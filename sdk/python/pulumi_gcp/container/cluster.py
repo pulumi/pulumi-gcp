@@ -29,10 +29,10 @@ class ClusterArgs:
                  datapath_provider: Optional[pulumi.Input[str]] = None,
                  default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  default_snat_status: Optional[pulumi.Input['ClusterDefaultSnatStatusArgs']] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_config: Optional[pulumi.Input['ClusterDnsConfigArgs']] = None,
                  enable_autopilot: Optional[pulumi.Input[bool]] = None,
-                 enable_binary_authorization: Optional[pulumi.Input[bool]] = None,
                  enable_fqdn_network_policy: Optional[pulumi.Input[bool]] = None,
                  enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
                  enable_k8s_beta_apis: Optional[pulumi.Input['ClusterEnableK8sBetaApisArgs']] = None,
@@ -102,7 +102,7 @@ class ClusterArgs:
         :param pulumi.Input[str] cluster_ipv4_cidr: The IP address range of the Kubernetes pods
                in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
                automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
-               only work for routes-based clusters, where `ip_allocation_policy` is not defined.
+               default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
         :param pulumi.Input['ClusterClusterTelemetryArgs'] cluster_telemetry: Configuration for
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
@@ -117,15 +117,14 @@ class ClusterArgs:
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
         :param pulumi.Input['ClusterDefaultSnatStatusArgs'] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in
+               Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.
         :param pulumi.Input[str] description: Description of the cluster.
         :param pulumi.Input['ClusterDnsConfigArgs'] dns_config: Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         :param pulumi.Input[bool] enable_autopilot: Enable Autopilot for this cluster. Defaults to `false`.
                Note that when this option is enabled, certain features of Standard GKE are not available.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
                for available features.
-        :param pulumi.Input[bool] enable_binary_authorization: Enable Binary Authorization for this cluster.
-               If enabled, all container images will be validated by Google Binary Authorization.
-               Deprecated in favor of `binary_authorization`.
         :param pulumi.Input[bool] enable_fqdn_network_policy: )
                Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         :param pulumi.Input[bool] enable_intranode_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
@@ -153,9 +152,8 @@ class ClusterArgs:
                set this to a value of at least `1`, alongside setting
                `remove_default_node_pool` to `true`.
         :param pulumi.Input['ClusterIpAllocationPolicyArgs'] ip_allocation_policy: Configuration of cluster IP allocation for
-               VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-               making the cluster VPC-native instead of routes-based. Structure is documented
-               below.
+               VPC-native clusters. If this block is unset during creation, it will be set by the GKE backend.
+               Structure is documented below.
         :param pulumi.Input[str] location: The location (region or zone) in which the cluster
                master will be created, as well as the default node location. If you specify a
                zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
@@ -214,8 +212,7 @@ class ClusterArgs:
                [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
                feature. Structure is documented below.
         :param pulumi.Input[str] networking_mode: Determines whether alias IPs or routes will be used for pod IPs in the cluster.
-               Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-               and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
+               Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases). Newly created clusters will default to `VPC_NATIVE`.
         :param pulumi.Input['ClusterNodeConfigArgs'] node_config: Parameters used in creating the default node pool.
                Generally, this field should not be used at the same time as a
                `container.NodePool` or a `node_pool` block; this configuration
@@ -306,10 +303,10 @@ class ClusterArgs:
             datapath_provider=datapath_provider,
             default_max_pods_per_node=default_max_pods_per_node,
             default_snat_status=default_snat_status,
+            deletion_protection=deletion_protection,
             description=description,
             dns_config=dns_config,
             enable_autopilot=enable_autopilot,
-            enable_binary_authorization=enable_binary_authorization,
             enable_fqdn_network_policy=enable_fqdn_network_policy,
             enable_intranode_visibility=enable_intranode_visibility,
             enable_k8s_beta_apis=enable_k8s_beta_apis,
@@ -376,10 +373,10 @@ class ClusterArgs:
              datapath_provider: Optional[pulumi.Input[str]] = None,
              default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
              default_snat_status: Optional[pulumi.Input['ClusterDefaultSnatStatusArgs']] = None,
+             deletion_protection: Optional[pulumi.Input[bool]] = None,
              description: Optional[pulumi.Input[str]] = None,
              dns_config: Optional[pulumi.Input['ClusterDnsConfigArgs']] = None,
              enable_autopilot: Optional[pulumi.Input[bool]] = None,
-             enable_binary_authorization: Optional[pulumi.Input[bool]] = None,
              enable_fqdn_network_policy: Optional[pulumi.Input[bool]] = None,
              enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
              enable_k8s_beta_apis: Optional[pulumi.Input['ClusterEnableK8sBetaApisArgs']] = None,
@@ -457,12 +454,12 @@ class ClusterArgs:
             default_max_pods_per_node = kwargs['defaultMaxPodsPerNode']
         if default_snat_status is None and 'defaultSnatStatus' in kwargs:
             default_snat_status = kwargs['defaultSnatStatus']
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
         if dns_config is None and 'dnsConfig' in kwargs:
             dns_config = kwargs['dnsConfig']
         if enable_autopilot is None and 'enableAutopilot' in kwargs:
             enable_autopilot = kwargs['enableAutopilot']
-        if enable_binary_authorization is None and 'enableBinaryAuthorization' in kwargs:
-            enable_binary_authorization = kwargs['enableBinaryAuthorization']
         if enable_fqdn_network_policy is None and 'enableFqdnNetworkPolicy' in kwargs:
             enable_fqdn_network_policy = kwargs['enableFqdnNetworkPolicy']
         if enable_intranode_visibility is None and 'enableIntranodeVisibility' in kwargs:
@@ -578,17 +575,14 @@ class ClusterArgs:
             _setter("default_max_pods_per_node", default_max_pods_per_node)
         if default_snat_status is not None:
             _setter("default_snat_status", default_snat_status)
+        if deletion_protection is not None:
+            _setter("deletion_protection", deletion_protection)
         if description is not None:
             _setter("description", description)
         if dns_config is not None:
             _setter("dns_config", dns_config)
         if enable_autopilot is not None:
             _setter("enable_autopilot", enable_autopilot)
-        if enable_binary_authorization is not None:
-            warnings.warn("""Deprecated in favor of binary_authorization.""", DeprecationWarning)
-            pulumi.log.warn("""enable_binary_authorization is deprecated: Deprecated in favor of binary_authorization.""")
-        if enable_binary_authorization is not None:
-            _setter("enable_binary_authorization", enable_binary_authorization)
         if enable_fqdn_network_policy is not None:
             _setter("enable_fqdn_network_policy", enable_fqdn_network_policy)
         if enable_intranode_visibility is not None:
@@ -765,7 +759,7 @@ class ClusterArgs:
         The IP address range of the Kubernetes pods
         in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
         automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
-        only work for routes-based clusters, where `ip_allocation_policy` is not defined.
+        default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
         """
         return pulumi.get(self, "cluster_ipv4_cidr")
 
@@ -865,6 +859,19 @@ class ClusterArgs:
         pulumi.set(self, "default_snat_status", value)
 
     @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in
+        Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -902,23 +909,6 @@ class ClusterArgs:
     @enable_autopilot.setter
     def enable_autopilot(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_autopilot", value)
-
-    @property
-    @pulumi.getter(name="enableBinaryAuthorization")
-    def enable_binary_authorization(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable Binary Authorization for this cluster.
-        If enabled, all container images will be validated by Google Binary Authorization.
-        Deprecated in favor of `binary_authorization`.
-        """
-        warnings.warn("""Deprecated in favor of binary_authorization.""", DeprecationWarning)
-        pulumi.log.warn("""enable_binary_authorization is deprecated: Deprecated in favor of binary_authorization.""")
-
-        return pulumi.get(self, "enable_binary_authorization")
-
-    @enable_binary_authorization.setter
-    def enable_binary_authorization(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enable_binary_authorization", value)
 
     @property
     @pulumi.getter(name="enableFqdnNetworkPolicy")
@@ -1083,9 +1073,8 @@ class ClusterArgs:
     def ip_allocation_policy(self) -> Optional[pulumi.Input['ClusterIpAllocationPolicyArgs']]:
         """
         Configuration of cluster IP allocation for
-        VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-        making the cluster VPC-native instead of routes-based. Structure is documented
-        below.
+        VPC-native clusters. If this block is unset during creation, it will be set by the GKE backend.
+        Structure is documented below.
         """
         return pulumi.get(self, "ip_allocation_policy")
 
@@ -1298,8 +1287,7 @@ class ClusterArgs:
     def networking_mode(self) -> Optional[pulumi.Input[str]]:
         """
         Determines whether alias IPs or routes will be used for pod IPs in the cluster.
-        Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-        and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
+        Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases). Newly created clusters will default to `VPC_NATIVE`.
         """
         return pulumi.get(self, "networking_mode")
 
@@ -1640,10 +1628,10 @@ class _ClusterState:
                  datapath_provider: Optional[pulumi.Input[str]] = None,
                  default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  default_snat_status: Optional[pulumi.Input['ClusterDefaultSnatStatusArgs']] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_config: Optional[pulumi.Input['ClusterDnsConfigArgs']] = None,
                  enable_autopilot: Optional[pulumi.Input[bool]] = None,
-                 enable_binary_authorization: Optional[pulumi.Input[bool]] = None,
                  enable_fqdn_network_policy: Optional[pulumi.Input[bool]] = None,
                  enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
                  enable_k8s_beta_apis: Optional[pulumi.Input['ClusterEnableK8sBetaApisArgs']] = None,
@@ -1720,7 +1708,7 @@ class _ClusterState:
         :param pulumi.Input[str] cluster_ipv4_cidr: The IP address range of the Kubernetes pods
                in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
                automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
-               only work for routes-based clusters, where `ip_allocation_policy` is not defined.
+               default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
         :param pulumi.Input['ClusterClusterTelemetryArgs'] cluster_telemetry: Configuration for
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
@@ -1735,15 +1723,14 @@ class _ClusterState:
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
         :param pulumi.Input['ClusterDefaultSnatStatusArgs'] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in
+               Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.
         :param pulumi.Input[str] description: Description of the cluster.
         :param pulumi.Input['ClusterDnsConfigArgs'] dns_config: Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         :param pulumi.Input[bool] enable_autopilot: Enable Autopilot for this cluster. Defaults to `false`.
                Note that when this option is enabled, certain features of Standard GKE are not available.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
                for available features.
-        :param pulumi.Input[bool] enable_binary_authorization: Enable Binary Authorization for this cluster.
-               If enabled, all container images will be validated by Google Binary Authorization.
-               Deprecated in favor of `binary_authorization`.
         :param pulumi.Input[bool] enable_fqdn_network_policy: )
                Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         :param pulumi.Input[bool] enable_intranode_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
@@ -1772,9 +1759,8 @@ class _ClusterState:
                set this to a value of at least `1`, alongside setting
                `remove_default_node_pool` to `true`.
         :param pulumi.Input['ClusterIpAllocationPolicyArgs'] ip_allocation_policy: Configuration of cluster IP allocation for
-               VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-               making the cluster VPC-native instead of routes-based. Structure is documented
-               below.
+               VPC-native clusters. If this block is unset during creation, it will be set by the GKE backend.
+               Structure is documented below.
         :param pulumi.Input[str] label_fingerprint: The fingerprint of the set of labels for this cluster.
         :param pulumi.Input[str] location: The location (region or zone) in which the cluster
                master will be created, as well as the default node location. If you specify a
@@ -1837,8 +1823,7 @@ class _ClusterState:
                [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
                feature. Structure is documented below.
         :param pulumi.Input[str] networking_mode: Determines whether alias IPs or routes will be used for pod IPs in the cluster.
-               Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-               and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
+               Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases). Newly created clusters will default to `VPC_NATIVE`.
         :param pulumi.Input['ClusterNodeConfigArgs'] node_config: Parameters used in creating the default node pool.
                Generally, this field should not be used at the same time as a
                `container.NodePool` or a `node_pool` block; this configuration
@@ -1937,10 +1922,10 @@ class _ClusterState:
             datapath_provider=datapath_provider,
             default_max_pods_per_node=default_max_pods_per_node,
             default_snat_status=default_snat_status,
+            deletion_protection=deletion_protection,
             description=description,
             dns_config=dns_config,
             enable_autopilot=enable_autopilot,
-            enable_binary_authorization=enable_binary_authorization,
             enable_fqdn_network_policy=enable_fqdn_network_policy,
             enable_intranode_visibility=enable_intranode_visibility,
             enable_k8s_beta_apis=enable_k8s_beta_apis,
@@ -2014,10 +1999,10 @@ class _ClusterState:
              datapath_provider: Optional[pulumi.Input[str]] = None,
              default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
              default_snat_status: Optional[pulumi.Input['ClusterDefaultSnatStatusArgs']] = None,
+             deletion_protection: Optional[pulumi.Input[bool]] = None,
              description: Optional[pulumi.Input[str]] = None,
              dns_config: Optional[pulumi.Input['ClusterDnsConfigArgs']] = None,
              enable_autopilot: Optional[pulumi.Input[bool]] = None,
-             enable_binary_authorization: Optional[pulumi.Input[bool]] = None,
              enable_fqdn_network_policy: Optional[pulumi.Input[bool]] = None,
              enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
              enable_k8s_beta_apis: Optional[pulumi.Input['ClusterEnableK8sBetaApisArgs']] = None,
@@ -2102,12 +2087,12 @@ class _ClusterState:
             default_max_pods_per_node = kwargs['defaultMaxPodsPerNode']
         if default_snat_status is None and 'defaultSnatStatus' in kwargs:
             default_snat_status = kwargs['defaultSnatStatus']
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
         if dns_config is None and 'dnsConfig' in kwargs:
             dns_config = kwargs['dnsConfig']
         if enable_autopilot is None and 'enableAutopilot' in kwargs:
             enable_autopilot = kwargs['enableAutopilot']
-        if enable_binary_authorization is None and 'enableBinaryAuthorization' in kwargs:
-            enable_binary_authorization = kwargs['enableBinaryAuthorization']
         if enable_fqdn_network_policy is None and 'enableFqdnNetworkPolicy' in kwargs:
             enable_fqdn_network_policy = kwargs['enableFqdnNetworkPolicy']
         if enable_intranode_visibility is None and 'enableIntranodeVisibility' in kwargs:
@@ -2233,17 +2218,14 @@ class _ClusterState:
             _setter("default_max_pods_per_node", default_max_pods_per_node)
         if default_snat_status is not None:
             _setter("default_snat_status", default_snat_status)
+        if deletion_protection is not None:
+            _setter("deletion_protection", deletion_protection)
         if description is not None:
             _setter("description", description)
         if dns_config is not None:
             _setter("dns_config", dns_config)
         if enable_autopilot is not None:
             _setter("enable_autopilot", enable_autopilot)
-        if enable_binary_authorization is not None:
-            warnings.warn("""Deprecated in favor of binary_authorization.""", DeprecationWarning)
-            pulumi.log.warn("""enable_binary_authorization is deprecated: Deprecated in favor of binary_authorization.""")
-        if enable_binary_authorization is not None:
-            _setter("enable_binary_authorization", enable_binary_authorization)
         if enable_fqdn_network_policy is not None:
             _setter("enable_fqdn_network_policy", enable_fqdn_network_policy)
         if enable_intranode_visibility is not None:
@@ -2434,7 +2416,7 @@ class _ClusterState:
         The IP address range of the Kubernetes pods
         in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
         automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
-        only work for routes-based clusters, where `ip_allocation_policy` is not defined.
+        default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
         """
         return pulumi.get(self, "cluster_ipv4_cidr")
 
@@ -2534,6 +2516,19 @@ class _ClusterState:
         pulumi.set(self, "default_snat_status", value)
 
     @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in
+        Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2571,23 +2566,6 @@ class _ClusterState:
     @enable_autopilot.setter
     def enable_autopilot(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_autopilot", value)
-
-    @property
-    @pulumi.getter(name="enableBinaryAuthorization")
-    def enable_binary_authorization(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable Binary Authorization for this cluster.
-        If enabled, all container images will be validated by Google Binary Authorization.
-        Deprecated in favor of `binary_authorization`.
-        """
-        warnings.warn("""Deprecated in favor of binary_authorization.""", DeprecationWarning)
-        pulumi.log.warn("""enable_binary_authorization is deprecated: Deprecated in favor of binary_authorization.""")
-
-        return pulumi.get(self, "enable_binary_authorization")
-
-    @enable_binary_authorization.setter
-    def enable_binary_authorization(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enable_binary_authorization", value)
 
     @property
     @pulumi.getter(name="enableFqdnNetworkPolicy")
@@ -2764,9 +2742,8 @@ class _ClusterState:
     def ip_allocation_policy(self) -> Optional[pulumi.Input['ClusterIpAllocationPolicyArgs']]:
         """
         Configuration of cluster IP allocation for
-        VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-        making the cluster VPC-native instead of routes-based. Structure is documented
-        below.
+        VPC-native clusters. If this block is unset during creation, it will be set by the GKE backend.
+        Structure is documented below.
         """
         return pulumi.get(self, "ip_allocation_policy")
 
@@ -3005,8 +2982,7 @@ class _ClusterState:
     def networking_mode(self) -> Optional[pulumi.Input[str]]:
         """
         Determines whether alias IPs or routes will be used for pod IPs in the cluster.
-        Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-        and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
+        Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases). Newly created clusters will default to `VPC_NATIVE`.
         """
         return pulumi.get(self, "networking_mode")
 
@@ -3399,10 +3375,10 @@ class Cluster(pulumi.CustomResource):
                  datapath_provider: Optional[pulumi.Input[str]] = None,
                  default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  default_snat_status: Optional[pulumi.Input[pulumi.InputType['ClusterDefaultSnatStatusArgs']]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_config: Optional[pulumi.Input[pulumi.InputType['ClusterDnsConfigArgs']]] = None,
                  enable_autopilot: Optional[pulumi.Input[bool]] = None,
-                 enable_binary_authorization: Optional[pulumi.Input[bool]] = None,
                  enable_fqdn_network_policy: Optional[pulumi.Input[bool]] = None,
                  enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
                  enable_k8s_beta_apis: Optional[pulumi.Input[pulumi.InputType['ClusterEnableK8sBetaApisArgs']]] = None,
@@ -3457,6 +3433,10 @@ class Cluster(pulumi.CustomResource):
         Manages a Google Kubernetes Engine (GKE) cluster. For more information see
         [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
         and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters).
+
+        > **Note**: On version 5.0.0+ of the provider, you must explicitly set `deletion_protection=false`
+        (and run `pulumi up` to write the field to state) in order to destroy a cluster.
+        It is recommended to not set this field (or set it to true) until you're ready to destroy.
 
         > **Warning:** All arguments and attributes, including basic auth username and
         passwords as well as certificate outputs will be stored in the raw state as
@@ -3543,7 +3523,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_ipv4_cidr: The IP address range of the Kubernetes pods
                in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
                automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
-               only work for routes-based clusters, where `ip_allocation_policy` is not defined.
+               default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
         :param pulumi.Input[pulumi.InputType['ClusterClusterTelemetryArgs']] cluster_telemetry: Configuration for
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
@@ -3558,15 +3538,14 @@ class Cluster(pulumi.CustomResource):
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
         :param pulumi.Input[pulumi.InputType['ClusterDefaultSnatStatusArgs']] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in
+               Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.
         :param pulumi.Input[str] description: Description of the cluster.
         :param pulumi.Input[pulumi.InputType['ClusterDnsConfigArgs']] dns_config: Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         :param pulumi.Input[bool] enable_autopilot: Enable Autopilot for this cluster. Defaults to `false`.
                Note that when this option is enabled, certain features of Standard GKE are not available.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
                for available features.
-        :param pulumi.Input[bool] enable_binary_authorization: Enable Binary Authorization for this cluster.
-               If enabled, all container images will be validated by Google Binary Authorization.
-               Deprecated in favor of `binary_authorization`.
         :param pulumi.Input[bool] enable_fqdn_network_policy: )
                Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         :param pulumi.Input[bool] enable_intranode_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
@@ -3594,9 +3573,8 @@ class Cluster(pulumi.CustomResource):
                set this to a value of at least `1`, alongside setting
                `remove_default_node_pool` to `true`.
         :param pulumi.Input[pulumi.InputType['ClusterIpAllocationPolicyArgs']] ip_allocation_policy: Configuration of cluster IP allocation for
-               VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-               making the cluster VPC-native instead of routes-based. Structure is documented
-               below.
+               VPC-native clusters. If this block is unset during creation, it will be set by the GKE backend.
+               Structure is documented below.
         :param pulumi.Input[str] location: The location (region or zone) in which the cluster
                master will be created, as well as the default node location. If you specify a
                zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
@@ -3655,8 +3633,7 @@ class Cluster(pulumi.CustomResource):
                [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
                feature. Structure is documented below.
         :param pulumi.Input[str] networking_mode: Determines whether alias IPs or routes will be used for pod IPs in the cluster.
-               Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-               and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
+               Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases). Newly created clusters will default to `VPC_NATIVE`.
         :param pulumi.Input[pulumi.InputType['ClusterNodeConfigArgs']] node_config: Parameters used in creating the default node pool.
                Generally, this field should not be used at the same time as a
                `container.NodePool` or a `node_pool` block; this configuration
@@ -3742,6 +3719,10 @@ class Cluster(pulumi.CustomResource):
         Manages a Google Kubernetes Engine (GKE) cluster. For more information see
         [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
         and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters).
+
+        > **Note**: On version 5.0.0+ of the provider, you must explicitly set `deletion_protection=false`
+        (and run `pulumi up` to write the field to state) in order to destroy a cluster.
+        It is recommended to not set this field (or set it to true) until you're ready to destroy.
 
         > **Warning:** All arguments and attributes, including basic auth username and
         passwords as well as certificate outputs will be stored in the raw state as
@@ -3840,10 +3821,10 @@ class Cluster(pulumi.CustomResource):
                  datapath_provider: Optional[pulumi.Input[str]] = None,
                  default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  default_snat_status: Optional[pulumi.Input[pulumi.InputType['ClusterDefaultSnatStatusArgs']]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_config: Optional[pulumi.Input[pulumi.InputType['ClusterDnsConfigArgs']]] = None,
                  enable_autopilot: Optional[pulumi.Input[bool]] = None,
-                 enable_binary_authorization: Optional[pulumi.Input[bool]] = None,
                  enable_fqdn_network_policy: Optional[pulumi.Input[bool]] = None,
                  enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
                  enable_k8s_beta_apis: Optional[pulumi.Input[pulumi.InputType['ClusterEnableK8sBetaApisArgs']]] = None,
@@ -3924,11 +3905,11 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["default_max_pods_per_node"] = default_max_pods_per_node
             default_snat_status = _utilities.configure(default_snat_status, ClusterDefaultSnatStatusArgs, True)
             __props__.__dict__["default_snat_status"] = default_snat_status
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
             dns_config = _utilities.configure(dns_config, ClusterDnsConfigArgs, True)
             __props__.__dict__["dns_config"] = dns_config
             __props__.__dict__["enable_autopilot"] = enable_autopilot
-            __props__.__dict__["enable_binary_authorization"] = enable_binary_authorization
             __props__.__dict__["enable_fqdn_network_policy"] = enable_fqdn_network_policy
             __props__.__dict__["enable_intranode_visibility"] = enable_intranode_visibility
             enable_k8s_beta_apis = _utilities.configure(enable_k8s_beta_apis, ClusterEnableK8sBetaApisArgs, True)
@@ -4033,10 +4014,10 @@ class Cluster(pulumi.CustomResource):
             datapath_provider: Optional[pulumi.Input[str]] = None,
             default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
             default_snat_status: Optional[pulumi.Input[pulumi.InputType['ClusterDefaultSnatStatusArgs']]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             dns_config: Optional[pulumi.Input[pulumi.InputType['ClusterDnsConfigArgs']]] = None,
             enable_autopilot: Optional[pulumi.Input[bool]] = None,
-            enable_binary_authorization: Optional[pulumi.Input[bool]] = None,
             enable_fqdn_network_policy: Optional[pulumi.Input[bool]] = None,
             enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
             enable_k8s_beta_apis: Optional[pulumi.Input[pulumi.InputType['ClusterEnableK8sBetaApisArgs']]] = None,
@@ -4118,7 +4099,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_ipv4_cidr: The IP address range of the Kubernetes pods
                in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
                automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
-               only work for routes-based clusters, where `ip_allocation_policy` is not defined.
+               default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
         :param pulumi.Input[pulumi.InputType['ClusterClusterTelemetryArgs']] cluster_telemetry: Configuration for
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
@@ -4133,15 +4114,14 @@ class Cluster(pulumi.CustomResource):
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
         :param pulumi.Input[pulumi.InputType['ClusterDefaultSnatStatusArgs']] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in
+               Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.
         :param pulumi.Input[str] description: Description of the cluster.
         :param pulumi.Input[pulumi.InputType['ClusterDnsConfigArgs']] dns_config: Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         :param pulumi.Input[bool] enable_autopilot: Enable Autopilot for this cluster. Defaults to `false`.
                Note that when this option is enabled, certain features of Standard GKE are not available.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
                for available features.
-        :param pulumi.Input[bool] enable_binary_authorization: Enable Binary Authorization for this cluster.
-               If enabled, all container images will be validated by Google Binary Authorization.
-               Deprecated in favor of `binary_authorization`.
         :param pulumi.Input[bool] enable_fqdn_network_policy: )
                Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         :param pulumi.Input[bool] enable_intranode_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
@@ -4170,9 +4150,8 @@ class Cluster(pulumi.CustomResource):
                set this to a value of at least `1`, alongside setting
                `remove_default_node_pool` to `true`.
         :param pulumi.Input[pulumi.InputType['ClusterIpAllocationPolicyArgs']] ip_allocation_policy: Configuration of cluster IP allocation for
-               VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-               making the cluster VPC-native instead of routes-based. Structure is documented
-               below.
+               VPC-native clusters. If this block is unset during creation, it will be set by the GKE backend.
+               Structure is documented below.
         :param pulumi.Input[str] label_fingerprint: The fingerprint of the set of labels for this cluster.
         :param pulumi.Input[str] location: The location (region or zone) in which the cluster
                master will be created, as well as the default node location. If you specify a
@@ -4235,8 +4214,7 @@ class Cluster(pulumi.CustomResource):
                [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
                feature. Structure is documented below.
         :param pulumi.Input[str] networking_mode: Determines whether alias IPs or routes will be used for pod IPs in the cluster.
-               Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-               and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
+               Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases). Newly created clusters will default to `VPC_NATIVE`.
         :param pulumi.Input[pulumi.InputType['ClusterNodeConfigArgs']] node_config: Parameters used in creating the default node pool.
                Generally, this field should not be used at the same time as a
                `container.NodePool` or a `node_pool` block; this configuration
@@ -4337,10 +4315,10 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["datapath_provider"] = datapath_provider
         __props__.__dict__["default_max_pods_per_node"] = default_max_pods_per_node
         __props__.__dict__["default_snat_status"] = default_snat_status
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["dns_config"] = dns_config
         __props__.__dict__["enable_autopilot"] = enable_autopilot
-        __props__.__dict__["enable_binary_authorization"] = enable_binary_authorization
         __props__.__dict__["enable_fqdn_network_policy"] = enable_fqdn_network_policy
         __props__.__dict__["enable_intranode_visibility"] = enable_intranode_visibility
         __props__.__dict__["enable_k8s_beta_apis"] = enable_k8s_beta_apis
@@ -4456,7 +4434,7 @@ class Cluster(pulumi.CustomResource):
         The IP address range of the Kubernetes pods
         in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
         automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
-        only work for routes-based clusters, where `ip_allocation_policy` is not defined.
+        default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
         """
         return pulumi.get(self, "cluster_ipv4_cidr")
 
@@ -4524,6 +4502,15 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "default_snat_status")
 
     @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in
+        Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
@@ -4549,19 +4536,6 @@ class Cluster(pulumi.CustomResource):
         for available features.
         """
         return pulumi.get(self, "enable_autopilot")
-
-    @property
-    @pulumi.getter(name="enableBinaryAuthorization")
-    def enable_binary_authorization(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Enable Binary Authorization for this cluster.
-        If enabled, all container images will be validated by Google Binary Authorization.
-        Deprecated in favor of `binary_authorization`.
-        """
-        warnings.warn("""Deprecated in favor of binary_authorization.""", DeprecationWarning)
-        pulumi.log.warn("""enable_binary_authorization is deprecated: Deprecated in favor of binary_authorization.""")
-
-        return pulumi.get(self, "enable_binary_authorization")
 
     @property
     @pulumi.getter(name="enableFqdnNetworkPolicy")
@@ -4686,9 +4660,8 @@ class Cluster(pulumi.CustomResource):
     def ip_allocation_policy(self) -> pulumi.Output['outputs.ClusterIpAllocationPolicy']:
         """
         Configuration of cluster IP allocation for
-        VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-        making the cluster VPC-native instead of routes-based. Structure is documented
-        below.
+        VPC-native clusters. If this block is unset during creation, it will be set by the GKE backend.
+        Structure is documented below.
         """
         return pulumi.get(self, "ip_allocation_policy")
 
@@ -4863,8 +4836,7 @@ class Cluster(pulumi.CustomResource):
     def networking_mode(self) -> pulumi.Output[str]:
         """
         Determines whether alias IPs or routes will be used for pod IPs in the cluster.
-        Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-        and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
+        Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases). Newly created clusters will default to `VPC_NATIVE`.
         """
         return pulumi.get(self, "networking_mode")
 

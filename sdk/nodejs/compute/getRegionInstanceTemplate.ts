@@ -94,6 +94,7 @@ export interface GetRegionInstanceTemplateResult {
      * documented below.
      */
     readonly disks: outputs.compute.GetRegionInstanceTemplateDisk[];
+    readonly effectiveLabels: {[key: string]: string};
     /**
      * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
@@ -198,6 +199,7 @@ export interface GetRegionInstanceTemplateResult {
      * The unique fingerprint of the tags.
      */
     readonly tagsFingerprint: string;
+    readonly terraformLabels: {[key: string]: string};
 }
 /**
  * Get information about a VM instance template resource within GCE. For more information see

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,8 +21,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicedirectory"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/servicedirectory"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -91,7 +91,12 @@ type ServiceBinding struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Set of label tags associated with the ServiceBinding resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the ServiceBinding resource.
 	//
@@ -103,6 +108,9 @@ type ServiceBinding struct {
 	// The full Service Directory Service name of the format
 	// projects/*/locations/*/namespaces/*/services/*
 	Service pulumi.StringOutput `pulumi:"service"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Time the ServiceBinding was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -144,7 +152,12 @@ type serviceBindingState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Set of label tags associated with the ServiceBinding resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the ServiceBinding resource.
 	//
@@ -156,6 +169,9 @@ type serviceBindingState struct {
 	// The full Service Directory Service name of the format
 	// projects/*/locations/*/namespaces/*/services/*
 	Service *string `pulumi:"service"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Time the ServiceBinding was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -165,7 +181,12 @@ type ServiceBindingState struct {
 	CreateTime pulumi.StringPtrInput
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Set of label tags associated with the ServiceBinding resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Name of the ServiceBinding resource.
 	//
@@ -177,6 +198,9 @@ type ServiceBindingState struct {
 	// The full Service Directory Service name of the format
 	// projects/*/locations/*/namespaces/*/services/*
 	Service pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// Time the ServiceBinding was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -189,6 +213,8 @@ type serviceBindingArgs struct {
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
 	// Set of label tags associated with the ServiceBinding resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the ServiceBinding resource.
 	//
@@ -207,6 +233,8 @@ type ServiceBindingArgs struct {
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
 	// Set of label tags associated with the ServiceBinding resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Name of the ServiceBinding resource.
 	//
@@ -341,7 +369,15 @@ func (o ServiceBindingOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceBinding) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o ServiceBindingOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServiceBinding) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Set of label tags associated with the ServiceBinding resource.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ServiceBindingOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceBinding) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -363,6 +399,12 @@ func (o ServiceBindingOutput) Project() pulumi.StringOutput {
 // projects/*/locations/*/namespaces/*/services/*
 func (o ServiceBindingOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceBinding) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ServiceBindingOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServiceBinding) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Time the ServiceBinding was updated in UTC.

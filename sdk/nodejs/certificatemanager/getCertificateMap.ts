@@ -52,6 +52,7 @@ export interface GetCertificateMapArgs {
 export interface GetCertificateMapResult {
     readonly createTime: string;
     readonly description: string;
+    readonly effectiveLabels: {[key: string]: string};
     readonly gclbTargets: outputs.certificatemanager.GetCertificateMapGclbTarget[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -60,6 +61,7 @@ export interface GetCertificateMapResult {
     readonly labels: {[key: string]: string};
     readonly name: string;
     readonly project?: string;
+    readonly terraformLabels: {[key: string]: string};
     readonly updateTime: string;
 }
 /**

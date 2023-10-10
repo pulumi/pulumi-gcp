@@ -113,6 +113,7 @@ namespace Pulumi.Gcp.Storage
         public readonly ImmutableArray<Outputs.GetBucketCorResult> Cors;
         public readonly ImmutableArray<Outputs.GetBucketCustomPlacementConfigResult> CustomPlacementConfigs;
         public readonly bool DefaultEventBasedHold;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly ImmutableArray<Outputs.GetBucketEncryptionResult> Encryptions;
         public readonly bool ForceDestroy;
         /// <summary>
@@ -130,6 +131,7 @@ namespace Pulumi.Gcp.Storage
         public readonly ImmutableArray<Outputs.GetBucketRetentionPolicyResult> RetentionPolicies;
         public readonly string SelfLink;
         public readonly string StorageClass;
+        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly bool UniformBucketLevelAccess;
         public readonly string Url;
         public readonly ImmutableArray<Outputs.GetBucketVersioningResult> Versionings;
@@ -144,6 +146,8 @@ namespace Pulumi.Gcp.Storage
             ImmutableArray<Outputs.GetBucketCustomPlacementConfigResult> customPlacementConfigs,
 
             bool defaultEventBasedHold,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             ImmutableArray<Outputs.GetBucketEncryptionResult> encryptions,
 
@@ -173,6 +177,8 @@ namespace Pulumi.Gcp.Storage
 
             string storageClass,
 
+            ImmutableDictionary<string, string> terraformLabels,
+
             bool uniformBucketLevelAccess,
 
             string url,
@@ -185,6 +191,7 @@ namespace Pulumi.Gcp.Storage
             Cors = cors;
             CustomPlacementConfigs = customPlacementConfigs;
             DefaultEventBasedHold = defaultEventBasedHold;
+            EffectiveLabels = effectiveLabels;
             Encryptions = encryptions;
             ForceDestroy = forceDestroy;
             Id = id;
@@ -199,6 +206,7 @@ namespace Pulumi.Gcp.Storage
             RetentionPolicies = retentionPolicies;
             SelfLink = selfLink;
             StorageClass = storageClass;
+            TerraformLabels = terraformLabels;
             UniformBucketLevelAccess = uniformBucketLevelAccess;
             Url = url;
             Versionings = versionings;

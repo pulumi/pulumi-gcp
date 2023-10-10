@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigAdvancedMachineFeature;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigConfidentialNode;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigEffectiveTaint;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigEphemeralStorageConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigFastSocket;
@@ -36,6 +37,7 @@ public final class GetClusterNodePoolNodeConfig {
     private List<GetClusterNodePoolNodeConfigConfidentialNode> confidentialNodes;
     private Integer diskSizeGb;
     private String diskType;
+    private List<GetClusterNodePoolNodeConfigEffectiveTaint> effectiveTaints;
     private List<GetClusterNodePoolNodeConfigEphemeralStorageConfig> ephemeralStorageConfigs;
     private List<GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig> ephemeralStorageLocalSsdConfigs;
     private List<GetClusterNodePoolNodeConfigFastSocket> fastSockets;
@@ -82,6 +84,9 @@ public final class GetClusterNodePoolNodeConfig {
     }
     public String diskType() {
         return this.diskType;
+    }
+    public List<GetClusterNodePoolNodeConfigEffectiveTaint> effectiveTaints() {
+        return this.effectiveTaints;
     }
     public List<GetClusterNodePoolNodeConfigEphemeralStorageConfig> ephemeralStorageConfigs() {
         return this.ephemeralStorageConfigs;
@@ -188,6 +193,7 @@ public final class GetClusterNodePoolNodeConfig {
         private List<GetClusterNodePoolNodeConfigConfidentialNode> confidentialNodes;
         private Integer diskSizeGb;
         private String diskType;
+        private List<GetClusterNodePoolNodeConfigEffectiveTaint> effectiveTaints;
         private List<GetClusterNodePoolNodeConfigEphemeralStorageConfig> ephemeralStorageConfigs;
         private List<GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig> ephemeralStorageLocalSsdConfigs;
         private List<GetClusterNodePoolNodeConfigFastSocket> fastSockets;
@@ -226,6 +232,7 @@ public final class GetClusterNodePoolNodeConfig {
     	      this.confidentialNodes = defaults.confidentialNodes;
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.diskType = defaults.diskType;
+    	      this.effectiveTaints = defaults.effectiveTaints;
     	      this.ephemeralStorageConfigs = defaults.ephemeralStorageConfigs;
     	      this.ephemeralStorageLocalSsdConfigs = defaults.ephemeralStorageLocalSsdConfigs;
     	      this.fastSockets = defaults.fastSockets;
@@ -288,6 +295,14 @@ public final class GetClusterNodePoolNodeConfig {
         public Builder diskType(String diskType) {
             this.diskType = Objects.requireNonNull(diskType);
             return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveTaints(List<GetClusterNodePoolNodeConfigEffectiveTaint> effectiveTaints) {
+            this.effectiveTaints = Objects.requireNonNull(effectiveTaints);
+            return this;
+        }
+        public Builder effectiveTaints(GetClusterNodePoolNodeConfigEffectiveTaint... effectiveTaints) {
+            return effectiveTaints(List.of(effectiveTaints));
         }
         @CustomType.Setter
         public Builder ephemeralStorageConfigs(List<GetClusterNodePoolNodeConfigEphemeralStorageConfig> ephemeralStorageConfigs) {
@@ -500,6 +515,7 @@ public final class GetClusterNodePoolNodeConfig {
             o.confidentialNodes = confidentialNodes;
             o.diskSizeGb = diskSizeGb;
             o.diskType = diskType;
+            o.effectiveTaints = effectiveTaints;
             o.ephemeralStorageConfigs = ephemeralStorageConfigs;
             o.ephemeralStorageLocalSsdConfigs = ephemeralStorageLocalSsdConfigs;
             o.fastSockets = fastSockets;

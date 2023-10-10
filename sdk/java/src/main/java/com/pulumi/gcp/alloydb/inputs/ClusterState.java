@@ -16,6 +16,7 @@ import com.pulumi.gcp.alloydb.inputs.ClusterMigrationSourceArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterRestoreBackupSourceArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterRestoreContinuousBackupSourceArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +28,29 @@ import javax.annotation.Nullable;
 public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterState Empty = new ClusterState();
+
+    /**
+     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+     * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * 
+     */
+    @Import(name="annotations")
+    private @Nullable Output<Map<String,String>> annotations;
+
+    /**
+     * @return Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+     * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> annotations() {
+        return Optional.ofNullable(this.annotations);
+    }
 
     /**
      * The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
@@ -144,6 +168,40 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    @Import(name="effectiveAnnotations")
+    private @Nullable Output<Map<String,String>> effectiveAnnotations;
+
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveAnnotations() {
+        return Optional.ofNullable(this.effectiveAnnotations);
+    }
+
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
      * Structure is documented below.
      * 
@@ -180,6 +238,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * For Resource freshness validation (https://google.aip.dev/154)
+     * 
+     */
+    @Import(name="etag")
+    private @Nullable Output<String> etag;
+
+    /**
+     * @return For Resource freshness validation (https://google.aip.dev/154)
+     * 
+     */
+    public Optional<Output<String>> etag() {
+        return Optional.ofNullable(this.etag);
+    }
+
+    /**
      * Initial user to setup during cluster creation.
      * Structure is documented below.
      * 
@@ -198,6 +271,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * User-defined labels for the alloydb cluster.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -205,6 +280,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return User-defined labels for the alloydb cluster.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -328,6 +405,25 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+     * Set to true if the current state of Cluster does not match the user&#39;s intended state, and the service is actively updating the resource to reconcile them.
+     * This can happen due to user-triggered updates or system actions like failover or maintenance.
+     * 
+     */
+    @Import(name="reconciling")
+    private @Nullable Output<Boolean> reconciling;
+
+    /**
+     * @return Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+     * Set to true if the current state of Cluster does not match the user&#39;s intended state, and the service is actively updating the resource to reconcile them.
+     * This can happen due to user-triggered updates or system actions like failover or maintenance.
+     * 
+     */
+    public Optional<Output<Boolean>> reconciling() {
+        return Optional.ofNullable(this.reconciling);
+    }
+
+    /**
      * The source when restoring from a backup. Conflicts with &#39;restore_continuous_backup_source&#39;, both can&#39;t be set together.
      * Structure is documented below.
      * 
@@ -362,6 +458,38 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Output only. The current serving state of the cluster.
+     * 
+     */
+    @Import(name="state")
+    private @Nullable Output<String> state;
+
+    /**
+     * @return Output only. The current serving state of the cluster.
+     * 
+     */
+    public Optional<Output<String>> state() {
+        return Optional.ofNullable(this.state);
+    }
+
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
+    }
+
+    /**
      * The system-generated UID of the resource.
      * 
      */
@@ -379,6 +507,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private ClusterState() {}
 
     private ClusterState(ClusterState $) {
+        this.annotations = $.annotations;
         this.automatedBackupPolicy = $.automatedBackupPolicy;
         this.backupSources = $.backupSources;
         this.clusterId = $.clusterId;
@@ -386,8 +515,11 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.continuousBackupInfos = $.continuousBackupInfos;
         this.databaseVersion = $.databaseVersion;
         this.displayName = $.displayName;
+        this.effectiveAnnotations = $.effectiveAnnotations;
+        this.effectiveLabels = $.effectiveLabels;
         this.encryptionConfig = $.encryptionConfig;
         this.encryptionInfos = $.encryptionInfos;
+        this.etag = $.etag;
         this.initialUser = $.initialUser;
         this.labels = $.labels;
         this.location = $.location;
@@ -396,8 +528,11 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.network = $.network;
         this.networkConfig = $.networkConfig;
         this.project = $.project;
+        this.reconciling = $.reconciling;
         this.restoreBackupSource = $.restoreBackupSource;
         this.restoreContinuousBackupSource = $.restoreContinuousBackupSource;
+        this.state = $.state;
+        this.terraformLabels = $.terraformLabels;
         this.uid = $.uid;
     }
 
@@ -417,6 +552,35 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ClusterState defaults) {
             $ = new ClusterState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param annotations Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+         * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder annotations(@Nullable Output<Map<String,String>> annotations) {
+            $.annotations = annotations;
+            return this;
+        }
+
+        /**
+         * @param annotations Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+         * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder annotations(Map<String,String> annotations) {
+            return annotations(Output.of(annotations));
         }
 
         /**
@@ -599,6 +763,52 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+         * Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveAnnotations(@Nullable Output<Map<String,String>> effectiveAnnotations) {
+            $.effectiveAnnotations = effectiveAnnotations;
+            return this;
+        }
+
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+         * Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveAnnotations(Map<String,String> effectiveAnnotations) {
+            return effectiveAnnotations(Output.of(effectiveAnnotations));
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param encryptionConfig EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
          * Structure is documented below.
          * 
@@ -659,6 +869,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param etag For Resource freshness validation (https://google.aip.dev/154)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder etag(@Nullable Output<String> etag) {
+            $.etag = etag;
+            return this;
+        }
+
+        /**
+         * @param etag For Resource freshness validation (https://google.aip.dev/154)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder etag(String etag) {
+            return etag(Output.of(etag));
+        }
+
+        /**
          * @param initialUser Initial user to setup during cluster creation.
          * Structure is documented below.
          * 
@@ -683,6 +914,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels User-defined labels for the alloydb cluster.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -694,6 +927,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels User-defined labels for the alloydb cluster.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -866,6 +1101,31 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param reconciling Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+         * Set to true if the current state of Cluster does not match the user&#39;s intended state, and the service is actively updating the resource to reconcile them.
+         * This can happen due to user-triggered updates or system actions like failover or maintenance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reconciling(@Nullable Output<Boolean> reconciling) {
+            $.reconciling = reconciling;
+            return this;
+        }
+
+        /**
+         * @param reconciling Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+         * Set to true if the current state of Cluster does not match the user&#39;s intended state, and the service is actively updating the resource to reconcile them.
+         * This can happen due to user-triggered updates or system actions like failover or maintenance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reconciling(Boolean reconciling) {
+            return reconciling(Output.of(reconciling));
+        }
+
+        /**
          * @param restoreBackupSource The source when restoring from a backup. Conflicts with &#39;restore_continuous_backup_source&#39;, both can&#39;t be set together.
          * Structure is documented below.
          * 
@@ -909,6 +1169,50 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder restoreContinuousBackupSource(ClusterRestoreContinuousBackupSourceArgs restoreContinuousBackupSource) {
             return restoreContinuousBackupSource(Output.of(restoreContinuousBackupSource));
+        }
+
+        /**
+         * @param state Output only. The current serving state of the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(@Nullable Output<String> state) {
+            $.state = state;
+            return this;
+        }
+
+        /**
+         * @param state Output only. The current serving state of the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(String state) {
+            return state(Output.of(state));
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
+            return this;
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

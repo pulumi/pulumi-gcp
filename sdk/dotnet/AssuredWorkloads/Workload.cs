@@ -101,6 +101,13 @@ namespace Pulumi.Gcp.AssuredWorkloads
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, object>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
         /// </summary>
         [Output("kmsSettings")]
@@ -108,6 +115,9 @@ namespace Pulumi.Gcp.AssuredWorkloads
 
         /// <summary>
         /// Optional. Labels applied to the workload.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -151,6 +161,12 @@ namespace Pulumi.Gcp.AssuredWorkloads
         /// </summary>
         [Output("resources")]
         public Output<ImmutableArray<Outputs.WorkloadResource>> Resources { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("terraformLabels")]
+        public Output<ImmutableDictionary<string, object>> TerraformLabels { get; private set; } = null!;
 
 
         /// <summary>
@@ -227,6 +243,9 @@ namespace Pulumi.Gcp.AssuredWorkloads
 
         /// <summary>
         /// Optional. Labels applied to the workload.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -300,6 +319,19 @@ namespace Pulumi.Gcp.AssuredWorkloads
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<object>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<object> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<object>());
+            set => _effectiveLabels = value;
+        }
+
         /// <summary>
         /// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
         /// </summary>
@@ -311,6 +343,9 @@ namespace Pulumi.Gcp.AssuredWorkloads
 
         /// <summary>
         /// Optional. Labels applied to the workload.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -368,6 +403,18 @@ namespace Pulumi.Gcp.AssuredWorkloads
         {
             get => _resources ?? (_resources = new InputList<Inputs.WorkloadResourceGetArgs>());
             set => _resources = value;
+        }
+
+        [Input("terraformLabels")]
+        private InputMap<object>? _terraformLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<object> TerraformLabels
+        {
+            get => _terraformLabels ?? (_terraformLabels = new InputMap<object>());
+            set => _terraformLabels = value;
         }
 
         public WorkloadState()

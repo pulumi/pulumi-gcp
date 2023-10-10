@@ -31,6 +31,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("publicPtrDomainName")]
         public Input<string>? PublicPtrDomainName { get; set; }
 
+        [Input("securityPolicy")]
+        public Input<string>? SecurityPolicy { get; set; }
+
         public InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs()
         {
         }

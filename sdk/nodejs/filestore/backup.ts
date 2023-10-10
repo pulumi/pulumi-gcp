@@ -107,11 +107,19 @@ export class Backup extends pulumi.CustomResource {
      */
     public /*out*/ readonly downloadBytes!: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * KMS key name used for data encryption.
      */
     public /*out*/ readonly kmsKeyName!: pulumi.Output<string>;
     /**
      * Resource labels to represent user-provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -156,6 +164,11 @@ export class Backup extends pulumi.CustomResource {
      * The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
      */
     public /*out*/ readonly storageBytes!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Backup resource with the given unique name, arguments, and options.
@@ -174,6 +187,7 @@ export class Backup extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["downloadBytes"] = state ? state.downloadBytes : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -184,6 +198,7 @@ export class Backup extends pulumi.CustomResource {
             resourceInputs["sourceInstanceTier"] = state ? state.sourceInstanceTier : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["storageBytes"] = state ? state.storageBytes : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as BackupArgs | undefined;
             if ((!args || args.location === undefined) && !opts.urn) {
@@ -205,10 +220,12 @@ export class Backup extends pulumi.CustomResource {
             resourceInputs["capacityGb"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["downloadBytes"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["kmsKeyName"] = undefined /*out*/;
             resourceInputs["sourceInstanceTier"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["storageBytes"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Backup.__pulumiType, name, resourceInputs, opts);
@@ -236,11 +253,19 @@ export interface BackupState {
      */
     downloadBytes?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * KMS key name used for data encryption.
      */
     kmsKeyName?: pulumi.Input<string>;
     /**
      * Resource labels to represent user-provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -285,6 +310,11 @@ export interface BackupState {
      * The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
      */
     storageBytes?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -297,6 +327,9 @@ export interface BackupArgs {
     description?: pulumi.Input<string>;
     /**
      * Resource labels to represent user-provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

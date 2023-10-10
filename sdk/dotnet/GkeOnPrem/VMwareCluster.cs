@@ -376,9 +376,12 @@ namespace Pulumi.Gcp.GkeOnPrem
         /// Prefix must be a DNS subdomain.
         /// Name must be 63 characters or less, begin and end with alphanumerics,
         /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
-        public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
 
         /// <summary>
         /// AAGConfig specifies whether to spread VMware User Cluster nodes across at
@@ -433,6 +436,13 @@ namespace Pulumi.Gcp.GkeOnPrem
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        /// Terraform, other clients and services.
+        /// </summary>
+        [Output("effectiveAnnotations")]
+        public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
         /// <summary>
         /// Enable control plane V2. Default to false.
@@ -652,6 +662,9 @@ namespace Pulumi.Gcp.GkeOnPrem
         /// Prefix must be a DNS subdomain.
         /// Name must be 63 characters or less, begin and end with alphanumerics,
         /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -795,6 +808,9 @@ namespace Pulumi.Gcp.GkeOnPrem
         /// Prefix must be a DNS subdomain.
         /// Name must be 63 characters or less, begin and end with alphanumerics,
         /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -855,6 +871,19 @@ namespace Pulumi.Gcp.GkeOnPrem
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("effectiveAnnotations")]
+        private InputMap<string>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        /// Terraform, other clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveAnnotations
+        {
+            get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());
+            set => _effectiveAnnotations = value;
+        }
 
         /// <summary>
         /// Enable control plane V2. Default to false.

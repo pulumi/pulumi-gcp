@@ -33,12 +33,18 @@ class TargetArgs:
         The set of arguments for constructing a Target resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['TargetAnthosClusterArgs'] anthos_cluster: Information specifying an Anthos Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[str] description: Optional. Description of the `Target`. Max length is 255 characters.
         :param pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArgs']]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
         :param pulumi.Input['TargetGkeArgs'] gke: Information specifying a GKE Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['TargetMultiTargetArgs'] multi_target: Information specifying a multiTarget.
         :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
                
@@ -139,6 +145,9 @@ class TargetArgs:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -211,6 +220,9 @@ class TargetArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -291,6 +303,8 @@ class _TargetState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  execution_configs: Optional[pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArgs']]]] = None,
                  gke: Optional[pulumi.Input['TargetGkeArgs']] = None,
@@ -302,19 +316,30 @@ class _TargetState:
                  require_approval: Optional[pulumi.Input[bool]] = None,
                  run: Optional[pulumi.Input['TargetRunArgs']] = None,
                  target_id: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Target resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['TargetAnthosClusterArgs'] anthos_cluster: Information specifying an Anthos Cluster.
         :param pulumi.Input[str] create_time: Output only. Time at which the `Target` was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[str] description: Optional. Description of the `Target`. Max length is 255 characters.
+        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
+        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] etag: Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArgs']]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
         :param pulumi.Input['TargetGkeArgs'] gke: Information specifying a GKE Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input['TargetMultiTargetArgs'] multi_target: Information specifying a multiTarget.
         :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
@@ -326,6 +351,7 @@ class _TargetState:
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
         :param pulumi.Input['TargetRunArgs'] run: Information specifying a Cloud Run deployment target.
         :param pulumi.Input[str] target_id: Output only. Resource id of the `Target`.
+        :param pulumi.Input[Mapping[str, Any]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] uid: Output only. Unique identifier of the `Target`.
         :param pulumi.Input[str] update_time: Output only. Most recent time at which the `Target` was updated.
         """
@@ -336,6 +362,8 @@ class _TargetState:
             create_time=create_time,
             deploy_parameters=deploy_parameters,
             description=description,
+            effective_annotations=effective_annotations,
+            effective_labels=effective_labels,
             etag=etag,
             execution_configs=execution_configs,
             gke=gke,
@@ -347,6 +375,7 @@ class _TargetState:
             require_approval=require_approval,
             run=run,
             target_id=target_id,
+            terraform_labels=terraform_labels,
             uid=uid,
             update_time=update_time,
         )
@@ -358,6 +387,8 @@ class _TargetState:
              create_time: Optional[pulumi.Input[str]] = None,
              deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
+             effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              etag: Optional[pulumi.Input[str]] = None,
              execution_configs: Optional[pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArgs']]]] = None,
              gke: Optional[pulumi.Input['TargetGkeArgs']] = None,
@@ -369,6 +400,7 @@ class _TargetState:
              require_approval: Optional[pulumi.Input[bool]] = None,
              run: Optional[pulumi.Input['TargetRunArgs']] = None,
              target_id: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
@@ -379,6 +411,10 @@ class _TargetState:
             create_time = kwargs['createTime']
         if deploy_parameters is None and 'deployParameters' in kwargs:
             deploy_parameters = kwargs['deployParameters']
+        if effective_annotations is None and 'effectiveAnnotations' in kwargs:
+            effective_annotations = kwargs['effectiveAnnotations']
+        if effective_labels is None and 'effectiveLabels' in kwargs:
+            effective_labels = kwargs['effectiveLabels']
         if execution_configs is None and 'executionConfigs' in kwargs:
             execution_configs = kwargs['executionConfigs']
         if multi_target is None and 'multiTarget' in kwargs:
@@ -387,6 +423,8 @@ class _TargetState:
             require_approval = kwargs['requireApproval']
         if target_id is None and 'targetId' in kwargs:
             target_id = kwargs['targetId']
+        if terraform_labels is None and 'terraformLabels' in kwargs:
+            terraform_labels = kwargs['terraformLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
@@ -400,6 +438,10 @@ class _TargetState:
             _setter("deploy_parameters", deploy_parameters)
         if description is not None:
             _setter("description", description)
+        if effective_annotations is not None:
+            _setter("effective_annotations", effective_annotations)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if etag is not None:
             _setter("etag", etag)
         if execution_configs is not None:
@@ -422,6 +464,8 @@ class _TargetState:
             _setter("run", run)
         if target_id is not None:
             _setter("target_id", target_id)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if uid is not None:
             _setter("uid", uid)
         if update_time is not None:
@@ -432,6 +476,9 @@ class _TargetState:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -488,6 +535,32 @@ class _TargetState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @effective_annotations.setter
+    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "effective_annotations", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
@@ -528,6 +601,9 @@ class _TargetState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -624,6 +700,18 @@ class _TargetState:
         pulumi.set(self, "target_id", value)
 
     @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "terraform_labels", value)
+
+    @property
     @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[str]]:
         """
@@ -679,10 +767,6 @@ class Target(pulumi.CustomResource):
 
         primary = gcp.clouddeploy.Target("primary",
             location="us-west1",
-            annotations={
-                "my_first_annotation": "example-annotation-1",
-                "my_second_annotation": "example-annotation-2",
-            },
             deploy_parameters={},
             description="multi-target description",
             execution_configs=[gcp.clouddeploy.TargetExecutionConfigArgs(
@@ -692,10 +776,6 @@ class Target(pulumi.CustomResource):
                 ],
                 execution_timeout="3600s",
             )],
-            labels={
-                "my_first_label": "example-label-1",
-                "my_second_label": "example-label-2",
-            },
             multi_target=gcp.clouddeploy.TargetMultiTargetArgs(
                 target_ids=[
                     "1",
@@ -704,6 +784,14 @@ class Target(pulumi.CustomResource):
             ),
             project="my-project-name",
             require_approval=False,
+            annotations={
+                "my_first_annotation": "example-annotation-1",
+                "my_second_annotation": "example-annotation-2",
+            },
+            labels={
+                "my_first_label": "example-label-1",
+                "my_second_label": "example-label-2",
+            },
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Run_target
@@ -714,10 +802,6 @@ class Target(pulumi.CustomResource):
 
         primary = gcp.clouddeploy.Target("primary",
             location="us-west1",
-            annotations={
-                "my_first_annotation": "example-annotation-1",
-                "my_second_annotation": "example-annotation-2",
-            },
             deploy_parameters={},
             description="basic description",
             execution_configs=[gcp.clouddeploy.TargetExecutionConfigArgs(
@@ -727,15 +811,19 @@ class Target(pulumi.CustomResource):
                 ],
                 execution_timeout="3600s",
             )],
-            labels={
-                "my_first_label": "example-label-1",
-                "my_second_label": "example-label-2",
-            },
             project="my-project-name",
             require_approval=False,
             run=gcp.clouddeploy.TargetRunArgs(
                 location="projects/my-project-name/locations/us-west1",
             ),
+            annotations={
+                "my_first_annotation": "example-annotation-1",
+                "my_second_annotation": "example-annotation-2",
+            },
+            labels={
+                "my_first_label": "example-label-1",
+                "my_second_label": "example-label-2",
+            },
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Target
@@ -784,12 +872,18 @@ class Target(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['TargetAnthosClusterArgs']] anthos_cluster: Information specifying an Anthos Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[str] description: Optional. Description of the `Target`. Max length is 255 characters.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetExecutionConfigArgs']]]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
         :param pulumi.Input[pulumi.InputType['TargetGkeArgs']] gke: Information specifying a GKE Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[pulumi.InputType['TargetMultiTargetArgs']] multi_target: Information specifying a multiTarget.
         :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
@@ -819,10 +913,6 @@ class Target(pulumi.CustomResource):
 
         primary = gcp.clouddeploy.Target("primary",
             location="us-west1",
-            annotations={
-                "my_first_annotation": "example-annotation-1",
-                "my_second_annotation": "example-annotation-2",
-            },
             deploy_parameters={},
             description="multi-target description",
             execution_configs=[gcp.clouddeploy.TargetExecutionConfigArgs(
@@ -832,10 +922,6 @@ class Target(pulumi.CustomResource):
                 ],
                 execution_timeout="3600s",
             )],
-            labels={
-                "my_first_label": "example-label-1",
-                "my_second_label": "example-label-2",
-            },
             multi_target=gcp.clouddeploy.TargetMultiTargetArgs(
                 target_ids=[
                     "1",
@@ -844,6 +930,14 @@ class Target(pulumi.CustomResource):
             ),
             project="my-project-name",
             require_approval=False,
+            annotations={
+                "my_first_annotation": "example-annotation-1",
+                "my_second_annotation": "example-annotation-2",
+            },
+            labels={
+                "my_first_label": "example-label-1",
+                "my_second_label": "example-label-2",
+            },
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Run_target
@@ -854,10 +948,6 @@ class Target(pulumi.CustomResource):
 
         primary = gcp.clouddeploy.Target("primary",
             location="us-west1",
-            annotations={
-                "my_first_annotation": "example-annotation-1",
-                "my_second_annotation": "example-annotation-2",
-            },
             deploy_parameters={},
             description="basic description",
             execution_configs=[gcp.clouddeploy.TargetExecutionConfigArgs(
@@ -867,15 +957,19 @@ class Target(pulumi.CustomResource):
                 ],
                 execution_timeout="3600s",
             )],
-            labels={
-                "my_first_label": "example-label-1",
-                "my_second_label": "example-label-2",
-            },
             project="my-project-name",
             require_approval=False,
             run=gcp.clouddeploy.TargetRunArgs(
                 location="projects/my-project-name/locations/us-west1",
             ),
+            annotations={
+                "my_first_annotation": "example-annotation-1",
+                "my_second_annotation": "example-annotation-2",
+            },
+            labels={
+                "my_first_label": "example-label-1",
+                "my_second_label": "example-label-2",
+            },
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Target
@@ -982,8 +1076,11 @@ class Target(pulumi.CustomResource):
             run = _utilities.configure(run, TargetRunArgs, True)
             __props__.__dict__["run"] = run
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_annotations"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["target_id"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
         super(Target, __self__).__init__(
@@ -1001,6 +1098,8 @@ class Target(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             execution_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetExecutionConfigArgs']]]]] = None,
             gke: Optional[pulumi.Input[pulumi.InputType['TargetGkeArgs']]] = None,
@@ -1012,6 +1111,7 @@ class Target(pulumi.CustomResource):
             require_approval: Optional[pulumi.Input[bool]] = None,
             run: Optional[pulumi.Input[pulumi.InputType['TargetRunArgs']]] = None,
             target_id: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Target':
         """
@@ -1022,14 +1122,24 @@ class Target(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['TargetAnthosClusterArgs']] anthos_cluster: Information specifying an Anthos Cluster.
         :param pulumi.Input[str] create_time: Output only. Time at which the `Target` was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[str] description: Optional. Description of the `Target`. Max length is 255 characters.
+        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
+        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] etag: Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetExecutionConfigArgs']]]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
         :param pulumi.Input[pulumi.InputType['TargetGkeArgs']] gke: Information specifying a GKE Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[pulumi.InputType['TargetMultiTargetArgs']] multi_target: Information specifying a multiTarget.
         :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
@@ -1041,6 +1151,7 @@ class Target(pulumi.CustomResource):
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
         :param pulumi.Input[pulumi.InputType['TargetRunArgs']] run: Information specifying a Cloud Run deployment target.
         :param pulumi.Input[str] target_id: Output only. Resource id of the `Target`.
+        :param pulumi.Input[Mapping[str, Any]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] uid: Output only. Unique identifier of the `Target`.
         :param pulumi.Input[str] update_time: Output only. Most recent time at which the `Target` was updated.
         """
@@ -1053,6 +1164,8 @@ class Target(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deploy_parameters"] = deploy_parameters
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_annotations"] = effective_annotations
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["etag"] = etag
         __props__.__dict__["execution_configs"] = execution_configs
         __props__.__dict__["gke"] = gke
@@ -1064,6 +1177,7 @@ class Target(pulumi.CustomResource):
         __props__.__dict__["require_approval"] = require_approval
         __props__.__dict__["run"] = run
         __props__.__dict__["target_id"] = target_id
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         return Target(resource_name, opts=opts, __props__=__props__)
@@ -1073,6 +1187,9 @@ class Target(pulumi.CustomResource):
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -1109,6 +1226,24 @@ class Target(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
@@ -1137,6 +1272,9 @@ class Target(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1199,6 +1337,14 @@ class Target(pulumi.CustomResource):
         Output only. Resource id of the `Target`.
         """
         return pulumi.get(self, "target_id")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

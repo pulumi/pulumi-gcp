@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -38,7 +38,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -65,7 +65,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -114,6 +114,9 @@ type Project struct {
 	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
 	// for more details.
 	BillingAccount pulumi.StringPtrOutput `pulumi:"billingAccount"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The numeric ID of the folder this project should be
 	// created under. Only one of `orgId` or `folderId` may be
 	// specified. If the `folderId` is specified, then the project is
@@ -121,6 +124,8 @@ type Project struct {
 	// project to be migrated to the newly specified folder.
 	FolderId pulumi.StringPtrOutput `pulumi:"folderId"`
 	// A set of key/value label pairs to assign to the project.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The display name of the project.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -138,6 +143,8 @@ type Project struct {
 	// If true, the resource can be deleted
 	// without deleting the Project via the Google API.
 	SkipDelete pulumi.BoolOutput `pulumi:"skipDelete"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewProject registers a new resource with the given unique name, arguments, and options.
@@ -183,6 +190,9 @@ type projectState struct {
 	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
 	// for more details.
 	BillingAccount *string `pulumi:"billingAccount"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The numeric ID of the folder this project should be
 	// created under. Only one of `orgId` or `folderId` may be
 	// specified. If the `folderId` is specified, then the project is
@@ -190,6 +200,8 @@ type projectState struct {
 	// project to be migrated to the newly specified folder.
 	FolderId *string `pulumi:"folderId"`
 	// A set of key/value label pairs to assign to the project.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The display name of the project.
 	Name *string `pulumi:"name"`
@@ -207,6 +219,8 @@ type projectState struct {
 	// If true, the resource can be deleted
 	// without deleting the Project via the Google API.
 	SkipDelete *bool `pulumi:"skipDelete"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type ProjectState struct {
@@ -220,6 +234,9 @@ type ProjectState struct {
 	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
 	// for more details.
 	BillingAccount pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// The numeric ID of the folder this project should be
 	// created under. Only one of `orgId` or `folderId` may be
 	// specified. If the `folderId` is specified, then the project is
@@ -227,6 +244,8 @@ type ProjectState struct {
 	// project to be migrated to the newly specified folder.
 	FolderId pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to the project.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The display name of the project.
 	Name pulumi.StringPtrInput
@@ -244,6 +263,8 @@ type ProjectState struct {
 	// If true, the resource can be deleted
 	// without deleting the Project via the Google API.
 	SkipDelete pulumi.BoolPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 }
 
 func (ProjectState) ElementType() reflect.Type {
@@ -268,6 +289,8 @@ type projectArgs struct {
 	// project to be migrated to the newly specified folder.
 	FolderId *string `pulumi:"folderId"`
 	// A set of key/value label pairs to assign to the project.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The display name of the project.
 	Name *string `pulumi:"name"`
@@ -304,6 +327,8 @@ type ProjectArgs struct {
 	// project to be migrated to the newly specified folder.
 	FolderId pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to the project.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The display name of the project.
 	Name pulumi.StringPtrInput
@@ -448,6 +473,12 @@ func (o ProjectOutput) BillingAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.BillingAccount }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o ProjectOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The numeric ID of the folder this project should be
 // created under. Only one of `orgId` or `folderId` may be
 // specified. If the `folderId` is specified, then the project is
@@ -458,6 +489,8 @@ func (o ProjectOutput) FolderId() pulumi.StringPtrOutput {
 }
 
 // A set of key/value label pairs to assign to the project.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 func (o ProjectOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -491,6 +524,11 @@ func (o ProjectOutput) ProjectId() pulumi.StringOutput {
 // without deleting the Project via the Google API.
 func (o ProjectOutput) SkipDelete() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.SkipDelete }).(pulumi.BoolOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o ProjectOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type ProjectArrayOutput struct{ *pulumi.OutputState }

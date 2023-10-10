@@ -27,6 +27,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// The DNS domain name for the public PTR record.
         /// </summary>
         public readonly string PublicPtrDomainName;
+        public readonly string SecurityPolicy;
 
         [OutputConstructor]
         private GetInstanceNetworkInterfaceIpv6AccessConfigResult(
@@ -38,13 +39,16 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string networkTier,
 
-            string publicPtrDomainName)
+            string publicPtrDomainName,
+
+            string securityPolicy)
         {
             ExternalIpv6 = externalIpv6;
             ExternalIpv6PrefixLength = externalIpv6PrefixLength;
             Name = name;
             NetworkTier = networkTier;
             PublicPtrDomainName = publicPtrDomainName;
+            SecurityPolicy = securityPolicy;
         }
     }
 }

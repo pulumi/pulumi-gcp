@@ -144,10 +144,8 @@ export class Dashboard extends pulumi.CustomResource {
     }
 
     /**
-     * The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
-     * The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
-     *
-     * - - -
+     * The JSON representation of a dashboard, following the format at
+     * https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
      */
     public readonly dashboardJson!: pulumi.Output<string>;
     /**
@@ -189,10 +187,8 @@ export class Dashboard extends pulumi.CustomResource {
  */
 export interface DashboardState {
     /**
-     * The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
-     * The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
-     *
-     * - - -
+     * The JSON representation of a dashboard, following the format at
+     * https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
      */
     dashboardJson?: pulumi.Input<string>;
     /**
@@ -207,10 +203,8 @@ export interface DashboardState {
  */
 export interface DashboardArgs {
     /**
-     * The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
-     * The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
-     *
-     * - - -
+     * The JSON representation of a dashboard, following the format at
+     * https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
      */
     dashboardJson: pulumi.Input<string>;
     /**

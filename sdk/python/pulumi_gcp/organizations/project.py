@@ -39,6 +39,8 @@ class ProjectArgs:
                created under the specified folder. Changing this forces the
                project to be migrated to the newly specified folder.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the project.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] name: The display name of the project.
         :param pulumi.Input[str] org_id: The numeric ID of the organization this project belongs to.
                Changing this forces a new project to be created.  Only one of
@@ -167,6 +169,8 @@ class ProjectArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A set of key/value label pairs to assign to the project.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -222,13 +226,15 @@ class _ProjectState:
     def __init__(__self__, *,
                  auto_create_network: Optional[pulumi.Input[bool]] = None,
                  billing_account: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  number: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 skip_delete: Optional[pulumi.Input[bool]] = None):
+                 skip_delete: Optional[pulumi.Input[bool]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Project resources.
         :param pulumi.Input[bool] auto_create_network: Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
@@ -239,12 +245,16 @@ class _ProjectState:
                must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
                See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
                for more details.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] folder_id: The numeric ID of the folder this project should be
                created under. Only one of `org_id` or `folder_id` may be
                specified. If the `folder_id` is specified, then the project is
                created under the specified folder. Changing this forces the
                project to be migrated to the newly specified folder.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the project.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] name: The display name of the project.
         :param pulumi.Input[str] number: The numeric identifier of the project.
         :param pulumi.Input[str] org_id: The numeric ID of the organization this project belongs to.
@@ -256,11 +266,13 @@ class _ProjectState:
         :param pulumi.Input[str] project_id: The project ID. Changing this forces a new project to be created.
         :param pulumi.Input[bool] skip_delete: If true, the resource can be deleted
                without deleting the Project via the Google API.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         _ProjectState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             auto_create_network=auto_create_network,
             billing_account=billing_account,
+            effective_labels=effective_labels,
             folder_id=folder_id,
             labels=labels,
             name=name,
@@ -268,12 +280,14 @@ class _ProjectState:
             org_id=org_id,
             project_id=project_id,
             skip_delete=skip_delete,
+            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
              auto_create_network: Optional[pulumi.Input[bool]] = None,
              billing_account: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              folder_id: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -281,12 +295,15 @@ class _ProjectState:
              org_id: Optional[pulumi.Input[str]] = None,
              project_id: Optional[pulumi.Input[str]] = None,
              skip_delete: Optional[pulumi.Input[bool]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if auto_create_network is None and 'autoCreateNetwork' in kwargs:
             auto_create_network = kwargs['autoCreateNetwork']
         if billing_account is None and 'billingAccount' in kwargs:
             billing_account = kwargs['billingAccount']
+        if effective_labels is None and 'effectiveLabels' in kwargs:
+            effective_labels = kwargs['effectiveLabels']
         if folder_id is None and 'folderId' in kwargs:
             folder_id = kwargs['folderId']
         if org_id is None and 'orgId' in kwargs:
@@ -295,11 +312,15 @@ class _ProjectState:
             project_id = kwargs['projectId']
         if skip_delete is None and 'skipDelete' in kwargs:
             skip_delete = kwargs['skipDelete']
+        if terraform_labels is None and 'terraformLabels' in kwargs:
+            terraform_labels = kwargs['terraformLabels']
 
         if auto_create_network is not None:
             _setter("auto_create_network", auto_create_network)
         if billing_account is not None:
             _setter("billing_account", billing_account)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if folder_id is not None:
             _setter("folder_id", folder_id)
         if labels is not None:
@@ -314,6 +335,8 @@ class _ProjectState:
             _setter("project_id", project_id)
         if skip_delete is not None:
             _setter("skip_delete", skip_delete)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="autoCreateNetwork")
@@ -346,6 +369,19 @@ class _ProjectState:
         pulumi.set(self, "billing_account", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="folderId")
     def folder_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -366,6 +402,8 @@ class _ProjectState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A set of key/value label pairs to assign to the project.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -438,6 +476,18 @@ class _ProjectState:
     @skip_delete.setter
     def skip_delete(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "skip_delete", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
 
 class Project(pulumi.CustomResource):
@@ -522,6 +572,8 @@ class Project(pulumi.CustomResource):
                created under the specified folder. Changing this forces the
                project to be migrated to the newly specified folder.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the project.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] name: The display name of the project.
         :param pulumi.Input[str] org_id: The numeric ID of the organization this project belongs to.
                Changing this forces a new project to be created.  Only one of
@@ -637,7 +689,9 @@ class Project(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["skip_delete"] = skip_delete
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["number"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(Project, __self__).__init__(
             'gcp:organizations/project:Project',
             resource_name,
@@ -650,13 +704,15 @@ class Project(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_create_network: Optional[pulumi.Input[bool]] = None,
             billing_account: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             folder_id: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             number: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
-            skip_delete: Optional[pulumi.Input[bool]] = None) -> 'Project':
+            skip_delete: Optional[pulumi.Input[bool]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Project':
         """
         Get an existing Project resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -672,12 +728,16 @@ class Project(pulumi.CustomResource):
                must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
                See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
                for more details.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] folder_id: The numeric ID of the folder this project should be
                created under. Only one of `org_id` or `folder_id` may be
                specified. If the `folder_id` is specified, then the project is
                created under the specified folder. Changing this forces the
                project to be migrated to the newly specified folder.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the project.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] name: The display name of the project.
         :param pulumi.Input[str] number: The numeric identifier of the project.
         :param pulumi.Input[str] org_id: The numeric ID of the organization this project belongs to.
@@ -689,6 +749,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] project_id: The project ID. Changing this forces a new project to be created.
         :param pulumi.Input[bool] skip_delete: If true, the resource can be deleted
                without deleting the Project via the Google API.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -696,6 +757,7 @@ class Project(pulumi.CustomResource):
 
         __props__.__dict__["auto_create_network"] = auto_create_network
         __props__.__dict__["billing_account"] = billing_account
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["folder_id"] = folder_id
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
@@ -703,6 +765,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["skip_delete"] = skip_delete
+        __props__.__dict__["terraform_labels"] = terraform_labels
         return Project(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -728,6 +791,15 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "billing_account")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="folderId")
     def folder_id(self) -> pulumi.Output[Optional[str]]:
         """
@@ -744,6 +816,8 @@ class Project(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A set of key/value label pairs to assign to the project.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -792,4 +866,12 @@ class Project(pulumi.CustomResource):
         without deleting the Project via the Google API.
         """
         return pulumi.get(self, "skip_delete")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 

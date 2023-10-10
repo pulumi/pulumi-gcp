@@ -70,6 +70,7 @@ export interface GetAuthorityResult {
     readonly createTime: string;
     readonly deletionProtection: boolean;
     readonly desiredState: string;
+    readonly effectiveLabels: {[key: string]: string};
     readonly gcsBucket: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -92,6 +93,7 @@ export interface GetAuthorityResult {
     readonly skipGracePeriod: boolean;
     readonly state: string;
     readonly subordinateConfigs: outputs.certificateauthority.GetAuthoritySubordinateConfig[];
+    readonly terraformLabels: {[key: string]: string};
     readonly type: string;
     readonly updateTime: string;
 }

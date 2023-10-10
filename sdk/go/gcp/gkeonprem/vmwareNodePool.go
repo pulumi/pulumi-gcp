@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkeonprem"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkeonprem"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -101,7 +101,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkeonprem"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkeonprem"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -228,6 +228,9 @@ type VMwareNodePool struct {
 	// Prefix must be a DNS subdomain.
 	// Name must be 63 characters or less, begin and end with alphanumerics,
 	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The node configuration of the node pool.
 	// Structure is documented below.
@@ -238,6 +241,9 @@ type VMwareNodePool struct {
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// The display name for the node pool.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// This checksum is computed by the server based on the value of other
 	// fields, and may be sent on update and delete requests to ensure the
 	// client has an up-to-date value before proceeding.
@@ -319,6 +325,9 @@ type vmwareNodePoolState struct {
 	// Prefix must be a DNS subdomain.
 	// Name must be 63 characters or less, begin and end with alphanumerics,
 	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// The node configuration of the node pool.
 	// Structure is documented below.
@@ -329,6 +338,9 @@ type vmwareNodePoolState struct {
 	DeleteTime *string `pulumi:"deleteTime"`
 	// The display name for the node pool.
 	DisplayName *string `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// This checksum is computed by the server based on the value of other
 	// fields, and may be sent on update and delete requests to ensure the
 	// client has an up-to-date value before proceeding.
@@ -372,6 +384,9 @@ type VMwareNodePoolState struct {
 	// Prefix must be a DNS subdomain.
 	// Name must be 63 characters or less, begin and end with alphanumerics,
 	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// The node configuration of the node pool.
 	// Structure is documented below.
@@ -382,6 +397,9 @@ type VMwareNodePoolState struct {
 	DeleteTime pulumi.StringPtrInput
 	// The display name for the node pool.
 	DisplayName pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapInput
 	// This checksum is computed by the server based on the value of other
 	// fields, and may be sent on update and delete requests to ensure the
 	// client has an up-to-date value before proceeding.
@@ -429,6 +447,9 @@ type vmwareNodePoolArgs struct {
 	// Prefix must be a DNS subdomain.
 	// Name must be 63 characters or less, begin and end with alphanumerics,
 	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// The node configuration of the node pool.
 	// Structure is documented below.
@@ -459,6 +480,9 @@ type VMwareNodePoolArgs struct {
 	// Prefix must be a DNS subdomain.
 	// Name must be 63 characters or less, begin and end with alphanumerics,
 	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// The node configuration of the node pool.
 	// Structure is documented below.
@@ -598,6 +622,9 @@ func (o VMwareNodePoolOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwa
 // Prefix must be a DNS subdomain.
 // Name must be 63 characters or less, begin and end with alphanumerics,
 // with dashes (-), underscores (_), dots (.), and alphanumerics between.
+//
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o VMwareNodePoolOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VMwareNodePool) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -621,6 +648,12 @@ func (o VMwareNodePoolOutput) DeleteTime() pulumi.StringOutput {
 // The display name for the node pool.
 func (o VMwareNodePoolOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VMwareNodePool) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+// Terraform, other clients and services.
+func (o VMwareNodePoolOutput) EffectiveAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *VMwareNodePool) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
 
 // This checksum is computed by the server based on the value of other

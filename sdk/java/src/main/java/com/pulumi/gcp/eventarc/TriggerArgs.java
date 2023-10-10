@@ -68,12 +68,18 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Optional. User labels attached to the triggers that can be used to group resources.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return Optional. User labels attached to the triggers that can be used to group resources.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -159,15 +165,15 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
      * Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      * 
      */
-    @Import(name="transports")
-    private @Nullable Output<List<TriggerTransportArgs>> transports;
+    @Import(name="transport")
+    private @Nullable Output<TriggerTransportArgs> transport;
 
     /**
      * @return Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      * 
      */
-    public Optional<Output<List<TriggerTransportArgs>>> transports() {
-        return Optional.ofNullable(this.transports);
+    public Optional<Output<TriggerTransportArgs>> transport() {
+        return Optional.ofNullable(this.transport);
     }
 
     private TriggerArgs() {}
@@ -182,7 +188,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.serviceAccount = $.serviceAccount;
-        this.transports = $.transports;
+        this.transport = $.transport;
     }
 
     public static Builder builder() {
@@ -269,6 +275,9 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels Optional. User labels attached to the triggers that can be used to group resources.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -279,6 +288,9 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Optional. User labels attached to the triggers that can be used to group resources.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -403,34 +415,24 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param transports Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+         * @param transport Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
          * 
          * @return builder
          * 
          */
-        public Builder transports(@Nullable Output<List<TriggerTransportArgs>> transports) {
-            $.transports = transports;
+        public Builder transport(@Nullable Output<TriggerTransportArgs> transport) {
+            $.transport = transport;
             return this;
         }
 
         /**
-         * @param transports Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+         * @param transport Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
          * 
          * @return builder
          * 
          */
-        public Builder transports(List<TriggerTransportArgs> transports) {
-            return transports(Output.of(transports));
-        }
-
-        /**
-         * @param transports Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder transports(TriggerTransportArgs... transports) {
-            return transports(List.of(transports));
+        public Builder transport(TriggerTransportArgs transport) {
+            return transport(Output.of(transport));
         }
 
         public TriggerArgs build() {

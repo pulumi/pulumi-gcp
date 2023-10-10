@@ -13,6 +13,7 @@ import com.pulumi.gcp.dataplex.inputs.ZoneState;
 import com.pulumi.gcp.dataplex.outputs.ZoneAssetStatus;
 import com.pulumi.gcp.dataplex.outputs.ZoneDiscoverySpec;
 import com.pulumi.gcp.dataplex.outputs.ZoneResourceSpec;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -54,8 +55,8 @@ import javax.annotation.Nullable;
  *             .location(&#34;us-west1&#34;)
  *             .description(&#34;Lake for DCL&#34;)
  *             .displayName(&#34;Lake for DCL&#34;)
- *             .labels(Map.of(&#34;my-lake&#34;, &#34;exists&#34;))
  *             .project(&#34;my-project-name&#34;)
+ *             .labels(Map.of(&#34;my-lake&#34;, &#34;exists&#34;))
  *             .build());
  * 
  *         var primary = new Zone(&#34;primary&#34;, ZoneArgs.builder()        
@@ -70,8 +71,8 @@ import javax.annotation.Nullable;
  *             .type(&#34;RAW&#34;)
  *             .description(&#34;Zone for DCL&#34;)
  *             .displayName(&#34;Zone for DCL&#34;)
- *             .labels()
  *             .project(&#34;my-project-name&#34;)
+ *             .labels()
  *             .build());
  * 
  *     }
@@ -168,7 +169,26 @@ public class Zone extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.displayName);
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output<Map<String,Object>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,Object>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * Optional. User defined labels for the zone.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -176,6 +196,9 @@ public class Zone extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Optional. User defined labels for the zone.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -264,6 +287,20 @@ public class Zone extends com.pulumi.resources.CustomResource {
      */
     public Output<String> state() {
         return this.state;
+    }
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Export(name="terraformLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output<Map<String,Object>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,Object>> terraformLabels() {
+        return this.terraformLabels;
     }
     /**
      * Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED

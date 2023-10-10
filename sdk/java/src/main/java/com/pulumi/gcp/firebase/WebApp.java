@@ -32,10 +32,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.Project;
- * import com.pulumi.gcp.organizations.ProjectArgs;
- * import com.pulumi.gcp.firebase.Project;
- * import com.pulumi.gcp.firebase.ProjectArgs;
  * import com.pulumi.gcp.firebase.WebApp;
  * import com.pulumi.gcp.firebase.WebAppArgs;
  * import com.pulumi.gcp.firebase.FirebaseFunctions;
@@ -59,27 +55,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;my-project&#34;)
- *             .orgId(&#34;123456789&#34;)
- *             .labels(Map.of(&#34;firebase&#34;, &#34;enabled&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var defaultFirebase_projectProject = new Project(&#34;defaultFirebase/projectProject&#34;, ProjectArgs.builder()        
- *             .project(defaultProject.projectId())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
  *         var basicWebApp = new WebApp(&#34;basicWebApp&#34;, WebAppArgs.builder()        
- *             .project(defaultProject.projectId())
+ *             .project(&#34;my-project-name&#34;)
  *             .displayName(&#34;Display Name Basic&#34;)
- *             .deletionPolicy(&#34;DELETE&#34;)
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
- *                 .dependsOn(defaultFirebase / projectProject)
  *                 .build());
  * 
  *         final var basicWebAppConfig = FirebaseFunctions.getWebAppConfig(GetWebAppConfigArgs.builder()
@@ -249,7 +229,7 @@ public class WebApp extends com.pulumi.resources.CustomResource {
     }
     /**
      * Set to &#39;ABANDON&#39; to allow the WebApp to be untracked from terraform state rather than deleted upon &#39;terraform destroy&#39;.
-     * This is useful becaue the WebApp may be serving traffic. Set to &#39;DELETE&#39; to delete the WebApp. Default to &#39;ABANDON&#39;
+     * This is useful becaue the WebApp may be serving traffic. Set to &#39;DELETE&#39; to delete the WebApp. Default to &#39;DELETE&#39;
      * 
      */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
@@ -257,7 +237,7 @@ public class WebApp extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Set to &#39;ABANDON&#39; to allow the WebApp to be untracked from terraform state rather than deleted upon &#39;terraform destroy&#39;.
-     * This is useful becaue the WebApp may be serving traffic. Set to &#39;DELETE&#39; to delete the WebApp. Default to &#39;ABANDON&#39;
+     * This is useful becaue the WebApp may be serving traffic. Set to &#39;DELETE&#39; to delete the WebApp. Default to &#39;DELETE&#39;
      * 
      */
     public Output<Optional<String>> deletionPolicy() {

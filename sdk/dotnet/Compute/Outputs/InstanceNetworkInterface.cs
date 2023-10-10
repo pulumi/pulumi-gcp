@@ -44,6 +44,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// be inferred from the subnetwork.
         /// </summary>
         public readonly string? Network;
+        public readonly string? NetworkAttachment;
         /// <summary>
         /// The private IP address to assign to the instance. If
         /// empty, the address will be automatically assigned.
@@ -57,6 +58,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         /// </summary>
         public readonly int? QueueCount;
+        public readonly string? SecurityPolicy;
         /// <summary>
         /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
         /// </summary>
@@ -97,11 +99,15 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? network,
 
+            string? networkAttachment,
+
             string? networkIp,
 
             string? nicType,
 
             int? queueCount,
+
+            string? securityPolicy,
 
             string? stackType,
 
@@ -117,9 +123,11 @@ namespace Pulumi.Gcp.Compute.Outputs
             Ipv6Address = ipv6Address;
             Name = name;
             Network = network;
+            NetworkAttachment = networkAttachment;
             NetworkIp = networkIp;
             NicType = nicType;
             QueueCount = queueCount;
+            SecurityPolicy = securityPolicy;
             StackType = stackType;
             Subnetwork = subnetwork;
             SubnetworkProject = subnetworkProject;

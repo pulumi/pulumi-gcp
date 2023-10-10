@@ -57,6 +57,9 @@ class AuthorityArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
                "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
                "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
                fractional digits, terminated by 's'. Example: "3.5s".
@@ -299,6 +302,9 @@ class AuthorityArgs:
         Labels with user-defined metadata.
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
         "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -400,6 +406,7 @@ class _AuthorityState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  desired_state: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  gcs_bucket: Optional[pulumi.Input[str]] = None,
                  ignore_active_certificates_on_deletion: Optional[pulumi.Input[bool]] = None,
                  key_spec: Optional[pulumi.Input['AuthorityKeySpecArgs']] = None,
@@ -414,6 +421,7 @@ class _AuthorityState:
                  skip_grace_period: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  subordinate_config: Optional[pulumi.Input['AuthoritySubordinateConfigArgs']] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -429,6 +437,8 @@ class _AuthorityState:
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
                state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
         :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
                such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
                (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -443,6 +453,9 @@ class _AuthorityState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
                "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
                "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
                fractional digits, terminated by 's'. Example: "3.5s".
@@ -466,6 +479,8 @@ class _AuthorityState:
         :param pulumi.Input['AuthoritySubordinateConfigArgs'] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
                with the subordinate configuration, which describes its issuers.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] type: The Type of this CertificateAuthority.
                > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
                be activated before they can issue certificates.
@@ -483,6 +498,7 @@ class _AuthorityState:
             create_time=create_time,
             deletion_protection=deletion_protection,
             desired_state=desired_state,
+            effective_labels=effective_labels,
             gcs_bucket=gcs_bucket,
             ignore_active_certificates_on_deletion=ignore_active_certificates_on_deletion,
             key_spec=key_spec,
@@ -497,6 +513,7 @@ class _AuthorityState:
             skip_grace_period=skip_grace_period,
             state=state,
             subordinate_config=subordinate_config,
+            terraform_labels=terraform_labels,
             type=type,
             update_time=update_time,
         )
@@ -509,6 +526,7 @@ class _AuthorityState:
              create_time: Optional[pulumi.Input[str]] = None,
              deletion_protection: Optional[pulumi.Input[bool]] = None,
              desired_state: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              gcs_bucket: Optional[pulumi.Input[str]] = None,
              ignore_active_certificates_on_deletion: Optional[pulumi.Input[bool]] = None,
              key_spec: Optional[pulumi.Input['AuthorityKeySpecArgs']] = None,
@@ -523,6 +541,7 @@ class _AuthorityState:
              skip_grace_period: Optional[pulumi.Input[bool]] = None,
              state: Optional[pulumi.Input[str]] = None,
              subordinate_config: Optional[pulumi.Input['AuthoritySubordinateConfigArgs']] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
@@ -537,6 +556,8 @@ class _AuthorityState:
             deletion_protection = kwargs['deletionProtection']
         if desired_state is None and 'desiredState' in kwargs:
             desired_state = kwargs['desiredState']
+        if effective_labels is None and 'effectiveLabels' in kwargs:
+            effective_labels = kwargs['effectiveLabels']
         if gcs_bucket is None and 'gcsBucket' in kwargs:
             gcs_bucket = kwargs['gcsBucket']
         if ignore_active_certificates_on_deletion is None and 'ignoreActiveCertificatesOnDeletion' in kwargs:
@@ -551,6 +572,8 @@ class _AuthorityState:
             skip_grace_period = kwargs['skipGracePeriod']
         if subordinate_config is None and 'subordinateConfig' in kwargs:
             subordinate_config = kwargs['subordinateConfig']
+        if terraform_labels is None and 'terraformLabels' in kwargs:
+            terraform_labels = kwargs['terraformLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
@@ -566,6 +589,8 @@ class _AuthorityState:
             _setter("deletion_protection", deletion_protection)
         if desired_state is not None:
             _setter("desired_state", desired_state)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if gcs_bucket is not None:
             _setter("gcs_bucket", gcs_bucket)
         if ignore_active_certificates_on_deletion is not None:
@@ -594,6 +619,8 @@ class _AuthorityState:
             _setter("state", state)
         if subordinate_config is not None:
             _setter("subordinate_config", subordinate_config)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if type is not None:
             _setter("type", type)
         if update_time is not None:
@@ -677,6 +704,19 @@ class _AuthorityState:
         pulumi.set(self, "desired_state", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="gcsBucket")
     def gcs_bucket(self) -> Optional[pulumi.Input[str]]:
         """
@@ -727,6 +767,9 @@ class _AuthorityState:
         Labels with user-defined metadata.
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
         "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -866,6 +909,19 @@ class _AuthorityState:
     @subordinate_config.setter
     def subordinate_config(self, value: Optional[pulumi.Input['AuthoritySubordinateConfigArgs']]):
         pulumi.set(self, "subordinate_config", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -1179,6 +1235,9 @@ class Authority(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
                "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
                "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
                fractional digits, terminated by 's'. Example: "3.5s".
@@ -1519,9 +1578,11 @@ class Authority(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["access_urls"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["pem_ca_certificates"] = None
             __props__.__dict__["state"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["update_time"] = None
         super(Authority, __self__).__init__(
             'gcp:certificateauthority/authority:Authority',
@@ -1539,6 +1600,7 @@ class Authority(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             desired_state: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             gcs_bucket: Optional[pulumi.Input[str]] = None,
             ignore_active_certificates_on_deletion: Optional[pulumi.Input[bool]] = None,
             key_spec: Optional[pulumi.Input[pulumi.InputType['AuthorityKeySpecArgs']]] = None,
@@ -1553,6 +1615,7 @@ class Authority(pulumi.CustomResource):
             skip_grace_period: Optional[pulumi.Input[bool]] = None,
             state: Optional[pulumi.Input[str]] = None,
             subordinate_config: Optional[pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArgs']]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Authority':
         """
@@ -1573,6 +1636,8 @@ class Authority(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
                state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
         :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
                such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
                (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -1587,6 +1652,9 @@ class Authority(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
                "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
                "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
                fractional digits, terminated by 's'. Example: "3.5s".
@@ -1610,6 +1678,8 @@ class Authority(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArgs']] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
                with the subordinate configuration, which describes its issuers.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] type: The Type of this CertificateAuthority.
                > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
                be activated before they can issue certificates.
@@ -1629,6 +1699,7 @@ class Authority(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["desired_state"] = desired_state
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["gcs_bucket"] = gcs_bucket
         __props__.__dict__["ignore_active_certificates_on_deletion"] = ignore_active_certificates_on_deletion
         __props__.__dict__["key_spec"] = key_spec
@@ -1643,6 +1714,7 @@ class Authority(pulumi.CustomResource):
         __props__.__dict__["skip_grace_period"] = skip_grace_period
         __props__.__dict__["state"] = state
         __props__.__dict__["subordinate_config"] = subordinate_config
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["type"] = type
         __props__.__dict__["update_time"] = update_time
         return Authority(resource_name, opts=opts, __props__=__props__)
@@ -1701,6 +1773,15 @@ class Authority(pulumi.CustomResource):
         return pulumi.get(self, "desired_state")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="gcsBucket")
     def gcs_bucket(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1739,6 +1820,9 @@ class Authority(pulumi.CustomResource):
         Labels with user-defined metadata.
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
         "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1834,6 +1918,15 @@ class Authority(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "subordinate_config")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

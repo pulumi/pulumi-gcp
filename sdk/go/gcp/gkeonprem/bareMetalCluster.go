@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkeonprem"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkeonprem"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -123,7 +123,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkeonprem"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkeonprem"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -214,7 +214,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkeonprem"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkeonprem"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -421,6 +421,9 @@ type BareMetalCluster struct {
 	// Prefix must be a DNS subdomain.
 	// Name must be 63 characters or less, begin and end with alphanumerics,
 	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// A human readable description of this Bare Metal User Cluster.
 	BareMetalVersion pulumi.StringOutput `pulumi:"bareMetalVersion"`
@@ -439,6 +442,9 @@ type BareMetalCluster struct {
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// A human readable description of this Bare Metal User Cluster.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// The IP address name of Bare Metal User Cluster's API server.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// This checksum is computed by the server based on the value of other
@@ -583,6 +589,9 @@ type bareMetalClusterState struct {
 	// Prefix must be a DNS subdomain.
 	// Name must be 63 characters or less, begin and end with alphanumerics,
 	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// A human readable description of this Bare Metal User Cluster.
 	BareMetalVersion *string `pulumi:"bareMetalVersion"`
@@ -601,6 +610,9 @@ type bareMetalClusterState struct {
 	DeleteTime *string `pulumi:"deleteTime"`
 	// A human readable description of this Bare Metal User Cluster.
 	Description *string `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// The IP address name of Bare Metal User Cluster's API server.
 	Endpoint *string `pulumi:"endpoint"`
 	// This checksum is computed by the server based on the value of other
@@ -695,6 +707,9 @@ type BareMetalClusterState struct {
 	// Prefix must be a DNS subdomain.
 	// Name must be 63 characters or less, begin and end with alphanumerics,
 	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// A human readable description of this Bare Metal User Cluster.
 	BareMetalVersion pulumi.StringPtrInput
@@ -713,6 +728,9 @@ type BareMetalClusterState struct {
 	DeleteTime pulumi.StringPtrInput
 	// A human readable description of this Bare Metal User Cluster.
 	Description pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapInput
 	// The IP address name of Bare Metal User Cluster's API server.
 	Endpoint pulumi.StringPtrInput
 	// This checksum is computed by the server based on the value of other
@@ -811,6 +829,9 @@ type bareMetalClusterArgs struct {
 	// Prefix must be a DNS subdomain.
 	// Name must be 63 characters or less, begin and end with alphanumerics,
 	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// A human readable description of this Bare Metal User Cluster.
 	BareMetalVersion string `pulumi:"bareMetalVersion"`
@@ -877,6 +898,9 @@ type BareMetalClusterArgs struct {
 	// Prefix must be a DNS subdomain.
 	// Name must be 63 characters or less, begin and end with alphanumerics,
 	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// A human readable description of this Bare Metal User Cluster.
 	BareMetalVersion pulumi.StringInput
@@ -1055,6 +1079,9 @@ func (o BareMetalClusterOutput) AdminClusterMembership() pulumi.StringOutput {
 // Prefix must be a DNS subdomain.
 // Name must be 63 characters or less, begin and end with alphanumerics,
 // with dashes (-), underscores (_), dots (.), and alphanumerics between.
+//
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o BareMetalClusterOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BareMetalCluster) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -1095,6 +1122,12 @@ func (o BareMetalClusterOutput) DeleteTime() pulumi.StringOutput {
 // A human readable description of this Bare Metal User Cluster.
 func (o BareMetalClusterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BareMetalCluster) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+// Terraform, other clients and services.
+func (o BareMetalClusterOutput) EffectiveAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *BareMetalCluster) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
 
 // The IP address name of Bare Metal User Cluster's API server.

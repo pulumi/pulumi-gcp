@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -25,7 +25,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -93,6 +93,7 @@ type LookupRouterNatResult struct {
 	TcpEstablishedIdleTimeoutSec  int                      `pulumi:"tcpEstablishedIdleTimeoutSec"`
 	TcpTimeWaitTimeoutSec         int                      `pulumi:"tcpTimeWaitTimeoutSec"`
 	TcpTransitoryIdleTimeoutSec   int                      `pulumi:"tcpTransitoryIdleTimeoutSec"`
+	Type                          string                   `pulumi:"type"`
 	UdpIdleTimeoutSec             int                      `pulumi:"udpIdleTimeoutSec"`
 }
 
@@ -229,6 +230,10 @@ func (o LookupRouterNatResultOutput) TcpTimeWaitTimeoutSec() pulumi.IntOutput {
 
 func (o LookupRouterNatResultOutput) TcpTransitoryIdleTimeoutSec() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupRouterNatResult) int { return v.TcpTransitoryIdleTimeoutSec }).(pulumi.IntOutput)
+}
+
+func (o LookupRouterNatResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouterNatResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func (o LookupRouterNatResultOutput) UdpIdleTimeoutSec() pulumi.IntOutput {

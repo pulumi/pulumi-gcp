@@ -127,6 +127,11 @@ export class MetastoreFederation extends pulumi.CustomResource {
      */
     public readonly backendMetastores!: pulumi.Output<outputs.dataproc.MetastoreFederationBackendMetastore[]>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The URI of the endpoint used to access the metastore federation.
      */
     public /*out*/ readonly endpointUri!: pulumi.Output<string>;
@@ -138,6 +143,8 @@ export class MetastoreFederation extends pulumi.CustomResource {
     public readonly federationId!: pulumi.Output<string>;
     /**
      * User-defined labels for the metastore federation.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -162,6 +169,11 @@ export class MetastoreFederation extends pulumi.CustomResource {
      */
     public /*out*/ readonly stateMessage!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The globally unique resource identifier of the metastore federation.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
@@ -184,6 +196,7 @@ export class MetastoreFederation extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as MetastoreFederationState | undefined;
             resourceInputs["backendMetastores"] = state ? state.backendMetastores : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["endpointUri"] = state ? state.endpointUri : undefined;
             resourceInputs["federationId"] = state ? state.federationId : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -192,6 +205,7 @@ export class MetastoreFederation extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["stateMessage"] = state ? state.stateMessage : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
         } else {
@@ -211,10 +225,12 @@ export class MetastoreFederation extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["endpointUri"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateMessage"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -232,6 +248,11 @@ export interface MetastoreFederationState {
      */
     backendMetastores?: pulumi.Input<pulumi.Input<inputs.dataproc.MetastoreFederationBackendMetastore>[]>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The URI of the endpoint used to access the metastore federation.
      */
     endpointUri?: pulumi.Input<string>;
@@ -243,6 +264,8 @@ export interface MetastoreFederationState {
     federationId?: pulumi.Input<string>;
     /**
      * User-defined labels for the metastore federation.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -266,6 +289,11 @@ export interface MetastoreFederationState {
      * Additional information about the current state of the metastore federation, if available.
      */
     stateMessage?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The globally unique resource identifier of the metastore federation.
      */
@@ -293,6 +321,8 @@ export interface MetastoreFederationArgs {
     federationId: pulumi.Input<string>;
     /**
      * User-defined labels for the metastore federation.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

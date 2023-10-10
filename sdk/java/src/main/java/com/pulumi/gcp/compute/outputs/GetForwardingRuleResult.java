@@ -22,6 +22,7 @@ public final class GetForwardingRuleResult {
     private String baseForwardingRule;
     private String creationTimestamp;
     private String description;
+    private Map<String,String> effectiveLabels;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -51,6 +52,7 @@ public final class GetForwardingRuleResult {
     private List<String> sourceIpRanges;
     private String subnetwork;
     private String target;
+    private Map<String,String> terraformLabels;
 
     private GetForwardingRuleResult() {}
     public Boolean allPorts() {
@@ -73,6 +75,9 @@ public final class GetForwardingRuleResult {
     }
     public String description() {
         return this.description;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -153,6 +158,9 @@ public final class GetForwardingRuleResult {
     public String target() {
         return this.target;
     }
+    public Map<String,String> terraformLabels() {
+        return this.terraformLabels;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -170,6 +178,7 @@ public final class GetForwardingRuleResult {
         private String baseForwardingRule;
         private String creationTimestamp;
         private String description;
+        private Map<String,String> effectiveLabels;
         private String id;
         private String ipAddress;
         private String ipProtocol;
@@ -195,6 +204,7 @@ public final class GetForwardingRuleResult {
         private List<String> sourceIpRanges;
         private String subnetwork;
         private String target;
+        private Map<String,String> terraformLabels;
         public Builder() {}
         public Builder(GetForwardingRuleResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -205,6 +215,7 @@ public final class GetForwardingRuleResult {
     	      this.baseForwardingRule = defaults.baseForwardingRule;
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.description = defaults.description;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.id = defaults.id;
     	      this.ipAddress = defaults.ipAddress;
     	      this.ipProtocol = defaults.ipProtocol;
@@ -230,6 +241,7 @@ public final class GetForwardingRuleResult {
     	      this.sourceIpRanges = defaults.sourceIpRanges;
     	      this.subnetwork = defaults.subnetwork;
     	      this.target = defaults.target;
+    	      this.terraformLabels = defaults.terraformLabels;
         }
 
         @CustomType.Setter
@@ -265,6 +277,11 @@ public final class GetForwardingRuleResult {
         @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -401,6 +418,11 @@ public final class GetForwardingRuleResult {
             this.target = Objects.requireNonNull(target);
             return this;
         }
+        @CustomType.Setter
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+            return this;
+        }
         public GetForwardingRuleResult build() {
             final var o = new GetForwardingRuleResult();
             o.allPorts = allPorts;
@@ -410,6 +432,7 @@ public final class GetForwardingRuleResult {
             o.baseForwardingRule = baseForwardingRule;
             o.creationTimestamp = creationTimestamp;
             o.description = description;
+            o.effectiveLabels = effectiveLabels;
             o.id = id;
             o.ipAddress = ipAddress;
             o.ipProtocol = ipProtocol;
@@ -435,6 +458,7 @@ public final class GetForwardingRuleResult {
             o.sourceIpRanges = sourceIpRanges;
             o.subnetwork = subnetwork;
             o.target = target;
+            o.terraformLabels = terraformLabels;
             return o;
         }
     }

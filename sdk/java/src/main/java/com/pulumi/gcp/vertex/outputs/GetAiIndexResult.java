@@ -20,6 +20,7 @@ public final class GetAiIndexResult {
     private List<GetAiIndexDeployedIndex> deployedIndexes;
     private String description;
     private String displayName;
+    private Map<String,String> effectiveLabels;
     private String etag;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -34,6 +35,7 @@ public final class GetAiIndexResult {
     private String name;
     private @Nullable String project;
     private String region;
+    private Map<String,String> terraformLabels;
     private String updateTime;
 
     private GetAiIndexResult() {}
@@ -48,6 +50,9 @@ public final class GetAiIndexResult {
     }
     public String displayName() {
         return this.displayName;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public String etag() {
         return this.etag;
@@ -83,6 +88,9 @@ public final class GetAiIndexResult {
     public String region() {
         return this.region;
     }
+    public Map<String,String> terraformLabels() {
+        return this.terraformLabels;
+    }
     public String updateTime() {
         return this.updateTime;
     }
@@ -100,6 +108,7 @@ public final class GetAiIndexResult {
         private List<GetAiIndexDeployedIndex> deployedIndexes;
         private String description;
         private String displayName;
+        private Map<String,String> effectiveLabels;
         private String etag;
         private String id;
         private List<GetAiIndexIndexStat> indexStats;
@@ -110,6 +119,7 @@ public final class GetAiIndexResult {
         private String name;
         private @Nullable String project;
         private String region;
+        private Map<String,String> terraformLabels;
         private String updateTime;
         public Builder() {}
         public Builder(GetAiIndexResult defaults) {
@@ -118,6 +128,7 @@ public final class GetAiIndexResult {
     	      this.deployedIndexes = defaults.deployedIndexes;
     	      this.description = defaults.description;
     	      this.displayName = defaults.displayName;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.etag = defaults.etag;
     	      this.id = defaults.id;
     	      this.indexStats = defaults.indexStats;
@@ -128,6 +139,7 @@ public final class GetAiIndexResult {
     	      this.name = defaults.name;
     	      this.project = defaults.project;
     	      this.region = defaults.region;
+    	      this.terraformLabels = defaults.terraformLabels;
     	      this.updateTime = defaults.updateTime;
         }
 
@@ -152,6 +164,11 @@ public final class GetAiIndexResult {
         @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -211,6 +228,11 @@ public final class GetAiIndexResult {
             return this;
         }
         @CustomType.Setter
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
@@ -221,6 +243,7 @@ public final class GetAiIndexResult {
             o.deployedIndexes = deployedIndexes;
             o.description = description;
             o.displayName = displayName;
+            o.effectiveLabels = effectiveLabels;
             o.etag = etag;
             o.id = id;
             o.indexStats = indexStats;
@@ -231,6 +254,7 @@ public final class GetAiIndexResult {
             o.name = name;
             o.project = project;
             o.region = region;
+            o.terraformLabels = terraformLabels;
             o.updateTime = updateTime;
             return o;
         }

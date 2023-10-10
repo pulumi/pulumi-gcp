@@ -190,6 +190,22 @@ public class EndpointPolicy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * Required. A matcher that selects endpoints to which the policies should be applied.
      * Structure is documented below.
      * 
@@ -207,6 +223,8 @@ public class EndpointPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * Set of label tags associated with the TcpRoute resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -214,6 +232,8 @@ public class EndpointPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Set of label tags associated with the TcpRoute resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -262,6 +282,22 @@ public class EndpointPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> serverTlsPolicy() {
         return Codegen.optional(this.serverTlsPolicy);
+    }
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="terraformLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> terraformLabels() {
+        return this.terraformLabels;
     }
     /**
      * Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.

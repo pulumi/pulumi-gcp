@@ -66,6 +66,7 @@ public final class GetInstanceResult {
      */
     private String description;
     private String desiredStatus;
+    private Map<String,String> effectiveLabels;
     /**
      * @return Whether the instance has virtual displays enabled.
      * 
@@ -168,6 +169,7 @@ public final class GetInstanceResult {
      * 
      */
     private String tagsFingerprint;
+    private Map<String,String> terraformLabels;
     private @Nullable String zone;
 
     private GetInstanceResult() {}
@@ -231,6 +233,9 @@ public final class GetInstanceResult {
     }
     public String desiredStatus() {
         return this.desiredStatus;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     /**
      * @return Whether the instance has virtual displays enabled.
@@ -386,6 +391,9 @@ public final class GetInstanceResult {
     public String tagsFingerprint() {
         return this.tagsFingerprint;
     }
+    public Map<String,String> terraformLabels() {
+        return this.terraformLabels;
+    }
     public Optional<String> zone() {
         return Optional.ofNullable(this.zone);
     }
@@ -410,6 +418,7 @@ public final class GetInstanceResult {
         private Boolean deletionProtection;
         private String description;
         private String desiredStatus;
+        private Map<String,String> effectiveLabels;
         private Boolean enableDisplay;
         private List<GetInstanceGuestAccelerator> guestAccelerators;
         private String hostname;
@@ -436,6 +445,7 @@ public final class GetInstanceResult {
         private List<GetInstanceShieldedInstanceConfig> shieldedInstanceConfigs;
         private List<String> tags;
         private String tagsFingerprint;
+        private Map<String,String> terraformLabels;
         private @Nullable String zone;
         public Builder() {}
         public Builder(GetInstanceResult defaults) {
@@ -451,6 +461,7 @@ public final class GetInstanceResult {
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.description = defaults.description;
     	      this.desiredStatus = defaults.desiredStatus;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.enableDisplay = defaults.enableDisplay;
     	      this.guestAccelerators = defaults.guestAccelerators;
     	      this.hostname = defaults.hostname;
@@ -477,6 +488,7 @@ public final class GetInstanceResult {
     	      this.shieldedInstanceConfigs = defaults.shieldedInstanceConfigs;
     	      this.tags = defaults.tags;
     	      this.tagsFingerprint = defaults.tagsFingerprint;
+    	      this.terraformLabels = defaults.terraformLabels;
     	      this.zone = defaults.zone;
         }
 
@@ -545,6 +557,11 @@ public final class GetInstanceResult {
         @CustomType.Setter
         public Builder desiredStatus(String desiredStatus) {
             this.desiredStatus = Objects.requireNonNull(desiredStatus);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -711,6 +728,11 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder zone(@Nullable String zone) {
             this.zone = zone;
             return this;
@@ -728,6 +750,7 @@ public final class GetInstanceResult {
             o.deletionProtection = deletionProtection;
             o.description = description;
             o.desiredStatus = desiredStatus;
+            o.effectiveLabels = effectiveLabels;
             o.enableDisplay = enableDisplay;
             o.guestAccelerators = guestAccelerators;
             o.hostname = hostname;
@@ -754,6 +777,7 @@ public final class GetInstanceResult {
             o.shieldedInstanceConfigs = shieldedInstanceConfigs;
             o.tags = tags;
             o.tagsFingerprint = tagsFingerprint;
+            o.terraformLabels = terraformLabels;
             o.zone = zone;
             return o;
         }

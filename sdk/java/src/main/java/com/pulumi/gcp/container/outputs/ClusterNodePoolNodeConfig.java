@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigAdvancedMachineFeatures;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigConfidentialNodes;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigEffectiveTaint;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigEphemeralStorageConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigFastSocket;
@@ -61,6 +62,7 @@ public final class ClusterNodePoolNodeConfig {
      * 
      */
     private @Nullable String diskType;
+    private @Nullable List<ClusterNodePoolNodeConfigEffectiveTaint> effectiveTaints;
     /**
      * @return ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
      * ```java
@@ -444,6 +446,9 @@ public final class ClusterNodePoolNodeConfig {
      */
     public Optional<String> diskType() {
         return Optional.ofNullable(this.diskType);
+    }
+    public List<ClusterNodePoolNodeConfigEffectiveTaint> effectiveTaints() {
+        return this.effectiveTaints == null ? List.of() : this.effectiveTaints;
     }
     /**
      * @return ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
@@ -864,6 +869,7 @@ public final class ClusterNodePoolNodeConfig {
         private @Nullable ClusterNodePoolNodeConfigConfidentialNodes confidentialNodes;
         private @Nullable Integer diskSizeGb;
         private @Nullable String diskType;
+        private @Nullable List<ClusterNodePoolNodeConfigEffectiveTaint> effectiveTaints;
         private @Nullable ClusterNodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig;
         private @Nullable ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig ephemeralStorageLocalSsdConfig;
         private @Nullable ClusterNodePoolNodeConfigFastSocket fastSocket;
@@ -902,6 +908,7 @@ public final class ClusterNodePoolNodeConfig {
     	      this.confidentialNodes = defaults.confidentialNodes;
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.diskType = defaults.diskType;
+    	      this.effectiveTaints = defaults.effectiveTaints;
     	      this.ephemeralStorageConfig = defaults.ephemeralStorageConfig;
     	      this.ephemeralStorageLocalSsdConfig = defaults.ephemeralStorageLocalSsdConfig;
     	      this.fastSocket = defaults.fastSocket;
@@ -958,6 +965,14 @@ public final class ClusterNodePoolNodeConfig {
         public Builder diskType(@Nullable String diskType) {
             this.diskType = diskType;
             return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveTaints(@Nullable List<ClusterNodePoolNodeConfigEffectiveTaint> effectiveTaints) {
+            this.effectiveTaints = effectiveTaints;
+            return this;
+        }
+        public Builder effectiveTaints(ClusterNodePoolNodeConfigEffectiveTaint... effectiveTaints) {
+            return effectiveTaints(List.of(effectiveTaints));
         }
         @CustomType.Setter
         public Builder ephemeralStorageConfig(@Nullable ClusterNodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig) {
@@ -1128,6 +1143,7 @@ public final class ClusterNodePoolNodeConfig {
             o.confidentialNodes = confidentialNodes;
             o.diskSizeGb = diskSizeGb;
             o.diskType = diskType;
+            o.effectiveTaints = effectiveTaints;
             o.ephemeralStorageConfig = ephemeralStorageConfig;
             o.ephemeralStorageLocalSsdConfig = ephemeralStorageLocalSsdConfig;
             o.fastSocket = fastSocket;

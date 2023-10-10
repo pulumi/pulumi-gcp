@@ -21,13 +21,16 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, auto_create_network=None, billing_account=None, folder_id=None, id=None, labels=None, name=None, number=None, org_id=None, project_id=None, skip_delete=None):
+    def __init__(__self__, auto_create_network=None, billing_account=None, effective_labels=None, folder_id=None, id=None, labels=None, name=None, number=None, org_id=None, project_id=None, skip_delete=None, terraform_labels=None):
         if auto_create_network and not isinstance(auto_create_network, bool):
             raise TypeError("Expected argument 'auto_create_network' to be a bool")
         pulumi.set(__self__, "auto_create_network", auto_create_network)
         if billing_account and not isinstance(billing_account, str):
             raise TypeError("Expected argument 'billing_account' to be a str")
         pulumi.set(__self__, "billing_account", billing_account)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if folder_id and not isinstance(folder_id, str):
             raise TypeError("Expected argument 'folder_id' to be a str")
         pulumi.set(__self__, "folder_id", folder_id)
@@ -52,6 +55,9 @@ class GetProjectResult:
         if skip_delete and not isinstance(skip_delete, bool):
             raise TypeError("Expected argument 'skip_delete' to be a bool")
         pulumi.set(__self__, "skip_delete", skip_delete)
+        if terraform_labels and not isinstance(terraform_labels, dict):
+            raise TypeError("Expected argument 'terraform_labels' to be a dict")
+        pulumi.set(__self__, "terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="autoCreateNetwork")
@@ -62,6 +68,11 @@ class GetProjectResult:
     @pulumi.getter(name="billingAccount")
     def billing_account(self) -> str:
         return pulumi.get(self, "billing_account")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="folderId")
@@ -109,6 +120,11 @@ class GetProjectResult:
     def skip_delete(self) -> bool:
         return pulumi.get(self, "skip_delete")
 
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "terraform_labels")
+
 
 class AwaitableGetProjectResult(GetProjectResult):
     # pylint: disable=using-constant-test
@@ -118,6 +134,7 @@ class AwaitableGetProjectResult(GetProjectResult):
         return GetProjectResult(
             auto_create_network=self.auto_create_network,
             billing_account=self.billing_account,
+            effective_labels=self.effective_labels,
             folder_id=self.folder_id,
             id=self.id,
             labels=self.labels,
@@ -125,7 +142,8 @@ class AwaitableGetProjectResult(GetProjectResult):
             number=self.number,
             org_id=self.org_id,
             project_id=self.project_id,
-            skip_delete=self.skip_delete)
+            skip_delete=self.skip_delete,
+            terraform_labels=self.terraform_labels)
 
 
 def get_project(project_id: Optional[str] = None,
@@ -156,6 +174,7 @@ def get_project(project_id: Optional[str] = None,
     return AwaitableGetProjectResult(
         auto_create_network=pulumi.get(__ret__, 'auto_create_network'),
         billing_account=pulumi.get(__ret__, 'billing_account'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         folder_id=pulumi.get(__ret__, 'folder_id'),
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
@@ -163,7 +182,8 @@ def get_project(project_id: Optional[str] = None,
         number=pulumi.get(__ret__, 'number'),
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
-        skip_delete=pulumi.get(__ret__, 'skip_delete'))
+        skip_delete=pulumi.get(__ret__, 'skip_delete'),
+        terraform_labels=pulumi.get(__ret__, 'terraform_labels'))
 
 
 @_utilities.lift_output_func(get_project)

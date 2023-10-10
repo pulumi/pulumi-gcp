@@ -33,6 +33,9 @@ class EnterpriseKeyArgs:
         :param pulumi.Input['EnterpriseKeyAndroidSettingsArgs'] android_settings: Settings for keys that can be used by Android apps.
         :param pulumi.Input['EnterpriseKeyIosSettingsArgs'] ios_settings: Settings for keys that can be used by iOS apps.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input['EnterpriseKeyTestingOptionsArgs'] testing_options: Options for user acceptance testing.
         :param pulumi.Input['EnterpriseKeyWebSettingsArgs'] web_settings: Settings for keys that can be used by websites.
@@ -131,6 +134,9 @@ class EnterpriseKeyArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -181,10 +187,12 @@ class _EnterpriseKeyState:
                  android_settings: Optional[pulumi.Input['EnterpriseKeyAndroidSettingsArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  ios_settings: Optional[pulumi.Input['EnterpriseKeyIosSettingsArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  testing_options: Optional[pulumi.Input['EnterpriseKeyTestingOptionsArgs']] = None,
                  web_settings: Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']] = None):
         """
@@ -196,10 +204,16 @@ class _EnterpriseKeyState:
                
                
                - - -
+        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input['EnterpriseKeyIosSettingsArgs'] ios_settings: Settings for keys that can be used by iOS apps.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the Key in the format "projects/{project}/keys/{key}".
         :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[Mapping[str, Any]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input['EnterpriseKeyTestingOptionsArgs'] testing_options: Options for user acceptance testing.
         :param pulumi.Input['EnterpriseKeyWebSettingsArgs'] web_settings: Settings for keys that can be used by websites.
         """
@@ -208,10 +222,12 @@ class _EnterpriseKeyState:
             android_settings=android_settings,
             create_time=create_time,
             display_name=display_name,
+            effective_labels=effective_labels,
             ios_settings=ios_settings,
             labels=labels,
             name=name,
             project=project,
+            terraform_labels=terraform_labels,
             testing_options=testing_options,
             web_settings=web_settings,
         )
@@ -221,10 +237,12 @@ class _EnterpriseKeyState:
              android_settings: Optional[pulumi.Input['EnterpriseKeyAndroidSettingsArgs']] = None,
              create_time: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              ios_settings: Optional[pulumi.Input['EnterpriseKeyIosSettingsArgs']] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              testing_options: Optional[pulumi.Input['EnterpriseKeyTestingOptionsArgs']] = None,
              web_settings: Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
@@ -235,8 +253,12 @@ class _EnterpriseKeyState:
             create_time = kwargs['createTime']
         if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
+        if effective_labels is None and 'effectiveLabels' in kwargs:
+            effective_labels = kwargs['effectiveLabels']
         if ios_settings is None and 'iosSettings' in kwargs:
             ios_settings = kwargs['iosSettings']
+        if terraform_labels is None and 'terraformLabels' in kwargs:
+            terraform_labels = kwargs['terraformLabels']
         if testing_options is None and 'testingOptions' in kwargs:
             testing_options = kwargs['testingOptions']
         if web_settings is None and 'webSettings' in kwargs:
@@ -248,6 +270,8 @@ class _EnterpriseKeyState:
             _setter("create_time", create_time)
         if display_name is not None:
             _setter("display_name", display_name)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if ios_settings is not None:
             _setter("ios_settings", ios_settings)
         if labels is not None:
@@ -256,6 +280,8 @@ class _EnterpriseKeyState:
             _setter("name", name)
         if project is not None:
             _setter("project", project)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if testing_options is not None:
             _setter("testing_options", testing_options)
         if web_settings is not None:
@@ -302,6 +328,19 @@ class _EnterpriseKeyState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="iosSettings")
     def ios_settings(self) -> Optional[pulumi.Input['EnterpriseKeyIosSettingsArgs']]:
         """
@@ -318,6 +357,9 @@ class _EnterpriseKeyState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -348,6 +390,18 @@ class _EnterpriseKeyState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="testingOptions")
@@ -518,6 +572,9 @@ class EnterpriseKey(pulumi.CustomResource):
                - - -
         :param pulumi.Input[pulumi.InputType['EnterpriseKeyIosSettingsArgs']] ios_settings: Settings for keys that can be used by iOS apps.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[pulumi.InputType['EnterpriseKeyTestingOptionsArgs']] testing_options: Options for user acceptance testing.
         :param pulumi.Input[pulumi.InputType['EnterpriseKeyWebSettingsArgs']] web_settings: Settings for keys that can be used by websites.
@@ -698,7 +755,9 @@ class EnterpriseKey(pulumi.CustomResource):
             web_settings = _utilities.configure(web_settings, EnterpriseKeyWebSettingsArgs, True)
             __props__.__dict__["web_settings"] = web_settings
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(EnterpriseKey, __self__).__init__(
             'gcp:recaptcha/enterpriseKey:EnterpriseKey',
             resource_name,
@@ -712,10 +771,12 @@ class EnterpriseKey(pulumi.CustomResource):
             android_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyAndroidSettingsArgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             ios_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyIosSettingsArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             testing_options: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyTestingOptionsArgs']]] = None,
             web_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyWebSettingsArgs']]] = None) -> 'EnterpriseKey':
         """
@@ -732,10 +793,16 @@ class EnterpriseKey(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[pulumi.InputType['EnterpriseKeyIosSettingsArgs']] ios_settings: Settings for keys that can be used by iOS apps.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the Key in the format "projects/{project}/keys/{key}".
         :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[Mapping[str, Any]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['EnterpriseKeyTestingOptionsArgs']] testing_options: Options for user acceptance testing.
         :param pulumi.Input[pulumi.InputType['EnterpriseKeyWebSettingsArgs']] web_settings: Settings for keys that can be used by websites.
         """
@@ -746,10 +813,12 @@ class EnterpriseKey(pulumi.CustomResource):
         __props__.__dict__["android_settings"] = android_settings
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["ios_settings"] = ios_settings
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["testing_options"] = testing_options
         __props__.__dict__["web_settings"] = web_settings
         return EnterpriseKey(resource_name, opts=opts, __props__=__props__)
@@ -783,6 +852,15 @@ class EnterpriseKey(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="iosSettings")
     def ios_settings(self) -> pulumi.Output[Optional['outputs.EnterpriseKeyIosSettings']]:
         """
@@ -795,6 +873,9 @@ class EnterpriseKey(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -813,6 +894,14 @@ class EnterpriseKey(pulumi.CustomResource):
         The project for the resource
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="testingOptions")

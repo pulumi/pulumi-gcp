@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkservices"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -49,7 +49,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkservices"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -99,6 +99,9 @@ type Mesh struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the
 	// specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to
 	// be redirected to this port regardless of its actual ip:port destination. If unset, a port
@@ -106,6 +109,8 @@ type Mesh struct {
 	// deployments.
 	InterceptionPort pulumi.IntPtrOutput `pulumi:"interceptionPort"`
 	// Set of label tags associated with the Mesh resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Short name of the Mesh resource to be created.
 	//
@@ -116,6 +121,9 @@ type Mesh struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Server-defined URL of this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Time the Mesh was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -154,6 +162,9 @@ type meshState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the
 	// specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to
 	// be redirected to this port regardless of its actual ip:port destination. If unset, a port
@@ -161,6 +172,8 @@ type meshState struct {
 	// deployments.
 	InterceptionPort *int `pulumi:"interceptionPort"`
 	// Set of label tags associated with the Mesh resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Short name of the Mesh resource to be created.
 	//
@@ -171,6 +184,9 @@ type meshState struct {
 	Project *string `pulumi:"project"`
 	// Server-defined URL of this resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Time the Mesh was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -180,6 +196,9 @@ type MeshState struct {
 	CreateTime pulumi.StringPtrInput
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the
 	// specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to
 	// be redirected to this port regardless of its actual ip:port destination. If unset, a port
@@ -187,6 +206,8 @@ type MeshState struct {
 	// deployments.
 	InterceptionPort pulumi.IntPtrInput
 	// Set of label tags associated with the Mesh resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Short name of the Mesh resource to be created.
 	//
@@ -197,6 +218,9 @@ type MeshState struct {
 	Project pulumi.StringPtrInput
 	// Server-defined URL of this resource.
 	SelfLink pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// Time the Mesh was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -215,6 +239,8 @@ type meshArgs struct {
 	// deployments.
 	InterceptionPort *int `pulumi:"interceptionPort"`
 	// Set of label tags associated with the Mesh resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Short name of the Mesh resource to be created.
 	//
@@ -236,6 +262,8 @@ type MeshArgs struct {
 	// deployments.
 	InterceptionPort pulumi.IntPtrInput
 	// Set of label tags associated with the Mesh resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Short name of the Mesh resource to be created.
 	//
@@ -367,6 +395,12 @@ func (o MeshOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Mesh) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o MeshOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Mesh) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the
 // specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to
 // be redirected to this port regardless of its actual ip:port destination. If unset, a port
@@ -377,6 +411,8 @@ func (o MeshOutput) InterceptionPort() pulumi.IntPtrOutput {
 }
 
 // Set of label tags associated with the Mesh resource.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o MeshOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Mesh) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -397,6 +433,12 @@ func (o MeshOutput) Project() pulumi.StringOutput {
 // Server-defined URL of this resource.
 func (o MeshOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *Mesh) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o MeshOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Mesh) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Time the Mesh was updated in UTC.

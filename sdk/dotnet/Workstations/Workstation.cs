@@ -124,6 +124,8 @@ namespace Pulumi.Gcp.Workstations
     {
         /// <summary>
         /// Client-specified annotations. This is distinct from labels.
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
@@ -141,6 +143,20 @@ namespace Pulumi.Gcp.Workstations
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        /// Terraform, other clients and services.
+        /// </summary>
+        [Output("effectiveAnnotations")]
+        public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// 'Client-specified environment variables passed to the workstation container's entrypoint.'
         /// </summary>
         [Output("env")]
@@ -156,6 +172,8 @@ namespace Pulumi.Gcp.Workstations
 
         /// <summary>
         /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -187,6 +205,13 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("terraformLabels")]
+        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// A system-assigned unique identified for this resource.
@@ -263,6 +288,8 @@ namespace Pulumi.Gcp.Workstations
 
         /// <summary>
         /// Client-specified annotations. This is distinct from labels.
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -293,6 +320,8 @@ namespace Pulumi.Gcp.Workstations
 
         /// <summary>
         /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -347,6 +376,8 @@ namespace Pulumi.Gcp.Workstations
 
         /// <summary>
         /// Client-specified annotations. This is distinct from labels.
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -365,6 +396,32 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        [Input("effectiveAnnotations")]
+        private InputMap<string>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        /// Terraform, other clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveAnnotations
+        {
+            get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());
+            set => _effectiveAnnotations = value;
+        }
+
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
 
         [Input("env")]
         private InputMap<string>? _env;
@@ -391,6 +448,8 @@ namespace Pulumi.Gcp.Workstations
 
         /// <summary>
         /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -425,6 +484,19 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        [Input("terraformLabels")]
+        private InputMap<string>? _terraformLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> TerraformLabels
+        {
+            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
+            set => _terraformLabels = value;
+        }
 
         /// <summary>
         /// A system-assigned unique identified for this resource.

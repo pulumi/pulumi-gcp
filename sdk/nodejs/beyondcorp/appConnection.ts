@@ -141,12 +141,20 @@ export class AppConnection extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Gateway used by the AppConnection.
      * Structure is documented below.
      */
     public readonly gateway!: pulumi.Output<outputs.beyondcorp.AppConnectionGateway>;
     /**
      * Resource labels to represent user provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -162,6 +170,11 @@ export class AppConnection extends pulumi.CustomResource {
      * The region of the AppConnection.
      */
     public readonly region!: pulumi.Output<string | undefined>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The type of network connectivity used by the AppConnection. Refer to
      * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
@@ -185,11 +198,13 @@ export class AppConnection extends pulumi.CustomResource {
             resourceInputs["applicationEndpoint"] = state ? state.applicationEndpoint : undefined;
             resourceInputs["connectors"] = state ? state.connectors : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["gateway"] = state ? state.gateway : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as AppConnectionArgs | undefined;
@@ -205,6 +220,8 @@ export class AppConnection extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AppConnection.__pulumiType, name, resourceInputs, opts);
@@ -229,12 +246,20 @@ export interface AppConnectionState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Gateway used by the AppConnection.
      * Structure is documented below.
      */
     gateway?: pulumi.Input<inputs.beyondcorp.AppConnectionGateway>;
     /**
      * Resource labels to represent user provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -250,6 +275,11 @@ export interface AppConnectionState {
      * The region of the AppConnection.
      */
     region?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The type of network connectivity used by the AppConnection. Refer to
      * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
@@ -282,6 +312,9 @@ export interface AppConnectionArgs {
     gateway?: pulumi.Input<inputs.beyondcorp.AppConnectionGateway>;
     /**
      * Resource labels to represent user provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

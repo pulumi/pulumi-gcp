@@ -44,6 +44,9 @@ class ManagedZoneArgs:
                to forward to.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this ManagedZone.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: User assigned name for this resource.
                Must be unique within the project.
                
@@ -235,6 +238,9 @@ class ManagedZoneArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A set of key/value label pairs to assign to this ManagedZone.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -349,6 +355,7 @@ class _ManagedZoneState:
                  description: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
                  dnssec_config: Optional[pulumi.Input['ManagedZoneDnssecConfigArgs']] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  forwarding_config: Optional[pulumi.Input['ManagedZoneForwardingConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -360,6 +367,7 @@ class _ManagedZoneState:
                  project: Optional[pulumi.Input[str]] = None,
                  reverse_lookup: Optional[pulumi.Input[bool]] = None,
                  service_directory_config: Optional[pulumi.Input['ManagedZoneServiceDirectoryConfigArgs']] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  visibility: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ManagedZone resources.
@@ -371,12 +379,17 @@ class _ManagedZoneState:
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
         :param pulumi.Input['ManagedZoneDnssecConfigArgs'] dnssec_config: DNSSEC configuration
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[bool] force_destroy: Set this true to delete all records in the zone.
         :param pulumi.Input['ManagedZoneForwardingConfigArgs'] forwarding_config: The presence for this field indicates that outbound forwarding is enabled
                for this zone. The value of this field contains the set of destinations
                to forward to.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this ManagedZone.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[int] managed_zone_id: Unique identifier for the resource; defined by the server.
         :param pulumi.Input[str] name: User assigned name for this resource.
                Must be unique within the project.
@@ -397,6 +410,8 @@ class _ManagedZoneState:
                to networks listed under `private_visibility_config`.
         :param pulumi.Input['ManagedZoneServiceDirectoryConfigArgs'] service_directory_config: The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] visibility: The zone's visibility: public zones are exposed to the Internet,
                while private zones are visible only to Virtual Private Cloud resources.
                Default value is `public`.
@@ -409,6 +424,7 @@ class _ManagedZoneState:
             description=description,
             dns_name=dns_name,
             dnssec_config=dnssec_config,
+            effective_labels=effective_labels,
             force_destroy=force_destroy,
             forwarding_config=forwarding_config,
             labels=labels,
@@ -420,6 +436,7 @@ class _ManagedZoneState:
             project=project,
             reverse_lookup=reverse_lookup,
             service_directory_config=service_directory_config,
+            terraform_labels=terraform_labels,
             visibility=visibility,
         )
     @staticmethod
@@ -430,6 +447,7 @@ class _ManagedZoneState:
              description: Optional[pulumi.Input[str]] = None,
              dns_name: Optional[pulumi.Input[str]] = None,
              dnssec_config: Optional[pulumi.Input['ManagedZoneDnssecConfigArgs']] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              force_destroy: Optional[pulumi.Input[bool]] = None,
              forwarding_config: Optional[pulumi.Input['ManagedZoneForwardingConfigArgs']] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -441,6 +459,7 @@ class _ManagedZoneState:
              project: Optional[pulumi.Input[str]] = None,
              reverse_lookup: Optional[pulumi.Input[bool]] = None,
              service_directory_config: Optional[pulumi.Input['ManagedZoneServiceDirectoryConfigArgs']] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              visibility: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -452,6 +471,8 @@ class _ManagedZoneState:
             dns_name = kwargs['dnsName']
         if dnssec_config is None and 'dnssecConfig' in kwargs:
             dnssec_config = kwargs['dnssecConfig']
+        if effective_labels is None and 'effectiveLabels' in kwargs:
+            effective_labels = kwargs['effectiveLabels']
         if force_destroy is None and 'forceDestroy' in kwargs:
             force_destroy = kwargs['forceDestroy']
         if forwarding_config is None and 'forwardingConfig' in kwargs:
@@ -468,6 +489,8 @@ class _ManagedZoneState:
             reverse_lookup = kwargs['reverseLookup']
         if service_directory_config is None and 'serviceDirectoryConfig' in kwargs:
             service_directory_config = kwargs['serviceDirectoryConfig']
+        if terraform_labels is None and 'terraformLabels' in kwargs:
+            terraform_labels = kwargs['terraformLabels']
 
         if cloud_logging_config is not None:
             _setter("cloud_logging_config", cloud_logging_config)
@@ -481,6 +504,8 @@ class _ManagedZoneState:
             _setter("dns_name", dns_name)
         if dnssec_config is not None:
             _setter("dnssec_config", dnssec_config)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if force_destroy is not None:
             _setter("force_destroy", force_destroy)
         if forwarding_config is not None:
@@ -503,6 +528,8 @@ class _ManagedZoneState:
             _setter("reverse_lookup", reverse_lookup)
         if service_directory_config is not None:
             _setter("service_directory_config", service_directory_config)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if visibility is not None:
             _setter("visibility", visibility)
 
@@ -570,6 +597,19 @@ class _ManagedZoneState:
         pulumi.set(self, "dnssec_config", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -601,6 +641,9 @@ class _ManagedZoneState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A set of key/value label pairs to assign to this ManagedZone.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -715,6 +758,19 @@ class _ManagedZoneState:
     @service_directory_config.setter
     def service_directory_config(self, value: Optional[pulumi.Input['ManagedZoneServiceDirectoryConfigArgs']]):
         pulumi.set(self, "service_directory_config", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -882,7 +938,8 @@ class ManagedZone(pulumi.CustomResource):
             ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(
                 cluster_secondary_range_name=subnetwork_1.secondary_ip_ranges[0].range_name,
                 services_secondary_range_name=subnetwork_1.secondary_ip_ranges[1].range_name,
-            ))
+            ),
+            deletion_protection=True)
         private_zone_gke = gcp.dns.ManagedZone("private-zone-gke",
             dns_name="private.example.com.",
             description="Example private DNS zone",
@@ -989,6 +1046,9 @@ class ManagedZone(pulumi.CustomResource):
                to forward to.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this ManagedZone.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: User assigned name for this resource.
                Must be unique within the project.
                
@@ -1147,7 +1207,8 @@ class ManagedZone(pulumi.CustomResource):
             ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(
                 cluster_secondary_range_name=subnetwork_1.secondary_ip_ranges[0].range_name,
                 services_secondary_range_name=subnetwork_1.secondary_ip_ranges[1].range_name,
-            ))
+            ),
+            deletion_protection=True)
         private_zone_gke = gcp.dns.ManagedZone("private-zone-gke",
             dns_name="private.example.com.",
             description="Example private DNS zone",
@@ -1307,8 +1368,10 @@ class ManagedZone(pulumi.CustomResource):
             __props__.__dict__["service_directory_config"] = service_directory_config
             __props__.__dict__["visibility"] = visibility
             __props__.__dict__["creation_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["managed_zone_id"] = None
             __props__.__dict__["name_servers"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(ManagedZone, __self__).__init__(
             'gcp:dns/managedZone:ManagedZone',
             resource_name,
@@ -1324,6 +1387,7 @@ class ManagedZone(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             dns_name: Optional[pulumi.Input[str]] = None,
             dnssec_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneDnssecConfigArgs']]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
             forwarding_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneForwardingConfigArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1335,6 +1399,7 @@ class ManagedZone(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             reverse_lookup: Optional[pulumi.Input[bool]] = None,
             service_directory_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneServiceDirectoryConfigArgs']]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             visibility: Optional[pulumi.Input[str]] = None) -> 'ManagedZone':
         """
         Get an existing ManagedZone resource's state with the given name, id, and optional extra
@@ -1351,12 +1416,17 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
         :param pulumi.Input[pulumi.InputType['ManagedZoneDnssecConfigArgs']] dnssec_config: DNSSEC configuration
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[bool] force_destroy: Set this true to delete all records in the zone.
         :param pulumi.Input[pulumi.InputType['ManagedZoneForwardingConfigArgs']] forwarding_config: The presence for this field indicates that outbound forwarding is enabled
                for this zone. The value of this field contains the set of destinations
                to forward to.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this ManagedZone.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[int] managed_zone_id: Unique identifier for the resource; defined by the server.
         :param pulumi.Input[str] name: User assigned name for this resource.
                Must be unique within the project.
@@ -1377,6 +1447,8 @@ class ManagedZone(pulumi.CustomResource):
                to networks listed under `private_visibility_config`.
         :param pulumi.Input[pulumi.InputType['ManagedZoneServiceDirectoryConfigArgs']] service_directory_config: The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] visibility: The zone's visibility: public zones are exposed to the Internet,
                while private zones are visible only to Virtual Private Cloud resources.
                Default value is `public`.
@@ -1391,6 +1463,7 @@ class ManagedZone(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["dns_name"] = dns_name
         __props__.__dict__["dnssec_config"] = dnssec_config
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["forwarding_config"] = forwarding_config
         __props__.__dict__["labels"] = labels
@@ -1402,6 +1475,7 @@ class ManagedZone(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["reverse_lookup"] = reverse_lookup
         __props__.__dict__["service_directory_config"] = service_directory_config
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["visibility"] = visibility
         return ManagedZone(resource_name, opts=opts, __props__=__props__)
 
@@ -1449,6 +1523,15 @@ class ManagedZone(pulumi.CustomResource):
         return pulumi.get(self, "dnssec_config")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -1472,6 +1555,9 @@ class ManagedZone(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A set of key/value label pairs to assign to this ManagedZone.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1550,6 +1636,15 @@ class ManagedZone(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "service_directory_config")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

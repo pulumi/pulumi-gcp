@@ -49,6 +49,7 @@ public final class GetRegionInstanceTemplateResult {
      * 
      */
     private List<GetRegionInstanceTemplateDisk> disks;
+    private Map<String,String> effectiveLabels;
     /**
      * @return Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
@@ -174,6 +175,7 @@ public final class GetRegionInstanceTemplateResult {
      * 
      */
     private String tagsFingerprint;
+    private Map<String,String> terraformLabels;
 
     private GetRegionInstanceTemplateResult() {}
     public List<GetRegionInstanceTemplateAdvancedMachineFeature> advancedMachineFeatures() {
@@ -209,6 +211,9 @@ public final class GetRegionInstanceTemplateResult {
      */
     public List<GetRegionInstanceTemplateDisk> disks() {
         return this.disks;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     /**
      * @return Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
@@ -387,6 +392,9 @@ public final class GetRegionInstanceTemplateResult {
     public String tagsFingerprint() {
         return this.tagsFingerprint;
     }
+    public Map<String,String> terraformLabels() {
+        return this.terraformLabels;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -402,6 +410,7 @@ public final class GetRegionInstanceTemplateResult {
         private List<GetRegionInstanceTemplateConfidentialInstanceConfig> confidentialInstanceConfigs;
         private String description;
         private List<GetRegionInstanceTemplateDisk> disks;
+        private Map<String,String> effectiveLabels;
         private Boolean enableDisplay;
         private @Nullable String filter;
         private List<GetRegionInstanceTemplateGuestAccelerator> guestAccelerators;
@@ -428,6 +437,7 @@ public final class GetRegionInstanceTemplateResult {
         private List<GetRegionInstanceTemplateShieldedInstanceConfig> shieldedInstanceConfigs;
         private List<String> tags;
         private String tagsFingerprint;
+        private Map<String,String> terraformLabels;
         public Builder() {}
         public Builder(GetRegionInstanceTemplateResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -436,6 +446,7 @@ public final class GetRegionInstanceTemplateResult {
     	      this.confidentialInstanceConfigs = defaults.confidentialInstanceConfigs;
     	      this.description = defaults.description;
     	      this.disks = defaults.disks;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.enableDisplay = defaults.enableDisplay;
     	      this.filter = defaults.filter;
     	      this.guestAccelerators = defaults.guestAccelerators;
@@ -462,6 +473,7 @@ public final class GetRegionInstanceTemplateResult {
     	      this.shieldedInstanceConfigs = defaults.shieldedInstanceConfigs;
     	      this.tags = defaults.tags;
     	      this.tagsFingerprint = defaults.tagsFingerprint;
+    	      this.terraformLabels = defaults.terraformLabels;
         }
 
         @CustomType.Setter
@@ -497,6 +509,11 @@ public final class GetRegionInstanceTemplateResult {
         }
         public Builder disks(GetRegionInstanceTemplateDisk... disks) {
             return disks(List.of(disks));
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            return this;
         }
         @CustomType.Setter
         public Builder enableDisplay(Boolean enableDisplay) {
@@ -655,6 +672,11 @@ public final class GetRegionInstanceTemplateResult {
             this.tagsFingerprint = Objects.requireNonNull(tagsFingerprint);
             return this;
         }
+        @CustomType.Setter
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+            return this;
+        }
         public GetRegionInstanceTemplateResult build() {
             final var o = new GetRegionInstanceTemplateResult();
             o.advancedMachineFeatures = advancedMachineFeatures;
@@ -662,6 +684,7 @@ public final class GetRegionInstanceTemplateResult {
             o.confidentialInstanceConfigs = confidentialInstanceConfigs;
             o.description = description;
             o.disks = disks;
+            o.effectiveLabels = effectiveLabels;
             o.enableDisplay = enableDisplay;
             o.filter = filter;
             o.guestAccelerators = guestAccelerators;
@@ -688,6 +711,7 @@ public final class GetRegionInstanceTemplateResult {
             o.shieldedInstanceConfigs = shieldedInstanceConfigs;
             o.tags = tags;
             o.tagsFingerprint = tagsFingerprint;
+            o.terraformLabels = terraformLabels;
             return o;
         }
     }

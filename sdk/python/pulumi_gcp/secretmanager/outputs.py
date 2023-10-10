@@ -144,29 +144,22 @@ class SecretReplication(dict):
 
     def __init__(__self__, *,
                  auto: Optional['outputs.SecretReplicationAuto'] = None,
-                 automatic: Optional[bool] = None,
                  user_managed: Optional['outputs.SecretReplicationUserManaged'] = None):
         """
         :param 'SecretReplicationAutoArgs' auto: The Secret will automatically be replicated without any restrictions.
                Structure is documented below.
-        :param bool automatic: (Optional, Deprecated)
-               The Secret will automatically be replicated without any restrictions.
-               
-               > **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
         :param 'SecretReplicationUserManagedArgs' user_managed: The Secret will be replicated to the regions specified by the user.
                Structure is documented below.
         """
         SecretReplication._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             auto=auto,
-            automatic=automatic,
             user_managed=user_managed,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
              auto: Optional['outputs.SecretReplicationAuto'] = None,
-             automatic: Optional[bool] = None,
              user_managed: Optional['outputs.SecretReplicationUserManaged'] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -175,8 +168,6 @@ class SecretReplication(dict):
 
         if auto is not None:
             _setter("auto", auto)
-        if automatic is not None:
-            _setter("automatic", automatic)
         if user_managed is not None:
             _setter("user_managed", user_managed)
 
@@ -188,20 +179,6 @@ class SecretReplication(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "auto")
-
-    @property
-    @pulumi.getter
-    def automatic(self) -> Optional[bool]:
-        """
-        (Optional, Deprecated)
-        The Secret will automatically be replicated without any restrictions.
-
-        > **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
-        """
-        warnings.warn("""`automatic` is deprecated and will be removed in a future major release. Use `auto` instead.""", DeprecationWarning)
-        pulumi.log.warn("""automatic is deprecated: `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.""")
-
-        return pulumi.get(self, "automatic")
 
     @property
     @pulumi.getter(name="userManaged")
@@ -582,25 +559,20 @@ class SecretTopic(dict):
 @pulumi.output_type
 class GetSecretReplicationResult(dict):
     def __init__(__self__, *,
-                 automatic: bool,
                  autos: Sequence['outputs.GetSecretReplicationAutoResult'],
                  user_manageds: Sequence['outputs.GetSecretReplicationUserManagedResult']):
         GetSecretReplicationResult._configure(
             lambda key, value: pulumi.set(__self__, key, value),
-            automatic=automatic,
             autos=autos,
             user_manageds=user_manageds,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             automatic: Optional[bool] = None,
              autos: Optional[Sequence['outputs.GetSecretReplicationAutoResult']] = None,
              user_manageds: Optional[Sequence['outputs.GetSecretReplicationUserManagedResult']] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if automatic is None:
-            raise TypeError("Missing 'automatic' argument")
         if autos is None:
             raise TypeError("Missing 'autos' argument")
         if user_manageds is None and 'userManageds' in kwargs:
@@ -608,14 +580,8 @@ class GetSecretReplicationResult(dict):
         if user_manageds is None:
             raise TypeError("Missing 'user_manageds' argument")
 
-        _setter("automatic", automatic)
         _setter("autos", autos)
         _setter("user_manageds", user_manageds)
-
-    @property
-    @pulumi.getter
-    def automatic(self) -> bool:
-        return pulumi.get(self, "automatic")
 
     @property
     @pulumi.getter

@@ -65,12 +65,15 @@ class SubnetworkArgs:
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, or `PRIVATE_SERVICE_CONNECT`.
-               A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
-               A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
-               A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
-               Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
-               If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
+        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either 'PRIVATE_RFC_1918', 'REGIONAL_MANAGED_PROXY',
+               'GLOBAL_MANAGED_PROXY', 'PRIVATE_SERVICE_CONNECT' or
+               'PRIVATE_NAT'([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html)). A subnet with purpose
+               set to 'REGIONAL_MANAGED_PROXY' is a user-created subnetwork that is reserved for regional Envoy-based load balancers. A
+               subnetwork in a given region with purpose set to 'GLOBAL_MANAGED_PROXY' is a proxy-only subnet and is shared between all
+               the cross-regional Envoy-based load balancers. A subnetwork with purpose set to 'PRIVATE_SERVICE_CONNECT' reserves the
+               subnet for hosting a Private Service Connect published service. A subnetwork with purpose set to 'PRIVATE_NAT' is used
+               as source range for Private NAT gateways. Note that 'REGIONAL_MANAGED_PROXY' is the preferred setting for all regional
+               Envoy load balancers. If unspecified, the purpose defaults to 'PRIVATE_RFC_1918'.
         :param pulumi.Input[str] region: The GCP region for this subnetwork.
         :param pulumi.Input[str] role: The role of subnetwork.
                Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
@@ -305,12 +308,15 @@ class SubnetworkArgs:
     @pulumi.getter
     def purpose(self) -> Optional[pulumi.Input[str]]:
         """
-        The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, or `PRIVATE_SERVICE_CONNECT`.
-        A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
-        A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
-        A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
-        Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
-        If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
+        The purpose of the resource. This field can be either 'PRIVATE_RFC_1918', 'REGIONAL_MANAGED_PROXY',
+        'GLOBAL_MANAGED_PROXY', 'PRIVATE_SERVICE_CONNECT' or
+        'PRIVATE_NAT'([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html)). A subnet with purpose
+        set to 'REGIONAL_MANAGED_PROXY' is a user-created subnetwork that is reserved for regional Envoy-based load balancers. A
+        subnetwork in a given region with purpose set to 'GLOBAL_MANAGED_PROXY' is a proxy-only subnet and is shared between all
+        the cross-regional Envoy-based load balancers. A subnetwork with purpose set to 'PRIVATE_SERVICE_CONNECT' reserves the
+        subnet for hosting a Private Service Connect published service. A subnetwork with purpose set to 'PRIVATE_NAT' is used
+        as source range for Private NAT gateways. Note that 'REGIONAL_MANAGED_PROXY' is the preferred setting for all regional
+        Envoy load balancers. If unspecified, the purpose defaults to 'PRIVATE_RFC_1918'.
         """
         return pulumi.get(self, "purpose")
 
@@ -444,12 +450,15 @@ class _SubnetworkState:
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, or `PRIVATE_SERVICE_CONNECT`.
-               A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
-               A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
-               A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
-               Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
-               If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
+        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either 'PRIVATE_RFC_1918', 'REGIONAL_MANAGED_PROXY',
+               'GLOBAL_MANAGED_PROXY', 'PRIVATE_SERVICE_CONNECT' or
+               'PRIVATE_NAT'([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html)). A subnet with purpose
+               set to 'REGIONAL_MANAGED_PROXY' is a user-created subnetwork that is reserved for regional Envoy-based load balancers. A
+               subnetwork in a given region with purpose set to 'GLOBAL_MANAGED_PROXY' is a proxy-only subnet and is shared between all
+               the cross-regional Envoy-based load balancers. A subnetwork with purpose set to 'PRIVATE_SERVICE_CONNECT' reserves the
+               subnet for hosting a Private Service Connect published service. A subnetwork with purpose set to 'PRIVATE_NAT' is used
+               as source range for Private NAT gateways. Note that 'REGIONAL_MANAGED_PROXY' is the preferred setting for all regional
+               Envoy load balancers. If unspecified, the purpose defaults to 'PRIVATE_RFC_1918'.
         :param pulumi.Input[str] region: The GCP region for this subnetwork.
         :param pulumi.Input[str] role: The role of subnetwork.
                Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
@@ -802,12 +811,15 @@ class _SubnetworkState:
     @pulumi.getter
     def purpose(self) -> Optional[pulumi.Input[str]]:
         """
-        The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, or `PRIVATE_SERVICE_CONNECT`.
-        A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
-        A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
-        A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
-        Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
-        If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
+        The purpose of the resource. This field can be either 'PRIVATE_RFC_1918', 'REGIONAL_MANAGED_PROXY',
+        'GLOBAL_MANAGED_PROXY', 'PRIVATE_SERVICE_CONNECT' or
+        'PRIVATE_NAT'([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html)). A subnet with purpose
+        set to 'REGIONAL_MANAGED_PROXY' is a user-created subnetwork that is reserved for regional Envoy-based load balancers. A
+        subnetwork in a given region with purpose set to 'GLOBAL_MANAGED_PROXY' is a proxy-only subnet and is shared between all
+        the cross-regional Envoy-based load balancers. A subnetwork with purpose set to 'PRIVATE_SERVICE_CONNECT' reserves the
+        subnet for hosting a Private Service Connect published service. A subnetwork with purpose set to 'PRIVATE_NAT' is used
+        as source range for Private NAT gateways. Note that 'REGIONAL_MANAGED_PROXY' is the preferred setting for all regional
+        Envoy load balancers. If unspecified, the purpose defaults to 'PRIVATE_RFC_1918'.
         """
         return pulumi.get(self, "purpose")
 
@@ -1018,6 +1030,21 @@ class Subnetwork(pulumi.CustomResource):
             ipv6_access_type="INTERNAL",
             network=custom_test.id)
         ```
+        ### Subnetwork Purpose Private Nat
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_test = gcp.compute.Network("custom-test", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        subnetwork_purpose_private_nat = gcp.compute.Subnetwork("subnetwork-purpose-private-nat",
+            region="us-west2",
+            ip_cidr_range="192.168.1.0/24",
+            purpose="PRIVATE_NAT",
+            network=custom_test.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -1074,12 +1101,15 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, or `PRIVATE_SERVICE_CONNECT`.
-               A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
-               A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
-               A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
-               Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
-               If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
+        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either 'PRIVATE_RFC_1918', 'REGIONAL_MANAGED_PROXY',
+               'GLOBAL_MANAGED_PROXY', 'PRIVATE_SERVICE_CONNECT' or
+               'PRIVATE_NAT'([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html)). A subnet with purpose
+               set to 'REGIONAL_MANAGED_PROXY' is a user-created subnetwork that is reserved for regional Envoy-based load balancers. A
+               subnetwork in a given region with purpose set to 'GLOBAL_MANAGED_PROXY' is a proxy-only subnet and is shared between all
+               the cross-regional Envoy-based load balancers. A subnetwork with purpose set to 'PRIVATE_SERVICE_CONNECT' reserves the
+               subnet for hosting a Private Service Connect published service. A subnetwork with purpose set to 'PRIVATE_NAT' is used
+               as source range for Private NAT gateways. Note that 'REGIONAL_MANAGED_PROXY' is the preferred setting for all regional
+               Envoy load balancers. If unspecified, the purpose defaults to 'PRIVATE_RFC_1918'.
         :param pulumi.Input[str] region: The GCP region for this subnetwork.
         :param pulumi.Input[str] role: The role of subnetwork.
                Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
@@ -1212,6 +1242,21 @@ class Subnetwork(pulumi.CustomResource):
             stack_type="IPV4_IPV6",
             ipv6_access_type="INTERNAL",
             network=custom_test.id)
+        ```
+        ### Subnetwork Purpose Private Nat
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_test = gcp.compute.Network("custom-test", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        subnetwork_purpose_private_nat = gcp.compute.Subnetwork("subnetwork-purpose-private-nat",
+            region="us-west2",
+            ip_cidr_range="192.168.1.0/24",
+            purpose="PRIVATE_NAT",
+            network=custom_test.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -1380,12 +1425,15 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, or `PRIVATE_SERVICE_CONNECT`.
-               A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
-               A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
-               A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
-               Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
-               If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
+        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either 'PRIVATE_RFC_1918', 'REGIONAL_MANAGED_PROXY',
+               'GLOBAL_MANAGED_PROXY', 'PRIVATE_SERVICE_CONNECT' or
+               'PRIVATE_NAT'([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html)). A subnet with purpose
+               set to 'REGIONAL_MANAGED_PROXY' is a user-created subnetwork that is reserved for regional Envoy-based load balancers. A
+               subnetwork in a given region with purpose set to 'GLOBAL_MANAGED_PROXY' is a proxy-only subnet and is shared between all
+               the cross-regional Envoy-based load balancers. A subnetwork with purpose set to 'PRIVATE_SERVICE_CONNECT' reserves the
+               subnet for hosting a Private Service Connect published service. A subnetwork with purpose set to 'PRIVATE_NAT' is used
+               as source range for Private NAT gateways. Note that 'REGIONAL_MANAGED_PROXY' is the preferred setting for all regional
+               Envoy load balancers. If unspecified, the purpose defaults to 'PRIVATE_RFC_1918'.
         :param pulumi.Input[str] region: The GCP region for this subnetwork.
         :param pulumi.Input[str] role: The role of subnetwork.
                Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
@@ -1582,12 +1630,15 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter
     def purpose(self) -> pulumi.Output[str]:
         """
-        The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, or `PRIVATE_SERVICE_CONNECT`.
-        A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
-        A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
-        A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
-        Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
-        If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
+        The purpose of the resource. This field can be either 'PRIVATE_RFC_1918', 'REGIONAL_MANAGED_PROXY',
+        'GLOBAL_MANAGED_PROXY', 'PRIVATE_SERVICE_CONNECT' or
+        'PRIVATE_NAT'([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html)). A subnet with purpose
+        set to 'REGIONAL_MANAGED_PROXY' is a user-created subnetwork that is reserved for regional Envoy-based load balancers. A
+        subnetwork in a given region with purpose set to 'GLOBAL_MANAGED_PROXY' is a proxy-only subnet and is shared between all
+        the cross-regional Envoy-based load balancers. A subnetwork with purpose set to 'PRIVATE_SERVICE_CONNECT' reserves the
+        subnet for hosting a Private Service Connect published service. A subnetwork with purpose set to 'PRIVATE_NAT' is used
+        as source range for Private NAT gateways. Note that 'REGIONAL_MANAGED_PROXY' is the preferred setting for all regional
+        Envoy load balancers. If unspecified, the purpose defaults to 'PRIVATE_RFC_1918'.
         """
         return pulumi.get(self, "purpose")
 

@@ -132,6 +132,13 @@ namespace Pulumi.Gcp.Dataproc
         public Output<string?> DagTimeout { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, object>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Required. The Directed Acyclic Graph of Jobs to submit.
         /// </summary>
         [Output("jobs")]
@@ -172,6 +179,12 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("terraformLabels")]
+        public Output<ImmutableDictionary<string, object>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// Output only. The time template was last updated.
@@ -323,6 +336,19 @@ namespace Pulumi.Gcp.Dataproc
         [Input("dagTimeout")]
         public Input<string>? DagTimeout { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<object>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<object> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<object>());
+            set => _effectiveLabels = value;
+        }
+
         [Input("jobs")]
         private InputList<Inputs.WorkflowTemplateJobGetArgs>? _jobs;
 
@@ -382,6 +408,18 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("terraformLabels")]
+        private InputMap<object>? _terraformLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<object> TerraformLabels
+        {
+            get => _terraformLabels ?? (_terraformLabels = new InputMap<object>());
+            set => _terraformLabels = value;
+        }
 
         /// <summary>
         /// Output only. The time template was last updated.

@@ -102,6 +102,23 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * The IPv4 addresses associated with this service. Addresses are static for the lifetime of the service.
      * 
      */
@@ -133,6 +150,8 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
 
     /**
      * Set of label tags associated with the EdgeCache resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -140,6 +159,8 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Set of label tags associated with the EdgeCache resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -252,6 +273,23 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.sslPolicy);
     }
 
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
+    }
+
     private EdgeCacheServiceState() {}
 
     private EdgeCacheServiceState(EdgeCacheServiceState $) {
@@ -260,6 +298,7 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
         this.disableQuic = $.disableQuic;
         this.edgeSecurityPolicy = $.edgeSecurityPolicy;
         this.edgeSslCertificates = $.edgeSslCertificates;
+        this.effectiveLabels = $.effectiveLabels;
         this.ipv4Addresses = $.ipv4Addresses;
         this.ipv6Addresses = $.ipv6Addresses;
         this.labels = $.labels;
@@ -269,6 +308,7 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
         this.requireTls = $.requireTls;
         this.routing = $.routing;
         this.sslPolicy = $.sslPolicy;
+        this.terraformLabels = $.terraformLabels;
     }
 
     public static Builder builder() {
@@ -412,6 +452,29 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param ipv4Addresses The IPv4 addresses associated with this service. Addresses are static for the lifetime of the service.
          * 
          * @return builder
@@ -475,6 +538,8 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param labels Set of label tags associated with the EdgeCache resource.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -486,6 +551,8 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param labels Set of label tags associated with the EdgeCache resource.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -634,6 +701,29 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
          */
         public Builder sslPolicy(String sslPolicy) {
             return sslPolicy(Output.of(sslPolicy));
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
+            return this;
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
         }
 
         public EdgeCacheServiceState build() {

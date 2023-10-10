@@ -11,6 +11,66 @@ namespace Pulumi.Gcp.VMwareEngine
 {
     /// <summary>
     /// ## Example Usage
+    /// ### Vmware Engine Network Legacy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumiverse.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // there can be only 1 Legacy network per region for a given project,
+    ///     // so creating new project for isolation in CI.
+    ///     var acceptanceProject = new Gcp.Organizations.Project("acceptanceProject", new()
+    ///     {
+    ///         ProjectId = "vmw-proj",
+    ///         OrgId = "123456789",
+    ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var wait60Seconds = new Time.Sleep("wait60Seconds", new()
+    ///     {
+    ///         CreateDuration = "60s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             acceptanceProject,
+    ///         },
+    ///     });
+    /// 
+    ///     var acceptanceService = new Gcp.Projects.Service("acceptanceService", new()
+    ///     {
+    ///         Project = acceptanceProject.ProjectId,
+    ///         ServiceName = "vmwareengine.googleapis.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///         DependsOn = new[]
+    ///         {
+    ///             wait60Seconds,
+    ///         },
+    ///     });
+    /// 
+    ///     var vmw_engine_network = new Gcp.VMwareEngine.Network("vmw-engine-network", new()
+    ///     {
+    ///         Project = acceptanceService.Project,
+    ///         Location = "us-west1",
+    ///         Type = "LEGACY",
+    ///         Description = "VMwareEngine legacy network sample",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

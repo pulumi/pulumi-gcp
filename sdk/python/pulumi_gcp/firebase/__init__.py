@@ -21,7 +21,6 @@ from .hosting_release import *
 from .hosting_site import *
 from .hosting_version import *
 from .project import *
-from .project_location import *
 from .storage_bucket import *
 from .web_app import *
 from ._inputs import *

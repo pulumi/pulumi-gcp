@@ -22,7 +22,7 @@ class GetGlobalForwardingRuleResult:
     """
     A collection of values returned by getGlobalForwardingRule.
     """
-    def __init__(__self__, allow_psc_global_access=None, base_forwarding_rule=None, description=None, id=None, ip_address=None, ip_protocol=None, ip_version=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, no_automate_dns_zone=None, port_range=None, project=None, psc_connection_id=None, psc_connection_status=None, self_link=None, source_ip_ranges=None, subnetwork=None, target=None):
+    def __init__(__self__, allow_psc_global_access=None, base_forwarding_rule=None, description=None, effective_labels=None, id=None, ip_address=None, ip_protocol=None, ip_version=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, no_automate_dns_zone=None, port_range=None, project=None, psc_connection_id=None, psc_connection_status=None, self_link=None, source_ip_ranges=None, subnetwork=None, target=None, terraform_labels=None):
         if allow_psc_global_access and not isinstance(allow_psc_global_access, bool):
             raise TypeError("Expected argument 'allow_psc_global_access' to be a bool")
         pulumi.set(__self__, "allow_psc_global_access", allow_psc_global_access)
@@ -32,6 +32,9 @@ class GetGlobalForwardingRuleResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -89,6 +92,9 @@ class GetGlobalForwardingRuleResult:
         if target and not isinstance(target, str):
             raise TypeError("Expected argument 'target' to be a str")
         pulumi.set(__self__, "target", target)
+        if terraform_labels and not isinstance(terraform_labels, dict):
+            raise TypeError("Expected argument 'terraform_labels' to be a dict")
+        pulumi.set(__self__, "terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="allowPscGlobalAccess")
@@ -104,6 +110,11 @@ class GetGlobalForwardingRuleResult:
     @pulumi.getter
     def description(self) -> str:
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter
@@ -203,6 +214,11 @@ class GetGlobalForwardingRuleResult:
     def target(self) -> str:
         return pulumi.get(self, "target")
 
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "terraform_labels")
+
 
 class AwaitableGetGlobalForwardingRuleResult(GetGlobalForwardingRuleResult):
     # pylint: disable=using-constant-test
@@ -213,6 +229,7 @@ class AwaitableGetGlobalForwardingRuleResult(GetGlobalForwardingRuleResult):
             allow_psc_global_access=self.allow_psc_global_access,
             base_forwarding_rule=self.base_forwarding_rule,
             description=self.description,
+            effective_labels=self.effective_labels,
             id=self.id,
             ip_address=self.ip_address,
             ip_protocol=self.ip_protocol,
@@ -231,7 +248,8 @@ class AwaitableGetGlobalForwardingRuleResult(GetGlobalForwardingRuleResult):
             self_link=self.self_link,
             source_ip_ranges=self.source_ip_ranges,
             subnetwork=self.subnetwork,
-            target=self.target)
+            target=self.target,
+            terraform_labels=self.terraform_labels)
 
 
 def get_global_forwarding_rule(name: Optional[str] = None,
@@ -266,6 +284,7 @@ def get_global_forwarding_rule(name: Optional[str] = None,
         allow_psc_global_access=pulumi.get(__ret__, 'allow_psc_global_access'),
         base_forwarding_rule=pulumi.get(__ret__, 'base_forwarding_rule'),
         description=pulumi.get(__ret__, 'description'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         id=pulumi.get(__ret__, 'id'),
         ip_address=pulumi.get(__ret__, 'ip_address'),
         ip_protocol=pulumi.get(__ret__, 'ip_protocol'),
@@ -284,7 +303,8 @@ def get_global_forwarding_rule(name: Optional[str] = None,
         self_link=pulumi.get(__ret__, 'self_link'),
         source_ip_ranges=pulumi.get(__ret__, 'source_ip_ranges'),
         subnetwork=pulumi.get(__ret__, 'subnetwork'),
-        target=pulumi.get(__ret__, 'target'))
+        target=pulumi.get(__ret__, 'target'),
+        terraform_labels=pulumi.get(__ret__, 'terraform_labels'))
 
 
 @_utilities.lift_output_func(get_global_forwarding_rule)

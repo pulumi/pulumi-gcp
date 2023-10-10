@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -1549,50 +1549,34 @@ func (i InstanceMaintenanceScheduleArgs) ToOutput(ctx context.Context) pulumix.O
 	}
 }
 
-func (i InstanceMaintenanceScheduleArgs) ToInstanceMaintenanceSchedulePtrOutput() InstanceMaintenanceSchedulePtrOutput {
-	return i.ToInstanceMaintenanceSchedulePtrOutputWithContext(context.Background())
-}
-
-func (i InstanceMaintenanceScheduleArgs) ToInstanceMaintenanceSchedulePtrOutputWithContext(ctx context.Context) InstanceMaintenanceSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenanceScheduleOutput).ToInstanceMaintenanceSchedulePtrOutputWithContext(ctx)
-}
-
-// InstanceMaintenanceSchedulePtrInput is an input type that accepts InstanceMaintenanceScheduleArgs, InstanceMaintenanceSchedulePtr and InstanceMaintenanceSchedulePtrOutput values.
-// You can construct a concrete instance of `InstanceMaintenanceSchedulePtrInput` via:
+// InstanceMaintenanceScheduleArrayInput is an input type that accepts InstanceMaintenanceScheduleArray and InstanceMaintenanceScheduleArrayOutput values.
+// You can construct a concrete instance of `InstanceMaintenanceScheduleArrayInput` via:
 //
-//	        InstanceMaintenanceScheduleArgs{...}
-//
-//	or:
-//
-//	        nil
-type InstanceMaintenanceSchedulePtrInput interface {
+//	InstanceMaintenanceScheduleArray{ InstanceMaintenanceScheduleArgs{...} }
+type InstanceMaintenanceScheduleArrayInput interface {
 	pulumi.Input
 
-	ToInstanceMaintenanceSchedulePtrOutput() InstanceMaintenanceSchedulePtrOutput
-	ToInstanceMaintenanceSchedulePtrOutputWithContext(context.Context) InstanceMaintenanceSchedulePtrOutput
+	ToInstanceMaintenanceScheduleArrayOutput() InstanceMaintenanceScheduleArrayOutput
+	ToInstanceMaintenanceScheduleArrayOutputWithContext(context.Context) InstanceMaintenanceScheduleArrayOutput
 }
 
-type instanceMaintenanceSchedulePtrType InstanceMaintenanceScheduleArgs
+type InstanceMaintenanceScheduleArray []InstanceMaintenanceScheduleInput
 
-func InstanceMaintenanceSchedulePtr(v *InstanceMaintenanceScheduleArgs) InstanceMaintenanceSchedulePtrInput {
-	return (*instanceMaintenanceSchedulePtrType)(v)
+func (InstanceMaintenanceScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceMaintenanceSchedule)(nil)).Elem()
 }
 
-func (*instanceMaintenanceSchedulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceMaintenanceSchedule)(nil)).Elem()
+func (i InstanceMaintenanceScheduleArray) ToInstanceMaintenanceScheduleArrayOutput() InstanceMaintenanceScheduleArrayOutput {
+	return i.ToInstanceMaintenanceScheduleArrayOutputWithContext(context.Background())
 }
 
-func (i *instanceMaintenanceSchedulePtrType) ToInstanceMaintenanceSchedulePtrOutput() InstanceMaintenanceSchedulePtrOutput {
-	return i.ToInstanceMaintenanceSchedulePtrOutputWithContext(context.Background())
+func (i InstanceMaintenanceScheduleArray) ToInstanceMaintenanceScheduleArrayOutputWithContext(ctx context.Context) InstanceMaintenanceScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenanceScheduleArrayOutput)
 }
 
-func (i *instanceMaintenanceSchedulePtrType) ToInstanceMaintenanceSchedulePtrOutputWithContext(ctx context.Context) InstanceMaintenanceSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenanceSchedulePtrOutput)
-}
-
-func (i *instanceMaintenanceSchedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceMaintenanceSchedule] {
-	return pulumix.Output[*InstanceMaintenanceSchedule]{
-		OutputState: i.ToInstanceMaintenanceSchedulePtrOutputWithContext(ctx).OutputState,
+func (i InstanceMaintenanceScheduleArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceMaintenanceSchedule] {
+	return pulumix.Output[[]InstanceMaintenanceSchedule]{
+		OutputState: i.ToInstanceMaintenanceScheduleArrayOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -1608,16 +1592,6 @@ func (o InstanceMaintenanceScheduleOutput) ToInstanceMaintenanceScheduleOutput()
 
 func (o InstanceMaintenanceScheduleOutput) ToInstanceMaintenanceScheduleOutputWithContext(ctx context.Context) InstanceMaintenanceScheduleOutput {
 	return o
-}
-
-func (o InstanceMaintenanceScheduleOutput) ToInstanceMaintenanceSchedulePtrOutput() InstanceMaintenanceSchedulePtrOutput {
-	return o.ToInstanceMaintenanceSchedulePtrOutputWithContext(context.Background())
-}
-
-func (o InstanceMaintenanceScheduleOutput) ToInstanceMaintenanceSchedulePtrOutputWithContext(ctx context.Context) InstanceMaintenanceSchedulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceMaintenanceSchedule) *InstanceMaintenanceSchedule {
-		return &v
-	}).(InstanceMaintenanceSchedulePtrOutput)
 }
 
 func (o InstanceMaintenanceScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceMaintenanceSchedule] {
@@ -1649,72 +1623,30 @@ func (o InstanceMaintenanceScheduleOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceMaintenanceSchedule) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
-type InstanceMaintenanceSchedulePtrOutput struct{ *pulumi.OutputState }
+type InstanceMaintenanceScheduleArrayOutput struct{ *pulumi.OutputState }
 
-func (InstanceMaintenanceSchedulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceMaintenanceSchedule)(nil)).Elem()
+func (InstanceMaintenanceScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceMaintenanceSchedule)(nil)).Elem()
 }
 
-func (o InstanceMaintenanceSchedulePtrOutput) ToInstanceMaintenanceSchedulePtrOutput() InstanceMaintenanceSchedulePtrOutput {
+func (o InstanceMaintenanceScheduleArrayOutput) ToInstanceMaintenanceScheduleArrayOutput() InstanceMaintenanceScheduleArrayOutput {
 	return o
 }
 
-func (o InstanceMaintenanceSchedulePtrOutput) ToInstanceMaintenanceSchedulePtrOutputWithContext(ctx context.Context) InstanceMaintenanceSchedulePtrOutput {
+func (o InstanceMaintenanceScheduleArrayOutput) ToInstanceMaintenanceScheduleArrayOutputWithContext(ctx context.Context) InstanceMaintenanceScheduleArrayOutput {
 	return o
 }
 
-func (o InstanceMaintenanceSchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceMaintenanceSchedule] {
-	return pulumix.Output[*InstanceMaintenanceSchedule]{
+func (o InstanceMaintenanceScheduleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceMaintenanceSchedule] {
+	return pulumix.Output[[]InstanceMaintenanceSchedule]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o InstanceMaintenanceSchedulePtrOutput) Elem() InstanceMaintenanceScheduleOutput {
-	return o.ApplyT(func(v *InstanceMaintenanceSchedule) InstanceMaintenanceSchedule {
-		if v != nil {
-			return *v
-		}
-		var ret InstanceMaintenanceSchedule
-		return ret
+func (o InstanceMaintenanceScheduleArrayOutput) Index(i pulumi.IntInput) InstanceMaintenanceScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceMaintenanceSchedule {
+		return vs[0].([]InstanceMaintenanceSchedule)[vs[1].(int)]
 	}).(InstanceMaintenanceScheduleOutput)
-}
-
-// (Output)
-// Output only. The end time of any upcoming scheduled maintenance for this instance.
-// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-// resolution and up to nine fractional digits.
-func (o InstanceMaintenanceSchedulePtrOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceMaintenanceSchedule) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EndTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// (Output)
-// Output only. The deadline that the maintenance schedule start time
-// can not go beyond, including reschedule.
-// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-// resolution and up to nine fractional digits.
-func (o InstanceMaintenanceSchedulePtrOutput) ScheduleDeadlineTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceMaintenanceSchedule) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ScheduleDeadlineTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Required. Start time of the window in UTC time.
-// Structure is documented below.
-func (o InstanceMaintenanceSchedulePtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceMaintenanceSchedule) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StartTime
-	}).(pulumi.StringPtrOutput)
 }
 
 type InstanceNode struct {
@@ -3274,7 +3206,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayInput)(nil)).Elem(), InstanceMaintenancePolicyWeeklyMaintenanceWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput)(nil)).Elem(), InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenanceScheduleInput)(nil)).Elem(), InstanceMaintenanceScheduleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenanceSchedulePtrInput)(nil)).Elem(), InstanceMaintenanceScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenanceScheduleArrayInput)(nil)).Elem(), InstanceMaintenanceScheduleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNodeInput)(nil)).Elem(), InstanceNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNodeArrayInput)(nil)).Elem(), InstanceNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePersistenceConfigInput)(nil)).Elem(), InstancePersistenceConfigArgs{})
@@ -3313,7 +3245,7 @@ func init() {
 	pulumi.RegisterOutputType(InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput{})
 	pulumi.RegisterOutputType(InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput{})
 	pulumi.RegisterOutputType(InstanceMaintenanceScheduleOutput{})
-	pulumi.RegisterOutputType(InstanceMaintenanceSchedulePtrOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenanceScheduleArrayOutput{})
 	pulumi.RegisterOutputType(InstanceNodeOutput{})
 	pulumi.RegisterOutputType(InstanceNodeArrayOutput{})
 	pulumi.RegisterOutputType(InstancePersistenceConfigOutput{})

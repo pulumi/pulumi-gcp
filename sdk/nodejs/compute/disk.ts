@@ -170,6 +170,11 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly diskEncryptionKey!: pulumi.Output<outputs.compute.DiskDiskEncryptionKey | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
      * required when setting to true
      */
@@ -208,6 +213,9 @@ export class Disk extends pulumi.CustomResource {
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     /**
      * Labels to apply to this disk.  A list of key->value pairs.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -346,6 +354,11 @@ export class Disk extends pulumi.CustomResource {
      */
     public /*out*/ readonly sourceSnapshotId!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * URL of the disk type resource describing which disk type to use to
      * create the disk. Provide this when creating the disk.
      */
@@ -377,6 +390,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["diskEncryptionKey"] = state ? state.diskEncryptionKey : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["enableConfidentialCompute"] = state ? state.enableConfidentialCompute : undefined;
             resourceInputs["guestOsFeatures"] = state ? state.guestOsFeatures : undefined;
             resourceInputs["image"] = state ? state.image : undefined;
@@ -402,6 +416,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["sourceImageId"] = state ? state.sourceImageId : undefined;
             resourceInputs["sourceSnapshotEncryptionKey"] = state ? state.sourceSnapshotEncryptionKey : undefined;
             resourceInputs["sourceSnapshotId"] = state ? state.sourceSnapshotId : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["users"] = state ? state.users : undefined;
             resourceInputs["zone"] = state ? state.zone : undefined;
@@ -431,6 +446,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["lastAttachTimestamp"] = undefined /*out*/;
             resourceInputs["lastDetachTimestamp"] = undefined /*out*/;
@@ -438,6 +454,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["sourceDiskId"] = undefined /*out*/;
             resourceInputs["sourceImageId"] = undefined /*out*/;
             resourceInputs["sourceSnapshotId"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["users"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -477,6 +494,11 @@ export interface DiskState {
      */
     diskEncryptionKey?: pulumi.Input<inputs.compute.DiskDiskEncryptionKey>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
      * required when setting to true
      */
@@ -515,6 +537,9 @@ export interface DiskState {
     labelFingerprint?: pulumi.Input<string>;
     /**
      * Labels to apply to this disk.  A list of key->value pairs.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -653,6 +678,11 @@ export interface DiskState {
      */
     sourceSnapshotId?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * URL of the disk type resource describing which disk type to use to
      * create the disk. Provide this when creating the disk.
      */
@@ -729,6 +759,9 @@ export interface DiskArgs {
     interface?: pulumi.Input<string>;
     /**
      * Labels to apply to this disk.  A list of key->value pairs.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

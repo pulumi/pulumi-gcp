@@ -66,6 +66,21 @@ public final class DatabaseInstanceCloneArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
+     * 
+     */
+    @Import(name="preferredZone")
+    private @Nullable Output<String> preferredZone;
+
+    /**
+     * @return (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
+     * 
+     */
+    public Optional<Output<String>> preferredZone() {
+        return Optional.ofNullable(this.preferredZone);
+    }
+
+    /**
      * Name of the source instance which will be cloned.
      * 
      */
@@ -86,6 +101,7 @@ public final class DatabaseInstanceCloneArgs extends com.pulumi.resources.Resour
         this.allocatedIpRange = $.allocatedIpRange;
         this.databaseNames = $.databaseNames;
         this.pointInTime = $.pointInTime;
+        this.preferredZone = $.preferredZone;
         this.sourceInstanceName = $.sourceInstanceName;
     }
 
@@ -182,6 +198,27 @@ public final class DatabaseInstanceCloneArgs extends com.pulumi.resources.Resour
          */
         public Builder pointInTime(String pointInTime) {
             return pointInTime(Output.of(pointInTime));
+        }
+
+        /**
+         * @param preferredZone (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preferredZone(@Nullable Output<String> preferredZone) {
+            $.preferredZone = preferredZone;
+            return this;
+        }
+
+        /**
+         * @param preferredZone (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preferredZone(String preferredZone) {
+            return preferredZone(Output.of(preferredZone));
         }
 
         /**

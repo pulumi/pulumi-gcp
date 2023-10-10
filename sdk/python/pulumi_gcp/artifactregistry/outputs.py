@@ -19,10 +19,14 @@ __all__ = [
     'RepositoryIamMemberCondition',
     'RepositoryMavenConfig',
     'RepositoryRemoteRepositoryConfig',
+    'RepositoryRemoteRepositoryConfigAptRepository',
+    'RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository',
     'RepositoryRemoteRepositoryConfigDockerRepository',
     'RepositoryRemoteRepositoryConfigMavenRepository',
     'RepositoryRemoteRepositoryConfigNpmRepository',
     'RepositoryRemoteRepositoryConfigPythonRepository',
+    'RepositoryRemoteRepositoryConfigYumRepository',
+    'RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository',
     'RepositoryVirtualRepositoryConfig',
     'RepositoryVirtualRepositoryConfigUpstreamPolicy',
     'GetRepositoryCleanupPolicyResult',
@@ -31,10 +35,14 @@ __all__ = [
     'GetRepositoryDockerConfigResult',
     'GetRepositoryMavenConfigResult',
     'GetRepositoryRemoteRepositoryConfigResult',
+    'GetRepositoryRemoteRepositoryConfigAptRepositoryResult',
+    'GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryResult',
     'GetRepositoryRemoteRepositoryConfigDockerRepositoryResult',
     'GetRepositoryRemoteRepositoryConfigMavenRepositoryResult',
     'GetRepositoryRemoteRepositoryConfigNpmRepositoryResult',
     'GetRepositoryRemoteRepositoryConfigPythonRepositoryResult',
+    'GetRepositoryRemoteRepositoryConfigYumRepositoryResult',
+    'GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryResult',
     'GetRepositoryVirtualRepositoryConfigResult',
     'GetRepositoryVirtualRepositoryConfigUpstreamPolicyResult',
 ]
@@ -508,7 +516,9 @@ class RepositoryRemoteRepositoryConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "dockerRepository":
+        if key == "aptRepository":
+            suggest = "apt_repository"
+        elif key == "dockerRepository":
             suggest = "docker_repository"
         elif key == "mavenRepository":
             suggest = "maven_repository"
@@ -516,6 +526,8 @@ class RepositoryRemoteRepositoryConfig(dict):
             suggest = "npm_repository"
         elif key == "pythonRepository":
             suggest = "python_repository"
+        elif key == "yumRepository":
+            suggest = "yum_repository"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RepositoryRemoteRepositoryConfig. Access the value via the '{suggest}' property getter instead.")
@@ -529,12 +541,16 @@ class RepositoryRemoteRepositoryConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 apt_repository: Optional['outputs.RepositoryRemoteRepositoryConfigAptRepository'] = None,
                  description: Optional[str] = None,
                  docker_repository: Optional['outputs.RepositoryRemoteRepositoryConfigDockerRepository'] = None,
                  maven_repository: Optional['outputs.RepositoryRemoteRepositoryConfigMavenRepository'] = None,
                  npm_repository: Optional['outputs.RepositoryRemoteRepositoryConfigNpmRepository'] = None,
-                 python_repository: Optional['outputs.RepositoryRemoteRepositoryConfigPythonRepository'] = None):
+                 python_repository: Optional['outputs.RepositoryRemoteRepositoryConfigPythonRepository'] = None,
+                 yum_repository: Optional['outputs.RepositoryRemoteRepositoryConfigYumRepository'] = None):
         """
+        :param 'RepositoryRemoteRepositoryConfigAptRepositoryArgs' apt_repository: Specific settings for an Apt remote repository.
+               Structure is documented below.
         :param str description: The description of the remote source.
         :param 'RepositoryRemoteRepositoryConfigDockerRepositoryArgs' docker_repository: Specific settings for a Docker remote repository.
                Structure is documented below.
@@ -544,25 +560,33 @@ class RepositoryRemoteRepositoryConfig(dict):
                Structure is documented below.
         :param 'RepositoryRemoteRepositoryConfigPythonRepositoryArgs' python_repository: Specific settings for a Python remote repository.
                Structure is documented below.
+        :param 'RepositoryRemoteRepositoryConfigYumRepositoryArgs' yum_repository: Specific settings for an Yum remote repository.
+               Structure is documented below.
         """
         RepositoryRemoteRepositoryConfig._configure(
             lambda key, value: pulumi.set(__self__, key, value),
+            apt_repository=apt_repository,
             description=description,
             docker_repository=docker_repository,
             maven_repository=maven_repository,
             npm_repository=npm_repository,
             python_repository=python_repository,
+            yum_repository=yum_repository,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
+             apt_repository: Optional['outputs.RepositoryRemoteRepositoryConfigAptRepository'] = None,
              description: Optional[str] = None,
              docker_repository: Optional['outputs.RepositoryRemoteRepositoryConfigDockerRepository'] = None,
              maven_repository: Optional['outputs.RepositoryRemoteRepositoryConfigMavenRepository'] = None,
              npm_repository: Optional['outputs.RepositoryRemoteRepositoryConfigNpmRepository'] = None,
              python_repository: Optional['outputs.RepositoryRemoteRepositoryConfigPythonRepository'] = None,
+             yum_repository: Optional['outputs.RepositoryRemoteRepositoryConfigYumRepository'] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if apt_repository is None and 'aptRepository' in kwargs:
+            apt_repository = kwargs['aptRepository']
         if docker_repository is None and 'dockerRepository' in kwargs:
             docker_repository = kwargs['dockerRepository']
         if maven_repository is None and 'mavenRepository' in kwargs:
@@ -571,7 +595,11 @@ class RepositoryRemoteRepositoryConfig(dict):
             npm_repository = kwargs['npmRepository']
         if python_repository is None and 'pythonRepository' in kwargs:
             python_repository = kwargs['pythonRepository']
+        if yum_repository is None and 'yumRepository' in kwargs:
+            yum_repository = kwargs['yumRepository']
 
+        if apt_repository is not None:
+            _setter("apt_repository", apt_repository)
         if description is not None:
             _setter("description", description)
         if docker_repository is not None:
@@ -582,6 +610,17 @@ class RepositoryRemoteRepositoryConfig(dict):
             _setter("npm_repository", npm_repository)
         if python_repository is not None:
             _setter("python_repository", python_repository)
+        if yum_repository is not None:
+            _setter("yum_repository", yum_repository)
+
+    @property
+    @pulumi.getter(name="aptRepository")
+    def apt_repository(self) -> Optional['outputs.RepositoryRemoteRepositoryConfigAptRepository']:
+        """
+        Specific settings for an Apt remote repository.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "apt_repository")
 
     @property
     @pulumi.getter
@@ -626,6 +665,137 @@ class RepositoryRemoteRepositoryConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "python_repository")
+
+    @property
+    @pulumi.getter(name="yumRepository")
+    def yum_repository(self) -> Optional['outputs.RepositoryRemoteRepositoryConfigYumRepository']:
+        """
+        Specific settings for an Yum remote repository.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "yum_repository")
+
+
+@pulumi.output_type
+class RepositoryRemoteRepositoryConfigAptRepository(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicRepository":
+            suggest = "public_repository"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryRemoteRepositoryConfigAptRepository. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryRemoteRepositoryConfigAptRepository.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryRemoteRepositoryConfigAptRepository.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 public_repository: Optional['outputs.RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository'] = None):
+        """
+        :param 'RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs' public_repository: One of the publicly available Apt repositories supported by Artifact Registry.
+               Structure is documented below.
+        """
+        RepositoryRemoteRepositoryConfigAptRepository._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            public_repository=public_repository,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             public_repository: Optional['outputs.RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if public_repository is None and 'publicRepository' in kwargs:
+            public_repository = kwargs['publicRepository']
+
+        if public_repository is not None:
+            _setter("public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="publicRepository")
+    def public_repository(self) -> Optional['outputs.RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository']:
+        """
+        One of the publicly available Apt repositories supported by Artifact Registry.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "public_repository")
+
+
+@pulumi.output_type
+class RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "repositoryBase":
+            suggest = "repository_base"
+        elif key == "repositoryPath":
+            suggest = "repository_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 repository_base: str,
+                 repository_path: str):
+        """
+        :param str repository_base: A common public repository base for Yum.
+               Possible values are: `CENTOS`, `CENTOS_DEBUG`, `CENTOS_VAULT`, `CENTOS_STREAM`, `ROCKY`, `EPEL`.
+        :param str repository_path: Specific repository from the base, e.g. `"8-stream/BaseOs/x86_64/os"`
+        """
+        RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            repository_base=repository_base,
+            repository_path=repository_path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             repository_base: Optional[str] = None,
+             repository_path: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if repository_base is None and 'repositoryBase' in kwargs:
+            repository_base = kwargs['repositoryBase']
+        if repository_base is None:
+            raise TypeError("Missing 'repository_base' argument")
+        if repository_path is None and 'repositoryPath' in kwargs:
+            repository_path = kwargs['repositoryPath']
+        if repository_path is None:
+            raise TypeError("Missing 'repository_path' argument")
+
+        _setter("repository_base", repository_base)
+        _setter("repository_path", repository_path)
+
+    @property
+    @pulumi.getter(name="repositoryBase")
+    def repository_base(self) -> str:
+        """
+        A common public repository base for Yum.
+        Possible values are: `CENTOS`, `CENTOS_DEBUG`, `CENTOS_VAULT`, `CENTOS_STREAM`, `ROCKY`, `EPEL`.
+        """
+        return pulumi.get(self, "repository_base")
+
+    @property
+    @pulumi.getter(name="repositoryPath")
+    def repository_path(self) -> str:
+        """
+        Specific repository from the base, e.g. `"8-stream/BaseOs/x86_64/os"`
+        """
+        return pulumi.get(self, "repository_path")
 
 
 @pulumi.output_type
@@ -838,6 +1008,128 @@ class RepositoryRemoteRepositoryConfigPythonRepository(dict):
         Possible values are: `PYPI`.
         """
         return pulumi.get(self, "public_repository")
+
+
+@pulumi.output_type
+class RepositoryRemoteRepositoryConfigYumRepository(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicRepository":
+            suggest = "public_repository"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryRemoteRepositoryConfigYumRepository. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryRemoteRepositoryConfigYumRepository.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryRemoteRepositoryConfigYumRepository.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 public_repository: Optional['outputs.RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository'] = None):
+        """
+        :param 'RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs' public_repository: One of the publicly available Yum repositories supported by Artifact Registry.
+               Structure is documented below.
+        """
+        RepositoryRemoteRepositoryConfigYumRepository._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            public_repository=public_repository,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             public_repository: Optional['outputs.RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if public_repository is None and 'publicRepository' in kwargs:
+            public_repository = kwargs['publicRepository']
+
+        if public_repository is not None:
+            _setter("public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="publicRepository")
+    def public_repository(self) -> Optional['outputs.RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository']:
+        """
+        One of the publicly available Yum repositories supported by Artifact Registry.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "public_repository")
+
+
+@pulumi.output_type
+class RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "repositoryBase":
+            suggest = "repository_base"
+        elif key == "repositoryPath":
+            suggest = "repository_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 repository_base: str,
+                 repository_path: str):
+        """
+        :param str repository_base: A common public repository base for Yum.
+               Possible values are: `CENTOS`, `CENTOS_DEBUG`, `CENTOS_VAULT`, `CENTOS_STREAM`, `ROCKY`, `EPEL`.
+        :param str repository_path: Specific repository from the base, e.g. `"8-stream/BaseOs/x86_64/os"`
+        """
+        RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            repository_base=repository_base,
+            repository_path=repository_path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             repository_base: Optional[str] = None,
+             repository_path: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if repository_base is None and 'repositoryBase' in kwargs:
+            repository_base = kwargs['repositoryBase']
+        if repository_base is None:
+            raise TypeError("Missing 'repository_base' argument")
+        if repository_path is None and 'repositoryPath' in kwargs:
+            repository_path = kwargs['repositoryPath']
+        if repository_path is None:
+            raise TypeError("Missing 'repository_path' argument")
+
+        _setter("repository_base", repository_base)
+        _setter("repository_path", repository_path)
+
+    @property
+    @pulumi.getter(name="repositoryBase")
+    def repository_base(self) -> str:
+        """
+        A common public repository base for Yum.
+        Possible values are: `CENTOS`, `CENTOS_DEBUG`, `CENTOS_VAULT`, `CENTOS_STREAM`, `ROCKY`, `EPEL`.
+        """
+        return pulumi.get(self, "repository_base")
+
+    @property
+    @pulumi.getter(name="repositoryPath")
+    def repository_path(self) -> str:
+        """
+        Specific repository from the base, e.g. `"8-stream/BaseOs/x86_64/os"`
+        """
+        return pulumi.get(self, "repository_path")
 
 
 @pulumi.output_type
@@ -1215,29 +1507,39 @@ class GetRepositoryMavenConfigResult(dict):
 @pulumi.output_type
 class GetRepositoryRemoteRepositoryConfigResult(dict):
     def __init__(__self__, *,
+                 apt_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigAptRepositoryResult'],
                  description: str,
                  docker_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigDockerRepositoryResult'],
                  maven_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigMavenRepositoryResult'],
                  npm_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigNpmRepositoryResult'],
-                 python_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigPythonRepositoryResult']):
+                 python_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigPythonRepositoryResult'],
+                 yum_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigYumRepositoryResult']):
         GetRepositoryRemoteRepositoryConfigResult._configure(
             lambda key, value: pulumi.set(__self__, key, value),
+            apt_repositories=apt_repositories,
             description=description,
             docker_repositories=docker_repositories,
             maven_repositories=maven_repositories,
             npm_repositories=npm_repositories,
             python_repositories=python_repositories,
+            yum_repositories=yum_repositories,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
+             apt_repositories: Optional[Sequence['outputs.GetRepositoryRemoteRepositoryConfigAptRepositoryResult']] = None,
              description: Optional[str] = None,
              docker_repositories: Optional[Sequence['outputs.GetRepositoryRemoteRepositoryConfigDockerRepositoryResult']] = None,
              maven_repositories: Optional[Sequence['outputs.GetRepositoryRemoteRepositoryConfigMavenRepositoryResult']] = None,
              npm_repositories: Optional[Sequence['outputs.GetRepositoryRemoteRepositoryConfigNpmRepositoryResult']] = None,
              python_repositories: Optional[Sequence['outputs.GetRepositoryRemoteRepositoryConfigPythonRepositoryResult']] = None,
+             yum_repositories: Optional[Sequence['outputs.GetRepositoryRemoteRepositoryConfigYumRepositoryResult']] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if apt_repositories is None and 'aptRepositories' in kwargs:
+            apt_repositories = kwargs['aptRepositories']
+        if apt_repositories is None:
+            raise TypeError("Missing 'apt_repositories' argument")
         if description is None:
             raise TypeError("Missing 'description' argument")
         if docker_repositories is None and 'dockerRepositories' in kwargs:
@@ -1256,12 +1558,23 @@ class GetRepositoryRemoteRepositoryConfigResult(dict):
             python_repositories = kwargs['pythonRepositories']
         if python_repositories is None:
             raise TypeError("Missing 'python_repositories' argument")
+        if yum_repositories is None and 'yumRepositories' in kwargs:
+            yum_repositories = kwargs['yumRepositories']
+        if yum_repositories is None:
+            raise TypeError("Missing 'yum_repositories' argument")
 
+        _setter("apt_repositories", apt_repositories)
         _setter("description", description)
         _setter("docker_repositories", docker_repositories)
         _setter("maven_repositories", maven_repositories)
         _setter("npm_repositories", npm_repositories)
         _setter("python_repositories", python_repositories)
+        _setter("yum_repositories", yum_repositories)
+
+    @property
+    @pulumi.getter(name="aptRepositories")
+    def apt_repositories(self) -> Sequence['outputs.GetRepositoryRemoteRepositoryConfigAptRepositoryResult']:
+        return pulumi.get(self, "apt_repositories")
 
     @property
     @pulumi.getter
@@ -1287,6 +1600,78 @@ class GetRepositoryRemoteRepositoryConfigResult(dict):
     @pulumi.getter(name="pythonRepositories")
     def python_repositories(self) -> Sequence['outputs.GetRepositoryRemoteRepositoryConfigPythonRepositoryResult']:
         return pulumi.get(self, "python_repositories")
+
+    @property
+    @pulumi.getter(name="yumRepositories")
+    def yum_repositories(self) -> Sequence['outputs.GetRepositoryRemoteRepositoryConfigYumRepositoryResult']:
+        return pulumi.get(self, "yum_repositories")
+
+
+@pulumi.output_type
+class GetRepositoryRemoteRepositoryConfigAptRepositoryResult(dict):
+    def __init__(__self__, *,
+                 public_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryResult']):
+        GetRepositoryRemoteRepositoryConfigAptRepositoryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            public_repositories=public_repositories,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             public_repositories: Optional[Sequence['outputs.GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if public_repositories is None and 'publicRepositories' in kwargs:
+            public_repositories = kwargs['publicRepositories']
+        if public_repositories is None:
+            raise TypeError("Missing 'public_repositories' argument")
+
+        _setter("public_repositories", public_repositories)
+
+    @property
+    @pulumi.getter(name="publicRepositories")
+    def public_repositories(self) -> Sequence['outputs.GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryResult']:
+        return pulumi.get(self, "public_repositories")
+
+
+@pulumi.output_type
+class GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryResult(dict):
+    def __init__(__self__, *,
+                 repository_base: str,
+                 repository_path: str):
+        GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            repository_base=repository_base,
+            repository_path=repository_path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             repository_base: Optional[str] = None,
+             repository_path: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if repository_base is None and 'repositoryBase' in kwargs:
+            repository_base = kwargs['repositoryBase']
+        if repository_base is None:
+            raise TypeError("Missing 'repository_base' argument")
+        if repository_path is None and 'repositoryPath' in kwargs:
+            repository_path = kwargs['repositoryPath']
+        if repository_path is None:
+            raise TypeError("Missing 'repository_path' argument")
+
+        _setter("repository_base", repository_base)
+        _setter("repository_path", repository_path)
+
+    @property
+    @pulumi.getter(name="repositoryBase")
+    def repository_base(self) -> str:
+        return pulumi.get(self, "repository_base")
+
+    @property
+    @pulumi.getter(name="repositoryPath")
+    def repository_path(self) -> str:
+        return pulumi.get(self, "repository_path")
 
 
 @pulumi.output_type
@@ -1395,6 +1780,73 @@ class GetRepositoryRemoteRepositoryConfigPythonRepositoryResult(dict):
     @pulumi.getter(name="publicRepository")
     def public_repository(self) -> str:
         return pulumi.get(self, "public_repository")
+
+
+@pulumi.output_type
+class GetRepositoryRemoteRepositoryConfigYumRepositoryResult(dict):
+    def __init__(__self__, *,
+                 public_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryResult']):
+        GetRepositoryRemoteRepositoryConfigYumRepositoryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            public_repositories=public_repositories,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             public_repositories: Optional[Sequence['outputs.GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if public_repositories is None and 'publicRepositories' in kwargs:
+            public_repositories = kwargs['publicRepositories']
+        if public_repositories is None:
+            raise TypeError("Missing 'public_repositories' argument")
+
+        _setter("public_repositories", public_repositories)
+
+    @property
+    @pulumi.getter(name="publicRepositories")
+    def public_repositories(self) -> Sequence['outputs.GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryResult']:
+        return pulumi.get(self, "public_repositories")
+
+
+@pulumi.output_type
+class GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryResult(dict):
+    def __init__(__self__, *,
+                 repository_base: str,
+                 repository_path: str):
+        GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            repository_base=repository_base,
+            repository_path=repository_path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             repository_base: Optional[str] = None,
+             repository_path: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if repository_base is None and 'repositoryBase' in kwargs:
+            repository_base = kwargs['repositoryBase']
+        if repository_base is None:
+            raise TypeError("Missing 'repository_base' argument")
+        if repository_path is None and 'repositoryPath' in kwargs:
+            repository_path = kwargs['repositoryPath']
+        if repository_path is None:
+            raise TypeError("Missing 'repository_path' argument")
+
+        _setter("repository_base", repository_base)
+        _setter("repository_path", repository_path)
+
+    @property
+    @pulumi.getter(name="repositoryBase")
+    def repository_base(self) -> str:
+        return pulumi.get(self, "repository_base")
+
+    @property
+    @pulumi.getter(name="repositoryPath")
+    def repository_path(self) -> str:
+        return pulumi.get(self, "repository_path")
 
 
 @pulumi.output_type

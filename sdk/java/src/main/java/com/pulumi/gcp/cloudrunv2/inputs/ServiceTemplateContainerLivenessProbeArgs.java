@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerLivenessProbeGrpcArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerLivenessProbeHttpGetArgs;
-import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerLivenessProbeTcpSocketArgs;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -98,37 +97,6 @@ public final class ServiceTemplateContainerLivenessProbeArgs extends com.pulumi.
     }
 
     /**
-     * (Optional, Deprecated)
-     * TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
-     * Structure is documented below.
-     * 
-     * &gt; **Warning:** `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-     * 
-     * @deprecated
-     * `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-     * 
-     */
-    @Deprecated /* `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
-    @Import(name="tcpSocket")
-    private @Nullable Output<ServiceTemplateContainerLivenessProbeTcpSocketArgs> tcpSocket;
-
-    /**
-     * @return (Optional, Deprecated)
-     * TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
-     * Structure is documented below.
-     * 
-     * &gt; **Warning:** `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-     * 
-     * @deprecated
-     * `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-     * 
-     */
-    @Deprecated /* `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
-    public Optional<Output<ServiceTemplateContainerLivenessProbeTcpSocketArgs>> tcpSocket() {
-        return Optional.ofNullable(this.tcpSocket);
-    }
-
-    /**
      * Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
      * 
      */
@@ -151,7 +119,6 @@ public final class ServiceTemplateContainerLivenessProbeArgs extends com.pulumi.
         this.httpGet = $.httpGet;
         this.initialDelaySeconds = $.initialDelaySeconds;
         this.periodSeconds = $.periodSeconds;
-        this.tcpSocket = $.tcpSocket;
         this.timeoutSeconds = $.timeoutSeconds;
     }
 
@@ -280,43 +247,6 @@ public final class ServiceTemplateContainerLivenessProbeArgs extends com.pulumi.
          */
         public Builder periodSeconds(Integer periodSeconds) {
             return periodSeconds(Output.of(periodSeconds));
-        }
-
-        /**
-         * @param tcpSocket (Optional, Deprecated)
-         * TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
-         * Structure is documented below.
-         * 
-         * &gt; **Warning:** `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-         * 
-         */
-        @Deprecated /* `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
-        public Builder tcpSocket(@Nullable Output<ServiceTemplateContainerLivenessProbeTcpSocketArgs> tcpSocket) {
-            $.tcpSocket = tcpSocket;
-            return this;
-        }
-
-        /**
-         * @param tcpSocket (Optional, Deprecated)
-         * TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
-         * Structure is documented below.
-         * 
-         * &gt; **Warning:** `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-         * 
-         */
-        @Deprecated /* `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
-        public Builder tcpSocket(ServiceTemplateContainerLivenessProbeTcpSocketArgs tcpSocket) {
-            return tcpSocket(Output.of(tcpSocket));
         }
 
         /**

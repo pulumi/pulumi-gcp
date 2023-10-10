@@ -142,6 +142,7 @@ class InstanceCluster(dict):
                  autoscaling_config: Optional['outputs.InstanceClusterAutoscalingConfig'] = None,
                  kms_key_name: Optional[str] = None,
                  num_nodes: Optional[int] = None,
+                 state: Optional[str] = None,
                  storage_type: Optional[str] = None,
                  zone: Optional[str] = None):
         """
@@ -171,6 +172,7 @@ class InstanceCluster(dict):
             autoscaling_config=autoscaling_config,
             kms_key_name=kms_key_name,
             num_nodes=num_nodes,
+            state=state,
             storage_type=storage_type,
             zone=zone,
         )
@@ -181,6 +183,7 @@ class InstanceCluster(dict):
              autoscaling_config: Optional['outputs.InstanceClusterAutoscalingConfig'] = None,
              kms_key_name: Optional[str] = None,
              num_nodes: Optional[int] = None,
+             state: Optional[str] = None,
              storage_type: Optional[str] = None,
              zone: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
@@ -205,6 +208,8 @@ class InstanceCluster(dict):
             _setter("kms_key_name", kms_key_name)
         if num_nodes is not None:
             _setter("num_nodes", num_nodes)
+        if state is not None:
+            _setter("state", state)
         if storage_type is not None:
             _setter("storage_type", storage_type)
         if zone is not None:
@@ -251,6 +256,11 @@ class InstanceCluster(dict):
         If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
         """
         return pulumi.get(self, "num_nodes")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="storageType")

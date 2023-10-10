@@ -23,6 +23,7 @@ __all__ = [
     'AttachedClusterWorkloadIdentityConfig',
     'AwsClusterAuthorization',
     'AwsClusterAuthorizationAdminUser',
+    'AwsClusterBinaryAuthorization',
     'AwsClusterControlPlane',
     'AwsClusterControlPlaneAwsServicesAuthentication',
     'AwsClusterControlPlaneConfigEncryption',
@@ -49,6 +50,8 @@ __all__ = [
     'AwsNodePoolConfigTaint',
     'AwsNodePoolManagement',
     'AwsNodePoolMaxPodsConstraint',
+    'AwsNodePoolUpdateSettings',
+    'AwsNodePoolUpdateSettingsSurgeSettings',
     'AzureClusterAuthorization',
     'AzureClusterAuthorizationAdminUser',
     'AzureClusterAzureServicesAuthentication',
@@ -125,6 +128,7 @@ __all__ = [
     'ClusterNodeConfig',
     'ClusterNodeConfigAdvancedMachineFeatures',
     'ClusterNodeConfigConfidentialNodes',
+    'ClusterNodeConfigEffectiveTaint',
     'ClusterNodeConfigEphemeralStorageConfig',
     'ClusterNodeConfigEphemeralStorageLocalSsdConfig',
     'ClusterNodeConfigFastSocket',
@@ -159,6 +163,7 @@ __all__ = [
     'ClusterNodePoolNodeConfig',
     'ClusterNodePoolNodeConfigAdvancedMachineFeatures',
     'ClusterNodePoolNodeConfigConfidentialNodes',
+    'ClusterNodePoolNodeConfigEffectiveTaint',
     'ClusterNodePoolNodeConfigEphemeralStorageConfig',
     'ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig',
     'ClusterNodePoolNodeConfigFastSocket',
@@ -207,6 +212,7 @@ __all__ = [
     'NodePoolNodeConfig',
     'NodePoolNodeConfigAdvancedMachineFeatures',
     'NodePoolNodeConfigConfidentialNodes',
+    'NodePoolNodeConfigEffectiveTaint',
     'NodePoolNodeConfigEphemeralStorageConfig',
     'NodePoolNodeConfigEphemeralStorageLocalSsdConfig',
     'NodePoolNodeConfigFastSocket',
@@ -284,6 +290,7 @@ __all__ = [
     'GetClusterNodeConfigResult',
     'GetClusterNodeConfigAdvancedMachineFeatureResult',
     'GetClusterNodeConfigConfidentialNodeResult',
+    'GetClusterNodeConfigEffectiveTaintResult',
     'GetClusterNodeConfigEphemeralStorageConfigResult',
     'GetClusterNodeConfigEphemeralStorageLocalSsdConfigResult',
     'GetClusterNodeConfigFastSocketResult',
@@ -318,6 +325,7 @@ __all__ = [
     'GetClusterNodePoolNodeConfigResult',
     'GetClusterNodePoolNodeConfigAdvancedMachineFeatureResult',
     'GetClusterNodePoolNodeConfigConfidentialNodeResult',
+    'GetClusterNodePoolNodeConfigEffectiveTaintResult',
     'GetClusterNodePoolNodeConfigEphemeralStorageConfigResult',
     'GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigResult',
     'GetClusterNodePoolNodeConfigFastSocketResult',
@@ -963,6 +971,55 @@ class AwsClusterAuthorizationAdminUser(dict):
         The name of the user, e.g. `my-gcp-id@gmail.com`.
         """
         return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class AwsClusterBinaryAuthorization(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluationMode":
+            suggest = "evaluation_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsClusterBinaryAuthorization. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsClusterBinaryAuthorization.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsClusterBinaryAuthorization.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 evaluation_mode: Optional[str] = None):
+        """
+        :param str evaluation_mode: Mode of operation for Binary Authorization policy evaluation. Possible values: DISABLED, PROJECT_SINGLETON_POLICY_ENFORCE
+        """
+        AwsClusterBinaryAuthorization._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            evaluation_mode=evaluation_mode,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             evaluation_mode: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if evaluation_mode is None and 'evaluationMode' in kwargs:
+            evaluation_mode = kwargs['evaluationMode']
+
+        if evaluation_mode is not None:
+            _setter("evaluation_mode", evaluation_mode)
+
+    @property
+    @pulumi.getter(name="evaluationMode")
+    def evaluation_mode(self) -> Optional[str]:
+        """
+        Mode of operation for Binary Authorization policy evaluation. Possible values: DISABLED, PROJECT_SINGLETON_POLICY_ENFORCE
+        """
+        return pulumi.get(self, "evaluation_mode")
 
 
 @pulumi.output_type
@@ -3026,6 +3083,122 @@ class AwsNodePoolMaxPodsConstraint(dict):
 
 
 @pulumi.output_type
+class AwsNodePoolUpdateSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "surgeSettings":
+            suggest = "surge_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsNodePoolUpdateSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsNodePoolUpdateSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsNodePoolUpdateSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 surge_settings: Optional['outputs.AwsNodePoolUpdateSettingsSurgeSettings'] = None):
+        """
+        :param 'AwsNodePoolUpdateSettingsSurgeSettingsArgs' surge_settings: Optional. Settings for surge update.
+        """
+        AwsNodePoolUpdateSettings._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            surge_settings=surge_settings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             surge_settings: Optional['outputs.AwsNodePoolUpdateSettingsSurgeSettings'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if surge_settings is None and 'surgeSettings' in kwargs:
+            surge_settings = kwargs['surgeSettings']
+
+        if surge_settings is not None:
+            _setter("surge_settings", surge_settings)
+
+    @property
+    @pulumi.getter(name="surgeSettings")
+    def surge_settings(self) -> Optional['outputs.AwsNodePoolUpdateSettingsSurgeSettings']:
+        """
+        Optional. Settings for surge update.
+        """
+        return pulumi.get(self, "surge_settings")
+
+
+@pulumi.output_type
+class AwsNodePoolUpdateSettingsSurgeSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxSurge":
+            suggest = "max_surge"
+        elif key == "maxUnavailable":
+            suggest = "max_unavailable"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsNodePoolUpdateSettingsSurgeSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsNodePoolUpdateSettingsSurgeSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsNodePoolUpdateSettingsSurgeSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_surge: Optional[int] = None,
+                 max_unavailable: Optional[int] = None):
+        """
+        :param int max_surge: Optional. The maximum number of nodes that can be created beyond the current size of the node pool during the update process.
+        :param int max_unavailable: Optional. The maximum number of nodes that can be simultaneously unavailable during the update process. A node is considered unavailable if its status is not Ready.
+        """
+        AwsNodePoolUpdateSettingsSurgeSettings._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_surge=max_surge,
+            max_unavailable=max_unavailable,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_surge: Optional[int] = None,
+             max_unavailable: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if max_surge is None and 'maxSurge' in kwargs:
+            max_surge = kwargs['maxSurge']
+        if max_unavailable is None and 'maxUnavailable' in kwargs:
+            max_unavailable = kwargs['maxUnavailable']
+
+        if max_surge is not None:
+            _setter("max_surge", max_surge)
+        if max_unavailable is not None:
+            _setter("max_unavailable", max_unavailable)
+
+    @property
+    @pulumi.getter(name="maxSurge")
+    def max_surge(self) -> Optional[int]:
+        """
+        Optional. The maximum number of nodes that can be created beyond the current size of the node pool during the update process.
+        """
+        return pulumi.get(self, "max_surge")
+
+    @property
+    @pulumi.getter(name="maxUnavailable")
+    def max_unavailable(self) -> Optional[int]:
+        """
+        Optional. The maximum number of nodes that can be simultaneously unavailable during the update process. A node is considered unavailable if its status is not Ready.
+        """
+        return pulumi.get(self, "max_unavailable")
+
+
+@pulumi.output_type
 class AzureClusterAuthorization(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -4579,7 +4752,9 @@ class ClusterAddonsConfig(dict):
                It is disabled by default; set `enabled = true` to enable.
         :param 'ClusterAddonsConfigGcsFuseCsiDriverConfigArgs' gcs_fuse_csi_driver_config: The status of the GCSFuse CSI driver addon,
                which allows the usage of a gcs bucket as volumes.
-               It is disabled by default; set `enabled = true` to enable.
+               It is disabled by default for Standard clusters; set `enabled = true` to enable.
+               It is enabled by default for Autopilot clusters with version 1.24 or later; set `enabled = true` to enable it explicitly.
+               See [Enable the Cloud Storage FUSE CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/cloud-storage-fuse-csi-driver#enable) for more information.
         :param 'ClusterAddonsConfigGkeBackupAgentConfigArgs' gke_backup_agent_config: .
                The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
         :param 'ClusterAddonsConfigHorizontalPodAutoscalingArgs' horizontal_pod_autoscaling: The status of the Horizontal Pod Autoscaling
@@ -4748,7 +4923,9 @@ class ClusterAddonsConfig(dict):
         """
         The status of the GCSFuse CSI driver addon,
         which allows the usage of a gcs bucket as volumes.
-        It is disabled by default; set `enabled = true` to enable.
+        It is disabled by default for Standard clusters; set `enabled = true` to enable.
+        It is enabled by default for Autopilot clusters with version 1.24 or later; set `enabled = true` to enable it explicitly.
+        See [Enable the Cloud Storage FUSE CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/cloud-storage-fuse-csi-driver#enable) for more information.
         """
         return pulumi.get(self, "gcs_fuse_csi_driver_config")
 
@@ -5325,8 +5502,7 @@ class ClusterBinaryAuthorization(dict):
         """
         :param bool enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
         :param str evaluation_mode: Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
-               and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
-               deprecated `enable_binary_authorization` parameter being set to `true`.
+               and `PROJECT_SINGLETON_POLICY_ENFORCE`.
         """
         ClusterBinaryAuthorization._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -5364,8 +5540,7 @@ class ClusterBinaryAuthorization(dict):
     def evaluation_mode(self) -> Optional[str]:
         """
         Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
-        and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
-        deprecated `enable_binary_authorization` parameter being set to `true`.
+        and `PROJECT_SINGLETON_POLICY_ENFORCE`.
         """
         return pulumi.get(self, "evaluation_mode")
 
@@ -7955,6 +8130,8 @@ class ClusterNodeConfig(dict):
             suggest = "disk_size_gb"
         elif key == "diskType":
             suggest = "disk_type"
+        elif key == "effectiveTaints":
+            suggest = "effective_taints"
         elif key == "ephemeralStorageConfig":
             suggest = "ephemeral_storage_config"
         elif key == "ephemeralStorageLocalSsdConfig":
@@ -8019,6 +8196,7 @@ class ClusterNodeConfig(dict):
                  confidential_nodes: Optional['outputs.ClusterNodeConfigConfidentialNodes'] = None,
                  disk_size_gb: Optional[int] = None,
                  disk_type: Optional[str] = None,
+                 effective_taints: Optional[Sequence['outputs.ClusterNodeConfigEffectiveTaint']] = None,
                  ephemeral_storage_config: Optional['outputs.ClusterNodeConfigEphemeralStorageConfig'] = None,
                  ephemeral_storage_local_ssd_config: Optional['outputs.ClusterNodeConfigEphemeralStorageLocalSsdConfig'] = None,
                  fast_socket: Optional['outputs.ClusterNodeConfigFastSocket'] = None,
@@ -8171,6 +8349,7 @@ class ClusterNodeConfig(dict):
             confidential_nodes=confidential_nodes,
             disk_size_gb=disk_size_gb,
             disk_type=disk_type,
+            effective_taints=effective_taints,
             ephemeral_storage_config=ephemeral_storage_config,
             ephemeral_storage_local_ssd_config=ephemeral_storage_local_ssd_config,
             fast_socket=fast_socket,
@@ -8210,6 +8389,7 @@ class ClusterNodeConfig(dict):
              confidential_nodes: Optional['outputs.ClusterNodeConfigConfidentialNodes'] = None,
              disk_size_gb: Optional[int] = None,
              disk_type: Optional[str] = None,
+             effective_taints: Optional[Sequence['outputs.ClusterNodeConfigEffectiveTaint']] = None,
              ephemeral_storage_config: Optional['outputs.ClusterNodeConfigEphemeralStorageConfig'] = None,
              ephemeral_storage_local_ssd_config: Optional['outputs.ClusterNodeConfigEphemeralStorageLocalSsdConfig'] = None,
              fast_socket: Optional['outputs.ClusterNodeConfigFastSocket'] = None,
@@ -8252,6 +8432,8 @@ class ClusterNodeConfig(dict):
             disk_size_gb = kwargs['diskSizeGb']
         if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
+        if effective_taints is None and 'effectiveTaints' in kwargs:
+            effective_taints = kwargs['effectiveTaints']
         if ephemeral_storage_config is None and 'ephemeralStorageConfig' in kwargs:
             ephemeral_storage_config = kwargs['ephemeralStorageConfig']
         if ephemeral_storage_local_ssd_config is None and 'ephemeralStorageLocalSsdConfig' in kwargs:
@@ -8309,6 +8491,8 @@ class ClusterNodeConfig(dict):
             _setter("disk_size_gb", disk_size_gb)
         if disk_type is not None:
             _setter("disk_type", disk_type)
+        if effective_taints is not None:
+            _setter("effective_taints", effective_taints)
         if ephemeral_storage_config is not None:
             _setter("ephemeral_storage_config", ephemeral_storage_config)
         if ephemeral_storage_local_ssd_config is not None:
@@ -8412,6 +8596,11 @@ class ClusterNodeConfig(dict):
         (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
         """
         return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="effectiveTaints")
+    def effective_taints(self) -> Optional[Sequence['outputs.ClusterNodeConfigEffectiveTaint']]:
+        return pulumi.get(self, "effective_taints")
 
     @property
     @pulumi.getter(name="ephemeralStorageConfig")
@@ -8806,6 +8995,64 @@ class ClusterNodeConfigConfidentialNodes(dict):
         enforce encryption of data in-use.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ClusterNodeConfigEffectiveTaint(dict):
+    def __init__(__self__, *,
+                 effect: Optional[str] = None,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str effect: Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
+        :param str key: The default or custom node affinity label key name.
+        :param str value: Value for taint.
+        """
+        ClusterNodeConfigEffectiveTaint._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            effect=effect,
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             effect: Optional[str] = None,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
+        if effect is not None:
+            _setter("effect", effect)
+        if key is not None:
+            _setter("key", key)
+        if value is not None:
+            _setter("value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        """
+        Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
+        """
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The default or custom node affinity label key name.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Value for taint.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -10961,6 +11208,8 @@ class ClusterNodePoolNodeConfig(dict):
             suggest = "disk_size_gb"
         elif key == "diskType":
             suggest = "disk_type"
+        elif key == "effectiveTaints":
+            suggest = "effective_taints"
         elif key == "ephemeralStorageConfig":
             suggest = "ephemeral_storage_config"
         elif key == "ephemeralStorageLocalSsdConfig":
@@ -11025,6 +11274,7 @@ class ClusterNodePoolNodeConfig(dict):
                  confidential_nodes: Optional['outputs.ClusterNodePoolNodeConfigConfidentialNodes'] = None,
                  disk_size_gb: Optional[int] = None,
                  disk_type: Optional[str] = None,
+                 effective_taints: Optional[Sequence['outputs.ClusterNodePoolNodeConfigEffectiveTaint']] = None,
                  ephemeral_storage_config: Optional['outputs.ClusterNodePoolNodeConfigEphemeralStorageConfig'] = None,
                  ephemeral_storage_local_ssd_config: Optional['outputs.ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig'] = None,
                  fast_socket: Optional['outputs.ClusterNodePoolNodeConfigFastSocket'] = None,
@@ -11177,6 +11427,7 @@ class ClusterNodePoolNodeConfig(dict):
             confidential_nodes=confidential_nodes,
             disk_size_gb=disk_size_gb,
             disk_type=disk_type,
+            effective_taints=effective_taints,
             ephemeral_storage_config=ephemeral_storage_config,
             ephemeral_storage_local_ssd_config=ephemeral_storage_local_ssd_config,
             fast_socket=fast_socket,
@@ -11216,6 +11467,7 @@ class ClusterNodePoolNodeConfig(dict):
              confidential_nodes: Optional['outputs.ClusterNodePoolNodeConfigConfidentialNodes'] = None,
              disk_size_gb: Optional[int] = None,
              disk_type: Optional[str] = None,
+             effective_taints: Optional[Sequence['outputs.ClusterNodePoolNodeConfigEffectiveTaint']] = None,
              ephemeral_storage_config: Optional['outputs.ClusterNodePoolNodeConfigEphemeralStorageConfig'] = None,
              ephemeral_storage_local_ssd_config: Optional['outputs.ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig'] = None,
              fast_socket: Optional['outputs.ClusterNodePoolNodeConfigFastSocket'] = None,
@@ -11258,6 +11510,8 @@ class ClusterNodePoolNodeConfig(dict):
             disk_size_gb = kwargs['diskSizeGb']
         if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
+        if effective_taints is None and 'effectiveTaints' in kwargs:
+            effective_taints = kwargs['effectiveTaints']
         if ephemeral_storage_config is None and 'ephemeralStorageConfig' in kwargs:
             ephemeral_storage_config = kwargs['ephemeralStorageConfig']
         if ephemeral_storage_local_ssd_config is None and 'ephemeralStorageLocalSsdConfig' in kwargs:
@@ -11315,6 +11569,8 @@ class ClusterNodePoolNodeConfig(dict):
             _setter("disk_size_gb", disk_size_gb)
         if disk_type is not None:
             _setter("disk_type", disk_type)
+        if effective_taints is not None:
+            _setter("effective_taints", effective_taints)
         if ephemeral_storage_config is not None:
             _setter("ephemeral_storage_config", ephemeral_storage_config)
         if ephemeral_storage_local_ssd_config is not None:
@@ -11418,6 +11674,11 @@ class ClusterNodePoolNodeConfig(dict):
         (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
         """
         return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="effectiveTaints")
+    def effective_taints(self) -> Optional[Sequence['outputs.ClusterNodePoolNodeConfigEffectiveTaint']]:
+        return pulumi.get(self, "effective_taints")
 
     @property
     @pulumi.getter(name="ephemeralStorageConfig")
@@ -11812,6 +12073,64 @@ class ClusterNodePoolNodeConfigConfidentialNodes(dict):
         enforce encryption of data in-use.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigEffectiveTaint(dict):
+    def __init__(__self__, *,
+                 effect: Optional[str] = None,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str effect: Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
+        :param str key: The default or custom node affinity label key name.
+        :param str value: Value for taint.
+        """
+        ClusterNodePoolNodeConfigEffectiveTaint._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            effect=effect,
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             effect: Optional[str] = None,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
+        if effect is not None:
+            _setter("effect", effect)
+        if key is not None:
+            _setter("key", key)
+        if value is not None:
+            _setter("value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        """
+        Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
+        """
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The default or custom node affinity label key name.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Value for taint.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -14423,8 +14742,8 @@ class NodePoolManagement(dict):
                  auto_repair: Optional[bool] = None,
                  auto_upgrade: Optional[bool] = None):
         """
-        :param bool auto_repair: Whether the nodes will be automatically repaired.
-        :param bool auto_upgrade: Whether the nodes will be automatically upgraded.
+        :param bool auto_repair: Whether the nodes will be automatically repaired. Enabled by default.
+        :param bool auto_upgrade: Whether the nodes will be automatically upgraded. Enabled by default.
         """
         NodePoolManagement._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -14452,7 +14771,7 @@ class NodePoolManagement(dict):
     @pulumi.getter(name="autoRepair")
     def auto_repair(self) -> Optional[bool]:
         """
-        Whether the nodes will be automatically repaired.
+        Whether the nodes will be automatically repaired. Enabled by default.
         """
         return pulumi.get(self, "auto_repair")
 
@@ -14460,7 +14779,7 @@ class NodePoolManagement(dict):
     @pulumi.getter(name="autoUpgrade")
     def auto_upgrade(self) -> Optional[bool]:
         """
-        Whether the nodes will be automatically upgraded.
+        Whether the nodes will be automatically upgraded. Enabled by default.
         """
         return pulumi.get(self, "auto_upgrade")
 
@@ -14787,6 +15106,8 @@ class NodePoolNodeConfig(dict):
             suggest = "disk_size_gb"
         elif key == "diskType":
             suggest = "disk_type"
+        elif key == "effectiveTaints":
+            suggest = "effective_taints"
         elif key == "ephemeralStorageConfig":
             suggest = "ephemeral_storage_config"
         elif key == "ephemeralStorageLocalSsdConfig":
@@ -14851,6 +15172,7 @@ class NodePoolNodeConfig(dict):
                  confidential_nodes: Optional['outputs.NodePoolNodeConfigConfidentialNodes'] = None,
                  disk_size_gb: Optional[int] = None,
                  disk_type: Optional[str] = None,
+                 effective_taints: Optional[Sequence['outputs.NodePoolNodeConfigEffectiveTaint']] = None,
                  ephemeral_storage_config: Optional['outputs.NodePoolNodeConfigEphemeralStorageConfig'] = None,
                  ephemeral_storage_local_ssd_config: Optional['outputs.NodePoolNodeConfigEphemeralStorageLocalSsdConfig'] = None,
                  fast_socket: Optional['outputs.NodePoolNodeConfigFastSocket'] = None,
@@ -14891,6 +15213,7 @@ class NodePoolNodeConfig(dict):
             confidential_nodes=confidential_nodes,
             disk_size_gb=disk_size_gb,
             disk_type=disk_type,
+            effective_taints=effective_taints,
             ephemeral_storage_config=ephemeral_storage_config,
             ephemeral_storage_local_ssd_config=ephemeral_storage_local_ssd_config,
             fast_socket=fast_socket,
@@ -14930,6 +15253,7 @@ class NodePoolNodeConfig(dict):
              confidential_nodes: Optional['outputs.NodePoolNodeConfigConfidentialNodes'] = None,
              disk_size_gb: Optional[int] = None,
              disk_type: Optional[str] = None,
+             effective_taints: Optional[Sequence['outputs.NodePoolNodeConfigEffectiveTaint']] = None,
              ephemeral_storage_config: Optional['outputs.NodePoolNodeConfigEphemeralStorageConfig'] = None,
              ephemeral_storage_local_ssd_config: Optional['outputs.NodePoolNodeConfigEphemeralStorageLocalSsdConfig'] = None,
              fast_socket: Optional['outputs.NodePoolNodeConfigFastSocket'] = None,
@@ -14972,6 +15296,8 @@ class NodePoolNodeConfig(dict):
             disk_size_gb = kwargs['diskSizeGb']
         if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
+        if effective_taints is None and 'effectiveTaints' in kwargs:
+            effective_taints = kwargs['effectiveTaints']
         if ephemeral_storage_config is None and 'ephemeralStorageConfig' in kwargs:
             ephemeral_storage_config = kwargs['ephemeralStorageConfig']
         if ephemeral_storage_local_ssd_config is None and 'ephemeralStorageLocalSsdConfig' in kwargs:
@@ -15029,6 +15355,8 @@ class NodePoolNodeConfig(dict):
             _setter("disk_size_gb", disk_size_gb)
         if disk_type is not None:
             _setter("disk_type", disk_type)
+        if effective_taints is not None:
+            _setter("effective_taints", effective_taints)
         if ephemeral_storage_config is not None:
             _setter("ephemeral_storage_config", ephemeral_storage_config)
         if ephemeral_storage_local_ssd_config is not None:
@@ -15117,6 +15445,11 @@ class NodePoolNodeConfig(dict):
     @pulumi.getter(name="diskType")
     def disk_type(self) -> Optional[str]:
         return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="effectiveTaints")
+    def effective_taints(self) -> Optional[Sequence['outputs.NodePoolNodeConfigEffectiveTaint']]:
+        return pulumi.get(self, "effective_taints")
 
     @property
     @pulumi.getter(name="ephemeralStorageConfig")
@@ -15344,6 +15677,50 @@ class NodePoolNodeConfigConfidentialNodes(dict):
         enforce encryption of data in-use.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigEffectiveTaint(dict):
+    def __init__(__self__, *,
+                 effect: Optional[str] = None,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        NodePoolNodeConfigEffectiveTaint._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            effect=effect,
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             effect: Optional[str] = None,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
+        if effect is not None:
+            _setter("effect", effect)
+        if key is not None:
+            _setter("key", key)
+        if value is not None:
+            _setter("value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -18773,6 +19150,7 @@ class GetClusterNodeConfigResult(dict):
                  confidential_nodes: Sequence['outputs.GetClusterNodeConfigConfidentialNodeResult'],
                  disk_size_gb: int,
                  disk_type: str,
+                 effective_taints: Sequence['outputs.GetClusterNodeConfigEffectiveTaintResult'],
                  ephemeral_storage_configs: Sequence['outputs.GetClusterNodeConfigEphemeralStorageConfigResult'],
                  ephemeral_storage_local_ssd_configs: Sequence['outputs.GetClusterNodeConfigEphemeralStorageLocalSsdConfigResult'],
                  fast_sockets: Sequence['outputs.GetClusterNodeConfigFastSocketResult'],
@@ -18810,6 +19188,7 @@ class GetClusterNodeConfigResult(dict):
             confidential_nodes=confidential_nodes,
             disk_size_gb=disk_size_gb,
             disk_type=disk_type,
+            effective_taints=effective_taints,
             ephemeral_storage_configs=ephemeral_storage_configs,
             ephemeral_storage_local_ssd_configs=ephemeral_storage_local_ssd_configs,
             fast_sockets=fast_sockets,
@@ -18849,6 +19228,7 @@ class GetClusterNodeConfigResult(dict):
              confidential_nodes: Optional[Sequence['outputs.GetClusterNodeConfigConfidentialNodeResult']] = None,
              disk_size_gb: Optional[int] = None,
              disk_type: Optional[str] = None,
+             effective_taints: Optional[Sequence['outputs.GetClusterNodeConfigEffectiveTaintResult']] = None,
              ephemeral_storage_configs: Optional[Sequence['outputs.GetClusterNodeConfigEphemeralStorageConfigResult']] = None,
              ephemeral_storage_local_ssd_configs: Optional[Sequence['outputs.GetClusterNodeConfigEphemeralStorageLocalSsdConfigResult']] = None,
              fast_sockets: Optional[Sequence['outputs.GetClusterNodeConfigFastSocketResult']] = None,
@@ -18901,6 +19281,10 @@ class GetClusterNodeConfigResult(dict):
             disk_type = kwargs['diskType']
         if disk_type is None:
             raise TypeError("Missing 'disk_type' argument")
+        if effective_taints is None and 'effectiveTaints' in kwargs:
+            effective_taints = kwargs['effectiveTaints']
+        if effective_taints is None:
+            raise TypeError("Missing 'effective_taints' argument")
         if ephemeral_storage_configs is None and 'ephemeralStorageConfigs' in kwargs:
             ephemeral_storage_configs = kwargs['ephemeralStorageConfigs']
         if ephemeral_storage_configs is None:
@@ -19013,6 +19397,7 @@ class GetClusterNodeConfigResult(dict):
         _setter("confidential_nodes", confidential_nodes)
         _setter("disk_size_gb", disk_size_gb)
         _setter("disk_type", disk_type)
+        _setter("effective_taints", effective_taints)
         _setter("ephemeral_storage_configs", ephemeral_storage_configs)
         _setter("ephemeral_storage_local_ssd_configs", ephemeral_storage_local_ssd_configs)
         _setter("fast_sockets", fast_sockets)
@@ -19068,6 +19453,11 @@ class GetClusterNodeConfigResult(dict):
     @pulumi.getter(name="diskType")
     def disk_type(self) -> str:
         return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="effectiveTaints")
+    def effective_taints(self) -> Sequence['outputs.GetClusterNodeConfigEffectiveTaintResult']:
+        return pulumi.get(self, "effective_taints")
 
     @property
     @pulumi.getter(name="ephemeralStorageConfigs")
@@ -19270,6 +19660,53 @@ class GetClusterNodeConfigConfidentialNodeResult(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigEffectiveTaintResult(dict):
+    def __init__(__self__, *,
+                 effect: str,
+                 key: str,
+                 value: str):
+        GetClusterNodeConfigEffectiveTaintResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            effect=effect,
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             effect: Optional[str] = None,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if effect is None:
+            raise TypeError("Missing 'effect' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
+        _setter("effect", effect)
+        _setter("key", key)
+        _setter("value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> str:
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -20645,6 +21082,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
                  confidential_nodes: Sequence['outputs.GetClusterNodePoolNodeConfigConfidentialNodeResult'],
                  disk_size_gb: int,
                  disk_type: str,
+                 effective_taints: Sequence['outputs.GetClusterNodePoolNodeConfigEffectiveTaintResult'],
                  ephemeral_storage_configs: Sequence['outputs.GetClusterNodePoolNodeConfigEphemeralStorageConfigResult'],
                  ephemeral_storage_local_ssd_configs: Sequence['outputs.GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigResult'],
                  fast_sockets: Sequence['outputs.GetClusterNodePoolNodeConfigFastSocketResult'],
@@ -20682,6 +21120,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
             confidential_nodes=confidential_nodes,
             disk_size_gb=disk_size_gb,
             disk_type=disk_type,
+            effective_taints=effective_taints,
             ephemeral_storage_configs=ephemeral_storage_configs,
             ephemeral_storage_local_ssd_configs=ephemeral_storage_local_ssd_configs,
             fast_sockets=fast_sockets,
@@ -20721,6 +21160,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
              confidential_nodes: Optional[Sequence['outputs.GetClusterNodePoolNodeConfigConfidentialNodeResult']] = None,
              disk_size_gb: Optional[int] = None,
              disk_type: Optional[str] = None,
+             effective_taints: Optional[Sequence['outputs.GetClusterNodePoolNodeConfigEffectiveTaintResult']] = None,
              ephemeral_storage_configs: Optional[Sequence['outputs.GetClusterNodePoolNodeConfigEphemeralStorageConfigResult']] = None,
              ephemeral_storage_local_ssd_configs: Optional[Sequence['outputs.GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigResult']] = None,
              fast_sockets: Optional[Sequence['outputs.GetClusterNodePoolNodeConfigFastSocketResult']] = None,
@@ -20773,6 +21213,10 @@ class GetClusterNodePoolNodeConfigResult(dict):
             disk_type = kwargs['diskType']
         if disk_type is None:
             raise TypeError("Missing 'disk_type' argument")
+        if effective_taints is None and 'effectiveTaints' in kwargs:
+            effective_taints = kwargs['effectiveTaints']
+        if effective_taints is None:
+            raise TypeError("Missing 'effective_taints' argument")
         if ephemeral_storage_configs is None and 'ephemeralStorageConfigs' in kwargs:
             ephemeral_storage_configs = kwargs['ephemeralStorageConfigs']
         if ephemeral_storage_configs is None:
@@ -20885,6 +21329,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         _setter("confidential_nodes", confidential_nodes)
         _setter("disk_size_gb", disk_size_gb)
         _setter("disk_type", disk_type)
+        _setter("effective_taints", effective_taints)
         _setter("ephemeral_storage_configs", ephemeral_storage_configs)
         _setter("ephemeral_storage_local_ssd_configs", ephemeral_storage_local_ssd_configs)
         _setter("fast_sockets", fast_sockets)
@@ -20940,6 +21385,11 @@ class GetClusterNodePoolNodeConfigResult(dict):
     @pulumi.getter(name="diskType")
     def disk_type(self) -> str:
         return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="effectiveTaints")
+    def effective_taints(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigEffectiveTaintResult']:
+        return pulumi.get(self, "effective_taints")
 
     @property
     @pulumi.getter(name="ephemeralStorageConfigs")
@@ -21142,6 +21592,53 @@ class GetClusterNodePoolNodeConfigConfidentialNodeResult(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigEffectiveTaintResult(dict):
+    def __init__(__self__, *,
+                 effect: str,
+                 key: str,
+                 value: str):
+        GetClusterNodePoolNodeConfigEffectiveTaintResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            effect=effect,
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             effect: Optional[str] = None,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if effect is None:
+            raise TypeError("Missing 'effect' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
+        _setter("effect", effect)
+        _setter("key", key)
+        _setter("value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> str:
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

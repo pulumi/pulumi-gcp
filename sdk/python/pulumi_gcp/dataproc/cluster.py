@@ -29,9 +29,9 @@ class ClusterArgs:
                Structure defined below.
         :param pulumi.Input[str] graceful_decommission_timeout: The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
                terraform apply
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of labels (key/value pairs) to be applied to
-               instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
-               which is the name of the cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+               to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                zone.
                
@@ -117,9 +117,9 @@ class ClusterArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The list of labels (key/value pairs) to be applied to
-        instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
-        which is the name of the cluster.
+        The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+        to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -186,21 +186,26 @@ class ClusterArgs:
 class _ClusterState:
     def __init__(__self__, *,
                  cluster_config: Optional[pulumi.Input['ClusterClusterConfigArgs']] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  graceful_decommission_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  virtual_cluster_config: Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
         :param pulumi.Input['ClusterClusterConfigArgs'] cluster_config: Allows you to configure various aspects of the cluster.
                Structure defined below.
-        :param pulumi.Input[str] graceful_decommission_timeout: The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
-               terraform apply
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of labels (key/value pairs) to be applied to
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: The list of labels (key/value pairs) to be applied to
                instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
                which is the name of the cluster.
+        :param pulumi.Input[str] graceful_decommission_timeout: The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
+               terraform apply
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+               to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                zone.
                
@@ -209,40 +214,51 @@ class _ClusterState:
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the cluster and associated nodes will be created in.
                Defaults to `global`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input['ClusterVirtualClusterConfigArgs'] virtual_cluster_config: Allows you to configure a virtual Dataproc on GKE cluster.
                Structure defined below.
         """
         _ClusterState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             cluster_config=cluster_config,
+            effective_labels=effective_labels,
             graceful_decommission_timeout=graceful_decommission_timeout,
             labels=labels,
             name=name,
             project=project,
             region=region,
+            terraform_labels=terraform_labels,
             virtual_cluster_config=virtual_cluster_config,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
              cluster_config: Optional[pulumi.Input['ClusterClusterConfigArgs']] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              graceful_decommission_timeout: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              virtual_cluster_config: Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if cluster_config is None and 'clusterConfig' in kwargs:
             cluster_config = kwargs['clusterConfig']
+        if effective_labels is None and 'effectiveLabels' in kwargs:
+            effective_labels = kwargs['effectiveLabels']
         if graceful_decommission_timeout is None and 'gracefulDecommissionTimeout' in kwargs:
             graceful_decommission_timeout = kwargs['gracefulDecommissionTimeout']
+        if terraform_labels is None and 'terraformLabels' in kwargs:
+            terraform_labels = kwargs['terraformLabels']
         if virtual_cluster_config is None and 'virtualClusterConfig' in kwargs:
             virtual_cluster_config = kwargs['virtualClusterConfig']
 
         if cluster_config is not None:
             _setter("cluster_config", cluster_config)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if graceful_decommission_timeout is not None:
             _setter("graceful_decommission_timeout", graceful_decommission_timeout)
         if labels is not None:
@@ -253,6 +269,8 @@ class _ClusterState:
             _setter("project", project)
         if region is not None:
             _setter("region", region)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if virtual_cluster_config is not None:
             _setter("virtual_cluster_config", virtual_cluster_config)
 
@@ -268,6 +286,20 @@ class _ClusterState:
     @cluster_config.setter
     def cluster_config(self, value: Optional[pulumi.Input['ClusterClusterConfigArgs']]):
         pulumi.set(self, "cluster_config", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The list of labels (key/value pairs) to be applied to
+        instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
+        which is the name of the cluster.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
 
     @property
     @pulumi.getter(name="gracefulDecommissionTimeout")
@@ -286,9 +318,9 @@ class _ClusterState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The list of labels (key/value pairs) to be applied to
-        instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
-        which is the name of the cluster.
+        The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+        to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -336,6 +368,18 @@ class _ClusterState:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="virtualClusterConfig")
@@ -472,9 +516,9 @@ class Cluster(pulumi.CustomResource):
                Structure defined below.
         :param pulumi.Input[str] graceful_decommission_timeout: The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
                terraform apply
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of labels (key/value pairs) to be applied to
-               instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
-               which is the name of the cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+               to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                zone.
                
@@ -638,6 +682,8 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             virtual_cluster_config = _utilities.configure(virtual_cluster_config, ClusterVirtualClusterConfigArgs, True)
             __props__.__dict__["virtual_cluster_config"] = virtual_cluster_config
+            __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(Cluster, __self__).__init__(
             'gcp:dataproc/cluster:Cluster',
             resource_name,
@@ -649,11 +695,13 @@ class Cluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterClusterConfigArgs']]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             graceful_decommission_timeout: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             virtual_cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterVirtualClusterConfigArgs']]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
@@ -664,11 +712,14 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ClusterClusterConfigArgs']] cluster_config: Allows you to configure various aspects of the cluster.
                Structure defined below.
-        :param pulumi.Input[str] graceful_decommission_timeout: The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
-               terraform apply
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of labels (key/value pairs) to be applied to
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: The list of labels (key/value pairs) to be applied to
                instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
                which is the name of the cluster.
+        :param pulumi.Input[str] graceful_decommission_timeout: The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
+               terraform apply
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+               to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                zone.
                
@@ -677,6 +728,7 @@ class Cluster(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the cluster and associated nodes will be created in.
                Defaults to `global`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['ClusterVirtualClusterConfigArgs']] virtual_cluster_config: Allows you to configure a virtual Dataproc on GKE cluster.
                Structure defined below.
         """
@@ -685,11 +737,13 @@ class Cluster(pulumi.CustomResource):
         __props__ = _ClusterState.__new__(_ClusterState)
 
         __props__.__dict__["cluster_config"] = cluster_config
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["graceful_decommission_timeout"] = graceful_decommission_timeout
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["virtual_cluster_config"] = virtual_cluster_config
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
@@ -703,6 +757,16 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "cluster_config")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The list of labels (key/value pairs) to be applied to
+        instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
+        which is the name of the cluster.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="gracefulDecommissionTimeout")
     def graceful_decommission_timeout(self) -> pulumi.Output[Optional[str]]:
         """
@@ -713,11 +777,11 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        The list of labels (key/value pairs) to be applied to
-        instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
-        which is the name of the cluster.
+        The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+        to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -749,6 +813,14 @@ class Cluster(pulumi.CustomResource):
         Defaults to `global`.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="virtualClusterConfig")

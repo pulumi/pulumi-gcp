@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -1935,6 +1935,167 @@ func (o AwsClusterAuthorizationAdminUserArrayOutput) Index(i pulumi.IntInput) Aw
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AwsClusterAuthorizationAdminUser {
 		return vs[0].([]AwsClusterAuthorizationAdminUser)[vs[1].(int)]
 	}).(AwsClusterAuthorizationAdminUserOutput)
+}
+
+type AwsClusterBinaryAuthorization struct {
+	// Mode of operation for Binary Authorization policy evaluation. Possible values: DISABLED, PROJECT_SINGLETON_POLICY_ENFORCE
+	EvaluationMode *string `pulumi:"evaluationMode"`
+}
+
+// AwsClusterBinaryAuthorizationInput is an input type that accepts AwsClusterBinaryAuthorizationArgs and AwsClusterBinaryAuthorizationOutput values.
+// You can construct a concrete instance of `AwsClusterBinaryAuthorizationInput` via:
+//
+//	AwsClusterBinaryAuthorizationArgs{...}
+type AwsClusterBinaryAuthorizationInput interface {
+	pulumi.Input
+
+	ToAwsClusterBinaryAuthorizationOutput() AwsClusterBinaryAuthorizationOutput
+	ToAwsClusterBinaryAuthorizationOutputWithContext(context.Context) AwsClusterBinaryAuthorizationOutput
+}
+
+type AwsClusterBinaryAuthorizationArgs struct {
+	// Mode of operation for Binary Authorization policy evaluation. Possible values: DISABLED, PROJECT_SINGLETON_POLICY_ENFORCE
+	EvaluationMode pulumi.StringPtrInput `pulumi:"evaluationMode"`
+}
+
+func (AwsClusterBinaryAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterBinaryAuthorization)(nil)).Elem()
+}
+
+func (i AwsClusterBinaryAuthorizationArgs) ToAwsClusterBinaryAuthorizationOutput() AwsClusterBinaryAuthorizationOutput {
+	return i.ToAwsClusterBinaryAuthorizationOutputWithContext(context.Background())
+}
+
+func (i AwsClusterBinaryAuthorizationArgs) ToAwsClusterBinaryAuthorizationOutputWithContext(ctx context.Context) AwsClusterBinaryAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterBinaryAuthorizationOutput)
+}
+
+func (i AwsClusterBinaryAuthorizationArgs) ToOutput(ctx context.Context) pulumix.Output[AwsClusterBinaryAuthorization] {
+	return pulumix.Output[AwsClusterBinaryAuthorization]{
+		OutputState: i.ToAwsClusterBinaryAuthorizationOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i AwsClusterBinaryAuthorizationArgs) ToAwsClusterBinaryAuthorizationPtrOutput() AwsClusterBinaryAuthorizationPtrOutput {
+	return i.ToAwsClusterBinaryAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i AwsClusterBinaryAuthorizationArgs) ToAwsClusterBinaryAuthorizationPtrOutputWithContext(ctx context.Context) AwsClusterBinaryAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterBinaryAuthorizationOutput).ToAwsClusterBinaryAuthorizationPtrOutputWithContext(ctx)
+}
+
+// AwsClusterBinaryAuthorizationPtrInput is an input type that accepts AwsClusterBinaryAuthorizationArgs, AwsClusterBinaryAuthorizationPtr and AwsClusterBinaryAuthorizationPtrOutput values.
+// You can construct a concrete instance of `AwsClusterBinaryAuthorizationPtrInput` via:
+//
+//	        AwsClusterBinaryAuthorizationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsClusterBinaryAuthorizationPtrInput interface {
+	pulumi.Input
+
+	ToAwsClusterBinaryAuthorizationPtrOutput() AwsClusterBinaryAuthorizationPtrOutput
+	ToAwsClusterBinaryAuthorizationPtrOutputWithContext(context.Context) AwsClusterBinaryAuthorizationPtrOutput
+}
+
+type awsClusterBinaryAuthorizationPtrType AwsClusterBinaryAuthorizationArgs
+
+func AwsClusterBinaryAuthorizationPtr(v *AwsClusterBinaryAuthorizationArgs) AwsClusterBinaryAuthorizationPtrInput {
+	return (*awsClusterBinaryAuthorizationPtrType)(v)
+}
+
+func (*awsClusterBinaryAuthorizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterBinaryAuthorization)(nil)).Elem()
+}
+
+func (i *awsClusterBinaryAuthorizationPtrType) ToAwsClusterBinaryAuthorizationPtrOutput() AwsClusterBinaryAuthorizationPtrOutput {
+	return i.ToAwsClusterBinaryAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i *awsClusterBinaryAuthorizationPtrType) ToAwsClusterBinaryAuthorizationPtrOutputWithContext(ctx context.Context) AwsClusterBinaryAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterBinaryAuthorizationPtrOutput)
+}
+
+func (i *awsClusterBinaryAuthorizationPtrType) ToOutput(ctx context.Context) pulumix.Output[*AwsClusterBinaryAuthorization] {
+	return pulumix.Output[*AwsClusterBinaryAuthorization]{
+		OutputState: i.ToAwsClusterBinaryAuthorizationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type AwsClusterBinaryAuthorizationOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterBinaryAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterBinaryAuthorization)(nil)).Elem()
+}
+
+func (o AwsClusterBinaryAuthorizationOutput) ToAwsClusterBinaryAuthorizationOutput() AwsClusterBinaryAuthorizationOutput {
+	return o
+}
+
+func (o AwsClusterBinaryAuthorizationOutput) ToAwsClusterBinaryAuthorizationOutputWithContext(ctx context.Context) AwsClusterBinaryAuthorizationOutput {
+	return o
+}
+
+func (o AwsClusterBinaryAuthorizationOutput) ToAwsClusterBinaryAuthorizationPtrOutput() AwsClusterBinaryAuthorizationPtrOutput {
+	return o.ToAwsClusterBinaryAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (o AwsClusterBinaryAuthorizationOutput) ToAwsClusterBinaryAuthorizationPtrOutputWithContext(ctx context.Context) AwsClusterBinaryAuthorizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsClusterBinaryAuthorization) *AwsClusterBinaryAuthorization {
+		return &v
+	}).(AwsClusterBinaryAuthorizationPtrOutput)
+}
+
+func (o AwsClusterBinaryAuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[AwsClusterBinaryAuthorization] {
+	return pulumix.Output[AwsClusterBinaryAuthorization]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Mode of operation for Binary Authorization policy evaluation. Possible values: DISABLED, PROJECT_SINGLETON_POLICY_ENFORCE
+func (o AwsClusterBinaryAuthorizationOutput) EvaluationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsClusterBinaryAuthorization) *string { return v.EvaluationMode }).(pulumi.StringPtrOutput)
+}
+
+type AwsClusterBinaryAuthorizationPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterBinaryAuthorizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterBinaryAuthorization)(nil)).Elem()
+}
+
+func (o AwsClusterBinaryAuthorizationPtrOutput) ToAwsClusterBinaryAuthorizationPtrOutput() AwsClusterBinaryAuthorizationPtrOutput {
+	return o
+}
+
+func (o AwsClusterBinaryAuthorizationPtrOutput) ToAwsClusterBinaryAuthorizationPtrOutputWithContext(ctx context.Context) AwsClusterBinaryAuthorizationPtrOutput {
+	return o
+}
+
+func (o AwsClusterBinaryAuthorizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AwsClusterBinaryAuthorization] {
+	return pulumix.Output[*AwsClusterBinaryAuthorization]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AwsClusterBinaryAuthorizationPtrOutput) Elem() AwsClusterBinaryAuthorizationOutput {
+	return o.ApplyT(func(v *AwsClusterBinaryAuthorization) AwsClusterBinaryAuthorization {
+		if v != nil {
+			return *v
+		}
+		var ret AwsClusterBinaryAuthorization
+		return ret
+	}).(AwsClusterBinaryAuthorizationOutput)
+}
+
+// Mode of operation for Binary Authorization policy evaluation. Possible values: DISABLED, PROJECT_SINGLETON_POLICY_ENFORCE
+func (o AwsClusterBinaryAuthorizationPtrOutput) EvaluationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsClusterBinaryAuthorization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluationMode
+	}).(pulumi.StringPtrOutput)
 }
 
 type AwsClusterControlPlane struct {
@@ -6983,6 +7144,347 @@ func (o AwsNodePoolMaxPodsConstraintPtrOutput) MaxPodsPerNode() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
+type AwsNodePoolUpdateSettings struct {
+	// Optional. Settings for surge update.
+	SurgeSettings *AwsNodePoolUpdateSettingsSurgeSettings `pulumi:"surgeSettings"`
+}
+
+// AwsNodePoolUpdateSettingsInput is an input type that accepts AwsNodePoolUpdateSettingsArgs and AwsNodePoolUpdateSettingsOutput values.
+// You can construct a concrete instance of `AwsNodePoolUpdateSettingsInput` via:
+//
+//	AwsNodePoolUpdateSettingsArgs{...}
+type AwsNodePoolUpdateSettingsInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolUpdateSettingsOutput() AwsNodePoolUpdateSettingsOutput
+	ToAwsNodePoolUpdateSettingsOutputWithContext(context.Context) AwsNodePoolUpdateSettingsOutput
+}
+
+type AwsNodePoolUpdateSettingsArgs struct {
+	// Optional. Settings for surge update.
+	SurgeSettings AwsNodePoolUpdateSettingsSurgeSettingsPtrInput `pulumi:"surgeSettings"`
+}
+
+func (AwsNodePoolUpdateSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolUpdateSettings)(nil)).Elem()
+}
+
+func (i AwsNodePoolUpdateSettingsArgs) ToAwsNodePoolUpdateSettingsOutput() AwsNodePoolUpdateSettingsOutput {
+	return i.ToAwsNodePoolUpdateSettingsOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolUpdateSettingsArgs) ToAwsNodePoolUpdateSettingsOutputWithContext(ctx context.Context) AwsNodePoolUpdateSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolUpdateSettingsOutput)
+}
+
+func (i AwsNodePoolUpdateSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[AwsNodePoolUpdateSettings] {
+	return pulumix.Output[AwsNodePoolUpdateSettings]{
+		OutputState: i.ToAwsNodePoolUpdateSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i AwsNodePoolUpdateSettingsArgs) ToAwsNodePoolUpdateSettingsPtrOutput() AwsNodePoolUpdateSettingsPtrOutput {
+	return i.ToAwsNodePoolUpdateSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolUpdateSettingsArgs) ToAwsNodePoolUpdateSettingsPtrOutputWithContext(ctx context.Context) AwsNodePoolUpdateSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolUpdateSettingsOutput).ToAwsNodePoolUpdateSettingsPtrOutputWithContext(ctx)
+}
+
+// AwsNodePoolUpdateSettingsPtrInput is an input type that accepts AwsNodePoolUpdateSettingsArgs, AwsNodePoolUpdateSettingsPtr and AwsNodePoolUpdateSettingsPtrOutput values.
+// You can construct a concrete instance of `AwsNodePoolUpdateSettingsPtrInput` via:
+//
+//	        AwsNodePoolUpdateSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsNodePoolUpdateSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolUpdateSettingsPtrOutput() AwsNodePoolUpdateSettingsPtrOutput
+	ToAwsNodePoolUpdateSettingsPtrOutputWithContext(context.Context) AwsNodePoolUpdateSettingsPtrOutput
+}
+
+type awsNodePoolUpdateSettingsPtrType AwsNodePoolUpdateSettingsArgs
+
+func AwsNodePoolUpdateSettingsPtr(v *AwsNodePoolUpdateSettingsArgs) AwsNodePoolUpdateSettingsPtrInput {
+	return (*awsNodePoolUpdateSettingsPtrType)(v)
+}
+
+func (*awsNodePoolUpdateSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolUpdateSettings)(nil)).Elem()
+}
+
+func (i *awsNodePoolUpdateSettingsPtrType) ToAwsNodePoolUpdateSettingsPtrOutput() AwsNodePoolUpdateSettingsPtrOutput {
+	return i.ToAwsNodePoolUpdateSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *awsNodePoolUpdateSettingsPtrType) ToAwsNodePoolUpdateSettingsPtrOutputWithContext(ctx context.Context) AwsNodePoolUpdateSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolUpdateSettingsPtrOutput)
+}
+
+func (i *awsNodePoolUpdateSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AwsNodePoolUpdateSettings] {
+	return pulumix.Output[*AwsNodePoolUpdateSettings]{
+		OutputState: i.ToAwsNodePoolUpdateSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type AwsNodePoolUpdateSettingsOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolUpdateSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolUpdateSettings)(nil)).Elem()
+}
+
+func (o AwsNodePoolUpdateSettingsOutput) ToAwsNodePoolUpdateSettingsOutput() AwsNodePoolUpdateSettingsOutput {
+	return o
+}
+
+func (o AwsNodePoolUpdateSettingsOutput) ToAwsNodePoolUpdateSettingsOutputWithContext(ctx context.Context) AwsNodePoolUpdateSettingsOutput {
+	return o
+}
+
+func (o AwsNodePoolUpdateSettingsOutput) ToAwsNodePoolUpdateSettingsPtrOutput() AwsNodePoolUpdateSettingsPtrOutput {
+	return o.ToAwsNodePoolUpdateSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AwsNodePoolUpdateSettingsOutput) ToAwsNodePoolUpdateSettingsPtrOutputWithContext(ctx context.Context) AwsNodePoolUpdateSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsNodePoolUpdateSettings) *AwsNodePoolUpdateSettings {
+		return &v
+	}).(AwsNodePoolUpdateSettingsPtrOutput)
+}
+
+func (o AwsNodePoolUpdateSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[AwsNodePoolUpdateSettings] {
+	return pulumix.Output[AwsNodePoolUpdateSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Settings for surge update.
+func (o AwsNodePoolUpdateSettingsOutput) SurgeSettings() AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput {
+	return o.ApplyT(func(v AwsNodePoolUpdateSettings) *AwsNodePoolUpdateSettingsSurgeSettings { return v.SurgeSettings }).(AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput)
+}
+
+type AwsNodePoolUpdateSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolUpdateSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolUpdateSettings)(nil)).Elem()
+}
+
+func (o AwsNodePoolUpdateSettingsPtrOutput) ToAwsNodePoolUpdateSettingsPtrOutput() AwsNodePoolUpdateSettingsPtrOutput {
+	return o
+}
+
+func (o AwsNodePoolUpdateSettingsPtrOutput) ToAwsNodePoolUpdateSettingsPtrOutputWithContext(ctx context.Context) AwsNodePoolUpdateSettingsPtrOutput {
+	return o
+}
+
+func (o AwsNodePoolUpdateSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AwsNodePoolUpdateSettings] {
+	return pulumix.Output[*AwsNodePoolUpdateSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AwsNodePoolUpdateSettingsPtrOutput) Elem() AwsNodePoolUpdateSettingsOutput {
+	return o.ApplyT(func(v *AwsNodePoolUpdateSettings) AwsNodePoolUpdateSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AwsNodePoolUpdateSettings
+		return ret
+	}).(AwsNodePoolUpdateSettingsOutput)
+}
+
+// Optional. Settings for surge update.
+func (o AwsNodePoolUpdateSettingsPtrOutput) SurgeSettings() AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolUpdateSettings) *AwsNodePoolUpdateSettingsSurgeSettings {
+		if v == nil {
+			return nil
+		}
+		return v.SurgeSettings
+	}).(AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput)
+}
+
+type AwsNodePoolUpdateSettingsSurgeSettings struct {
+	// Optional. The maximum number of nodes that can be created beyond the current size of the node pool during the update process.
+	MaxSurge *int `pulumi:"maxSurge"`
+	// Optional. The maximum number of nodes that can be simultaneously unavailable during the update process. A node is considered unavailable if its status is not Ready.
+	MaxUnavailable *int `pulumi:"maxUnavailable"`
+}
+
+// AwsNodePoolUpdateSettingsSurgeSettingsInput is an input type that accepts AwsNodePoolUpdateSettingsSurgeSettingsArgs and AwsNodePoolUpdateSettingsSurgeSettingsOutput values.
+// You can construct a concrete instance of `AwsNodePoolUpdateSettingsSurgeSettingsInput` via:
+//
+//	AwsNodePoolUpdateSettingsSurgeSettingsArgs{...}
+type AwsNodePoolUpdateSettingsSurgeSettingsInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolUpdateSettingsSurgeSettingsOutput() AwsNodePoolUpdateSettingsSurgeSettingsOutput
+	ToAwsNodePoolUpdateSettingsSurgeSettingsOutputWithContext(context.Context) AwsNodePoolUpdateSettingsSurgeSettingsOutput
+}
+
+type AwsNodePoolUpdateSettingsSurgeSettingsArgs struct {
+	// Optional. The maximum number of nodes that can be created beyond the current size of the node pool during the update process.
+	MaxSurge pulumi.IntPtrInput `pulumi:"maxSurge"`
+	// Optional. The maximum number of nodes that can be simultaneously unavailable during the update process. A node is considered unavailable if its status is not Ready.
+	MaxUnavailable pulumi.IntPtrInput `pulumi:"maxUnavailable"`
+}
+
+func (AwsNodePoolUpdateSettingsSurgeSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolUpdateSettingsSurgeSettings)(nil)).Elem()
+}
+
+func (i AwsNodePoolUpdateSettingsSurgeSettingsArgs) ToAwsNodePoolUpdateSettingsSurgeSettingsOutput() AwsNodePoolUpdateSettingsSurgeSettingsOutput {
+	return i.ToAwsNodePoolUpdateSettingsSurgeSettingsOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolUpdateSettingsSurgeSettingsArgs) ToAwsNodePoolUpdateSettingsSurgeSettingsOutputWithContext(ctx context.Context) AwsNodePoolUpdateSettingsSurgeSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolUpdateSettingsSurgeSettingsOutput)
+}
+
+func (i AwsNodePoolUpdateSettingsSurgeSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[AwsNodePoolUpdateSettingsSurgeSettings] {
+	return pulumix.Output[AwsNodePoolUpdateSettingsSurgeSettings]{
+		OutputState: i.ToAwsNodePoolUpdateSettingsSurgeSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i AwsNodePoolUpdateSettingsSurgeSettingsArgs) ToAwsNodePoolUpdateSettingsSurgeSettingsPtrOutput() AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput {
+	return i.ToAwsNodePoolUpdateSettingsSurgeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolUpdateSettingsSurgeSettingsArgs) ToAwsNodePoolUpdateSettingsSurgeSettingsPtrOutputWithContext(ctx context.Context) AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolUpdateSettingsSurgeSettingsOutput).ToAwsNodePoolUpdateSettingsSurgeSettingsPtrOutputWithContext(ctx)
+}
+
+// AwsNodePoolUpdateSettingsSurgeSettingsPtrInput is an input type that accepts AwsNodePoolUpdateSettingsSurgeSettingsArgs, AwsNodePoolUpdateSettingsSurgeSettingsPtr and AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput values.
+// You can construct a concrete instance of `AwsNodePoolUpdateSettingsSurgeSettingsPtrInput` via:
+//
+//	        AwsNodePoolUpdateSettingsSurgeSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsNodePoolUpdateSettingsSurgeSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolUpdateSettingsSurgeSettingsPtrOutput() AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput
+	ToAwsNodePoolUpdateSettingsSurgeSettingsPtrOutputWithContext(context.Context) AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput
+}
+
+type awsNodePoolUpdateSettingsSurgeSettingsPtrType AwsNodePoolUpdateSettingsSurgeSettingsArgs
+
+func AwsNodePoolUpdateSettingsSurgeSettingsPtr(v *AwsNodePoolUpdateSettingsSurgeSettingsArgs) AwsNodePoolUpdateSettingsSurgeSettingsPtrInput {
+	return (*awsNodePoolUpdateSettingsSurgeSettingsPtrType)(v)
+}
+
+func (*awsNodePoolUpdateSettingsSurgeSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolUpdateSettingsSurgeSettings)(nil)).Elem()
+}
+
+func (i *awsNodePoolUpdateSettingsSurgeSettingsPtrType) ToAwsNodePoolUpdateSettingsSurgeSettingsPtrOutput() AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput {
+	return i.ToAwsNodePoolUpdateSettingsSurgeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *awsNodePoolUpdateSettingsSurgeSettingsPtrType) ToAwsNodePoolUpdateSettingsSurgeSettingsPtrOutputWithContext(ctx context.Context) AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput)
+}
+
+func (i *awsNodePoolUpdateSettingsSurgeSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AwsNodePoolUpdateSettingsSurgeSettings] {
+	return pulumix.Output[*AwsNodePoolUpdateSettingsSurgeSettings]{
+		OutputState: i.ToAwsNodePoolUpdateSettingsSurgeSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type AwsNodePoolUpdateSettingsSurgeSettingsOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolUpdateSettingsSurgeSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolUpdateSettingsSurgeSettings)(nil)).Elem()
+}
+
+func (o AwsNodePoolUpdateSettingsSurgeSettingsOutput) ToAwsNodePoolUpdateSettingsSurgeSettingsOutput() AwsNodePoolUpdateSettingsSurgeSettingsOutput {
+	return o
+}
+
+func (o AwsNodePoolUpdateSettingsSurgeSettingsOutput) ToAwsNodePoolUpdateSettingsSurgeSettingsOutputWithContext(ctx context.Context) AwsNodePoolUpdateSettingsSurgeSettingsOutput {
+	return o
+}
+
+func (o AwsNodePoolUpdateSettingsSurgeSettingsOutput) ToAwsNodePoolUpdateSettingsSurgeSettingsPtrOutput() AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput {
+	return o.ToAwsNodePoolUpdateSettingsSurgeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AwsNodePoolUpdateSettingsSurgeSettingsOutput) ToAwsNodePoolUpdateSettingsSurgeSettingsPtrOutputWithContext(ctx context.Context) AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsNodePoolUpdateSettingsSurgeSettings) *AwsNodePoolUpdateSettingsSurgeSettings {
+		return &v
+	}).(AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput)
+}
+
+func (o AwsNodePoolUpdateSettingsSurgeSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[AwsNodePoolUpdateSettingsSurgeSettings] {
+	return pulumix.Output[AwsNodePoolUpdateSettingsSurgeSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The maximum number of nodes that can be created beyond the current size of the node pool during the update process.
+func (o AwsNodePoolUpdateSettingsSurgeSettingsOutput) MaxSurge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsNodePoolUpdateSettingsSurgeSettings) *int { return v.MaxSurge }).(pulumi.IntPtrOutput)
+}
+
+// Optional. The maximum number of nodes that can be simultaneously unavailable during the update process. A node is considered unavailable if its status is not Ready.
+func (o AwsNodePoolUpdateSettingsSurgeSettingsOutput) MaxUnavailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsNodePoolUpdateSettingsSurgeSettings) *int { return v.MaxUnavailable }).(pulumi.IntPtrOutput)
+}
+
+type AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolUpdateSettingsSurgeSettings)(nil)).Elem()
+}
+
+func (o AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput) ToAwsNodePoolUpdateSettingsSurgeSettingsPtrOutput() AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput {
+	return o
+}
+
+func (o AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput) ToAwsNodePoolUpdateSettingsSurgeSettingsPtrOutputWithContext(ctx context.Context) AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput {
+	return o
+}
+
+func (o AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AwsNodePoolUpdateSettingsSurgeSettings] {
+	return pulumix.Output[*AwsNodePoolUpdateSettingsSurgeSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput) Elem() AwsNodePoolUpdateSettingsSurgeSettingsOutput {
+	return o.ApplyT(func(v *AwsNodePoolUpdateSettingsSurgeSettings) AwsNodePoolUpdateSettingsSurgeSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AwsNodePoolUpdateSettingsSurgeSettings
+		return ret
+	}).(AwsNodePoolUpdateSettingsSurgeSettingsOutput)
+}
+
+// Optional. The maximum number of nodes that can be created beyond the current size of the node pool during the update process.
+func (o AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput) MaxSurge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolUpdateSettingsSurgeSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSurge
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. The maximum number of nodes that can be simultaneously unavailable during the update process. A node is considered unavailable if its status is not Ready.
+func (o AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput) MaxUnavailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolUpdateSettingsSurgeSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxUnavailable
+	}).(pulumi.IntPtrOutput)
+}
+
 type AzureClusterAuthorization struct {
 	// Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
 	AdminUsers []AzureClusterAuthorizationAdminUser `pulumi:"adminUsers"`
@@ -10883,7 +11385,9 @@ type ClusterAddonsConfig struct {
 	GcpFilestoreCsiDriverConfig *ClusterAddonsConfigGcpFilestoreCsiDriverConfig `pulumi:"gcpFilestoreCsiDriverConfig"`
 	// The status of the GCSFuse CSI driver addon,
 	// which allows the usage of a gcs bucket as volumes.
-	// It is disabled by default; set `enabled = true` to enable.
+	// It is disabled by default for Standard clusters; set `enabled = true` to enable.
+	// It is enabled by default for Autopilot clusters with version 1.24 or later; set `enabled = true` to enable it explicitly.
+	// See [Enable the Cloud Storage FUSE CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/cloud-storage-fuse-csi-driver#enable) for more information.
 	GcsFuseCsiDriverConfig *ClusterAddonsConfigGcsFuseCsiDriverConfig `pulumi:"gcsFuseCsiDriverConfig"`
 	// .
 	// The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
@@ -10965,7 +11469,9 @@ type ClusterAddonsConfigArgs struct {
 	GcpFilestoreCsiDriverConfig ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrInput `pulumi:"gcpFilestoreCsiDriverConfig"`
 	// The status of the GCSFuse CSI driver addon,
 	// which allows the usage of a gcs bucket as volumes.
-	// It is disabled by default; set `enabled = true` to enable.
+	// It is disabled by default for Standard clusters; set `enabled = true` to enable.
+	// It is enabled by default for Autopilot clusters with version 1.24 or later; set `enabled = true` to enable it explicitly.
+	// See [Enable the Cloud Storage FUSE CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/cloud-storage-fuse-csi-driver#enable) for more information.
 	GcsFuseCsiDriverConfig ClusterAddonsConfigGcsFuseCsiDriverConfigPtrInput `pulumi:"gcsFuseCsiDriverConfig"`
 	// .
 	// The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
@@ -11152,7 +11658,9 @@ func (o ClusterAddonsConfigOutput) GcpFilestoreCsiDriverConfig() ClusterAddonsCo
 
 // The status of the GCSFuse CSI driver addon,
 // which allows the usage of a gcs bucket as volumes.
-// It is disabled by default; set `enabled = true` to enable.
+// It is disabled by default for Standard clusters; set `enabled = true` to enable.
+// It is enabled by default for Autopilot clusters with version 1.24 or later; set `enabled = true` to enable it explicitly.
+// See [Enable the Cloud Storage FUSE CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/cloud-storage-fuse-csi-driver#enable) for more information.
 func (o ClusterAddonsConfigOutput) GcsFuseCsiDriverConfig() ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigGcsFuseCsiDriverConfig {
 		return v.GcsFuseCsiDriverConfig
@@ -11318,7 +11826,9 @@ func (o ClusterAddonsConfigPtrOutput) GcpFilestoreCsiDriverConfig() ClusterAddon
 
 // The status of the GCSFuse CSI driver addon,
 // which allows the usage of a gcs bucket as volumes.
-// It is disabled by default; set `enabled = true` to enable.
+// It is disabled by default for Standard clusters; set `enabled = true` to enable.
+// It is enabled by default for Autopilot clusters with version 1.24 or later; set `enabled = true` to enable it explicitly.
+// See [Enable the Cloud Storage FUSE CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/cloud-storage-fuse-csi-driver#enable) for more information.
 func (o ClusterAddonsConfigPtrOutput) GcsFuseCsiDriverConfig() ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigGcsFuseCsiDriverConfig {
 		if v == nil {
@@ -13571,8 +14081,7 @@ type ClusterBinaryAuthorization struct {
 	// Deprecated: Deprecated in favor of evaluation_mode.
 	Enabled *bool `pulumi:"enabled"`
 	// Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
-	// and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
-	// deprecated `enableBinaryAuthorization` parameter being set to `true`.
+	// and `PROJECT_SINGLETON_POLICY_ENFORCE`.
 	EvaluationMode *string `pulumi:"evaluationMode"`
 }
 
@@ -13593,8 +14102,7 @@ type ClusterBinaryAuthorizationArgs struct {
 	// Deprecated: Deprecated in favor of evaluation_mode.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
-	// and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
-	// deprecated `enableBinaryAuthorization` parameter being set to `true`.
+	// and `PROJECT_SINGLETON_POLICY_ENFORCE`.
 	EvaluationMode pulumi.StringPtrInput `pulumi:"evaluationMode"`
 }
 
@@ -13701,8 +14209,7 @@ func (o ClusterBinaryAuthorizationOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 // Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
-// and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
-// deprecated `enableBinaryAuthorization` parameter being set to `true`.
+// and `PROJECT_SINGLETON_POLICY_ENFORCE`.
 func (o ClusterBinaryAuthorizationOutput) EvaluationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterBinaryAuthorization) *string { return v.EvaluationMode }).(pulumi.StringPtrOutput)
 }
@@ -13750,8 +14257,7 @@ func (o ClusterBinaryAuthorizationPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 // Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
-// and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
-// deprecated `enableBinaryAuthorization` parameter being set to `true`.
+// and `PROJECT_SINGLETON_POLICY_ENFORCE`.
 func (o ClusterBinaryAuthorizationPtrOutput) EvaluationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterBinaryAuthorization) *string {
 		if v == nil {
@@ -20807,7 +21313,8 @@ type ClusterNodeConfig struct {
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node
 	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
-	DiskType *string `pulumi:"diskType"`
+	DiskType        *string                           `pulumi:"diskType"`
+	EffectiveTaints []ClusterNodeConfigEffectiveTaint `pulumi:"effectiveTaints"`
 	// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 	//
 	// ```go
@@ -21038,7 +21545,8 @@ type ClusterNodeConfigArgs struct {
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node
 	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
-	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	DiskType        pulumi.StringPtrInput                     `pulumi:"diskType"`
+	EffectiveTaints ClusterNodeConfigEffectiveTaintArrayInput `pulumi:"effectiveTaints"`
 	// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 	//
 	// ```go
@@ -21366,6 +21874,10 @@ func (o ClusterNodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 // (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 func (o ClusterNodeConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterNodeConfigOutput) EffectiveTaints() ClusterNodeConfigEffectiveTaintArrayOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) []ClusterNodeConfigEffectiveTaint { return v.EffectiveTaints }).(ClusterNodeConfigEffectiveTaintArrayOutput)
 }
 
 // ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
@@ -21766,6 +22278,15 @@ func (o ClusterNodeConfigPtrOutput) DiskType() pulumi.StringPtrOutput {
 		}
 		return v.DiskType
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterNodeConfigPtrOutput) EffectiveTaints() ClusterNodeConfigEffectiveTaintArrayOutput {
+	return o.ApplyT(func(v *ClusterNodeConfig) []ClusterNodeConfigEffectiveTaint {
+		if v == nil {
+			return nil
+		}
+		return v.EffectiveTaints
+	}).(ClusterNodeConfigEffectiveTaintArrayOutput)
 }
 
 // ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
@@ -22557,6 +23078,145 @@ func (o ClusterNodeConfigConfidentialNodesPtrOutput) Enabled() pulumi.BoolPtrOut
 		}
 		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterNodeConfigEffectiveTaint struct {
+	// Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
+	Effect *string `pulumi:"effect"`
+	// The default or custom node affinity label key name.
+	Key *string `pulumi:"key"`
+	// Value for taint.
+	Value *string `pulumi:"value"`
+}
+
+// ClusterNodeConfigEffectiveTaintInput is an input type that accepts ClusterNodeConfigEffectiveTaintArgs and ClusterNodeConfigEffectiveTaintOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigEffectiveTaintInput` via:
+//
+//	ClusterNodeConfigEffectiveTaintArgs{...}
+type ClusterNodeConfigEffectiveTaintInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigEffectiveTaintOutput() ClusterNodeConfigEffectiveTaintOutput
+	ToClusterNodeConfigEffectiveTaintOutputWithContext(context.Context) ClusterNodeConfigEffectiveTaintOutput
+}
+
+type ClusterNodeConfigEffectiveTaintArgs struct {
+	// Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
+	Effect pulumi.StringPtrInput `pulumi:"effect"`
+	// The default or custom node affinity label key name.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Value for taint.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ClusterNodeConfigEffectiveTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigEffectiveTaint)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigEffectiveTaintArgs) ToClusterNodeConfigEffectiveTaintOutput() ClusterNodeConfigEffectiveTaintOutput {
+	return i.ToClusterNodeConfigEffectiveTaintOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigEffectiveTaintArgs) ToClusterNodeConfigEffectiveTaintOutputWithContext(ctx context.Context) ClusterNodeConfigEffectiveTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigEffectiveTaintOutput)
+}
+
+func (i ClusterNodeConfigEffectiveTaintArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterNodeConfigEffectiveTaint] {
+	return pulumix.Output[ClusterNodeConfigEffectiveTaint]{
+		OutputState: i.ToClusterNodeConfigEffectiveTaintOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ClusterNodeConfigEffectiveTaintArrayInput is an input type that accepts ClusterNodeConfigEffectiveTaintArray and ClusterNodeConfigEffectiveTaintArrayOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigEffectiveTaintArrayInput` via:
+//
+//	ClusterNodeConfigEffectiveTaintArray{ ClusterNodeConfigEffectiveTaintArgs{...} }
+type ClusterNodeConfigEffectiveTaintArrayInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigEffectiveTaintArrayOutput() ClusterNodeConfigEffectiveTaintArrayOutput
+	ToClusterNodeConfigEffectiveTaintArrayOutputWithContext(context.Context) ClusterNodeConfigEffectiveTaintArrayOutput
+}
+
+type ClusterNodeConfigEffectiveTaintArray []ClusterNodeConfigEffectiveTaintInput
+
+func (ClusterNodeConfigEffectiveTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeConfigEffectiveTaint)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigEffectiveTaintArray) ToClusterNodeConfigEffectiveTaintArrayOutput() ClusterNodeConfigEffectiveTaintArrayOutput {
+	return i.ToClusterNodeConfigEffectiveTaintArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigEffectiveTaintArray) ToClusterNodeConfigEffectiveTaintArrayOutputWithContext(ctx context.Context) ClusterNodeConfigEffectiveTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigEffectiveTaintArrayOutput)
+}
+
+func (i ClusterNodeConfigEffectiveTaintArray) ToOutput(ctx context.Context) pulumix.Output[[]ClusterNodeConfigEffectiveTaint] {
+	return pulumix.Output[[]ClusterNodeConfigEffectiveTaint]{
+		OutputState: i.ToClusterNodeConfigEffectiveTaintArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClusterNodeConfigEffectiveTaintOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigEffectiveTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigEffectiveTaint)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigEffectiveTaintOutput) ToClusterNodeConfigEffectiveTaintOutput() ClusterNodeConfigEffectiveTaintOutput {
+	return o
+}
+
+func (o ClusterNodeConfigEffectiveTaintOutput) ToClusterNodeConfigEffectiveTaintOutputWithContext(ctx context.Context) ClusterNodeConfigEffectiveTaintOutput {
+	return o
+}
+
+func (o ClusterNodeConfigEffectiveTaintOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterNodeConfigEffectiveTaint] {
+	return pulumix.Output[ClusterNodeConfigEffectiveTaint]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
+func (o ClusterNodeConfigEffectiveTaintOutput) Effect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigEffectiveTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
+}
+
+// The default or custom node affinity label key name.
+func (o ClusterNodeConfigEffectiveTaintOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigEffectiveTaint) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Value for taint.
+func (o ClusterNodeConfigEffectiveTaintOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigEffectiveTaint) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodeConfigEffectiveTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigEffectiveTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeConfigEffectiveTaint)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigEffectiveTaintArrayOutput) ToClusterNodeConfigEffectiveTaintArrayOutput() ClusterNodeConfigEffectiveTaintArrayOutput {
+	return o
+}
+
+func (o ClusterNodeConfigEffectiveTaintArrayOutput) ToClusterNodeConfigEffectiveTaintArrayOutputWithContext(ctx context.Context) ClusterNodeConfigEffectiveTaintArrayOutput {
+	return o
+}
+
+func (o ClusterNodeConfigEffectiveTaintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClusterNodeConfigEffectiveTaint] {
+	return pulumix.Output[[]ClusterNodeConfigEffectiveTaint]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClusterNodeConfigEffectiveTaintArrayOutput) Index(i pulumi.IntInput) ClusterNodeConfigEffectiveTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeConfigEffectiveTaint {
+		return vs[0].([]ClusterNodeConfigEffectiveTaint)[vs[1].(int)]
+	}).(ClusterNodeConfigEffectiveTaintOutput)
 }
 
 type ClusterNodeConfigEphemeralStorageConfig struct {
@@ -28178,7 +28838,8 @@ type ClusterNodePoolNodeConfig struct {
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node
 	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
-	DiskType *string `pulumi:"diskType"`
+	DiskType        *string                                   `pulumi:"diskType"`
+	EffectiveTaints []ClusterNodePoolNodeConfigEffectiveTaint `pulumi:"effectiveTaints"`
 	// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 	//
 	// ```go
@@ -28409,7 +29070,8 @@ type ClusterNodePoolNodeConfigArgs struct {
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node
 	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
-	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	DiskType        pulumi.StringPtrInput                             `pulumi:"diskType"`
+	EffectiveTaints ClusterNodePoolNodeConfigEffectiveTaintArrayInput `pulumi:"effectiveTaints"`
 	// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 	//
 	// ```go
@@ -28741,6 +29403,10 @@ func (o ClusterNodePoolNodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 // (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 func (o ClusterNodePoolNodeConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterNodePoolNodeConfigOutput) EffectiveTaints() ClusterNodePoolNodeConfigEffectiveTaintArrayOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigEffectiveTaint { return v.EffectiveTaints }).(ClusterNodePoolNodeConfigEffectiveTaintArrayOutput)
 }
 
 // ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
@@ -29157,6 +29823,15 @@ func (o ClusterNodePoolNodeConfigPtrOutput) DiskType() pulumi.StringPtrOutput {
 		}
 		return v.DiskType
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterNodePoolNodeConfigPtrOutput) EffectiveTaints() ClusterNodePoolNodeConfigEffectiveTaintArrayOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigEffectiveTaint {
+		if v == nil {
+			return nil
+		}
+		return v.EffectiveTaints
+	}).(ClusterNodePoolNodeConfigEffectiveTaintArrayOutput)
 }
 
 // ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
@@ -29948,6 +30623,145 @@ func (o ClusterNodePoolNodeConfigConfidentialNodesPtrOutput) Enabled() pulumi.Bo
 		}
 		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigEffectiveTaint struct {
+	// Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
+	Effect *string `pulumi:"effect"`
+	// The default or custom node affinity label key name.
+	Key *string `pulumi:"key"`
+	// Value for taint.
+	Value *string `pulumi:"value"`
+}
+
+// ClusterNodePoolNodeConfigEffectiveTaintInput is an input type that accepts ClusterNodePoolNodeConfigEffectiveTaintArgs and ClusterNodePoolNodeConfigEffectiveTaintOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigEffectiveTaintInput` via:
+//
+//	ClusterNodePoolNodeConfigEffectiveTaintArgs{...}
+type ClusterNodePoolNodeConfigEffectiveTaintInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigEffectiveTaintOutput() ClusterNodePoolNodeConfigEffectiveTaintOutput
+	ToClusterNodePoolNodeConfigEffectiveTaintOutputWithContext(context.Context) ClusterNodePoolNodeConfigEffectiveTaintOutput
+}
+
+type ClusterNodePoolNodeConfigEffectiveTaintArgs struct {
+	// Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
+	Effect pulumi.StringPtrInput `pulumi:"effect"`
+	// The default or custom node affinity label key name.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Value for taint.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ClusterNodePoolNodeConfigEffectiveTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigEffectiveTaint)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigEffectiveTaintArgs) ToClusterNodePoolNodeConfigEffectiveTaintOutput() ClusterNodePoolNodeConfigEffectiveTaintOutput {
+	return i.ToClusterNodePoolNodeConfigEffectiveTaintOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigEffectiveTaintArgs) ToClusterNodePoolNodeConfigEffectiveTaintOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigEffectiveTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigEffectiveTaintOutput)
+}
+
+func (i ClusterNodePoolNodeConfigEffectiveTaintArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterNodePoolNodeConfigEffectiveTaint] {
+	return pulumix.Output[ClusterNodePoolNodeConfigEffectiveTaint]{
+		OutputState: i.ToClusterNodePoolNodeConfigEffectiveTaintOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ClusterNodePoolNodeConfigEffectiveTaintArrayInput is an input type that accepts ClusterNodePoolNodeConfigEffectiveTaintArray and ClusterNodePoolNodeConfigEffectiveTaintArrayOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigEffectiveTaintArrayInput` via:
+//
+//	ClusterNodePoolNodeConfigEffectiveTaintArray{ ClusterNodePoolNodeConfigEffectiveTaintArgs{...} }
+type ClusterNodePoolNodeConfigEffectiveTaintArrayInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigEffectiveTaintArrayOutput() ClusterNodePoolNodeConfigEffectiveTaintArrayOutput
+	ToClusterNodePoolNodeConfigEffectiveTaintArrayOutputWithContext(context.Context) ClusterNodePoolNodeConfigEffectiveTaintArrayOutput
+}
+
+type ClusterNodePoolNodeConfigEffectiveTaintArray []ClusterNodePoolNodeConfigEffectiveTaintInput
+
+func (ClusterNodePoolNodeConfigEffectiveTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodePoolNodeConfigEffectiveTaint)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigEffectiveTaintArray) ToClusterNodePoolNodeConfigEffectiveTaintArrayOutput() ClusterNodePoolNodeConfigEffectiveTaintArrayOutput {
+	return i.ToClusterNodePoolNodeConfigEffectiveTaintArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigEffectiveTaintArray) ToClusterNodePoolNodeConfigEffectiveTaintArrayOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigEffectiveTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigEffectiveTaintArrayOutput)
+}
+
+func (i ClusterNodePoolNodeConfigEffectiveTaintArray) ToOutput(ctx context.Context) pulumix.Output[[]ClusterNodePoolNodeConfigEffectiveTaint] {
+	return pulumix.Output[[]ClusterNodePoolNodeConfigEffectiveTaint]{
+		OutputState: i.ToClusterNodePoolNodeConfigEffectiveTaintArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClusterNodePoolNodeConfigEffectiveTaintOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigEffectiveTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigEffectiveTaint)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigEffectiveTaintOutput) ToClusterNodePoolNodeConfigEffectiveTaintOutput() ClusterNodePoolNodeConfigEffectiveTaintOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigEffectiveTaintOutput) ToClusterNodePoolNodeConfigEffectiveTaintOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigEffectiveTaintOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigEffectiveTaintOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterNodePoolNodeConfigEffectiveTaint] {
+	return pulumix.Output[ClusterNodePoolNodeConfigEffectiveTaint]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
+func (o ClusterNodePoolNodeConfigEffectiveTaintOutput) Effect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigEffectiveTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
+}
+
+// The default or custom node affinity label key name.
+func (o ClusterNodePoolNodeConfigEffectiveTaintOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigEffectiveTaint) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Value for taint.
+func (o ClusterNodePoolNodeConfigEffectiveTaintOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigEffectiveTaint) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigEffectiveTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigEffectiveTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodePoolNodeConfigEffectiveTaint)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigEffectiveTaintArrayOutput) ToClusterNodePoolNodeConfigEffectiveTaintArrayOutput() ClusterNodePoolNodeConfigEffectiveTaintArrayOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigEffectiveTaintArrayOutput) ToClusterNodePoolNodeConfigEffectiveTaintArrayOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigEffectiveTaintArrayOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigEffectiveTaintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClusterNodePoolNodeConfigEffectiveTaint] {
+	return pulumix.Output[[]ClusterNodePoolNodeConfigEffectiveTaint]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClusterNodePoolNodeConfigEffectiveTaintArrayOutput) Index(i pulumi.IntInput) ClusterNodePoolNodeConfigEffectiveTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodePoolNodeConfigEffectiveTaint {
+		return vs[0].([]ClusterNodePoolNodeConfigEffectiveTaint)[vs[1].(int)]
+	}).(ClusterNodePoolNodeConfigEffectiveTaintOutput)
 }
 
 type ClusterNodePoolNodeConfigEphemeralStorageConfig struct {
@@ -37493,9 +38307,9 @@ func (o NodePoolAutoscalingPtrOutput) TotalMinNodeCount() pulumi.IntPtrOutput {
 }
 
 type NodePoolManagement struct {
-	// Whether the nodes will be automatically repaired.
+	// Whether the nodes will be automatically repaired. Enabled by default.
 	AutoRepair *bool `pulumi:"autoRepair"`
-	// Whether the nodes will be automatically upgraded.
+	// Whether the nodes will be automatically upgraded. Enabled by default.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
 }
 
@@ -37511,9 +38325,9 @@ type NodePoolManagementInput interface {
 }
 
 type NodePoolManagementArgs struct {
-	// Whether the nodes will be automatically repaired.
+	// Whether the nodes will be automatically repaired. Enabled by default.
 	AutoRepair pulumi.BoolPtrInput `pulumi:"autoRepair"`
-	// Whether the nodes will be automatically upgraded.
+	// Whether the nodes will be automatically upgraded. Enabled by default.
 	AutoUpgrade pulumi.BoolPtrInput `pulumi:"autoUpgrade"`
 }
 
@@ -37612,12 +38426,12 @@ func (o NodePoolManagementOutput) ToOutput(ctx context.Context) pulumix.Output[N
 	}
 }
 
-// Whether the nodes will be automatically repaired.
+// Whether the nodes will be automatically repaired. Enabled by default.
 func (o NodePoolManagementOutput) AutoRepair() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolManagement) *bool { return v.AutoRepair }).(pulumi.BoolPtrOutput)
 }
 
-// Whether the nodes will be automatically upgraded.
+// Whether the nodes will be automatically upgraded. Enabled by default.
 func (o NodePoolManagementOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolManagement) *bool { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
 }
@@ -37652,7 +38466,7 @@ func (o NodePoolManagementPtrOutput) Elem() NodePoolManagementOutput {
 	}).(NodePoolManagementOutput)
 }
 
-// Whether the nodes will be automatically repaired.
+// Whether the nodes will be automatically repaired. Enabled by default.
 func (o NodePoolManagementPtrOutput) AutoRepair() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePoolManagement) *bool {
 		if v == nil {
@@ -37662,7 +38476,7 @@ func (o NodePoolManagementPtrOutput) AutoRepair() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether the nodes will be automatically upgraded.
+// Whether the nodes will be automatically upgraded. Enabled by default.
 func (o NodePoolManagementPtrOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePoolManagement) *bool {
 		if v == nil {
@@ -38390,6 +39204,7 @@ type NodePoolNodeConfig struct {
 	ConfidentialNodes              *NodePoolNodeConfigConfidentialNodes              `pulumi:"confidentialNodes"`
 	DiskSizeGb                     *int                                              `pulumi:"diskSizeGb"`
 	DiskType                       *string                                           `pulumi:"diskType"`
+	EffectiveTaints                []NodePoolNodeConfigEffectiveTaint                `pulumi:"effectiveTaints"`
 	EphemeralStorageConfig         *NodePoolNodeConfigEphemeralStorageConfig         `pulumi:"ephemeralStorageConfig"`
 	EphemeralStorageLocalSsdConfig *NodePoolNodeConfigEphemeralStorageLocalSsdConfig `pulumi:"ephemeralStorageLocalSsdConfig"`
 	FastSocket                     *NodePoolNodeConfigFastSocket                     `pulumi:"fastSocket"`
@@ -38440,6 +39255,7 @@ type NodePoolNodeConfigArgs struct {
 	ConfidentialNodes              NodePoolNodeConfigConfidentialNodesPtrInput              `pulumi:"confidentialNodes"`
 	DiskSizeGb                     pulumi.IntPtrInput                                       `pulumi:"diskSizeGb"`
 	DiskType                       pulumi.StringPtrInput                                    `pulumi:"diskType"`
+	EffectiveTaints                NodePoolNodeConfigEffectiveTaintArrayInput               `pulumi:"effectiveTaints"`
 	EphemeralStorageConfig         NodePoolNodeConfigEphemeralStorageConfigPtrInput         `pulumi:"ephemeralStorageConfig"`
 	EphemeralStorageLocalSsdConfig NodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrInput `pulumi:"ephemeralStorageLocalSsdConfig"`
 	FastSocket                     NodePoolNodeConfigFastSocketPtrInput                     `pulumi:"fastSocket"`
@@ -38588,6 +39404,10 @@ func (o NodePoolNodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 
 func (o NodePoolNodeConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+func (o NodePoolNodeConfigOutput) EffectiveTaints() NodePoolNodeConfigEffectiveTaintArrayOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) []NodePoolNodeConfigEffectiveTaint { return v.EffectiveTaints }).(NodePoolNodeConfigEffectiveTaintArrayOutput)
 }
 
 func (o NodePoolNodeConfigOutput) EphemeralStorageConfig() NodePoolNodeConfigEphemeralStorageConfigPtrOutput {
@@ -38788,6 +39608,15 @@ func (o NodePoolNodeConfigPtrOutput) DiskType() pulumi.StringPtrOutput {
 		}
 		return v.DiskType
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o NodePoolNodeConfigPtrOutput) EffectiveTaints() NodePoolNodeConfigEffectiveTaintArrayOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfig) []NodePoolNodeConfigEffectiveTaint {
+		if v == nil {
+			return nil
+		}
+		return v.EffectiveTaints
+	}).(NodePoolNodeConfigEffectiveTaintArrayOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) EphemeralStorageConfig() NodePoolNodeConfigEphemeralStorageConfigPtrOutput {
@@ -39380,6 +40209,136 @@ func (o NodePoolNodeConfigConfidentialNodesPtrOutput) Enabled() pulumi.BoolPtrOu
 		}
 		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+type NodePoolNodeConfigEffectiveTaint struct {
+	Effect *string `pulumi:"effect"`
+	Key    *string `pulumi:"key"`
+	Value  *string `pulumi:"value"`
+}
+
+// NodePoolNodeConfigEffectiveTaintInput is an input type that accepts NodePoolNodeConfigEffectiveTaintArgs and NodePoolNodeConfigEffectiveTaintOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigEffectiveTaintInput` via:
+//
+//	NodePoolNodeConfigEffectiveTaintArgs{...}
+type NodePoolNodeConfigEffectiveTaintInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigEffectiveTaintOutput() NodePoolNodeConfigEffectiveTaintOutput
+	ToNodePoolNodeConfigEffectiveTaintOutputWithContext(context.Context) NodePoolNodeConfigEffectiveTaintOutput
+}
+
+type NodePoolNodeConfigEffectiveTaintArgs struct {
+	Effect pulumi.StringPtrInput `pulumi:"effect"`
+	Key    pulumi.StringPtrInput `pulumi:"key"`
+	Value  pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (NodePoolNodeConfigEffectiveTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigEffectiveTaint)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigEffectiveTaintArgs) ToNodePoolNodeConfigEffectiveTaintOutput() NodePoolNodeConfigEffectiveTaintOutput {
+	return i.ToNodePoolNodeConfigEffectiveTaintOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigEffectiveTaintArgs) ToNodePoolNodeConfigEffectiveTaintOutputWithContext(ctx context.Context) NodePoolNodeConfigEffectiveTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigEffectiveTaintOutput)
+}
+
+func (i NodePoolNodeConfigEffectiveTaintArgs) ToOutput(ctx context.Context) pulumix.Output[NodePoolNodeConfigEffectiveTaint] {
+	return pulumix.Output[NodePoolNodeConfigEffectiveTaint]{
+		OutputState: i.ToNodePoolNodeConfigEffectiveTaintOutputWithContext(ctx).OutputState,
+	}
+}
+
+// NodePoolNodeConfigEffectiveTaintArrayInput is an input type that accepts NodePoolNodeConfigEffectiveTaintArray and NodePoolNodeConfigEffectiveTaintArrayOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigEffectiveTaintArrayInput` via:
+//
+//	NodePoolNodeConfigEffectiveTaintArray{ NodePoolNodeConfigEffectiveTaintArgs{...} }
+type NodePoolNodeConfigEffectiveTaintArrayInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigEffectiveTaintArrayOutput() NodePoolNodeConfigEffectiveTaintArrayOutput
+	ToNodePoolNodeConfigEffectiveTaintArrayOutputWithContext(context.Context) NodePoolNodeConfigEffectiveTaintArrayOutput
+}
+
+type NodePoolNodeConfigEffectiveTaintArray []NodePoolNodeConfigEffectiveTaintInput
+
+func (NodePoolNodeConfigEffectiveTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePoolNodeConfigEffectiveTaint)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigEffectiveTaintArray) ToNodePoolNodeConfigEffectiveTaintArrayOutput() NodePoolNodeConfigEffectiveTaintArrayOutput {
+	return i.ToNodePoolNodeConfigEffectiveTaintArrayOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigEffectiveTaintArray) ToNodePoolNodeConfigEffectiveTaintArrayOutputWithContext(ctx context.Context) NodePoolNodeConfigEffectiveTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigEffectiveTaintArrayOutput)
+}
+
+func (i NodePoolNodeConfigEffectiveTaintArray) ToOutput(ctx context.Context) pulumix.Output[[]NodePoolNodeConfigEffectiveTaint] {
+	return pulumix.Output[[]NodePoolNodeConfigEffectiveTaint]{
+		OutputState: i.ToNodePoolNodeConfigEffectiveTaintArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type NodePoolNodeConfigEffectiveTaintOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigEffectiveTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigEffectiveTaint)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigEffectiveTaintOutput) ToNodePoolNodeConfigEffectiveTaintOutput() NodePoolNodeConfigEffectiveTaintOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigEffectiveTaintOutput) ToNodePoolNodeConfigEffectiveTaintOutputWithContext(ctx context.Context) NodePoolNodeConfigEffectiveTaintOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigEffectiveTaintOutput) ToOutput(ctx context.Context) pulumix.Output[NodePoolNodeConfigEffectiveTaint] {
+	return pulumix.Output[NodePoolNodeConfigEffectiveTaint]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o NodePoolNodeConfigEffectiveTaintOutput) Effect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigEffectiveTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
+}
+
+func (o NodePoolNodeConfigEffectiveTaintOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigEffectiveTaint) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+func (o NodePoolNodeConfigEffectiveTaintOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigEffectiveTaint) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type NodePoolNodeConfigEffectiveTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigEffectiveTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePoolNodeConfigEffectiveTaint)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigEffectiveTaintArrayOutput) ToNodePoolNodeConfigEffectiveTaintArrayOutput() NodePoolNodeConfigEffectiveTaintArrayOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigEffectiveTaintArrayOutput) ToNodePoolNodeConfigEffectiveTaintArrayOutputWithContext(ctx context.Context) NodePoolNodeConfigEffectiveTaintArrayOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigEffectiveTaintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NodePoolNodeConfigEffectiveTaint] {
+	return pulumix.Output[[]NodePoolNodeConfigEffectiveTaint]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o NodePoolNodeConfigEffectiveTaintArrayOutput) Index(i pulumi.IntInput) NodePoolNodeConfigEffectiveTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePoolNodeConfigEffectiveTaint {
+		return vs[0].([]NodePoolNodeConfigEffectiveTaint)[vs[1].(int)]
+	}).(NodePoolNodeConfigEffectiveTaintOutput)
 }
 
 type NodePoolNodeConfigEphemeralStorageConfig struct {
@@ -49766,6 +50725,7 @@ type GetClusterNodeConfig struct {
 	ConfidentialNodes               []GetClusterNodeConfigConfidentialNode               `pulumi:"confidentialNodes"`
 	DiskSizeGb                      int                                                  `pulumi:"diskSizeGb"`
 	DiskType                        string                                               `pulumi:"diskType"`
+	EffectiveTaints                 []GetClusterNodeConfigEffectiveTaint                 `pulumi:"effectiveTaints"`
 	EphemeralStorageConfigs         []GetClusterNodeConfigEphemeralStorageConfig         `pulumi:"ephemeralStorageConfigs"`
 	EphemeralStorageLocalSsdConfigs []GetClusterNodeConfigEphemeralStorageLocalSsdConfig `pulumi:"ephemeralStorageLocalSsdConfigs"`
 	FastSockets                     []GetClusterNodeConfigFastSocket                     `pulumi:"fastSockets"`
@@ -49815,6 +50775,7 @@ type GetClusterNodeConfigArgs struct {
 	ConfidentialNodes               GetClusterNodeConfigConfidentialNodeArrayInput               `pulumi:"confidentialNodes"`
 	DiskSizeGb                      pulumi.IntInput                                              `pulumi:"diskSizeGb"`
 	DiskType                        pulumi.StringInput                                           `pulumi:"diskType"`
+	EffectiveTaints                 GetClusterNodeConfigEffectiveTaintArrayInput                 `pulumi:"effectiveTaints"`
 	EphemeralStorageConfigs         GetClusterNodeConfigEphemeralStorageConfigArrayInput         `pulumi:"ephemeralStorageConfigs"`
 	EphemeralStorageLocalSsdConfigs GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayInput `pulumi:"ephemeralStorageLocalSsdConfigs"`
 	FastSockets                     GetClusterNodeConfigFastSocketArrayInput                     `pulumi:"fastSockets"`
@@ -49936,6 +50897,10 @@ func (o GetClusterNodeConfigOutput) DiskSizeGb() pulumi.IntOutput {
 
 func (o GetClusterNodeConfigOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+func (o GetClusterNodeConfigOutput) EffectiveTaints() GetClusterNodeConfigEffectiveTaintArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigEffectiveTaint { return v.EffectiveTaints }).(GetClusterNodeConfigEffectiveTaintArrayOutput)
 }
 
 func (o GetClusterNodeConfigOutput) EphemeralStorageConfigs() GetClusterNodeConfigEphemeralStorageConfigArrayOutput {
@@ -50330,6 +51295,136 @@ func (o GetClusterNodeConfigConfidentialNodeArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigConfidentialNode {
 		return vs[0].([]GetClusterNodeConfigConfidentialNode)[vs[1].(int)]
 	}).(GetClusterNodeConfigConfidentialNodeOutput)
+}
+
+type GetClusterNodeConfigEffectiveTaint struct {
+	Effect string `pulumi:"effect"`
+	Key    string `pulumi:"key"`
+	Value  string `pulumi:"value"`
+}
+
+// GetClusterNodeConfigEffectiveTaintInput is an input type that accepts GetClusterNodeConfigEffectiveTaintArgs and GetClusterNodeConfigEffectiveTaintOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigEffectiveTaintInput` via:
+//
+//	GetClusterNodeConfigEffectiveTaintArgs{...}
+type GetClusterNodeConfigEffectiveTaintInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigEffectiveTaintOutput() GetClusterNodeConfigEffectiveTaintOutput
+	ToGetClusterNodeConfigEffectiveTaintOutputWithContext(context.Context) GetClusterNodeConfigEffectiveTaintOutput
+}
+
+type GetClusterNodeConfigEffectiveTaintArgs struct {
+	Effect pulumi.StringInput `pulumi:"effect"`
+	Key    pulumi.StringInput `pulumi:"key"`
+	Value  pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetClusterNodeConfigEffectiveTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigEffectiveTaint)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigEffectiveTaintArgs) ToGetClusterNodeConfigEffectiveTaintOutput() GetClusterNodeConfigEffectiveTaintOutput {
+	return i.ToGetClusterNodeConfigEffectiveTaintOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigEffectiveTaintArgs) ToGetClusterNodeConfigEffectiveTaintOutputWithContext(ctx context.Context) GetClusterNodeConfigEffectiveTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigEffectiveTaintOutput)
+}
+
+func (i GetClusterNodeConfigEffectiveTaintArgs) ToOutput(ctx context.Context) pulumix.Output[GetClusterNodeConfigEffectiveTaint] {
+	return pulumix.Output[GetClusterNodeConfigEffectiveTaint]{
+		OutputState: i.ToGetClusterNodeConfigEffectiveTaintOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClusterNodeConfigEffectiveTaintArrayInput is an input type that accepts GetClusterNodeConfigEffectiveTaintArray and GetClusterNodeConfigEffectiveTaintArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigEffectiveTaintArrayInput` via:
+//
+//	GetClusterNodeConfigEffectiveTaintArray{ GetClusterNodeConfigEffectiveTaintArgs{...} }
+type GetClusterNodeConfigEffectiveTaintArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigEffectiveTaintArrayOutput() GetClusterNodeConfigEffectiveTaintArrayOutput
+	ToGetClusterNodeConfigEffectiveTaintArrayOutputWithContext(context.Context) GetClusterNodeConfigEffectiveTaintArrayOutput
+}
+
+type GetClusterNodeConfigEffectiveTaintArray []GetClusterNodeConfigEffectiveTaintInput
+
+func (GetClusterNodeConfigEffectiveTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigEffectiveTaint)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigEffectiveTaintArray) ToGetClusterNodeConfigEffectiveTaintArrayOutput() GetClusterNodeConfigEffectiveTaintArrayOutput {
+	return i.ToGetClusterNodeConfigEffectiveTaintArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigEffectiveTaintArray) ToGetClusterNodeConfigEffectiveTaintArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigEffectiveTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigEffectiveTaintArrayOutput)
+}
+
+func (i GetClusterNodeConfigEffectiveTaintArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClusterNodeConfigEffectiveTaint] {
+	return pulumix.Output[[]GetClusterNodeConfigEffectiveTaint]{
+		OutputState: i.ToGetClusterNodeConfigEffectiveTaintArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClusterNodeConfigEffectiveTaintOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigEffectiveTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigEffectiveTaint)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigEffectiveTaintOutput) ToGetClusterNodeConfigEffectiveTaintOutput() GetClusterNodeConfigEffectiveTaintOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigEffectiveTaintOutput) ToGetClusterNodeConfigEffectiveTaintOutputWithContext(ctx context.Context) GetClusterNodeConfigEffectiveTaintOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigEffectiveTaintOutput) ToOutput(ctx context.Context) pulumix.Output[GetClusterNodeConfigEffectiveTaint] {
+	return pulumix.Output[GetClusterNodeConfigEffectiveTaint]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClusterNodeConfigEffectiveTaintOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigEffectiveTaint) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+func (o GetClusterNodeConfigEffectiveTaintOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigEffectiveTaint) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetClusterNodeConfigEffectiveTaintOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigEffectiveTaint) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetClusterNodeConfigEffectiveTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigEffectiveTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigEffectiveTaint)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigEffectiveTaintArrayOutput) ToGetClusterNodeConfigEffectiveTaintArrayOutput() GetClusterNodeConfigEffectiveTaintArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigEffectiveTaintArrayOutput) ToGetClusterNodeConfigEffectiveTaintArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigEffectiveTaintArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigEffectiveTaintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClusterNodeConfigEffectiveTaint] {
+	return pulumix.Output[[]GetClusterNodeConfigEffectiveTaint]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClusterNodeConfigEffectiveTaintArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigEffectiveTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigEffectiveTaint {
+		return vs[0].([]GetClusterNodeConfigEffectiveTaint)[vs[1].(int)]
+	}).(GetClusterNodeConfigEffectiveTaintOutput)
 }
 
 type GetClusterNodeConfigEphemeralStorageConfig struct {
@@ -54281,6 +55376,7 @@ type GetClusterNodePoolNodeConfig struct {
 	ConfidentialNodes               []GetClusterNodePoolNodeConfigConfidentialNode               `pulumi:"confidentialNodes"`
 	DiskSizeGb                      int                                                          `pulumi:"diskSizeGb"`
 	DiskType                        string                                                       `pulumi:"diskType"`
+	EffectiveTaints                 []GetClusterNodePoolNodeConfigEffectiveTaint                 `pulumi:"effectiveTaints"`
 	EphemeralStorageConfigs         []GetClusterNodePoolNodeConfigEphemeralStorageConfig         `pulumi:"ephemeralStorageConfigs"`
 	EphemeralStorageLocalSsdConfigs []GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig `pulumi:"ephemeralStorageLocalSsdConfigs"`
 	FastSockets                     []GetClusterNodePoolNodeConfigFastSocket                     `pulumi:"fastSockets"`
@@ -54330,6 +55426,7 @@ type GetClusterNodePoolNodeConfigArgs struct {
 	ConfidentialNodes               GetClusterNodePoolNodeConfigConfidentialNodeArrayInput               `pulumi:"confidentialNodes"`
 	DiskSizeGb                      pulumi.IntInput                                                      `pulumi:"diskSizeGb"`
 	DiskType                        pulumi.StringInput                                                   `pulumi:"diskType"`
+	EffectiveTaints                 GetClusterNodePoolNodeConfigEffectiveTaintArrayInput                 `pulumi:"effectiveTaints"`
 	EphemeralStorageConfigs         GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayInput         `pulumi:"ephemeralStorageConfigs"`
 	EphemeralStorageLocalSsdConfigs GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArrayInput `pulumi:"ephemeralStorageLocalSsdConfigs"`
 	FastSockets                     GetClusterNodePoolNodeConfigFastSocketArrayInput                     `pulumi:"fastSockets"`
@@ -54453,6 +55550,12 @@ func (o GetClusterNodePoolNodeConfigOutput) DiskSizeGb() pulumi.IntOutput {
 
 func (o GetClusterNodePoolNodeConfigOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+func (o GetClusterNodePoolNodeConfigOutput) EffectiveTaints() GetClusterNodePoolNodeConfigEffectiveTaintArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigEffectiveTaint {
+		return v.EffectiveTaints
+	}).(GetClusterNodePoolNodeConfigEffectiveTaintArrayOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) EphemeralStorageConfigs() GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput {
@@ -54859,6 +55962,136 @@ func (o GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput) Index(i pulumi.
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigConfidentialNode {
 		return vs[0].([]GetClusterNodePoolNodeConfigConfidentialNode)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigConfidentialNodeOutput)
+}
+
+type GetClusterNodePoolNodeConfigEffectiveTaint struct {
+	Effect string `pulumi:"effect"`
+	Key    string `pulumi:"key"`
+	Value  string `pulumi:"value"`
+}
+
+// GetClusterNodePoolNodeConfigEffectiveTaintInput is an input type that accepts GetClusterNodePoolNodeConfigEffectiveTaintArgs and GetClusterNodePoolNodeConfigEffectiveTaintOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigEffectiveTaintInput` via:
+//
+//	GetClusterNodePoolNodeConfigEffectiveTaintArgs{...}
+type GetClusterNodePoolNodeConfigEffectiveTaintInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigEffectiveTaintOutput() GetClusterNodePoolNodeConfigEffectiveTaintOutput
+	ToGetClusterNodePoolNodeConfigEffectiveTaintOutputWithContext(context.Context) GetClusterNodePoolNodeConfigEffectiveTaintOutput
+}
+
+type GetClusterNodePoolNodeConfigEffectiveTaintArgs struct {
+	Effect pulumi.StringInput `pulumi:"effect"`
+	Key    pulumi.StringInput `pulumi:"key"`
+	Value  pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetClusterNodePoolNodeConfigEffectiveTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigEffectiveTaint)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigEffectiveTaintArgs) ToGetClusterNodePoolNodeConfigEffectiveTaintOutput() GetClusterNodePoolNodeConfigEffectiveTaintOutput {
+	return i.ToGetClusterNodePoolNodeConfigEffectiveTaintOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigEffectiveTaintArgs) ToGetClusterNodePoolNodeConfigEffectiveTaintOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigEffectiveTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigEffectiveTaintOutput)
+}
+
+func (i GetClusterNodePoolNodeConfigEffectiveTaintArgs) ToOutput(ctx context.Context) pulumix.Output[GetClusterNodePoolNodeConfigEffectiveTaint] {
+	return pulumix.Output[GetClusterNodePoolNodeConfigEffectiveTaint]{
+		OutputState: i.ToGetClusterNodePoolNodeConfigEffectiveTaintOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClusterNodePoolNodeConfigEffectiveTaintArrayInput is an input type that accepts GetClusterNodePoolNodeConfigEffectiveTaintArray and GetClusterNodePoolNodeConfigEffectiveTaintArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigEffectiveTaintArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigEffectiveTaintArray{ GetClusterNodePoolNodeConfigEffectiveTaintArgs{...} }
+type GetClusterNodePoolNodeConfigEffectiveTaintArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigEffectiveTaintArrayOutput() GetClusterNodePoolNodeConfigEffectiveTaintArrayOutput
+	ToGetClusterNodePoolNodeConfigEffectiveTaintArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigEffectiveTaintArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigEffectiveTaintArray []GetClusterNodePoolNodeConfigEffectiveTaintInput
+
+func (GetClusterNodePoolNodeConfigEffectiveTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigEffectiveTaint)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigEffectiveTaintArray) ToGetClusterNodePoolNodeConfigEffectiveTaintArrayOutput() GetClusterNodePoolNodeConfigEffectiveTaintArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigEffectiveTaintArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigEffectiveTaintArray) ToGetClusterNodePoolNodeConfigEffectiveTaintArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigEffectiveTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigEffectiveTaintArrayOutput)
+}
+
+func (i GetClusterNodePoolNodeConfigEffectiveTaintArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClusterNodePoolNodeConfigEffectiveTaint] {
+	return pulumix.Output[[]GetClusterNodePoolNodeConfigEffectiveTaint]{
+		OutputState: i.ToGetClusterNodePoolNodeConfigEffectiveTaintArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClusterNodePoolNodeConfigEffectiveTaintOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigEffectiveTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigEffectiveTaint)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigEffectiveTaintOutput) ToGetClusterNodePoolNodeConfigEffectiveTaintOutput() GetClusterNodePoolNodeConfigEffectiveTaintOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigEffectiveTaintOutput) ToGetClusterNodePoolNodeConfigEffectiveTaintOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigEffectiveTaintOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigEffectiveTaintOutput) ToOutput(ctx context.Context) pulumix.Output[GetClusterNodePoolNodeConfigEffectiveTaint] {
+	return pulumix.Output[GetClusterNodePoolNodeConfigEffectiveTaint]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClusterNodePoolNodeConfigEffectiveTaintOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigEffectiveTaint) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+func (o GetClusterNodePoolNodeConfigEffectiveTaintOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigEffectiveTaint) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetClusterNodePoolNodeConfigEffectiveTaintOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigEffectiveTaint) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolNodeConfigEffectiveTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigEffectiveTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigEffectiveTaint)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigEffectiveTaintArrayOutput) ToGetClusterNodePoolNodeConfigEffectiveTaintArrayOutput() GetClusterNodePoolNodeConfigEffectiveTaintArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigEffectiveTaintArrayOutput) ToGetClusterNodePoolNodeConfigEffectiveTaintArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigEffectiveTaintArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigEffectiveTaintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClusterNodePoolNodeConfigEffectiveTaint] {
+	return pulumix.Output[[]GetClusterNodePoolNodeConfigEffectiveTaint]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClusterNodePoolNodeConfigEffectiveTaintArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigEffectiveTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigEffectiveTaint {
+		return vs[0].([]GetClusterNodePoolNodeConfigEffectiveTaint)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigEffectiveTaintOutput)
 }
 
 type GetClusterNodePoolNodeConfigEphemeralStorageConfig struct {
@@ -59744,6 +60977,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterAuthorizationPtrInput)(nil)).Elem(), AwsClusterAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterAuthorizationAdminUserInput)(nil)).Elem(), AwsClusterAuthorizationAdminUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterAuthorizationAdminUserArrayInput)(nil)).Elem(), AwsClusterAuthorizationAdminUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterBinaryAuthorizationInput)(nil)).Elem(), AwsClusterBinaryAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterBinaryAuthorizationPtrInput)(nil)).Elem(), AwsClusterBinaryAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlaneInput)(nil)).Elem(), AwsClusterControlPlaneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlanePtrInput)(nil)).Elem(), AwsClusterControlPlaneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlaneAwsServicesAuthenticationInput)(nil)).Elem(), AwsClusterControlPlaneAwsServicesAuthenticationArgs{})
@@ -59796,6 +61031,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolManagementPtrInput)(nil)).Elem(), AwsNodePoolManagementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolMaxPodsConstraintInput)(nil)).Elem(), AwsNodePoolMaxPodsConstraintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolMaxPodsConstraintPtrInput)(nil)).Elem(), AwsNodePoolMaxPodsConstraintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolUpdateSettingsInput)(nil)).Elem(), AwsNodePoolUpdateSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolUpdateSettingsPtrInput)(nil)).Elem(), AwsNodePoolUpdateSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolUpdateSettingsSurgeSettingsInput)(nil)).Elem(), AwsNodePoolUpdateSettingsSurgeSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolUpdateSettingsSurgeSettingsPtrInput)(nil)).Elem(), AwsNodePoolUpdateSettingsSurgeSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterAuthorizationInput)(nil)).Elem(), AzureClusterAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterAuthorizationPtrInput)(nil)).Elem(), AzureClusterAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterAuthorizationAdminUserInput)(nil)).Elem(), AzureClusterAuthorizationAdminUserArgs{})
@@ -59948,6 +61187,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigAdvancedMachineFeaturesPtrInput)(nil)).Elem(), ClusterNodeConfigAdvancedMachineFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigConfidentialNodesInput)(nil)).Elem(), ClusterNodeConfigConfidentialNodesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigConfidentialNodesPtrInput)(nil)).Elem(), ClusterNodeConfigConfidentialNodesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigEffectiveTaintInput)(nil)).Elem(), ClusterNodeConfigEffectiveTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigEffectiveTaintArrayInput)(nil)).Elem(), ClusterNodeConfigEffectiveTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigEphemeralStorageConfigInput)(nil)).Elem(), ClusterNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigEphemeralStorageConfigPtrInput)(nil)).Elem(), ClusterNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigEphemeralStorageLocalSsdConfigInput)(nil)).Elem(), ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs{})
@@ -60016,6 +61257,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigConfidentialNodesInput)(nil)).Elem(), ClusterNodePoolNodeConfigConfidentialNodesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigConfidentialNodesPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigConfidentialNodesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigEffectiveTaintInput)(nil)).Elem(), ClusterNodePoolNodeConfigEffectiveTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigEffectiveTaintArrayInput)(nil)).Elem(), ClusterNodePoolNodeConfigEffectiveTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigEphemeralStorageConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigEphemeralStorageConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs{})
@@ -60112,6 +61355,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigAdvancedMachineFeaturesPtrInput)(nil)).Elem(), NodePoolNodeConfigAdvancedMachineFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigConfidentialNodesInput)(nil)).Elem(), NodePoolNodeConfigConfidentialNodesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigConfidentialNodesPtrInput)(nil)).Elem(), NodePoolNodeConfigConfidentialNodesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigEffectiveTaintInput)(nil)).Elem(), NodePoolNodeConfigEffectiveTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigEffectiveTaintArrayInput)(nil)).Elem(), NodePoolNodeConfigEffectiveTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigEphemeralStorageConfigInput)(nil)).Elem(), NodePoolNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigEphemeralStorageConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigEphemeralStorageLocalSsdConfigInput)(nil)).Elem(), NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs{})
@@ -60266,6 +61511,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigAdvancedMachineFeatureArrayInput)(nil)).Elem(), GetClusterNodeConfigAdvancedMachineFeatureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigConfidentialNodeInput)(nil)).Elem(), GetClusterNodeConfigConfidentialNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigConfidentialNodeArrayInput)(nil)).Elem(), GetClusterNodeConfigConfidentialNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEffectiveTaintInput)(nil)).Elem(), GetClusterNodeConfigEffectiveTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEffectiveTaintArrayInput)(nil)).Elem(), GetClusterNodeConfigEffectiveTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEphemeralStorageConfigInput)(nil)).Elem(), GetClusterNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEphemeralStorageConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigEphemeralStorageConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEphemeralStorageLocalSsdConfigInput)(nil)).Elem(), GetClusterNodeConfigEphemeralStorageLocalSsdConfigArgs{})
@@ -60334,6 +61581,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigAdvancedMachineFeatureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigConfidentialNodeInput)(nil)).Elem(), GetClusterNodePoolNodeConfigConfidentialNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigConfidentialNodeArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigConfidentialNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigEffectiveTaintInput)(nil)).Elem(), GetClusterNodePoolNodeConfigEffectiveTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigEffectiveTaintArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigEffectiveTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigEphemeralStorageConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigEphemeralStorageConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs{})
@@ -60436,6 +61685,8 @@ func init() {
 	pulumi.RegisterOutputType(AwsClusterAuthorizationPtrOutput{})
 	pulumi.RegisterOutputType(AwsClusterAuthorizationAdminUserOutput{})
 	pulumi.RegisterOutputType(AwsClusterAuthorizationAdminUserArrayOutput{})
+	pulumi.RegisterOutputType(AwsClusterBinaryAuthorizationOutput{})
+	pulumi.RegisterOutputType(AwsClusterBinaryAuthorizationPtrOutput{})
 	pulumi.RegisterOutputType(AwsClusterControlPlaneOutput{})
 	pulumi.RegisterOutputType(AwsClusterControlPlanePtrOutput{})
 	pulumi.RegisterOutputType(AwsClusterControlPlaneAwsServicesAuthenticationOutput{})
@@ -60488,6 +61739,10 @@ func init() {
 	pulumi.RegisterOutputType(AwsNodePoolManagementPtrOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolMaxPodsConstraintOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolMaxPodsConstraintPtrOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolUpdateSettingsOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolUpdateSettingsPtrOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolUpdateSettingsSurgeSettingsOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput{})
 	pulumi.RegisterOutputType(AzureClusterAuthorizationOutput{})
 	pulumi.RegisterOutputType(AzureClusterAuthorizationPtrOutput{})
 	pulumi.RegisterOutputType(AzureClusterAuthorizationAdminUserOutput{})
@@ -60640,6 +61895,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeConfigAdvancedMachineFeaturesPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigConfidentialNodesOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigConfidentialNodesPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigEffectiveTaintOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigEffectiveTaintArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigEphemeralStorageConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigEphemeralStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigEphemeralStorageLocalSsdConfigOutput{})
@@ -60708,6 +61965,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigConfidentialNodesOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigConfidentialNodesPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigEffectiveTaintOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigEffectiveTaintArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigEphemeralStorageConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigOutput{})
@@ -60804,6 +62063,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigConfidentialNodesOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigConfidentialNodesPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigEffectiveTaintOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigEffectiveTaintArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigEphemeralStorageConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigEphemeralStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigEphemeralStorageLocalSsdConfigOutput{})
@@ -60958,6 +62219,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodeConfigAdvancedMachineFeatureArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigConfidentialNodeOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigConfidentialNodeArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigEffectiveTaintOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigEffectiveTaintArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigEphemeralStorageConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigEphemeralStorageConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput{})
@@ -61026,6 +62289,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigConfidentialNodeOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigEffectiveTaintOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigEffectiveTaintArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigEphemeralStorageConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigOutput{})

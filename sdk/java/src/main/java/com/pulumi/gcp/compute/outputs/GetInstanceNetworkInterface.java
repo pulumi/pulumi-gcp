@@ -39,6 +39,7 @@ public final class GetInstanceNetworkInterface {
      * 
      */
     private String network;
+    private String networkAttachment;
     /**
      * @return The private IP address assigned to the instance.
      * 
@@ -46,6 +47,7 @@ public final class GetInstanceNetworkInterface {
     private String networkIp;
     private String nicType;
     private Integer queueCount;
+    private String securityPolicy;
     private String stackType;
     /**
      * @return The name or self_link of the subnetwork attached to this interface.
@@ -100,6 +102,9 @@ public final class GetInstanceNetworkInterface {
     public String network() {
         return this.network;
     }
+    public String networkAttachment() {
+        return this.networkAttachment;
+    }
     /**
      * @return The private IP address assigned to the instance.
      * 
@@ -112,6 +117,9 @@ public final class GetInstanceNetworkInterface {
     }
     public Integer queueCount() {
         return this.queueCount;
+    }
+    public String securityPolicy() {
+        return this.securityPolicy;
     }
     public String stackType() {
         return this.stackType;
@@ -148,9 +156,11 @@ public final class GetInstanceNetworkInterface {
         private String ipv6Address;
         private String name;
         private String network;
+        private String networkAttachment;
         private String networkIp;
         private String nicType;
         private Integer queueCount;
+        private String securityPolicy;
         private String stackType;
         private String subnetwork;
         private String subnetworkProject;
@@ -165,9 +175,11 @@ public final class GetInstanceNetworkInterface {
     	      this.ipv6Address = defaults.ipv6Address;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
+    	      this.networkAttachment = defaults.networkAttachment;
     	      this.networkIp = defaults.networkIp;
     	      this.nicType = defaults.nicType;
     	      this.queueCount = defaults.queueCount;
+    	      this.securityPolicy = defaults.securityPolicy;
     	      this.stackType = defaults.stackType;
     	      this.subnetwork = defaults.subnetwork;
     	      this.subnetworkProject = defaults.subnetworkProject;
@@ -223,6 +235,11 @@ public final class GetInstanceNetworkInterface {
             return this;
         }
         @CustomType.Setter
+        public Builder networkAttachment(String networkAttachment) {
+            this.networkAttachment = Objects.requireNonNull(networkAttachment);
+            return this;
+        }
+        @CustomType.Setter
         public Builder networkIp(String networkIp) {
             this.networkIp = Objects.requireNonNull(networkIp);
             return this;
@@ -235,6 +252,11 @@ public final class GetInstanceNetworkInterface {
         @CustomType.Setter
         public Builder queueCount(Integer queueCount) {
             this.queueCount = Objects.requireNonNull(queueCount);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder securityPolicy(String securityPolicy) {
+            this.securityPolicy = Objects.requireNonNull(securityPolicy);
             return this;
         }
         @CustomType.Setter
@@ -262,9 +284,11 @@ public final class GetInstanceNetworkInterface {
             o.ipv6Address = ipv6Address;
             o.name = name;
             o.network = network;
+            o.networkAttachment = networkAttachment;
             o.networkIp = networkIp;
             o.nicType = nicType;
             o.queueCount = queueCount;
+            o.securityPolicy = securityPolicy;
             o.stackType = stackType;
             o.subnetwork = subnetwork;
             o.subnetworkProject = subnetworkProject;

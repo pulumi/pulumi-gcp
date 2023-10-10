@@ -52,6 +52,9 @@ class VMwareClusterArgs:
                Prefix must be a DNS subdomain.
                Name must be 63 characters or less, begin and end with alphanumerics,
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['VMwareClusterAntiAffinityGroupsArgs'] anti_affinity_groups: AAGConfig specifies whether to spread VMware User Cluster nodes across at
                least three physical hosts in the datacenter.
                Structure is documented below.
@@ -248,6 +251,9 @@ class VMwareClusterArgs:
         Prefix must be a DNS subdomain.
         Name must be 63 characters or less, begin and end with alphanumerics,
         with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -435,6 +441,7 @@ class _VMwareClusterState:
                  dataplane_v2: Optional[pulumi.Input['VMwareClusterDataplaneV2Args']] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enable_control_plane_v2: Optional[pulumi.Input[bool]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -470,6 +477,9 @@ class _VMwareClusterState:
                Prefix must be a DNS subdomain.
                Name must be 63 characters or less, begin and end with alphanumerics,
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['VMwareClusterAntiAffinityGroupsArgs'] anti_affinity_groups: AAGConfig specifies whether to spread VMware User Cluster nodes across at
                least three physical hosts in the datacenter.
                Structure is documented below.
@@ -484,6 +494,8 @@ class _VMwareClusterState:
                Structure is documented below.
         :param pulumi.Input[str] delete_time: The time at which VMware User Cluster was deleted.
         :param pulumi.Input[str] description: A human readable description of this VMware User Cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
         :param pulumi.Input[bool] enable_control_plane_v2: Enable control plane V2. Default to false.
         :param pulumi.Input[str] endpoint: The DNS name of VMware User Cluster's API server.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other
@@ -543,6 +555,7 @@ class _VMwareClusterState:
             dataplane_v2=dataplane_v2,
             delete_time=delete_time,
             description=description,
+            effective_annotations=effective_annotations,
             enable_control_plane_v2=enable_control_plane_v2,
             endpoint=endpoint,
             etag=etag,
@@ -578,6 +591,7 @@ class _VMwareClusterState:
              dataplane_v2: Optional[pulumi.Input['VMwareClusterDataplaneV2Args']] = None,
              delete_time: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
+             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              enable_control_plane_v2: Optional[pulumi.Input[bool]] = None,
              endpoint: Optional[pulumi.Input[str]] = None,
              etag: Optional[pulumi.Input[str]] = None,
@@ -615,6 +629,8 @@ class _VMwareClusterState:
             dataplane_v2 = kwargs['dataplaneV2']
         if delete_time is None and 'deleteTime' in kwargs:
             delete_time = kwargs['deleteTime']
+        if effective_annotations is None and 'effectiveAnnotations' in kwargs:
+            effective_annotations = kwargs['effectiveAnnotations']
         if enable_control_plane_v2 is None and 'enableControlPlaneV2' in kwargs:
             enable_control_plane_v2 = kwargs['enableControlPlaneV2']
         if load_balancer is None and 'loadBalancer' in kwargs:
@@ -654,6 +670,8 @@ class _VMwareClusterState:
             _setter("delete_time", delete_time)
         if description is not None:
             _setter("description", description)
+        if effective_annotations is not None:
+            _setter("effective_annotations", effective_annotations)
         if enable_control_plane_v2 is not None:
             _setter("enable_control_plane_v2", enable_control_plane_v2)
         if endpoint is not None:
@@ -724,6 +742,9 @@ class _VMwareClusterState:
         Prefix must be a DNS subdomain.
         Name must be 63 characters or less, begin and end with alphanumerics,
         with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -832,6 +853,19 @@ class _VMwareClusterState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @effective_annotations.setter
+    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_annotations", value)
 
     @property
     @pulumi.getter(name="enableControlPlaneV2")
@@ -1375,6 +1409,9 @@ class VMwareCluster(pulumi.CustomResource):
                Prefix must be a DNS subdomain.
                Name must be 63 characters or less, begin and end with alphanumerics,
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['VMwareClusterAntiAffinityGroupsArgs']] anti_affinity_groups: AAGConfig specifies whether to spread VMware User Cluster nodes across at
                least three physical hosts in the datacenter.
                Structure is documented below.
@@ -1718,6 +1755,7 @@ class VMwareCluster(pulumi.CustomResource):
             __props__.__dict__["vm_tracking_enabled"] = vm_tracking_enabled
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None
+            __props__.__dict__["effective_annotations"] = None
             __props__.__dict__["endpoint"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["fleets"] = None
@@ -1749,6 +1787,7 @@ class VMwareCluster(pulumi.CustomResource):
             dataplane_v2: Optional[pulumi.Input[pulumi.InputType['VMwareClusterDataplaneV2Args']]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enable_control_plane_v2: Optional[pulumi.Input[bool]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
@@ -1789,6 +1828,9 @@ class VMwareCluster(pulumi.CustomResource):
                Prefix must be a DNS subdomain.
                Name must be 63 characters or less, begin and end with alphanumerics,
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['VMwareClusterAntiAffinityGroupsArgs']] anti_affinity_groups: AAGConfig specifies whether to spread VMware User Cluster nodes across at
                least three physical hosts in the datacenter.
                Structure is documented below.
@@ -1803,6 +1845,8 @@ class VMwareCluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] delete_time: The time at which VMware User Cluster was deleted.
         :param pulumi.Input[str] description: A human readable description of this VMware User Cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
         :param pulumi.Input[bool] enable_control_plane_v2: Enable control plane V2. Default to false.
         :param pulumi.Input[str] endpoint: The DNS name of VMware User Cluster's API server.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other
@@ -1864,6 +1908,7 @@ class VMwareCluster(pulumi.CustomResource):
         __props__.__dict__["dataplane_v2"] = dataplane_v2
         __props__.__dict__["delete_time"] = delete_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["enable_control_plane_v2"] = enable_control_plane_v2
         __props__.__dict__["endpoint"] = endpoint
         __props__.__dict__["etag"] = etag
@@ -1900,7 +1945,7 @@ class VMwareCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
+    def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Annotations on the VMware User Cluster.
         This field has the same restrictions as Kubernetes annotations.
@@ -1910,6 +1955,9 @@ class VMwareCluster(pulumi.CustomResource):
         Prefix must be a DNS subdomain.
         Name must be 63 characters or less, begin and end with alphanumerics,
         with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -1982,6 +2030,15 @@ class VMwareCluster(pulumi.CustomResource):
         A human readable description of this VMware User Cluster.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
 
     @property
     @pulumi.getter(name="enableControlPlaneV2")

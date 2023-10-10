@@ -133,6 +133,7 @@ namespace Pulumi.Gcp.Spanner
     {
         public readonly string? Config;
         public readonly string? DisplayName;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly bool ForceDestroy;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -144,12 +145,15 @@ namespace Pulumi.Gcp.Spanner
         public readonly int ProcessingUnits;
         public readonly string? Project;
         public readonly string State;
+        public readonly ImmutableDictionary<string, string> TerraformLabels;
 
         [OutputConstructor]
         private GetInstanceResult(
             string? config,
 
             string? displayName,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             bool forceDestroy,
 
@@ -165,10 +169,13 @@ namespace Pulumi.Gcp.Spanner
 
             string? project,
 
-            string state)
+            string state,
+
+            ImmutableDictionary<string, string> terraformLabels)
         {
             Config = config;
             DisplayName = displayName;
+            EffectiveLabels = effectiveLabels;
             ForceDestroy = forceDestroy;
             Id = id;
             Labels = labels;
@@ -177,6 +184,7 @@ namespace Pulumi.Gcp.Spanner
             ProcessingUnits = processingUnits;
             Project = project;
             State = state;
+            TerraformLabels = terraformLabels;
         }
     }
 }

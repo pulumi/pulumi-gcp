@@ -29,6 +29,8 @@ class AiIndexEndpointArgs:
                - - -
         :param pulumi.Input[str] description: The description of the Index.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Indexes.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] network: The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the index endpoint should be peered.
                Private services access must already be configured for the network. If left unspecified, the index endpoint is not peered with any network.
                [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`.
@@ -113,6 +115,8 @@ class AiIndexEndpointArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The labels with user-defined metadata to organize your Indexes.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -179,6 +183,7 @@ class _AiIndexEndpointState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -187,6 +192,7 @@ class _AiIndexEndpointState:
                  public_endpoint_domain_name: Optional[pulumi.Input[str]] = None,
                  public_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AiIndexEndpoint resources.
@@ -196,8 +202,12 @@ class _AiIndexEndpointState:
                
                
                - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Indexes.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name of the Index.
         :param pulumi.Input[str] network: The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the index endpoint should be peered.
                Private services access must already be configured for the network. If left unspecified, the index endpoint is not peered with any network.
@@ -208,6 +218,8 @@ class _AiIndexEndpointState:
         :param pulumi.Input[str] public_endpoint_domain_name: If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
         :param pulumi.Input[bool] public_endpoint_enabled: If true, the deployed index will be accessible through public endpoint.
         :param pulumi.Input[str] region: The region of the index endpoint. eg us-central1
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         _AiIndexEndpointState._configure(
@@ -215,6 +227,7 @@ class _AiIndexEndpointState:
             create_time=create_time,
             description=description,
             display_name=display_name,
+            effective_labels=effective_labels,
             etag=etag,
             labels=labels,
             name=name,
@@ -223,6 +236,7 @@ class _AiIndexEndpointState:
             public_endpoint_domain_name=public_endpoint_domain_name,
             public_endpoint_enabled=public_endpoint_enabled,
             region=region,
+            terraform_labels=terraform_labels,
             update_time=update_time,
         )
     @staticmethod
@@ -231,6 +245,7 @@ class _AiIndexEndpointState:
              create_time: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              etag: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -239,6 +254,7 @@ class _AiIndexEndpointState:
              public_endpoint_domain_name: Optional[pulumi.Input[str]] = None,
              public_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
              region: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -246,10 +262,14 @@ class _AiIndexEndpointState:
             create_time = kwargs['createTime']
         if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
+        if effective_labels is None and 'effectiveLabels' in kwargs:
+            effective_labels = kwargs['effectiveLabels']
         if public_endpoint_domain_name is None and 'publicEndpointDomainName' in kwargs:
             public_endpoint_domain_name = kwargs['publicEndpointDomainName']
         if public_endpoint_enabled is None and 'publicEndpointEnabled' in kwargs:
             public_endpoint_enabled = kwargs['publicEndpointEnabled']
+        if terraform_labels is None and 'terraformLabels' in kwargs:
+            terraform_labels = kwargs['terraformLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
@@ -259,6 +279,8 @@ class _AiIndexEndpointState:
             _setter("description", description)
         if display_name is not None:
             _setter("display_name", display_name)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if etag is not None:
             _setter("etag", etag)
         if labels is not None:
@@ -275,6 +297,8 @@ class _AiIndexEndpointState:
             _setter("public_endpoint_enabled", public_endpoint_enabled)
         if region is not None:
             _setter("region", region)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if update_time is not None:
             _setter("update_time", update_time)
 
@@ -318,6 +342,19 @@ class _AiIndexEndpointState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
@@ -334,6 +371,8 @@ class _AiIndexEndpointState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The labels with user-defined metadata to organize your Indexes.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -418,6 +457,19 @@ class _AiIndexEndpointState:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -457,7 +509,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        vertex_network = gcp.compute.get_network(name="network-name")
+        vertex_network = gcp.compute.Network("vertexNetwork")
         vertex_range = gcp.compute.GlobalAddress("vertexRange",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
@@ -475,7 +527,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
             labels={
                 "label-one": "value-one",
             },
-            network=f"projects/{project.number}/global/networks/{vertex_network.name}",
+            network=vertex_network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"),
             opts=pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
         ```
         ### Vertex Ai Index Endpoint With Public Endpoint
@@ -522,6 +574,8 @@ class AiIndexEndpoint(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Indexes.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] network: The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the index endpoint should be peered.
                Private services access must already be configured for the network. If left unspecified, the index endpoint is not peered with any network.
                [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`.
@@ -551,7 +605,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        vertex_network = gcp.compute.get_network(name="network-name")
+        vertex_network = gcp.compute.Network("vertexNetwork")
         vertex_range = gcp.compute.GlobalAddress("vertexRange",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
@@ -569,7 +623,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
             labels={
                 "label-one": "value-one",
             },
-            network=f"projects/{project.number}/global/networks/{vertex_network.name}",
+            network=vertex_network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"),
             opts=pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
         ```
         ### Vertex Ai Index Endpoint With Public Endpoint
@@ -653,9 +707,11 @@ class AiIndexEndpoint(pulumi.CustomResource):
             __props__.__dict__["public_endpoint_enabled"] = public_endpoint_enabled
             __props__.__dict__["region"] = region
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["public_endpoint_domain_name"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["update_time"] = None
         super(AiIndexEndpoint, __self__).__init__(
             'gcp:vertex/aiIndexEndpoint:AiIndexEndpoint',
@@ -670,6 +726,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -678,6 +735,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
             public_endpoint_domain_name: Optional[pulumi.Input[str]] = None,
             public_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'AiIndexEndpoint':
         """
         Get an existing AiIndexEndpoint resource's state with the given name, id, and optional extra
@@ -692,8 +750,12 @@ class AiIndexEndpoint(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Indexes.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name of the Index.
         :param pulumi.Input[str] network: The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the index endpoint should be peered.
                Private services access must already be configured for the network. If left unspecified, the index endpoint is not peered with any network.
@@ -704,6 +766,8 @@ class AiIndexEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] public_endpoint_domain_name: If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
         :param pulumi.Input[bool] public_endpoint_enabled: If true, the deployed index will be accessible through public endpoint.
         :param pulumi.Input[str] region: The region of the index endpoint. eg us-central1
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -713,6 +777,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["etag"] = etag
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
@@ -721,6 +786,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
         __props__.__dict__["public_endpoint_domain_name"] = public_endpoint_domain_name
         __props__.__dict__["public_endpoint_enabled"] = public_endpoint_enabled
         __props__.__dict__["region"] = region
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["update_time"] = update_time
         return AiIndexEndpoint(resource_name, opts=opts, __props__=__props__)
 
@@ -752,6 +818,15 @@ class AiIndexEndpoint(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
@@ -764,6 +839,8 @@ class AiIndexEndpoint(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The labels with user-defined metadata to organize your Indexes.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -818,6 +895,15 @@ class AiIndexEndpoint(pulumi.CustomResource):
         The region of the index endpoint. eg us-central1
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="updateTime")

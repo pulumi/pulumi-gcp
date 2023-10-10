@@ -103,6 +103,23 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
      * For example: `projects/*{@literal /}locations/*{@literal /}gatewaySecurityPolicies/swg-policy`.
      * This policy is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
@@ -123,6 +140,8 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Set of label tags associated with the Gateway resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -130,6 +149,8 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Set of label tags associated with the Gateway resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -300,6 +321,23 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
+    }
+
+    /**
      * Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
      * Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
      * 
@@ -339,6 +377,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.deleteSwgAutogenRouterOnDestroy = $.deleteSwgAutogenRouterOnDestroy;
         this.description = $.description;
+        this.effectiveLabels = $.effectiveLabels;
         this.gatewaySecurityPolicy = $.gatewaySecurityPolicy;
         this.labels = $.labels;
         this.location = $.location;
@@ -350,6 +389,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         this.selfLink = $.selfLink;
         this.serverTlsPolicy = $.serverTlsPolicy;
         this.subnetwork = $.subnetwork;
+        this.terraformLabels = $.terraformLabels;
         this.type = $.type;
         this.updateTime = $.updateTime;
     }
@@ -509,6 +549,29 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param gatewaySecurityPolicy A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
          * For example: `projects/*{@literal /}locations/*{@literal /}gatewaySecurityPolicies/swg-policy`.
          * This policy is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
@@ -535,6 +598,8 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Set of label tags associated with the Gateway resource.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -546,6 +611,8 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Set of label tags associated with the Gateway resource.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -781,6 +848,29 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder subnetwork(String subnetwork) {
             return subnetwork(Output.of(subnetwork));
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
+            return this;
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

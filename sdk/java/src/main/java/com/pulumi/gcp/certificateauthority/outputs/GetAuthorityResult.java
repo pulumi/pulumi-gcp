@@ -24,6 +24,7 @@ public final class GetAuthorityResult {
     private String createTime;
     private Boolean deletionProtection;
     private String desiredState;
+    private Map<String,String> effectiveLabels;
     private String gcsBucket;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -48,6 +49,7 @@ public final class GetAuthorityResult {
     private Boolean skipGracePeriod;
     private String state;
     private List<GetAuthoritySubordinateConfig> subordinateConfigs;
+    private Map<String,String> terraformLabels;
     private String type;
     private String updateTime;
 
@@ -69,6 +71,9 @@ public final class GetAuthorityResult {
     }
     public String desiredState() {
         return this.desiredState;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public String gcsBucket() {
         return this.gcsBucket;
@@ -126,6 +131,9 @@ public final class GetAuthorityResult {
     public List<GetAuthoritySubordinateConfig> subordinateConfigs() {
         return this.subordinateConfigs;
     }
+    public Map<String,String> terraformLabels() {
+        return this.terraformLabels;
+    }
     public String type() {
         return this.type;
     }
@@ -148,6 +156,7 @@ public final class GetAuthorityResult {
         private String createTime;
         private Boolean deletionProtection;
         private String desiredState;
+        private Map<String,String> effectiveLabels;
         private String gcsBucket;
         private String id;
         private Boolean ignoreActiveCertificatesOnDeletion;
@@ -164,6 +173,7 @@ public final class GetAuthorityResult {
         private Boolean skipGracePeriod;
         private String state;
         private List<GetAuthoritySubordinateConfig> subordinateConfigs;
+        private Map<String,String> terraformLabels;
         private String type;
         private String updateTime;
         public Builder() {}
@@ -175,6 +185,7 @@ public final class GetAuthorityResult {
     	      this.createTime = defaults.createTime;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.desiredState = defaults.desiredState;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.gcsBucket = defaults.gcsBucket;
     	      this.id = defaults.id;
     	      this.ignoreActiveCertificatesOnDeletion = defaults.ignoreActiveCertificatesOnDeletion;
@@ -191,6 +202,7 @@ public final class GetAuthorityResult {
     	      this.skipGracePeriod = defaults.skipGracePeriod;
     	      this.state = defaults.state;
     	      this.subordinateConfigs = defaults.subordinateConfigs;
+    	      this.terraformLabels = defaults.terraformLabels;
     	      this.type = defaults.type;
     	      this.updateTime = defaults.updateTime;
         }
@@ -229,6 +241,11 @@ public final class GetAuthorityResult {
         @CustomType.Setter
         public Builder desiredState(String desiredState) {
             this.desiredState = Objects.requireNonNull(desiredState);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -321,6 +338,11 @@ public final class GetAuthorityResult {
             return subordinateConfigs(List.of(subordinateConfigs));
         }
         @CustomType.Setter
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
@@ -338,6 +360,7 @@ public final class GetAuthorityResult {
             o.createTime = createTime;
             o.deletionProtection = deletionProtection;
             o.desiredState = desiredState;
+            o.effectiveLabels = effectiveLabels;
             o.gcsBucket = gcsBucket;
             o.id = id;
             o.ignoreActiveCertificatesOnDeletion = ignoreActiveCertificatesOnDeletion;
@@ -354,6 +377,7 @@ public final class GetAuthorityResult {
             o.skipGracePeriod = skipGracePeriod;
             o.state = state;
             o.subordinateConfigs = subordinateConfigs;
+            o.terraformLabels = terraformLabels;
             o.type = type;
             o.updateTime = updateTime;
             return o;

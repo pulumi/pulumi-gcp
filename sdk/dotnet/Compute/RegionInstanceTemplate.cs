@@ -65,6 +65,13 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.RegionInstanceTemplateDisk>> Disks { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
         /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         /// </summary>
@@ -87,6 +94,9 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A set of key/value label pairs to assign to instances
         /// created from this template.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -227,6 +237,12 @@ namespace Pulumi.Gcp.Compute
         [Output("tagsFingerprint")]
         public Output<string> TagsFingerprint { get; private set; } = null!;
 
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("terraformLabels")]
+        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a RegionInstanceTemplate resource with the given unique name, arguments, and options.
@@ -344,6 +360,9 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A set of key/value label pairs to assign to instances
         /// created from this template.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -534,6 +553,19 @@ namespace Pulumi.Gcp.Compute
             set => _disks = value;
         }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
+
         /// <summary>
         /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
         /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
@@ -566,6 +598,9 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A set of key/value label pairs to assign to instances
         /// created from this template.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -726,6 +761,18 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("tagsFingerprint")]
         public Input<string>? TagsFingerprint { get; set; }
+
+        [Input("terraformLabels")]
+        private InputMap<string>? _terraformLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> TerraformLabels
+        {
+            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
+            set => _terraformLabels = value;
+        }
 
         public RegionInstanceTemplateState()
         {

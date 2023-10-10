@@ -228,6 +228,13 @@ namespace Pulumi.Gcp.Healthcare
         public Output<string> Dataset { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// User-supplied key-value pairs used to organize HL7v2 stores.
         /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
         /// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -236,6 +243,9 @@ namespace Pulumi.Gcp.Healthcare
         /// No more than 64 labels can be associated with a given store.
         /// An object containing a list of "key": value pairs.
         /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -278,6 +288,13 @@ namespace Pulumi.Gcp.Healthcare
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("terraformLabels")]
+        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
 
         /// <summary>
@@ -347,6 +364,9 @@ namespace Pulumi.Gcp.Healthcare
         /// No more than 64 labels can be associated with a given store.
         /// An object containing a list of "key": value pairs.
         /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -411,6 +431,19 @@ namespace Pulumi.Gcp.Healthcare
         [Input("dataset")]
         public Input<string>? Dataset { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -423,6 +456,9 @@ namespace Pulumi.Gcp.Healthcare
         /// No more than 64 labels can be associated with a given store.
         /// An object containing a list of "key": value pairs.
         /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -474,6 +510,19 @@ namespace Pulumi.Gcp.Healthcare
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        [Input("terraformLabels")]
+        private InputMap<string>? _terraformLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> TerraformLabels
+        {
+            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
+            set => _terraformLabels = value;
+        }
 
         public Hl7StoreState()
         {

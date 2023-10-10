@@ -41,6 +41,8 @@ class EdgeCacheServiceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] edge_ssl_certificates: URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
                Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['EdgeCacheServiceLogConfigArgs'] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
@@ -208,6 +210,8 @@ class EdgeCacheServiceArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Set of label tags associated with the EdgeCache resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -291,6 +295,7 @@ class _EdgeCacheServiceState:
                  disable_quic: Optional[pulumi.Input[bool]] = None,
                  edge_security_policy: Optional[pulumi.Input[str]] = None,
                  edge_ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ipv4_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -299,7 +304,8 @@ class _EdgeCacheServiceState:
                  project: Optional[pulumi.Input[str]] = None,
                  require_tls: Optional[pulumi.Input[bool]] = None,
                  routing: Optional[pulumi.Input['EdgeCacheServiceRoutingArgs']] = None,
-                 ssl_policy: Optional[pulumi.Input[str]] = None):
+                 ssl_policy: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering EdgeCacheService resources.
         :param pulumi.Input[str] description: A human-readable description of the hostRule.
@@ -310,9 +316,13 @@ class _EdgeCacheServiceState:
         :param pulumi.Input[str] edge_security_policy: Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] edge_ssl_certificates: URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
                Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4_addresses: The IPv4 addresses associated with this service. Addresses are static for the lifetime of the service.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: The IPv6 addresses associated with this service. Addresses are static for the lifetime of the service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['EdgeCacheServiceLogConfigArgs'] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
@@ -327,6 +337,8 @@ class _EdgeCacheServiceState:
                Structure is documented below.
         :param pulumi.Input[str] ssl_policy: URL of the SslPolicy resource that will be associated with the EdgeCacheService.
                If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         _EdgeCacheServiceState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -335,6 +347,7 @@ class _EdgeCacheServiceState:
             disable_quic=disable_quic,
             edge_security_policy=edge_security_policy,
             edge_ssl_certificates=edge_ssl_certificates,
+            effective_labels=effective_labels,
             ipv4_addresses=ipv4_addresses,
             ipv6_addresses=ipv6_addresses,
             labels=labels,
@@ -344,6 +357,7 @@ class _EdgeCacheServiceState:
             require_tls=require_tls,
             routing=routing,
             ssl_policy=ssl_policy,
+            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
@@ -353,6 +367,7 @@ class _EdgeCacheServiceState:
              disable_quic: Optional[pulumi.Input[bool]] = None,
              edge_security_policy: Optional[pulumi.Input[str]] = None,
              edge_ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              ipv4_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -362,6 +377,7 @@ class _EdgeCacheServiceState:
              require_tls: Optional[pulumi.Input[bool]] = None,
              routing: Optional[pulumi.Input['EdgeCacheServiceRoutingArgs']] = None,
              ssl_policy: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if disable_http2 is None and 'disableHttp2' in kwargs:
@@ -372,6 +388,8 @@ class _EdgeCacheServiceState:
             edge_security_policy = kwargs['edgeSecurityPolicy']
         if edge_ssl_certificates is None and 'edgeSslCertificates' in kwargs:
             edge_ssl_certificates = kwargs['edgeSslCertificates']
+        if effective_labels is None and 'effectiveLabels' in kwargs:
+            effective_labels = kwargs['effectiveLabels']
         if ipv4_addresses is None and 'ipv4Addresses' in kwargs:
             ipv4_addresses = kwargs['ipv4Addresses']
         if ipv6_addresses is None and 'ipv6Addresses' in kwargs:
@@ -382,6 +400,8 @@ class _EdgeCacheServiceState:
             require_tls = kwargs['requireTls']
         if ssl_policy is None and 'sslPolicy' in kwargs:
             ssl_policy = kwargs['sslPolicy']
+        if terraform_labels is None and 'terraformLabels' in kwargs:
+            terraform_labels = kwargs['terraformLabels']
 
         if description is not None:
             _setter("description", description)
@@ -393,6 +413,8 @@ class _EdgeCacheServiceState:
             _setter("edge_security_policy", edge_security_policy)
         if edge_ssl_certificates is not None:
             _setter("edge_ssl_certificates", edge_ssl_certificates)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if ipv4_addresses is not None:
             _setter("ipv4_addresses", ipv4_addresses)
         if ipv6_addresses is not None:
@@ -411,6 +433,8 @@ class _EdgeCacheServiceState:
             _setter("routing", routing)
         if ssl_policy is not None:
             _setter("ssl_policy", ssl_policy)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter
@@ -476,6 +500,19 @@ class _EdgeCacheServiceState:
         pulumi.set(self, "edge_ssl_certificates", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="ipv4Addresses")
     def ipv4_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -504,6 +541,8 @@ class _EdgeCacheServiceState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Set of label tags associated with the EdgeCache resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -590,6 +629,19 @@ class _EdgeCacheServiceState:
     @ssl_policy.setter
     def ssl_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ssl_policy", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
 
 class EdgeCacheService(pulumi.CustomResource):
@@ -884,6 +936,8 @@ class EdgeCacheService(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] edge_ssl_certificates: URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
                Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[pulumi.InputType['EdgeCacheServiceLogConfigArgs']] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
@@ -1224,8 +1278,10 @@ class EdgeCacheService(pulumi.CustomResource):
                 raise TypeError("Missing required property 'routing'")
             __props__.__dict__["routing"] = routing
             __props__.__dict__["ssl_policy"] = ssl_policy
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["ipv4_addresses"] = None
             __props__.__dict__["ipv6_addresses"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(EdgeCacheService, __self__).__init__(
             'gcp:networkservices/edgeCacheService:EdgeCacheService',
             resource_name,
@@ -1241,6 +1297,7 @@ class EdgeCacheService(pulumi.CustomResource):
             disable_quic: Optional[pulumi.Input[bool]] = None,
             edge_security_policy: Optional[pulumi.Input[str]] = None,
             edge_ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             ipv4_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1249,7 +1306,8 @@ class EdgeCacheService(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             require_tls: Optional[pulumi.Input[bool]] = None,
             routing: Optional[pulumi.Input[pulumi.InputType['EdgeCacheServiceRoutingArgs']]] = None,
-            ssl_policy: Optional[pulumi.Input[str]] = None) -> 'EdgeCacheService':
+            ssl_policy: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'EdgeCacheService':
         """
         Get an existing EdgeCacheService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1265,9 +1323,13 @@ class EdgeCacheService(pulumi.CustomResource):
         :param pulumi.Input[str] edge_security_policy: Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] edge_ssl_certificates: URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
                Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4_addresses: The IPv4 addresses associated with this service. Addresses are static for the lifetime of the service.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: The IPv6 addresses associated with this service. Addresses are static for the lifetime of the service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[pulumi.InputType['EdgeCacheServiceLogConfigArgs']] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
@@ -1282,6 +1344,8 @@ class EdgeCacheService(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] ssl_policy: URL of the SslPolicy resource that will be associated with the EdgeCacheService.
                If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1292,6 +1356,7 @@ class EdgeCacheService(pulumi.CustomResource):
         __props__.__dict__["disable_quic"] = disable_quic
         __props__.__dict__["edge_security_policy"] = edge_security_policy
         __props__.__dict__["edge_ssl_certificates"] = edge_ssl_certificates
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["ipv4_addresses"] = ipv4_addresses
         __props__.__dict__["ipv6_addresses"] = ipv6_addresses
         __props__.__dict__["labels"] = labels
@@ -1301,6 +1366,7 @@ class EdgeCacheService(pulumi.CustomResource):
         __props__.__dict__["require_tls"] = require_tls
         __props__.__dict__["routing"] = routing
         __props__.__dict__["ssl_policy"] = ssl_policy
+        __props__.__dict__["terraform_labels"] = terraform_labels
         return EdgeCacheService(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1347,6 +1413,15 @@ class EdgeCacheService(pulumi.CustomResource):
         return pulumi.get(self, "edge_ssl_certificates")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="ipv4Addresses")
     def ipv4_addresses(self) -> pulumi.Output[Sequence[str]]:
         """
@@ -1367,6 +1442,8 @@ class EdgeCacheService(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Set of label tags associated with the EdgeCache resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1425,4 +1502,13 @@ class EdgeCacheService(pulumi.CustomResource):
         If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
         """
         return pulumi.get(self, "ssl_policy")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 

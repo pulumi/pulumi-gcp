@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -30,7 +30,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkservices"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -59,7 +59,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkservices"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -94,10 +94,10 @@ import (
 //
 //	"os"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networksecurity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkservices"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -203,10 +203,10 @@ import (
 //
 //	"os"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networksecurity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkservices"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -365,11 +365,16 @@ type Gateway struct {
 	DeleteSwgAutogenRouterOnDestroy pulumi.BoolPtrOutput `pulumi:"deleteSwgAutogenRouterOnDestroy"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
 	// For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
 	// This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
 	GatewaySecurityPolicy pulumi.StringPtrOutput `pulumi:"gatewaySecurityPolicy"`
 	// Set of label tags associated with the Gateway resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location of the gateway.
 	// The default value is `global`.
@@ -403,6 +408,9 @@ type Gateway struct {
 	// For example: `projects/*/regions/us-central1/subnetworks/network-1`.
 	// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
 	Subnetwork pulumi.StringPtrOutput `pulumi:"subnetwork"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
 	// Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -460,11 +468,16 @@ type gatewayState struct {
 	DeleteSwgAutogenRouterOnDestroy *bool `pulumi:"deleteSwgAutogenRouterOnDestroy"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
 	// For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
 	// This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
 	GatewaySecurityPolicy *string `pulumi:"gatewaySecurityPolicy"`
 	// Set of label tags associated with the Gateway resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the gateway.
 	// The default value is `global`.
@@ -498,6 +511,9 @@ type gatewayState struct {
 	// For example: `projects/*/regions/us-central1/subnetworks/network-1`.
 	// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
 	Subnetwork *string `pulumi:"subnetwork"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
 	// Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
 	Type *string `pulumi:"type"`
@@ -520,11 +536,16 @@ type GatewayState struct {
 	DeleteSwgAutogenRouterOnDestroy pulumi.BoolPtrInput
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
 	// For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
 	// This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
 	GatewaySecurityPolicy pulumi.StringPtrInput
 	// Set of label tags associated with the Gateway resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the gateway.
 	// The default value is `global`.
@@ -558,6 +579,9 @@ type GatewayState struct {
 	// For example: `projects/*/regions/us-central1/subnetworks/network-1`.
 	// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
 	Subnetwork pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
 	// Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
 	Type pulumi.StringPtrInput
@@ -587,6 +611,8 @@ type gatewayArgs struct {
 	// This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
 	GatewaySecurityPolicy *string `pulumi:"gatewaySecurityPolicy"`
 	// Set of label tags associated with the Gateway resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the gateway.
 	// The default value is `global`.
@@ -642,6 +668,8 @@ type GatewayArgs struct {
 	// This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
 	GatewaySecurityPolicy pulumi.StringPtrInput
 	// Set of label tags associated with the Gateway resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the gateway.
 	// The default value is `global`.
@@ -818,6 +846,12 @@ func (o GatewayOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o GatewayOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
 // For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
 // This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
@@ -826,6 +860,8 @@ func (o GatewayOutput) GatewaySecurityPolicy() pulumi.StringPtrOutput {
 }
 
 // Set of label tags associated with the Gateway resource.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o GatewayOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -887,6 +923,12 @@ func (o GatewayOutput) ServerTlsPolicy() pulumi.StringPtrOutput {
 // Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
 func (o GatewayOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o GatewayOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.

@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// The DNS domain name for the public PTR record.
         /// </summary>
         public readonly string PublicPtrDomainName;
+        public readonly string SecurityPolicy;
 
         [OutputConstructor]
         private GetInstanceNetworkInterfaceAccessConfigResult(
@@ -33,11 +34,14 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string networkTier,
 
-            string publicPtrDomainName)
+            string publicPtrDomainName,
+
+            string securityPolicy)
         {
             NatIp = natIp;
             NetworkTier = networkTier;
             PublicPtrDomainName = publicPtrDomainName;
+            SecurityPolicy = securityPolicy;
         }
     }
 }

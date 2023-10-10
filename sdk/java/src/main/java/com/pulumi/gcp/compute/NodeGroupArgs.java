@@ -22,6 +22,7 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * If you use sole-tenant nodes for your workloads, you can use the node
      * group autoscaler to automatically manage the sizes of your node groups.
+     * One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
      * Structure is documented below.
      * 
      */
@@ -31,6 +32,7 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return If you use sole-tenant nodes for your workloads, you can use the node
      * group autoscaler to automatically manage the sizes of your node groups.
+     * One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
      * Structure is documented below.
      * 
      */
@@ -54,14 +56,14 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The initial number of nodes in the node group. One of `initial_size` or `size` must be specified.
+     * The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
      * 
      */
     @Import(name="initialSize")
     private @Nullable Output<Integer> initialSize;
 
     /**
-     * @return The initial number of nodes in the node group. One of `initial_size` or `size` must be specified.
+     * @return The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
      * 
      */
     public Optional<Output<Integer>> initialSize() {
@@ -169,21 +171,6 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
-     * 
-     */
-    @Import(name="size")
-    private @Nullable Output<Integer> size;
-
-    /**
-     * @return The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
-     * 
-     */
-    public Optional<Output<Integer>> size() {
-        return Optional.ofNullable(this.size);
-    }
-
-    /**
      * Zone where this node group is located
      * 
      */
@@ -210,7 +197,6 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
         this.nodeTemplate = $.nodeTemplate;
         this.project = $.project;
         this.shareSettings = $.shareSettings;
-        this.size = $.size;
         this.zone = $.zone;
     }
 
@@ -235,6 +221,7 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param autoscalingPolicy If you use sole-tenant nodes for your workloads, you can use the node
          * group autoscaler to automatically manage the sizes of your node groups.
+         * One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
          * Structure is documented below.
          * 
          * @return builder
@@ -248,6 +235,7 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param autoscalingPolicy If you use sole-tenant nodes for your workloads, you can use the node
          * group autoscaler to automatically manage the sizes of your node groups.
+         * One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
          * Structure is documented below.
          * 
          * @return builder
@@ -279,7 +267,7 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param initialSize The initial number of nodes in the node group. One of `initial_size` or `size` must be specified.
+         * @param initialSize The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
          * 
          * @return builder
          * 
@@ -290,7 +278,7 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param initialSize The initial number of nodes in the node group. One of `initial_size` or `size` must be specified.
+         * @param initialSize The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
          * 
          * @return builder
          * 
@@ -433,27 +421,6 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder shareSettings(NodeGroupShareSettingsArgs shareSettings) {
             return shareSettings(Output.of(shareSettings));
-        }
-
-        /**
-         * @param size The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder size(@Nullable Output<Integer> size) {
-            $.size = size;
-            return this;
-        }
-
-        /**
-         * @param size The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder size(Integer size) {
-            return size(Output.of(size));
         }
 
         /**

@@ -33,6 +33,7 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
+ *     deletionProtection: true,
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     cluster: primary.id,
@@ -62,6 +63,7 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
+ *     deletionProtection: true,
  * });
  * const autopilot = new gcp.gkebackup.BackupPlan("autopilot", {
  *     cluster: primary.id,
@@ -90,6 +92,7 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
+ *     deletionProtection: true,
  * });
  * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "us-central1"});
  * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.id});
@@ -128,6 +131,7 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
+ *     deletionProtection: true,
  * });
  * const full = new gcp.gkebackup.BackupPlan("full", {
  *     cluster: primary.id,
@@ -228,6 +232,11 @@ export class BackupPlan extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * etag is used for optimistic concurrency control as a way to help prevent simultaneous
      * updates of a backup plan from overwriting each other. It is strongly suggested that
      * systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates
@@ -240,6 +249,9 @@ export class BackupPlan extends pulumi.CustomResource {
      * Description: A set of custom labels supplied by the user.
      * A list of key->value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -276,6 +288,11 @@ export class BackupPlan extends pulumi.CustomResource {
      */
     public /*out*/ readonly stateReason!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Server generated, unique identifier of UUID format.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
@@ -298,6 +315,7 @@ export class BackupPlan extends pulumi.CustomResource {
             resourceInputs["cluster"] = state ? state.cluster : undefined;
             resourceInputs["deactivated"] = state ? state.deactivated : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -307,6 +325,7 @@ export class BackupPlan extends pulumi.CustomResource {
             resourceInputs["retentionPolicy"] = state ? state.retentionPolicy : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["stateReason"] = state ? state.stateReason : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
         } else {
             const args = argsOrState as BackupPlanArgs | undefined;
@@ -326,10 +345,12 @@ export class BackupPlan extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["retentionPolicy"] = args ? args.retentionPolicy : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["protectedPodCount"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateReason"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -367,6 +388,11 @@ export interface BackupPlanState {
      */
     description?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * etag is used for optimistic concurrency control as a way to help prevent simultaneous
      * updates of a backup plan from overwriting each other. It is strongly suggested that
      * systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates
@@ -379,6 +405,9 @@ export interface BackupPlanState {
      * Description: A set of custom labels supplied by the user.
      * A list of key->value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -414,6 +443,11 @@ export interface BackupPlanState {
      * Detailed description of why BackupPlan is in its current state.
      */
     stateReason?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Server generated, unique identifier of UUID format.
      */
@@ -453,6 +487,9 @@ export interface BackupPlanArgs {
      * Description: A set of custom labels supplied by the user.
      * A list of key->value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

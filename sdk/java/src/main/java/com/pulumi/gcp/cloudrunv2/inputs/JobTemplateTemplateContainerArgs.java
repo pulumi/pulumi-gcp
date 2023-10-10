@@ -6,10 +6,8 @@ package com.pulumi.gcp.cloudrunv2.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateContainerEnvArgs;
-import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateContainerLivenessProbeArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateContainerPortArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateContainerResourcesArgs;
-import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateContainerStartupProbeArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateContainerVolumeMountArgs;
 import java.lang.String;
 import java.util.List;
@@ -85,39 +83,6 @@ public final class JobTemplateTemplateContainerArgs extends com.pulumi.resources
     }
 
     /**
-     * (Optional, Deprecated)
-     * Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-     * This field is not supported in Cloud Run Job currently.
-     * Structure is documented below.
-     * 
-     * &gt; **Warning:** `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-     * 
-     * @deprecated
-     * `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-     * 
-     */
-    @Deprecated /* `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
-    @Import(name="livenessProbe")
-    private @Nullable Output<JobTemplateTemplateContainerLivenessProbeArgs> livenessProbe;
-
-    /**
-     * @return (Optional, Deprecated)
-     * Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-     * This field is not supported in Cloud Run Job currently.
-     * Structure is documented below.
-     * 
-     * &gt; **Warning:** `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-     * 
-     * @deprecated
-     * `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-     * 
-     */
-    @Deprecated /* `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
-    public Optional<Output<JobTemplateTemplateContainerLivenessProbeArgs>> livenessProbe() {
-        return Optional.ofNullable(this.livenessProbe);
-    }
-
-    /**
      * Name of the container specified as a DNS_LABEL.
      * 
      */
@@ -169,39 +134,6 @@ public final class JobTemplateTemplateContainerArgs extends com.pulumi.resources
     }
 
     /**
-     * (Optional, Deprecated)
-     * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-     * This field is not supported in Cloud Run Job currently.
-     * Structure is documented below.
-     * 
-     * &gt; **Warning:** `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-     * 
-     * @deprecated
-     * `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-     * 
-     */
-    @Deprecated /* `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
-    @Import(name="startupProbe")
-    private @Nullable Output<JobTemplateTemplateContainerStartupProbeArgs> startupProbe;
-
-    /**
-     * @return (Optional, Deprecated)
-     * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-     * This field is not supported in Cloud Run Job currently.
-     * Structure is documented below.
-     * 
-     * &gt; **Warning:** `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-     * 
-     * @deprecated
-     * `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-     * 
-     */
-    @Deprecated /* `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
-    public Optional<Output<JobTemplateTemplateContainerStartupProbeArgs>> startupProbe() {
-        return Optional.ofNullable(this.startupProbe);
-    }
-
-    /**
      * Volume to mount into the container&#39;s filesystem.
      * Structure is documented below.
      * 
@@ -240,11 +172,9 @@ public final class JobTemplateTemplateContainerArgs extends com.pulumi.resources
         this.commands = $.commands;
         this.envs = $.envs;
         this.image = $.image;
-        this.livenessProbe = $.livenessProbe;
         this.name = $.name;
         this.ports = $.ports;
         this.resources = $.resources;
-        this.startupProbe = $.startupProbe;
         this.volumeMounts = $.volumeMounts;
         this.workingDir = $.workingDir;
     }
@@ -385,45 +315,6 @@ public final class JobTemplateTemplateContainerArgs extends com.pulumi.resources
         }
 
         /**
-         * @param livenessProbe (Optional, Deprecated)
-         * Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-         * This field is not supported in Cloud Run Job currently.
-         * Structure is documented below.
-         * 
-         * &gt; **Warning:** `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-         * 
-         */
-        @Deprecated /* `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
-        public Builder livenessProbe(@Nullable Output<JobTemplateTemplateContainerLivenessProbeArgs> livenessProbe) {
-            $.livenessProbe = livenessProbe;
-            return this;
-        }
-
-        /**
-         * @param livenessProbe (Optional, Deprecated)
-         * Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-         * This field is not supported in Cloud Run Job currently.
-         * Structure is documented below.
-         * 
-         * &gt; **Warning:** `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-         * 
-         */
-        @Deprecated /* `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
-        public Builder livenessProbe(JobTemplateTemplateContainerLivenessProbeArgs livenessProbe) {
-            return livenessProbe(Output.of(livenessProbe));
-        }
-
-        /**
          * @param name Name of the container specified as a DNS_LABEL.
          * 
          * @return builder
@@ -502,45 +393,6 @@ public final class JobTemplateTemplateContainerArgs extends com.pulumi.resources
          */
         public Builder resources(JobTemplateTemplateContainerResourcesArgs resources) {
             return resources(Output.of(resources));
-        }
-
-        /**
-         * @param startupProbe (Optional, Deprecated)
-         * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-         * This field is not supported in Cloud Run Job currently.
-         * Structure is documented below.
-         * 
-         * &gt; **Warning:** `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-         * 
-         */
-        @Deprecated /* `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
-        public Builder startupProbe(@Nullable Output<JobTemplateTemplateContainerStartupProbeArgs> startupProbe) {
-            $.startupProbe = startupProbe;
-            return this;
-        }
-
-        /**
-         * @param startupProbe (Optional, Deprecated)
-         * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-         * This field is not supported in Cloud Run Job currently.
-         * Structure is documented below.
-         * 
-         * &gt; **Warning:** `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-         * 
-         */
-        @Deprecated /* `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
-        public Builder startupProbe(JobTemplateTemplateContainerStartupProbeArgs startupProbe) {
-            return startupProbe(Output.of(startupProbe));
         }
 
         /**

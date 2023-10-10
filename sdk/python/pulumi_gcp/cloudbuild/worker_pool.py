@@ -27,7 +27,8 @@ class WorkerPoolArgs:
         The set of arguments for constructing a WorkerPool resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-               limitations.
+               limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
+               configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
         :param pulumi.Input[str] name: User-defined name of the `WorkerPool`.
                
@@ -99,7 +100,8 @@ class WorkerPoolArgs:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-        limitations.
+        limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
+        configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -178,6 +180,7 @@ class _WorkerPoolState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['WorkerPoolNetworkConfigArgs']] = None,
@@ -189,10 +192,13 @@ class _WorkerPoolState:
         """
         Input properties used for looking up and filtering WorkerPool resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-               limitations.
+               limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
+               configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] create_time: Output only. Time at which the request to create the `WorkerPool` was received.
         :param pulumi.Input[str] delete_time: Output only. Time at which the request to delete the `WorkerPool` was received.
         :param pulumi.Input[str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: User-defined name of the `WorkerPool`.
                
@@ -211,6 +217,7 @@ class _WorkerPoolState:
             create_time=create_time,
             delete_time=delete_time,
             display_name=display_name,
+            effective_annotations=effective_annotations,
             location=location,
             name=name,
             network_config=network_config,
@@ -227,6 +234,7 @@ class _WorkerPoolState:
              create_time: Optional[pulumi.Input[str]] = None,
              delete_time: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
+             effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              network_config: Optional[pulumi.Input['WorkerPoolNetworkConfigArgs']] = None,
@@ -243,6 +251,8 @@ class _WorkerPoolState:
             delete_time = kwargs['deleteTime']
         if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
+        if effective_annotations is None and 'effectiveAnnotations' in kwargs:
+            effective_annotations = kwargs['effectiveAnnotations']
         if network_config is None and 'networkConfig' in kwargs:
             network_config = kwargs['networkConfig']
         if update_time is None and 'updateTime' in kwargs:
@@ -258,6 +268,8 @@ class _WorkerPoolState:
             _setter("delete_time", delete_time)
         if display_name is not None:
             _setter("display_name", display_name)
+        if effective_annotations is not None:
+            _setter("effective_annotations", effective_annotations)
         if location is not None:
             _setter("location", location)
         if name is not None:
@@ -280,7 +292,8 @@ class _WorkerPoolState:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-        limitations.
+        limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
+        configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -323,6 +336,19 @@ class _WorkerPoolState:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @effective_annotations.setter
+    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "effective_annotations", value)
 
     @property
     @pulumi.getter
@@ -508,7 +534,8 @@ class WorkerPool(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-               limitations.
+               limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
+               configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: User-defined name of the `WorkerPool`.
@@ -641,6 +668,7 @@ class WorkerPool(pulumi.CustomResource):
             __props__.__dict__["worker_config"] = worker_config
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None
+            __props__.__dict__["effective_annotations"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
@@ -658,6 +686,7 @@ class WorkerPool(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_config: Optional[pulumi.Input[pulumi.InputType['WorkerPoolNetworkConfigArgs']]] = None,
@@ -674,10 +703,13 @@ class WorkerPool(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-               limitations.
+               limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
+               configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] create_time: Output only. Time at which the request to create the `WorkerPool` was received.
         :param pulumi.Input[str] delete_time: Output only. Time at which the request to delete the `WorkerPool` was received.
         :param pulumi.Input[str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: User-defined name of the `WorkerPool`.
                
@@ -698,6 +730,7 @@ class WorkerPool(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delete_time"] = delete_time
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["network_config"] = network_config
@@ -713,7 +746,8 @@ class WorkerPool(pulumi.CustomResource):
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-        limitations.
+        limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
+        configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -740,6 +774,15 @@ class WorkerPool(pulumi.CustomResource):
         A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
 
     @property
     @pulumi.getter

@@ -339,6 +339,7 @@ namespace Pulumi.Gcp.OsConfig
     ///                 WeekDayOfMonth = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs
     ///                 {
     ///                     DayOfWeek = "TUESDAY",
+    ///                     DayOffset = 3,
     ///                     WeekOrdinal = -1,
     ///                 },
     ///             },

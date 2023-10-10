@@ -107,6 +107,23 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
      * required when setting to true
      * 
@@ -222,12 +239,18 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     /**
      * Labels to apply to this disk.  A list of key-&gt;value pairs.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return Labels to apply to this disk.  A list of key-&gt;value pairs.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -636,6 +659,23 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
+    }
+
+    /**
      * URL of the disk type resource describing which disk type to use to
      * create the disk. Provide this when creating the disk.
      * 
@@ -691,6 +731,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
         this.diskEncryptionKey = $.diskEncryptionKey;
+        this.effectiveLabels = $.effectiveLabels;
         this.enableConfidentialCompute = $.enableConfidentialCompute;
         this.guestOsFeatures = $.guestOsFeatures;
         this.image = $.image;
@@ -716,6 +757,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         this.sourceImageId = $.sourceImageId;
         this.sourceSnapshotEncryptionKey = $.sourceSnapshotEncryptionKey;
         this.sourceSnapshotId = $.sourceSnapshotId;
+        this.terraformLabels = $.terraformLabels;
         this.type = $.type;
         this.users = $.users;
         this.zone = $.zone;
@@ -843,6 +885,29 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder diskEncryptionKey(DiskDiskEncryptionKeyArgs diskEncryptionKey) {
             return diskEncryptionKey(Output.of(diskEncryptionKey));
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
         }
 
         /**
@@ -1003,6 +1068,9 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels Labels to apply to this disk.  A list of key-&gt;value pairs.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -1013,6 +1081,9 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Labels to apply to this disk.  A list of key-&gt;value pairs.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -1559,6 +1630,29 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sourceSnapshotId(String sourceSnapshotId) {
             return sourceSnapshotId(Output.of(sourceSnapshotId));
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
+            return this;
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

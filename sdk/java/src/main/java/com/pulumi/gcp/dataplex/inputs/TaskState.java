@@ -68,6 +68,23 @@ public final class TaskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * Configuration for the cluster
      * Structure is documented below.
      * 
@@ -104,12 +121,18 @@ public final class TaskState extends com.pulumi.resources.ResourceArgs {
     /**
      * User-defined labels for the task.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return User-defined labels for the task.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -247,6 +270,23 @@ public final class TaskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
+    }
+
+    /**
      * Configuration for the cluster
      * Structure is documented below.
      * 
@@ -303,6 +343,7 @@ public final class TaskState extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.description = $.description;
         this.displayName = $.displayName;
+        this.effectiveLabels = $.effectiveLabels;
         this.executionSpec = $.executionSpec;
         this.executionStatuses = $.executionStatuses;
         this.labels = $.labels;
@@ -314,6 +355,7 @@ public final class TaskState extends com.pulumi.resources.ResourceArgs {
         this.spark = $.spark;
         this.state = $.state;
         this.taskId = $.taskId;
+        this.terraformLabels = $.terraformLabels;
         this.triggerSpec = $.triggerSpec;
         this.uid = $.uid;
         this.updateTime = $.updateTime;
@@ -401,6 +443,29 @@ public final class TaskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param executionSpec Configuration for the cluster
          * Structure is documented below.
          * 
@@ -460,6 +525,9 @@ public final class TaskState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels User-defined labels for the task.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -470,6 +538,9 @@ public final class TaskState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels User-defined labels for the task.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -654,6 +725,29 @@ public final class TaskState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder taskId(String taskId) {
             return taskId(Output.of(taskId));
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
+            return this;
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

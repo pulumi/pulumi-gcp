@@ -142,29 +142,22 @@ class SecretIamMemberConditionArgs:
 class SecretReplicationArgs:
     def __init__(__self__, *,
                  auto: Optional[pulumi.Input['SecretReplicationAutoArgs']] = None,
-                 automatic: Optional[pulumi.Input[bool]] = None,
                  user_managed: Optional[pulumi.Input['SecretReplicationUserManagedArgs']] = None):
         """
         :param pulumi.Input['SecretReplicationAutoArgs'] auto: The Secret will automatically be replicated without any restrictions.
                Structure is documented below.
-        :param pulumi.Input[bool] automatic: (Optional, Deprecated)
-               The Secret will automatically be replicated without any restrictions.
-               
-               > **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
         :param pulumi.Input['SecretReplicationUserManagedArgs'] user_managed: The Secret will be replicated to the regions specified by the user.
                Structure is documented below.
         """
         SecretReplicationArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             auto=auto,
-            automatic=automatic,
             user_managed=user_managed,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
              auto: Optional[pulumi.Input['SecretReplicationAutoArgs']] = None,
-             automatic: Optional[pulumi.Input[bool]] = None,
              user_managed: Optional[pulumi.Input['SecretReplicationUserManagedArgs']] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -173,11 +166,6 @@ class SecretReplicationArgs:
 
         if auto is not None:
             _setter("auto", auto)
-        if automatic is not None:
-            warnings.warn("""`automatic` is deprecated and will be removed in a future major release. Use `auto` instead.""", DeprecationWarning)
-            pulumi.log.warn("""automatic is deprecated: `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.""")
-        if automatic is not None:
-            _setter("automatic", automatic)
         if user_managed is not None:
             _setter("user_managed", user_managed)
 
@@ -193,24 +181,6 @@ class SecretReplicationArgs:
     @auto.setter
     def auto(self, value: Optional[pulumi.Input['SecretReplicationAutoArgs']]):
         pulumi.set(self, "auto", value)
-
-    @property
-    @pulumi.getter
-    def automatic(self) -> Optional[pulumi.Input[bool]]:
-        """
-        (Optional, Deprecated)
-        The Secret will automatically be replicated without any restrictions.
-
-        > **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
-        """
-        warnings.warn("""`automatic` is deprecated and will be removed in a future major release. Use `auto` instead.""", DeprecationWarning)
-        pulumi.log.warn("""automatic is deprecated: `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.""")
-
-        return pulumi.get(self, "automatic")
-
-    @automatic.setter
-    def automatic(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "automatic", value)
 
     @property
     @pulumi.getter(name="userManaged")

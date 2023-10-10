@@ -126,6 +126,13 @@ namespace Pulumi.Gcp.CertificateManager
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
         /// for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
         /// selecting a proper certificate.
@@ -137,9 +144,12 @@ namespace Pulumi.Gcp.CertificateManager
         /// Set of labels associated with a Certificate Map Entry.
         /// An object containing a list of "key": value pairs.
         /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
         /// A map entry that is inputted into the cetrificate map
@@ -176,6 +186,13 @@ namespace Pulumi.Gcp.CertificateManager
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("terraformLabels")]
+        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
@@ -266,6 +283,9 @@ namespace Pulumi.Gcp.CertificateManager
         /// Set of labels associated with a Certificate Map Entry.
         /// An object containing a list of "key": value pairs.
         /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -339,6 +359,19 @@ namespace Pulumi.Gcp.CertificateManager
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
+
         /// <summary>
         /// A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
         /// for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
@@ -354,6 +387,9 @@ namespace Pulumi.Gcp.CertificateManager
         /// Set of labels associated with a Certificate Map Entry.
         /// An object containing a list of "key": value pairs.
         /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -396,6 +432,19 @@ namespace Pulumi.Gcp.CertificateManager
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        [Input("terraformLabels")]
+        private InputMap<string>? _terraformLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> TerraformLabels
+        {
+            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
+            set => _terraformLabels = value;
+        }
 
         /// <summary>
         /// Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,

@@ -29,16 +29,13 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = Gcp.Compute.GetNetwork.Invoke(new()
-    ///     {
-    ///         Name = "alloydb-network",
-    ///     });
+    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork");
     /// 
     ///     var defaultCluster = new Gcp.Alloydb.Cluster("defaultCluster", new()
     ///     {
     ///         ClusterId = "alloydb-cluster",
     ///         Location = "us-central1",
-    ///         Network = defaultNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///         Network = defaultNetwork.Id,
     ///     });
     /// 
     ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("privateIpAlloc", new()
@@ -46,12 +43,12 @@ namespace Pulumi.Gcp.Alloydb
     ///         AddressType = "INTERNAL",
     ///         Purpose = "VPC_PEERING",
     ///         PrefixLength = 16,
-    ///         Network = defaultNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///         Network = defaultNetwork.Id,
     ///     });
     /// 
     ///     var vpcConnection = new Gcp.ServiceNetworking.Connection("vpcConnection", new()
     ///     {
-    ///         Network = defaultNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///         Network = defaultNetwork.Id,
     ///         Service = "servicenetworking.googleapis.com",
     ///         ReservedPeeringRanges = new[]
     ///         {
@@ -97,16 +94,13 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = Gcp.Compute.GetNetwork.Invoke(new()
-    ///     {
-    ///         Name = "alloydb-network",
-    ///     });
+    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork");
     /// 
     ///     var defaultCluster = new Gcp.Alloydb.Cluster("defaultCluster", new()
     ///     {
     ///         ClusterId = "alloydb-cluster",
     ///         Location = "us-central1",
-    ///         Network = defaultNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///         Network = defaultNetwork.Id,
     ///     });
     /// 
     ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("privateIpAlloc", new()
@@ -114,12 +108,12 @@ namespace Pulumi.Gcp.Alloydb
     ///         AddressType = "INTERNAL",
     ///         Purpose = "VPC_PEERING",
     ///         PrefixLength = 16,
-    ///         Network = defaultNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///         Network = defaultNetwork.Id,
     ///     });
     /// 
     ///     var vpcConnection = new Gcp.ServiceNetworking.Connection("vpcConnection", new()
     ///     {
-    ///         Network = defaultNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///         Network = defaultNetwork.Id,
     ///         Service = "servicenetworking.googleapis.com",
     ///         ReservedPeeringRanges = new[]
     ///         {
@@ -146,6 +140,7 @@ namespace Pulumi.Gcp.Alloydb
     ///         BackupId = "alloydb-backup",
     ///         ClusterName = defaultCluster.Name,
     ///         Description = "example description",
+    ///         Type = "ON_DEMAND",
     ///         Labels = 
     ///         {
     ///             { "label", "key" },
@@ -181,6 +176,16 @@ namespace Pulumi.Gcp.Alloydb
     public partial class Backup : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// </summary>
+        [Output("annotations")]
+        public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the alloydb backup.
         /// </summary>
         [Output("backupId")]
@@ -193,16 +198,50 @@ namespace Pulumi.Gcp.Alloydb
         public Output<string> ClusterName { get; private set; } = null!;
 
         /// <summary>
-        /// Time the Backup was created in UTC.
+        /// Output only. The system-generated UID of the cluster which was used to create this resource.
+        /// </summary>
+        [Output("clusterUid")]
+        public Output<string> ClusterUid { get; private set; } = null!;
+
+        /// <summary>
+        /// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Output only. Delete time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Output("deleteTime")]
+        public Output<string> DeleteTime { get; private set; } = null!;
 
         /// <summary>
         /// User-provided description of the backup.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// User-settable and human-readable display name for the Backup.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string?> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        /// Terraform, other clients and services.
+        /// </summary>
+        [Output("effectiveAnnotations")]
+        public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
         /// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
@@ -219,13 +258,31 @@ namespace Pulumi.Gcp.Alloydb
         public Output<ImmutableArray<Outputs.BackupEncryptionInfo>> EncryptionInfos { get; private set; } = null!;
 
         /// <summary>
-        /// A hash of the resource.
+        /// For Resource freshness validation (https://google.aip.dev/154)
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// User-defined labels for the alloydb backup.
+        /// Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
+        /// Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("expiryQuantities")]
+        public Output<ImmutableArray<Outputs.BackupExpiryQuantity>> ExpiryQuantities { get; private set; } = null!;
+
+        /// <summary>
+        /// Output only. The time at which after the backup is eligible to be garbage collected.
+        /// It is the duration specified by the backup's retention policy, added to the backup's createTime.
+        /// </summary>
+        [Output("expiryTime")]
+        public Output<string> ExpiryTime { get; private set; } = null!;
+
+        /// <summary>
+        /// User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -253,16 +310,37 @@ namespace Pulumi.Gcp.Alloydb
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
+        /// Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+        /// This can happen due to user-triggered updates or system actions like failover or maintenance.
         /// </summary>
         [Output("reconciling")]
         public Output<bool> Reconciling { get; private set; } = null!;
 
         /// <summary>
-        /// The current state of the backup.
+        /// Output only. The size of the backup in bytes.
+        /// </summary>
+        [Output("sizeBytes")]
+        public Output<string> SizeBytes { get; private set; } = null!;
+
+        /// <summary>
+        /// Output only. The current state of the backup.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("terraformLabels")]
+        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// The backup type, which suggests the trigger for the backup.
+        /// Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
         /// Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
@@ -271,7 +349,8 @@ namespace Pulumi.Gcp.Alloydb
         public Output<string> Uid { get; private set; } = null!;
 
         /// <summary>
-        /// Time the Backup was updated in UTC.
+        /// Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -322,6 +401,22 @@ namespace Pulumi.Gcp.Alloydb
 
     public sealed class BackupArgs : global::Pulumi.ResourceArgs
     {
+        [Input("annotations")]
+        private InputMap<string>? _annotations;
+
+        /// <summary>
+        /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// </summary>
+        public InputMap<string> Annotations
+        {
+            get => _annotations ?? (_annotations = new InputMap<string>());
+            set => _annotations = value;
+        }
+
         /// <summary>
         /// The ID of the alloydb backup.
         /// </summary>
@@ -341,6 +436,12 @@ namespace Pulumi.Gcp.Alloydb
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// User-settable and human-readable display name for the Backup.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
         /// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
         /// Structure is documented below.
         /// </summary>
@@ -351,7 +452,10 @@ namespace Pulumi.Gcp.Alloydb
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// User-defined labels for the alloydb backup.
+        /// User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -375,6 +479,13 @@ namespace Pulumi.Gcp.Alloydb
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The backup type, which suggests the trigger for the backup.
+        /// Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
         public BackupArgs()
         {
         }
@@ -383,6 +494,22 @@ namespace Pulumi.Gcp.Alloydb
 
     public sealed class BackupState : global::Pulumi.ResourceArgs
     {
+        [Input("annotations")]
+        private InputMap<string>? _annotations;
+
+        /// <summary>
+        /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// </summary>
+        public InputMap<string> Annotations
+        {
+            get => _annotations ?? (_annotations = new InputMap<string>());
+            set => _annotations = value;
+        }
+
         /// <summary>
         /// The ID of the alloydb backup.
         /// </summary>
@@ -396,16 +523,62 @@ namespace Pulumi.Gcp.Alloydb
         public Input<string>? ClusterName { get; set; }
 
         /// <summary>
-        /// Time the Backup was created in UTC.
+        /// Output only. The system-generated UID of the cluster which was used to create this resource.
+        /// </summary>
+        [Input("clusterUid")]
+        public Input<string>? ClusterUid { get; set; }
+
+        /// <summary>
+        /// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Output only. Delete time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Input("deleteTime")]
+        public Input<string>? DeleteTime { get; set; }
 
         /// <summary>
         /// User-provided description of the backup.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// User-settable and human-readable display name for the Backup.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        [Input("effectiveAnnotations")]
+        private InputMap<string>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        /// Terraform, other clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveAnnotations
+        {
+            get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());
+            set => _effectiveAnnotations = value;
+        }
+
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
 
         /// <summary>
         /// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
@@ -428,16 +601,40 @@ namespace Pulumi.Gcp.Alloydb
         }
 
         /// <summary>
-        /// A hash of the resource.
+        /// For Resource freshness validation (https://google.aip.dev/154)
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
+
+        [Input("expiryQuantities")]
+        private InputList<Inputs.BackupExpiryQuantityGetArgs>? _expiryQuantities;
+
+        /// <summary>
+        /// Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
+        /// Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.BackupExpiryQuantityGetArgs> ExpiryQuantities
+        {
+            get => _expiryQuantities ?? (_expiryQuantities = new InputList<Inputs.BackupExpiryQuantityGetArgs>());
+            set => _expiryQuantities = value;
+        }
+
+        /// <summary>
+        /// Output only. The time at which after the backup is eligible to be garbage collected.
+        /// It is the duration specified by the backup's retention policy, added to the backup's createTime.
+        /// </summary>
+        [Input("expiryTime")]
+        public Input<string>? ExpiryTime { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// User-defined labels for the alloydb backup.
+        /// User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -468,16 +665,43 @@ namespace Pulumi.Gcp.Alloydb
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
+        /// Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+        /// This can happen due to user-triggered updates or system actions like failover or maintenance.
         /// </summary>
         [Input("reconciling")]
         public Input<bool>? Reconciling { get; set; }
 
         /// <summary>
-        /// The current state of the backup.
+        /// Output only. The size of the backup in bytes.
+        /// </summary>
+        [Input("sizeBytes")]
+        public Input<string>? SizeBytes { get; set; }
+
+        /// <summary>
+        /// Output only. The current state of the backup.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        [Input("terraformLabels")]
+        private InputMap<string>? _terraformLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> TerraformLabels
+        {
+            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
+            set => _terraformLabels = value;
+        }
+
+        /// <summary>
+        /// The backup type, which suggests the trigger for the backup.
+        /// Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         /// <summary>
         /// Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
@@ -486,7 +710,8 @@ namespace Pulumi.Gcp.Alloydb
         public Input<string>? Uid { get; set; }
 
         /// <summary>
-        /// Time the Backup was updated in UTC.
+        /// Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

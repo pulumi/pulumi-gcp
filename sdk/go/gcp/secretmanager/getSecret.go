@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -59,20 +59,23 @@ type LookupSecretArgs struct {
 
 // A collection of values returned by getSecret.
 type LookupSecretResult struct {
-	Annotations map[string]string `pulumi:"annotations"`
-	CreateTime  string            `pulumi:"createTime"`
-	ExpireTime  string            `pulumi:"expireTime"`
+	Annotations          map[string]string `pulumi:"annotations"`
+	CreateTime           string            `pulumi:"createTime"`
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
+	EffectiveLabels      map[string]string `pulumi:"effectiveLabels"`
+	ExpireTime           string            `pulumi:"expireTime"`
 	// The provider-assigned unique ID for this managed resource.
-	Id             string                 `pulumi:"id"`
-	Labels         map[string]string      `pulumi:"labels"`
-	Name           string                 `pulumi:"name"`
-	Project        *string                `pulumi:"project"`
-	Replications   []GetSecretReplication `pulumi:"replications"`
-	Rotations      []GetSecretRotation    `pulumi:"rotations"`
-	SecretId       string                 `pulumi:"secretId"`
-	Topics         []GetSecretTopic       `pulumi:"topics"`
-	Ttl            string                 `pulumi:"ttl"`
-	VersionAliases map[string]string      `pulumi:"versionAliases"`
+	Id              string                 `pulumi:"id"`
+	Labels          map[string]string      `pulumi:"labels"`
+	Name            string                 `pulumi:"name"`
+	Project         *string                `pulumi:"project"`
+	Replications    []GetSecretReplication `pulumi:"replications"`
+	Rotations       []GetSecretRotation    `pulumi:"rotations"`
+	SecretId        string                 `pulumi:"secretId"`
+	TerraformLabels map[string]string      `pulumi:"terraformLabels"`
+	Topics          []GetSecretTopic       `pulumi:"topics"`
+	Ttl             string                 `pulumi:"ttl"`
+	VersionAliases  map[string]string      `pulumi:"versionAliases"`
 }
 
 func LookupSecretOutput(ctx *pulumi.Context, args LookupSecretOutputArgs, opts ...pulumi.InvokeOption) LookupSecretResultOutput {
@@ -129,6 +132,14 @@ func (o LookupSecretResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+func (o LookupSecretResultOutput) EffectiveAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSecretResult) map[string]string { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
+}
+
+func (o LookupSecretResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSecretResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupSecretResultOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretResult) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
@@ -160,6 +171,10 @@ func (o LookupSecretResultOutput) Rotations() GetSecretRotationArrayOutput {
 
 func (o LookupSecretResultOutput) SecretId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretResult) string { return v.SecretId }).(pulumi.StringOutput)
+}
+
+func (o LookupSecretResultOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSecretResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupSecretResultOutput) Topics() GetSecretTopicArrayOutput {

@@ -57,6 +57,7 @@ import * as utilities from "../utilities";
  *         clusterSecondaryRangeName: subnetwork_1.secondaryIpRanges.apply(secondaryIpRanges => secondaryIpRanges[0].rangeName),
  *         servicesSecondaryRangeName: subnetwork_1.secondaryIpRanges.apply(secondaryIpRanges => secondaryIpRanges[1].rangeName),
  *     },
+ *     deletionProtection: true,
  * });
  * const example_response_policy = new gcp.dns.ResponsePolicy("example-response-policy", {
  *     responsePolicyName: "example-response-policy",

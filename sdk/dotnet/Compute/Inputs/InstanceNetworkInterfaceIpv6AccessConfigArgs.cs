@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class InstanceNetworkInterfaceIpv6AccessConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The first IPv6 address of the external IPv6 range associated 
+        /// The first IPv6 address of the external IPv6 range associated
         /// with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig.
         /// To use a static external IP address, it must be unused and in the same region as the instance's zone.
         /// If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
@@ -47,6 +47,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// </summary>
         [Input("publicPtrDomainName")]
         public Input<string>? PublicPtrDomainName { get; set; }
+
+        [Input("securityPolicy")]
+        public Input<string>? SecurityPolicy { get; set; }
 
         public InstanceNetworkInterfaceIpv6AccessConfigArgs()
         {

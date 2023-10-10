@@ -20,8 +20,6 @@ __all__ = [
     'KeyRingIAMMemberConditionArgs',
     'KeyRingImportJobAttestationArgs',
     'KeyRingImportJobPublicKeyArgs',
-    'RegistryCredentialArgs',
-    'RegistryEventNotificationConfigItemArgs',
 ]
 
 @pulumi.input_type
@@ -727,107 +725,5 @@ class KeyRingImportJobPublicKeyArgs:
     @pem.setter
     def pem(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pem", value)
-
-
-@pulumi.input_type
-class RegistryCredentialArgs:
-    def __init__(__self__, *,
-                 public_key_certificate: pulumi.Input[Mapping[str, Any]]):
-        """
-        :param pulumi.Input[Mapping[str, Any]] public_key_certificate: A public key certificate format and data.
-        """
-        RegistryCredentialArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            public_key_certificate=public_key_certificate,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             public_key_certificate: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if public_key_certificate is None and 'publicKeyCertificate' in kwargs:
-            public_key_certificate = kwargs['publicKeyCertificate']
-        if public_key_certificate is None:
-            raise TypeError("Missing 'public_key_certificate' argument")
-
-        _setter("public_key_certificate", public_key_certificate)
-
-    @property
-    @pulumi.getter(name="publicKeyCertificate")
-    def public_key_certificate(self) -> pulumi.Input[Mapping[str, Any]]:
-        """
-        A public key certificate format and data.
-        """
-        return pulumi.get(self, "public_key_certificate")
-
-    @public_key_certificate.setter
-    def public_key_certificate(self, value: pulumi.Input[Mapping[str, Any]]):
-        pulumi.set(self, "public_key_certificate", value)
-
-
-@pulumi.input_type
-class RegistryEventNotificationConfigItemArgs:
-    def __init__(__self__, *,
-                 pubsub_topic_name: pulumi.Input[str],
-                 subfolder_matches: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] pubsub_topic_name: PubSub topic name to publish device events.
-        :param pulumi.Input[str] subfolder_matches: If the subfolder name matches this string exactly, this
-               configuration will be used. The string must not include the
-               leading '/' character. If empty, all strings are matched. Empty
-               value can only be used for the last `event_notification_configs`
-               item.
-        """
-        RegistryEventNotificationConfigItemArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            pubsub_topic_name=pubsub_topic_name,
-            subfolder_matches=subfolder_matches,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             pubsub_topic_name: Optional[pulumi.Input[str]] = None,
-             subfolder_matches: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if pubsub_topic_name is None and 'pubsubTopicName' in kwargs:
-            pubsub_topic_name = kwargs['pubsubTopicName']
-        if pubsub_topic_name is None:
-            raise TypeError("Missing 'pubsub_topic_name' argument")
-        if subfolder_matches is None and 'subfolderMatches' in kwargs:
-            subfolder_matches = kwargs['subfolderMatches']
-
-        _setter("pubsub_topic_name", pubsub_topic_name)
-        if subfolder_matches is not None:
-            _setter("subfolder_matches", subfolder_matches)
-
-    @property
-    @pulumi.getter(name="pubsubTopicName")
-    def pubsub_topic_name(self) -> pulumi.Input[str]:
-        """
-        PubSub topic name to publish device events.
-        """
-        return pulumi.get(self, "pubsub_topic_name")
-
-    @pubsub_topic_name.setter
-    def pubsub_topic_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "pubsub_topic_name", value)
-
-    @property
-    @pulumi.getter(name="subfolderMatches")
-    def subfolder_matches(self) -> Optional[pulumi.Input[str]]:
-        """
-        If the subfolder name matches this string exactly, this
-        configuration will be used. The string must not include the
-        leading '/' character. If empty, all strings are matched. Empty
-        value can only be used for the last `event_notification_configs`
-        item.
-        """
-        return pulumi.get(self, "subfolder_matches")
-
-    @subfolder_matches.setter
-    def subfolder_matches(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "subfolder_matches", value)
 
 

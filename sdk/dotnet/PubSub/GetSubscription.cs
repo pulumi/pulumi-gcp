@@ -127,6 +127,7 @@ namespace Pulumi.Gcp.PubSub
         public readonly ImmutableArray<Outputs.GetSubscriptionBigqueryConfigResult> BigqueryConfigs;
         public readonly ImmutableArray<Outputs.GetSubscriptionCloudStorageConfigResult> CloudStorageConfigs;
         public readonly ImmutableArray<Outputs.GetSubscriptionDeadLetterPolicyResult> DeadLetterPolicies;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly bool EnableExactlyOnceDelivery;
         public readonly bool EnableMessageOrdering;
         public readonly ImmutableArray<Outputs.GetSubscriptionExpirationPolicyResult> ExpirationPolicies;
@@ -142,6 +143,7 @@ namespace Pulumi.Gcp.PubSub
         public readonly ImmutableArray<Outputs.GetSubscriptionPushConfigResult> PushConfigs;
         public readonly bool RetainAckedMessages;
         public readonly ImmutableArray<Outputs.GetSubscriptionRetryPolicyResult> RetryPolicies;
+        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly string Topic;
 
         [OutputConstructor]
@@ -153,6 +155,8 @@ namespace Pulumi.Gcp.PubSub
             ImmutableArray<Outputs.GetSubscriptionCloudStorageConfigResult> cloudStorageConfigs,
 
             ImmutableArray<Outputs.GetSubscriptionDeadLetterPolicyResult> deadLetterPolicies,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             bool enableExactlyOnceDelivery,
 
@@ -178,12 +182,15 @@ namespace Pulumi.Gcp.PubSub
 
             ImmutableArray<Outputs.GetSubscriptionRetryPolicyResult> retryPolicies,
 
+            ImmutableDictionary<string, string> terraformLabels,
+
             string topic)
         {
             AckDeadlineSeconds = ackDeadlineSeconds;
             BigqueryConfigs = bigqueryConfigs;
             CloudStorageConfigs = cloudStorageConfigs;
             DeadLetterPolicies = deadLetterPolicies;
+            EffectiveLabels = effectiveLabels;
             EnableExactlyOnceDelivery = enableExactlyOnceDelivery;
             EnableMessageOrdering = enableMessageOrdering;
             ExpirationPolicies = expirationPolicies;
@@ -196,6 +203,7 @@ namespace Pulumi.Gcp.PubSub
             PushConfigs = pushConfigs;
             RetainAckedMessages = retainAckedMessages;
             RetryPolicies = retryPolicies;
+            TerraformLabels = terraformLabels;
             Topic = topic;
         }
     }

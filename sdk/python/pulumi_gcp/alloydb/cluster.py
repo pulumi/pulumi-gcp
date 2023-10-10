@@ -18,10 +18,12 @@ class ClusterArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
                  location: pulumi.Input[str],
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  automated_backup_policy: Optional[pulumi.Input['ClusterAutomatedBackupPolicyArgs']] = None,
                  continuous_backup_config: Optional[pulumi.Input['ClusterContinuousBackupConfigArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input['ClusterEncryptionConfigArgs']] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  initial_user: Optional[pulumi.Input['ClusterInitialUserArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -36,6 +38,11 @@ class ClusterArgs:
                
                
                - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+               An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['ClusterAutomatedBackupPolicyArgs'] automated_backup_policy: The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
                Structure is documented below.
         :param pulumi.Input['ClusterContinuousBackupConfigArgs'] continuous_backup_config: The continuous backup config for this cluster.
@@ -44,9 +51,12 @@ class ClusterArgs:
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
         :param pulumi.Input['ClusterEncryptionConfigArgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
+        :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
         :param pulumi.Input['ClusterInitialUserArgs'] initial_user: Initial user to setup during cluster creation.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb cluster.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] network: (Optional, Deprecated)
                The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
@@ -65,10 +75,12 @@ class ClusterArgs:
             lambda key, value: pulumi.set(__self__, key, value),
             cluster_id=cluster_id,
             location=location,
+            annotations=annotations,
             automated_backup_policy=automated_backup_policy,
             continuous_backup_config=continuous_backup_config,
             display_name=display_name,
             encryption_config=encryption_config,
+            etag=etag,
             initial_user=initial_user,
             labels=labels,
             network=network,
@@ -82,10 +94,12 @@ class ClusterArgs:
              _setter: Callable[[Any, Any], None],
              cluster_id: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              automated_backup_policy: Optional[pulumi.Input['ClusterAutomatedBackupPolicyArgs']] = None,
              continuous_backup_config: Optional[pulumi.Input['ClusterContinuousBackupConfigArgs']] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              encryption_config: Optional[pulumi.Input['ClusterEncryptionConfigArgs']] = None,
+             etag: Optional[pulumi.Input[str]] = None,
              initial_user: Optional[pulumi.Input['ClusterInitialUserArgs']] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              network: Optional[pulumi.Input[str]] = None,
@@ -120,6 +134,8 @@ class ClusterArgs:
 
         _setter("cluster_id", cluster_id)
         _setter("location", location)
+        if annotations is not None:
+            _setter("annotations", annotations)
         if automated_backup_policy is not None:
             _setter("automated_backup_policy", automated_backup_policy)
         if continuous_backup_config is not None:
@@ -128,6 +144,8 @@ class ClusterArgs:
             _setter("display_name", display_name)
         if encryption_config is not None:
             _setter("encryption_config", encryption_config)
+        if etag is not None:
+            _setter("etag", etag)
         if initial_user is not None:
             _setter("initial_user", initial_user)
         if labels is not None:
@@ -172,6 +190,22 @@ class ClusterArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "annotations", value)
 
     @property
     @pulumi.getter(name="automatedBackupPolicy")
@@ -226,6 +260,18 @@ class ClusterArgs:
         pulumi.set(self, "encryption_config", value)
 
     @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        For Resource freshness validation (https://google.aip.dev/154)
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
     @pulumi.getter(name="initialUser")
     def initial_user(self) -> Optional[pulumi.Input['ClusterInitialUserArgs']]:
         """
@@ -243,6 +289,8 @@ class ClusterArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         User-defined labels for the alloydb cluster.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -325,6 +373,7 @@ class ClusterArgs:
 @pulumi.input_type
 class _ClusterState:
     def __init__(__self__, *,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  automated_backup_policy: Optional[pulumi.Input['ClusterAutomatedBackupPolicyArgs']] = None,
                  backup_sources: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBackupSourceArgs']]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
@@ -332,8 +381,11 @@ class _ClusterState:
                  continuous_backup_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoArgs']]]] = None,
                  database_version: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  encryption_config: Optional[pulumi.Input['ClusterEncryptionConfigArgs']] = None,
                  encryption_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterEncryptionInfoArgs']]]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  initial_user: Optional[pulumi.Input['ClusterInitialUserArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -342,11 +394,19 @@ class _ClusterState:
                  network: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['ClusterNetworkConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 reconciling: Optional[pulumi.Input[bool]] = None,
                  restore_backup_source: Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']] = None,
                  restore_continuous_backup_source: Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  uid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+               An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['ClusterAutomatedBackupPolicyArgs'] automated_backup_policy: The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterBackupSourceArgs']]] backup_sources: Cluster created from backup.
@@ -359,14 +419,21 @@ class _ClusterState:
                Structure is documented below.
         :param pulumi.Input[str] database_version: The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input['ClusterEncryptionConfigArgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterEncryptionInfoArgs']]] encryption_infos: (Output)
                Output only. The encryption information for the WALs and backups required for ContinuousBackup.
                Structure is documented below.
+        :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
         :param pulumi.Input['ClusterInitialUserArgs'] initial_user: Initial user to setup during cluster creation.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb cluster.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the alloydb cluster should reside.
                
                
@@ -383,14 +450,21 @@ class _ClusterState:
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] reconciling: Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+               Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
+               This can happen due to user-triggered updates or system actions like failover or maintenance.
         :param pulumi.Input['ClusterRestoreBackupSourceArgs'] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
                Structure is documented below.
         :param pulumi.Input['ClusterRestoreContinuousBackupSourceArgs'] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
                Structure is documented below.
+        :param pulumi.Input[str] state: Output only. The current serving state of the cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         """
         _ClusterState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
             automated_backup_policy=automated_backup_policy,
             backup_sources=backup_sources,
             cluster_id=cluster_id,
@@ -398,8 +472,11 @@ class _ClusterState:
             continuous_backup_infos=continuous_backup_infos,
             database_version=database_version,
             display_name=display_name,
+            effective_annotations=effective_annotations,
+            effective_labels=effective_labels,
             encryption_config=encryption_config,
             encryption_infos=encryption_infos,
+            etag=etag,
             initial_user=initial_user,
             labels=labels,
             location=location,
@@ -408,13 +485,17 @@ class _ClusterState:
             network=network,
             network_config=network_config,
             project=project,
+            reconciling=reconciling,
             restore_backup_source=restore_backup_source,
             restore_continuous_backup_source=restore_continuous_backup_source,
+            state=state,
+            terraform_labels=terraform_labels,
             uid=uid,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
+             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              automated_backup_policy: Optional[pulumi.Input['ClusterAutomatedBackupPolicyArgs']] = None,
              backup_sources: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBackupSourceArgs']]]] = None,
              cluster_id: Optional[pulumi.Input[str]] = None,
@@ -422,8 +503,11 @@ class _ClusterState:
              continuous_backup_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoArgs']]]] = None,
              database_version: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
+             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              encryption_config: Optional[pulumi.Input['ClusterEncryptionConfigArgs']] = None,
              encryption_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterEncryptionInfoArgs']]]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
              initial_user: Optional[pulumi.Input['ClusterInitialUserArgs']] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              location: Optional[pulumi.Input[str]] = None,
@@ -432,8 +516,11 @@ class _ClusterState:
              network: Optional[pulumi.Input[str]] = None,
              network_config: Optional[pulumi.Input['ClusterNetworkConfigArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
+             reconciling: Optional[pulumi.Input[bool]] = None,
              restore_backup_source: Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']] = None,
              restore_continuous_backup_source: Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -451,6 +538,10 @@ class _ClusterState:
             database_version = kwargs['databaseVersion']
         if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
+        if effective_annotations is None and 'effectiveAnnotations' in kwargs:
+            effective_annotations = kwargs['effectiveAnnotations']
+        if effective_labels is None and 'effectiveLabels' in kwargs:
+            effective_labels = kwargs['effectiveLabels']
         if encryption_config is None and 'encryptionConfig' in kwargs:
             encryption_config = kwargs['encryptionConfig']
         if encryption_infos is None and 'encryptionInfos' in kwargs:
@@ -465,7 +556,11 @@ class _ClusterState:
             restore_backup_source = kwargs['restoreBackupSource']
         if restore_continuous_backup_source is None and 'restoreContinuousBackupSource' in kwargs:
             restore_continuous_backup_source = kwargs['restoreContinuousBackupSource']
+        if terraform_labels is None and 'terraformLabels' in kwargs:
+            terraform_labels = kwargs['terraformLabels']
 
+        if annotations is not None:
+            _setter("annotations", annotations)
         if automated_backup_policy is not None:
             _setter("automated_backup_policy", automated_backup_policy)
         if backup_sources is not None:
@@ -480,10 +575,16 @@ class _ClusterState:
             _setter("database_version", database_version)
         if display_name is not None:
             _setter("display_name", display_name)
+        if effective_annotations is not None:
+            _setter("effective_annotations", effective_annotations)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if encryption_config is not None:
             _setter("encryption_config", encryption_config)
         if encryption_infos is not None:
             _setter("encryption_infos", encryption_infos)
+        if etag is not None:
+            _setter("etag", etag)
         if initial_user is not None:
             _setter("initial_user", initial_user)
         if labels is not None:
@@ -503,12 +604,34 @@ class _ClusterState:
             _setter("network_config", network_config)
         if project is not None:
             _setter("project", project)
+        if reconciling is not None:
+            _setter("reconciling", reconciling)
         if restore_backup_source is not None:
             _setter("restore_backup_source", restore_backup_source)
         if restore_continuous_backup_source is not None:
             _setter("restore_continuous_backup_source", restore_continuous_backup_source)
+        if state is not None:
+            _setter("state", state)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if uid is not None:
             _setter("uid", uid)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "annotations", value)
 
     @property
     @pulumi.getter(name="automatedBackupPolicy")
@@ -600,6 +723,32 @@ class _ClusterState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @effective_annotations.setter
+    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_annotations", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="encryptionConfig")
     def encryption_config(self) -> Optional[pulumi.Input['ClusterEncryptionConfigArgs']]:
         """
@@ -627,6 +776,18 @@ class _ClusterState:
         pulumi.set(self, "encryption_infos", value)
 
     @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        For Resource freshness validation (https://google.aip.dev/154)
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
     @pulumi.getter(name="initialUser")
     def initial_user(self) -> Optional[pulumi.Input['ClusterInitialUserArgs']]:
         """
@@ -644,6 +805,8 @@ class _ClusterState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         User-defined labels for the alloydb cluster.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -737,6 +900,20 @@ class _ClusterState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter
+    def reconciling(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+        Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
+        This can happen due to user-triggered updates or system actions like failover or maintenance.
+        """
+        return pulumi.get(self, "reconciling")
+
+    @reconciling.setter
+    def reconciling(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "reconciling", value)
+
+    @property
     @pulumi.getter(name="restoreBackupSource")
     def restore_backup_source(self) -> Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']]:
         """
@@ -764,6 +941,31 @@ class _ClusterState:
 
     @property
     @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The current serving state of the cluster.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
+
+    @property
+    @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[str]]:
         """
         The system-generated UID of the resource.
@@ -780,11 +982,13 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  automated_backup_policy: Optional[pulumi.Input[pulumi.InputType['ClusterAutomatedBackupPolicyArgs']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  continuous_backup_config: Optional[pulumi.Input[pulumi.InputType['ClusterContinuousBackupConfigArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['ClusterEncryptionConfigArgs']]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  initial_user: Optional[pulumi.Input[pulumi.InputType['ClusterInitialUserArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -941,6 +1145,11 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+               An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['ClusterAutomatedBackupPolicyArgs']] automated_backup_policy: The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
                Structure is documented below.
         :param pulumi.Input[str] cluster_id: The ID of the alloydb cluster.
@@ -950,9 +1159,12 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
         :param pulumi.Input[pulumi.InputType['ClusterEncryptionConfigArgs']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
+        :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
         :param pulumi.Input[pulumi.InputType['ClusterInitialUserArgs']] initial_user: Initial user to setup during cluster creation.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb cluster.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the alloydb cluster should reside.
                
                
@@ -1141,11 +1353,13 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  automated_backup_policy: Optional[pulumi.Input[pulumi.InputType['ClusterAutomatedBackupPolicyArgs']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  continuous_backup_config: Optional[pulumi.Input[pulumi.InputType['ClusterContinuousBackupConfigArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['ClusterEncryptionConfigArgs']]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  initial_user: Optional[pulumi.Input[pulumi.InputType['ClusterInitialUserArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -1163,6 +1377,7 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ClusterArgs.__new__(ClusterArgs)
 
+            __props__.__dict__["annotations"] = annotations
             automated_backup_policy = _utilities.configure(automated_backup_policy, ClusterAutomatedBackupPolicyArgs, True)
             __props__.__dict__["automated_backup_policy"] = automated_backup_policy
             if cluster_id is None and not opts.urn:
@@ -1173,6 +1388,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             encryption_config = _utilities.configure(encryption_config, ClusterEncryptionConfigArgs, True)
             __props__.__dict__["encryption_config"] = encryption_config
+            __props__.__dict__["etag"] = etag
             initial_user = _utilities.configure(initial_user, ClusterInitialUserArgs, True)
             __props__.__dict__["initial_user"] = initial_user
             __props__.__dict__["labels"] = labels
@@ -1190,9 +1406,14 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["backup_sources"] = None
             __props__.__dict__["continuous_backup_infos"] = None
             __props__.__dict__["database_version"] = None
+            __props__.__dict__["effective_annotations"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["encryption_infos"] = None
             __props__.__dict__["migration_sources"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["reconciling"] = None
+            __props__.__dict__["state"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["uid"] = None
         super(Cluster, __self__).__init__(
             'gcp:alloydb/cluster:Cluster',
@@ -1204,6 +1425,7 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             automated_backup_policy: Optional[pulumi.Input[pulumi.InputType['ClusterAutomatedBackupPolicyArgs']]] = None,
             backup_sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBackupSourceArgs']]]]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
@@ -1211,8 +1433,11 @@ class Cluster(pulumi.CustomResource):
             continuous_backup_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterContinuousBackupInfoArgs']]]]] = None,
             database_version: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             encryption_config: Optional[pulumi.Input[pulumi.InputType['ClusterEncryptionConfigArgs']]] = None,
             encryption_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterEncryptionInfoArgs']]]]] = None,
+            etag: Optional[pulumi.Input[str]] = None,
             initial_user: Optional[pulumi.Input[pulumi.InputType['ClusterInitialUserArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -1221,8 +1446,11 @@ class Cluster(pulumi.CustomResource):
             network: Optional[pulumi.Input[str]] = None,
             network_config: Optional[pulumi.Input[pulumi.InputType['ClusterNetworkConfigArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            reconciling: Optional[pulumi.Input[bool]] = None,
             restore_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreBackupSourceArgs']]] = None,
             restore_continuous_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreContinuousBackupSourceArgs']]] = None,
+            state: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             uid: Optional[pulumi.Input[str]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
@@ -1231,6 +1459,11 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+               An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['ClusterAutomatedBackupPolicyArgs']] automated_backup_policy: The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBackupSourceArgs']]]] backup_sources: Cluster created from backup.
@@ -1243,14 +1476,21 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] database_version: The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[pulumi.InputType['ClusterEncryptionConfigArgs']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterEncryptionInfoArgs']]]] encryption_infos: (Output)
                Output only. The encryption information for the WALs and backups required for ContinuousBackup.
                Structure is documented below.
+        :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
         :param pulumi.Input[pulumi.InputType['ClusterInitialUserArgs']] initial_user: Initial user to setup during cluster creation.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb cluster.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the alloydb cluster should reside.
                
                
@@ -1267,16 +1507,23 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] reconciling: Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+               Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
+               This can happen due to user-triggered updates or system actions like failover or maintenance.
         :param pulumi.Input[pulumi.InputType['ClusterRestoreBackupSourceArgs']] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterRestoreContinuousBackupSourceArgs']] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
                Structure is documented below.
+        :param pulumi.Input[str] state: Output only. The current serving state of the cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ClusterState.__new__(_ClusterState)
 
+        __props__.__dict__["annotations"] = annotations
         __props__.__dict__["automated_backup_policy"] = automated_backup_policy
         __props__.__dict__["backup_sources"] = backup_sources
         __props__.__dict__["cluster_id"] = cluster_id
@@ -1284,8 +1531,11 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["continuous_backup_infos"] = continuous_backup_infos
         __props__.__dict__["database_version"] = database_version
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_annotations"] = effective_annotations
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["encryption_config"] = encryption_config
         __props__.__dict__["encryption_infos"] = encryption_infos
+        __props__.__dict__["etag"] = etag
         __props__.__dict__["initial_user"] = initial_user
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
@@ -1294,10 +1544,25 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["network"] = network
         __props__.__dict__["network_config"] = network_config
         __props__.__dict__["project"] = project
+        __props__.__dict__["reconciling"] = reconciling
         __props__.__dict__["restore_backup_source"] = restore_backup_source
         __props__.__dict__["restore_continuous_backup_source"] = restore_continuous_backup_source
+        __props__.__dict__["state"] = state
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["uid"] = uid
         return Cluster(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        """
+        return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter(name="automatedBackupPolicy")
@@ -1361,6 +1626,24 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="encryptionConfig")
     def encryption_config(self) -> pulumi.Output[Optional['outputs.ClusterEncryptionConfig']]:
         """
@@ -1380,6 +1663,14 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "encryption_infos")
 
     @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[Optional[str]]:
+        """
+        For Resource freshness validation (https://google.aip.dev/154)
+        """
+        return pulumi.get(self, "etag")
+
+    @property
     @pulumi.getter(name="initialUser")
     def initial_user(self) -> pulumi.Output[Optional['outputs.ClusterInitialUser']]:
         """
@@ -1393,6 +1684,8 @@ class Cluster(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         User-defined labels for the alloydb cluster.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1458,6 +1751,16 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter
+    def reconciling(self) -> pulumi.Output[bool]:
+        """
+        Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+        Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
+        This can happen due to user-triggered updates or system actions like failover or maintenance.
+        """
+        return pulumi.get(self, "reconciling")
+
+    @property
     @pulumi.getter(name="restoreBackupSource")
     def restore_backup_source(self) -> pulumi.Output[Optional['outputs.ClusterRestoreBackupSource']]:
         """
@@ -1474,6 +1777,23 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "restore_continuous_backup_source")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        Output only. The current serving state of the cluster.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

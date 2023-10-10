@@ -757,6 +757,7 @@ class PatchDeployment(pulumi.CustomResource):
                 monthly=gcp.osconfig.PatchDeploymentRecurringScheduleMonthlyArgs(
                     week_day_of_month=gcp.osconfig.PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs(
                         day_of_week="TUESDAY",
+                        day_offset=3,
                         week_ordinal=-1,
                     ),
                 ),
@@ -1037,6 +1038,7 @@ class PatchDeployment(pulumi.CustomResource):
                 monthly=gcp.osconfig.PatchDeploymentRecurringScheduleMonthlyArgs(
                     week_day_of_month=gcp.osconfig.PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs(
                         day_of_week="TUESDAY",
+                        day_offset=3,
                         week_ordinal=-1,
                     ),
                 ),

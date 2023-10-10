@@ -73,6 +73,9 @@ class FhirStoreArgs:
                No more than 64 labels can be associated with a given store.
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the FhirStore.
                ** Changing this property may recreate the FHIR store (removing all data) **
         :param pulumi.Input['FhirStoreNotificationConfigArgs'] notification_config: A nested object resource
@@ -293,6 +296,9 @@ class FhirStoreArgs:
         No more than 64 labels can be associated with a given store.
         An object containing a list of "key": value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -379,6 +385,7 @@ class _FhirStoreState:
                  default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
                  disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enable_history_import: Optional[pulumi.Input[bool]] = None,
                  enable_update_create: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -387,6 +394,7 @@ class _FhirStoreState:
                  notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering FhirStore resources.
@@ -412,6 +420,8 @@ class _FhirStoreState:
                cannot be updated. If set to true, no historical versions will be kept. The server will send back errors for
                attempts to read the historical versions.
                ** Changing this property may recreate the FHIR store (removing all data) **
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[bool] enable_history_import: Whether to allow the bulk import API to accept history bundles and directly insert historical resource
                versions into the FHIR store. Importing resource histories creates resource interactions that appear to have
                occurred in the past, which clients may not want to allow. If set to false, history bundles within an import
@@ -432,6 +442,9 @@ class _FhirStoreState:
                No more than 64 labels can be associated with a given store.
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the FhirStore.
                ** Changing this property may recreate the FHIR store (removing all data) **
         :param pulumi.Input['FhirStoreNotificationConfigArgs'] notification_config: A nested object resource
@@ -445,6 +458,8 @@ class _FhirStoreState:
                bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
                the order of dozens of seconds) is expected before the results show up in the streaming destination.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] version: The FHIR specification version.
                Default value is `STU3`.
                Possible values are: `DSTU2`, `STU3`, `R4`.
@@ -456,6 +471,7 @@ class _FhirStoreState:
             default_search_handling_strict=default_search_handling_strict,
             disable_referential_integrity=disable_referential_integrity,
             disable_resource_versioning=disable_resource_versioning,
+            effective_labels=effective_labels,
             enable_history_import=enable_history_import,
             enable_update_create=enable_update_create,
             labels=labels,
@@ -464,6 +480,7 @@ class _FhirStoreState:
             notification_configs=notification_configs,
             self_link=self_link,
             stream_configs=stream_configs,
+            terraform_labels=terraform_labels,
             version=version,
         )
     @staticmethod
@@ -474,6 +491,7 @@ class _FhirStoreState:
              default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
              disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
              disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              enable_history_import: Optional[pulumi.Input[bool]] = None,
              enable_update_create: Optional[pulumi.Input[bool]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -482,6 +500,7 @@ class _FhirStoreState:
              notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              version: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -493,6 +512,8 @@ class _FhirStoreState:
             disable_referential_integrity = kwargs['disableReferentialIntegrity']
         if disable_resource_versioning is None and 'disableResourceVersioning' in kwargs:
             disable_resource_versioning = kwargs['disableResourceVersioning']
+        if effective_labels is None and 'effectiveLabels' in kwargs:
+            effective_labels = kwargs['effectiveLabels']
         if enable_history_import is None and 'enableHistoryImport' in kwargs:
             enable_history_import = kwargs['enableHistoryImport']
         if enable_update_create is None and 'enableUpdateCreate' in kwargs:
@@ -505,6 +526,8 @@ class _FhirStoreState:
             self_link = kwargs['selfLink']
         if stream_configs is None and 'streamConfigs' in kwargs:
             stream_configs = kwargs['streamConfigs']
+        if terraform_labels is None and 'terraformLabels' in kwargs:
+            terraform_labels = kwargs['terraformLabels']
 
         if complex_data_type_reference_parsing is not None:
             _setter("complex_data_type_reference_parsing", complex_data_type_reference_parsing)
@@ -516,6 +539,8 @@ class _FhirStoreState:
             _setter("disable_referential_integrity", disable_referential_integrity)
         if disable_resource_versioning is not None:
             _setter("disable_resource_versioning", disable_resource_versioning)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if enable_history_import is not None:
             _setter("enable_history_import", enable_history_import)
         if enable_update_create is not None:
@@ -532,6 +557,8 @@ class _FhirStoreState:
             _setter("self_link", self_link)
         if stream_configs is not None:
             _setter("stream_configs", stream_configs)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if version is not None:
             _setter("version", version)
 
@@ -613,6 +640,19 @@ class _FhirStoreState:
         pulumi.set(self, "disable_resource_versioning", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="enableHistoryImport")
     def enable_history_import(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -658,6 +698,9 @@ class _FhirStoreState:
         No more than 64 labels can be associated with a given store.
         An object containing a list of "key": value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -732,6 +775,19 @@ class _FhirStoreState:
     @stream_configs.setter
     def stream_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]]):
         pulumi.set(self, "stream_configs", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -945,6 +1001,9 @@ class FhirStore(pulumi.CustomResource):
                No more than 64 labels can be associated with a given store.
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the FhirStore.
                ** Changing this property may recreate the FHIR store (removing all data) **
         :param pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']] notification_config: A nested object resource
@@ -1158,7 +1217,9 @@ class FhirStore(pulumi.CustomResource):
             __props__.__dict__["notification_configs"] = notification_configs
             __props__.__dict__["stream_configs"] = stream_configs
             __props__.__dict__["version"] = version
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(FhirStore, __self__).__init__(
             'gcp:healthcare/fhirStore:FhirStore',
             resource_name,
@@ -1174,6 +1235,7 @@ class FhirStore(pulumi.CustomResource):
             default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
             disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
             disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enable_history_import: Optional[pulumi.Input[bool]] = None,
             enable_update_create: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1182,6 +1244,7 @@ class FhirStore(pulumi.CustomResource):
             notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreStreamConfigArgs']]]]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'FhirStore':
         """
         Get an existing FhirStore resource's state with the given name, id, and optional extra
@@ -1212,6 +1275,8 @@ class FhirStore(pulumi.CustomResource):
                cannot be updated. If set to true, no historical versions will be kept. The server will send back errors for
                attempts to read the historical versions.
                ** Changing this property may recreate the FHIR store (removing all data) **
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[bool] enable_history_import: Whether to allow the bulk import API to accept history bundles and directly insert historical resource
                versions into the FHIR store. Importing resource histories creates resource interactions that appear to have
                occurred in the past, which clients may not want to allow. If set to false, history bundles within an import
@@ -1232,6 +1297,9 @@ class FhirStore(pulumi.CustomResource):
                No more than 64 labels can be associated with a given store.
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the FhirStore.
                ** Changing this property may recreate the FHIR store (removing all data) **
         :param pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']] notification_config: A nested object resource
@@ -1245,6 +1313,8 @@ class FhirStore(pulumi.CustomResource):
                bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
                the order of dozens of seconds) is expected before the results show up in the streaming destination.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] version: The FHIR specification version.
                Default value is `STU3`.
                Possible values are: `DSTU2`, `STU3`, `R4`.
@@ -1258,6 +1328,7 @@ class FhirStore(pulumi.CustomResource):
         __props__.__dict__["default_search_handling_strict"] = default_search_handling_strict
         __props__.__dict__["disable_referential_integrity"] = disable_referential_integrity
         __props__.__dict__["disable_resource_versioning"] = disable_resource_versioning
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["enable_history_import"] = enable_history_import
         __props__.__dict__["enable_update_create"] = enable_update_create
         __props__.__dict__["labels"] = labels
@@ -1266,6 +1337,7 @@ class FhirStore(pulumi.CustomResource):
         __props__.__dict__["notification_configs"] = notification_configs
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["stream_configs"] = stream_configs
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["version"] = version
         return FhirStore(resource_name, opts=opts, __props__=__props__)
 
@@ -1327,6 +1399,15 @@ class FhirStore(pulumi.CustomResource):
         return pulumi.get(self, "disable_resource_versioning")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="enableHistoryImport")
     def enable_history_import(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -1364,6 +1445,9 @@ class FhirStore(pulumi.CustomResource):
         No more than 64 labels can be associated with a given store.
         An object containing a list of "key": value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1414,6 +1498,15 @@ class FhirStore(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "stream_configs")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

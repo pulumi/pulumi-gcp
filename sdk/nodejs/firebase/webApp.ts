@@ -20,25 +20,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultProject = new gcp.organizations.Project("defaultProject", {
- *     projectId: "my-project",
- *     orgId: "123456789",
- *     labels: {
- *         firebase: "enabled",
- *     },
- * }, {
- *     provider: google_beta,
- * });
- * const defaultFirebase_projectProject = new gcp.firebase.Project("defaultFirebase/projectProject", {project: defaultProject.projectId}, {
- *     provider: google_beta,
- * });
  * const basicWebApp = new gcp.firebase.WebApp("basicWebApp", {
- *     project: defaultProject.projectId,
+ *     project: "my-project-name",
  *     displayName: "Display Name Basic",
- *     deletionPolicy: "DELETE",
  * }, {
  *     provider: google_beta,
- *     dependsOn: [defaultFirebase / projectProject],
  * });
  * const basicWebAppConfig = gcp.firebase.getWebAppConfigOutput({
  *     webAppId: basicWebApp.appId,
@@ -157,7 +143,7 @@ export class WebApp extends pulumi.CustomResource {
     public /*out*/ readonly appUrls!: pulumi.Output<string[]>;
     /**
      * Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
-     * This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+     * This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'DELETE'
      */
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
@@ -237,7 +223,7 @@ export interface WebAppState {
     appUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
-     * This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+     * This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'DELETE'
      */
     deletionPolicy?: pulumi.Input<string>;
     /**
@@ -271,7 +257,7 @@ export interface WebAppArgs {
     apiKeyId?: pulumi.Input<string>;
     /**
      * Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
-     * This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+     * This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'DELETE'
      */
     deletionPolicy?: pulumi.Input<string>;
     /**

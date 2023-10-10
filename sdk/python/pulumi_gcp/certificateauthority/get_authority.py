@@ -22,7 +22,7 @@ class GetAuthorityResult:
     """
     A collection of values returned by getAuthority.
     """
-    def __init__(__self__, access_urls=None, certificate_authority_id=None, configs=None, create_time=None, deletion_protection=None, desired_state=None, gcs_bucket=None, id=None, ignore_active_certificates_on_deletion=None, key_specs=None, labels=None, lifetime=None, location=None, name=None, pem_ca_certificate=None, pem_ca_certificates=None, pem_csr=None, pool=None, project=None, skip_grace_period=None, state=None, subordinate_configs=None, type=None, update_time=None):
+    def __init__(__self__, access_urls=None, certificate_authority_id=None, configs=None, create_time=None, deletion_protection=None, desired_state=None, effective_labels=None, gcs_bucket=None, id=None, ignore_active_certificates_on_deletion=None, key_specs=None, labels=None, lifetime=None, location=None, name=None, pem_ca_certificate=None, pem_ca_certificates=None, pem_csr=None, pool=None, project=None, skip_grace_period=None, state=None, subordinate_configs=None, terraform_labels=None, type=None, update_time=None):
         if access_urls and not isinstance(access_urls, list):
             raise TypeError("Expected argument 'access_urls' to be a list")
         pulumi.set(__self__, "access_urls", access_urls)
@@ -41,6 +41,9 @@ class GetAuthorityResult:
         if desired_state and not isinstance(desired_state, str):
             raise TypeError("Expected argument 'desired_state' to be a str")
         pulumi.set(__self__, "desired_state", desired_state)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if gcs_bucket and not isinstance(gcs_bucket, str):
             raise TypeError("Expected argument 'gcs_bucket' to be a str")
         pulumi.set(__self__, "gcs_bucket", gcs_bucket)
@@ -89,6 +92,9 @@ class GetAuthorityResult:
         if subordinate_configs and not isinstance(subordinate_configs, list):
             raise TypeError("Expected argument 'subordinate_configs' to be a list")
         pulumi.set(__self__, "subordinate_configs", subordinate_configs)
+        if terraform_labels and not isinstance(terraform_labels, dict):
+            raise TypeError("Expected argument 'terraform_labels' to be a dict")
+        pulumi.set(__self__, "terraform_labels", terraform_labels)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -125,6 +131,11 @@ class GetAuthorityResult:
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> str:
         return pulumi.get(self, "desired_state")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="gcsBucket")
@@ -213,6 +224,11 @@ class GetAuthorityResult:
         return pulumi.get(self, "subordinate_configs")
 
     @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "terraform_labels")
+
+    @property
     @pulumi.getter
     def type(self) -> str:
         return pulumi.get(self, "type")
@@ -235,6 +251,7 @@ class AwaitableGetAuthorityResult(GetAuthorityResult):
             create_time=self.create_time,
             deletion_protection=self.deletion_protection,
             desired_state=self.desired_state,
+            effective_labels=self.effective_labels,
             gcs_bucket=self.gcs_bucket,
             id=self.id,
             ignore_active_certificates_on_deletion=self.ignore_active_certificates_on_deletion,
@@ -251,6 +268,7 @@ class AwaitableGetAuthorityResult(GetAuthorityResult):
             skip_grace_period=self.skip_grace_period,
             state=self.state,
             subordinate_configs=self.subordinate_configs,
+            terraform_labels=self.terraform_labels,
             type=self.type,
             update_time=self.update_time)
 
@@ -299,6 +317,7 @@ def get_authority(certificate_authority_id: Optional[str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         desired_state=pulumi.get(__ret__, 'desired_state'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         gcs_bucket=pulumi.get(__ret__, 'gcs_bucket'),
         id=pulumi.get(__ret__, 'id'),
         ignore_active_certificates_on_deletion=pulumi.get(__ret__, 'ignore_active_certificates_on_deletion'),
@@ -315,6 +334,7 @@ def get_authority(certificate_authority_id: Optional[str] = None,
         skip_grace_period=pulumi.get(__ret__, 'skip_grace_period'),
         state=pulumi.get(__ret__, 'state'),
         subordinate_configs=pulumi.get(__ret__, 'subordinate_configs'),
+        terraform_labels=pulumi.get(__ret__, 'terraform_labels'),
         type=pulumi.get(__ret__, 'type'),
         update_time=pulumi.get(__ret__, 'update_time'))
 

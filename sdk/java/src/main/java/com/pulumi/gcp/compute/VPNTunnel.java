@@ -276,6 +276,22 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
         return this.detailedStatus;
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * IKE protocol version to use when establishing the VPN tunnel with
      * peer VPN gateway.
      * Acceptable IKE versions are 1 or 2. Default version is 2.
@@ -309,6 +325,8 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
     }
     /**
      * Labels to apply to this VpnTunnel.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -316,6 +334,8 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Labels to apply to this VpnTunnel.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -558,6 +578,20 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> targetVpnGateway() {
         return Codegen.optional(this.targetVpnGateway);
+    }
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Export(name="terraformLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> terraformLabels() {
+        return this.terraformLabels;
     }
     /**
      * The unique identifier for the resource. This identifier is defined by the server.

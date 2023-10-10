@@ -77,7 +77,6 @@ import javax.annotation.Nullable;
  *         var default_ = new WebApp(&#34;default&#34;, WebAppArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .displayName(&#34;Test web app for Firebase Hosting&#34;)
- *             .deletionPolicy(&#34;DELETE&#34;)
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());

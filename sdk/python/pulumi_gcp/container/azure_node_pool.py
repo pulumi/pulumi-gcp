@@ -38,6 +38,9 @@ class AzureNodePoolArgs:
         :param pulumi.Input[str] subnet_id: The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
         :param pulumi.Input[str] version: The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] azure_availability_zone: Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
         :param pulumi.Input['AzureNodePoolManagementArgs'] management: The Management configuration for this node pool.
         :param pulumi.Input[str] name: The name of this resource.
@@ -203,6 +206,9 @@ class AzureNodePoolArgs:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -268,6 +274,7 @@ class _AzureNodePoolState:
                  cluster: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input['AzureNodePoolConfigArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  management: Optional[pulumi.Input['AzureNodePoolManagementArgs']] = None,
@@ -283,11 +290,16 @@ class _AzureNodePoolState:
         """
         Input properties used for looking up and filtering AzureNodePool resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['AzureNodePoolAutoscalingArgs'] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[str] azure_availability_zone: Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
         :param pulumi.Input[str] cluster: The azureCluster for the resource
         :param pulumi.Input['AzureNodePoolConfigArgs'] config: The node configuration of the node pool.
         :param pulumi.Input[str] create_time: Output only. The time at which this node pool was created.
+        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input['AzureNodePoolManagementArgs'] management: The Management configuration for this node pool.
@@ -309,6 +321,7 @@ class _AzureNodePoolState:
             cluster=cluster,
             config=config,
             create_time=create_time,
+            effective_annotations=effective_annotations,
             etag=etag,
             location=location,
             management=management,
@@ -331,6 +344,7 @@ class _AzureNodePoolState:
              cluster: Optional[pulumi.Input[str]] = None,
              config: Optional[pulumi.Input['AzureNodePoolConfigArgs']] = None,
              create_time: Optional[pulumi.Input[str]] = None,
+             effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              etag: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              management: Optional[pulumi.Input['AzureNodePoolManagementArgs']] = None,
@@ -349,6 +363,8 @@ class _AzureNodePoolState:
             azure_availability_zone = kwargs['azureAvailabilityZone']
         if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
+        if effective_annotations is None and 'effectiveAnnotations' in kwargs:
+            effective_annotations = kwargs['effectiveAnnotations']
         if max_pods_constraint is None and 'maxPodsConstraint' in kwargs:
             max_pods_constraint = kwargs['maxPodsConstraint']
         if subnet_id is None and 'subnetId' in kwargs:
@@ -368,6 +384,8 @@ class _AzureNodePoolState:
             _setter("config", config)
         if create_time is not None:
             _setter("create_time", create_time)
+        if effective_annotations is not None:
+            _setter("effective_annotations", effective_annotations)
         if etag is not None:
             _setter("etag", etag)
         if location is not None:
@@ -398,6 +416,9 @@ class _AzureNodePoolState:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -464,6 +485,19 @@ class _AzureNodePoolState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @effective_annotations.setter
+    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "effective_annotations", value)
 
     @property
     @pulumi.getter
@@ -729,6 +763,9 @@ class AzureNodePool(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['AzureNodePoolAutoscalingArgs']] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[str] azure_availability_zone: Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
         :param pulumi.Input[str] cluster: The azureCluster for the resource
@@ -916,6 +953,7 @@ class AzureNodePool(pulumi.CustomResource):
                 raise TypeError("Missing required property 'version'")
             __props__.__dict__["version"] = version
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_annotations"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["reconciling"] = None
             __props__.__dict__["state"] = None
@@ -937,6 +975,7 @@ class AzureNodePool(pulumi.CustomResource):
             cluster: Optional[pulumi.Input[str]] = None,
             config: Optional[pulumi.Input[pulumi.InputType['AzureNodePoolConfigArgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             management: Optional[pulumi.Input[pulumi.InputType['AzureNodePoolManagementArgs']]] = None,
@@ -957,11 +996,16 @@ class AzureNodePool(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['AzureNodePoolAutoscalingArgs']] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[str] azure_availability_zone: Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
         :param pulumi.Input[str] cluster: The azureCluster for the resource
         :param pulumi.Input[pulumi.InputType['AzureNodePoolConfigArgs']] config: The node configuration of the node pool.
         :param pulumi.Input[str] create_time: Output only. The time at which this node pool was created.
+        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[pulumi.InputType['AzureNodePoolManagementArgs']] management: The Management configuration for this node pool.
@@ -985,6 +1029,7 @@ class AzureNodePool(pulumi.CustomResource):
         __props__.__dict__["cluster"] = cluster
         __props__.__dict__["config"] = config
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["etag"] = etag
         __props__.__dict__["location"] = location
         __props__.__dict__["management"] = management
@@ -1004,6 +1049,9 @@ class AzureNodePool(pulumi.CustomResource):
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -1046,6 +1094,15 @@ class AzureNodePool(pulumi.CustomResource):
         Output only. The time at which this node pool was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
 
     @property
     @pulumi.getter

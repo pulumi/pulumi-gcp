@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/firebase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -54,7 +54,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/firebase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -108,11 +108,16 @@ type HostingChannel struct {
 	//
 	// ***
 	ChannelId pulumi.StringOutput `pulumi:"channelId"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The time at which the channel will be automatically deleted. If null, the channel
 	// will not be automatically deleted. This field is present in the output whether it's
 	// set directly or via the `ttl` field.
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// Text labels used for extra metadata and/or filtering
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The fully-qualified resource name for the channel, in the format:
 	// sites/SITE_ID/channels/CHANNEL_ID
@@ -122,6 +127,9 @@ type HostingChannel struct {
 	RetainedReleaseCount pulumi.IntOutput `pulumi:"retainedReleaseCount"`
 	// Required. The ID of the site in which to create this channel.
 	SiteId pulumi.StringOutput `pulumi:"siteId"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Input only. A time-to-live for this channel. Sets `expireTime` to the provided
 	// duration past the time of the request. A duration in seconds with up to nine fractional
 	// digits, terminated by 's'. Example: "86400s" (one day).
@@ -168,11 +176,16 @@ type hostingChannelState struct {
 	//
 	// ***
 	ChannelId *string `pulumi:"channelId"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The time at which the channel will be automatically deleted. If null, the channel
 	// will not be automatically deleted. This field is present in the output whether it's
 	// set directly or via the `ttl` field.
 	ExpireTime *string `pulumi:"expireTime"`
 	// Text labels used for extra metadata and/or filtering
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The fully-qualified resource name for the channel, in the format:
 	// sites/SITE_ID/channels/CHANNEL_ID
@@ -182,6 +195,9 @@ type hostingChannelState struct {
 	RetainedReleaseCount *int `pulumi:"retainedReleaseCount"`
 	// Required. The ID of the site in which to create this channel.
 	SiteId *string `pulumi:"siteId"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Input only. A time-to-live for this channel. Sets `expireTime` to the provided
 	// duration past the time of the request. A duration in seconds with up to nine fractional
 	// digits, terminated by 's'. Example: "86400s" (one day).
@@ -193,11 +209,16 @@ type HostingChannelState struct {
 	//
 	// ***
 	ChannelId pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// The time at which the channel will be automatically deleted. If null, the channel
 	// will not be automatically deleted. This field is present in the output whether it's
 	// set directly or via the `ttl` field.
 	ExpireTime pulumi.StringPtrInput
 	// Text labels used for extra metadata and/or filtering
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The fully-qualified resource name for the channel, in the format:
 	// sites/SITE_ID/channels/CHANNEL_ID
@@ -207,6 +228,9 @@ type HostingChannelState struct {
 	RetainedReleaseCount pulumi.IntPtrInput
 	// Required. The ID of the site in which to create this channel.
 	SiteId pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// Input only. A time-to-live for this channel. Sets `expireTime` to the provided
 	// duration past the time of the request. A duration in seconds with up to nine fractional
 	// digits, terminated by 's'. Example: "86400s" (one day).
@@ -227,6 +251,8 @@ type hostingChannelArgs struct {
 	// set directly or via the `ttl` field.
 	ExpireTime *string `pulumi:"expireTime"`
 	// Text labels used for extra metadata and/or filtering
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The number of previous releases to retain on the channel for rollback or other
 	// purposes. Must be a number between 1-100. Defaults to 10 for new channels.
@@ -250,6 +276,8 @@ type HostingChannelArgs struct {
 	// set directly or via the `ttl` field.
 	ExpireTime pulumi.StringPtrInput
 	// Text labels used for extra metadata and/or filtering
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The number of previous releases to retain on the channel for rollback or other
 	// purposes. Must be a number between 1-100. Defaults to 10 for new channels.
@@ -380,6 +408,12 @@ func (o HostingChannelOutput) ChannelId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostingChannel) pulumi.StringOutput { return v.ChannelId }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o HostingChannelOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *HostingChannel) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The time at which the channel will be automatically deleted. If null, the channel
 // will not be automatically deleted. This field is present in the output whether it's
 // set directly or via the `ttl` field.
@@ -388,6 +422,8 @@ func (o HostingChannelOutput) ExpireTime() pulumi.StringOutput {
 }
 
 // Text labels used for extra metadata and/or filtering
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o HostingChannelOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *HostingChannel) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -407,6 +443,12 @@ func (o HostingChannelOutput) RetainedReleaseCount() pulumi.IntOutput {
 // Required. The ID of the site in which to create this channel.
 func (o HostingChannelOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostingChannel) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o HostingChannelOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *HostingChannel) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Input only. A time-to-live for this channel. Sets `expireTime` to the provided

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificatemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -62,15 +62,17 @@ type GetCertificateMapArgs struct {
 
 // A collection of values returned by getCertificateMap.
 type GetCertificateMapResult struct {
-	CreateTime  string                        `pulumi:"createTime"`
-	Description string                        `pulumi:"description"`
-	GclbTargets []GetCertificateMapGclbTarget `pulumi:"gclbTargets"`
+	CreateTime      string                        `pulumi:"createTime"`
+	Description     string                        `pulumi:"description"`
+	EffectiveLabels map[string]string             `pulumi:"effectiveLabels"`
+	GclbTargets     []GetCertificateMapGclbTarget `pulumi:"gclbTargets"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string            `pulumi:"id"`
-	Labels     map[string]string `pulumi:"labels"`
-	Name       string            `pulumi:"name"`
-	Project    *string           `pulumi:"project"`
-	UpdateTime string            `pulumi:"updateTime"`
+	Id              string            `pulumi:"id"`
+	Labels          map[string]string `pulumi:"labels"`
+	Name            string            `pulumi:"name"`
+	Project         *string           `pulumi:"project"`
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	UpdateTime      string            `pulumi:"updateTime"`
 }
 
 func GetCertificateMapOutput(ctx *pulumi.Context, args GetCertificateMapOutputArgs, opts ...pulumi.InvokeOption) GetCertificateMapResultOutput {
@@ -130,6 +132,10 @@ func (o GetCertificateMapResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificateMapResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+func (o GetCertificateMapResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetCertificateMapResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 func (o GetCertificateMapResultOutput) GclbTargets() GetCertificateMapGclbTargetArrayOutput {
 	return o.ApplyT(func(v GetCertificateMapResult) []GetCertificateMapGclbTarget { return v.GclbTargets }).(GetCertificateMapGclbTargetArrayOutput)
 }
@@ -149,6 +155,10 @@ func (o GetCertificateMapResultOutput) Name() pulumi.StringOutput {
 
 func (o GetCertificateMapResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCertificateMapResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o GetCertificateMapResultOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetCertificateMapResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func (o GetCertificateMapResultOutput) UpdateTime() pulumi.StringOutput {

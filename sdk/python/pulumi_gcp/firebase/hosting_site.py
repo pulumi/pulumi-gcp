@@ -258,7 +258,6 @@ class HostingSite(pulumi.CustomResource):
         default = gcp.firebase.WebApp("default",
             project="my-project-name",
             display_name="Test web app for Firebase Hosting",
-            deletion_policy="DELETE",
             opts=pulumi.ResourceOptions(provider=google_beta))
         full = gcp.firebase.HostingSite("full",
             project="my-project-name",
@@ -325,7 +324,6 @@ class HostingSite(pulumi.CustomResource):
         default = gcp.firebase.WebApp("default",
             project="my-project-name",
             display_name="Test web app for Firebase Hosting",
-            deletion_policy="DELETE",
             opts=pulumi.ResourceOptions(provider=google_beta))
         full = gcp.firebase.HostingSite("full",
             project="my-project-name",

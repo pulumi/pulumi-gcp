@@ -92,7 +92,14 @@ export class Peering extends pulumi.CustomResource {
      */
     public readonly domainResource!: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Resource labels that can contain user-provided metadata
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -116,6 +123,11 @@ export class Peering extends pulumi.CustomResource {
      * Additional information about the current status of this peering, if available.
      */
     public readonly statusMessage!: pulumi.Output<string | undefined>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Peering resource with the given unique name, arguments, and options.
@@ -132,12 +144,14 @@ export class Peering extends pulumi.CustomResource {
             const state = argsOrState as PeeringState | undefined;
             resourceInputs["authorizedNetwork"] = state ? state.authorizedNetwork : undefined;
             resourceInputs["domainResource"] = state ? state.domainResource : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["peeringId"] = state ? state.peeringId : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["statusMessage"] = state ? state.statusMessage : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as PeeringArgs | undefined;
             if ((!args || args.authorizedNetwork === undefined) && !opts.urn) {
@@ -156,7 +170,9 @@ export class Peering extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["statusMessage"] = args ? args.statusMessage : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Peering.__pulumiType, name, resourceInputs, opts);
@@ -176,7 +192,14 @@ export interface PeeringState {
      */
     domainResource?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Resource labels that can contain user-provided metadata
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -200,6 +223,11 @@ export interface PeeringState {
      * Additional information about the current status of this peering, if available.
      */
     statusMessage?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -216,6 +244,8 @@ export interface PeeringArgs {
     domainResource: pulumi.Input<string>;
     /**
      * Resource labels that can contain user-provided metadata
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -121,6 +121,70 @@ import * as utilities from "../utilities";
  *     enableEndpointIndependentMapping: false,
  * });
  * ```
+ * ### Router Nat Private
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const net = new gcp.compute.Network("net", {}, {
+ *     provider: google_beta,
+ * });
+ * const subnet = new gcp.compute.Subnetwork("subnet", {
+ *     network: net.id,
+ *     ipCidrRange: "10.0.0.0/16",
+ *     region: "us-central1",
+ *     purpose: "PRIVATE_NAT",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const router = new gcp.compute.Router("router", {
+ *     region: subnet.region,
+ *     network: net.id,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const hub = new gcp.networkconnectivity.Hub("hub", {description: "vpc hub for inter vpc nat"}, {
+ *     provider: google_beta,
+ * });
+ * const spoke = new gcp.networkconnectivity.Spoke("spoke", {
+ *     location: "global",
+ *     description: "vpc spoke for inter vpc nat",
+ *     hub: hub.id,
+ *     linkedVpcNetwork: {
+ *         excludeExportRanges: [
+ *             "198.51.100.0/24",
+ *             "10.10.0.0/16",
+ *         ],
+ *         uri: net.selfLink,
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const natType = new gcp.compute.RouterNat("natType", {
+ *     router: router.name,
+ *     region: router.region,
+ *     sourceSubnetworkIpRangesToNat: "LIST_OF_SUBNETWORKS",
+ *     enableDynamicPortAllocation: false,
+ *     enableEndpointIndependentMapping: false,
+ *     minPortsPerVm: 32,
+ *     type: "PRIVATE",
+ *     subnetworks: [{
+ *         name: subnet.id,
+ *         sourceIpRangesToNats: ["ALL_IP_RANGES"],
+ *     }],
+ *     rules: [{
+ *         ruleNumber: 100,
+ *         description: "rule for private nat",
+ *         match: "nexthop.hub == \"//networkconnectivity.googleapis.com/projects/acm-test-proj-123/locations/global/hubs/my-hub\"",
+ *         action: {
+ *             sourceNatActiveRanges: [subnet.selfLink],
+ *         },
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -185,10 +249,10 @@ export class RouterNat extends pulumi.CustomResource {
      */
     public readonly enableDynamicPortAllocation!: pulumi.Output<boolean>;
     /**
-     * Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
-     * see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+     * Enable endpoint independent mapping.
+     * For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
      */
-    public readonly enableEndpointIndependentMapping!: pulumi.Output<boolean | undefined>;
+    public readonly enableEndpointIndependentMapping!: pulumi.Output<boolean>;
     /**
      * Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
      */
@@ -218,7 +282,7 @@ export class RouterNat extends pulumi.CustomResource {
      * Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
      * Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
      */
-    public readonly natIpAllocateOption!: pulumi.Output<string>;
+    public readonly natIpAllocateOption!: pulumi.Output<string | undefined>;
     /**
      * Self-links of NAT IPs. Only valid if natIpAllocateOption
      * is set to MANUAL_ONLY.
@@ -281,6 +345,12 @@ export class RouterNat extends pulumi.CustomResource {
      */
     public readonly tcpTransitoryIdleTimeoutSec!: pulumi.Output<number | undefined>;
     /**
+     * Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
+     * 'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
+     * Possible values: ["PUBLIC", "PRIVATE"]
+     */
+    public readonly type!: pulumi.Output<string | undefined>;
+    /**
      * Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
      */
     public readonly udpIdleTimeoutSec!: pulumi.Output<number | undefined>;
@@ -317,12 +387,10 @@ export class RouterNat extends pulumi.CustomResource {
             resourceInputs["tcpEstablishedIdleTimeoutSec"] = state ? state.tcpEstablishedIdleTimeoutSec : undefined;
             resourceInputs["tcpTimeWaitTimeoutSec"] = state ? state.tcpTimeWaitTimeoutSec : undefined;
             resourceInputs["tcpTransitoryIdleTimeoutSec"] = state ? state.tcpTransitoryIdleTimeoutSec : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["udpIdleTimeoutSec"] = state ? state.udpIdleTimeoutSec : undefined;
         } else {
             const args = argsOrState as RouterNatArgs | undefined;
-            if ((!args || args.natIpAllocateOption === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'natIpAllocateOption'");
-            }
             if ((!args || args.router === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'router'");
             }
@@ -348,6 +416,7 @@ export class RouterNat extends pulumi.CustomResource {
             resourceInputs["tcpEstablishedIdleTimeoutSec"] = args ? args.tcpEstablishedIdleTimeoutSec : undefined;
             resourceInputs["tcpTimeWaitTimeoutSec"] = args ? args.tcpTimeWaitTimeoutSec : undefined;
             resourceInputs["tcpTransitoryIdleTimeoutSec"] = args ? args.tcpTransitoryIdleTimeoutSec : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["udpIdleTimeoutSec"] = args ? args.udpIdleTimeoutSec : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -374,8 +443,8 @@ export interface RouterNatState {
      */
     enableDynamicPortAllocation?: pulumi.Input<boolean>;
     /**
-     * Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
-     * see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+     * Enable endpoint independent mapping.
+     * For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
      */
     enableEndpointIndependentMapping?: pulumi.Input<boolean>;
     /**
@@ -470,6 +539,12 @@ export interface RouterNatState {
      */
     tcpTransitoryIdleTimeoutSec?: pulumi.Input<number>;
     /**
+     * Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
+     * 'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
+     * Possible values: ["PUBLIC", "PRIVATE"]
+     */
+    type?: pulumi.Input<string>;
+    /**
      * Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
      */
     udpIdleTimeoutSec?: pulumi.Input<number>;
@@ -494,8 +569,8 @@ export interface RouterNatArgs {
      */
     enableDynamicPortAllocation?: pulumi.Input<boolean>;
     /**
-     * Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
-     * see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+     * Enable endpoint independent mapping.
+     * For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
      */
     enableEndpointIndependentMapping?: pulumi.Input<boolean>;
     /**
@@ -527,7 +602,7 @@ export interface RouterNatArgs {
      * Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
      * Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
      */
-    natIpAllocateOption: pulumi.Input<string>;
+    natIpAllocateOption?: pulumi.Input<string>;
     /**
      * Self-links of NAT IPs. Only valid if natIpAllocateOption
      * is set to MANUAL_ONLY.
@@ -589,6 +664,12 @@ export interface RouterNatArgs {
      * Defaults to 30s if not set.
      */
     tcpTransitoryIdleTimeoutSec?: pulumi.Input<number>;
+    /**
+     * Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
+     * 'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
+     * Possible values: ["PUBLIC", "PRIVATE"]
+     */
+    type?: pulumi.Input<string>;
     /**
      * Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
      */

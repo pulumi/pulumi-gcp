@@ -308,6 +308,11 @@ export class Authority extends pulumi.CustomResource {
      */
     public readonly desiredState!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
      * such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
      * (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -331,6 +336,9 @@ export class Authority extends pulumi.CustomResource {
      * Labels with user-defined metadata.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
      * "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -387,6 +395,11 @@ export class Authority extends pulumi.CustomResource {
      */
     public readonly subordinateConfig!: pulumi.Output<outputs.certificateauthority.AuthoritySubordinateConfig | undefined>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The Type of this CertificateAuthority.
      * > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
      * be activated before they can issue certificates.
@@ -420,6 +433,7 @@ export class Authority extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["desiredState"] = state ? state.desiredState : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["gcsBucket"] = state ? state.gcsBucket : undefined;
             resourceInputs["ignoreActiveCertificatesOnDeletion"] = state ? state.ignoreActiveCertificatesOnDeletion : undefined;
             resourceInputs["keySpec"] = state ? state.keySpec : undefined;
@@ -434,6 +448,7 @@ export class Authority extends pulumi.CustomResource {
             resourceInputs["skipGracePeriod"] = state ? state.skipGracePeriod : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["subordinateConfig"] = state ? state.subordinateConfig : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -471,9 +486,11 @@ export class Authority extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["accessUrls"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pemCaCertificates"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -515,6 +532,11 @@ export interface AuthorityState {
      */
     desiredState?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
      * such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
      * (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -538,6 +560,9 @@ export interface AuthorityState {
      * Labels with user-defined metadata.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
      * "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -593,6 +618,11 @@ export interface AuthorityState {
      * Structure is documented below.
      */
     subordinateConfig?: pulumi.Input<inputs.certificateauthority.AuthoritySubordinateConfig>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The Type of this CertificateAuthority.
      * > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
@@ -655,6 +685,9 @@ export interface AuthorityArgs {
      * Labels with user-defined metadata.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
      * "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

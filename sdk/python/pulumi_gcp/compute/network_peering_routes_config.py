@@ -335,7 +335,8 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
             ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(
                 cluster_secondary_range_name=container_subnetwork.secondary_ip_ranges[0].range_name,
                 services_secondary_range_name=container_subnetwork.secondary_ip_ranges[1].range_name,
-            ))
+            ),
+            deletion_protection=True)
         peering_gke_routes = gcp.compute.NetworkPeeringRoutesConfig("peeringGkeRoutes",
             peering=private_cluster.private_cluster_config.peering_name,
             network=container_network.name,
@@ -448,7 +449,8 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
             ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(
                 cluster_secondary_range_name=container_subnetwork.secondary_ip_ranges[0].range_name,
                 services_secondary_range_name=container_subnetwork.secondary_ip_ranges[1].range_name,
-            ))
+            ),
+            deletion_protection=True)
         peering_gke_routes = gcp.compute.NetworkPeeringRoutesConfig("peeringGkeRoutes",
             peering=private_cluster.private_cluster_config.peering_name,
             network=container_network.name,

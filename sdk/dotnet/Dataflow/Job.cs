@@ -147,6 +147,13 @@ namespace Pulumi.Gcp.Dataflow
         public Output<ImmutableArray<string>> AdditionalExperiments { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
         /// </summary>
         [Output("enableStreamingEngine")]
@@ -173,11 +180,10 @@ namespace Pulumi.Gcp.Dataflow
         /// <summary>
         /// User labels to be specified for the job. Keys and values should follow the restrictions
         /// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-        /// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-        /// Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, object>?> Labels { get; private set; } = null!;
 
         /// <summary>
         /// The machine type to use for the job.
@@ -264,6 +270,12 @@ namespace Pulumi.Gcp.Dataflow
         /// </summary>
         [Output("templateGcsPath")]
         public Output<string> TemplateGcsPath { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("terraformLabels")]
+        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
@@ -365,8 +377,7 @@ namespace Pulumi.Gcp.Dataflow
         /// <summary>
         /// User labels to be specified for the job. Keys and values should follow the restrictions
         /// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-        /// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-        /// Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<object> Labels
         {
@@ -498,6 +509,19 @@ namespace Pulumi.Gcp.Dataflow
             set => _additionalExperiments = value;
         }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
+
         /// <summary>
         /// Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
         /// </summary>
@@ -528,8 +552,7 @@ namespace Pulumi.Gcp.Dataflow
         /// <summary>
         /// User labels to be specified for the job. Keys and values should follow the restrictions
         /// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-        /// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-        /// Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<object> Labels
         {
@@ -628,6 +651,18 @@ namespace Pulumi.Gcp.Dataflow
         /// </summary>
         [Input("templateGcsPath")]
         public Input<string>? TemplateGcsPath { get; set; }
+
+        [Input("terraformLabels")]
+        private InputMap<string>? _terraformLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> TerraformLabels
+        {
+            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
+            set => _terraformLabels = value;
+        }
 
         [Input("transformNameMapping")]
         private InputMap<object>? _transformNameMapping;

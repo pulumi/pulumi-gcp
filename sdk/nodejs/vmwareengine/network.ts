@@ -8,6 +8,41 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Vmware Engine Network Legacy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumiverse/time";
+ *
+ * // there can be only 1 Legacy network per region for a given project,
+ * // so creating new project for isolation in CI.
+ * const acceptanceProject = new gcp.organizations.Project("acceptanceProject", {
+ *     projectId: "vmw-proj",
+ *     orgId: "123456789",
+ *     billingAccount: "000000-0000000-0000000-000000",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const wait60Seconds = new time.Sleep("wait60Seconds", {createDuration: "60s"}, {
+ *     dependsOn: [acceptanceProject],
+ * });
+ * const acceptanceService = new gcp.projects.Service("acceptanceService", {
+ *     project: acceptanceProject.projectId,
+ *     service: "vmwareengine.googleapis.com",
+ * }, {
+ *     provider: google_beta,
+ *     dependsOn: [wait60Seconds],
+ * });
+ * const vmw_engine_network = new gcp.vmwareengine.Network("vmw-engine-network", {
+ *     project: acceptanceService.project,
+ *     location: "us-west1",
+ *     type: "LEGACY",
+ *     description: "VMwareEngine legacy network sample",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

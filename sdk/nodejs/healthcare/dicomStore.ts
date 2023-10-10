@@ -130,6 +130,11 @@ export class DicomStore extends pulumi.CustomResource {
      */
     public readonly dataset!: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * User-supplied key-value pairs used to organize DICOM stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
      * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -138,6 +143,9 @@ export class DicomStore extends pulumi.CustomResource {
      * No more than 64 labels can be associated with a given store.
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -160,6 +168,11 @@ export class DicomStore extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly streamConfigs!: pulumi.Output<outputs.healthcare.DicomStoreStreamConfig[] | undefined>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a DicomStore resource with the given unique name, arguments, and options.
@@ -175,11 +188,13 @@ export class DicomStore extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as DicomStoreState | undefined;
             resourceInputs["dataset"] = state ? state.dataset : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notificationConfig"] = state ? state.notificationConfig : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["streamConfigs"] = state ? state.streamConfigs : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as DicomStoreArgs | undefined;
             if ((!args || args.dataset === undefined) && !opts.urn) {
@@ -190,7 +205,9 @@ export class DicomStore extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             resourceInputs["streamConfigs"] = args ? args.streamConfigs : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DicomStore.__pulumiType, name, resourceInputs, opts);
@@ -210,6 +227,11 @@ export interface DicomStoreState {
      */
     dataset?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * User-supplied key-value pairs used to organize DICOM stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
      * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -218,6 +240,9 @@ export interface DicomStoreState {
      * No more than 64 labels can be associated with a given store.
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -240,6 +265,11 @@ export interface DicomStoreState {
      * Structure is documented below.
      */
     streamConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.DicomStoreStreamConfig>[]>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -263,6 +293,9 @@ export interface DicomStoreArgs {
      * No more than 64 labels can be associated with a given store.
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

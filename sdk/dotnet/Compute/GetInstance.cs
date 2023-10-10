@@ -185,6 +185,7 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string Description;
         public readonly string DesiredStatus;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
         /// Whether the instance has virtual displays enabled.
         /// </summary>
@@ -268,6 +269,7 @@ namespace Pulumi.Gcp.Compute
         /// The unique fingerprint of the tags.
         /// </summary>
         public readonly string TagsFingerprint;
+        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly string? Zone;
 
         [OutputConstructor]
@@ -293,6 +295,8 @@ namespace Pulumi.Gcp.Compute
             string description,
 
             string desiredStatus,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             bool enableDisplay,
 
@@ -346,6 +350,8 @@ namespace Pulumi.Gcp.Compute
 
             string tagsFingerprint,
 
+            ImmutableDictionary<string, string> terraformLabels,
+
             string? zone)
         {
             AdvancedMachineFeatures = advancedMachineFeatures;
@@ -359,6 +365,7 @@ namespace Pulumi.Gcp.Compute
             DeletionProtection = deletionProtection;
             Description = description;
             DesiredStatus = desiredStatus;
+            EffectiveLabels = effectiveLabels;
             EnableDisplay = enableDisplay;
             GuestAccelerators = guestAccelerators;
             Hostname = hostname;
@@ -385,6 +392,7 @@ namespace Pulumi.Gcp.Compute
             ShieldedInstanceConfigs = shieldedInstanceConfigs;
             Tags = tags;
             TagsFingerprint = tagsFingerprint;
+            TerraformLabels = terraformLabels;
             Zone = zone;
         }
     }

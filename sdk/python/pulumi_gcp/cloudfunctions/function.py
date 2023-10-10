@@ -67,6 +67,9 @@ class FunctionArgs:
         :param pulumi.Input[str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
                If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
         :param pulumi.Input[Mapping[str, Any]] labels: A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[int] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
         :param pulumi.Input[int] min_instances: The limit on the minimum number of function instances that may coexist at a given time.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally.
@@ -438,6 +441,9 @@ class FunctionArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -636,6 +642,7 @@ class _FunctionState:
                  description: Optional[pulumi.Input[str]] = None,
                  docker_registry: Optional[pulumi.Input[str]] = None,
                  docker_repository: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  event_trigger: Optional[pulumi.Input['FunctionEventTriggerArgs']] = None,
@@ -657,6 +664,7 @@ class _FunctionState:
                  source_archive_object: Optional[pulumi.Input[str]] = None,
                  source_repository: Optional[pulumi.Input['FunctionSourceRepositoryArgs']] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  timeout: Optional[pulumi.Input[int]] = None,
                  trigger_http: Optional[pulumi.Input[bool]] = None,
                  vpc_connector: Optional[pulumi.Input[str]] = None,
@@ -669,6 +677,8 @@ class _FunctionState:
         :param pulumi.Input[str] description: Description of the function.
         :param pulumi.Input[str] docker_registry: Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
         :param pulumi.Input[str] docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
         :param pulumi.Input['FunctionEventTriggerArgs'] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
@@ -678,6 +688,9 @@ class _FunctionState:
         :param pulumi.Input[str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
                If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
         :param pulumi.Input[Mapping[str, Any]] labels: A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[int] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
         :param pulumi.Input[int] min_instances: The limit on the minimum number of function instances that may coexist at a given time.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally.
@@ -695,6 +708,7 @@ class _FunctionState:
         :param pulumi.Input['FunctionSourceRepositoryArgs'] source_repository: Represents parameters related to source repository where a function is hosted.
                Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
         :param pulumi.Input[str] status: Describes the current stage of a deployment.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[int] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
         :param pulumi.Input[bool] trigger_http: Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `event_trigger`.
         :param pulumi.Input[str] vpc_connector: The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
@@ -708,6 +722,7 @@ class _FunctionState:
             description=description,
             docker_registry=docker_registry,
             docker_repository=docker_repository,
+            effective_labels=effective_labels,
             entry_point=entry_point,
             environment_variables=environment_variables,
             event_trigger=event_trigger,
@@ -729,6 +744,7 @@ class _FunctionState:
             source_archive_object=source_archive_object,
             source_repository=source_repository,
             status=status,
+            terraform_labels=terraform_labels,
             timeout=timeout,
             trigger_http=trigger_http,
             vpc_connector=vpc_connector,
@@ -743,6 +759,7 @@ class _FunctionState:
              description: Optional[pulumi.Input[str]] = None,
              docker_registry: Optional[pulumi.Input[str]] = None,
              docker_repository: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              entry_point: Optional[pulumi.Input[str]] = None,
              environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              event_trigger: Optional[pulumi.Input['FunctionEventTriggerArgs']] = None,
@@ -764,6 +781,7 @@ class _FunctionState:
              source_archive_object: Optional[pulumi.Input[str]] = None,
              source_repository: Optional[pulumi.Input['FunctionSourceRepositoryArgs']] = None,
              status: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
              trigger_http: Optional[pulumi.Input[bool]] = None,
              vpc_connector: Optional[pulumi.Input[str]] = None,
@@ -780,6 +798,8 @@ class _FunctionState:
             docker_registry = kwargs['dockerRegistry']
         if docker_repository is None and 'dockerRepository' in kwargs:
             docker_repository = kwargs['dockerRepository']
+        if effective_labels is None and 'effectiveLabels' in kwargs:
+            effective_labels = kwargs['effectiveLabels']
         if entry_point is None and 'entryPoint' in kwargs:
             entry_point = kwargs['entryPoint']
         if environment_variables is None and 'environmentVariables' in kwargs:
@@ -810,6 +830,8 @@ class _FunctionState:
             source_archive_object = kwargs['sourceArchiveObject']
         if source_repository is None and 'sourceRepository' in kwargs:
             source_repository = kwargs['sourceRepository']
+        if terraform_labels is None and 'terraformLabels' in kwargs:
+            terraform_labels = kwargs['terraformLabels']
         if trigger_http is None and 'triggerHttp' in kwargs:
             trigger_http = kwargs['triggerHttp']
         if vpc_connector is None and 'vpcConnector' in kwargs:
@@ -829,6 +851,8 @@ class _FunctionState:
             _setter("docker_registry", docker_registry)
         if docker_repository is not None:
             _setter("docker_repository", docker_repository)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if entry_point is not None:
             _setter("entry_point", entry_point)
         if environment_variables is not None:
@@ -871,6 +895,8 @@ class _FunctionState:
             _setter("source_repository", source_repository)
         if status is not None:
             _setter("status", status)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if timeout is not None:
             _setter("timeout", timeout)
         if trigger_http is not None:
@@ -951,6 +977,19 @@ class _FunctionState:
     @docker_repository.setter
     def docker_repository(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "docker_repository", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
 
     @property
     @pulumi.getter(name="entryPoint")
@@ -1042,6 +1081,9 @@ class _FunctionState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1208,6 +1250,18 @@ class _FunctionState:
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -1398,6 +1452,9 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
                If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
         :param pulumi.Input[Mapping[str, Any]] labels: A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[int] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
         :param pulumi.Input[int] min_instances: The limit on the minimum number of function instances that may coexist at a given time.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally.
@@ -1604,7 +1661,9 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["trigger_http"] = trigger_http
             __props__.__dict__["vpc_connector"] = vpc_connector
             __props__.__dict__["vpc_connector_egress_settings"] = vpc_connector_egress_settings
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["status"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(Function, __self__).__init__(
             'gcp:cloudfunctions/function:Function',
             resource_name,
@@ -1621,6 +1680,7 @@ class Function(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             docker_registry: Optional[pulumi.Input[str]] = None,
             docker_repository: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             entry_point: Optional[pulumi.Input[str]] = None,
             environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             event_trigger: Optional[pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']]] = None,
@@ -1642,6 +1702,7 @@ class Function(pulumi.CustomResource):
             source_archive_object: Optional[pulumi.Input[str]] = None,
             source_repository: Optional[pulumi.Input[pulumi.InputType['FunctionSourceRepositoryArgs']]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             timeout: Optional[pulumi.Input[int]] = None,
             trigger_http: Optional[pulumi.Input[bool]] = None,
             vpc_connector: Optional[pulumi.Input[str]] = None,
@@ -1659,6 +1720,8 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the function.
         :param pulumi.Input[str] docker_registry: Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
         :param pulumi.Input[str] docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
         :param pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
@@ -1668,6 +1731,9 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
                If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
         :param pulumi.Input[Mapping[str, Any]] labels: A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[int] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
         :param pulumi.Input[int] min_instances: The limit on the minimum number of function instances that may coexist at a given time.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally.
@@ -1685,6 +1751,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['FunctionSourceRepositoryArgs']] source_repository: Represents parameters related to source repository where a function is hosted.
                Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
         :param pulumi.Input[str] status: Describes the current stage of a deployment.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[int] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
         :param pulumi.Input[bool] trigger_http: Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `event_trigger`.
         :param pulumi.Input[str] vpc_connector: The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
@@ -1700,6 +1767,7 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["docker_registry"] = docker_registry
         __props__.__dict__["docker_repository"] = docker_repository
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["entry_point"] = entry_point
         __props__.__dict__["environment_variables"] = environment_variables
         __props__.__dict__["event_trigger"] = event_trigger
@@ -1721,6 +1789,7 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["source_archive_object"] = source_archive_object
         __props__.__dict__["source_repository"] = source_repository
         __props__.__dict__["status"] = status
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["timeout"] = timeout
         __props__.__dict__["trigger_http"] = trigger_http
         __props__.__dict__["vpc_connector"] = vpc_connector
@@ -1774,6 +1843,15 @@ class Function(pulumi.CustomResource):
         User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
         """
         return pulumi.get(self, "docker_repository")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="entryPoint")
@@ -1837,6 +1915,9 @@ class Function(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1947,6 +2028,14 @@ class Function(pulumi.CustomResource):
         Describes the current stage of a deployment.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

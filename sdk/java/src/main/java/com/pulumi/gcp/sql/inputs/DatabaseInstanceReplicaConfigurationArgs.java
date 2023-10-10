@@ -157,9 +157,17 @@ public final class DatabaseInstanceReplicaConfigurationArgs extends com.pulumi.r
         return Optional.ofNullable(this.password);
     }
 
+    /**
+     * Permissible ciphers for use in SSL encryption.
+     * 
+     */
     @Import(name="sslCipher")
     private @Nullable Output<String> sslCipher;
 
+    /**
+     * @return Permissible ciphers for use in SSL encryption.
+     * 
+     */
     public Optional<Output<String>> sslCipher() {
         return Optional.ofNullable(this.sslCipher);
     }
@@ -418,11 +426,23 @@ public final class DatabaseInstanceReplicaConfigurationArgs extends com.pulumi.r
             return password(Output.of(password));
         }
 
+        /**
+         * @param sslCipher Permissible ciphers for use in SSL encryption.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sslCipher(@Nullable Output<String> sslCipher) {
             $.sslCipher = sslCipher;
             return this;
         }
 
+        /**
+         * @param sslCipher Permissible ciphers for use in SSL encryption.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sslCipher(String sslCipher) {
             return sslCipher(Output.of(sslCipher));
         }

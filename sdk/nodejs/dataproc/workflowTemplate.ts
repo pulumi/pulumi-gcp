@@ -124,6 +124,11 @@ export class WorkflowTemplate extends pulumi.CustomResource {
      */
     public readonly dagTimeout!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: any}>;
+    /**
      * Required. The Directed Acyclic Graph of Jobs to submit.
      */
     public readonly jobs!: pulumi.Output<outputs.dataproc.WorkflowTemplateJob[]>;
@@ -152,6 +157,10 @@ export class WorkflowTemplate extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: any}>;
+    /**
      * Output only. The time template was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -177,6 +186,7 @@ export class WorkflowTemplate extends pulumi.CustomResource {
             const state = argsOrState as WorkflowTemplateState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["dagTimeout"] = state ? state.dagTimeout : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["jobs"] = state ? state.jobs : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -184,6 +194,7 @@ export class WorkflowTemplate extends pulumi.CustomResource {
             resourceInputs["parameters"] = state ? state.parameters : undefined;
             resourceInputs["placement"] = state ? state.placement : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
         } else {
@@ -207,6 +218,8 @@ export class WorkflowTemplate extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -226,6 +239,11 @@ export interface WorkflowTemplateState {
      * (Beta only) Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a (/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
      */
     dagTimeout?: pulumi.Input<string>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Required. The Directed Acyclic Graph of Jobs to submit.
      */
@@ -254,6 +272,10 @@ export interface WorkflowTemplateState {
      * The project for the resource
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Output only. The time template was last updated.
      */

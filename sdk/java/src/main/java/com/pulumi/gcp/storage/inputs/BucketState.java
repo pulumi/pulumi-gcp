@@ -88,6 +88,23 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * The bucket&#39;s encryption configuration. Structure is documented below.
      * 
      */
@@ -293,6 +310,21 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
+    }
+
+    /**
      * Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
      * 
      */
@@ -359,6 +391,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         this.cors = $.cors;
         this.customPlacementConfig = $.customPlacementConfig;
         this.defaultEventBasedHold = $.defaultEventBasedHold;
+        this.effectiveLabels = $.effectiveLabels;
         this.encryption = $.encryption;
         this.forceDestroy = $.forceDestroy;
         this.labels = $.labels;
@@ -372,6 +405,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         this.retentionPolicy = $.retentionPolicy;
         this.selfLink = $.selfLink;
         this.storageClass = $.storageClass;
+        this.terraformLabels = $.terraformLabels;
         this.uniformBucketLevelAccess = $.uniformBucketLevelAccess;
         this.url = $.url;
         this.versioning = $.versioning;
@@ -488,6 +522,29 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder defaultEventBasedHold(Boolean defaultEventBasedHold) {
             return defaultEventBasedHold(Output.of(defaultEventBasedHold));
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
         }
 
         /**
@@ -781,6 +838,27 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder storageClass(String storageClass) {
             return storageClass(Output.of(storageClass));
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
+            return this;
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

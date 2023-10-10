@@ -16,17 +16,21 @@ __all__ = ['FunctionArgs', 'Function']
 @pulumi.input_type
 class FunctionArgs:
     def __init__(__self__, *,
+                 location: pulumi.Input[str],
                  build_config: Optional[pulumi.Input['FunctionBuildConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  event_trigger: Optional[pulumi.Input['FunctionEventTriggerArgs']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_config: Optional[pulumi.Input['FunctionServiceConfigArgs']] = None):
         """
         The set of arguments for constructing a Function resource.
+        :param pulumi.Input[str] location: The location of this cloud function.
+               
+               
+               - - -
         :param pulumi.Input['FunctionBuildConfigArgs'] build_config: Describes the Build step of the function that builds a container
                from the given source.
                Structure is documented below.
@@ -37,12 +41,11 @@ class FunctionArgs:
         :param pulumi.Input[str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
                It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs associated with this Cloud Function.
-        :param pulumi.Input[str] location: The location of this cloud function.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must
                be unique globally and match pattern `projects/*/locations/*/functions/*`.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['FunctionServiceConfigArgs'] service_config: Describes the Service being deployed.
@@ -50,12 +53,12 @@ class FunctionArgs:
         """
         FunctionArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
             build_config=build_config,
             description=description,
             event_trigger=event_trigger,
             kms_key_name=kms_key_name,
             labels=labels,
-            location=location,
             name=name,
             project=project,
             service_config=service_config,
@@ -63,17 +66,19 @@ class FunctionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
+             location: Optional[pulumi.Input[str]] = None,
              build_config: Optional[pulumi.Input['FunctionBuildConfigArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              event_trigger: Optional[pulumi.Input['FunctionEventTriggerArgs']] = None,
              kms_key_name: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              service_config: Optional[pulumi.Input['FunctionServiceConfigArgs']] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
         if build_config is None and 'buildConfig' in kwargs:
             build_config = kwargs['buildConfig']
         if event_trigger is None and 'eventTrigger' in kwargs:
@@ -83,6 +88,7 @@ class FunctionArgs:
         if service_config is None and 'serviceConfig' in kwargs:
             service_config = kwargs['serviceConfig']
 
+        _setter("location", location)
         if build_config is not None:
             _setter("build_config", build_config)
         if description is not None:
@@ -93,14 +99,27 @@ class FunctionArgs:
             _setter("kms_key_name", kms_key_name)
         if labels is not None:
             _setter("labels", labels)
-        if location is not None:
-            _setter("location", location)
         if name is not None:
             _setter("name", name)
         if project is not None:
             _setter("project", project)
         if service_config is not None:
             _setter("service_config", service_config)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        """
+        The location of this cloud function.
+
+
+        - - -
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="buildConfig")
@@ -160,6 +179,9 @@ class FunctionArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A set of key/value label pairs associated with this Cloud Function.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -169,25 +191,10 @@ class FunctionArgs:
 
     @property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[str]]:
-        """
-        The location of this cloud function.
-        """
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         A user-defined name of the function. Function names must
         be unique globally and match pattern `projects/*/locations/*/functions/*`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -227,6 +234,7 @@ class _FunctionState:
     def __init__(__self__, *,
                  build_config: Optional[pulumi.Input['FunctionBuildConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  event_trigger: Optional[pulumi.Input['FunctionEventTriggerArgs']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -236,6 +244,7 @@ class _FunctionState:
                  project: Optional[pulumi.Input[str]] = None,
                  service_config: Optional[pulumi.Input['FunctionServiceConfigArgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
@@ -244,6 +253,8 @@ class _FunctionState:
                from the given source.
                Structure is documented below.
         :param pulumi.Input[str] description: User-provided description of a function.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] environment: The environment the function is hosted on.
         :param pulumi.Input['FunctionEventTriggerArgs'] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in
                response to a condition in another service.
@@ -251,17 +262,22 @@ class _FunctionState:
         :param pulumi.Input[str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
                It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs associated with this Cloud Function.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of this cloud function.
-        :param pulumi.Input[str] name: A user-defined name of the function. Function names must
-               be unique globally and match pattern `projects/*/locations/*/functions/*`.
                
                
                - - -
+        :param pulumi.Input[str] name: A user-defined name of the function. Function names must
+               be unique globally and match pattern `projects/*/locations/*/functions/*`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['FunctionServiceConfigArgs'] service_config: Describes the Service being deployed.
                Structure is documented below.
         :param pulumi.Input[str] state: Describes the current state of the function.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: The last update timestamp of a Cloud Function.
         :param pulumi.Input[str] url: Output only. The deployed url for the function.
         """
@@ -269,6 +285,7 @@ class _FunctionState:
             lambda key, value: pulumi.set(__self__, key, value),
             build_config=build_config,
             description=description,
+            effective_labels=effective_labels,
             environment=environment,
             event_trigger=event_trigger,
             kms_key_name=kms_key_name,
@@ -278,6 +295,7 @@ class _FunctionState:
             project=project,
             service_config=service_config,
             state=state,
+            terraform_labels=terraform_labels,
             update_time=update_time,
             url=url,
         )
@@ -286,6 +304,7 @@ class _FunctionState:
              _setter: Callable[[Any, Any], None],
              build_config: Optional[pulumi.Input['FunctionBuildConfigArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              environment: Optional[pulumi.Input[str]] = None,
              event_trigger: Optional[pulumi.Input['FunctionEventTriggerArgs']] = None,
              kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -295,18 +314,23 @@ class _FunctionState:
              project: Optional[pulumi.Input[str]] = None,
              service_config: Optional[pulumi.Input['FunctionServiceConfigArgs']] = None,
              state: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if build_config is None and 'buildConfig' in kwargs:
             build_config = kwargs['buildConfig']
+        if effective_labels is None and 'effectiveLabels' in kwargs:
+            effective_labels = kwargs['effectiveLabels']
         if event_trigger is None and 'eventTrigger' in kwargs:
             event_trigger = kwargs['eventTrigger']
         if kms_key_name is None and 'kmsKeyName' in kwargs:
             kms_key_name = kwargs['kmsKeyName']
         if service_config is None and 'serviceConfig' in kwargs:
             service_config = kwargs['serviceConfig']
+        if terraform_labels is None and 'terraformLabels' in kwargs:
+            terraform_labels = kwargs['terraformLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
@@ -314,6 +338,8 @@ class _FunctionState:
             _setter("build_config", build_config)
         if description is not None:
             _setter("description", description)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if environment is not None:
             _setter("environment", environment)
         if event_trigger is not None:
@@ -332,6 +358,8 @@ class _FunctionState:
             _setter("service_config", service_config)
         if state is not None:
             _setter("state", state)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if update_time is not None:
             _setter("update_time", update_time)
         if url is not None:
@@ -362,6 +390,19 @@ class _FunctionState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
 
     @property
     @pulumi.getter
@@ -407,6 +448,9 @@ class _FunctionState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A set of key/value label pairs associated with this Cloud Function.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -419,6 +463,9 @@ class _FunctionState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location of this cloud function.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -432,9 +479,6 @@ class _FunctionState:
         """
         A user-defined name of the function. Function names must
         be unique globally and match pattern `projects/*/locations/*/functions/*`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -479,6 +523,19 @@ class _FunctionState:
     @state.setter
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="updateTime")
@@ -737,12 +794,15 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
                It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs associated with this Cloud Function.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of this cloud function.
-        :param pulumi.Input[str] name: A user-defined name of the function. Function names must
-               be unique globally and match pattern `projects/*/locations/*/functions/*`.
                
                
                - - -
+        :param pulumi.Input[str] name: A user-defined name of the function. Function names must
+               be unique globally and match pattern `projects/*/locations/*/functions/*`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['FunctionServiceConfigArgs']] service_config: Describes the Service being deployed.
@@ -752,7 +812,7 @@ class Function(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[FunctionArgs] = None,
+                 args: FunctionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Cloud Function that contains user computation executed in response to an event.
@@ -1003,13 +1063,17 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["event_trigger"] = event_trigger
             __props__.__dict__["kms_key_name"] = kms_key_name
             __props__.__dict__["labels"] = labels
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             service_config = _utilities.configure(service_config, FunctionServiceConfigArgs, True)
             __props__.__dict__["service_config"] = service_config
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["environment"] = None
             __props__.__dict__["state"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["update_time"] = None
             __props__.__dict__["url"] = None
         super(Function, __self__).__init__(
@@ -1024,6 +1088,7 @@ class Function(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             build_config: Optional[pulumi.Input[pulumi.InputType['FunctionBuildConfigArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             environment: Optional[pulumi.Input[str]] = None,
             event_trigger: Optional[pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']]] = None,
             kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -1033,6 +1098,7 @@ class Function(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             service_config: Optional[pulumi.Input[pulumi.InputType['FunctionServiceConfigArgs']]] = None,
             state: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None) -> 'Function':
         """
@@ -1046,6 +1112,8 @@ class Function(pulumi.CustomResource):
                from the given source.
                Structure is documented below.
         :param pulumi.Input[str] description: User-provided description of a function.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] environment: The environment the function is hosted on.
         :param pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in
                response to a condition in another service.
@@ -1053,17 +1121,22 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
                It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs associated with this Cloud Function.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of this cloud function.
-        :param pulumi.Input[str] name: A user-defined name of the function. Function names must
-               be unique globally and match pattern `projects/*/locations/*/functions/*`.
                
                
                - - -
+        :param pulumi.Input[str] name: A user-defined name of the function. Function names must
+               be unique globally and match pattern `projects/*/locations/*/functions/*`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['FunctionServiceConfigArgs']] service_config: Describes the Service being deployed.
                Structure is documented below.
         :param pulumi.Input[str] state: Describes the current state of the function.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: The last update timestamp of a Cloud Function.
         :param pulumi.Input[str] url: Output only. The deployed url for the function.
         """
@@ -1073,6 +1146,7 @@ class Function(pulumi.CustomResource):
 
         __props__.__dict__["build_config"] = build_config
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["environment"] = environment
         __props__.__dict__["event_trigger"] = event_trigger
         __props__.__dict__["kms_key_name"] = kms_key_name
@@ -1082,6 +1156,7 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["service_config"] = service_config
         __props__.__dict__["state"] = state
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["url"] = url
         return Function(resource_name, opts=opts, __props__=__props__)
@@ -1103,6 +1178,15 @@ class Function(pulumi.CustomResource):
         User-provided description of a function.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter
@@ -1136,14 +1220,20 @@ class Function(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A set of key/value label pairs associated with this Cloud Function.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
-    def location(self) -> pulumi.Output[Optional[str]]:
+    def location(self) -> pulumi.Output[str]:
         """
         The location of this cloud function.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -1153,9 +1243,6 @@ class Function(pulumi.CustomResource):
         """
         A user-defined name of the function. Function names must
         be unique globally and match pattern `projects/*/locations/*/functions/*`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1184,6 +1271,15 @@ class Function(pulumi.CustomResource):
         Describes the current state of the function.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="updateTime")

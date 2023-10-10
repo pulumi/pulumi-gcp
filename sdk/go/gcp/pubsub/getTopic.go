@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -64,6 +64,7 @@ type LookupTopicArgs struct {
 
 // A collection of values returned by getTopic.
 type LookupTopicResult struct {
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                       string                         `pulumi:"id"`
 	KmsKeyName               string                         `pulumi:"kmsKeyName"`
@@ -73,6 +74,7 @@ type LookupTopicResult struct {
 	Name                     string                         `pulumi:"name"`
 	Project                  *string                        `pulumi:"project"`
 	SchemaSettings           []GetTopicSchemaSetting        `pulumi:"schemaSettings"`
+	TerraformLabels          map[string]string              `pulumi:"terraformLabels"`
 }
 
 func LookupTopicOutput(ctx *pulumi.Context, args LookupTopicOutputArgs, opts ...pulumi.InvokeOption) LookupTopicResultOutput {
@@ -124,6 +126,10 @@ func (o LookupTopicResultOutput) ToOutput(ctx context.Context) pulumix.Output[Lo
 	}
 }
 
+func (o LookupTopicResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupTopicResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupTopicResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTopicResult) string { return v.Id }).(pulumi.StringOutput)
@@ -155,6 +161,10 @@ func (o LookupTopicResultOutput) Project() pulumi.StringPtrOutput {
 
 func (o LookupTopicResultOutput) SchemaSettings() GetTopicSchemaSettingArrayOutput {
 	return o.ApplyT(func(v LookupTopicResult) []GetTopicSchemaSetting { return v.SchemaSettings }).(GetTopicSchemaSettingArrayOutput)
+}
+
+func (o LookupTopicResultOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupTopicResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func init() {

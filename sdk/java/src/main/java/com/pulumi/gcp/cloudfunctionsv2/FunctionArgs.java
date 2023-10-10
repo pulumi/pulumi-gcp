@@ -92,12 +92,18 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A set of key/value label pairs associated with this Cloud Function.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return A set of key/value label pairs associated with this Cloud Function.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -107,23 +113,25 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The location of this cloud function.
      * 
+     * ***
+     * 
      */
-    @Import(name="location")
-    private @Nullable Output<String> location;
+    @Import(name="location", required=true)
+    private Output<String> location;
 
     /**
      * @return The location of this cloud function.
      * 
+     * ***
+     * 
      */
-    public Optional<Output<String>> location() {
-        return Optional.ofNullable(this.location);
+    public Output<String> location() {
+        return this.location;
     }
 
     /**
      * A user-defined name of the function. Function names must
      * be unique globally and match pattern `projects/*{@literal /}locations/*{@literal /}functions/*`.
-     * 
-     * ***
      * 
      */
     @Import(name="name")
@@ -132,8 +140,6 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return A user-defined name of the function. Function names must
      * be unique globally and match pattern `projects/*{@literal /}locations/*{@literal /}functions/*`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -303,6 +309,9 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels A set of key/value label pairs associated with this Cloud Function.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -314,6 +323,9 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels A set of key/value label pairs associated with this Cloud Function.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -324,16 +336,20 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The location of this cloud function.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
-        public Builder location(@Nullable Output<String> location) {
+        public Builder location(Output<String> location) {
             $.location = location;
             return this;
         }
 
         /**
          * @param location The location of this cloud function.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -346,8 +362,6 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
          * @param name A user-defined name of the function. Function names must
          * be unique globally and match pattern `projects/*{@literal /}locations/*{@literal /}functions/*`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -359,8 +373,6 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name A user-defined name of the function. Function names must
          * be unique globally and match pattern `projects/*{@literal /}locations/*{@literal /}functions/*`.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -416,6 +428,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FunctionArgs build() {
+            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
             return $;
         }
     }

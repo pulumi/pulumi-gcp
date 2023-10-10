@@ -187,14 +187,18 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * A set of key/value label pairs assigned to the instance.
+     * A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
+     * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
+     * the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return A set of key/value label pairs assigned to the instance.
+     * @return A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
+     * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
+     * the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -762,7 +766,9 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param labels A set of key/value label pairs assigned to the instance.
+         * @param labels A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
+         * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
+         * the resource.
          * 
          * @return builder
          * 
@@ -773,7 +779,9 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param labels A set of key/value label pairs assigned to the instance.
+         * @param labels A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
+         * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
+         * the resource.
          * 
          * @return builder
          * 

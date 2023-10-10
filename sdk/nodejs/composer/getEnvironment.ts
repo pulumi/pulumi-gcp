@@ -46,6 +46,7 @@ export interface GetEnvironmentResult {
      * Configuration parameters for the environment.
      */
     readonly configs: outputs.composer.GetEnvironmentConfig[];
+    readonly effectiveLabels: {[key: string]: string};
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -54,6 +55,7 @@ export interface GetEnvironmentResult {
     readonly name: string;
     readonly project?: string;
     readonly region?: string;
+    readonly terraformLabels: {[key: string]: string};
 }
 /**
  * Provides access to Cloud Composer environment configuration in a region for a given project.

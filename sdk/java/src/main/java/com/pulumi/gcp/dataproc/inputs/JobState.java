@@ -60,6 +60,23 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * By default, you can only delete inactive jobs within
      * Dataproc. Setting this to true, and calling destroy, will ensure that the
      * job is first cancelled before issuing the delete.
@@ -110,10 +127,8 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The list of labels (key/value pairs) to add to the job.
-     * 
-     * * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-     * 
-     * * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -121,10 +136,8 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The list of labels (key/value pairs) to add to the job.
-     * 
-     * * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-     * 
-     * * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -300,11 +313,27 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.statuses);
     }
 
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
+    }
+
     private JobState() {}
 
     private JobState(JobState $) {
         this.driverControlsFilesUri = $.driverControlsFilesUri;
         this.driverOutputResourceUri = $.driverOutputResourceUri;
+        this.effectiveLabels = $.effectiveLabels;
         this.forceDelete = $.forceDelete;
         this.hadoopConfig = $.hadoopConfig;
         this.hiveConfig = $.hiveConfig;
@@ -320,6 +349,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         this.sparkConfig = $.sparkConfig;
         this.sparksqlConfig = $.sparksqlConfig;
         this.statuses = $.statuses;
+        this.terraformLabels = $.terraformLabels;
     }
 
     public static Builder builder() {
@@ -380,6 +410,29 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder driverOutputResourceUri(String driverOutputResourceUri) {
             return driverOutputResourceUri(Output.of(driverOutputResourceUri));
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
         }
 
         /**
@@ -451,10 +504,8 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels The list of labels (key/value pairs) to add to the job.
-         * 
-         * * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-         * 
-         * * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -466,10 +517,8 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels The list of labels (key/value pairs) to add to the job.
-         * 
-         * * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-         * 
-         * * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -721,6 +770,27 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder statuses(JobStatusArgs... statuses) {
             return statuses(List.of(statuses));
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
+            return this;
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
         }
 
         public JobState build() {

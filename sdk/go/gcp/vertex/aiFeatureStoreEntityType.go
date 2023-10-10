@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -90,7 +90,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -156,6 +156,9 @@ type AiFeatureStoreEntityType struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. Description of the EntityType.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
@@ -163,6 +166,9 @@ type AiFeatureStoreEntityType struct {
 	// ***
 	Featurestore pulumi.StringOutput `pulumi:"featurestore"`
 	// A set of key/value label pairs to assign to this EntityType.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The default monitoring configuration for all Features under this EntityType.
 	// If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
@@ -176,6 +182,9 @@ type AiFeatureStoreEntityType struct {
 	OfflineStorageTtlDays pulumi.IntPtrOutput `pulumi:"offlineStorageTtlDays"`
 	// The region of the EntityType.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -217,6 +226,9 @@ type aiFeatureStoreEntityTypeState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Optional. Description of the EntityType.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Used to perform consistent read-modify-write updates.
 	Etag *string `pulumi:"etag"`
 	// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
@@ -224,6 +236,9 @@ type aiFeatureStoreEntityTypeState struct {
 	// ***
 	Featurestore *string `pulumi:"featurestore"`
 	// A set of key/value label pairs to assign to this EntityType.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The default monitoring configuration for all Features under this EntityType.
 	// If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
@@ -237,6 +252,9 @@ type aiFeatureStoreEntityTypeState struct {
 	OfflineStorageTtlDays *int `pulumi:"offlineStorageTtlDays"`
 	// The region of the EntityType.
 	Region *string `pulumi:"region"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -246,6 +264,9 @@ type AiFeatureStoreEntityTypeState struct {
 	CreateTime pulumi.StringPtrInput
 	// Optional. Description of the EntityType.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringPtrInput
 	// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
@@ -253,6 +274,9 @@ type AiFeatureStoreEntityTypeState struct {
 	// ***
 	Featurestore pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to this EntityType.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The default monitoring configuration for all Features under this EntityType.
 	// If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
@@ -266,6 +290,9 @@ type AiFeatureStoreEntityTypeState struct {
 	OfflineStorageTtlDays pulumi.IntPtrInput
 	// The region of the EntityType.
 	Region pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -282,6 +309,9 @@ type aiFeatureStoreEntityTypeArgs struct {
 	// ***
 	Featurestore string `pulumi:"featurestore"`
 	// A set of key/value label pairs to assign to this EntityType.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The default monitoring configuration for all Features under this EntityType.
 	// If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
@@ -304,6 +334,9 @@ type AiFeatureStoreEntityTypeArgs struct {
 	// ***
 	Featurestore pulumi.StringInput
 	// A set of key/value label pairs to assign to this EntityType.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The default monitoring configuration for all Features under this EntityType.
 	// If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
@@ -438,6 +471,12 @@ func (o AiFeatureStoreEntityTypeOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityType) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o AiFeatureStoreEntityTypeOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityType) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Used to perform consistent read-modify-write updates.
 func (o AiFeatureStoreEntityTypeOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityType) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
@@ -451,6 +490,9 @@ func (o AiFeatureStoreEntityTypeOutput) Featurestore() pulumi.StringOutput {
 }
 
 // A set of key/value label pairs to assign to this EntityType.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o AiFeatureStoreEntityTypeOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityType) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -479,6 +521,12 @@ func (o AiFeatureStoreEntityTypeOutput) OfflineStorageTtlDays() pulumi.IntPtrOut
 // The region of the EntityType.
 func (o AiFeatureStoreEntityTypeOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityType) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o AiFeatureStoreEntityTypeOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityType) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.

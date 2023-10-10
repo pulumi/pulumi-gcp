@@ -31,6 +31,9 @@ class TopicArgs:
                `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
                The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Topic.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] message_retention_duration: Indicates the minimum duration to retain a message after it is published
                to the topic. If this field is set, messages published to the topic in
                the last messageRetentionDuration are always available to subscribers.
@@ -118,6 +121,9 @@ class TopicArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A set of key/value label pairs to assign to this Topic.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -203,21 +209,28 @@ class TopicArgs:
 @pulumi.input_type
 class _TopicState:
     def __init__(__self__, *,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
                  message_storage_policy: Optional[pulumi.Input['TopicMessageStoragePolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 schema_settings: Optional[pulumi.Input['TopicSchemaSettingsArgs']] = None):
+                 schema_settings: Optional[pulumi.Input['TopicSchemaSettingsArgs']] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Topic resources.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS CryptoKey to be used to protect access
                to messages published on this topic. Your project's PubSub service account
                (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
                `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
                The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Topic.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] message_retention_duration: Indicates the minimum duration to retain a message after it is published
                to the topic. If this field is set, messages published to the topic in
                the last messageRetentionDuration are always available to subscribers.
@@ -237,9 +250,12 @@ class _TopicState:
                If it is not provided, the provider project is used.
         :param pulumi.Input['TopicSchemaSettingsArgs'] schema_settings: Settings for validating messages published against a schema.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         _TopicState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
+            effective_labels=effective_labels,
             kms_key_name=kms_key_name,
             labels=labels,
             message_retention_duration=message_retention_duration,
@@ -247,10 +263,12 @@ class _TopicState:
             name=name,
             project=project,
             schema_settings=schema_settings,
+            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              kms_key_name: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              message_retention_duration: Optional[pulumi.Input[str]] = None,
@@ -258,8 +276,11 @@ class _TopicState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              schema_settings: Optional[pulumi.Input['TopicSchemaSettingsArgs']] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if effective_labels is None and 'effectiveLabels' in kwargs:
+            effective_labels = kwargs['effectiveLabels']
         if kms_key_name is None and 'kmsKeyName' in kwargs:
             kms_key_name = kwargs['kmsKeyName']
         if message_retention_duration is None and 'messageRetentionDuration' in kwargs:
@@ -268,7 +289,11 @@ class _TopicState:
             message_storage_policy = kwargs['messageStoragePolicy']
         if schema_settings is None and 'schemaSettings' in kwargs:
             schema_settings = kwargs['schemaSettings']
+        if terraform_labels is None and 'terraformLabels' in kwargs:
+            terraform_labels = kwargs['terraformLabels']
 
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if kms_key_name is not None:
             _setter("kms_key_name", kms_key_name)
         if labels is not None:
@@ -283,6 +308,21 @@ class _TopicState:
             _setter("project", project)
         if schema_settings is not None:
             _setter("schema_settings", schema_settings)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -305,6 +345,9 @@ class _TopicState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A set of key/value label pairs to assign to this Topic.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -385,6 +428,19 @@ class _TopicState:
     @schema_settings.setter
     def schema_settings(self, value: Optional[pulumi.Input['TopicSchemaSettingsArgs']]):
         pulumi.set(self, "schema_settings", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
 
 class Topic(pulumi.CustomResource):
@@ -499,6 +555,9 @@ class Topic(pulumi.CustomResource):
                `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
                The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Topic.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] message_retention_duration: Indicates the minimum duration to retain a message after it is published
                to the topic. If this field is set, messages published to the topic in
                the last messageRetentionDuration are always available to subscribers.
@@ -660,6 +719,8 @@ class Topic(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             schema_settings = _utilities.configure(schema_settings, TopicSchemaSettingsArgs, True)
             __props__.__dict__["schema_settings"] = schema_settings
+            __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(Topic, __self__).__init__(
             'gcp:pubsub/topic:Topic',
             resource_name,
@@ -670,13 +731,15 @@ class Topic(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             kms_key_name: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             message_retention_duration: Optional[pulumi.Input[str]] = None,
             message_storage_policy: Optional[pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            schema_settings: Optional[pulumi.Input[pulumi.InputType['TopicSchemaSettingsArgs']]] = None) -> 'Topic':
+            schema_settings: Optional[pulumi.Input[pulumi.InputType['TopicSchemaSettingsArgs']]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Topic':
         """
         Get an existing Topic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -684,12 +747,17 @@ class Topic(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS CryptoKey to be used to protect access
                to messages published on this topic. Your project's PubSub service account
                (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
                `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
                The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Topic.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] message_retention_duration: Indicates the minimum duration to retain a message after it is published
                to the topic. If this field is set, messages published to the topic in
                the last messageRetentionDuration are always available to subscribers.
@@ -709,11 +777,14 @@ class Topic(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['TopicSchemaSettingsArgs']] schema_settings: Settings for validating messages published against a schema.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _TopicState.__new__(_TopicState)
 
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["kms_key_name"] = kms_key_name
         __props__.__dict__["labels"] = labels
         __props__.__dict__["message_retention_duration"] = message_retention_duration
@@ -721,7 +792,17 @@ class Topic(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["schema_settings"] = schema_settings
+        __props__.__dict__["terraform_labels"] = terraform_labels
         return Topic(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -740,6 +821,9 @@ class Topic(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A set of key/value label pairs to assign to this Topic.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -796,4 +880,13 @@ class Topic(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "schema_settings")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 

@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  * const _default = new gcp.firebase.WebApp("default", {
  *     project: "my-project-name",
  *     displayName: "Test web app for Firebase Hosting",
- *     deletionPolicy: "DELETE",
  * }, {
  *     provider: google_beta,
  * });

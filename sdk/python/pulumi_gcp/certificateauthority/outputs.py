@@ -52,13 +52,6 @@ __all__ = [
     'CertificateCertificateDescription',
     'CertificateCertificateDescriptionAuthorityKeyId',
     'CertificateCertificateDescriptionCertFingerprint',
-    'CertificateCertificateDescriptionConfigValue',
-    'CertificateCertificateDescriptionConfigValueKeyUsage',
-    'CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage',
-    'CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption',
-    'CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsage',
-    'CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage',
-    'CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId',
     'CertificateCertificateDescriptionPublicKey',
     'CertificateCertificateDescriptionSubjectDescription',
     'CertificateCertificateDescriptionSubjectDescriptionSubject',
@@ -3933,8 +3926,6 @@ class CertificateCertificateDescription(dict):
             suggest = "authority_key_ids"
         elif key == "certFingerprints":
             suggest = "cert_fingerprints"
-        elif key == "configValues":
-            suggest = "config_values"
         elif key == "crlDistributionPoints":
             suggest = "crl_distribution_points"
         elif key == "publicKeys":
@@ -3961,7 +3952,6 @@ class CertificateCertificateDescription(dict):
                  aia_issuing_certificate_urls: Optional[Sequence[str]] = None,
                  authority_key_ids: Optional[Sequence['outputs.CertificateCertificateDescriptionAuthorityKeyId']] = None,
                  cert_fingerprints: Optional[Sequence['outputs.CertificateCertificateDescriptionCertFingerprint']] = None,
-                 config_values: Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValue']] = None,
                  crl_distribution_points: Optional[Sequence[str]] = None,
                  public_keys: Optional[Sequence['outputs.CertificateCertificateDescriptionPublicKey']] = None,
                  subject_descriptions: Optional[Sequence['outputs.CertificateCertificateDescriptionSubjectDescription']] = None,
@@ -3975,9 +3965,6 @@ class CertificateCertificateDescription(dict):
                Structure is documented below.
         :param Sequence['CertificateCertificateDescriptionCertFingerprintArgs'] cert_fingerprints: (Output)
                The hash of the x.509 certificate.
-               Structure is documented below.
-        :param Sequence['CertificateCertificateDescriptionConfigValueArgs'] config_values: (Output, Deprecated)
-               Describes some of the technical fields in a certificate.
                Structure is documented below.
         :param Sequence[str] crl_distribution_points: (Output)
                Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
@@ -4001,7 +3988,6 @@ class CertificateCertificateDescription(dict):
             aia_issuing_certificate_urls=aia_issuing_certificate_urls,
             authority_key_ids=authority_key_ids,
             cert_fingerprints=cert_fingerprints,
-            config_values=config_values,
             crl_distribution_points=crl_distribution_points,
             public_keys=public_keys,
             subject_descriptions=subject_descriptions,
@@ -4014,7 +4000,6 @@ class CertificateCertificateDescription(dict):
              aia_issuing_certificate_urls: Optional[Sequence[str]] = None,
              authority_key_ids: Optional[Sequence['outputs.CertificateCertificateDescriptionAuthorityKeyId']] = None,
              cert_fingerprints: Optional[Sequence['outputs.CertificateCertificateDescriptionCertFingerprint']] = None,
-             config_values: Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValue']] = None,
              crl_distribution_points: Optional[Sequence[str]] = None,
              public_keys: Optional[Sequence['outputs.CertificateCertificateDescriptionPublicKey']] = None,
              subject_descriptions: Optional[Sequence['outputs.CertificateCertificateDescriptionSubjectDescription']] = None,
@@ -4028,8 +4013,6 @@ class CertificateCertificateDescription(dict):
             authority_key_ids = kwargs['authorityKeyIds']
         if cert_fingerprints is None and 'certFingerprints' in kwargs:
             cert_fingerprints = kwargs['certFingerprints']
-        if config_values is None and 'configValues' in kwargs:
-            config_values = kwargs['configValues']
         if crl_distribution_points is None and 'crlDistributionPoints' in kwargs:
             crl_distribution_points = kwargs['crlDistributionPoints']
         if public_keys is None and 'publicKeys' in kwargs:
@@ -4047,8 +4030,6 @@ class CertificateCertificateDescription(dict):
             _setter("authority_key_ids", authority_key_ids)
         if cert_fingerprints is not None:
             _setter("cert_fingerprints", cert_fingerprints)
-        if config_values is not None:
-            _setter("config_values", config_values)
         if crl_distribution_points is not None:
             _setter("crl_distribution_points", crl_distribution_points)
         if public_keys is not None:
@@ -4088,19 +4069,6 @@ class CertificateCertificateDescription(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "cert_fingerprints")
-
-    @property
-    @pulumi.getter(name="configValues")
-    def config_values(self) -> Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValue']]:
-        """
-        (Output, Deprecated)
-        Describes some of the technical fields in a certificate.
-        Structure is documented below.
-        """
-        warnings.warn("""`config_values` is deprecated and will be removed in a future release. Use `x509_description` instead.""", DeprecationWarning)
-        pulumi.log.warn("""config_values is deprecated: `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead.""")
-
-        return pulumi.get(self, "config_values")
 
     @property
     @pulumi.getter(name="crlDistributionPoints")
@@ -4254,635 +4222,6 @@ class CertificateCertificateDescriptionCertFingerprint(dict):
         The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
         """
         return pulumi.get(self, "sha256_hash")
-
-
-@pulumi.output_type
-class CertificateCertificateDescriptionConfigValue(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyUsages":
-            suggest = "key_usages"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CertificateCertificateDescriptionConfigValue. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CertificateCertificateDescriptionConfigValue.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CertificateCertificateDescriptionConfigValue.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 key_usages: Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsage']] = None):
-        """
-        :param Sequence['CertificateCertificateDescriptionConfigValueKeyUsageArgs'] key_usages: Indicates the intended use for keys that correspond to a certificate.
-               Structure is documented below.
-        """
-        CertificateCertificateDescriptionConfigValue._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key_usages=key_usages,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key_usages: Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsage']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key_usages is None and 'keyUsages' in kwargs:
-            key_usages = kwargs['keyUsages']
-
-        if key_usages is not None:
-            _setter("key_usages", key_usages)
-
-    @property
-    @pulumi.getter(name="keyUsages")
-    def key_usages(self) -> Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsage']]:
-        """
-        Indicates the intended use for keys that correspond to a certificate.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "key_usages")
-
-
-@pulumi.output_type
-class CertificateCertificateDescriptionConfigValueKeyUsage(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "baseKeyUsages":
-            suggest = "base_key_usages"
-        elif key == "extendedKeyUsages":
-            suggest = "extended_key_usages"
-        elif key == "unknownExtendedKeyUsages":
-            suggest = "unknown_extended_key_usages"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CertificateCertificateDescriptionConfigValueKeyUsage. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CertificateCertificateDescriptionConfigValueKeyUsage.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CertificateCertificateDescriptionConfigValueKeyUsage.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 base_key_usages: Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage']] = None,
-                 extended_key_usages: Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsage']] = None,
-                 unknown_extended_key_usages: Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage']] = None):
-        """
-        :param Sequence['CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArgs'] base_key_usages: Describes high-level ways in which a key may be used.
-               Structure is documented below.
-        :param Sequence['CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsageArgs'] extended_key_usages: Describes high-level ways in which a key may be used.
-               Structure is documented below.
-        :param Sequence['CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArgs'] unknown_extended_key_usages: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-               Structure is documented below.
-        """
-        CertificateCertificateDescriptionConfigValueKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            base_key_usages=base_key_usages,
-            extended_key_usages=extended_key_usages,
-            unknown_extended_key_usages=unknown_extended_key_usages,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             base_key_usages: Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage']] = None,
-             extended_key_usages: Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsage']] = None,
-             unknown_extended_key_usages: Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if base_key_usages is None and 'baseKeyUsages' in kwargs:
-            base_key_usages = kwargs['baseKeyUsages']
-        if extended_key_usages is None and 'extendedKeyUsages' in kwargs:
-            extended_key_usages = kwargs['extendedKeyUsages']
-        if unknown_extended_key_usages is None and 'unknownExtendedKeyUsages' in kwargs:
-            unknown_extended_key_usages = kwargs['unknownExtendedKeyUsages']
-
-        if base_key_usages is not None:
-            _setter("base_key_usages", base_key_usages)
-        if extended_key_usages is not None:
-            _setter("extended_key_usages", extended_key_usages)
-        if unknown_extended_key_usages is not None:
-            _setter("unknown_extended_key_usages", unknown_extended_key_usages)
-
-    @property
-    @pulumi.getter(name="baseKeyUsages")
-    def base_key_usages(self) -> Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage']]:
-        """
-        Describes high-level ways in which a key may be used.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "base_key_usages")
-
-    @property
-    @pulumi.getter(name="extendedKeyUsages")
-    def extended_key_usages(self) -> Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsage']]:
-        """
-        Describes high-level ways in which a key may be used.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "extended_key_usages")
-
-    @property
-    @pulumi.getter(name="unknownExtendedKeyUsages")
-    def unknown_extended_key_usages(self) -> Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage']]:
-        """
-        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "unknown_extended_key_usages")
-
-
-@pulumi.output_type
-class CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyUsageOptions":
-            suggest = "key_usage_options"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 key_usage_options: Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption']] = None):
-        """
-        :param Sequence['CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArgs'] key_usage_options: (Output)
-               Describes high-level ways in which a key may be used.
-               Structure is documented below.
-        """
-        CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key_usage_options=key_usage_options,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key_usage_options: Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key_usage_options is None and 'keyUsageOptions' in kwargs:
-            key_usage_options = kwargs['keyUsageOptions']
-
-        if key_usage_options is not None:
-            _setter("key_usage_options", key_usage_options)
-
-    @property
-    @pulumi.getter(name="keyUsageOptions")
-    def key_usage_options(self) -> Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption']]:
-        """
-        (Output)
-        Describes high-level ways in which a key may be used.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "key_usage_options")
-
-
-@pulumi.output_type
-class CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "certSign":
-            suggest = "cert_sign"
-        elif key == "contentCommitment":
-            suggest = "content_commitment"
-        elif key == "crlSign":
-            suggest = "crl_sign"
-        elif key == "dataEncipherment":
-            suggest = "data_encipherment"
-        elif key == "decipherOnly":
-            suggest = "decipher_only"
-        elif key == "digitalSignature":
-            suggest = "digital_signature"
-        elif key == "encipherOnly":
-            suggest = "encipher_only"
-        elif key == "keyAgreement":
-            suggest = "key_agreement"
-        elif key == "keyEncipherment":
-            suggest = "key_encipherment"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 cert_sign: Optional[bool] = None,
-                 content_commitment: Optional[bool] = None,
-                 crl_sign: Optional[bool] = None,
-                 data_encipherment: Optional[bool] = None,
-                 decipher_only: Optional[bool] = None,
-                 digital_signature: Optional[bool] = None,
-                 encipher_only: Optional[bool] = None,
-                 key_agreement: Optional[bool] = None,
-                 key_encipherment: Optional[bool] = None):
-        """
-        :param bool cert_sign: The key may be used to sign certificates.
-        :param bool content_commitment: The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
-        :param bool crl_sign: The key may be used sign certificate revocation lists.
-        :param bool data_encipherment: The key may be used to encipher data.
-        :param bool decipher_only: The key may be used to decipher only.
-        :param bool digital_signature: The key may be used for digital signatures.
-        :param bool encipher_only: The key may be used to encipher only.
-        :param bool key_agreement: The key may be used in a key agreement protocol.
-        :param bool key_encipherment: The key may be used to encipher other keys.
-        """
-        CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cert_sign=cert_sign,
-            content_commitment=content_commitment,
-            crl_sign=crl_sign,
-            data_encipherment=data_encipherment,
-            decipher_only=decipher_only,
-            digital_signature=digital_signature,
-            encipher_only=encipher_only,
-            key_agreement=key_agreement,
-            key_encipherment=key_encipherment,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cert_sign: Optional[bool] = None,
-             content_commitment: Optional[bool] = None,
-             crl_sign: Optional[bool] = None,
-             data_encipherment: Optional[bool] = None,
-             decipher_only: Optional[bool] = None,
-             digital_signature: Optional[bool] = None,
-             encipher_only: Optional[bool] = None,
-             key_agreement: Optional[bool] = None,
-             key_encipherment: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cert_sign is None and 'certSign' in kwargs:
-            cert_sign = kwargs['certSign']
-        if content_commitment is None and 'contentCommitment' in kwargs:
-            content_commitment = kwargs['contentCommitment']
-        if crl_sign is None and 'crlSign' in kwargs:
-            crl_sign = kwargs['crlSign']
-        if data_encipherment is None and 'dataEncipherment' in kwargs:
-            data_encipherment = kwargs['dataEncipherment']
-        if decipher_only is None and 'decipherOnly' in kwargs:
-            decipher_only = kwargs['decipherOnly']
-        if digital_signature is None and 'digitalSignature' in kwargs:
-            digital_signature = kwargs['digitalSignature']
-        if encipher_only is None and 'encipherOnly' in kwargs:
-            encipher_only = kwargs['encipherOnly']
-        if key_agreement is None and 'keyAgreement' in kwargs:
-            key_agreement = kwargs['keyAgreement']
-        if key_encipherment is None and 'keyEncipherment' in kwargs:
-            key_encipherment = kwargs['keyEncipherment']
-
-        if cert_sign is not None:
-            _setter("cert_sign", cert_sign)
-        if content_commitment is not None:
-            _setter("content_commitment", content_commitment)
-        if crl_sign is not None:
-            _setter("crl_sign", crl_sign)
-        if data_encipherment is not None:
-            _setter("data_encipherment", data_encipherment)
-        if decipher_only is not None:
-            _setter("decipher_only", decipher_only)
-        if digital_signature is not None:
-            _setter("digital_signature", digital_signature)
-        if encipher_only is not None:
-            _setter("encipher_only", encipher_only)
-        if key_agreement is not None:
-            _setter("key_agreement", key_agreement)
-        if key_encipherment is not None:
-            _setter("key_encipherment", key_encipherment)
-
-    @property
-    @pulumi.getter(name="certSign")
-    def cert_sign(self) -> Optional[bool]:
-        """
-        The key may be used to sign certificates.
-        """
-        return pulumi.get(self, "cert_sign")
-
-    @property
-    @pulumi.getter(name="contentCommitment")
-    def content_commitment(self) -> Optional[bool]:
-        """
-        The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
-        """
-        return pulumi.get(self, "content_commitment")
-
-    @property
-    @pulumi.getter(name="crlSign")
-    def crl_sign(self) -> Optional[bool]:
-        """
-        The key may be used sign certificate revocation lists.
-        """
-        return pulumi.get(self, "crl_sign")
-
-    @property
-    @pulumi.getter(name="dataEncipherment")
-    def data_encipherment(self) -> Optional[bool]:
-        """
-        The key may be used to encipher data.
-        """
-        return pulumi.get(self, "data_encipherment")
-
-    @property
-    @pulumi.getter(name="decipherOnly")
-    def decipher_only(self) -> Optional[bool]:
-        """
-        The key may be used to decipher only.
-        """
-        return pulumi.get(self, "decipher_only")
-
-    @property
-    @pulumi.getter(name="digitalSignature")
-    def digital_signature(self) -> Optional[bool]:
-        """
-        The key may be used for digital signatures.
-        """
-        return pulumi.get(self, "digital_signature")
-
-    @property
-    @pulumi.getter(name="encipherOnly")
-    def encipher_only(self) -> Optional[bool]:
-        """
-        The key may be used to encipher only.
-        """
-        return pulumi.get(self, "encipher_only")
-
-    @property
-    @pulumi.getter(name="keyAgreement")
-    def key_agreement(self) -> Optional[bool]:
-        """
-        The key may be used in a key agreement protocol.
-        """
-        return pulumi.get(self, "key_agreement")
-
-    @property
-    @pulumi.getter(name="keyEncipherment")
-    def key_encipherment(self) -> Optional[bool]:
-        """
-        The key may be used to encipher other keys.
-        """
-        return pulumi.get(self, "key_encipherment")
-
-
-@pulumi.output_type
-class CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsage(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientAuth":
-            suggest = "client_auth"
-        elif key == "codeSigning":
-            suggest = "code_signing"
-        elif key == "emailProtection":
-            suggest = "email_protection"
-        elif key == "ocspSigning":
-            suggest = "ocsp_signing"
-        elif key == "serverAuth":
-            suggest = "server_auth"
-        elif key == "timeStamping":
-            suggest = "time_stamping"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsage. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsage.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsage.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 client_auth: Optional[bool] = None,
-                 code_signing: Optional[bool] = None,
-                 email_protection: Optional[bool] = None,
-                 ocsp_signing: Optional[bool] = None,
-                 server_auth: Optional[bool] = None,
-                 time_stamping: Optional[bool] = None):
-        """
-        :param bool client_auth: Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
-        :param bool code_signing: Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
-        :param bool email_protection: Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
-        :param bool ocsp_signing: Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
-        :param bool server_auth: Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
-        :param bool time_stamping: Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
-        """
-        CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            client_auth=client_auth,
-            code_signing=code_signing,
-            email_protection=email_protection,
-            ocsp_signing=ocsp_signing,
-            server_auth=server_auth,
-            time_stamping=time_stamping,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             client_auth: Optional[bool] = None,
-             code_signing: Optional[bool] = None,
-             email_protection: Optional[bool] = None,
-             ocsp_signing: Optional[bool] = None,
-             server_auth: Optional[bool] = None,
-             time_stamping: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if client_auth is None and 'clientAuth' in kwargs:
-            client_auth = kwargs['clientAuth']
-        if code_signing is None and 'codeSigning' in kwargs:
-            code_signing = kwargs['codeSigning']
-        if email_protection is None and 'emailProtection' in kwargs:
-            email_protection = kwargs['emailProtection']
-        if ocsp_signing is None and 'ocspSigning' in kwargs:
-            ocsp_signing = kwargs['ocspSigning']
-        if server_auth is None and 'serverAuth' in kwargs:
-            server_auth = kwargs['serverAuth']
-        if time_stamping is None and 'timeStamping' in kwargs:
-            time_stamping = kwargs['timeStamping']
-
-        if client_auth is not None:
-            _setter("client_auth", client_auth)
-        if code_signing is not None:
-            _setter("code_signing", code_signing)
-        if email_protection is not None:
-            _setter("email_protection", email_protection)
-        if ocsp_signing is not None:
-            _setter("ocsp_signing", ocsp_signing)
-        if server_auth is not None:
-            _setter("server_auth", server_auth)
-        if time_stamping is not None:
-            _setter("time_stamping", time_stamping)
-
-    @property
-    @pulumi.getter(name="clientAuth")
-    def client_auth(self) -> Optional[bool]:
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
-        """
-        return pulumi.get(self, "client_auth")
-
-    @property
-    @pulumi.getter(name="codeSigning")
-    def code_signing(self) -> Optional[bool]:
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
-        """
-        return pulumi.get(self, "code_signing")
-
-    @property
-    @pulumi.getter(name="emailProtection")
-    def email_protection(self) -> Optional[bool]:
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
-        """
-        return pulumi.get(self, "email_protection")
-
-    @property
-    @pulumi.getter(name="ocspSigning")
-    def ocsp_signing(self) -> Optional[bool]:
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
-        """
-        return pulumi.get(self, "ocsp_signing")
-
-    @property
-    @pulumi.getter(name="serverAuth")
-    def server_auth(self) -> Optional[bool]:
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
-        """
-        return pulumi.get(self, "server_auth")
-
-    @property
-    @pulumi.getter(name="timeStamping")
-    def time_stamping(self) -> Optional[bool]:
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
-        """
-        return pulumi.get(self, "time_stamping")
-
-
-@pulumi.output_type
-class CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "obectIds":
-            suggest = "obect_ids"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 obect_ids: Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId']] = None):
-        """
-        :param Sequence['CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs'] obect_ids: (Output)
-               Required. Describes how some of the technical fields in a certificate should be populated.
-               Structure is documented below.
-        """
-        CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            obect_ids=obect_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             obect_ids: Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if obect_ids is None and 'obectIds' in kwargs:
-            obect_ids = kwargs['obectIds']
-
-        if obect_ids is not None:
-            _setter("obect_ids", obect_ids)
-
-    @property
-    @pulumi.getter(name="obectIds")
-    def obect_ids(self) -> Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId']]:
-        """
-        (Output)
-        Required. Describes how some of the technical fields in a certificate should be populated.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "obect_ids")
-
-
-@pulumi.output_type
-class CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "objectIdPaths":
-            suggest = "object_id_paths"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 object_id_paths: Optional[Sequence[int]] = None):
-        """
-        :param Sequence[int] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-        """
-        CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            object_id_paths=object_id_paths,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             object_id_paths: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if object_id_paths is None and 'objectIdPaths' in kwargs:
-            object_id_paths = kwargs['objectIdPaths']
-
-        if object_id_paths is not None:
-            _setter("object_id_paths", object_id_paths)
-
-    @property
-    @pulumi.getter(name="objectIdPaths")
-    def object_id_paths(self) -> Optional[Sequence[int]]:
-        """
-        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-        """
-        return pulumi.get(self, "object_id_paths")
 
 
 @pulumi.output_type
@@ -5387,7 +4726,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
         :param bool critical: Indicates whether or not this extension is critical (i.e., if the client does not know how to
                handle this extension, the client should consider this to be an error).
         :param Sequence['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs'] obect_ids: (Output)
-               Required. Describes how some of the technical fields in a certificate should be populated.
+               Describes how some of the technical fields in a certificate should be populated.
                Structure is documented below.
         :param str value: The value of this X.509 extension. A base64-encoded string.
         """
@@ -5429,7 +4768,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
     def obect_ids(self) -> Optional[Sequence['outputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId']]:
         """
         (Output)
-        Required. Describes how some of the technical fields in a certificate should be populated.
+        Describes how some of the technical fields in a certificate should be populated.
         Structure is documented below.
         """
         return pulumi.get(self, "obect_ids")

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -358,7 +358,8 @@ type InstanceCluster struct {
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// The number of nodes in the cluster.
 	// If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
-	NumNodes *int `pulumi:"numNodes"`
+	NumNodes *int    `pulumi:"numNodes"`
+	State    *string `pulumi:"state"`
 	// The storage type to use. One of `"SSD"` or
 	// `"HDD"`. Defaults to `"SSD"`.
 	StorageType *string `pulumi:"storageType"`
@@ -397,7 +398,8 @@ type InstanceClusterArgs struct {
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
 	// The number of nodes in the cluster.
 	// If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
-	NumNodes pulumi.IntPtrInput `pulumi:"numNodes"`
+	NumNodes pulumi.IntPtrInput    `pulumi:"numNodes"`
+	State    pulumi.StringPtrInput `pulumi:"state"`
 	// The storage type to use. One of `"SSD"` or
 	// `"HDD"`. Defaults to `"SSD"`.
 	StorageType pulumi.StringPtrInput `pulumi:"storageType"`
@@ -504,6 +506,10 @@ func (o InstanceClusterOutput) KmsKeyName() pulumi.StringPtrOutput {
 // If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
 func (o InstanceClusterOutput) NumNodes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceCluster) *int { return v.NumNodes }).(pulumi.IntPtrOutput)
+}
+
+func (o InstanceClusterOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceCluster) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
 // The storage type to use. One of `"SSD"` or

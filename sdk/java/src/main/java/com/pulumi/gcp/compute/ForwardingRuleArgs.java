@@ -5,7 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.compute.inputs.ForwardingRuleServiceDirectoryRegistrationArgs;
+import com.pulumi.gcp.compute.inputs.ForwardingRuleServiceDirectoryRegistrationsArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -299,12 +299,18 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -585,7 +591,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
      * 
      */
     @Import(name="serviceDirectoryRegistrations")
-    private @Nullable Output<List<ForwardingRuleServiceDirectoryRegistrationArgs>> serviceDirectoryRegistrations;
+    private @Nullable Output<ForwardingRuleServiceDirectoryRegistrationsArgs> serviceDirectoryRegistrations;
 
     /**
      * @return Service Directory resources to register this forwarding rule with.
@@ -593,7 +599,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
      * Structure is documented below.
      * 
      */
-    public Optional<Output<List<ForwardingRuleServiceDirectoryRegistrationArgs>>> serviceDirectoryRegistrations() {
+    public Optional<Output<ForwardingRuleServiceDirectoryRegistrationsArgs>> serviceDirectoryRegistrations() {
         return Optional.ofNullable(this.serviceDirectoryRegistrations);
     }
 
@@ -1086,6 +1092,9 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param labels Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -1096,6 +1105,9 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param labels Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -1458,7 +1470,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder serviceDirectoryRegistrations(@Nullable Output<List<ForwardingRuleServiceDirectoryRegistrationArgs>> serviceDirectoryRegistrations) {
+        public Builder serviceDirectoryRegistrations(@Nullable Output<ForwardingRuleServiceDirectoryRegistrationsArgs> serviceDirectoryRegistrations) {
             $.serviceDirectoryRegistrations = serviceDirectoryRegistrations;
             return this;
         }
@@ -1471,20 +1483,8 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder serviceDirectoryRegistrations(List<ForwardingRuleServiceDirectoryRegistrationArgs> serviceDirectoryRegistrations) {
+        public Builder serviceDirectoryRegistrations(ForwardingRuleServiceDirectoryRegistrationsArgs serviceDirectoryRegistrations) {
             return serviceDirectoryRegistrations(Output.of(serviceDirectoryRegistrations));
-        }
-
-        /**
-         * @param serviceDirectoryRegistrations Service Directory resources to register this forwarding rule with.
-         * Currently, only supports a single Service Directory resource.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder serviceDirectoryRegistrations(ForwardingRuleServiceDirectoryRegistrationArgs... serviceDirectoryRegistrations) {
-            return serviceDirectoryRegistrations(List.of(serviceDirectoryRegistrations));
         }
 
         /**

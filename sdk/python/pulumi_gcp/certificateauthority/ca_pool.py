@@ -37,6 +37,9 @@ class CaPoolArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
                "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name for this CaPool.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -136,6 +139,9 @@ class CaPoolArgs:
         Labels with user-defined metadata.
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
         "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -185,20 +191,27 @@ class CaPoolArgs:
 @pulumi.input_type
 class _CaPoolState:
     def __init__(__self__, *,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  issuance_policy: Optional[pulumi.Input['CaPoolIssuancePolicyArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  publishing_options: Optional[pulumi.Input['CaPoolPublishingOptionsArgs']] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tier: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CaPool resources.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input['CaPoolIssuancePolicyArgs'] issuance_policy: The IssuancePolicy to control how Certificates will be issued from this CaPool.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
                "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Location of the CaPool. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
                
@@ -209,36 +222,48 @@ class _CaPoolState:
                If it is not provided, the provider project is used.
         :param pulumi.Input['CaPoolPublishingOptionsArgs'] publishing_options: The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] tier: The Tier of this CaPool.
                Possible values are: `ENTERPRISE`, `DEVOPS`.
         """
         _CaPoolState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
+            effective_labels=effective_labels,
             issuance_policy=issuance_policy,
             labels=labels,
             location=location,
             name=name,
             project=project,
             publishing_options=publishing_options,
+            terraform_labels=terraform_labels,
             tier=tier,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              issuance_policy: Optional[pulumi.Input['CaPoolIssuancePolicyArgs']] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              publishing_options: Optional[pulumi.Input['CaPoolPublishingOptionsArgs']] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              tier: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if effective_labels is None and 'effectiveLabels' in kwargs:
+            effective_labels = kwargs['effectiveLabels']
         if issuance_policy is None and 'issuancePolicy' in kwargs:
             issuance_policy = kwargs['issuancePolicy']
         if publishing_options is None and 'publishingOptions' in kwargs:
             publishing_options = kwargs['publishingOptions']
+        if terraform_labels is None and 'terraformLabels' in kwargs:
+            terraform_labels = kwargs['terraformLabels']
 
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if issuance_policy is not None:
             _setter("issuance_policy", issuance_policy)
         if labels is not None:
@@ -251,8 +276,23 @@ class _CaPoolState:
             _setter("project", project)
         if publishing_options is not None:
             _setter("publishing_options", publishing_options)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if tier is not None:
             _setter("tier", tier)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
 
     @property
     @pulumi.getter(name="issuancePolicy")
@@ -274,6 +314,9 @@ class _CaPoolState:
         Labels with user-defined metadata.
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
         "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -334,6 +377,19 @@ class _CaPoolState:
     @publishing_options.setter
     def publishing_options(self, value: Optional[pulumi.Input['CaPoolPublishingOptionsArgs']]):
         pulumi.set(self, "publishing_options", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -409,6 +465,9 @@ class CaPool(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
                "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Location of the CaPool. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
                
@@ -516,6 +575,8 @@ class CaPool(pulumi.CustomResource):
             if tier is None and not opts.urn:
                 raise TypeError("Missing required property 'tier'")
             __props__.__dict__["tier"] = tier
+            __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(CaPool, __self__).__init__(
             'gcp:certificateauthority/caPool:CaPool',
             resource_name,
@@ -526,12 +587,14 @@ class CaPool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             issuance_policy: Optional[pulumi.Input[pulumi.InputType['CaPoolIssuancePolicyArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             publishing_options: Optional[pulumi.Input[pulumi.InputType['CaPoolPublishingOptionsArgs']]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             tier: Optional[pulumi.Input[str]] = None) -> 'CaPool':
         """
         Get an existing CaPool resource's state with the given name, id, and optional extra
@@ -540,11 +603,16 @@ class CaPool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[pulumi.InputType['CaPoolIssuancePolicyArgs']] issuance_policy: The IssuancePolicy to control how Certificates will be issued from this CaPool.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
                "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Location of the CaPool. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
                
@@ -555,6 +623,8 @@ class CaPool(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['CaPoolPublishingOptionsArgs']] publishing_options: The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] tier: The Tier of this CaPool.
                Possible values are: `ENTERPRISE`, `DEVOPS`.
         """
@@ -562,14 +632,25 @@ class CaPool(pulumi.CustomResource):
 
         __props__ = _CaPoolState.__new__(_CaPoolState)
 
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["issuance_policy"] = issuance_policy
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["publishing_options"] = publishing_options
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["tier"] = tier
         return CaPool(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="issuancePolicy")
@@ -587,6 +668,9 @@ class CaPool(pulumi.CustomResource):
         Labels with user-defined metadata.
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
         "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -627,6 +711,15 @@ class CaPool(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "publishing_options")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

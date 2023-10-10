@@ -76,8 +76,6 @@ cloudIdentityCustomEndpoint: Optional[str]
 
 cloudIdsCustomEndpoint: Optional[str]
 
-cloudIotCustomEndpoint: Optional[str]
-
 cloudResourceManagerCustomEndpoint: Optional[str]
 
 cloudRunCustomEndpoint: Optional[str]
@@ -136,6 +134,8 @@ datastoreCustomEndpoint: Optional[str]
 
 datastreamCustomEndpoint: Optional[str]
 
+defaultLabels: Optional[str]
+
 deploymentManagerCustomEndpoint: Optional[str]
 
 dialogflowCustomEndpoint: Optional[str]
@@ -171,8 +171,6 @@ firebaseStorageCustomEndpoint: Optional[str]
 firebaserulesCustomEndpoint: Optional[str]
 
 firestoreCustomEndpoint: Optional[str]
-
-gameServicesCustomEndpoint: Optional[str]
 
 gkeBackupCustomEndpoint: Optional[str]
 

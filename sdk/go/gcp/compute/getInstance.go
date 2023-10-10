@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -87,8 +87,9 @@ type LookupInstanceResult struct {
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection bool `pulumi:"deletionProtection"`
 	// A brief description of the resource.
-	Description   string `pulumi:"description"`
-	DesiredStatus string `pulumi:"desiredStatus"`
+	Description     string            `pulumi:"description"`
+	DesiredStatus   string            `pulumi:"desiredStatus"`
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Whether the instance has virtual displays enabled.
 	EnableDisplay bool `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance. Structure is documented below.
@@ -133,8 +134,9 @@ type LookupInstanceResult struct {
 	// The list of tags attached to the instance.
 	Tags []string `pulumi:"tags"`
 	// The unique fingerprint of the tags.
-	TagsFingerprint string  `pulumi:"tagsFingerprint"`
-	Zone            *string `pulumi:"zone"`
+	TagsFingerprint string            `pulumi:"tagsFingerprint"`
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	Zone            *string           `pulumi:"zone"`
 }
 
 func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceResultOutput {
@@ -242,6 +244,10 @@ func (o LookupInstanceResultOutput) Description() pulumi.StringOutput {
 
 func (o LookupInstanceResultOutput) DesiredStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.DesiredStatus }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
 // Whether the instance has virtual displays enabled.
@@ -365,6 +371,10 @@ func (o LookupInstanceResultOutput) Tags() pulumi.StringArrayOutput {
 // The unique fingerprint of the tags.
 func (o LookupInstanceResultOutput) TagsFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.TagsFingerprint }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupInstanceResultOutput) Zone() pulumi.StringPtrOutput {

@@ -167,6 +167,7 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetDiskDiskEncryptionKeyResult> DiskEncryptionKeys;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly bool EnableConfidentialCompute;
         public readonly ImmutableArray<Outputs.GetDiskGuestOsFeatureResult> GuestOsFeatures;
         /// <summary>
@@ -183,9 +184,6 @@ namespace Pulumi.Gcp.Compute
         /// internally during updates.
         /// </summary>
         public readonly string LabelFingerprint;
-        /// <summary>
-        /// A map of labels applied to this disk.
-        /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
         /// Last attach timestamp in RFC3339 text format.
@@ -245,6 +243,7 @@ namespace Pulumi.Gcp.Compute
         /// used.
         /// </summary>
         public readonly string SourceSnapshotId;
+        public readonly ImmutableDictionary<string, string> TerraformLabels;
         /// <summary>
         /// URL of the disk type resource describing which disk type to use to
         /// create the disk.
@@ -269,6 +268,8 @@ namespace Pulumi.Gcp.Compute
             string description,
 
             ImmutableArray<Outputs.GetDiskDiskEncryptionKeyResult> diskEncryptionKeys,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             bool enableConfidentialCompute,
 
@@ -322,6 +323,8 @@ namespace Pulumi.Gcp.Compute
 
             string sourceSnapshotId,
 
+            ImmutableDictionary<string, string> terraformLabels,
+
             string type,
 
             ImmutableArray<string> users,
@@ -332,6 +335,7 @@ namespace Pulumi.Gcp.Compute
             CreationTimestamp = creationTimestamp;
             Description = description;
             DiskEncryptionKeys = diskEncryptionKeys;
+            EffectiveLabels = effectiveLabels;
             EnableConfidentialCompute = enableConfidentialCompute;
             GuestOsFeatures = guestOsFeatures;
             Id = id;
@@ -358,6 +362,7 @@ namespace Pulumi.Gcp.Compute
             SourceImageId = sourceImageId;
             SourceSnapshotEncryptionKeys = sourceSnapshotEncryptionKeys;
             SourceSnapshotId = sourceSnapshotId;
+            TerraformLabels = terraformLabels;
             Type = type;
             Users = users;
             Zone = zone;

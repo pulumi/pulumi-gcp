@@ -55,6 +55,7 @@ namespace Pulumi.Gcp.Compute
     ///             ClusterIpv4CidrBlock = "/19",
     ///             ServicesIpv4CidrBlock = "/22",
     ///         },
+    ///         DeletionProtection = true,
     ///     });
     /// 
     ///     var myPort = new Gcp.Compute.InstanceGroupNamedPort("myPort", new()

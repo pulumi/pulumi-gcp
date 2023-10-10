@@ -68,6 +68,7 @@ export interface GetInstanceResult {
     readonly currentLocationId: string;
     readonly customerManagedKey: string;
     readonly displayName: string;
+    readonly effectiveLabels: {[key: string]: string};
     readonly host: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -94,6 +95,7 @@ export interface GetInstanceResult {
     readonly reservedIpRange: string;
     readonly secondaryIpRange: string;
     readonly serverCaCerts: outputs.redis.GetInstanceServerCaCert[];
+    readonly terraformLabels: {[key: string]: string};
     readonly tier: string;
     readonly transitEncryptionMode: string;
 }

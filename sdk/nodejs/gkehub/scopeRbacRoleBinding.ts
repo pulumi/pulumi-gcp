@@ -70,6 +70,11 @@ export class ScopeRbacRoleBinding extends pulumi.CustomResource {
      */
     public /*out*/ readonly deleteTime!: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Principal that is be authorized in the cluster (at least of one the oneof
      * is required). Updating one will unset the other automatically.
      * group is the group, as seen by the kubernetes cluster.
@@ -77,6 +82,9 @@ export class ScopeRbacRoleBinding extends pulumi.CustomResource {
     public readonly group!: pulumi.Output<string | undefined>;
     /**
      * Labels for this ScopeRBACRoleBinding.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -106,6 +114,11 @@ export class ScopeRbacRoleBinding extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public /*out*/ readonly states!: pulumi.Output<outputs.gkehub.ScopeRbacRoleBindingState[]>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Google-generated UUID for this resource.
      */
@@ -137,6 +150,7 @@ export class ScopeRbacRoleBinding extends pulumi.CustomResource {
             const state = argsOrState as ScopeRbacRoleBindingState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["group"] = state ? state.group : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -145,6 +159,7 @@ export class ScopeRbacRoleBinding extends pulumi.CustomResource {
             resourceInputs["scopeId"] = state ? state.scopeId : undefined;
             resourceInputs["scopeRbacRoleBindingId"] = state ? state.scopeRbacRoleBindingId : undefined;
             resourceInputs["states"] = state ? state.states : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
             resourceInputs["user"] = state ? state.user : undefined;
@@ -168,8 +183,10 @@ export class ScopeRbacRoleBinding extends pulumi.CustomResource {
             resourceInputs["user"] = args ? args.user : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["states"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -191,6 +208,11 @@ export interface ScopeRbacRoleBindingState {
      */
     deleteTime?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Principal that is be authorized in the cluster (at least of one the oneof
      * is required). Updating one will unset the other automatically.
      * group is the group, as seen by the kubernetes cluster.
@@ -198,6 +220,9 @@ export interface ScopeRbacRoleBindingState {
     group?: pulumi.Input<string>;
     /**
      * Labels for this ScopeRBACRoleBinding.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -228,6 +253,11 @@ export interface ScopeRbacRoleBindingState {
      */
     states?: pulumi.Input<pulumi.Input<inputs.gkehub.ScopeRbacRoleBindingState>[]>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Google-generated UUID for this resource.
      */
     uid?: pulumi.Input<string>;
@@ -256,6 +286,9 @@ export interface ScopeRbacRoleBindingArgs {
     group?: pulumi.Input<string>;
     /**
      * Labels for this ScopeRBACRoleBinding.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

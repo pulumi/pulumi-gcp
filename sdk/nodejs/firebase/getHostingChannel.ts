@@ -32,6 +32,7 @@ export interface GetHostingChannelArgs {
  */
 export interface GetHostingChannelResult {
     readonly channelId: string;
+    readonly effectiveLabels: {[key: string]: string};
     readonly expireTime: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -44,6 +45,7 @@ export interface GetHostingChannelResult {
     readonly name: string;
     readonly retainedReleaseCount: number;
     readonly siteId: string;
+    readonly terraformLabels: {[key: string]: string};
     readonly ttl: string;
 }
 export function getHostingChannelOutput(args: GetHostingChannelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostingChannelResult> {

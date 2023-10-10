@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -35,9 +35,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/databasemigrationservice"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/databasemigrationservice"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -151,8 +151,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/databasemigrationservice"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/databasemigrationservice"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -260,10 +260,16 @@ type ConnectionProfile struct {
 	Dbprovider pulumi.StringOutput `pulumi:"dbprovider"`
 	// The connection profile display name.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Output only. The error details in case of state FAILED.
 	// Structure is documented below.
 	Errors ConnectionProfileErrorArrayOutput `pulumi:"errors"`
 	// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the connection profile should reside.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
@@ -280,6 +286,9 @@ type ConnectionProfile struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The current connection profile state.
 	State pulumi.StringOutput `pulumi:"state"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewConnectionProfile registers a new resource with the given unique name, arguments, and options.
@@ -331,10 +340,16 @@ type connectionProfileState struct {
 	Dbprovider *string `pulumi:"dbprovider"`
 	// The connection profile display name.
 	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Output only. The error details in case of state FAILED.
 	// Structure is documented below.
 	Errors []ConnectionProfileError `pulumi:"errors"`
 	// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the connection profile should reside.
 	Location *string `pulumi:"location"`
@@ -351,6 +366,9 @@ type connectionProfileState struct {
 	Project *string `pulumi:"project"`
 	// The current connection profile state.
 	State *string `pulumi:"state"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type ConnectionProfileState struct {
@@ -370,10 +388,16 @@ type ConnectionProfileState struct {
 	Dbprovider pulumi.StringPtrInput
 	// The connection profile display name.
 	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Output only. The error details in case of state FAILED.
 	// Structure is documented below.
 	Errors ConnectionProfileErrorArrayInput
 	// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the connection profile should reside.
 	Location pulumi.StringPtrInput
@@ -390,6 +414,9 @@ type ConnectionProfileState struct {
 	Project pulumi.StringPtrInput
 	// The current connection profile state.
 	State pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 }
 
 func (ConnectionProfileState) ElementType() reflect.Type {
@@ -410,6 +437,9 @@ type connectionProfileArgs struct {
 	// The connection profile display name.
 	DisplayName *string `pulumi:"displayName"`
 	// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the connection profile should reside.
 	Location *string `pulumi:"location"`
@@ -439,6 +469,9 @@ type ConnectionProfileArgs struct {
 	// The connection profile display name.
 	DisplayName pulumi.StringPtrInput
 	// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the connection profile should reside.
 	Location pulumi.StringPtrInput
@@ -598,6 +631,12 @@ func (o ConnectionProfileOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o ConnectionProfileOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Output only. The error details in case of state FAILED.
 // Structure is documented below.
 func (o ConnectionProfileOutput) Errors() ConnectionProfileErrorArrayOutput {
@@ -605,6 +644,9 @@ func (o ConnectionProfileOutput) Errors() ConnectionProfileErrorArrayOutput {
 }
 
 // The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ConnectionProfileOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -640,6 +682,12 @@ func (o ConnectionProfileOutput) Project() pulumi.StringOutput {
 // The current connection profile state.
 func (o ConnectionProfileOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ConnectionProfileOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type ConnectionProfileArrayOutput struct{ *pulumi.OutputState }

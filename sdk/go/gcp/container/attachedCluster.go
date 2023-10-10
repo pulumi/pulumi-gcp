@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -32,8 +32,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -81,8 +81,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -153,6 +153,9 @@ type AttachedCluster struct {
 	// and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
 	// Name must be 63 characters or less, begin and end with alphanumerics,
 	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Configuration related to the cluster RBAC settings.
 	// Structure is documented below.
@@ -174,6 +177,9 @@ type AttachedCluster struct {
 	// The Kubernetes distribution of the underlying attached cluster. Supported values:
 	// "eks", "aks".
 	Distribution pulumi.StringOutput `pulumi:"distribution"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// A set of errors found in the cluster.
 	// Structure is documented below.
 	Errors AttachedClusterErrorArrayOutput `pulumi:"errors"`
@@ -274,6 +280,9 @@ type attachedClusterState struct {
 	// and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
 	// Name must be 63 characters or less, begin and end with alphanumerics,
 	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Configuration related to the cluster RBAC settings.
 	// Structure is documented below.
@@ -295,6 +304,9 @@ type attachedClusterState struct {
 	// The Kubernetes distribution of the underlying attached cluster. Supported values:
 	// "eks", "aks".
 	Distribution *string `pulumi:"distribution"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// A set of errors found in the cluster.
 	// Structure is documented below.
 	Errors []AttachedClusterError `pulumi:"errors"`
@@ -351,6 +363,9 @@ type AttachedClusterState struct {
 	// and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
 	// Name must be 63 characters or less, begin and end with alphanumerics,
 	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Configuration related to the cluster RBAC settings.
 	// Structure is documented below.
@@ -372,6 +387,9 @@ type AttachedClusterState struct {
 	// The Kubernetes distribution of the underlying attached cluster. Supported values:
 	// "eks", "aks".
 	Distribution pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapInput
 	// A set of errors found in the cluster.
 	// Structure is documented below.
 	Errors AttachedClusterErrorArrayInput
@@ -432,6 +450,9 @@ type attachedClusterArgs struct {
 	// and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
 	// Name must be 63 characters or less, begin and end with alphanumerics,
 	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Configuration related to the cluster RBAC settings.
 	// Structure is documented below.
@@ -486,6 +507,9 @@ type AttachedClusterArgs struct {
 	// and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
 	// Name must be 63 characters or less, begin and end with alphanumerics,
 	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Configuration related to the cluster RBAC settings.
 	// Structure is documented below.
@@ -649,6 +673,9 @@ func (o AttachedClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*Att
 // and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
 // Name must be 63 characters or less, begin and end with alphanumerics,
 // with dashes (-), underscores (_), dots (.), and alphanumerics between.
+//
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o AttachedClusterOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AttachedCluster) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -692,6 +719,12 @@ func (o AttachedClusterOutput) Description() pulumi.StringPtrOutput {
 // "eks", "aks".
 func (o AttachedClusterOutput) Distribution() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttachedCluster) pulumi.StringOutput { return v.Distribution }).(pulumi.StringOutput)
+}
+
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+// Terraform, other clients and services.
+func (o AttachedClusterOutput) EffectiveAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AttachedCluster) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
 
 // A set of errors found in the cluster.

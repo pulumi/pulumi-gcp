@@ -99,6 +99,11 @@ export class Job extends pulumi.CustomResource {
      */
     public /*out*/ readonly driverOutputResourceUri!: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * By default, you can only delete inactive jobs within
      * Dataproc. Setting this to true, and calling destroy, will ensure that the
      * job is first cancelled before issuing the delete.
@@ -114,10 +119,8 @@ export class Job extends pulumi.CustomResource {
     public readonly hiveConfig!: pulumi.Output<outputs.dataproc.JobHiveConfig | undefined>;
     /**
      * The list of labels (key/value pairs) to add to the job.
-     *
-     * * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-     *
-     * * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -166,6 +169,10 @@ export class Job extends pulumi.CustomResource {
      * The status of the job.
      */
     public /*out*/ readonly statuses!: pulumi.Output<outputs.dataproc.JobStatus[]>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -182,6 +189,7 @@ export class Job extends pulumi.CustomResource {
             const state = argsOrState as JobState | undefined;
             resourceInputs["driverControlsFilesUri"] = state ? state.driverControlsFilesUri : undefined;
             resourceInputs["driverOutputResourceUri"] = state ? state.driverOutputResourceUri : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
             resourceInputs["hadoopConfig"] = state ? state.hadoopConfig : undefined;
             resourceInputs["hiveConfig"] = state ? state.hiveConfig : undefined;
@@ -197,6 +205,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["sparkConfig"] = state ? state.sparkConfig : undefined;
             resourceInputs["sparksqlConfig"] = state ? state.sparksqlConfig : undefined;
             resourceInputs["statuses"] = state ? state.statuses : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as JobArgs | undefined;
             if ((!args || args.placement === undefined) && !opts.urn) {
@@ -218,7 +227,9 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["sparksqlConfig"] = args ? args.sparksqlConfig : undefined;
             resourceInputs["driverControlsFilesUri"] = undefined /*out*/;
             resourceInputs["driverOutputResourceUri"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["statuses"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Job.__pulumiType, name, resourceInputs, opts);
@@ -238,6 +249,11 @@ export interface JobState {
      */
     driverOutputResourceUri?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * By default, you can only delete inactive jobs within
      * Dataproc. Setting this to true, and calling destroy, will ensure that the
      * job is first cancelled before issuing the delete.
@@ -253,10 +269,8 @@ export interface JobState {
     hiveConfig?: pulumi.Input<inputs.dataproc.JobHiveConfig>;
     /**
      * The list of labels (key/value pairs) to add to the job.
-     *
-     * * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-     *
-     * * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -305,6 +319,10 @@ export interface JobState {
      * The status of the job.
      */
     statuses?: pulumi.Input<pulumi.Input<inputs.dataproc.JobStatus>[]>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -327,10 +345,8 @@ export interface JobArgs {
     hiveConfig?: pulumi.Input<inputs.dataproc.JobHiveConfig>;
     /**
      * The list of labels (key/value pairs) to add to the job.
-     *
-     * * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-     *
-     * * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

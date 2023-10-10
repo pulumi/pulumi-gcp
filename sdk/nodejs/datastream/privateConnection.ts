@@ -86,12 +86,19 @@ export class PrivateConnection extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The PrivateConnection error in case of failure.
      * Structure is documented below.
      */
     public /*out*/ readonly errors!: pulumi.Output<outputs.datastream.PrivateConnectionError[]>;
     /**
      * Labels.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -116,6 +123,11 @@ export class PrivateConnection extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The VPC Peering configuration is used to create VPC peering
      * between Datastream and the consumer's VPC.
      * Structure is documented below.
@@ -136,6 +148,7 @@ export class PrivateConnection extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PrivateConnectionState | undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["errors"] = state ? state.errors : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -143,6 +156,7 @@ export class PrivateConnection extends pulumi.CustomResource {
             resourceInputs["privateConnectionId"] = state ? state.privateConnectionId : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["vpcPeeringConfig"] = state ? state.vpcPeeringConfig : undefined;
         } else {
             const args = argsOrState as PrivateConnectionArgs | undefined;
@@ -164,9 +178,11 @@ export class PrivateConnection extends pulumi.CustomResource {
             resourceInputs["privateConnectionId"] = args ? args.privateConnectionId : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["vpcPeeringConfig"] = args ? args.vpcPeeringConfig : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["errors"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PrivateConnection.__pulumiType, name, resourceInputs, opts);
@@ -182,12 +198,19 @@ export interface PrivateConnectionState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The PrivateConnection error in case of failure.
      * Structure is documented below.
      */
     errors?: pulumi.Input<pulumi.Input<inputs.datastream.PrivateConnectionError>[]>;
     /**
      * Labels.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -212,6 +235,11 @@ export interface PrivateConnectionState {
      */
     state?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The VPC Peering configuration is used to create VPC peering
      * between Datastream and the consumer's VPC.
      * Structure is documented below.
@@ -229,6 +257,8 @@ export interface PrivateConnectionArgs {
     displayName: pulumi.Input<string>;
     /**
      * Labels.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

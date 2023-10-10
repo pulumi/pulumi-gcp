@@ -74,6 +74,9 @@ class DiskArgs:
                
                > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[bool] multi_writer: Indicates whether or not the disk can be read/write attached to more than one instance.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -385,6 +388,9 @@ class DiskArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels to apply to this disk.  A list of key->value pairs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -629,6 +635,7 @@ class _DiskState:
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]]] = None,
                  image: Optional[pulumi.Input[str]] = None,
@@ -654,6 +661,7 @@ class _DiskState:
                  source_image_id: Optional[pulumi.Input[str]] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs']] = None,
                  source_snapshot_id: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -674,6 +682,8 @@ class _DiskState:
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
                required when setting to true
         :param pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
@@ -695,6 +705,9 @@ class _DiskState:
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
                internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] last_attach_timestamp: Last attach timestamp in RFC3339 text format.
         :param pulumi.Input[str] last_detach_timestamp: Last detach timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
@@ -773,6 +786,8 @@ class _DiskState:
                that was later deleted and recreated under the same name, the source
                snapshot ID would identify the exact version of the snapshot that was
                used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to
                create the disk. Provide this when creating the disk.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Links to the users of the disk (attached instances) in form:
@@ -785,6 +800,7 @@ class _DiskState:
             creation_timestamp=creation_timestamp,
             description=description,
             disk_encryption_key=disk_encryption_key,
+            effective_labels=effective_labels,
             enable_confidential_compute=enable_confidential_compute,
             guest_os_features=guest_os_features,
             image=image,
@@ -810,6 +826,7 @@ class _DiskState:
             source_image_id=source_image_id,
             source_snapshot_encryption_key=source_snapshot_encryption_key,
             source_snapshot_id=source_snapshot_id,
+            terraform_labels=terraform_labels,
             type=type,
             users=users,
             zone=zone,
@@ -821,6 +838,7 @@ class _DiskState:
              creation_timestamp: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              disk_encryption_key: Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
              guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]]] = None,
              image: Optional[pulumi.Input[str]] = None,
@@ -846,6 +864,7 @@ class _DiskState:
              source_image_id: Optional[pulumi.Input[str]] = None,
              source_snapshot_encryption_key: Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs']] = None,
              source_snapshot_id: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              zone: Optional[pulumi.Input[str]] = None,
@@ -857,6 +876,8 @@ class _DiskState:
             creation_timestamp = kwargs['creationTimestamp']
         if disk_encryption_key is None and 'diskEncryptionKey' in kwargs:
             disk_encryption_key = kwargs['diskEncryptionKey']
+        if effective_labels is None and 'effectiveLabels' in kwargs:
+            effective_labels = kwargs['effectiveLabels']
         if enable_confidential_compute is None and 'enableConfidentialCompute' in kwargs:
             enable_confidential_compute = kwargs['enableConfidentialCompute']
         if guest_os_features is None and 'guestOsFeatures' in kwargs:
@@ -891,6 +912,8 @@ class _DiskState:
             source_snapshot_encryption_key = kwargs['sourceSnapshotEncryptionKey']
         if source_snapshot_id is None and 'sourceSnapshotId' in kwargs:
             source_snapshot_id = kwargs['sourceSnapshotId']
+        if terraform_labels is None and 'terraformLabels' in kwargs:
+            terraform_labels = kwargs['terraformLabels']
 
         if async_primary_disk is not None:
             _setter("async_primary_disk", async_primary_disk)
@@ -900,6 +923,8 @@ class _DiskState:
             _setter("description", description)
         if disk_encryption_key is not None:
             _setter("disk_encryption_key", disk_encryption_key)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if enable_confidential_compute is not None:
             _setter("enable_confidential_compute", enable_confidential_compute)
         if guest_os_features is not None:
@@ -953,6 +978,8 @@ class _DiskState:
             _setter("source_snapshot_encryption_key", source_snapshot_encryption_key)
         if source_snapshot_id is not None:
             _setter("source_snapshot_id", source_snapshot_id)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if type is not None:
             _setter("type", type)
         if users is not None:
@@ -1018,6 +1045,19 @@ class _DiskState:
     @disk_encryption_key.setter
     def disk_encryption_key(self, value: Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']]):
         pulumi.set(self, "disk_encryption_key", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
 
     @property
     @pulumi.getter(name="enableConfidentialCompute")
@@ -1102,6 +1142,9 @@ class _DiskState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels to apply to this disk.  A list of key->value pairs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1397,6 +1440,19 @@ class _DiskState:
         pulumi.set(self, "source_snapshot_id", value)
 
     @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1603,6 +1659,9 @@ class Disk(pulumi.CustomResource):
                
                > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[bool] multi_writer: Indicates whether or not the disk can be read/write attached to more than one instance.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -1857,6 +1916,7 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["last_attach_timestamp"] = None
             __props__.__dict__["last_detach_timestamp"] = None
@@ -1864,6 +1924,7 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["source_disk_id"] = None
             __props__.__dict__["source_image_id"] = None
             __props__.__dict__["source_snapshot_id"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["users"] = None
         super(Disk, __self__).__init__(
             'gcp:compute/disk:Disk',
@@ -1879,6 +1940,7 @@ class Disk(pulumi.CustomResource):
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArgs']]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
             guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArgs']]]]] = None,
             image: Optional[pulumi.Input[str]] = None,
@@ -1904,6 +1966,7 @@ class Disk(pulumi.CustomResource):
             source_image_id: Optional[pulumi.Input[str]] = None,
             source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceSnapshotEncryptionKeyArgs']]] = None,
             source_snapshot_id: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'Disk':
@@ -1929,6 +1992,8 @@ class Disk(pulumi.CustomResource):
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
                required when setting to true
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system.
@@ -1950,6 +2015,9 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
                internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] last_attach_timestamp: Last attach timestamp in RFC3339 text format.
         :param pulumi.Input[str] last_detach_timestamp: Last detach timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
@@ -2028,6 +2096,8 @@ class Disk(pulumi.CustomResource):
                that was later deleted and recreated under the same name, the source
                snapshot ID would identify the exact version of the snapshot that was
                used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to
                create the disk. Provide this when creating the disk.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Links to the users of the disk (attached instances) in form:
@@ -2042,6 +2112,7 @@ class Disk(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_encryption_key"] = disk_encryption_key
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["enable_confidential_compute"] = enable_confidential_compute
         __props__.__dict__["guest_os_features"] = guest_os_features
         __props__.__dict__["image"] = image
@@ -2067,6 +2138,7 @@ class Disk(pulumi.CustomResource):
         __props__.__dict__["source_image_id"] = source_image_id
         __props__.__dict__["source_snapshot_encryption_key"] = source_snapshot_encryption_key
         __props__.__dict__["source_snapshot_id"] = source_snapshot_id
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["type"] = type
         __props__.__dict__["users"] = users
         __props__.__dict__["zone"] = zone
@@ -2114,6 +2186,15 @@ class Disk(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "disk_encryption_key")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="enableConfidentialCompute")
@@ -2178,6 +2259,9 @@ class Disk(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels to apply to this disk.  A list of key->value pairs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -2391,6 +2475,15 @@ class Disk(pulumi.CustomResource):
         used.
         """
         return pulumi.get(self, "source_snapshot_id")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

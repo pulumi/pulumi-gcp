@@ -36,6 +36,9 @@ class AssetArgs:
         :param pulumi.Input[str] description: Optional. Description of the asset.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the asset.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name of the asset.
         :param pulumi.Input[str] project: The project for the resource
         """
@@ -191,6 +194,9 @@ class AssetArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. User defined labels for the asset.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -232,6 +238,7 @@ class _AssetState:
                  discovery_spec: Optional[pulumi.Input['AssetDiscoverySpecArgs']] = None,
                  discovery_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['AssetDiscoveryStatusArgs']]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -241,6 +248,7 @@ class _AssetState:
                  resource_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['AssetResourceStatusArgs']]]] = None,
                  security_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['AssetSecurityStatusArgs']]]] = None,
                  state: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -251,7 +259,12 @@ class _AssetState:
         :param pulumi.Input['AssetDiscoverySpecArgs'] discovery_spec: Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
         :param pulumi.Input[Sequence[pulumi.Input['AssetDiscoveryStatusArgs']]] discovery_statuses: Output only. Status of the discovery feature applied to data referenced by this asset.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
+        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the asset.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] lake: The lake for the resource
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: The name of the asset.
@@ -260,6 +273,7 @@ class _AssetState:
         :param pulumi.Input[Sequence[pulumi.Input['AssetResourceStatusArgs']]] resource_statuses: Output only. Status of the resource referenced by this asset.
         :param pulumi.Input[Sequence[pulumi.Input['AssetSecurityStatusArgs']]] security_statuses: Output only. Status of the security policy applied to resource referenced by this asset.
         :param pulumi.Input[str] state: Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+        :param pulumi.Input[Mapping[str, Any]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] uid: Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
         :param pulumi.Input[str] update_time: Output only. The time when the asset was last updated.
         """
@@ -271,6 +285,7 @@ class _AssetState:
             discovery_spec=discovery_spec,
             discovery_statuses=discovery_statuses,
             display_name=display_name,
+            effective_labels=effective_labels,
             labels=labels,
             lake=lake,
             location=location,
@@ -280,6 +295,7 @@ class _AssetState:
             resource_statuses=resource_statuses,
             security_statuses=security_statuses,
             state=state,
+            terraform_labels=terraform_labels,
             uid=uid,
             update_time=update_time,
         )
@@ -292,6 +308,7 @@ class _AssetState:
              discovery_spec: Optional[pulumi.Input['AssetDiscoverySpecArgs']] = None,
              discovery_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['AssetDiscoveryStatusArgs']]]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              lake: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
@@ -301,6 +318,7 @@ class _AssetState:
              resource_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['AssetResourceStatusArgs']]]] = None,
              security_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['AssetSecurityStatusArgs']]]] = None,
              state: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
@@ -315,12 +333,16 @@ class _AssetState:
             discovery_statuses = kwargs['discoveryStatuses']
         if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
+        if effective_labels is None and 'effectiveLabels' in kwargs:
+            effective_labels = kwargs['effectiveLabels']
         if resource_spec is None and 'resourceSpec' in kwargs:
             resource_spec = kwargs['resourceSpec']
         if resource_statuses is None and 'resourceStatuses' in kwargs:
             resource_statuses = kwargs['resourceStatuses']
         if security_statuses is None and 'securityStatuses' in kwargs:
             security_statuses = kwargs['securityStatuses']
+        if terraform_labels is None and 'terraformLabels' in kwargs:
+            terraform_labels = kwargs['terraformLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
@@ -336,6 +358,8 @@ class _AssetState:
             _setter("discovery_statuses", discovery_statuses)
         if display_name is not None:
             _setter("display_name", display_name)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if labels is not None:
             _setter("labels", labels)
         if lake is not None:
@@ -354,6 +378,8 @@ class _AssetState:
             _setter("security_statuses", security_statuses)
         if state is not None:
             _setter("state", state)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if uid is not None:
             _setter("uid", uid)
         if update_time is not None:
@@ -432,10 +458,26 @@ class _AssetState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. User defined labels for the asset.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -540,6 +582,18 @@ class _AssetState:
         pulumi.set(self, "state", value)
 
     @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "terraform_labels", value)
+
+    @property
     @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[str]]:
         """
@@ -618,6 +672,10 @@ class Asset(pulumi.CustomResource):
                 name="projects/my-project-name/buckets/bucket",
                 type="STORAGE_BUCKET",
             ),
+            labels={
+                "env": "foo",
+                "my-asset": "exists",
+            },
             project="my-project-name",
             opts=pulumi.ResourceOptions(depends_on=[basic_bucket]))
         ```
@@ -645,6 +703,9 @@ class Asset(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AssetDiscoverySpecArgs']] discovery_spec: Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the asset.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] lake: The lake for the resource
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: The name of the asset.
@@ -695,6 +756,10 @@ class Asset(pulumi.CustomResource):
                 name="projects/my-project-name/buckets/bucket",
                 type="STORAGE_BUCKET",
             ),
+            labels={
+                "env": "foo",
+                "my-asset": "exists",
+            },
             project="my-project-name",
             opts=pulumi.ResourceOptions(depends_on=[basic_bucket]))
         ```
@@ -777,9 +842,11 @@ class Asset(pulumi.CustomResource):
             __props__.__dict__["resource_spec"] = resource_spec
             __props__.__dict__["create_time"] = None
             __props__.__dict__["discovery_statuses"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["resource_statuses"] = None
             __props__.__dict__["security_statuses"] = None
             __props__.__dict__["state"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
         super(Asset, __self__).__init__(
@@ -798,6 +865,7 @@ class Asset(pulumi.CustomResource):
             discovery_spec: Optional[pulumi.Input[pulumi.InputType['AssetDiscoverySpecArgs']]] = None,
             discovery_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AssetDiscoveryStatusArgs']]]]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             lake: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -807,6 +875,7 @@ class Asset(pulumi.CustomResource):
             resource_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AssetResourceStatusArgs']]]]] = None,
             security_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AssetSecurityStatusArgs']]]]] = None,
             state: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Asset':
         """
@@ -822,7 +891,12 @@ class Asset(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AssetDiscoverySpecArgs']] discovery_spec: Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AssetDiscoveryStatusArgs']]]] discovery_statuses: Output only. Status of the discovery feature applied to data referenced by this asset.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
+        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the asset.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] lake: The lake for the resource
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: The name of the asset.
@@ -831,6 +905,7 @@ class Asset(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AssetResourceStatusArgs']]]] resource_statuses: Output only. Status of the resource referenced by this asset.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AssetSecurityStatusArgs']]]] security_statuses: Output only. Status of the security policy applied to resource referenced by this asset.
         :param pulumi.Input[str] state: Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+        :param pulumi.Input[Mapping[str, Any]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] uid: Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
         :param pulumi.Input[str] update_time: Output only. The time when the asset was last updated.
         """
@@ -844,6 +919,7 @@ class Asset(pulumi.CustomResource):
         __props__.__dict__["discovery_spec"] = discovery_spec
         __props__.__dict__["discovery_statuses"] = discovery_statuses
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["labels"] = labels
         __props__.__dict__["lake"] = lake
         __props__.__dict__["location"] = location
@@ -853,6 +929,7 @@ class Asset(pulumi.CustomResource):
         __props__.__dict__["resource_statuses"] = resource_statuses
         __props__.__dict__["security_statuses"] = security_statuses
         __props__.__dict__["state"] = state
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         return Asset(resource_name, opts=opts, __props__=__props__)
@@ -906,10 +983,22 @@ class Asset(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Optional. User defined labels for the asset.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -976,6 +1065,14 @@ class Asset(pulumi.CustomResource):
         Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

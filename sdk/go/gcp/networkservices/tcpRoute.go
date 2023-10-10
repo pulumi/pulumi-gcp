@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -43,10 +43,15 @@ type TcpRoute struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
 	// Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
 	Gateways pulumi.StringArrayOutput `pulumi:"gateways"`
 	// Set of label tags associated with the TcpRoute resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
 	// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
@@ -63,6 +68,9 @@ type TcpRoute struct {
 	Rules TcpRouteRuleArrayOutput `pulumi:"rules"`
 	// Server-defined URL of this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Time the TcpRoute was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -104,10 +112,15 @@ type tcpRouteState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
 	// Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
 	Gateways []string `pulumi:"gateways"`
 	// Set of label tags associated with the TcpRoute resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
 	// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
@@ -124,6 +137,9 @@ type tcpRouteState struct {
 	Rules []TcpRouteRule `pulumi:"rules"`
 	// Server-defined URL of this resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Time the TcpRoute was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -133,10 +149,15 @@ type TcpRouteState struct {
 	CreateTime pulumi.StringPtrInput
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
 	// Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
 	Gateways pulumi.StringArrayInput
 	// Set of label tags associated with the TcpRoute resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
 	// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
@@ -153,6 +174,9 @@ type TcpRouteState struct {
 	Rules TcpRouteRuleArrayInput
 	// Server-defined URL of this resource.
 	SelfLink pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// Time the TcpRoute was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -168,6 +192,8 @@ type tcpRouteArgs struct {
 	// Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
 	Gateways []string `pulumi:"gateways"`
 	// Set of label tags associated with the TcpRoute resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
 	// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
@@ -192,6 +218,8 @@ type TcpRouteArgs struct {
 	// Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
 	Gateways pulumi.StringArrayInput
 	// Set of label tags associated with the TcpRoute resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
 	// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
@@ -329,6 +357,12 @@ func (o TcpRouteOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TcpRoute) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o TcpRouteOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TcpRoute) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
 // Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
 func (o TcpRouteOutput) Gateways() pulumi.StringArrayOutput {
@@ -336,6 +370,8 @@ func (o TcpRouteOutput) Gateways() pulumi.StringArrayOutput {
 }
 
 // Set of label tags associated with the TcpRoute resource.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o TcpRouteOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *TcpRoute) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -368,6 +404,12 @@ func (o TcpRouteOutput) Rules() TcpRouteRuleArrayOutput {
 // Server-defined URL of this resource.
 func (o TcpRouteOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *TcpRoute) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o TcpRouteOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TcpRoute) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Time the TcpRoute was updated in UTC.

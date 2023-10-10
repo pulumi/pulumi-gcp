@@ -28,6 +28,8 @@ class FeatureArgs:
                
                - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this Feature.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The full, unique name of this Feature resource
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -85,6 +87,8 @@ class FeatureArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         GCP labels for this Feature.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -136,6 +140,7 @@ class _FeatureState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -143,12 +148,17 @@ class _FeatureState:
                  resource_states: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureResourceStateArgs']]]] = None,
                  spec: Optional[pulumi.Input['FeatureSpecArgs']] = None,
                  states: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateArgs']]]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Feature resources.
         :param pulumi.Input[str] create_time: Output only. When the Feature resource was created.
         :param pulumi.Input[str] delete_time: Output only. When the Feature resource was deleted.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this Feature.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
                
                
@@ -163,6 +173,8 @@ class _FeatureState:
         :param pulumi.Input[Sequence[pulumi.Input['FeatureStateArgs']]] states: (Output)
                Output only. The "running state" of the Feature in this Hub.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: (Output)
                The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         """
@@ -170,6 +182,7 @@ class _FeatureState:
             lambda key, value: pulumi.set(__self__, key, value),
             create_time=create_time,
             delete_time=delete_time,
+            effective_labels=effective_labels,
             labels=labels,
             location=location,
             name=name,
@@ -177,6 +190,7 @@ class _FeatureState:
             resource_states=resource_states,
             spec=spec,
             states=states,
+            terraform_labels=terraform_labels,
             update_time=update_time,
         )
     @staticmethod
@@ -184,6 +198,7 @@ class _FeatureState:
              _setter: Callable[[Any, Any], None],
              create_time: Optional[pulumi.Input[str]] = None,
              delete_time: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -191,6 +206,7 @@ class _FeatureState:
              resource_states: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureResourceStateArgs']]]] = None,
              spec: Optional[pulumi.Input['FeatureSpecArgs']] = None,
              states: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateArgs']]]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -198,8 +214,12 @@ class _FeatureState:
             create_time = kwargs['createTime']
         if delete_time is None and 'deleteTime' in kwargs:
             delete_time = kwargs['deleteTime']
+        if effective_labels is None and 'effectiveLabels' in kwargs:
+            effective_labels = kwargs['effectiveLabels']
         if resource_states is None and 'resourceStates' in kwargs:
             resource_states = kwargs['resourceStates']
+        if terraform_labels is None and 'terraformLabels' in kwargs:
+            terraform_labels = kwargs['terraformLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
@@ -207,6 +227,8 @@ class _FeatureState:
             _setter("create_time", create_time)
         if delete_time is not None:
             _setter("delete_time", delete_time)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if labels is not None:
             _setter("labels", labels)
         if location is not None:
@@ -221,6 +243,8 @@ class _FeatureState:
             _setter("spec", spec)
         if states is not None:
             _setter("states", states)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if update_time is not None:
             _setter("update_time", update_time)
 
@@ -249,10 +273,25 @@ class _FeatureState:
         pulumi.set(self, "delete_time", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         GCP labels for this Feature.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -339,6 +378,19 @@ class _FeatureState:
     @states.setter
     def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateArgs']]]]):
         pulumi.set(self, "states", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="updateTime")
@@ -497,6 +549,8 @@ class Feature(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this Feature.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
                
                
@@ -685,8 +739,10 @@ class Feature(pulumi.CustomResource):
             __props__.__dict__["spec"] = spec
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["resource_states"] = None
             __props__.__dict__["states"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["update_time"] = None
         super(Feature, __self__).__init__(
             'gcp:gkehub/feature:Feature',
@@ -700,6 +756,7 @@ class Feature(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -707,6 +764,7 @@ class Feature(pulumi.CustomResource):
             resource_states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureResourceStateArgs']]]]] = None,
             spec: Optional[pulumi.Input[pulumi.InputType['FeatureSpecArgs']]] = None,
             states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureStateArgs']]]]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Feature':
         """
         Get an existing Feature resource's state with the given name, id, and optional extra
@@ -717,7 +775,11 @@ class Feature(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Output only. When the Feature resource was created.
         :param pulumi.Input[str] delete_time: Output only. When the Feature resource was deleted.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this Feature.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
                
                
@@ -732,6 +794,8 @@ class Feature(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureStateArgs']]]] states: (Output)
                Output only. The "running state" of the Feature in this Hub.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: (Output)
                The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         """
@@ -741,6 +805,7 @@ class Feature(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delete_time"] = delete_time
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -748,6 +813,7 @@ class Feature(pulumi.CustomResource):
         __props__.__dict__["resource_states"] = resource_states
         __props__.__dict__["spec"] = spec
         __props__.__dict__["states"] = states
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["update_time"] = update_time
         return Feature(resource_name, opts=opts, __props__=__props__)
 
@@ -768,10 +834,21 @@ class Feature(pulumi.CustomResource):
         return pulumi.get(self, "delete_time")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         GCP labels for this Feature.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -830,6 +907,15 @@ class Feature(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "states")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="updateTime")

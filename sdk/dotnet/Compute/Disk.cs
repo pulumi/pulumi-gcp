@@ -189,6 +189,13 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.DiskDiskEncryptionKey?> DiskEncryptionKey { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
         /// required when setting to true
         /// </summary>
@@ -235,6 +242,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Labels to apply to this disk.  A list of key-&gt;value pairs.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -413,6 +423,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SourceSnapshotId { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("terraformLabels")]
+        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
+
+        /// <summary>
         /// URL of the disk type resource describing which disk type to use to
         /// create the disk. Provide this when creating the disk.
         /// </summary>
@@ -556,6 +573,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Labels to apply to this disk.  A list of key-&gt;value pairs.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -757,6 +777,19 @@ namespace Pulumi.Gcp.Compute
         [Input("diskEncryptionKey")]
         public Input<Inputs.DiskDiskEncryptionKeyGetArgs>? DiskEncryptionKey { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
+
         /// <summary>
         /// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
         /// required when setting to true
@@ -813,6 +846,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Labels to apply to this disk.  A list of key-&gt;value pairs.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -1004,6 +1040,19 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("sourceSnapshotId")]
         public Input<string>? SourceSnapshotId { get; set; }
+
+        [Input("terraformLabels")]
+        private InputMap<string>? _terraformLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> TerraformLabels
+        {
+            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
+            set => _terraformLabels = value;
+        }
 
         /// <summary>
         /// URL of the disk type resource describing which disk type to use to

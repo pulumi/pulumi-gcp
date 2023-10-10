@@ -123,6 +123,23 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
      * such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
      * (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -188,6 +205,9 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;:
      * &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
@@ -196,6 +216,9 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
      * @return Labels with user-defined metadata.
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;:
      * &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -379,6 +402,23 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
+    }
+
+    /**
      * The Type of this CertificateAuthority.
      * &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
      * be activated before they can issue certificates.
@@ -429,6 +469,7 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.deletionProtection = $.deletionProtection;
         this.desiredState = $.desiredState;
+        this.effectiveLabels = $.effectiveLabels;
         this.gcsBucket = $.gcsBucket;
         this.ignoreActiveCertificatesOnDeletion = $.ignoreActiveCertificatesOnDeletion;
         this.keySpec = $.keySpec;
@@ -443,6 +484,7 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
         this.skipGracePeriod = $.skipGracePeriod;
         this.state = $.state;
         this.subordinateConfig = $.subordinateConfig;
+        this.terraformLabels = $.terraformLabels;
         this.type = $.type;
         this.updateTime = $.updateTime;
     }
@@ -613,6 +655,29 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param gcsBucket The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
          * such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
          * (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -696,6 +761,9 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
          * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;:
          * &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -708,6 +776,9 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
          * @param labels Labels with user-defined metadata.
          * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;:
          * &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -963,6 +1034,29 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder subordinateConfig(AuthoritySubordinateConfigArgs subordinateConfig) {
             return subordinateConfig(Output.of(subordinateConfig));
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
+            return this;
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

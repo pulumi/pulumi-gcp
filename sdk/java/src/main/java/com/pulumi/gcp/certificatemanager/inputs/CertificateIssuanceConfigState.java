@@ -70,6 +70,23 @@ public final class CertificateIssuanceConfigState extends com.pulumi.resources.R
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * Key algorithm to use when generating the private key.
      * Possible values are: `RSA_2048`, `ECDSA_P256`.
      * 
@@ -90,6 +107,9 @@ public final class CertificateIssuanceConfigState extends com.pulumi.resources.R
      * &#39;Set of label tags associated with the CertificateIssuanceConfig resource.
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
@@ -97,6 +117,9 @@ public final class CertificateIssuanceConfigState extends com.pulumi.resources.R
     /**
      * @return &#39;Set of label tags associated with the CertificateIssuanceConfig resource.
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -191,6 +214,23 @@ public final class CertificateIssuanceConfigState extends com.pulumi.resources.R
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
+    }
+
+    /**
      * The last update timestamp of a CertificateIssuanceConfig. Timestamp is in RFC3339 UTC &#34;Zulu&#34; format,
      * accurate to nanoseconds with up to nine fractional digits.
      * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
@@ -215,6 +255,7 @@ public final class CertificateIssuanceConfigState extends com.pulumi.resources.R
         this.certificateAuthorityConfig = $.certificateAuthorityConfig;
         this.createTime = $.createTime;
         this.description = $.description;
+        this.effectiveLabels = $.effectiveLabels;
         this.keyAlgorithm = $.keyAlgorithm;
         this.labels = $.labels;
         this.lifetime = $.lifetime;
@@ -222,6 +263,7 @@ public final class CertificateIssuanceConfigState extends com.pulumi.resources.R
         this.name = $.name;
         this.project = $.project;
         this.rotationWindowPercentage = $.rotationWindowPercentage;
+        this.terraformLabels = $.terraformLabels;
         this.updateTime = $.updateTime;
     }
 
@@ -313,6 +355,29 @@ public final class CertificateIssuanceConfigState extends com.pulumi.resources.R
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param keyAlgorithm Key algorithm to use when generating the private key.
          * Possible values are: `RSA_2048`, `ECDSA_P256`.
          * 
@@ -339,6 +404,9 @@ public final class CertificateIssuanceConfigState extends com.pulumi.resources.R
          * @param labels &#39;Set of label tags associated with the CertificateIssuanceConfig resource.
          * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;count&#34;: &#34;3&#34; }.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -350,6 +418,9 @@ public final class CertificateIssuanceConfigState extends com.pulumi.resources.R
         /**
          * @param labels &#39;Set of label tags associated with the CertificateIssuanceConfig resource.
          * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -473,6 +544,29 @@ public final class CertificateIssuanceConfigState extends com.pulumi.resources.R
          */
         public Builder rotationWindowPercentage(Integer rotationWindowPercentage) {
             return rotationWindowPercentage(Output.of(rotationWindowPercentage));
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
+            return this;
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

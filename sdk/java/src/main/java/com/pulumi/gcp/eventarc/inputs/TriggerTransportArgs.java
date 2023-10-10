@@ -6,7 +6,6 @@ package com.pulumi.gcp.eventarc.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.eventarc.inputs.TriggerTransportPubsubArgs;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,21 +19,21 @@ public final class TriggerTransportArgs extends com.pulumi.resources.ResourceArg
      * The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
      * 
      */
-    @Import(name="pubsubs")
-    private @Nullable Output<List<TriggerTransportPubsubArgs>> pubsubs;
+    @Import(name="pubsub")
+    private @Nullable Output<TriggerTransportPubsubArgs> pubsub;
 
     /**
      * @return The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
      * 
      */
-    public Optional<Output<List<TriggerTransportPubsubArgs>>> pubsubs() {
-        return Optional.ofNullable(this.pubsubs);
+    public Optional<Output<TriggerTransportPubsubArgs>> pubsub() {
+        return Optional.ofNullable(this.pubsub);
     }
 
     private TriggerTransportArgs() {}
 
     private TriggerTransportArgs(TriggerTransportArgs $) {
-        this.pubsubs = $.pubsubs;
+        this.pubsub = $.pubsub;
     }
 
     public static Builder builder() {
@@ -56,34 +55,24 @@ public final class TriggerTransportArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pubsubs The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+         * @param pubsub The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
          * 
          * @return builder
          * 
          */
-        public Builder pubsubs(@Nullable Output<List<TriggerTransportPubsubArgs>> pubsubs) {
-            $.pubsubs = pubsubs;
+        public Builder pubsub(@Nullable Output<TriggerTransportPubsubArgs> pubsub) {
+            $.pubsub = pubsub;
             return this;
         }
 
         /**
-         * @param pubsubs The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+         * @param pubsub The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
          * 
          * @return builder
          * 
          */
-        public Builder pubsubs(List<TriggerTransportPubsubArgs> pubsubs) {
-            return pubsubs(Output.of(pubsubs));
-        }
-
-        /**
-         * @param pubsubs The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder pubsubs(TriggerTransportPubsubArgs... pubsubs) {
-            return pubsubs(List.of(pubsubs));
+        public Builder pubsub(TriggerTransportPubsubArgs pubsub) {
+            return pubsub(Output.of(pubsub));
         }
 
         public TriggerTransportArgs build() {

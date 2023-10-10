@@ -28,6 +28,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// records for the external IPv6 ranges..
         /// </summary>
         public readonly string? PublicPtrDomainName;
+        public readonly string? SecurityPolicy;
 
         [OutputConstructor]
         private InstanceNetworkInterfaceAccessConfig(
@@ -35,11 +36,14 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? networkTier,
 
-            string? publicPtrDomainName)
+            string? publicPtrDomainName,
+
+            string? securityPolicy)
         {
             NatIp = natIp;
             NetworkTier = networkTier;
             PublicPtrDomainName = publicPtrDomainName;
+            SecurityPolicy = securityPolicy;
         }
     }
 }

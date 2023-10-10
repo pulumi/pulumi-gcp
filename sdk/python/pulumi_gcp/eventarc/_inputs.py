@@ -370,35 +370,35 @@ class TriggerMatchingCriteriaArgs:
 @pulumi.input_type
 class TriggerTransportArgs:
     def __init__(__self__, *,
-                 pubsubs: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerTransportPubsubArgs']]]] = None):
+                 pubsub: Optional[pulumi.Input['TriggerTransportPubsubArgs']] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['TriggerTransportPubsubArgs']]] pubsubs: The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+        :param pulumi.Input['TriggerTransportPubsubArgs'] pubsub: The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
         """
         TriggerTransportArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
-            pubsubs=pubsubs,
+            pubsub=pubsub,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pubsubs: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerTransportPubsubArgs']]]] = None,
+             pubsub: Optional[pulumi.Input['TriggerTransportPubsubArgs']] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
-        if pubsubs is not None:
-            _setter("pubsubs", pubsubs)
+        if pubsub is not None:
+            _setter("pubsub", pubsub)
 
     @property
     @pulumi.getter
-    def pubsubs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TriggerTransportPubsubArgs']]]]:
+    def pubsub(self) -> Optional[pulumi.Input['TriggerTransportPubsubArgs']]:
         """
         The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
         """
-        return pulumi.get(self, "pubsubs")
+        return pulumi.get(self, "pubsub")
 
-    @pubsubs.setter
-    def pubsubs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerTransportPubsubArgs']]]]):
-        pulumi.set(self, "pubsubs", value)
+    @pubsub.setter
+    def pubsub(self, value: Optional[pulumi.Input['TriggerTransportPubsubArgs']]):
+        pulumi.set(self, "pubsub", value)
 
 
 @pulumi.input_type

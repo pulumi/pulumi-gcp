@@ -14,16 +14,23 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     public sealed class GetServiceMetadataResult
     {
         public readonly ImmutableDictionary<string, string> Annotations;
+        public readonly ImmutableDictionary<string, string> EffectiveAnnotations;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly int Generation;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Namespace;
         public readonly string ResourceVersion;
         public readonly string SelfLink;
+        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly string Uid;
 
         [OutputConstructor]
         private GetServiceMetadataResult(
             ImmutableDictionary<string, string> annotations,
+
+            ImmutableDictionary<string, string> effectiveAnnotations,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             int generation,
 
@@ -35,14 +42,19 @@ namespace Pulumi.Gcp.CloudRun.Outputs
 
             string selfLink,
 
+            ImmutableDictionary<string, string> terraformLabels,
+
             string uid)
         {
             Annotations = annotations;
+            EffectiveAnnotations = effectiveAnnotations;
+            EffectiveLabels = effectiveLabels;
             Generation = generation;
             Labels = labels;
             Namespace = @namespace;
             ResourceVersion = resourceVersion;
             SelfLink = selfLink;
+            TerraformLabels = terraformLabels;
             Uid = uid;
         }
     }

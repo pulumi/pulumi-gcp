@@ -35,6 +35,7 @@ __all__ = [
     'InsightsReportConfigObjectMetadataReportOptionsStorageFilters',
     'ObjectAccessControlProjectTeam',
     'TransferAgentPoolBandwidthLimit',
+    'TransferJobEventStream',
     'TransferJobNotificationConfig',
     'TransferJobSchedule',
     'TransferJobScheduleScheduleEndDate',
@@ -1758,6 +1759,88 @@ class TransferAgentPoolBandwidthLimit(dict):
         Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
         """
         return pulumi.get(self, "limit_mbps")
+
+
+@pulumi.output_type
+class TransferJobEventStream(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "eventStreamExpirationTime":
+            suggest = "event_stream_expiration_time"
+        elif key == "eventStreamStartTime":
+            suggest = "event_stream_start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransferJobEventStream. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransferJobEventStream.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransferJobEventStream.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 event_stream_expiration_time: Optional[str] = None,
+                 event_stream_start_time: Optional[str] = None):
+        """
+        :param str name: Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
+        :param str event_stream_expiration_time: Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param str event_stream_start_time: Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If no start time is specified or start time is in the past, Storage Transfer Service starts listening immediately. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        TransferJobEventStream._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            event_stream_expiration_time=event_stream_expiration_time,
+            event_stream_start_time=event_stream_start_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             event_stream_expiration_time: Optional[str] = None,
+             event_stream_start_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if event_stream_expiration_time is None and 'eventStreamExpirationTime' in kwargs:
+            event_stream_expiration_time = kwargs['eventStreamExpirationTime']
+        if event_stream_start_time is None and 'eventStreamStartTime' in kwargs:
+            event_stream_start_time = kwargs['eventStreamStartTime']
+
+        _setter("name", name)
+        if event_stream_expiration_time is not None:
+            _setter("event_stream_expiration_time", event_stream_expiration_time)
+        if event_stream_start_time is not None:
+            _setter("event_stream_start_time", event_stream_start_time)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="eventStreamExpirationTime")
+    def event_stream_expiration_time(self) -> Optional[str]:
+        """
+        Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "event_stream_expiration_time")
+
+    @property
+    @pulumi.getter(name="eventStreamStartTime")
+    def event_stream_start_time(self) -> Optional[str]:
+        """
+        Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If no start time is specified or start time is in the past, Storage Transfer Service starts listening immediately. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "event_stream_start_time")
 
 
 @pulumi.output_type

@@ -11,15 +11,6 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
-    'AutoscalarAutoscalingPolicy',
-    'AutoscalarAutoscalingPolicyCpuUtilization',
-    'AutoscalarAutoscalingPolicyLoadBalancingUtilization',
-    'AutoscalarAutoscalingPolicyMetric',
-    'AutoscalarAutoscalingPolicyScaleDownControl',
-    'AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicas',
-    'AutoscalarAutoscalingPolicyScaleInControl',
-    'AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas',
-    'AutoscalarAutoscalingPolicyScalingSchedule',
     'AutoscalerAutoscalingPolicy',
     'AutoscalerAutoscalingPolicyCpuUtilization',
     'AutoscalerAutoscalingPolicyLoadBalancingUtilization',
@@ -70,7 +61,7 @@ __all__ = [
     'FirewallLogConfig',
     'FirewallPolicyRuleMatch',
     'FirewallPolicyRuleMatchLayer4Config',
-    'ForwardingRuleServiceDirectoryRegistration',
+    'ForwardingRuleServiceDirectoryRegistrations',
     'GlobalForwardingRuleMetadataFilter',
     'GlobalForwardingRuleMetadataFilterFilterLabel',
     'HaVpnGatewayVpnInterface',
@@ -680,971 +671,6 @@ __all__ = [
     'GetSnapshotSourceDiskEncryptionKeyResult',
     'GetSubnetworkSecondaryIpRangeResult',
 ]
-
-@pulumi.output_type
-class AutoscalarAutoscalingPolicy(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxReplicas":
-            suggest = "max_replicas"
-        elif key == "minReplicas":
-            suggest = "min_replicas"
-        elif key == "cooldownPeriod":
-            suggest = "cooldown_period"
-        elif key == "cpuUtilization":
-            suggest = "cpu_utilization"
-        elif key == "loadBalancingUtilization":
-            suggest = "load_balancing_utilization"
-        elif key == "scaleDownControl":
-            suggest = "scale_down_control"
-        elif key == "scaleInControl":
-            suggest = "scale_in_control"
-        elif key == "scalingSchedules":
-            suggest = "scaling_schedules"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AutoscalarAutoscalingPolicy. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AutoscalarAutoscalingPolicy.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AutoscalarAutoscalingPolicy.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 max_replicas: int,
-                 min_replicas: int,
-                 cooldown_period: Optional[int] = None,
-                 cpu_utilization: Optional['outputs.AutoscalarAutoscalingPolicyCpuUtilization'] = None,
-                 load_balancing_utilization: Optional['outputs.AutoscalarAutoscalingPolicyLoadBalancingUtilization'] = None,
-                 metrics: Optional[Sequence['outputs.AutoscalarAutoscalingPolicyMetric']] = None,
-                 mode: Optional[str] = None,
-                 scale_down_control: Optional['outputs.AutoscalarAutoscalingPolicyScaleDownControl'] = None,
-                 scale_in_control: Optional['outputs.AutoscalarAutoscalingPolicyScaleInControl'] = None,
-                 scaling_schedules: Optional[Sequence['outputs.AutoscalarAutoscalingPolicyScalingSchedule']] = None):
-        """
-        :param int max_replicas: The maximum number of instances that the autoscaler can scale up
-               to. This is required when creating or updating an autoscaler. The
-               maximum number of replicas should not be lower than minimal number
-               of replicas.
-        :param int min_replicas: The minimum number of replicas that the autoscaler can scale down
-               to. This cannot be less than 0. If not provided, autoscaler will
-               choose a default value depending on maximum number of instances
-               allowed.
-        :param int cooldown_period: The number of seconds that the autoscaler should wait before it
-               starts collecting information from a new instance. This prevents
-               the autoscaler from collecting information when the instance is
-               initializing, during which the collected usage would not be
-               reliable. The default time autoscaler waits is 60 seconds.
-               Virtual machine initialization times might vary because of
-               numerous factors. We recommend that you test how long an
-               instance may take to initialize. To do this, create an instance
-               and time the startup process.
-        :param 'AutoscalarAutoscalingPolicyCpuUtilizationArgs' cpu_utilization: Defines the CPU utilization policy that allows the autoscaler to
-               scale based on the average CPU utilization of a managed instance
-               group.
-               Structure is documented below.
-        :param 'AutoscalarAutoscalingPolicyLoadBalancingUtilizationArgs' load_balancing_utilization: Configuration parameters of autoscaling based on a load balancer.
-               Structure is documented below.
-        :param Sequence['AutoscalarAutoscalingPolicyMetricArgs'] metrics: Configuration parameters of autoscaling based on a custom metric.
-               Structure is documented below.
-        :param str mode: Defines operating mode for this policy.
-        :param 'AutoscalarAutoscalingPolicyScaleDownControlArgs' scale_down_control: Defines scale down controls to reduce the risk of response latency
-               and outages due to abrupt scale-in events
-               Structure is documented below.
-        :param 'AutoscalarAutoscalingPolicyScaleInControlArgs' scale_in_control: Defines scale in controls to reduce the risk of response latency
-               and outages due to abrupt scale-in events
-               Structure is documented below.
-        :param Sequence['AutoscalarAutoscalingPolicyScalingScheduleArgs'] scaling_schedules: Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
-               Structure is documented below.
-        """
-        AutoscalarAutoscalingPolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            max_replicas=max_replicas,
-            min_replicas=min_replicas,
-            cooldown_period=cooldown_period,
-            cpu_utilization=cpu_utilization,
-            load_balancing_utilization=load_balancing_utilization,
-            metrics=metrics,
-            mode=mode,
-            scale_down_control=scale_down_control,
-            scale_in_control=scale_in_control,
-            scaling_schedules=scaling_schedules,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             max_replicas: Optional[int] = None,
-             min_replicas: Optional[int] = None,
-             cooldown_period: Optional[int] = None,
-             cpu_utilization: Optional['outputs.AutoscalarAutoscalingPolicyCpuUtilization'] = None,
-             load_balancing_utilization: Optional['outputs.AutoscalarAutoscalingPolicyLoadBalancingUtilization'] = None,
-             metrics: Optional[Sequence['outputs.AutoscalarAutoscalingPolicyMetric']] = None,
-             mode: Optional[str] = None,
-             scale_down_control: Optional['outputs.AutoscalarAutoscalingPolicyScaleDownControl'] = None,
-             scale_in_control: Optional['outputs.AutoscalarAutoscalingPolicyScaleInControl'] = None,
-             scaling_schedules: Optional[Sequence['outputs.AutoscalarAutoscalingPolicyScalingSchedule']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if max_replicas is None and 'maxReplicas' in kwargs:
-            max_replicas = kwargs['maxReplicas']
-        if max_replicas is None:
-            raise TypeError("Missing 'max_replicas' argument")
-        if min_replicas is None and 'minReplicas' in kwargs:
-            min_replicas = kwargs['minReplicas']
-        if min_replicas is None:
-            raise TypeError("Missing 'min_replicas' argument")
-        if cooldown_period is None and 'cooldownPeriod' in kwargs:
-            cooldown_period = kwargs['cooldownPeriod']
-        if cpu_utilization is None and 'cpuUtilization' in kwargs:
-            cpu_utilization = kwargs['cpuUtilization']
-        if load_balancing_utilization is None and 'loadBalancingUtilization' in kwargs:
-            load_balancing_utilization = kwargs['loadBalancingUtilization']
-        if scale_down_control is None and 'scaleDownControl' in kwargs:
-            scale_down_control = kwargs['scaleDownControl']
-        if scale_in_control is None and 'scaleInControl' in kwargs:
-            scale_in_control = kwargs['scaleInControl']
-        if scaling_schedules is None and 'scalingSchedules' in kwargs:
-            scaling_schedules = kwargs['scalingSchedules']
-
-        _setter("max_replicas", max_replicas)
-        _setter("min_replicas", min_replicas)
-        if cooldown_period is not None:
-            _setter("cooldown_period", cooldown_period)
-        if cpu_utilization is not None:
-            _setter("cpu_utilization", cpu_utilization)
-        if load_balancing_utilization is not None:
-            _setter("load_balancing_utilization", load_balancing_utilization)
-        if metrics is not None:
-            _setter("metrics", metrics)
-        if mode is not None:
-            _setter("mode", mode)
-        if scale_down_control is not None:
-            _setter("scale_down_control", scale_down_control)
-        if scale_in_control is not None:
-            _setter("scale_in_control", scale_in_control)
-        if scaling_schedules is not None:
-            _setter("scaling_schedules", scaling_schedules)
-
-    @property
-    @pulumi.getter(name="maxReplicas")
-    def max_replicas(self) -> int:
-        """
-        The maximum number of instances that the autoscaler can scale up
-        to. This is required when creating or updating an autoscaler. The
-        maximum number of replicas should not be lower than minimal number
-        of replicas.
-        """
-        return pulumi.get(self, "max_replicas")
-
-    @property
-    @pulumi.getter(name="minReplicas")
-    def min_replicas(self) -> int:
-        """
-        The minimum number of replicas that the autoscaler can scale down
-        to. This cannot be less than 0. If not provided, autoscaler will
-        choose a default value depending on maximum number of instances
-        allowed.
-        """
-        return pulumi.get(self, "min_replicas")
-
-    @property
-    @pulumi.getter(name="cooldownPeriod")
-    def cooldown_period(self) -> Optional[int]:
-        """
-        The number of seconds that the autoscaler should wait before it
-        starts collecting information from a new instance. This prevents
-        the autoscaler from collecting information when the instance is
-        initializing, during which the collected usage would not be
-        reliable. The default time autoscaler waits is 60 seconds.
-        Virtual machine initialization times might vary because of
-        numerous factors. We recommend that you test how long an
-        instance may take to initialize. To do this, create an instance
-        and time the startup process.
-        """
-        return pulumi.get(self, "cooldown_period")
-
-    @property
-    @pulumi.getter(name="cpuUtilization")
-    def cpu_utilization(self) -> Optional['outputs.AutoscalarAutoscalingPolicyCpuUtilization']:
-        """
-        Defines the CPU utilization policy that allows the autoscaler to
-        scale based on the average CPU utilization of a managed instance
-        group.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "cpu_utilization")
-
-    @property
-    @pulumi.getter(name="loadBalancingUtilization")
-    def load_balancing_utilization(self) -> Optional['outputs.AutoscalarAutoscalingPolicyLoadBalancingUtilization']:
-        """
-        Configuration parameters of autoscaling based on a load balancer.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "load_balancing_utilization")
-
-    @property
-    @pulumi.getter
-    def metrics(self) -> Optional[Sequence['outputs.AutoscalarAutoscalingPolicyMetric']]:
-        """
-        Configuration parameters of autoscaling based on a custom metric.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "metrics")
-
-    @property
-    @pulumi.getter
-    def mode(self) -> Optional[str]:
-        """
-        Defines operating mode for this policy.
-        """
-        return pulumi.get(self, "mode")
-
-    @property
-    @pulumi.getter(name="scaleDownControl")
-    def scale_down_control(self) -> Optional['outputs.AutoscalarAutoscalingPolicyScaleDownControl']:
-        """
-        Defines scale down controls to reduce the risk of response latency
-        and outages due to abrupt scale-in events
-        Structure is documented below.
-        """
-        return pulumi.get(self, "scale_down_control")
-
-    @property
-    @pulumi.getter(name="scaleInControl")
-    def scale_in_control(self) -> Optional['outputs.AutoscalarAutoscalingPolicyScaleInControl']:
-        """
-        Defines scale in controls to reduce the risk of response latency
-        and outages due to abrupt scale-in events
-        Structure is documented below.
-        """
-        return pulumi.get(self, "scale_in_control")
-
-    @property
-    @pulumi.getter(name="scalingSchedules")
-    def scaling_schedules(self) -> Optional[Sequence['outputs.AutoscalarAutoscalingPolicyScalingSchedule']]:
-        """
-        Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "scaling_schedules")
-
-
-@pulumi.output_type
-class AutoscalarAutoscalingPolicyCpuUtilization(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "predictiveMethod":
-            suggest = "predictive_method"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AutoscalarAutoscalingPolicyCpuUtilization. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AutoscalarAutoscalingPolicyCpuUtilization.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AutoscalarAutoscalingPolicyCpuUtilization.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 target: float,
-                 predictive_method: Optional[str] = None):
-        """
-        :param float target: The target CPU utilization that the autoscaler should maintain.
-               Must be a float value in the range (0, 1]. If not specified, the
-               default is 0.6.
-               If the CPU level is below the target utilization, the autoscaler
-               scales down the number of instances until it reaches the minimum
-               number of instances you specified or until the average CPU of
-               your instances reaches the target utilization.
-               If the average CPU is above the target utilization, the autoscaler
-               scales up until it reaches the maximum number of instances you
-               specified or until the average utilization reaches the target
-               utilization.
-        :param str predictive_method: Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
-               - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
-               - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
-        """
-        AutoscalarAutoscalingPolicyCpuUtilization._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            target=target,
-            predictive_method=predictive_method,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             target: Optional[float] = None,
-             predictive_method: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if target is None:
-            raise TypeError("Missing 'target' argument")
-        if predictive_method is None and 'predictiveMethod' in kwargs:
-            predictive_method = kwargs['predictiveMethod']
-
-        _setter("target", target)
-        if predictive_method is not None:
-            _setter("predictive_method", predictive_method)
-
-    @property
-    @pulumi.getter
-    def target(self) -> float:
-        """
-        The target CPU utilization that the autoscaler should maintain.
-        Must be a float value in the range (0, 1]. If not specified, the
-        default is 0.6.
-        If the CPU level is below the target utilization, the autoscaler
-        scales down the number of instances until it reaches the minimum
-        number of instances you specified or until the average CPU of
-        your instances reaches the target utilization.
-        If the average CPU is above the target utilization, the autoscaler
-        scales up until it reaches the maximum number of instances you
-        specified or until the average utilization reaches the target
-        utilization.
-        """
-        return pulumi.get(self, "target")
-
-    @property
-    @pulumi.getter(name="predictiveMethod")
-    def predictive_method(self) -> Optional[str]:
-        """
-        Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
-        - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
-        - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
-        """
-        return pulumi.get(self, "predictive_method")
-
-
-@pulumi.output_type
-class AutoscalarAutoscalingPolicyLoadBalancingUtilization(dict):
-    def __init__(__self__, *,
-                 target: float):
-        """
-        :param float target: Fraction of backend capacity utilization (set in HTTP(s) load
-               balancing configuration) that autoscaler should maintain. Must
-               be a positive float value. If not defined, the default is 0.8.
-        """
-        AutoscalarAutoscalingPolicyLoadBalancingUtilization._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            target=target,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             target: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if target is None:
-            raise TypeError("Missing 'target' argument")
-
-        _setter("target", target)
-
-    @property
-    @pulumi.getter
-    def target(self) -> float:
-        """
-        Fraction of backend capacity utilization (set in HTTP(s) load
-        balancing configuration) that autoscaler should maintain. Must
-        be a positive float value. If not defined, the default is 0.8.
-        """
-        return pulumi.get(self, "target")
-
-
-@pulumi.output_type
-class AutoscalarAutoscalingPolicyMetric(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "singleInstanceAssignment":
-            suggest = "single_instance_assignment"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AutoscalarAutoscalingPolicyMetric. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AutoscalarAutoscalingPolicyMetric.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AutoscalarAutoscalingPolicyMetric.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 name: str,
-                 filter: Optional[str] = None,
-                 single_instance_assignment: Optional[float] = None,
-                 target: Optional[float] = None,
-                 type: Optional[str] = None):
-        """
-        :param str name: The identifier (type) of the Stackdriver Monitoring metric.
-               The metric cannot have negative values.
-               The metric must have a value type of INT64 or DOUBLE.
-        :param str filter: A filter string to be used as the filter string for
-               a Stackdriver Monitoring TimeSeries.list API call.
-               This filter is used to select a specific TimeSeries for
-               the purpose of autoscaling and to determine whether the metric
-               is exporting per-instance or per-group data.
-               You can only use the AND operator for joining selectors.
-               You can only use direct equality comparison operator (=) without
-               any functions for each selector.
-               You can specify the metric in both the filter string and in the
-               metric field. However, if specified in both places, the metric must
-               be identical.
-               The monitored resource type determines what kind of values are
-               expected for the metric. If it is a gce_instance, the autoscaler
-               expects the metric to include a separate TimeSeries for each
-               instance in a group. In such a case, you cannot filter on resource
-               labels.
-               If the resource type is any other value, the autoscaler expects
-               this metric to contain values that apply to the entire autoscaled
-               instance group and resource label filtering can be performed to
-               point autoscaler at the correct TimeSeries to scale upon.
-               This is called a per-group metric for the purpose of autoscaling.
-               If not specified, the type defaults to gce_instance.
-               You should provide a filter that is selective enough to pick just
-               one TimeSeries for the autoscaled group or for each of the instances
-               (if you are using gce_instance resource type). If multiple
-               TimeSeries are returned upon the query execution, the autoscaler
-               will sum their respective values to obtain its scaling value.
-        :param float single_instance_assignment: If scaling is based on a per-group metric value that represents the
-               total amount of work to be done or resource usage, set this value to
-               an amount assigned for a single instance of the scaled group.
-               The autoscaler will keep the number of instances proportional to the
-               value of this metric, the metric itself should not change value due
-               to group resizing.
-               For example, a good metric to use with the target is
-               `pubsub.googleapis.com/subscription/num_undelivered_messages`
-               or a custom metric exporting the total number of requests coming to
-               your instances.
-               A bad example would be a metric exporting an average or median
-               latency, since this value can't include a chunk assignable to a
-               single instance, it could be better used with utilization_target
-               instead.
-        :param float target: The target value of the metric that autoscaler should
-               maintain. This must be a positive value. A utilization
-               metric scales number of virtual machines handling requests
-               to increase or decrease proportionally to the metric.
-               For example, a good metric to use as a utilizationTarget is
-               www.googleapis.com/compute/instance/network/received_bytes_count.
-               The autoscaler will work to keep this value constant for each
-               of the instances.
-        :param str type: Defines how target utilization value is expressed for a
-               Stackdriver Monitoring metric.
-               Possible values are: `GAUGE`, `DELTA_PER_SECOND`, `DELTA_PER_MINUTE`.
-        """
-        AutoscalarAutoscalingPolicyMetric._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            filter=filter,
-            single_instance_assignment=single_instance_assignment,
-            target=target,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             filter: Optional[str] = None,
-             single_instance_assignment: Optional[float] = None,
-             target: Optional[float] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if single_instance_assignment is None and 'singleInstanceAssignment' in kwargs:
-            single_instance_assignment = kwargs['singleInstanceAssignment']
-
-        _setter("name", name)
-        if filter is not None:
-            _setter("filter", filter)
-        if single_instance_assignment is not None:
-            _setter("single_instance_assignment", single_instance_assignment)
-        if target is not None:
-            _setter("target", target)
-        if type is not None:
-            _setter("type", type)
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        """
-        The identifier (type) of the Stackdriver Monitoring metric.
-        The metric cannot have negative values.
-        The metric must have a value type of INT64 or DOUBLE.
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def filter(self) -> Optional[str]:
-        """
-        A filter string to be used as the filter string for
-        a Stackdriver Monitoring TimeSeries.list API call.
-        This filter is used to select a specific TimeSeries for
-        the purpose of autoscaling and to determine whether the metric
-        is exporting per-instance or per-group data.
-        You can only use the AND operator for joining selectors.
-        You can only use direct equality comparison operator (=) without
-        any functions for each selector.
-        You can specify the metric in both the filter string and in the
-        metric field. However, if specified in both places, the metric must
-        be identical.
-        The monitored resource type determines what kind of values are
-        expected for the metric. If it is a gce_instance, the autoscaler
-        expects the metric to include a separate TimeSeries for each
-        instance in a group. In such a case, you cannot filter on resource
-        labels.
-        If the resource type is any other value, the autoscaler expects
-        this metric to contain values that apply to the entire autoscaled
-        instance group and resource label filtering can be performed to
-        point autoscaler at the correct TimeSeries to scale upon.
-        This is called a per-group metric for the purpose of autoscaling.
-        If not specified, the type defaults to gce_instance.
-        You should provide a filter that is selective enough to pick just
-        one TimeSeries for the autoscaled group or for each of the instances
-        (if you are using gce_instance resource type). If multiple
-        TimeSeries are returned upon the query execution, the autoscaler
-        will sum their respective values to obtain its scaling value.
-        """
-        return pulumi.get(self, "filter")
-
-    @property
-    @pulumi.getter(name="singleInstanceAssignment")
-    def single_instance_assignment(self) -> Optional[float]:
-        """
-        If scaling is based on a per-group metric value that represents the
-        total amount of work to be done or resource usage, set this value to
-        an amount assigned for a single instance of the scaled group.
-        The autoscaler will keep the number of instances proportional to the
-        value of this metric, the metric itself should not change value due
-        to group resizing.
-        For example, a good metric to use with the target is
-        `pubsub.googleapis.com/subscription/num_undelivered_messages`
-        or a custom metric exporting the total number of requests coming to
-        your instances.
-        A bad example would be a metric exporting an average or median
-        latency, since this value can't include a chunk assignable to a
-        single instance, it could be better used with utilization_target
-        instead.
-        """
-        return pulumi.get(self, "single_instance_assignment")
-
-    @property
-    @pulumi.getter
-    def target(self) -> Optional[float]:
-        """
-        The target value of the metric that autoscaler should
-        maintain. This must be a positive value. A utilization
-        metric scales number of virtual machines handling requests
-        to increase or decrease proportionally to the metric.
-        For example, a good metric to use as a utilizationTarget is
-        www.googleapis.com/compute/instance/network/received_bytes_count.
-        The autoscaler will work to keep this value constant for each
-        of the instances.
-        """
-        return pulumi.get(self, "target")
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[str]:
-        """
-        Defines how target utilization value is expressed for a
-        Stackdriver Monitoring metric.
-        Possible values are: `GAUGE`, `DELTA_PER_SECOND`, `DELTA_PER_MINUTE`.
-        """
-        return pulumi.get(self, "type")
-
-
-@pulumi.output_type
-class AutoscalarAutoscalingPolicyScaleDownControl(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxScaledDownReplicas":
-            suggest = "max_scaled_down_replicas"
-        elif key == "timeWindowSec":
-            suggest = "time_window_sec"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AutoscalarAutoscalingPolicyScaleDownControl. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AutoscalarAutoscalingPolicyScaleDownControl.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AutoscalarAutoscalingPolicyScaleDownControl.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 max_scaled_down_replicas: Optional['outputs.AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicas'] = None,
-                 time_window_sec: Optional[int] = None):
-        """
-        :param 'AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs' max_scaled_down_replicas: A nested object resource
-               Structure is documented below.
-        :param int time_window_sec: How long back autoscaling should look when computing recommendations
-               to include directives regarding slower scale down, as described above.
-        """
-        AutoscalarAutoscalingPolicyScaleDownControl._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            max_scaled_down_replicas=max_scaled_down_replicas,
-            time_window_sec=time_window_sec,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             max_scaled_down_replicas: Optional['outputs.AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicas'] = None,
-             time_window_sec: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if max_scaled_down_replicas is None and 'maxScaledDownReplicas' in kwargs:
-            max_scaled_down_replicas = kwargs['maxScaledDownReplicas']
-        if time_window_sec is None and 'timeWindowSec' in kwargs:
-            time_window_sec = kwargs['timeWindowSec']
-
-        if max_scaled_down_replicas is not None:
-            _setter("max_scaled_down_replicas", max_scaled_down_replicas)
-        if time_window_sec is not None:
-            _setter("time_window_sec", time_window_sec)
-
-    @property
-    @pulumi.getter(name="maxScaledDownReplicas")
-    def max_scaled_down_replicas(self) -> Optional['outputs.AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicas']:
-        """
-        A nested object resource
-        Structure is documented below.
-        """
-        return pulumi.get(self, "max_scaled_down_replicas")
-
-    @property
-    @pulumi.getter(name="timeWindowSec")
-    def time_window_sec(self) -> Optional[int]:
-        """
-        How long back autoscaling should look when computing recommendations
-        to include directives regarding slower scale down, as described above.
-        """
-        return pulumi.get(self, "time_window_sec")
-
-
-@pulumi.output_type
-class AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicas(dict):
-    def __init__(__self__, *,
-                 fixed: Optional[int] = None,
-                 percent: Optional[int] = None):
-        """
-        :param int fixed: Specifies a fixed number of VM instances. This must be a positive
-               integer.
-        :param int percent: Specifies a percentage of instances between 0 to 100%, inclusive.
-               For example, specify 80 for 80%.
-        """
-        AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicas._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            fixed=fixed,
-            percent=percent,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             fixed: Optional[int] = None,
-             percent: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
-        if fixed is not None:
-            _setter("fixed", fixed)
-        if percent is not None:
-            _setter("percent", percent)
-
-    @property
-    @pulumi.getter
-    def fixed(self) -> Optional[int]:
-        """
-        Specifies a fixed number of VM instances. This must be a positive
-        integer.
-        """
-        return pulumi.get(self, "fixed")
-
-    @property
-    @pulumi.getter
-    def percent(self) -> Optional[int]:
-        """
-        Specifies a percentage of instances between 0 to 100%, inclusive.
-        For example, specify 80 for 80%.
-        """
-        return pulumi.get(self, "percent")
-
-
-@pulumi.output_type
-class AutoscalarAutoscalingPolicyScaleInControl(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxScaledInReplicas":
-            suggest = "max_scaled_in_replicas"
-        elif key == "timeWindowSec":
-            suggest = "time_window_sec"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AutoscalarAutoscalingPolicyScaleInControl. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AutoscalarAutoscalingPolicyScaleInControl.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AutoscalarAutoscalingPolicyScaleInControl.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 max_scaled_in_replicas: Optional['outputs.AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas'] = None,
-                 time_window_sec: Optional[int] = None):
-        """
-        :param 'AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs' max_scaled_in_replicas: A nested object resource
-               Structure is documented below.
-        :param int time_window_sec: How long back autoscaling should look when computing recommendations
-               to include directives regarding slower scale down, as described above.
-        """
-        AutoscalarAutoscalingPolicyScaleInControl._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            max_scaled_in_replicas=max_scaled_in_replicas,
-            time_window_sec=time_window_sec,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             max_scaled_in_replicas: Optional['outputs.AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas'] = None,
-             time_window_sec: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if max_scaled_in_replicas is None and 'maxScaledInReplicas' in kwargs:
-            max_scaled_in_replicas = kwargs['maxScaledInReplicas']
-        if time_window_sec is None and 'timeWindowSec' in kwargs:
-            time_window_sec = kwargs['timeWindowSec']
-
-        if max_scaled_in_replicas is not None:
-            _setter("max_scaled_in_replicas", max_scaled_in_replicas)
-        if time_window_sec is not None:
-            _setter("time_window_sec", time_window_sec)
-
-    @property
-    @pulumi.getter(name="maxScaledInReplicas")
-    def max_scaled_in_replicas(self) -> Optional['outputs.AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas']:
-        """
-        A nested object resource
-        Structure is documented below.
-        """
-        return pulumi.get(self, "max_scaled_in_replicas")
-
-    @property
-    @pulumi.getter(name="timeWindowSec")
-    def time_window_sec(self) -> Optional[int]:
-        """
-        How long back autoscaling should look when computing recommendations
-        to include directives regarding slower scale down, as described above.
-        """
-        return pulumi.get(self, "time_window_sec")
-
-
-@pulumi.output_type
-class AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas(dict):
-    def __init__(__self__, *,
-                 fixed: Optional[int] = None,
-                 percent: Optional[int] = None):
-        """
-        :param int fixed: Specifies a fixed number of VM instances. This must be a positive
-               integer.
-        :param int percent: Specifies a percentage of instances between 0 to 100%, inclusive.
-               For example, specify 80 for 80%.
-        """
-        AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            fixed=fixed,
-            percent=percent,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             fixed: Optional[int] = None,
-             percent: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
-        if fixed is not None:
-            _setter("fixed", fixed)
-        if percent is not None:
-            _setter("percent", percent)
-
-    @property
-    @pulumi.getter
-    def fixed(self) -> Optional[int]:
-        """
-        Specifies a fixed number of VM instances. This must be a positive
-        integer.
-        """
-        return pulumi.get(self, "fixed")
-
-    @property
-    @pulumi.getter
-    def percent(self) -> Optional[int]:
-        """
-        Specifies a percentage of instances between 0 to 100%, inclusive.
-        For example, specify 80 for 80%.
-        """
-        return pulumi.get(self, "percent")
-
-
-@pulumi.output_type
-class AutoscalarAutoscalingPolicyScalingSchedule(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "durationSec":
-            suggest = "duration_sec"
-        elif key == "minRequiredReplicas":
-            suggest = "min_required_replicas"
-        elif key == "timeZone":
-            suggest = "time_zone"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AutoscalarAutoscalingPolicyScalingSchedule. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AutoscalarAutoscalingPolicyScalingSchedule.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AutoscalarAutoscalingPolicyScalingSchedule.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 duration_sec: int,
-                 min_required_replicas: int,
-                 name: str,
-                 schedule: str,
-                 description: Optional[str] = None,
-                 disabled: Optional[bool] = None,
-                 time_zone: Optional[str] = None):
-        """
-        :param int duration_sec: The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
-        :param int min_required_replicas: Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
-        :param str name: The identifier for this object. Format specified above.
-        :param str schedule: The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
-        :param str description: An optional description of this resource.
-        :param bool disabled: A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
-        :param str time_zone: The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
-        """
-        AutoscalarAutoscalingPolicyScalingSchedule._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            duration_sec=duration_sec,
-            min_required_replicas=min_required_replicas,
-            name=name,
-            schedule=schedule,
-            description=description,
-            disabled=disabled,
-            time_zone=time_zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             duration_sec: Optional[int] = None,
-             min_required_replicas: Optional[int] = None,
-             name: Optional[str] = None,
-             schedule: Optional[str] = None,
-             description: Optional[str] = None,
-             disabled: Optional[bool] = None,
-             time_zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if duration_sec is None and 'durationSec' in kwargs:
-            duration_sec = kwargs['durationSec']
-        if duration_sec is None:
-            raise TypeError("Missing 'duration_sec' argument")
-        if min_required_replicas is None and 'minRequiredReplicas' in kwargs:
-            min_required_replicas = kwargs['minRequiredReplicas']
-        if min_required_replicas is None:
-            raise TypeError("Missing 'min_required_replicas' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if schedule is None:
-            raise TypeError("Missing 'schedule' argument")
-        if time_zone is None and 'timeZone' in kwargs:
-            time_zone = kwargs['timeZone']
-
-        _setter("duration_sec", duration_sec)
-        _setter("min_required_replicas", min_required_replicas)
-        _setter("name", name)
-        _setter("schedule", schedule)
-        if description is not None:
-            _setter("description", description)
-        if disabled is not None:
-            _setter("disabled", disabled)
-        if time_zone is not None:
-            _setter("time_zone", time_zone)
-
-    @property
-    @pulumi.getter(name="durationSec")
-    def duration_sec(self) -> int:
-        """
-        The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
-        """
-        return pulumi.get(self, "duration_sec")
-
-    @property
-    @pulumi.getter(name="minRequiredReplicas")
-    def min_required_replicas(self) -> int:
-        """
-        Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
-        """
-        return pulumi.get(self, "min_required_replicas")
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        """
-        The identifier for this object. Format specified above.
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def schedule(self) -> str:
-        """
-        The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
-        """
-        return pulumi.get(self, "schedule")
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[str]:
-        """
-        An optional description of this resource.
-        """
-        return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter
-    def disabled(self) -> Optional[bool]:
-        """
-        A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
-        """
-        return pulumi.get(self, "disabled")
-
-    @property
-    @pulumi.getter(name="timeZone")
-    def time_zone(self) -> Optional[str]:
-        """
-        The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
-        """
-        return pulumi.get(self, "time_zone")
-
 
 @pulumi.output_type
 class AutoscalerAutoscalingPolicy(dict):
@@ -6424,7 +5450,7 @@ class FirewallPolicyRuleMatchLayer4Config(dict):
 
 
 @pulumi.output_type
-class ForwardingRuleServiceDirectoryRegistration(dict):
+class ForwardingRuleServiceDirectoryRegistrations(dict):
     def __init__(__self__, *,
                  namespace: Optional[str] = None,
                  service: Optional[str] = None):
@@ -6432,7 +5458,7 @@ class ForwardingRuleServiceDirectoryRegistration(dict):
         :param str namespace: Service Directory namespace to register the forwarding rule under.
         :param str service: Service Directory service to register the forwarding rule under.
         """
-        ForwardingRuleServiceDirectoryRegistration._configure(
+        ForwardingRuleServiceDirectoryRegistrations._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             namespace=namespace,
             service=service,
@@ -8436,7 +7462,7 @@ class InstanceBootDiskInitializeParams(dict):
                [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
                For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
                These images can be referred by family name here.
-        :param Mapping[str, Any] labels: A set of key/value label pairs assigned to the disk. This  
+        :param Mapping[str, Any] labels: A set of key/value label pairs assigned to the disk. This
                field is only applicable for persistent disks.
         :param int size: The size of the image in gigabytes. If not specified, it
                will inherit the size of its base image.
@@ -8494,7 +7520,7 @@ class InstanceBootDiskInitializeParams(dict):
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, Any]]:
         """
-        A set of key/value label pairs assigned to the disk. This  
+        A set of key/value label pairs assigned to the disk. This
         field is only applicable for persistent disks.
         """
         return pulumi.get(self, "labels")
@@ -9062,12 +8088,16 @@ class InstanceFromMachineImageNetworkInterface(dict):
             suggest = "ipv6_access_type"
         elif key == "ipv6Address":
             suggest = "ipv6_address"
+        elif key == "networkAttachment":
+            suggest = "network_attachment"
         elif key == "networkIp":
             suggest = "network_ip"
         elif key == "nicType":
             suggest = "nic_type"
         elif key == "queueCount":
             suggest = "queue_count"
+        elif key == "securityPolicy":
+            suggest = "security_policy"
         elif key == "stackType":
             suggest = "stack_type"
         elif key == "subnetworkProject":
@@ -9093,9 +8123,11 @@ class InstanceFromMachineImageNetworkInterface(dict):
                  ipv6_address: Optional[str] = None,
                  name: Optional[str] = None,
                  network: Optional[str] = None,
+                 network_attachment: Optional[str] = None,
                  network_ip: Optional[str] = None,
                  nic_type: Optional[str] = None,
                  queue_count: Optional[int] = None,
+                 security_policy: Optional[str] = None,
                  stack_type: Optional[str] = None,
                  subnetwork: Optional[str] = None,
                  subnetwork_project: Optional[str] = None):
@@ -9113,9 +8145,11 @@ class InstanceFromMachineImageNetworkInterface(dict):
             ipv6_address=ipv6_address,
             name=name,
             network=network,
+            network_attachment=network_attachment,
             network_ip=network_ip,
             nic_type=nic_type,
             queue_count=queue_count,
+            security_policy=security_policy,
             stack_type=stack_type,
             subnetwork=subnetwork,
             subnetwork_project=subnetwork_project,
@@ -9131,9 +8165,11 @@ class InstanceFromMachineImageNetworkInterface(dict):
              ipv6_address: Optional[str] = None,
              name: Optional[str] = None,
              network: Optional[str] = None,
+             network_attachment: Optional[str] = None,
              network_ip: Optional[str] = None,
              nic_type: Optional[str] = None,
              queue_count: Optional[int] = None,
+             security_policy: Optional[str] = None,
              stack_type: Optional[str] = None,
              subnetwork: Optional[str] = None,
              subnetwork_project: Optional[str] = None,
@@ -9151,12 +8187,16 @@ class InstanceFromMachineImageNetworkInterface(dict):
             ipv6_access_type = kwargs['ipv6AccessType']
         if ipv6_address is None and 'ipv6Address' in kwargs:
             ipv6_address = kwargs['ipv6Address']
+        if network_attachment is None and 'networkAttachment' in kwargs:
+            network_attachment = kwargs['networkAttachment']
         if network_ip is None and 'networkIp' in kwargs:
             network_ip = kwargs['networkIp']
         if nic_type is None and 'nicType' in kwargs:
             nic_type = kwargs['nicType']
         if queue_count is None and 'queueCount' in kwargs:
             queue_count = kwargs['queueCount']
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
         if stack_type is None and 'stackType' in kwargs:
             stack_type = kwargs['stackType']
         if subnetwork_project is None and 'subnetworkProject' in kwargs:
@@ -9178,12 +8218,16 @@ class InstanceFromMachineImageNetworkInterface(dict):
             _setter("name", name)
         if network is not None:
             _setter("network", network)
+        if network_attachment is not None:
+            _setter("network_attachment", network_attachment)
         if network_ip is not None:
             _setter("network_ip", network_ip)
         if nic_type is not None:
             _setter("nic_type", nic_type)
         if queue_count is not None:
             _setter("queue_count", queue_count)
+        if security_policy is not None:
+            _setter("security_policy", security_policy)
         if stack_type is not None:
             _setter("stack_type", stack_type)
         if subnetwork is not None:
@@ -9236,6 +8280,11 @@ class InstanceFromMachineImageNetworkInterface(dict):
         return pulumi.get(self, "network")
 
     @property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> Optional[str]:
+        return pulumi.get(self, "network_attachment")
+
+    @property
     @pulumi.getter(name="networkIp")
     def network_ip(self) -> Optional[str]:
         return pulumi.get(self, "network_ip")
@@ -9249,6 +8298,11 @@ class InstanceFromMachineImageNetworkInterface(dict):
     @pulumi.getter(name="queueCount")
     def queue_count(self) -> Optional[int]:
         return pulumi.get(self, "queue_count")
+
+    @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> Optional[str]:
+        return pulumi.get(self, "security_policy")
 
     @property
     @pulumi.getter(name="stackType")
@@ -9277,6 +8331,8 @@ class InstanceFromMachineImageNetworkInterfaceAccessConfig(dict):
             suggest = "network_tier"
         elif key == "publicPtrDomainName":
             suggest = "public_ptr_domain_name"
+        elif key == "securityPolicy":
+            suggest = "security_policy"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceFromMachineImageNetworkInterfaceAccessConfig. Access the value via the '{suggest}' property getter instead.")
@@ -9292,12 +8348,14 @@ class InstanceFromMachineImageNetworkInterfaceAccessConfig(dict):
     def __init__(__self__, *,
                  nat_ip: Optional[str] = None,
                  network_tier: Optional[str] = None,
-                 public_ptr_domain_name: Optional[str] = None):
+                 public_ptr_domain_name: Optional[str] = None,
+                 security_policy: Optional[str] = None):
         InstanceFromMachineImageNetworkInterfaceAccessConfig._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             nat_ip=nat_ip,
             network_tier=network_tier,
             public_ptr_domain_name=public_ptr_domain_name,
+            security_policy=security_policy,
         )
     @staticmethod
     def _configure(
@@ -9305,6 +8363,7 @@ class InstanceFromMachineImageNetworkInterfaceAccessConfig(dict):
              nat_ip: Optional[str] = None,
              network_tier: Optional[str] = None,
              public_ptr_domain_name: Optional[str] = None,
+             security_policy: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if nat_ip is None and 'natIp' in kwargs:
@@ -9313,6 +8372,8 @@ class InstanceFromMachineImageNetworkInterfaceAccessConfig(dict):
             network_tier = kwargs['networkTier']
         if public_ptr_domain_name is None and 'publicPtrDomainName' in kwargs:
             public_ptr_domain_name = kwargs['publicPtrDomainName']
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
 
         if nat_ip is not None:
             _setter("nat_ip", nat_ip)
@@ -9320,6 +8381,8 @@ class InstanceFromMachineImageNetworkInterfaceAccessConfig(dict):
             _setter("network_tier", network_tier)
         if public_ptr_domain_name is not None:
             _setter("public_ptr_domain_name", public_ptr_domain_name)
+        if security_policy is not None:
+            _setter("security_policy", security_policy)
 
     @property
     @pulumi.getter(name="natIp")
@@ -9335,6 +8398,11 @@ class InstanceFromMachineImageNetworkInterfaceAccessConfig(dict):
     @pulumi.getter(name="publicPtrDomainName")
     def public_ptr_domain_name(self) -> Optional[str]:
         return pulumi.get(self, "public_ptr_domain_name")
+
+    @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> Optional[str]:
+        return pulumi.get(self, "security_policy")
 
 
 @pulumi.output_type
@@ -9408,6 +8476,8 @@ class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig(dict):
             suggest = "external_ipv6_prefix_length"
         elif key == "publicPtrDomainName":
             suggest = "public_ptr_domain_name"
+        elif key == "securityPolicy":
+            suggest = "security_policy"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig. Access the value via the '{suggest}' property getter instead.")
@@ -9425,7 +8495,8 @@ class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig(dict):
                  external_ipv6: Optional[str] = None,
                  external_ipv6_prefix_length: Optional[str] = None,
                  name: Optional[str] = None,
-                 public_ptr_domain_name: Optional[str] = None):
+                 public_ptr_domain_name: Optional[str] = None,
+                 security_policy: Optional[str] = None):
         """
         :param str name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
@@ -9437,6 +8508,7 @@ class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig(dict):
             external_ipv6_prefix_length=external_ipv6_prefix_length,
             name=name,
             public_ptr_domain_name=public_ptr_domain_name,
+            security_policy=security_policy,
         )
     @staticmethod
     def _configure(
@@ -9446,6 +8518,7 @@ class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig(dict):
              external_ipv6_prefix_length: Optional[str] = None,
              name: Optional[str] = None,
              public_ptr_domain_name: Optional[str] = None,
+             security_policy: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if network_tier is None and 'networkTier' in kwargs:
@@ -9458,6 +8531,8 @@ class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig(dict):
             external_ipv6_prefix_length = kwargs['externalIpv6PrefixLength']
         if public_ptr_domain_name is None and 'publicPtrDomainName' in kwargs:
             public_ptr_domain_name = kwargs['publicPtrDomainName']
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
 
         _setter("network_tier", network_tier)
         if external_ipv6 is not None:
@@ -9468,6 +8543,8 @@ class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig(dict):
             _setter("name", name)
         if public_ptr_domain_name is not None:
             _setter("public_ptr_domain_name", public_ptr_domain_name)
+        if security_policy is not None:
+            _setter("security_policy", security_policy)
 
     @property
     @pulumi.getter(name="networkTier")
@@ -9497,6 +8574,11 @@ class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig(dict):
     @pulumi.getter(name="publicPtrDomainName")
     def public_ptr_domain_name(self) -> Optional[str]:
         return pulumi.get(self, "public_ptr_domain_name")
+
+    @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> Optional[str]:
+        return pulumi.get(self, "security_policy")
 
 
 @pulumi.output_type
@@ -10589,12 +9671,16 @@ class InstanceFromTemplateNetworkInterface(dict):
             suggest = "ipv6_access_type"
         elif key == "ipv6Address":
             suggest = "ipv6_address"
+        elif key == "networkAttachment":
+            suggest = "network_attachment"
         elif key == "networkIp":
             suggest = "network_ip"
         elif key == "nicType":
             suggest = "nic_type"
         elif key == "queueCount":
             suggest = "queue_count"
+        elif key == "securityPolicy":
+            suggest = "security_policy"
         elif key == "stackType":
             suggest = "stack_type"
         elif key == "subnetworkProject":
@@ -10620,9 +9706,11 @@ class InstanceFromTemplateNetworkInterface(dict):
                  ipv6_address: Optional[str] = None,
                  name: Optional[str] = None,
                  network: Optional[str] = None,
+                 network_attachment: Optional[str] = None,
                  network_ip: Optional[str] = None,
                  nic_type: Optional[str] = None,
                  queue_count: Optional[int] = None,
+                 security_policy: Optional[str] = None,
                  stack_type: Optional[str] = None,
                  subnetwork: Optional[str] = None,
                  subnetwork_project: Optional[str] = None):
@@ -10640,9 +9728,11 @@ class InstanceFromTemplateNetworkInterface(dict):
             ipv6_address=ipv6_address,
             name=name,
             network=network,
+            network_attachment=network_attachment,
             network_ip=network_ip,
             nic_type=nic_type,
             queue_count=queue_count,
+            security_policy=security_policy,
             stack_type=stack_type,
             subnetwork=subnetwork,
             subnetwork_project=subnetwork_project,
@@ -10658,9 +9748,11 @@ class InstanceFromTemplateNetworkInterface(dict):
              ipv6_address: Optional[str] = None,
              name: Optional[str] = None,
              network: Optional[str] = None,
+             network_attachment: Optional[str] = None,
              network_ip: Optional[str] = None,
              nic_type: Optional[str] = None,
              queue_count: Optional[int] = None,
+             security_policy: Optional[str] = None,
              stack_type: Optional[str] = None,
              subnetwork: Optional[str] = None,
              subnetwork_project: Optional[str] = None,
@@ -10678,12 +9770,16 @@ class InstanceFromTemplateNetworkInterface(dict):
             ipv6_access_type = kwargs['ipv6AccessType']
         if ipv6_address is None and 'ipv6Address' in kwargs:
             ipv6_address = kwargs['ipv6Address']
+        if network_attachment is None and 'networkAttachment' in kwargs:
+            network_attachment = kwargs['networkAttachment']
         if network_ip is None and 'networkIp' in kwargs:
             network_ip = kwargs['networkIp']
         if nic_type is None and 'nicType' in kwargs:
             nic_type = kwargs['nicType']
         if queue_count is None and 'queueCount' in kwargs:
             queue_count = kwargs['queueCount']
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
         if stack_type is None and 'stackType' in kwargs:
             stack_type = kwargs['stackType']
         if subnetwork_project is None and 'subnetworkProject' in kwargs:
@@ -10705,12 +9801,16 @@ class InstanceFromTemplateNetworkInterface(dict):
             _setter("name", name)
         if network is not None:
             _setter("network", network)
+        if network_attachment is not None:
+            _setter("network_attachment", network_attachment)
         if network_ip is not None:
             _setter("network_ip", network_ip)
         if nic_type is not None:
             _setter("nic_type", nic_type)
         if queue_count is not None:
             _setter("queue_count", queue_count)
+        if security_policy is not None:
+            _setter("security_policy", security_policy)
         if stack_type is not None:
             _setter("stack_type", stack_type)
         if subnetwork is not None:
@@ -10763,6 +9863,11 @@ class InstanceFromTemplateNetworkInterface(dict):
         return pulumi.get(self, "network")
 
     @property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> Optional[str]:
+        return pulumi.get(self, "network_attachment")
+
+    @property
     @pulumi.getter(name="networkIp")
     def network_ip(self) -> Optional[str]:
         return pulumi.get(self, "network_ip")
@@ -10776,6 +9881,11 @@ class InstanceFromTemplateNetworkInterface(dict):
     @pulumi.getter(name="queueCount")
     def queue_count(self) -> Optional[int]:
         return pulumi.get(self, "queue_count")
+
+    @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> Optional[str]:
+        return pulumi.get(self, "security_policy")
 
     @property
     @pulumi.getter(name="stackType")
@@ -10804,6 +9914,8 @@ class InstanceFromTemplateNetworkInterfaceAccessConfig(dict):
             suggest = "network_tier"
         elif key == "publicPtrDomainName":
             suggest = "public_ptr_domain_name"
+        elif key == "securityPolicy":
+            suggest = "security_policy"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceFromTemplateNetworkInterfaceAccessConfig. Access the value via the '{suggest}' property getter instead.")
@@ -10819,12 +9931,14 @@ class InstanceFromTemplateNetworkInterfaceAccessConfig(dict):
     def __init__(__self__, *,
                  nat_ip: Optional[str] = None,
                  network_tier: Optional[str] = None,
-                 public_ptr_domain_name: Optional[str] = None):
+                 public_ptr_domain_name: Optional[str] = None,
+                 security_policy: Optional[str] = None):
         InstanceFromTemplateNetworkInterfaceAccessConfig._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             nat_ip=nat_ip,
             network_tier=network_tier,
             public_ptr_domain_name=public_ptr_domain_name,
+            security_policy=security_policy,
         )
     @staticmethod
     def _configure(
@@ -10832,6 +9946,7 @@ class InstanceFromTemplateNetworkInterfaceAccessConfig(dict):
              nat_ip: Optional[str] = None,
              network_tier: Optional[str] = None,
              public_ptr_domain_name: Optional[str] = None,
+             security_policy: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if nat_ip is None and 'natIp' in kwargs:
@@ -10840,6 +9955,8 @@ class InstanceFromTemplateNetworkInterfaceAccessConfig(dict):
             network_tier = kwargs['networkTier']
         if public_ptr_domain_name is None and 'publicPtrDomainName' in kwargs:
             public_ptr_domain_name = kwargs['publicPtrDomainName']
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
 
         if nat_ip is not None:
             _setter("nat_ip", nat_ip)
@@ -10847,6 +9964,8 @@ class InstanceFromTemplateNetworkInterfaceAccessConfig(dict):
             _setter("network_tier", network_tier)
         if public_ptr_domain_name is not None:
             _setter("public_ptr_domain_name", public_ptr_domain_name)
+        if security_policy is not None:
+            _setter("security_policy", security_policy)
 
     @property
     @pulumi.getter(name="natIp")
@@ -10862,6 +9981,11 @@ class InstanceFromTemplateNetworkInterfaceAccessConfig(dict):
     @pulumi.getter(name="publicPtrDomainName")
     def public_ptr_domain_name(self) -> Optional[str]:
         return pulumi.get(self, "public_ptr_domain_name")
+
+    @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> Optional[str]:
+        return pulumi.get(self, "security_policy")
 
 
 @pulumi.output_type
@@ -10935,6 +10059,8 @@ class InstanceFromTemplateNetworkInterfaceIpv6AccessConfig(dict):
             suggest = "external_ipv6_prefix_length"
         elif key == "publicPtrDomainName":
             suggest = "public_ptr_domain_name"
+        elif key == "securityPolicy":
+            suggest = "security_policy"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceFromTemplateNetworkInterfaceIpv6AccessConfig. Access the value via the '{suggest}' property getter instead.")
@@ -10952,7 +10078,8 @@ class InstanceFromTemplateNetworkInterfaceIpv6AccessConfig(dict):
                  external_ipv6: Optional[str] = None,
                  external_ipv6_prefix_length: Optional[str] = None,
                  name: Optional[str] = None,
-                 public_ptr_domain_name: Optional[str] = None):
+                 public_ptr_domain_name: Optional[str] = None,
+                 security_policy: Optional[str] = None):
         """
         :param str name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
@@ -10964,6 +10091,7 @@ class InstanceFromTemplateNetworkInterfaceIpv6AccessConfig(dict):
             external_ipv6_prefix_length=external_ipv6_prefix_length,
             name=name,
             public_ptr_domain_name=public_ptr_domain_name,
+            security_policy=security_policy,
         )
     @staticmethod
     def _configure(
@@ -10973,6 +10101,7 @@ class InstanceFromTemplateNetworkInterfaceIpv6AccessConfig(dict):
              external_ipv6_prefix_length: Optional[str] = None,
              name: Optional[str] = None,
              public_ptr_domain_name: Optional[str] = None,
+             security_policy: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if network_tier is None and 'networkTier' in kwargs:
@@ -10985,6 +10114,8 @@ class InstanceFromTemplateNetworkInterfaceIpv6AccessConfig(dict):
             external_ipv6_prefix_length = kwargs['externalIpv6PrefixLength']
         if public_ptr_domain_name is None and 'publicPtrDomainName' in kwargs:
             public_ptr_domain_name = kwargs['publicPtrDomainName']
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
 
         _setter("network_tier", network_tier)
         if external_ipv6 is not None:
@@ -10995,6 +10126,8 @@ class InstanceFromTemplateNetworkInterfaceIpv6AccessConfig(dict):
             _setter("name", name)
         if public_ptr_domain_name is not None:
             _setter("public_ptr_domain_name", public_ptr_domain_name)
+        if security_policy is not None:
+            _setter("security_policy", security_policy)
 
     @property
     @pulumi.getter(name="networkTier")
@@ -11024,6 +10157,11 @@ class InstanceFromTemplateNetworkInterfaceIpv6AccessConfig(dict):
     @pulumi.getter(name="publicPtrDomainName")
     def public_ptr_domain_name(self) -> Optional[str]:
         return pulumi.get(self, "public_ptr_domain_name")
+
+    @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> Optional[str]:
+        return pulumi.get(self, "security_policy")
 
 
 @pulumi.output_type
@@ -12910,12 +12048,16 @@ class InstanceNetworkInterface(dict):
             suggest = "ipv6_access_type"
         elif key == "ipv6Address":
             suggest = "ipv6_address"
+        elif key == "networkAttachment":
+            suggest = "network_attachment"
         elif key == "networkIp":
             suggest = "network_ip"
         elif key == "nicType":
             suggest = "nic_type"
         elif key == "queueCount":
             suggest = "queue_count"
+        elif key == "securityPolicy":
+            suggest = "security_policy"
         elif key == "stackType":
             suggest = "stack_type"
         elif key == "subnetworkProject":
@@ -12941,9 +12083,11 @@ class InstanceNetworkInterface(dict):
                  ipv6_address: Optional[str] = None,
                  name: Optional[str] = None,
                  network: Optional[str] = None,
+                 network_attachment: Optional[str] = None,
                  network_ip: Optional[str] = None,
                  nic_type: Optional[str] = None,
                  queue_count: Optional[int] = None,
+                 security_policy: Optional[str] = None,
                  stack_type: Optional[str] = None,
                  subnetwork: Optional[str] = None,
                  subnetwork_project: Optional[str] = None):
@@ -12988,9 +12132,11 @@ class InstanceNetworkInterface(dict):
             ipv6_address=ipv6_address,
             name=name,
             network=network,
+            network_attachment=network_attachment,
             network_ip=network_ip,
             nic_type=nic_type,
             queue_count=queue_count,
+            security_policy=security_policy,
             stack_type=stack_type,
             subnetwork=subnetwork,
             subnetwork_project=subnetwork_project,
@@ -13006,9 +12152,11 @@ class InstanceNetworkInterface(dict):
              ipv6_address: Optional[str] = None,
              name: Optional[str] = None,
              network: Optional[str] = None,
+             network_attachment: Optional[str] = None,
              network_ip: Optional[str] = None,
              nic_type: Optional[str] = None,
              queue_count: Optional[int] = None,
+             security_policy: Optional[str] = None,
              stack_type: Optional[str] = None,
              subnetwork: Optional[str] = None,
              subnetwork_project: Optional[str] = None,
@@ -13026,12 +12174,16 @@ class InstanceNetworkInterface(dict):
             ipv6_access_type = kwargs['ipv6AccessType']
         if ipv6_address is None and 'ipv6Address' in kwargs:
             ipv6_address = kwargs['ipv6Address']
+        if network_attachment is None and 'networkAttachment' in kwargs:
+            network_attachment = kwargs['networkAttachment']
         if network_ip is None and 'networkIp' in kwargs:
             network_ip = kwargs['networkIp']
         if nic_type is None and 'nicType' in kwargs:
             nic_type = kwargs['nicType']
         if queue_count is None and 'queueCount' in kwargs:
             queue_count = kwargs['queueCount']
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
         if stack_type is None and 'stackType' in kwargs:
             stack_type = kwargs['stackType']
         if subnetwork_project is None and 'subnetworkProject' in kwargs:
@@ -13053,12 +12205,16 @@ class InstanceNetworkInterface(dict):
             _setter("name", name)
         if network is not None:
             _setter("network", network)
+        if network_attachment is not None:
+            _setter("network_attachment", network_attachment)
         if network_ip is not None:
             _setter("network_ip", network_ip)
         if nic_type is not None:
             _setter("nic_type", nic_type)
         if queue_count is not None:
             _setter("queue_count", queue_count)
+        if security_policy is not None:
+            _setter("security_policy", security_policy)
         if stack_type is not None:
             _setter("stack_type", stack_type)
         if subnetwork is not None:
@@ -13130,6 +12286,11 @@ class InstanceNetworkInterface(dict):
         return pulumi.get(self, "network")
 
     @property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> Optional[str]:
+        return pulumi.get(self, "network_attachment")
+
+    @property
     @pulumi.getter(name="networkIp")
     def network_ip(self) -> Optional[str]:
         """
@@ -13153,6 +12314,11 @@ class InstanceNetworkInterface(dict):
         The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         """
         return pulumi.get(self, "queue_count")
+
+    @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> Optional[str]:
+        return pulumi.get(self, "security_policy")
 
     @property
     @pulumi.getter(name="stackType")
@@ -13199,6 +12365,8 @@ class InstanceNetworkInterfaceAccessConfig(dict):
             suggest = "network_tier"
         elif key == "publicPtrDomainName":
             suggest = "public_ptr_domain_name"
+        elif key == "securityPolicy":
+            suggest = "security_policy"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceNetworkInterfaceAccessConfig. Access the value via the '{suggest}' property getter instead.")
@@ -13214,7 +12382,8 @@ class InstanceNetworkInterfaceAccessConfig(dict):
     def __init__(__self__, *,
                  nat_ip: Optional[str] = None,
                  network_tier: Optional[str] = None,
-                 public_ptr_domain_name: Optional[str] = None):
+                 public_ptr_domain_name: Optional[str] = None,
+                 security_policy: Optional[str] = None):
         """
         :param str nat_ip: The IP address that will be 1:1 mapped to the instance's
                network ip. If not given, one will be generated.
@@ -13228,6 +12397,7 @@ class InstanceNetworkInterfaceAccessConfig(dict):
             nat_ip=nat_ip,
             network_tier=network_tier,
             public_ptr_domain_name=public_ptr_domain_name,
+            security_policy=security_policy,
         )
     @staticmethod
     def _configure(
@@ -13235,6 +12405,7 @@ class InstanceNetworkInterfaceAccessConfig(dict):
              nat_ip: Optional[str] = None,
              network_tier: Optional[str] = None,
              public_ptr_domain_name: Optional[str] = None,
+             security_policy: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if nat_ip is None and 'natIp' in kwargs:
@@ -13243,6 +12414,8 @@ class InstanceNetworkInterfaceAccessConfig(dict):
             network_tier = kwargs['networkTier']
         if public_ptr_domain_name is None and 'publicPtrDomainName' in kwargs:
             public_ptr_domain_name = kwargs['publicPtrDomainName']
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
 
         if nat_ip is not None:
             _setter("nat_ip", nat_ip)
@@ -13250,6 +12423,8 @@ class InstanceNetworkInterfaceAccessConfig(dict):
             _setter("network_tier", network_tier)
         if public_ptr_domain_name is not None:
             _setter("public_ptr_domain_name", public_ptr_domain_name)
+        if security_policy is not None:
+            _setter("security_policy", security_policy)
 
     @property
     @pulumi.getter(name="natIp")
@@ -13277,6 +12452,11 @@ class InstanceNetworkInterfaceAccessConfig(dict):
         records for the external IPv6 ranges..
         """
         return pulumi.get(self, "public_ptr_domain_name")
+
+    @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> Optional[str]:
+        return pulumi.get(self, "security_policy")
 
 
 @pulumi.output_type
@@ -13370,6 +12550,8 @@ class InstanceNetworkInterfaceIpv6AccessConfig(dict):
             suggest = "external_ipv6_prefix_length"
         elif key == "publicPtrDomainName":
             suggest = "public_ptr_domain_name"
+        elif key == "securityPolicy":
+            suggest = "security_policy"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceNetworkInterfaceIpv6AccessConfig. Access the value via the '{suggest}' property getter instead.")
@@ -13387,11 +12569,12 @@ class InstanceNetworkInterfaceIpv6AccessConfig(dict):
                  external_ipv6: Optional[str] = None,
                  external_ipv6_prefix_length: Optional[str] = None,
                  name: Optional[str] = None,
-                 public_ptr_domain_name: Optional[str] = None):
+                 public_ptr_domain_name: Optional[str] = None,
+                 security_policy: Optional[str] = None):
         """
         :param str network_tier: The service-level to be provided for IPv6 traffic when the
                subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
-        :param str external_ipv6: The first IPv6 address of the external IPv6 range associated 
+        :param str external_ipv6: The first IPv6 address of the external IPv6 range associated
                with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig.
                To use a static external IP address, it must be unused and in the same region as the instance's zone.
                If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
@@ -13408,6 +12591,7 @@ class InstanceNetworkInterfaceIpv6AccessConfig(dict):
             external_ipv6_prefix_length=external_ipv6_prefix_length,
             name=name,
             public_ptr_domain_name=public_ptr_domain_name,
+            security_policy=security_policy,
         )
     @staticmethod
     def _configure(
@@ -13417,6 +12601,7 @@ class InstanceNetworkInterfaceIpv6AccessConfig(dict):
              external_ipv6_prefix_length: Optional[str] = None,
              name: Optional[str] = None,
              public_ptr_domain_name: Optional[str] = None,
+             security_policy: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if network_tier is None and 'networkTier' in kwargs:
@@ -13429,6 +12614,8 @@ class InstanceNetworkInterfaceIpv6AccessConfig(dict):
             external_ipv6_prefix_length = kwargs['externalIpv6PrefixLength']
         if public_ptr_domain_name is None and 'publicPtrDomainName' in kwargs:
             public_ptr_domain_name = kwargs['publicPtrDomainName']
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
 
         _setter("network_tier", network_tier)
         if external_ipv6 is not None:
@@ -13439,6 +12626,8 @@ class InstanceNetworkInterfaceIpv6AccessConfig(dict):
             _setter("name", name)
         if public_ptr_domain_name is not None:
             _setter("public_ptr_domain_name", public_ptr_domain_name)
+        if security_policy is not None:
+            _setter("security_policy", security_policy)
 
     @property
     @pulumi.getter(name="networkTier")
@@ -13453,7 +12642,7 @@ class InstanceNetworkInterfaceIpv6AccessConfig(dict):
     @pulumi.getter(name="externalIpv6")
     def external_ipv6(self) -> Optional[str]:
         """
-        The first IPv6 address of the external IPv6 range associated 
+        The first IPv6 address of the external IPv6 range associated
         with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig.
         To use a static external IP address, it must be unused and in the same region as the instance's zone.
         If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
@@ -13485,6 +12674,11 @@ class InstanceNetworkInterfaceIpv6AccessConfig(dict):
         records for the external IPv6 ranges..
         """
         return pulumi.get(self, "public_ptr_domain_name")
+
+    @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> Optional[str]:
+        return pulumi.get(self, "security_policy")
 
 
 @pulumi.output_type
@@ -13757,7 +12951,7 @@ class InstanceScheduling(dict):
         :param bool preemptible: Specifies if the instance is preemptible.
                If this field is set to true, then `automatic_restart` must be
                set to false.  Defaults to false.
-        :param str provisioning_model: Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
+        :param str provisioning_model: Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
                `preemptible` should be `true` and `automatic_restart` should be
                `false`. For more info about
                `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
@@ -13907,7 +13101,7 @@ class InstanceScheduling(dict):
     @pulumi.getter(name="provisioningModel")
     def provisioning_model(self) -> Optional[str]:
         """
-        Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
+        Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
         `preemptible` should be `true` and `automatic_restart` should be
         `false`. For more info about
         `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
@@ -36347,8 +35541,12 @@ class RouterNatRuleAction(dict):
         suggest = None
         if key == "sourceNatActiveIps":
             suggest = "source_nat_active_ips"
+        elif key == "sourceNatActiveRanges":
+            suggest = "source_nat_active_ranges"
         elif key == "sourceNatDrainIps":
             suggest = "source_nat_drain_ips"
+        elif key == "sourceNatDrainRanges":
+            suggest = "source_nat_drain_ranges"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RouterNatRuleAction. Access the value via the '{suggest}' property getter instead.")
@@ -36363,7 +35561,9 @@ class RouterNatRuleAction(dict):
 
     def __init__(__self__, *,
                  source_nat_active_ips: Optional[Sequence[str]] = None,
-                 source_nat_drain_ips: Optional[Sequence[str]] = None):
+                 source_nat_active_ranges: Optional[Sequence[str]] = None,
+                 source_nat_drain_ips: Optional[Sequence[str]] = None,
+                 source_nat_drain_ranges: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] source_nat_active_ips: A list of URLs of the IP resources used for this NAT rule.
                These IP addresses must be valid static external IP addresses assigned to the project.
@@ -36376,24 +35576,36 @@ class RouterNatRuleAction(dict):
         RouterNatRuleAction._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             source_nat_active_ips=source_nat_active_ips,
+            source_nat_active_ranges=source_nat_active_ranges,
             source_nat_drain_ips=source_nat_drain_ips,
+            source_nat_drain_ranges=source_nat_drain_ranges,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
              source_nat_active_ips: Optional[Sequence[str]] = None,
+             source_nat_active_ranges: Optional[Sequence[str]] = None,
              source_nat_drain_ips: Optional[Sequence[str]] = None,
+             source_nat_drain_ranges: Optional[Sequence[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if source_nat_active_ips is None and 'sourceNatActiveIps' in kwargs:
             source_nat_active_ips = kwargs['sourceNatActiveIps']
+        if source_nat_active_ranges is None and 'sourceNatActiveRanges' in kwargs:
+            source_nat_active_ranges = kwargs['sourceNatActiveRanges']
         if source_nat_drain_ips is None and 'sourceNatDrainIps' in kwargs:
             source_nat_drain_ips = kwargs['sourceNatDrainIps']
+        if source_nat_drain_ranges is None and 'sourceNatDrainRanges' in kwargs:
+            source_nat_drain_ranges = kwargs['sourceNatDrainRanges']
 
         if source_nat_active_ips is not None:
             _setter("source_nat_active_ips", source_nat_active_ips)
+        if source_nat_active_ranges is not None:
+            _setter("source_nat_active_ranges", source_nat_active_ranges)
         if source_nat_drain_ips is not None:
             _setter("source_nat_drain_ips", source_nat_drain_ips)
+        if source_nat_drain_ranges is not None:
+            _setter("source_nat_drain_ranges", source_nat_drain_ranges)
 
     @property
     @pulumi.getter(name="sourceNatActiveIps")
@@ -36406,6 +35618,11 @@ class RouterNatRuleAction(dict):
         return pulumi.get(self, "source_nat_active_ips")
 
     @property
+    @pulumi.getter(name="sourceNatActiveRanges")
+    def source_nat_active_ranges(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "source_nat_active_ranges")
+
+    @property
     @pulumi.getter(name="sourceNatDrainIps")
     def source_nat_drain_ips(self) -> Optional[Sequence[str]]:
         """
@@ -36415,6 +35632,11 @@ class RouterNatRuleAction(dict):
         This field is used for public NAT.
         """
         return pulumi.get(self, "source_nat_drain_ips")
+
+    @property
+    @pulumi.getter(name="sourceNatDrainRanges")
+    def source_nat_drain_ranges(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "source_nat_drain_ranges")
 
 
 @pulumi.output_type
@@ -52285,9 +51507,11 @@ class GetInstanceNetworkInterfaceResult(dict):
                  ipv6_address: str,
                  name: str,
                  network: str,
+                 network_attachment: str,
                  network_ip: str,
                  nic_type: str,
                  queue_count: int,
+                 security_policy: str,
                  stack_type: str,
                  subnetwork: str,
                  subnetwork_project: str):
@@ -52311,9 +51535,11 @@ class GetInstanceNetworkInterfaceResult(dict):
             ipv6_address=ipv6_address,
             name=name,
             network=network,
+            network_attachment=network_attachment,
             network_ip=network_ip,
             nic_type=nic_type,
             queue_count=queue_count,
+            security_policy=security_policy,
             stack_type=stack_type,
             subnetwork=subnetwork,
             subnetwork_project=subnetwork_project,
@@ -52329,9 +51555,11 @@ class GetInstanceNetworkInterfaceResult(dict):
              ipv6_address: Optional[str] = None,
              name: Optional[str] = None,
              network: Optional[str] = None,
+             network_attachment: Optional[str] = None,
              network_ip: Optional[str] = None,
              nic_type: Optional[str] = None,
              queue_count: Optional[int] = None,
+             security_policy: Optional[str] = None,
              stack_type: Optional[str] = None,
              subnetwork: Optional[str] = None,
              subnetwork_project: Optional[str] = None,
@@ -52365,6 +51593,10 @@ class GetInstanceNetworkInterfaceResult(dict):
             raise TypeError("Missing 'name' argument")
         if network is None:
             raise TypeError("Missing 'network' argument")
+        if network_attachment is None and 'networkAttachment' in kwargs:
+            network_attachment = kwargs['networkAttachment']
+        if network_attachment is None:
+            raise TypeError("Missing 'network_attachment' argument")
         if network_ip is None and 'networkIp' in kwargs:
             network_ip = kwargs['networkIp']
         if network_ip is None:
@@ -52377,6 +51609,10 @@ class GetInstanceNetworkInterfaceResult(dict):
             queue_count = kwargs['queueCount']
         if queue_count is None:
             raise TypeError("Missing 'queue_count' argument")
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
+        if security_policy is None:
+            raise TypeError("Missing 'security_policy' argument")
         if stack_type is None and 'stackType' in kwargs:
             stack_type = kwargs['stackType']
         if stack_type is None:
@@ -52396,9 +51632,11 @@ class GetInstanceNetworkInterfaceResult(dict):
         _setter("ipv6_address", ipv6_address)
         _setter("name", name)
         _setter("network", network)
+        _setter("network_attachment", network_attachment)
         _setter("network_ip", network_ip)
         _setter("nic_type", nic_type)
         _setter("queue_count", queue_count)
+        _setter("security_policy", security_policy)
         _setter("stack_type", stack_type)
         _setter("subnetwork", subnetwork)
         _setter("subnetwork_project", subnetwork_project)
@@ -52457,6 +51695,11 @@ class GetInstanceNetworkInterfaceResult(dict):
         return pulumi.get(self, "network")
 
     @property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> str:
+        return pulumi.get(self, "network_attachment")
+
+    @property
     @pulumi.getter(name="networkIp")
     def network_ip(self) -> str:
         """
@@ -52473,6 +51716,11 @@ class GetInstanceNetworkInterfaceResult(dict):
     @pulumi.getter(name="queueCount")
     def queue_count(self) -> int:
         return pulumi.get(self, "queue_count")
+
+    @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> str:
+        return pulumi.get(self, "security_policy")
 
     @property
     @pulumi.getter(name="stackType")
@@ -52501,7 +51749,8 @@ class GetInstanceNetworkInterfaceAccessConfigResult(dict):
     def __init__(__self__, *,
                  nat_ip: str,
                  network_tier: str,
-                 public_ptr_domain_name: str):
+                 public_ptr_domain_name: str,
+                 security_policy: str):
         """
         :param str nat_ip: The IP address that is be 1:1 mapped to the instance's
                network ip.
@@ -52513,6 +51762,7 @@ class GetInstanceNetworkInterfaceAccessConfigResult(dict):
             nat_ip=nat_ip,
             network_tier=network_tier,
             public_ptr_domain_name=public_ptr_domain_name,
+            security_policy=security_policy,
         )
     @staticmethod
     def _configure(
@@ -52520,6 +51770,7 @@ class GetInstanceNetworkInterfaceAccessConfigResult(dict):
              nat_ip: Optional[str] = None,
              network_tier: Optional[str] = None,
              public_ptr_domain_name: Optional[str] = None,
+             security_policy: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if nat_ip is None and 'natIp' in kwargs:
@@ -52534,10 +51785,15 @@ class GetInstanceNetworkInterfaceAccessConfigResult(dict):
             public_ptr_domain_name = kwargs['publicPtrDomainName']
         if public_ptr_domain_name is None:
             raise TypeError("Missing 'public_ptr_domain_name' argument")
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
+        if security_policy is None:
+            raise TypeError("Missing 'security_policy' argument")
 
         _setter("nat_ip", nat_ip)
         _setter("network_tier", network_tier)
         _setter("public_ptr_domain_name", public_ptr_domain_name)
+        _setter("security_policy", security_policy)
 
     @property
     @pulumi.getter(name="natIp")
@@ -52563,6 +51819,11 @@ class GetInstanceNetworkInterfaceAccessConfigResult(dict):
         The DNS domain name for the public PTR record.
         """
         return pulumi.get(self, "public_ptr_domain_name")
+
+    @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> str:
+        return pulumi.get(self, "security_policy")
 
 
 @pulumi.output_type
@@ -52626,7 +51887,8 @@ class GetInstanceNetworkInterfaceIpv6AccessConfigResult(dict):
                  external_ipv6_prefix_length: str,
                  name: str,
                  network_tier: str,
-                 public_ptr_domain_name: str):
+                 public_ptr_domain_name: str,
+                 security_policy: str):
         """
         :param str name: The name of the instance. One of `name` or `self_link` must be provided.
         :param str network_tier: The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
@@ -52639,6 +51901,7 @@ class GetInstanceNetworkInterfaceIpv6AccessConfigResult(dict):
             name=name,
             network_tier=network_tier,
             public_ptr_domain_name=public_ptr_domain_name,
+            security_policy=security_policy,
         )
     @staticmethod
     def _configure(
@@ -52648,6 +51911,7 @@ class GetInstanceNetworkInterfaceIpv6AccessConfigResult(dict):
              name: Optional[str] = None,
              network_tier: Optional[str] = None,
              public_ptr_domain_name: Optional[str] = None,
+             security_policy: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if external_ipv6 is None and 'externalIpv6' in kwargs:
@@ -52668,12 +51932,17 @@ class GetInstanceNetworkInterfaceIpv6AccessConfigResult(dict):
             public_ptr_domain_name = kwargs['publicPtrDomainName']
         if public_ptr_domain_name is None:
             raise TypeError("Missing 'public_ptr_domain_name' argument")
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
+        if security_policy is None:
+            raise TypeError("Missing 'security_policy' argument")
 
         _setter("external_ipv6", external_ipv6)
         _setter("external_ipv6_prefix_length", external_ipv6_prefix_length)
         _setter("name", name)
         _setter("network_tier", network_tier)
         _setter("public_ptr_domain_name", public_ptr_domain_name)
+        _setter("security_policy", security_policy)
 
     @property
     @pulumi.getter(name="externalIpv6")
@@ -52708,6 +51977,11 @@ class GetInstanceNetworkInterfaceIpv6AccessConfigResult(dict):
         The DNS domain name for the public PTR record.
         """
         return pulumi.get(self, "public_ptr_domain_name")
+
+    @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> str:
+        return pulumi.get(self, "security_policy")
 
 
 @pulumi.output_type
@@ -57618,30 +56892,46 @@ class GetRouterNatRuleResult(dict):
 class GetRouterNatRuleActionResult(dict):
     def __init__(__self__, *,
                  source_nat_active_ips: Sequence[str],
-                 source_nat_drain_ips: Sequence[str]):
+                 source_nat_active_ranges: Sequence[str],
+                 source_nat_drain_ips: Sequence[str],
+                 source_nat_drain_ranges: Sequence[str]):
         GetRouterNatRuleActionResult._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             source_nat_active_ips=source_nat_active_ips,
+            source_nat_active_ranges=source_nat_active_ranges,
             source_nat_drain_ips=source_nat_drain_ips,
+            source_nat_drain_ranges=source_nat_drain_ranges,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
              source_nat_active_ips: Optional[Sequence[str]] = None,
+             source_nat_active_ranges: Optional[Sequence[str]] = None,
              source_nat_drain_ips: Optional[Sequence[str]] = None,
+             source_nat_drain_ranges: Optional[Sequence[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if source_nat_active_ips is None and 'sourceNatActiveIps' in kwargs:
             source_nat_active_ips = kwargs['sourceNatActiveIps']
         if source_nat_active_ips is None:
             raise TypeError("Missing 'source_nat_active_ips' argument")
+        if source_nat_active_ranges is None and 'sourceNatActiveRanges' in kwargs:
+            source_nat_active_ranges = kwargs['sourceNatActiveRanges']
+        if source_nat_active_ranges is None:
+            raise TypeError("Missing 'source_nat_active_ranges' argument")
         if source_nat_drain_ips is None and 'sourceNatDrainIps' in kwargs:
             source_nat_drain_ips = kwargs['sourceNatDrainIps']
         if source_nat_drain_ips is None:
             raise TypeError("Missing 'source_nat_drain_ips' argument")
+        if source_nat_drain_ranges is None and 'sourceNatDrainRanges' in kwargs:
+            source_nat_drain_ranges = kwargs['sourceNatDrainRanges']
+        if source_nat_drain_ranges is None:
+            raise TypeError("Missing 'source_nat_drain_ranges' argument")
 
         _setter("source_nat_active_ips", source_nat_active_ips)
+        _setter("source_nat_active_ranges", source_nat_active_ranges)
         _setter("source_nat_drain_ips", source_nat_drain_ips)
+        _setter("source_nat_drain_ranges", source_nat_drain_ranges)
 
     @property
     @pulumi.getter(name="sourceNatActiveIps")
@@ -57649,9 +56939,19 @@ class GetRouterNatRuleActionResult(dict):
         return pulumi.get(self, "source_nat_active_ips")
 
     @property
+    @pulumi.getter(name="sourceNatActiveRanges")
+    def source_nat_active_ranges(self) -> Sequence[str]:
+        return pulumi.get(self, "source_nat_active_ranges")
+
+    @property
     @pulumi.getter(name="sourceNatDrainIps")
     def source_nat_drain_ips(self) -> Sequence[str]:
         return pulumi.get(self, "source_nat_drain_ips")
+
+    @property
+    @pulumi.getter(name="sourceNatDrainRanges")
+    def source_nat_drain_ranges(self) -> Sequence[str]:
+        return pulumi.get(self, "source_nat_drain_ranges")
 
 
 @pulumi.output_type

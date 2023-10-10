@@ -9,7 +9,9 @@ import com.pulumi.gcp.container.inputs.AwsNodePoolAutoscalingArgs;
 import com.pulumi.gcp.container.inputs.AwsNodePoolConfigArgs;
 import com.pulumi.gcp.container.inputs.AwsNodePoolManagementArgs;
 import com.pulumi.gcp.container.inputs.AwsNodePoolMaxPodsConstraintArgs;
+import com.pulumi.gcp.container.inputs.AwsNodePoolUpdateSettingsArgs;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -24,12 +26,18 @@ public final class AwsNodePoolState extends com.pulumi.resources.ResourceArgs {
     /**
      * Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
      * @return Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -94,6 +102,23 @@ public final class AwsNodePoolState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    @Import(name="effectiveAnnotations")
+    private @Nullable Output<Map<String,Object>> effectiveAnnotations;
+
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> effectiveAnnotations() {
+        return Optional.ofNullable(this.effectiveAnnotations);
     }
 
     /**
@@ -247,6 +272,21 @@ public final class AwsNodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+     * 
+     */
+    @Import(name="updateSettings")
+    private @Nullable Output<AwsNodePoolUpdateSettingsArgs> updateSettings;
+
+    /**
+     * @return (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+     * 
+     */
+    public Optional<Output<AwsNodePoolUpdateSettingsArgs>> updateSettings() {
+        return Optional.ofNullable(this.updateSettings);
+    }
+
+    /**
      * Output only. The time at which this node pool was last updated.
      * 
      */
@@ -284,6 +324,7 @@ public final class AwsNodePoolState extends com.pulumi.resources.ResourceArgs {
         this.cluster = $.cluster;
         this.config = $.config;
         this.createTime = $.createTime;
+        this.effectiveAnnotations = $.effectiveAnnotations;
         this.etag = $.etag;
         this.location = $.location;
         this.management = $.management;
@@ -294,6 +335,7 @@ public final class AwsNodePoolState extends com.pulumi.resources.ResourceArgs {
         this.state = $.state;
         this.subnetId = $.subnetId;
         this.uid = $.uid;
+        this.updateSettings = $.updateSettings;
         this.updateTime = $.updateTime;
         this.version = $.version;
     }
@@ -319,6 +361,9 @@ public final class AwsNodePoolState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param annotations Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -329,6 +374,9 @@ public final class AwsNodePoolState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param annotations Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -419,6 +467,29 @@ public final class AwsNodePoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+         * Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveAnnotations(@Nullable Output<Map<String,Object>> effectiveAnnotations) {
+            $.effectiveAnnotations = effectiveAnnotations;
+            return this;
+        }
+
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+         * Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveAnnotations(Map<String,Object> effectiveAnnotations) {
+            return effectiveAnnotations(Output.of(effectiveAnnotations));
         }
 
         /**
@@ -629,6 +700,27 @@ public final class AwsNodePoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder uid(String uid) {
             return uid(Output.of(uid));
+        }
+
+        /**
+         * @param updateSettings (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateSettings(@Nullable Output<AwsNodePoolUpdateSettingsArgs> updateSettings) {
+            $.updateSettings = updateSettings;
+            return this;
+        }
+
+        /**
+         * @param updateSettings (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateSettings(AwsNodePoolUpdateSettingsArgs updateSettings) {
+            return updateSettings(Output.of(updateSettings));
         }
 
         /**

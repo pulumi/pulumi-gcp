@@ -202,6 +202,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly diskEncryption!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Whether the end user authorizes Google Cloud to install GPU driver
      * on this instance. If this field is empty or set to false, the GPU driver
      * won't be installed. Only applicable to instances with GPUs.
@@ -223,8 +228,11 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Labels to apply to this instance. These can be later modified by the setLabels method.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A reference to the zone where the machine resides.
      *
@@ -325,6 +333,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Instance update time.
      */
     public readonly updateTime!: pulumi.Output<string>;
@@ -356,6 +369,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["dataDiskSizeGb"] = state ? state.dataDiskSizeGb : undefined;
             resourceInputs["dataDiskType"] = state ? state.dataDiskType : undefined;
             resourceInputs["diskEncryption"] = state ? state.diskEncryption : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["installGpuDriver"] = state ? state.installGpuDriver : undefined;
             resourceInputs["instanceOwners"] = state ? state.instanceOwners : undefined;
             resourceInputs["kmsKey"] = state ? state.kmsKey : undefined;
@@ -379,6 +393,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["subnet"] = state ? state.subnet : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
             resourceInputs["vmImage"] = state ? state.vmImage : undefined;
         } else {
@@ -421,8 +436,10 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["updateTime"] = args ? args.updateTime : undefined;
             resourceInputs["vmImage"] = args ? args.vmImage : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["proxyUri"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
@@ -483,6 +500,11 @@ export interface InstanceState {
      */
     diskEncryption?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Whether the end user authorizes Google Cloud to install GPU driver
      * on this instance. If this field is empty or set to false, the GPU driver
      * won't be installed. Only applicable to instances with GPUs.
@@ -504,6 +526,9 @@ export interface InstanceState {
     /**
      * Labels to apply to this instance. These can be later modified by the setLabels method.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -606,6 +631,11 @@ export interface InstanceState {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Instance update time.
      */
     updateTime?: pulumi.Input<string>;
@@ -691,6 +721,9 @@ export interface InstanceArgs {
     /**
      * Labels to apply to this instance. These can be later modified by the setLabels method.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

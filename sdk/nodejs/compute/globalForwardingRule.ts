@@ -194,6 +194,11 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * IP address for which this forwarding rule accepts traffic. When a client
      * sends traffic to this IP address, the forwarding rule directs the traffic
      * to the referenced `target`.
@@ -253,6 +258,9 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     /**
      * Labels to apply to this forwarding rule.  A list of key->value pairs.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -376,6 +384,11 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * - - -
      */
     public readonly target!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a GlobalForwardingRule resource with the given unique name, arguments, and options.
@@ -393,6 +406,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             resourceInputs["allowPscGlobalAccess"] = state ? state.allowPscGlobalAccess : undefined;
             resourceInputs["baseForwardingRule"] = state ? state.baseForwardingRule : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
             resourceInputs["ipProtocol"] = state ? state.ipProtocol : undefined;
             resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
@@ -411,6 +425,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             resourceInputs["sourceIpRanges"] = state ? state.sourceIpRanges : undefined;
             resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
             resourceInputs["target"] = state ? state.target : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as GlobalForwardingRuleArgs | undefined;
             if ((!args || args.target === undefined) && !opts.urn) {
@@ -433,10 +448,12 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
             resourceInputs["target"] = args ? args.target : undefined;
             resourceInputs["baseForwardingRule"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["pscConnectionId"] = undefined /*out*/;
             resourceInputs["pscConnectionStatus"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GlobalForwardingRule.__pulumiType, name, resourceInputs, opts);
@@ -460,6 +477,11 @@ export interface GlobalForwardingRuleState {
      * you create the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * IP address for which this forwarding rule accepts traffic. When a client
      * sends traffic to this IP address, the forwarding rule directs the traffic
@@ -520,6 +542,9 @@ export interface GlobalForwardingRuleState {
     labelFingerprint?: pulumi.Input<string>;
     /**
      * Labels to apply to this forwarding rule.  A list of key->value pairs.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -643,6 +668,11 @@ export interface GlobalForwardingRuleState {
      * - - -
      */
     target?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -713,6 +743,9 @@ export interface GlobalForwardingRuleArgs {
     ipVersion?: pulumi.Input<string>;
     /**
      * Labels to apply to this forwarding rule.  A list of key->value pairs.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

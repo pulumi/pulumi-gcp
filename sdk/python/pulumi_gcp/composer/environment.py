@@ -28,7 +28,9 @@ class EnvironmentArgs:
                are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
                must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
                characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
-               associated with a given environment. Both keys and values must be <= 128 bytes in size.
+               associated with a given environment. Both keys and values must be <= 128 bytes in size. **Note**: This field is
+               non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+               'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the environment.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The location or Compute Engine region for the environment.
@@ -83,7 +85,9 @@ class EnvironmentArgs:
         are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
         must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
         characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
-        associated with a given environment. Both keys and values must be <= 128 bytes in size.
+        associated with a given environment. Both keys and values must be <= 128 bytes in size. **Note**: This field is
+        non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+        'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -132,43 +136,60 @@ class EnvironmentArgs:
 class _EnvironmentState:
     def __init__(__self__, *,
                  config: Optional[pulumi.Input['EnvironmentConfigArgs']] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None):
+                 region: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Environment resources.
         :param pulumi.Input['EnvironmentConfigArgs'] config: Configuration parameters for this environment.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
                are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
                must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
                characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
-               associated with a given environment. Both keys and values must be <= 128 bytes in size.
+               associated with a given environment. Both keys and values must be <= 128 bytes in size. **Note**: This field is
+               non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+               'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the environment.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The location or Compute Engine region for the environment.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         _EnvironmentState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             config=config,
+            effective_labels=effective_labels,
             labels=labels,
             name=name,
             project=project,
             region=region,
+            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
              config: Optional[pulumi.Input['EnvironmentConfigArgs']] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if effective_labels is None and 'effectiveLabels' in kwargs:
+            effective_labels = kwargs['effectiveLabels']
+        if terraform_labels is None and 'terraformLabels' in kwargs:
+            terraform_labels = kwargs['terraformLabels']
 
         if config is not None:
             _setter("config", config)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if labels is not None:
             _setter("labels", labels)
         if name is not None:
@@ -177,6 +198,8 @@ class _EnvironmentState:
             _setter("project", project)
         if region is not None:
             _setter("region", region)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter
@@ -191,6 +214,19 @@ class _EnvironmentState:
         pulumi.set(self, "config", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -198,7 +234,9 @@ class _EnvironmentState:
         are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
         must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
         characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
-        associated with a given environment. Both keys and values must be <= 128 bytes in size.
+        associated with a given environment. Both keys and values must be <= 128 bytes in size. **Note**: This field is
+        non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+        'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -242,6 +280,18 @@ class _EnvironmentState:
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
 
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
+
 
 class Environment(pulumi.CustomResource):
     @overload
@@ -278,7 +328,9 @@ class Environment(pulumi.CustomResource):
                are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
                must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
                characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
-               associated with a given environment. Both keys and values must be <= 128 bytes in size.
+               associated with a given environment. Both keys and values must be <= 128 bytes in size. **Note**: This field is
+               non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+               'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the environment.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The location or Compute Engine region for the environment.
@@ -345,6 +397,8 @@ class Environment(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
+            __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(Environment, __self__).__init__(
             'gcp:composer/environment:Environment',
             resource_name,
@@ -356,10 +410,12 @@ class Environment(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             config: Optional[pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            region: Optional[pulumi.Input[str]] = None) -> 'Environment':
+            region: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Environment':
         """
         Get an existing Environment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -368,24 +424,31 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']] config: Configuration parameters for this environment.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
                are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
                must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
                characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
-               associated with a given environment. Both keys and values must be <= 128 bytes in size.
+               associated with a given environment. Both keys and values must be <= 128 bytes in size. **Note**: This field is
+               non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+               'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the environment.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The location or Compute Engine region for the environment.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _EnvironmentState.__new__(_EnvironmentState)
 
         __props__.__dict__["config"] = config
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
+        __props__.__dict__["terraform_labels"] = terraform_labels
         return Environment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -397,6 +460,15 @@ class Environment(pulumi.CustomResource):
         return pulumi.get(self, "config")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
@@ -404,7 +476,9 @@ class Environment(pulumi.CustomResource):
         are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
         must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
         characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
-        associated with a given environment. Both keys and values must be <= 128 bytes in size.
+        associated with a given environment. Both keys and values must be <= 128 bytes in size. **Note**: This field is
+        non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+        'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -431,4 +505,12 @@ class Environment(pulumi.CustomResource):
         The location or Compute Engine region for the environment.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 

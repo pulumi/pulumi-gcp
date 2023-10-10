@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Double;
 import java.lang.Integer;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class MetricBucketOptionsLinearBucketsArgs extends com.pulumi.resources.ResourceArgs {
@@ -20,45 +18,45 @@ public final class MetricBucketOptionsLinearBucketsArgs extends com.pulumi.resou
      * Must be greater than 0.
      * 
      */
-    @Import(name="numFiniteBuckets")
-    private @Nullable Output<Integer> numFiniteBuckets;
+    @Import(name="numFiniteBuckets", required=true)
+    private Output<Integer> numFiniteBuckets;
 
     /**
      * @return Must be greater than 0.
      * 
      */
-    public Optional<Output<Integer>> numFiniteBuckets() {
-        return Optional.ofNullable(this.numFiniteBuckets);
+    public Output<Integer> numFiniteBuckets() {
+        return this.numFiniteBuckets;
     }
 
     /**
      * Lower bound of the first bucket.
      * 
      */
-    @Import(name="offset")
-    private @Nullable Output<Double> offset;
+    @Import(name="offset", required=true)
+    private Output<Double> offset;
 
     /**
      * @return Lower bound of the first bucket.
      * 
      */
-    public Optional<Output<Double>> offset() {
-        return Optional.ofNullable(this.offset);
+    public Output<Double> offset() {
+        return this.offset;
     }
 
     /**
      * Must be greater than 0.
      * 
      */
-    @Import(name="width")
-    private @Nullable Output<Double> width;
+    @Import(name="width", required=true)
+    private Output<Double> width;
 
     /**
      * @return Must be greater than 0.
      * 
      */
-    public Optional<Output<Double>> width() {
-        return Optional.ofNullable(this.width);
+    public Output<Double> width() {
+        return this.width;
     }
 
     private MetricBucketOptionsLinearBucketsArgs() {}
@@ -93,7 +91,7 @@ public final class MetricBucketOptionsLinearBucketsArgs extends com.pulumi.resou
          * @return builder
          * 
          */
-        public Builder numFiniteBuckets(@Nullable Output<Integer> numFiniteBuckets) {
+        public Builder numFiniteBuckets(Output<Integer> numFiniteBuckets) {
             $.numFiniteBuckets = numFiniteBuckets;
             return this;
         }
@@ -114,7 +112,7 @@ public final class MetricBucketOptionsLinearBucketsArgs extends com.pulumi.resou
          * @return builder
          * 
          */
-        public Builder offset(@Nullable Output<Double> offset) {
+        public Builder offset(Output<Double> offset) {
             $.offset = offset;
             return this;
         }
@@ -135,7 +133,7 @@ public final class MetricBucketOptionsLinearBucketsArgs extends com.pulumi.resou
          * @return builder
          * 
          */
-        public Builder width(@Nullable Output<Double> width) {
+        public Builder width(Output<Double> width) {
             $.width = width;
             return this;
         }
@@ -151,6 +149,9 @@ public final class MetricBucketOptionsLinearBucketsArgs extends com.pulumi.resou
         }
 
         public MetricBucketOptionsLinearBucketsArgs build() {
+            $.numFiniteBuckets = Objects.requireNonNull($.numFiniteBuckets, "expected parameter 'numFiniteBuckets' to be non-null");
+            $.offset = Objects.requireNonNull($.offset, "expected parameter 'offset' to be non-null");
+            $.width = Objects.requireNonNull($.width, "expected parameter 'width' to be non-null");
             return $;
         }
     }

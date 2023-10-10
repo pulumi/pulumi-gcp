@@ -122,22 +122,27 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var redis_network = Gcp.Compute.GetNetwork.Invoke(new()
-    ///     {
-    ///         Name = "redis-test-network",
-    ///     });
+    ///     // This example assumes this network already exists.
+    ///     // The API creates a tenant network per network authorized for a
+    ///     // Redis instance and that network is not deleted when the user-created
+    ///     // network (authorized_network) is deleted, so this prevents issues
+    ///     // with tenant network quota.
+    ///     // If this network hasn't been created and you are using this example in your
+    ///     // config, add an additional network resource or change
+    ///     // this from "data"to "resource"
+    ///     var redis_network = new Gcp.Compute.Network("redis-network");
     /// 
     ///     var serviceRange = new Gcp.Compute.GlobalAddress("serviceRange", new()
     ///     {
     ///         Purpose = "VPC_PEERING",
     ///         AddressType = "INTERNAL",
     ///         PrefixLength = 16,
-    ///         Network = redis_network.Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///         Network = redis_network.Id,
     ///     });
     /// 
     ///     var privateServiceConnection = new Gcp.ServiceNetworking.Connection("privateServiceConnection", new()
     ///     {
-    ///         Network = redis_network.Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///         Network = redis_network.Id,
     ///         Service = "servicenetworking.googleapis.com",
     ///         ReservedPeeringRanges = new[]
     ///         {
@@ -151,7 +156,7 @@ namespace Pulumi.Gcp.Redis
     ///         MemorySizeGb = 1,
     ///         LocationId = "us-central1-a",
     ///         AlternativeLocationId = "us-central1-f",
-    ///         AuthorizedNetwork = redis_network.Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///         AuthorizedNetwork = redis_network.Id,
     ///         ConnectMode = "PRIVATE_SERVICE_ACCESS",
     ///         RedisVersion = "REDIS_4_0",
     ///         DisplayName = "Test Instance",
@@ -342,6 +347,13 @@ namespace Pulumi.Gcp.Redis
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Hostname or IP address of the exposed Redis endpoint used by clients
         /// to connect to the service.
         /// </summary>
@@ -350,6 +362,8 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// Resource labels to represent user provided metadata.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -375,8 +389,8 @@ namespace Pulumi.Gcp.Redis
         /// Upcoming maintenance schedule.
         /// Structure is documented below.
         /// </summary>
-        [Output("maintenanceSchedule")]
-        public Output<Outputs.InstanceMaintenanceSchedule> MaintenanceSchedule { get; private set; } = null!;
+        [Output("maintenanceSchedules")]
+        public Output<ImmutableArray<Outputs.InstanceMaintenanceSchedule>> MaintenanceSchedules { get; private set; } = null!;
 
         /// <summary>
         /// Redis memory size in GiB.
@@ -514,6 +528,13 @@ namespace Pulumi.Gcp.Redis
         public Output<ImmutableArray<Outputs.InstanceServerCaCert>> ServerCaCerts { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("terraformLabels")]
+        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
+
+        /// <summary>
         /// The service tier of the instance. Must be one of these values:
         /// - BASIC: standalone instance
         /// - STANDARD_HA: highly available primary/replica instances
@@ -633,6 +654,8 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// Resource labels to represent user provided metadata.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -862,6 +885,19 @@ namespace Pulumi.Gcp.Redis
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
+
         /// <summary>
         /// Hostname or IP address of the exposed Redis endpoint used by clients
         /// to connect to the service.
@@ -874,6 +910,8 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// Resource labels to represent user provided metadata.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -898,12 +936,18 @@ namespace Pulumi.Gcp.Redis
         [Input("maintenancePolicy")]
         public Input<Inputs.InstanceMaintenancePolicyGetArgs>? MaintenancePolicy { get; set; }
 
+        [Input("maintenanceSchedules")]
+        private InputList<Inputs.InstanceMaintenanceScheduleGetArgs>? _maintenanceSchedules;
+
         /// <summary>
         /// Upcoming maintenance schedule.
         /// Structure is documented below.
         /// </summary>
-        [Input("maintenanceSchedule")]
-        public Input<Inputs.InstanceMaintenanceScheduleGetArgs>? MaintenanceSchedule { get; set; }
+        public InputList<Inputs.InstanceMaintenanceScheduleGetArgs> MaintenanceSchedules
+        {
+            get => _maintenanceSchedules ?? (_maintenanceSchedules = new InputList<Inputs.InstanceMaintenanceScheduleGetArgs>());
+            set => _maintenanceSchedules = value;
+        }
 
         /// <summary>
         /// Redis memory size in GiB.
@@ -1056,6 +1100,19 @@ namespace Pulumi.Gcp.Redis
         {
             get => _serverCaCerts ?? (_serverCaCerts = new InputList<Inputs.InstanceServerCaCertGetArgs>());
             set => _serverCaCerts = value;
+        }
+
+        [Input("terraformLabels")]
+        private InputMap<string>? _terraformLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> TerraformLabels
+        {
+            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
+            set => _terraformLabels = value;
         }
 
         /// <summary>

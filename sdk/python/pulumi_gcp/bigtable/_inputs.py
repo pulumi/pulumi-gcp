@@ -131,6 +131,7 @@ class InstanceClusterArgs:
                  autoscaling_config: Optional[pulumi.Input['InstanceClusterAutoscalingConfigArgs']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  num_nodes: Optional[pulumi.Input[int]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
@@ -160,6 +161,7 @@ class InstanceClusterArgs:
             autoscaling_config=autoscaling_config,
             kms_key_name=kms_key_name,
             num_nodes=num_nodes,
+            state=state,
             storage_type=storage_type,
             zone=zone,
         )
@@ -170,6 +172,7 @@ class InstanceClusterArgs:
              autoscaling_config: Optional[pulumi.Input['InstanceClusterAutoscalingConfigArgs']] = None,
              kms_key_name: Optional[pulumi.Input[str]] = None,
              num_nodes: Optional[pulumi.Input[int]] = None,
+             state: Optional[pulumi.Input[str]] = None,
              storage_type: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
@@ -194,6 +197,8 @@ class InstanceClusterArgs:
             _setter("kms_key_name", kms_key_name)
         if num_nodes is not None:
             _setter("num_nodes", num_nodes)
+        if state is not None:
+            _setter("state", state)
         if storage_type is not None:
             _setter("storage_type", storage_type)
         if zone is not None:
@@ -256,6 +261,15 @@ class InstanceClusterArgs:
     @num_nodes.setter
     def num_nodes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "num_nodes", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
 
     @property
     @pulumi.getter(name="storageType")

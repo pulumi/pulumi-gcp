@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -27,7 +27,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkservices"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -53,7 +53,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkservices"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -132,8 +132,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -203,12 +203,17 @@ type EdgeCacheOrigin struct {
 	AwsV4Authentication EdgeCacheOriginAwsV4AuthenticationPtrOutput `pulumi:"awsV4Authentication"`
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The Origin resource to try when the current origin cannot be reached.
 	// After maxAttempts is reached, the configured failoverOrigin will be used to fulfil the request.
 	// The value of timeout.maxAttemptsTimeout dictates the timeout across all origins.
 	// A reference to a Topic resource.
 	FailoverOrigin pulumi.StringPtrOutput `pulumi:"failoverOrigin"`
 	// Set of label tags associated with the EdgeCache resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The maximum number of attempts to cache fill from this origin. Another attempt is made when a cache fill fails with one of the retryConditions.
 	// Once maxAttempts to this origin have failed the failoverOrigin will be used, if one is specified. That failoverOrigin may specify its own maxAttempts,
@@ -262,6 +267,9 @@ type EdgeCacheOrigin struct {
 	// - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
 	//   Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
 	RetryConditions pulumi.StringArrayOutput `pulumi:"retryConditions"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The connection and HTTP timeout configuration for this origin.
 	// Structure is documented below.
 	Timeout EdgeCacheOriginTimeoutPtrOutput `pulumi:"timeout"`
@@ -305,12 +313,17 @@ type edgeCacheOriginState struct {
 	AwsV4Authentication *EdgeCacheOriginAwsV4Authentication `pulumi:"awsV4Authentication"`
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The Origin resource to try when the current origin cannot be reached.
 	// After maxAttempts is reached, the configured failoverOrigin will be used to fulfil the request.
 	// The value of timeout.maxAttemptsTimeout dictates the timeout across all origins.
 	// A reference to a Topic resource.
 	FailoverOrigin *string `pulumi:"failoverOrigin"`
 	// Set of label tags associated with the EdgeCache resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The maximum number of attempts to cache fill from this origin. Another attempt is made when a cache fill fails with one of the retryConditions.
 	// Once maxAttempts to this origin have failed the failoverOrigin will be used, if one is specified. That failoverOrigin may specify its own maxAttempts,
@@ -364,6 +377,9 @@ type edgeCacheOriginState struct {
 	// - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
 	//   Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
 	RetryConditions []string `pulumi:"retryConditions"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The connection and HTTP timeout configuration for this origin.
 	// Structure is documented below.
 	Timeout *EdgeCacheOriginTimeout `pulumi:"timeout"`
@@ -375,12 +391,17 @@ type EdgeCacheOriginState struct {
 	AwsV4Authentication EdgeCacheOriginAwsV4AuthenticationPtrInput
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// The Origin resource to try when the current origin cannot be reached.
 	// After maxAttempts is reached, the configured failoverOrigin will be used to fulfil the request.
 	// The value of timeout.maxAttemptsTimeout dictates the timeout across all origins.
 	// A reference to a Topic resource.
 	FailoverOrigin pulumi.StringPtrInput
 	// Set of label tags associated with the EdgeCache resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The maximum number of attempts to cache fill from this origin. Another attempt is made when a cache fill fails with one of the retryConditions.
 	// Once maxAttempts to this origin have failed the failoverOrigin will be used, if one is specified. That failoverOrigin may specify its own maxAttempts,
@@ -434,6 +455,9 @@ type EdgeCacheOriginState struct {
 	// - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
 	//   Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
 	RetryConditions pulumi.StringArrayInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// The connection and HTTP timeout configuration for this origin.
 	// Structure is documented below.
 	Timeout EdgeCacheOriginTimeoutPtrInput
@@ -455,6 +479,8 @@ type edgeCacheOriginArgs struct {
 	// A reference to a Topic resource.
 	FailoverOrigin *string `pulumi:"failoverOrigin"`
 	// Set of label tags associated with the EdgeCache resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The maximum number of attempts to cache fill from this origin. Another attempt is made when a cache fill fails with one of the retryConditions.
 	// Once maxAttempts to this origin have failed the failoverOrigin will be used, if one is specified. That failoverOrigin may specify its own maxAttempts,
@@ -526,6 +552,8 @@ type EdgeCacheOriginArgs struct {
 	// A reference to a Topic resource.
 	FailoverOrigin pulumi.StringPtrInput
 	// Set of label tags associated with the EdgeCache resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The maximum number of attempts to cache fill from this origin. Another attempt is made when a cache fill fails with one of the retryConditions.
 	// Once maxAttempts to this origin have failed the failoverOrigin will be used, if one is specified. That failoverOrigin may specify its own maxAttempts,
@@ -706,6 +734,12 @@ func (o EdgeCacheOriginOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheOrigin) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o EdgeCacheOriginOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EdgeCacheOrigin) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The Origin resource to try when the current origin cannot be reached.
 // After maxAttempts is reached, the configured failoverOrigin will be used to fulfil the request.
 // The value of timeout.maxAttemptsTimeout dictates the timeout across all origins.
@@ -715,6 +749,8 @@ func (o EdgeCacheOriginOutput) FailoverOrigin() pulumi.StringPtrOutput {
 }
 
 // Set of label tags associated with the EdgeCache resource.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o EdgeCacheOriginOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EdgeCacheOrigin) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -796,6 +832,12 @@ func (o EdgeCacheOriginOutput) Protocol() pulumi.StringOutput {
 //     Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
 func (o EdgeCacheOriginOutput) RetryConditions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EdgeCacheOrigin) pulumi.StringArrayOutput { return v.RetryConditions }).(pulumi.StringArrayOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o EdgeCacheOriginOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EdgeCacheOrigin) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The connection and HTTP timeout configuration for this origin.

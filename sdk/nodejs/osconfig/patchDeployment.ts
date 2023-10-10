@@ -226,6 +226,7 @@ import * as utilities from "../utilities";
  *         monthly: {
  *             weekDayOfMonth: {
  *                 dayOfWeek: "TUESDAY",
+ *                 dayOffset: 3,
  *                 weekOrdinal: -1,
  *             },
  *         },

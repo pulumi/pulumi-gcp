@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/healthcare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -60,7 +60,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/healthcare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -98,8 +98,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceAccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -162,6 +162,9 @@ type ConsentStore struct {
 	// Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	DefaultConsentTtl pulumi.StringPtrOutput `pulumi:"defaultConsentTtl"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
 	EnableConsentCreateOnUpdate pulumi.BoolPtrOutput `pulumi:"enableConsentCreateOnUpdate"`
 	// User-supplied key-value pairs used to organize Consent stores.
@@ -172,10 +175,16 @@ type ConsentStore struct {
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of this ConsentStore, for example:
 	// "consent1"
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewConsentStore registers a new resource with the given unique name, arguments, and options.
@@ -219,6 +228,9 @@ type consentStoreState struct {
 	// Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	DefaultConsentTtl *string `pulumi:"defaultConsentTtl"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
 	EnableConsentCreateOnUpdate *bool `pulumi:"enableConsentCreateOnUpdate"`
 	// User-supplied key-value pairs used to organize Consent stores.
@@ -229,10 +241,16 @@ type consentStoreState struct {
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of this ConsentStore, for example:
 	// "consent1"
 	Name *string `pulumi:"name"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type ConsentStoreState struct {
@@ -244,6 +262,9 @@ type ConsentStoreState struct {
 	// Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	DefaultConsentTtl pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
 	EnableConsentCreateOnUpdate pulumi.BoolPtrInput
 	// User-supplied key-value pairs used to organize Consent stores.
@@ -254,10 +275,16 @@ type ConsentStoreState struct {
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of this ConsentStore, for example:
 	// "consent1"
 	Name pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 }
 
 func (ConsentStoreState) ElementType() reflect.Type {
@@ -283,6 +310,9 @@ type consentStoreArgs struct {
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of this ConsentStore, for example:
 	// "consent1"
@@ -309,6 +339,9 @@ type ConsentStoreArgs struct {
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of this ConsentStore, for example:
 	// "consent1"
@@ -440,6 +473,12 @@ func (o ConsentStoreOutput) DefaultConsentTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConsentStore) pulumi.StringPtrOutput { return v.DefaultConsentTtl }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o ConsentStoreOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConsentStore) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
 func (o ConsentStoreOutput) EnableConsentCreateOnUpdate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConsentStore) pulumi.BoolPtrOutput { return v.EnableConsentCreateOnUpdate }).(pulumi.BoolPtrOutput)
@@ -453,6 +492,9 @@ func (o ConsentStoreOutput) EnableConsentCreateOnUpdate() pulumi.BoolPtrOutput {
 // No more than 64 labels can be associated with a given store.
 // An object containing a list of "key": value pairs.
 // Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ConsentStoreOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConsentStore) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -461,6 +503,12 @@ func (o ConsentStoreOutput) Labels() pulumi.StringMapOutput {
 // "consent1"
 func (o ConsentStoreOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConsentStore) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ConsentStoreOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConsentStore) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type ConsentStoreArrayOutput struct{ *pulumi.OutputState }

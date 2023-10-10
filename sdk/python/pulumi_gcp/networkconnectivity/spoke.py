@@ -32,6 +32,9 @@ class SpokeArgs:
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] description: An optional description of the spoke.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs'] linked_interconnect_attachments: A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
         :param pulumi.Input['SpokeLinkedRouterApplianceInstancesArgs'] linked_router_appliance_instances: The URIs of linked Router appliance resources
         :param pulumi.Input['SpokeLinkedVpcNetworkArgs'] linked_vpc_network: VPC network that is associated with the spoke.
@@ -140,6 +143,9 @@ class SpokeArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -225,6 +231,7 @@ class _SpokeState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  hub: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linked_interconnect_attachments: Optional[pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs']] = None,
@@ -235,14 +242,20 @@ class _SpokeState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  unique_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Spoke resources.
         :param pulumi.Input[str] create_time: Output only. The time the spoke was created.
         :param pulumi.Input[str] description: An optional description of the spoke.
+        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] hub: Immutable. The URI of the hub that this spoke is attached to.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs'] linked_interconnect_attachments: A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
         :param pulumi.Input['SpokeLinkedRouterApplianceInstancesArgs'] linked_router_appliance_instances: The URIs of linked Router appliance resources
         :param pulumi.Input['SpokeLinkedVpcNetworkArgs'] linked_vpc_network: VPC network that is associated with the spoke.
@@ -251,6 +264,7 @@ class _SpokeState:
         :param pulumi.Input[str] name: Immutable. The name of the spoke. Spoke names must be unique.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] state: Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+        :param pulumi.Input[Mapping[str, Any]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] unique_id: Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
         :param pulumi.Input[str] update_time: Output only. The time the spoke was last updated.
         """
@@ -258,6 +272,7 @@ class _SpokeState:
             lambda key, value: pulumi.set(__self__, key, value),
             create_time=create_time,
             description=description,
+            effective_labels=effective_labels,
             hub=hub,
             labels=labels,
             linked_interconnect_attachments=linked_interconnect_attachments,
@@ -268,6 +283,7 @@ class _SpokeState:
             name=name,
             project=project,
             state=state,
+            terraform_labels=terraform_labels,
             unique_id=unique_id,
             update_time=update_time,
         )
@@ -276,6 +292,7 @@ class _SpokeState:
              _setter: Callable[[Any, Any], None],
              create_time: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              hub: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              linked_interconnect_attachments: Optional[pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs']] = None,
@@ -286,12 +303,15 @@ class _SpokeState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              unique_id: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
+        if effective_labels is None and 'effectiveLabels' in kwargs:
+            effective_labels = kwargs['effectiveLabels']
         if linked_interconnect_attachments is None and 'linkedInterconnectAttachments' in kwargs:
             linked_interconnect_attachments = kwargs['linkedInterconnectAttachments']
         if linked_router_appliance_instances is None and 'linkedRouterApplianceInstances' in kwargs:
@@ -300,6 +320,8 @@ class _SpokeState:
             linked_vpc_network = kwargs['linkedVpcNetwork']
         if linked_vpn_tunnels is None and 'linkedVpnTunnels' in kwargs:
             linked_vpn_tunnels = kwargs['linkedVpnTunnels']
+        if terraform_labels is None and 'terraformLabels' in kwargs:
+            terraform_labels = kwargs['terraformLabels']
         if unique_id is None and 'uniqueId' in kwargs:
             unique_id = kwargs['uniqueId']
         if update_time is None and 'updateTime' in kwargs:
@@ -309,6 +331,8 @@ class _SpokeState:
             _setter("create_time", create_time)
         if description is not None:
             _setter("description", description)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if hub is not None:
             _setter("hub", hub)
         if labels is not None:
@@ -329,6 +353,8 @@ class _SpokeState:
             _setter("project", project)
         if state is not None:
             _setter("state", state)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if unique_id is not None:
             _setter("unique_id", unique_id)
         if update_time is not None:
@@ -359,6 +385,19 @@ class _SpokeState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def hub(self) -> Optional[pulumi.Input[str]]:
         """
@@ -375,6 +414,9 @@ class _SpokeState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -477,6 +519,18 @@ class _SpokeState:
     @state.setter
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="uniqueId")
@@ -617,6 +671,9 @@ class Spoke(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of the spoke.
         :param pulumi.Input[str] hub: Immutable. The URI of the hub that this spoke is attached to.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[pulumi.InputType['SpokeLinkedInterconnectAttachmentsArgs']] linked_interconnect_attachments: A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
         :param pulumi.Input[pulumi.InputType['SpokeLinkedRouterApplianceInstancesArgs']] linked_router_appliance_instances: The URIs of linked Router appliance resources
         :param pulumi.Input[pulumi.InputType['SpokeLinkedVpcNetworkArgs']] linked_vpc_network: VPC network that is associated with the spoke.
@@ -781,7 +838,9 @@ class Spoke(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["state"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["unique_id"] = None
             __props__.__dict__["update_time"] = None
         super(Spoke, __self__).__init__(
@@ -796,6 +855,7 @@ class Spoke(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             hub: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             linked_interconnect_attachments: Optional[pulumi.Input[pulumi.InputType['SpokeLinkedInterconnectAttachmentsArgs']]] = None,
@@ -806,6 +866,7 @@ class Spoke(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             unique_id: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Spoke':
         """
@@ -817,8 +878,13 @@ class Spoke(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Output only. The time the spoke was created.
         :param pulumi.Input[str] description: An optional description of the spoke.
+        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] hub: Immutable. The URI of the hub that this spoke is attached to.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[pulumi.InputType['SpokeLinkedInterconnectAttachmentsArgs']] linked_interconnect_attachments: A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
         :param pulumi.Input[pulumi.InputType['SpokeLinkedRouterApplianceInstancesArgs']] linked_router_appliance_instances: The URIs of linked Router appliance resources
         :param pulumi.Input[pulumi.InputType['SpokeLinkedVpcNetworkArgs']] linked_vpc_network: VPC network that is associated with the spoke.
@@ -827,6 +893,7 @@ class Spoke(pulumi.CustomResource):
         :param pulumi.Input[str] name: Immutable. The name of the spoke. Spoke names must be unique.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] state: Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+        :param pulumi.Input[Mapping[str, Any]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] unique_id: Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
         :param pulumi.Input[str] update_time: Output only. The time the spoke was last updated.
         """
@@ -836,6 +903,7 @@ class Spoke(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["hub"] = hub
         __props__.__dict__["labels"] = labels
         __props__.__dict__["linked_interconnect_attachments"] = linked_interconnect_attachments
@@ -846,6 +914,7 @@ class Spoke(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["state"] = state
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["unique_id"] = unique_id
         __props__.__dict__["update_time"] = update_time
         return Spoke(resource_name, opts=opts, __props__=__props__)
@@ -867,6 +936,15 @@ class Spoke(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def hub(self) -> pulumi.Output[str]:
         """
@@ -879,6 +957,9 @@ class Spoke(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -945,6 +1026,14 @@ class Spoke(pulumi.CustomResource):
         Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="uniqueId")

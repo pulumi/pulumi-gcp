@@ -60,6 +60,7 @@ export interface GetKMSCryptoKeyArgs {
  */
 export interface GetKMSCryptoKeyResult {
     readonly destroyScheduledDuration: string;
+    readonly effectiveLabels: {[key: string]: string};
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -79,6 +80,7 @@ export interface GetKMSCryptoKeyResult {
      */
     readonly rotationPeriod: string;
     readonly skipInitialVersionCreation: boolean;
+    readonly terraformLabels: {[key: string]: string};
     readonly versionTemplates: outputs.kms.GetKMSCryptoKeyVersionTemplate[];
 }
 /**

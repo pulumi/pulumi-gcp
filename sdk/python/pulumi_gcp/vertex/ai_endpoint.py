@@ -36,6 +36,8 @@ class AiEndpointArgs:
         :param pulumi.Input['AiEndpointEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
         :param pulumi.Input[str] network: The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -151,6 +153,8 @@ class AiEndpointArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -215,6 +219,7 @@ class _AiEndpointState:
                  deployed_models: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  encryption_spec: Optional[pulumi.Input['AiEndpointEncryptionSpecArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -224,6 +229,7 @@ class _AiEndpointState:
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AiEndpoint resources.
@@ -233,10 +239,14 @@ class _AiEndpointState:
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the Endpoint.
         :param pulumi.Input[str] display_name: Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input['AiEndpointEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
                
                
@@ -247,6 +257,8 @@ class _AiEndpointState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region for the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Output only. Timestamp when this Endpoint was last updated.
         """
         _AiEndpointState._configure(
@@ -255,6 +267,7 @@ class _AiEndpointState:
             deployed_models=deployed_models,
             description=description,
             display_name=display_name,
+            effective_labels=effective_labels,
             encryption_spec=encryption_spec,
             etag=etag,
             labels=labels,
@@ -264,6 +277,7 @@ class _AiEndpointState:
             network=network,
             project=project,
             region=region,
+            terraform_labels=terraform_labels,
             update_time=update_time,
         )
     @staticmethod
@@ -273,6 +287,7 @@ class _AiEndpointState:
              deployed_models: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              encryption_spec: Optional[pulumi.Input['AiEndpointEncryptionSpecArgs']] = None,
              etag: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -282,6 +297,7 @@ class _AiEndpointState:
              network: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -291,10 +307,14 @@ class _AiEndpointState:
             deployed_models = kwargs['deployedModels']
         if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
+        if effective_labels is None and 'effectiveLabels' in kwargs:
+            effective_labels = kwargs['effectiveLabels']
         if encryption_spec is None and 'encryptionSpec' in kwargs:
             encryption_spec = kwargs['encryptionSpec']
         if model_deployment_monitoring_job is None and 'modelDeploymentMonitoringJob' in kwargs:
             model_deployment_monitoring_job = kwargs['modelDeploymentMonitoringJob']
+        if terraform_labels is None and 'terraformLabels' in kwargs:
+            terraform_labels = kwargs['terraformLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
@@ -306,6 +326,8 @@ class _AiEndpointState:
             _setter("description", description)
         if display_name is not None:
             _setter("display_name", display_name)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if encryption_spec is not None:
             _setter("encryption_spec", encryption_spec)
         if etag is not None:
@@ -324,6 +346,8 @@ class _AiEndpointState:
             _setter("project", project)
         if region is not None:
             _setter("region", region)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if update_time is not None:
             _setter("update_time", update_time)
 
@@ -378,6 +402,19 @@ class _AiEndpointState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="encryptionSpec")
     def encryption_spec(self) -> Optional[pulumi.Input['AiEndpointEncryptionSpecArgs']]:
         """
@@ -407,6 +444,8 @@ class _AiEndpointState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -491,6 +530,19 @@ class _AiEndpointState:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -534,7 +586,7 @@ class AiEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        vertex_network = gcp.compute.get_network(name="network-name")
+        vertex_network = gcp.compute.Network("vertexNetwork")
         vertex_range = gcp.compute.GlobalAddress("vertexRange",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
@@ -553,7 +605,7 @@ class AiEndpoint(pulumi.CustomResource):
             labels={
                 "label-one": "value-one",
             },
-            network=f"projects/{project.number}/global/networks/{vertex_network.name}",
+            network=vertex_network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"),
             encryption_spec=gcp.vertex.AiEndpointEncryptionSpecArgs(
                 kms_key_name="kms-name",
             ),
@@ -587,6 +639,8 @@ class AiEndpoint(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AiEndpointEncryptionSpecArgs']] encryption_spec: Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
                
                
@@ -619,7 +673,7 @@ class AiEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        vertex_network = gcp.compute.get_network(name="network-name")
+        vertex_network = gcp.compute.Network("vertexNetwork")
         vertex_range = gcp.compute.GlobalAddress("vertexRange",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
@@ -638,7 +692,7 @@ class AiEndpoint(pulumi.CustomResource):
             labels={
                 "label-one": "value-one",
             },
-            network=f"projects/{project.number}/global/networks/{vertex_network.name}",
+            network=vertex_network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"),
             encryption_spec=gcp.vertex.AiEndpointEncryptionSpecArgs(
                 kms_key_name="kms-name",
             ),
@@ -718,8 +772,10 @@ class AiEndpoint(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["create_time"] = None
             __props__.__dict__["deployed_models"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["model_deployment_monitoring_job"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["update_time"] = None
         super(AiEndpoint, __self__).__init__(
             'gcp:vertex/aiEndpoint:AiEndpoint',
@@ -735,6 +791,7 @@ class AiEndpoint(pulumi.CustomResource):
             deployed_models: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AiEndpointDeployedModelArgs']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiEndpointEncryptionSpecArgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -744,6 +801,7 @@ class AiEndpoint(pulumi.CustomResource):
             network: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'AiEndpoint':
         """
         Get an existing AiEndpoint resource's state with the given name, id, and optional extra
@@ -758,10 +816,14 @@ class AiEndpoint(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the Endpoint.
         :param pulumi.Input[str] display_name: Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[pulumi.InputType['AiEndpointEncryptionSpecArgs']] encryption_spec: Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
                
                
@@ -772,6 +834,8 @@ class AiEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region for the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Output only. Timestamp when this Endpoint was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -782,6 +846,7 @@ class AiEndpoint(pulumi.CustomResource):
         __props__.__dict__["deployed_models"] = deployed_models
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["encryption_spec"] = encryption_spec
         __props__.__dict__["etag"] = etag
         __props__.__dict__["labels"] = labels
@@ -791,6 +856,7 @@ class AiEndpoint(pulumi.CustomResource):
         __props__.__dict__["network"] = network
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["update_time"] = update_time
         return AiEndpoint(resource_name, opts=opts, __props__=__props__)
 
@@ -829,6 +895,15 @@ class AiEndpoint(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="encryptionSpec")
     def encryption_spec(self) -> pulumi.Output[Optional['outputs.AiEndpointEncryptionSpec']]:
         """
@@ -850,6 +925,8 @@ class AiEndpoint(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -904,6 +981,15 @@ class AiEndpoint(pulumi.CustomResource):
         The region for the resource
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="updateTime")

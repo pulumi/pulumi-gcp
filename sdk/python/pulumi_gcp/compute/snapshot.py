@@ -40,6 +40,8 @@ class SnapshotArgs:
                resource, this field is visible only if it has a non-empty value.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this Snapshot.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -177,6 +179,8 @@ class SnapshotArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels to apply to this Snapshot.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -284,6 +288,7 @@ class _SnapshotState:
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -296,6 +301,7 @@ class _SnapshotState:
                  source_disk_encryption_key: Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs']] = None,
                  storage_bytes: Optional[pulumi.Input[int]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Snapshot resources.
@@ -308,9 +314,13 @@ class _SnapshotState:
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[int] disk_size_gb: Size of the snapshot, specified in GB.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used
                internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this Snapshot.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: A list of public visible licenses that apply to this snapshot. This
                can be because the original image had licenses attached (such as a
                Windows image).  snapshotEncryptionKey nested object Encrypts the
@@ -349,6 +359,8 @@ class _SnapshotState:
                storage, this number is expected to change with snapshot
                creation/deletion.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] zone: A reference to the zone where the disk is hosted.
         """
         _SnapshotState._configure(
@@ -357,6 +369,7 @@ class _SnapshotState:
             creation_timestamp=creation_timestamp,
             description=description,
             disk_size_gb=disk_size_gb,
+            effective_labels=effective_labels,
             label_fingerprint=label_fingerprint,
             labels=labels,
             licenses=licenses,
@@ -369,6 +382,7 @@ class _SnapshotState:
             source_disk_encryption_key=source_disk_encryption_key,
             storage_bytes=storage_bytes,
             storage_locations=storage_locations,
+            terraform_labels=terraform_labels,
             zone=zone,
         )
     @staticmethod
@@ -378,6 +392,7 @@ class _SnapshotState:
              creation_timestamp: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              disk_size_gb: Optional[pulumi.Input[int]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              label_fingerprint: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -390,6 +405,7 @@ class _SnapshotState:
              source_disk_encryption_key: Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs']] = None,
              storage_bytes: Optional[pulumi.Input[int]] = None,
              storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              zone: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -399,6 +415,8 @@ class _SnapshotState:
             creation_timestamp = kwargs['creationTimestamp']
         if disk_size_gb is None and 'diskSizeGb' in kwargs:
             disk_size_gb = kwargs['diskSizeGb']
+        if effective_labels is None and 'effectiveLabels' in kwargs:
+            effective_labels = kwargs['effectiveLabels']
         if label_fingerprint is None and 'labelFingerprint' in kwargs:
             label_fingerprint = kwargs['labelFingerprint']
         if self_link is None and 'selfLink' in kwargs:
@@ -415,6 +433,8 @@ class _SnapshotState:
             storage_bytes = kwargs['storageBytes']
         if storage_locations is None and 'storageLocations' in kwargs:
             storage_locations = kwargs['storageLocations']
+        if terraform_labels is None and 'terraformLabels' in kwargs:
+            terraform_labels = kwargs['terraformLabels']
 
         if chain_name is not None:
             _setter("chain_name", chain_name)
@@ -424,6 +444,8 @@ class _SnapshotState:
             _setter("description", description)
         if disk_size_gb is not None:
             _setter("disk_size_gb", disk_size_gb)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if label_fingerprint is not None:
             _setter("label_fingerprint", label_fingerprint)
         if labels is not None:
@@ -448,6 +470,8 @@ class _SnapshotState:
             _setter("storage_bytes", storage_bytes)
         if storage_locations is not None:
             _setter("storage_locations", storage_locations)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if zone is not None:
             _setter("zone", zone)
 
@@ -505,6 +529,19 @@ class _SnapshotState:
         pulumi.set(self, "disk_size_gb", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> Optional[pulumi.Input[str]]:
         """
@@ -522,6 +559,8 @@ class _SnapshotState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels to apply to this Snapshot.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -678,6 +717,19 @@ class _SnapshotState:
         pulumi.set(self, "storage_locations", value)
 
     @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
+
+    @property
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
@@ -800,6 +852,8 @@ class Snapshot(pulumi.CustomResource):
                resource, this field is visible only if it has a non-empty value.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this Snapshot.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -975,11 +1029,13 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["disk_size_gb"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["licenses"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["snapshot_id"] = None
             __props__.__dict__["storage_bytes"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(Snapshot, __self__).__init__(
             'gcp:compute/snapshot:Snapshot',
             resource_name,
@@ -994,6 +1050,7 @@ class Snapshot(pulumi.CustomResource):
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disk_size_gb: Optional[pulumi.Input[int]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             label_fingerprint: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1006,6 +1063,7 @@ class Snapshot(pulumi.CustomResource):
             source_disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['SnapshotSourceDiskEncryptionKeyArgs']]] = None,
             storage_bytes: Optional[pulumi.Input[int]] = None,
             storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'Snapshot':
         """
         Get an existing Snapshot resource's state with the given name, id, and optional extra
@@ -1023,9 +1081,13 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[int] disk_size_gb: Size of the snapshot, specified in GB.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used
                internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this Snapshot.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: A list of public visible licenses that apply to this snapshot. This
                can be because the original image had licenses attached (such as a
                Windows image).  snapshotEncryptionKey nested object Encrypts the
@@ -1064,6 +1126,8 @@ class Snapshot(pulumi.CustomResource):
                storage, this number is expected to change with snapshot
                creation/deletion.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] zone: A reference to the zone where the disk is hosted.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1074,6 +1138,7 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_size_gb"] = disk_size_gb
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["label_fingerprint"] = label_fingerprint
         __props__.__dict__["labels"] = labels
         __props__.__dict__["licenses"] = licenses
@@ -1086,6 +1151,7 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["source_disk_encryption_key"] = source_disk_encryption_key
         __props__.__dict__["storage_bytes"] = storage_bytes
         __props__.__dict__["storage_locations"] = storage_locations
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["zone"] = zone
         return Snapshot(resource_name, opts=opts, __props__=__props__)
 
@@ -1127,6 +1193,15 @@ class Snapshot(pulumi.CustomResource):
         return pulumi.get(self, "disk_size_gb")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> pulumi.Output[str]:
         """
@@ -1140,6 +1215,8 @@ class Snapshot(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels to apply to this Snapshot.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1250,6 +1327,15 @@ class Snapshot(pulumi.CustomResource):
         Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
         """
         return pulumi.get(self, "storage_locations")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

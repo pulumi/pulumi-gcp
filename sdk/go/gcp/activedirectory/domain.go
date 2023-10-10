@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/activedirectory"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/activedirectory"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -75,10 +75,15 @@ type Domain struct {
 	//
 	// ***
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The fully-qualified domain name of the exposed domain used by clients to connect to the service.
 	// Similar to what would be chosen for an Active Directory set up on an internal network.
 	Fqdn pulumi.StringOutput `pulumi:"fqdn"`
 	// Resource labels that can contain user-provided metadata
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
 	// e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
@@ -91,6 +96,9 @@ type Domain struct {
 	// The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger.
 	// Ranges must be unique and non-overlapping with existing subnets in authorizedNetworks
 	ReservedIpRange pulumi.StringOutput `pulumi:"reservedIpRange"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewDomain registers a new resource with the given unique name, arguments, and options.
@@ -143,10 +151,15 @@ type domainState struct {
 	//
 	// ***
 	DomainName *string `pulumi:"domainName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The fully-qualified domain name of the exposed domain used by clients to connect to the service.
 	// Similar to what would be chosen for an Active Directory set up on an internal network.
 	Fqdn *string `pulumi:"fqdn"`
 	// Resource labels that can contain user-provided metadata
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
 	// e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
@@ -159,6 +172,9 @@ type domainState struct {
 	// The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger.
 	// Ranges must be unique and non-overlapping with existing subnets in authorizedNetworks
 	ReservedIpRange *string `pulumi:"reservedIpRange"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type DomainState struct {
@@ -173,10 +189,15 @@ type DomainState struct {
 	//
 	// ***
 	DomainName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// The fully-qualified domain name of the exposed domain used by clients to connect to the service.
 	// Similar to what would be chosen for an Active Directory set up on an internal network.
 	Fqdn pulumi.StringPtrInput
 	// Resource labels that can contain user-provided metadata
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
 	// e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
@@ -189,6 +210,9 @@ type DomainState struct {
 	// The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger.
 	// Ranges must be unique and non-overlapping with existing subnets in authorizedNetworks
 	ReservedIpRange pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 }
 
 func (DomainState) ElementType() reflect.Type {
@@ -208,6 +232,8 @@ type domainArgs struct {
 	// ***
 	DomainName string `pulumi:"domainName"`
 	// Resource labels that can contain user-provided metadata
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
 	// e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
@@ -234,6 +260,8 @@ type DomainArgs struct {
 	// ***
 	DomainName pulumi.StringInput
 	// Resource labels that can contain user-provided metadata
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
 	// e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
@@ -377,6 +405,12 @@ func (o DomainOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o DomainOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The fully-qualified domain name of the exposed domain used by clients to connect to the service.
 // Similar to what would be chosen for an Active Directory set up on an internal network.
 func (o DomainOutput) Fqdn() pulumi.StringOutput {
@@ -384,6 +418,8 @@ func (o DomainOutput) Fqdn() pulumi.StringOutput {
 }
 
 // Resource labels that can contain user-provided metadata
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o DomainOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -409,6 +445,12 @@ func (o DomainOutput) Project() pulumi.StringOutput {
 // Ranges must be unique and non-overlapping with existing subnets in authorizedNetworks
 func (o DomainOutput) ReservedIpRange() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.ReservedIpRange }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o DomainOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type DomainArrayOutput struct{ *pulumi.OutputState }

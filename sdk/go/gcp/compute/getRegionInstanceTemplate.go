@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -90,7 +90,8 @@ type LookupRegionInstanceTemplateResult struct {
 	// Disks to attach to instances created from this template.
 	// This can be specified multiple times for multiple disks. Structure is
 	// documented below.
-	Disks []GetRegionInstanceTemplateDisk `pulumi:"disks"`
+	Disks           []GetRegionInstanceTemplateDisk `pulumi:"disks"`
+	EffectiveLabels map[string]string               `pulumi:"effectiveLabels"`
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 	EnableDisplay bool    `pulumi:"enableDisplay"`
@@ -152,7 +153,8 @@ type LookupRegionInstanceTemplateResult struct {
 	// Tags to attach to the instance.
 	Tags []string `pulumi:"tags"`
 	// The unique fingerprint of the tags.
-	TagsFingerprint string `pulumi:"tagsFingerprint"`
+	TagsFingerprint string            `pulumi:"tagsFingerprint"`
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 func LookupRegionInstanceTemplateOutput(ctx *pulumi.Context, args LookupRegionInstanceTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupRegionInstanceTemplateResultOutput {
@@ -240,6 +242,10 @@ func (o LookupRegionInstanceTemplateResultOutput) Description() pulumi.StringOut
 // documented below.
 func (o LookupRegionInstanceTemplateResultOutput) Disks() GetRegionInstanceTemplateDiskArrayOutput {
 	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) []GetRegionInstanceTemplateDisk { return v.Disks }).(GetRegionInstanceTemplateDiskArrayOutput)
+}
+
+func (o LookupRegionInstanceTemplateResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
 // Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
@@ -392,6 +398,10 @@ func (o LookupRegionInstanceTemplateResultOutput) Tags() pulumi.StringArrayOutpu
 // The unique fingerprint of the tags.
 func (o LookupRegionInstanceTemplateResultOutput) TagsFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) string { return v.TagsFingerprint }).(pulumi.StringOutput)
+}
+
+func (o LookupRegionInstanceTemplateResultOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func init() {

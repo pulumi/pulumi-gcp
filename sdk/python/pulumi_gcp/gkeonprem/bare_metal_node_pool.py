@@ -37,6 +37,9 @@ class BareMetalNodePoolArgs:
                Prefix must be a DNS subdomain.
                Name must be 63 characters or less, begin and end with alphanumerics,
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] display_name: The display name for the Bare Metal Node Pool.
         :param pulumi.Input[str] name: The bare metal node pool name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -138,6 +141,9 @@ class BareMetalNodePoolArgs:
         Prefix must be a DNS subdomain.
         Name must be 63 characters or less, begin and end with alphanumerics,
         with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -191,6 +197,7 @@ class _BareMetalNodePoolState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -211,10 +218,15 @@ class _BareMetalNodePoolState:
                Prefix must be a DNS subdomain.
                Name must be 63 characters or less, begin and end with alphanumerics,
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] bare_metal_cluster: The cluster this node pool belongs to.
         :param pulumi.Input[str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[str] delete_time: The time the cluster was deleted, in RFC3339 text format.
         :param pulumi.Input[str] display_name: The display name for the Bare Metal Node Pool.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other
                fields, and may be sent on update and delete requests to ensure the
                client has an up-to-date value before proceeding.
@@ -241,6 +253,7 @@ class _BareMetalNodePoolState:
             create_time=create_time,
             delete_time=delete_time,
             display_name=display_name,
+            effective_annotations=effective_annotations,
             etag=etag,
             location=location,
             name=name,
@@ -260,6 +273,7 @@ class _BareMetalNodePoolState:
              create_time: Optional[pulumi.Input[str]] = None,
              delete_time: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
+             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              etag: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -280,6 +294,8 @@ class _BareMetalNodePoolState:
             delete_time = kwargs['deleteTime']
         if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
+        if effective_annotations is None and 'effectiveAnnotations' in kwargs:
+            effective_annotations = kwargs['effectiveAnnotations']
         if node_pool_config is None and 'nodePoolConfig' in kwargs:
             node_pool_config = kwargs['nodePoolConfig']
         if update_time is None and 'updateTime' in kwargs:
@@ -295,6 +311,8 @@ class _BareMetalNodePoolState:
             _setter("delete_time", delete_time)
         if display_name is not None:
             _setter("display_name", display_name)
+        if effective_annotations is not None:
+            _setter("effective_annotations", effective_annotations)
         if etag is not None:
             _setter("etag", etag)
         if location is not None:
@@ -328,6 +346,9 @@ class _BareMetalNodePoolState:
         Prefix must be a DNS subdomain.
         Name must be 63 characters or less, begin and end with alphanumerics,
         with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -382,6 +403,19 @@ class _BareMetalNodePoolState:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @effective_annotations.setter
+    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_annotations", value)
 
     @property
     @pulumi.getter
@@ -733,6 +767,9 @@ class BareMetalNodePool(pulumi.CustomResource):
                Prefix must be a DNS subdomain.
                Name must be 63 characters or less, begin and end with alphanumerics,
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] bare_metal_cluster: The cluster this node pool belongs to.
         :param pulumi.Input[str] display_name: The display name for the Bare Metal Node Pool.
         :param pulumi.Input[str] location: The location of the resource.
@@ -997,6 +1034,7 @@ class BareMetalNodePool(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None
+            __props__.__dict__["effective_annotations"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["reconciling"] = None
             __props__.__dict__["state"] = None
@@ -1018,6 +1056,7 @@ class BareMetalNodePool(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -1043,10 +1082,15 @@ class BareMetalNodePool(pulumi.CustomResource):
                Prefix must be a DNS subdomain.
                Name must be 63 characters or less, begin and end with alphanumerics,
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] bare_metal_cluster: The cluster this node pool belongs to.
         :param pulumi.Input[str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[str] delete_time: The time the cluster was deleted, in RFC3339 text format.
         :param pulumi.Input[str] display_name: The display name for the Bare Metal Node Pool.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other
                fields, and may be sent on update and delete requests to ensure the
                client has an up-to-date value before proceeding.
@@ -1075,6 +1119,7 @@ class BareMetalNodePool(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delete_time"] = delete_time
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["etag"] = etag
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -1089,7 +1134,7 @@ class BareMetalNodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
+    def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Annotations on the Bare Metal Node Pool.
         This field has the same restrictions as Kubernetes annotations.
@@ -1099,6 +1144,9 @@ class BareMetalNodePool(pulumi.CustomResource):
         Prefix must be a DNS subdomain.
         Name must be 63 characters or less, begin and end with alphanumerics,
         with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -1133,6 +1181,15 @@ class BareMetalNodePool(pulumi.CustomResource):
         The display name for the Bare Metal Node Pool.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
 
     @property
     @pulumi.getter

@@ -70,6 +70,7 @@ export interface GetFunctionResult {
     readonly description: string;
     readonly dockerRegistry: string;
     readonly dockerRepository: string;
+    readonly effectiveLabels: {[key: string]: string};
     /**
      * Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
      */
@@ -93,9 +94,6 @@ export interface GetFunctionResult {
      */
     readonly ingressSettings: string;
     readonly kmsKeyName: string;
-    /**
-     * A map of labels applied to this function.
-     */
     readonly labels: {[key: string]: any};
     /**
      * The limit on the maximum number of function instances that may coexist at a given time. If unset or set to `0`, the API default will be used.
@@ -131,6 +129,7 @@ export interface GetFunctionResult {
      */
     readonly sourceRepositories: outputs.cloudfunctions.GetFunctionSourceRepository[];
     readonly status: string;
+    readonly terraformLabels: {[key: string]: string};
     /**
      * Function execution timeout (in seconds).
      */

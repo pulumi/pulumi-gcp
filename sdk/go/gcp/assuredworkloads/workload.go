@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/assuredworkloads"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/assuredworkloads"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -92,9 +92,15 @@ type Workload struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
 	// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
 	KmsSettings WorkloadKmsSettingsPtrOutput `pulumi:"kmsSettings"`
 	// Optional. Labels applied to the workload.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -110,6 +116,8 @@ type Workload struct {
 	ResourceSettings WorkloadResourceSettingArrayOutput `pulumi:"resourceSettings"`
 	// Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
 	Resources WorkloadResourceArrayOutput `pulumi:"resources"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.MapOutput `pulumi:"terraformLabels"`
 }
 
 // NewWorkload registers a new resource with the given unique name, arguments, and options.
@@ -165,9 +173,15 @@ type workloadState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
 	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
 	// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
 	KmsSettings *WorkloadKmsSettings `pulumi:"kmsSettings"`
 	// Optional. Labels applied to the workload.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
@@ -183,6 +197,8 @@ type workloadState struct {
 	ResourceSettings []WorkloadResourceSetting `pulumi:"resourceSettings"`
 	// Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
 	Resources []WorkloadResource `pulumi:"resources"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels map[string]interface{} `pulumi:"terraformLabels"`
 }
 
 type WorkloadState struct {
@@ -194,9 +210,15 @@ type WorkloadState struct {
 	CreateTime pulumi.StringPtrInput
 	// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
 	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.MapInput
 	// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
 	KmsSettings WorkloadKmsSettingsPtrInput
 	// Optional. Labels applied to the workload.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
@@ -212,6 +234,8 @@ type WorkloadState struct {
 	ResourceSettings WorkloadResourceSettingArrayInput
 	// Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
 	Resources WorkloadResourceArrayInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.MapInput
 }
 
 func (WorkloadState) ElementType() reflect.Type {
@@ -228,6 +252,9 @@ type workloadArgs struct {
 	// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
 	KmsSettings *WorkloadKmsSettings `pulumi:"kmsSettings"`
 	// Optional. Labels applied to the workload.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location string `pulumi:"location"`
@@ -252,6 +279,9 @@ type WorkloadArgs struct {
 	// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
 	KmsSettings WorkloadKmsSettingsPtrInput
 	// Optional. Labels applied to the workload.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringInput
@@ -396,12 +426,21 @@ func (o WorkloadOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o WorkloadOutput) EffectiveLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Workload) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
+}
+
 // Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
 func (o WorkloadOutput) KmsSettings() WorkloadKmsSettingsPtrOutput {
 	return o.ApplyT(func(v *Workload) WorkloadKmsSettingsPtrOutput { return v.KmsSettings }).(WorkloadKmsSettingsPtrOutput)
 }
 
 // Optional. Labels applied to the workload.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o WorkloadOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workload) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -436,6 +475,11 @@ func (o WorkloadOutput) ResourceSettings() WorkloadResourceSettingArrayOutput {
 // Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
 func (o WorkloadOutput) Resources() WorkloadResourceArrayOutput {
 	return o.ApplyT(func(v *Workload) WorkloadResourceArrayOutput { return v.Resources }).(WorkloadResourceArrayOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o WorkloadOutput) TerraformLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Workload) pulumi.MapOutput { return v.TerraformLabels }).(pulumi.MapOutput)
 }
 
 type WorkloadArrayOutput struct{ *pulumi.OutputState }

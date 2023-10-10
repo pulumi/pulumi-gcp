@@ -152,6 +152,11 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly dockerRepository!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Name of the function that will be executed when the Google Cloud Function is triggered.
      */
     public readonly entryPoint!: pulumi.Output<string | undefined>;
@@ -182,6 +187,9 @@ export class Function extends pulumi.CustomResource {
     public readonly kmsKeyName!: pulumi.Output<string | undefined>;
     /**
      * A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -241,6 +249,10 @@ export class Function extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
      */
     public readonly timeout!: pulumi.Output<number | undefined>;
@@ -276,6 +288,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["dockerRegistry"] = state ? state.dockerRegistry : undefined;
             resourceInputs["dockerRepository"] = state ? state.dockerRepository : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["entryPoint"] = state ? state.entryPoint : undefined;
             resourceInputs["environmentVariables"] = state ? state.environmentVariables : undefined;
             resourceInputs["eventTrigger"] = state ? state.eventTrigger : undefined;
@@ -297,6 +310,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["sourceArchiveObject"] = state ? state.sourceArchiveObject : undefined;
             resourceInputs["sourceRepository"] = state ? state.sourceRepository : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["timeout"] = state ? state.timeout : undefined;
             resourceInputs["triggerHttp"] = state ? state.triggerHttp : undefined;
             resourceInputs["vpcConnector"] = state ? state.vpcConnector : undefined;
@@ -336,7 +350,9 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["triggerHttp"] = args ? args.triggerHttp : undefined;
             resourceInputs["vpcConnector"] = args ? args.vpcConnector : undefined;
             resourceInputs["vpcConnectorEgressSettings"] = args ? args.vpcConnectorEgressSettings : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Function.__pulumiType, name, resourceInputs, opts);
@@ -372,6 +388,11 @@ export interface FunctionState {
      */
     dockerRepository?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Name of the function that will be executed when the Google Cloud Function is triggered.
      */
     entryPoint?: pulumi.Input<string>;
@@ -402,6 +423,9 @@ export interface FunctionState {
     kmsKeyName?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -460,6 +484,10 @@ export interface FunctionState {
      * Describes the current stage of a deployment.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
      */
@@ -537,6 +565,9 @@ export interface FunctionArgs {
     kmsKeyName?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**

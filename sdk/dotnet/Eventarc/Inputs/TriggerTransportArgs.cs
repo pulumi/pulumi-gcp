@@ -12,17 +12,11 @@ namespace Pulumi.Gcp.Eventarc.Inputs
 
     public sealed class TriggerTransportArgs : global::Pulumi.ResourceArgs
     {
-        [Input("pubsubs")]
-        private InputList<Inputs.TriggerTransportPubsubArgs>? _pubsubs;
-
         /// <summary>
         /// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
         /// </summary>
-        public InputList<Inputs.TriggerTransportPubsubArgs> Pubsubs
-        {
-            get => _pubsubs ?? (_pubsubs = new InputList<Inputs.TriggerTransportPubsubArgs>());
-            set => _pubsubs = value;
-        }
+        [Input("pubsub")]
+        public Input<Inputs.TriggerTransportPubsubArgs>? Pubsub { get; set; }
 
         public TriggerTransportArgs()
         {

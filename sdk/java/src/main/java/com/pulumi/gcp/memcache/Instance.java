@@ -39,8 +39,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.ComputeFunctions;
- * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
+ * import com.pulumi.gcp.compute.Network;
  * import com.pulumi.gcp.compute.GlobalAddress;
  * import com.pulumi.gcp.compute.GlobalAddressArgs;
  * import com.pulumi.gcp.servicenetworking.Connection;
@@ -62,25 +61,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var memcacheNetwork = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
- *             .name(&#34;test-network&#34;)
- *             .build());
+ *         var memcacheNetwork = new Network(&#34;memcacheNetwork&#34;);
  * 
  *         var serviceRange = new GlobalAddress(&#34;serviceRange&#34;, GlobalAddressArgs.builder()        
  *             .purpose(&#34;VPC_PEERING&#34;)
  *             .addressType(&#34;INTERNAL&#34;)
  *             .prefixLength(16)
- *             .network(memcacheNetwork.applyValue(getNetworkResult -&gt; getNetworkResult.id()))
+ *             .network(memcacheNetwork.id())
  *             .build());
  * 
  *         var privateServiceConnection = new Connection(&#34;privateServiceConnection&#34;, ConnectionArgs.builder()        
- *             .network(memcacheNetwork.applyValue(getNetworkResult -&gt; getNetworkResult.id()))
+ *             .network(memcacheNetwork.id())
  *             .service(&#34;servicenetworking.googleapis.com&#34;)
  *             .reservedPeeringRanges(serviceRange.name())
  *             .build());
  * 
  *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
  *             .authorizedNetwork(privateServiceConnection.network())
+ *             .labels(Map.of(&#34;env&#34;, &#34;test&#34;))
  *             .nodeConfig(InstanceNodeConfigArgs.builder()
  *                 .cpuCount(1)
  *                 .memorySizeMb(1024)
@@ -193,7 +191,26 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * Resource labels to represent user-provided metadata.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -201,6 +218,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Resource labels to represent user-provided metadata.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -379,6 +399,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> region() {
         return this.region;
+    }
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="terraformLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> terraformLabels() {
+        return this.terraformLabels;
     }
     /**
      * Zones where memcache nodes should be provisioned.  If not

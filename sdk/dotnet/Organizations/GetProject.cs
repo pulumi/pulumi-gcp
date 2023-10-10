@@ -109,6 +109,7 @@ namespace Pulumi.Gcp.Organizations
     {
         public readonly bool AutoCreateNetwork;
         public readonly string BillingAccount;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string FolderId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -123,12 +124,15 @@ namespace Pulumi.Gcp.Organizations
         public readonly string OrgId;
         public readonly string? ProjectId;
         public readonly bool SkipDelete;
+        public readonly ImmutableDictionary<string, string> TerraformLabels;
 
         [OutputConstructor]
         private GetProjectResult(
             bool autoCreateNetwork,
 
             string billingAccount,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             string folderId,
 
@@ -144,10 +148,13 @@ namespace Pulumi.Gcp.Organizations
 
             string? projectId,
 
-            bool skipDelete)
+            bool skipDelete,
+
+            ImmutableDictionary<string, string> terraformLabels)
         {
             AutoCreateNetwork = autoCreateNetwork;
             BillingAccount = billingAccount;
+            EffectiveLabels = effectiveLabels;
             FolderId = folderId;
             Id = id;
             Labels = labels;
@@ -156,6 +163,7 @@ namespace Pulumi.Gcp.Organizations
             OrgId = orgId;
             ProjectId = projectId;
             SkipDelete = skipDelete;
+            TerraformLabels = terraformLabels;
         }
     }
 }

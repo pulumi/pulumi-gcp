@@ -152,6 +152,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly desiredStatus!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
@@ -177,6 +182,8 @@ export class Instance extends pulumi.CustomResource {
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     /**
      * A map of key/value label pairs to assign to the instance.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -302,6 +309,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly tagsFingerprint!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The zone that the machine should be created in. If it is not provided, the provider zone is used.
      */
     public readonly zone!: pulumi.Output<string>;
@@ -330,6 +341,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["desiredStatus"] = state ? state.desiredStatus : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["enableDisplay"] = state ? state.enableDisplay : undefined;
             resourceInputs["guestAccelerators"] = state ? state.guestAccelerators : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
@@ -355,6 +367,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["tagsFingerprint"] = state ? state.tagsFingerprint : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
@@ -399,11 +412,13 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["cpuPlatform"] = undefined /*out*/;
             resourceInputs["currentStatus"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["metadataFingerprint"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["tagsFingerprint"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
@@ -465,6 +480,11 @@ export interface InstanceState {
      */
     desiredStatus?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
@@ -490,6 +510,8 @@ export interface InstanceState {
     labelFingerprint?: pulumi.Input<string>;
     /**
      * A map of key/value label pairs to assign to the instance.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -615,6 +637,10 @@ export interface InstanceState {
      */
     tagsFingerprint?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The zone that the machine should be created in. If it is not provided, the provider zone is used.
      */
     zone?: pulumi.Input<string>;
@@ -684,6 +710,8 @@ export interface InstanceArgs {
     hostname?: pulumi.Input<string>;
     /**
      * A map of key/value label pairs to assign to the instance.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

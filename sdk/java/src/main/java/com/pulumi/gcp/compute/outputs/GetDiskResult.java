@@ -32,6 +32,7 @@ public final class GetDiskResult {
      */
     private String description;
     private List<GetDiskDiskEncryptionKey> diskEncryptionKeys;
+    private Map<String,String> effectiveLabels;
     private Boolean enableConfidentialCompute;
     private List<GetDiskGuestOsFeature> guestOsFeatures;
     /**
@@ -51,10 +52,6 @@ public final class GetDiskResult {
      * 
      */
     private String labelFingerprint;
-    /**
-     * @return A map of labels applied to this disk.
-     * 
-     */
     private Map<String,String> labels;
     /**
      * @return Last attach timestamp in RFC3339 text format.
@@ -124,6 +121,7 @@ public final class GetDiskResult {
      * 
      */
     private String sourceSnapshotId;
+    private Map<String,String> terraformLabels;
     /**
      * @return URL of the disk type resource describing which disk type to use to
      * create the disk.
@@ -163,6 +161,9 @@ public final class GetDiskResult {
     public List<GetDiskDiskEncryptionKey> diskEncryptionKeys() {
         return this.diskEncryptionKeys;
     }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
+    }
     public Boolean enableConfidentialCompute() {
         return this.enableConfidentialCompute;
     }
@@ -194,10 +195,6 @@ public final class GetDiskResult {
     public String labelFingerprint() {
         return this.labelFingerprint;
     }
-    /**
-     * @return A map of labels applied to this disk.
-     * 
-     */
     public Map<String,String> labels() {
         return this.labels;
     }
@@ -307,6 +304,9 @@ public final class GetDiskResult {
     public String sourceSnapshotId() {
         return this.sourceSnapshotId;
     }
+    public Map<String,String> terraformLabels() {
+        return this.terraformLabels;
+    }
     /**
      * @return URL of the disk type resource describing which disk type to use to
      * create the disk.
@@ -344,6 +344,7 @@ public final class GetDiskResult {
         private String creationTimestamp;
         private String description;
         private List<GetDiskDiskEncryptionKey> diskEncryptionKeys;
+        private Map<String,String> effectiveLabels;
         private Boolean enableConfidentialCompute;
         private List<GetDiskGuestOsFeature> guestOsFeatures;
         private String id;
@@ -370,6 +371,7 @@ public final class GetDiskResult {
         private String sourceImageId;
         private List<GetDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys;
         private String sourceSnapshotId;
+        private Map<String,String> terraformLabels;
         private String type;
         private List<String> users;
         private @Nullable String zone;
@@ -380,6 +382,7 @@ public final class GetDiskResult {
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.description = defaults.description;
     	      this.diskEncryptionKeys = defaults.diskEncryptionKeys;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.enableConfidentialCompute = defaults.enableConfidentialCompute;
     	      this.guestOsFeatures = defaults.guestOsFeatures;
     	      this.id = defaults.id;
@@ -406,6 +409,7 @@ public final class GetDiskResult {
     	      this.sourceImageId = defaults.sourceImageId;
     	      this.sourceSnapshotEncryptionKeys = defaults.sourceSnapshotEncryptionKeys;
     	      this.sourceSnapshotId = defaults.sourceSnapshotId;
+    	      this.terraformLabels = defaults.terraformLabels;
     	      this.type = defaults.type;
     	      this.users = defaults.users;
     	      this.zone = defaults.zone;
@@ -436,6 +440,11 @@ public final class GetDiskResult {
         }
         public Builder diskEncryptionKeys(GetDiskDiskEncryptionKey... diskEncryptionKeys) {
             return diskEncryptionKeys(List.of(diskEncryptionKeys));
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            return this;
         }
         @CustomType.Setter
         public Builder enableConfidentialCompute(Boolean enableConfidentialCompute) {
@@ -583,6 +592,11 @@ public final class GetDiskResult {
             return this;
         }
         @CustomType.Setter
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
@@ -606,6 +620,7 @@ public final class GetDiskResult {
             o.creationTimestamp = creationTimestamp;
             o.description = description;
             o.diskEncryptionKeys = diskEncryptionKeys;
+            o.effectiveLabels = effectiveLabels;
             o.enableConfidentialCompute = enableConfidentialCompute;
             o.guestOsFeatures = guestOsFeatures;
             o.id = id;
@@ -632,6 +647,7 @@ public final class GetDiskResult {
             o.sourceImageId = sourceImageId;
             o.sourceSnapshotEncryptionKeys = sourceSnapshotEncryptionKeys;
             o.sourceSnapshotId = sourceSnapshotId;
+            o.terraformLabels = terraformLabels;
             o.type = type;
             o.users = users;
             o.zone = zone;

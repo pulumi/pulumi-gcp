@@ -34,6 +34,8 @@ class JobArgs:
                Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
                All system annotations in v1 now have a corresponding field in v2 Job.
                This field follows Kubernetes annotations' namespacing, limits, and rules.
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['JobBinaryAuthorizationArgs'] binary_authorization: Settings for the Binary Authorization feature.
                Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
@@ -42,6 +44,8 @@ class JobArgs:
                environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
                Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
                All system labels in v1 now have a corresponding field in v2 Job.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
                If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
                For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
@@ -129,6 +133,8 @@ class JobArgs:
         Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
         All system annotations in v1 now have a corresponding field in v2 Job.
         This field follows Kubernetes annotations' namespacing, limits, and rules.
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -181,6 +187,8 @@ class JobArgs:
         environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
         Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
         All system labels in v1 now have a corresponding field in v2 Job.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -252,6 +260,8 @@ class _JobState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  creator: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
+                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  execution_count: Optional[pulumi.Input[int]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
@@ -267,6 +277,7 @@ class _JobState:
                  reconciling: Optional[pulumi.Input[bool]] = None,
                  template: Optional[pulumi.Input['JobTemplateArgs']] = None,
                  terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['JobTerminalConditionArgs']]]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -275,6 +286,8 @@ class _JobState:
                Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
                All system annotations in v1 now have a corresponding field in v2 Job.
                This field follows Kubernetes annotations' namespacing, limits, and rules.
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['JobBinaryAuthorizationArgs'] binary_authorization: Settings for the Binary Authorization feature.
                Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
@@ -286,6 +299,10 @@ class _JobState:
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] creator: Email address of the authenticated creator.
         :param pulumi.Input[str] delete_time: The deletion time.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[int] execution_count: Number of executions created for this job.
         :param pulumi.Input[str] expire_time: For a deleted resource, the time after which it will be permamently deleted.
@@ -294,6 +311,8 @@ class _JobState:
                environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
                Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
                All system labels in v1 now have a corresponding field in v2 Job.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] last_modifier: Email address of the last authenticated modifier.
         :param pulumi.Input[Sequence[pulumi.Input['JobLatestCreatedExecutionArgs']]] latest_created_executions: Name of the last created execution.
                Structure is documented below.
@@ -314,6 +333,8 @@ class _JobState:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['JobTerminalConditionArgs']]] terminal_conditions: The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] uid: Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         :param pulumi.Input[str] update_time: The last-modified time.
         """
@@ -327,6 +348,8 @@ class _JobState:
             create_time=create_time,
             creator=creator,
             delete_time=delete_time,
+            effective_annotations=effective_annotations,
+            effective_labels=effective_labels,
             etag=etag,
             execution_count=execution_count,
             expire_time=expire_time,
@@ -342,6 +365,7 @@ class _JobState:
             reconciling=reconciling,
             template=template,
             terminal_conditions=terminal_conditions,
+            terraform_labels=terraform_labels,
             uid=uid,
             update_time=update_time,
         )
@@ -356,6 +380,8 @@ class _JobState:
              create_time: Optional[pulumi.Input[str]] = None,
              creator: Optional[pulumi.Input[str]] = None,
              delete_time: Optional[pulumi.Input[str]] = None,
+             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              etag: Optional[pulumi.Input[str]] = None,
              execution_count: Optional[pulumi.Input[int]] = None,
              expire_time: Optional[pulumi.Input[str]] = None,
@@ -371,6 +397,7 @@ class _JobState:
              reconciling: Optional[pulumi.Input[bool]] = None,
              template: Optional[pulumi.Input['JobTemplateArgs']] = None,
              terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['JobTerminalConditionArgs']]]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
@@ -383,6 +410,10 @@ class _JobState:
             create_time = kwargs['createTime']
         if delete_time is None and 'deleteTime' in kwargs:
             delete_time = kwargs['deleteTime']
+        if effective_annotations is None and 'effectiveAnnotations' in kwargs:
+            effective_annotations = kwargs['effectiveAnnotations']
+        if effective_labels is None and 'effectiveLabels' in kwargs:
+            effective_labels = kwargs['effectiveLabels']
         if execution_count is None and 'executionCount' in kwargs:
             execution_count = kwargs['executionCount']
         if expire_time is None and 'expireTime' in kwargs:
@@ -397,6 +428,8 @@ class _JobState:
             observed_generation = kwargs['observedGeneration']
         if terminal_conditions is None and 'terminalConditions' in kwargs:
             terminal_conditions = kwargs['terminalConditions']
+        if terraform_labels is None and 'terraformLabels' in kwargs:
+            terraform_labels = kwargs['terraformLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
@@ -416,6 +449,10 @@ class _JobState:
             _setter("creator", creator)
         if delete_time is not None:
             _setter("delete_time", delete_time)
+        if effective_annotations is not None:
+            _setter("effective_annotations", effective_annotations)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if etag is not None:
             _setter("etag", etag)
         if execution_count is not None:
@@ -446,6 +483,8 @@ class _JobState:
             _setter("template", template)
         if terminal_conditions is not None:
             _setter("terminal_conditions", terminal_conditions)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if uid is not None:
             _setter("uid", uid)
         if update_time is not None:
@@ -459,6 +498,8 @@ class _JobState:
         Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
         All system annotations in v1 now have a corresponding field in v2 Job.
         This field follows Kubernetes annotations' namespacing, limits, and rules.
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -555,6 +596,32 @@ class _JobState:
         pulumi.set(self, "delete_time", value)
 
     @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @effective_annotations.setter
+    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_annotations", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
@@ -610,6 +677,8 @@ class _JobState:
         environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
         Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
         All system labels in v1 now have a corresponding field in v2 Job.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -746,6 +815,19 @@ class _JobState:
     @terminal_conditions.setter
     def terminal_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTerminalConditionArgs']]]]):
         pulumi.set(self, "terminal_conditions", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -1040,6 +1122,8 @@ class Job(pulumi.CustomResource):
                Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
                All system annotations in v1 now have a corresponding field in v2 Job.
                This field follows Kubernetes annotations' namespacing, limits, and rules.
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['JobBinaryAuthorizationArgs']] binary_authorization: Settings for the Binary Authorization feature.
                Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
@@ -1048,6 +1132,8 @@ class Job(pulumi.CustomResource):
                environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
                Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
                All system labels in v1 now have a corresponding field in v2 Job.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
                If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
                For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
@@ -1367,6 +1453,8 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["creator"] = None
             __props__.__dict__["delete_time"] = None
+            __props__.__dict__["effective_annotations"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["execution_count"] = None
             __props__.__dict__["expire_time"] = None
@@ -1376,6 +1464,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["observed_generation"] = None
             __props__.__dict__["reconciling"] = None
             __props__.__dict__["terminal_conditions"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
         super(Job, __self__).__init__(
@@ -1396,6 +1485,8 @@ class Job(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             creator: Optional[pulumi.Input[str]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
+            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             execution_count: Optional[pulumi.Input[int]] = None,
             expire_time: Optional[pulumi.Input[str]] = None,
@@ -1411,6 +1502,7 @@ class Job(pulumi.CustomResource):
             reconciling: Optional[pulumi.Input[bool]] = None,
             template: Optional[pulumi.Input[pulumi.InputType['JobTemplateArgs']]] = None,
             terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTerminalConditionArgs']]]]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Job':
         """
@@ -1424,6 +1516,8 @@ class Job(pulumi.CustomResource):
                Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
                All system annotations in v1 now have a corresponding field in v2 Job.
                This field follows Kubernetes annotations' namespacing, limits, and rules.
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['JobBinaryAuthorizationArgs']] binary_authorization: Settings for the Binary Authorization feature.
                Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
@@ -1435,6 +1529,10 @@ class Job(pulumi.CustomResource):
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] creator: Email address of the authenticated creator.
         :param pulumi.Input[str] delete_time: The deletion time.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[int] execution_count: Number of executions created for this job.
         :param pulumi.Input[str] expire_time: For a deleted resource, the time after which it will be permamently deleted.
@@ -1443,6 +1541,8 @@ class Job(pulumi.CustomResource):
                environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
                Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
                All system labels in v1 now have a corresponding field in v2 Job.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] last_modifier: Email address of the last authenticated modifier.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobLatestCreatedExecutionArgs']]]] latest_created_executions: Name of the last created execution.
                Structure is documented below.
@@ -1463,6 +1563,8 @@ class Job(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTerminalConditionArgs']]]] terminal_conditions: The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] uid: Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         :param pulumi.Input[str] update_time: The last-modified time.
         """
@@ -1478,6 +1580,8 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["creator"] = creator
         __props__.__dict__["delete_time"] = delete_time
+        __props__.__dict__["effective_annotations"] = effective_annotations
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["etag"] = etag
         __props__.__dict__["execution_count"] = execution_count
         __props__.__dict__["expire_time"] = expire_time
@@ -1493,6 +1597,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["reconciling"] = reconciling
         __props__.__dict__["template"] = template
         __props__.__dict__["terminal_conditions"] = terminal_conditions
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         return Job(resource_name, opts=opts, __props__=__props__)
@@ -1505,6 +1610,8 @@ class Job(pulumi.CustomResource):
         Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
         All system annotations in v1 now have a corresponding field in v2 Job.
         This field follows Kubernetes annotations' namespacing, limits, and rules.
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -1569,6 +1676,24 @@ class Job(pulumi.CustomResource):
         return pulumi.get(self, "delete_time")
 
     @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
@@ -1608,6 +1733,8 @@ class Job(pulumi.CustomResource):
         environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
         Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
         All system labels in v1 now have a corresponding field in v2 Job.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1700,6 +1827,15 @@ class Job(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "terminal_conditions")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

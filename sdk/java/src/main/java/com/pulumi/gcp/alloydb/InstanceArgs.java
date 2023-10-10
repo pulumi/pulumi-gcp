@@ -6,6 +6,7 @@ package com.pulumi.gcp.alloydb;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.alloydb.inputs.InstanceMachineConfigArgs;
+import com.pulumi.gcp.alloydb.inputs.InstanceQueryInsightsConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceReadPoolConfigArgs;
 import java.lang.String;
 import java.util.Map;
@@ -20,6 +21,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
@@ -27,6 +30,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -160,6 +165,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * User-defined labels for the alloydb instance.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -167,6 +174,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return User-defined labels for the alloydb instance.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -188,6 +197,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<InstanceMachineConfigArgs>> machineConfig() {
         return Optional.ofNullable(this.machineConfig);
+    }
+
+    /**
+     * Configuration for query insights.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="queryInsightsConfig")
+    private @Nullable Output<InstanceQueryInsightsConfigArgs> queryInsightsConfig;
+
+    /**
+     * @return Configuration for query insights.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceQueryInsightsConfigArgs>> queryInsightsConfig() {
+        return Optional.ofNullable(this.queryInsightsConfig);
     }
 
     /**
@@ -220,6 +246,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.instanceType = $.instanceType;
         this.labels = $.labels;
         this.machineConfig = $.machineConfig;
+        this.queryInsightsConfig = $.queryInsightsConfig;
         this.readPoolConfig = $.readPoolConfig;
     }
 
@@ -243,6 +270,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param annotations Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -254,6 +283,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param annotations Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -431,6 +462,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels User-defined labels for the alloydb instance.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -442,6 +475,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels User-defined labels for the alloydb instance.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -471,6 +506,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder machineConfig(InstanceMachineConfigArgs machineConfig) {
             return machineConfig(Output.of(machineConfig));
+        }
+
+        /**
+         * @param queryInsightsConfig Configuration for query insights.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder queryInsightsConfig(@Nullable Output<InstanceQueryInsightsConfigArgs> queryInsightsConfig) {
+            $.queryInsightsConfig = queryInsightsConfig;
+            return this;
+        }
+
+        /**
+         * @param queryInsightsConfig Configuration for query insights.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder queryInsightsConfig(InstanceQueryInsightsConfigArgs queryInsightsConfig) {
+            return queryInsightsConfig(Output.of(queryInsightsConfig));
         }
 
         /**

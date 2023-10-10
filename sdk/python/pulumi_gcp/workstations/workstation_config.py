@@ -22,12 +22,14 @@ class WorkstationConfigArgs:
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  container: Optional[pulumi.Input['WorkstationConfigContainerArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 enable_audit_agent: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input['WorkstationConfigEncryptionKeyArgs']] = None,
                  host: Optional[pulumi.Input['WorkstationConfigHostArgs']] = None,
                  idle_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  running_timeout: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WorkstationConfig resource.
@@ -38,9 +40,12 @@ class WorkstationConfigArgs:
         :param pulumi.Input[str] workstation_cluster_id: The ID of the parent workstation cluster.
         :param pulumi.Input[str] workstation_config_id: The ID to be assigned to the workstation cluster config.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['WorkstationConfigContainerArgs'] container: Container that will be run for each workstation using this configuration when that workstation is started.
                Structure is documented below.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
+        :param pulumi.Input[bool] enable_audit_agent: Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
         :param pulumi.Input['WorkstationConfigEncryptionKeyArgs'] encryption_key: Encrypts resources of this workstation configuration using a customer-managed encryption key.
                If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata.
                If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost.
@@ -51,10 +56,14 @@ class WorkstationConfigArgs:
         :param pulumi.Input[str] idle_timeout: How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]] persistent_directories: Directories to persist across workstation sessions.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
+               If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
         :param pulumi.Input[str] running_timeout: How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         """
@@ -66,12 +75,14 @@ class WorkstationConfigArgs:
             annotations=annotations,
             container=container,
             display_name=display_name,
+            enable_audit_agent=enable_audit_agent,
             encryption_key=encryption_key,
             host=host,
             idle_timeout=idle_timeout,
             labels=labels,
             persistent_directories=persistent_directories,
             project=project,
+            replica_zones=replica_zones,
             running_timeout=running_timeout,
         )
     @staticmethod
@@ -83,12 +94,14 @@ class WorkstationConfigArgs:
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              container: Optional[pulumi.Input['WorkstationConfigContainerArgs']] = None,
              display_name: Optional[pulumi.Input[str]] = None,
+             enable_audit_agent: Optional[pulumi.Input[bool]] = None,
              encryption_key: Optional[pulumi.Input['WorkstationConfigEncryptionKeyArgs']] = None,
              host: Optional[pulumi.Input['WorkstationConfigHostArgs']] = None,
              idle_timeout: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              running_timeout: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -104,12 +117,16 @@ class WorkstationConfigArgs:
             raise TypeError("Missing 'workstation_config_id' argument")
         if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
+        if enable_audit_agent is None and 'enableAuditAgent' in kwargs:
+            enable_audit_agent = kwargs['enableAuditAgent']
         if encryption_key is None and 'encryptionKey' in kwargs:
             encryption_key = kwargs['encryptionKey']
         if idle_timeout is None and 'idleTimeout' in kwargs:
             idle_timeout = kwargs['idleTimeout']
         if persistent_directories is None and 'persistentDirectories' in kwargs:
             persistent_directories = kwargs['persistentDirectories']
+        if replica_zones is None and 'replicaZones' in kwargs:
+            replica_zones = kwargs['replicaZones']
         if running_timeout is None and 'runningTimeout' in kwargs:
             running_timeout = kwargs['runningTimeout']
 
@@ -122,6 +139,8 @@ class WorkstationConfigArgs:
             _setter("container", container)
         if display_name is not None:
             _setter("display_name", display_name)
+        if enable_audit_agent is not None:
+            _setter("enable_audit_agent", enable_audit_agent)
         if encryption_key is not None:
             _setter("encryption_key", encryption_key)
         if host is not None:
@@ -134,6 +153,8 @@ class WorkstationConfigArgs:
             _setter("persistent_directories", persistent_directories)
         if project is not None:
             _setter("project", project)
+        if replica_zones is not None:
+            _setter("replica_zones", replica_zones)
         if running_timeout is not None:
             _setter("running_timeout", running_timeout)
 
@@ -181,6 +202,8 @@ class WorkstationConfigArgs:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Client-specified annotations. This is distinct from labels.
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -212,6 +235,18 @@ class WorkstationConfigArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="enableAuditAgent")
+    def enable_audit_agent(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
+        """
+        return pulumi.get(self, "enable_audit_agent")
+
+    @enable_audit_agent.setter
+    def enable_audit_agent(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_audit_agent", value)
 
     @property
     @pulumi.getter(name="encryptionKey")
@@ -260,6 +295,8 @@ class WorkstationConfigArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -294,6 +331,19 @@ class WorkstationConfigArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="replicaZones")
+    def replica_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
+        If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+        """
+        return pulumi.get(self, "replica_zones")
+
+    @replica_zones.setter
+    def replica_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "replica_zones", value)
+
+    @property
     @pulumi.getter(name="runningTimeout")
     def running_timeout(self) -> Optional[pulumi.Input[str]]:
         """
@@ -316,6 +366,9 @@ class _WorkstationConfigState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  degraded: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 enable_audit_agent: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input['WorkstationConfigEncryptionKeyArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input['WorkstationConfigHostArgs']] = None,
@@ -325,13 +378,17 @@ class _WorkstationConfigState:
                  name: Optional[pulumi.Input[str]] = None,
                  persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  running_timeout: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None,
                  workstation_config_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering WorkstationConfig resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigConditionArgs']]] conditions: Status conditions describing the current resource state.
                Structure is documented below.
         :param pulumi.Input['WorkstationConfigContainerArgs'] container: Container that will be run for each workstation using this configuration when that workstation is started.
@@ -339,6 +396,11 @@ class _WorkstationConfigState:
         :param pulumi.Input[str] create_time: Time when this resource was created.
         :param pulumi.Input[bool] degraded: Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
+        :param pulumi.Input[bool] enable_audit_agent: Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
         :param pulumi.Input['WorkstationConfigEncryptionKeyArgs'] encryption_key: Encrypts resources of this workstation configuration using a customer-managed encryption key.
                If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata.
                If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost.
@@ -351,6 +413,8 @@ class _WorkstationConfigState:
         :param pulumi.Input[str] idle_timeout: How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the workstation cluster config should reside.
                
                
@@ -360,8 +424,12 @@ class _WorkstationConfigState:
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
+               If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
         :param pulumi.Input[str] running_timeout: How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         :param pulumi.Input[str] workstation_cluster_id: The ID of the parent workstation cluster.
         :param pulumi.Input[str] workstation_config_id: The ID to be assigned to the workstation cluster config.
@@ -374,6 +442,9 @@ class _WorkstationConfigState:
             create_time=create_time,
             degraded=degraded,
             display_name=display_name,
+            effective_annotations=effective_annotations,
+            effective_labels=effective_labels,
+            enable_audit_agent=enable_audit_agent,
             encryption_key=encryption_key,
             etag=etag,
             host=host,
@@ -383,7 +454,9 @@ class _WorkstationConfigState:
             name=name,
             persistent_directories=persistent_directories,
             project=project,
+            replica_zones=replica_zones,
             running_timeout=running_timeout,
+            terraform_labels=terraform_labels,
             uid=uid,
             workstation_cluster_id=workstation_cluster_id,
             workstation_config_id=workstation_config_id,
@@ -397,6 +470,9 @@ class _WorkstationConfigState:
              create_time: Optional[pulumi.Input[str]] = None,
              degraded: Optional[pulumi.Input[bool]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
+             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             enable_audit_agent: Optional[pulumi.Input[bool]] = None,
              encryption_key: Optional[pulumi.Input['WorkstationConfigEncryptionKeyArgs']] = None,
              etag: Optional[pulumi.Input[str]] = None,
              host: Optional[pulumi.Input['WorkstationConfigHostArgs']] = None,
@@ -406,7 +482,9 @@ class _WorkstationConfigState:
              name: Optional[pulumi.Input[str]] = None,
              persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              running_timeout: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              workstation_cluster_id: Optional[pulumi.Input[str]] = None,
              workstation_config_id: Optional[pulumi.Input[str]] = None,
@@ -416,14 +494,24 @@ class _WorkstationConfigState:
             create_time = kwargs['createTime']
         if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
+        if effective_annotations is None and 'effectiveAnnotations' in kwargs:
+            effective_annotations = kwargs['effectiveAnnotations']
+        if effective_labels is None and 'effectiveLabels' in kwargs:
+            effective_labels = kwargs['effectiveLabels']
+        if enable_audit_agent is None and 'enableAuditAgent' in kwargs:
+            enable_audit_agent = kwargs['enableAuditAgent']
         if encryption_key is None and 'encryptionKey' in kwargs:
             encryption_key = kwargs['encryptionKey']
         if idle_timeout is None and 'idleTimeout' in kwargs:
             idle_timeout = kwargs['idleTimeout']
         if persistent_directories is None and 'persistentDirectories' in kwargs:
             persistent_directories = kwargs['persistentDirectories']
+        if replica_zones is None and 'replicaZones' in kwargs:
+            replica_zones = kwargs['replicaZones']
         if running_timeout is None and 'runningTimeout' in kwargs:
             running_timeout = kwargs['runningTimeout']
+        if terraform_labels is None and 'terraformLabels' in kwargs:
+            terraform_labels = kwargs['terraformLabels']
         if workstation_cluster_id is None and 'workstationClusterId' in kwargs:
             workstation_cluster_id = kwargs['workstationClusterId']
         if workstation_config_id is None and 'workstationConfigId' in kwargs:
@@ -441,6 +529,12 @@ class _WorkstationConfigState:
             _setter("degraded", degraded)
         if display_name is not None:
             _setter("display_name", display_name)
+        if effective_annotations is not None:
+            _setter("effective_annotations", effective_annotations)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
+        if enable_audit_agent is not None:
+            _setter("enable_audit_agent", enable_audit_agent)
         if encryption_key is not None:
             _setter("encryption_key", encryption_key)
         if etag is not None:
@@ -459,8 +553,12 @@ class _WorkstationConfigState:
             _setter("persistent_directories", persistent_directories)
         if project is not None:
             _setter("project", project)
+        if replica_zones is not None:
+            _setter("replica_zones", replica_zones)
         if running_timeout is not None:
             _setter("running_timeout", running_timeout)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if uid is not None:
             _setter("uid", uid)
         if workstation_cluster_id is not None:
@@ -473,6 +571,8 @@ class _WorkstationConfigState:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Client-specified annotations. This is distinct from labels.
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -543,6 +643,44 @@ class _WorkstationConfigState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @effective_annotations.setter
+    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_annotations", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
+    @pulumi.getter(name="enableAuditAgent")
+    def enable_audit_agent(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
+        """
+        return pulumi.get(self, "enable_audit_agent")
+
+    @enable_audit_agent.setter
+    def enable_audit_agent(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_audit_agent", value)
+
+    @property
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> Optional[pulumi.Input['WorkstationConfigEncryptionKeyArgs']]:
         """
@@ -602,6 +740,8 @@ class _WorkstationConfigState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -663,6 +803,19 @@ class _WorkstationConfigState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="replicaZones")
+    def replica_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
+        If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+        """
+        return pulumi.get(self, "replica_zones")
+
+    @replica_zones.setter
+    def replica_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "replica_zones", value)
+
+    @property
     @pulumi.getter(name="runningTimeout")
     def running_timeout(self) -> Optional[pulumi.Input[str]]:
         """
@@ -674,6 +827,19 @@ class _WorkstationConfigState:
     @running_timeout.setter
     def running_timeout(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "running_timeout", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -720,6 +886,7 @@ class WorkstationConfig(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  container: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigContainerArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 enable_audit_agent: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigEncryptionKeyArgs']]] = None,
                  host: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigHostArgs']]] = None,
                  idle_timeout: Optional[pulumi.Input[str]] = None,
@@ -727,6 +894,7 @@ class WorkstationConfig(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigPersistentDirectoryArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  running_timeout: Optional[pulumi.Input[str]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None,
                  workstation_config_id: Optional[pulumi.Input[str]] = None,
@@ -764,6 +932,16 @@ class WorkstationConfig(pulumi.CustomResource):
             location="us-central1",
             idle_timeout="600s",
             running_timeout="21600s",
+            replica_zones=[
+                "us-central1-a",
+                "us-central1-b",
+            ],
+            annotations={
+                "label-one": "value-one",
+            },
+            labels={
+                "label": "key",
+            },
             host=gcp.workstations.WorkstationConfigHostArgs(
                 gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
                     machine_type="e2-standard-4",
@@ -1069,9 +1247,12 @@ class WorkstationConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['WorkstationConfigContainerArgs']] container: Container that will be run for each workstation using this configuration when that workstation is started.
                Structure is documented below.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
+        :param pulumi.Input[bool] enable_audit_agent: Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
         :param pulumi.Input[pulumi.InputType['WorkstationConfigEncryptionKeyArgs']] encryption_key: Encrypts resources of this workstation configuration using a customer-managed encryption key.
                If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata.
                If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost.
@@ -1082,6 +1263,8 @@ class WorkstationConfig(pulumi.CustomResource):
         :param pulumi.Input[str] idle_timeout: How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the workstation cluster config should reside.
                
                
@@ -1090,6 +1273,8 @@ class WorkstationConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
+               If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
         :param pulumi.Input[str] running_timeout: How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param pulumi.Input[str] workstation_cluster_id: The ID of the parent workstation cluster.
@@ -1134,6 +1319,16 @@ class WorkstationConfig(pulumi.CustomResource):
             location="us-central1",
             idle_timeout="600s",
             running_timeout="21600s",
+            replica_zones=[
+                "us-central1-a",
+                "us-central1-b",
+            ],
+            annotations={
+                "label-one": "value-one",
+            },
+            labels={
+                "label": "key",
+            },
             host=gcp.workstations.WorkstationConfigHostArgs(
                 gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
                     machine_type="e2-standard-4",
@@ -1458,6 +1653,7 @@ class WorkstationConfig(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  container: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigContainerArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 enable_audit_agent: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigEncryptionKeyArgs']]] = None,
                  host: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigHostArgs']]] = None,
                  idle_timeout: Optional[pulumi.Input[str]] = None,
@@ -1465,6 +1661,7 @@ class WorkstationConfig(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigPersistentDirectoryArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  running_timeout: Optional[pulumi.Input[str]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None,
                  workstation_config_id: Optional[pulumi.Input[str]] = None,
@@ -1481,6 +1678,7 @@ class WorkstationConfig(pulumi.CustomResource):
             container = _utilities.configure(container, WorkstationConfigContainerArgs, True)
             __props__.__dict__["container"] = container
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["enable_audit_agent"] = enable_audit_agent
             encryption_key = _utilities.configure(encryption_key, WorkstationConfigEncryptionKeyArgs, True)
             __props__.__dict__["encryption_key"] = encryption_key
             host = _utilities.configure(host, WorkstationConfigHostArgs, True)
@@ -1492,6 +1690,7 @@ class WorkstationConfig(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["persistent_directories"] = persistent_directories
             __props__.__dict__["project"] = project
+            __props__.__dict__["replica_zones"] = replica_zones
             __props__.__dict__["running_timeout"] = running_timeout
             if workstation_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workstation_cluster_id'")
@@ -1502,8 +1701,11 @@ class WorkstationConfig(pulumi.CustomResource):
             __props__.__dict__["conditions"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["degraded"] = None
+            __props__.__dict__["effective_annotations"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["uid"] = None
         super(WorkstationConfig, __self__).__init__(
             'gcp:workstations/workstationConfig:WorkstationConfig',
@@ -1521,6 +1723,9 @@ class WorkstationConfig(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             degraded: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            enable_audit_agent: Optional[pulumi.Input[bool]] = None,
             encryption_key: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigEncryptionKeyArgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             host: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigHostArgs']]] = None,
@@ -1530,7 +1735,9 @@ class WorkstationConfig(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigPersistentDirectoryArgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             running_timeout: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             workstation_cluster_id: Optional[pulumi.Input[str]] = None,
             workstation_config_id: Optional[pulumi.Input[str]] = None) -> 'WorkstationConfig':
@@ -1542,6 +1749,8 @@ class WorkstationConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigConditionArgs']]]] conditions: Status conditions describing the current resource state.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['WorkstationConfigContainerArgs']] container: Container that will be run for each workstation using this configuration when that workstation is started.
@@ -1549,6 +1758,11 @@ class WorkstationConfig(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Time when this resource was created.
         :param pulumi.Input[bool] degraded: Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
+        :param pulumi.Input[bool] enable_audit_agent: Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
         :param pulumi.Input[pulumi.InputType['WorkstationConfigEncryptionKeyArgs']] encryption_key: Encrypts resources of this workstation configuration using a customer-managed encryption key.
                If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata.
                If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost.
@@ -1561,6 +1775,8 @@ class WorkstationConfig(pulumi.CustomResource):
         :param pulumi.Input[str] idle_timeout: How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the workstation cluster config should reside.
                
                
@@ -1570,8 +1786,12 @@ class WorkstationConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
+               If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
         :param pulumi.Input[str] running_timeout: How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         :param pulumi.Input[str] workstation_cluster_id: The ID of the parent workstation cluster.
         :param pulumi.Input[str] workstation_config_id: The ID to be assigned to the workstation cluster config.
@@ -1586,6 +1806,9 @@ class WorkstationConfig(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["degraded"] = degraded
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_annotations"] = effective_annotations
+        __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["enable_audit_agent"] = enable_audit_agent
         __props__.__dict__["encryption_key"] = encryption_key
         __props__.__dict__["etag"] = etag
         __props__.__dict__["host"] = host
@@ -1595,7 +1818,9 @@ class WorkstationConfig(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["persistent_directories"] = persistent_directories
         __props__.__dict__["project"] = project
+        __props__.__dict__["replica_zones"] = replica_zones
         __props__.__dict__["running_timeout"] = running_timeout
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["uid"] = uid
         __props__.__dict__["workstation_cluster_id"] = workstation_cluster_id
         __props__.__dict__["workstation_config_id"] = workstation_config_id
@@ -1606,6 +1831,8 @@ class WorkstationConfig(pulumi.CustomResource):
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Client-specified annotations. This is distinct from labels.
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -1652,6 +1879,32 @@ class WorkstationConfig(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
+    @pulumi.getter(name="enableAuditAgent")
+    def enable_audit_agent(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
+        """
+        return pulumi.get(self, "enable_audit_agent")
+
+    @property
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> pulumi.Output[Optional['outputs.WorkstationConfigEncryptionKey']]:
         """
@@ -1695,6 +1948,8 @@ class WorkstationConfig(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1736,6 +1991,15 @@ class WorkstationConfig(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="replicaZones")
+    def replica_zones(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
+        If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+        """
+        return pulumi.get(self, "replica_zones")
+
+    @property
     @pulumi.getter(name="runningTimeout")
     def running_timeout(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1743,6 +2007,15 @@ class WorkstationConfig(pulumi.CustomResource):
         A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         """
         return pulumi.get(self, "running_timeout")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

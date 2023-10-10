@@ -9,6 +9,7 @@ import com.pulumi.gcp.dataproc.inputs.WorkflowTemplateJobArgs;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplateParameterArgs;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementArgs;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -49,6 +50,23 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> dagTimeout() {
         return Optional.ofNullable(this.dagTimeout);
+    }
+
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,Object>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
     }
 
     /**
@@ -157,6 +175,21 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,Object>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
+    }
+
+    /**
      * Output only. The time template was last updated.
      * 
      */
@@ -199,6 +232,7 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
     private WorkflowTemplateState(WorkflowTemplateState $) {
         this.createTime = $.createTime;
         this.dagTimeout = $.dagTimeout;
+        this.effectiveLabels = $.effectiveLabels;
         this.jobs = $.jobs;
         this.labels = $.labels;
         this.location = $.location;
@@ -206,6 +240,7 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         this.parameters = $.parameters;
         this.placement = $.placement;
         this.project = $.project;
+        this.terraformLabels = $.terraformLabels;
         this.updateTime = $.updateTime;
         this.version = $.version;
     }
@@ -268,6 +303,29 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
          */
         public Builder dagTimeout(String dagTimeout) {
             return dagTimeout(Output.of(dagTimeout));
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,Object>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,Object> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
         }
 
         /**
@@ -435,6 +493,27 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(@Nullable Output<Map<String,Object>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
+            return this;
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(Map<String,Object> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

@@ -23,6 +23,7 @@ class AwsClusterArgs:
                  location: pulumi.Input[str],
                  networking: pulumi.Input['AwsClusterNetworkingArgs'],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 binary_authorization: Optional[pulumi.Input['AwsClusterBinaryAuthorizationArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  logging_config: Optional[pulumi.Input['AwsClusterLoggingConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -36,6 +37,10 @@ class AwsClusterArgs:
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input['AwsClusterNetworkingArgs'] networking: Cluster-wide networking configuration.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input['AwsClusterBinaryAuthorizationArgs'] binary_authorization: Configuration options for the Binary Authorization feature.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input['AwsClusterLoggingConfigArgs'] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
@@ -50,6 +55,7 @@ class AwsClusterArgs:
             location=location,
             networking=networking,
             annotations=annotations,
+            binary_authorization=binary_authorization,
             description=description,
             logging_config=logging_config,
             name=name,
@@ -65,6 +71,7 @@ class AwsClusterArgs:
              location: Optional[pulumi.Input[str]] = None,
              networking: Optional[pulumi.Input['AwsClusterNetworkingArgs']] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             binary_authorization: Optional[pulumi.Input['AwsClusterBinaryAuthorizationArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              logging_config: Optional[pulumi.Input['AwsClusterLoggingConfigArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -87,6 +94,8 @@ class AwsClusterArgs:
             raise TypeError("Missing 'location' argument")
         if networking is None:
             raise TypeError("Missing 'networking' argument")
+        if binary_authorization is None and 'binaryAuthorization' in kwargs:
+            binary_authorization = kwargs['binaryAuthorization']
         if logging_config is None and 'loggingConfig' in kwargs:
             logging_config = kwargs['loggingConfig']
 
@@ -98,6 +107,8 @@ class AwsClusterArgs:
         _setter("networking", networking)
         if annotations is not None:
             _setter("annotations", annotations)
+        if binary_authorization is not None:
+            _setter("binary_authorization", binary_authorization)
         if description is not None:
             _setter("description", description)
         if logging_config is not None:
@@ -184,12 +195,27 @@ class AwsClusterArgs:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
     def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter(name="binaryAuthorization")
+    def binary_authorization(self) -> Optional[pulumi.Input['AwsClusterBinaryAuthorizationArgs']]:
+        """
+        Configuration options for the Binary Authorization feature.
+        """
+        return pulumi.get(self, "binary_authorization")
+
+    @binary_authorization.setter
+    def binary_authorization(self, value: Optional[pulumi.Input['AwsClusterBinaryAuthorizationArgs']]):
+        pulumi.set(self, "binary_authorization", value)
 
     @property
     @pulumi.getter
@@ -246,9 +272,11 @@ class _AwsClusterState:
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  authorization: Optional[pulumi.Input['AwsClusterAuthorizationArgs']] = None,
                  aws_region: Optional[pulumi.Input[str]] = None,
+                 binary_authorization: Optional[pulumi.Input['AwsClusterBinaryAuthorizationArgs']] = None,
                  control_plane: Optional[pulumi.Input['AwsClusterControlPlaneArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  fleet: Optional[pulumi.Input['AwsClusterFleetArgs']] = None,
@@ -265,11 +293,17 @@ class _AwsClusterState:
         """
         Input properties used for looking up and filtering AwsCluster resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['AwsClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[str] aws_region: The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
+        :param pulumi.Input['AwsClusterBinaryAuthorizationArgs'] binary_authorization: Configuration options for the Binary Authorization feature.
         :param pulumi.Input['AwsClusterControlPlaneArgs'] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
+        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
         :param pulumi.Input[str] endpoint: Output only. The endpoint of the cluster's API server.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input['AwsClusterFleetArgs'] fleet: Fleet configuration.
@@ -289,9 +323,11 @@ class _AwsClusterState:
             annotations=annotations,
             authorization=authorization,
             aws_region=aws_region,
+            binary_authorization=binary_authorization,
             control_plane=control_plane,
             create_time=create_time,
             description=description,
+            effective_annotations=effective_annotations,
             endpoint=endpoint,
             etag=etag,
             fleet=fleet,
@@ -312,9 +348,11 @@ class _AwsClusterState:
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              authorization: Optional[pulumi.Input['AwsClusterAuthorizationArgs']] = None,
              aws_region: Optional[pulumi.Input[str]] = None,
+             binary_authorization: Optional[pulumi.Input['AwsClusterBinaryAuthorizationArgs']] = None,
              control_plane: Optional[pulumi.Input['AwsClusterControlPlaneArgs']] = None,
              create_time: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
+             effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              endpoint: Optional[pulumi.Input[str]] = None,
              etag: Optional[pulumi.Input[str]] = None,
              fleet: Optional[pulumi.Input['AwsClusterFleetArgs']] = None,
@@ -332,10 +370,14 @@ class _AwsClusterState:
              **kwargs):
         if aws_region is None and 'awsRegion' in kwargs:
             aws_region = kwargs['awsRegion']
+        if binary_authorization is None and 'binaryAuthorization' in kwargs:
+            binary_authorization = kwargs['binaryAuthorization']
         if control_plane is None and 'controlPlane' in kwargs:
             control_plane = kwargs['controlPlane']
         if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
+        if effective_annotations is None and 'effectiveAnnotations' in kwargs:
+            effective_annotations = kwargs['effectiveAnnotations']
         if logging_config is None and 'loggingConfig' in kwargs:
             logging_config = kwargs['loggingConfig']
         if update_time is None and 'updateTime' in kwargs:
@@ -349,12 +391,16 @@ class _AwsClusterState:
             _setter("authorization", authorization)
         if aws_region is not None:
             _setter("aws_region", aws_region)
+        if binary_authorization is not None:
+            _setter("binary_authorization", binary_authorization)
         if control_plane is not None:
             _setter("control_plane", control_plane)
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:
             _setter("description", description)
+        if effective_annotations is not None:
+            _setter("effective_annotations", effective_annotations)
         if endpoint is not None:
             _setter("endpoint", endpoint)
         if etag is not None:
@@ -387,6 +433,9 @@ class _AwsClusterState:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -417,6 +466,18 @@ class _AwsClusterState:
     @aws_region.setter
     def aws_region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "aws_region", value)
+
+    @property
+    @pulumi.getter(name="binaryAuthorization")
+    def binary_authorization(self) -> Optional[pulumi.Input['AwsClusterBinaryAuthorizationArgs']]:
+        """
+        Configuration options for the Binary Authorization feature.
+        """
+        return pulumi.get(self, "binary_authorization")
+
+    @binary_authorization.setter
+    def binary_authorization(self, value: Optional[pulumi.Input['AwsClusterBinaryAuthorizationArgs']]):
+        pulumi.set(self, "binary_authorization", value)
 
     @property
     @pulumi.getter(name="controlPlane")
@@ -453,6 +514,19 @@ class _AwsClusterState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @effective_annotations.setter
+    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "effective_annotations", value)
 
     @property
     @pulumi.getter
@@ -619,6 +693,7 @@ class AwsCluster(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  authorization: Optional[pulumi.Input[pulumi.InputType['AwsClusterAuthorizationArgs']]] = None,
                  aws_region: Optional[pulumi.Input[str]] = None,
+                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['AwsClusterBinaryAuthorizationArgs']]] = None,
                  control_plane: Optional[pulumi.Input[pulumi.InputType['AwsClusterControlPlaneArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fleet: Optional[pulumi.Input[pulumi.InputType['AwsClusterFleetArgs']]] = None,
@@ -873,8 +948,12 @@ class AwsCluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['AwsClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[str] aws_region: The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
+        :param pulumi.Input[pulumi.InputType['AwsClusterBinaryAuthorizationArgs']] binary_authorization: Configuration options for the Binary Authorization feature.
         :param pulumi.Input[pulumi.InputType['AwsClusterControlPlaneArgs']] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[pulumi.InputType['AwsClusterFleetArgs']] fleet: Fleet configuration.
@@ -1154,6 +1233,7 @@ class AwsCluster(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  authorization: Optional[pulumi.Input[pulumi.InputType['AwsClusterAuthorizationArgs']]] = None,
                  aws_region: Optional[pulumi.Input[str]] = None,
+                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['AwsClusterBinaryAuthorizationArgs']]] = None,
                  control_plane: Optional[pulumi.Input[pulumi.InputType['AwsClusterControlPlaneArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fleet: Optional[pulumi.Input[pulumi.InputType['AwsClusterFleetArgs']]] = None,
@@ -1179,6 +1259,8 @@ class AwsCluster(pulumi.CustomResource):
             if aws_region is None and not opts.urn:
                 raise TypeError("Missing required property 'aws_region'")
             __props__.__dict__["aws_region"] = aws_region
+            binary_authorization = _utilities.configure(binary_authorization, AwsClusterBinaryAuthorizationArgs, True)
+            __props__.__dict__["binary_authorization"] = binary_authorization
             control_plane = _utilities.configure(control_plane, AwsClusterControlPlaneArgs, True)
             if control_plane is None and not opts.urn:
                 raise TypeError("Missing required property 'control_plane'")
@@ -1200,6 +1282,7 @@ class AwsCluster(pulumi.CustomResource):
             __props__.__dict__["networking"] = networking
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_annotations"] = None
             __props__.__dict__["endpoint"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["reconciling"] = None
@@ -1220,9 +1303,11 @@ class AwsCluster(pulumi.CustomResource):
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             authorization: Optional[pulumi.Input[pulumi.InputType['AwsClusterAuthorizationArgs']]] = None,
             aws_region: Optional[pulumi.Input[str]] = None,
+            binary_authorization: Optional[pulumi.Input[pulumi.InputType['AwsClusterBinaryAuthorizationArgs']]] = None,
             control_plane: Optional[pulumi.Input[pulumi.InputType['AwsClusterControlPlaneArgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             fleet: Optional[pulumi.Input[pulumi.InputType['AwsClusterFleetArgs']]] = None,
@@ -1244,11 +1329,17 @@ class AwsCluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['AwsClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[str] aws_region: The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
+        :param pulumi.Input[pulumi.InputType['AwsClusterBinaryAuthorizationArgs']] binary_authorization: Configuration options for the Binary Authorization feature.
         :param pulumi.Input[pulumi.InputType['AwsClusterControlPlaneArgs']] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
+        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
         :param pulumi.Input[str] endpoint: Output only. The endpoint of the cluster's API server.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[pulumi.InputType['AwsClusterFleetArgs']] fleet: Fleet configuration.
@@ -1270,9 +1361,11 @@ class AwsCluster(pulumi.CustomResource):
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["authorization"] = authorization
         __props__.__dict__["aws_region"] = aws_region
+        __props__.__dict__["binary_authorization"] = binary_authorization
         __props__.__dict__["control_plane"] = control_plane
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["endpoint"] = endpoint
         __props__.__dict__["etag"] = etag
         __props__.__dict__["fleet"] = fleet
@@ -1293,6 +1386,9 @@ class AwsCluster(pulumi.CustomResource):
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -1311,6 +1407,14 @@ class AwsCluster(pulumi.CustomResource):
         The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
         """
         return pulumi.get(self, "aws_region")
+
+    @property
+    @pulumi.getter(name="binaryAuthorization")
+    def binary_authorization(self) -> pulumi.Output['outputs.AwsClusterBinaryAuthorization']:
+        """
+        Configuration options for the Binary Authorization feature.
+        """
+        return pulumi.get(self, "binary_authorization")
 
     @property
     @pulumi.getter(name="controlPlane")
@@ -1335,6 +1439,15 @@ class AwsCluster(pulumi.CustomResource):
         Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
 
     @property
     @pulumi.getter

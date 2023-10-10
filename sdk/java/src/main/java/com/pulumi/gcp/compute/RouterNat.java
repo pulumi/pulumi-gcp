@@ -241,6 +241,110 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Router Nat Private
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.Router;
+ * import com.pulumi.gcp.compute.RouterArgs;
+ * import com.pulumi.gcp.networkconnectivity.Hub;
+ * import com.pulumi.gcp.networkconnectivity.HubArgs;
+ * import com.pulumi.gcp.networkconnectivity.Spoke;
+ * import com.pulumi.gcp.networkconnectivity.SpokeArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedVpcNetworkArgs;
+ * import com.pulumi.gcp.compute.RouterNat;
+ * import com.pulumi.gcp.compute.RouterNatArgs;
+ * import com.pulumi.gcp.compute.inputs.RouterNatSubnetworkArgs;
+ * import com.pulumi.gcp.compute.inputs.RouterNatRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RouterNatRuleActionArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var net = new Network(&#34;net&#34;, NetworkArgs.Empty, CustomResourceOptions.builder()
+ *             .provider(google_beta)
+ *             .build());
+ * 
+ *         var subnet = new Subnetwork(&#34;subnet&#34;, SubnetworkArgs.builder()        
+ *             .network(net.id())
+ *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .purpose(&#34;PRIVATE_NAT&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var router = new Router(&#34;router&#34;, RouterArgs.builder()        
+ *             .region(subnet.region())
+ *             .network(net.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var hub = new Hub(&#34;hub&#34;, HubArgs.builder()        
+ *             .description(&#34;vpc hub for inter vpc nat&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var spoke = new Spoke(&#34;spoke&#34;, SpokeArgs.builder()        
+ *             .location(&#34;global&#34;)
+ *             .description(&#34;vpc spoke for inter vpc nat&#34;)
+ *             .hub(hub.id())
+ *             .linkedVpcNetwork(SpokeLinkedVpcNetworkArgs.builder()
+ *                 .excludeExportRanges(                
+ *                     &#34;198.51.100.0/24&#34;,
+ *                     &#34;10.10.0.0/16&#34;)
+ *                 .uri(net.selfLink())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var natType = new RouterNat(&#34;natType&#34;, RouterNatArgs.builder()        
+ *             .router(router.name())
+ *             .region(router.region())
+ *             .sourceSubnetworkIpRangesToNat(&#34;LIST_OF_SUBNETWORKS&#34;)
+ *             .enableDynamicPortAllocation(false)
+ *             .enableEndpointIndependentMapping(false)
+ *             .minPortsPerVm(32)
+ *             .type(&#34;PRIVATE&#34;)
+ *             .subnetworks(RouterNatSubnetworkArgs.builder()
+ *                 .name(subnet.id())
+ *                 .sourceIpRangesToNats(&#34;ALL_IP_RANGES&#34;)
+ *                 .build())
+ *             .rules(RouterNatRuleArgs.builder()
+ *                 .ruleNumber(100)
+ *                 .description(&#34;rule for private nat&#34;)
+ *                 .match(&#34;nexthop.hub == \&#34;//networkconnectivity.googleapis.com/projects/acm-test-proj-123/locations/global/hubs/my-hub\&#34;&#34;)
+ *                 .action(RouterNatRuleActionArgs.builder()
+ *                     .sourceNatActiveRanges(subnet.selfLink())
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -306,20 +410,20 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
         return this.enableDynamicPortAllocation;
     }
     /**
-     * Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
-     * see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+     * Enable endpoint independent mapping.
+     * For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
      * 
      */
     @Export(name="enableEndpointIndependentMapping", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enableEndpointIndependentMapping;
+    private Output<Boolean> enableEndpointIndependentMapping;
 
     /**
-     * @return Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
-     * see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+     * @return Enable endpoint independent mapping.
+     * For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
      * 
      */
-    public Output<Optional<Boolean>> enableEndpointIndependentMapping() {
-        return Codegen.optional(this.enableEndpointIndependentMapping);
+    public Output<Boolean> enableEndpointIndependentMapping() {
+        return this.enableEndpointIndependentMapping;
     }
     /**
      * Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
@@ -405,7 +509,7 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="natIpAllocateOption", refs={String.class}, tree="[0]")
-    private Output<String> natIpAllocateOption;
+    private Output</* @Nullable */ String> natIpAllocateOption;
 
     /**
      * @return How external IPs should be allocated for this NAT. Valid values are
@@ -414,8 +518,8 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
      * Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
      * 
      */
-    public Output<String> natIpAllocateOption() {
-        return this.natIpAllocateOption;
+    public Output<Optional<String>> natIpAllocateOption() {
+        return Codegen.optional(this.natIpAllocateOption);
     }
     /**
      * Self-links of NAT IPs. Only valid if natIpAllocateOption
@@ -596,6 +700,24 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> tcpTransitoryIdleTimeoutSec() {
         return Codegen.optional(this.tcpTransitoryIdleTimeoutSec);
+    }
+    /**
+     * Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
+     * &#39;PUBLIC&#39; NAT used for public IP translation. If &#39;PRIVATE&#39; NAT used for private IP translation. Default value: &#34;PUBLIC&#34;
+     * Possible values: [&#34;PUBLIC&#34;, &#34;PRIVATE&#34;]
+     * 
+     */
+    @Export(name="type", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> type;
+
+    /**
+     * @return Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
+     * &#39;PUBLIC&#39; NAT used for public IP translation. If &#39;PRIVATE&#39; NAT used for private IP translation. Default value: &#34;PUBLIC&#34;
+     * Possible values: [&#34;PUBLIC&#34;, &#34;PRIVATE&#34;]
+     * 
+     */
+    public Output<Optional<String>> type() {
+        return Codegen.optional(this.type);
     }
     /**
      * Timeout (in seconds) for UDP connections. Defaults to 30s if not set.

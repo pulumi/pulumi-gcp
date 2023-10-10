@@ -43,6 +43,7 @@ public final class InstanceCluster {
      * 
      */
     private @Nullable Integer numNodes;
+    private @Nullable String state;
     /**
      * @return The storage type to use. One of `&#34;SSD&#34;` or
      * `&#34;HDD&#34;`. Defaults to `&#34;SSD&#34;`.
@@ -96,6 +97,9 @@ public final class InstanceCluster {
     public Optional<Integer> numNodes() {
         return Optional.ofNullable(this.numNodes);
     }
+    public Optional<String> state() {
+        return Optional.ofNullable(this.state);
+    }
     /**
      * @return The storage type to use. One of `&#34;SSD&#34;` or
      * `&#34;HDD&#34;`. Defaults to `&#34;SSD&#34;`.
@@ -127,6 +131,7 @@ public final class InstanceCluster {
         private String clusterId;
         private @Nullable String kmsKeyName;
         private @Nullable Integer numNodes;
+        private @Nullable String state;
         private @Nullable String storageType;
         private @Nullable String zone;
         public Builder() {}
@@ -136,6 +141,7 @@ public final class InstanceCluster {
     	      this.clusterId = defaults.clusterId;
     	      this.kmsKeyName = defaults.kmsKeyName;
     	      this.numNodes = defaults.numNodes;
+    	      this.state = defaults.state;
     	      this.storageType = defaults.storageType;
     	      this.zone = defaults.zone;
         }
@@ -161,6 +167,11 @@ public final class InstanceCluster {
             return this;
         }
         @CustomType.Setter
+        public Builder state(@Nullable String state) {
+            this.state = state;
+            return this;
+        }
+        @CustomType.Setter
         public Builder storageType(@Nullable String storageType) {
             this.storageType = storageType;
             return this;
@@ -176,6 +187,7 @@ public final class InstanceCluster {
             o.clusterId = clusterId;
             o.kmsKeyName = kmsKeyName;
             o.numNodes = numNodes;
+            o.state = state;
             o.storageType = storageType;
             o.zone = zone;
             return o;
