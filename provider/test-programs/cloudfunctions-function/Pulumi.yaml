@@ -6,7 +6,7 @@ resources:
         properties:
             bucket: ${bucket.name}
             source:
-                fn::fileAsset: ./src/src.zip
+                fn::fileArchive: ./src
         type: gcp:storage:BucketObject
     bucket:
         options:
