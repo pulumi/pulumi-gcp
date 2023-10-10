@@ -396,4 +396,5 @@ on:
       - CHANGELOG.md
   repository_dispatch:
     types:
-      - run-acceptance-tests-command
+    - run-acceptance-tests-command
+
