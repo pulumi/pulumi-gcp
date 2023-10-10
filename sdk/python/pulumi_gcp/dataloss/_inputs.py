@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -340,12 +340,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigArgs:
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs'] record_transformations: Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            image_transformations=image_transformations,
+            info_type_transformations=info_type_transformations,
+            record_transformations=record_transformations,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             image_transformations: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs']] = None,
+             info_type_transformations: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs']] = None,
+             record_transformations: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if image_transformations is not None:
-            pulumi.set(__self__, "image_transformations", image_transformations)
+            _setter("image_transformations", image_transformations)
         if info_type_transformations is not None:
-            pulumi.set(__self__, "info_type_transformations", info_type_transformations)
+            _setter("info_type_transformations", info_type_transformations)
         if record_transformations is not None:
-            pulumi.set(__self__, "record_transformations", record_transformations)
+            _setter("record_transformations", record_transformations)
 
     @property
     @pulumi.getter(name="imageTransformations")
@@ -395,7 +408,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs']]] transforms: For determination of how redaction of images should occur.
                Structure is documented below.
         """
-        pulumi.set(__self__, "transforms", transforms)
+        PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            transforms=transforms,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             transforms: pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs']]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("transforms", transforms)
 
     @property
     @pulumi.getter
@@ -426,14 +448,29 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformA
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs'] selected_info_types: Apply transformation to the selected infoTypes.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            all_info_types=all_info_types,
+            all_text=all_text,
+            redaction_color=redaction_color,
+            selected_info_types=selected_info_types,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             all_info_types: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArgs']] = None,
+             all_text: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArgs']] = None,
+             redaction_color: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs']] = None,
+             selected_info_types: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if all_info_types is not None:
-            pulumi.set(__self__, "all_info_types", all_info_types)
+            _setter("all_info_types", all_info_types)
         if all_text is not None:
-            pulumi.set(__self__, "all_text", all_text)
+            _setter("all_text", all_text)
         if redaction_color is not None:
-            pulumi.set(__self__, "redaction_color", redaction_color)
+            _setter("redaction_color", redaction_color)
         if selected_info_types is not None:
-            pulumi.set(__self__, "selected_info_types", selected_info_types)
+            _setter("selected_info_types", selected_info_types)
 
     @property
     @pulumi.getter(name="allInfoTypes")
@@ -490,11 +527,21 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformA
 class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArgs:
     def __init__(__self__):
         pass
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        pass
 
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArgs:
     def __init__(__self__):
+        pass
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             opts: Optional[pulumi.ResourceOptions]=None):
         pass
 
 
@@ -509,12 +556,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformR
         :param pulumi.Input[float] green: The amount of green in the color as a value in the interval [0, 1].
         :param pulumi.Input[float] red: The amount of red in the color as a value in the interval [0, 1].
         """
+        PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            blue=blue,
+            green=green,
+            red=red,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             blue: Optional[pulumi.Input[float]] = None,
+             green: Optional[pulumi.Input[float]] = None,
+             red: Optional[pulumi.Input[float]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if blue is not None:
-            pulumi.set(__self__, "blue", blue)
+            _setter("blue", blue)
         if green is not None:
-            pulumi.set(__self__, "green", green)
+            _setter("green", green)
         if red is not None:
-            pulumi.set(__self__, "red", red)
+            _setter("red", red)
 
     @property
     @pulumi.getter
@@ -562,7 +622,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformS
                all findings that correspond to infoTypes that were requested in InspectConfig.
                Structure is documented below.
         """
-        pulumi.set(__self__, "info_types", info_types)
+        PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            info_types=info_types,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             info_types: pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgs']]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("info_types", info_types)
 
     @property
     @pulumi.getter(name="infoTypes")
@@ -591,11 +660,24 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformS
                Structure is documented below.
         :param pulumi.Input[str] version: Version name for this InfoType.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            sensitivity_score=sensitivity_score,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             sensitivity_score: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeSensitivityScoreArgs']] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if sensitivity_score is not None:
-            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+            _setter("sensitivity_score", sensitivity_score)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -643,7 +725,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformS
         :param pulumi.Input[str] score: The sensitivity score applied to the resource.
                Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
         """
-        pulumi.set(__self__, "score", score)
+        PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeSensitivityScoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            score=score,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             score: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("score", score)
 
     @property
     @pulumi.getter
@@ -667,7 +758,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs']]] transformations: Transformation for each infoType. Cannot specify more than one for a given infoType.
                Structure is documented below.
         """
-        pulumi.set(__self__, "transformations", transformations)
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            transformations=transformations,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             transformations: pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs']]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("transformations", transformations)
 
     @property
     @pulumi.getter
@@ -696,9 +796,20 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                all findings that correspond to infoTypes that were requested in InspectConfig.
                Structure is documented below.
         """
-        pulumi.set(__self__, "primitive_transformation", primitive_transformation)
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            primitive_transformation=primitive_transformation,
+            info_types=info_types,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             primitive_transformation: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs'],
+             info_types: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("primitive_transformation", primitive_transformation)
         if info_types is not None:
-            pulumi.set(__self__, "info_types", info_types)
+            _setter("info_types", info_types)
 
     @property
     @pulumi.getter(name="primitiveTransformation")
@@ -741,11 +852,24 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                Structure is documented below.
         :param pulumi.Input[str] version: Version name for this InfoType.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            sensitivity_score=sensitivity_score,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             sensitivity_score: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeSensitivityScoreArgs']] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if sensitivity_score is not None:
-            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+            _setter("sensitivity_score", sensitivity_score)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -793,7 +917,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input[str] score: The sensitivity score applied to the resource.
                Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
         """
-        pulumi.set(__self__, "score", score)
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeSensitivityScoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            score=score,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             score: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("score", score)
 
     @property
     @pulumi.getter
@@ -859,30 +992,61 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfigArgs'] time_part_config: For use with Date, Timestamp, and TimeOfDay, extract or preserve a portion of the value.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucketing_config=bucketing_config,
+            character_mask_config=character_mask_config,
+            crypto_deterministic_config=crypto_deterministic_config,
+            crypto_hash_config=crypto_hash_config,
+            crypto_replace_ffx_fpe_config=crypto_replace_ffx_fpe_config,
+            date_shift_config=date_shift_config,
+            fixed_size_bucketing_config=fixed_size_bucketing_config,
+            redact_config=redact_config,
+            replace_config=replace_config,
+            replace_dictionary_config=replace_dictionary_config,
+            replace_with_info_type_config=replace_with_info_type_config,
+            time_part_config=time_part_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucketing_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArgs']] = None,
+             character_mask_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs']] = None,
+             crypto_deterministic_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs']] = None,
+             crypto_hash_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArgs']] = None,
+             crypto_replace_ffx_fpe_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs']] = None,
+             date_shift_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgs']] = None,
+             fixed_size_bucketing_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArgs']] = None,
+             redact_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArgs']] = None,
+             replace_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs']] = None,
+             replace_dictionary_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgs']] = None,
+             replace_with_info_type_config: Optional[pulumi.Input[bool]] = None,
+             time_part_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bucketing_config is not None:
-            pulumi.set(__self__, "bucketing_config", bucketing_config)
+            _setter("bucketing_config", bucketing_config)
         if character_mask_config is not None:
-            pulumi.set(__self__, "character_mask_config", character_mask_config)
+            _setter("character_mask_config", character_mask_config)
         if crypto_deterministic_config is not None:
-            pulumi.set(__self__, "crypto_deterministic_config", crypto_deterministic_config)
+            _setter("crypto_deterministic_config", crypto_deterministic_config)
         if crypto_hash_config is not None:
-            pulumi.set(__self__, "crypto_hash_config", crypto_hash_config)
+            _setter("crypto_hash_config", crypto_hash_config)
         if crypto_replace_ffx_fpe_config is not None:
-            pulumi.set(__self__, "crypto_replace_ffx_fpe_config", crypto_replace_ffx_fpe_config)
+            _setter("crypto_replace_ffx_fpe_config", crypto_replace_ffx_fpe_config)
         if date_shift_config is not None:
-            pulumi.set(__self__, "date_shift_config", date_shift_config)
+            _setter("date_shift_config", date_shift_config)
         if fixed_size_bucketing_config is not None:
-            pulumi.set(__self__, "fixed_size_bucketing_config", fixed_size_bucketing_config)
+            _setter("fixed_size_bucketing_config", fixed_size_bucketing_config)
         if redact_config is not None:
-            pulumi.set(__self__, "redact_config", redact_config)
+            _setter("redact_config", redact_config)
         if replace_config is not None:
-            pulumi.set(__self__, "replace_config", replace_config)
+            _setter("replace_config", replace_config)
         if replace_dictionary_config is not None:
-            pulumi.set(__self__, "replace_dictionary_config", replace_dictionary_config)
+            _setter("replace_dictionary_config", replace_dictionary_config)
         if replace_with_info_type_config is not None:
-            pulumi.set(__self__, "replace_with_info_type_config", replace_with_info_type_config)
+            _setter("replace_with_info_type_config", replace_with_info_type_config)
         if time_part_config is not None:
-            pulumi.set(__self__, "time_part_config", time_part_config)
+            _setter("time_part_config", time_part_config)
 
     @property
     @pulumi.getter(name="bucketingConfig")
@@ -1059,8 +1223,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                Bucket is represented as a range, along with replacement values.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            buckets=buckets,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             buckets: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if buckets is not None:
-            pulumi.set(__self__, "buckets", buckets)
+            _setter("buckets", buckets)
 
     @property
     @pulumi.getter
@@ -1094,11 +1267,24 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                The `min` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
                Structure is documented below.
         """
-        pulumi.set(__self__, "replacement_value", replacement_value)
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            replacement_value=replacement_value,
+            max=max,
+            min=min,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             replacement_value: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgs'],
+             max: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxArgs']] = None,
+             min: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("replacement_value", replacement_value)
         if max is not None:
-            pulumi.set(__self__, "max", max)
+            _setter("max", max)
         if min is not None:
-            pulumi.set(__self__, "min", min)
+            _setter("min", min)
 
     @property
     @pulumi.getter(name="replacementValue")
@@ -1165,20 +1351,41 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                Structure is documented below.
         :param pulumi.Input[str] timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            date_value=date_value,
+            day_of_week_value=day_of_week_value,
+            float_value=float_value,
+            integer_value=integer_value,
+            string_value=string_value,
+            time_value=time_value,
+            timestamp_value=timestamp_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             date_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgs']] = None,
+             day_of_week_value: Optional[pulumi.Input[str]] = None,
+             float_value: Optional[pulumi.Input[float]] = None,
+             integer_value: Optional[pulumi.Input[str]] = None,
+             string_value: Optional[pulumi.Input[str]] = None,
+             time_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgs']] = None,
+             timestamp_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if date_value is not None:
-            pulumi.set(__self__, "date_value", date_value)
+            _setter("date_value", date_value)
         if day_of_week_value is not None:
-            pulumi.set(__self__, "day_of_week_value", day_of_week_value)
+            _setter("day_of_week_value", day_of_week_value)
         if float_value is not None:
-            pulumi.set(__self__, "float_value", float_value)
+            _setter("float_value", float_value)
         if integer_value is not None:
-            pulumi.set(__self__, "integer_value", integer_value)
+            _setter("integer_value", integer_value)
         if string_value is not None:
-            pulumi.set(__self__, "string_value", string_value)
+            _setter("string_value", string_value)
         if time_value is not None:
-            pulumi.set(__self__, "time_value", time_value)
+            _setter("time_value", time_value)
         if timestamp_value is not None:
-            pulumi.set(__self__, "timestamp_value", timestamp_value)
+            _setter("timestamp_value", timestamp_value)
 
     @property
     @pulumi.getter(name="dateValue")
@@ -1281,12 +1488,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day=day,
+            month=month,
+            year=year,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day: Optional[pulumi.Input[int]] = None,
+             month: Optional[pulumi.Input[int]] = None,
+             year: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if day is not None:
-            pulumi.set(__self__, "day", day)
+            _setter("day", day)
         if month is not None:
-            pulumi.set(__self__, "month", month)
+            _setter("month", month)
         if year is not None:
-            pulumi.set(__self__, "year", year)
+            _setter("year", year)
 
     @property
     @pulumi.getter
@@ -1340,14 +1560,29 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input[int] nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         :param pulumi.Input[int] seconds: Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hours=hours,
+            minutes=minutes,
+            nanos=nanos,
+            seconds=seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hours: Optional[pulumi.Input[int]] = None,
+             minutes: Optional[pulumi.Input[int]] = None,
+             nanos: Optional[pulumi.Input[int]] = None,
+             seconds: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if hours is not None:
-            pulumi.set(__self__, "hours", hours)
+            _setter("hours", hours)
         if minutes is not None:
-            pulumi.set(__self__, "minutes", minutes)
+            _setter("minutes", minutes)
         if nanos is not None:
-            pulumi.set(__self__, "nanos", nanos)
+            _setter("nanos", nanos)
         if seconds is not None:
-            pulumi.set(__self__, "seconds", seconds)
+            _setter("seconds", seconds)
 
     @property
     @pulumi.getter
@@ -1420,20 +1655,41 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                Structure is documented below.
         :param pulumi.Input[str] timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            date_value=date_value,
+            day_of_week_value=day_of_week_value,
+            float_value=float_value,
+            integer_value=integer_value,
+            string_value=string_value,
+            time_value=time_value,
+            timestamp_value=timestamp_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             date_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgs']] = None,
+             day_of_week_value: Optional[pulumi.Input[str]] = None,
+             float_value: Optional[pulumi.Input[float]] = None,
+             integer_value: Optional[pulumi.Input[str]] = None,
+             string_value: Optional[pulumi.Input[str]] = None,
+             time_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgs']] = None,
+             timestamp_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if date_value is not None:
-            pulumi.set(__self__, "date_value", date_value)
+            _setter("date_value", date_value)
         if day_of_week_value is not None:
-            pulumi.set(__self__, "day_of_week_value", day_of_week_value)
+            _setter("day_of_week_value", day_of_week_value)
         if float_value is not None:
-            pulumi.set(__self__, "float_value", float_value)
+            _setter("float_value", float_value)
         if integer_value is not None:
-            pulumi.set(__self__, "integer_value", integer_value)
+            _setter("integer_value", integer_value)
         if string_value is not None:
-            pulumi.set(__self__, "string_value", string_value)
+            _setter("string_value", string_value)
         if time_value is not None:
-            pulumi.set(__self__, "time_value", time_value)
+            _setter("time_value", time_value)
         if timestamp_value is not None:
-            pulumi.set(__self__, "timestamp_value", timestamp_value)
+            _setter("timestamp_value", timestamp_value)
 
     @property
     @pulumi.getter(name="dateValue")
@@ -1536,12 +1792,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day=day,
+            month=month,
+            year=year,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day: Optional[pulumi.Input[int]] = None,
+             month: Optional[pulumi.Input[int]] = None,
+             year: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if day is not None:
-            pulumi.set(__self__, "day", day)
+            _setter("day", day)
         if month is not None:
-            pulumi.set(__self__, "month", month)
+            _setter("month", month)
         if year is not None:
-            pulumi.set(__self__, "year", year)
+            _setter("year", year)
 
     @property
     @pulumi.getter
@@ -1595,14 +1864,29 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input[int] nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         :param pulumi.Input[int] seconds: Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hours=hours,
+            minutes=minutes,
+            nanos=nanos,
+            seconds=seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hours: Optional[pulumi.Input[int]] = None,
+             minutes: Optional[pulumi.Input[int]] = None,
+             nanos: Optional[pulumi.Input[int]] = None,
+             seconds: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if hours is not None:
-            pulumi.set(__self__, "hours", hours)
+            _setter("hours", hours)
         if minutes is not None:
-            pulumi.set(__self__, "minutes", minutes)
+            _setter("minutes", minutes)
         if nanos is not None:
-            pulumi.set(__self__, "nanos", nanos)
+            _setter("nanos", nanos)
         if seconds is not None:
-            pulumi.set(__self__, "seconds", seconds)
+            _setter("seconds", seconds)
 
     @property
     @pulumi.getter
@@ -1675,20 +1959,41 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                Structure is documented below.
         :param pulumi.Input[str] timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            date_value=date_value,
+            day_of_week_value=day_of_week_value,
+            float_value=float_value,
+            integer_value=integer_value,
+            string_value=string_value,
+            time_value=time_value,
+            timestamp_value=timestamp_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             date_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgs']] = None,
+             day_of_week_value: Optional[pulumi.Input[str]] = None,
+             float_value: Optional[pulumi.Input[float]] = None,
+             integer_value: Optional[pulumi.Input[str]] = None,
+             string_value: Optional[pulumi.Input[str]] = None,
+             time_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgs']] = None,
+             timestamp_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if date_value is not None:
-            pulumi.set(__self__, "date_value", date_value)
+            _setter("date_value", date_value)
         if day_of_week_value is not None:
-            pulumi.set(__self__, "day_of_week_value", day_of_week_value)
+            _setter("day_of_week_value", day_of_week_value)
         if float_value is not None:
-            pulumi.set(__self__, "float_value", float_value)
+            _setter("float_value", float_value)
         if integer_value is not None:
-            pulumi.set(__self__, "integer_value", integer_value)
+            _setter("integer_value", integer_value)
         if string_value is not None:
-            pulumi.set(__self__, "string_value", string_value)
+            _setter("string_value", string_value)
         if time_value is not None:
-            pulumi.set(__self__, "time_value", time_value)
+            _setter("time_value", time_value)
         if timestamp_value is not None:
-            pulumi.set(__self__, "timestamp_value", timestamp_value)
+            _setter("timestamp_value", timestamp_value)
 
     @property
     @pulumi.getter(name="dateValue")
@@ -1791,12 +2096,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day=day,
+            month=month,
+            year=year,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day: Optional[pulumi.Input[int]] = None,
+             month: Optional[pulumi.Input[int]] = None,
+             year: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if day is not None:
-            pulumi.set(__self__, "day", day)
+            _setter("day", day)
         if month is not None:
-            pulumi.set(__self__, "month", month)
+            _setter("month", month)
         if year is not None:
-            pulumi.set(__self__, "year", year)
+            _setter("year", year)
 
     @property
     @pulumi.getter
@@ -1850,14 +2168,29 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input[int] nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         :param pulumi.Input[int] seconds: Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hours=hours,
+            minutes=minutes,
+            nanos=nanos,
+            seconds=seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hours: Optional[pulumi.Input[int]] = None,
+             minutes: Optional[pulumi.Input[int]] = None,
+             nanos: Optional[pulumi.Input[int]] = None,
+             seconds: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if hours is not None:
-            pulumi.set(__self__, "hours", hours)
+            _setter("hours", hours)
         if minutes is not None:
-            pulumi.set(__self__, "minutes", minutes)
+            _setter("minutes", minutes)
         if nanos is not None:
-            pulumi.set(__self__, "nanos", nanos)
+            _setter("nanos", nanos)
         if seconds is not None:
-            pulumi.set(__self__, "seconds", seconds)
+            _setter("seconds", seconds)
 
     @property
     @pulumi.getter
@@ -1923,14 +2256,29 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input[bool] reverse_order: Mask characters in reverse order. For example, if masking_character is 0, number_to_mask is 14, and reverse_order is `false`, then the
                input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            characters_to_ignores=characters_to_ignores,
+            masking_character=masking_character,
+            number_to_mask=number_to_mask,
+            reverse_order=reverse_order,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             characters_to_ignores: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs']]]] = None,
+             masking_character: Optional[pulumi.Input[str]] = None,
+             number_to_mask: Optional[pulumi.Input[int]] = None,
+             reverse_order: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if characters_to_ignores is not None:
-            pulumi.set(__self__, "characters_to_ignores", characters_to_ignores)
+            _setter("characters_to_ignores", characters_to_ignores)
         if masking_character is not None:
-            pulumi.set(__self__, "masking_character", masking_character)
+            _setter("masking_character", masking_character)
         if number_to_mask is not None:
-            pulumi.set(__self__, "number_to_mask", number_to_mask)
+            _setter("number_to_mask", number_to_mask)
         if reverse_order is not None:
-            pulumi.set(__self__, "reverse_order", reverse_order)
+            _setter("reverse_order", reverse_order)
 
     @property
     @pulumi.getter(name="charactersToIgnores")
@@ -1993,10 +2341,21 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input[str] common_characters_to_ignore: Common characters to not transform when masking. Useful to avoid removing punctuation. Only one of this or `characters_to_skip` must be specified.
                Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            characters_to_skip=characters_to_skip,
+            common_characters_to_ignore=common_characters_to_ignore,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             characters_to_skip: Optional[pulumi.Input[str]] = None,
+             common_characters_to_ignore: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if characters_to_skip is not None:
-            pulumi.set(__self__, "characters_to_skip", characters_to_skip)
+            _setter("characters_to_skip", characters_to_skip)
         if common_characters_to_ignore is not None:
-            pulumi.set(__self__, "common_characters_to_ignore", common_characters_to_ignore)
+            _setter("common_characters_to_ignore", common_characters_to_ignore)
 
     @property
     @pulumi.getter(name="charactersToSkip")
@@ -2050,12 +2409,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            context=context,
+            crypto_key=crypto_key,
+            surrogate_info_type=surrogate_info_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             context: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs']] = None,
+             crypto_key: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs']] = None,
+             surrogate_info_type: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if context is not None:
-            pulumi.set(__self__, "context", context)
+            _setter("context", context)
         if crypto_key is not None:
-            pulumi.set(__self__, "crypto_key", crypto_key)
+            _setter("crypto_key", crypto_key)
         if surrogate_info_type is not None:
-            pulumi.set(__self__, "surrogate_info_type", surrogate_info_type)
+            _setter("surrogate_info_type", surrogate_info_type)
 
     @property
     @pulumi.getter
@@ -2116,8 +2488,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         """
         :param pulumi.Input[str] name: Name describing the field.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -2149,12 +2530,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs'] unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_wrapped=kms_wrapped,
+            transient=transient,
+            unwrapped=unwrapped,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_wrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs']] = None,
+             transient: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs']] = None,
+             unwrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if kms_wrapped is not None:
-            pulumi.set(__self__, "kms_wrapped", kms_wrapped)
+            _setter("kms_wrapped", kms_wrapped)
         if transient is not None:
-            pulumi.set(__self__, "transient", transient)
+            _setter("transient", transient)
         if unwrapped is not None:
-            pulumi.set(__self__, "unwrapped", unwrapped)
+            _setter("unwrapped", unwrapped)
 
     @property
     @pulumi.getter(name="kmsWrapped")
@@ -2209,8 +2603,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input[str] wrapped_key: The wrapped data crypto key.
                A base64-encoded string.
         """
-        pulumi.set(__self__, "crypto_key_name", crypto_key_name)
-        pulumi.set(__self__, "wrapped_key", wrapped_key)
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            crypto_key_name=crypto_key_name,
+            wrapped_key=wrapped_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             crypto_key_name: pulumi.Input[str],
+             wrapped_key: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("crypto_key_name", crypto_key_name)
+        _setter("wrapped_key", wrapped_key)
 
     @property
     @pulumi.getter(name="cryptoKeyName")
@@ -2245,7 +2650,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         """
         :param pulumi.Input[str] name: Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
         """
-        pulumi.set(__self__, "name", name)
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -2269,7 +2683,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                A base64-encoded string.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
-        pulumi.set(__self__, "key", key)
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
 
     @property
     @pulumi.getter
@@ -2298,12 +2721,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                Structure is documented below.
         :param pulumi.Input[str] version: Optional version name for this InfoType.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            sensitivity_score=sensitivity_score,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             sensitivity_score: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgs']] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if sensitivity_score is not None:
-            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+            _setter("sensitivity_score", sensitivity_score)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -2351,7 +2787,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input[str] score: The sensitivity score applied to the resource.
                Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
         """
-        pulumi.set(__self__, "score", score)
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            score=score,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             score: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("score", score)
 
     @property
     @pulumi.getter
@@ -2375,8 +2820,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgs'] crypto_key: The key used by the encryption function.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            crypto_key=crypto_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             crypto_key: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if crypto_key is not None:
-            pulumi.set(__self__, "crypto_key", crypto_key)
+            _setter("crypto_key", crypto_key)
 
     @property
     @pulumi.getter(name="cryptoKey")
@@ -2409,12 +2863,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgs'] unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_wrapped=kms_wrapped,
+            transient=transient,
+            unwrapped=unwrapped,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_wrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgs']] = None,
+             transient: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgs']] = None,
+             unwrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if kms_wrapped is not None:
-            pulumi.set(__self__, "kms_wrapped", kms_wrapped)
+            _setter("kms_wrapped", kms_wrapped)
         if transient is not None:
-            pulumi.set(__self__, "transient", transient)
+            _setter("transient", transient)
         if unwrapped is not None:
-            pulumi.set(__self__, "unwrapped", unwrapped)
+            _setter("unwrapped", unwrapped)
 
     @property
     @pulumi.getter(name="kmsWrapped")
@@ -2469,8 +2936,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input[str] wrapped_key: The wrapped data crypto key.
                A base64-encoded string.
         """
-        pulumi.set(__self__, "crypto_key_name", crypto_key_name)
-        pulumi.set(__self__, "wrapped_key", wrapped_key)
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            crypto_key_name=crypto_key_name,
+            wrapped_key=wrapped_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             crypto_key_name: pulumi.Input[str],
+             wrapped_key: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("crypto_key_name", crypto_key_name)
+        _setter("wrapped_key", wrapped_key)
 
     @property
     @pulumi.getter(name="cryptoKeyName")
@@ -2505,7 +2983,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         """
         :param pulumi.Input[str] name: Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
         """
-        pulumi.set(__self__, "name", name)
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -2529,7 +3016,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                A base64-encoded string.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
-        pulumi.set(__self__, "key", key)
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
 
     @property
     @pulumi.getter
@@ -2579,18 +3075,37 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            common_alphabet=common_alphabet,
+            context=context,
+            crypto_key=crypto_key,
+            custom_alphabet=custom_alphabet,
+            radix=radix,
+            surrogate_info_type=surrogate_info_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             common_alphabet: Optional[pulumi.Input[str]] = None,
+             context: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs']] = None,
+             crypto_key: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs']] = None,
+             custom_alphabet: Optional[pulumi.Input[str]] = None,
+             radix: Optional[pulumi.Input[int]] = None,
+             surrogate_info_type: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if common_alphabet is not None:
-            pulumi.set(__self__, "common_alphabet", common_alphabet)
+            _setter("common_alphabet", common_alphabet)
         if context is not None:
-            pulumi.set(__self__, "context", context)
+            _setter("context", context)
         if crypto_key is not None:
-            pulumi.set(__self__, "crypto_key", crypto_key)
+            _setter("crypto_key", crypto_key)
         if custom_alphabet is not None:
-            pulumi.set(__self__, "custom_alphabet", custom_alphabet)
+            _setter("custom_alphabet", custom_alphabet)
         if radix is not None:
-            pulumi.set(__self__, "radix", radix)
+            _setter("radix", radix)
         if surrogate_info_type is not None:
-            pulumi.set(__self__, "surrogate_info_type", surrogate_info_type)
+            _setter("surrogate_info_type", surrogate_info_type)
 
     @property
     @pulumi.getter(name="commonAlphabet")
@@ -2688,8 +3203,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         """
         :param pulumi.Input[str] name: Name describing the field.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -2721,12 +3245,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs'] unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_wrapped=kms_wrapped,
+            transient=transient,
+            unwrapped=unwrapped,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_wrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs']] = None,
+             transient: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs']] = None,
+             unwrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if kms_wrapped is not None:
-            pulumi.set(__self__, "kms_wrapped", kms_wrapped)
+            _setter("kms_wrapped", kms_wrapped)
         if transient is not None:
-            pulumi.set(__self__, "transient", transient)
+            _setter("transient", transient)
         if unwrapped is not None:
-            pulumi.set(__self__, "unwrapped", unwrapped)
+            _setter("unwrapped", unwrapped)
 
     @property
     @pulumi.getter(name="kmsWrapped")
@@ -2781,8 +3318,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input[str] wrapped_key: The wrapped data crypto key.
                A base64-encoded string.
         """
-        pulumi.set(__self__, "crypto_key_name", crypto_key_name)
-        pulumi.set(__self__, "wrapped_key", wrapped_key)
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            crypto_key_name=crypto_key_name,
+            wrapped_key=wrapped_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             crypto_key_name: pulumi.Input[str],
+             wrapped_key: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("crypto_key_name", crypto_key_name)
+        _setter("wrapped_key", wrapped_key)
 
     @property
     @pulumi.getter(name="cryptoKeyName")
@@ -2817,7 +3365,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         """
         :param pulumi.Input[str] name: Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
         """
-        pulumi.set(__self__, "name", name)
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -2841,7 +3398,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                A base64-encoded string.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
-        pulumi.set(__self__, "key", key)
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
 
     @property
     @pulumi.getter
@@ -2870,12 +3436,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                Structure is documented below.
         :param pulumi.Input[str] version: Optional version name for this InfoType.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            sensitivity_score=sensitivity_score,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             sensitivity_score: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgs']] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if sensitivity_score is not None:
-            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+            _setter("sensitivity_score", sensitivity_score)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -2923,7 +3502,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input[str] score: The sensitivity score applied to the resource.
                Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
         """
-        pulumi.set(__self__, "score", score)
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            score=score,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             score: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("score", score)
 
     @property
     @pulumi.getter
@@ -2956,12 +3544,27 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgs'] crypto_key: Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and cryptoKey. If set, must also set context. Can only be applied to table items.
                Structure is documented below.
         """
-        pulumi.set(__self__, "lower_bound_days", lower_bound_days)
-        pulumi.set(__self__, "upper_bound_days", upper_bound_days)
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            lower_bound_days=lower_bound_days,
+            upper_bound_days=upper_bound_days,
+            context=context,
+            crypto_key=crypto_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             lower_bound_days: pulumi.Input[int],
+             upper_bound_days: pulumi.Input[int],
+             context: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContextArgs']] = None,
+             crypto_key: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("lower_bound_days", lower_bound_days)
+        _setter("upper_bound_days", upper_bound_days)
         if context is not None:
-            pulumi.set(__self__, "context", context)
+            _setter("context", context)
         if crypto_key is not None:
-            pulumi.set(__self__, "crypto_key", crypto_key)
+            _setter("crypto_key", crypto_key)
 
     @property
     @pulumi.getter(name="lowerBoundDays")
@@ -3023,7 +3626,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         """
         :param pulumi.Input[str] name: Name describing the field.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContextArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -3055,12 +3667,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgs'] unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_wrapped=kms_wrapped,
+            transient=transient,
+            unwrapped=unwrapped,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_wrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgs']] = None,
+             transient: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgs']] = None,
+             unwrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if kms_wrapped is not None:
-            pulumi.set(__self__, "kms_wrapped", kms_wrapped)
+            _setter("kms_wrapped", kms_wrapped)
         if transient is not None:
-            pulumi.set(__self__, "transient", transient)
+            _setter("transient", transient)
         if unwrapped is not None:
-            pulumi.set(__self__, "unwrapped", unwrapped)
+            _setter("unwrapped", unwrapped)
 
     @property
     @pulumi.getter(name="kmsWrapped")
@@ -3115,8 +3740,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input[str] wrapped_key: The wrapped data crypto key.
                A base64-encoded string.
         """
-        pulumi.set(__self__, "crypto_key_name", crypto_key_name)
-        pulumi.set(__self__, "wrapped_key", wrapped_key)
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            crypto_key_name=crypto_key_name,
+            wrapped_key=wrapped_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             crypto_key_name: pulumi.Input[str],
+             wrapped_key: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("crypto_key_name", crypto_key_name)
+        _setter("wrapped_key", wrapped_key)
 
     @property
     @pulumi.getter(name="cryptoKeyName")
@@ -3151,7 +3787,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         """
         :param pulumi.Input[str] name: Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
         """
-        pulumi.set(__self__, "name", name)
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -3175,7 +3820,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                A base64-encoded string.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
-        pulumi.set(__self__, "key", key)
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
 
     @property
     @pulumi.getter
@@ -3211,9 +3865,22 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                The `upper_bound` block must only contain one argument. See the `fixed_size_bucketing_config` block description for more information about choosing a data type.
                Structure is documented below.
         """
-        pulumi.set(__self__, "bucket_size", bucket_size)
-        pulumi.set(__self__, "lower_bound", lower_bound)
-        pulumi.set(__self__, "upper_bound", upper_bound)
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucket_size=bucket_size,
+            lower_bound=lower_bound,
+            upper_bound=upper_bound,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucket_size: pulumi.Input[float],
+             lower_bound: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgs'],
+             upper_bound: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgs'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bucket_size", bucket_size)
+        _setter("lower_bound", lower_bound)
+        _setter("upper_bound", upper_bound)
 
     @property
     @pulumi.getter(name="bucketSize")
@@ -3269,10 +3936,21 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input[float] float_value: A float value.
         :param pulumi.Input[str] integer_value: An integer value (int64 format)
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            float_value=float_value,
+            integer_value=integer_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             float_value: Optional[pulumi.Input[float]] = None,
+             integer_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if float_value is not None:
-            pulumi.set(__self__, "float_value", float_value)
+            _setter("float_value", float_value)
         if integer_value is not None:
-            pulumi.set(__self__, "integer_value", integer_value)
+            _setter("integer_value", integer_value)
 
     @property
     @pulumi.getter(name="floatValue")
@@ -3308,10 +3986,21 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input[float] float_value: A float value.
         :param pulumi.Input[str] integer_value: An integer value (int64 format)
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            float_value=float_value,
+            integer_value=integer_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             float_value: Optional[pulumi.Input[float]] = None,
+             integer_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if float_value is not None:
-            pulumi.set(__self__, "float_value", float_value)
+            _setter("float_value", float_value)
         if integer_value is not None:
-            pulumi.set(__self__, "integer_value", integer_value)
+            _setter("integer_value", integer_value)
 
     @property
     @pulumi.getter(name="floatValue")
@@ -3342,6 +4031,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArgs:
     def __init__(__self__):
         pass
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        pass
 
 
 @pulumi.input_type
@@ -3353,7 +4047,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                The `new_value` block must only contain one argument. For example when replacing the contents of a string-type field, only `string_value` should be set.
                Structure is documented below.
         """
-        pulumi.set(__self__, "new_value", new_value)
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            new_value=new_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             new_value: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("new_value", new_value)
 
     @property
     @pulumi.getter(name="newValue")
@@ -3395,22 +4098,45 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input[str] timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            boolean_value=boolean_value,
+            date_value=date_value,
+            day_of_week_value=day_of_week_value,
+            float_value=float_value,
+            integer_value=integer_value,
+            string_value=string_value,
+            time_value=time_value,
+            timestamp_value=timestamp_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             boolean_value: Optional[pulumi.Input[bool]] = None,
+             date_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs']] = None,
+             day_of_week_value: Optional[pulumi.Input[str]] = None,
+             float_value: Optional[pulumi.Input[float]] = None,
+             integer_value: Optional[pulumi.Input[int]] = None,
+             string_value: Optional[pulumi.Input[str]] = None,
+             time_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs']] = None,
+             timestamp_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if boolean_value is not None:
-            pulumi.set(__self__, "boolean_value", boolean_value)
+            _setter("boolean_value", boolean_value)
         if date_value is not None:
-            pulumi.set(__self__, "date_value", date_value)
+            _setter("date_value", date_value)
         if day_of_week_value is not None:
-            pulumi.set(__self__, "day_of_week_value", day_of_week_value)
+            _setter("day_of_week_value", day_of_week_value)
         if float_value is not None:
-            pulumi.set(__self__, "float_value", float_value)
+            _setter("float_value", float_value)
         if integer_value is not None:
-            pulumi.set(__self__, "integer_value", integer_value)
+            _setter("integer_value", integer_value)
         if string_value is not None:
-            pulumi.set(__self__, "string_value", string_value)
+            _setter("string_value", string_value)
         if time_value is not None:
-            pulumi.set(__self__, "time_value", time_value)
+            _setter("time_value", time_value)
         if timestamp_value is not None:
-            pulumi.set(__self__, "timestamp_value", timestamp_value)
+            _setter("timestamp_value", timestamp_value)
 
     @property
     @pulumi.getter(name="booleanValue")
@@ -3526,12 +4252,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day=day,
+            month=month,
+            year=year,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day: Optional[pulumi.Input[int]] = None,
+             month: Optional[pulumi.Input[int]] = None,
+             year: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if day is not None:
-            pulumi.set(__self__, "day", day)
+            _setter("day", day)
         if month is not None:
-            pulumi.set(__self__, "month", month)
+            _setter("month", month)
         if year is not None:
-            pulumi.set(__self__, "year", year)
+            _setter("year", year)
 
     @property
     @pulumi.getter
@@ -3585,14 +4324,29 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input[int] nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         :param pulumi.Input[int] seconds: Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hours=hours,
+            minutes=minutes,
+            nanos=nanos,
+            seconds=seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hours: Optional[pulumi.Input[int]] = None,
+             minutes: Optional[pulumi.Input[int]] = None,
+             nanos: Optional[pulumi.Input[int]] = None,
+             seconds: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if hours is not None:
-            pulumi.set(__self__, "hours", hours)
+            _setter("hours", hours)
         if minutes is not None:
-            pulumi.set(__self__, "minutes", minutes)
+            _setter("minutes", minutes)
         if nanos is not None:
-            pulumi.set(__self__, "nanos", nanos)
+            _setter("nanos", nanos)
         if seconds is not None:
-            pulumi.set(__self__, "seconds", seconds)
+            _setter("seconds", seconds)
 
     @property
     @pulumi.getter
@@ -3651,7 +4405,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgs'] word_list: A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
                Structure is documented below.
         """
-        pulumi.set(__self__, "word_list", word_list)
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            word_list=word_list,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             word_list: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgs'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("word_list", word_list)
 
     @property
     @pulumi.getter(name="wordList")
@@ -3674,7 +4437,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] words: Words or phrases defining the dictionary. The dictionary must contain at least one phrase and every phrase must contain at least 2 characters that are letters or digits.
         """
-        pulumi.set(__self__, "words", words)
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            words=words,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             words: pulumi.Input[Sequence[pulumi.Input[str]]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("words", words)
 
     @property
     @pulumi.getter
@@ -3697,8 +4469,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input[str] part_to_extract: The part of the time to keep.
                Possible values are: `YEAR`, `MONTH`, `DAY_OF_MONTH`, `DAY_OF_WEEK`, `WEEK_OF_YEAR`, `HOUR_OF_DAY`.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            part_to_extract=part_to_extract,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             part_to_extract: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if part_to_extract is not None:
-            pulumi.set(__self__, "part_to_extract", part_to_extract)
+            _setter("part_to_extract", part_to_extract)
 
     @property
     @pulumi.getter(name="partToExtract")
@@ -3725,10 +4506,21 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArgs']]] record_suppressions: Configuration defining which records get suppressed entirely. Records that match any suppression rule are omitted from the output.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            field_transformations=field_transformations,
+            record_suppressions=record_suppressions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             field_transformations: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArgs']]]] = None,
+             record_suppressions: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if field_transformations is not None:
-            pulumi.set(__self__, "field_transformations", field_transformations)
+            _setter("field_transformations", field_transformations)
         if record_suppressions is not None:
-            pulumi.set(__self__, "record_suppressions", record_suppressions)
+            _setter("record_suppressions", record_suppressions)
 
     @property
     @pulumi.getter(name="fieldTransformations")
@@ -3781,13 +4573,28 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                Only one of `primitive_transformation` or `info_type_transformations` must be specified.
                Structure is documented below.
         """
-        pulumi.set(__self__, "fields", fields)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fields=fields,
+            condition=condition,
+            info_type_transformations=info_type_transformations,
+            primitive_transformation=primitive_transformation,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fields: pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArgs']]],
+             condition: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgs']] = None,
+             info_type_transformations: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsArgs']] = None,
+             primitive_transformation: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("fields", fields)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if info_type_transformations is not None:
-            pulumi.set(__self__, "info_type_transformations", info_type_transformations)
+            _setter("info_type_transformations", info_type_transformations)
         if primitive_transformation is not None:
-            pulumi.set(__self__, "primitive_transformation", primitive_transformation)
+            _setter("primitive_transformation", primitive_transformation)
 
     @property
     @pulumi.getter
@@ -3857,8 +4664,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgs'] expressions: An expression, consisting of an operator and conditions.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expressions=expressions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expressions: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if expressions is not None:
-            pulumi.set(__self__, "expressions", expressions)
+            _setter("expressions", expressions)
 
     @property
     @pulumi.getter
@@ -3886,10 +4702,21 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                Default value is `AND`.
                Possible values are: `AND`.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            conditions=conditions,
+            logical_operator=logical_operator,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             conditions: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgs']] = None,
+             logical_operator: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if conditions is not None:
-            pulumi.set(__self__, "conditions", conditions)
+            _setter("conditions", conditions)
         if logical_operator is not None:
-            pulumi.set(__self__, "logical_operator", logical_operator)
+            _setter("logical_operator", logical_operator)
 
     @property
     @pulumi.getter
@@ -3927,8 +4754,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArgs']]] conditions: A collection of conditions.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            conditions=conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             conditions: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if conditions is not None:
-            pulumi.set(__self__, "conditions", conditions)
+            _setter("conditions", conditions)
 
     @property
     @pulumi.getter
@@ -3958,10 +4794,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgs'] value: Value to compare against. [Mandatory, except for EXISTS tests.]
                Structure is documented below.
         """
-        pulumi.set(__self__, "field", field)
-        pulumi.set(__self__, "operator", operator)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            field=field,
+            operator=operator,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             field: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldArgs'],
+             operator: pulumi.Input[str],
+             value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("field", field)
+        _setter("operator", operator)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -4010,8 +4859,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         """
         :param pulumi.Input[str] name: Name describing the field.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -4050,22 +4908,45 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                Structure is documented below.
         :param pulumi.Input[str] timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            boolean_value=boolean_value,
+            date_value=date_value,
+            day_of_week_value=day_of_week_value,
+            float_value=float_value,
+            integer_value=integer_value,
+            string_value=string_value,
+            time_value=time_value,
+            timestamp_value=timestamp_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             boolean_value: Optional[pulumi.Input[bool]] = None,
+             date_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgs']] = None,
+             day_of_week_value: Optional[pulumi.Input[str]] = None,
+             float_value: Optional[pulumi.Input[float]] = None,
+             integer_value: Optional[pulumi.Input[str]] = None,
+             string_value: Optional[pulumi.Input[str]] = None,
+             time_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArgs']] = None,
+             timestamp_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if boolean_value is not None:
-            pulumi.set(__self__, "boolean_value", boolean_value)
+            _setter("boolean_value", boolean_value)
         if date_value is not None:
-            pulumi.set(__self__, "date_value", date_value)
+            _setter("date_value", date_value)
         if day_of_week_value is not None:
-            pulumi.set(__self__, "day_of_week_value", day_of_week_value)
+            _setter("day_of_week_value", day_of_week_value)
         if float_value is not None:
-            pulumi.set(__self__, "float_value", float_value)
+            _setter("float_value", float_value)
         if integer_value is not None:
-            pulumi.set(__self__, "integer_value", integer_value)
+            _setter("integer_value", integer_value)
         if string_value is not None:
-            pulumi.set(__self__, "string_value", string_value)
+            _setter("string_value", string_value)
         if time_value is not None:
-            pulumi.set(__self__, "time_value", time_value)
+            _setter("time_value", time_value)
         if timestamp_value is not None:
-            pulumi.set(__self__, "timestamp_value", timestamp_value)
+            _setter("timestamp_value", timestamp_value)
 
     @property
     @pulumi.getter(name="booleanValue")
@@ -4180,12 +5061,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day=day,
+            month=month,
+            year=year,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day: Optional[pulumi.Input[int]] = None,
+             month: Optional[pulumi.Input[int]] = None,
+             year: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if day is not None:
-            pulumi.set(__self__, "day", day)
+            _setter("day", day)
         if month is not None:
-            pulumi.set(__self__, "month", month)
+            _setter("month", month)
         if year is not None:
-            pulumi.set(__self__, "year", year)
+            _setter("year", year)
 
     @property
     @pulumi.getter
@@ -4239,14 +5133,29 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[int] nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         :param pulumi.Input[int] seconds: Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hours=hours,
+            minutes=minutes,
+            nanos=nanos,
+            seconds=seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hours: Optional[pulumi.Input[int]] = None,
+             minutes: Optional[pulumi.Input[int]] = None,
+             nanos: Optional[pulumi.Input[int]] = None,
+             seconds: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if hours is not None:
-            pulumi.set(__self__, "hours", hours)
+            _setter("hours", hours)
         if minutes is not None:
-            pulumi.set(__self__, "minutes", minutes)
+            _setter("minutes", minutes)
         if nanos is not None:
-            pulumi.set(__self__, "nanos", nanos)
+            _setter("nanos", nanos)
         if seconds is not None:
-            pulumi.set(__self__, "seconds", seconds)
+            _setter("seconds", seconds)
 
     @property
     @pulumi.getter
@@ -4304,8 +5213,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         """
         :param pulumi.Input[str] name: Name describing the field.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -4328,7 +5246,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationArgs']]] transformations: Transformation for each infoType. Cannot specify more than one for a given infoType.
                Structure is documented below.
         """
-        pulumi.set(__self__, "transformations", transformations)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            transformations=transformations,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             transformations: pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationArgs']]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("transformations", transformations)
 
     @property
     @pulumi.getter
@@ -4357,9 +5284,20 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                all findings that correspond to infoTypes that were requested in InspectConfig.
                Structure is documented below.
         """
-        pulumi.set(__self__, "primitive_transformation", primitive_transformation)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            primitive_transformation=primitive_transformation,
+            info_types=info_types,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             primitive_transformation: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationArgs'],
+             info_types: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("primitive_transformation", primitive_transformation)
         if info_types is not None:
-            pulumi.set(__self__, "info_types", info_types)
+            _setter("info_types", info_types)
 
     @property
     @pulumi.getter(name="primitiveTransformation")
@@ -4402,11 +5340,24 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                Structure is documented below.
         :param pulumi.Input[str] version: Version name for this InfoType.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            sensitivity_score=sensitivity_score,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             sensitivity_score: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeSensitivityScoreArgs']] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if sensitivity_score is not None:
-            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+            _setter("sensitivity_score", sensitivity_score)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -4454,7 +5405,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[str] score: The sensitivity score applied to the resource.
                Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
         """
-        pulumi.set(__self__, "score", score)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeSensitivityScoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            score=score,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             score: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("score", score)
 
     @property
     @pulumi.getter
@@ -4520,30 +5480,61 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfigArgs'] time_part_config: For use with Date, Timestamp, and TimeOfDay, extract or preserve a portion of the value.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucketing_config=bucketing_config,
+            character_mask_config=character_mask_config,
+            crypto_deterministic_config=crypto_deterministic_config,
+            crypto_hash_config=crypto_hash_config,
+            crypto_replace_ffx_fpe_config=crypto_replace_ffx_fpe_config,
+            date_shift_config=date_shift_config,
+            fixed_size_bucketing_config=fixed_size_bucketing_config,
+            redact_config=redact_config,
+            replace_config=replace_config,
+            replace_dictionary_config=replace_dictionary_config,
+            replace_with_info_type_config=replace_with_info_type_config,
+            time_part_config=time_part_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucketing_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArgs']] = None,
+             character_mask_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs']] = None,
+             crypto_deterministic_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs']] = None,
+             crypto_hash_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArgs']] = None,
+             crypto_replace_ffx_fpe_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs']] = None,
+             date_shift_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgs']] = None,
+             fixed_size_bucketing_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArgs']] = None,
+             redact_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArgs']] = None,
+             replace_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs']] = None,
+             replace_dictionary_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgs']] = None,
+             replace_with_info_type_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceWithInfoTypeConfigArgs']] = None,
+             time_part_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bucketing_config is not None:
-            pulumi.set(__self__, "bucketing_config", bucketing_config)
+            _setter("bucketing_config", bucketing_config)
         if character_mask_config is not None:
-            pulumi.set(__self__, "character_mask_config", character_mask_config)
+            _setter("character_mask_config", character_mask_config)
         if crypto_deterministic_config is not None:
-            pulumi.set(__self__, "crypto_deterministic_config", crypto_deterministic_config)
+            _setter("crypto_deterministic_config", crypto_deterministic_config)
         if crypto_hash_config is not None:
-            pulumi.set(__self__, "crypto_hash_config", crypto_hash_config)
+            _setter("crypto_hash_config", crypto_hash_config)
         if crypto_replace_ffx_fpe_config is not None:
-            pulumi.set(__self__, "crypto_replace_ffx_fpe_config", crypto_replace_ffx_fpe_config)
+            _setter("crypto_replace_ffx_fpe_config", crypto_replace_ffx_fpe_config)
         if date_shift_config is not None:
-            pulumi.set(__self__, "date_shift_config", date_shift_config)
+            _setter("date_shift_config", date_shift_config)
         if fixed_size_bucketing_config is not None:
-            pulumi.set(__self__, "fixed_size_bucketing_config", fixed_size_bucketing_config)
+            _setter("fixed_size_bucketing_config", fixed_size_bucketing_config)
         if redact_config is not None:
-            pulumi.set(__self__, "redact_config", redact_config)
+            _setter("redact_config", redact_config)
         if replace_config is not None:
-            pulumi.set(__self__, "replace_config", replace_config)
+            _setter("replace_config", replace_config)
         if replace_dictionary_config is not None:
-            pulumi.set(__self__, "replace_dictionary_config", replace_dictionary_config)
+            _setter("replace_dictionary_config", replace_dictionary_config)
         if replace_with_info_type_config is not None:
-            pulumi.set(__self__, "replace_with_info_type_config", replace_with_info_type_config)
+            _setter("replace_with_info_type_config", replace_with_info_type_config)
         if time_part_config is not None:
-            pulumi.set(__self__, "time_part_config", time_part_config)
+            _setter("time_part_config", time_part_config)
 
     @property
     @pulumi.getter(name="bucketingConfig")
@@ -4720,7 +5711,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                Bucket is represented as a range, along with replacement values.
                Structure is documented below.
         """
-        pulumi.set(__self__, "buckets", buckets)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            buckets=buckets,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             buckets: pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketArgs']]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("buckets", buckets)
 
     @property
     @pulumi.getter
@@ -4754,11 +5754,24 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                The `min` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
                Structure is documented below.
         """
-        pulumi.set(__self__, "replacement_value", replacement_value)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            replacement_value=replacement_value,
+            max=max,
+            min=min,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             replacement_value: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgs'],
+             max: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxArgs']] = None,
+             min: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("replacement_value", replacement_value)
         if max is not None:
-            pulumi.set(__self__, "max", max)
+            _setter("max", max)
         if min is not None:
-            pulumi.set(__self__, "min", min)
+            _setter("min", min)
 
     @property
     @pulumi.getter(name="replacementValue")
@@ -4825,20 +5838,41 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                Structure is documented below.
         :param pulumi.Input[str] timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            date_value=date_value,
+            day_of_week_value=day_of_week_value,
+            float_value=float_value,
+            integer_value=integer_value,
+            string_value=string_value,
+            time_value=time_value,
+            timestamp_value=timestamp_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             date_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgs']] = None,
+             day_of_week_value: Optional[pulumi.Input[str]] = None,
+             float_value: Optional[pulumi.Input[float]] = None,
+             integer_value: Optional[pulumi.Input[str]] = None,
+             string_value: Optional[pulumi.Input[str]] = None,
+             time_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgs']] = None,
+             timestamp_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if date_value is not None:
-            pulumi.set(__self__, "date_value", date_value)
+            _setter("date_value", date_value)
         if day_of_week_value is not None:
-            pulumi.set(__self__, "day_of_week_value", day_of_week_value)
+            _setter("day_of_week_value", day_of_week_value)
         if float_value is not None:
-            pulumi.set(__self__, "float_value", float_value)
+            _setter("float_value", float_value)
         if integer_value is not None:
-            pulumi.set(__self__, "integer_value", integer_value)
+            _setter("integer_value", integer_value)
         if string_value is not None:
-            pulumi.set(__self__, "string_value", string_value)
+            _setter("string_value", string_value)
         if time_value is not None:
-            pulumi.set(__self__, "time_value", time_value)
+            _setter("time_value", time_value)
         if timestamp_value is not None:
-            pulumi.set(__self__, "timestamp_value", timestamp_value)
+            _setter("timestamp_value", timestamp_value)
 
     @property
     @pulumi.getter(name="dateValue")
@@ -4941,12 +5975,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day=day,
+            month=month,
+            year=year,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day: Optional[pulumi.Input[int]] = None,
+             month: Optional[pulumi.Input[int]] = None,
+             year: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if day is not None:
-            pulumi.set(__self__, "day", day)
+            _setter("day", day)
         if month is not None:
-            pulumi.set(__self__, "month", month)
+            _setter("month", month)
         if year is not None:
-            pulumi.set(__self__, "year", year)
+            _setter("year", year)
 
     @property
     @pulumi.getter
@@ -5000,14 +6047,29 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[int] nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         :param pulumi.Input[int] seconds: Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hours=hours,
+            minutes=minutes,
+            nanos=nanos,
+            seconds=seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hours: Optional[pulumi.Input[int]] = None,
+             minutes: Optional[pulumi.Input[int]] = None,
+             nanos: Optional[pulumi.Input[int]] = None,
+             seconds: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if hours is not None:
-            pulumi.set(__self__, "hours", hours)
+            _setter("hours", hours)
         if minutes is not None:
-            pulumi.set(__self__, "minutes", minutes)
+            _setter("minutes", minutes)
         if nanos is not None:
-            pulumi.set(__self__, "nanos", nanos)
+            _setter("nanos", nanos)
         if seconds is not None:
-            pulumi.set(__self__, "seconds", seconds)
+            _setter("seconds", seconds)
 
     @property
     @pulumi.getter
@@ -5080,20 +6142,41 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                Structure is documented below.
         :param pulumi.Input[str] timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            date_value=date_value,
+            day_of_week_value=day_of_week_value,
+            float_value=float_value,
+            integer_value=integer_value,
+            string_value=string_value,
+            time_value=time_value,
+            timestamp_value=timestamp_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             date_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgs']] = None,
+             day_of_week_value: Optional[pulumi.Input[str]] = None,
+             float_value: Optional[pulumi.Input[float]] = None,
+             integer_value: Optional[pulumi.Input[str]] = None,
+             string_value: Optional[pulumi.Input[str]] = None,
+             time_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgs']] = None,
+             timestamp_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if date_value is not None:
-            pulumi.set(__self__, "date_value", date_value)
+            _setter("date_value", date_value)
         if day_of_week_value is not None:
-            pulumi.set(__self__, "day_of_week_value", day_of_week_value)
+            _setter("day_of_week_value", day_of_week_value)
         if float_value is not None:
-            pulumi.set(__self__, "float_value", float_value)
+            _setter("float_value", float_value)
         if integer_value is not None:
-            pulumi.set(__self__, "integer_value", integer_value)
+            _setter("integer_value", integer_value)
         if string_value is not None:
-            pulumi.set(__self__, "string_value", string_value)
+            _setter("string_value", string_value)
         if time_value is not None:
-            pulumi.set(__self__, "time_value", time_value)
+            _setter("time_value", time_value)
         if timestamp_value is not None:
-            pulumi.set(__self__, "timestamp_value", timestamp_value)
+            _setter("timestamp_value", timestamp_value)
 
     @property
     @pulumi.getter(name="dateValue")
@@ -5196,12 +6279,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day=day,
+            month=month,
+            year=year,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day: Optional[pulumi.Input[int]] = None,
+             month: Optional[pulumi.Input[int]] = None,
+             year: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if day is not None:
-            pulumi.set(__self__, "day", day)
+            _setter("day", day)
         if month is not None:
-            pulumi.set(__self__, "month", month)
+            _setter("month", month)
         if year is not None:
-            pulumi.set(__self__, "year", year)
+            _setter("year", year)
 
     @property
     @pulumi.getter
@@ -5255,14 +6351,29 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[int] nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         :param pulumi.Input[int] seconds: Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hours=hours,
+            minutes=minutes,
+            nanos=nanos,
+            seconds=seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hours: Optional[pulumi.Input[int]] = None,
+             minutes: Optional[pulumi.Input[int]] = None,
+             nanos: Optional[pulumi.Input[int]] = None,
+             seconds: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if hours is not None:
-            pulumi.set(__self__, "hours", hours)
+            _setter("hours", hours)
         if minutes is not None:
-            pulumi.set(__self__, "minutes", minutes)
+            _setter("minutes", minutes)
         if nanos is not None:
-            pulumi.set(__self__, "nanos", nanos)
+            _setter("nanos", nanos)
         if seconds is not None:
-            pulumi.set(__self__, "seconds", seconds)
+            _setter("seconds", seconds)
 
     @property
     @pulumi.getter
@@ -5335,20 +6446,41 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                Structure is documented below.
         :param pulumi.Input[str] timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            date_value=date_value,
+            day_of_week_value=day_of_week_value,
+            float_value=float_value,
+            integer_value=integer_value,
+            string_value=string_value,
+            time_value=time_value,
+            timestamp_value=timestamp_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             date_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgs']] = None,
+             day_of_week_value: Optional[pulumi.Input[str]] = None,
+             float_value: Optional[pulumi.Input[float]] = None,
+             integer_value: Optional[pulumi.Input[str]] = None,
+             string_value: Optional[pulumi.Input[str]] = None,
+             time_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgs']] = None,
+             timestamp_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if date_value is not None:
-            pulumi.set(__self__, "date_value", date_value)
+            _setter("date_value", date_value)
         if day_of_week_value is not None:
-            pulumi.set(__self__, "day_of_week_value", day_of_week_value)
+            _setter("day_of_week_value", day_of_week_value)
         if float_value is not None:
-            pulumi.set(__self__, "float_value", float_value)
+            _setter("float_value", float_value)
         if integer_value is not None:
-            pulumi.set(__self__, "integer_value", integer_value)
+            _setter("integer_value", integer_value)
         if string_value is not None:
-            pulumi.set(__self__, "string_value", string_value)
+            _setter("string_value", string_value)
         if time_value is not None:
-            pulumi.set(__self__, "time_value", time_value)
+            _setter("time_value", time_value)
         if timestamp_value is not None:
-            pulumi.set(__self__, "timestamp_value", timestamp_value)
+            _setter("timestamp_value", timestamp_value)
 
     @property
     @pulumi.getter(name="dateValue")
@@ -5451,12 +6583,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day=day,
+            month=month,
+            year=year,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day: Optional[pulumi.Input[int]] = None,
+             month: Optional[pulumi.Input[int]] = None,
+             year: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if day is not None:
-            pulumi.set(__self__, "day", day)
+            _setter("day", day)
         if month is not None:
-            pulumi.set(__self__, "month", month)
+            _setter("month", month)
         if year is not None:
-            pulumi.set(__self__, "year", year)
+            _setter("year", year)
 
     @property
     @pulumi.getter
@@ -5510,14 +6655,29 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[int] nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         :param pulumi.Input[int] seconds: Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hours=hours,
+            minutes=minutes,
+            nanos=nanos,
+            seconds=seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hours: Optional[pulumi.Input[int]] = None,
+             minutes: Optional[pulumi.Input[int]] = None,
+             nanos: Optional[pulumi.Input[int]] = None,
+             seconds: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if hours is not None:
-            pulumi.set(__self__, "hours", hours)
+            _setter("hours", hours)
         if minutes is not None:
-            pulumi.set(__self__, "minutes", minutes)
+            _setter("minutes", minutes)
         if nanos is not None:
-            pulumi.set(__self__, "nanos", nanos)
+            _setter("nanos", nanos)
         if seconds is not None:
-            pulumi.set(__self__, "seconds", seconds)
+            _setter("seconds", seconds)
 
     @property
     @pulumi.getter
@@ -5583,14 +6743,29 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[bool] reverse_order: Mask characters in reverse order. For example, if masking_character is 0, number_to_mask is 14, and reverse_order is `false`, then the
                input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            characters_to_ignores=characters_to_ignores,
+            masking_character=masking_character,
+            number_to_mask=number_to_mask,
+            reverse_order=reverse_order,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             characters_to_ignores: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs']]]] = None,
+             masking_character: Optional[pulumi.Input[str]] = None,
+             number_to_mask: Optional[pulumi.Input[int]] = None,
+             reverse_order: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if characters_to_ignores is not None:
-            pulumi.set(__self__, "characters_to_ignores", characters_to_ignores)
+            _setter("characters_to_ignores", characters_to_ignores)
         if masking_character is not None:
-            pulumi.set(__self__, "masking_character", masking_character)
+            _setter("masking_character", masking_character)
         if number_to_mask is not None:
-            pulumi.set(__self__, "number_to_mask", number_to_mask)
+            _setter("number_to_mask", number_to_mask)
         if reverse_order is not None:
-            pulumi.set(__self__, "reverse_order", reverse_order)
+            _setter("reverse_order", reverse_order)
 
     @property
     @pulumi.getter(name="charactersToIgnores")
@@ -5653,10 +6828,21 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[str] common_characters_to_ignore: Common characters to not transform when masking. Useful to avoid removing punctuation. Only one of this or `characters_to_skip` must be specified.
                Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            characters_to_skip=characters_to_skip,
+            common_characters_to_ignore=common_characters_to_ignore,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             characters_to_skip: Optional[pulumi.Input[str]] = None,
+             common_characters_to_ignore: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if characters_to_skip is not None:
-            pulumi.set(__self__, "characters_to_skip", characters_to_skip)
+            _setter("characters_to_skip", characters_to_skip)
         if common_characters_to_ignore is not None:
-            pulumi.set(__self__, "common_characters_to_ignore", common_characters_to_ignore)
+            _setter("common_characters_to_ignore", common_characters_to_ignore)
 
     @property
     @pulumi.getter(name="charactersToSkip")
@@ -5710,10 +6896,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
                Structure is documented below.
         """
-        pulumi.set(__self__, "crypto_key", crypto_key)
-        pulumi.set(__self__, "surrogate_info_type", surrogate_info_type)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            crypto_key=crypto_key,
+            surrogate_info_type=surrogate_info_type,
+            context=context,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             crypto_key: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs'],
+             surrogate_info_type: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs'],
+             context: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("crypto_key", crypto_key)
+        _setter("surrogate_info_type", surrogate_info_type)
         if context is not None:
-            pulumi.set(__self__, "context", context)
+            _setter("context", context)
 
     @property
     @pulumi.getter(name="cryptoKey")
@@ -5774,7 +6973,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         """
         :param pulumi.Input[str] name: Name describing the field.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -5806,12 +7014,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs'] unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_wrapped=kms_wrapped,
+            transient=transient,
+            unwrapped=unwrapped,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_wrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs']] = None,
+             transient: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs']] = None,
+             unwrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if kms_wrapped is not None:
-            pulumi.set(__self__, "kms_wrapped", kms_wrapped)
+            _setter("kms_wrapped", kms_wrapped)
         if transient is not None:
-            pulumi.set(__self__, "transient", transient)
+            _setter("transient", transient)
         if unwrapped is not None:
-            pulumi.set(__self__, "unwrapped", unwrapped)
+            _setter("unwrapped", unwrapped)
 
     @property
     @pulumi.getter(name="kmsWrapped")
@@ -5866,8 +7087,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[str] wrapped_key: The wrapped data crypto key.
                A base64-encoded string.
         """
-        pulumi.set(__self__, "crypto_key_name", crypto_key_name)
-        pulumi.set(__self__, "wrapped_key", wrapped_key)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            crypto_key_name=crypto_key_name,
+            wrapped_key=wrapped_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             crypto_key_name: pulumi.Input[str],
+             wrapped_key: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("crypto_key_name", crypto_key_name)
+        _setter("wrapped_key", wrapped_key)
 
     @property
     @pulumi.getter(name="cryptoKeyName")
@@ -5902,7 +7134,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         """
         :param pulumi.Input[str] name: Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
         """
-        pulumi.set(__self__, "name", name)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -5926,7 +7167,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                A base64-encoded string.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
-        pulumi.set(__self__, "key", key)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
 
     @property
     @pulumi.getter
@@ -5955,11 +7205,24 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                Structure is documented below.
         :param pulumi.Input[str] version: Optional version name for this InfoType.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            sensitivity_score=sensitivity_score,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             sensitivity_score: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgs']] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if sensitivity_score is not None:
-            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+            _setter("sensitivity_score", sensitivity_score)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -6007,7 +7270,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[str] score: The sensitivity score applied to the resource.
                Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
         """
-        pulumi.set(__self__, "score", score)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            score=score,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             score: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("score", score)
 
     @property
     @pulumi.getter
@@ -6031,7 +7303,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgs'] crypto_key: The key used by the encryption function.
                Structure is documented below.
         """
-        pulumi.set(__self__, "crypto_key", crypto_key)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            crypto_key=crypto_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             crypto_key: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgs'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("crypto_key", crypto_key)
 
     @property
     @pulumi.getter(name="cryptoKey")
@@ -6064,12 +7345,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgs'] unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_wrapped=kms_wrapped,
+            transient=transient,
+            unwrapped=unwrapped,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_wrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgs']] = None,
+             transient: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgs']] = None,
+             unwrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if kms_wrapped is not None:
-            pulumi.set(__self__, "kms_wrapped", kms_wrapped)
+            _setter("kms_wrapped", kms_wrapped)
         if transient is not None:
-            pulumi.set(__self__, "transient", transient)
+            _setter("transient", transient)
         if unwrapped is not None:
-            pulumi.set(__self__, "unwrapped", unwrapped)
+            _setter("unwrapped", unwrapped)
 
     @property
     @pulumi.getter(name="kmsWrapped")
@@ -6124,8 +7418,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[str] wrapped_key: The wrapped data crypto key.
                A base64-encoded string.
         """
-        pulumi.set(__self__, "crypto_key_name", crypto_key_name)
-        pulumi.set(__self__, "wrapped_key", wrapped_key)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            crypto_key_name=crypto_key_name,
+            wrapped_key=wrapped_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             crypto_key_name: pulumi.Input[str],
+             wrapped_key: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("crypto_key_name", crypto_key_name)
+        _setter("wrapped_key", wrapped_key)
 
     @property
     @pulumi.getter(name="cryptoKeyName")
@@ -6160,7 +7465,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         """
         :param pulumi.Input[str] name: Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
         """
-        pulumi.set(__self__, "name", name)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -6184,7 +7498,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                A base64-encoded string.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
-        pulumi.set(__self__, "key", key)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
 
     @property
     @pulumi.getter
@@ -6234,17 +7557,36 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE
                Structure is documented below.
         """
-        pulumi.set(__self__, "crypto_key", crypto_key)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            crypto_key=crypto_key,
+            common_alphabet=common_alphabet,
+            context=context,
+            custom_alphabet=custom_alphabet,
+            radix=radix,
+            surrogate_info_type=surrogate_info_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             crypto_key: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs'],
+             common_alphabet: Optional[pulumi.Input[str]] = None,
+             context: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs']] = None,
+             custom_alphabet: Optional[pulumi.Input[str]] = None,
+             radix: Optional[pulumi.Input[int]] = None,
+             surrogate_info_type: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("crypto_key", crypto_key)
         if common_alphabet is not None:
-            pulumi.set(__self__, "common_alphabet", common_alphabet)
+            _setter("common_alphabet", common_alphabet)
         if context is not None:
-            pulumi.set(__self__, "context", context)
+            _setter("context", context)
         if custom_alphabet is not None:
-            pulumi.set(__self__, "custom_alphabet", custom_alphabet)
+            _setter("custom_alphabet", custom_alphabet)
         if radix is not None:
-            pulumi.set(__self__, "radix", radix)
+            _setter("radix", radix)
         if surrogate_info_type is not None:
-            pulumi.set(__self__, "surrogate_info_type", surrogate_info_type)
+            _setter("surrogate_info_type", surrogate_info_type)
 
     @property
     @pulumi.getter(name="cryptoKey")
@@ -6342,7 +7684,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         """
         :param pulumi.Input[str] name: Name describing the field.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -6374,12 +7725,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs'] unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_wrapped=kms_wrapped,
+            transient=transient,
+            unwrapped=unwrapped,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_wrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs']] = None,
+             transient: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs']] = None,
+             unwrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if kms_wrapped is not None:
-            pulumi.set(__self__, "kms_wrapped", kms_wrapped)
+            _setter("kms_wrapped", kms_wrapped)
         if transient is not None:
-            pulumi.set(__self__, "transient", transient)
+            _setter("transient", transient)
         if unwrapped is not None:
-            pulumi.set(__self__, "unwrapped", unwrapped)
+            _setter("unwrapped", unwrapped)
 
     @property
     @pulumi.getter(name="kmsWrapped")
@@ -6434,8 +7798,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[str] wrapped_key: The wrapped data crypto key.
                A base64-encoded string.
         """
-        pulumi.set(__self__, "crypto_key_name", crypto_key_name)
-        pulumi.set(__self__, "wrapped_key", wrapped_key)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            crypto_key_name=crypto_key_name,
+            wrapped_key=wrapped_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             crypto_key_name: pulumi.Input[str],
+             wrapped_key: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("crypto_key_name", crypto_key_name)
+        _setter("wrapped_key", wrapped_key)
 
     @property
     @pulumi.getter(name="cryptoKeyName")
@@ -6470,7 +7845,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         """
         :param pulumi.Input[str] name: Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
         """
-        pulumi.set(__self__, "name", name)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -6494,7 +7878,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                A base64-encoded string.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
-        pulumi.set(__self__, "key", key)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
 
     @property
     @pulumi.getter
@@ -6523,11 +7916,24 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                Structure is documented below.
         :param pulumi.Input[str] version: Optional version name for this InfoType.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            sensitivity_score=sensitivity_score,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             sensitivity_score: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgs']] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if sensitivity_score is not None:
-            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+            _setter("sensitivity_score", sensitivity_score)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -6575,7 +7981,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[str] score: The sensitivity score applied to the resource.
                Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
         """
-        pulumi.set(__self__, "score", score)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            score=score,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             score: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("score", score)
 
     @property
     @pulumi.getter
@@ -6608,12 +8023,27 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgs'] crypto_key: Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and cryptoKey. If set, must also set context. Can only be applied to table items.
                Structure is documented below.
         """
-        pulumi.set(__self__, "lower_bound_days", lower_bound_days)
-        pulumi.set(__self__, "upper_bound_days", upper_bound_days)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            lower_bound_days=lower_bound_days,
+            upper_bound_days=upper_bound_days,
+            context=context,
+            crypto_key=crypto_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             lower_bound_days: pulumi.Input[int],
+             upper_bound_days: pulumi.Input[int],
+             context: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContextArgs']] = None,
+             crypto_key: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("lower_bound_days", lower_bound_days)
+        _setter("upper_bound_days", upper_bound_days)
         if context is not None:
-            pulumi.set(__self__, "context", context)
+            _setter("context", context)
         if crypto_key is not None:
-            pulumi.set(__self__, "crypto_key", crypto_key)
+            _setter("crypto_key", crypto_key)
 
     @property
     @pulumi.getter(name="lowerBoundDays")
@@ -6675,7 +8105,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         """
         :param pulumi.Input[str] name: Name describing the field.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContextArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -6707,12 +8146,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgs'] unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_wrapped=kms_wrapped,
+            transient=transient,
+            unwrapped=unwrapped,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_wrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgs']] = None,
+             transient: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgs']] = None,
+             unwrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if kms_wrapped is not None:
-            pulumi.set(__self__, "kms_wrapped", kms_wrapped)
+            _setter("kms_wrapped", kms_wrapped)
         if transient is not None:
-            pulumi.set(__self__, "transient", transient)
+            _setter("transient", transient)
         if unwrapped is not None:
-            pulumi.set(__self__, "unwrapped", unwrapped)
+            _setter("unwrapped", unwrapped)
 
     @property
     @pulumi.getter(name="kmsWrapped")
@@ -6767,8 +8219,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[str] wrapped_key: The wrapped data crypto key.
                A base64-encoded string.
         """
-        pulumi.set(__self__, "crypto_key_name", crypto_key_name)
-        pulumi.set(__self__, "wrapped_key", wrapped_key)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            crypto_key_name=crypto_key_name,
+            wrapped_key=wrapped_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             crypto_key_name: pulumi.Input[str],
+             wrapped_key: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("crypto_key_name", crypto_key_name)
+        _setter("wrapped_key", wrapped_key)
 
     @property
     @pulumi.getter(name="cryptoKeyName")
@@ -6803,7 +8266,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         """
         :param pulumi.Input[str] name: Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
         """
-        pulumi.set(__self__, "name", name)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -6827,7 +8299,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                A base64-encoded string.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
-        pulumi.set(__self__, "key", key)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
 
     @property
     @pulumi.getter
@@ -6863,9 +8344,22 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                The `upper_bound` block must only contain one argument. See the `fixed_size_bucketing_config` block description for more information about choosing a data type.
                Structure is documented below.
         """
-        pulumi.set(__self__, "bucket_size", bucket_size)
-        pulumi.set(__self__, "lower_bound", lower_bound)
-        pulumi.set(__self__, "upper_bound", upper_bound)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucket_size=bucket_size,
+            lower_bound=lower_bound,
+            upper_bound=upper_bound,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucket_size: pulumi.Input[float],
+             lower_bound: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgs'],
+             upper_bound: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgs'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bucket_size", bucket_size)
+        _setter("lower_bound", lower_bound)
+        _setter("upper_bound", upper_bound)
 
     @property
     @pulumi.getter(name="bucketSize")
@@ -6921,10 +8415,21 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[float] float_value: A float value.
         :param pulumi.Input[str] integer_value: An integer value (int64 format)
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            float_value=float_value,
+            integer_value=integer_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             float_value: Optional[pulumi.Input[float]] = None,
+             integer_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if float_value is not None:
-            pulumi.set(__self__, "float_value", float_value)
+            _setter("float_value", float_value)
         if integer_value is not None:
-            pulumi.set(__self__, "integer_value", integer_value)
+            _setter("integer_value", integer_value)
 
     @property
     @pulumi.getter(name="floatValue")
@@ -6960,10 +8465,21 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[float] float_value: A float value.
         :param pulumi.Input[str] integer_value: An integer value (int64 format)
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            float_value=float_value,
+            integer_value=integer_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             float_value: Optional[pulumi.Input[float]] = None,
+             integer_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if float_value is not None:
-            pulumi.set(__self__, "float_value", float_value)
+            _setter("float_value", float_value)
         if integer_value is not None:
-            pulumi.set(__self__, "integer_value", integer_value)
+            _setter("integer_value", integer_value)
 
     @property
     @pulumi.getter(name="floatValue")
@@ -6994,6 +8510,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArgs:
     def __init__(__self__):
         pass
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        pass
 
 
 @pulumi.input_type
@@ -7005,7 +8526,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                The `new_value` block must only contain one argument. For example when replacing the contents of a string-type field, only `string_value` should be set.
                Structure is documented below.
         """
-        pulumi.set(__self__, "new_value", new_value)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            new_value=new_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             new_value: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("new_value", new_value)
 
     @property
     @pulumi.getter(name="newValue")
@@ -7047,22 +8577,45 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[str] timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            boolean_value=boolean_value,
+            date_value=date_value,
+            day_of_week_value=day_of_week_value,
+            float_value=float_value,
+            integer_value=integer_value,
+            string_value=string_value,
+            time_value=time_value,
+            timestamp_value=timestamp_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             boolean_value: Optional[pulumi.Input[bool]] = None,
+             date_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs']] = None,
+             day_of_week_value: Optional[pulumi.Input[str]] = None,
+             float_value: Optional[pulumi.Input[float]] = None,
+             integer_value: Optional[pulumi.Input[str]] = None,
+             string_value: Optional[pulumi.Input[str]] = None,
+             time_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs']] = None,
+             timestamp_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if boolean_value is not None:
-            pulumi.set(__self__, "boolean_value", boolean_value)
+            _setter("boolean_value", boolean_value)
         if date_value is not None:
-            pulumi.set(__self__, "date_value", date_value)
+            _setter("date_value", date_value)
         if day_of_week_value is not None:
-            pulumi.set(__self__, "day_of_week_value", day_of_week_value)
+            _setter("day_of_week_value", day_of_week_value)
         if float_value is not None:
-            pulumi.set(__self__, "float_value", float_value)
+            _setter("float_value", float_value)
         if integer_value is not None:
-            pulumi.set(__self__, "integer_value", integer_value)
+            _setter("integer_value", integer_value)
         if string_value is not None:
-            pulumi.set(__self__, "string_value", string_value)
+            _setter("string_value", string_value)
         if time_value is not None:
-            pulumi.set(__self__, "time_value", time_value)
+            _setter("time_value", time_value)
         if timestamp_value is not None:
-            pulumi.set(__self__, "timestamp_value", timestamp_value)
+            _setter("timestamp_value", timestamp_value)
 
     @property
     @pulumi.getter(name="booleanValue")
@@ -7178,12 +8731,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day=day,
+            month=month,
+            year=year,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day: Optional[pulumi.Input[int]] = None,
+             month: Optional[pulumi.Input[int]] = None,
+             year: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if day is not None:
-            pulumi.set(__self__, "day", day)
+            _setter("day", day)
         if month is not None:
-            pulumi.set(__self__, "month", month)
+            _setter("month", month)
         if year is not None:
-            pulumi.set(__self__, "year", year)
+            _setter("year", year)
 
     @property
     @pulumi.getter
@@ -7237,14 +8803,29 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[int] nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         :param pulumi.Input[int] seconds: Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hours=hours,
+            minutes=minutes,
+            nanos=nanos,
+            seconds=seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hours: Optional[pulumi.Input[int]] = None,
+             minutes: Optional[pulumi.Input[int]] = None,
+             nanos: Optional[pulumi.Input[int]] = None,
+             seconds: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if hours is not None:
-            pulumi.set(__self__, "hours", hours)
+            _setter("hours", hours)
         if minutes is not None:
-            pulumi.set(__self__, "minutes", minutes)
+            _setter("minutes", minutes)
         if nanos is not None:
-            pulumi.set(__self__, "nanos", nanos)
+            _setter("nanos", nanos)
         if seconds is not None:
-            pulumi.set(__self__, "seconds", seconds)
+            _setter("seconds", seconds)
 
     @property
     @pulumi.getter
@@ -7303,7 +8884,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgs'] word_list: A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
                Structure is documented below.
         """
-        pulumi.set(__self__, "word_list", word_list)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            word_list=word_list,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             word_list: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgs'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("word_list", word_list)
 
     @property
     @pulumi.getter(name="wordList")
@@ -7326,7 +8916,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] words: Words or phrases defining the dictionary. The dictionary must contain at least one phrase and every phrase must contain at least 2 characters that are letters or digits.
         """
-        pulumi.set(__self__, "words", words)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            words=words,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             words: pulumi.Input[Sequence[pulumi.Input[str]]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("words", words)
 
     @property
     @pulumi.getter
@@ -7345,6 +8944,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceWithInfoTypeConfigArgs:
     def __init__(__self__):
         pass
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        pass
 
 
 @pulumi.input_type
@@ -7355,7 +8959,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[str] part_to_extract: The part of the time to keep.
                Possible values are: `YEAR`, `MONTH`, `DAY_OF_MONTH`, `DAY_OF_WEEK`, `WEEK_OF_YEAR`, `HOUR_OF_DAY`.
         """
-        pulumi.set(__self__, "part_to_extract", part_to_extract)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            part_to_extract=part_to_extract,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             part_to_extract: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("part_to_extract", part_to_extract)
 
     @property
     @pulumi.getter(name="partToExtract")
@@ -7419,28 +9032,57 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfigArgs'] time_part_config: For use with Date, Timestamp, and TimeOfDay, extract or preserve a portion of the value.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucketing_config=bucketing_config,
+            character_mask_config=character_mask_config,
+            crypto_deterministic_config=crypto_deterministic_config,
+            crypto_hash_config=crypto_hash_config,
+            crypto_replace_ffx_fpe_config=crypto_replace_ffx_fpe_config,
+            date_shift_config=date_shift_config,
+            fixed_size_bucketing_config=fixed_size_bucketing_config,
+            redact_config=redact_config,
+            replace_config=replace_config,
+            replace_dictionary_config=replace_dictionary_config,
+            time_part_config=time_part_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucketing_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigArgs']] = None,
+             character_mask_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgs']] = None,
+             crypto_deterministic_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigArgs']] = None,
+             crypto_hash_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigArgs']] = None,
+             crypto_replace_ffx_fpe_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs']] = None,
+             date_shift_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigArgs']] = None,
+             fixed_size_bucketing_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigArgs']] = None,
+             redact_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgs']] = None,
+             replace_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgs']] = None,
+             replace_dictionary_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigArgs']] = None,
+             time_part_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bucketing_config is not None:
-            pulumi.set(__self__, "bucketing_config", bucketing_config)
+            _setter("bucketing_config", bucketing_config)
         if character_mask_config is not None:
-            pulumi.set(__self__, "character_mask_config", character_mask_config)
+            _setter("character_mask_config", character_mask_config)
         if crypto_deterministic_config is not None:
-            pulumi.set(__self__, "crypto_deterministic_config", crypto_deterministic_config)
+            _setter("crypto_deterministic_config", crypto_deterministic_config)
         if crypto_hash_config is not None:
-            pulumi.set(__self__, "crypto_hash_config", crypto_hash_config)
+            _setter("crypto_hash_config", crypto_hash_config)
         if crypto_replace_ffx_fpe_config is not None:
-            pulumi.set(__self__, "crypto_replace_ffx_fpe_config", crypto_replace_ffx_fpe_config)
+            _setter("crypto_replace_ffx_fpe_config", crypto_replace_ffx_fpe_config)
         if date_shift_config is not None:
-            pulumi.set(__self__, "date_shift_config", date_shift_config)
+            _setter("date_shift_config", date_shift_config)
         if fixed_size_bucketing_config is not None:
-            pulumi.set(__self__, "fixed_size_bucketing_config", fixed_size_bucketing_config)
+            _setter("fixed_size_bucketing_config", fixed_size_bucketing_config)
         if redact_config is not None:
-            pulumi.set(__self__, "redact_config", redact_config)
+            _setter("redact_config", redact_config)
         if replace_config is not None:
-            pulumi.set(__self__, "replace_config", replace_config)
+            _setter("replace_config", replace_config)
         if replace_dictionary_config is not None:
-            pulumi.set(__self__, "replace_dictionary_config", replace_dictionary_config)
+            _setter("replace_dictionary_config", replace_dictionary_config)
         if time_part_config is not None:
-            pulumi.set(__self__, "time_part_config", time_part_config)
+            _setter("time_part_config", time_part_config)
 
     @property
     @pulumi.getter(name="bucketingConfig")
@@ -7605,8 +9247,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                Bucket is represented as a range, along with replacement values.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            buckets=buckets,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             buckets: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if buckets is not None:
-            pulumi.set(__self__, "buckets", buckets)
+            _setter("buckets", buckets)
 
     @property
     @pulumi.getter
@@ -7640,11 +9291,24 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                The `min` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
                Structure is documented below.
         """
-        pulumi.set(__self__, "replacement_value", replacement_value)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            replacement_value=replacement_value,
+            max=max,
+            min=min,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             replacement_value: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgs'],
+             max: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxArgs']] = None,
+             min: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("replacement_value", replacement_value)
         if max is not None:
-            pulumi.set(__self__, "max", max)
+            _setter("max", max)
         if min is not None:
-            pulumi.set(__self__, "min", min)
+            _setter("min", min)
 
     @property
     @pulumi.getter(name="replacementValue")
@@ -7713,22 +9377,45 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                Structure is documented below.
         :param pulumi.Input[str] timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            boolean_value=boolean_value,
+            date_value=date_value,
+            day_of_week_value=day_of_week_value,
+            float_value=float_value,
+            integer_value=integer_value,
+            string_value=string_value,
+            time_value=time_value,
+            timestamp_value=timestamp_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             boolean_value: Optional[pulumi.Input[bool]] = None,
+             date_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgs']] = None,
+             day_of_week_value: Optional[pulumi.Input[str]] = None,
+             float_value: Optional[pulumi.Input[float]] = None,
+             integer_value: Optional[pulumi.Input[str]] = None,
+             string_value: Optional[pulumi.Input[str]] = None,
+             time_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgs']] = None,
+             timestamp_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if boolean_value is not None:
-            pulumi.set(__self__, "boolean_value", boolean_value)
+            _setter("boolean_value", boolean_value)
         if date_value is not None:
-            pulumi.set(__self__, "date_value", date_value)
+            _setter("date_value", date_value)
         if day_of_week_value is not None:
-            pulumi.set(__self__, "day_of_week_value", day_of_week_value)
+            _setter("day_of_week_value", day_of_week_value)
         if float_value is not None:
-            pulumi.set(__self__, "float_value", float_value)
+            _setter("float_value", float_value)
         if integer_value is not None:
-            pulumi.set(__self__, "integer_value", integer_value)
+            _setter("integer_value", integer_value)
         if string_value is not None:
-            pulumi.set(__self__, "string_value", string_value)
+            _setter("string_value", string_value)
         if time_value is not None:
-            pulumi.set(__self__, "time_value", time_value)
+            _setter("time_value", time_value)
         if timestamp_value is not None:
-            pulumi.set(__self__, "timestamp_value", timestamp_value)
+            _setter("timestamp_value", timestamp_value)
 
     @property
     @pulumi.getter(name="booleanValue")
@@ -7843,12 +9530,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day=day,
+            month=month,
+            year=year,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day: Optional[pulumi.Input[int]] = None,
+             month: Optional[pulumi.Input[int]] = None,
+             year: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if day is not None:
-            pulumi.set(__self__, "day", day)
+            _setter("day", day)
         if month is not None:
-            pulumi.set(__self__, "month", month)
+            _setter("month", month)
         if year is not None:
-            pulumi.set(__self__, "year", year)
+            _setter("year", year)
 
     @property
     @pulumi.getter
@@ -7902,14 +9602,29 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[int] nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         :param pulumi.Input[int] seconds: Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hours=hours,
+            minutes=minutes,
+            nanos=nanos,
+            seconds=seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hours: Optional[pulumi.Input[int]] = None,
+             minutes: Optional[pulumi.Input[int]] = None,
+             nanos: Optional[pulumi.Input[int]] = None,
+             seconds: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if hours is not None:
-            pulumi.set(__self__, "hours", hours)
+            _setter("hours", hours)
         if minutes is not None:
-            pulumi.set(__self__, "minutes", minutes)
+            _setter("minutes", minutes)
         if nanos is not None:
-            pulumi.set(__self__, "nanos", nanos)
+            _setter("nanos", nanos)
         if seconds is not None:
-            pulumi.set(__self__, "seconds", seconds)
+            _setter("seconds", seconds)
 
     @property
     @pulumi.getter
@@ -7984,22 +9699,45 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                Structure is documented below.
         :param pulumi.Input[str] timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            boolean_value=boolean_value,
+            date_value=date_value,
+            day_of_week_value=day_of_week_value,
+            float_value=float_value,
+            integer_value=integer_value,
+            string_value=string_value,
+            time_value=time_value,
+            timestamp_value=timestamp_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             boolean_value: Optional[pulumi.Input[bool]] = None,
+             date_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgs']] = None,
+             day_of_week_value: Optional[pulumi.Input[str]] = None,
+             float_value: Optional[pulumi.Input[float]] = None,
+             integer_value: Optional[pulumi.Input[str]] = None,
+             string_value: Optional[pulumi.Input[str]] = None,
+             time_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgs']] = None,
+             timestamp_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if boolean_value is not None:
-            pulumi.set(__self__, "boolean_value", boolean_value)
+            _setter("boolean_value", boolean_value)
         if date_value is not None:
-            pulumi.set(__self__, "date_value", date_value)
+            _setter("date_value", date_value)
         if day_of_week_value is not None:
-            pulumi.set(__self__, "day_of_week_value", day_of_week_value)
+            _setter("day_of_week_value", day_of_week_value)
         if float_value is not None:
-            pulumi.set(__self__, "float_value", float_value)
+            _setter("float_value", float_value)
         if integer_value is not None:
-            pulumi.set(__self__, "integer_value", integer_value)
+            _setter("integer_value", integer_value)
         if string_value is not None:
-            pulumi.set(__self__, "string_value", string_value)
+            _setter("string_value", string_value)
         if time_value is not None:
-            pulumi.set(__self__, "time_value", time_value)
+            _setter("time_value", time_value)
         if timestamp_value is not None:
-            pulumi.set(__self__, "timestamp_value", timestamp_value)
+            _setter("timestamp_value", timestamp_value)
 
     @property
     @pulumi.getter(name="booleanValue")
@@ -8114,12 +9852,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day=day,
+            month=month,
+            year=year,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day: Optional[pulumi.Input[int]] = None,
+             month: Optional[pulumi.Input[int]] = None,
+             year: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if day is not None:
-            pulumi.set(__self__, "day", day)
+            _setter("day", day)
         if month is not None:
-            pulumi.set(__self__, "month", month)
+            _setter("month", month)
         if year is not None:
-            pulumi.set(__self__, "year", year)
+            _setter("year", year)
 
     @property
     @pulumi.getter
@@ -8173,14 +9924,29 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[int] nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         :param pulumi.Input[int] seconds: Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hours=hours,
+            minutes=minutes,
+            nanos=nanos,
+            seconds=seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hours: Optional[pulumi.Input[int]] = None,
+             minutes: Optional[pulumi.Input[int]] = None,
+             nanos: Optional[pulumi.Input[int]] = None,
+             seconds: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if hours is not None:
-            pulumi.set(__self__, "hours", hours)
+            _setter("hours", hours)
         if minutes is not None:
-            pulumi.set(__self__, "minutes", minutes)
+            _setter("minutes", minutes)
         if nanos is not None:
-            pulumi.set(__self__, "nanos", nanos)
+            _setter("nanos", nanos)
         if seconds is not None:
-            pulumi.set(__self__, "seconds", seconds)
+            _setter("seconds", seconds)
 
     @property
     @pulumi.getter
@@ -8255,22 +10021,45 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                Structure is documented below.
         :param pulumi.Input[str] timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            boolean_value=boolean_value,
+            date_value=date_value,
+            day_of_week_value=day_of_week_value,
+            float_value=float_value,
+            integer_value=integer_value,
+            string_value=string_value,
+            time_value=time_value,
+            timestamp_value=timestamp_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             boolean_value: Optional[pulumi.Input[bool]] = None,
+             date_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgs']] = None,
+             day_of_week_value: Optional[pulumi.Input[str]] = None,
+             float_value: Optional[pulumi.Input[float]] = None,
+             integer_value: Optional[pulumi.Input[str]] = None,
+             string_value: Optional[pulumi.Input[str]] = None,
+             time_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgs']] = None,
+             timestamp_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if boolean_value is not None:
-            pulumi.set(__self__, "boolean_value", boolean_value)
+            _setter("boolean_value", boolean_value)
         if date_value is not None:
-            pulumi.set(__self__, "date_value", date_value)
+            _setter("date_value", date_value)
         if day_of_week_value is not None:
-            pulumi.set(__self__, "day_of_week_value", day_of_week_value)
+            _setter("day_of_week_value", day_of_week_value)
         if float_value is not None:
-            pulumi.set(__self__, "float_value", float_value)
+            _setter("float_value", float_value)
         if integer_value is not None:
-            pulumi.set(__self__, "integer_value", integer_value)
+            _setter("integer_value", integer_value)
         if string_value is not None:
-            pulumi.set(__self__, "string_value", string_value)
+            _setter("string_value", string_value)
         if time_value is not None:
-            pulumi.set(__self__, "time_value", time_value)
+            _setter("time_value", time_value)
         if timestamp_value is not None:
-            pulumi.set(__self__, "timestamp_value", timestamp_value)
+            _setter("timestamp_value", timestamp_value)
 
     @property
     @pulumi.getter(name="booleanValue")
@@ -8385,12 +10174,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day=day,
+            month=month,
+            year=year,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day: Optional[pulumi.Input[int]] = None,
+             month: Optional[pulumi.Input[int]] = None,
+             year: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if day is not None:
-            pulumi.set(__self__, "day", day)
+            _setter("day", day)
         if month is not None:
-            pulumi.set(__self__, "month", month)
+            _setter("month", month)
         if year is not None:
-            pulumi.set(__self__, "year", year)
+            _setter("year", year)
 
     @property
     @pulumi.getter
@@ -8444,14 +10246,29 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[int] nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         :param pulumi.Input[int] seconds: Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hours=hours,
+            minutes=minutes,
+            nanos=nanos,
+            seconds=seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hours: Optional[pulumi.Input[int]] = None,
+             minutes: Optional[pulumi.Input[int]] = None,
+             nanos: Optional[pulumi.Input[int]] = None,
+             seconds: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if hours is not None:
-            pulumi.set(__self__, "hours", hours)
+            _setter("hours", hours)
         if minutes is not None:
-            pulumi.set(__self__, "minutes", minutes)
+            _setter("minutes", minutes)
         if nanos is not None:
-            pulumi.set(__self__, "nanos", nanos)
+            _setter("nanos", nanos)
         if seconds is not None:
-            pulumi.set(__self__, "seconds", seconds)
+            _setter("seconds", seconds)
 
     @property
     @pulumi.getter
@@ -8517,14 +10334,29 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[bool] reverse_order: Mask characters in reverse order. For example, if masking_character is 0, number_to_mask is 14, and reverse_order is `false`, then the
                input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            characters_to_ignores=characters_to_ignores,
+            masking_character=masking_character,
+            number_to_mask=number_to_mask,
+            reverse_order=reverse_order,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             characters_to_ignores: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs']]]] = None,
+             masking_character: Optional[pulumi.Input[str]] = None,
+             number_to_mask: Optional[pulumi.Input[int]] = None,
+             reverse_order: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if characters_to_ignores is not None:
-            pulumi.set(__self__, "characters_to_ignores", characters_to_ignores)
+            _setter("characters_to_ignores", characters_to_ignores)
         if masking_character is not None:
-            pulumi.set(__self__, "masking_character", masking_character)
+            _setter("masking_character", masking_character)
         if number_to_mask is not None:
-            pulumi.set(__self__, "number_to_mask", number_to_mask)
+            _setter("number_to_mask", number_to_mask)
         if reverse_order is not None:
-            pulumi.set(__self__, "reverse_order", reverse_order)
+            _setter("reverse_order", reverse_order)
 
     @property
     @pulumi.getter(name="charactersToIgnores")
@@ -8587,10 +10419,21 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[str] common_characters_to_ignore: Common characters to not transform when masking. Useful to avoid removing punctuation. Only one of this or `characters_to_skip` must be specified.
                Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            characters_to_skip=characters_to_skip,
+            common_characters_to_ignore=common_characters_to_ignore,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             characters_to_skip: Optional[pulumi.Input[str]] = None,
+             common_characters_to_ignore: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if characters_to_skip is not None:
-            pulumi.set(__self__, "characters_to_skip", characters_to_skip)
+            _setter("characters_to_skip", characters_to_skip)
         if common_characters_to_ignore is not None:
-            pulumi.set(__self__, "common_characters_to_ignore", common_characters_to_ignore)
+            _setter("common_characters_to_ignore", common_characters_to_ignore)
 
     @property
     @pulumi.getter(name="charactersToSkip")
@@ -8644,12 +10487,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            context=context,
+            crypto_key=crypto_key,
+            surrogate_info_type=surrogate_info_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             context: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs']] = None,
+             crypto_key: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs']] = None,
+             surrogate_info_type: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if context is not None:
-            pulumi.set(__self__, "context", context)
+            _setter("context", context)
         if crypto_key is not None:
-            pulumi.set(__self__, "crypto_key", crypto_key)
+            _setter("crypto_key", crypto_key)
         if surrogate_info_type is not None:
-            pulumi.set(__self__, "surrogate_info_type", surrogate_info_type)
+            _setter("surrogate_info_type", surrogate_info_type)
 
     @property
     @pulumi.getter
@@ -8710,8 +10566,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         """
         :param pulumi.Input[str] name: Name describing the field.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -8743,12 +10608,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs'] unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_wrapped=kms_wrapped,
+            transient=transient,
+            unwrapped=unwrapped,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_wrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs']] = None,
+             transient: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs']] = None,
+             unwrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if kms_wrapped is not None:
-            pulumi.set(__self__, "kms_wrapped", kms_wrapped)
+            _setter("kms_wrapped", kms_wrapped)
         if transient is not None:
-            pulumi.set(__self__, "transient", transient)
+            _setter("transient", transient)
         if unwrapped is not None:
-            pulumi.set(__self__, "unwrapped", unwrapped)
+            _setter("unwrapped", unwrapped)
 
     @property
     @pulumi.getter(name="kmsWrapped")
@@ -8803,8 +10681,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[str] wrapped_key: The wrapped data crypto key.
                A base64-encoded string.
         """
-        pulumi.set(__self__, "crypto_key_name", crypto_key_name)
-        pulumi.set(__self__, "wrapped_key", wrapped_key)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            crypto_key_name=crypto_key_name,
+            wrapped_key=wrapped_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             crypto_key_name: pulumi.Input[str],
+             wrapped_key: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("crypto_key_name", crypto_key_name)
+        _setter("wrapped_key", wrapped_key)
 
     @property
     @pulumi.getter(name="cryptoKeyName")
@@ -8839,7 +10728,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         """
         :param pulumi.Input[str] name: Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
         """
-        pulumi.set(__self__, "name", name)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -8863,7 +10761,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                A base64-encoded string.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
-        pulumi.set(__self__, "key", key)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
 
     @property
     @pulumi.getter
@@ -8892,12 +10799,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                Structure is documented below.
         :param pulumi.Input[str] version: Optional version name for this InfoType.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            sensitivity_score=sensitivity_score,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             sensitivity_score: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgs']] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if sensitivity_score is not None:
-            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+            _setter("sensitivity_score", sensitivity_score)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -8945,7 +10865,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[str] score: The sensitivity score applied to the resource.
                Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
         """
-        pulumi.set(__self__, "score", score)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            score=score,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             score: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("score", score)
 
     @property
     @pulumi.getter
@@ -8969,8 +10898,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgs'] crypto_key: The key used by the encryption function.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            crypto_key=crypto_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             crypto_key: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if crypto_key is not None:
-            pulumi.set(__self__, "crypto_key", crypto_key)
+            _setter("crypto_key", crypto_key)
 
     @property
     @pulumi.getter(name="cryptoKey")
@@ -9003,12 +10941,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgs'] unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_wrapped=kms_wrapped,
+            transient=transient,
+            unwrapped=unwrapped,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_wrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgs']] = None,
+             transient: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgs']] = None,
+             unwrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if kms_wrapped is not None:
-            pulumi.set(__self__, "kms_wrapped", kms_wrapped)
+            _setter("kms_wrapped", kms_wrapped)
         if transient is not None:
-            pulumi.set(__self__, "transient", transient)
+            _setter("transient", transient)
         if unwrapped is not None:
-            pulumi.set(__self__, "unwrapped", unwrapped)
+            _setter("unwrapped", unwrapped)
 
     @property
     @pulumi.getter(name="kmsWrapped")
@@ -9063,8 +11014,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[str] wrapped_key: The wrapped data crypto key.
                A base64-encoded string.
         """
-        pulumi.set(__self__, "crypto_key_name", crypto_key_name)
-        pulumi.set(__self__, "wrapped_key", wrapped_key)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            crypto_key_name=crypto_key_name,
+            wrapped_key=wrapped_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             crypto_key_name: pulumi.Input[str],
+             wrapped_key: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("crypto_key_name", crypto_key_name)
+        _setter("wrapped_key", wrapped_key)
 
     @property
     @pulumi.getter(name="cryptoKeyName")
@@ -9099,7 +11061,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         """
         :param pulumi.Input[str] name: Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
         """
-        pulumi.set(__self__, "name", name)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -9123,7 +11094,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                A base64-encoded string.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
-        pulumi.set(__self__, "key", key)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
 
     @property
     @pulumi.getter
@@ -9173,18 +11153,37 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            common_alphabet=common_alphabet,
+            context=context,
+            crypto_key=crypto_key,
+            custom_alphabet=custom_alphabet,
+            radix=radix,
+            surrogate_info_type=surrogate_info_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             common_alphabet: Optional[pulumi.Input[str]] = None,
+             context: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs']] = None,
+             crypto_key: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs']] = None,
+             custom_alphabet: Optional[pulumi.Input[str]] = None,
+             radix: Optional[pulumi.Input[int]] = None,
+             surrogate_info_type: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if common_alphabet is not None:
-            pulumi.set(__self__, "common_alphabet", common_alphabet)
+            _setter("common_alphabet", common_alphabet)
         if context is not None:
-            pulumi.set(__self__, "context", context)
+            _setter("context", context)
         if crypto_key is not None:
-            pulumi.set(__self__, "crypto_key", crypto_key)
+            _setter("crypto_key", crypto_key)
         if custom_alphabet is not None:
-            pulumi.set(__self__, "custom_alphabet", custom_alphabet)
+            _setter("custom_alphabet", custom_alphabet)
         if radix is not None:
-            pulumi.set(__self__, "radix", radix)
+            _setter("radix", radix)
         if surrogate_info_type is not None:
-            pulumi.set(__self__, "surrogate_info_type", surrogate_info_type)
+            _setter("surrogate_info_type", surrogate_info_type)
 
     @property
     @pulumi.getter(name="commonAlphabet")
@@ -9282,8 +11281,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         """
         :param pulumi.Input[str] name: Name describing the field.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -9315,12 +11323,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs'] unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_wrapped=kms_wrapped,
+            transient=transient,
+            unwrapped=unwrapped,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_wrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs']] = None,
+             transient: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs']] = None,
+             unwrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if kms_wrapped is not None:
-            pulumi.set(__self__, "kms_wrapped", kms_wrapped)
+            _setter("kms_wrapped", kms_wrapped)
         if transient is not None:
-            pulumi.set(__self__, "transient", transient)
+            _setter("transient", transient)
         if unwrapped is not None:
-            pulumi.set(__self__, "unwrapped", unwrapped)
+            _setter("unwrapped", unwrapped)
 
     @property
     @pulumi.getter(name="kmsWrapped")
@@ -9375,8 +11396,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[str] wrapped_key: The wrapped data crypto key.
                A base64-encoded string.
         """
-        pulumi.set(__self__, "crypto_key_name", crypto_key_name)
-        pulumi.set(__self__, "wrapped_key", wrapped_key)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            crypto_key_name=crypto_key_name,
+            wrapped_key=wrapped_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             crypto_key_name: pulumi.Input[str],
+             wrapped_key: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("crypto_key_name", crypto_key_name)
+        _setter("wrapped_key", wrapped_key)
 
     @property
     @pulumi.getter(name="cryptoKeyName")
@@ -9411,7 +11443,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         """
         :param pulumi.Input[str] name: Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
         """
-        pulumi.set(__self__, "name", name)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -9435,7 +11476,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                A base64-encoded string.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
-        pulumi.set(__self__, "key", key)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
 
     @property
     @pulumi.getter
@@ -9464,12 +11514,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                Structure is documented below.
         :param pulumi.Input[str] version: Optional version name for this InfoType.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            sensitivity_score=sensitivity_score,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             sensitivity_score: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgs']] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if sensitivity_score is not None:
-            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+            _setter("sensitivity_score", sensitivity_score)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -9517,7 +11580,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[str] score: The sensitivity score applied to the resource.
                Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
         """
-        pulumi.set(__self__, "score", score)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            score=score,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             score: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("score", score)
 
     @property
     @pulumi.getter
@@ -9550,12 +11622,27 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgs'] crypto_key: Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and cryptoKey. If set, must also set context. Can only be applied to table items.
                Structure is documented below.
         """
-        pulumi.set(__self__, "lower_bound_days", lower_bound_days)
-        pulumi.set(__self__, "upper_bound_days", upper_bound_days)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            lower_bound_days=lower_bound_days,
+            upper_bound_days=upper_bound_days,
+            context=context,
+            crypto_key=crypto_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             lower_bound_days: pulumi.Input[int],
+             upper_bound_days: pulumi.Input[int],
+             context: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigContextArgs']] = None,
+             crypto_key: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("lower_bound_days", lower_bound_days)
+        _setter("upper_bound_days", upper_bound_days)
         if context is not None:
-            pulumi.set(__self__, "context", context)
+            _setter("context", context)
         if crypto_key is not None:
-            pulumi.set(__self__, "crypto_key", crypto_key)
+            _setter("crypto_key", crypto_key)
 
     @property
     @pulumi.getter(name="lowerBoundDays")
@@ -9617,8 +11704,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         """
         :param pulumi.Input[str] name: Name describing the field.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigContextArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -9650,12 +11746,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgs'] unwrapped: Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_wrapped=kms_wrapped,
+            transient=transient,
+            unwrapped=unwrapped,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_wrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgs']] = None,
+             transient: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgs']] = None,
+             unwrapped: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if kms_wrapped is not None:
-            pulumi.set(__self__, "kms_wrapped", kms_wrapped)
+            _setter("kms_wrapped", kms_wrapped)
         if transient is not None:
-            pulumi.set(__self__, "transient", transient)
+            _setter("transient", transient)
         if unwrapped is not None:
-            pulumi.set(__self__, "unwrapped", unwrapped)
+            _setter("unwrapped", unwrapped)
 
     @property
     @pulumi.getter(name="kmsWrapped")
@@ -9710,8 +11819,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[str] wrapped_key: The wrapped data crypto key.
                A base64-encoded string.
         """
-        pulumi.set(__self__, "crypto_key_name", crypto_key_name)
-        pulumi.set(__self__, "wrapped_key", wrapped_key)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            crypto_key_name=crypto_key_name,
+            wrapped_key=wrapped_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             crypto_key_name: pulumi.Input[str],
+             wrapped_key: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("crypto_key_name", crypto_key_name)
+        _setter("wrapped_key", wrapped_key)
 
     @property
     @pulumi.getter(name="cryptoKeyName")
@@ -9746,7 +11866,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         """
         :param pulumi.Input[str] name: Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
         """
-        pulumi.set(__self__, "name", name)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -9770,7 +11899,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                A base64-encoded string.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
-        pulumi.set(__self__, "key", key)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
 
     @property
     @pulumi.getter
@@ -9806,9 +11944,22 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                The `upper_bound` block must only contain one argument. See the `fixed_size_bucketing_config` block description for more information about choosing a data type.
                Structure is documented below.
         """
-        pulumi.set(__self__, "bucket_size", bucket_size)
-        pulumi.set(__self__, "lower_bound", lower_bound)
-        pulumi.set(__self__, "upper_bound", upper_bound)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucket_size=bucket_size,
+            lower_bound=lower_bound,
+            upper_bound=upper_bound,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucket_size: pulumi.Input[float],
+             lower_bound: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgs'],
+             upper_bound: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgs'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bucket_size", bucket_size)
+        _setter("lower_bound", lower_bound)
+        _setter("upper_bound", upper_bound)
 
     @property
     @pulumi.getter(name="bucketSize")
@@ -9879,22 +12030,45 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                Structure is documented below.
         :param pulumi.Input[str] timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            boolean_value=boolean_value,
+            date_value=date_value,
+            day_of_week_value=day_of_week_value,
+            float_value=float_value,
+            integer_value=integer_value,
+            string_value=string_value,
+            time_value=time_value,
+            timestamp_value=timestamp_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             boolean_value: Optional[pulumi.Input[bool]] = None,
+             date_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValueArgs']] = None,
+             day_of_week_value: Optional[pulumi.Input[str]] = None,
+             float_value: Optional[pulumi.Input[float]] = None,
+             integer_value: Optional[pulumi.Input[str]] = None,
+             string_value: Optional[pulumi.Input[str]] = None,
+             time_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundTimeValueArgs']] = None,
+             timestamp_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if boolean_value is not None:
-            pulumi.set(__self__, "boolean_value", boolean_value)
+            _setter("boolean_value", boolean_value)
         if date_value is not None:
-            pulumi.set(__self__, "date_value", date_value)
+            _setter("date_value", date_value)
         if day_of_week_value is not None:
-            pulumi.set(__self__, "day_of_week_value", day_of_week_value)
+            _setter("day_of_week_value", day_of_week_value)
         if float_value is not None:
-            pulumi.set(__self__, "float_value", float_value)
+            _setter("float_value", float_value)
         if integer_value is not None:
-            pulumi.set(__self__, "integer_value", integer_value)
+            _setter("integer_value", integer_value)
         if string_value is not None:
-            pulumi.set(__self__, "string_value", string_value)
+            _setter("string_value", string_value)
         if time_value is not None:
-            pulumi.set(__self__, "time_value", time_value)
+            _setter("time_value", time_value)
         if timestamp_value is not None:
-            pulumi.set(__self__, "timestamp_value", timestamp_value)
+            _setter("timestamp_value", timestamp_value)
 
     @property
     @pulumi.getter(name="booleanValue")
@@ -10009,12 +12183,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day=day,
+            month=month,
+            year=year,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day: Optional[pulumi.Input[int]] = None,
+             month: Optional[pulumi.Input[int]] = None,
+             year: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if day is not None:
-            pulumi.set(__self__, "day", day)
+            _setter("day", day)
         if month is not None:
-            pulumi.set(__self__, "month", month)
+            _setter("month", month)
         if year is not None:
-            pulumi.set(__self__, "year", year)
+            _setter("year", year)
 
     @property
     @pulumi.getter
@@ -10068,14 +12255,29 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[int] nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         :param pulumi.Input[int] seconds: Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundTimeValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hours=hours,
+            minutes=minutes,
+            nanos=nanos,
+            seconds=seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hours: Optional[pulumi.Input[int]] = None,
+             minutes: Optional[pulumi.Input[int]] = None,
+             nanos: Optional[pulumi.Input[int]] = None,
+             seconds: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if hours is not None:
-            pulumi.set(__self__, "hours", hours)
+            _setter("hours", hours)
         if minutes is not None:
-            pulumi.set(__self__, "minutes", minutes)
+            _setter("minutes", minutes)
         if nanos is not None:
-            pulumi.set(__self__, "nanos", nanos)
+            _setter("nanos", nanos)
         if seconds is not None:
-            pulumi.set(__self__, "seconds", seconds)
+            _setter("seconds", seconds)
 
     @property
     @pulumi.getter
@@ -10150,22 +12352,45 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                Structure is documented below.
         :param pulumi.Input[str] timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            boolean_value=boolean_value,
+            date_value=date_value,
+            day_of_week_value=day_of_week_value,
+            float_value=float_value,
+            integer_value=integer_value,
+            string_value=string_value,
+            time_value=time_value,
+            timestamp_value=timestamp_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             boolean_value: Optional[pulumi.Input[bool]] = None,
+             date_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValueArgs']] = None,
+             day_of_week_value: Optional[pulumi.Input[str]] = None,
+             float_value: Optional[pulumi.Input[float]] = None,
+             integer_value: Optional[pulumi.Input[str]] = None,
+             string_value: Optional[pulumi.Input[str]] = None,
+             time_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundTimeValueArgs']] = None,
+             timestamp_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if boolean_value is not None:
-            pulumi.set(__self__, "boolean_value", boolean_value)
+            _setter("boolean_value", boolean_value)
         if date_value is not None:
-            pulumi.set(__self__, "date_value", date_value)
+            _setter("date_value", date_value)
         if day_of_week_value is not None:
-            pulumi.set(__self__, "day_of_week_value", day_of_week_value)
+            _setter("day_of_week_value", day_of_week_value)
         if float_value is not None:
-            pulumi.set(__self__, "float_value", float_value)
+            _setter("float_value", float_value)
         if integer_value is not None:
-            pulumi.set(__self__, "integer_value", integer_value)
+            _setter("integer_value", integer_value)
         if string_value is not None:
-            pulumi.set(__self__, "string_value", string_value)
+            _setter("string_value", string_value)
         if time_value is not None:
-            pulumi.set(__self__, "time_value", time_value)
+            _setter("time_value", time_value)
         if timestamp_value is not None:
-            pulumi.set(__self__, "timestamp_value", timestamp_value)
+            _setter("timestamp_value", timestamp_value)
 
     @property
     @pulumi.getter(name="booleanValue")
@@ -10280,12 +12505,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day=day,
+            month=month,
+            year=year,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day: Optional[pulumi.Input[int]] = None,
+             month: Optional[pulumi.Input[int]] = None,
+             year: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if day is not None:
-            pulumi.set(__self__, "day", day)
+            _setter("day", day)
         if month is not None:
-            pulumi.set(__self__, "month", month)
+            _setter("month", month)
         if year is not None:
-            pulumi.set(__self__, "year", year)
+            _setter("year", year)
 
     @property
     @pulumi.getter
@@ -10339,14 +12577,29 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[int] nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         :param pulumi.Input[int] seconds: Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundTimeValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hours=hours,
+            minutes=minutes,
+            nanos=nanos,
+            seconds=seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hours: Optional[pulumi.Input[int]] = None,
+             minutes: Optional[pulumi.Input[int]] = None,
+             nanos: Optional[pulumi.Input[int]] = None,
+             seconds: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if hours is not None:
-            pulumi.set(__self__, "hours", hours)
+            _setter("hours", hours)
         if minutes is not None:
-            pulumi.set(__self__, "minutes", minutes)
+            _setter("minutes", minutes)
         if nanos is not None:
-            pulumi.set(__self__, "nanos", nanos)
+            _setter("nanos", nanos)
         if seconds is not None:
-            pulumi.set(__self__, "seconds", seconds)
+            _setter("seconds", seconds)
 
     @property
     @pulumi.getter
@@ -10401,6 +12654,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgs:
     def __init__(__self__):
         pass
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        pass
 
 
 @pulumi.input_type
@@ -10412,7 +12670,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                The `new_value` block must only contain one argument. For example when replacing the contents of a string-type field, only `string_value` should be set.
                Structure is documented below.
         """
-        pulumi.set(__self__, "new_value", new_value)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            new_value=new_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             new_value: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueArgs'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("new_value", new_value)
 
     @property
     @pulumi.getter(name="newValue")
@@ -10454,22 +12721,45 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[str] timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            boolean_value=boolean_value,
+            date_value=date_value,
+            day_of_week_value=day_of_week_value,
+            float_value=float_value,
+            integer_value=integer_value,
+            string_value=string_value,
+            time_value=time_value,
+            timestamp_value=timestamp_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             boolean_value: Optional[pulumi.Input[bool]] = None,
+             date_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs']] = None,
+             day_of_week_value: Optional[pulumi.Input[str]] = None,
+             float_value: Optional[pulumi.Input[float]] = None,
+             integer_value: Optional[pulumi.Input[str]] = None,
+             string_value: Optional[pulumi.Input[str]] = None,
+             time_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs']] = None,
+             timestamp_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if boolean_value is not None:
-            pulumi.set(__self__, "boolean_value", boolean_value)
+            _setter("boolean_value", boolean_value)
         if date_value is not None:
-            pulumi.set(__self__, "date_value", date_value)
+            _setter("date_value", date_value)
         if day_of_week_value is not None:
-            pulumi.set(__self__, "day_of_week_value", day_of_week_value)
+            _setter("day_of_week_value", day_of_week_value)
         if float_value is not None:
-            pulumi.set(__self__, "float_value", float_value)
+            _setter("float_value", float_value)
         if integer_value is not None:
-            pulumi.set(__self__, "integer_value", integer_value)
+            _setter("integer_value", integer_value)
         if string_value is not None:
-            pulumi.set(__self__, "string_value", string_value)
+            _setter("string_value", string_value)
         if time_value is not None:
-            pulumi.set(__self__, "time_value", time_value)
+            _setter("time_value", time_value)
         if timestamp_value is not None:
-            pulumi.set(__self__, "timestamp_value", timestamp_value)
+            _setter("timestamp_value", timestamp_value)
 
     @property
     @pulumi.getter(name="booleanValue")
@@ -10585,12 +12875,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day=day,
+            month=month,
+            year=year,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day: Optional[pulumi.Input[int]] = None,
+             month: Optional[pulumi.Input[int]] = None,
+             year: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if day is not None:
-            pulumi.set(__self__, "day", day)
+            _setter("day", day)
         if month is not None:
-            pulumi.set(__self__, "month", month)
+            _setter("month", month)
         if year is not None:
-            pulumi.set(__self__, "year", year)
+            _setter("year", year)
 
     @property
     @pulumi.getter
@@ -10644,14 +12947,29 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[int] nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         :param pulumi.Input[int] seconds: Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hours=hours,
+            minutes=minutes,
+            nanos=nanos,
+            seconds=seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hours: Optional[pulumi.Input[int]] = None,
+             minutes: Optional[pulumi.Input[int]] = None,
+             nanos: Optional[pulumi.Input[int]] = None,
+             seconds: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if hours is not None:
-            pulumi.set(__self__, "hours", hours)
+            _setter("hours", hours)
         if minutes is not None:
-            pulumi.set(__self__, "minutes", minutes)
+            _setter("minutes", minutes)
         if nanos is not None:
-            pulumi.set(__self__, "nanos", nanos)
+            _setter("nanos", nanos)
         if seconds is not None:
-            pulumi.set(__self__, "seconds", seconds)
+            _setter("seconds", seconds)
 
     @property
     @pulumi.getter
@@ -10710,8 +13028,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgs'] word_list: A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            word_list=word_list,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             word_list: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if word_list is not None:
-            pulumi.set(__self__, "word_list", word_list)
+            _setter("word_list", word_list)
 
     @property
     @pulumi.getter(name="wordList")
@@ -10734,7 +13061,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] words: Words or phrases defining the dictionary. The dictionary must contain at least one phrase and every phrase must contain at least 2 characters that are letters or digits.
         """
-        pulumi.set(__self__, "words", words)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            words=words,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             words: pulumi.Input[Sequence[pulumi.Input[str]]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("words", words)
 
     @property
     @pulumi.getter
@@ -10757,8 +13093,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input[str] part_to_extract: The part of the time to keep.
                Possible values are: `YEAR`, `MONTH`, `DAY_OF_MONTH`, `DAY_OF_WEEK`, `WEEK_OF_YEAR`, `HOUR_OF_DAY`.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            part_to_extract=part_to_extract,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             part_to_extract: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if part_to_extract is not None:
-            pulumi.set(__self__, "part_to_extract", part_to_extract)
+            _setter("part_to_extract", part_to_extract)
 
     @property
     @pulumi.getter(name="partToExtract")
@@ -10782,8 +13127,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgs'] condition: A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
 
     @property
     @pulumi.getter
@@ -10807,8 +13161,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgs'] expressions: An expression, consisting of an operator and conditions.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expressions=expressions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expressions: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if expressions is not None:
-            pulumi.set(__self__, "expressions", expressions)
+            _setter("expressions", expressions)
 
     @property
     @pulumi.getter
@@ -10836,10 +13199,21 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
                Default value is `AND`.
                Possible values are: `AND`.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            conditions=conditions,
+            logical_operator=logical_operator,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             conditions: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgs']] = None,
+             logical_operator: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if conditions is not None:
-            pulumi.set(__self__, "conditions", conditions)
+            _setter("conditions", conditions)
         if logical_operator is not None:
-            pulumi.set(__self__, "logical_operator", logical_operator)
+            _setter("logical_operator", logical_operator)
 
     @property
     @pulumi.getter
@@ -10877,8 +13251,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
         :param pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArgs']]] conditions: A collection of conditions.
                Structure is documented below.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            conditions=conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             conditions: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if conditions is not None:
-            pulumi.set(__self__, "conditions", conditions)
+            _setter("conditions", conditions)
 
     @property
     @pulumi.getter
@@ -10908,10 +13291,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgs'] value: Value to compare against. [Mandatory, except for EXISTS tests.]
                Structure is documented below.
         """
-        pulumi.set(__self__, "field", field)
-        pulumi.set(__self__, "operator", operator)
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            field=field,
+            operator=operator,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             field: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldArgs'],
+             operator: pulumi.Input[str],
+             value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("field", field)
+        _setter("operator", operator)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -10960,8 +13356,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
         """
         :param pulumi.Input[str] name: Name describing the field.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -11000,22 +13405,45 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
                Structure is documented below.
         :param pulumi.Input[str] timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            boolean_value=boolean_value,
+            date_value=date_value,
+            day_of_week_value=day_of_week_value,
+            float_value=float_value,
+            integer_value=integer_value,
+            string_value=string_value,
+            time_value=time_value,
+            timestamp_value=timestamp_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             boolean_value: Optional[pulumi.Input[bool]] = None,
+             date_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgs']] = None,
+             day_of_week_value: Optional[pulumi.Input[str]] = None,
+             float_value: Optional[pulumi.Input[float]] = None,
+             integer_value: Optional[pulumi.Input[str]] = None,
+             string_value: Optional[pulumi.Input[str]] = None,
+             time_value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArgs']] = None,
+             timestamp_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if boolean_value is not None:
-            pulumi.set(__self__, "boolean_value", boolean_value)
+            _setter("boolean_value", boolean_value)
         if date_value is not None:
-            pulumi.set(__self__, "date_value", date_value)
+            _setter("date_value", date_value)
         if day_of_week_value is not None:
-            pulumi.set(__self__, "day_of_week_value", day_of_week_value)
+            _setter("day_of_week_value", day_of_week_value)
         if float_value is not None:
-            pulumi.set(__self__, "float_value", float_value)
+            _setter("float_value", float_value)
         if integer_value is not None:
-            pulumi.set(__self__, "integer_value", integer_value)
+            _setter("integer_value", integer_value)
         if string_value is not None:
-            pulumi.set(__self__, "string_value", string_value)
+            _setter("string_value", string_value)
         if time_value is not None:
-            pulumi.set(__self__, "time_value", time_value)
+            _setter("time_value", time_value)
         if timestamp_value is not None:
-            pulumi.set(__self__, "timestamp_value", timestamp_value)
+            _setter("timestamp_value", timestamp_value)
 
     @property
     @pulumi.getter(name="booleanValue")
@@ -11130,12 +13558,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day=day,
+            month=month,
+            year=year,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day: Optional[pulumi.Input[int]] = None,
+             month: Optional[pulumi.Input[int]] = None,
+             year: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if day is not None:
-            pulumi.set(__self__, "day", day)
+            _setter("day", day)
         if month is not None:
-            pulumi.set(__self__, "month", month)
+            _setter("month", month)
         if year is not None:
-            pulumi.set(__self__, "year", year)
+            _setter("year", year)
 
     @property
     @pulumi.getter
@@ -11189,14 +13630,29 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
         :param pulumi.Input[int] nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         :param pulumi.Input[int] seconds: Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
         """
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hours=hours,
+            minutes=minutes,
+            nanos=nanos,
+            seconds=seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hours: Optional[pulumi.Input[int]] = None,
+             minutes: Optional[pulumi.Input[int]] = None,
+             nanos: Optional[pulumi.Input[int]] = None,
+             seconds: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if hours is not None:
-            pulumi.set(__self__, "hours", hours)
+            _setter("hours", hours)
         if minutes is not None:
-            pulumi.set(__self__, "minutes", minutes)
+            _setter("minutes", minutes)
         if nanos is not None:
-            pulumi.set(__self__, "nanos", nanos)
+            _setter("nanos", nanos)
         if seconds is not None:
-            pulumi.set(__self__, "seconds", seconds)
+            _setter("seconds", seconds)
 
     @property
     @pulumi.getter
@@ -11279,22 +13735,45 @@ class PreventionInspectTemplateInspectConfigArgs:
                other rules are executed in the order they are specified for each info type.
                Structure is documented below.
         """
+        PreventionInspectTemplateInspectConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            content_options=content_options,
+            custom_info_types=custom_info_types,
+            exclude_info_types=exclude_info_types,
+            include_quote=include_quote,
+            info_types=info_types,
+            limits=limits,
+            min_likelihood=min_likelihood,
+            rule_sets=rule_sets,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             content_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             custom_info_types: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeArgs']]]] = None,
+             exclude_info_types: Optional[pulumi.Input[bool]] = None,
+             include_quote: Optional[pulumi.Input[bool]] = None,
+             info_types: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigInfoTypeArgs']]]] = None,
+             limits: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigLimitsArgs']] = None,
+             min_likelihood: Optional[pulumi.Input[str]] = None,
+             rule_sets: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if content_options is not None:
-            pulumi.set(__self__, "content_options", content_options)
+            _setter("content_options", content_options)
         if custom_info_types is not None:
-            pulumi.set(__self__, "custom_info_types", custom_info_types)
+            _setter("custom_info_types", custom_info_types)
         if exclude_info_types is not None:
-            pulumi.set(__self__, "exclude_info_types", exclude_info_types)
+            _setter("exclude_info_types", exclude_info_types)
         if include_quote is not None:
-            pulumi.set(__self__, "include_quote", include_quote)
+            _setter("include_quote", include_quote)
         if info_types is not None:
-            pulumi.set(__self__, "info_types", info_types)
+            _setter("info_types", info_types)
         if limits is not None:
-            pulumi.set(__self__, "limits", limits)
+            _setter("limits", limits)
         if min_likelihood is not None:
-            pulumi.set(__self__, "min_likelihood", min_likelihood)
+            _setter("min_likelihood", min_likelihood)
         if rule_sets is not None:
-            pulumi.set(__self__, "rule_sets", rule_sets)
+            _setter("rule_sets", rule_sets)
 
     @property
     @pulumi.getter(name="contentOptions")
@@ -11437,21 +13916,44 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeArgs:
                Structure is documented below.
         :param pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArgs'] surrogate_type: Message for detecting output from deidentification transformations that support reversing.
         """
-        pulumi.set(__self__, "info_type", info_type)
+        PreventionInspectTemplateInspectConfigCustomInfoTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            info_type=info_type,
+            dictionary=dictionary,
+            exclusion_type=exclusion_type,
+            likelihood=likelihood,
+            regex=regex,
+            sensitivity_score=sensitivity_score,
+            stored_type=stored_type,
+            surrogate_type=surrogate_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             info_type: pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs'],
+             dictionary: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs']] = None,
+             exclusion_type: Optional[pulumi.Input[str]] = None,
+             likelihood: Optional[pulumi.Input[str]] = None,
+             regex: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs']] = None,
+             sensitivity_score: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScoreArgs']] = None,
+             stored_type: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs']] = None,
+             surrogate_type: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("info_type", info_type)
         if dictionary is not None:
-            pulumi.set(__self__, "dictionary", dictionary)
+            _setter("dictionary", dictionary)
         if exclusion_type is not None:
-            pulumi.set(__self__, "exclusion_type", exclusion_type)
+            _setter("exclusion_type", exclusion_type)
         if likelihood is not None:
-            pulumi.set(__self__, "likelihood", likelihood)
+            _setter("likelihood", likelihood)
         if regex is not None:
-            pulumi.set(__self__, "regex", regex)
+            _setter("regex", regex)
         if sensitivity_score is not None:
-            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+            _setter("sensitivity_score", sensitivity_score)
         if stored_type is not None:
-            pulumi.set(__self__, "stored_type", stored_type)
+            _setter("stored_type", stored_type)
         if surrogate_type is not None:
-            pulumi.set(__self__, "surrogate_type", surrogate_type)
+            _setter("surrogate_type", surrogate_type)
 
     @property
     @pulumi.getter(name="infoType")
@@ -11573,10 +14075,21 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs:
         :param pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs'] word_list: List of words or phrases to search for.
                Structure is documented below.
         """
+        PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cloud_storage_path=cloud_storage_path,
+            word_list=word_list,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cloud_storage_path: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs']] = None,
+             word_list: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cloud_storage_path is not None:
-            pulumi.set(__self__, "cloud_storage_path", cloud_storage_path)
+            _setter("cloud_storage_path", cloud_storage_path)
         if word_list is not None:
-            pulumi.set(__self__, "word_list", word_list)
+            _setter("word_list", word_list)
 
     @property
     @pulumi.getter(name="cloudStoragePath")
@@ -11612,7 +14125,16 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStorage
         """
         :param pulumi.Input[str] path: A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
         """
-        pulumi.set(__self__, "path", path)
+        PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            path=path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             path: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("path", path)
 
     @property
     @pulumi.getter
@@ -11635,7 +14157,16 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs
         :param pulumi.Input[Sequence[pulumi.Input[str]]] words: Words or phrases defining the dictionary. The dictionary must contain at least one
                phrase and every phrase must contain at least 2 characters that are letters or digits.
         """
-        pulumi.set(__self__, "words", words)
+        PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            words=words,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             words: pulumi.Input[Sequence[pulumi.Input[str]]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("words", words)
 
     @property
     @pulumi.getter
@@ -11664,11 +14195,24 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs:
                Structure is documented below.
         :param pulumi.Input[str] version: Version name for this InfoType.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            sensitivity_score=sensitivity_score,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             sensitivity_score: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs']] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if sensitivity_score is not None:
-            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+            _setter("sensitivity_score", sensitivity_score)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -11717,7 +14261,16 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeSensitivitySco
         :param pulumi.Input[str] score: The sensitivity score applied to the resource.
                Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
         """
-        pulumi.set(__self__, "score", score)
+        PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            score=score,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             score: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("score", score)
 
     @property
     @pulumi.getter
@@ -11743,9 +14296,20 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs:
                Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] group_indexes: The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
         """
-        pulumi.set(__self__, "pattern", pattern)
+        PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pattern=pattern,
+            group_indexes=group_indexes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pattern: pulumi.Input[str],
+             group_indexes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("pattern", pattern)
         if group_indexes is not None:
-            pulumi.set(__self__, "group_indexes", group_indexes)
+            _setter("group_indexes", group_indexes)
 
     @property
     @pulumi.getter
@@ -11781,7 +14345,16 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScoreArgs:
         :param pulumi.Input[str] score: The sensitivity score applied to the resource.
                Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
         """
-        pulumi.set(__self__, "score", score)
+        PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            score=score,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             score: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("score", score)
 
     @property
     @pulumi.getter
@@ -11805,7 +14378,16 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs:
         :param pulumi.Input[str] name: Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
                or `projects/project-id/storedInfoTypes/432452342`.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -11825,6 +14407,11 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs:
 class PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArgs:
     def __init__(__self__):
         pass
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        pass
 
 
 @pulumi.input_type
@@ -11840,11 +14427,24 @@ class PreventionInspectTemplateInspectConfigInfoTypeArgs:
                Structure is documented below.
         :param pulumi.Input[str] version: Version name for this InfoType.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionInspectTemplateInspectConfigInfoTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            sensitivity_score=sensitivity_score,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             sensitivity_score: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigInfoTypeSensitivityScoreArgs']] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if sensitivity_score is not None:
-            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+            _setter("sensitivity_score", sensitivity_score)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -11893,7 +14493,16 @@ class PreventionInspectTemplateInspectConfigInfoTypeSensitivityScoreArgs:
         :param pulumi.Input[str] score: The sensitivity score applied to the resource.
                Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
         """
-        pulumi.set(__self__, "score", score)
+        PreventionInspectTemplateInspectConfigInfoTypeSensitivityScoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            score=score,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             score: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("score", score)
 
     @property
     @pulumi.getter
@@ -11921,10 +14530,23 @@ class PreventionInspectTemplateInspectConfigLimitsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs']]] max_findings_per_info_types: Configuration of findings limit given for specified infoTypes.
                Structure is documented below.
         """
-        pulumi.set(__self__, "max_findings_per_item", max_findings_per_item)
-        pulumi.set(__self__, "max_findings_per_request", max_findings_per_request)
+        PreventionInspectTemplateInspectConfigLimitsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_findings_per_item=max_findings_per_item,
+            max_findings_per_request=max_findings_per_request,
+            max_findings_per_info_types=max_findings_per_info_types,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_findings_per_item: pulumi.Input[int],
+             max_findings_per_request: pulumi.Input[int],
+             max_findings_per_info_types: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("max_findings_per_item", max_findings_per_item)
+        _setter("max_findings_per_request", max_findings_per_request)
         if max_findings_per_info_types is not None:
-            pulumi.set(__self__, "max_findings_per_info_types", max_findings_per_info_types)
+            _setter("max_findings_per_info_types", max_findings_per_info_types)
 
     @property
     @pulumi.getter(name="maxFindingsPerItem")
@@ -11976,8 +14598,19 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs:
                Structure is documented below.
         :param pulumi.Input[int] max_findings: Max findings limit for the given infoType.
         """
-        pulumi.set(__self__, "info_type", info_type)
-        pulumi.set(__self__, "max_findings", max_findings)
+        PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            info_type=info_type,
+            max_findings=max_findings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             info_type: pulumi.Input['PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs'],
+             max_findings: pulumi.Input[int],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("info_type", info_type)
+        _setter("max_findings", max_findings)
 
     @property
     @pulumi.getter(name="infoType")
@@ -12020,11 +14653,24 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType
                Structure is documented below.
         :param pulumi.Input[str] version: Version name for this InfoType.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            sensitivity_score=sensitivity_score,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             sensitivity_score: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs']] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if sensitivity_score is not None:
-            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+            _setter("sensitivity_score", sensitivity_score)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -12073,7 +14719,16 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType
         :param pulumi.Input[str] score: The sensitivity score applied to the resource.
                Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
         """
-        pulumi.set(__self__, "score", score)
+        PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            score=score,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             score: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("score", score)
 
     @property
     @pulumi.getter
@@ -12100,8 +14755,19 @@ class PreventionInspectTemplateInspectConfigRuleSetArgs:
         :param pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleArgs']]] rules: Set of rules to be applied to infoTypes. The rules are applied in order.
                Structure is documented below.
         """
-        pulumi.set(__self__, "info_types", info_types)
-        pulumi.set(__self__, "rules", rules)
+        PreventionInspectTemplateInspectConfigRuleSetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            info_types=info_types,
+            rules=rules,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             info_types: pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs']]],
+             rules: pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleArgs']]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("info_types", info_types)
+        _setter("rules", rules)
 
     @property
     @pulumi.getter(name="infoTypes")
@@ -12143,11 +14809,24 @@ class PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs:
                Structure is documented below.
         :param pulumi.Input[str] version: Version name for this InfoType.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            sensitivity_score=sensitivity_score,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             sensitivity_score: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScoreArgs']] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if sensitivity_score is not None:
-            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+            _setter("sensitivity_score", sensitivity_score)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -12196,7 +14875,16 @@ class PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScoreArgs:
         :param pulumi.Input[str] score: The sensitivity score applied to the resource.
                Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
         """
-        pulumi.set(__self__, "score", score)
+        PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            score=score,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             score: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("score", score)
 
     @property
     @pulumi.getter
@@ -12223,10 +14911,21 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleArgs:
         :param pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs'] hotword_rule: Hotword-based detection rule.
                Structure is documented below.
         """
+        PreventionInspectTemplateInspectConfigRuleSetRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            exclusion_rule=exclusion_rule,
+            hotword_rule=hotword_rule,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             exclusion_rule: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs']] = None,
+             hotword_rule: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if exclusion_rule is not None:
-            pulumi.set(__self__, "exclusion_rule", exclusion_rule)
+            _setter("exclusion_rule", exclusion_rule)
         if hotword_rule is not None:
-            pulumi.set(__self__, "hotword_rule", hotword_rule)
+            _setter("hotword_rule", hotword_rule)
 
     @property
     @pulumi.getter(name="exclusionRule")
@@ -12276,15 +14975,32 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs:
         :param pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs'] regex: Regular expression which defines the rule.
                Structure is documented below.
         """
-        pulumi.set(__self__, "matching_type", matching_type)
+        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            matching_type=matching_type,
+            dictionary=dictionary,
+            exclude_by_hotword=exclude_by_hotword,
+            exclude_info_types=exclude_info_types,
+            regex=regex,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             matching_type: pulumi.Input[str],
+             dictionary: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgs']] = None,
+             exclude_by_hotword: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs']] = None,
+             exclude_info_types: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs']] = None,
+             regex: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("matching_type", matching_type)
         if dictionary is not None:
-            pulumi.set(__self__, "dictionary", dictionary)
+            _setter("dictionary", dictionary)
         if exclude_by_hotword is not None:
-            pulumi.set(__self__, "exclude_by_hotword", exclude_by_hotword)
+            _setter("exclude_by_hotword", exclude_by_hotword)
         if exclude_info_types is not None:
-            pulumi.set(__self__, "exclude_info_types", exclude_info_types)
+            _setter("exclude_info_types", exclude_info_types)
         if regex is not None:
-            pulumi.set(__self__, "regex", regex)
+            _setter("regex", regex)
 
     @property
     @pulumi.getter(name="matchingType")
@@ -12364,10 +15080,21 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryAr
         :param pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs'] word_list: List of words or phrases to search for.
                Structure is documented below.
         """
+        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cloud_storage_path=cloud_storage_path,
+            word_list=word_list,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cloud_storage_path: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs']] = None,
+             word_list: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cloud_storage_path is not None:
-            pulumi.set(__self__, "cloud_storage_path", cloud_storage_path)
+            _setter("cloud_storage_path", cloud_storage_path)
         if word_list is not None:
-            pulumi.set(__self__, "word_list", word_list)
+            _setter("word_list", word_list)
 
     @property
     @pulumi.getter(name="cloudStoragePath")
@@ -12403,7 +15130,16 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCl
         """
         :param pulumi.Input[str] path: A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
         """
-        pulumi.set(__self__, "path", path)
+        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            path=path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             path: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("path", path)
 
     @property
     @pulumi.getter
@@ -12426,7 +15162,16 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWo
         :param pulumi.Input[Sequence[pulumi.Input[str]]] words: Words or phrases defining the dictionary. The dictionary must contain at least one
                phrase and every phrase must contain at least 2 characters that are letters or digits.
         """
-        pulumi.set(__self__, "words", words)
+        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            words=words,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             words: pulumi.Input[Sequence[pulumi.Input[str]]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("words", words)
 
     @property
     @pulumi.getter
@@ -12457,8 +15202,19 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHot
                office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
                Structure is documented below.
         """
-        pulumi.set(__self__, "hotword_regex", hotword_regex)
-        pulumi.set(__self__, "proximity", proximity)
+        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hotword_regex=hotword_regex,
+            proximity=proximity,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hotword_regex: pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs'],
+             proximity: pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("hotword_regex", hotword_regex)
+        _setter("proximity", proximity)
 
     @property
     @pulumi.getter(name="hotwordRegex")
@@ -12502,9 +15258,20 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHot
         :param pulumi.Input[Sequence[pulumi.Input[int]]] group_indexes: The index of the submatch to extract as findings. When not specified,
                the entire match is returned. No more than 3 may be included.
         """
-        pulumi.set(__self__, "pattern", pattern)
+        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pattern=pattern,
+            group_indexes=group_indexes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pattern: pulumi.Input[str],
+             group_indexes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("pattern", pattern)
         if group_indexes is not None:
-            pulumi.set(__self__, "group_indexes", group_indexes)
+            _setter("group_indexes", group_indexes)
 
     @property
     @pulumi.getter
@@ -12542,10 +15309,21 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHot
         :param pulumi.Input[int] window_after: Number of characters after the finding to consider.
         :param pulumi.Input[int] window_before: Number of characters before the finding to consider.
         """
+        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            window_after=window_after,
+            window_before=window_before,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             window_after: Optional[pulumi.Input[int]] = None,
+             window_before: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if window_after is not None:
-            pulumi.set(__self__, "window_after", window_after)
+            _setter("window_after", window_after)
         if window_before is not None:
-            pulumi.set(__self__, "window_before", window_before)
+            _setter("window_before", window_before)
 
     @property
     @pulumi.getter(name="windowAfter")
@@ -12580,7 +15358,16 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
         :param pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs']]] info_types: If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
                Structure is documented below.
         """
-        pulumi.set(__self__, "info_types", info_types)
+        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            info_types=info_types,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             info_types: pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs']]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("info_types", info_types)
 
     @property
     @pulumi.getter(name="infoTypes")
@@ -12609,11 +15396,24 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
                Structure is documented below.
         :param pulumi.Input[str] version: Version name for this InfoType.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            sensitivity_score=sensitivity_score,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             sensitivity_score: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs']] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if sensitivity_score is not None:
-            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+            _setter("sensitivity_score", sensitivity_score)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -12662,7 +15462,16 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
         :param pulumi.Input[str] score: The sensitivity score applied to the resource.
                Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
         """
-        pulumi.set(__self__, "score", score)
+        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            score=score,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             score: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("score", score)
 
     @property
     @pulumi.getter
@@ -12688,9 +15497,20 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs:
                Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] group_indexes: The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
         """
-        pulumi.set(__self__, "pattern", pattern)
+        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pattern=pattern,
+            group_indexes=group_indexes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pattern: pulumi.Input[str],
+             group_indexes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("pattern", pattern)
         if group_indexes is not None:
-            pulumi.set(__self__, "group_indexes", group_indexes)
+            _setter("group_indexes", group_indexes)
 
     @property
     @pulumi.getter
@@ -12736,9 +15556,22 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs:
                office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
                Structure is documented below.
         """
-        pulumi.set(__self__, "hotword_regex", hotword_regex)
-        pulumi.set(__self__, "likelihood_adjustment", likelihood_adjustment)
-        pulumi.set(__self__, "proximity", proximity)
+        PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hotword_regex=hotword_regex,
+            likelihood_adjustment=likelihood_adjustment,
+            proximity=proximity,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hotword_regex: pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs'],
+             likelihood_adjustment: pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs'],
+             proximity: pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("hotword_regex", hotword_regex)
+        _setter("likelihood_adjustment", likelihood_adjustment)
+        _setter("proximity", proximity)
 
     @property
     @pulumi.getter(name="hotwordRegex")
@@ -12795,9 +15628,20 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexAr
         :param pulumi.Input[Sequence[pulumi.Input[int]]] group_indexes: The index of the submatch to extract as findings. When not specified,
                the entire match is returned. No more than 3 may be included.
         """
-        pulumi.set(__self__, "pattern", pattern)
+        PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pattern=pattern,
+            group_indexes=group_indexes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pattern: pulumi.Input[str],
+             group_indexes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("pattern", pattern)
         if group_indexes is not None:
-            pulumi.set(__self__, "group_indexes", group_indexes)
+            _setter("group_indexes", group_indexes)
 
     @property
     @pulumi.getter
@@ -12841,10 +15685,21 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdju
                adjustment of 1 followed by an adjustment of -1 when base likelihood is VERY_LIKELY
                will result in a final likelihood of LIKELY. Either this or fixed_likelihood can be set.
         """
+        PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fixed_likelihood=fixed_likelihood,
+            relative_likelihood=relative_likelihood,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fixed_likelihood: Optional[pulumi.Input[str]] = None,
+             relative_likelihood: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if fixed_likelihood is not None:
-            pulumi.set(__self__, "fixed_likelihood", fixed_likelihood)
+            _setter("fixed_likelihood", fixed_likelihood)
         if relative_likelihood is not None:
-            pulumi.set(__self__, "relative_likelihood", relative_likelihood)
+            _setter("relative_likelihood", relative_likelihood)
 
     @property
     @pulumi.getter(name="fixedLikelihood")
@@ -12886,10 +15741,21 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs:
         :param pulumi.Input[int] window_after: Number of characters after the finding to consider.
         :param pulumi.Input[int] window_before: Number of characters before the finding to consider.
         """
+        PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            window_after=window_after,
+            window_before=window_before,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             window_after: Optional[pulumi.Input[int]] = None,
+             window_before: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if window_after is not None:
-            pulumi.set(__self__, "window_after", window_after)
+            _setter("window_after", window_after)
         if window_before is not None:
-            pulumi.set(__self__, "window_before", window_before)
+            _setter("window_before", window_before)
 
     @property
     @pulumi.getter(name="windowAfter")
@@ -12932,13 +15798,28 @@ class PreventionJobTriggerInspectJobArgs:
                Structure is documented below.
         :param pulumi.Input[str] inspect_template_name: The name of the template to run when this job is triggered.
         """
-        pulumi.set(__self__, "storage_config", storage_config)
+        PreventionJobTriggerInspectJobArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            storage_config=storage_config,
+            actions=actions,
+            inspect_config=inspect_config,
+            inspect_template_name=inspect_template_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             storage_config: pulumi.Input['PreventionJobTriggerInspectJobStorageConfigArgs'],
+             actions: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobActionArgs']]]] = None,
+             inspect_config: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigArgs']] = None,
+             inspect_template_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("storage_config", storage_config)
         if actions is not None:
-            pulumi.set(__self__, "actions", actions)
+            _setter("actions", actions)
         if inspect_config is not None:
-            pulumi.set(__self__, "inspect_config", inspect_config)
+            _setter("inspect_config", inspect_config)
         if inspect_template_name is not None:
-            pulumi.set(__self__, "inspect_template_name", inspect_template_name)
+            _setter("inspect_template_name", inspect_template_name)
 
     @property
     @pulumi.getter(name="storageConfig")
@@ -13014,20 +15895,41 @@ class PreventionJobTriggerInspectJobActionArgs:
         :param pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsArgs'] save_findings: If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
                Structure is documented below.
         """
+        PreventionJobTriggerInspectJobActionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            deidentify=deidentify,
+            job_notification_emails=job_notification_emails,
+            pub_sub=pub_sub,
+            publish_findings_to_cloud_data_catalog=publish_findings_to_cloud_data_catalog,
+            publish_summary_to_cscc=publish_summary_to_cscc,
+            publish_to_stackdriver=publish_to_stackdriver,
+            save_findings=save_findings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             deidentify: Optional[pulumi.Input['PreventionJobTriggerInspectJobActionDeidentifyArgs']] = None,
+             job_notification_emails: Optional[pulumi.Input['PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs']] = None,
+             pub_sub: Optional[pulumi.Input['PreventionJobTriggerInspectJobActionPubSubArgs']] = None,
+             publish_findings_to_cloud_data_catalog: Optional[pulumi.Input['PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs']] = None,
+             publish_summary_to_cscc: Optional[pulumi.Input['PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs']] = None,
+             publish_to_stackdriver: Optional[pulumi.Input['PreventionJobTriggerInspectJobActionPublishToStackdriverArgs']] = None,
+             save_findings: Optional[pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if deidentify is not None:
-            pulumi.set(__self__, "deidentify", deidentify)
+            _setter("deidentify", deidentify)
         if job_notification_emails is not None:
-            pulumi.set(__self__, "job_notification_emails", job_notification_emails)
+            _setter("job_notification_emails", job_notification_emails)
         if pub_sub is not None:
-            pulumi.set(__self__, "pub_sub", pub_sub)
+            _setter("pub_sub", pub_sub)
         if publish_findings_to_cloud_data_catalog is not None:
-            pulumi.set(__self__, "publish_findings_to_cloud_data_catalog", publish_findings_to_cloud_data_catalog)
+            _setter("publish_findings_to_cloud_data_catalog", publish_findings_to_cloud_data_catalog)
         if publish_summary_to_cscc is not None:
-            pulumi.set(__self__, "publish_summary_to_cscc", publish_summary_to_cscc)
+            _setter("publish_summary_to_cscc", publish_summary_to_cscc)
         if publish_to_stackdriver is not None:
-            pulumi.set(__self__, "publish_to_stackdriver", publish_to_stackdriver)
+            _setter("publish_to_stackdriver", publish_to_stackdriver)
         if save_findings is not None:
-            pulumi.set(__self__, "save_findings", save_findings)
+            _setter("save_findings", save_findings)
 
     @property
     @pulumi.getter
@@ -13139,13 +16041,28 @@ class PreventionJobTriggerInspectJobActionDeidentifyArgs:
         :param pulumi.Input['PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs'] transformation_details_storage_config: Config for storing transformation details.
                Structure is documented below.
         """
-        pulumi.set(__self__, "cloud_storage_output", cloud_storage_output)
+        PreventionJobTriggerInspectJobActionDeidentifyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cloud_storage_output=cloud_storage_output,
+            file_types_to_transforms=file_types_to_transforms,
+            transformation_config=transformation_config,
+            transformation_details_storage_config=transformation_details_storage_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cloud_storage_output: pulumi.Input[str],
+             file_types_to_transforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             transformation_config: Optional[pulumi.Input['PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs']] = None,
+             transformation_details_storage_config: Optional[pulumi.Input['PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cloud_storage_output", cloud_storage_output)
         if file_types_to_transforms is not None:
-            pulumi.set(__self__, "file_types_to_transforms", file_types_to_transforms)
+            _setter("file_types_to_transforms", file_types_to_transforms)
         if transformation_config is not None:
-            pulumi.set(__self__, "transformation_config", transformation_config)
+            _setter("transformation_config", transformation_config)
         if transformation_details_storage_config is not None:
-            pulumi.set(__self__, "transformation_details_storage_config", transformation_details_storage_config)
+            _setter("transformation_details_storage_config", transformation_details_storage_config)
 
     @property
     @pulumi.getter(name="cloudStorageOutput")
@@ -13216,12 +16133,25 @@ class PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs:
         :param pulumi.Input[str] image_redact_template: If this template is specified, it will serve as the de-identify template for images.
         :param pulumi.Input[str] structured_deidentify_template: If this template is specified, it will serve as the de-identify template for structured content such as delimited files and tables.
         """
+        PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            deidentify_template=deidentify_template,
+            image_redact_template=image_redact_template,
+            structured_deidentify_template=structured_deidentify_template,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             deidentify_template: Optional[pulumi.Input[str]] = None,
+             image_redact_template: Optional[pulumi.Input[str]] = None,
+             structured_deidentify_template: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if deidentify_template is not None:
-            pulumi.set(__self__, "deidentify_template", deidentify_template)
+            _setter("deidentify_template", deidentify_template)
         if image_redact_template is not None:
-            pulumi.set(__self__, "image_redact_template", image_redact_template)
+            _setter("image_redact_template", image_redact_template)
         if structured_deidentify_template is not None:
-            pulumi.set(__self__, "structured_deidentify_template", structured_deidentify_template)
+            _setter("structured_deidentify_template", structured_deidentify_template)
 
     @property
     @pulumi.getter(name="deidentifyTemplate")
@@ -13268,7 +16198,16 @@ class PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorage
         :param pulumi.Input['PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs'] table: The BigQuery table in which to store the output.
                Structure is documented below.
         """
-        pulumi.set(__self__, "table", table)
+        PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            table=table,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             table: pulumi.Input['PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("table", table)
 
     @property
     @pulumi.getter
@@ -13297,10 +16236,23 @@ class PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorage
                A-Z), numbers (0-9), or underscores (_). The maximum length
                is 1,024 characters.
         """
-        pulumi.set(__self__, "dataset_id", dataset_id)
-        pulumi.set(__self__, "project_id", project_id)
+        PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dataset_id=dataset_id,
+            project_id=project_id,
+            table_id=table_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dataset_id: pulumi.Input[str],
+             project_id: pulumi.Input[str],
+             table_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dataset_id", dataset_id)
+        _setter("project_id", project_id)
         if table_id is not None:
-            pulumi.set(__self__, "table_id", table_id)
+            _setter("table_id", table_id)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -13345,6 +16297,11 @@ class PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorage
 class PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs:
     def __init__(__self__):
         pass
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        pass
 
 
 @pulumi.input_type
@@ -13354,7 +16311,16 @@ class PreventionJobTriggerInspectJobActionPubSubArgs:
         """
         :param pulumi.Input[str] topic: Cloud Pub/Sub topic to send notifications to.
         """
-        pulumi.set(__self__, "topic", topic)
+        PreventionJobTriggerInspectJobActionPubSubArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            topic=topic,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             topic: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("topic", topic)
 
     @property
     @pulumi.getter
@@ -13373,17 +16339,32 @@ class PreventionJobTriggerInspectJobActionPubSubArgs:
 class PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs:
     def __init__(__self__):
         pass
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        pass
 
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs:
     def __init__(__self__):
         pass
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        pass
 
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobActionPublishToStackdriverArgs:
     def __init__(__self__):
+        pass
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             opts: Optional[pulumi.ResourceOptions]=None):
         pass
 
 
@@ -13395,7 +16376,16 @@ class PreventionJobTriggerInspectJobActionSaveFindingsArgs:
         :param pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs'] output_config: Information on where to store output
                Structure is documented below.
         """
-        pulumi.set(__self__, "output_config", output_config)
+        PreventionJobTriggerInspectJobActionSaveFindingsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            output_config=output_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             output_config: pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("output_config", output_config)
 
     @property
     @pulumi.getter(name="outputConfig")
@@ -13428,9 +16418,20 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs:
                Only for use with external storage.
                Possible values are: `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, `ALL_COLUMNS`.
         """
-        pulumi.set(__self__, "table", table)
+        PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            table=table,
+            output_schema=output_schema,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             table: pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs'],
+             output_schema: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("table", table)
         if output_schema is not None:
-            pulumi.set(__self__, "output_schema", output_schema)
+            _setter("output_schema", output_schema)
 
     @property
     @pulumi.getter
@@ -13478,10 +16479,23 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs:
                A-Z), numbers (0-9), or underscores (_). The maximum length
                is 1,024 characters.
         """
-        pulumi.set(__self__, "dataset_id", dataset_id)
-        pulumi.set(__self__, "project_id", project_id)
+        PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dataset_id=dataset_id,
+            project_id=project_id,
+            table_id=table_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dataset_id: pulumi.Input[str],
+             project_id: pulumi.Input[str],
+             table_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dataset_id", dataset_id)
+        _setter("project_id", project_id)
         if table_id is not None:
-            pulumi.set(__self__, "table_id", table_id)
+            _setter("table_id", table_id)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -13551,20 +16565,41 @@ class PreventionJobTriggerInspectJobInspectConfigArgs:
                other rules are executed in the order they are specified for each info type.
                Structure is documented below.
         """
+        PreventionJobTriggerInspectJobInspectConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            custom_info_types=custom_info_types,
+            exclude_info_types=exclude_info_types,
+            include_quote=include_quote,
+            info_types=info_types,
+            limits=limits,
+            min_likelihood=min_likelihood,
+            rule_sets=rule_sets,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             custom_info_types: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgs']]]] = None,
+             exclude_info_types: Optional[pulumi.Input[bool]] = None,
+             include_quote: Optional[pulumi.Input[bool]] = None,
+             info_types: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigInfoTypeArgs']]]] = None,
+             limits: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigLimitsArgs']] = None,
+             min_likelihood: Optional[pulumi.Input[str]] = None,
+             rule_sets: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if custom_info_types is not None:
-            pulumi.set(__self__, "custom_info_types", custom_info_types)
+            _setter("custom_info_types", custom_info_types)
         if exclude_info_types is not None:
-            pulumi.set(__self__, "exclude_info_types", exclude_info_types)
+            _setter("exclude_info_types", exclude_info_types)
         if include_quote is not None:
-            pulumi.set(__self__, "include_quote", include_quote)
+            _setter("include_quote", include_quote)
         if info_types is not None:
-            pulumi.set(__self__, "info_types", info_types)
+            _setter("info_types", info_types)
         if limits is not None:
-            pulumi.set(__self__, "limits", limits)
+            _setter("limits", limits)
         if min_likelihood is not None:
-            pulumi.set(__self__, "min_likelihood", min_likelihood)
+            _setter("min_likelihood", min_likelihood)
         if rule_sets is not None:
-            pulumi.set(__self__, "rule_sets", rule_sets)
+            _setter("rule_sets", rule_sets)
 
     @property
     @pulumi.getter(name="customInfoTypes")
@@ -13694,21 +16729,44 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgs:
                Structure is documented below.
         :param pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateTypeArgs'] surrogate_type: Message for detecting output from deidentification transformations that support reversing.
         """
-        pulumi.set(__self__, "info_type", info_type)
+        PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            info_type=info_type,
+            dictionary=dictionary,
+            exclusion_type=exclusion_type,
+            likelihood=likelihood,
+            regex=regex,
+            sensitivity_score=sensitivity_score,
+            stored_type=stored_type,
+            surrogate_type=surrogate_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             info_type: pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeArgs'],
+             dictionary: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryArgs']] = None,
+             exclusion_type: Optional[pulumi.Input[str]] = None,
+             likelihood: Optional[pulumi.Input[str]] = None,
+             regex: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegexArgs']] = None,
+             sensitivity_score: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScoreArgs']] = None,
+             stored_type: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredTypeArgs']] = None,
+             surrogate_type: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateTypeArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("info_type", info_type)
         if dictionary is not None:
-            pulumi.set(__self__, "dictionary", dictionary)
+            _setter("dictionary", dictionary)
         if exclusion_type is not None:
-            pulumi.set(__self__, "exclusion_type", exclusion_type)
+            _setter("exclusion_type", exclusion_type)
         if likelihood is not None:
-            pulumi.set(__self__, "likelihood", likelihood)
+            _setter("likelihood", likelihood)
         if regex is not None:
-            pulumi.set(__self__, "regex", regex)
+            _setter("regex", regex)
         if sensitivity_score is not None:
-            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+            _setter("sensitivity_score", sensitivity_score)
         if stored_type is not None:
-            pulumi.set(__self__, "stored_type", stored_type)
+            _setter("stored_type", stored_type)
         if surrogate_type is not None:
-            pulumi.set(__self__, "surrogate_type", surrogate_type)
+            _setter("surrogate_type", surrogate_type)
 
     @property
     @pulumi.getter(name="infoType")
@@ -13830,10 +16888,21 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryArgs:
         :param pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordListArgs'] word_list: List of words or phrases to search for.
                Structure is documented below.
         """
+        PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cloud_storage_path=cloud_storage_path,
+            word_list=word_list,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cloud_storage_path: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs']] = None,
+             word_list: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordListArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cloud_storage_path is not None:
-            pulumi.set(__self__, "cloud_storage_path", cloud_storage_path)
+            _setter("cloud_storage_path", cloud_storage_path)
         if word_list is not None:
-            pulumi.set(__self__, "word_list", word_list)
+            _setter("word_list", word_list)
 
     @property
     @pulumi.getter(name="cloudStoragePath")
@@ -13869,7 +16938,16 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudSt
         """
         :param pulumi.Input[str] path: A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
         """
-        pulumi.set(__self__, "path", path)
+        PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            path=path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             path: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("path", path)
 
     @property
     @pulumi.getter
@@ -13892,7 +16970,16 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordLis
         :param pulumi.Input[Sequence[pulumi.Input[str]]] words: Words or phrases defining the dictionary. The dictionary must contain at least one
                phrase and every phrase must contain at least 2 characters that are letters or digits.
         """
-        pulumi.set(__self__, "words", words)
+        PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            words=words,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             words: pulumi.Input[Sequence[pulumi.Input[str]]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("words", words)
 
     @property
     @pulumi.getter
@@ -13921,11 +17008,24 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeArgs:
                Structure is documented below.
         :param pulumi.Input[str] version: Version of the information type to use. By default, the version is set to stable.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            sensitivity_score=sensitivity_score,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             sensitivity_score: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs']] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if sensitivity_score is not None:
-            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+            _setter("sensitivity_score", sensitivity_score)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -13974,7 +17074,16 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivi
         :param pulumi.Input[str] score: The sensitivity score applied to the resource.
                Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
         """
-        pulumi.set(__self__, "score", score)
+        PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            score=score,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             score: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("score", score)
 
     @property
     @pulumi.getter
@@ -14000,9 +17109,20 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegexArgs:
                Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] group_indexes: The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
         """
-        pulumi.set(__self__, "pattern", pattern)
+        PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegexArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pattern=pattern,
+            group_indexes=group_indexes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pattern: pulumi.Input[str],
+             group_indexes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("pattern", pattern)
         if group_indexes is not None:
-            pulumi.set(__self__, "group_indexes", group_indexes)
+            _setter("group_indexes", group_indexes)
 
     @property
     @pulumi.getter
@@ -14038,7 +17158,16 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScoreA
         :param pulumi.Input[str] score: The sensitivity score applied to the resource.
                Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
         """
-        pulumi.set(__self__, "score", score)
+        PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            score=score,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             score: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("score", score)
 
     @property
     @pulumi.getter
@@ -14065,9 +17194,20 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredTypeArgs:
         :param pulumi.Input[str] create_time: (Output)
                The creation timestamp of an inspectTemplate. Set by the server.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            create_time=create_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             create_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
 
     @property
     @pulumi.getter
@@ -14100,6 +17240,11 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredTypeArgs:
 class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateTypeArgs:
     def __init__(__self__):
         pass
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        pass
 
 
 @pulumi.input_type
@@ -14115,11 +17260,24 @@ class PreventionJobTriggerInspectJobInspectConfigInfoTypeArgs:
                Structure is documented below.
         :param pulumi.Input[str] version: Version of the information type to use. By default, the version is set to stable.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionJobTriggerInspectJobInspectConfigInfoTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            sensitivity_score=sensitivity_score,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             sensitivity_score: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScoreArgs']] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if sensitivity_score is not None:
-            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+            _setter("sensitivity_score", sensitivity_score)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -14168,7 +17326,16 @@ class PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScoreArgs:
         :param pulumi.Input[str] score: The sensitivity score applied to the resource.
                Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
         """
-        pulumi.set(__self__, "score", score)
+        PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            score=score,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             score: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("score", score)
 
     @property
     @pulumi.getter
@@ -14196,12 +17363,25 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsArgs:
         :param pulumi.Input[int] max_findings_per_item: Max number of findings that will be returned for each item scanned. The maximum returned is 2000.
         :param pulumi.Input[int] max_findings_per_request: Max number of findings that will be returned per request/job. The maximum returned is 2000.
         """
+        PreventionJobTriggerInspectJobInspectConfigLimitsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_findings_per_info_types=max_findings_per_info_types,
+            max_findings_per_item=max_findings_per_item,
+            max_findings_per_request=max_findings_per_request,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_findings_per_info_types: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeArgs']]]] = None,
+             max_findings_per_item: Optional[pulumi.Input[int]] = None,
+             max_findings_per_request: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if max_findings_per_info_types is not None:
-            pulumi.set(__self__, "max_findings_per_info_types", max_findings_per_info_types)
+            _setter("max_findings_per_info_types", max_findings_per_info_types)
         if max_findings_per_item is not None:
-            pulumi.set(__self__, "max_findings_per_item", max_findings_per_item)
+            _setter("max_findings_per_item", max_findings_per_item)
         if max_findings_per_request is not None:
-            pulumi.set(__self__, "max_findings_per_request", max_findings_per_request)
+            _setter("max_findings_per_request", max_findings_per_request)
 
     @property
     @pulumi.getter(name="maxFindingsPerInfoTypes")
@@ -14253,10 +17433,21 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeArg
                Structure is documented below.
         :param pulumi.Input[int] max_findings: Max findings limit for the given infoType.
         """
+        PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            info_type=info_type,
+            max_findings=max_findings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             info_type: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs']] = None,
+             max_findings: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if info_type is not None:
-            pulumi.set(__self__, "info_type", info_type)
+            _setter("info_type", info_type)
         if max_findings is not None:
-            pulumi.set(__self__, "max_findings", max_findings)
+            _setter("max_findings", max_findings)
 
     @property
     @pulumi.getter(name="infoType")
@@ -14299,11 +17490,24 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInf
                Structure is documented below.
         :param pulumi.Input[str] version: Version of the information type to use. By default, the version is set to stable.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            sensitivity_score=sensitivity_score,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             sensitivity_score: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs']] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if sensitivity_score is not None:
-            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+            _setter("sensitivity_score", sensitivity_score)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -14352,7 +17556,16 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInf
         :param pulumi.Input[str] score: The sensitivity score applied to the resource.
                Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
         """
-        pulumi.set(__self__, "score", score)
+        PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            score=score,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             score: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("score", score)
 
     @property
     @pulumi.getter
@@ -14379,9 +17592,20 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetArgs:
         :param pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeArgs']]] info_types: List of infoTypes this rule set is applied to.
                Structure is documented below.
         """
-        pulumi.set(__self__, "rules", rules)
+        PreventionJobTriggerInspectJobInspectConfigRuleSetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            rules=rules,
+            info_types=info_types,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             rules: pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleArgs']]],
+             info_types: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("rules", rules)
         if info_types is not None:
-            pulumi.set(__self__, "info_types", info_types)
+            _setter("info_types", info_types)
 
     @property
     @pulumi.getter
@@ -14423,11 +17647,24 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeArgs:
                Structure is documented below.
         :param pulumi.Input[str] version: Version of the information type to use. By default, the version is set to stable.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            sensitivity_score=sensitivity_score,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             sensitivity_score: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeSensitivityScoreArgs']] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if sensitivity_score is not None:
-            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+            _setter("sensitivity_score", sensitivity_score)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -14476,7 +17713,16 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeSensitivityScore
         :param pulumi.Input[str] score: The sensitivity score applied to the resource.
                Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
         """
-        pulumi.set(__self__, "score", score)
+        PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeSensitivityScoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            score=score,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             score: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("score", score)
 
     @property
     @pulumi.getter
@@ -14503,10 +17749,21 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleArgs:
         :param pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleArgs'] hotword_rule: Hotword-based detection rule.
                Structure is documented below.
         """
+        PreventionJobTriggerInspectJobInspectConfigRuleSetRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            exclusion_rule=exclusion_rule,
+            hotword_rule=hotword_rule,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             exclusion_rule: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleArgs']] = None,
+             hotword_rule: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if exclusion_rule is not None:
-            pulumi.set(__self__, "exclusion_rule", exclusion_rule)
+            _setter("exclusion_rule", exclusion_rule)
         if hotword_rule is not None:
-            pulumi.set(__self__, "hotword_rule", hotword_rule)
+            _setter("hotword_rule", hotword_rule)
 
     @property
     @pulumi.getter(name="exclusionRule")
@@ -14555,15 +17812,32 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleArgs:
         :param pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegexArgs'] regex: Regular expression which defines the rule.
                Structure is documented below.
         """
-        pulumi.set(__self__, "matching_type", matching_type)
+        PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            matching_type=matching_type,
+            dictionary=dictionary,
+            exclude_by_hotword=exclude_by_hotword,
+            exclude_info_types=exclude_info_types,
+            regex=regex,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             matching_type: pulumi.Input[str],
+             dictionary: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryArgs']] = None,
+             exclude_by_hotword: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs']] = None,
+             exclude_info_types: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs']] = None,
+             regex: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegexArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("matching_type", matching_type)
         if dictionary is not None:
-            pulumi.set(__self__, "dictionary", dictionary)
+            _setter("dictionary", dictionary)
         if exclude_by_hotword is not None:
-            pulumi.set(__self__, "exclude_by_hotword", exclude_by_hotword)
+            _setter("exclude_by_hotword", exclude_by_hotword)
         if exclude_info_types is not None:
-            pulumi.set(__self__, "exclude_info_types", exclude_info_types)
+            _setter("exclude_info_types", exclude_info_types)
         if regex is not None:
-            pulumi.set(__self__, "regex", regex)
+            _setter("regex", regex)
 
     @property
     @pulumi.getter(name="matchingType")
@@ -14642,10 +17916,21 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDiction
         :param pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs'] word_list: List of words or phrases to search for.
                Structure is documented below.
         """
+        PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cloud_storage_path=cloud_storage_path,
+            word_list=word_list,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cloud_storage_path: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs']] = None,
+             word_list: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cloud_storage_path is not None:
-            pulumi.set(__self__, "cloud_storage_path", cloud_storage_path)
+            _setter("cloud_storage_path", cloud_storage_path)
         if word_list is not None:
-            pulumi.set(__self__, "word_list", word_list)
+            _setter("word_list", word_list)
 
     @property
     @pulumi.getter(name="cloudStoragePath")
@@ -14681,7 +17966,16 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDiction
         """
         :param pulumi.Input[str] path: A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
         """
-        pulumi.set(__self__, "path", path)
+        PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            path=path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             path: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("path", path)
 
     @property
     @pulumi.getter
@@ -14704,7 +17998,16 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDiction
         :param pulumi.Input[Sequence[pulumi.Input[str]]] words: Words or phrases defining the dictionary. The dictionary must contain at least one
                phrase and every phrase must contain at least 2 characters that are letters or digits.
         """
-        pulumi.set(__self__, "words", words)
+        PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            words=words,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             words: pulumi.Input[Sequence[pulumi.Input[str]]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("words", words)
 
     @property
     @pulumi.getter
@@ -14735,10 +18038,21 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
                office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
                Structure is documented below.
         """
+        PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hotword_regex=hotword_regex,
+            proximity=proximity,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hotword_regex: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs']] = None,
+             proximity: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if hotword_regex is not None:
-            pulumi.set(__self__, "hotword_regex", hotword_regex)
+            _setter("hotword_regex", hotword_regex)
         if proximity is not None:
-            pulumi.set(__self__, "proximity", proximity)
+            _setter("proximity", proximity)
 
     @property
     @pulumi.getter(name="hotwordRegex")
@@ -14782,10 +18096,21 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
         :param pulumi.Input[str] pattern: Pattern defining the regular expression. Its syntax
                (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
         """
+        PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_indexes=group_indexes,
+            pattern=pattern,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_indexes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             pattern: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if group_indexes is not None:
-            pulumi.set(__self__, "group_indexes", group_indexes)
+            _setter("group_indexes", group_indexes)
         if pattern is not None:
-            pulumi.set(__self__, "pattern", pattern)
+            _setter("pattern", pattern)
 
     @property
     @pulumi.getter(name="groupIndexes")
@@ -14823,10 +18148,21 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
         :param pulumi.Input[int] window_after: Number of characters after the finding to consider. Either this or window_before must be specified
         :param pulumi.Input[int] window_before: Number of characters before the finding to consider. Either this or window_after must be specified
         """
+        PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            window_after=window_after,
+            window_before=window_before,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             window_after: Optional[pulumi.Input[int]] = None,
+             window_before: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if window_after is not None:
-            pulumi.set(__self__, "window_after", window_after)
+            _setter("window_after", window_after)
         if window_before is not None:
-            pulumi.set(__self__, "window_before", window_before)
+            _setter("window_before", window_before)
 
     @property
     @pulumi.getter(name="windowAfter")
@@ -14861,7 +18197,16 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
         :param pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs']]] info_types: If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
                Structure is documented below.
         """
-        pulumi.set(__self__, "info_types", info_types)
+        PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            info_types=info_types,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             info_types: pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs']]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("info_types", info_types)
 
     @property
     @pulumi.getter(name="infoTypes")
@@ -14890,11 +18235,24 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
                Structure is documented below.
         :param pulumi.Input[str] version: Version of the information type to use. By default, the version is set to stable.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            sensitivity_score=sensitivity_score,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             sensitivity_score: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs']] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if sensitivity_score is not None:
-            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+            _setter("sensitivity_score", sensitivity_score)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -14943,7 +18301,16 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
         :param pulumi.Input[str] score: The sensitivity score applied to the resource.
                Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
         """
-        pulumi.set(__self__, "score", score)
+        PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            score=score,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             score: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("score", score)
 
     @property
     @pulumi.getter
@@ -14969,9 +18336,20 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegexAr
                Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] group_indexes: The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
         """
-        pulumi.set(__self__, "pattern", pattern)
+        PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegexArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pattern=pattern,
+            group_indexes=group_indexes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pattern: pulumi.Input[str],
+             group_indexes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("pattern", pattern)
         if group_indexes is not None:
-            pulumi.set(__self__, "group_indexes", group_indexes)
+            _setter("group_indexes", group_indexes)
 
     @property
     @pulumi.getter
@@ -15017,12 +18395,25 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleArgs:
                office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
                Structure is documented below.
         """
+        PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hotword_regex=hotword_regex,
+            likelihood_adjustment=likelihood_adjustment,
+            proximity=proximity,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hotword_regex: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs']] = None,
+             likelihood_adjustment: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs']] = None,
+             proximity: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximityArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if hotword_regex is not None:
-            pulumi.set(__self__, "hotword_regex", hotword_regex)
+            _setter("hotword_regex", hotword_regex)
         if likelihood_adjustment is not None:
-            pulumi.set(__self__, "likelihood_adjustment", likelihood_adjustment)
+            _setter("likelihood_adjustment", likelihood_adjustment)
         if proximity is not None:
-            pulumi.set(__self__, "proximity", proximity)
+            _setter("proximity", proximity)
 
     @property
     @pulumi.getter(name="hotwordRegex")
@@ -15079,10 +18470,21 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRe
         :param pulumi.Input[str] pattern: Pattern defining the regular expression. Its syntax
                (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
         """
+        PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_indexes=group_indexes,
+            pattern=pattern,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_indexes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             pattern: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if group_indexes is not None:
-            pulumi.set(__self__, "group_indexes", group_indexes)
+            _setter("group_indexes", group_indexes)
         if pattern is not None:
-            pulumi.set(__self__, "pattern", pattern)
+            _setter("pattern", pattern)
 
     @property
     @pulumi.getter(name="groupIndexes")
@@ -15126,10 +18528,21 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoo
                adjustment of 1 followed by an adjustment of -1 when base likelihood is VERY_LIKELY
                will result in a final likelihood of LIKELY. Either this or fixed_likelihood can be set.
         """
+        PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fixed_likelihood=fixed_likelihood,
+            relative_likelihood=relative_likelihood,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fixed_likelihood: Optional[pulumi.Input[str]] = None,
+             relative_likelihood: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if fixed_likelihood is not None:
-            pulumi.set(__self__, "fixed_likelihood", fixed_likelihood)
+            _setter("fixed_likelihood", fixed_likelihood)
         if relative_likelihood is not None:
-            pulumi.set(__self__, "relative_likelihood", relative_likelihood)
+            _setter("relative_likelihood", relative_likelihood)
 
     @property
     @pulumi.getter(name="fixedLikelihood")
@@ -15171,10 +18584,21 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximity
         :param pulumi.Input[int] window_after: Number of characters after the finding to consider. Either this or window_before must be specified
         :param pulumi.Input[int] window_before: Number of characters before the finding to consider. Either this or window_after must be specified
         """
+        PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximityArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            window_after=window_after,
+            window_before=window_before,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             window_after: Optional[pulumi.Input[int]] = None,
+             window_before: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if window_after is not None:
-            pulumi.set(__self__, "window_after", window_after)
+            _setter("window_after", window_after)
         if window_before is not None:
-            pulumi.set(__self__, "window_before", window_before)
+            _setter("window_before", window_before)
 
     @property
     @pulumi.getter(name="windowAfter")
@@ -15221,16 +18645,33 @@ class PreventionJobTriggerInspectJobStorageConfigArgs:
         :param pulumi.Input['PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs'] timespan_config: Information on where to inspect
                Structure is documented below.
         """
+        PreventionJobTriggerInspectJobStorageConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            big_query_options=big_query_options,
+            cloud_storage_options=cloud_storage_options,
+            datastore_options=datastore_options,
+            hybrid_options=hybrid_options,
+            timespan_config=timespan_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             big_query_options: Optional[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs']] = None,
+             cloud_storage_options: Optional[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs']] = None,
+             datastore_options: Optional[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArgs']] = None,
+             hybrid_options: Optional[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs']] = None,
+             timespan_config: Optional[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if big_query_options is not None:
-            pulumi.set(__self__, "big_query_options", big_query_options)
+            _setter("big_query_options", big_query_options)
         if cloud_storage_options is not None:
-            pulumi.set(__self__, "cloud_storage_options", cloud_storage_options)
+            _setter("cloud_storage_options", cloud_storage_options)
         if datastore_options is not None:
-            pulumi.set(__self__, "datastore_options", datastore_options)
+            _setter("datastore_options", datastore_options)
         if hybrid_options is not None:
-            pulumi.set(__self__, "hybrid_options", hybrid_options)
+            _setter("hybrid_options", hybrid_options)
         if timespan_config is not None:
-            pulumi.set(__self__, "timespan_config", timespan_config)
+            _setter("timespan_config", timespan_config)
 
     @property
     @pulumi.getter(name="bigQueryOptions")
@@ -15330,19 +18771,40 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs:
                Default value is `TOP`.
                Possible values are: `TOP`, `RANDOM_START`.
         """
-        pulumi.set(__self__, "table_reference", table_reference)
+        PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            table_reference=table_reference,
+            excluded_fields=excluded_fields,
+            identifying_fields=identifying_fields,
+            included_fields=included_fields,
+            rows_limit=rows_limit,
+            rows_limit_percent=rows_limit_percent,
+            sample_method=sample_method,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             table_reference: pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs'],
+             excluded_fields: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs']]]] = None,
+             identifying_fields: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs']]]] = None,
+             included_fields: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs']]]] = None,
+             rows_limit: Optional[pulumi.Input[int]] = None,
+             rows_limit_percent: Optional[pulumi.Input[int]] = None,
+             sample_method: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("table_reference", table_reference)
         if excluded_fields is not None:
-            pulumi.set(__self__, "excluded_fields", excluded_fields)
+            _setter("excluded_fields", excluded_fields)
         if identifying_fields is not None:
-            pulumi.set(__self__, "identifying_fields", identifying_fields)
+            _setter("identifying_fields", identifying_fields)
         if included_fields is not None:
-            pulumi.set(__self__, "included_fields", included_fields)
+            _setter("included_fields", included_fields)
         if rows_limit is not None:
-            pulumi.set(__self__, "rows_limit", rows_limit)
+            _setter("rows_limit", rows_limit)
         if rows_limit_percent is not None:
-            pulumi.set(__self__, "rows_limit_percent", rows_limit_percent)
+            _setter("rows_limit_percent", rows_limit_percent)
         if sample_method is not None:
-            pulumi.set(__self__, "sample_method", sample_method)
+            _setter("sample_method", sample_method)
 
     @property
     @pulumi.getter(name="tableReference")
@@ -15449,7 +18911,16 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArg
         """
         :param pulumi.Input[str] name: Name describing the field excluded from scanning.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -15471,7 +18942,16 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField
         """
         :param pulumi.Input[str] name: Name describing the field.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -15493,7 +18973,16 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArg
         """
         :param pulumi.Input[str] name: Name describing the field to which scanning is limited.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -15519,9 +19008,22 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceAr
         :param pulumi.Input[str] project_id: The Google Cloud Platform project ID of the project containing the table.
         :param pulumi.Input[str] table_id: The name of the table.
         """
-        pulumi.set(__self__, "dataset_id", dataset_id)
-        pulumi.set(__self__, "project_id", project_id)
-        pulumi.set(__self__, "table_id", table_id)
+        PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dataset_id=dataset_id,
+            project_id=project_id,
+            table_id=table_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dataset_id: pulumi.Input[str],
+             project_id: pulumi.Input[str],
+             table_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dataset_id", dataset_id)
+        _setter("project_id", project_id)
+        _setter("table_id", table_id)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -15586,17 +19088,36 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs:
                If not specified, scanning would start from the top.
                Possible values are: `TOP`, `RANDOM_START`.
         """
-        pulumi.set(__self__, "file_set", file_set)
+        PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            file_set=file_set,
+            bytes_limit_per_file=bytes_limit_per_file,
+            bytes_limit_per_file_percent=bytes_limit_per_file_percent,
+            file_types=file_types,
+            files_limit_percent=files_limit_percent,
+            sample_method=sample_method,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             file_set: pulumi.Input['PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs'],
+             bytes_limit_per_file: Optional[pulumi.Input[int]] = None,
+             bytes_limit_per_file_percent: Optional[pulumi.Input[int]] = None,
+             file_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             files_limit_percent: Optional[pulumi.Input[int]] = None,
+             sample_method: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("file_set", file_set)
         if bytes_limit_per_file is not None:
-            pulumi.set(__self__, "bytes_limit_per_file", bytes_limit_per_file)
+            _setter("bytes_limit_per_file", bytes_limit_per_file)
         if bytes_limit_per_file_percent is not None:
-            pulumi.set(__self__, "bytes_limit_per_file_percent", bytes_limit_per_file_percent)
+            _setter("bytes_limit_per_file_percent", bytes_limit_per_file_percent)
         if file_types is not None:
-            pulumi.set(__self__, "file_types", file_types)
+            _setter("file_types", file_types)
         if files_limit_percent is not None:
-            pulumi.set(__self__, "files_limit_percent", files_limit_percent)
+            _setter("files_limit_percent", files_limit_percent)
         if sample_method is not None:
-            pulumi.set(__self__, "sample_method", sample_method)
+            _setter("sample_method", sample_method)
 
     @property
     @pulumi.getter(name="fileSet")
@@ -15694,10 +19215,21 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs:
                non-recursively (content in sub-directories will not be scanned). This means that `gs://mybucket/` is
                equivalent to `gs://mybucket/*`, and `gs://mybucket/directory/` is equivalent to `gs://mybucket/directory/*`.
         """
+        PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            regex_file_set=regex_file_set,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             regex_file_set: Optional[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetArgs']] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if regex_file_set is not None:
-            pulumi.set(__self__, "regex_file_set", regex_file_set)
+            _setter("regex_file_set", regex_file_set)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter(name="regexFileSet")
@@ -15744,11 +19276,24 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegex
                except for those that also match an item in excludeRegex. Leaving this field empty will
                match all files by default (this is equivalent to including .* in the list)
         """
-        pulumi.set(__self__, "bucket_name", bucket_name)
+        PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucket_name=bucket_name,
+            exclude_regexes=exclude_regexes,
+            include_regexes=include_regexes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucket_name: pulumi.Input[str],
+             exclude_regexes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             include_regexes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bucket_name", bucket_name)
         if exclude_regexes is not None:
-            pulumi.set(__self__, "exclude_regexes", exclude_regexes)
+            _setter("exclude_regexes", exclude_regexes)
         if include_regexes is not None:
-            pulumi.set(__self__, "include_regexes", include_regexes)
+            _setter("include_regexes", include_regexes)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -15803,8 +19348,19 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArgs:
                is always by project and namespace, however the namespace ID may be empty.
                Structure is documented below.
         """
-        pulumi.set(__self__, "kind", kind)
-        pulumi.set(__self__, "partition_id", partition_id)
+        PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kind=kind,
+            partition_id=partition_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kind: pulumi.Input['PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindArgs'],
+             partition_id: pulumi.Input['PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdArgs'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("kind", kind)
+        _setter("partition_id", partition_id)
 
     @property
     @pulumi.getter
@@ -15841,7 +19397,16 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindArgs:
         """
         :param pulumi.Input[str] name: The name of the Datastore kind.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -15865,9 +19430,20 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdArgs
         :param pulumi.Input[str] project_id: The ID of the project to which the entities belong.
         :param pulumi.Input[str] namespace_id: If not empty, the ID of the namespace to which the entities belong.
         """
-        pulumi.set(__self__, "project_id", project_id)
+        PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project_id=project_id,
+            namespace_id=namespace_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project_id: pulumi.Input[str],
+             namespace_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("project_id", project_id)
         if namespace_id is not None:
-            pulumi.set(__self__, "namespace_id", namespace_id)
+            _setter("namespace_id", namespace_id)
 
     @property
     @pulumi.getter(name="projectId")
@@ -15917,14 +19493,29 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs:
         :param pulumi.Input['PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs'] table_options: If the container is a table, additional information to make findings meaningful such as the columns that are primary keys.
                Structure is documented below.
         """
+        PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            labels=labels,
+            required_finding_label_keys=required_finding_label_keys,
+            table_options=table_options,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             required_finding_label_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             table_options: Optional[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if required_finding_label_keys is not None:
-            pulumi.set(__self__, "required_finding_label_keys", required_finding_label_keys)
+            _setter("required_finding_label_keys", required_finding_label_keys)
         if table_options is not None:
-            pulumi.set(__self__, "table_options", table_options)
+            _setter("table_options", table_options)
 
     @property
     @pulumi.getter
@@ -15995,8 +19586,17 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs:
                the specific row it came from. No more than 3 may be provided.
                Structure is documented below.
         """
+        PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            identifying_fields=identifying_fields,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             identifying_fields: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if identifying_fields is not None:
-            pulumi.set(__self__, "identifying_fields", identifying_fields)
+            _setter("identifying_fields", identifying_fields)
 
     @property
     @pulumi.getter(name="identifyingFields")
@@ -16021,7 +19621,16 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdenti
         """
         :param pulumi.Input[str] name: Name describing the field.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -16052,13 +19661,28 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs:
         :param pulumi.Input[str] end_time: Exclude files or rows newer than this value. If set to zero, no upper time limit is applied.
         :param pulumi.Input[str] start_time: Exclude files or rows older than this value.
         """
-        pulumi.set(__self__, "timestamp_field", timestamp_field)
+        PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            timestamp_field=timestamp_field,
+            enable_auto_population_of_timespan_config=enable_auto_population_of_timespan_config,
+            end_time=end_time,
+            start_time=start_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             timestamp_field: pulumi.Input['PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs'],
+             enable_auto_population_of_timespan_config: Optional[pulumi.Input[bool]] = None,
+             end_time: Optional[pulumi.Input[str]] = None,
+             start_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("timestamp_field", timestamp_field)
         if enable_auto_population_of_timespan_config is not None:
-            pulumi.set(__self__, "enable_auto_population_of_timespan_config", enable_auto_population_of_timespan_config)
+            _setter("enable_auto_population_of_timespan_config", enable_auto_population_of_timespan_config)
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
 
     @property
     @pulumi.getter(name="timestampField")
@@ -16124,7 +19748,16 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArg
                For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
                timestamp property does not exist or its value is empty or invalid.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -16154,10 +19787,21 @@ class PreventionJobTriggerTriggerArgs:
         :param pulumi.Input['PreventionJobTriggerTriggerScheduleArgs'] schedule: Schedule for triggered jobs
                Structure is documented below.
         """
+        PreventionJobTriggerTriggerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            manual=manual,
+            schedule=schedule,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             manual: Optional[pulumi.Input['PreventionJobTriggerTriggerManualArgs']] = None,
+             schedule: Optional[pulumi.Input['PreventionJobTriggerTriggerScheduleArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if manual is not None:
-            pulumi.set(__self__, "manual", manual)
+            _setter("manual", manual)
         if schedule is not None:
-            pulumi.set(__self__, "schedule", schedule)
+            _setter("schedule", schedule)
 
     @property
     @pulumi.getter
@@ -16189,6 +19833,11 @@ class PreventionJobTriggerTriggerArgs:
 class PreventionJobTriggerTriggerManualArgs:
     def __init__(__self__):
         pass
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        pass
 
 
 @pulumi.input_type
@@ -16203,8 +19852,17 @@ class PreventionJobTriggerTriggerScheduleArgs:
                
                - - -
         """
+        PreventionJobTriggerTriggerScheduleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            recurrence_period_duration=recurrence_period_duration,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             recurrence_period_duration: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if recurrence_period_duration is not None:
-            pulumi.set(__self__, "recurrence_period_duration", recurrence_period_duration)
+            _setter("recurrence_period_duration", recurrence_period_duration)
 
     @property
     @pulumi.getter(name="recurrencePeriodDuration")
@@ -16235,10 +19893,21 @@ class PreventionStoredInfoTypeDictionaryArgs:
         :param pulumi.Input['PreventionStoredInfoTypeDictionaryWordListArgs'] word_list: List of words or phrases to search for.
                Structure is documented below.
         """
+        PreventionStoredInfoTypeDictionaryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cloud_storage_path=cloud_storage_path,
+            word_list=word_list,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cloud_storage_path: Optional[pulumi.Input['PreventionStoredInfoTypeDictionaryCloudStoragePathArgs']] = None,
+             word_list: Optional[pulumi.Input['PreventionStoredInfoTypeDictionaryWordListArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cloud_storage_path is not None:
-            pulumi.set(__self__, "cloud_storage_path", cloud_storage_path)
+            _setter("cloud_storage_path", cloud_storage_path)
         if word_list is not None:
-            pulumi.set(__self__, "word_list", word_list)
+            _setter("word_list", word_list)
 
     @property
     @pulumi.getter(name="cloudStoragePath")
@@ -16274,7 +19943,16 @@ class PreventionStoredInfoTypeDictionaryCloudStoragePathArgs:
         """
         :param pulumi.Input[str] path: A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
         """
-        pulumi.set(__self__, "path", path)
+        PreventionStoredInfoTypeDictionaryCloudStoragePathArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            path=path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             path: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("path", path)
 
     @property
     @pulumi.getter
@@ -16297,7 +19975,16 @@ class PreventionStoredInfoTypeDictionaryWordListArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] words: Words or phrases defining the dictionary. The dictionary must contain at least one
                phrase and every phrase must contain at least 2 characters that are letters or digits.
         """
-        pulumi.set(__self__, "words", words)
+        PreventionStoredInfoTypeDictionaryWordListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            words=words,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             words: pulumi.Input[Sequence[pulumi.Input[str]]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("words", words)
 
     @property
     @pulumi.getter
@@ -16328,11 +20015,24 @@ class PreventionStoredInfoTypeLargeCustomDictionaryArgs:
         :param pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs'] cloud_storage_file_set: Set of files containing newline-delimited lists of dictionary phrases.
                Structure is documented below.
         """
-        pulumi.set(__self__, "output_path", output_path)
+        PreventionStoredInfoTypeLargeCustomDictionaryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            output_path=output_path,
+            big_query_field=big_query_field,
+            cloud_storage_file_set=cloud_storage_file_set,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             output_path: pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs'],
+             big_query_field: Optional[pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldArgs']] = None,
+             cloud_storage_file_set: Optional[pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("output_path", output_path)
         if big_query_field is not None:
-            pulumi.set(__self__, "big_query_field", big_query_field)
+            _setter("big_query_field", big_query_field)
         if cloud_storage_file_set is not None:
-            pulumi.set(__self__, "cloud_storage_file_set", cloud_storage_file_set)
+            _setter("cloud_storage_file_set", cloud_storage_file_set)
 
     @property
     @pulumi.getter(name="outputPath")
@@ -16386,8 +20086,19 @@ class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldArgs:
         :param pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableArgs'] table: Field in a BigQuery table where each cell represents a dictionary phrase.
                Structure is documented below.
         """
-        pulumi.set(__self__, "field", field)
-        pulumi.set(__self__, "table", table)
+        PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            field=field,
+            table=table,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             field: pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldArgs'],
+             table: pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableArgs'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("field", field)
+        _setter("table", table)
 
     @property
     @pulumi.getter
@@ -16423,7 +20134,16 @@ class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldArgs:
         """
         :param pulumi.Input[str] name: Name describing the field.
         """
-        pulumi.set(__self__, "name", name)
+        PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -16449,9 +20169,22 @@ class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableArgs:
         :param pulumi.Input[str] project_id: The Google Cloud Platform project ID of the project containing the table.
         :param pulumi.Input[str] table_id: The name of the table.
         """
-        pulumi.set(__self__, "dataset_id", dataset_id)
-        pulumi.set(__self__, "project_id", project_id)
-        pulumi.set(__self__, "table_id", table_id)
+        PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dataset_id=dataset_id,
+            project_id=project_id,
+            table_id=table_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dataset_id: pulumi.Input[str],
+             project_id: pulumi.Input[str],
+             table_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dataset_id", dataset_id)
+        _setter("project_id", project_id)
+        _setter("table_id", table_id)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -16497,7 +20230,16 @@ class PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs:
         """
         :param pulumi.Input[str] url: The url, in the format `gs://<bucket>/<path>`. Trailing wildcard in the path is allowed.
         """
-        pulumi.set(__self__, "url", url)
+        PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             url: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("url", url)
 
     @property
     @pulumi.getter
@@ -16519,7 +20261,16 @@ class PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs:
         """
         :param pulumi.Input[str] path: A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
         """
-        pulumi.set(__self__, "path", path)
+        PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            path=path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             path: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("path", path)
 
     @property
     @pulumi.getter
@@ -16544,9 +20295,20 @@ class PreventionStoredInfoTypeRegexArgs:
                Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] group_indexes: The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
         """
-        pulumi.set(__self__, "pattern", pattern)
+        PreventionStoredInfoTypeRegexArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pattern=pattern,
+            group_indexes=group_indexes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pattern: pulumi.Input[str],
+             group_indexes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("pattern", pattern)
         if group_indexes is not None:
-            pulumi.set(__self__, "group_indexes", group_indexes)
+            _setter("group_indexes", group_indexes)
 
     @property
     @pulumi.getter

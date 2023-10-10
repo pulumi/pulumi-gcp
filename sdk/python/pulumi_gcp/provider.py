@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from ._inputs import *
 
@@ -169,314 +169,623 @@ class ProviderArgs:
         """
         The set of arguments for constructing a Provider resource.
         """
+        ProviderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_approval_custom_endpoint=access_approval_custom_endpoint,
+            access_context_manager_custom_endpoint=access_context_manager_custom_endpoint,
+            access_token=access_token,
+            active_directory_custom_endpoint=active_directory_custom_endpoint,
+            alloydb_custom_endpoint=alloydb_custom_endpoint,
+            api_gateway_custom_endpoint=api_gateway_custom_endpoint,
+            apigee_custom_endpoint=apigee_custom_endpoint,
+            apikeys_custom_endpoint=apikeys_custom_endpoint,
+            app_engine_custom_endpoint=app_engine_custom_endpoint,
+            artifact_registry_custom_endpoint=artifact_registry_custom_endpoint,
+            assured_workloads_custom_endpoint=assured_workloads_custom_endpoint,
+            backup_dr_custom_endpoint=backup_dr_custom_endpoint,
+            batching=batching,
+            beyondcorp_custom_endpoint=beyondcorp_custom_endpoint,
+            big_query_custom_endpoint=big_query_custom_endpoint,
+            biglake_custom_endpoint=biglake_custom_endpoint,
+            bigquery_analytics_hub_custom_endpoint=bigquery_analytics_hub_custom_endpoint,
+            bigquery_connection_custom_endpoint=bigquery_connection_custom_endpoint,
+            bigquery_data_transfer_custom_endpoint=bigquery_data_transfer_custom_endpoint,
+            bigquery_datapolicy_custom_endpoint=bigquery_datapolicy_custom_endpoint,
+            bigquery_reservation_custom_endpoint=bigquery_reservation_custom_endpoint,
+            bigtable_custom_endpoint=bigtable_custom_endpoint,
+            billing_custom_endpoint=billing_custom_endpoint,
+            billing_project=billing_project,
+            binary_authorization_custom_endpoint=binary_authorization_custom_endpoint,
+            certificate_manager_custom_endpoint=certificate_manager_custom_endpoint,
+            cloud_asset_custom_endpoint=cloud_asset_custom_endpoint,
+            cloud_billing_custom_endpoint=cloud_billing_custom_endpoint,
+            cloud_build_custom_endpoint=cloud_build_custom_endpoint,
+            cloud_build_worker_pool_custom_endpoint=cloud_build_worker_pool_custom_endpoint,
+            cloud_functions_custom_endpoint=cloud_functions_custom_endpoint,
+            cloud_identity_custom_endpoint=cloud_identity_custom_endpoint,
+            cloud_ids_custom_endpoint=cloud_ids_custom_endpoint,
+            cloud_iot_custom_endpoint=cloud_iot_custom_endpoint,
+            cloud_resource_manager_custom_endpoint=cloud_resource_manager_custom_endpoint,
+            cloud_run_custom_endpoint=cloud_run_custom_endpoint,
+            cloud_run_v2_custom_endpoint=cloud_run_v2_custom_endpoint,
+            cloud_scheduler_custom_endpoint=cloud_scheduler_custom_endpoint,
+            cloud_tasks_custom_endpoint=cloud_tasks_custom_endpoint,
+            cloudbuildv2_custom_endpoint=cloudbuildv2_custom_endpoint,
+            clouddeploy_custom_endpoint=clouddeploy_custom_endpoint,
+            cloudfunctions2_custom_endpoint=cloudfunctions2_custom_endpoint,
+            composer_custom_endpoint=composer_custom_endpoint,
+            compute_custom_endpoint=compute_custom_endpoint,
+            container_analysis_custom_endpoint=container_analysis_custom_endpoint,
+            container_attached_custom_endpoint=container_attached_custom_endpoint,
+            container_aws_custom_endpoint=container_aws_custom_endpoint,
+            container_azure_custom_endpoint=container_azure_custom_endpoint,
+            container_custom_endpoint=container_custom_endpoint,
+            core_billing_custom_endpoint=core_billing_custom_endpoint,
+            credentials=credentials,
+            data_catalog_custom_endpoint=data_catalog_custom_endpoint,
+            data_fusion_custom_endpoint=data_fusion_custom_endpoint,
+            data_loss_prevention_custom_endpoint=data_loss_prevention_custom_endpoint,
+            data_pipeline_custom_endpoint=data_pipeline_custom_endpoint,
+            database_migration_service_custom_endpoint=database_migration_service_custom_endpoint,
+            dataflow_custom_endpoint=dataflow_custom_endpoint,
+            dataform_custom_endpoint=dataform_custom_endpoint,
+            dataplex_custom_endpoint=dataplex_custom_endpoint,
+            dataproc_custom_endpoint=dataproc_custom_endpoint,
+            dataproc_metastore_custom_endpoint=dataproc_metastore_custom_endpoint,
+            datastore_custom_endpoint=datastore_custom_endpoint,
+            datastream_custom_endpoint=datastream_custom_endpoint,
+            deployment_manager_custom_endpoint=deployment_manager_custom_endpoint,
+            dialogflow_custom_endpoint=dialogflow_custom_endpoint,
+            dialogflow_cx_custom_endpoint=dialogflow_cx_custom_endpoint,
+            disable_google_partner_name=disable_google_partner_name,
+            dns_custom_endpoint=dns_custom_endpoint,
+            document_ai_custom_endpoint=document_ai_custom_endpoint,
+            document_ai_warehouse_custom_endpoint=document_ai_warehouse_custom_endpoint,
+            edgenetwork_custom_endpoint=edgenetwork_custom_endpoint,
+            essential_contacts_custom_endpoint=essential_contacts_custom_endpoint,
+            eventarc_custom_endpoint=eventarc_custom_endpoint,
+            filestore_custom_endpoint=filestore_custom_endpoint,
+            firebase_custom_endpoint=firebase_custom_endpoint,
+            firebase_database_custom_endpoint=firebase_database_custom_endpoint,
+            firebase_extensions_custom_endpoint=firebase_extensions_custom_endpoint,
+            firebase_hosting_custom_endpoint=firebase_hosting_custom_endpoint,
+            firebase_storage_custom_endpoint=firebase_storage_custom_endpoint,
+            firebaserules_custom_endpoint=firebaserules_custom_endpoint,
+            firestore_custom_endpoint=firestore_custom_endpoint,
+            game_services_custom_endpoint=game_services_custom_endpoint,
+            gke_backup_custom_endpoint=gke_backup_custom_endpoint,
+            gke_hub2_custom_endpoint=gke_hub2_custom_endpoint,
+            gke_hub_custom_endpoint=gke_hub_custom_endpoint,
+            gkehub_feature_custom_endpoint=gkehub_feature_custom_endpoint,
+            gkeonprem_custom_endpoint=gkeonprem_custom_endpoint,
+            google_partner_name=google_partner_name,
+            healthcare_custom_endpoint=healthcare_custom_endpoint,
+            iam2_custom_endpoint=iam2_custom_endpoint,
+            iam_beta_custom_endpoint=iam_beta_custom_endpoint,
+            iam_credentials_custom_endpoint=iam_credentials_custom_endpoint,
+            iam_custom_endpoint=iam_custom_endpoint,
+            iam_workforce_pool_custom_endpoint=iam_workforce_pool_custom_endpoint,
+            iap_custom_endpoint=iap_custom_endpoint,
+            identity_platform_custom_endpoint=identity_platform_custom_endpoint,
+            impersonate_service_account=impersonate_service_account,
+            impersonate_service_account_delegates=impersonate_service_account_delegates,
+            kms_custom_endpoint=kms_custom_endpoint,
+            logging_custom_endpoint=logging_custom_endpoint,
+            looker_custom_endpoint=looker_custom_endpoint,
+            memcache_custom_endpoint=memcache_custom_endpoint,
+            ml_engine_custom_endpoint=ml_engine_custom_endpoint,
+            monitoring_custom_endpoint=monitoring_custom_endpoint,
+            network_connectivity_custom_endpoint=network_connectivity_custom_endpoint,
+            network_management_custom_endpoint=network_management_custom_endpoint,
+            network_security_custom_endpoint=network_security_custom_endpoint,
+            network_services_custom_endpoint=network_services_custom_endpoint,
+            notebooks_custom_endpoint=notebooks_custom_endpoint,
+            org_policy_custom_endpoint=org_policy_custom_endpoint,
+            os_config_custom_endpoint=os_config_custom_endpoint,
+            os_login_custom_endpoint=os_login_custom_endpoint,
+            privateca_custom_endpoint=privateca_custom_endpoint,
+            project=project,
+            public_ca_custom_endpoint=public_ca_custom_endpoint,
+            pubsub_custom_endpoint=pubsub_custom_endpoint,
+            pubsub_lite_custom_endpoint=pubsub_lite_custom_endpoint,
+            recaptcha_enterprise_custom_endpoint=recaptcha_enterprise_custom_endpoint,
+            redis_custom_endpoint=redis_custom_endpoint,
+            region=region,
+            request_reason=request_reason,
+            request_timeout=request_timeout,
+            resource_manager_custom_endpoint=resource_manager_custom_endpoint,
+            resource_manager_v3_custom_endpoint=resource_manager_v3_custom_endpoint,
+            runtime_config_custom_endpoint=runtime_config_custom_endpoint,
+            runtimeconfig_custom_endpoint=runtimeconfig_custom_endpoint,
+            scopes=scopes,
+            secret_manager_custom_endpoint=secret_manager_custom_endpoint,
+            security_center_custom_endpoint=security_center_custom_endpoint,
+            security_scanner_custom_endpoint=security_scanner_custom_endpoint,
+            service_directory_custom_endpoint=service_directory_custom_endpoint,
+            service_management_custom_endpoint=service_management_custom_endpoint,
+            service_networking_custom_endpoint=service_networking_custom_endpoint,
+            service_usage_custom_endpoint=service_usage_custom_endpoint,
+            source_repo_custom_endpoint=source_repo_custom_endpoint,
+            spanner_custom_endpoint=spanner_custom_endpoint,
+            sql_custom_endpoint=sql_custom_endpoint,
+            storage_custom_endpoint=storage_custom_endpoint,
+            storage_insights_custom_endpoint=storage_insights_custom_endpoint,
+            storage_transfer_custom_endpoint=storage_transfer_custom_endpoint,
+            tags_custom_endpoint=tags_custom_endpoint,
+            tags_location_custom_endpoint=tags_location_custom_endpoint,
+            tpu_custom_endpoint=tpu_custom_endpoint,
+            tpu_v2_custom_endpoint=tpu_v2_custom_endpoint,
+            user_project_override=user_project_override,
+            vertex_ai_custom_endpoint=vertex_ai_custom_endpoint,
+            vmwareengine_custom_endpoint=vmwareengine_custom_endpoint,
+            vpc_access_custom_endpoint=vpc_access_custom_endpoint,
+            workflows_custom_endpoint=workflows_custom_endpoint,
+            workstations_custom_endpoint=workstations_custom_endpoint,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_approval_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             access_context_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             access_token: Optional[pulumi.Input[str]] = None,
+             active_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             alloydb_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             api_gateway_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             apigee_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             apikeys_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             app_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             artifact_registry_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             assured_workloads_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             backup_dr_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             batching: Optional[pulumi.Input['ProviderBatchingArgs']] = None,
+             beyondcorp_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             big_query_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             biglake_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             bigquery_analytics_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             bigquery_connection_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             bigquery_data_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             bigquery_datapolicy_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             bigquery_reservation_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             bigtable_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             billing_project: Optional[pulumi.Input[str]] = None,
+             binary_authorization_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             certificate_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             cloud_asset_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             cloud_billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             cloud_build_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             cloud_build_worker_pool_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             cloud_functions_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             cloud_identity_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             cloud_ids_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             cloud_iot_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             cloud_resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             cloud_run_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             cloud_run_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             cloud_scheduler_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             cloud_tasks_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             cloudbuildv2_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             clouddeploy_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             cloudfunctions2_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             compute_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             container_analysis_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             container_attached_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             container_aws_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             container_azure_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             container_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             core_billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             credentials: Optional[pulumi.Input[str]] = None,
+             data_catalog_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             data_fusion_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             data_loss_prevention_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             data_pipeline_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             database_migration_service_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             dataflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             dataform_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             dataplex_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             dataproc_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             datastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             datastream_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             deployment_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             dialogflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             dialogflow_cx_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             disable_google_partner_name: Optional[pulumi.Input[bool]] = None,
+             dns_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             document_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             document_ai_warehouse_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             edgenetwork_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             essential_contacts_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             firebase_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             firebase_database_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             firebase_extensions_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             firebase_hosting_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             firebase_storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             firebaserules_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             firestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             game_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             gke_backup_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             gke_hub2_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             gke_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             gkehub_feature_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             gkeonprem_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             google_partner_name: Optional[pulumi.Input[str]] = None,
+             healthcare_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             iam2_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             iam_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             iam_credentials_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             iam_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             iam_workforce_pool_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             iap_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             identity_platform_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             impersonate_service_account: Optional[pulumi.Input[str]] = None,
+             impersonate_service_account_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             kms_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             logging_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             looker_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             memcache_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             ml_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             monitoring_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             network_connectivity_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             network_management_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             network_security_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             network_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             notebooks_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             org_policy_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             os_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             privateca_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             public_ca_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             pubsub_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             pubsub_lite_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             recaptcha_enterprise_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             redis_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             request_reason: Optional[pulumi.Input[str]] = None,
+             request_timeout: Optional[pulumi.Input[str]] = None,
+             resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             resource_manager_v3_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             runtime_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             runtimeconfig_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             secret_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             security_center_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             security_scanner_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             service_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             service_management_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             service_networking_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             service_usage_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             source_repo_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             spanner_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             sql_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             storage_insights_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             storage_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             tags_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             tags_location_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             tpu_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             user_project_override: Optional[pulumi.Input[bool]] = None,
+             vertex_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             vmwareengine_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             vpc_access_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             workflows_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             workstations_custom_endpoint: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_approval_custom_endpoint is not None:
-            pulumi.set(__self__, "access_approval_custom_endpoint", access_approval_custom_endpoint)
+            _setter("access_approval_custom_endpoint", access_approval_custom_endpoint)
         if access_context_manager_custom_endpoint is not None:
-            pulumi.set(__self__, "access_context_manager_custom_endpoint", access_context_manager_custom_endpoint)
+            _setter("access_context_manager_custom_endpoint", access_context_manager_custom_endpoint)
         if access_token is not None:
-            pulumi.set(__self__, "access_token", access_token)
+            _setter("access_token", access_token)
         if active_directory_custom_endpoint is not None:
-            pulumi.set(__self__, "active_directory_custom_endpoint", active_directory_custom_endpoint)
+            _setter("active_directory_custom_endpoint", active_directory_custom_endpoint)
         if alloydb_custom_endpoint is not None:
-            pulumi.set(__self__, "alloydb_custom_endpoint", alloydb_custom_endpoint)
+            _setter("alloydb_custom_endpoint", alloydb_custom_endpoint)
         if api_gateway_custom_endpoint is not None:
-            pulumi.set(__self__, "api_gateway_custom_endpoint", api_gateway_custom_endpoint)
+            _setter("api_gateway_custom_endpoint", api_gateway_custom_endpoint)
         if apigee_custom_endpoint is not None:
-            pulumi.set(__self__, "apigee_custom_endpoint", apigee_custom_endpoint)
+            _setter("apigee_custom_endpoint", apigee_custom_endpoint)
         if apikeys_custom_endpoint is not None:
-            pulumi.set(__self__, "apikeys_custom_endpoint", apikeys_custom_endpoint)
+            _setter("apikeys_custom_endpoint", apikeys_custom_endpoint)
         if app_engine_custom_endpoint is not None:
-            pulumi.set(__self__, "app_engine_custom_endpoint", app_engine_custom_endpoint)
+            _setter("app_engine_custom_endpoint", app_engine_custom_endpoint)
         if artifact_registry_custom_endpoint is not None:
-            pulumi.set(__self__, "artifact_registry_custom_endpoint", artifact_registry_custom_endpoint)
+            _setter("artifact_registry_custom_endpoint", artifact_registry_custom_endpoint)
         if assured_workloads_custom_endpoint is not None:
-            pulumi.set(__self__, "assured_workloads_custom_endpoint", assured_workloads_custom_endpoint)
+            _setter("assured_workloads_custom_endpoint", assured_workloads_custom_endpoint)
         if backup_dr_custom_endpoint is not None:
-            pulumi.set(__self__, "backup_dr_custom_endpoint", backup_dr_custom_endpoint)
+            _setter("backup_dr_custom_endpoint", backup_dr_custom_endpoint)
         if batching is not None:
-            pulumi.set(__self__, "batching", batching)
+            _setter("batching", batching)
         if beyondcorp_custom_endpoint is not None:
-            pulumi.set(__self__, "beyondcorp_custom_endpoint", beyondcorp_custom_endpoint)
+            _setter("beyondcorp_custom_endpoint", beyondcorp_custom_endpoint)
         if big_query_custom_endpoint is not None:
-            pulumi.set(__self__, "big_query_custom_endpoint", big_query_custom_endpoint)
+            _setter("big_query_custom_endpoint", big_query_custom_endpoint)
         if biglake_custom_endpoint is not None:
-            pulumi.set(__self__, "biglake_custom_endpoint", biglake_custom_endpoint)
+            _setter("biglake_custom_endpoint", biglake_custom_endpoint)
         if bigquery_analytics_hub_custom_endpoint is not None:
-            pulumi.set(__self__, "bigquery_analytics_hub_custom_endpoint", bigquery_analytics_hub_custom_endpoint)
+            _setter("bigquery_analytics_hub_custom_endpoint", bigquery_analytics_hub_custom_endpoint)
         if bigquery_connection_custom_endpoint is not None:
-            pulumi.set(__self__, "bigquery_connection_custom_endpoint", bigquery_connection_custom_endpoint)
+            _setter("bigquery_connection_custom_endpoint", bigquery_connection_custom_endpoint)
         if bigquery_data_transfer_custom_endpoint is not None:
-            pulumi.set(__self__, "bigquery_data_transfer_custom_endpoint", bigquery_data_transfer_custom_endpoint)
+            _setter("bigquery_data_transfer_custom_endpoint", bigquery_data_transfer_custom_endpoint)
         if bigquery_datapolicy_custom_endpoint is not None:
-            pulumi.set(__self__, "bigquery_datapolicy_custom_endpoint", bigquery_datapolicy_custom_endpoint)
+            _setter("bigquery_datapolicy_custom_endpoint", bigquery_datapolicy_custom_endpoint)
         if bigquery_reservation_custom_endpoint is not None:
-            pulumi.set(__self__, "bigquery_reservation_custom_endpoint", bigquery_reservation_custom_endpoint)
+            _setter("bigquery_reservation_custom_endpoint", bigquery_reservation_custom_endpoint)
         if bigtable_custom_endpoint is not None:
-            pulumi.set(__self__, "bigtable_custom_endpoint", bigtable_custom_endpoint)
+            _setter("bigtable_custom_endpoint", bigtable_custom_endpoint)
         if billing_custom_endpoint is not None:
-            pulumi.set(__self__, "billing_custom_endpoint", billing_custom_endpoint)
+            _setter("billing_custom_endpoint", billing_custom_endpoint)
         if billing_project is not None:
-            pulumi.set(__self__, "billing_project", billing_project)
+            _setter("billing_project", billing_project)
         if binary_authorization_custom_endpoint is not None:
-            pulumi.set(__self__, "binary_authorization_custom_endpoint", binary_authorization_custom_endpoint)
+            _setter("binary_authorization_custom_endpoint", binary_authorization_custom_endpoint)
         if certificate_manager_custom_endpoint is not None:
-            pulumi.set(__self__, "certificate_manager_custom_endpoint", certificate_manager_custom_endpoint)
+            _setter("certificate_manager_custom_endpoint", certificate_manager_custom_endpoint)
         if cloud_asset_custom_endpoint is not None:
-            pulumi.set(__self__, "cloud_asset_custom_endpoint", cloud_asset_custom_endpoint)
+            _setter("cloud_asset_custom_endpoint", cloud_asset_custom_endpoint)
         if cloud_billing_custom_endpoint is not None:
-            pulumi.set(__self__, "cloud_billing_custom_endpoint", cloud_billing_custom_endpoint)
+            _setter("cloud_billing_custom_endpoint", cloud_billing_custom_endpoint)
         if cloud_build_custom_endpoint is not None:
-            pulumi.set(__self__, "cloud_build_custom_endpoint", cloud_build_custom_endpoint)
+            _setter("cloud_build_custom_endpoint", cloud_build_custom_endpoint)
         if cloud_build_worker_pool_custom_endpoint is not None:
-            pulumi.set(__self__, "cloud_build_worker_pool_custom_endpoint", cloud_build_worker_pool_custom_endpoint)
+            _setter("cloud_build_worker_pool_custom_endpoint", cloud_build_worker_pool_custom_endpoint)
         if cloud_functions_custom_endpoint is not None:
-            pulumi.set(__self__, "cloud_functions_custom_endpoint", cloud_functions_custom_endpoint)
+            _setter("cloud_functions_custom_endpoint", cloud_functions_custom_endpoint)
         if cloud_identity_custom_endpoint is not None:
-            pulumi.set(__self__, "cloud_identity_custom_endpoint", cloud_identity_custom_endpoint)
+            _setter("cloud_identity_custom_endpoint", cloud_identity_custom_endpoint)
         if cloud_ids_custom_endpoint is not None:
-            pulumi.set(__self__, "cloud_ids_custom_endpoint", cloud_ids_custom_endpoint)
+            _setter("cloud_ids_custom_endpoint", cloud_ids_custom_endpoint)
         if cloud_iot_custom_endpoint is not None:
-            pulumi.set(__self__, "cloud_iot_custom_endpoint", cloud_iot_custom_endpoint)
+            _setter("cloud_iot_custom_endpoint", cloud_iot_custom_endpoint)
         if cloud_resource_manager_custom_endpoint is not None:
-            pulumi.set(__self__, "cloud_resource_manager_custom_endpoint", cloud_resource_manager_custom_endpoint)
+            _setter("cloud_resource_manager_custom_endpoint", cloud_resource_manager_custom_endpoint)
         if cloud_run_custom_endpoint is not None:
-            pulumi.set(__self__, "cloud_run_custom_endpoint", cloud_run_custom_endpoint)
+            _setter("cloud_run_custom_endpoint", cloud_run_custom_endpoint)
         if cloud_run_v2_custom_endpoint is not None:
-            pulumi.set(__self__, "cloud_run_v2_custom_endpoint", cloud_run_v2_custom_endpoint)
+            _setter("cloud_run_v2_custom_endpoint", cloud_run_v2_custom_endpoint)
         if cloud_scheduler_custom_endpoint is not None:
-            pulumi.set(__self__, "cloud_scheduler_custom_endpoint", cloud_scheduler_custom_endpoint)
+            _setter("cloud_scheduler_custom_endpoint", cloud_scheduler_custom_endpoint)
         if cloud_tasks_custom_endpoint is not None:
-            pulumi.set(__self__, "cloud_tasks_custom_endpoint", cloud_tasks_custom_endpoint)
+            _setter("cloud_tasks_custom_endpoint", cloud_tasks_custom_endpoint)
         if cloudbuildv2_custom_endpoint is not None:
-            pulumi.set(__self__, "cloudbuildv2_custom_endpoint", cloudbuildv2_custom_endpoint)
+            _setter("cloudbuildv2_custom_endpoint", cloudbuildv2_custom_endpoint)
         if clouddeploy_custom_endpoint is not None:
-            pulumi.set(__self__, "clouddeploy_custom_endpoint", clouddeploy_custom_endpoint)
+            _setter("clouddeploy_custom_endpoint", clouddeploy_custom_endpoint)
         if cloudfunctions2_custom_endpoint is not None:
-            pulumi.set(__self__, "cloudfunctions2_custom_endpoint", cloudfunctions2_custom_endpoint)
+            _setter("cloudfunctions2_custom_endpoint", cloudfunctions2_custom_endpoint)
         if composer_custom_endpoint is not None:
-            pulumi.set(__self__, "composer_custom_endpoint", composer_custom_endpoint)
+            _setter("composer_custom_endpoint", composer_custom_endpoint)
         if compute_custom_endpoint is not None:
-            pulumi.set(__self__, "compute_custom_endpoint", compute_custom_endpoint)
+            _setter("compute_custom_endpoint", compute_custom_endpoint)
         if container_analysis_custom_endpoint is not None:
-            pulumi.set(__self__, "container_analysis_custom_endpoint", container_analysis_custom_endpoint)
+            _setter("container_analysis_custom_endpoint", container_analysis_custom_endpoint)
         if container_attached_custom_endpoint is not None:
-            pulumi.set(__self__, "container_attached_custom_endpoint", container_attached_custom_endpoint)
+            _setter("container_attached_custom_endpoint", container_attached_custom_endpoint)
         if container_aws_custom_endpoint is not None:
-            pulumi.set(__self__, "container_aws_custom_endpoint", container_aws_custom_endpoint)
+            _setter("container_aws_custom_endpoint", container_aws_custom_endpoint)
         if container_azure_custom_endpoint is not None:
-            pulumi.set(__self__, "container_azure_custom_endpoint", container_azure_custom_endpoint)
+            _setter("container_azure_custom_endpoint", container_azure_custom_endpoint)
         if container_custom_endpoint is not None:
-            pulumi.set(__self__, "container_custom_endpoint", container_custom_endpoint)
+            _setter("container_custom_endpoint", container_custom_endpoint)
         if core_billing_custom_endpoint is not None:
-            pulumi.set(__self__, "core_billing_custom_endpoint", core_billing_custom_endpoint)
+            _setter("core_billing_custom_endpoint", core_billing_custom_endpoint)
         if credentials is not None:
-            pulumi.set(__self__, "credentials", credentials)
+            _setter("credentials", credentials)
         if data_catalog_custom_endpoint is not None:
-            pulumi.set(__self__, "data_catalog_custom_endpoint", data_catalog_custom_endpoint)
+            _setter("data_catalog_custom_endpoint", data_catalog_custom_endpoint)
         if data_fusion_custom_endpoint is not None:
-            pulumi.set(__self__, "data_fusion_custom_endpoint", data_fusion_custom_endpoint)
+            _setter("data_fusion_custom_endpoint", data_fusion_custom_endpoint)
         if data_loss_prevention_custom_endpoint is not None:
-            pulumi.set(__self__, "data_loss_prevention_custom_endpoint", data_loss_prevention_custom_endpoint)
+            _setter("data_loss_prevention_custom_endpoint", data_loss_prevention_custom_endpoint)
         if data_pipeline_custom_endpoint is not None:
-            pulumi.set(__self__, "data_pipeline_custom_endpoint", data_pipeline_custom_endpoint)
+            _setter("data_pipeline_custom_endpoint", data_pipeline_custom_endpoint)
         if database_migration_service_custom_endpoint is not None:
-            pulumi.set(__self__, "database_migration_service_custom_endpoint", database_migration_service_custom_endpoint)
+            _setter("database_migration_service_custom_endpoint", database_migration_service_custom_endpoint)
         if dataflow_custom_endpoint is not None:
-            pulumi.set(__self__, "dataflow_custom_endpoint", dataflow_custom_endpoint)
+            _setter("dataflow_custom_endpoint", dataflow_custom_endpoint)
         if dataform_custom_endpoint is not None:
-            pulumi.set(__self__, "dataform_custom_endpoint", dataform_custom_endpoint)
+            _setter("dataform_custom_endpoint", dataform_custom_endpoint)
         if dataplex_custom_endpoint is not None:
-            pulumi.set(__self__, "dataplex_custom_endpoint", dataplex_custom_endpoint)
+            _setter("dataplex_custom_endpoint", dataplex_custom_endpoint)
         if dataproc_custom_endpoint is not None:
-            pulumi.set(__self__, "dataproc_custom_endpoint", dataproc_custom_endpoint)
+            _setter("dataproc_custom_endpoint", dataproc_custom_endpoint)
         if dataproc_metastore_custom_endpoint is not None:
-            pulumi.set(__self__, "dataproc_metastore_custom_endpoint", dataproc_metastore_custom_endpoint)
+            _setter("dataproc_metastore_custom_endpoint", dataproc_metastore_custom_endpoint)
         if datastore_custom_endpoint is not None:
-            pulumi.set(__self__, "datastore_custom_endpoint", datastore_custom_endpoint)
+            _setter("datastore_custom_endpoint", datastore_custom_endpoint)
         if datastream_custom_endpoint is not None:
-            pulumi.set(__self__, "datastream_custom_endpoint", datastream_custom_endpoint)
+            _setter("datastream_custom_endpoint", datastream_custom_endpoint)
         if deployment_manager_custom_endpoint is not None:
-            pulumi.set(__self__, "deployment_manager_custom_endpoint", deployment_manager_custom_endpoint)
+            _setter("deployment_manager_custom_endpoint", deployment_manager_custom_endpoint)
         if dialogflow_custom_endpoint is not None:
-            pulumi.set(__self__, "dialogflow_custom_endpoint", dialogflow_custom_endpoint)
+            _setter("dialogflow_custom_endpoint", dialogflow_custom_endpoint)
         if dialogflow_cx_custom_endpoint is not None:
-            pulumi.set(__self__, "dialogflow_cx_custom_endpoint", dialogflow_cx_custom_endpoint)
+            _setter("dialogflow_cx_custom_endpoint", dialogflow_cx_custom_endpoint)
         if disable_google_partner_name is not None:
-            pulumi.set(__self__, "disable_google_partner_name", disable_google_partner_name)
+            _setter("disable_google_partner_name", disable_google_partner_name)
         if dns_custom_endpoint is not None:
-            pulumi.set(__self__, "dns_custom_endpoint", dns_custom_endpoint)
+            _setter("dns_custom_endpoint", dns_custom_endpoint)
         if document_ai_custom_endpoint is not None:
-            pulumi.set(__self__, "document_ai_custom_endpoint", document_ai_custom_endpoint)
+            _setter("document_ai_custom_endpoint", document_ai_custom_endpoint)
         if document_ai_warehouse_custom_endpoint is not None:
-            pulumi.set(__self__, "document_ai_warehouse_custom_endpoint", document_ai_warehouse_custom_endpoint)
+            _setter("document_ai_warehouse_custom_endpoint", document_ai_warehouse_custom_endpoint)
         if edgenetwork_custom_endpoint is not None:
-            pulumi.set(__self__, "edgenetwork_custom_endpoint", edgenetwork_custom_endpoint)
+            _setter("edgenetwork_custom_endpoint", edgenetwork_custom_endpoint)
         if essential_contacts_custom_endpoint is not None:
-            pulumi.set(__self__, "essential_contacts_custom_endpoint", essential_contacts_custom_endpoint)
+            _setter("essential_contacts_custom_endpoint", essential_contacts_custom_endpoint)
         if eventarc_custom_endpoint is not None:
-            pulumi.set(__self__, "eventarc_custom_endpoint", eventarc_custom_endpoint)
+            _setter("eventarc_custom_endpoint", eventarc_custom_endpoint)
         if filestore_custom_endpoint is not None:
-            pulumi.set(__self__, "filestore_custom_endpoint", filestore_custom_endpoint)
+            _setter("filestore_custom_endpoint", filestore_custom_endpoint)
         if firebase_custom_endpoint is not None:
-            pulumi.set(__self__, "firebase_custom_endpoint", firebase_custom_endpoint)
+            _setter("firebase_custom_endpoint", firebase_custom_endpoint)
         if firebase_database_custom_endpoint is not None:
-            pulumi.set(__self__, "firebase_database_custom_endpoint", firebase_database_custom_endpoint)
+            _setter("firebase_database_custom_endpoint", firebase_database_custom_endpoint)
         if firebase_extensions_custom_endpoint is not None:
-            pulumi.set(__self__, "firebase_extensions_custom_endpoint", firebase_extensions_custom_endpoint)
+            _setter("firebase_extensions_custom_endpoint", firebase_extensions_custom_endpoint)
         if firebase_hosting_custom_endpoint is not None:
-            pulumi.set(__self__, "firebase_hosting_custom_endpoint", firebase_hosting_custom_endpoint)
+            _setter("firebase_hosting_custom_endpoint", firebase_hosting_custom_endpoint)
         if firebase_storage_custom_endpoint is not None:
-            pulumi.set(__self__, "firebase_storage_custom_endpoint", firebase_storage_custom_endpoint)
+            _setter("firebase_storage_custom_endpoint", firebase_storage_custom_endpoint)
         if firebaserules_custom_endpoint is not None:
-            pulumi.set(__self__, "firebaserules_custom_endpoint", firebaserules_custom_endpoint)
+            _setter("firebaserules_custom_endpoint", firebaserules_custom_endpoint)
         if firestore_custom_endpoint is not None:
-            pulumi.set(__self__, "firestore_custom_endpoint", firestore_custom_endpoint)
+            _setter("firestore_custom_endpoint", firestore_custom_endpoint)
         if game_services_custom_endpoint is not None:
-            pulumi.set(__self__, "game_services_custom_endpoint", game_services_custom_endpoint)
+            _setter("game_services_custom_endpoint", game_services_custom_endpoint)
         if gke_backup_custom_endpoint is not None:
-            pulumi.set(__self__, "gke_backup_custom_endpoint", gke_backup_custom_endpoint)
+            _setter("gke_backup_custom_endpoint", gke_backup_custom_endpoint)
         if gke_hub2_custom_endpoint is not None:
-            pulumi.set(__self__, "gke_hub2_custom_endpoint", gke_hub2_custom_endpoint)
+            _setter("gke_hub2_custom_endpoint", gke_hub2_custom_endpoint)
         if gke_hub_custom_endpoint is not None:
-            pulumi.set(__self__, "gke_hub_custom_endpoint", gke_hub_custom_endpoint)
+            _setter("gke_hub_custom_endpoint", gke_hub_custom_endpoint)
         if gkehub_feature_custom_endpoint is not None:
-            pulumi.set(__self__, "gkehub_feature_custom_endpoint", gkehub_feature_custom_endpoint)
+            _setter("gkehub_feature_custom_endpoint", gkehub_feature_custom_endpoint)
         if gkeonprem_custom_endpoint is not None:
-            pulumi.set(__self__, "gkeonprem_custom_endpoint", gkeonprem_custom_endpoint)
+            _setter("gkeonprem_custom_endpoint", gkeonprem_custom_endpoint)
         if google_partner_name is not None:
-            pulumi.set(__self__, "google_partner_name", google_partner_name)
+            _setter("google_partner_name", google_partner_name)
         if healthcare_custom_endpoint is not None:
-            pulumi.set(__self__, "healthcare_custom_endpoint", healthcare_custom_endpoint)
+            _setter("healthcare_custom_endpoint", healthcare_custom_endpoint)
         if iam2_custom_endpoint is not None:
-            pulumi.set(__self__, "iam2_custom_endpoint", iam2_custom_endpoint)
+            _setter("iam2_custom_endpoint", iam2_custom_endpoint)
         if iam_beta_custom_endpoint is not None:
-            pulumi.set(__self__, "iam_beta_custom_endpoint", iam_beta_custom_endpoint)
+            _setter("iam_beta_custom_endpoint", iam_beta_custom_endpoint)
         if iam_credentials_custom_endpoint is not None:
-            pulumi.set(__self__, "iam_credentials_custom_endpoint", iam_credentials_custom_endpoint)
+            _setter("iam_credentials_custom_endpoint", iam_credentials_custom_endpoint)
         if iam_custom_endpoint is not None:
-            pulumi.set(__self__, "iam_custom_endpoint", iam_custom_endpoint)
+            _setter("iam_custom_endpoint", iam_custom_endpoint)
         if iam_workforce_pool_custom_endpoint is not None:
-            pulumi.set(__self__, "iam_workforce_pool_custom_endpoint", iam_workforce_pool_custom_endpoint)
+            _setter("iam_workforce_pool_custom_endpoint", iam_workforce_pool_custom_endpoint)
         if iap_custom_endpoint is not None:
-            pulumi.set(__self__, "iap_custom_endpoint", iap_custom_endpoint)
+            _setter("iap_custom_endpoint", iap_custom_endpoint)
         if identity_platform_custom_endpoint is not None:
-            pulumi.set(__self__, "identity_platform_custom_endpoint", identity_platform_custom_endpoint)
+            _setter("identity_platform_custom_endpoint", identity_platform_custom_endpoint)
         if impersonate_service_account is not None:
-            pulumi.set(__self__, "impersonate_service_account", impersonate_service_account)
+            _setter("impersonate_service_account", impersonate_service_account)
         if impersonate_service_account_delegates is not None:
-            pulumi.set(__self__, "impersonate_service_account_delegates", impersonate_service_account_delegates)
+            _setter("impersonate_service_account_delegates", impersonate_service_account_delegates)
         if kms_custom_endpoint is not None:
-            pulumi.set(__self__, "kms_custom_endpoint", kms_custom_endpoint)
+            _setter("kms_custom_endpoint", kms_custom_endpoint)
         if logging_custom_endpoint is not None:
-            pulumi.set(__self__, "logging_custom_endpoint", logging_custom_endpoint)
+            _setter("logging_custom_endpoint", logging_custom_endpoint)
         if looker_custom_endpoint is not None:
-            pulumi.set(__self__, "looker_custom_endpoint", looker_custom_endpoint)
+            _setter("looker_custom_endpoint", looker_custom_endpoint)
         if memcache_custom_endpoint is not None:
-            pulumi.set(__self__, "memcache_custom_endpoint", memcache_custom_endpoint)
+            _setter("memcache_custom_endpoint", memcache_custom_endpoint)
         if ml_engine_custom_endpoint is not None:
-            pulumi.set(__self__, "ml_engine_custom_endpoint", ml_engine_custom_endpoint)
+            _setter("ml_engine_custom_endpoint", ml_engine_custom_endpoint)
         if monitoring_custom_endpoint is not None:
-            pulumi.set(__self__, "monitoring_custom_endpoint", monitoring_custom_endpoint)
+            _setter("monitoring_custom_endpoint", monitoring_custom_endpoint)
         if network_connectivity_custom_endpoint is not None:
-            pulumi.set(__self__, "network_connectivity_custom_endpoint", network_connectivity_custom_endpoint)
+            _setter("network_connectivity_custom_endpoint", network_connectivity_custom_endpoint)
         if network_management_custom_endpoint is not None:
-            pulumi.set(__self__, "network_management_custom_endpoint", network_management_custom_endpoint)
+            _setter("network_management_custom_endpoint", network_management_custom_endpoint)
         if network_security_custom_endpoint is not None:
-            pulumi.set(__self__, "network_security_custom_endpoint", network_security_custom_endpoint)
+            _setter("network_security_custom_endpoint", network_security_custom_endpoint)
         if network_services_custom_endpoint is not None:
-            pulumi.set(__self__, "network_services_custom_endpoint", network_services_custom_endpoint)
+            _setter("network_services_custom_endpoint", network_services_custom_endpoint)
         if notebooks_custom_endpoint is not None:
-            pulumi.set(__self__, "notebooks_custom_endpoint", notebooks_custom_endpoint)
+            _setter("notebooks_custom_endpoint", notebooks_custom_endpoint)
         if org_policy_custom_endpoint is not None:
-            pulumi.set(__self__, "org_policy_custom_endpoint", org_policy_custom_endpoint)
+            _setter("org_policy_custom_endpoint", org_policy_custom_endpoint)
         if os_config_custom_endpoint is not None:
-            pulumi.set(__self__, "os_config_custom_endpoint", os_config_custom_endpoint)
+            _setter("os_config_custom_endpoint", os_config_custom_endpoint)
         if os_login_custom_endpoint is not None:
-            pulumi.set(__self__, "os_login_custom_endpoint", os_login_custom_endpoint)
+            _setter("os_login_custom_endpoint", os_login_custom_endpoint)
         if privateca_custom_endpoint is not None:
-            pulumi.set(__self__, "privateca_custom_endpoint", privateca_custom_endpoint)
+            _setter("privateca_custom_endpoint", privateca_custom_endpoint)
         if project is None:
             project = _utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if public_ca_custom_endpoint is not None:
-            pulumi.set(__self__, "public_ca_custom_endpoint", public_ca_custom_endpoint)
+            _setter("public_ca_custom_endpoint", public_ca_custom_endpoint)
         if pubsub_custom_endpoint is not None:
-            pulumi.set(__self__, "pubsub_custom_endpoint", pubsub_custom_endpoint)
+            _setter("pubsub_custom_endpoint", pubsub_custom_endpoint)
         if pubsub_lite_custom_endpoint is not None:
-            pulumi.set(__self__, "pubsub_lite_custom_endpoint", pubsub_lite_custom_endpoint)
+            _setter("pubsub_lite_custom_endpoint", pubsub_lite_custom_endpoint)
         if recaptcha_enterprise_custom_endpoint is not None:
-            pulumi.set(__self__, "recaptcha_enterprise_custom_endpoint", recaptcha_enterprise_custom_endpoint)
+            _setter("recaptcha_enterprise_custom_endpoint", recaptcha_enterprise_custom_endpoint)
         if redis_custom_endpoint is not None:
-            pulumi.set(__self__, "redis_custom_endpoint", redis_custom_endpoint)
+            _setter("redis_custom_endpoint", redis_custom_endpoint)
         if region is None:
             region = _utilities.get_env('GOOGLE_REGION', 'GCLOUD_REGION', 'CLOUDSDK_COMPUTE_REGION')
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if request_reason is not None:
-            pulumi.set(__self__, "request_reason", request_reason)
+            _setter("request_reason", request_reason)
         if request_timeout is not None:
-            pulumi.set(__self__, "request_timeout", request_timeout)
+            _setter("request_timeout", request_timeout)
         if resource_manager_custom_endpoint is not None:
-            pulumi.set(__self__, "resource_manager_custom_endpoint", resource_manager_custom_endpoint)
+            _setter("resource_manager_custom_endpoint", resource_manager_custom_endpoint)
         if resource_manager_v3_custom_endpoint is not None:
-            pulumi.set(__self__, "resource_manager_v3_custom_endpoint", resource_manager_v3_custom_endpoint)
+            _setter("resource_manager_v3_custom_endpoint", resource_manager_v3_custom_endpoint)
         if runtime_config_custom_endpoint is not None:
-            pulumi.set(__self__, "runtime_config_custom_endpoint", runtime_config_custom_endpoint)
+            _setter("runtime_config_custom_endpoint", runtime_config_custom_endpoint)
         if runtimeconfig_custom_endpoint is not None:
-            pulumi.set(__self__, "runtimeconfig_custom_endpoint", runtimeconfig_custom_endpoint)
+            _setter("runtimeconfig_custom_endpoint", runtimeconfig_custom_endpoint)
         if scopes is not None:
-            pulumi.set(__self__, "scopes", scopes)
+            _setter("scopes", scopes)
         if secret_manager_custom_endpoint is not None:
-            pulumi.set(__self__, "secret_manager_custom_endpoint", secret_manager_custom_endpoint)
+            _setter("secret_manager_custom_endpoint", secret_manager_custom_endpoint)
         if security_center_custom_endpoint is not None:
-            pulumi.set(__self__, "security_center_custom_endpoint", security_center_custom_endpoint)
+            _setter("security_center_custom_endpoint", security_center_custom_endpoint)
         if security_scanner_custom_endpoint is not None:
-            pulumi.set(__self__, "security_scanner_custom_endpoint", security_scanner_custom_endpoint)
+            _setter("security_scanner_custom_endpoint", security_scanner_custom_endpoint)
         if service_directory_custom_endpoint is not None:
-            pulumi.set(__self__, "service_directory_custom_endpoint", service_directory_custom_endpoint)
+            _setter("service_directory_custom_endpoint", service_directory_custom_endpoint)
         if service_management_custom_endpoint is not None:
-            pulumi.set(__self__, "service_management_custom_endpoint", service_management_custom_endpoint)
+            _setter("service_management_custom_endpoint", service_management_custom_endpoint)
         if service_networking_custom_endpoint is not None:
-            pulumi.set(__self__, "service_networking_custom_endpoint", service_networking_custom_endpoint)
+            _setter("service_networking_custom_endpoint", service_networking_custom_endpoint)
         if service_usage_custom_endpoint is not None:
-            pulumi.set(__self__, "service_usage_custom_endpoint", service_usage_custom_endpoint)
+            _setter("service_usage_custom_endpoint", service_usage_custom_endpoint)
         if source_repo_custom_endpoint is not None:
-            pulumi.set(__self__, "source_repo_custom_endpoint", source_repo_custom_endpoint)
+            _setter("source_repo_custom_endpoint", source_repo_custom_endpoint)
         if spanner_custom_endpoint is not None:
-            pulumi.set(__self__, "spanner_custom_endpoint", spanner_custom_endpoint)
+            _setter("spanner_custom_endpoint", spanner_custom_endpoint)
         if sql_custom_endpoint is not None:
-            pulumi.set(__self__, "sql_custom_endpoint", sql_custom_endpoint)
+            _setter("sql_custom_endpoint", sql_custom_endpoint)
         if storage_custom_endpoint is not None:
-            pulumi.set(__self__, "storage_custom_endpoint", storage_custom_endpoint)
+            _setter("storage_custom_endpoint", storage_custom_endpoint)
         if storage_insights_custom_endpoint is not None:
-            pulumi.set(__self__, "storage_insights_custom_endpoint", storage_insights_custom_endpoint)
+            _setter("storage_insights_custom_endpoint", storage_insights_custom_endpoint)
         if storage_transfer_custom_endpoint is not None:
-            pulumi.set(__self__, "storage_transfer_custom_endpoint", storage_transfer_custom_endpoint)
+            _setter("storage_transfer_custom_endpoint", storage_transfer_custom_endpoint)
         if tags_custom_endpoint is not None:
-            pulumi.set(__self__, "tags_custom_endpoint", tags_custom_endpoint)
+            _setter("tags_custom_endpoint", tags_custom_endpoint)
         if tags_location_custom_endpoint is not None:
-            pulumi.set(__self__, "tags_location_custom_endpoint", tags_location_custom_endpoint)
+            _setter("tags_location_custom_endpoint", tags_location_custom_endpoint)
         if tpu_custom_endpoint is not None:
-            pulumi.set(__self__, "tpu_custom_endpoint", tpu_custom_endpoint)
+            _setter("tpu_custom_endpoint", tpu_custom_endpoint)
         if tpu_v2_custom_endpoint is not None:
-            pulumi.set(__self__, "tpu_v2_custom_endpoint", tpu_v2_custom_endpoint)
+            _setter("tpu_v2_custom_endpoint", tpu_v2_custom_endpoint)
         if user_project_override is not None:
-            pulumi.set(__self__, "user_project_override", user_project_override)
+            _setter("user_project_override", user_project_override)
         if vertex_ai_custom_endpoint is not None:
-            pulumi.set(__self__, "vertex_ai_custom_endpoint", vertex_ai_custom_endpoint)
+            _setter("vertex_ai_custom_endpoint", vertex_ai_custom_endpoint)
         if vmwareengine_custom_endpoint is not None:
-            pulumi.set(__self__, "vmwareengine_custom_endpoint", vmwareengine_custom_endpoint)
+            _setter("vmwareengine_custom_endpoint", vmwareengine_custom_endpoint)
         if vpc_access_custom_endpoint is not None:
-            pulumi.set(__self__, "vpc_access_custom_endpoint", vpc_access_custom_endpoint)
+            _setter("vpc_access_custom_endpoint", vpc_access_custom_endpoint)
         if workflows_custom_endpoint is not None:
-            pulumi.set(__self__, "workflows_custom_endpoint", workflows_custom_endpoint)
+            _setter("workflows_custom_endpoint", workflows_custom_endpoint)
         if workstations_custom_endpoint is not None:
-            pulumi.set(__self__, "workstations_custom_endpoint", workstations_custom_endpoint)
+            _setter("workstations_custom_endpoint", workstations_custom_endpoint)
         if zone is None:
             zone = _utilities.get_env('GOOGLE_ZONE', 'GCLOUD_ZONE', 'CLOUDSDK_COMPUTE_ZONE')
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter(name="accessApprovalCustomEndpoint")
@@ -2026,6 +2335,10 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -2203,6 +2516,11 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["artifact_registry_custom_endpoint"] = artifact_registry_custom_endpoint
             __props__.__dict__["assured_workloads_custom_endpoint"] = assured_workloads_custom_endpoint
             __props__.__dict__["backup_dr_custom_endpoint"] = backup_dr_custom_endpoint
+            if batching is not None and not isinstance(batching, ProviderBatchingArgs):
+                batching = batching or {}
+                def _setter(key, value):
+                    batching[key] = value
+                ProviderBatchingArgs._configure(_setter, **batching)
             __props__.__dict__["batching"] = pulumi.Output.from_input(batching).apply(pulumi.runtime.to_json) if batching is not None else None
             __props__.__dict__["beyondcorp_custom_endpoint"] = beyondcorp_custom_endpoint
             __props__.__dict__["big_query_custom_endpoint"] = big_query_custom_endpoint

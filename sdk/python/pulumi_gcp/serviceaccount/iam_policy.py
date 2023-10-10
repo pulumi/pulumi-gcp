@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['IAMPolicyArgs', 'IAMPolicy']
@@ -31,8 +31,19 @@ class IAMPolicyArgs:
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
-        pulumi.set(__self__, "policy_data", policy_data)
-        pulumi.set(__self__, "service_account_id", service_account_id)
+        IAMPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            policy_data=policy_data,
+            service_account_id=service_account_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             policy_data: pulumi.Input[str],
+             service_account_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("policy_data", policy_data)
+        _setter("service_account_id", service_account_id)
 
     @property
     @pulumi.getter(name="policyData")
@@ -91,12 +102,25 @@ class _IAMPolicyState:
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
+        _IAMPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            etag=etag,
+            policy_data=policy_data,
+            service_account_id=service_account_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             etag: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             service_account_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if policy_data is not None:
-            pulumi.set(__self__, "policy_data", policy_data)
+            _setter("policy_data", policy_data)
         if service_account_id is not None:
-            pulumi.set(__self__, "service_account_id", service_account_id)
+            _setter("service_account_id", service_account_id)
 
     @property
     @pulumi.getter
@@ -444,6 +468,10 @@ class IAMPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IAMPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

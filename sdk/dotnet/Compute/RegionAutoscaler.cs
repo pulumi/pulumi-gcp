@@ -159,12 +159,6 @@ namespace Pulumi.Gcp.Compute
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
         /// <summary>
-        /// A description of a scaling schedule.
-        /// 
-        /// - - -
-        /// 
-        /// 
-        /// (Optional)
         /// An optional description of this resource.
         /// </summary>
         [Output("description")]
@@ -263,12 +257,6 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionAutoscalerAutoscalingPolicyArgs> AutoscalingPolicy { get; set; } = null!;
 
         /// <summary>
-        /// A description of a scaling schedule.
-        /// 
-        /// - - -
-        /// 
-        /// 
-        /// (Optional)
         /// An optional description of this resource.
         /// </summary>
         [Input("description")]
@@ -329,12 +317,6 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? CreationTimestamp { get; set; }
 
         /// <summary>
-        /// A description of a scaling schedule.
-        /// 
-        /// - - -
-        /// 
-        /// 
-        /// (Optional)
         /// An optional description of this resource.
         /// </summary>
         [Input("description")]

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -42,17 +42,38 @@ class RecordSetArgs:
                string (e.g. "first255characters\\"\\"morecharacters").
         :param pulumi.Input[int] ttl: The time-to-live of this record set (seconds).
         """
-        pulumi.set(__self__, "managed_zone", managed_zone)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
+        RecordSetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            managed_zone=managed_zone,
+            name=name,
+            type=type,
+            project=project,
+            routing_policy=routing_policy,
+            rrdatas=rrdatas,
+            ttl=ttl,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             managed_zone: pulumi.Input[str],
+             name: pulumi.Input[str],
+             type: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
+             routing_policy: Optional[pulumi.Input['RecordSetRoutingPolicyArgs']] = None,
+             rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             ttl: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("managed_zone", managed_zone)
+        _setter("name", name)
+        _setter("type", type)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if routing_policy is not None:
-            pulumi.set(__self__, "routing_policy", routing_policy)
+            _setter("routing_policy", routing_policy)
         if rrdatas is not None:
-            pulumi.set(__self__, "rrdatas", rrdatas)
+            _setter("rrdatas", rrdatas)
         if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
+            _setter("ttl", ttl)
 
     @property
     @pulumi.getter(name="managedZone")
@@ -177,20 +198,41 @@ class _RecordSetState:
                
                - - -
         """
+        _RecordSetState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            managed_zone=managed_zone,
+            name=name,
+            project=project,
+            routing_policy=routing_policy,
+            rrdatas=rrdatas,
+            ttl=ttl,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             managed_zone: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             routing_policy: Optional[pulumi.Input['RecordSetRoutingPolicyArgs']] = None,
+             rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             ttl: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if managed_zone is not None:
-            pulumi.set(__self__, "managed_zone", managed_zone)
+            _setter("managed_zone", managed_zone)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if routing_policy is not None:
-            pulumi.set(__self__, "routing_policy", routing_policy)
+            _setter("routing_policy", routing_policy)
         if rrdatas is not None:
-            pulumi.set(__self__, "rrdatas", rrdatas)
+            _setter("rrdatas", rrdatas)
         if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
+            _setter("ttl", ttl)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="managedZone")
@@ -706,6 +748,10 @@ class RecordSet(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RecordSetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -734,6 +780,11 @@ class RecordSet(pulumi.CustomResource):
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            if routing_policy is not None and not isinstance(routing_policy, RecordSetRoutingPolicyArgs):
+                routing_policy = routing_policy or {}
+                def _setter(key, value):
+                    routing_policy[key] = value
+                RecordSetRoutingPolicyArgs._configure(_setter, **routing_policy)
             __props__.__dict__["routing_policy"] = routing_policy
             __props__.__dict__["rrdatas"] = rrdatas
             __props__.__dict__["ttl"] = ttl

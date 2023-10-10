@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -55,24 +55,51 @@ class PipelineArgs:
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload
                Structure is documented below.
         """
-        pulumi.set(__self__, "state", state)
-        pulumi.set(__self__, "type", type)
+        PipelineArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            state=state,
+            type=type,
+            display_name=display_name,
+            name=name,
+            pipeline_sources=pipeline_sources,
+            project=project,
+            region=region,
+            schedule_info=schedule_info,
+            scheduler_service_account_email=scheduler_service_account_email,
+            workload=workload,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             state: pulumi.Input[str],
+             type: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             pipeline_sources: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             schedule_info: Optional[pulumi.Input['PipelineScheduleInfoArgs']] = None,
+             scheduler_service_account_email: Optional[pulumi.Input[str]] = None,
+             workload: Optional[pulumi.Input['PipelineWorkloadArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("state", state)
+        _setter("type", type)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if pipeline_sources is not None:
-            pulumi.set(__self__, "pipeline_sources", pipeline_sources)
+            _setter("pipeline_sources", pipeline_sources)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if schedule_info is not None:
-            pulumi.set(__self__, "schedule_info", schedule_info)
+            _setter("schedule_info", schedule_info)
         if scheduler_service_account_email is not None:
-            pulumi.set(__self__, "scheduler_service_account_email", scheduler_service_account_email)
+            _setter("scheduler_service_account_email", scheduler_service_account_email)
         if workload is not None:
-            pulumi.set(__self__, "workload", workload)
+            _setter("workload", workload)
 
     @property
     @pulumi.getter
@@ -261,32 +288,65 @@ class _PipelineState:
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload
                Structure is documented below.
         """
+        _PipelineState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            display_name=display_name,
+            job_count=job_count,
+            last_update_time=last_update_time,
+            name=name,
+            pipeline_sources=pipeline_sources,
+            project=project,
+            region=region,
+            schedule_info=schedule_info,
+            scheduler_service_account_email=scheduler_service_account_email,
+            state=state,
+            type=type,
+            workload=workload,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             job_count: Optional[pulumi.Input[int]] = None,
+             last_update_time: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             pipeline_sources: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             schedule_info: Optional[pulumi.Input['PipelineScheduleInfoArgs']] = None,
+             scheduler_service_account_email: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             workload: Optional[pulumi.Input['PipelineWorkloadArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if job_count is not None:
-            pulumi.set(__self__, "job_count", job_count)
+            _setter("job_count", job_count)
         if last_update_time is not None:
-            pulumi.set(__self__, "last_update_time", last_update_time)
+            _setter("last_update_time", last_update_time)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if pipeline_sources is not None:
-            pulumi.set(__self__, "pipeline_sources", pipeline_sources)
+            _setter("pipeline_sources", pipeline_sources)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if schedule_info is not None:
-            pulumi.set(__self__, "schedule_info", schedule_info)
+            _setter("schedule_info", schedule_info)
         if scheduler_service_account_email is not None:
-            pulumi.set(__self__, "scheduler_service_account_email", scheduler_service_account_email)
+            _setter("scheduler_service_account_email", scheduler_service_account_email)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if workload is not None:
-            pulumi.set(__self__, "workload", workload)
+            _setter("workload", workload)
 
     @property
     @pulumi.getter(name="createTime")
@@ -688,6 +748,10 @@ class Pipeline(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PipelineArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -717,6 +781,11 @@ class Pipeline(pulumi.CustomResource):
             __props__.__dict__["pipeline_sources"] = pipeline_sources
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
+            if schedule_info is not None and not isinstance(schedule_info, PipelineScheduleInfoArgs):
+                schedule_info = schedule_info or {}
+                def _setter(key, value):
+                    schedule_info[key] = value
+                PipelineScheduleInfoArgs._configure(_setter, **schedule_info)
             __props__.__dict__["schedule_info"] = schedule_info
             __props__.__dict__["scheduler_service_account_email"] = scheduler_service_account_email
             if state is None and not opts.urn:
@@ -725,6 +794,11 @@ class Pipeline(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
+            if workload is not None and not isinstance(workload, PipelineWorkloadArgs):
+                workload = workload or {}
+                def _setter(key, value):
+                    workload[key] = value
+                PipelineWorkloadArgs._configure(_setter, **workload)
             __props__.__dict__["workload"] = workload
             __props__.__dict__["create_time"] = None
             __props__.__dict__["job_count"] = None

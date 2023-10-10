@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -49,22 +49,45 @@ class ResourcePolicyArgs:
         :param pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs'] snapshot_schedule_policy: Policy for creating snapshots of persistent disks.
                Structure is documented below.
         """
+        ResourcePolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            disk_consistency_group_policy=disk_consistency_group_policy,
+            group_placement_policy=group_placement_policy,
+            instance_schedule_policy=instance_schedule_policy,
+            name=name,
+            project=project,
+            region=region,
+            snapshot_schedule_policy=snapshot_schedule_policy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             disk_consistency_group_policy: Optional[pulumi.Input['ResourcePolicyDiskConsistencyGroupPolicyArgs']] = None,
+             group_placement_policy: Optional[pulumi.Input['ResourcePolicyGroupPlacementPolicyArgs']] = None,
+             instance_schedule_policy: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             snapshot_schedule_policy: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disk_consistency_group_policy is not None:
-            pulumi.set(__self__, "disk_consistency_group_policy", disk_consistency_group_policy)
+            _setter("disk_consistency_group_policy", disk_consistency_group_policy)
         if group_placement_policy is not None:
-            pulumi.set(__self__, "group_placement_policy", group_placement_policy)
+            _setter("group_placement_policy", group_placement_policy)
         if instance_schedule_policy is not None:
-            pulumi.set(__self__, "instance_schedule_policy", instance_schedule_policy)
+            _setter("instance_schedule_policy", instance_schedule_policy)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if snapshot_schedule_policy is not None:
-            pulumi.set(__self__, "snapshot_schedule_policy", snapshot_schedule_policy)
+            _setter("snapshot_schedule_policy", snapshot_schedule_policy)
 
     @property
     @pulumi.getter
@@ -215,24 +238,49 @@ class _ResourcePolicyState:
         :param pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs'] snapshot_schedule_policy: Policy for creating snapshots of persistent disks.
                Structure is documented below.
         """
+        _ResourcePolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            disk_consistency_group_policy=disk_consistency_group_policy,
+            group_placement_policy=group_placement_policy,
+            instance_schedule_policy=instance_schedule_policy,
+            name=name,
+            project=project,
+            region=region,
+            self_link=self_link,
+            snapshot_schedule_policy=snapshot_schedule_policy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             disk_consistency_group_policy: Optional[pulumi.Input['ResourcePolicyDiskConsistencyGroupPolicyArgs']] = None,
+             group_placement_policy: Optional[pulumi.Input['ResourcePolicyGroupPlacementPolicyArgs']] = None,
+             instance_schedule_policy: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             snapshot_schedule_policy: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disk_consistency_group_policy is not None:
-            pulumi.set(__self__, "disk_consistency_group_policy", disk_consistency_group_policy)
+            _setter("disk_consistency_group_policy", disk_consistency_group_policy)
         if group_placement_policy is not None:
-            pulumi.set(__self__, "group_placement_policy", group_placement_policy)
+            _setter("group_placement_policy", group_placement_policy)
         if instance_schedule_policy is not None:
-            pulumi.set(__self__, "instance_schedule_policy", instance_schedule_policy)
+            _setter("instance_schedule_policy", instance_schedule_policy)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if snapshot_schedule_policy is not None:
-            pulumi.set(__self__, "snapshot_schedule_policy", snapshot_schedule_policy)
+            _setter("snapshot_schedule_policy", snapshot_schedule_policy)
 
     @property
     @pulumi.getter
@@ -738,6 +786,10 @@ class ResourcePolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ResourcePolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -761,12 +813,32 @@ class ResourcePolicy(pulumi.CustomResource):
             __props__ = ResourcePolicyArgs.__new__(ResourcePolicyArgs)
 
             __props__.__dict__["description"] = description
+            if disk_consistency_group_policy is not None and not isinstance(disk_consistency_group_policy, ResourcePolicyDiskConsistencyGroupPolicyArgs):
+                disk_consistency_group_policy = disk_consistency_group_policy or {}
+                def _setter(key, value):
+                    disk_consistency_group_policy[key] = value
+                ResourcePolicyDiskConsistencyGroupPolicyArgs._configure(_setter, **disk_consistency_group_policy)
             __props__.__dict__["disk_consistency_group_policy"] = disk_consistency_group_policy
+            if group_placement_policy is not None and not isinstance(group_placement_policy, ResourcePolicyGroupPlacementPolicyArgs):
+                group_placement_policy = group_placement_policy or {}
+                def _setter(key, value):
+                    group_placement_policy[key] = value
+                ResourcePolicyGroupPlacementPolicyArgs._configure(_setter, **group_placement_policy)
             __props__.__dict__["group_placement_policy"] = group_placement_policy
+            if instance_schedule_policy is not None and not isinstance(instance_schedule_policy, ResourcePolicyInstanceSchedulePolicyArgs):
+                instance_schedule_policy = instance_schedule_policy or {}
+                def _setter(key, value):
+                    instance_schedule_policy[key] = value
+                ResourcePolicyInstanceSchedulePolicyArgs._configure(_setter, **instance_schedule_policy)
             __props__.__dict__["instance_schedule_policy"] = instance_schedule_policy
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
+            if snapshot_schedule_policy is not None and not isinstance(snapshot_schedule_policy, ResourcePolicySnapshotSchedulePolicyArgs):
+                snapshot_schedule_policy = snapshot_schedule_policy or {}
+                def _setter(key, value):
+                    snapshot_schedule_policy[key] = value
+                ResourcePolicySnapshotSchedulePolicyArgs._configure(_setter, **snapshot_schedule_policy)
             __props__.__dict__["snapshot_schedule_policy"] = snapshot_schedule_policy
             __props__.__dict__["self_link"] = None
         super(ResourcePolicy, __self__).__init__(

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -34,13 +34,28 @@ class NetworkEndpointListArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: Zone where the containing network endpoint group is located.
         """
-        pulumi.set(__self__, "network_endpoint_group", network_endpoint_group)
+        NetworkEndpointListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network_endpoint_group=network_endpoint_group,
+            network_endpoints=network_endpoints,
+            project=project,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network_endpoint_group: pulumi.Input[str],
+             network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("network_endpoint_group", network_endpoint_group)
         if network_endpoints is not None:
-            pulumi.set(__self__, "network_endpoints", network_endpoints)
+            _setter("network_endpoints", network_endpoints)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter(name="networkEndpointGroup")
@@ -119,14 +134,29 @@ class _NetworkEndpointListState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: Zone where the containing network endpoint group is located.
         """
+        _NetworkEndpointListState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network_endpoint_group=network_endpoint_group,
+            network_endpoints=network_endpoints,
+            project=project,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network_endpoint_group: Optional[pulumi.Input[str]] = None,
+             network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if network_endpoint_group is not None:
-            pulumi.set(__self__, "network_endpoint_group", network_endpoint_group)
+            _setter("network_endpoint_group", network_endpoint_group)
         if network_endpoints is not None:
-            pulumi.set(__self__, "network_endpoints", network_endpoints)
+            _setter("network_endpoints", network_endpoints)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter(name="networkEndpointGroup")
@@ -410,6 +440,10 @@ class NetworkEndpointList(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NetworkEndpointListArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

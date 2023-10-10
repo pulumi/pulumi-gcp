@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -42,17 +42,38 @@ class BareMetalNodePoolArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "bare_metal_cluster", bare_metal_cluster)
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "node_pool_config", node_pool_config)
+        BareMetalNodePoolArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bare_metal_cluster=bare_metal_cluster,
+            location=location,
+            node_pool_config=node_pool_config,
+            annotations=annotations,
+            display_name=display_name,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bare_metal_cluster: pulumi.Input[str],
+             location: pulumi.Input[str],
+             node_pool_config: pulumi.Input['BareMetalNodePoolNodePoolConfigArgs'],
+             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bare_metal_cluster", bare_metal_cluster)
+        _setter("location", location)
+        _setter("node_pool_config", node_pool_config)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="bareMetalCluster")
@@ -199,36 +220,73 @@ class _BareMetalNodePoolState:
         :param pulumi.Input[str] uid: The unique identifier of the Bare Metal Node Pool.
         :param pulumi.Input[str] update_time: The time the cluster was last updated, in RFC3339 text format.
         """
+        _BareMetalNodePoolState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            bare_metal_cluster=bare_metal_cluster,
+            create_time=create_time,
+            delete_time=delete_time,
+            display_name=display_name,
+            etag=etag,
+            location=location,
+            name=name,
+            node_pool_config=node_pool_config,
+            project=project,
+            reconciling=reconciling,
+            state=state,
+            statuses=statuses,
+            uid=uid,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             bare_metal_cluster: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             delete_time: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             node_pool_config: Optional[pulumi.Input['BareMetalNodePoolNodePoolConfigArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             reconciling: Optional[pulumi.Input[bool]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             statuses: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolStatusArgs']]]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if bare_metal_cluster is not None:
-            pulumi.set(__self__, "bare_metal_cluster", bare_metal_cluster)
+            _setter("bare_metal_cluster", bare_metal_cluster)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if delete_time is not None:
-            pulumi.set(__self__, "delete_time", delete_time)
+            _setter("delete_time", delete_time)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if node_pool_config is not None:
-            pulumi.set(__self__, "node_pool_config", node_pool_config)
+            _setter("node_pool_config", node_pool_config)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if reconciling is not None:
-            pulumi.set(__self__, "reconciling", reconciling)
+            _setter("reconciling", reconciling)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if statuses is not None:
-            pulumi.set(__self__, "statuses", statuses)
+            _setter("statuses", statuses)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter
@@ -870,6 +928,10 @@ class BareMetalNodePool(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BareMetalNodePoolArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -900,6 +962,11 @@ class BareMetalNodePool(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
+            if node_pool_config is not None and not isinstance(node_pool_config, BareMetalNodePoolNodePoolConfigArgs):
+                node_pool_config = node_pool_config or {}
+                def _setter(key, value):
+                    node_pool_config[key] = value
+                BareMetalNodePoolNodePoolConfigArgs._configure(_setter, **node_pool_config)
             if node_pool_config is None and not opts.urn:
                 raise TypeError("Missing required property 'node_pool_config'")
             __props__.__dict__["node_pool_config"] = node_pool_config

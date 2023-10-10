@@ -241,17 +241,7 @@ export class GuestPolicies extends pulumi.CustomResource {
      */
     public readonly guestPolicyId!: pulumi.Output<string>;
     /**
-     * The name of the package. A package is uniquely identified for conflict validation
-     * by checking the package name and the manager(s) that the package targets.
-     *
-     * (Required)
      * The name of the repository.
-     *
-     * (Required)
-     * Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-     * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-     * This means that requests to create multiple recipes with the same name and version are rejected since they
-     * could potentially have conflicting assignments.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -369,17 +359,7 @@ export interface GuestPoliciesState {
      */
     guestPolicyId?: pulumi.Input<string>;
     /**
-     * The name of the package. A package is uniquely identified for conflict validation
-     * by checking the package name and the manager(s) that the package targets.
-     *
-     * (Required)
      * The name of the repository.
-     *
-     * (Required)
-     * Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-     * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-     * This means that requests to create multiple recipes with the same name and version are rejected since they
-     * could potentially have conflicting assignments.
      */
     name?: pulumi.Input<string>;
     /**

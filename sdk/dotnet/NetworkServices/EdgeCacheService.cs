@@ -436,15 +436,6 @@ namespace Pulumi.Gcp.NetworkServices
     {
         /// <summary>
         /// A human-readable description of the hostRule.
-        /// 
-        /// (Optional)
-        /// A human-readable description of the resource.
-        /// 
-        /// (Optional)
-        /// A human-readable description of the routeRule.
-        /// 
-        /// (Optional)
-        /// A human-readable description of the resource.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -586,15 +577,6 @@ namespace Pulumi.Gcp.NetworkServices
     {
         /// <summary>
         /// A human-readable description of the hostRule.
-        /// 
-        /// (Optional)
-        /// A human-readable description of the resource.
-        /// 
-        /// (Optional)
-        /// A human-readable description of the routeRule.
-        /// 
-        /// (Optional)
-        /// A human-readable description of the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -698,15 +680,6 @@ namespace Pulumi.Gcp.NetworkServices
     {
         /// <summary>
         /// A human-readable description of the hostRule.
-        /// 
-        /// (Optional)
-        /// A human-readable description of the resource.
-        /// 
-        /// (Optional)
-        /// A human-readable description of the routeRule.
-        /// 
-        /// (Optional)
-        /// A human-readable description of the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

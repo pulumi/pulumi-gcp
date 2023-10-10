@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,13 +31,7 @@ class RegionAutoscalerArgs:
                on cpuUtilization to 0.6 or 60%.
                Structure is documented below.
         :param pulumi.Input[str] target: URL of the managed instance group that this autoscaler will scale.
-        :param pulumi.Input[str] description: A description of a scaling schedule.
-               
-               - - -
-               
-               
-               (Optional)
-               An optional description of this resource.
+        :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
                the regular expression `a-z?` which means the
                first character must be a lowercase letter, and all following
@@ -47,16 +41,35 @@ class RegionAutoscalerArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: URL of the region where the instance group resides.
         """
-        pulumi.set(__self__, "autoscaling_policy", autoscaling_policy)
-        pulumi.set(__self__, "target", target)
+        RegionAutoscalerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            autoscaling_policy=autoscaling_policy,
+            target=target,
+            description=description,
+            name=name,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             autoscaling_policy: pulumi.Input['RegionAutoscalerAutoscalingPolicyArgs'],
+             target: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("autoscaling_policy", autoscaling_policy)
+        _setter("target", target)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="autoscalingPolicy")
@@ -91,12 +104,6 @@ class RegionAutoscalerArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A description of a scaling schedule.
-
-        - - -
-
-
-        (Optional)
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
@@ -167,13 +174,7 @@ class _RegionAutoscalerState:
                on cpuUtilization to 0.6 or 60%.
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
-        :param pulumi.Input[str] description: A description of a scaling schedule.
-               
-               - - -
-               
-               
-               (Optional)
-               An optional description of this resource.
+        :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
                the regular expression `a-z?` which means the
                first character must be a lowercase letter, and all following
@@ -185,22 +186,45 @@ class _RegionAutoscalerState:
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] target: URL of the managed instance group that this autoscaler will scale.
         """
+        _RegionAutoscalerState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            autoscaling_policy=autoscaling_policy,
+            creation_timestamp=creation_timestamp,
+            description=description,
+            name=name,
+            project=project,
+            region=region,
+            self_link=self_link,
+            target=target,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             autoscaling_policy: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyArgs']] = None,
+             creation_timestamp: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             target: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if autoscaling_policy is not None:
-            pulumi.set(__self__, "autoscaling_policy", autoscaling_policy)
+            _setter("autoscaling_policy", autoscaling_policy)
         if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+            _setter("creation_timestamp", creation_timestamp)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if target is not None:
-            pulumi.set(__self__, "target", target)
+            _setter("target", target)
 
     @property
     @pulumi.getter(name="autoscalingPolicy")
@@ -235,12 +259,6 @@ class _RegionAutoscalerState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A description of a scaling schedule.
-
-        - - -
-
-
-        (Optional)
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
@@ -422,13 +440,7 @@ class RegionAutoscaler(pulumi.CustomResource):
                If none of these are specified, the default will be to autoscale based
                on cpuUtilization to 0.6 or 60%.
                Structure is documented below.
-        :param pulumi.Input[str] description: A description of a scaling schedule.
-               
-               - - -
-               
-               
-               (Optional)
-               An optional description of this resource.
+        :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
                the regular expression `a-z?` which means the
                first character must be a lowercase letter, and all following
@@ -542,6 +554,10 @@ class RegionAutoscaler(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RegionAutoscalerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -562,6 +578,11 @@ class RegionAutoscaler(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RegionAutoscalerArgs.__new__(RegionAutoscalerArgs)
 
+            if autoscaling_policy is not None and not isinstance(autoscaling_policy, RegionAutoscalerAutoscalingPolicyArgs):
+                autoscaling_policy = autoscaling_policy or {}
+                def _setter(key, value):
+                    autoscaling_policy[key] = value
+                RegionAutoscalerAutoscalingPolicyArgs._configure(_setter, **autoscaling_policy)
             if autoscaling_policy is None and not opts.urn:
                 raise TypeError("Missing required property 'autoscaling_policy'")
             __props__.__dict__["autoscaling_policy"] = autoscaling_policy
@@ -606,13 +627,7 @@ class RegionAutoscaler(pulumi.CustomResource):
                on cpuUtilization to 0.6 or 60%.
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
-        :param pulumi.Input[str] description: A description of a scaling schedule.
-               
-               - - -
-               
-               
-               (Optional)
-               An optional description of this resource.
+        :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
                the regular expression `a-z?` which means the
                first character must be a lowercase letter, and all following
@@ -663,12 +678,6 @@ class RegionAutoscaler(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        A description of a scaling schedule.
-
-        - - -
-
-
-        (Optional)
         An optional description of this resource.
         """
         return pulumi.get(self, "description")

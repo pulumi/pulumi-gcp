@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -24,8 +24,17 @@ class FieldIndexConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['FieldIndexConfigIndexArgs']]] indexes: The indexes to configure on the field. Order or array contains must be specified.
                Structure is documented below.
         """
+        FieldIndexConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            indexes=indexes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             indexes: Optional[pulumi.Input[Sequence[pulumi.Input['FieldIndexConfigIndexArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if indexes is not None:
-            pulumi.set(__self__, "indexes", indexes)
+            _setter("indexes", indexes)
 
     @property
     @pulumi.getter
@@ -60,12 +69,25 @@ class FieldIndexConfigIndexArgs:
                Default value is `COLLECTION`.
                Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
         """
+        FieldIndexConfigIndexArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            array_config=array_config,
+            order=order,
+            query_scope=query_scope,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             array_config: Optional[pulumi.Input[str]] = None,
+             order: Optional[pulumi.Input[str]] = None,
+             query_scope: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if array_config is not None:
-            pulumi.set(__self__, "array_config", array_config)
+            _setter("array_config", array_config)
         if order is not None:
-            pulumi.set(__self__, "order", order)
+            _setter("order", order)
         if query_scope is not None:
-            pulumi.set(__self__, "query_scope", query_scope)
+            _setter("query_scope", query_scope)
 
     @property
     @pulumi.getter(name="arrayConfig")
@@ -120,8 +142,17 @@ class FieldTtlConfigArgs:
         :param pulumi.Input[str] state: (Output)
                The state of the TTL configuration.
         """
+        FieldTtlConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             state: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
 
     @property
     @pulumi.getter
@@ -154,12 +185,25 @@ class IndexFieldArgs:
                Only one of `order` and `arrayConfig` can be specified.
                Possible values are: `ASCENDING`, `DESCENDING`.
         """
+        IndexFieldArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            array_config=array_config,
+            field_path=field_path,
+            order=order,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             array_config: Optional[pulumi.Input[str]] = None,
+             field_path: Optional[pulumi.Input[str]] = None,
+             order: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if array_config is not None:
-            pulumi.set(__self__, "array_config", array_config)
+            _setter("array_config", array_config)
         if field_path is not None:
-            pulumi.set(__self__, "field_path", field_path)
+            _setter("field_path", field_path)
         if order is not None:
-            pulumi.set(__self__, "order", order)
+            _setter("order", order)
 
     @property
     @pulumi.getter(name="arrayConfig")

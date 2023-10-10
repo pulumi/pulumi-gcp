@@ -140,12 +140,6 @@ export class RegionAutoscaler extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
-     * A description of a scaling schedule.
-     *
-     * - - -
-     *
-     *
-     * (Optional)
      * An optional description of this resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -236,12 +230,6 @@ export interface RegionAutoscalerState {
      */
     creationTimestamp?: pulumi.Input<string>;
     /**
-     * A description of a scaling schedule.
-     *
-     * - - -
-     *
-     *
-     * (Optional)
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
@@ -286,12 +274,6 @@ export interface RegionAutoscalerArgs {
      */
     autoscalingPolicy: pulumi.Input<inputs.compute.RegionAutoscalerAutoscalingPolicy>;
     /**
-     * A description of a scaling schedule.
-     *
-     * - - -
-     *
-     *
-     * (Optional)
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;

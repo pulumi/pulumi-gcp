@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -54,24 +54,49 @@ class RegistryArgs:
         :param pulumi.Input[Mapping[str, Any]] state_notification_config: A PubSub topic to publish device state updates.
                The structure is documented below.
         """
+        RegistryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            credentials=credentials,
+            event_notification_configs=event_notification_configs,
+            http_config=http_config,
+            log_level=log_level,
+            mqtt_config=mqtt_config,
+            name=name,
+            project=project,
+            region=region,
+            state_notification_config=state_notification_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             credentials: Optional[pulumi.Input[Sequence[pulumi.Input['RegistryCredentialArgs']]]] = None,
+             event_notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RegistryEventNotificationConfigItemArgs']]]] = None,
+             http_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             log_level: Optional[pulumi.Input[str]] = None,
+             mqtt_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             state_notification_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if credentials is not None:
-            pulumi.set(__self__, "credentials", credentials)
+            _setter("credentials", credentials)
         if event_notification_configs is not None:
-            pulumi.set(__self__, "event_notification_configs", event_notification_configs)
+            _setter("event_notification_configs", event_notification_configs)
         if http_config is not None:
-            pulumi.set(__self__, "http_config", http_config)
+            _setter("http_config", http_config)
         if log_level is not None:
-            pulumi.set(__self__, "log_level", log_level)
+            _setter("log_level", log_level)
         if mqtt_config is not None:
-            pulumi.set(__self__, "mqtt_config", mqtt_config)
+            _setter("mqtt_config", mqtt_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if state_notification_config is not None:
-            pulumi.set(__self__, "state_notification_config", state_notification_config)
+            _setter("state_notification_config", state_notification_config)
 
     @property
     @pulumi.getter
@@ -240,24 +265,49 @@ class _RegistryState:
         :param pulumi.Input[Mapping[str, Any]] state_notification_config: A PubSub topic to publish device state updates.
                The structure is documented below.
         """
+        _RegistryState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            credentials=credentials,
+            event_notification_configs=event_notification_configs,
+            http_config=http_config,
+            log_level=log_level,
+            mqtt_config=mqtt_config,
+            name=name,
+            project=project,
+            region=region,
+            state_notification_config=state_notification_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             credentials: Optional[pulumi.Input[Sequence[pulumi.Input['RegistryCredentialArgs']]]] = None,
+             event_notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RegistryEventNotificationConfigItemArgs']]]] = None,
+             http_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             log_level: Optional[pulumi.Input[str]] = None,
+             mqtt_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             state_notification_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if credentials is not None:
-            pulumi.set(__self__, "credentials", credentials)
+            _setter("credentials", credentials)
         if event_notification_configs is not None:
-            pulumi.set(__self__, "event_notification_configs", event_notification_configs)
+            _setter("event_notification_configs", event_notification_configs)
         if http_config is not None:
-            pulumi.set(__self__, "http_config", http_config)
+            _setter("http_config", http_config)
         if log_level is not None:
-            pulumi.set(__self__, "log_level", log_level)
+            _setter("log_level", log_level)
         if mqtt_config is not None:
-            pulumi.set(__self__, "mqtt_config", mqtt_config)
+            _setter("mqtt_config", mqtt_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if state_notification_config is not None:
-            pulumi.set(__self__, "state_notification_config", state_notification_config)
+            _setter("state_notification_config", state_notification_config)
 
     @property
     @pulumi.getter
@@ -630,6 +680,10 @@ class Registry(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RegistryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

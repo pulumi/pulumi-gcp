@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,10 +39,25 @@ class ObjectAccessControlArgs:
                
                - - -
         """
-        pulumi.set(__self__, "bucket", bucket)
-        pulumi.set(__self__, "entity", entity)
-        pulumi.set(__self__, "object", object)
-        pulumi.set(__self__, "role", role)
+        ObjectAccessControlArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucket=bucket,
+            entity=entity,
+            object=object,
+            role=role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucket: pulumi.Input[str],
+             entity: pulumi.Input[str],
+             object: pulumi.Input[str],
+             role: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bucket", bucket)
+        _setter("entity", entity)
+        _setter("object", object)
+        _setter("role", role)
 
     @property
     @pulumi.getter
@@ -142,24 +157,49 @@ class _ObjectAccessControlState:
                
                - - -
         """
+        _ObjectAccessControlState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucket=bucket,
+            domain=domain,
+            email=email,
+            entity=entity,
+            entity_id=entity_id,
+            generation=generation,
+            object=object,
+            project_teams=project_teams,
+            role=role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucket: Optional[pulumi.Input[str]] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             email: Optional[pulumi.Input[str]] = None,
+             entity: Optional[pulumi.Input[str]] = None,
+             entity_id: Optional[pulumi.Input[str]] = None,
+             generation: Optional[pulumi.Input[int]] = None,
+             object: Optional[pulumi.Input[str]] = None,
+             project_teams: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectAccessControlProjectTeamArgs']]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bucket is not None:
-            pulumi.set(__self__, "bucket", bucket)
+            _setter("bucket", bucket)
         if domain is not None:
-            pulumi.set(__self__, "domain", domain)
+            _setter("domain", domain)
         if email is not None:
-            pulumi.set(__self__, "email", email)
+            _setter("email", email)
         if entity is not None:
-            pulumi.set(__self__, "entity", entity)
+            _setter("entity", entity)
         if entity_id is not None:
-            pulumi.set(__self__, "entity_id", entity_id)
+            _setter("entity_id", entity_id)
         if generation is not None:
-            pulumi.set(__self__, "generation", generation)
+            _setter("generation", generation)
         if object is not None:
-            pulumi.set(__self__, "object", object)
+            _setter("object", object)
         if project_teams is not None:
-            pulumi.set(__self__, "project_teams", project_teams)
+            _setter("project_teams", project_teams)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
 
     @property
     @pulumi.getter
@@ -420,6 +460,10 @@ class ObjectAccessControl(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ObjectAccessControlArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

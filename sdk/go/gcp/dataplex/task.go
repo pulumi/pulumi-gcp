@@ -70,12 +70,8 @@ type Task struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
 	// Structure is documented below.
-	//
-	// (Required)
-	// Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
 	Notebook TaskNotebookPtrOutput `pulumi:"notebook"`
-	// The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
-	//
+	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
@@ -156,12 +152,8 @@ type taskState struct {
 	Name *string `pulumi:"name"`
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
 	// Structure is documented below.
-	//
-	// (Required)
-	// Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
 	Notebook *TaskNotebook `pulumi:"notebook"`
-	// The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
-	//
+	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
@@ -207,12 +199,8 @@ type TaskState struct {
 	Name pulumi.StringPtrInput
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
 	// Structure is documented below.
-	//
-	// (Required)
-	// Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
 	Notebook TaskNotebookPtrInput
-	// The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
-	//
+	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
@@ -254,12 +242,8 @@ type taskArgs struct {
 	Location *string `pulumi:"location"`
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
 	// Structure is documented below.
-	//
-	// (Required)
-	// Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
 	Notebook *TaskNotebook `pulumi:"notebook"`
-	// The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
-	//
+	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
@@ -289,12 +273,8 @@ type TaskArgs struct {
 	Location pulumi.StringPtrInput
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
 	// Structure is documented below.
-	//
-	// (Required)
-	// Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
 	Notebook TaskNotebookPtrInput
-	// The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
-	//
+	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
@@ -468,15 +448,11 @@ func (o TaskOutput) Name() pulumi.StringOutput {
 
 // A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
 // Structure is documented below.
-//
-// (Required)
-// Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
 func (o TaskOutput) Notebook() TaskNotebookPtrOutput {
 	return o.ApplyT(func(v *Task) TaskNotebookPtrOutput { return v.Notebook }).(TaskNotebookPtrOutput)
 }
 
-// The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
-//
+// The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
 func (o TaskOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Task) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)

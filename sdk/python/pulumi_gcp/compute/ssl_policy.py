@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SSLPolicyArgs', 'SSLPolicy']
@@ -58,18 +58,37 @@ class SSLPolicyArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        SSLPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            custom_features=custom_features,
+            description=description,
+            min_tls_version=min_tls_version,
+            name=name,
+            profile=profile,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             custom_features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             min_tls_version: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             profile: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if custom_features is not None:
-            pulumi.set(__self__, "custom_features", custom_features)
+            _setter("custom_features", custom_features)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if min_tls_version is not None:
-            pulumi.set(__self__, "min_tls_version", min_tls_version)
+            _setter("min_tls_version", min_tls_version)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if profile is not None:
-            pulumi.set(__self__, "profile", profile)
+            _setter("profile", profile)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="customFeatures")
@@ -229,26 +248,53 @@ class _SSLPolicyState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
+        _SSLPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            creation_timestamp=creation_timestamp,
+            custom_features=custom_features,
+            description=description,
+            enabled_features=enabled_features,
+            fingerprint=fingerprint,
+            min_tls_version=min_tls_version,
+            name=name,
+            profile=profile,
+            project=project,
+            self_link=self_link,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             creation_timestamp: Optional[pulumi.Input[str]] = None,
+             custom_features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enabled_features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             fingerprint: Optional[pulumi.Input[str]] = None,
+             min_tls_version: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             profile: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+            _setter("creation_timestamp", creation_timestamp)
         if custom_features is not None:
-            pulumi.set(__self__, "custom_features", custom_features)
+            _setter("custom_features", custom_features)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enabled_features is not None:
-            pulumi.set(__self__, "enabled_features", enabled_features)
+            _setter("enabled_features", enabled_features)
         if fingerprint is not None:
-            pulumi.set(__self__, "fingerprint", fingerprint)
+            _setter("fingerprint", fingerprint)
         if min_tls_version is not None:
-            pulumi.set(__self__, "min_tls_version", min_tls_version)
+            _setter("min_tls_version", min_tls_version)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if profile is not None:
-            pulumi.set(__self__, "profile", profile)
+            _setter("profile", profile)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -559,6 +605,10 @@ class SSLPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SSLPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

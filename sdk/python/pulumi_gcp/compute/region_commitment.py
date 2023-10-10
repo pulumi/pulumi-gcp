@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -63,25 +63,52 @@ class RegionCommitmentArgs:
                `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
                `GRAPHICS_OPTIMIZED_G2`
         """
-        pulumi.set(__self__, "plan", plan)
+        RegionCommitmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            plan=plan,
+            auto_renew=auto_renew,
+            category=category,
+            description=description,
+            license_resource=license_resource,
+            name=name,
+            project=project,
+            region=region,
+            resources=resources,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             plan: pulumi.Input[str],
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             category: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             license_resource: Optional[pulumi.Input['RegionCommitmentLicenseResourceArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             resources: Optional[pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArgs']]]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("plan", plan)
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if license_resource is not None:
-            pulumi.set(__self__, "license_resource", license_resource)
+            _setter("license_resource", license_resource)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if resources is not None:
-            pulumi.set(__self__, "resources", resources)
+            _setter("resources", resources)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -293,40 +320,81 @@ class _RegionCommitmentState:
                `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
                `GRAPHICS_OPTIMIZED_G2`
         """
+        _RegionCommitmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_renew=auto_renew,
+            category=category,
+            commitment_id=commitment_id,
+            creation_timestamp=creation_timestamp,
+            description=description,
+            end_timestamp=end_timestamp,
+            license_resource=license_resource,
+            name=name,
+            plan=plan,
+            project=project,
+            region=region,
+            resources=resources,
+            self_link=self_link,
+            start_timestamp=start_timestamp,
+            status=status,
+            status_message=status_message,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             category: Optional[pulumi.Input[str]] = None,
+             commitment_id: Optional[pulumi.Input[int]] = None,
+             creation_timestamp: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             end_timestamp: Optional[pulumi.Input[str]] = None,
+             license_resource: Optional[pulumi.Input['RegionCommitmentLicenseResourceArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             plan: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             resources: Optional[pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArgs']]]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             start_timestamp: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             status_message: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if commitment_id is not None:
-            pulumi.set(__self__, "commitment_id", commitment_id)
+            _setter("commitment_id", commitment_id)
         if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+            _setter("creation_timestamp", creation_timestamp)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if end_timestamp is not None:
-            pulumi.set(__self__, "end_timestamp", end_timestamp)
+            _setter("end_timestamp", end_timestamp)
         if license_resource is not None:
-            pulumi.set(__self__, "license_resource", license_resource)
+            _setter("license_resource", license_resource)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if plan is not None:
-            pulumi.set(__self__, "plan", plan)
+            _setter("plan", plan)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if resources is not None:
-            pulumi.set(__self__, "resources", resources)
+            _setter("resources", resources)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if start_timestamp is not None:
-            pulumi.set(__self__, "start_timestamp", start_timestamp)
+            _setter("start_timestamp", start_timestamp)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if status_message is not None:
-            pulumi.set(__self__, "status_message", status_message)
+            _setter("status_message", status_message)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="autoRenew")
@@ -781,6 +849,10 @@ class RegionCommitment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RegionCommitmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -808,6 +880,11 @@ class RegionCommitment(pulumi.CustomResource):
             __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["category"] = category
             __props__.__dict__["description"] = description
+            if license_resource is not None and not isinstance(license_resource, RegionCommitmentLicenseResourceArgs):
+                license_resource = license_resource or {}
+                def _setter(key, value):
+                    license_resource[key] = value
+                RegionCommitmentLicenseResourceArgs._configure(_setter, **license_resource)
             __props__.__dict__["license_resource"] = license_resource
             __props__.__dict__["name"] = name
             if plan is None and not opts.urn:

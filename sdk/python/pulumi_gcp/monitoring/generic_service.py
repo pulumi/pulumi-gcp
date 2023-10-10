@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -42,15 +42,32 @@ class GenericServiceArgs:
                label entries may be stored. For labels which do not have a semantic value,
                the empty string may be supplied for the label value.
         """
-        pulumi.set(__self__, "service_id", service_id)
+        GenericServiceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service_id=service_id,
+            basic_service=basic_service,
+            display_name=display_name,
+            project=project,
+            user_labels=user_labels,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service_id: pulumi.Input[str],
+             basic_service: Optional[pulumi.Input['GenericServiceBasicServiceArgs']] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("service_id", service_id)
         if basic_service is not None:
-            pulumi.set(__self__, "basic_service", basic_service)
+            _setter("basic_service", basic_service)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if user_labels is not None:
-            pulumi.set(__self__, "user_labels", user_labels)
+            _setter("user_labels", user_labels)
 
     @property
     @pulumi.getter(name="serviceId")
@@ -161,20 +178,41 @@ class _GenericServiceState:
                label entries may be stored. For labels which do not have a semantic value,
                the empty string may be supplied for the label value.
         """
+        _GenericServiceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            basic_service=basic_service,
+            display_name=display_name,
+            name=name,
+            project=project,
+            service_id=service_id,
+            telemetries=telemetries,
+            user_labels=user_labels,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             basic_service: Optional[pulumi.Input['GenericServiceBasicServiceArgs']] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_id: Optional[pulumi.Input[str]] = None,
+             telemetries: Optional[pulumi.Input[Sequence[pulumi.Input['GenericServiceTelemetryArgs']]]] = None,
+             user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if basic_service is not None:
-            pulumi.set(__self__, "basic_service", basic_service)
+            _setter("basic_service", basic_service)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if service_id is not None:
-            pulumi.set(__self__, "service_id", service_id)
+            _setter("service_id", service_id)
         if telemetries is not None:
-            pulumi.set(__self__, "telemetries", telemetries)
+            _setter("telemetries", telemetries)
         if user_labels is not None:
-            pulumi.set(__self__, "user_labels", user_labels)
+            _setter("user_labels", user_labels)
 
     @property
     @pulumi.getter(name="basicService")
@@ -426,6 +464,10 @@ class GenericService(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GenericServiceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -445,6 +487,11 @@ class GenericService(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GenericServiceArgs.__new__(GenericServiceArgs)
 
+            if basic_service is not None and not isinstance(basic_service, GenericServiceBasicServiceArgs):
+                basic_service = basic_service or {}
+                def _setter(key, value):
+                    basic_service[key] = value
+                GenericServiceBasicServiceArgs._configure(_setter, **basic_service)
             __props__.__dict__["basic_service"] = basic_service
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["project"] = project

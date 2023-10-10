@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -34,13 +34,28 @@ class DataStoreIndexArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DataStoreIndexPropertyArgs']]] properties: An ordered list of properties to index on.
                Structure is documented below.
         """
-        pulumi.set(__self__, "kind", kind)
+        DataStoreIndexArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kind=kind,
+            ancestor=ancestor,
+            project=project,
+            properties=properties,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kind: pulumi.Input[str],
+             ancestor: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             properties: Optional[pulumi.Input[Sequence[pulumi.Input['DataStoreIndexPropertyArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("kind", kind)
         if ancestor is not None:
-            pulumi.set(__self__, "ancestor", ancestor)
+            _setter("ancestor", ancestor)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if properties is not None:
-            pulumi.set(__self__, "properties", properties)
+            _setter("properties", properties)
 
     @property
     @pulumi.getter
@@ -121,16 +136,33 @@ class _DataStoreIndexState:
         :param pulumi.Input[Sequence[pulumi.Input['DataStoreIndexPropertyArgs']]] properties: An ordered list of properties to index on.
                Structure is documented below.
         """
+        _DataStoreIndexState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ancestor=ancestor,
+            index_id=index_id,
+            kind=kind,
+            project=project,
+            properties=properties,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ancestor: Optional[pulumi.Input[str]] = None,
+             index_id: Optional[pulumi.Input[str]] = None,
+             kind: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             properties: Optional[pulumi.Input[Sequence[pulumi.Input['DataStoreIndexPropertyArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ancestor is not None:
-            pulumi.set(__self__, "ancestor", ancestor)
+            _setter("ancestor", ancestor)
         if index_id is not None:
-            pulumi.set(__self__, "index_id", index_id)
+            _setter("index_id", index_id)
         if kind is not None:
-            pulumi.set(__self__, "kind", kind)
+            _setter("kind", kind)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if properties is not None:
-            pulumi.set(__self__, "properties", properties)
+            _setter("properties", properties)
 
     @property
     @pulumi.getter
@@ -344,6 +376,10 @@ class DataStoreIndex(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DataStoreIndexArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

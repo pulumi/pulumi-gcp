@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,15 +35,32 @@ class FulfillmentArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "display_name", display_name)
+        FulfillmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            enabled=enabled,
+            features=features,
+            generic_web_service=generic_web_service,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: pulumi.Input[str],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             features: Optional[pulumi.Input[Sequence[pulumi.Input['FulfillmentFeatureArgs']]]] = None,
+             generic_web_service: Optional[pulumi.Input['FulfillmentGenericWebServiceArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("display_name", display_name)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if features is not None:
-            pulumi.set(__self__, "features", features)
+            _setter("features", features)
         if generic_web_service is not None:
-            pulumi.set(__self__, "generic_web_service", generic_web_service)
+            _setter("generic_web_service", generic_web_service)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="displayName")
@@ -137,18 +154,37 @@ class _FulfillmentState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        _FulfillmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            enabled=enabled,
+            features=features,
+            generic_web_service=generic_web_service,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             features: Optional[pulumi.Input[Sequence[pulumi.Input['FulfillmentFeatureArgs']]]] = None,
+             generic_web_service: Optional[pulumi.Input['FulfillmentGenericWebServiceArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if features is not None:
-            pulumi.set(__self__, "features", features)
+            _setter("features", features)
         if generic_web_service is not None:
-            pulumi.set(__self__, "generic_web_service", generic_web_service)
+            _setter("generic_web_service", generic_web_service)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="displayName")
@@ -355,6 +391,10 @@ class Fulfillment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FulfillmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -379,6 +419,11 @@ class Fulfillment(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["features"] = features
+            if generic_web_service is not None and not isinstance(generic_web_service, FulfillmentGenericWebServiceArgs):
+                generic_web_service = generic_web_service or {}
+                def _setter(key, value):
+                    generic_web_service[key] = value
+                FulfillmentGenericWebServiceArgs._configure(_setter, **generic_web_service)
             __props__.__dict__["generic_web_service"] = generic_web_service
             __props__.__dict__["project"] = project
             __props__.__dict__["name"] = None

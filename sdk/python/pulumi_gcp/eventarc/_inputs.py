@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -31,14 +31,29 @@ class TriggerDestinationArgs:
         :param pulumi.Input['TriggerDestinationGkeArgs'] gke: A GKE service capable of receiving events. The service should be running in the same project as the trigger.
         :param pulumi.Input[str] workflow: The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
         """
+        TriggerDestinationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cloud_function=cloud_function,
+            cloud_run_service=cloud_run_service,
+            gke=gke,
+            workflow=workflow,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cloud_function: Optional[pulumi.Input[str]] = None,
+             cloud_run_service: Optional[pulumi.Input['TriggerDestinationCloudRunServiceArgs']] = None,
+             gke: Optional[pulumi.Input['TriggerDestinationGkeArgs']] = None,
+             workflow: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cloud_function is not None:
-            pulumi.set(__self__, "cloud_function", cloud_function)
+            _setter("cloud_function", cloud_function)
         if cloud_run_service is not None:
-            pulumi.set(__self__, "cloud_run_service", cloud_run_service)
+            _setter("cloud_run_service", cloud_run_service)
         if gke is not None:
-            pulumi.set(__self__, "gke", gke)
+            _setter("gke", gke)
         if workflow is not None:
-            pulumi.set(__self__, "workflow", workflow)
+            _setter("workflow", workflow)
 
     @property
     @pulumi.getter(name="cloudFunction")
@@ -100,11 +115,24 @@ class TriggerDestinationCloudRunServiceArgs:
         :param pulumi.Input[str] path: Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
         :param pulumi.Input[str] region: Required. The region the Cloud Run service is deployed in.
         """
-        pulumi.set(__self__, "service", service)
+        TriggerDestinationCloudRunServiceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service=service,
+            path=path,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service: pulumi.Input[str],
+             path: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("service", service)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter
@@ -158,12 +186,29 @@ class TriggerDestinationGkeArgs:
         :param pulumi.Input[str] service: Required. Name of the GKE service.
         :param pulumi.Input[str] path: Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
         """
-        pulumi.set(__self__, "cluster", cluster)
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "service", service)
+        TriggerDestinationGkeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster=cluster,
+            location=location,
+            namespace=namespace,
+            service=service,
+            path=path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster: pulumi.Input[str],
+             location: pulumi.Input[str],
+             namespace: pulumi.Input[str],
+             service: pulumi.Input[str],
+             path: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster", cluster)
+        _setter("location", location)
+        _setter("namespace", namespace)
+        _setter("service", service)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
 
     @property
     @pulumi.getter
@@ -239,10 +284,23 @@ class TriggerMatchingCriteriaArgs:
                - - -
         :param pulumi.Input[str] operator: Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
         """
-        pulumi.set(__self__, "attribute", attribute)
-        pulumi.set(__self__, "value", value)
+        TriggerMatchingCriteriaArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attribute=attribute,
+            value=value,
+            operator=operator,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attribute: pulumi.Input[str],
+             value: pulumi.Input[str],
+             operator: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("attribute", attribute)
+        _setter("value", value)
         if operator is not None:
-            pulumi.set(__self__, "operator", operator)
+            _setter("operator", operator)
 
     @property
     @pulumi.getter
@@ -290,8 +348,17 @@ class TriggerTransportArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['TriggerTransportPubsubArgs']]] pubsubs: The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
         """
+        TriggerTransportArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pubsubs=pubsubs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pubsubs: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerTransportPubsubArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if pubsubs is not None:
-            pulumi.set(__self__, "pubsubs", pubsubs)
+            _setter("pubsubs", pubsubs)
 
     @property
     @pulumi.getter
@@ -315,10 +382,21 @@ class TriggerTransportPubsubArgs:
         :param pulumi.Input[str] subscription: Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
         :param pulumi.Input[str] topic: Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}. You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
         """
+        TriggerTransportPubsubArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            subscription=subscription,
+            topic=topic,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             subscription: Optional[pulumi.Input[str]] = None,
+             topic: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if subscription is not None:
-            pulumi.set(__self__, "subscription", subscription)
+            _setter("subscription", subscription)
         if topic is not None:
-            pulumi.set(__self__, "topic", topic)
+            _setter("topic", topic)
 
     @property
     @pulumi.getter

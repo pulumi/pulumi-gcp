@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -62,19 +62,40 @@ class AccessLevelConditionArgs:
                granted for the Condition to be true.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
         """
-        pulumi.set(__self__, "access_level", access_level)
+        AccessLevelConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            device_policy=device_policy,
+            ip_subnetworks=ip_subnetworks,
+            members=members,
+            negate=negate,
+            regions=regions,
+            required_access_levels=required_access_levels,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: pulumi.Input[str],
+             device_policy: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArgs']] = None,
+             ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             negate: Optional[pulumi.Input[bool]] = None,
+             regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_level", access_level)
         if device_policy is not None:
-            pulumi.set(__self__, "device_policy", device_policy)
+            _setter("device_policy", device_policy)
         if ip_subnetworks is not None:
-            pulumi.set(__self__, "ip_subnetworks", ip_subnetworks)
+            _setter("ip_subnetworks", ip_subnetworks)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if negate is not None:
-            pulumi.set(__self__, "negate", negate)
+            _setter("negate", negate)
         if regions is not None:
-            pulumi.set(__self__, "regions", regions)
+            _setter("regions", regions)
         if required_access_levels is not None:
-            pulumi.set(__self__, "required_access_levels", required_access_levels)
+            _setter("required_access_levels", required_access_levels)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -239,20 +260,41 @@ class _AccessLevelConditionState:
                granted for the Condition to be true.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
         """
+        _AccessLevelConditionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            device_policy=device_policy,
+            ip_subnetworks=ip_subnetworks,
+            members=members,
+            negate=negate,
+            regions=regions,
+            required_access_levels=required_access_levels,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: Optional[pulumi.Input[str]] = None,
+             device_policy: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArgs']] = None,
+             ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             negate: Optional[pulumi.Input[bool]] = None,
+             regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
+            _setter("access_level", access_level)
         if device_policy is not None:
-            pulumi.set(__self__, "device_policy", device_policy)
+            _setter("device_policy", device_policy)
         if ip_subnetworks is not None:
-            pulumi.set(__self__, "ip_subnetworks", ip_subnetworks)
+            _setter("ip_subnetworks", ip_subnetworks)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if negate is not None:
-            pulumi.set(__self__, "negate", negate)
+            _setter("negate", negate)
         if regions is not None:
-            pulumi.set(__self__, "regions", regions)
+            _setter("regions", regions)
         if required_access_levels is not None:
-            pulumi.set(__self__, "required_access_levels", required_access_levels)
+            _setter("required_access_levels", required_access_levels)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -592,6 +634,10 @@ class AccessLevelCondition(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccessLevelConditionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -616,6 +662,11 @@ class AccessLevelCondition(pulumi.CustomResource):
             if access_level is None and not opts.urn:
                 raise TypeError("Missing required property 'access_level'")
             __props__.__dict__["access_level"] = access_level
+            if device_policy is not None and not isinstance(device_policy, AccessLevelConditionDevicePolicyArgs):
+                device_policy = device_policy or {}
+                def _setter(key, value):
+                    device_policy[key] = value
+                AccessLevelConditionDevicePolicyArgs._configure(_setter, **device_policy)
             __props__.__dict__["device_policy"] = device_policy
             __props__.__dict__["ip_subnetworks"] = ip_subnetworks
             __props__.__dict__["members"] = members

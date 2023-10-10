@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -46,20 +46,45 @@ class CertificateIssuanceConfigArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "certificate_authority_config", certificate_authority_config)
-        pulumi.set(__self__, "key_algorithm", key_algorithm)
-        pulumi.set(__self__, "lifetime", lifetime)
-        pulumi.set(__self__, "rotation_window_percentage", rotation_window_percentage)
+        CertificateIssuanceConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            certificate_authority_config=certificate_authority_config,
+            key_algorithm=key_algorithm,
+            lifetime=lifetime,
+            rotation_window_percentage=rotation_window_percentage,
+            description=description,
+            labels=labels,
+            location=location,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             certificate_authority_config: pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArgs'],
+             key_algorithm: pulumi.Input[str],
+             lifetime: pulumi.Input[str],
+             rotation_window_percentage: pulumi.Input[int],
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("certificate_authority_config", certificate_authority_config)
+        _setter("key_algorithm", key_algorithm)
+        _setter("lifetime", lifetime)
+        _setter("rotation_window_percentage", rotation_window_percentage)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="certificateAuthorityConfig")
@@ -220,28 +245,57 @@ class _CertificateIssuanceConfigState:
                accurate to nanoseconds with up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        _CertificateIssuanceConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            certificate_authority_config=certificate_authority_config,
+            create_time=create_time,
+            description=description,
+            key_algorithm=key_algorithm,
+            labels=labels,
+            lifetime=lifetime,
+            location=location,
+            name=name,
+            project=project,
+            rotation_window_percentage=rotation_window_percentage,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             certificate_authority_config: Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArgs']] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             key_algorithm: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             lifetime: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             rotation_window_percentage: Optional[pulumi.Input[int]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if certificate_authority_config is not None:
-            pulumi.set(__self__, "certificate_authority_config", certificate_authority_config)
+            _setter("certificate_authority_config", certificate_authority_config)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if key_algorithm is not None:
-            pulumi.set(__self__, "key_algorithm", key_algorithm)
+            _setter("key_algorithm", key_algorithm)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if lifetime is not None:
-            pulumi.set(__self__, "lifetime", lifetime)
+            _setter("lifetime", lifetime)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if rotation_window_percentage is not None:
-            pulumi.set(__self__, "rotation_window_percentage", rotation_window_percentage)
+            _setter("rotation_window_percentage", rotation_window_percentage)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="certificateAuthorityConfig")
@@ -615,6 +669,10 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CertificateIssuanceConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -638,6 +696,11 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CertificateIssuanceConfigArgs.__new__(CertificateIssuanceConfigArgs)
 
+            if certificate_authority_config is not None and not isinstance(certificate_authority_config, CertificateIssuanceConfigCertificateAuthorityConfigArgs):
+                certificate_authority_config = certificate_authority_config or {}
+                def _setter(key, value):
+                    certificate_authority_config[key] = value
+                CertificateIssuanceConfigCertificateAuthorityConfigArgs._configure(_setter, **certificate_authority_config)
             if certificate_authority_config is None and not opts.urn:
                 raise TypeError("Missing required property 'certificate_authority_config'")
             __props__.__dict__["certificate_authority_config"] = certificate_authority_config

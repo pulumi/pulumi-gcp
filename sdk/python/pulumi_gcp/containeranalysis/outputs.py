@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -35,7 +35,16 @@ class NoteAttestationAuthority(dict):
                Attestations to verify.
                Structure is documented below.
         """
-        pulumi.set(__self__, "hint", hint)
+        NoteAttestationAuthority._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hint=hint,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hint: 'outputs.NoteAttestationAuthorityHint',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("hint", hint)
 
     @property
     @pulumi.getter
@@ -81,7 +90,16 @@ class NoteAttestationAuthorityHint(dict):
                
                - - -
         """
-        pulumi.set(__self__, "human_readable_name", human_readable_name)
+        NoteAttestationAuthorityHint._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            human_readable_name=human_readable_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             human_readable_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("human_readable_name", human_readable_name)
 
     @property
     @pulumi.getter(name="humanReadableName")
@@ -101,10 +119,23 @@ class NoteIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        NoteIamBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -128,10 +159,23 @@ class NoteIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        NoteIamMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -158,9 +202,20 @@ class NoteRelatedUrl(dict):
         :param str url: Specific URL associated with the resource.
         :param str label: Label to describe usage of the URL
         """
-        pulumi.set(__self__, "url", url)
+        NoteRelatedUrl._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            url=url,
+            label=label,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             url: str,
+             label: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("url", url)
         if label is not None:
-            pulumi.set(__self__, "label", label)
+            _setter("label", label)
 
     @property
     @pulumi.getter
@@ -211,8 +266,19 @@ class OccurenceAttestation(dict):
                details on signature structure and verification.
                Structure is documented below.
         """
-        pulumi.set(__self__, "serialized_payload", serialized_payload)
-        pulumi.set(__self__, "signatures", signatures)
+        OccurenceAttestation._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            serialized_payload=serialized_payload,
+            signatures=signatures,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             serialized_payload: str,
+             signatures: Sequence['outputs.OccurenceAttestationSignature'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("serialized_payload", serialized_payload)
+        _setter("signatures", signatures)
 
     @property
     @pulumi.getter(name="serializedPayload")
@@ -280,9 +346,20 @@ class OccurenceAttestationSignature(dict):
                have a canonical serialization that can always be
                unambiguously computed to derive the payload.
         """
-        pulumi.set(__self__, "public_key_id", public_key_id)
+        OccurenceAttestationSignature._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            public_key_id=public_key_id,
+            signature=signature,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             public_key_id: str,
+             signature: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("public_key_id", public_key_id)
         if signature is not None:
-            pulumi.set(__self__, "signature", signature)
+            _setter("signature", signature)
 
     @property
     @pulumi.getter(name="publicKeyId")

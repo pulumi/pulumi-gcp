@@ -531,10 +531,6 @@ namespace Pulumi.Gcp.GkeBackup
         public Output<string> Cluster { get; private set; } = null!;
 
         /// <summary>
-        /// The description is a user specified string description
-        /// of the transformation rule.
-        /// 
-        /// (Optional)
         /// User specified descriptive string for this RestorePlan.
         /// </summary>
         [Output("description")]
@@ -652,10 +648,6 @@ namespace Pulumi.Gcp.GkeBackup
         public Input<string> Cluster { get; set; } = null!;
 
         /// <summary>
-        /// The description is a user specified string description
-        /// of the transformation rule.
-        /// 
-        /// (Optional)
         /// User specified descriptive string for this RestorePlan.
         /// </summary>
         [Input("description")]
@@ -723,10 +715,6 @@ namespace Pulumi.Gcp.GkeBackup
         public Input<string>? Cluster { get; set; }
 
         /// <summary>
-        /// The description is a user specified string description
-        /// of the transformation rule.
-        /// 
-        /// (Optional)
         /// User specified descriptive string for this RestorePlan.
         /// </summary>
         [Input("description")]

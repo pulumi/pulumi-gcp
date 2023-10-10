@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -38,11 +38,26 @@ class IAMMemberArgs:
         :param pulumi.Input['IAMMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         """
-        pulumi.set(__self__, "member", member)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "service_account_id", service_account_id)
+        IAMMemberArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            member=member,
+            role=role,
+            service_account_id=service_account_id,
+            condition=condition,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             member: pulumi.Input[str],
+             role: pulumi.Input[str],
+             service_account_id: pulumi.Input[str],
+             condition: Optional[pulumi.Input['IAMMemberConditionArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("member", member)
+        _setter("role", role)
+        _setter("service_account_id", service_account_id)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
 
     @property
     @pulumi.getter
@@ -129,16 +144,33 @@ class _IAMMemberState:
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
+        _IAMMemberState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            etag=etag,
+            member=member,
+            role=role,
+            service_account_id=service_account_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: Optional[pulumi.Input['IAMMemberConditionArgs']] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             service_account_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if member is not None:
-            pulumi.set(__self__, "member", member)
+            _setter("member", member)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if service_account_id is not None:
-            pulumi.set(__self__, "service_account_id", service_account_id)
+            _setter("service_account_id", service_account_id)
 
     @property
     @pulumi.getter
@@ -514,6 +546,10 @@ class IAMMember(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IAMMemberArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -532,6 +568,11 @@ class IAMMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = IAMMemberArgs.__new__(IAMMemberArgs)
 
+            if condition is not None and not isinstance(condition, IAMMemberConditionArgs):
+                condition = condition or {}
+                def _setter(key, value):
+                    condition[key] = value
+                IAMMemberConditionArgs._configure(_setter, **condition)
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")

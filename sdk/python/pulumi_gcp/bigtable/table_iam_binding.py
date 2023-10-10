@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,14 +45,33 @@ class TableIamBindingArgs:
         :param pulumi.Input[str] project: The project in which the table belongs. If it
                is not provided, this provider will use the provider default.
         """
-        pulumi.set(__self__, "instance", instance)
-        pulumi.set(__self__, "members", members)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "table", table)
+        TableIamBindingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance=instance,
+            members=members,
+            role=role,
+            table=table,
+            condition=condition,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance: pulumi.Input[str],
+             members: pulumi.Input[Sequence[pulumi.Input[str]]],
+             role: pulumi.Input[str],
+             table: pulumi.Input[str],
+             condition: Optional[pulumi.Input['TableIamBindingConditionArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance", instance)
+        _setter("members", members)
+        _setter("role", role)
+        _setter("table", table)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -171,20 +190,41 @@ class _TableIamBindingState:
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
+        _TableIamBindingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            etag=etag,
+            instance=instance,
+            members=members,
+            project=project,
+            role=role,
+            table=table,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: Optional[pulumi.Input['TableIamBindingConditionArgs']] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             instance: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             table: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if instance is not None:
-            pulumi.set(__self__, "instance", instance)
+            _setter("instance", instance)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if table is not None:
-            pulumi.set(__self__, "table", table)
+            _setter("table", table)
 
     @property
     @pulumi.getter
@@ -480,6 +520,10 @@ class TableIamBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TableIamBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -500,6 +544,11 @@ class TableIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TableIamBindingArgs.__new__(TableIamBindingArgs)
 
+            if condition is not None and not isinstance(condition, TableIamBindingConditionArgs):
+                condition = condition or {}
+                def _setter(key, value):
+                    condition[key] = value
+                TableIamBindingConditionArgs._configure(_setter, **condition)
             __props__.__dict__["condition"] = condition
             if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -32,13 +32,28 @@ class BiReservationArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[int] size: Size of a reservation, in bytes.
         """
-        pulumi.set(__self__, "location", location)
+        BiReservationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            preferred_tables=preferred_tables,
+            project=project,
+            size=size,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: pulumi.Input[str],
+             preferred_tables: Optional[pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("location", location)
         if preferred_tables is not None:
-            pulumi.set(__self__, "preferred_tables", preferred_tables)
+            _setter("preferred_tables", preferred_tables)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
 
     @property
     @pulumi.getter
@@ -118,18 +133,37 @@ class _BiReservationState:
         :param pulumi.Input[str] update_time: The last update timestamp of a reservation.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        _BiReservationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            name=name,
+            preferred_tables=preferred_tables,
+            project=project,
+            size=size,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             preferred_tables: Optional[pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[int]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if preferred_tables is not None:
-            pulumi.set(__self__, "preferred_tables", preferred_tables)
+            _setter("preferred_tables", preferred_tables)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter
@@ -322,6 +356,10 @@ class BiReservation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BiReservationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

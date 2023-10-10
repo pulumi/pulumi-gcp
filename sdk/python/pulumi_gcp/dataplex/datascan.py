@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -38,32 +38,56 @@ class DatascanArgs:
                Structure is documented below.
         :param pulumi.Input['DatascanDataQualitySpecArgs'] data_quality_spec: DataQualityScan related setting.
                Structure is documented below.
-        :param pulumi.Input[str] description: Description of the scan.
-               
-               (Optional)
-               Description of the rule.
+        :param pulumi.Input[str] description: Description of the rule.
                The maximum length is 1,024 characters.
         :param pulumi.Input[str] display_name: User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the scan. A list of key->value pairs.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "data", data)
-        pulumi.set(__self__, "data_scan_id", data_scan_id)
-        pulumi.set(__self__, "execution_spec", execution_spec)
-        pulumi.set(__self__, "location", location)
+        DatascanArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            data=data,
+            data_scan_id=data_scan_id,
+            execution_spec=execution_spec,
+            location=location,
+            data_profile_spec=data_profile_spec,
+            data_quality_spec=data_quality_spec,
+            description=description,
+            display_name=display_name,
+            labels=labels,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             data: pulumi.Input['DatascanDataArgs'],
+             data_scan_id: pulumi.Input[str],
+             execution_spec: pulumi.Input['DatascanExecutionSpecArgs'],
+             location: pulumi.Input[str],
+             data_profile_spec: Optional[pulumi.Input['DatascanDataProfileSpecArgs']] = None,
+             data_quality_spec: Optional[pulumi.Input['DatascanDataQualitySpecArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("data", data)
+        _setter("data_scan_id", data_scan_id)
+        _setter("execution_spec", execution_spec)
+        _setter("location", location)
         if data_profile_spec is not None:
-            pulumi.set(__self__, "data_profile_spec", data_profile_spec)
+            _setter("data_profile_spec", data_profile_spec)
         if data_quality_spec is not None:
-            pulumi.set(__self__, "data_quality_spec", data_quality_spec)
+            _setter("data_quality_spec", data_quality_spec)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -145,9 +169,6 @@ class DatascanArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the scan.
-
-        (Optional)
         Description of the rule.
         The maximum length is 1,024 characters.
         """
@@ -233,10 +254,7 @@ class _DatascanState:
         :param pulumi.Input['DatascanDataQualitySpecArgs'] data_quality_spec: DataQualityScan related setting.
                Structure is documented below.
         :param pulumi.Input[str] data_scan_id: DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
-        :param pulumi.Input[str] description: Description of the scan.
-               
-               (Optional)
-               Description of the rule.
+        :param pulumi.Input[str] description: Description of the rule.
                The maximum length is 1,024 characters.
         :param pulumi.Input[str] display_name: User friendly display name.
         :param pulumi.Input['DatascanExecutionSpecArgs'] execution_spec: DataScan execution settings.
@@ -257,50 +275,95 @@ class _DatascanState:
         :param pulumi.Input[str] uid: System generated globally unique ID for the scan. This ID will be different if the scan is deleted and re-created with the same name.
         :param pulumi.Input[str] update_time: The time when the scan was last updated.
         """
+        _DatascanState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            data=data,
+            data_profile_results=data_profile_results,
+            data_profile_spec=data_profile_spec,
+            data_quality_results=data_quality_results,
+            data_quality_spec=data_quality_spec,
+            data_scan_id=data_scan_id,
+            description=description,
+            display_name=display_name,
+            execution_spec=execution_spec,
+            execution_statuses=execution_statuses,
+            labels=labels,
+            location=location,
+            name=name,
+            project=project,
+            state=state,
+            type=type,
+            uid=uid,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             data: Optional[pulumi.Input['DatascanDataArgs']] = None,
+             data_profile_results: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultArgs']]]] = None,
+             data_profile_spec: Optional[pulumi.Input['DatascanDataProfileSpecArgs']] = None,
+             data_quality_results: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultArgs']]]] = None,
+             data_quality_spec: Optional[pulumi.Input['DatascanDataQualitySpecArgs']] = None,
+             data_scan_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             execution_spec: Optional[pulumi.Input['DatascanExecutionSpecArgs']] = None,
+             execution_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanExecutionStatusArgs']]]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if data is not None:
-            pulumi.set(__self__, "data", data)
+            _setter("data", data)
         if data_profile_results is not None:
             warnings.warn("""`data_profile_result` is deprecated and will be removed in a future major release.""", DeprecationWarning)
             pulumi.log.warn("""data_profile_results is deprecated: `data_profile_result` is deprecated and will be removed in a future major release.""")
         if data_profile_results is not None:
-            pulumi.set(__self__, "data_profile_results", data_profile_results)
+            _setter("data_profile_results", data_profile_results)
         if data_profile_spec is not None:
-            pulumi.set(__self__, "data_profile_spec", data_profile_spec)
+            _setter("data_profile_spec", data_profile_spec)
         if data_quality_results is not None:
             warnings.warn("""`data_quality_result` is deprecated and will be removed in a future major release.""", DeprecationWarning)
             pulumi.log.warn("""data_quality_results is deprecated: `data_quality_result` is deprecated and will be removed in a future major release.""")
         if data_quality_results is not None:
-            pulumi.set(__self__, "data_quality_results", data_quality_results)
+            _setter("data_quality_results", data_quality_results)
         if data_quality_spec is not None:
-            pulumi.set(__self__, "data_quality_spec", data_quality_spec)
+            _setter("data_quality_spec", data_quality_spec)
         if data_scan_id is not None:
-            pulumi.set(__self__, "data_scan_id", data_scan_id)
+            _setter("data_scan_id", data_scan_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if execution_spec is not None:
-            pulumi.set(__self__, "execution_spec", execution_spec)
+            _setter("execution_spec", execution_spec)
         if execution_statuses is not None:
-            pulumi.set(__self__, "execution_statuses", execution_statuses)
+            _setter("execution_statuses", execution_statuses)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -403,9 +466,6 @@ class _DatascanState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the scan.
-
-        (Optional)
         Description of the rule.
         The maximum length is 1,024 characters.
         """
@@ -807,10 +867,7 @@ class Datascan(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DatascanDataQualitySpecArgs']] data_quality_spec: DataQualityScan related setting.
                Structure is documented below.
         :param pulumi.Input[str] data_scan_id: DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
-        :param pulumi.Input[str] description: Description of the scan.
-               
-               (Optional)
-               Description of the rule.
+        :param pulumi.Input[str] description: Description of the rule.
                The maximum length is 1,024 characters.
         :param pulumi.Input[str] display_name: User friendly display name.
         :param pulumi.Input[pulumi.InputType['DatascanExecutionSpecArgs']] execution_spec: DataScan execution settings.
@@ -1063,6 +1120,10 @@ class Datascan(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DatascanArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1087,16 +1148,36 @@ class Datascan(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatascanArgs.__new__(DatascanArgs)
 
+            if data is not None and not isinstance(data, DatascanDataArgs):
+                data = data or {}
+                def _setter(key, value):
+                    data[key] = value
+                DatascanDataArgs._configure(_setter, **data)
             if data is None and not opts.urn:
                 raise TypeError("Missing required property 'data'")
             __props__.__dict__["data"] = data
+            if data_profile_spec is not None and not isinstance(data_profile_spec, DatascanDataProfileSpecArgs):
+                data_profile_spec = data_profile_spec or {}
+                def _setter(key, value):
+                    data_profile_spec[key] = value
+                DatascanDataProfileSpecArgs._configure(_setter, **data_profile_spec)
             __props__.__dict__["data_profile_spec"] = data_profile_spec
+            if data_quality_spec is not None and not isinstance(data_quality_spec, DatascanDataQualitySpecArgs):
+                data_quality_spec = data_quality_spec or {}
+                def _setter(key, value):
+                    data_quality_spec[key] = value
+                DatascanDataQualitySpecArgs._configure(_setter, **data_quality_spec)
             __props__.__dict__["data_quality_spec"] = data_quality_spec
             if data_scan_id is None and not opts.urn:
                 raise TypeError("Missing required property 'data_scan_id'")
             __props__.__dict__["data_scan_id"] = data_scan_id
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
+            if execution_spec is not None and not isinstance(execution_spec, DatascanExecutionSpecArgs):
+                execution_spec = execution_spec or {}
+                def _setter(key, value):
+                    execution_spec[key] = value
+                DatascanExecutionSpecArgs._configure(_setter, **execution_spec)
             if execution_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'execution_spec'")
             __props__.__dict__["execution_spec"] = execution_spec
@@ -1164,10 +1245,7 @@ class Datascan(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DatascanDataQualitySpecArgs']] data_quality_spec: DataQualityScan related setting.
                Structure is documented below.
         :param pulumi.Input[str] data_scan_id: DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
-        :param pulumi.Input[str] description: Description of the scan.
-               
-               (Optional)
-               Description of the rule.
+        :param pulumi.Input[str] description: Description of the rule.
                The maximum length is 1,024 characters.
         :param pulumi.Input[str] display_name: User friendly display name.
         :param pulumi.Input[pulumi.InputType['DatascanExecutionSpecArgs']] execution_spec: DataScan execution settings.
@@ -1286,9 +1364,6 @@ class Datascan(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the scan.
-
-        (Optional)
         Description of the rule.
         The maximum length is 1,024 characters.
         """

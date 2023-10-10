@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -42,21 +42,46 @@ class GCPolicyArgs:
         :param pulumi.Input[str] mode: If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "column_family", column_family)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "table", table)
+        GCPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            column_family=column_family,
+            instance_name=instance_name,
+            table=table,
+            deletion_policy=deletion_policy,
+            gc_rules=gc_rules,
+            max_age=max_age,
+            max_versions=max_versions,
+            mode=mode,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             column_family: pulumi.Input[str],
+             instance_name: pulumi.Input[str],
+             table: pulumi.Input[str],
+             deletion_policy: Optional[pulumi.Input[str]] = None,
+             gc_rules: Optional[pulumi.Input[str]] = None,
+             max_age: Optional[pulumi.Input['GCPolicyMaxAgeArgs']] = None,
+             max_versions: Optional[pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]]] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("column_family", column_family)
+        _setter("instance_name", instance_name)
+        _setter("table", table)
         if deletion_policy is not None:
-            pulumi.set(__self__, "deletion_policy", deletion_policy)
+            _setter("deletion_policy", deletion_policy)
         if gc_rules is not None:
-            pulumi.set(__self__, "gc_rules", gc_rules)
+            _setter("gc_rules", gc_rules)
         if max_age is not None:
-            pulumi.set(__self__, "max_age", max_age)
+            _setter("max_age", max_age)
         if max_versions is not None:
-            pulumi.set(__self__, "max_versions", max_versions)
+            _setter("max_versions", max_versions)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="columnFamily")
@@ -201,24 +226,49 @@ class _GCPolicyState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] table: The name of the table.
         """
+        _GCPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            column_family=column_family,
+            deletion_policy=deletion_policy,
+            gc_rules=gc_rules,
+            instance_name=instance_name,
+            max_age=max_age,
+            max_versions=max_versions,
+            mode=mode,
+            project=project,
+            table=table,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             column_family: Optional[pulumi.Input[str]] = None,
+             deletion_policy: Optional[pulumi.Input[str]] = None,
+             gc_rules: Optional[pulumi.Input[str]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             max_age: Optional[pulumi.Input['GCPolicyMaxAgeArgs']] = None,
+             max_versions: Optional[pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]]] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             table: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if column_family is not None:
-            pulumi.set(__self__, "column_family", column_family)
+            _setter("column_family", column_family)
         if deletion_policy is not None:
-            pulumi.set(__self__, "deletion_policy", deletion_policy)
+            _setter("deletion_policy", deletion_policy)
         if gc_rules is not None:
-            pulumi.set(__self__, "gc_rules", gc_rules)
+            _setter("gc_rules", gc_rules)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if max_age is not None:
-            pulumi.set(__self__, "max_age", max_age)
+            _setter("max_age", max_age)
         if max_versions is not None:
-            pulumi.set(__self__, "max_versions", max_versions)
+            _setter("max_versions", max_versions)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if table is not None:
-            pulumi.set(__self__, "table", table)
+            _setter("table", table)
 
     @property
     @pulumi.getter(name="columnFamily")
@@ -626,6 +676,10 @@ class GCPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GCPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -657,6 +711,11 @@ class GCPolicy(pulumi.CustomResource):
             if instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_name'")
             __props__.__dict__["instance_name"] = instance_name
+            if max_age is not None and not isinstance(max_age, GCPolicyMaxAgeArgs):
+                max_age = max_age or {}
+                def _setter(key, value):
+                    max_age[key] = value
+                GCPolicyMaxAgeArgs._configure(_setter, **max_age)
             __props__.__dict__["max_age"] = max_age
             __props__.__dict__["max_versions"] = max_versions
             __props__.__dict__["mode"] = mode

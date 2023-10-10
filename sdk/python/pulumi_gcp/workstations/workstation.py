@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['WorkstationArgs', 'Workstation']
@@ -39,20 +39,45 @@ class WorkstationArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "workstation_cluster_id", workstation_cluster_id)
-        pulumi.set(__self__, "workstation_config_id", workstation_config_id)
-        pulumi.set(__self__, "workstation_id", workstation_id)
+        WorkstationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            workstation_cluster_id=workstation_cluster_id,
+            workstation_config_id=workstation_config_id,
+            workstation_id=workstation_id,
+            annotations=annotations,
+            display_name=display_name,
+            env=env,
+            labels=labels,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: pulumi.Input[str],
+             workstation_cluster_id: pulumi.Input[str],
+             workstation_config_id: pulumi.Input[str],
+             workstation_id: pulumi.Input[str],
+             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             env: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("location", location)
+        _setter("workstation_cluster_id", workstation_cluster_id)
+        _setter("workstation_config_id", workstation_config_id)
+        _setter("workstation_id", workstation_id)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if env is not None:
-            pulumi.set(__self__, "env", env)
+            _setter("env", env)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -207,34 +232,69 @@ class _WorkstationState:
         :param pulumi.Input[str] workstation_config_id: The ID of the parent workstation cluster config.
         :param pulumi.Input[str] workstation_id: ID to use for the workstation.
         """
+        _WorkstationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            create_time=create_time,
+            display_name=display_name,
+            env=env,
+            host=host,
+            labels=labels,
+            location=location,
+            name=name,
+            project=project,
+            state=state,
+            uid=uid,
+            workstation_cluster_id=workstation_cluster_id,
+            workstation_config_id=workstation_config_id,
+            workstation_id=workstation_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             env: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             workstation_cluster_id: Optional[pulumi.Input[str]] = None,
+             workstation_config_id: Optional[pulumi.Input[str]] = None,
+             workstation_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if env is not None:
-            pulumi.set(__self__, "env", env)
+            _setter("env", env)
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if workstation_cluster_id is not None:
-            pulumi.set(__self__, "workstation_cluster_id", workstation_cluster_id)
+            _setter("workstation_cluster_id", workstation_cluster_id)
         if workstation_config_id is not None:
-            pulumi.set(__self__, "workstation_config_id", workstation_config_id)
+            _setter("workstation_config_id", workstation_config_id)
         if workstation_id is not None:
-            pulumi.set(__self__, "workstation_id", workstation_id)
+            _setter("workstation_id", workstation_id)
 
     @property
     @pulumi.getter
@@ -602,6 +662,10 @@ class Workstation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            WorkstationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -13,10 +13,6 @@ namespace Pulumi.Gcp.GkeBackup.Inputs
     public sealed class RestorePlanIamMemberConditionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description is a user specified string description
-        /// of the transformation rule.
-        /// 
-        /// (Optional)
         /// User specified descriptive string for this RestorePlan.
         /// </summary>
         [Input("description")]

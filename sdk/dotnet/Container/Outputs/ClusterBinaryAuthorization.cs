@@ -15,22 +15,6 @@ namespace Pulumi.Gcp.Container.Outputs
     {
         /// <summary>
         /// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-        /// 
-        /// 
-        /// 
-        /// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-        /// 
-        /// 
-        /// 
-        /// 
-        /// 
-        /// 
-        /// 
-        /// enforce encryption of data in-use.
-        /// 
-        /// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-        /// 
-        /// not.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>

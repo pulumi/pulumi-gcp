@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,15 +45,34 @@ class GroupArgs:
                Default value is `EMPTY`.
                Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
         """
-        pulumi.set(__self__, "group_key", group_key)
-        pulumi.set(__self__, "labels", labels)
-        pulumi.set(__self__, "parent", parent)
+        GroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_key=group_key,
+            labels=labels,
+            parent=parent,
+            description=description,
+            display_name=display_name,
+            initial_group_config=initial_group_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_key: pulumi.Input['GroupGroupKeyArgs'],
+             labels: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+             parent: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             initial_group_config: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group_key", group_key)
+        _setter("labels", labels)
+        _setter("parent", parent)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if initial_group_config is not None:
-            pulumi.set(__self__, "initial_group_config", initial_group_config)
+            _setter("initial_group_config", initial_group_config)
 
     @property
     @pulumi.getter(name="groupKey")
@@ -181,24 +200,49 @@ class _GroupState:
                groups or customers/{customer_id} for Google Groups.
         :param pulumi.Input[str] update_time: The time when the Group was last updated.
         """
+        _GroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            display_name=display_name,
+            group_key=group_key,
+            initial_group_config=initial_group_config,
+            labels=labels,
+            name=name,
+            parent=parent,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             group_key: Optional[pulumi.Input['GroupGroupKeyArgs']] = None,
+             initial_group_config: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if group_key is not None:
-            pulumi.set(__self__, "group_key", group_key)
+            _setter("group_key", group_key)
         if initial_group_config is not None:
-            pulumi.set(__self__, "initial_group_config", initial_group_config)
+            _setter("initial_group_config", initial_group_config)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent is not None:
-            pulumi.set(__self__, "parent", parent)
+            _setter("parent", parent)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -459,6 +503,10 @@ class Group(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -481,6 +529,11 @@ class Group(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
+            if group_key is not None and not isinstance(group_key, GroupGroupKeyArgs):
+                group_key = group_key or {}
+                def _setter(key, value):
+                    group_key[key] = value
+                GroupGroupKeyArgs._configure(_setter, **group_key)
             if group_key is None and not opts.urn:
                 raise TypeError("Missing required property 'group_key'")
             __props__.__dict__["group_key"] = group_key

@@ -37,24 +37,12 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
     /**
      * The name of a Compute Engine machine type.
      * 
-     * to create for the master. If not specified, GCP will default to a predetermined
-     * computed value (currently `n1-standard-4`).
-     * 
-     * to create for the worker nodes. If not specified, GCP will default to a predetermined
-     * computed value (currently `n1-standard-4`).
-     * 
      */
     @Import(name="machineType")
     private @Nullable Output<String> machineType;
 
     /**
      * @return The name of a Compute Engine machine type.
-     * 
-     * to create for the master. If not specified, GCP will default to a predetermined
-     * computed value (currently `n1-standard-4`).
-     * 
-     * to create for the worker nodes. If not specified, GCP will default to a predetermined
-     * computed value (currently `n1-standard-4`).
      * 
      */
     public Optional<Output<String>> machineType() {
@@ -66,14 +54,6 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
      * The instance may be scheduled on the specified or a newer CPU platform.
      * Specify the friendly names of CPU platforms, such as &#34;Intel Haswell&#34; or &#34;Intel Sandy Bridge&#34;.
      * 
-     * for the master. If not specified, GCP will default to a predetermined computed value
-     * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-     * for details about which CPU families are available (and defaulted) for each zone.
-     * 
-     * for the master. If not specified, GCP will default to a predetermined computed value
-     * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-     * for details about which CPU families are available (and defaulted) for each zone.
-     * 
      */
     @Import(name="minCpuPlatform")
     private @Nullable Output<String> minCpuPlatform;
@@ -82,14 +62,6 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
      * @return Minimum CPU platform to be used by this instance.
      * The instance may be scheduled on the specified or a newer CPU platform.
      * Specify the friendly names of CPU platforms, such as &#34;Intel Haswell&#34; or &#34;Intel Sandy Bridge&#34;.
-     * 
-     * for the master. If not specified, GCP will default to a predetermined computed value
-     * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-     * for details about which CPU families are available (and defaulted) for each zone.
-     * 
-     * for the master. If not specified, GCP will default to a predetermined computed value
-     * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-     * for details about which CPU families are available (and defaulted) for each zone.
      * 
      */
     public Optional<Output<String>> minCpuPlatform() {
@@ -184,12 +156,6 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         /**
          * @param machineType The name of a Compute Engine machine type.
          * 
-         * to create for the master. If not specified, GCP will default to a predetermined
-         * computed value (currently `n1-standard-4`).
-         * 
-         * to create for the worker nodes. If not specified, GCP will default to a predetermined
-         * computed value (currently `n1-standard-4`).
-         * 
          * @return builder
          * 
          */
@@ -200,12 +166,6 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
 
         /**
          * @param machineType The name of a Compute Engine machine type.
-         * 
-         * to create for the master. If not specified, GCP will default to a predetermined
-         * computed value (currently `n1-standard-4`).
-         * 
-         * to create for the worker nodes. If not specified, GCP will default to a predetermined
-         * computed value (currently `n1-standard-4`).
          * 
          * @return builder
          * 
@@ -219,14 +179,6 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
          * The instance may be scheduled on the specified or a newer CPU platform.
          * Specify the friendly names of CPU platforms, such as &#34;Intel Haswell&#34; or &#34;Intel Sandy Bridge&#34;.
          * 
-         * for the master. If not specified, GCP will default to a predetermined computed value
-         * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-         * for details about which CPU families are available (and defaulted) for each zone.
-         * 
-         * for the master. If not specified, GCP will default to a predetermined computed value
-         * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-         * for details about which CPU families are available (and defaulted) for each zone.
-         * 
          * @return builder
          * 
          */
@@ -239,14 +191,6 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
          * @param minCpuPlatform Minimum CPU platform to be used by this instance.
          * The instance may be scheduled on the specified or a newer CPU platform.
          * Specify the friendly names of CPU platforms, such as &#34;Intel Haswell&#34; or &#34;Intel Sandy Bridge&#34;.
-         * 
-         * for the master. If not specified, GCP will default to a predetermined computed value
-         * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-         * for details about which CPU families are available (and defaulted) for each zone.
-         * 
-         * for the master. If not specified, GCP will default to a predetermined computed value
-         * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-         * for details about which CPU families are available (and defaulted) for each zone.
          * 
          * @return builder
          * 

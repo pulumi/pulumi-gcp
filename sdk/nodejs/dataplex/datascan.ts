@@ -307,9 +307,6 @@ export class Datascan extends pulumi.CustomResource {
      */
     public readonly dataScanId!: pulumi.Output<string>;
     /**
-     * Description of the scan.
-     *
-     * (Optional)
      * Description of the rule.
      * The maximum length is 1,024 characters.
      */
@@ -481,9 +478,6 @@ export interface DatascanState {
      */
     dataScanId?: pulumi.Input<string>;
     /**
-     * Description of the scan.
-     *
-     * (Optional)
      * Description of the rule.
      * The maximum length is 1,024 characters.
      */
@@ -565,9 +559,6 @@ export interface DatascanArgs {
      */
     dataScanId: pulumi.Input<string>;
     /**
-     * Description of the scan.
-     *
-     * (Optional)
      * Description of the rule.
      * The maximum length is 1,024 characters.
      */

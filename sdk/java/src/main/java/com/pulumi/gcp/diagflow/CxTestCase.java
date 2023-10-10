@@ -267,10 +267,6 @@ public class CxTestCase extends com.pulumi.resources.CustomResource {
         return this.lastTestResults;
     }
     /**
-     * The unique identifier of the intent.
-     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/intents/&lt;Intent ID&gt;.
-     * 
-     * (Optional)
      * The unique identifier of the page.
      * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/pages/&lt;Page ID&gt;.
      * 
@@ -279,11 +275,7 @@ public class CxTestCase extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return The unique identifier of the intent.
-     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/intents/&lt;Intent ID&gt;.
-     * 
-     * (Optional)
-     * The unique identifier of the page.
+     * @return The unique identifier of the page.
      * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/pages/&lt;Page ID&gt;.
      * 
      */

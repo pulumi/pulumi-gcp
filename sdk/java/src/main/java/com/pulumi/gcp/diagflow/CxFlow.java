@@ -439,9 +439,6 @@ public class CxFlow extends com.pulumi.resources.CustomResource {
     }
     /**
      * (Output)
-     * The unique identifier of this transition route.
-     * 
-     * (Output)
      * The unique identifier of this event handler.
      * 
      */
@@ -450,9 +447,6 @@ public class CxFlow extends com.pulumi.resources.CustomResource {
 
     /**
      * @return (Output)
-     * The unique identifier of this transition route.
-     * 
-     * (Output)
      * The unique identifier of this event handler.
      * 
      */

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['LocationTagBindingArgs', 'LocationTagBinding']
@@ -25,10 +25,23 @@ class LocationTagBindingArgs:
                
                - - -
         """
-        pulumi.set(__self__, "parent", parent)
-        pulumi.set(__self__, "tag_value", tag_value)
+        LocationTagBindingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parent=parent,
+            tag_value=tag_value,
+            location=location,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parent: pulumi.Input[str],
+             tag_value: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("parent", parent)
+        _setter("tag_value", tag_value)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
 
     @property
     @pulumi.getter
@@ -85,14 +98,29 @@ class _LocationTagBindingState:
         :param pulumi.Input[str] parent: The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
         :param pulumi.Input[str] tag_value: The TagValue of the TagBinding. Must be of the form tagValues/456.
         """
+        _LocationTagBindingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            name=name,
+            parent=parent,
+            tag_value=tag_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             tag_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent is not None:
-            pulumi.set(__self__, "parent", parent)
+            _setter("parent", parent)
         if tag_value is not None:
-            pulumi.set(__self__, "tag_value", tag_value)
+            _setter("tag_value", tag_value)
 
     @property
     @pulumi.getter
@@ -308,6 +336,10 @@ class LocationTagBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            LocationTagBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

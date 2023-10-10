@@ -15908,10 +15908,6 @@ type CxTestCaseLastTestResult struct {
 	ConversationTurns []CxTestCaseLastTestResultConversationTurn `pulumi:"conversationTurns"`
 	// Environment where the test was run. If not set, it indicates the draft environment.
 	Environment *string `pulumi:"environment"`
-	// The unique identifier of the intent.
-	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
-	//
-	// (Optional)
 	// The unique identifier of the page.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
 	Name *string `pulumi:"name"`
@@ -15941,10 +15937,6 @@ type CxTestCaseLastTestResultArgs struct {
 	ConversationTurns CxTestCaseLastTestResultConversationTurnArrayInput `pulumi:"conversationTurns"`
 	// Environment where the test was run. If not set, it indicates the draft environment.
 	Environment pulumi.StringPtrInput `pulumi:"environment"`
-	// The unique identifier of the intent.
-	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
-	//
-	// (Optional)
 	// The unique identifier of the page.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -16039,10 +16031,6 @@ func (o CxTestCaseLastTestResultOutput) Environment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxTestCaseLastTestResult) *string { return v.Environment }).(pulumi.StringPtrOutput)
 }
 
-// The unique identifier of the intent.
-// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
-//
-// (Optional)
 // The unique identifier of the page.
 // Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
 func (o CxTestCaseLastTestResultOutput) Name() pulumi.StringPtrOutput {

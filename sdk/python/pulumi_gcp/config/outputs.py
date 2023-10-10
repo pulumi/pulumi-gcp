@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -18,10 +18,21 @@ class Batching(dict):
     def __init__(__self__, *,
                  enable_batching: Optional[bool] = None,
                  send_after: Optional[str] = None):
+        Batching._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enable_batching=enable_batching,
+            send_after=send_after,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enable_batching: Optional[bool] = None,
+             send_after: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enable_batching is not None:
-            pulumi.set(__self__, "enable_batching", enable_batching)
+            _setter("enable_batching", enable_batching)
         if send_after is not None:
-            pulumi.set(__self__, "send_after", send_after)
+            _setter("send_after", send_after)
 
     @property
     @pulumi.getter(name="enableBatching")

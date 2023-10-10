@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AndroidAppArgs', 'AndroidApp']
@@ -40,19 +40,40 @@ class AndroidAppArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] sha1_hashes: The SHA1 certificate hashes for the AndroidApp.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] sha256_hashes: The SHA256 certificate hashes for the AndroidApp.
         """
-        pulumi.set(__self__, "display_name", display_name)
+        AndroidAppArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            api_key_id=api_key_id,
+            deletion_policy=deletion_policy,
+            package_name=package_name,
+            project=project,
+            sha1_hashes=sha1_hashes,
+            sha256_hashes=sha256_hashes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: pulumi.Input[str],
+             api_key_id: Optional[pulumi.Input[str]] = None,
+             deletion_policy: Optional[pulumi.Input[str]] = None,
+             package_name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             sha1_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             sha256_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("display_name", display_name)
         if api_key_id is not None:
-            pulumi.set(__self__, "api_key_id", api_key_id)
+            _setter("api_key_id", api_key_id)
         if deletion_policy is not None:
-            pulumi.set(__self__, "deletion_policy", deletion_policy)
+            _setter("deletion_policy", deletion_policy)
         if package_name is not None:
-            pulumi.set(__self__, "package_name", package_name)
+            _setter("package_name", package_name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if sha1_hashes is not None:
-            pulumi.set(__self__, "sha1_hashes", sha1_hashes)
+            _setter("sha1_hashes", sha1_hashes)
         if sha256_hashes is not None:
-            pulumi.set(__self__, "sha256_hashes", sha256_hashes)
+            _setter("sha256_hashes", sha256_hashes)
 
     @property
     @pulumi.getter(name="displayName")
@@ -186,26 +207,53 @@ class _AndroidAppState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] sha1_hashes: The SHA1 certificate hashes for the AndroidApp.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] sha256_hashes: The SHA256 certificate hashes for the AndroidApp.
         """
+        _AndroidAppState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_key_id=api_key_id,
+            app_id=app_id,
+            deletion_policy=deletion_policy,
+            display_name=display_name,
+            etag=etag,
+            name=name,
+            package_name=package_name,
+            project=project,
+            sha1_hashes=sha1_hashes,
+            sha256_hashes=sha256_hashes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_key_id: Optional[pulumi.Input[str]] = None,
+             app_id: Optional[pulumi.Input[str]] = None,
+             deletion_policy: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             package_name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             sha1_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             sha256_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if api_key_id is not None:
-            pulumi.set(__self__, "api_key_id", api_key_id)
+            _setter("api_key_id", api_key_id)
         if app_id is not None:
-            pulumi.set(__self__, "app_id", app_id)
+            _setter("app_id", app_id)
         if deletion_policy is not None:
-            pulumi.set(__self__, "deletion_policy", deletion_policy)
+            _setter("deletion_policy", deletion_policy)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if package_name is not None:
-            pulumi.set(__self__, "package_name", package_name)
+            _setter("package_name", package_name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if sha1_hashes is not None:
-            pulumi.set(__self__, "sha1_hashes", sha1_hashes)
+            _setter("sha1_hashes", sha1_hashes)
         if sha256_hashes is not None:
-            pulumi.set(__self__, "sha256_hashes", sha256_hashes)
+            _setter("sha256_hashes", sha256_hashes)
 
     @property
     @pulumi.getter(name="apiKeyId")
@@ -524,6 +572,10 @@ class AndroidApp(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AndroidAppArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

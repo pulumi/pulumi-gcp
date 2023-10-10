@@ -228,28 +228,8 @@ type PreventionInspectTemplate struct {
 	// The core content of the template.
 	// Structure is documented below.
 	InspectConfig PreventionInspectTemplateInspectConfigPtrOutput `pulumi:"inspectConfig"`
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-	//
-	// (Required)
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-	//
-	// (Required)
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-	//
-	// (Required)
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-	//
-	// (Required)
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
 	// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-	//
-	// (Required)
-	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-	// or `projects/project-id/storedInfoTypes/432452342`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent of the inspect template in any of the following formats:
 	// * `projects/{{project}}`
@@ -305,28 +285,8 @@ type preventionInspectTemplateState struct {
 	// The core content of the template.
 	// Structure is documented below.
 	InspectConfig *PreventionInspectTemplateInspectConfig `pulumi:"inspectConfig"`
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-	//
-	// (Required)
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-	//
-	// (Required)
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-	//
-	// (Required)
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-	//
-	// (Required)
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
 	// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-	//
-	// (Required)
-	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-	// or `projects/project-id/storedInfoTypes/432452342`.
 	Name *string `pulumi:"name"`
 	// The parent of the inspect template in any of the following formats:
 	// * `projects/{{project}}`
@@ -350,28 +310,8 @@ type PreventionInspectTemplateState struct {
 	// The core content of the template.
 	// Structure is documented below.
 	InspectConfig PreventionInspectTemplateInspectConfigPtrInput
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-	//
-	// (Required)
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-	//
-	// (Required)
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-	//
-	// (Required)
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-	//
-	// (Required)
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
 	// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-	//
-	// (Required)
-	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-	// or `projects/project-id/storedInfoTypes/432452342`.
 	Name pulumi.StringPtrInput
 	// The parent of the inspect template in any of the following formats:
 	// * `projects/{{project}}`
@@ -565,28 +505,8 @@ func (o PreventionInspectTemplateOutput) InspectConfig() PreventionInspectTempla
 	}).(PreventionInspectTemplateInspectConfigPtrOutput)
 }
 
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-//
-// (Required)
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-//
-// (Required)
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-//
-// (Required)
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-//
-// (Required)
 // Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
 // listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-//
-// (Required)
-// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-// or `projects/project-id/storedInfoTypes/432452342`.
 func (o PreventionInspectTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionInspectTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

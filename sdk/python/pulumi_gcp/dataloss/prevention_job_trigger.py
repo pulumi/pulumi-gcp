@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,10 +29,7 @@ class PreventionJobTriggerArgs:
                or `projects/{{project}}/locations/{{location}}`
         :param pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerTriggerArgs']]] triggers: What event needs to occur for a new job to be started.
                Structure is documented below.
-        :param pulumi.Input[str] description: A description of the job trigger.
-               
-               (Optional)
-               A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+        :param pulumi.Input[str] description: A short description of where the data is coming from. Will be stored once in the job. 256 max length.
         :param pulumi.Input[str] display_name: User set display name of the job trigger.
         :param pulumi.Input['PreventionJobTriggerInspectJobArgs'] inspect_job: Controls what and how to inspect for findings.
                Structure is documented below.
@@ -43,18 +40,39 @@ class PreventionJobTriggerArgs:
                that is, it must match the regular expression: [a-zA-Z\\d-_]+.
                The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
-        pulumi.set(__self__, "parent", parent)
-        pulumi.set(__self__, "triggers", triggers)
+        PreventionJobTriggerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parent=parent,
+            triggers=triggers,
+            description=description,
+            display_name=display_name,
+            inspect_job=inspect_job,
+            status=status,
+            trigger_id=trigger_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parent: pulumi.Input[str],
+             triggers: pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerTriggerArgs']]],
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             inspect_job: Optional[pulumi.Input['PreventionJobTriggerInspectJobArgs']] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             trigger_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("parent", parent)
+        _setter("triggers", triggers)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if inspect_job is not None:
-            pulumi.set(__self__, "inspect_job", inspect_job)
+            _setter("inspect_job", inspect_job)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if trigger_id is not None:
-            pulumi.set(__self__, "trigger_id", trigger_id)
+            _setter("trigger_id", trigger_id)
 
     @property
     @pulumi.getter
@@ -86,9 +104,6 @@ class PreventionJobTriggerArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A description of the job trigger.
-
-        (Optional)
         A short description of where the data is coming from. Will be stored once in the job. 256 max length.
         """
         return pulumi.get(self, "description")
@@ -169,59 +184,12 @@ class _PreventionJobTriggerState:
         Input properties used for looking up and filtering PreventionJobTrigger resources.
         :param pulumi.Input[str] create_time: (Output)
                The creation timestamp of an inspectTemplate. Set by the server.
-        :param pulumi.Input[str] description: A description of the job trigger.
-               
-               (Optional)
-               A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+        :param pulumi.Input[str] description: A short description of where the data is coming from. Will be stored once in the job. 256 max length.
         :param pulumi.Input[str] display_name: User set display name of the job trigger.
         :param pulumi.Input['PreventionJobTriggerInspectJobArgs'] inspect_job: Controls what and how to inspect for findings.
                Structure is documented below.
         :param pulumi.Input[str] last_run_time: The timestamp of the last time this trigger executed.
-        :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-               
-               (Required)
-               Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-               
-               (Required)
-               Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-               
-               (Required)
-               Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-               
-               (Required)
-               Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-               listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-               
-               (Required)
-               Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-               or `projects/project-id/storedInfoTypes/432452342`.
-               
-               (Required)
-               Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
-               For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
-               modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
-               field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
-               For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
-               timestamp property does not exist or its value is empty or invalid.
-               
-               (Required)
-               The name of the Datastore kind.
-               
-               (Required)
-               Name of a BigQuery field to be returned with the findings.
-               
-               (Required)
-               Name describing the field to which scanning is limited.
-               
-               (Required)
-               Name describing the field excluded from scanning.
-               
-               (Required)
-               Name describing the field.
+        :param pulumi.Input[str] name: Name describing the field excluded from scanning.
         :param pulumi.Input[str] parent: The parent of the trigger, either in the format `projects/{{project}}`
                or `projects/{{project}}/locations/{{location}}`
         :param pulumi.Input[str] status: Whether the trigger is currently active.
@@ -234,28 +202,57 @@ class _PreventionJobTriggerState:
                Structure is documented below.
         :param pulumi.Input[str] update_time: The last update timestamp of an inspectTemplate. Set by the server.
         """
+        _PreventionJobTriggerState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            display_name=display_name,
+            inspect_job=inspect_job,
+            last_run_time=last_run_time,
+            name=name,
+            parent=parent,
+            status=status,
+            trigger_id=trigger_id,
+            triggers=triggers,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             inspect_job: Optional[pulumi.Input['PreventionJobTriggerInspectJobArgs']] = None,
+             last_run_time: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             trigger_id: Optional[pulumi.Input[str]] = None,
+             triggers: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerTriggerArgs']]]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if inspect_job is not None:
-            pulumi.set(__self__, "inspect_job", inspect_job)
+            _setter("inspect_job", inspect_job)
         if last_run_time is not None:
-            pulumi.set(__self__, "last_run_time", last_run_time)
+            _setter("last_run_time", last_run_time)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent is not None:
-            pulumi.set(__self__, "parent", parent)
+            _setter("parent", parent)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if trigger_id is not None:
-            pulumi.set(__self__, "trigger_id", trigger_id)
+            _setter("trigger_id", trigger_id)
         if triggers is not None:
-            pulumi.set(__self__, "triggers", triggers)
+            _setter("triggers", triggers)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -274,9 +271,6 @@ class _PreventionJobTriggerState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A description of the job trigger.
-
-        (Optional)
         A short description of where the data is coming from. Will be stored once in the job. 256 max length.
         """
         return pulumi.get(self, "description")
@@ -326,51 +320,7 @@ class _PreventionJobTriggerState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-
-        (Required)
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-
-        (Required)
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-
-        (Required)
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-
-        (Required)
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-        listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-
-        (Required)
-        Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-        or `projects/project-id/storedInfoTypes/432452342`.
-
-        (Required)
-        Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
-        For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
-        modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
-        field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
-        For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
-        timestamp property does not exist or its value is empty or invalid.
-
-        (Required)
-        The name of the Datastore kind.
-
-        (Required)
-        Name of a BigQuery field to be returned with the findings.
-
-        (Required)
-        Name describing the field to which scanning is limited.
-
-        (Required)
         Name describing the field excluded from scanning.
-
-        (Required)
-        Name describing the field.
         """
         return pulumi.get(self, "name")
 
@@ -814,10 +764,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A description of the job trigger.
-               
-               (Optional)
-               A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+        :param pulumi.Input[str] description: A short description of where the data is coming from. Will be stored once in the job. 256 max length.
         :param pulumi.Input[str] display_name: User set display name of the job trigger.
         :param pulumi.Input[pulumi.InputType['PreventionJobTriggerInspectJobArgs']] inspect_job: Controls what and how to inspect for findings.
                Structure is documented below.
@@ -1202,6 +1149,10 @@ class PreventionJobTrigger(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PreventionJobTriggerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1225,6 +1176,11 @@ class PreventionJobTrigger(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
+            if inspect_job is not None and not isinstance(inspect_job, PreventionJobTriggerInspectJobArgs):
+                inspect_job = inspect_job or {}
+                def _setter(key, value):
+                    inspect_job[key] = value
+                PreventionJobTriggerInspectJobArgs._configure(_setter, **inspect_job)
             __props__.__dict__["inspect_job"] = inspect_job
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
@@ -1268,59 +1224,12 @@ class PreventionJobTrigger(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: (Output)
                The creation timestamp of an inspectTemplate. Set by the server.
-        :param pulumi.Input[str] description: A description of the job trigger.
-               
-               (Optional)
-               A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+        :param pulumi.Input[str] description: A short description of where the data is coming from. Will be stored once in the job. 256 max length.
         :param pulumi.Input[str] display_name: User set display name of the job trigger.
         :param pulumi.Input[pulumi.InputType['PreventionJobTriggerInspectJobArgs']] inspect_job: Controls what and how to inspect for findings.
                Structure is documented below.
         :param pulumi.Input[str] last_run_time: The timestamp of the last time this trigger executed.
-        :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-               
-               (Required)
-               Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-               
-               (Required)
-               Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-               
-               (Required)
-               Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-               
-               (Required)
-               Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-               listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-               
-               (Required)
-               Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-               or `projects/project-id/storedInfoTypes/432452342`.
-               
-               (Required)
-               Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
-               For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
-               modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
-               field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
-               For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
-               timestamp property does not exist or its value is empty or invalid.
-               
-               (Required)
-               The name of the Datastore kind.
-               
-               (Required)
-               Name of a BigQuery field to be returned with the findings.
-               
-               (Required)
-               Name describing the field to which scanning is limited.
-               
-               (Required)
-               Name describing the field excluded from scanning.
-               
-               (Required)
-               Name describing the field.
+        :param pulumi.Input[str] name: Name describing the field excluded from scanning.
         :param pulumi.Input[str] parent: The parent of the trigger, either in the format `projects/{{project}}`
                or `projects/{{project}}/locations/{{location}}`
         :param pulumi.Input[str] status: Whether the trigger is currently active.
@@ -1363,9 +1272,6 @@ class PreventionJobTrigger(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        A description of the job trigger.
-
-        (Optional)
         A short description of where the data is coming from. Will be stored once in the job. 256 max length.
         """
         return pulumi.get(self, "description")
@@ -1399,51 +1305,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-
-        (Required)
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-
-        (Required)
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-
-        (Required)
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-
-        (Required)
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-        listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-
-        (Required)
-        Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-        or `projects/project-id/storedInfoTypes/432452342`.
-
-        (Required)
-        Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
-        For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
-        modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
-        field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
-        For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
-        timestamp property does not exist or its value is empty or invalid.
-
-        (Required)
-        The name of the Datastore kind.
-
-        (Required)
-        Name of a BigQuery field to be returned with the findings.
-
-        (Required)
-        Name describing the field to which scanning is limited.
-
-        (Required)
         Name describing the field excluded from scanning.
-
-        (Required)
-        Name describing the field.
         """
         return pulumi.get(self, "name")
 

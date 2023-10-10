@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['HostingSiteArgs', 'HostingSite']
@@ -27,12 +27,25 @@ class HostingSiteArgs:
                used to construct the Firebase-provisioned subdomains for the site, so it must also be a valid
                domain name label.
         """
+        HostingSiteArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_id=app_id,
+            project=project,
+            site_id=site_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_id: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             site_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if app_id is not None:
-            pulumi.set(__self__, "app_id", app_id)
+            _setter("app_id", app_id)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if site_id is not None:
-            pulumi.set(__self__, "site_id", site_id)
+            _setter("site_id", site_id)
 
     @property
     @pulumi.getter(name="appId")
@@ -101,16 +114,33 @@ class _HostingSiteState:
                used to construct the Firebase-provisioned subdomains for the site, so it must also be a valid
                domain name label.
         """
+        _HostingSiteState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_id=app_id,
+            default_url=default_url,
+            name=name,
+            project=project,
+            site_id=site_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_id: Optional[pulumi.Input[str]] = None,
+             default_url: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             site_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if app_id is not None:
-            pulumi.set(__self__, "app_id", app_id)
+            _setter("app_id", app_id)
         if default_url is not None:
-            pulumi.set(__self__, "default_url", default_url)
+            _setter("default_url", default_url)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if site_id is not None:
-            pulumi.set(__self__, "site_id", site_id)
+            _setter("site_id", site_id)
 
     @property
     @pulumi.getter(name="appId")
@@ -320,6 +350,10 @@ class HostingSite(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            HostingSiteArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

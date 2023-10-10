@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -33,10 +33,23 @@ class InstanceIamBindingCondition(dict):
         """
         :param str description: An optional description of the instance.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        InstanceIamBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -66,10 +79,23 @@ class InstanceIamMemberCondition(dict):
         """
         :param str description: An optional description of the instance.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        InstanceIamMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -117,7 +143,16 @@ class NotificationConfigStreamingConfig(dict):
                
                - - -
         """
-        pulumi.set(__self__, "filter", filter)
+        NotificationConfigStreamingConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter=filter,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter", filter)
 
     @property
     @pulumi.getter
@@ -194,14 +229,33 @@ class ProjectCustomModuleCustomConfig(dict):
                module detects. This explanation is returned with each finding instance to
                help investigators understand the detected issue. The text must be enclosed in quotation marks.
         """
-        pulumi.set(__self__, "predicate", predicate)
-        pulumi.set(__self__, "recommendation", recommendation)
-        pulumi.set(__self__, "resource_selector", resource_selector)
-        pulumi.set(__self__, "severity", severity)
+        ProjectCustomModuleCustomConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            predicate=predicate,
+            recommendation=recommendation,
+            resource_selector=resource_selector,
+            severity=severity,
+            custom_output=custom_output,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             predicate: 'outputs.ProjectCustomModuleCustomConfigPredicate',
+             recommendation: str,
+             resource_selector: 'outputs.ProjectCustomModuleCustomConfigResourceSelector',
+             severity: str,
+             custom_output: Optional['outputs.ProjectCustomModuleCustomConfigCustomOutput'] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("predicate", predicate)
+        _setter("recommendation", recommendation)
+        _setter("resource_selector", resource_selector)
+        _setter("severity", severity)
         if custom_output is not None:
-            pulumi.set(__self__, "custom_output", custom_output)
+            _setter("custom_output", custom_output)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -270,8 +324,17 @@ class ProjectCustomModuleCustomConfigCustomOutput(dict):
         :param Sequence['ProjectCustomModuleCustomConfigCustomOutputPropertyArgs'] properties: A list of custom output properties to add to the finding.
                Structure is documented below.
         """
+        ProjectCustomModuleCustomConfigCustomOutput._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            properties=properties,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             properties: Optional[Sequence['outputs.ProjectCustomModuleCustomConfigCustomOutputProperty']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if properties is not None:
-            pulumi.set(__self__, "properties", properties)
+            _setter("properties", properties)
 
     @property
     @pulumi.getter
@@ -311,10 +374,21 @@ class ProjectCustomModuleCustomConfigCustomOutputProperty(dict):
                to return the value of the property or a text string enclosed in quotation marks.
                Structure is documented below.
         """
+        ProjectCustomModuleCustomConfigCustomOutputProperty._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value_expression=value_expression,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             value_expression: Optional['outputs.ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpression'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if value_expression is not None:
-            pulumi.set(__self__, "value_expression", value_expression)
+            _setter("value_expression", value_expression)
 
     @property
     @pulumi.getter
@@ -351,13 +425,28 @@ class ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpression(dict):
         :param str title: Title for the expression, i.e. a short string describing its purpose. This can
                be used e.g. in UIs which allow to enter the expression.
         """
-        pulumi.set(__self__, "expression", expression)
+        ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpression._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            description=description,
+            location=location,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             description: Optional[str] = None,
+             location: Optional[str] = None,
+             title: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter
@@ -411,13 +500,28 @@ class ProjectCustomModuleCustomConfigPredicate(dict):
         :param str title: Title for the expression, i.e. a short string describing its purpose. This can
                be used e.g. in UIs which allow to enter the expression.
         """
-        pulumi.set(__self__, "expression", expression)
+        ProjectCustomModuleCustomConfigPredicate._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            description=description,
+            location=location,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             description: Optional[str] = None,
+             location: Optional[str] = None,
+             title: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter
@@ -481,7 +585,16 @@ class ProjectCustomModuleCustomConfigResourceSelector(dict):
                
                - - -
         """
-        pulumi.set(__self__, "resource_types", resource_types)
+        ProjectCustomModuleCustomConfigResourceSelector._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_types=resource_types,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_types: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("resource_types", resource_types)
 
     @property
     @pulumi.getter(name="resourceTypes")
@@ -503,10 +616,23 @@ class SourceIamBindingCondition(dict):
         """
         :param str description: The description of the source (max of 1024 characters).
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        SourceIamBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -536,10 +662,23 @@ class SourceIamMemberCondition(dict):
         """
         :param str description: The description of the source (max of 1024 characters).
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        SourceIamMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter

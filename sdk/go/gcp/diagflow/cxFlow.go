@@ -431,9 +431,6 @@ type CxFlow struct {
 	// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode pulumi.StringPtrOutput `pulumi:"languageCode"`
 	// (Output)
-	// The unique identifier of this transition route.
-	//
-	// (Output)
 	// The unique identifier of this event handler.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// NLU related settings of the flow.
@@ -511,9 +508,6 @@ type cxFlowState struct {
 	// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode *string `pulumi:"languageCode"`
 	// (Output)
-	// The unique identifier of this transition route.
-	//
-	// (Output)
 	// The unique identifier of this event handler.
 	Name *string `pulumi:"name"`
 	// NLU related settings of the flow.
@@ -558,9 +552,6 @@ type CxFlowState struct {
 	// Flow.transition_routes.trigger_fulfillment.conditional_cases
 	// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode pulumi.StringPtrInput
-	// (Output)
-	// The unique identifier of this transition route.
-	//
 	// (Output)
 	// The unique identifier of this event handler.
 	Name pulumi.StringPtrInput
@@ -817,9 +808,6 @@ func (o CxFlowOutput) LanguageCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxFlow) pulumi.StringPtrOutput { return v.LanguageCode }).(pulumi.StringPtrOutput)
 }
 
-// (Output)
-// The unique identifier of this transition route.
-//
 // (Output)
 // The unique identifier of this event handler.
 func (o CxFlowOutput) Name() pulumi.StringOutput {

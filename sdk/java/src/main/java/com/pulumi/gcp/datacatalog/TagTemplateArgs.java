@@ -19,14 +19,6 @@ public final class TagTemplateArgs extends com.pulumi.resources.ResourceArgs {
     public static final TagTemplateArgs Empty = new TagTemplateArgs();
 
     /**
-     * The display name for this field.
-     * 
-     * (Required)
-     * The display name of the enum value.
-     * 
-     * ***
-     * 
-     * (Optional)
      * The display name for this template.
      * 
      */
@@ -34,15 +26,7 @@ public final class TagTemplateArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> displayName;
 
     /**
-     * @return The display name for this field.
-     * 
-     * (Required)
-     * The display name of the enum value.
-     * 
-     * ***
-     * 
-     * (Optional)
-     * The display name for this template.
+     * @return The display name for this template.
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -158,15 +142,7 @@ public final class TagTemplateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName The display name for this field.
-         * 
-         * (Required)
-         * The display name of the enum value.
-         * 
-         * ***
-         * 
-         * (Optional)
-         * The display name for this template.
+         * @param displayName The display name for this template.
          * 
          * @return builder
          * 
@@ -177,15 +153,7 @@ public final class TagTemplateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName The display name for this field.
-         * 
-         * (Required)
-         * The display name of the enum value.
-         * 
-         * ***
-         * 
-         * (Optional)
-         * The display name for this template.
+         * @param displayName The display name for this template.
          * 
          * @return builder
          * 

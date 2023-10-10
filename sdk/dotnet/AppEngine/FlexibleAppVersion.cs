@@ -277,18 +277,8 @@ namespace Pulumi.Gcp.AppEngine
         public Output<Outputs.FlexibleAppVersionManualScaling?> ManualScaling { get; private set; } = null!;
 
         /// <summary>
-        /// Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
-        /// 
-        /// (Required)
-        /// Unique name for the volume.
-        /// 
-        /// 
-        /// (Required)
         /// Endpoints service name which is the name of the "service" resource in the Service Management API.
         /// For example "myapi.endpoints.myproject.cloud.goog"
-        /// 
-        /// (Required)
-        /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -794,18 +784,8 @@ namespace Pulumi.Gcp.AppEngine
         public Input<Inputs.FlexibleAppVersionManualScalingGetArgs>? ManualScaling { get; set; }
 
         /// <summary>
-        /// Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
-        /// 
-        /// (Required)
-        /// Unique name for the volume.
-        /// 
-        /// 
-        /// (Required)
         /// Endpoints service name which is the name of the "service" resource in the Service Management API.
         /// For example "myapi.endpoints.myproject.cloud.goog"
-        /// 
-        /// (Required)
-        /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

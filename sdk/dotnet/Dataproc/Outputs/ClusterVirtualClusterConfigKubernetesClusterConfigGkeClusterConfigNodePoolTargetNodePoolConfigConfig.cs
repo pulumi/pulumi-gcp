@@ -20,26 +20,12 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         public readonly int? LocalSsdCount;
         /// <summary>
         /// The name of a Compute Engine machine type.
-        /// 
-        /// to create for the master. If not specified, GCP will default to a predetermined
-        /// computed value (currently `n1-standard-4`).
-        /// 
-        /// to create for the worker nodes. If not specified, GCP will default to a predetermined
-        /// computed value (currently `n1-standard-4`).
         /// </summary>
         public readonly string? MachineType;
         /// <summary>
         /// Minimum CPU platform to be used by this instance. 
         /// The instance may be scheduled on the specified or a newer CPU platform.
         /// Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
-        /// 
-        /// for the master. If not specified, GCP will default to a predetermined computed value
-        /// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-        /// for details about which CPU families are available (and defaulted) for each zone.
-        /// 
-        /// for the master. If not specified, GCP will default to a predetermined computed value
-        /// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-        /// for details about which CPU families are available (and defaulted) for each zone.
         /// </summary>
         public readonly string? MinCpuPlatform;
         /// <summary>

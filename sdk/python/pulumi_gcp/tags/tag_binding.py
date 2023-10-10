@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TagBindingArgs', 'TagBinding']
@@ -24,8 +24,19 @@ class TagBindingArgs:
                
                - - -
         """
-        pulumi.set(__self__, "parent", parent)
-        pulumi.set(__self__, "tag_value", tag_value)
+        TagBindingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parent=parent,
+            tag_value=tag_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parent: pulumi.Input[str],
+             tag_value: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("parent", parent)
+        _setter("tag_value", tag_value)
 
     @property
     @pulumi.getter
@@ -70,12 +81,25 @@ class _TagBindingState:
                
                - - -
         """
+        _TagBindingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            parent=parent,
+            tag_value=tag_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             tag_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent is not None:
-            pulumi.set(__self__, "parent", parent)
+            _setter("parent", parent)
         if tag_value is not None:
-            pulumi.set(__self__, "tag_value", tag_value)
+            _setter("tag_value", tag_value)
 
     @property
     @pulumi.getter
@@ -237,6 +261,10 @@ class TagBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TagBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

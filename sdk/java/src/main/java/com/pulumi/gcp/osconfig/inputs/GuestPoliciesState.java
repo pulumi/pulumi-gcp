@@ -122,34 +122,14 @@ public final class GuestPoliciesState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the package. A package is uniquely identified for conflict validation
-     * by checking the package name and the manager(s) that the package targets.
-     * 
-     * (Required)
      * The name of the repository.
-     * 
-     * (Required)
-     * Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-     * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-     * This means that requests to create multiple recipes with the same name and version are rejected since they
-     * could potentially have conflicting assignments.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the package. A package is uniquely identified for conflict validation
-     * by checking the package name and the manager(s) that the package targets.
-     * 
-     * (Required)
-     * The name of the repository.
-     * 
-     * (Required)
-     * Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-     * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-     * This means that requests to create multiple recipes with the same name and version are rejected since they
-     * could potentially have conflicting assignments.
+     * @return The name of the repository.
      * 
      */
     public Optional<Output<String>> name() {
@@ -411,17 +391,7 @@ public final class GuestPoliciesState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name The name of the package. A package is uniquely identified for conflict validation
-         * by checking the package name and the manager(s) that the package targets.
-         * 
-         * (Required)
-         * The name of the repository.
-         * 
-         * (Required)
-         * Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-         * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-         * This means that requests to create multiple recipes with the same name and version are rejected since they
-         * could potentially have conflicting assignments.
+         * @param name The name of the repository.
          * 
          * @return builder
          * 
@@ -432,17 +402,7 @@ public final class GuestPoliciesState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name The name of the package. A package is uniquely identified for conflict validation
-         * by checking the package name and the manager(s) that the package targets.
-         * 
-         * (Required)
-         * The name of the repository.
-         * 
-         * (Required)
-         * Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-         * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-         * This means that requests to create multiple recipes with the same name and version are rejected since they
-         * could potentially have conflicting assignments.
+         * @param name The name of the repository.
          * 
          * @return builder
          * 

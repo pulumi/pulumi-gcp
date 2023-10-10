@@ -11588,14 +11588,6 @@ func (o ClusterAddonsConfigCloudrunConfigPtrOutput) LoadBalancerType() pulumi.St
 
 type ClusterAddonsConfigConfigConnectorConfig struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-	//
-	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-	//
-	// enforce encryption of data in-use.
-	//
-	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-	//
-	// not.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -11612,14 +11604,6 @@ type ClusterAddonsConfigConfigConnectorConfigInput interface {
 
 type ClusterAddonsConfigConfigConnectorConfigArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-	//
-	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-	//
-	// enforce encryption of data in-use.
-	//
-	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-	//
-	// not.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -11719,14 +11703,6 @@ func (o ClusterAddonsConfigConfigConnectorConfigOutput) ToOutput(ctx context.Con
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-//
-// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-//
-// enforce encryption of data in-use.
-//
-// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-//
-// not.
 func (o ClusterAddonsConfigConfigConnectorConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigConfigConnectorConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -11762,14 +11738,6 @@ func (o ClusterAddonsConfigConfigConnectorConfigPtrOutput) Elem() ClusterAddonsC
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-//
-// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-//
-// enforce encryption of data in-use.
-//
-// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-//
-// not.
 func (o ClusterAddonsConfigConfigConnectorConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfigConfigConnectorConfig) *bool {
 		if v == nil {
@@ -11781,14 +11749,6 @@ func (o ClusterAddonsConfigConfigConnectorConfigPtrOutput) Enabled() pulumi.Bool
 
 type ClusterAddonsConfigDnsCacheConfig struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-	//
-	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-	//
-	// enforce encryption of data in-use.
-	//
-	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-	//
-	// not.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -11805,14 +11765,6 @@ type ClusterAddonsConfigDnsCacheConfigInput interface {
 
 type ClusterAddonsConfigDnsCacheConfigArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-	//
-	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-	//
-	// enforce encryption of data in-use.
-	//
-	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-	//
-	// not.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -11912,14 +11864,6 @@ func (o ClusterAddonsConfigDnsCacheConfigOutput) ToOutput(ctx context.Context) p
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-//
-// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-//
-// enforce encryption of data in-use.
-//
-// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-//
-// not.
 func (o ClusterAddonsConfigDnsCacheConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigDnsCacheConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -11955,14 +11899,6 @@ func (o ClusterAddonsConfigDnsCacheConfigPtrOutput) Elem() ClusterAddonsConfigDn
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-//
-// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-//
-// enforce encryption of data in-use.
-//
-// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-//
-// not.
 func (o ClusterAddonsConfigDnsCacheConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfigDnsCacheConfig) *bool {
 		if v == nil {
@@ -11974,14 +11910,6 @@ func (o ClusterAddonsConfigDnsCacheConfigPtrOutput) Enabled() pulumi.BoolPtrOutp
 
 type ClusterAddonsConfigGcePersistentDiskCsiDriverConfig struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-	//
-	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-	//
-	// enforce encryption of data in-use.
-	//
-	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-	//
-	// not.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -11998,14 +11926,6 @@ type ClusterAddonsConfigGcePersistentDiskCsiDriverConfigInput interface {
 
 type ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-	//
-	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-	//
-	// enforce encryption of data in-use.
-	//
-	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-	//
-	// not.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -12105,14 +12025,6 @@ func (o ClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput) ToOutput(ctx 
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-//
-// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-//
-// enforce encryption of data in-use.
-//
-// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-//
-// not.
 func (o ClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigGcePersistentDiskCsiDriverConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -12148,14 +12060,6 @@ func (o ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput) Elem() Clu
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-//
-// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-//
-// enforce encryption of data in-use.
-//
-// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-//
-// not.
 func (o ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfigGcePersistentDiskCsiDriverConfig) *bool {
 		if v == nil {
@@ -12167,14 +12071,6 @@ func (o ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput) Enabled() 
 
 type ClusterAddonsConfigGcpFilestoreCsiDriverConfig struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-	//
-	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-	//
-	// enforce encryption of data in-use.
-	//
-	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-	//
-	// not.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -12191,14 +12087,6 @@ type ClusterAddonsConfigGcpFilestoreCsiDriverConfigInput interface {
 
 type ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-	//
-	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-	//
-	// enforce encryption of data in-use.
-	//
-	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-	//
-	// not.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -12298,14 +12186,6 @@ func (o ClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput) ToOutput(ctx conte
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-//
-// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-//
-// enforce encryption of data in-use.
-//
-// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-//
-// not.
 func (o ClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigGcpFilestoreCsiDriverConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -12341,14 +12221,6 @@ func (o ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput) Elem() ClusterA
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-//
-// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-//
-// enforce encryption of data in-use.
-//
-// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-//
-// not.
 func (o ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfigGcpFilestoreCsiDriverConfig) *bool {
 		if v == nil {
@@ -12360,14 +12232,6 @@ func (o ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput) Enabled() pulum
 
 type ClusterAddonsConfigGcsFuseCsiDriverConfig struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-	//
-	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-	//
-	// enforce encryption of data in-use.
-	//
-	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-	//
-	// not.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -12384,14 +12248,6 @@ type ClusterAddonsConfigGcsFuseCsiDriverConfigInput interface {
 
 type ClusterAddonsConfigGcsFuseCsiDriverConfigArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-	//
-	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-	//
-	// enforce encryption of data in-use.
-	//
-	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-	//
-	// not.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -12491,14 +12347,6 @@ func (o ClusterAddonsConfigGcsFuseCsiDriverConfigOutput) ToOutput(ctx context.Co
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-//
-// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-//
-// enforce encryption of data in-use.
-//
-// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-//
-// not.
 func (o ClusterAddonsConfigGcsFuseCsiDriverConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigGcsFuseCsiDriverConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -12534,14 +12382,6 @@ func (o ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput) Elem() ClusterAddons
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-//
-// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-//
-// enforce encryption of data in-use.
-//
-// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-//
-// not.
 func (o ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfigGcsFuseCsiDriverConfig) *bool {
 		if v == nil {
@@ -12553,14 +12393,6 @@ func (o ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput) Enabled() pulumi.Boo
 
 type ClusterAddonsConfigGkeBackupAgentConfig struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-	//
-	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-	//
-	// enforce encryption of data in-use.
-	//
-	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-	//
-	// not.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -12577,14 +12409,6 @@ type ClusterAddonsConfigGkeBackupAgentConfigInput interface {
 
 type ClusterAddonsConfigGkeBackupAgentConfigArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-	//
-	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-	//
-	// enforce encryption of data in-use.
-	//
-	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-	//
-	// not.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -12684,14 +12508,6 @@ func (o ClusterAddonsConfigGkeBackupAgentConfigOutput) ToOutput(ctx context.Cont
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-//
-// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-//
-// enforce encryption of data in-use.
-//
-// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-//
-// not.
 func (o ClusterAddonsConfigGkeBackupAgentConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigGkeBackupAgentConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -12727,14 +12543,6 @@ func (o ClusterAddonsConfigGkeBackupAgentConfigPtrOutput) Elem() ClusterAddonsCo
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-//
-// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-//
-// enforce encryption of data in-use.
-//
-// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-//
-// not.
 func (o ClusterAddonsConfigGkeBackupAgentConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfigGkeBackupAgentConfig) *bool {
 		if v == nil {
@@ -13268,14 +13076,6 @@ func (o ClusterAddonsConfigIstioConfigPtrOutput) Disabled() pulumi.BoolPtrOutput
 
 type ClusterAddonsConfigKalmConfig struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-	//
-	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-	//
-	// enforce encryption of data in-use.
-	//
-	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-	//
-	// not.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -13292,14 +13092,6 @@ type ClusterAddonsConfigKalmConfigInput interface {
 
 type ClusterAddonsConfigKalmConfigArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-	//
-	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-	//
-	// enforce encryption of data in-use.
-	//
-	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-	//
-	// not.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -13399,14 +13191,6 @@ func (o ClusterAddonsConfigKalmConfigOutput) ToOutput(ctx context.Context) pulum
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-//
-// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-//
-// enforce encryption of data in-use.
-//
-// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-//
-// not.
 func (o ClusterAddonsConfigKalmConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigKalmConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -13442,14 +13226,6 @@ func (o ClusterAddonsConfigKalmConfigPtrOutput) Elem() ClusterAddonsConfigKalmCo
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-//
-// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-//
-// enforce encryption of data in-use.
-//
-// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-//
-// not.
 func (o ClusterAddonsConfigKalmConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfigKalmConfig) *bool {
 		if v == nil {
@@ -13792,14 +13568,6 @@ func (o ClusterAuthenticatorGroupsConfigPtrOutput) SecurityGroup() pulumi.String
 type ClusterBinaryAuthorization struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
 	//
-	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-	//
-	// enforce encryption of data in-use.
-	//
-	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-	//
-	// not.
-	//
 	// Deprecated: Deprecated in favor of evaluation_mode.
 	Enabled *bool `pulumi:"enabled"`
 	// Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
@@ -13821,14 +13589,6 @@ type ClusterBinaryAuthorizationInput interface {
 
 type ClusterBinaryAuthorizationArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-	//
-	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-	//
-	// enforce encryption of data in-use.
-	//
-	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-	//
-	// not.
 	//
 	// Deprecated: Deprecated in favor of evaluation_mode.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
@@ -13935,14 +13695,6 @@ func (o ClusterBinaryAuthorizationOutput) ToOutput(ctx context.Context) pulumix.
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
 //
-// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-//
-// enforce encryption of data in-use.
-//
-// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-//
-// not.
-//
 // Deprecated: Deprecated in favor of evaluation_mode.
 func (o ClusterBinaryAuthorizationOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterBinaryAuthorization) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -13986,14 +13738,6 @@ func (o ClusterBinaryAuthorizationPtrOutput) Elem() ClusterBinaryAuthorizationOu
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-//
-// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-//
-// enforce encryption of data in-use.
-//
-// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-//
-// not.
 //
 // Deprecated: Deprecated in favor of evaluation_mode.
 func (o ClusterBinaryAuthorizationPtrOutput) Enabled() pulumi.BoolPtrOutput {
@@ -36898,14 +36642,6 @@ func (o ClusterServiceExternalIpsConfigPtrOutput) Enabled() pulumi.BoolPtrOutput
 
 type ClusterTpuConfig struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-	//
-	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-	//
-	// enforce encryption of data in-use.
-	//
-	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-	//
-	// not.
 	Enabled              bool    `pulumi:"enabled"`
 	Ipv4CidrBlock        *string `pulumi:"ipv4CidrBlock"`
 	UseServiceNetworking *bool   `pulumi:"useServiceNetworking"`
@@ -36924,14 +36660,6 @@ type ClusterTpuConfigInput interface {
 
 type ClusterTpuConfigArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-	//
-	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-	//
-	// enforce encryption of data in-use.
-	//
-	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-	//
-	// not.
 	Enabled              pulumi.BoolInput      `pulumi:"enabled"`
 	Ipv4CidrBlock        pulumi.StringPtrInput `pulumi:"ipv4CidrBlock"`
 	UseServiceNetworking pulumi.BoolPtrInput   `pulumi:"useServiceNetworking"`
@@ -37033,14 +36761,6 @@ func (o ClusterTpuConfigOutput) ToOutput(ctx context.Context) pulumix.Output[Clu
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-//
-// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-//
-// enforce encryption of data in-use.
-//
-// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-//
-// not.
 func (o ClusterTpuConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterTpuConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -37084,14 +36804,6 @@ func (o ClusterTpuConfigPtrOutput) Elem() ClusterTpuConfigOutput {
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-//
-// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-//
-// enforce encryption of data in-use.
-//
-// If enabled, pods must be valid under a PodSecurityPolicy to be created.
-//
-// not.
 func (o ClusterTpuConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterTpuConfig) *bool {
 		if v == nil {

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -40,20 +40,43 @@ class NetworkAttachmentArgs:
                
                - - -
         """
-        pulumi.set(__self__, "connection_preference", connection_preference)
-        pulumi.set(__self__, "subnetworks", subnetworks)
+        NetworkAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connection_preference=connection_preference,
+            subnetworks=subnetworks,
+            description=description,
+            name=name,
+            producer_accept_lists=producer_accept_lists,
+            producer_reject_lists=producer_reject_lists,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connection_preference: pulumi.Input[str],
+             subnetworks: pulumi.Input[Sequence[pulumi.Input[str]]],
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             producer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             producer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("connection_preference", connection_preference)
+        _setter("subnetworks", subnetworks)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if producer_accept_lists is not None:
-            pulumi.set(__self__, "producer_accept_lists", producer_accept_lists)
+            _setter("producer_accept_lists", producer_accept_lists)
         if producer_reject_lists is not None:
-            pulumi.set(__self__, "producer_reject_lists", producer_reject_lists)
+            _setter("producer_reject_lists", producer_reject_lists)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="connectionPreference")
@@ -201,36 +224,73 @@ class _NetworkAttachmentState:
         :param pulumi.Input[str] self_link_with_id: Server-defined URL for this resource's resource id.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnetworks: An array of URLs where each entry is the URL of a subnet provided by the service consumer to use for endpoints in the producers that connect to this network attachment.
         """
+        _NetworkAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connection_endpoints=connection_endpoints,
+            connection_preference=connection_preference,
+            creation_timestamp=creation_timestamp,
+            description=description,
+            fingerprint=fingerprint,
+            kind=kind,
+            name=name,
+            network=network,
+            producer_accept_lists=producer_accept_lists,
+            producer_reject_lists=producer_reject_lists,
+            project=project,
+            region=region,
+            self_link=self_link,
+            self_link_with_id=self_link_with_id,
+            subnetworks=subnetworks,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connection_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAttachmentConnectionEndpointArgs']]]] = None,
+             connection_preference: Optional[pulumi.Input[str]] = None,
+             creation_timestamp: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             fingerprint: Optional[pulumi.Input[str]] = None,
+             kind: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             producer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             producer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             self_link_with_id: Optional[pulumi.Input[str]] = None,
+             subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if connection_endpoints is not None:
-            pulumi.set(__self__, "connection_endpoints", connection_endpoints)
+            _setter("connection_endpoints", connection_endpoints)
         if connection_preference is not None:
-            pulumi.set(__self__, "connection_preference", connection_preference)
+            _setter("connection_preference", connection_preference)
         if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+            _setter("creation_timestamp", creation_timestamp)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if fingerprint is not None:
-            pulumi.set(__self__, "fingerprint", fingerprint)
+            _setter("fingerprint", fingerprint)
         if kind is not None:
-            pulumi.set(__self__, "kind", kind)
+            _setter("kind", kind)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if producer_accept_lists is not None:
-            pulumi.set(__self__, "producer_accept_lists", producer_accept_lists)
+            _setter("producer_accept_lists", producer_accept_lists)
         if producer_reject_lists is not None:
-            pulumi.set(__self__, "producer_reject_lists", producer_reject_lists)
+            _setter("producer_reject_lists", producer_reject_lists)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if self_link_with_id is not None:
-            pulumi.set(__self__, "self_link_with_id", self_link_with_id)
+            _setter("self_link_with_id", self_link_with_id)
         if subnetworks is not None:
-            pulumi.set(__self__, "subnetworks", subnetworks)
+            _setter("subnetworks", subnetworks)
 
     @property
     @pulumi.getter(name="connectionEndpoints")
@@ -513,6 +573,10 @@ class NetworkAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NetworkAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

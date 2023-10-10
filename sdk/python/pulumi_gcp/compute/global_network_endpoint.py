@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['GlobalNetworkEndpointArgs', 'GlobalNetworkEndpoint']
@@ -32,14 +32,31 @@ class GlobalNetworkEndpointArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "global_network_endpoint_group", global_network_endpoint_group)
-        pulumi.set(__self__, "port", port)
+        GlobalNetworkEndpointArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            global_network_endpoint_group=global_network_endpoint_group,
+            port=port,
+            fqdn=fqdn,
+            ip_address=ip_address,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             global_network_endpoint_group: pulumi.Input[str],
+             port: pulumi.Input[int],
+             fqdn: Optional[pulumi.Input[str]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("global_network_endpoint_group", global_network_endpoint_group)
+        _setter("port", port)
         if fqdn is not None:
-            pulumi.set(__self__, "fqdn", fqdn)
+            _setter("fqdn", fqdn)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="globalNetworkEndpointGroup")
@@ -128,16 +145,33 @@ class _GlobalNetworkEndpointState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        _GlobalNetworkEndpointState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fqdn=fqdn,
+            global_network_endpoint_group=global_network_endpoint_group,
+            ip_address=ip_address,
+            port=port,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fqdn: Optional[pulumi.Input[str]] = None,
+             global_network_endpoint_group: Optional[pulumi.Input[str]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if fqdn is not None:
-            pulumi.set(__self__, "fqdn", fqdn)
+            _setter("fqdn", fqdn)
         if global_network_endpoint_group is not None:
-            pulumi.set(__self__, "global_network_endpoint_group", global_network_endpoint_group)
+            _setter("global_network_endpoint_group", global_network_endpoint_group)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -331,6 +365,10 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GlobalNetworkEndpointArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

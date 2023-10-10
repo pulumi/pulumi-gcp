@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['IngressPolicyArgs', 'IngressPolicy']
@@ -24,8 +24,19 @@ class IngressPolicyArgs:
                - - -
         :param pulumi.Input[str] resource: A GCP resource that is inside of the service perimeter.
         """
-        pulumi.set(__self__, "ingress_policy_name", ingress_policy_name)
-        pulumi.set(__self__, "resource", resource)
+        IngressPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ingress_policy_name=ingress_policy_name,
+            resource=resource,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ingress_policy_name: pulumi.Input[str],
+             resource: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ingress_policy_name", ingress_policy_name)
+        _setter("resource", resource)
 
     @property
     @pulumi.getter(name="ingressPolicyName")
@@ -68,10 +79,21 @@ class _IngressPolicyState:
                - - -
         :param pulumi.Input[str] resource: A GCP resource that is inside of the service perimeter.
         """
+        _IngressPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ingress_policy_name=ingress_policy_name,
+            resource=resource,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ingress_policy_name: Optional[pulumi.Input[str]] = None,
+             resource: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ingress_policy_name is not None:
-            pulumi.set(__self__, "ingress_policy_name", ingress_policy_name)
+            _setter("ingress_policy_name", ingress_policy_name)
         if resource is not None:
-            pulumi.set(__self__, "resource", resource)
+            _setter("resource", resource)
 
     @property
     @pulumi.getter(name="ingressPolicyName")
@@ -163,6 +185,10 @@ class IngressPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IngressPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

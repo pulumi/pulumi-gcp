@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -76,38 +76,81 @@ class VMwareClusterArgs:
                Structure is documented below.
         :param pulumi.Input[bool] vm_tracking_enabled: Enable VM tracking.
         """
-        pulumi.set(__self__, "admin_cluster_membership", admin_cluster_membership)
-        pulumi.set(__self__, "control_plane_node", control_plane_node)
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "on_prem_version", on_prem_version)
+        VMwareClusterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            admin_cluster_membership=admin_cluster_membership,
+            control_plane_node=control_plane_node,
+            location=location,
+            on_prem_version=on_prem_version,
+            annotations=annotations,
+            anti_affinity_groups=anti_affinity_groups,
+            authorization=authorization,
+            auto_repair_config=auto_repair_config,
+            dataplane_v2=dataplane_v2,
+            description=description,
+            enable_control_plane_v2=enable_control_plane_v2,
+            load_balancer=load_balancer,
+            name=name,
+            network_config=network_config,
+            project=project,
+            storage=storage,
+            upgrade_policy=upgrade_policy,
+            vm_tracking_enabled=vm_tracking_enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             admin_cluster_membership: pulumi.Input[str],
+             control_plane_node: pulumi.Input['VMwareClusterControlPlaneNodeArgs'],
+             location: pulumi.Input[str],
+             on_prem_version: pulumi.Input[str],
+             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             anti_affinity_groups: Optional[pulumi.Input['VMwareClusterAntiAffinityGroupsArgs']] = None,
+             authorization: Optional[pulumi.Input['VMwareClusterAuthorizationArgs']] = None,
+             auto_repair_config: Optional[pulumi.Input['VMwareClusterAutoRepairConfigArgs']] = None,
+             dataplane_v2: Optional[pulumi.Input['VMwareClusterDataplaneV2Args']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enable_control_plane_v2: Optional[pulumi.Input[bool]] = None,
+             load_balancer: Optional[pulumi.Input['VMwareClusterLoadBalancerArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_config: Optional[pulumi.Input['VMwareClusterNetworkConfigArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             storage: Optional[pulumi.Input['VMwareClusterStorageArgs']] = None,
+             upgrade_policy: Optional[pulumi.Input['VMwareClusterUpgradePolicyArgs']] = None,
+             vm_tracking_enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("admin_cluster_membership", admin_cluster_membership)
+        _setter("control_plane_node", control_plane_node)
+        _setter("location", location)
+        _setter("on_prem_version", on_prem_version)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if anti_affinity_groups is not None:
-            pulumi.set(__self__, "anti_affinity_groups", anti_affinity_groups)
+            _setter("anti_affinity_groups", anti_affinity_groups)
         if authorization is not None:
-            pulumi.set(__self__, "authorization", authorization)
+            _setter("authorization", authorization)
         if auto_repair_config is not None:
-            pulumi.set(__self__, "auto_repair_config", auto_repair_config)
+            _setter("auto_repair_config", auto_repair_config)
         if dataplane_v2 is not None:
-            pulumi.set(__self__, "dataplane_v2", dataplane_v2)
+            _setter("dataplane_v2", dataplane_v2)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enable_control_plane_v2 is not None:
-            pulumi.set(__self__, "enable_control_plane_v2", enable_control_plane_v2)
+            _setter("enable_control_plane_v2", enable_control_plane_v2)
         if load_balancer is not None:
-            pulumi.set(__self__, "load_balancer", load_balancer)
+            _setter("load_balancer", load_balancer)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_config is not None:
-            pulumi.set(__self__, "network_config", network_config)
+            _setter("network_config", network_config)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if storage is not None:
-            pulumi.set(__self__, "storage", storage)
+            _setter("storage", storage)
         if upgrade_policy is not None:
-            pulumi.set(__self__, "upgrade_policy", upgrade_policy)
+            _setter("upgrade_policy", upgrade_policy)
         if vm_tracking_enabled is not None:
-            pulumi.set(__self__, "vm_tracking_enabled", vm_tracking_enabled)
+            _setter("vm_tracking_enabled", vm_tracking_enabled)
 
     @property
     @pulumi.getter(name="adminClusterMembership")
@@ -456,68 +499,137 @@ class _VMwareClusterState:
                Structure is documented below.
         :param pulumi.Input[bool] vm_tracking_enabled: Enable VM tracking.
         """
+        _VMwareClusterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            admin_cluster_membership=admin_cluster_membership,
+            annotations=annotations,
+            anti_affinity_groups=anti_affinity_groups,
+            authorization=authorization,
+            auto_repair_config=auto_repair_config,
+            control_plane_node=control_plane_node,
+            create_time=create_time,
+            dataplane_v2=dataplane_v2,
+            delete_time=delete_time,
+            description=description,
+            enable_control_plane_v2=enable_control_plane_v2,
+            endpoint=endpoint,
+            etag=etag,
+            fleets=fleets,
+            load_balancer=load_balancer,
+            local_name=local_name,
+            location=location,
+            name=name,
+            network_config=network_config,
+            on_prem_version=on_prem_version,
+            project=project,
+            reconciling=reconciling,
+            state=state,
+            statuses=statuses,
+            storage=storage,
+            uid=uid,
+            update_time=update_time,
+            upgrade_policy=upgrade_policy,
+            validation_checks=validation_checks,
+            vcenters=vcenters,
+            vm_tracking_enabled=vm_tracking_enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             admin_cluster_membership: Optional[pulumi.Input[str]] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             anti_affinity_groups: Optional[pulumi.Input['VMwareClusterAntiAffinityGroupsArgs']] = None,
+             authorization: Optional[pulumi.Input['VMwareClusterAuthorizationArgs']] = None,
+             auto_repair_config: Optional[pulumi.Input['VMwareClusterAutoRepairConfigArgs']] = None,
+             control_plane_node: Optional[pulumi.Input['VMwareClusterControlPlaneNodeArgs']] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             dataplane_v2: Optional[pulumi.Input['VMwareClusterDataplaneV2Args']] = None,
+             delete_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enable_control_plane_v2: Optional[pulumi.Input[bool]] = None,
+             endpoint: Optional[pulumi.Input[str]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             fleets: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterFleetArgs']]]] = None,
+             load_balancer: Optional[pulumi.Input['VMwareClusterLoadBalancerArgs']] = None,
+             local_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_config: Optional[pulumi.Input['VMwareClusterNetworkConfigArgs']] = None,
+             on_prem_version: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             reconciling: Optional[pulumi.Input[bool]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             statuses: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterStatusArgs']]]] = None,
+             storage: Optional[pulumi.Input['VMwareClusterStorageArgs']] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             upgrade_policy: Optional[pulumi.Input['VMwareClusterUpgradePolicyArgs']] = None,
+             validation_checks: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckArgs']]]] = None,
+             vcenters: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArgs']]]] = None,
+             vm_tracking_enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if admin_cluster_membership is not None:
-            pulumi.set(__self__, "admin_cluster_membership", admin_cluster_membership)
+            _setter("admin_cluster_membership", admin_cluster_membership)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if anti_affinity_groups is not None:
-            pulumi.set(__self__, "anti_affinity_groups", anti_affinity_groups)
+            _setter("anti_affinity_groups", anti_affinity_groups)
         if authorization is not None:
-            pulumi.set(__self__, "authorization", authorization)
+            _setter("authorization", authorization)
         if auto_repair_config is not None:
-            pulumi.set(__self__, "auto_repair_config", auto_repair_config)
+            _setter("auto_repair_config", auto_repair_config)
         if control_plane_node is not None:
-            pulumi.set(__self__, "control_plane_node", control_plane_node)
+            _setter("control_plane_node", control_plane_node)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if dataplane_v2 is not None:
-            pulumi.set(__self__, "dataplane_v2", dataplane_v2)
+            _setter("dataplane_v2", dataplane_v2)
         if delete_time is not None:
-            pulumi.set(__self__, "delete_time", delete_time)
+            _setter("delete_time", delete_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enable_control_plane_v2 is not None:
-            pulumi.set(__self__, "enable_control_plane_v2", enable_control_plane_v2)
+            _setter("enable_control_plane_v2", enable_control_plane_v2)
         if endpoint is not None:
-            pulumi.set(__self__, "endpoint", endpoint)
+            _setter("endpoint", endpoint)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if fleets is not None:
-            pulumi.set(__self__, "fleets", fleets)
+            _setter("fleets", fleets)
         if load_balancer is not None:
-            pulumi.set(__self__, "load_balancer", load_balancer)
+            _setter("load_balancer", load_balancer)
         if local_name is not None:
-            pulumi.set(__self__, "local_name", local_name)
+            _setter("local_name", local_name)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_config is not None:
-            pulumi.set(__self__, "network_config", network_config)
+            _setter("network_config", network_config)
         if on_prem_version is not None:
-            pulumi.set(__self__, "on_prem_version", on_prem_version)
+            _setter("on_prem_version", on_prem_version)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if reconciling is not None:
-            pulumi.set(__self__, "reconciling", reconciling)
+            _setter("reconciling", reconciling)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if statuses is not None:
-            pulumi.set(__self__, "statuses", statuses)
+            _setter("statuses", statuses)
         if storage is not None:
-            pulumi.set(__self__, "storage", storage)
+            _setter("storage", storage)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
         if upgrade_policy is not None:
-            pulumi.set(__self__, "upgrade_policy", upgrade_policy)
+            _setter("upgrade_policy", upgrade_policy)
         if validation_checks is not None:
-            pulumi.set(__self__, "validation_checks", validation_checks)
+            _setter("validation_checks", validation_checks)
         if vcenters is not None:
-            pulumi.set(__self__, "vcenters", vcenters)
+            _setter("vcenters", vcenters)
         if vm_tracking_enabled is not None:
-            pulumi.set(__self__, "vm_tracking_enabled", vm_tracking_enabled)
+            _setter("vm_tracking_enabled", vm_tracking_enabled)
 
     @property
     @pulumi.getter(name="adminClusterMembership")
@@ -1467,6 +1579,10 @@ class VMwareCluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            VMwareClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1503,26 +1619,71 @@ class VMwareCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'admin_cluster_membership'")
             __props__.__dict__["admin_cluster_membership"] = admin_cluster_membership
             __props__.__dict__["annotations"] = annotations
+            if anti_affinity_groups is not None and not isinstance(anti_affinity_groups, VMwareClusterAntiAffinityGroupsArgs):
+                anti_affinity_groups = anti_affinity_groups or {}
+                def _setter(key, value):
+                    anti_affinity_groups[key] = value
+                VMwareClusterAntiAffinityGroupsArgs._configure(_setter, **anti_affinity_groups)
             __props__.__dict__["anti_affinity_groups"] = anti_affinity_groups
+            if authorization is not None and not isinstance(authorization, VMwareClusterAuthorizationArgs):
+                authorization = authorization or {}
+                def _setter(key, value):
+                    authorization[key] = value
+                VMwareClusterAuthorizationArgs._configure(_setter, **authorization)
             __props__.__dict__["authorization"] = authorization
+            if auto_repair_config is not None and not isinstance(auto_repair_config, VMwareClusterAutoRepairConfigArgs):
+                auto_repair_config = auto_repair_config or {}
+                def _setter(key, value):
+                    auto_repair_config[key] = value
+                VMwareClusterAutoRepairConfigArgs._configure(_setter, **auto_repair_config)
             __props__.__dict__["auto_repair_config"] = auto_repair_config
+            if control_plane_node is not None and not isinstance(control_plane_node, VMwareClusterControlPlaneNodeArgs):
+                control_plane_node = control_plane_node or {}
+                def _setter(key, value):
+                    control_plane_node[key] = value
+                VMwareClusterControlPlaneNodeArgs._configure(_setter, **control_plane_node)
             if control_plane_node is None and not opts.urn:
                 raise TypeError("Missing required property 'control_plane_node'")
             __props__.__dict__["control_plane_node"] = control_plane_node
+            if dataplane_v2 is not None and not isinstance(dataplane_v2, VMwareClusterDataplaneV2Args):
+                dataplane_v2 = dataplane_v2 or {}
+                def _setter(key, value):
+                    dataplane_v2[key] = value
+                VMwareClusterDataplaneV2Args._configure(_setter, **dataplane_v2)
             __props__.__dict__["dataplane_v2"] = dataplane_v2
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_control_plane_v2"] = enable_control_plane_v2
+            if load_balancer is not None and not isinstance(load_balancer, VMwareClusterLoadBalancerArgs):
+                load_balancer = load_balancer or {}
+                def _setter(key, value):
+                    load_balancer[key] = value
+                VMwareClusterLoadBalancerArgs._configure(_setter, **load_balancer)
             __props__.__dict__["load_balancer"] = load_balancer
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
+            if network_config is not None and not isinstance(network_config, VMwareClusterNetworkConfigArgs):
+                network_config = network_config or {}
+                def _setter(key, value):
+                    network_config[key] = value
+                VMwareClusterNetworkConfigArgs._configure(_setter, **network_config)
             __props__.__dict__["network_config"] = network_config
             if on_prem_version is None and not opts.urn:
                 raise TypeError("Missing required property 'on_prem_version'")
             __props__.__dict__["on_prem_version"] = on_prem_version
             __props__.__dict__["project"] = project
+            if storage is not None and not isinstance(storage, VMwareClusterStorageArgs):
+                storage = storage or {}
+                def _setter(key, value):
+                    storage[key] = value
+                VMwareClusterStorageArgs._configure(_setter, **storage)
             __props__.__dict__["storage"] = storage
+            if upgrade_policy is not None and not isinstance(upgrade_policy, VMwareClusterUpgradePolicyArgs):
+                upgrade_policy = upgrade_policy or {}
+                def _setter(key, value):
+                    upgrade_policy[key] = value
+                VMwareClusterUpgradePolicyArgs._configure(_setter, **upgrade_policy)
             __props__.__dict__["upgrade_policy"] = upgrade_policy
             __props__.__dict__["vm_tracking_enabled"] = vm_tracking_enabled
             __props__.__dict__["create_time"] = None

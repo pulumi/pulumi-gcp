@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,16 +37,33 @@ class CustomServiceArgs:
                label entries may be stored. For labels which do not have a semantic value,
                the empty string may be supplied for the label value.
         """
+        CustomServiceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            project=project,
+            service_id=service_id,
+            telemetry=telemetry,
+            user_labels=user_labels,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_id: Optional[pulumi.Input[str]] = None,
+             telemetry: Optional[pulumi.Input['CustomServiceTelemetryArgs']] = None,
+             user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if service_id is not None:
-            pulumi.set(__self__, "service_id", service_id)
+            _setter("service_id", service_id)
         if telemetry is not None:
-            pulumi.set(__self__, "telemetry", telemetry)
+            _setter("telemetry", telemetry)
         if user_labels is not None:
-            pulumi.set(__self__, "user_labels", user_labels)
+            _setter("user_labels", user_labels)
 
     @property
     @pulumi.getter(name="displayName")
@@ -144,18 +161,37 @@ class _CustomServiceState:
                label entries may be stored. For labels which do not have a semantic value,
                the empty string may be supplied for the label value.
         """
+        _CustomServiceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            name=name,
+            project=project,
+            service_id=service_id,
+            telemetry=telemetry,
+            user_labels=user_labels,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_id: Optional[pulumi.Input[str]] = None,
+             telemetry: Optional[pulumi.Input['CustomServiceTelemetryArgs']] = None,
+             user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if service_id is not None:
-            pulumi.set(__self__, "service_id", service_id)
+            _setter("service_id", service_id)
         if telemetry is not None:
-            pulumi.set(__self__, "telemetry", telemetry)
+            _setter("telemetry", telemetry)
         if user_labels is not None:
-            pulumi.set(__self__, "user_labels", user_labels)
+            _setter("user_labels", user_labels)
 
     @property
     @pulumi.getter(name="displayName")
@@ -362,6 +398,10 @@ class CustomService(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CustomServiceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -384,6 +424,11 @@ class CustomService(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["project"] = project
             __props__.__dict__["service_id"] = service_id
+            if telemetry is not None and not isinstance(telemetry, CustomServiceTelemetryArgs):
+                telemetry = telemetry or {}
+                def _setter(key, value):
+                    telemetry[key] = value
+                CustomServiceTelemetryArgs._configure(_setter, **telemetry)
             __props__.__dict__["telemetry"] = telemetry
             __props__.__dict__["user_labels"] = user_labels
             __props__.__dict__["name"] = None

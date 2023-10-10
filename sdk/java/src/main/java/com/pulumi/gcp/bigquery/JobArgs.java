@@ -22,6 +22,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Copies a table.
+     * Structure is documented below.
      * 
      */
     @Import(name="copy")
@@ -29,6 +30,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Copies a table.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<JobCopyArgs>> copy() {
@@ -37,6 +39,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Configures an extract job.
+     * Structure is documented below.
      * 
      */
     @Import(name="extract")
@@ -44,6 +47,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Configures an extract job.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<JobExtractArgs>> extract() {
@@ -97,6 +101,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Configures a load job.
+     * Structure is documented below.
      * 
      */
     @Import(name="load")
@@ -104,6 +109,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Configures a load job.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<JobLoadArgs>> load() {
@@ -143,14 +149,18 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configures a query job.
+     * SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+     * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+     * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = &#34;&#34;` and `write_disposition = &#34;&#34;`.
      * 
      */
     @Import(name="query")
     private @Nullable Output<JobQueryArgs> query;
 
     /**
-     * @return Configures a query job.
+     * @return SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+     * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+     * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = &#34;&#34;` and `write_disposition = &#34;&#34;`.
      * 
      */
     public Optional<Output<JobQueryArgs>> query() {
@@ -191,6 +201,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param copy Copies a table.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -202,6 +213,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param copy Copies a table.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -212,6 +224,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param extract Configures an extract job.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -223,6 +236,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param extract Configures an extract job.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -296,6 +310,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param load Configures a load job.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -307,6 +322,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param load Configures a load job.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -360,7 +376,9 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param query Configures a query job.
+         * @param query SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+         * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+         * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = &#34;&#34;` and `write_disposition = &#34;&#34;`.
          * 
          * @return builder
          * 
@@ -371,7 +389,9 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param query Configures a query job.
+         * @param query SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+         * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+         * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = &#34;&#34;` and `write_disposition = &#34;&#34;`.
          * 
          * @return builder
          * 

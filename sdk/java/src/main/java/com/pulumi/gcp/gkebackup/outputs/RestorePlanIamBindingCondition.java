@@ -12,11 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RestorePlanIamBindingCondition {
     /**
-     * @return The description is a user specified string description
-     * of the transformation rule.
-     * 
-     * (Optional)
-     * User specified descriptive string for this RestorePlan.
+     * @return User specified descriptive string for this RestorePlan.
      * 
      */
     private @Nullable String description;
@@ -25,11 +21,7 @@ public final class RestorePlanIamBindingCondition {
 
     private RestorePlanIamBindingCondition() {}
     /**
-     * @return The description is a user specified string description
-     * of the transformation rule.
-     * 
-     * (Optional)
-     * User specified descriptive string for this RestorePlan.
+     * @return User specified descriptive string for this RestorePlan.
      * 
      */
     public Optional<String> description() {

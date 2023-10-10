@@ -99,16 +99,12 @@ namespace Pulumi.Gcp.DataPlex
         /// <summary>
         /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
         /// Structure is documented below.
-        /// 
-        /// (Required)
-        /// Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
         /// </summary>
         [Output("notebook")]
         public Output<Outputs.TaskNotebook?> Notebook { get; private set; } = null!;
 
         /// <summary>
-        /// The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
-        /// 
+        /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
         [Output("project")]
@@ -247,16 +243,12 @@ namespace Pulumi.Gcp.DataPlex
         /// <summary>
         /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
         /// Structure is documented below.
-        /// 
-        /// (Required)
-        /// Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
         /// </summary>
         [Input("notebook")]
         public Input<Inputs.TaskNotebookArgs>? Notebook { get; set; }
 
         /// <summary>
-        /// The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
-        /// 
+        /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
@@ -362,16 +354,12 @@ namespace Pulumi.Gcp.DataPlex
         /// <summary>
         /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
         /// Structure is documented below.
-        /// 
-        /// (Required)
-        /// Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
         /// </summary>
         [Input("notebook")]
         public Input<Inputs.TaskNotebookGetArgs>? Notebook { get; set; }
 
         /// <summary>
-        /// The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
-        /// 
+        /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]

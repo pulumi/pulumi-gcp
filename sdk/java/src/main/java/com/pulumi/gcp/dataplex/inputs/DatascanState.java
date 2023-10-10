@@ -160,9 +160,6 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the scan.
-     * 
-     * (Optional)
      * Description of the rule.
      * The maximum length is 1,024 characters.
      * 
@@ -171,10 +168,7 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the scan.
-     * 
-     * (Optional)
-     * Description of the rule.
+     * @return Description of the rule.
      * The maximum length is 1,024 characters.
      * 
      */
@@ -613,10 +607,7 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the scan.
-         * 
-         * (Optional)
-         * Description of the rule.
+         * @param description Description of the rule.
          * The maximum length is 1,024 characters.
          * 
          * @return builder
@@ -628,10 +619,7 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the scan.
-         * 
-         * (Optional)
-         * Description of the rule.
+         * @param description Description of the rule.
          * The maximum length is 1,024 characters.
          * 
          * @return builder

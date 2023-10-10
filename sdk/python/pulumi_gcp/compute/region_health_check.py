@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -73,36 +73,73 @@ class RegionHealthCheckArgs:
         :param pulumi.Input[int] unhealthy_threshold: A so-far healthy instance will be marked unhealthy after this many
                consecutive failures. The default value is 2.
         """
+        RegionHealthCheckArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            check_interval_sec=check_interval_sec,
+            description=description,
+            grpc_health_check=grpc_health_check,
+            healthy_threshold=healthy_threshold,
+            http2_health_check=http2_health_check,
+            http_health_check=http_health_check,
+            https_health_check=https_health_check,
+            log_config=log_config,
+            name=name,
+            project=project,
+            region=region,
+            ssl_health_check=ssl_health_check,
+            tcp_health_check=tcp_health_check,
+            timeout_sec=timeout_sec,
+            unhealthy_threshold=unhealthy_threshold,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             check_interval_sec: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             grpc_health_check: Optional[pulumi.Input['RegionHealthCheckGrpcHealthCheckArgs']] = None,
+             healthy_threshold: Optional[pulumi.Input[int]] = None,
+             http2_health_check: Optional[pulumi.Input['RegionHealthCheckHttp2HealthCheckArgs']] = None,
+             http_health_check: Optional[pulumi.Input['RegionHealthCheckHttpHealthCheckArgs']] = None,
+             https_health_check: Optional[pulumi.Input['RegionHealthCheckHttpsHealthCheckArgs']] = None,
+             log_config: Optional[pulumi.Input['RegionHealthCheckLogConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             ssl_health_check: Optional[pulumi.Input['RegionHealthCheckSslHealthCheckArgs']] = None,
+             tcp_health_check: Optional[pulumi.Input['RegionHealthCheckTcpHealthCheckArgs']] = None,
+             timeout_sec: Optional[pulumi.Input[int]] = None,
+             unhealthy_threshold: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if check_interval_sec is not None:
-            pulumi.set(__self__, "check_interval_sec", check_interval_sec)
+            _setter("check_interval_sec", check_interval_sec)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if grpc_health_check is not None:
-            pulumi.set(__self__, "grpc_health_check", grpc_health_check)
+            _setter("grpc_health_check", grpc_health_check)
         if healthy_threshold is not None:
-            pulumi.set(__self__, "healthy_threshold", healthy_threshold)
+            _setter("healthy_threshold", healthy_threshold)
         if http2_health_check is not None:
-            pulumi.set(__self__, "http2_health_check", http2_health_check)
+            _setter("http2_health_check", http2_health_check)
         if http_health_check is not None:
-            pulumi.set(__self__, "http_health_check", http_health_check)
+            _setter("http_health_check", http_health_check)
         if https_health_check is not None:
-            pulumi.set(__self__, "https_health_check", https_health_check)
+            _setter("https_health_check", https_health_check)
         if log_config is not None:
-            pulumi.set(__self__, "log_config", log_config)
+            _setter("log_config", log_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if ssl_health_check is not None:
-            pulumi.set(__self__, "ssl_health_check", ssl_health_check)
+            _setter("ssl_health_check", ssl_health_check)
         if tcp_health_check is not None:
-            pulumi.set(__self__, "tcp_health_check", tcp_health_check)
+            _setter("tcp_health_check", tcp_health_check)
         if timeout_sec is not None:
-            pulumi.set(__self__, "timeout_sec", timeout_sec)
+            _setter("timeout_sec", timeout_sec)
         if unhealthy_threshold is not None:
-            pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
+            _setter("unhealthy_threshold", unhealthy_threshold)
 
     @property
     @pulumi.getter(name="checkIntervalSec")
@@ -375,42 +412,85 @@ class _RegionHealthCheckState:
         :param pulumi.Input[int] unhealthy_threshold: A so-far healthy instance will be marked unhealthy after this many
                consecutive failures. The default value is 2.
         """
+        _RegionHealthCheckState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            check_interval_sec=check_interval_sec,
+            creation_timestamp=creation_timestamp,
+            description=description,
+            grpc_health_check=grpc_health_check,
+            healthy_threshold=healthy_threshold,
+            http2_health_check=http2_health_check,
+            http_health_check=http_health_check,
+            https_health_check=https_health_check,
+            log_config=log_config,
+            name=name,
+            project=project,
+            region=region,
+            self_link=self_link,
+            ssl_health_check=ssl_health_check,
+            tcp_health_check=tcp_health_check,
+            timeout_sec=timeout_sec,
+            type=type,
+            unhealthy_threshold=unhealthy_threshold,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             check_interval_sec: Optional[pulumi.Input[int]] = None,
+             creation_timestamp: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             grpc_health_check: Optional[pulumi.Input['RegionHealthCheckGrpcHealthCheckArgs']] = None,
+             healthy_threshold: Optional[pulumi.Input[int]] = None,
+             http2_health_check: Optional[pulumi.Input['RegionHealthCheckHttp2HealthCheckArgs']] = None,
+             http_health_check: Optional[pulumi.Input['RegionHealthCheckHttpHealthCheckArgs']] = None,
+             https_health_check: Optional[pulumi.Input['RegionHealthCheckHttpsHealthCheckArgs']] = None,
+             log_config: Optional[pulumi.Input['RegionHealthCheckLogConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             ssl_health_check: Optional[pulumi.Input['RegionHealthCheckSslHealthCheckArgs']] = None,
+             tcp_health_check: Optional[pulumi.Input['RegionHealthCheckTcpHealthCheckArgs']] = None,
+             timeout_sec: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             unhealthy_threshold: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if check_interval_sec is not None:
-            pulumi.set(__self__, "check_interval_sec", check_interval_sec)
+            _setter("check_interval_sec", check_interval_sec)
         if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+            _setter("creation_timestamp", creation_timestamp)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if grpc_health_check is not None:
-            pulumi.set(__self__, "grpc_health_check", grpc_health_check)
+            _setter("grpc_health_check", grpc_health_check)
         if healthy_threshold is not None:
-            pulumi.set(__self__, "healthy_threshold", healthy_threshold)
+            _setter("healthy_threshold", healthy_threshold)
         if http2_health_check is not None:
-            pulumi.set(__self__, "http2_health_check", http2_health_check)
+            _setter("http2_health_check", http2_health_check)
         if http_health_check is not None:
-            pulumi.set(__self__, "http_health_check", http_health_check)
+            _setter("http_health_check", http_health_check)
         if https_health_check is not None:
-            pulumi.set(__self__, "https_health_check", https_health_check)
+            _setter("https_health_check", https_health_check)
         if log_config is not None:
-            pulumi.set(__self__, "log_config", log_config)
+            _setter("log_config", log_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if ssl_health_check is not None:
-            pulumi.set(__self__, "ssl_health_check", ssl_health_check)
+            _setter("ssl_health_check", ssl_health_check)
         if tcp_health_check is not None:
-            pulumi.set(__self__, "tcp_health_check", tcp_health_check)
+            _setter("tcp_health_check", tcp_health_check)
         if timeout_sec is not None:
-            pulumi.set(__self__, "timeout_sec", timeout_sec)
+            _setter("timeout_sec", timeout_sec)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if unhealthy_threshold is not None:
-            pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
+            _setter("unhealthy_threshold", unhealthy_threshold)
 
     @property
     @pulumi.getter(name="checkIntervalSec")
@@ -1240,6 +1320,10 @@ class RegionHealthCheck(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RegionHealthCheckArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1271,16 +1355,51 @@ class RegionHealthCheck(pulumi.CustomResource):
 
             __props__.__dict__["check_interval_sec"] = check_interval_sec
             __props__.__dict__["description"] = description
+            if grpc_health_check is not None and not isinstance(grpc_health_check, RegionHealthCheckGrpcHealthCheckArgs):
+                grpc_health_check = grpc_health_check or {}
+                def _setter(key, value):
+                    grpc_health_check[key] = value
+                RegionHealthCheckGrpcHealthCheckArgs._configure(_setter, **grpc_health_check)
             __props__.__dict__["grpc_health_check"] = grpc_health_check
             __props__.__dict__["healthy_threshold"] = healthy_threshold
+            if http2_health_check is not None and not isinstance(http2_health_check, RegionHealthCheckHttp2HealthCheckArgs):
+                http2_health_check = http2_health_check or {}
+                def _setter(key, value):
+                    http2_health_check[key] = value
+                RegionHealthCheckHttp2HealthCheckArgs._configure(_setter, **http2_health_check)
             __props__.__dict__["http2_health_check"] = http2_health_check
+            if http_health_check is not None and not isinstance(http_health_check, RegionHealthCheckHttpHealthCheckArgs):
+                http_health_check = http_health_check or {}
+                def _setter(key, value):
+                    http_health_check[key] = value
+                RegionHealthCheckHttpHealthCheckArgs._configure(_setter, **http_health_check)
             __props__.__dict__["http_health_check"] = http_health_check
+            if https_health_check is not None and not isinstance(https_health_check, RegionHealthCheckHttpsHealthCheckArgs):
+                https_health_check = https_health_check or {}
+                def _setter(key, value):
+                    https_health_check[key] = value
+                RegionHealthCheckHttpsHealthCheckArgs._configure(_setter, **https_health_check)
             __props__.__dict__["https_health_check"] = https_health_check
+            if log_config is not None and not isinstance(log_config, RegionHealthCheckLogConfigArgs):
+                log_config = log_config or {}
+                def _setter(key, value):
+                    log_config[key] = value
+                RegionHealthCheckLogConfigArgs._configure(_setter, **log_config)
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
+            if ssl_health_check is not None and not isinstance(ssl_health_check, RegionHealthCheckSslHealthCheckArgs):
+                ssl_health_check = ssl_health_check or {}
+                def _setter(key, value):
+                    ssl_health_check[key] = value
+                RegionHealthCheckSslHealthCheckArgs._configure(_setter, **ssl_health_check)
             __props__.__dict__["ssl_health_check"] = ssl_health_check
+            if tcp_health_check is not None and not isinstance(tcp_health_check, RegionHealthCheckTcpHealthCheckArgs):
+                tcp_health_check = tcp_health_check or {}
+                def _setter(key, value):
+                    tcp_health_check[key] = value
+                RegionHealthCheckTcpHealthCheckArgs._configure(_setter, **tcp_health_check)
             __props__.__dict__["tcp_health_check"] = tcp_health_check
             __props__.__dict__["timeout_sec"] = timeout_sec
             __props__.__dict__["unhealthy_threshold"] = unhealthy_threshold

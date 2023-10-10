@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -49,24 +49,49 @@ class NodeTemplateArgs:
                where the nodes should restart following a maintenance event.
                Structure is documented below.
         """
+        NodeTemplateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cpu_overcommit_type=cpu_overcommit_type,
+            description=description,
+            name=name,
+            node_affinity_labels=node_affinity_labels,
+            node_type=node_type,
+            node_type_flexibility=node_type_flexibility,
+            project=project,
+            region=region,
+            server_binding=server_binding,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cpu_overcommit_type: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             node_type: Optional[pulumi.Input[str]] = None,
+             node_type_flexibility: Optional[pulumi.Input['NodeTemplateNodeTypeFlexibilityArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             server_binding: Optional[pulumi.Input['NodeTemplateServerBindingArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cpu_overcommit_type is not None:
-            pulumi.set(__self__, "cpu_overcommit_type", cpu_overcommit_type)
+            _setter("cpu_overcommit_type", cpu_overcommit_type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if node_affinity_labels is not None:
-            pulumi.set(__self__, "node_affinity_labels", node_affinity_labels)
+            _setter("node_affinity_labels", node_affinity_labels)
         if node_type is not None:
-            pulumi.set(__self__, "node_type", node_type)
+            _setter("node_type", node_type)
         if node_type_flexibility is not None:
-            pulumi.set(__self__, "node_type_flexibility", node_type_flexibility)
+            _setter("node_type_flexibility", node_type_flexibility)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if server_binding is not None:
-            pulumi.set(__self__, "server_binding", server_binding)
+            _setter("server_binding", server_binding)
 
     @property
     @pulumi.getter(name="cpuOvercommitType")
@@ -229,28 +254,57 @@ class _NodeTemplateState:
                where the nodes should restart following a maintenance event.
                Structure is documented below.
         """
+        _NodeTemplateState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cpu_overcommit_type=cpu_overcommit_type,
+            creation_timestamp=creation_timestamp,
+            description=description,
+            name=name,
+            node_affinity_labels=node_affinity_labels,
+            node_type=node_type,
+            node_type_flexibility=node_type_flexibility,
+            project=project,
+            region=region,
+            self_link=self_link,
+            server_binding=server_binding,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cpu_overcommit_type: Optional[pulumi.Input[str]] = None,
+             creation_timestamp: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             node_type: Optional[pulumi.Input[str]] = None,
+             node_type_flexibility: Optional[pulumi.Input['NodeTemplateNodeTypeFlexibilityArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             server_binding: Optional[pulumi.Input['NodeTemplateServerBindingArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cpu_overcommit_type is not None:
-            pulumi.set(__self__, "cpu_overcommit_type", cpu_overcommit_type)
+            _setter("cpu_overcommit_type", cpu_overcommit_type)
         if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+            _setter("creation_timestamp", creation_timestamp)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if node_affinity_labels is not None:
-            pulumi.set(__self__, "node_affinity_labels", node_affinity_labels)
+            _setter("node_affinity_labels", node_affinity_labels)
         if node_type is not None:
-            pulumi.set(__self__, "node_type", node_type)
+            _setter("node_type", node_type)
         if node_type_flexibility is not None:
-            pulumi.set(__self__, "node_type_flexibility", node_type_flexibility)
+            _setter("node_type_flexibility", node_type_flexibility)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if server_binding is not None:
-            pulumi.set(__self__, "server_binding", server_binding)
+            _setter("server_binding", server_binding)
 
     @property
     @pulumi.getter(name="cpuOvercommitType")
@@ -572,6 +626,10 @@ class NodeTemplate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NodeTemplateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -600,9 +658,19 @@ class NodeTemplate(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["node_affinity_labels"] = node_affinity_labels
             __props__.__dict__["node_type"] = node_type
+            if node_type_flexibility is not None and not isinstance(node_type_flexibility, NodeTemplateNodeTypeFlexibilityArgs):
+                node_type_flexibility = node_type_flexibility or {}
+                def _setter(key, value):
+                    node_type_flexibility[key] = value
+                NodeTemplateNodeTypeFlexibilityArgs._configure(_setter, **node_type_flexibility)
             __props__.__dict__["node_type_flexibility"] = node_type_flexibility
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
+            if server_binding is not None and not isinstance(server_binding, NodeTemplateServerBindingArgs):
+                server_binding = server_binding or {}
+                def _setter(key, value):
+                    server_binding[key] = value
+                NodeTemplateServerBindingArgs._configure(_setter, **server_binding)
             __props__.__dict__["server_binding"] = server_binding
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["self_link"] = None

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -36,9 +36,20 @@ class ConnectionProfileAlloydbArgs:
         :param pulumi.Input['ConnectionProfileAlloydbSettingsArgs'] settings: Immutable. Metadata used to create the destination AlloyDB cluster.
                Structure is documented below.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
+        ConnectionProfileAlloydbArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            settings=settings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: pulumi.Input[str],
+             settings: Optional[pulumi.Input['ConnectionProfileAlloydbSettingsArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster_id", cluster_id)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -82,12 +93,27 @@ class ConnectionProfileAlloydbSettingsArgs:
         :param pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs'] primary_instance_settings: Settings for the cluster's primary instance
                Structure is documented below.
         """
-        pulumi.set(__self__, "initial_user", initial_user)
-        pulumi.set(__self__, "vpc_network", vpc_network)
+        ConnectionProfileAlloydbSettingsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            initial_user=initial_user,
+            vpc_network=vpc_network,
+            labels=labels,
+            primary_instance_settings=primary_instance_settings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             initial_user: pulumi.Input['ConnectionProfileAlloydbSettingsInitialUserArgs'],
+             vpc_network: pulumi.Input[str],
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             primary_instance_settings: Optional[pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("initial_user", initial_user)
+        _setter("vpc_network", vpc_network)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if primary_instance_settings is not None:
-            pulumi.set(__self__, "primary_instance_settings", primary_instance_settings)
+            _setter("primary_instance_settings", primary_instance_settings)
 
     @property
     @pulumi.getter(name="initialUser")
@@ -154,10 +180,23 @@ class ConnectionProfileAlloydbSettingsInitialUserArgs:
         :param pulumi.Input[bool] password_set: (Output)
                Output only. Indicates if the initialUser.password field has been set.
         """
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "user", user)
+        ConnectionProfileAlloydbSettingsInitialUserArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            password=password,
+            user=user,
+            password_set=password_set,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             password: pulumi.Input[str],
+             user: pulumi.Input[str],
+             password_set: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("password", password)
+        _setter("user", user)
         if password_set is not None:
-            pulumi.set(__self__, "password_set", password_set)
+            _setter("password_set", password_set)
 
     @property
     @pulumi.getter
@@ -215,14 +254,31 @@ class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs:
         :param pulumi.Input[str] private_ip: (Output)
                Output only. The private IP address for the Instance. This is the connection endpoint for an end-user application.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "machine_config", machine_config)
+        ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            machine_config=machine_config,
+            database_flags=database_flags,
+            labels=labels,
+            private_ip=private_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: pulumi.Input[str],
+             machine_config: pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs'],
+             database_flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             private_ip: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("machine_config", machine_config)
         if database_flags is not None:
-            pulumi.set(__self__, "database_flags", database_flags)
+            _setter("database_flags", database_flags)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if private_ip is not None:
-            pulumi.set(__self__, "private_ip", private_ip)
+            _setter("private_ip", private_ip)
 
     @property
     @pulumi.getter
@@ -294,7 +350,16 @@ class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs:
         """
         :param pulumi.Input[int] cpu_count: The number of CPU's in the VM instance.
         """
-        pulumi.set(__self__, "cpu_count", cpu_count)
+        ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cpu_count=cpu_count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cpu_count: pulumi.Input[int],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cpu_count", cpu_count)
 
     @property
     @pulumi.getter(name="cpuCount")
@@ -326,14 +391,29 @@ class ConnectionProfileCloudsqlArgs:
         :param pulumi.Input['ConnectionProfileCloudsqlSettingsArgs'] settings: Immutable. Metadata used to create the destination Cloud SQL database.
                Structure is documented below.
         """
+        ConnectionProfileCloudsqlArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cloud_sql_id=cloud_sql_id,
+            private_ip=private_ip,
+            public_ip=public_ip,
+            settings=settings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cloud_sql_id: Optional[pulumi.Input[str]] = None,
+             private_ip: Optional[pulumi.Input[str]] = None,
+             public_ip: Optional[pulumi.Input[str]] = None,
+             settings: Optional[pulumi.Input['ConnectionProfileCloudsqlSettingsArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cloud_sql_id is not None:
-            pulumi.set(__self__, "cloud_sql_id", cloud_sql_id)
+            _setter("cloud_sql_id", cloud_sql_id)
         if private_ip is not None:
-            pulumi.set(__self__, "private_ip", private_ip)
+            _setter("private_ip", private_ip)
         if public_ip is not None:
-            pulumi.set(__self__, "public_ip", public_ip)
+            _setter("public_ip", public_ip)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
 
     @property
     @pulumi.getter(name="cloudSqlId")
@@ -436,39 +516,80 @@ class ConnectionProfileCloudsqlSettingsArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs.
         :param pulumi.Input[str] zone: The Google Cloud Platform zone where your Cloud SQL datdabse instance is located.
         """
-        pulumi.set(__self__, "source_id", source_id)
+        ConnectionProfileCloudsqlSettingsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            source_id=source_id,
+            activation_policy=activation_policy,
+            auto_storage_increase=auto_storage_increase,
+            cmek_key_name=cmek_key_name,
+            collation=collation,
+            data_disk_size_gb=data_disk_size_gb,
+            data_disk_type=data_disk_type,
+            database_flags=database_flags,
+            database_version=database_version,
+            edition=edition,
+            ip_config=ip_config,
+            root_password=root_password,
+            root_password_set=root_password_set,
+            storage_auto_resize_limit=storage_auto_resize_limit,
+            tier=tier,
+            user_labels=user_labels,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             source_id: pulumi.Input[str],
+             activation_policy: Optional[pulumi.Input[str]] = None,
+             auto_storage_increase: Optional[pulumi.Input[bool]] = None,
+             cmek_key_name: Optional[pulumi.Input[str]] = None,
+             collation: Optional[pulumi.Input[str]] = None,
+             data_disk_size_gb: Optional[pulumi.Input[str]] = None,
+             data_disk_type: Optional[pulumi.Input[str]] = None,
+             database_flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             database_version: Optional[pulumi.Input[str]] = None,
+             edition: Optional[pulumi.Input[str]] = None,
+             ip_config: Optional[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigArgs']] = None,
+             root_password: Optional[pulumi.Input[str]] = None,
+             root_password_set: Optional[pulumi.Input[bool]] = None,
+             storage_auto_resize_limit: Optional[pulumi.Input[str]] = None,
+             tier: Optional[pulumi.Input[str]] = None,
+             user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("source_id", source_id)
         if activation_policy is not None:
-            pulumi.set(__self__, "activation_policy", activation_policy)
+            _setter("activation_policy", activation_policy)
         if auto_storage_increase is not None:
-            pulumi.set(__self__, "auto_storage_increase", auto_storage_increase)
+            _setter("auto_storage_increase", auto_storage_increase)
         if cmek_key_name is not None:
-            pulumi.set(__self__, "cmek_key_name", cmek_key_name)
+            _setter("cmek_key_name", cmek_key_name)
         if collation is not None:
-            pulumi.set(__self__, "collation", collation)
+            _setter("collation", collation)
         if data_disk_size_gb is not None:
-            pulumi.set(__self__, "data_disk_size_gb", data_disk_size_gb)
+            _setter("data_disk_size_gb", data_disk_size_gb)
         if data_disk_type is not None:
-            pulumi.set(__self__, "data_disk_type", data_disk_type)
+            _setter("data_disk_type", data_disk_type)
         if database_flags is not None:
-            pulumi.set(__self__, "database_flags", database_flags)
+            _setter("database_flags", database_flags)
         if database_version is not None:
-            pulumi.set(__self__, "database_version", database_version)
+            _setter("database_version", database_version)
         if edition is not None:
-            pulumi.set(__self__, "edition", edition)
+            _setter("edition", edition)
         if ip_config is not None:
-            pulumi.set(__self__, "ip_config", ip_config)
+            _setter("ip_config", ip_config)
         if root_password is not None:
-            pulumi.set(__self__, "root_password", root_password)
+            _setter("root_password", root_password)
         if root_password_set is not None:
-            pulumi.set(__self__, "root_password_set", root_password_set)
+            _setter("root_password_set", root_password_set)
         if storage_auto_resize_limit is not None:
-            pulumi.set(__self__, "storage_auto_resize_limit", storage_auto_resize_limit)
+            _setter("storage_auto_resize_limit", storage_auto_resize_limit)
         if tier is not None:
-            pulumi.set(__self__, "tier", tier)
+            _setter("tier", tier)
         if user_labels is not None:
-            pulumi.set(__self__, "user_labels", user_labels)
+            _setter("user_labels", user_labels)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter(name="sourceId")
@@ -699,14 +820,29 @@ class ConnectionProfileCloudsqlSettingsIpConfigArgs:
                This setting can be updated, but it cannot be removed after it is set.
         :param pulumi.Input[bool] require_ssl: Whether SSL connections over IP should be enforced or not.
         """
+        ConnectionProfileCloudsqlSettingsIpConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authorized_networks=authorized_networks,
+            enable_ipv4=enable_ipv4,
+            private_network=private_network,
+            require_ssl=require_ssl,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs']]]] = None,
+             enable_ipv4: Optional[pulumi.Input[bool]] = None,
+             private_network: Optional[pulumi.Input[str]] = None,
+             require_ssl: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if authorized_networks is not None:
-            pulumi.set(__self__, "authorized_networks", authorized_networks)
+            _setter("authorized_networks", authorized_networks)
         if enable_ipv4 is not None:
-            pulumi.set(__self__, "enable_ipv4", enable_ipv4)
+            _setter("enable_ipv4", enable_ipv4)
         if private_network is not None:
-            pulumi.set(__self__, "private_network", private_network)
+            _setter("private_network", private_network)
         if require_ssl is not None:
-            pulumi.set(__self__, "require_ssl", require_ssl)
+            _setter("require_ssl", require_ssl)
 
     @property
     @pulumi.getter(name="authorizedNetworks")
@@ -772,13 +908,28 @@ class ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs:
         :param pulumi.Input[str] label: A label to identify this entry.
         :param pulumi.Input[str] ttl: Input only. The time-to-leave of this access control entry.
         """
-        pulumi.set(__self__, "value", value)
+        ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            value=value,
+            expire_time=expire_time,
+            label=label,
+            ttl=ttl,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             value: pulumi.Input[str],
+             expire_time: Optional[pulumi.Input[str]] = None,
+             label: Optional[pulumi.Input[str]] = None,
+             ttl: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("value", value)
         if expire_time is not None:
-            pulumi.set(__self__, "expire_time", expire_time)
+            _setter("expire_time", expire_time)
         if label is not None:
-            pulumi.set(__self__, "label", label)
+            _setter("label", label)
         if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
+            _setter("ttl", ttl)
 
     @property
     @pulumi.getter
@@ -843,12 +994,25 @@ class ConnectionProfileErrorArgs:
         :param pulumi.Input[str] message: (Output)
                Human readable message indicating details about the current status.
         """
+        ConnectionProfileErrorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code=code,
+            details=details,
+            message=message,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code: Optional[pulumi.Input[int]] = None,
+             details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if code is not None:
-            pulumi.set(__self__, "code", code)
+            _setter("code", code)
         if details is not None:
-            pulumi.set(__self__, "details", details)
+            _setter("details", details)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
 
     @property
     @pulumi.getter
@@ -913,16 +1077,37 @@ class ConnectionProfileMysqlArgs:
         :param pulumi.Input['ConnectionProfileMysqlSslArgs'] ssl: SSL configuration for the destination to connect to the source database.
                Structure is documented below.
         """
-        pulumi.set(__self__, "host", host)
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "username", username)
+        ConnectionProfileMysqlArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host=host,
+            password=password,
+            port=port,
+            username=username,
+            cloud_sql_id=cloud_sql_id,
+            password_set=password_set,
+            ssl=ssl,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host: pulumi.Input[str],
+             password: pulumi.Input[str],
+             port: pulumi.Input[int],
+             username: pulumi.Input[str],
+             cloud_sql_id: Optional[pulumi.Input[str]] = None,
+             password_set: Optional[pulumi.Input[bool]] = None,
+             ssl: Optional[pulumi.Input['ConnectionProfileMysqlSslArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("host", host)
+        _setter("password", password)
+        _setter("port", port)
+        _setter("username", username)
         if cloud_sql_id is not None:
-            pulumi.set(__self__, "cloud_sql_id", cloud_sql_id)
+            _setter("cloud_sql_id", cloud_sql_id)
         if password_set is not None:
-            pulumi.set(__self__, "password_set", password_set)
+            _setter("password_set", password_set)
         if ssl is not None:
-            pulumi.set(__self__, "ssl", ssl)
+            _setter("ssl", ssl)
 
     @property
     @pulumi.getter
@@ -1033,13 +1218,28 @@ class ConnectionProfileMysqlSslArgs:
         :param pulumi.Input[str] type: (Output)
                The current connection profile state.
         """
-        pulumi.set(__self__, "ca_certificate", ca_certificate)
+        ConnectionProfileMysqlSslArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ca_certificate=ca_certificate,
+            client_certificate=client_certificate,
+            client_key=client_key,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ca_certificate: pulumi.Input[str],
+             client_certificate: Optional[pulumi.Input[str]] = None,
+             client_key: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ca_certificate", ca_certificate)
         if client_certificate is not None:
-            pulumi.set(__self__, "client_certificate", client_certificate)
+            _setter("client_certificate", client_certificate)
         if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
+            _setter("client_key", client_key)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="caCertificate")
@@ -1123,18 +1323,41 @@ class ConnectionProfilePostgresqlArgs:
         :param pulumi.Input['ConnectionProfilePostgresqlSslArgs'] ssl: SSL configuration for the destination to connect to the source database.
                Structure is documented below.
         """
-        pulumi.set(__self__, "host", host)
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "username", username)
+        ConnectionProfilePostgresqlArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host=host,
+            password=password,
+            port=port,
+            username=username,
+            cloud_sql_id=cloud_sql_id,
+            network_architecture=network_architecture,
+            password_set=password_set,
+            ssl=ssl,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host: pulumi.Input[str],
+             password: pulumi.Input[str],
+             port: pulumi.Input[int],
+             username: pulumi.Input[str],
+             cloud_sql_id: Optional[pulumi.Input[str]] = None,
+             network_architecture: Optional[pulumi.Input[str]] = None,
+             password_set: Optional[pulumi.Input[bool]] = None,
+             ssl: Optional[pulumi.Input['ConnectionProfilePostgresqlSslArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("host", host)
+        _setter("password", password)
+        _setter("port", port)
+        _setter("username", username)
         if cloud_sql_id is not None:
-            pulumi.set(__self__, "cloud_sql_id", cloud_sql_id)
+            _setter("cloud_sql_id", cloud_sql_id)
         if network_architecture is not None:
-            pulumi.set(__self__, "network_architecture", network_architecture)
+            _setter("network_architecture", network_architecture)
         if password_set is not None:
-            pulumi.set(__self__, "password_set", password_set)
+            _setter("password_set", password_set)
         if ssl is not None:
-            pulumi.set(__self__, "ssl", ssl)
+            _setter("ssl", ssl)
 
     @property
     @pulumi.getter
@@ -1258,13 +1481,28 @@ class ConnectionProfilePostgresqlSslArgs:
         :param pulumi.Input[str] type: (Output)
                The current connection profile state.
         """
-        pulumi.set(__self__, "ca_certificate", ca_certificate)
+        ConnectionProfilePostgresqlSslArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ca_certificate=ca_certificate,
+            client_certificate=client_certificate,
+            client_key=client_key,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ca_certificate: pulumi.Input[str],
+             client_certificate: Optional[pulumi.Input[str]] = None,
+             client_key: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ca_certificate", ca_certificate)
         if client_certificate is not None:
-            pulumi.set(__self__, "client_certificate", client_certificate)
+            _setter("client_certificate", client_certificate)
         if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
+            _setter("client_key", client_key)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="caCertificate")

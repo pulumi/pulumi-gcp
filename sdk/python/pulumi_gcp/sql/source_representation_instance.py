@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SourceRepresentationInstanceArgs', 'SourceRepresentationInstance']
@@ -49,28 +49,59 @@ class SourceRepresentationInstanceArgs:
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] username: The replication user account on the external server.
         """
-        pulumi.set(__self__, "database_version", database_version)
-        pulumi.set(__self__, "host", host)
+        SourceRepresentationInstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            database_version=database_version,
+            host=host,
+            ca_certificate=ca_certificate,
+            client_certificate=client_certificate,
+            client_key=client_key,
+            dump_file_path=dump_file_path,
+            name=name,
+            password=password,
+            port=port,
+            project=project,
+            region=region,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             database_version: pulumi.Input[str],
+             host: pulumi.Input[str],
+             ca_certificate: Optional[pulumi.Input[str]] = None,
+             client_certificate: Optional[pulumi.Input[str]] = None,
+             client_key: Optional[pulumi.Input[str]] = None,
+             dump_file_path: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("database_version", database_version)
+        _setter("host", host)
         if ca_certificate is not None:
-            pulumi.set(__self__, "ca_certificate", ca_certificate)
+            _setter("ca_certificate", ca_certificate)
         if client_certificate is not None:
-            pulumi.set(__self__, "client_certificate", client_certificate)
+            _setter("client_certificate", client_certificate)
         if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
+            _setter("client_key", client_key)
         if dump_file_path is not None:
-            pulumi.set(__self__, "dump_file_path", dump_file_path)
+            _setter("dump_file_path", dump_file_path)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if username is not None:
-            pulumi.set(__self__, "username", username)
+            _setter("username", username)
 
     @property
     @pulumi.getter(name="databaseVersion")
@@ -263,30 +294,61 @@ class _SourceRepresentationInstanceState:
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] username: The replication user account on the external server.
         """
+        _SourceRepresentationInstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ca_certificate=ca_certificate,
+            client_certificate=client_certificate,
+            client_key=client_key,
+            database_version=database_version,
+            dump_file_path=dump_file_path,
+            host=host,
+            name=name,
+            password=password,
+            port=port,
+            project=project,
+            region=region,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ca_certificate: Optional[pulumi.Input[str]] = None,
+             client_certificate: Optional[pulumi.Input[str]] = None,
+             client_key: Optional[pulumi.Input[str]] = None,
+             database_version: Optional[pulumi.Input[str]] = None,
+             dump_file_path: Optional[pulumi.Input[str]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ca_certificate is not None:
-            pulumi.set(__self__, "ca_certificate", ca_certificate)
+            _setter("ca_certificate", ca_certificate)
         if client_certificate is not None:
-            pulumi.set(__self__, "client_certificate", client_certificate)
+            _setter("client_certificate", client_certificate)
         if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
+            _setter("client_key", client_key)
         if database_version is not None:
-            pulumi.set(__self__, "database_version", database_version)
+            _setter("database_version", database_version)
         if dump_file_path is not None:
-            pulumi.set(__self__, "dump_file_path", dump_file_path)
+            _setter("dump_file_path", dump_file_path)
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if username is not None:
-            pulumi.set(__self__, "username", username)
+            _setter("username", username)
 
     @property
     @pulumi.getter(name="caCertificate")
@@ -616,6 +678,10 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SourceRepresentationInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

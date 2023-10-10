@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -69,12 +69,25 @@ class DeliveryPipelineCondition(dict):
                  pipeline_ready_conditions: Optional[Sequence['outputs.DeliveryPipelineConditionPipelineReadyCondition']] = None,
                  targets_present_conditions: Optional[Sequence['outputs.DeliveryPipelineConditionTargetsPresentCondition']] = None,
                  targets_type_conditions: Optional[Sequence['outputs.DeliveryPipelineConditionTargetsTypeCondition']] = None):
+        DeliveryPipelineCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pipeline_ready_conditions=pipeline_ready_conditions,
+            targets_present_conditions=targets_present_conditions,
+            targets_type_conditions=targets_type_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pipeline_ready_conditions: Optional[Sequence['outputs.DeliveryPipelineConditionPipelineReadyCondition']] = None,
+             targets_present_conditions: Optional[Sequence['outputs.DeliveryPipelineConditionTargetsPresentCondition']] = None,
+             targets_type_conditions: Optional[Sequence['outputs.DeliveryPipelineConditionTargetsTypeCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if pipeline_ready_conditions is not None:
-            pulumi.set(__self__, "pipeline_ready_conditions", pipeline_ready_conditions)
+            _setter("pipeline_ready_conditions", pipeline_ready_conditions)
         if targets_present_conditions is not None:
-            pulumi.set(__self__, "targets_present_conditions", targets_present_conditions)
+            _setter("targets_present_conditions", targets_present_conditions)
         if targets_type_conditions is not None:
-            pulumi.set(__self__, "targets_type_conditions", targets_type_conditions)
+            _setter("targets_type_conditions", targets_type_conditions)
 
     @property
     @pulumi.getter(name="pipelineReadyConditions")
@@ -117,10 +130,21 @@ class DeliveryPipelineConditionPipelineReadyCondition(dict):
         """
         :param str update_time: Output only. Most recent time at which the pipeline was updated.
         """
+        DeliveryPipelineConditionPipelineReadyCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            status=status,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             status: Optional[bool] = None,
+             update_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter
@@ -164,12 +188,25 @@ class DeliveryPipelineConditionTargetsPresentCondition(dict):
         """
         :param str update_time: Output only. Most recent time at which the pipeline was updated.
         """
+        DeliveryPipelineConditionTargetsPresentCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            missing_targets=missing_targets,
+            status=status,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             missing_targets: Optional[Sequence[str]] = None,
+             status: Optional[bool] = None,
+             update_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if missing_targets is not None:
-            pulumi.set(__self__, "missing_targets", missing_targets)
+            _setter("missing_targets", missing_targets)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="missingTargets")
@@ -212,10 +249,21 @@ class DeliveryPipelineConditionTargetsTypeCondition(dict):
     def __init__(__self__, *,
                  error_details: Optional[str] = None,
                  status: Optional[bool] = None):
+        DeliveryPipelineConditionTargetsTypeCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            error_details=error_details,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             error_details: Optional[str] = None,
+             status: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if error_details is not None:
-            pulumi.set(__self__, "error_details", error_details)
+            _setter("error_details", error_details)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="errorDetails")
@@ -235,8 +283,17 @@ class DeliveryPipelineSerialPipeline(dict):
         """
         :param Sequence['DeliveryPipelineSerialPipelineStageArgs'] stages: Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
         """
+        DeliveryPipelineSerialPipeline._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            stages=stages,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             stages: Optional[Sequence['outputs.DeliveryPipelineSerialPipelineStage']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if stages is not None:
-            pulumi.set(__self__, "stages", stages)
+            _setter("stages", stages)
 
     @property
     @pulumi.getter
@@ -279,14 +336,29 @@ class DeliveryPipelineSerialPipelineStage(dict):
         :param 'DeliveryPipelineSerialPipelineStageStrategyArgs' strategy: Optional. The strategy to use for a `Rollout` to this stage.
         :param str target_id: The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
         """
+        DeliveryPipelineSerialPipelineStage._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            deploy_parameters=deploy_parameters,
+            profiles=profiles,
+            strategy=strategy,
+            target_id=target_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             deploy_parameters: Optional[Sequence['outputs.DeliveryPipelineSerialPipelineStageDeployParameter']] = None,
+             profiles: Optional[Sequence[str]] = None,
+             strategy: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategy'] = None,
+             target_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if deploy_parameters is not None:
-            pulumi.set(__self__, "deploy_parameters", deploy_parameters)
+            _setter("deploy_parameters", deploy_parameters)
         if profiles is not None:
-            pulumi.set(__self__, "profiles", profiles)
+            _setter("profiles", profiles)
         if strategy is not None:
-            pulumi.set(__self__, "strategy", strategy)
+            _setter("strategy", strategy)
         if target_id is not None:
-            pulumi.set(__self__, "target_id", target_id)
+            _setter("target_id", target_id)
 
     @property
     @pulumi.getter(name="deployParameters")
@@ -347,9 +419,20 @@ class DeliveryPipelineSerialPipelineStageDeployParameter(dict):
         :param Mapping[str, str] values: Required. Values are deploy parameters in key-value pairs.
         :param Mapping[str, str] match_target_labels: Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).
         """
-        pulumi.set(__self__, "values", values)
+        DeliveryPipelineSerialPipelineStageDeployParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            values=values,
+            match_target_labels=match_target_labels,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             values: Mapping[str, str],
+             match_target_labels: Optional[Mapping[str, str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("values", values)
         if match_target_labels is not None:
-            pulumi.set(__self__, "match_target_labels", match_target_labels)
+            _setter("match_target_labels", match_target_labels)
 
     @property
     @pulumi.getter
@@ -377,10 +460,21 @@ class DeliveryPipelineSerialPipelineStageStrategy(dict):
         :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryArgs' canary: Canary deployment strategy provides progressive percentage based deployments to a Target.
         :param 'DeliveryPipelineSerialPipelineStageStrategyStandardArgs' standard: Standard deployment strategy executes a single deploy and allows verifying the deployment.
         """
+        DeliveryPipelineSerialPipelineStageStrategy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            canary=canary,
+            standard=standard,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             canary: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanary'] = None,
+             standard: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyStandard'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if canary is not None:
-            pulumi.set(__self__, "canary", canary)
+            _setter("canary", canary)
         if standard is not None:
-            pulumi.set(__self__, "standard", standard)
+            _setter("standard", standard)
 
     @property
     @pulumi.getter
@@ -431,12 +525,25 @@ class DeliveryPipelineSerialPipelineStageStrategyCanary(dict):
         :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs' custom_canary_deployment: Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
         :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs' runtime_config: Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
         """
+        DeliveryPipelineSerialPipelineStageStrategyCanary._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            canary_deployment=canary_deployment,
+            custom_canary_deployment=custom_canary_deployment,
+            runtime_config=runtime_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             canary_deployment: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment'] = None,
+             custom_canary_deployment: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment'] = None,
+             runtime_config: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if canary_deployment is not None:
-            pulumi.set(__self__, "canary_deployment", canary_deployment)
+            _setter("canary_deployment", canary_deployment)
         if custom_canary_deployment is not None:
-            pulumi.set(__self__, "custom_canary_deployment", custom_canary_deployment)
+            _setter("custom_canary_deployment", custom_canary_deployment)
         if runtime_config is not None:
-            pulumi.set(__self__, "runtime_config", runtime_config)
+            _setter("runtime_config", runtime_config)
 
     @property
     @pulumi.getter(name="canaryDeployment")
@@ -476,13 +583,28 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment(dict):
         :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs' predeploy: (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
         :param bool verify: Whether to run verify tests after each percentage deployment.
         """
-        pulumi.set(__self__, "percentages", percentages)
+        DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            percentages=percentages,
+            postdeploy=postdeploy,
+            predeploy=predeploy,
+            verify=verify,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             percentages: Sequence[int],
+             postdeploy: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy'] = None,
+             predeploy: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy'] = None,
+             verify: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("percentages", percentages)
         if postdeploy is not None:
-            pulumi.set(__self__, "postdeploy", postdeploy)
+            _setter("postdeploy", postdeploy)
         if predeploy is not None:
-            pulumi.set(__self__, "predeploy", predeploy)
+            _setter("predeploy", predeploy)
         if verify is not None:
-            pulumi.set(__self__, "verify", verify)
+            _setter("verify", verify)
 
     @property
     @pulumi.getter
@@ -524,8 +646,17 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeplo
         """
         :param Sequence[str] actions: Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
         """
+        DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            actions=actions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             actions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if actions is not None:
-            pulumi.set(__self__, "actions", actions)
+            _setter("actions", actions)
 
     @property
     @pulumi.getter
@@ -543,8 +674,17 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy
         """
         :param Sequence[str] actions: Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
         """
+        DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            actions=actions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             actions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if actions is not None:
-            pulumi.set(__self__, "actions", actions)
+            _setter("actions", actions)
 
     @property
     @pulumi.getter
@@ -579,7 +719,16 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment(di
         """
         :param Sequence['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs'] phase_configs: Required. Configuration for each phase in the canary deployment in the order executed.
         """
-        pulumi.set(__self__, "phase_configs", phase_configs)
+        DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            phase_configs=phase_configs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             phase_configs: Sequence['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("phase_configs", phase_configs)
 
     @property
     @pulumi.getter(name="phaseConfigs")
@@ -626,16 +775,35 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
                
                - - -
         """
-        pulumi.set(__self__, "percentage", percentage)
-        pulumi.set(__self__, "phase_id", phase_id)
+        DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            percentage=percentage,
+            phase_id=phase_id,
+            postdeploy=postdeploy,
+            predeploy=predeploy,
+            profiles=profiles,
+            verify=verify,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             percentage: int,
+             phase_id: str,
+             postdeploy: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy'] = None,
+             predeploy: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy'] = None,
+             profiles: Optional[Sequence[str]] = None,
+             verify: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("percentage", percentage)
+        _setter("phase_id", phase_id)
         if postdeploy is not None:
-            pulumi.set(__self__, "postdeploy", postdeploy)
+            _setter("postdeploy", postdeploy)
         if predeploy is not None:
-            pulumi.set(__self__, "predeploy", predeploy)
+            _setter("predeploy", predeploy)
         if profiles is not None:
-            pulumi.set(__self__, "profiles", profiles)
+            _setter("profiles", profiles)
         if verify is not None:
-            pulumi.set(__self__, "verify", verify)
+            _setter("verify", verify)
 
     @property
     @pulumi.getter
@@ -695,8 +863,17 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
         """
         :param Sequence[str] actions: Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
         """
+        DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            actions=actions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             actions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if actions is not None:
-            pulumi.set(__self__, "actions", actions)
+            _setter("actions", actions)
 
     @property
     @pulumi.getter
@@ -714,8 +891,17 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
         """
         :param Sequence[str] actions: Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
         """
+        DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            actions=actions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             actions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if actions is not None:
-            pulumi.set(__self__, "actions", actions)
+            _setter("actions", actions)
 
     @property
     @pulumi.getter
@@ -752,10 +938,21 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig(dict):
         :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs' cloud_run: Cloud Run runtime configuration.
         :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs' kubernetes: Kubernetes runtime configuration.
         """
+        DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cloud_run=cloud_run,
+            kubernetes=kubernetes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cloud_run: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun'] = None,
+             kubernetes: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cloud_run is not None:
-            pulumi.set(__self__, "cloud_run", cloud_run)
+            _setter("cloud_run", cloud_run)
         if kubernetes is not None:
-            pulumi.set(__self__, "kubernetes", kubernetes)
+            _setter("kubernetes", kubernetes)
 
     @property
     @pulumi.getter(name="cloudRun")
@@ -798,8 +995,17 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun(dic
         """
         :param bool automatic_traffic_control: Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
         """
+        DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            automatic_traffic_control=automatic_traffic_control,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             automatic_traffic_control: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if automatic_traffic_control is not None:
-            pulumi.set(__self__, "automatic_traffic_control", automatic_traffic_control)
+            _setter("automatic_traffic_control", automatic_traffic_control)
 
     @property
     @pulumi.getter(name="automaticTrafficControl")
@@ -838,10 +1044,21 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes(d
         :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs' gateway_service_mesh: Kubernetes Gateway API service mesh configuration.
         :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs' service_networking: Kubernetes Service networking configuration.
         """
+        DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            gateway_service_mesh=gateway_service_mesh,
+            service_networking=service_networking,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             gateway_service_mesh: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh'] = None,
+             service_networking: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if gateway_service_mesh is not None:
-            pulumi.set(__self__, "gateway_service_mesh", gateway_service_mesh)
+            _setter("gateway_service_mesh", gateway_service_mesh)
         if service_networking is not None:
-            pulumi.set(__self__, "service_networking", service_networking)
+            _setter("service_networking", service_networking)
 
     @property
     @pulumi.getter(name="gatewayServiceMesh")
@@ -892,11 +1109,26 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGa
         :param str service: Required. Name of the Kubernetes Service.
         :param str route_update_wait_time: Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
         """
-        pulumi.set(__self__, "deployment", deployment)
-        pulumi.set(__self__, "http_route", http_route)
-        pulumi.set(__self__, "service", service)
+        DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            deployment=deployment,
+            http_route=http_route,
+            service=service,
+            route_update_wait_time=route_update_wait_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             deployment: str,
+             http_route: str,
+             service: str,
+             route_update_wait_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("deployment", deployment)
+        _setter("http_route", http_route)
+        _setter("service", service)
         if route_update_wait_time is not None:
-            pulumi.set(__self__, "route_update_wait_time", route_update_wait_time)
+            _setter("route_update_wait_time", route_update_wait_time)
 
     @property
     @pulumi.getter
@@ -959,10 +1191,23 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesSe
         :param str service: Required. Name of the Kubernetes Service.
         :param bool disable_pod_overprovisioning: Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
         """
-        pulumi.set(__self__, "deployment", deployment)
-        pulumi.set(__self__, "service", service)
+        DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            deployment=deployment,
+            service=service,
+            disable_pod_overprovisioning=disable_pod_overprovisioning,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             deployment: str,
+             service: str,
+             disable_pod_overprovisioning: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("deployment", deployment)
+        _setter("service", service)
         if disable_pod_overprovisioning is not None:
-            pulumi.set(__self__, "disable_pod_overprovisioning", disable_pod_overprovisioning)
+            _setter("disable_pod_overprovisioning", disable_pod_overprovisioning)
 
     @property
     @pulumi.getter
@@ -1000,12 +1245,25 @@ class DeliveryPipelineSerialPipelineStageStrategyStandard(dict):
         :param 'DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs' predeploy: (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
         :param bool verify: Whether to verify a deployment.
         """
+        DeliveryPipelineSerialPipelineStageStrategyStandard._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            postdeploy=postdeploy,
+            predeploy=predeploy,
+            verify=verify,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             postdeploy: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy'] = None,
+             predeploy: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy'] = None,
+             verify: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if postdeploy is not None:
-            pulumi.set(__self__, "postdeploy", postdeploy)
+            _setter("postdeploy", postdeploy)
         if predeploy is not None:
-            pulumi.set(__self__, "predeploy", predeploy)
+            _setter("predeploy", predeploy)
         if verify is not None:
-            pulumi.set(__self__, "verify", verify)
+            _setter("verify", verify)
 
     @property
     @pulumi.getter
@@ -1039,8 +1297,17 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy(dict):
         """
         :param Sequence[str] actions: Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
         """
+        DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            actions=actions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             actions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if actions is not None:
-            pulumi.set(__self__, "actions", actions)
+            _setter("actions", actions)
 
     @property
     @pulumi.getter
@@ -1058,8 +1325,17 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy(dict):
         """
         :param Sequence[str] actions: Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
         """
+        DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            actions=actions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             actions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if actions is not None:
-            pulumi.set(__self__, "actions", actions)
+            _setter("actions", actions)
 
     @property
     @pulumi.getter
@@ -1077,8 +1353,17 @@ class TargetAnthosCluster(dict):
         """
         :param str membership: Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
         """
+        TargetAnthosCluster._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            membership=membership,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             membership: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if membership is not None:
-            pulumi.set(__self__, "membership", membership)
+            _setter("membership", membership)
 
     @property
     @pulumi.getter
@@ -1127,15 +1412,32 @@ class TargetExecutionConfig(dict):
         :param str service_account: Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
         :param str worker_pool: Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
         """
-        pulumi.set(__self__, "usages", usages)
+        TargetExecutionConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            usages=usages,
+            artifact_storage=artifact_storage,
+            execution_timeout=execution_timeout,
+            service_account=service_account,
+            worker_pool=worker_pool,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             usages: Sequence[str],
+             artifact_storage: Optional[str] = None,
+             execution_timeout: Optional[str] = None,
+             service_account: Optional[str] = None,
+             worker_pool: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("usages", usages)
         if artifact_storage is not None:
-            pulumi.set(__self__, "artifact_storage", artifact_storage)
+            _setter("artifact_storage", artifact_storage)
         if execution_timeout is not None:
-            pulumi.set(__self__, "execution_timeout", execution_timeout)
+            _setter("execution_timeout", execution_timeout)
         if service_account is not None:
-            pulumi.set(__self__, "service_account", service_account)
+            _setter("service_account", service_account)
         if worker_pool is not None:
-            pulumi.set(__self__, "worker_pool", worker_pool)
+            _setter("worker_pool", worker_pool)
 
     @property
     @pulumi.getter
@@ -1204,10 +1506,21 @@ class TargetGke(dict):
         :param str cluster: Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
         :param bool internal_ip: Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
         """
+        TargetGke._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster=cluster,
+            internal_ip=internal_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster: Optional[str] = None,
+             internal_ip: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cluster is not None:
-            pulumi.set(__self__, "cluster", cluster)
+            _setter("cluster", cluster)
         if internal_ip is not None:
-            pulumi.set(__self__, "internal_ip", internal_ip)
+            _setter("internal_ip", internal_ip)
 
     @property
     @pulumi.getter
@@ -1250,7 +1563,16 @@ class TargetMultiTarget(dict):
         """
         :param Sequence[str] target_ids: Required. The target_ids of this multiTarget.
         """
-        pulumi.set(__self__, "target_ids", target_ids)
+        TargetMultiTarget._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            target_ids=target_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             target_ids: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("target_ids", target_ids)
 
     @property
     @pulumi.getter(name="targetIds")
@@ -1268,7 +1590,16 @@ class TargetRun(dict):
         """
         :param str location: Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
         """
-        pulumi.set(__self__, "location", location)
+        TargetRun._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("location", location)
 
     @property
     @pulumi.getter

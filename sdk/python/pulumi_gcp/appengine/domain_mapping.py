@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,13 +35,28 @@ class DomainMappingArgs:
         :param pulumi.Input['DomainMappingSslSettingsArgs'] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
                Structure is documented below.
         """
-        pulumi.set(__self__, "domain_name", domain_name)
+        DomainMappingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain_name=domain_name,
+            override_strategy=override_strategy,
+            project=project,
+            ssl_settings=ssl_settings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain_name: pulumi.Input[str],
+             override_strategy: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             ssl_settings: Optional[pulumi.Input['DomainMappingSslSettingsArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("domain_name", domain_name)
         if override_strategy is not None:
-            pulumi.set(__self__, "override_strategy", override_strategy)
+            _setter("override_strategy", override_strategy)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if ssl_settings is not None:
-            pulumi.set(__self__, "ssl_settings", ssl_settings)
+            _setter("ssl_settings", ssl_settings)
 
     @property
     @pulumi.getter(name="domainName")
@@ -128,18 +143,37 @@ class _DomainMappingState:
         :param pulumi.Input['DomainMappingSslSettingsArgs'] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
                Structure is documented below.
         """
+        _DomainMappingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain_name=domain_name,
+            name=name,
+            override_strategy=override_strategy,
+            project=project,
+            resource_records=resource_records,
+            ssl_settings=ssl_settings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             override_strategy: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             resource_records: Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingResourceRecordArgs']]]] = None,
+             ssl_settings: Optional[pulumi.Input['DomainMappingSslSettingsArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if domain_name is not None:
-            pulumi.set(__self__, "domain_name", domain_name)
+            _setter("domain_name", domain_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if override_strategy is not None:
-            pulumi.set(__self__, "override_strategy", override_strategy)
+            _setter("override_strategy", override_strategy)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if resource_records is not None:
-            pulumi.set(__self__, "resource_records", resource_records)
+            _setter("resource_records", resource_records)
         if ssl_settings is not None:
-            pulumi.set(__self__, "ssl_settings", ssl_settings)
+            _setter("ssl_settings", ssl_settings)
 
     @property
     @pulumi.getter(name="domainName")
@@ -343,6 +377,10 @@ class DomainMapping(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DomainMappingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -366,6 +404,11 @@ class DomainMapping(pulumi.CustomResource):
             __props__.__dict__["domain_name"] = domain_name
             __props__.__dict__["override_strategy"] = override_strategy
             __props__.__dict__["project"] = project
+            if ssl_settings is not None and not isinstance(ssl_settings, DomainMappingSslSettingsArgs):
+                ssl_settings = ssl_settings or {}
+                def _setter(key, value):
+                    ssl_settings[key] = value
+                DomainMappingSslSettingsArgs._configure(_setter, **ssl_settings)
             __props__.__dict__["ssl_settings"] = ssl_settings
             __props__.__dict__["name"] = None
             __props__.__dict__["resource_records"] = None

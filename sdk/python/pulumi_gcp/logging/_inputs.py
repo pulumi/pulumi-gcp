@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -41,13 +41,28 @@ class BillingAccountBucketConfigCmekSettingsArgs:
         """
         :param pulumi.Input[str] name: The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
         """
-        pulumi.set(__self__, "kms_key_name", kms_key_name)
+        BillingAccountBucketConfigCmekSettingsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_key_name=kms_key_name,
+            kms_key_version_name=kms_key_version_name,
+            name=name,
+            service_account_id=service_account_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_key_name: pulumi.Input[str],
+             kms_key_version_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             service_account_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("kms_key_name", kms_key_name)
         if kms_key_version_name is not None:
-            pulumi.set(__self__, "kms_key_version_name", kms_key_version_name)
+            _setter("kms_key_version_name", kms_key_version_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if service_account_id is not None:
-            pulumi.set(__self__, "service_account_id", service_account_id)
+            _setter("service_account_id", service_account_id)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -99,7 +114,16 @@ class BillingAccountSinkBigqueryOptionsArgs:
                tables, the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
                has to be used instead. In both cases, tables are sharded based on UTC timezone.
         """
-        pulumi.set(__self__, "use_partitioned_tables", use_partitioned_tables)
+        BillingAccountSinkBigqueryOptionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            use_partitioned_tables=use_partitioned_tables,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             use_partitioned_tables: pulumi.Input[bool],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("use_partitioned_tables", use_partitioned_tables)
 
     @property
     @pulumi.getter(name="usePartitionedTables")
@@ -131,12 +155,27 @@ class BillingAccountSinkExclusionArgs:
         :param pulumi.Input[str] description: A description of this exclusion.
         :param pulumi.Input[bool] disabled: If set to True, then this exclusion is disabled and it does not exclude any log entries.
         """
-        pulumi.set(__self__, "filter", filter)
-        pulumi.set(__self__, "name", name)
+        BillingAccountSinkExclusionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter=filter,
+            name=name,
+            description=description,
+            disabled=disabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter: pulumi.Input[str],
+             name: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter", filter)
+        _setter("name", name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
 
     @property
     @pulumi.getter
@@ -198,13 +237,28 @@ class FolderBucketConfigCmekSettingsArgs:
         """
         :param pulumi.Input[str] name: The resource name of the bucket. For example: "folders/my-folder-id/locations/my-location/buckets/my-bucket-id"
         """
-        pulumi.set(__self__, "kms_key_name", kms_key_name)
+        FolderBucketConfigCmekSettingsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_key_name=kms_key_name,
+            kms_key_version_name=kms_key_version_name,
+            name=name,
+            service_account_id=service_account_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_key_name: pulumi.Input[str],
+             kms_key_version_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             service_account_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("kms_key_name", kms_key_name)
         if kms_key_version_name is not None:
-            pulumi.set(__self__, "kms_key_version_name", kms_key_version_name)
+            _setter("kms_key_version_name", kms_key_version_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if service_account_id is not None:
-            pulumi.set(__self__, "service_account_id", service_account_id)
+            _setter("service_account_id", service_account_id)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -256,7 +310,16 @@ class FolderSinkBigqueryOptionsArgs:
                tables, the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
                has to be used instead. In both cases, tables are sharded based on UTC timezone.
         """
-        pulumi.set(__self__, "use_partitioned_tables", use_partitioned_tables)
+        FolderSinkBigqueryOptionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            use_partitioned_tables=use_partitioned_tables,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             use_partitioned_tables: pulumi.Input[bool],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("use_partitioned_tables", use_partitioned_tables)
 
     @property
     @pulumi.getter(name="usePartitionedTables")
@@ -288,12 +351,27 @@ class FolderSinkExclusionArgs:
         :param pulumi.Input[str] description: A description of this exclusion.
         :param pulumi.Input[bool] disabled: If set to True, then this exclusion is disabled and it does not exclude any log entries.
         """
-        pulumi.set(__self__, "filter", filter)
-        pulumi.set(__self__, "name", name)
+        FolderSinkExclusionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter=filter,
+            name=name,
+            description=description,
+            disabled=disabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter: pulumi.Input[str],
+             name: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter", filter)
+        _setter("name", name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
 
     @property
     @pulumi.getter
@@ -356,8 +434,17 @@ class LinkedDatasetBigqueryDatasetArgs:
                (alphanumeric characters and underscores only). The dataset will have a resource path of
                "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET_ID]"
         """
+        LinkedDatasetBigqueryDatasetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dataset_id=dataset_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dataset_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if dataset_id is not None:
-            pulumi.set(__self__, "dataset_id", dataset_id)
+            _setter("dataset_id", dataset_id)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -392,12 +479,25 @@ class MetricBucketOptionsArgs:
                Each bucket represents a constant absolute uncertainty on the specific value in the bucket.
                Structure is documented below.
         """
+        MetricBucketOptionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            explicit_buckets=explicit_buckets,
+            exponential_buckets=exponential_buckets,
+            linear_buckets=linear_buckets,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             explicit_buckets: Optional[pulumi.Input['MetricBucketOptionsExplicitBucketsArgs']] = None,
+             exponential_buckets: Optional[pulumi.Input['MetricBucketOptionsExponentialBucketsArgs']] = None,
+             linear_buckets: Optional[pulumi.Input['MetricBucketOptionsLinearBucketsArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if explicit_buckets is not None:
-            pulumi.set(__self__, "explicit_buckets", explicit_buckets)
+            _setter("explicit_buckets", explicit_buckets)
         if exponential_buckets is not None:
-            pulumi.set(__self__, "exponential_buckets", exponential_buckets)
+            _setter("exponential_buckets", exponential_buckets)
         if linear_buckets is not None:
-            pulumi.set(__self__, "linear_buckets", linear_buckets)
+            _setter("linear_buckets", linear_buckets)
 
     @property
     @pulumi.getter(name="explicitBuckets")
@@ -448,7 +548,16 @@ class MetricBucketOptionsExplicitBucketsArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input[float]]] bounds: The values must be monotonically increasing.
         """
-        pulumi.set(__self__, "bounds", bounds)
+        MetricBucketOptionsExplicitBucketsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bounds=bounds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bounds: pulumi.Input[Sequence[pulumi.Input[float]]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bounds", bounds)
 
     @property
     @pulumi.getter
@@ -474,12 +583,25 @@ class MetricBucketOptionsExponentialBucketsArgs:
         :param pulumi.Input[int] num_finite_buckets: Must be greater than 0.
         :param pulumi.Input[float] scale: Must be greater than 0.
         """
+        MetricBucketOptionsExponentialBucketsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            growth_factor=growth_factor,
+            num_finite_buckets=num_finite_buckets,
+            scale=scale,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             growth_factor: Optional[pulumi.Input[float]] = None,
+             num_finite_buckets: Optional[pulumi.Input[int]] = None,
+             scale: Optional[pulumi.Input[float]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if growth_factor is not None:
-            pulumi.set(__self__, "growth_factor", growth_factor)
+            _setter("growth_factor", growth_factor)
         if num_finite_buckets is not None:
-            pulumi.set(__self__, "num_finite_buckets", num_finite_buckets)
+            _setter("num_finite_buckets", num_finite_buckets)
         if scale is not None:
-            pulumi.set(__self__, "scale", scale)
+            _setter("scale", scale)
 
     @property
     @pulumi.getter(name="growthFactor")
@@ -529,12 +651,25 @@ class MetricBucketOptionsLinearBucketsArgs:
         :param pulumi.Input[float] offset: Lower bound of the first bucket.
         :param pulumi.Input[float] width: Must be greater than 0.
         """
+        MetricBucketOptionsLinearBucketsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            num_finite_buckets=num_finite_buckets,
+            offset=offset,
+            width=width,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             num_finite_buckets: Optional[pulumi.Input[int]] = None,
+             offset: Optional[pulumi.Input[float]] = None,
+             width: Optional[pulumi.Input[float]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if num_finite_buckets is not None:
-            pulumi.set(__self__, "num_finite_buckets", num_finite_buckets)
+            _setter("num_finite_buckets", num_finite_buckets)
         if offset is not None:
-            pulumi.set(__self__, "offset", offset)
+            _setter("offset", offset)
         if width is not None:
-            pulumi.set(__self__, "width", width)
+            _setter("width", width)
 
     @property
     @pulumi.getter(name="numFiniteBuckets")
@@ -602,14 +737,31 @@ class MetricMetricDescriptorArgs:
                `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of
                [The Unified Code for Units of Measure](http://unitsofmeasure.org/ucum.html) standard
         """
-        pulumi.set(__self__, "metric_kind", metric_kind)
-        pulumi.set(__self__, "value_type", value_type)
+        MetricMetricDescriptorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            metric_kind=metric_kind,
+            value_type=value_type,
+            display_name=display_name,
+            labels=labels,
+            unit=unit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             metric_kind: pulumi.Input[str],
+             value_type: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Sequence[pulumi.Input['MetricMetricDescriptorLabelArgs']]]] = None,
+             unit: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("metric_kind", metric_kind)
+        _setter("value_type", value_type)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if unit is not None:
-            pulumi.set(__self__, "unit", unit)
+            _setter("unit", unit)
 
     @property
     @pulumi.getter(name="metricKind")
@@ -699,11 +851,24 @@ class MetricMetricDescriptorLabelArgs:
                Default value is `STRING`.
                Possible values are: `BOOL`, `INT64`, `STRING`.
         """
-        pulumi.set(__self__, "key", key)
+        MetricMetricDescriptorLabelArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            description=description,
+            value_type=value_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             value_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if value_type is not None:
-            pulumi.set(__self__, "value_type", value_type)
+            _setter("value_type", value_type)
 
     @property
     @pulumi.getter
@@ -754,13 +919,28 @@ class OrganizationBucketConfigCmekSettingsArgs:
         """
         :param pulumi.Input[str] name: The resource name of the bucket. For example: "organizations/my-organization-id/locations/my-location/buckets/my-bucket-id"
         """
-        pulumi.set(__self__, "kms_key_name", kms_key_name)
+        OrganizationBucketConfigCmekSettingsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_key_name=kms_key_name,
+            kms_key_version_name=kms_key_version_name,
+            name=name,
+            service_account_id=service_account_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_key_name: pulumi.Input[str],
+             kms_key_version_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             service_account_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("kms_key_name", kms_key_name)
         if kms_key_version_name is not None:
-            pulumi.set(__self__, "kms_key_version_name", kms_key_version_name)
+            _setter("kms_key_version_name", kms_key_version_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if service_account_id is not None:
-            pulumi.set(__self__, "service_account_id", service_account_id)
+            _setter("service_account_id", service_account_id)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -812,7 +992,16 @@ class OrganizationSinkBigqueryOptionsArgs:
                tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
                has to be used instead. In both cases, tables are sharded based on UTC timezone.
         """
-        pulumi.set(__self__, "use_partitioned_tables", use_partitioned_tables)
+        OrganizationSinkBigqueryOptionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            use_partitioned_tables=use_partitioned_tables,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             use_partitioned_tables: pulumi.Input[bool],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("use_partitioned_tables", use_partitioned_tables)
 
     @property
     @pulumi.getter(name="usePartitionedTables")
@@ -844,12 +1033,27 @@ class OrganizationSinkExclusionArgs:
         :param pulumi.Input[str] description: A description of this exclusion.
         :param pulumi.Input[bool] disabled: If set to True, then this exclusion is disabled and it does not exclude any log entries.
         """
-        pulumi.set(__self__, "filter", filter)
-        pulumi.set(__self__, "name", name)
+        OrganizationSinkExclusionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter=filter,
+            name=name,
+            description=description,
+            disabled=disabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter: pulumi.Input[str],
+             name: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter", filter)
+        _setter("name", name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
 
     @property
     @pulumi.getter
@@ -926,13 +1130,28 @@ class ProjectBucketConfigCmekSettingsArgs:
                Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
                See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
         """
-        pulumi.set(__self__, "kms_key_name", kms_key_name)
+        ProjectBucketConfigCmekSettingsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_key_name=kms_key_name,
+            kms_key_version_name=kms_key_version_name,
+            name=name,
+            service_account_id=service_account_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_key_name: pulumi.Input[str],
+             kms_key_version_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             service_account_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("kms_key_name", kms_key_name)
         if kms_key_version_name is not None:
-            pulumi.set(__self__, "kms_key_version_name", kms_key_version_name)
+            _setter("kms_key_version_name", kms_key_version_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if service_account_id is not None:
-            pulumi.set(__self__, "service_account_id", service_account_id)
+            _setter("service_account_id", service_account_id)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -1005,7 +1224,16 @@ class ProjectSinkBigqueryOptionsArgs:
                tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
                has to be used instead. In both cases, tables are sharded based on UTC timezone.
         """
-        pulumi.set(__self__, "use_partitioned_tables", use_partitioned_tables)
+        ProjectSinkBigqueryOptionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            use_partitioned_tables=use_partitioned_tables,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             use_partitioned_tables: pulumi.Input[bool],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("use_partitioned_tables", use_partitioned_tables)
 
     @property
     @pulumi.getter(name="usePartitionedTables")
@@ -1037,12 +1265,27 @@ class ProjectSinkExclusionArgs:
         :param pulumi.Input[str] description: A description of this exclusion.
         :param pulumi.Input[bool] disabled: If set to True, then this exclusion is disabled and it does not exclude any log entries.
         """
-        pulumi.set(__self__, "filter", filter)
-        pulumi.set(__self__, "name", name)
+        ProjectSinkExclusionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter=filter,
+            name=name,
+            description=description,
+            disabled=disabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter: pulumi.Input[str],
+             name: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter", filter)
+        _setter("name", name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
 
     @property
     @pulumi.getter

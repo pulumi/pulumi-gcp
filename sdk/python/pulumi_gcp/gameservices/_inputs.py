@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -32,8 +32,19 @@ class GameServerClusterConnectionInfoArgs:
                instances will be created. The namespace existence will be validated
                during creation.
         """
-        pulumi.set(__self__, "gke_cluster_reference", gke_cluster_reference)
-        pulumi.set(__self__, "namespace", namespace)
+        GameServerClusterConnectionInfoArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            gke_cluster_reference=gke_cluster_reference,
+            namespace=namespace,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             gke_cluster_reference: pulumi.Input['GameServerClusterConnectionInfoGkeClusterReferenceArgs'],
+             namespace: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("gke_cluster_reference", gke_cluster_reference)
+        _setter("namespace", namespace)
 
     @property
     @pulumi.getter(name="gkeClusterReference")
@@ -79,7 +90,16 @@ class GameServerClusterConnectionInfoGkeClusterReferenceArgs:
                
                - - -
         """
-        pulumi.set(__self__, "cluster", cluster)
+        GameServerClusterConnectionInfoGkeClusterReferenceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster=cluster,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster", cluster)
 
     @property
     @pulumi.getter
@@ -120,9 +140,20 @@ class GameServerConfigFleetConfigArgs:
                
                - - -
         """
-        pulumi.set(__self__, "fleet_spec", fleet_spec)
+        GameServerConfigFleetConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fleet_spec=fleet_spec,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fleet_spec: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("fleet_spec", fleet_spec)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="fleetSpec")
@@ -176,12 +207,27 @@ class GameServerConfigScalingConfigArgs:
                any of the selector entries.
                Structure is documented below.
         """
-        pulumi.set(__self__, "fleet_autoscaler_spec", fleet_autoscaler_spec)
-        pulumi.set(__self__, "name", name)
+        GameServerConfigScalingConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fleet_autoscaler_spec=fleet_autoscaler_spec,
+            name=name,
+            schedules=schedules,
+            selectors=selectors,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fleet_autoscaler_spec: pulumi.Input[str],
+             name: pulumi.Input[str],
+             schedules: Optional[pulumi.Input[Sequence[pulumi.Input['GameServerConfigScalingConfigScheduleArgs']]]] = None,
+             selectors: Optional[pulumi.Input[Sequence[pulumi.Input['GameServerConfigScalingConfigSelectorArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("fleet_autoscaler_spec", fleet_autoscaler_spec)
+        _setter("name", name)
         if schedules is not None:
-            pulumi.set(__self__, "schedules", schedules)
+            _setter("schedules", schedules)
         if selectors is not None:
-            pulumi.set(__self__, "selectors", selectors)
+            _setter("selectors", selectors)
 
     @property
     @pulumi.getter(name="fleetAutoscalerSpec")
@@ -257,14 +303,29 @@ class GameServerConfigScalingConfigScheduleArgs:
         :param pulumi.Input[str] start_time: The start time of the event.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
+        GameServerConfigScalingConfigScheduleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cron_job_duration=cron_job_duration,
+            cron_spec=cron_spec,
+            end_time=end_time,
+            start_time=start_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cron_job_duration: Optional[pulumi.Input[str]] = None,
+             cron_spec: Optional[pulumi.Input[str]] = None,
+             end_time: Optional[pulumi.Input[str]] = None,
+             start_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cron_job_duration is not None:
-            pulumi.set(__self__, "cron_job_duration", cron_job_duration)
+            _setter("cron_job_duration", cron_job_duration)
         if cron_spec is not None:
-            pulumi.set(__self__, "cron_spec", cron_spec)
+            _setter("cron_spec", cron_spec)
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
 
     @property
     @pulumi.getter(name="cronJobDuration")
@@ -328,8 +389,17 @@ class GameServerConfigScalingConfigSelectorArgs:
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels to group by.
         """
+        GameServerConfigScalingConfigSelectorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            labels=labels,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
 
     @property
     @pulumi.getter
@@ -354,10 +424,21 @@ class GameServerDeploymentRolloutGameServerConfigOverrideArgs:
         :param pulumi.Input['GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs'] realms_selector: Selection by realms.
                Structure is documented below.
         """
+        GameServerDeploymentRolloutGameServerConfigOverrideArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_version=config_version,
+            realms_selector=realms_selector,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_version: Optional[pulumi.Input[str]] = None,
+             realms_selector: Optional[pulumi.Input['GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if config_version is not None:
-            pulumi.set(__self__, "config_version", config_version)
+            _setter("config_version", config_version)
         if realms_selector is not None:
-            pulumi.set(__self__, "realms_selector", realms_selector)
+            _setter("realms_selector", realms_selector)
 
     @property
     @pulumi.getter(name="configVersion")
@@ -392,8 +473,17 @@ class GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: List of realms to match against.
         """
+        GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            realms=realms,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if realms is not None:
-            pulumi.set(__self__, "realms", realms)
+            _setter("realms", realms)
 
     @property
     @pulumi.getter

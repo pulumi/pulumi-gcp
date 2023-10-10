@@ -478,9 +478,6 @@ public class Datascan extends com.pulumi.resources.CustomResource {
         return this.dataScanId;
     }
     /**
-     * Description of the scan.
-     * 
-     * (Optional)
      * Description of the rule.
      * The maximum length is 1,024 characters.
      * 
@@ -489,10 +486,7 @@ public class Datascan extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the scan.
-     * 
-     * (Optional)
-     * Description of the rule.
+     * @return Description of the rule.
      * The maximum length is 1,024 characters.
      * 
      */

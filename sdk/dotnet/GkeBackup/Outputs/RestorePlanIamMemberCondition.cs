@@ -14,10 +14,6 @@ namespace Pulumi.Gcp.GkeBackup.Outputs
     public sealed class RestorePlanIamMemberCondition
     {
         /// <summary>
-        /// The description is a user specified string description
-        /// of the transformation rule.
-        /// 
-        /// (Optional)
         /// User specified descriptive string for this RestorePlan.
         /// </summary>
         public readonly string? Description;

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -38,15 +38,34 @@ class ResponsePolicyRuleArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "dns_name", dns_name)
-        pulumi.set(__self__, "response_policy", response_policy)
-        pulumi.set(__self__, "rule_name", rule_name)
+        ResponsePolicyRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dns_name=dns_name,
+            response_policy=response_policy,
+            rule_name=rule_name,
+            behavior=behavior,
+            local_data=local_data,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dns_name: pulumi.Input[str],
+             response_policy: pulumi.Input[str],
+             rule_name: pulumi.Input[str],
+             behavior: Optional[pulumi.Input[str]] = None,
+             local_data: Optional[pulumi.Input['ResponsePolicyRuleLocalDataArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dns_name", dns_name)
+        _setter("response_policy", response_policy)
+        _setter("rule_name", rule_name)
         if behavior is not None:
-            pulumi.set(__self__, "behavior", behavior)
+            _setter("behavior", behavior)
         if local_data is not None:
-            pulumi.set(__self__, "local_data", local_data)
+            _setter("local_data", local_data)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="dnsName")
@@ -153,18 +172,37 @@ class _ResponsePolicyRuleState:
                - - -
         :param pulumi.Input[str] rule_name: An identifier for this rule. Must be unique with the ResponsePolicy.
         """
+        _ResponsePolicyRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            behavior=behavior,
+            dns_name=dns_name,
+            local_data=local_data,
+            project=project,
+            response_policy=response_policy,
+            rule_name=rule_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             behavior: Optional[pulumi.Input[str]] = None,
+             dns_name: Optional[pulumi.Input[str]] = None,
+             local_data: Optional[pulumi.Input['ResponsePolicyRuleLocalDataArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             response_policy: Optional[pulumi.Input[str]] = None,
+             rule_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if behavior is not None:
-            pulumi.set(__self__, "behavior", behavior)
+            _setter("behavior", behavior)
         if dns_name is not None:
-            pulumi.set(__self__, "dns_name", dns_name)
+            _setter("dns_name", dns_name)
         if local_data is not None:
-            pulumi.set(__self__, "local_data", local_data)
+            _setter("local_data", local_data)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if response_policy is not None:
-            pulumi.set(__self__, "response_policy", response_policy)
+            _setter("response_policy", response_policy)
         if rule_name is not None:
-            pulumi.set(__self__, "rule_name", rule_name)
+            _setter("rule_name", rule_name)
 
     @property
     @pulumi.getter
@@ -400,6 +438,10 @@ class ResponsePolicyRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ResponsePolicyRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -424,6 +466,11 @@ class ResponsePolicyRule(pulumi.CustomResource):
             if dns_name is None and not opts.urn:
                 raise TypeError("Missing required property 'dns_name'")
             __props__.__dict__["dns_name"] = dns_name
+            if local_data is not None and not isinstance(local_data, ResponsePolicyRuleLocalDataArgs):
+                local_data = local_data or {}
+                def _setter(key, value):
+                    local_data[key] = value
+                ResponsePolicyRuleLocalDataArgs._configure(_setter, **local_data)
             __props__.__dict__["local_data"] = local_data
             __props__.__dict__["project"] = project
             if response_policy is None and not opts.urn:

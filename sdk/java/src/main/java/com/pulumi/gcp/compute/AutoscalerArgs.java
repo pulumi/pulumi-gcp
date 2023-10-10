@@ -42,11 +42,6 @@ public final class AutoscalerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A description of a scaling schedule.
-     * 
-     * ***
-     * 
-     * (Optional)
      * An optional description of this resource.
      * 
      */
@@ -54,12 +49,7 @@ public final class AutoscalerArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> description;
 
     /**
-     * @return A description of a scaling schedule.
-     * 
-     * ***
-     * 
-     * (Optional)
-     * An optional description of this resource.
+     * @return An optional description of this resource.
      * 
      */
     public Optional<Output<String>> description() {
@@ -197,12 +187,7 @@ public final class AutoscalerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description A description of a scaling schedule.
-         * 
-         * ***
-         * 
-         * (Optional)
-         * An optional description of this resource.
+         * @param description An optional description of this resource.
          * 
          * @return builder
          * 
@@ -213,12 +198,7 @@ public final class AutoscalerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description A description of a scaling schedule.
-         * 
-         * ***
-         * 
-         * (Optional)
-         * An optional description of this resource.
+         * @param description An optional description of this resource.
          * 
          * @return builder
          * 

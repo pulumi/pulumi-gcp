@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -43,10 +43,21 @@ class AuthorizationPolicyRule(dict):
                If not set, the action specified in the 'action' field will be applied without any rule checks for the source.
                Structure is documented below.
         """
+        AuthorizationPolicyRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            destinations=destinations,
+            sources=sources,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             destinations: Optional[Sequence['outputs.AuthorizationPolicyRuleDestination']] = None,
+             sources: Optional[Sequence['outputs.AuthorizationPolicyRuleSource']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if destinations is not None:
-            pulumi.set(__self__, "destinations", destinations)
+            _setter("destinations", destinations)
         if sources is not None:
-            pulumi.set(__self__, "sources", sources)
+            _setter("sources", sources)
 
     @property
     @pulumi.getter
@@ -101,11 +112,26 @@ class AuthorizationPolicyRuleDestination(dict):
                Avoid using header matches to make authorization decisions unless there is a strong guarantee that requests arrive through a trusted client or proxy.
                Structure is documented below.
         """
-        pulumi.set(__self__, "hosts", hosts)
-        pulumi.set(__self__, "methods", methods)
-        pulumi.set(__self__, "ports", ports)
+        AuthorizationPolicyRuleDestination._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hosts=hosts,
+            methods=methods,
+            ports=ports,
+            http_header_match=http_header_match,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hosts: Sequence[str],
+             methods: Sequence[str],
+             ports: Sequence[int],
+             http_header_match: Optional['outputs.AuthorizationPolicyRuleDestinationHttpHeaderMatch'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("hosts", hosts)
+        _setter("methods", methods)
+        _setter("ports", ports)
         if http_header_match is not None:
-            pulumi.set(__self__, "http_header_match", http_header_match)
+            _setter("http_header_match", http_header_match)
 
     @property
     @pulumi.getter
@@ -170,8 +196,19 @@ class AuthorizationPolicyRuleDestinationHttpHeaderMatch(dict):
         :param str header_name: The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method".
         :param str regex_match: The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see: en.cppreference.com/w/cpp/regex/ecmascript For matching against a port specified in the HTTP request, use a headerMatch with headerName set to Host and a regular expression that satisfies the RFC2616 Host header's port specifier.
         """
-        pulumi.set(__self__, "header_name", header_name)
-        pulumi.set(__self__, "regex_match", regex_match)
+        AuthorizationPolicyRuleDestinationHttpHeaderMatch._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            header_name=header_name,
+            regex_match=regex_match,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             header_name: str,
+             regex_match: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("header_name", header_name)
+        _setter("regex_match", regex_match)
 
     @property
     @pulumi.getter(name="headerName")
@@ -218,10 +255,21 @@ class AuthorizationPolicyRuleSource(dict):
         :param Sequence[str] principals: List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, "*/service-account") or a presence match "*".
                Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
         """
+        AuthorizationPolicyRuleSource._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_blocks=ip_blocks,
+            principals=principals,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_blocks: Optional[Sequence[str]] = None,
+             principals: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ip_blocks is not None:
-            pulumi.set(__self__, "ip_blocks", ip_blocks)
+            _setter("ip_blocks", ip_blocks)
         if principals is not None:
-            pulumi.set(__self__, "principals", principals)
+            _setter("principals", principals)
 
     @property
     @pulumi.getter(name="ipBlocks")
@@ -272,10 +320,21 @@ class ClientTlsPolicyClientCertificate(dict):
         :param 'ClientTlsPolicyClientCertificateGrpcEndpointArgs' grpc_endpoint: gRPC specific configuration to access the gRPC server to obtain the cert and private key.
                Structure is documented below.
         """
+        ClientTlsPolicyClientCertificate._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            certificate_provider_instance=certificate_provider_instance,
+            grpc_endpoint=grpc_endpoint,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             certificate_provider_instance: Optional['outputs.ClientTlsPolicyClientCertificateCertificateProviderInstance'] = None,
+             grpc_endpoint: Optional['outputs.ClientTlsPolicyClientCertificateGrpcEndpoint'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if certificate_provider_instance is not None:
-            pulumi.set(__self__, "certificate_provider_instance", certificate_provider_instance)
+            _setter("certificate_provider_instance", certificate_provider_instance)
         if grpc_endpoint is not None:
-            pulumi.set(__self__, "grpc_endpoint", grpc_endpoint)
+            _setter("grpc_endpoint", grpc_endpoint)
 
     @property
     @pulumi.getter(name="certificateProviderInstance")
@@ -320,7 +379,16 @@ class ClientTlsPolicyClientCertificateCertificateProviderInstance(dict):
         """
         :param str plugin_instance: Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
         """
-        pulumi.set(__self__, "plugin_instance", plugin_instance)
+        ClientTlsPolicyClientCertificateCertificateProviderInstance._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            plugin_instance=plugin_instance,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             plugin_instance: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("plugin_instance", plugin_instance)
 
     @property
     @pulumi.getter(name="pluginInstance")
@@ -355,7 +423,16 @@ class ClientTlsPolicyClientCertificateGrpcEndpoint(dict):
         """
         :param str target_uri: The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
         """
-        pulumi.set(__self__, "target_uri", target_uri)
+        ClientTlsPolicyClientCertificateGrpcEndpoint._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            target_uri=target_uri,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             target_uri: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("target_uri", target_uri)
 
     @property
     @pulumi.getter(name="targetUri")
@@ -396,10 +473,21 @@ class ClientTlsPolicyServerValidationCa(dict):
         :param 'ClientTlsPolicyServerValidationCaGrpcEndpointArgs' grpc_endpoint: gRPC specific configuration to access the gRPC server to obtain the cert and private key.
                Structure is documented below.
         """
+        ClientTlsPolicyServerValidationCa._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            certificate_provider_instance=certificate_provider_instance,
+            grpc_endpoint=grpc_endpoint,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             certificate_provider_instance: Optional['outputs.ClientTlsPolicyServerValidationCaCertificateProviderInstance'] = None,
+             grpc_endpoint: Optional['outputs.ClientTlsPolicyServerValidationCaGrpcEndpoint'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if certificate_provider_instance is not None:
-            pulumi.set(__self__, "certificate_provider_instance", certificate_provider_instance)
+            _setter("certificate_provider_instance", certificate_provider_instance)
         if grpc_endpoint is not None:
-            pulumi.set(__self__, "grpc_endpoint", grpc_endpoint)
+            _setter("grpc_endpoint", grpc_endpoint)
 
     @property
     @pulumi.getter(name="certificateProviderInstance")
@@ -444,7 +532,16 @@ class ClientTlsPolicyServerValidationCaCertificateProviderInstance(dict):
         """
         :param str plugin_instance: Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
         """
-        pulumi.set(__self__, "plugin_instance", plugin_instance)
+        ClientTlsPolicyServerValidationCaCertificateProviderInstance._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            plugin_instance=plugin_instance,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             plugin_instance: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("plugin_instance", plugin_instance)
 
     @property
     @pulumi.getter(name="pluginInstance")
@@ -479,7 +576,16 @@ class ClientTlsPolicyServerValidationCaGrpcEndpoint(dict):
         """
         :param str target_uri: The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
         """
-        pulumi.set(__self__, "target_uri", target_uri)
+        ClientTlsPolicyServerValidationCaGrpcEndpoint._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            target_uri=target_uri,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             target_uri: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("target_uri", target_uri)
 
     @property
     @pulumi.getter(name="targetUri")
@@ -528,12 +634,25 @@ class ServerTlsPolicyMtlsPolicy(dict):
                If specified, the chain validation will be performed against certificates configured in the given TrustConfig.
                Allowed only if the policy is to be used with external HTTPS load balancers.
         """
+        ServerTlsPolicyMtlsPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            client_validation_cas=client_validation_cas,
+            client_validation_mode=client_validation_mode,
+            client_validation_trust_config=client_validation_trust_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             client_validation_cas: Optional[Sequence['outputs.ServerTlsPolicyMtlsPolicyClientValidationCa']] = None,
+             client_validation_mode: Optional[str] = None,
+             client_validation_trust_config: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if client_validation_cas is not None:
-            pulumi.set(__self__, "client_validation_cas", client_validation_cas)
+            _setter("client_validation_cas", client_validation_cas)
         if client_validation_mode is not None:
-            pulumi.set(__self__, "client_validation_mode", client_validation_mode)
+            _setter("client_validation_mode", client_validation_mode)
         if client_validation_trust_config is not None:
-            pulumi.set(__self__, "client_validation_trust_config", client_validation_trust_config)
+            _setter("client_validation_trust_config", client_validation_trust_config)
 
     @property
     @pulumi.getter(name="clientValidationCas")
@@ -597,10 +716,21 @@ class ServerTlsPolicyMtlsPolicyClientValidationCa(dict):
         :param 'ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs' grpc_endpoint: gRPC specific configuration to access the gRPC server to obtain the cert and private key.
                Structure is documented below.
         """
+        ServerTlsPolicyMtlsPolicyClientValidationCa._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            certificate_provider_instance=certificate_provider_instance,
+            grpc_endpoint=grpc_endpoint,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             certificate_provider_instance: Optional['outputs.ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance'] = None,
+             grpc_endpoint: Optional['outputs.ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if certificate_provider_instance is not None:
-            pulumi.set(__self__, "certificate_provider_instance", certificate_provider_instance)
+            _setter("certificate_provider_instance", certificate_provider_instance)
         if grpc_endpoint is not None:
-            pulumi.set(__self__, "grpc_endpoint", grpc_endpoint)
+            _setter("grpc_endpoint", grpc_endpoint)
 
     @property
     @pulumi.getter(name="certificateProviderInstance")
@@ -646,7 +776,16 @@ class ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance(dic
         """
         :param str plugin_instance: Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
         """
-        pulumi.set(__self__, "plugin_instance", plugin_instance)
+        ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            plugin_instance=plugin_instance,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             plugin_instance: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("plugin_instance", plugin_instance)
 
     @property
     @pulumi.getter(name="pluginInstance")
@@ -681,7 +820,16 @@ class ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint(dict):
         """
         :param str target_uri: The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
         """
-        pulumi.set(__self__, "target_uri", target_uri)
+        ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            target_uri=target_uri,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             target_uri: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("target_uri", target_uri)
 
     @property
     @pulumi.getter(name="targetUri")
@@ -723,10 +871,21 @@ class ServerTlsPolicyServerCertificate(dict):
         :param 'ServerTlsPolicyServerCertificateGrpcEndpointArgs' grpc_endpoint: gRPC specific configuration to access the gRPC server to obtain the cert and private key.
                Structure is documented below.
         """
+        ServerTlsPolicyServerCertificate._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            certificate_provider_instance=certificate_provider_instance,
+            grpc_endpoint=grpc_endpoint,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             certificate_provider_instance: Optional['outputs.ServerTlsPolicyServerCertificateCertificateProviderInstance'] = None,
+             grpc_endpoint: Optional['outputs.ServerTlsPolicyServerCertificateGrpcEndpoint'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if certificate_provider_instance is not None:
-            pulumi.set(__self__, "certificate_provider_instance", certificate_provider_instance)
+            _setter("certificate_provider_instance", certificate_provider_instance)
         if grpc_endpoint is not None:
-            pulumi.set(__self__, "grpc_endpoint", grpc_endpoint)
+            _setter("grpc_endpoint", grpc_endpoint)
 
     @property
     @pulumi.getter(name="certificateProviderInstance")
@@ -772,7 +931,16 @@ class ServerTlsPolicyServerCertificateCertificateProviderInstance(dict):
         """
         :param str plugin_instance: Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
         """
-        pulumi.set(__self__, "plugin_instance", plugin_instance)
+        ServerTlsPolicyServerCertificateCertificateProviderInstance._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            plugin_instance=plugin_instance,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             plugin_instance: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("plugin_instance", plugin_instance)
 
     @property
     @pulumi.getter(name="pluginInstance")
@@ -807,7 +975,16 @@ class ServerTlsPolicyServerCertificateGrpcEndpoint(dict):
         """
         :param str target_uri: The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
         """
-        pulumi.set(__self__, "target_uri", target_uri)
+        ServerTlsPolicyServerCertificateGrpcEndpoint._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            target_uri=target_uri,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             target_uri: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("target_uri", target_uri)
 
     @property
     @pulumi.getter(name="targetUri")

@@ -116,9 +116,6 @@ public final class TaskArgs extends com.pulumi.resources.ResourceArgs {
      * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
      * Structure is documented below.
      * 
-     * (Required)
-     * Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
-     * 
      */
     @Import(name="notebook")
     private @Nullable Output<TaskNotebookArgs> notebook;
@@ -127,17 +124,13 @@ public final class TaskArgs extends com.pulumi.resources.ResourceArgs {
      * @return A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
      * Structure is documented below.
      * 
-     * (Required)
-     * Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
-     * 
      */
     public Optional<Output<TaskNotebookArgs>> notebook() {
         return Optional.ofNullable(this.notebook);
     }
 
     /**
-     * The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
-     * 
+     * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
      */
@@ -145,8 +138,7 @@ public final class TaskArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> project;
 
     /**
-     * @return The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
-     * 
+     * @return The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
      */
@@ -369,9 +361,6 @@ public final class TaskArgs extends com.pulumi.resources.ResourceArgs {
          * @param notebook A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
          * Structure is documented below.
          * 
-         * (Required)
-         * Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
-         * 
          * @return builder
          * 
          */
@@ -384,9 +373,6 @@ public final class TaskArgs extends com.pulumi.resources.ResourceArgs {
          * @param notebook A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
          * Structure is documented below.
          * 
-         * (Required)
-         * Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
-         * 
          * @return builder
          * 
          */
@@ -395,8 +381,7 @@ public final class TaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
-         * 
+         * @param project The ID of the project in which the resource belongs.
          * If it is not provided, the provider project is used.
          * 
          * @return builder
@@ -408,8 +393,7 @@ public final class TaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
-         * 
+         * @param project The ID of the project in which the resource belongs.
          * If it is not provided, the provider project is used.
          * 
          * @return builder

@@ -19,9 +19,6 @@ public final class PreventionJobTriggerArgs extends com.pulumi.resources.Resourc
     public static final PreventionJobTriggerArgs Empty = new PreventionJobTriggerArgs();
 
     /**
-     * A description of the job trigger.
-     * 
-     * (Optional)
      * A short description of where the data is coming from. Will be stored once in the job. 256 max length.
      * 
      */
@@ -29,10 +26,7 @@ public final class PreventionJobTriggerArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> description;
 
     /**
-     * @return A description of the job trigger.
-     * 
-     * (Optional)
-     * A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+     * @return A short description of where the data is coming from. Will be stored once in the job. 256 max length.
      * 
      */
     public Optional<Output<String>> description() {
@@ -174,10 +168,7 @@ public final class PreventionJobTriggerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param description A description of the job trigger.
-         * 
-         * (Optional)
-         * A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+         * @param description A short description of where the data is coming from. Will be stored once in the job. 256 max length.
          * 
          * @return builder
          * 
@@ -188,10 +179,7 @@ public final class PreventionJobTriggerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param description A description of the job trigger.
-         * 
-         * (Optional)
-         * A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+         * @param description A short description of where the data is coming from. Will be stored once in the job. 256 max length.
          * 
          * @return builder
          * 

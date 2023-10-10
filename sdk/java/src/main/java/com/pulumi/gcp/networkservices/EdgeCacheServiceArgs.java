@@ -23,30 +23,12 @@ public final class EdgeCacheServiceArgs extends com.pulumi.resources.ResourceArg
     /**
      * A human-readable description of the hostRule.
      * 
-     * (Optional)
-     * A human-readable description of the resource.
-     * 
-     * (Optional)
-     * A human-readable description of the routeRule.
-     * 
-     * (Optional)
-     * A human-readable description of the resource.
-     * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
      * @return A human-readable description of the hostRule.
-     * 
-     * (Optional)
-     * A human-readable description of the resource.
-     * 
-     * (Optional)
-     * A human-readable description of the routeRule.
-     * 
-     * (Optional)
-     * A human-readable description of the resource.
      * 
      */
     public Optional<Output<String>> description() {
@@ -278,15 +260,6 @@ public final class EdgeCacheServiceArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param description A human-readable description of the hostRule.
          * 
-         * (Optional)
-         * A human-readable description of the resource.
-         * 
-         * (Optional)
-         * A human-readable description of the routeRule.
-         * 
-         * (Optional)
-         * A human-readable description of the resource.
-         * 
          * @return builder
          * 
          */
@@ -297,15 +270,6 @@ public final class EdgeCacheServiceArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param description A human-readable description of the hostRule.
-         * 
-         * (Optional)
-         * A human-readable description of the resource.
-         * 
-         * (Optional)
-         * A human-readable description of the routeRule.
-         * 
-         * (Optional)
-         * A human-readable description of the resource.
          * 
          * @return builder
          * 

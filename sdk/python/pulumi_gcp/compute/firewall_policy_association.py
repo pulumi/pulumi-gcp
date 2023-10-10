@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FirewallPolicyAssociationArgs', 'FirewallPolicyAssociation']
@@ -27,10 +27,23 @@ class FirewallPolicyAssociationArgs:
                
                - - -
         """
-        pulumi.set(__self__, "attachment_target", attachment_target)
-        pulumi.set(__self__, "firewall_policy", firewall_policy)
+        FirewallPolicyAssociationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attachment_target=attachment_target,
+            firewall_policy=firewall_policy,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attachment_target: pulumi.Input[str],
+             firewall_policy: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("attachment_target", attachment_target)
+        _setter("firewall_policy", firewall_policy)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="attachmentTarget")
@@ -91,14 +104,29 @@ class _FirewallPolicyAssociationState:
                - - -
         :param pulumi.Input[str] short_name: The short name of the firewall policy of the association.
         """
+        _FirewallPolicyAssociationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attachment_target=attachment_target,
+            firewall_policy=firewall_policy,
+            name=name,
+            short_name=short_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attachment_target: Optional[pulumi.Input[str]] = None,
+             firewall_policy: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             short_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if attachment_target is not None:
-            pulumi.set(__self__, "attachment_target", attachment_target)
+            _setter("attachment_target", attachment_target)
         if firewall_policy is not None:
-            pulumi.set(__self__, "firewall_policy", firewall_policy)
+            _setter("firewall_policy", firewall_policy)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if short_name is not None:
-            pulumi.set(__self__, "short_name", short_name)
+            _setter("short_name", short_name)
 
     @property
     @pulumi.getter(name="attachmentTarget")
@@ -252,6 +280,10 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FirewallPolicyAssociationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

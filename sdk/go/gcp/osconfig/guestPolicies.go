@@ -274,17 +274,7 @@ type GuestPolicies struct {
 	// * Must end with a number or a letter.
 	// * Must be unique within the project.
 	GuestPolicyId pulumi.StringOutput `pulumi:"guestPolicyId"`
-	// The name of the package. A package is uniquely identified for conflict validation
-	// by checking the package name and the manager(s) that the package targets.
-	//
-	// (Required)
 	// The name of the repository.
-	//
-	// (Required)
-	// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-	// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-	// This means that requests to create multiple recipes with the same name and version are rejected since they
-	// could potentially have conflicting assignments.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A list of package repositories to configure on the VM instance.
 	// This is done before any other configs are applied so they can use these repos.
@@ -364,17 +354,7 @@ type guestPoliciesState struct {
 	// * Must end with a number or a letter.
 	// * Must be unique within the project.
 	GuestPolicyId *string `pulumi:"guestPolicyId"`
-	// The name of the package. A package is uniquely identified for conflict validation
-	// by checking the package name and the manager(s) that the package targets.
-	//
-	// (Required)
 	// The name of the repository.
-	//
-	// (Required)
-	// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-	// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-	// This means that requests to create multiple recipes with the same name and version are rejected since they
-	// could potentially have conflicting assignments.
 	Name *string `pulumi:"name"`
 	// A list of package repositories to configure on the VM instance.
 	// This is done before any other configs are applied so they can use these repos.
@@ -419,17 +399,7 @@ type GuestPoliciesState struct {
 	// * Must end with a number or a letter.
 	// * Must be unique within the project.
 	GuestPolicyId pulumi.StringPtrInput
-	// The name of the package. A package is uniquely identified for conflict validation
-	// by checking the package name and the manager(s) that the package targets.
-	//
-	// (Required)
 	// The name of the repository.
-	//
-	// (Required)
-	// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-	// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-	// This means that requests to create multiple recipes with the same name and version are rejected since they
-	// could potentially have conflicting assignments.
 	Name pulumi.StringPtrInput
 	// A list of package repositories to configure on the VM instance.
 	// This is done before any other configs are applied so they can use these repos.
@@ -678,17 +648,7 @@ func (o GuestPoliciesOutput) GuestPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GuestPolicies) pulumi.StringOutput { return v.GuestPolicyId }).(pulumi.StringOutput)
 }
 
-// The name of the package. A package is uniquely identified for conflict validation
-// by checking the package name and the manager(s) that the package targets.
-//
-// (Required)
 // The name of the repository.
-//
-// (Required)
-// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-// This means that requests to create multiple recipes with the same name and version are rejected since they
-// could potentially have conflicting assignments.
 func (o GuestPoliciesOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GuestPolicies) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

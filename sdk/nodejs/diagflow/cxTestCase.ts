@@ -203,10 +203,6 @@ export class CxTestCase extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastTestResults!: pulumi.Output<outputs.diagflow.CxTestCaseLastTestResult[]>;
     /**
-     * The unique identifier of the intent.
-     * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
-     *
-     * (Optional)
      * The unique identifier of the page.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
      */
@@ -299,10 +295,6 @@ export interface CxTestCaseState {
      */
     lastTestResults?: pulumi.Input<pulumi.Input<inputs.diagflow.CxTestCaseLastTestResult>[]>;
     /**
-     * The unique identifier of the intent.
-     * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
-     *
-     * (Optional)
      * The unique identifier of the page.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
      */

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -50,21 +50,44 @@ class UserArgs:
                user during login. The default is the database's built-in user type. Flags
                include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
         """
-        pulumi.set(__self__, "instance", instance)
+        UserArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance=instance,
+            deletion_policy=deletion_policy,
+            host=host,
+            name=name,
+            password=password,
+            password_policy=password_policy,
+            project=project,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance: pulumi.Input[str],
+             deletion_policy: Optional[pulumi.Input[str]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             password_policy: Optional[pulumi.Input['UserPasswordPolicyArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance", instance)
         if deletion_policy is not None:
-            pulumi.set(__self__, "deletion_policy", deletion_policy)
+            _setter("deletion_policy", deletion_policy)
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if password_policy is not None:
-            pulumi.set(__self__, "password_policy", password_policy)
+            _setter("password_policy", password_policy)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -214,24 +237,49 @@ class _UserState:
                user during login. The default is the database's built-in user type. Flags
                include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
         """
+        _UserState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            deletion_policy=deletion_policy,
+            host=host,
+            instance=instance,
+            name=name,
+            password=password,
+            password_policy=password_policy,
+            project=project,
+            sql_server_user_details=sql_server_user_details,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             deletion_policy: Optional[pulumi.Input[str]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             instance: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             password_policy: Optional[pulumi.Input['UserPasswordPolicyArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             sql_server_user_details: Optional[pulumi.Input[Sequence[pulumi.Input['UserSqlServerUserDetailArgs']]]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if deletion_policy is not None:
-            pulumi.set(__self__, "deletion_policy", deletion_policy)
+            _setter("deletion_policy", deletion_policy)
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if instance is not None:
-            pulumi.set(__self__, "instance", instance)
+            _setter("instance", instance)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if password_policy is not None:
-            pulumi.set(__self__, "password_policy", password_policy)
+            _setter("password_policy", password_policy)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if sql_server_user_details is not None:
-            pulumi.set(__self__, "sql_server_user_details", sql_server_user_details)
+            _setter("sql_server_user_details", sql_server_user_details)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="deletionPolicy")
@@ -444,6 +492,10 @@ class User(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            UserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -473,6 +525,11 @@ class User(pulumi.CustomResource):
             __props__.__dict__["instance"] = instance
             __props__.__dict__["name"] = name
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
+            if password_policy is not None and not isinstance(password_policy, UserPasswordPolicyArgs):
+                password_policy = password_policy or {}
+                def _setter(key, value):
+                    password_policy[key] = value
+                UserPasswordPolicyArgs._configure(_setter, **password_policy)
             __props__.__dict__["password_policy"] = password_policy
             __props__.__dict__["project"] = project
             __props__.__dict__["type"] = type

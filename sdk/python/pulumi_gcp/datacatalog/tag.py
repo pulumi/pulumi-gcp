@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,12 +35,27 @@ class TagArgs:
         :param pulumi.Input[str] parent: The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
                all entries in that group.
         """
-        pulumi.set(__self__, "fields", fields)
-        pulumi.set(__self__, "template", template)
+        TagArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fields=fields,
+            template=template,
+            column=column,
+            parent=parent,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fields: pulumi.Input[Sequence[pulumi.Input['TagFieldArgs']]],
+             template: pulumi.Input[str],
+             column: Optional[pulumi.Input[str]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("fields", fields)
+        _setter("template", template)
         if column is not None:
-            pulumi.set(__self__, "column", column)
+            _setter("column", column)
         if parent is not None:
-            pulumi.set(__self__, "parent", parent)
+            _setter("parent", parent)
 
     @property
     @pulumi.getter
@@ -128,18 +143,37 @@ class _TagState:
                This field cannot be modified after creation.
         :param pulumi.Input[str] template_displayname: The display name of the tag template.
         """
+        _TagState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            column=column,
+            fields=fields,
+            name=name,
+            parent=parent,
+            template=template,
+            template_displayname=template_displayname,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             column: Optional[pulumi.Input[str]] = None,
+             fields: Optional[pulumi.Input[Sequence[pulumi.Input['TagFieldArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             template: Optional[pulumi.Input[str]] = None,
+             template_displayname: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if column is not None:
-            pulumi.set(__self__, "column", column)
+            _setter("column", column)
         if fields is not None:
-            pulumi.set(__self__, "fields", fields)
+            _setter("fields", fields)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent is not None:
-            pulumi.set(__self__, "parent", parent)
+            _setter("parent", parent)
         if template is not None:
-            pulumi.set(__self__, "template", template)
+            _setter("template", template)
         if template_displayname is not None:
-            pulumi.set(__self__, "template_displayname", template_displayname)
+            _setter("template_displayname", template_displayname)
 
     @property
     @pulumi.getter
@@ -808,6 +842,10 @@ class Tag(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TagArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

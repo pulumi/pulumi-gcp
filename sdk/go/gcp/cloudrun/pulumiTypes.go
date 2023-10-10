@@ -1873,7 +1873,6 @@ type ServiceStatus struct {
 	// Clients polling for completed reconciliation should poll until observedGeneration =
 	// metadata.generation and the Ready condition's status is True or False.
 	ObservedGeneration *int `pulumi:"observedGeneration"`
-	// (Output)
 	// Traffic specifies how to distribute traffic over a collection of Knative Revisions
 	// and Configurations
 	// Structure is documented below.
@@ -1917,7 +1916,6 @@ type ServiceStatusArgs struct {
 	// Clients polling for completed reconciliation should poll until observedGeneration =
 	// metadata.generation and the Ready condition's status is True or False.
 	ObservedGeneration pulumi.IntPtrInput `pulumi:"observedGeneration"`
-	// (Output)
 	// Traffic specifies how to distribute traffic over a collection of Knative Revisions
 	// and Configurations
 	// Structure is documented below.
@@ -2030,7 +2028,6 @@ func (o ServiceStatusOutput) ObservedGeneration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceStatus) *int { return v.ObservedGeneration }).(pulumi.IntPtrOutput)
 }
 
-// (Output)
 // Traffic specifies how to distribute traffic over a collection of Knative Revisions
 // and Configurations
 // Structure is documented below.

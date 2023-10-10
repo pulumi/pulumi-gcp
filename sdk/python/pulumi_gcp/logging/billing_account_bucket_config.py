@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,15 +33,34 @@ class BillingAccountBucketConfigArgs:
         :param pulumi.Input[str] description: Describes this bucket.
         :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
         """
-        pulumi.set(__self__, "billing_account", billing_account)
-        pulumi.set(__self__, "bucket_id", bucket_id)
-        pulumi.set(__self__, "location", location)
+        BillingAccountBucketConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            billing_account=billing_account,
+            bucket_id=bucket_id,
+            location=location,
+            cmek_settings=cmek_settings,
+            description=description,
+            retention_days=retention_days,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             billing_account: pulumi.Input[str],
+             bucket_id: pulumi.Input[str],
+             location: pulumi.Input[str],
+             cmek_settings: Optional[pulumi.Input['BillingAccountBucketConfigCmekSettingsArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             retention_days: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("billing_account", billing_account)
+        _setter("bucket_id", bucket_id)
+        _setter("location", location)
         if cmek_settings is not None:
-            pulumi.set(__self__, "cmek_settings", cmek_settings)
+            _setter("cmek_settings", cmek_settings)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if retention_days is not None:
-            pulumi.set(__self__, "retention_days", retention_days)
+            _setter("retention_days", retention_days)
 
     @property
     @pulumi.getter(name="billingAccount")
@@ -142,22 +161,45 @@ class _BillingAccountBucketConfigState:
         :param pulumi.Input[str] name: The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
         :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
         """
+        _BillingAccountBucketConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            billing_account=billing_account,
+            bucket_id=bucket_id,
+            cmek_settings=cmek_settings,
+            description=description,
+            lifecycle_state=lifecycle_state,
+            location=location,
+            name=name,
+            retention_days=retention_days,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             billing_account: Optional[pulumi.Input[str]] = None,
+             bucket_id: Optional[pulumi.Input[str]] = None,
+             cmek_settings: Optional[pulumi.Input['BillingAccountBucketConfigCmekSettingsArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             lifecycle_state: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             retention_days: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if billing_account is not None:
-            pulumi.set(__self__, "billing_account", billing_account)
+            _setter("billing_account", billing_account)
         if bucket_id is not None:
-            pulumi.set(__self__, "bucket_id", bucket_id)
+            _setter("bucket_id", bucket_id)
         if cmek_settings is not None:
-            pulumi.set(__self__, "cmek_settings", cmek_settings)
+            _setter("cmek_settings", cmek_settings)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if lifecycle_state is not None:
-            pulumi.set(__self__, "lifecycle_state", lifecycle_state)
+            _setter("lifecycle_state", lifecycle_state)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if retention_days is not None:
-            pulumi.set(__self__, "retention_days", retention_days)
+            _setter("retention_days", retention_days)
 
     @property
     @pulumi.getter(name="billingAccount")
@@ -355,6 +397,10 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BillingAccountBucketConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -381,6 +427,11 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
             if bucket_id is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket_id'")
             __props__.__dict__["bucket_id"] = bucket_id
+            if cmek_settings is not None and not isinstance(cmek_settings, BillingAccountBucketConfigCmekSettingsArgs):
+                cmek_settings = cmek_settings or {}
+                def _setter(key, value):
+                    cmek_settings[key] = value
+                BillingAccountBucketConfigCmekSettingsArgs._configure(_setter, **cmek_settings)
             __props__.__dict__["cmek_settings"] = cmek_settings
             __props__.__dict__["description"] = description
             if location is None and not opts.urn:

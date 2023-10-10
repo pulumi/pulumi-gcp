@@ -121,18 +121,12 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
     /**
      * A description of the rule.
      * 
-     * (Optional)
-     * A description of the rule.
-     * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
      * @return A description of the rule.
-     * 
-     * (Optional)
-     * A description of the rule.
      * 
      */
     public Output<Optional<String>> description() {

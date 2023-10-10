@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AppleAppArgs', 'AppleApp']
@@ -39,18 +39,39 @@ class AppleAppArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] team_id: The Apple Developer Team ID associated with the App in the App Store.
         """
-        pulumi.set(__self__, "bundle_id", bundle_id)
-        pulumi.set(__self__, "display_name", display_name)
+        AppleAppArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bundle_id=bundle_id,
+            display_name=display_name,
+            api_key_id=api_key_id,
+            app_store_id=app_store_id,
+            deletion_policy=deletion_policy,
+            project=project,
+            team_id=team_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bundle_id: pulumi.Input[str],
+             display_name: pulumi.Input[str],
+             api_key_id: Optional[pulumi.Input[str]] = None,
+             app_store_id: Optional[pulumi.Input[str]] = None,
+             deletion_policy: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             team_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bundle_id", bundle_id)
+        _setter("display_name", display_name)
         if api_key_id is not None:
-            pulumi.set(__self__, "api_key_id", api_key_id)
+            _setter("api_key_id", api_key_id)
         if app_store_id is not None:
-            pulumi.set(__self__, "app_store_id", app_store_id)
+            _setter("app_store_id", app_store_id)
         if deletion_policy is not None:
-            pulumi.set(__self__, "deletion_policy", deletion_policy)
+            _setter("deletion_policy", deletion_policy)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if team_id is not None:
-            pulumi.set(__self__, "team_id", team_id)
+            _setter("team_id", team_id)
 
     @property
     @pulumi.getter(name="bundleId")
@@ -179,24 +200,49 @@ class _AppleAppState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] team_id: The Apple Developer Team ID associated with the App in the App Store.
         """
+        _AppleAppState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_key_id=api_key_id,
+            app_id=app_id,
+            app_store_id=app_store_id,
+            bundle_id=bundle_id,
+            deletion_policy=deletion_policy,
+            display_name=display_name,
+            name=name,
+            project=project,
+            team_id=team_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_key_id: Optional[pulumi.Input[str]] = None,
+             app_id: Optional[pulumi.Input[str]] = None,
+             app_store_id: Optional[pulumi.Input[str]] = None,
+             bundle_id: Optional[pulumi.Input[str]] = None,
+             deletion_policy: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             team_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if api_key_id is not None:
-            pulumi.set(__self__, "api_key_id", api_key_id)
+            _setter("api_key_id", api_key_id)
         if app_id is not None:
-            pulumi.set(__self__, "app_id", app_id)
+            _setter("app_id", app_id)
         if app_store_id is not None:
-            pulumi.set(__self__, "app_store_id", app_store_id)
+            _setter("app_store_id", app_store_id)
         if bundle_id is not None:
-            pulumi.set(__self__, "bundle_id", bundle_id)
+            _setter("bundle_id", bundle_id)
         if deletion_policy is not None:
-            pulumi.set(__self__, "deletion_policy", deletion_policy)
+            _setter("deletion_policy", deletion_policy)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if team_id is not None:
-            pulumi.set(__self__, "team_id", team_id)
+            _setter("team_id", team_id)
 
     @property
     @pulumi.getter(name="apiKeyId")
@@ -490,6 +536,10 @@ class AppleApp(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AppleAppArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

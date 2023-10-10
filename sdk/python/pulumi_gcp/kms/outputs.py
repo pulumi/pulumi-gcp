@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -42,10 +42,23 @@ class CryptoKeyIAMBindingCondition(dict):
                identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
                consider it to be an entirely different resource and will treat it as such.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        CryptoKeyIAMBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -91,10 +104,23 @@ class CryptoKeyIAMMemberCondition(dict):
                identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
                consider it to be an entirely different resource and will treat it as such.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        CryptoKeyIAMMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -161,14 +187,29 @@ class CryptoKeyVersionAttestation(dict):
         :param str format: (Output)
                The format of the attestation data.
         """
+        CryptoKeyVersionAttestation._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cert_chains=cert_chains,
+            content=content,
+            external_protection_level_options=external_protection_level_options,
+            format=format,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cert_chains: Optional['outputs.CryptoKeyVersionAttestationCertChains'] = None,
+             content: Optional[str] = None,
+             external_protection_level_options: Optional['outputs.CryptoKeyVersionAttestationExternalProtectionLevelOptions'] = None,
+             format: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cert_chains is not None:
-            pulumi.set(__self__, "cert_chains", cert_chains)
+            _setter("cert_chains", cert_chains)
         if content is not None:
-            pulumi.set(__self__, "content", content)
+            _setter("content", content)
         if external_protection_level_options is not None:
-            pulumi.set(__self__, "external_protection_level_options", external_protection_level_options)
+            _setter("external_protection_level_options", external_protection_level_options)
         if format is not None:
-            pulumi.set(__self__, "format", format)
+            _setter("format", format)
 
     @property
     @pulumi.getter(name="certChains")
@@ -239,12 +280,25 @@ class CryptoKeyVersionAttestationCertChains(dict):
         :param str google_card_certs: Google card certificate chain corresponding to the attestation.
         :param str google_partition_certs: Google partition certificate chain corresponding to the attestation.
         """
+        CryptoKeyVersionAttestationCertChains._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cavium_certs=cavium_certs,
+            google_card_certs=google_card_certs,
+            google_partition_certs=google_partition_certs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cavium_certs: Optional[str] = None,
+             google_card_certs: Optional[str] = None,
+             google_partition_certs: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cavium_certs is not None:
-            pulumi.set(__self__, "cavium_certs", cavium_certs)
+            _setter("cavium_certs", cavium_certs)
         if google_card_certs is not None:
-            pulumi.set(__self__, "google_card_certs", google_card_certs)
+            _setter("google_card_certs", google_card_certs)
         if google_partition_certs is not None:
-            pulumi.set(__self__, "google_partition_certs", google_partition_certs)
+            _setter("google_partition_certs", google_partition_certs)
 
     @property
     @pulumi.getter(name="caviumCerts")
@@ -299,10 +353,21 @@ class CryptoKeyVersionAttestationExternalProtectionLevelOptions(dict):
         :param str ekm_connection_key_path: The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
         :param str external_key_uri: The URI for an external resource that this CryptoKeyVersion represents.
         """
+        CryptoKeyVersionAttestationExternalProtectionLevelOptions._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ekm_connection_key_path=ekm_connection_key_path,
+            external_key_uri=external_key_uri,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ekm_connection_key_path: Optional[str] = None,
+             external_key_uri: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ekm_connection_key_path is not None:
-            pulumi.set(__self__, "ekm_connection_key_path", ekm_connection_key_path)
+            _setter("ekm_connection_key_path", ekm_connection_key_path)
         if external_key_uri is not None:
-            pulumi.set(__self__, "external_key_uri", external_key_uri)
+            _setter("external_key_uri", external_key_uri)
 
     @property
     @pulumi.getter(name="ekmConnectionKeyPath")
@@ -348,9 +413,20 @@ class CryptoKeyVersionTemplate(dict):
                See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
         :param str protection_level: The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
         """
-        pulumi.set(__self__, "algorithm", algorithm)
+        CryptoKeyVersionTemplate._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            algorithm=algorithm,
+            protection_level=protection_level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             algorithm: str,
+             protection_level: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("algorithm", algorithm)
         if protection_level is not None:
-            pulumi.set(__self__, "protection_level", protection_level)
+            _setter("protection_level", protection_level)
 
     @property
     @pulumi.getter
@@ -385,10 +461,23 @@ class KeyRingIAMBindingCondition(dict):
                identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
                consider it to be an entirely different resource and will treat it as such.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        KeyRingIAMBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -434,10 +523,23 @@ class KeyRingIAMMemberCondition(dict):
                identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
                consider it to be an entirely different resource and will treat it as such.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        KeyRingIAMMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -480,10 +582,21 @@ class KeyRingImportJobAttestation(dict):
         :param str format: (Output)
                The format of the attestation data.
         """
+        KeyRingImportJobAttestation._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            content=content,
+            format=format,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             content: Optional[str] = None,
+             format: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if content is not None:
-            pulumi.set(__self__, "content", content)
+            _setter("content", content)
         if format is not None:
-            pulumi.set(__self__, "format", format)
+            _setter("format", format)
 
     @property
     @pulumi.getter
@@ -514,8 +627,17 @@ class KeyRingImportJobPublicKey(dict):
                The public key, encoded in PEM format. For more information, see the RFC 7468 sections
                for General Considerations and Textual Encoding of Subject Public Key Info.
         """
+        KeyRingImportJobPublicKey._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pem=pem,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pem: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if pem is not None:
-            pulumi.set(__self__, "pem", pem)
+            _setter("pem", pem)
 
     @property
     @pulumi.getter
@@ -552,7 +674,16 @@ class RegistryCredential(dict):
         """
         :param Mapping[str, Any] public_key_certificate: A public key certificate format and data.
         """
-        pulumi.set(__self__, "public_key_certificate", public_key_certificate)
+        RegistryCredential._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            public_key_certificate=public_key_certificate,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             public_key_certificate: Mapping[str, Any],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("public_key_certificate", public_key_certificate)
 
     @property
     @pulumi.getter(name="publicKeyCertificate")
@@ -595,9 +726,20 @@ class RegistryEventNotificationConfigItem(dict):
                value can only be used for the last `event_notification_configs`
                item.
         """
-        pulumi.set(__self__, "pubsub_topic_name", pubsub_topic_name)
+        RegistryEventNotificationConfigItem._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pubsub_topic_name=pubsub_topic_name,
+            subfolder_matches=subfolder_matches,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pubsub_topic_name: str,
+             subfolder_matches: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("pubsub_topic_name", pubsub_topic_name)
         if subfolder_matches is not None:
-            pulumi.set(__self__, "subfolder_matches", subfolder_matches)
+            _setter("subfolder_matches", subfolder_matches)
 
     @property
     @pulumi.getter(name="pubsubTopicName")
@@ -629,8 +771,19 @@ class GetKMSCryptoKeyVersionPublicKeyResult(dict):
         :param str algorithm: The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
         :param str pem: The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
         """
-        pulumi.set(__self__, "algorithm", algorithm)
-        pulumi.set(__self__, "pem", pem)
+        GetKMSCryptoKeyVersionPublicKeyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            algorithm=algorithm,
+            pem=pem,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             algorithm: str,
+             pem: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("algorithm", algorithm)
+        _setter("pem", pem)
 
     @property
     @pulumi.getter
@@ -654,8 +807,19 @@ class GetKMSCryptoKeyVersionTemplateResult(dict):
     def __init__(__self__, *,
                  algorithm: str,
                  protection_level: str):
-        pulumi.set(__self__, "algorithm", algorithm)
-        pulumi.set(__self__, "protection_level", protection_level)
+        GetKMSCryptoKeyVersionTemplateResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            algorithm=algorithm,
+            protection_level=protection_level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             algorithm: str,
+             protection_level: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("algorithm", algorithm)
+        _setter("protection_level", protection_level)
 
     @property
     @pulumi.getter

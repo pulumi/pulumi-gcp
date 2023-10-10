@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AppEngineVersionIamPolicyArgs', 'AppEngineVersionIamPolicy']
@@ -41,12 +41,29 @@ class AppEngineVersionIamPolicyArgs:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        pulumi.set(__self__, "app_id", app_id)
-        pulumi.set(__self__, "policy_data", policy_data)
-        pulumi.set(__self__, "service", service)
-        pulumi.set(__self__, "version_id", version_id)
+        AppEngineVersionIamPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_id=app_id,
+            policy_data=policy_data,
+            service=service,
+            version_id=version_id,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_id: pulumi.Input[str],
+             policy_data: pulumi.Input[str],
+             service: pulumi.Input[str],
+             version_id: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("app_id", app_id)
+        _setter("policy_data", policy_data)
+        _setter("service", service)
+        _setter("version_id", version_id)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="appId")
@@ -155,18 +172,37 @@ class _AppEngineVersionIamPolicyState:
         :param pulumi.Input[str] service: Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] version_id: Version id of the App Engine application Used to find the parent resource to bind the IAM policy to
         """
+        _AppEngineVersionIamPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_id=app_id,
+            etag=etag,
+            policy_data=policy_data,
+            project=project,
+            service=service,
+            version_id=version_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_id: Optional[pulumi.Input[str]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             version_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if app_id is not None:
-            pulumi.set(__self__, "app_id", app_id)
+            _setter("app_id", app_id)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if policy_data is not None:
-            pulumi.set(__self__, "policy_data", policy_data)
+            _setter("policy_data", policy_data)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if service is not None:
-            pulumi.set(__self__, "service", service)
+            _setter("service", service)
         if version_id is not None:
-            pulumi.set(__self__, "version_id", version_id)
+            _setter("version_id", version_id)
 
     @property
     @pulumi.getter(name="appId")
@@ -604,6 +640,10 @@ class AppEngineVersionIamPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AppEngineVersionIamPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

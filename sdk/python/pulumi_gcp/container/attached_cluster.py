@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -66,36 +66,67 @@ class AttachedClusterArgs:
         :param pulumi.Input['AttachedClusterMonitoringConfigArgs'] monitoring_config: Monitoring configuration.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of this resource.
-        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
-               
-               - - -
-               
-               
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "distribution", distribution)
-        pulumi.set(__self__, "fleet", fleet)
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "oidc_config", oidc_config)
-        pulumi.set(__self__, "platform_version", platform_version)
+        AttachedClusterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            distribution=distribution,
+            fleet=fleet,
+            location=location,
+            oidc_config=oidc_config,
+            platform_version=platform_version,
+            annotations=annotations,
+            authorization=authorization,
+            binary_authorization=binary_authorization,
+            deletion_policy=deletion_policy,
+            description=description,
+            logging_config=logging_config,
+            monitoring_config=monitoring_config,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             distribution: pulumi.Input[str],
+             fleet: pulumi.Input['AttachedClusterFleetArgs'],
+             location: pulumi.Input[str],
+             oidc_config: pulumi.Input['AttachedClusterOidcConfigArgs'],
+             platform_version: pulumi.Input[str],
+             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             authorization: Optional[pulumi.Input['AttachedClusterAuthorizationArgs']] = None,
+             binary_authorization: Optional[pulumi.Input['AttachedClusterBinaryAuthorizationArgs']] = None,
+             deletion_policy: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             logging_config: Optional[pulumi.Input['AttachedClusterLoggingConfigArgs']] = None,
+             monitoring_config: Optional[pulumi.Input['AttachedClusterMonitoringConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("distribution", distribution)
+        _setter("fleet", fleet)
+        _setter("location", location)
+        _setter("oidc_config", oidc_config)
+        _setter("platform_version", platform_version)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if authorization is not None:
-            pulumi.set(__self__, "authorization", authorization)
+            _setter("authorization", authorization)
         if binary_authorization is not None:
-            pulumi.set(__self__, "binary_authorization", binary_authorization)
+            _setter("binary_authorization", binary_authorization)
         if deletion_policy is not None:
-            pulumi.set(__self__, "deletion_policy", deletion_policy)
+            _setter("deletion_policy", deletion_policy)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if logging_config is not None:
-            pulumi.set(__self__, "logging_config", logging_config)
+            _setter("logging_config", logging_config)
         if monitoring_config is not None:
-            pulumi.set(__self__, "monitoring_config", monitoring_config)
+            _setter("monitoring_config", monitoring_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -278,11 +309,7 @@ class AttachedClusterArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The number of the Fleet host project where this cluster will be registered.
-
-        - - -
-
-
+        The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
@@ -361,11 +388,7 @@ class _AttachedClusterState:
                `issuer_url` and `jwks`.
                Structure is documented below.
         :param pulumi.Input[str] platform_version: The platform version for the cluster (e.g. `1.23.0-gke.1`).
-        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
-               
-               - - -
-               
-               
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the cluster.
         :param pulumi.Input[str] state: The current state of the cluster. Possible values:
@@ -376,52 +399,105 @@ class _AttachedClusterState:
         :param pulumi.Input[Sequence[pulumi.Input['AttachedClusterWorkloadIdentityConfigArgs']]] workload_identity_configs: Workload Identity settings.
                Structure is documented below.
         """
+        _AttachedClusterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            authorization=authorization,
+            binary_authorization=binary_authorization,
+            cluster_region=cluster_region,
+            create_time=create_time,
+            deletion_policy=deletion_policy,
+            description=description,
+            distribution=distribution,
+            errors=errors,
+            fleet=fleet,
+            kubernetes_version=kubernetes_version,
+            location=location,
+            logging_config=logging_config,
+            monitoring_config=monitoring_config,
+            name=name,
+            oidc_config=oidc_config,
+            platform_version=platform_version,
+            project=project,
+            reconciling=reconciling,
+            state=state,
+            uid=uid,
+            update_time=update_time,
+            workload_identity_configs=workload_identity_configs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             authorization: Optional[pulumi.Input['AttachedClusterAuthorizationArgs']] = None,
+             binary_authorization: Optional[pulumi.Input['AttachedClusterBinaryAuthorizationArgs']] = None,
+             cluster_region: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             deletion_policy: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             distribution: Optional[pulumi.Input[str]] = None,
+             errors: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedClusterErrorArgs']]]] = None,
+             fleet: Optional[pulumi.Input['AttachedClusterFleetArgs']] = None,
+             kubernetes_version: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             logging_config: Optional[pulumi.Input['AttachedClusterLoggingConfigArgs']] = None,
+             monitoring_config: Optional[pulumi.Input['AttachedClusterMonitoringConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             oidc_config: Optional[pulumi.Input['AttachedClusterOidcConfigArgs']] = None,
+             platform_version: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             reconciling: Optional[pulumi.Input[bool]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedClusterWorkloadIdentityConfigArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if authorization is not None:
-            pulumi.set(__self__, "authorization", authorization)
+            _setter("authorization", authorization)
         if binary_authorization is not None:
-            pulumi.set(__self__, "binary_authorization", binary_authorization)
+            _setter("binary_authorization", binary_authorization)
         if cluster_region is not None:
-            pulumi.set(__self__, "cluster_region", cluster_region)
+            _setter("cluster_region", cluster_region)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if deletion_policy is not None:
-            pulumi.set(__self__, "deletion_policy", deletion_policy)
+            _setter("deletion_policy", deletion_policy)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if distribution is not None:
-            pulumi.set(__self__, "distribution", distribution)
+            _setter("distribution", distribution)
         if errors is not None:
-            pulumi.set(__self__, "errors", errors)
+            _setter("errors", errors)
         if fleet is not None:
-            pulumi.set(__self__, "fleet", fleet)
+            _setter("fleet", fleet)
         if kubernetes_version is not None:
-            pulumi.set(__self__, "kubernetes_version", kubernetes_version)
+            _setter("kubernetes_version", kubernetes_version)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if logging_config is not None:
-            pulumi.set(__self__, "logging_config", logging_config)
+            _setter("logging_config", logging_config)
         if monitoring_config is not None:
-            pulumi.set(__self__, "monitoring_config", monitoring_config)
+            _setter("monitoring_config", monitoring_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if oidc_config is not None:
-            pulumi.set(__self__, "oidc_config", oidc_config)
+            _setter("oidc_config", oidc_config)
         if platform_version is not None:
-            pulumi.set(__self__, "platform_version", platform_version)
+            _setter("platform_version", platform_version)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if reconciling is not None:
-            pulumi.set(__self__, "reconciling", reconciling)
+            _setter("reconciling", reconciling)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
         if workload_identity_configs is not None:
-            pulumi.set(__self__, "workload_identity_configs", workload_identity_configs)
+            _setter("workload_identity_configs", workload_identity_configs)
 
     @property
     @pulumi.getter
@@ -655,11 +731,7 @@ class _AttachedClusterState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The number of the Fleet host project where this cluster will be registered.
-
-        - - -
-
-
+        The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
@@ -861,11 +933,7 @@ class AttachedCluster(pulumi.CustomResource):
                `issuer_url` and `jwks`.
                Structure is documented below.
         :param pulumi.Input[str] platform_version: The platform version for the cluster (e.g. `1.23.0-gke.1`).
-        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
-               
-               - - -
-               
-               
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
         ...
@@ -957,6 +1025,10 @@ class AttachedCluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AttachedClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -986,22 +1058,52 @@ class AttachedCluster(pulumi.CustomResource):
             __props__ = AttachedClusterArgs.__new__(AttachedClusterArgs)
 
             __props__.__dict__["annotations"] = annotations
+            if authorization is not None and not isinstance(authorization, AttachedClusterAuthorizationArgs):
+                authorization = authorization or {}
+                def _setter(key, value):
+                    authorization[key] = value
+                AttachedClusterAuthorizationArgs._configure(_setter, **authorization)
             __props__.__dict__["authorization"] = authorization
+            if binary_authorization is not None and not isinstance(binary_authorization, AttachedClusterBinaryAuthorizationArgs):
+                binary_authorization = binary_authorization or {}
+                def _setter(key, value):
+                    binary_authorization[key] = value
+                AttachedClusterBinaryAuthorizationArgs._configure(_setter, **binary_authorization)
             __props__.__dict__["binary_authorization"] = binary_authorization
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if distribution is None and not opts.urn:
                 raise TypeError("Missing required property 'distribution'")
             __props__.__dict__["distribution"] = distribution
+            if fleet is not None and not isinstance(fleet, AttachedClusterFleetArgs):
+                fleet = fleet or {}
+                def _setter(key, value):
+                    fleet[key] = value
+                AttachedClusterFleetArgs._configure(_setter, **fleet)
             if fleet is None and not opts.urn:
                 raise TypeError("Missing required property 'fleet'")
             __props__.__dict__["fleet"] = fleet
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            if logging_config is not None and not isinstance(logging_config, AttachedClusterLoggingConfigArgs):
+                logging_config = logging_config or {}
+                def _setter(key, value):
+                    logging_config[key] = value
+                AttachedClusterLoggingConfigArgs._configure(_setter, **logging_config)
             __props__.__dict__["logging_config"] = logging_config
+            if monitoring_config is not None and not isinstance(monitoring_config, AttachedClusterMonitoringConfigArgs):
+                monitoring_config = monitoring_config or {}
+                def _setter(key, value):
+                    monitoring_config[key] = value
+                AttachedClusterMonitoringConfigArgs._configure(_setter, **monitoring_config)
             __props__.__dict__["monitoring_config"] = monitoring_config
             __props__.__dict__["name"] = name
+            if oidc_config is not None and not isinstance(oidc_config, AttachedClusterOidcConfigArgs):
+                oidc_config = oidc_config or {}
+                def _setter(key, value):
+                    oidc_config[key] = value
+                AttachedClusterOidcConfigArgs._configure(_setter, **oidc_config)
             if oidc_config is None and not opts.urn:
                 raise TypeError("Missing required property 'oidc_config'")
             __props__.__dict__["oidc_config"] = oidc_config
@@ -1099,11 +1201,7 @@ class AttachedCluster(pulumi.CustomResource):
                `issuer_url` and `jwks`.
                Structure is documented below.
         :param pulumi.Input[str] platform_version: The platform version for the cluster (e.g. `1.23.0-gke.1`).
-        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
-               
-               - - -
-               
-               
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the cluster.
         :param pulumi.Input[str] state: The current state of the cluster. Possible values:
@@ -1307,11 +1405,7 @@ class AttachedCluster(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The number of the Fleet host project where this cluster will be registered.
-
-        - - -
-
-
+        The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")

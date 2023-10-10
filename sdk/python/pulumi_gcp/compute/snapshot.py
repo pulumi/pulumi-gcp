@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -67,25 +67,52 @@ class SnapshotArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
         :param pulumi.Input[str] zone: A reference to the zone where the disk is hosted.
         """
-        pulumi.set(__self__, "source_disk", source_disk)
+        SnapshotArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            source_disk=source_disk,
+            chain_name=chain_name,
+            description=description,
+            labels=labels,
+            name=name,
+            project=project,
+            snapshot_encryption_key=snapshot_encryption_key,
+            source_disk_encryption_key=source_disk_encryption_key,
+            storage_locations=storage_locations,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             source_disk: pulumi.Input[str],
+             chain_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             snapshot_encryption_key: Optional[pulumi.Input['SnapshotSnapshotEncryptionKeyArgs']] = None,
+             source_disk_encryption_key: Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs']] = None,
+             storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("source_disk", source_disk)
         if chain_name is not None:
-            pulumi.set(__self__, "chain_name", chain_name)
+            _setter("chain_name", chain_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if snapshot_encryption_key is not None:
-            pulumi.set(__self__, "snapshot_encryption_key", snapshot_encryption_key)
+            _setter("snapshot_encryption_key", snapshot_encryption_key)
         if source_disk_encryption_key is not None:
-            pulumi.set(__self__, "source_disk_encryption_key", source_disk_encryption_key)
+            _setter("source_disk_encryption_key", source_disk_encryption_key)
         if storage_locations is not None:
-            pulumi.set(__self__, "storage_locations", storage_locations)
+            _setter("storage_locations", storage_locations)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter(name="sourceDisk")
@@ -310,40 +337,81 @@ class _SnapshotState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
         :param pulumi.Input[str] zone: A reference to the zone where the disk is hosted.
         """
+        _SnapshotState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            chain_name=chain_name,
+            creation_timestamp=creation_timestamp,
+            description=description,
+            disk_size_gb=disk_size_gb,
+            label_fingerprint=label_fingerprint,
+            labels=labels,
+            licenses=licenses,
+            name=name,
+            project=project,
+            self_link=self_link,
+            snapshot_encryption_key=snapshot_encryption_key,
+            snapshot_id=snapshot_id,
+            source_disk=source_disk,
+            source_disk_encryption_key=source_disk_encryption_key,
+            storage_bytes=storage_bytes,
+            storage_locations=storage_locations,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             chain_name: Optional[pulumi.Input[str]] = None,
+             creation_timestamp: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disk_size_gb: Optional[pulumi.Input[int]] = None,
+             label_fingerprint: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             snapshot_encryption_key: Optional[pulumi.Input['SnapshotSnapshotEncryptionKeyArgs']] = None,
+             snapshot_id: Optional[pulumi.Input[int]] = None,
+             source_disk: Optional[pulumi.Input[str]] = None,
+             source_disk_encryption_key: Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs']] = None,
+             storage_bytes: Optional[pulumi.Input[int]] = None,
+             storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if chain_name is not None:
-            pulumi.set(__self__, "chain_name", chain_name)
+            _setter("chain_name", chain_name)
         if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+            _setter("creation_timestamp", creation_timestamp)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disk_size_gb is not None:
-            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+            _setter("disk_size_gb", disk_size_gb)
         if label_fingerprint is not None:
-            pulumi.set(__self__, "label_fingerprint", label_fingerprint)
+            _setter("label_fingerprint", label_fingerprint)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if licenses is not None:
-            pulumi.set(__self__, "licenses", licenses)
+            _setter("licenses", licenses)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if snapshot_encryption_key is not None:
-            pulumi.set(__self__, "snapshot_encryption_key", snapshot_encryption_key)
+            _setter("snapshot_encryption_key", snapshot_encryption_key)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
         if source_disk is not None:
-            pulumi.set(__self__, "source_disk", source_disk)
+            _setter("source_disk", source_disk)
         if source_disk_encryption_key is not None:
-            pulumi.set(__self__, "source_disk_encryption_key", source_disk_encryption_key)
+            _setter("source_disk_encryption_key", source_disk_encryption_key)
         if storage_bytes is not None:
-            pulumi.set(__self__, "storage_bytes", storage_bytes)
+            _setter("storage_bytes", storage_bytes)
         if storage_locations is not None:
-            pulumi.set(__self__, "storage_locations", storage_locations)
+            _setter("storage_locations", storage_locations)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter(name="chainName")
@@ -825,6 +893,10 @@ class Snapshot(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SnapshotArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -854,10 +926,20 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            if snapshot_encryption_key is not None and not isinstance(snapshot_encryption_key, SnapshotSnapshotEncryptionKeyArgs):
+                snapshot_encryption_key = snapshot_encryption_key or {}
+                def _setter(key, value):
+                    snapshot_encryption_key[key] = value
+                SnapshotSnapshotEncryptionKeyArgs._configure(_setter, **snapshot_encryption_key)
             __props__.__dict__["snapshot_encryption_key"] = snapshot_encryption_key
             if source_disk is None and not opts.urn:
                 raise TypeError("Missing required property 'source_disk'")
             __props__.__dict__["source_disk"] = source_disk
+            if source_disk_encryption_key is not None and not isinstance(source_disk_encryption_key, SnapshotSourceDiskEncryptionKeyArgs):
+                source_disk_encryption_key = source_disk_encryption_key or {}
+                def _setter(key, value):
+                    source_disk_encryption_key[key] = value
+                SnapshotSourceDiskEncryptionKeyArgs._configure(_setter, **source_disk_encryption_key)
             __props__.__dict__["source_disk_encryption_key"] = source_disk_encryption_key
             __props__.__dict__["storage_locations"] = storage_locations
             __props__.__dict__["zone"] = zone

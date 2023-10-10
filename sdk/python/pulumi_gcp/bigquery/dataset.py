@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -108,35 +108,72 @@ class DatasetArgs:
                or to PHYSICAL to use physical bytes instead.
                LOGICAL is the default if this flag isn't specified.
         """
-        pulumi.set(__self__, "dataset_id", dataset_id)
+        DatasetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dataset_id=dataset_id,
+            accesses=accesses,
+            default_collation=default_collation,
+            default_encryption_configuration=default_encryption_configuration,
+            default_partition_expiration_ms=default_partition_expiration_ms,
+            default_table_expiration_ms=default_table_expiration_ms,
+            delete_contents_on_destroy=delete_contents_on_destroy,
+            description=description,
+            friendly_name=friendly_name,
+            is_case_insensitive=is_case_insensitive,
+            labels=labels,
+            location=location,
+            max_time_travel_hours=max_time_travel_hours,
+            project=project,
+            storage_billing_model=storage_billing_model,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dataset_id: pulumi.Input[str],
+             accesses: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessArgs']]]] = None,
+             default_collation: Optional[pulumi.Input[str]] = None,
+             default_encryption_configuration: Optional[pulumi.Input['DatasetDefaultEncryptionConfigurationArgs']] = None,
+             default_partition_expiration_ms: Optional[pulumi.Input[int]] = None,
+             default_table_expiration_ms: Optional[pulumi.Input[int]] = None,
+             delete_contents_on_destroy: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             friendly_name: Optional[pulumi.Input[str]] = None,
+             is_case_insensitive: Optional[pulumi.Input[bool]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             max_time_travel_hours: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             storage_billing_model: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dataset_id", dataset_id)
         if accesses is not None:
-            pulumi.set(__self__, "accesses", accesses)
+            _setter("accesses", accesses)
         if default_collation is not None:
-            pulumi.set(__self__, "default_collation", default_collation)
+            _setter("default_collation", default_collation)
         if default_encryption_configuration is not None:
-            pulumi.set(__self__, "default_encryption_configuration", default_encryption_configuration)
+            _setter("default_encryption_configuration", default_encryption_configuration)
         if default_partition_expiration_ms is not None:
-            pulumi.set(__self__, "default_partition_expiration_ms", default_partition_expiration_ms)
+            _setter("default_partition_expiration_ms", default_partition_expiration_ms)
         if default_table_expiration_ms is not None:
-            pulumi.set(__self__, "default_table_expiration_ms", default_table_expiration_ms)
+            _setter("default_table_expiration_ms", default_table_expiration_ms)
         if delete_contents_on_destroy is not None:
-            pulumi.set(__self__, "delete_contents_on_destroy", delete_contents_on_destroy)
+            _setter("delete_contents_on_destroy", delete_contents_on_destroy)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if friendly_name is not None:
-            pulumi.set(__self__, "friendly_name", friendly_name)
+            _setter("friendly_name", friendly_name)
         if is_case_insensitive is not None:
-            pulumi.set(__self__, "is_case_insensitive", is_case_insensitive)
+            _setter("is_case_insensitive", is_case_insensitive)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if max_time_travel_hours is not None:
-            pulumi.set(__self__, "max_time_travel_hours", max_time_travel_hours)
+            _setter("max_time_travel_hours", max_time_travel_hours)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if storage_billing_model is not None:
-            pulumi.set(__self__, "storage_billing_model", storage_billing_model)
+            _setter("storage_billing_model", storage_billing_model)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -483,44 +520,89 @@ class _DatasetState:
                or to PHYSICAL to use physical bytes instead.
                LOGICAL is the default if this flag isn't specified.
         """
+        _DatasetState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accesses=accesses,
+            creation_time=creation_time,
+            dataset_id=dataset_id,
+            default_collation=default_collation,
+            default_encryption_configuration=default_encryption_configuration,
+            default_partition_expiration_ms=default_partition_expiration_ms,
+            default_table_expiration_ms=default_table_expiration_ms,
+            delete_contents_on_destroy=delete_contents_on_destroy,
+            description=description,
+            etag=etag,
+            friendly_name=friendly_name,
+            is_case_insensitive=is_case_insensitive,
+            labels=labels,
+            last_modified_time=last_modified_time,
+            location=location,
+            max_time_travel_hours=max_time_travel_hours,
+            project=project,
+            self_link=self_link,
+            storage_billing_model=storage_billing_model,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accesses: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessArgs']]]] = None,
+             creation_time: Optional[pulumi.Input[int]] = None,
+             dataset_id: Optional[pulumi.Input[str]] = None,
+             default_collation: Optional[pulumi.Input[str]] = None,
+             default_encryption_configuration: Optional[pulumi.Input['DatasetDefaultEncryptionConfigurationArgs']] = None,
+             default_partition_expiration_ms: Optional[pulumi.Input[int]] = None,
+             default_table_expiration_ms: Optional[pulumi.Input[int]] = None,
+             delete_contents_on_destroy: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             friendly_name: Optional[pulumi.Input[str]] = None,
+             is_case_insensitive: Optional[pulumi.Input[bool]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             last_modified_time: Optional[pulumi.Input[int]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             max_time_travel_hours: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             storage_billing_model: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if accesses is not None:
-            pulumi.set(__self__, "accesses", accesses)
+            _setter("accesses", accesses)
         if creation_time is not None:
-            pulumi.set(__self__, "creation_time", creation_time)
+            _setter("creation_time", creation_time)
         if dataset_id is not None:
-            pulumi.set(__self__, "dataset_id", dataset_id)
+            _setter("dataset_id", dataset_id)
         if default_collation is not None:
-            pulumi.set(__self__, "default_collation", default_collation)
+            _setter("default_collation", default_collation)
         if default_encryption_configuration is not None:
-            pulumi.set(__self__, "default_encryption_configuration", default_encryption_configuration)
+            _setter("default_encryption_configuration", default_encryption_configuration)
         if default_partition_expiration_ms is not None:
-            pulumi.set(__self__, "default_partition_expiration_ms", default_partition_expiration_ms)
+            _setter("default_partition_expiration_ms", default_partition_expiration_ms)
         if default_table_expiration_ms is not None:
-            pulumi.set(__self__, "default_table_expiration_ms", default_table_expiration_ms)
+            _setter("default_table_expiration_ms", default_table_expiration_ms)
         if delete_contents_on_destroy is not None:
-            pulumi.set(__self__, "delete_contents_on_destroy", delete_contents_on_destroy)
+            _setter("delete_contents_on_destroy", delete_contents_on_destroy)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if friendly_name is not None:
-            pulumi.set(__self__, "friendly_name", friendly_name)
+            _setter("friendly_name", friendly_name)
         if is_case_insensitive is not None:
-            pulumi.set(__self__, "is_case_insensitive", is_case_insensitive)
+            _setter("is_case_insensitive", is_case_insensitive)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if last_modified_time is not None:
-            pulumi.set(__self__, "last_modified_time", last_modified_time)
+            _setter("last_modified_time", last_modified_time)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if max_time_travel_hours is not None:
-            pulumi.set(__self__, "max_time_travel_hours", max_time_travel_hours)
+            _setter("max_time_travel_hours", max_time_travel_hours)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if storage_billing_model is not None:
-            pulumi.set(__self__, "storage_billing_model", storage_billing_model)
+            _setter("storage_billing_model", storage_billing_model)
 
     @property
     @pulumi.getter
@@ -1260,6 +1342,10 @@ class Dataset(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DatasetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1294,6 +1380,11 @@ class Dataset(pulumi.CustomResource):
                 raise TypeError("Missing required property 'dataset_id'")
             __props__.__dict__["dataset_id"] = dataset_id
             __props__.__dict__["default_collation"] = default_collation
+            if default_encryption_configuration is not None and not isinstance(default_encryption_configuration, DatasetDefaultEncryptionConfigurationArgs):
+                default_encryption_configuration = default_encryption_configuration or {}
+                def _setter(key, value):
+                    default_encryption_configuration[key] = value
+                DatasetDefaultEncryptionConfigurationArgs._configure(_setter, **default_encryption_configuration)
             __props__.__dict__["default_encryption_configuration"] = default_encryption_configuration
             __props__.__dict__["default_partition_expiration_ms"] = default_partition_expiration_ms
             __props__.__dict__["default_table_expiration_ms"] = default_table_expiration_ms

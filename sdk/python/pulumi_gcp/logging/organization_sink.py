@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -48,22 +48,47 @@ class OrganizationSinkArgs:
                associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
         :param pulumi.Input[str] name: The name of the logging sink.
         """
-        pulumi.set(__self__, "destination", destination)
-        pulumi.set(__self__, "org_id", org_id)
+        OrganizationSinkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            destination=destination,
+            org_id=org_id,
+            bigquery_options=bigquery_options,
+            description=description,
+            disabled=disabled,
+            exclusions=exclusions,
+            filter=filter,
+            include_children=include_children,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             destination: pulumi.Input[str],
+             org_id: pulumi.Input[str],
+             bigquery_options: Optional[pulumi.Input['OrganizationSinkBigqueryOptionsArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationSinkExclusionArgs']]]] = None,
+             filter: Optional[pulumi.Input[str]] = None,
+             include_children: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("destination", destination)
+        _setter("org_id", org_id)
         if bigquery_options is not None:
-            pulumi.set(__self__, "bigquery_options", bigquery_options)
+            _setter("bigquery_options", bigquery_options)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if exclusions is not None:
-            pulumi.set(__self__, "exclusions", exclusions)
+            _setter("exclusions", exclusions)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if include_children is not None:
-            pulumi.set(__self__, "include_children", include_children)
+            _setter("include_children", include_children)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -223,26 +248,53 @@ class _OrganizationSinkState:
         :param pulumi.Input[str] writer_identity: The identity associated with this sink. This identity must be granted write access to the
                configured `destination`.
         """
+        _OrganizationSinkState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bigquery_options=bigquery_options,
+            description=description,
+            destination=destination,
+            disabled=disabled,
+            exclusions=exclusions,
+            filter=filter,
+            include_children=include_children,
+            name=name,
+            org_id=org_id,
+            writer_identity=writer_identity,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bigquery_options: Optional[pulumi.Input['OrganizationSinkBigqueryOptionsArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             destination: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationSinkExclusionArgs']]]] = None,
+             filter: Optional[pulumi.Input[str]] = None,
+             include_children: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             writer_identity: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bigquery_options is not None:
-            pulumi.set(__self__, "bigquery_options", bigquery_options)
+            _setter("bigquery_options", bigquery_options)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+            _setter("destination", destination)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if exclusions is not None:
-            pulumi.set(__self__, "exclusions", exclusions)
+            _setter("exclusions", exclusions)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if include_children is not None:
-            pulumi.set(__self__, "include_children", include_children)
+            _setter("include_children", include_children)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if writer_identity is not None:
-            pulumi.set(__self__, "writer_identity", writer_identity)
+            _setter("writer_identity", writer_identity)
 
     @property
     @pulumi.getter(name="bigqueryOptions")
@@ -495,6 +547,10 @@ class OrganizationSink(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OrganizationSinkArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -518,6 +574,11 @@ class OrganizationSink(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationSinkArgs.__new__(OrganizationSinkArgs)
 
+            if bigquery_options is not None and not isinstance(bigquery_options, OrganizationSinkBigqueryOptionsArgs):
+                bigquery_options = bigquery_options or {}
+                def _setter(key, value):
+                    bigquery_options[key] = value
+                OrganizationSinkBigqueryOptionsArgs._configure(_setter, **bigquery_options)
             __props__.__dict__["bigquery_options"] = bigquery_options
             __props__.__dict__["description"] = description
             if destination is None and not opts.urn:

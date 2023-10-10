@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TargetInstanceArgs', 'TargetInstance']
@@ -51,21 +51,44 @@ class TargetInstanceArgs:
         :param pulumi.Input[str] security_policy: The resource URL for the security policy associated with this target instance.
         :param pulumi.Input[str] zone: URL of the zone where the target instance resides.
         """
-        pulumi.set(__self__, "instance", instance)
+        TargetInstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance=instance,
+            description=description,
+            name=name,
+            nat_policy=nat_policy,
+            network=network,
+            project=project,
+            security_policy=security_policy,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             nat_policy: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             security_policy: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance", instance)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if nat_policy is not None:
-            pulumi.set(__self__, "nat_policy", nat_policy)
+            _setter("nat_policy", nat_policy)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if security_policy is not None:
-            pulumi.set(__self__, "security_policy", security_policy)
+            _setter("security_policy", security_policy)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter
@@ -226,26 +249,53 @@ class _TargetInstanceState:
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] zone: URL of the zone where the target instance resides.
         """
+        _TargetInstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            creation_timestamp=creation_timestamp,
+            description=description,
+            instance=instance,
+            name=name,
+            nat_policy=nat_policy,
+            network=network,
+            project=project,
+            security_policy=security_policy,
+            self_link=self_link,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             creation_timestamp: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             instance: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             nat_policy: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             security_policy: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+            _setter("creation_timestamp", creation_timestamp)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if instance is not None:
-            pulumi.set(__self__, "instance", instance)
+            _setter("instance", instance)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if nat_policy is not None:
-            pulumi.set(__self__, "nat_policy", nat_policy)
+            _setter("nat_policy", nat_policy)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if security_policy is not None:
-            pulumi.set(__self__, "security_policy", security_policy)
+            _setter("security_policy", security_policy)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -611,6 +661,10 @@ class TargetInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TargetInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PolicyTagArgs', 'PolicyTag']
@@ -35,12 +35,27 @@ class PolicyTagArgs:
                If empty, it means this policy tag is a top level policy tag.
                If not set, defaults to an empty string.
         """
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "taxonomy", taxonomy)
+        PolicyTagArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            taxonomy=taxonomy,
+            description=description,
+            parent_policy_tag=parent_policy_tag,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: pulumi.Input[str],
+             taxonomy: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             parent_policy_tag: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("display_name", display_name)
+        _setter("taxonomy", taxonomy)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if parent_policy_tag is not None:
-            pulumi.set(__self__, "parent_policy_tag", parent_policy_tag)
+            _setter("parent_policy_tag", parent_policy_tag)
 
     @property
     @pulumi.getter(name="displayName")
@@ -130,18 +145,37 @@ class _PolicyTagState:
                
                - - -
         """
+        _PolicyTagState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            child_policy_tags=child_policy_tags,
+            description=description,
+            display_name=display_name,
+            name=name,
+            parent_policy_tag=parent_policy_tag,
+            taxonomy=taxonomy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             child_policy_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parent_policy_tag: Optional[pulumi.Input[str]] = None,
+             taxonomy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if child_policy_tags is not None:
-            pulumi.set(__self__, "child_policy_tags", child_policy_tags)
+            _setter("child_policy_tags", child_policy_tags)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent_policy_tag is not None:
-            pulumi.set(__self__, "parent_policy_tag", parent_policy_tag)
+            _setter("parent_policy_tag", parent_policy_tag)
         if taxonomy is not None:
-            pulumi.set(__self__, "taxonomy", taxonomy)
+            _setter("taxonomy", taxonomy)
 
     @property
     @pulumi.getter(name="childPolicyTags")
@@ -390,6 +424,10 @@ class PolicyTag(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PolicyTagArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

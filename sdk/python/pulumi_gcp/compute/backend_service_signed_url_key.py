@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BackendServiceSignedUrlKeyArgs', 'BackendServiceSignedUrlKey']
@@ -31,12 +31,27 @@ class BackendServiceSignedUrlKeyArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "backend_service", backend_service)
-        pulumi.set(__self__, "key_value", key_value)
+        BackendServiceSignedUrlKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backend_service=backend_service,
+            key_value=key_value,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backend_service: pulumi.Input[str],
+             key_value: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("backend_service", backend_service)
+        _setter("key_value", key_value)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="backendService")
@@ -113,14 +128,29 @@ class _BackendServiceSignedUrlKeyState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        _BackendServiceSignedUrlKeyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backend_service=backend_service,
+            key_value=key_value,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backend_service: Optional[pulumi.Input[str]] = None,
+             key_value: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if backend_service is not None:
-            pulumi.set(__self__, "backend_service", backend_service)
+            _setter("backend_service", backend_service)
         if key_value is not None:
-            pulumi.set(__self__, "key_value", key_value)
+            _setter("key_value", key_value)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="backendService")
@@ -252,6 +282,10 @@ class BackendServiceSignedUrlKey(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BackendServiceSignedUrlKeyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

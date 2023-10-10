@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EndpointAttachmentArgs', 'EndpointAttachment']
@@ -29,10 +29,25 @@ class EndpointAttachmentArgs:
                in the format `organizations/{{org_name}}`.
         :param pulumi.Input[str] service_attachment: Format: projects/*/regions/*/serviceAttachments/*
         """
-        pulumi.set(__self__, "endpoint_attachment_id", endpoint_attachment_id)
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "org_id", org_id)
-        pulumi.set(__self__, "service_attachment", service_attachment)
+        EndpointAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoint_attachment_id=endpoint_attachment_id,
+            location=location,
+            org_id=org_id,
+            service_attachment=service_attachment,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoint_attachment_id: pulumi.Input[str],
+             location: pulumi.Input[str],
+             org_id: pulumi.Input[str],
+             service_attachment: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("endpoint_attachment_id", endpoint_attachment_id)
+        _setter("location", location)
+        _setter("org_id", org_id)
+        _setter("service_attachment", service_attachment)
 
     @property
     @pulumi.getter(name="endpointAttachmentId")
@@ -112,20 +127,41 @@ class _EndpointAttachmentState:
                in the format `organizations/{{org_name}}`.
         :param pulumi.Input[str] service_attachment: Format: projects/*/regions/*/serviceAttachments/*
         """
+        _EndpointAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connection_state=connection_state,
+            endpoint_attachment_id=endpoint_attachment_id,
+            host=host,
+            location=location,
+            name=name,
+            org_id=org_id,
+            service_attachment=service_attachment,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connection_state: Optional[pulumi.Input[str]] = None,
+             endpoint_attachment_id: Optional[pulumi.Input[str]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             service_attachment: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if connection_state is not None:
-            pulumi.set(__self__, "connection_state", connection_state)
+            _setter("connection_state", connection_state)
         if endpoint_attachment_id is not None:
-            pulumi.set(__self__, "endpoint_attachment_id", endpoint_attachment_id)
+            _setter("endpoint_attachment_id", endpoint_attachment_id)
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if service_attachment is not None:
-            pulumi.set(__self__, "service_attachment", service_attachment)
+            _setter("service_attachment", service_attachment)
 
     @property
     @pulumi.getter(name="connectionState")
@@ -356,6 +392,10 @@ class EndpointAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EndpointAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

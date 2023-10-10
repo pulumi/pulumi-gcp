@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -72,32 +72,67 @@ class RepositoryArgs:
         :param pulumi.Input['RepositoryVirtualRepositoryConfigArgs'] virtual_repository_config: Configuration specific for a Virtual Repository.
                Structure is documented below.
         """
-        pulumi.set(__self__, "format", format)
-        pulumi.set(__self__, "repository_id", repository_id)
+        RepositoryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            format=format,
+            repository_id=repository_id,
+            cleanup_policies=cleanup_policies,
+            cleanup_policy_dry_run=cleanup_policy_dry_run,
+            description=description,
+            docker_config=docker_config,
+            kms_key_name=kms_key_name,
+            labels=labels,
+            location=location,
+            maven_config=maven_config,
+            mode=mode,
+            project=project,
+            remote_repository_config=remote_repository_config,
+            virtual_repository_config=virtual_repository_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             format: pulumi.Input[str],
+             repository_id: pulumi.Input[str],
+             cleanup_policies: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]]] = None,
+             cleanup_policy_dry_run: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             docker_config: Optional[pulumi.Input['RepositoryDockerConfigArgs']] = None,
+             kms_key_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             maven_config: Optional[pulumi.Input['RepositoryMavenConfigArgs']] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             remote_repository_config: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigArgs']] = None,
+             virtual_repository_config: Optional[pulumi.Input['RepositoryVirtualRepositoryConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("format", format)
+        _setter("repository_id", repository_id)
         if cleanup_policies is not None:
-            pulumi.set(__self__, "cleanup_policies", cleanup_policies)
+            _setter("cleanup_policies", cleanup_policies)
         if cleanup_policy_dry_run is not None:
-            pulumi.set(__self__, "cleanup_policy_dry_run", cleanup_policy_dry_run)
+            _setter("cleanup_policy_dry_run", cleanup_policy_dry_run)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if docker_config is not None:
-            pulumi.set(__self__, "docker_config", docker_config)
+            _setter("docker_config", docker_config)
         if kms_key_name is not None:
-            pulumi.set(__self__, "kms_key_name", kms_key_name)
+            _setter("kms_key_name", kms_key_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if maven_config is not None:
-            pulumi.set(__self__, "maven_config", maven_config)
+            _setter("maven_config", maven_config)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if remote_repository_config is not None:
-            pulumi.set(__self__, "remote_repository_config", remote_repository_config)
+            _setter("remote_repository_config", remote_repository_config)
         if virtual_repository_config is not None:
-            pulumi.set(__self__, "virtual_repository_config", virtual_repository_config)
+            _setter("virtual_repository_config", virtual_repository_config)
 
     @property
     @pulumi.getter
@@ -359,40 +394,81 @@ class _RepositoryState:
         :param pulumi.Input['RepositoryVirtualRepositoryConfigArgs'] virtual_repository_config: Configuration specific for a Virtual Repository.
                Structure is documented below.
         """
+        _RepositoryState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cleanup_policies=cleanup_policies,
+            cleanup_policy_dry_run=cleanup_policy_dry_run,
+            create_time=create_time,
+            description=description,
+            docker_config=docker_config,
+            format=format,
+            kms_key_name=kms_key_name,
+            labels=labels,
+            location=location,
+            maven_config=maven_config,
+            mode=mode,
+            name=name,
+            project=project,
+            remote_repository_config=remote_repository_config,
+            repository_id=repository_id,
+            update_time=update_time,
+            virtual_repository_config=virtual_repository_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cleanup_policies: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]]] = None,
+             cleanup_policy_dry_run: Optional[pulumi.Input[bool]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             docker_config: Optional[pulumi.Input['RepositoryDockerConfigArgs']] = None,
+             format: Optional[pulumi.Input[str]] = None,
+             kms_key_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             maven_config: Optional[pulumi.Input['RepositoryMavenConfigArgs']] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             remote_repository_config: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigArgs']] = None,
+             repository_id: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             virtual_repository_config: Optional[pulumi.Input['RepositoryVirtualRepositoryConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cleanup_policies is not None:
-            pulumi.set(__self__, "cleanup_policies", cleanup_policies)
+            _setter("cleanup_policies", cleanup_policies)
         if cleanup_policy_dry_run is not None:
-            pulumi.set(__self__, "cleanup_policy_dry_run", cleanup_policy_dry_run)
+            _setter("cleanup_policy_dry_run", cleanup_policy_dry_run)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if docker_config is not None:
-            pulumi.set(__self__, "docker_config", docker_config)
+            _setter("docker_config", docker_config)
         if format is not None:
-            pulumi.set(__self__, "format", format)
+            _setter("format", format)
         if kms_key_name is not None:
-            pulumi.set(__self__, "kms_key_name", kms_key_name)
+            _setter("kms_key_name", kms_key_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if maven_config is not None:
-            pulumi.set(__self__, "maven_config", maven_config)
+            _setter("maven_config", maven_config)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if remote_repository_config is not None:
-            pulumi.set(__self__, "remote_repository_config", remote_repository_config)
+            _setter("remote_repository_config", remote_repository_config)
         if repository_id is not None:
-            pulumi.set(__self__, "repository_id", repository_id)
+            _setter("repository_id", repository_id)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
         if virtual_repository_config is not None:
-            pulumi.set(__self__, "virtual_repository_config", virtual_repository_config)
+            _setter("virtual_repository_config", virtual_repository_config)
 
     @property
     @pulumi.getter(name="cleanupPolicies")
@@ -1051,6 +1127,10 @@ class Repository(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RepositoryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1082,6 +1162,11 @@ class Repository(pulumi.CustomResource):
             __props__.__dict__["cleanup_policies"] = cleanup_policies
             __props__.__dict__["cleanup_policy_dry_run"] = cleanup_policy_dry_run
             __props__.__dict__["description"] = description
+            if docker_config is not None and not isinstance(docker_config, RepositoryDockerConfigArgs):
+                docker_config = docker_config or {}
+                def _setter(key, value):
+                    docker_config[key] = value
+                RepositoryDockerConfigArgs._configure(_setter, **docker_config)
             __props__.__dict__["docker_config"] = docker_config
             if format is None and not opts.urn:
                 raise TypeError("Missing required property 'format'")
@@ -1089,13 +1174,28 @@ class Repository(pulumi.CustomResource):
             __props__.__dict__["kms_key_name"] = kms_key_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
+            if maven_config is not None and not isinstance(maven_config, RepositoryMavenConfigArgs):
+                maven_config = maven_config or {}
+                def _setter(key, value):
+                    maven_config[key] = value
+                RepositoryMavenConfigArgs._configure(_setter, **maven_config)
             __props__.__dict__["maven_config"] = maven_config
             __props__.__dict__["mode"] = mode
             __props__.__dict__["project"] = project
+            if remote_repository_config is not None and not isinstance(remote_repository_config, RepositoryRemoteRepositoryConfigArgs):
+                remote_repository_config = remote_repository_config or {}
+                def _setter(key, value):
+                    remote_repository_config[key] = value
+                RepositoryRemoteRepositoryConfigArgs._configure(_setter, **remote_repository_config)
             __props__.__dict__["remote_repository_config"] = remote_repository_config
             if repository_id is None and not opts.urn:
                 raise TypeError("Missing required property 'repository_id'")
             __props__.__dict__["repository_id"] = repository_id
+            if virtual_repository_config is not None and not isinstance(virtual_repository_config, RepositoryVirtualRepositoryConfigArgs):
+                virtual_repository_config = virtual_repository_config or {}
+                def _setter(key, value):
+                    virtual_repository_config[key] = value
+                RepositoryVirtualRepositoryConfigArgs._configure(_setter, **virtual_repository_config)
             __props__.__dict__["virtual_repository_config"] = virtual_repository_config
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None

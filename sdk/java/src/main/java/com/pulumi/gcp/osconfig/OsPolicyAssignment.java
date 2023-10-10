@@ -195,9 +195,7 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
         return this.deleted;
     }
     /**
-     * Policy description. Length of the description is
-     * limited to 1024 characters.
-     * 
+     * OS policy assignment description. Length of the
      * description is limited to 1024 characters.
      * 
      */
@@ -205,9 +203,7 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Policy description. Length of the description is
-     * limited to 1024 characters.
-     * 
+     * @return OS policy assignment description. Length of the
      * description is limited to 1024 characters.
      * 
      */

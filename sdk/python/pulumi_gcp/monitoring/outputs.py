@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -109,12 +109,25 @@ class AlertPolicyAlertStrategy(dict):
                This limit is not implemented for alert policies that are not log-based.
                Structure is documented below.
         """
+        AlertPolicyAlertStrategy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_close=auto_close,
+            notification_channel_strategies=notification_channel_strategies,
+            notification_rate_limit=notification_rate_limit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_close: Optional[str] = None,
+             notification_channel_strategies: Optional[Sequence['outputs.AlertPolicyAlertStrategyNotificationChannelStrategy']] = None,
+             notification_rate_limit: Optional['outputs.AlertPolicyAlertStrategyNotificationRateLimit'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_close is not None:
-            pulumi.set(__self__, "auto_close", auto_close)
+            _setter("auto_close", auto_close)
         if notification_channel_strategies is not None:
-            pulumi.set(__self__, "notification_channel_strategies", notification_channel_strategies)
+            _setter("notification_channel_strategies", notification_channel_strategies)
         if notification_rate_limit is not None:
-            pulumi.set(__self__, "notification_rate_limit", notification_rate_limit)
+            _setter("notification_rate_limit", notification_rate_limit)
 
     @property
     @pulumi.getter(name="autoClose")
@@ -176,10 +189,21 @@ class AlertPolicyAlertStrategyNotificationChannelStrategy(dict):
                `projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]`
         :param str renotify_interval: The frequency at which to send reminder notifications for open incidents.
         """
+        AlertPolicyAlertStrategyNotificationChannelStrategy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            notification_channel_names=notification_channel_names,
+            renotify_interval=renotify_interval,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             notification_channel_names: Optional[Sequence[str]] = None,
+             renotify_interval: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if notification_channel_names is not None:
-            pulumi.set(__self__, "notification_channel_names", notification_channel_names)
+            _setter("notification_channel_names", notification_channel_names)
         if renotify_interval is not None:
-            pulumi.set(__self__, "renotify_interval", renotify_interval)
+            _setter("renotify_interval", renotify_interval)
 
     @property
     @pulumi.getter(name="notificationChannelNames")
@@ -208,8 +232,17 @@ class AlertPolicyAlertStrategyNotificationRateLimit(dict):
         """
         :param str period: Not more than one notification per period.
         """
+        AlertPolicyAlertStrategyNotificationRateLimit._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            period=period,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             period: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
 
     @property
     @pulumi.getter
@@ -288,19 +321,40 @@ class AlertPolicyCondition(dict):
                the condition is created as part of a new or updated alerting
                policy.
         """
-        pulumi.set(__self__, "display_name", display_name)
+        AlertPolicyCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            condition_absent=condition_absent,
+            condition_matched_log=condition_matched_log,
+            condition_monitoring_query_language=condition_monitoring_query_language,
+            condition_prometheus_query_language=condition_prometheus_query_language,
+            condition_threshold=condition_threshold,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: str,
+             condition_absent: Optional['outputs.AlertPolicyConditionConditionAbsent'] = None,
+             condition_matched_log: Optional['outputs.AlertPolicyConditionConditionMatchedLog'] = None,
+             condition_monitoring_query_language: Optional['outputs.AlertPolicyConditionConditionMonitoringQueryLanguage'] = None,
+             condition_prometheus_query_language: Optional['outputs.AlertPolicyConditionConditionPrometheusQueryLanguage'] = None,
+             condition_threshold: Optional['outputs.AlertPolicyConditionConditionThreshold'] = None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("display_name", display_name)
         if condition_absent is not None:
-            pulumi.set(__self__, "condition_absent", condition_absent)
+            _setter("condition_absent", condition_absent)
         if condition_matched_log is not None:
-            pulumi.set(__self__, "condition_matched_log", condition_matched_log)
+            _setter("condition_matched_log", condition_matched_log)
         if condition_monitoring_query_language is not None:
-            pulumi.set(__self__, "condition_monitoring_query_language", condition_monitoring_query_language)
+            _setter("condition_monitoring_query_language", condition_monitoring_query_language)
         if condition_prometheus_query_language is not None:
-            pulumi.set(__self__, "condition_prometheus_query_language", condition_prometheus_query_language)
+            _setter("condition_prometheus_query_language", condition_prometheus_query_language)
         if condition_threshold is not None:
-            pulumi.set(__self__, "condition_threshold", condition_threshold)
+            _setter("condition_threshold", condition_threshold)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="displayName")
@@ -424,13 +478,28 @@ class AlertPolicyConditionConditionAbsent(dict):
                been identified by filter and aggregations.
                Structure is documented below.
         """
-        pulumi.set(__self__, "duration", duration)
+        AlertPolicyConditionConditionAbsent._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            duration=duration,
+            aggregations=aggregations,
+            filter=filter,
+            trigger=trigger,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             duration: str,
+             aggregations: Optional[Sequence['outputs.AlertPolicyConditionConditionAbsentAggregation']] = None,
+             filter: Optional[str] = None,
+             trigger: Optional['outputs.AlertPolicyConditionConditionAbsentTrigger'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("duration", duration)
         if aggregations is not None:
-            pulumi.set(__self__, "aggregations", aggregations)
+            _setter("aggregations", aggregations)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if trigger is not None:
-            pulumi.set(__self__, "trigger", trigger)
+            _setter("trigger", trigger)
 
     @property
     @pulumi.getter
@@ -602,14 +671,29 @@ class AlertPolicyConditionConditionAbsentAggregation(dict):
                returned.
                Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
         """
+        AlertPolicyConditionConditionAbsentAggregation._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alignment_period=alignment_period,
+            cross_series_reducer=cross_series_reducer,
+            group_by_fields=group_by_fields,
+            per_series_aligner=per_series_aligner,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alignment_period: Optional[str] = None,
+             cross_series_reducer: Optional[str] = None,
+             group_by_fields: Optional[Sequence[str]] = None,
+             per_series_aligner: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if alignment_period is not None:
-            pulumi.set(__self__, "alignment_period", alignment_period)
+            _setter("alignment_period", alignment_period)
         if cross_series_reducer is not None:
-            pulumi.set(__self__, "cross_series_reducer", cross_series_reducer)
+            _setter("cross_series_reducer", cross_series_reducer)
         if group_by_fields is not None:
-            pulumi.set(__self__, "group_by_fields", group_by_fields)
+            _setter("group_by_fields", group_by_fields)
         if per_series_aligner is not None:
-            pulumi.set(__self__, "per_series_aligner", per_series_aligner)
+            _setter("per_series_aligner", per_series_aligner)
 
     @property
     @pulumi.getter(name="alignmentPeriod")
@@ -728,10 +812,21 @@ class AlertPolicyConditionConditionAbsentTrigger(dict):
                must fail the predicate for the
                condition to be triggered.
         """
+        AlertPolicyConditionConditionAbsentTrigger._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            count=count,
+            percent=percent,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             count: Optional[int] = None,
+             percent: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if count is not None:
-            pulumi.set(__self__, "count", count)
+            _setter("count", count)
         if percent is not None:
-            pulumi.set(__self__, "percent", percent)
+            _setter("percent", percent)
 
     @property
     @pulumi.getter
@@ -786,9 +881,20 @@ class AlertPolicyConditionConditionMatchedLog(dict):
                Label keys and corresponding values can be used in notifications
                generated by this condition.
         """
-        pulumi.set(__self__, "filter", filter)
+        AlertPolicyConditionConditionMatchedLog._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter=filter,
+            label_extractors=label_extractors,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter: str,
+             label_extractors: Optional[Mapping[str, str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter", filter)
         if label_extractors is not None:
-            pulumi.set(__self__, "label_extractors", label_extractors)
+            _setter("label_extractors", label_extractors)
 
     @property
     @pulumi.getter
@@ -868,12 +974,27 @@ class AlertPolicyConditionConditionMonitoringQueryLanguage(dict):
                denominator_aggregations are specified.
                Structure is documented below.
         """
-        pulumi.set(__self__, "duration", duration)
-        pulumi.set(__self__, "query", query)
+        AlertPolicyConditionConditionMonitoringQueryLanguage._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            duration=duration,
+            query=query,
+            evaluation_missing_data=evaluation_missing_data,
+            trigger=trigger,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             duration: str,
+             query: str,
+             evaluation_missing_data: Optional[str] = None,
+             trigger: Optional['outputs.AlertPolicyConditionConditionMonitoringQueryLanguageTrigger'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("duration", duration)
+        _setter("query", query)
         if evaluation_missing_data is not None:
-            pulumi.set(__self__, "evaluation_missing_data", evaluation_missing_data)
+            _setter("evaluation_missing_data", evaluation_missing_data)
         if trigger is not None:
-            pulumi.set(__self__, "trigger", trigger)
+            _setter("trigger", trigger)
 
     @property
     @pulumi.getter
@@ -946,10 +1067,21 @@ class AlertPolicyConditionConditionMonitoringQueryLanguageTrigger(dict):
                must fail the predicate for the
                condition to be triggered.
         """
+        AlertPolicyConditionConditionMonitoringQueryLanguageTrigger._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            count=count,
+            percent=percent,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             count: Optional[int] = None,
+             percent: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if count is not None:
-            pulumi.set(__self__, "count", count)
+            _setter("count", count)
         if percent is not None:
-            pulumi.set(__self__, "percent", percent)
+            _setter("percent", percent)
 
     @property
     @pulumi.getter
@@ -1042,17 +1174,36 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage(dict):
                This field is optional. If this field is not empty, then it must be a
                valid Prometheus label name.
         """
-        pulumi.set(__self__, "query", query)
+        AlertPolicyConditionConditionPrometheusQueryLanguage._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            query=query,
+            alert_rule=alert_rule,
+            duration=duration,
+            evaluation_interval=evaluation_interval,
+            labels=labels,
+            rule_group=rule_group,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             query: str,
+             alert_rule: Optional[str] = None,
+             duration: Optional[str] = None,
+             evaluation_interval: Optional[str] = None,
+             labels: Optional[Mapping[str, str]] = None,
+             rule_group: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("query", query)
         if alert_rule is not None:
-            pulumi.set(__self__, "alert_rule", alert_rule)
+            _setter("alert_rule", alert_rule)
         if duration is not None:
-            pulumi.set(__self__, "duration", duration)
+            _setter("duration", duration)
         if evaluation_interval is not None:
-            pulumi.set(__self__, "evaluation_interval", evaluation_interval)
+            _setter("evaluation_interval", evaluation_interval)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if rule_group is not None:
-            pulumi.set(__self__, "rule_group", rule_group)
+            _setter("rule_group", rule_group)
 
     @property
     @pulumi.getter
@@ -1279,24 +1430,51 @@ class AlertPolicyConditionConditionThreshold(dict):
                denominator_aggregations are specified.
                Structure is documented below.
         """
-        pulumi.set(__self__, "comparison", comparison)
-        pulumi.set(__self__, "duration", duration)
+        AlertPolicyConditionConditionThreshold._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comparison=comparison,
+            duration=duration,
+            aggregations=aggregations,
+            denominator_aggregations=denominator_aggregations,
+            denominator_filter=denominator_filter,
+            evaluation_missing_data=evaluation_missing_data,
+            filter=filter,
+            forecast_options=forecast_options,
+            threshold_value=threshold_value,
+            trigger=trigger,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comparison: str,
+             duration: str,
+             aggregations: Optional[Sequence['outputs.AlertPolicyConditionConditionThresholdAggregation']] = None,
+             denominator_aggregations: Optional[Sequence['outputs.AlertPolicyConditionConditionThresholdDenominatorAggregation']] = None,
+             denominator_filter: Optional[str] = None,
+             evaluation_missing_data: Optional[str] = None,
+             filter: Optional[str] = None,
+             forecast_options: Optional['outputs.AlertPolicyConditionConditionThresholdForecastOptions'] = None,
+             threshold_value: Optional[float] = None,
+             trigger: Optional['outputs.AlertPolicyConditionConditionThresholdTrigger'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("comparison", comparison)
+        _setter("duration", duration)
         if aggregations is not None:
-            pulumi.set(__self__, "aggregations", aggregations)
+            _setter("aggregations", aggregations)
         if denominator_aggregations is not None:
-            pulumi.set(__self__, "denominator_aggregations", denominator_aggregations)
+            _setter("denominator_aggregations", denominator_aggregations)
         if denominator_filter is not None:
-            pulumi.set(__self__, "denominator_filter", denominator_filter)
+            _setter("denominator_filter", denominator_filter)
         if evaluation_missing_data is not None:
-            pulumi.set(__self__, "evaluation_missing_data", evaluation_missing_data)
+            _setter("evaluation_missing_data", evaluation_missing_data)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if forecast_options is not None:
-            pulumi.set(__self__, "forecast_options", forecast_options)
+            _setter("forecast_options", forecast_options)
         if threshold_value is not None:
-            pulumi.set(__self__, "threshold_value", threshold_value)
+            _setter("threshold_value", threshold_value)
         if trigger is not None:
-            pulumi.set(__self__, "trigger", trigger)
+            _setter("trigger", trigger)
 
     @property
     @pulumi.getter
@@ -1580,14 +1758,29 @@ class AlertPolicyConditionConditionThresholdAggregation(dict):
                returned.
                Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
         """
+        AlertPolicyConditionConditionThresholdAggregation._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alignment_period=alignment_period,
+            cross_series_reducer=cross_series_reducer,
+            group_by_fields=group_by_fields,
+            per_series_aligner=per_series_aligner,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alignment_period: Optional[str] = None,
+             cross_series_reducer: Optional[str] = None,
+             group_by_fields: Optional[Sequence[str]] = None,
+             per_series_aligner: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if alignment_period is not None:
-            pulumi.set(__self__, "alignment_period", alignment_period)
+            _setter("alignment_period", alignment_period)
         if cross_series_reducer is not None:
-            pulumi.set(__self__, "cross_series_reducer", cross_series_reducer)
+            _setter("cross_series_reducer", cross_series_reducer)
         if group_by_fields is not None:
-            pulumi.set(__self__, "group_by_fields", group_by_fields)
+            _setter("group_by_fields", group_by_fields)
         if per_series_aligner is not None:
-            pulumi.set(__self__, "per_series_aligner", per_series_aligner)
+            _setter("per_series_aligner", per_series_aligner)
 
     @property
     @pulumi.getter(name="alignmentPeriod")
@@ -1800,14 +1993,29 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregation(dict):
                returned.
                Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
         """
+        AlertPolicyConditionConditionThresholdDenominatorAggregation._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alignment_period=alignment_period,
+            cross_series_reducer=cross_series_reducer,
+            group_by_fields=group_by_fields,
+            per_series_aligner=per_series_aligner,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alignment_period: Optional[str] = None,
+             cross_series_reducer: Optional[str] = None,
+             group_by_fields: Optional[Sequence[str]] = None,
+             per_series_aligner: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if alignment_period is not None:
-            pulumi.set(__self__, "alignment_period", alignment_period)
+            _setter("alignment_period", alignment_period)
         if cross_series_reducer is not None:
-            pulumi.set(__self__, "cross_series_reducer", cross_series_reducer)
+            _setter("cross_series_reducer", cross_series_reducer)
         if group_by_fields is not None:
-            pulumi.set(__self__, "group_by_fields", group_by_fields)
+            _setter("group_by_fields", group_by_fields)
         if per_series_aligner is not None:
-            pulumi.set(__self__, "per_series_aligner", per_series_aligner)
+            _setter("per_series_aligner", per_series_aligner)
 
     @property
     @pulumi.getter(name="alignmentPeriod")
@@ -1942,7 +2150,16 @@ class AlertPolicyConditionConditionThresholdForecastOptions(dict):
                forecasts made for the Configured `duration`,
                then the timeseries is considered to be failing.
         """
-        pulumi.set(__self__, "forecast_horizon", forecast_horizon)
+        AlertPolicyConditionConditionThresholdForecastOptions._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            forecast_horizon=forecast_horizon,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             forecast_horizon: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("forecast_horizon", forecast_horizon)
 
     @property
     @pulumi.getter(name="forecastHorizon")
@@ -1971,10 +2188,21 @@ class AlertPolicyConditionConditionThresholdTrigger(dict):
                must fail the predicate for the
                condition to be triggered.
         """
+        AlertPolicyConditionConditionThresholdTrigger._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            count=count,
+            percent=percent,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             count: Optional[int] = None,
+             percent: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if count is not None:
-            pulumi.set(__self__, "count", count)
+            _setter("count", count)
         if percent is not None:
-            pulumi.set(__self__, "percent", percent)
+            _setter("percent", percent)
 
     @property
     @pulumi.getter
@@ -2027,10 +2255,21 @@ class AlertPolicyCreationRecord(dict):
         :param str mutated_by: (Output)
                The email address of the user making the change.
         """
+        AlertPolicyCreationRecord._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            mutate_time=mutate_time,
+            mutated_by=mutated_by,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             mutate_time: Optional[str] = None,
+             mutated_by: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if mutate_time is not None:
-            pulumi.set(__self__, "mutate_time", mutate_time)
+            _setter("mutate_time", mutate_time)
         if mutated_by is not None:
-            pulumi.set(__self__, "mutated_by", mutated_by)
+            _setter("mutated_by", mutated_by)
 
     @property
     @pulumi.getter(name="mutateTime")
@@ -2081,10 +2320,21 @@ class AlertPolicyDocumentation(dict):
         :param str mime_type: The format of the content field. Presently, only the value
                "text/markdown" is supported.
         """
+        AlertPolicyDocumentation._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            content=content,
+            mime_type=mime_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             content: Optional[str] = None,
+             mime_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if content is not None:
-            pulumi.set(__self__, "content", content)
+            _setter("content", content)
         if mime_type is not None:
-            pulumi.set(__self__, "mime_type", mime_type)
+            _setter("mime_type", mime_type)
 
     @property
     @pulumi.getter
@@ -2133,8 +2383,17 @@ class CustomServiceTelemetry(dict):
                Formatted as described in
                https://cloud.google.com/apis/design/resource_names.
         """
+        CustomServiceTelemetry._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_name=resource_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if resource_name is not None:
-            pulumi.set(__self__, "resource_name", resource_name)
+            _setter("resource_name", resource_name)
 
     @property
     @pulumi.getter(name="resourceName")
@@ -2177,10 +2436,21 @@ class GenericServiceBasicService(dict):
         :param str service_type: The type of service that this basic service defines, e.g.
                APP_ENGINE service type
         """
+        GenericServiceBasicService._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service_labels=service_labels,
+            service_type=service_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service_labels: Optional[Mapping[str, str]] = None,
+             service_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if service_labels is not None:
-            pulumi.set(__self__, "service_labels", service_labels)
+            _setter("service_labels", service_labels)
         if service_type is not None:
-            pulumi.set(__self__, "service_type", service_type)
+            _setter("service_type", service_type)
 
     @property
     @pulumi.getter(name="serviceLabels")
@@ -2227,8 +2497,17 @@ class GenericServiceTelemetry(dict):
                Formatted as described in
                https://cloud.google.com/apis/design/resource_names.
         """
+        GenericServiceTelemetry._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_name=resource_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if resource_name is not None:
-            pulumi.set(__self__, "resource_name", resource_name)
+            _setter("resource_name", resource_name)
 
     @property
     @pulumi.getter(name="resourceName")
@@ -2271,11 +2550,24 @@ class MetricDescriptorLabel(dict):
                Default value is `STRING`.
                Possible values are: `STRING`, `BOOL`, `INT64`.
         """
-        pulumi.set(__self__, "key", key)
+        MetricDescriptorLabel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            description=description,
+            value_type=value_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             description: Optional[str] = None,
+             value_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if value_type is not None:
-            pulumi.set(__self__, "value_type", value_type)
+            _setter("value_type", value_type)
 
     @property
     @pulumi.getter
@@ -2332,10 +2624,21 @@ class MetricDescriptorMetadata(dict):
         :param str ingest_delay: The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
         :param str sample_period: The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
         """
+        MetricDescriptorMetadata._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ingest_delay=ingest_delay,
+            sample_period=sample_period,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ingest_delay: Optional[str] = None,
+             sample_period: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ingest_delay is not None:
-            pulumi.set(__self__, "ingest_delay", ingest_delay)
+            _setter("ingest_delay", ingest_delay)
         if sample_period is not None:
-            pulumi.set(__self__, "sample_period", sample_period)
+            _setter("sample_period", sample_period)
 
     @property
     @pulumi.getter(name="ingestDelay")
@@ -2387,12 +2690,25 @@ class NotificationChannelSensitiveLabels(dict):
         :param str service_key: An servicekey token for a notification channel. Channel types that support this field include: pagerduty
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
+        NotificationChannelSensitiveLabels._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auth_token=auth_token,
+            password=password,
+            service_key=service_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auth_token: Optional[str] = None,
+             password: Optional[str] = None,
+             service_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auth_token is not None:
-            pulumi.set(__self__, "auth_token", auth_token)
+            _setter("auth_token", auth_token)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if service_key is not None:
-            pulumi.set(__self__, "service_key", service_key)
+            _setter("service_key", service_key)
 
     @property
     @pulumi.getter(name="authToken")
@@ -2454,16 +2770,33 @@ class SloBasicSli(dict):
                that don't support breaking down by version, setting this
                field will result in an error.
         """
+        SloBasicSli._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            availability=availability,
+            latency=latency,
+            locations=locations,
+            methods=methods,
+            versions=versions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             availability: Optional['outputs.SloBasicSliAvailability'] = None,
+             latency: Optional['outputs.SloBasicSliLatency'] = None,
+             locations: Optional[Sequence[str]] = None,
+             methods: Optional[Sequence[str]] = None,
+             versions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if availability is not None:
-            pulumi.set(__self__, "availability", availability)
+            _setter("availability", availability)
         if latency is not None:
-            pulumi.set(__self__, "latency", latency)
+            _setter("latency", latency)
         if locations is not None:
-            pulumi.set(__self__, "locations", locations)
+            _setter("locations", locations)
         if methods is not None:
-            pulumi.set(__self__, "methods", methods)
+            _setter("methods", methods)
         if versions is not None:
-            pulumi.set(__self__, "versions", versions)
+            _setter("versions", versions)
 
     @property
     @pulumi.getter
@@ -2530,8 +2863,17 @@ class SloBasicSliAvailability(dict):
         """
         :param bool enabled: Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
         """
+        SloBasicSliAvailability._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
 
     @property
     @pulumi.getter
@@ -2551,7 +2893,16 @@ class SloBasicSliLatency(dict):
                Good service is defined to be the count of requests made to
                this service that return in no more than threshold.
         """
-        pulumi.set(__self__, "threshold", threshold)
+        SloBasicSliLatency._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            threshold=threshold,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             threshold: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("threshold", threshold)
 
     @property
     @pulumi.getter
@@ -2604,10 +2955,21 @@ class SloRequestBasedSli(dict):
                Exactly one of `distribution_cut` or `good_total_ratio` can be set.
                Structure is documented below.
         """
+        SloRequestBasedSli._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            distribution_cut=distribution_cut,
+            good_total_ratio=good_total_ratio,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             distribution_cut: Optional['outputs.SloRequestBasedSliDistributionCut'] = None,
+             good_total_ratio: Optional['outputs.SloRequestBasedSliGoodTotalRatio'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if distribution_cut is not None:
-            pulumi.set(__self__, "distribution_cut", distribution_cut)
+            _setter("distribution_cut", distribution_cut)
         if good_total_ratio is not None:
-            pulumi.set(__self__, "good_total_ratio", good_total_ratio)
+            _setter("good_total_ratio", good_total_ratio)
 
     @property
     @pulumi.getter(name="distributionCut")
@@ -2672,8 +3034,19 @@ class SloRequestBasedSliDistributionCut(dict):
                just one of min or max.
                Structure is documented below.
         """
-        pulumi.set(__self__, "distribution_filter", distribution_filter)
-        pulumi.set(__self__, "range", range)
+        SloRequestBasedSliDistributionCut._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            distribution_filter=distribution_filter,
+            range=range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             distribution_filter: str,
+             range: 'outputs.SloRequestBasedSliDistributionCutRange',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("distribution_filter", distribution_filter)
+        _setter("range", range)
 
     @property
     @pulumi.getter(name="distributionFilter")
@@ -2713,10 +3086,21 @@ class SloRequestBasedSliDistributionCutRange(dict):
                will be set to "-infinity", defining an open range
                "< range.max"
         """
+        SloRequestBasedSliDistributionCutRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max=max,
+            min=min,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max: Optional[float] = None,
+             min: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if max is not None:
-            pulumi.set(__self__, "max", max)
+            _setter("max", max)
         if min is not None:
-            pulumi.set(__self__, "min", min)
+            _setter("min", min)
 
     @property
     @pulumi.getter
@@ -2788,12 +3172,25 @@ class SloRequestBasedSliGoodTotalRatio(dict):
                Must have ValueType = DOUBLE or ValueType = INT64 and
                must have MetricKind = DELTA or MetricKind = CUMULATIVE.
         """
+        SloRequestBasedSliGoodTotalRatio._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bad_service_filter=bad_service_filter,
+            good_service_filter=good_service_filter,
+            total_service_filter=total_service_filter,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bad_service_filter: Optional[str] = None,
+             good_service_filter: Optional[str] = None,
+             total_service_filter: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bad_service_filter is not None:
-            pulumi.set(__self__, "bad_service_filter", bad_service_filter)
+            _setter("bad_service_filter", bad_service_filter)
         if good_service_filter is not None:
-            pulumi.set(__self__, "good_service_filter", good_service_filter)
+            _setter("good_service_filter", good_service_filter)
         if total_service_filter is not None:
-            pulumi.set(__self__, "total_service_filter", total_service_filter)
+            _setter("total_service_filter", total_service_filter)
 
     @property
     @pulumi.getter(name="badServiceFilter")
@@ -2901,16 +3298,33 @@ class SloWindowsBasedSli(dict):
                duration string "{X}s" representing X seconds. Must be an
                integer fraction of a day and at least 60s.
         """
+        SloWindowsBasedSli._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            good_bad_metric_filter=good_bad_metric_filter,
+            good_total_ratio_threshold=good_total_ratio_threshold,
+            metric_mean_in_range=metric_mean_in_range,
+            metric_sum_in_range=metric_sum_in_range,
+            window_period=window_period,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             good_bad_metric_filter: Optional[str] = None,
+             good_total_ratio_threshold: Optional['outputs.SloWindowsBasedSliGoodTotalRatioThreshold'] = None,
+             metric_mean_in_range: Optional['outputs.SloWindowsBasedSliMetricMeanInRange'] = None,
+             metric_sum_in_range: Optional['outputs.SloWindowsBasedSliMetricSumInRange'] = None,
+             window_period: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if good_bad_metric_filter is not None:
-            pulumi.set(__self__, "good_bad_metric_filter", good_bad_metric_filter)
+            _setter("good_bad_metric_filter", good_bad_metric_filter)
         if good_total_ratio_threshold is not None:
-            pulumi.set(__self__, "good_total_ratio_threshold", good_total_ratio_threshold)
+            _setter("good_total_ratio_threshold", good_total_ratio_threshold)
         if metric_mean_in_range is not None:
-            pulumi.set(__self__, "metric_mean_in_range", metric_mean_in_range)
+            _setter("metric_mean_in_range", metric_mean_in_range)
         if metric_sum_in_range is not None:
-            pulumi.set(__self__, "metric_sum_in_range", metric_sum_in_range)
+            _setter("metric_sum_in_range", metric_sum_in_range)
         if window_period is not None:
-            pulumi.set(__self__, "window_period", window_period)
+            _setter("window_period", window_period)
 
     @property
     @pulumi.getter(name="goodBadMetricFilter")
@@ -3008,12 +3422,25 @@ class SloWindowsBasedSliGoodTotalRatioThreshold(dict):
         :param float threshold: If window performance >= threshold, the window is counted
                as good.
         """
+        SloWindowsBasedSliGoodTotalRatioThreshold._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            basic_sli_performance=basic_sli_performance,
+            performance=performance,
+            threshold=threshold,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             basic_sli_performance: Optional['outputs.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance'] = None,
+             performance: Optional['outputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformance'] = None,
+             threshold: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if basic_sli_performance is not None:
-            pulumi.set(__self__, "basic_sli_performance", basic_sli_performance)
+            _setter("basic_sli_performance", basic_sli_performance)
         if performance is not None:
-            pulumi.set(__self__, "performance", performance)
+            _setter("performance", performance)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
 
     @property
     @pulumi.getter(name="basicSliPerformance")
@@ -3075,16 +3502,33 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance(dict):
                that don't support breaking down by version, setting this
                field will result in an error.
         """
+        SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            availability=availability,
+            latency=latency,
+            locations=locations,
+            methods=methods,
+            versions=versions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             availability: Optional['outputs.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability'] = None,
+             latency: Optional['outputs.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency'] = None,
+             locations: Optional[Sequence[str]] = None,
+             methods: Optional[Sequence[str]] = None,
+             versions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if availability is not None:
-            pulumi.set(__self__, "availability", availability)
+            _setter("availability", availability)
         if latency is not None:
-            pulumi.set(__self__, "latency", latency)
+            _setter("latency", latency)
         if locations is not None:
-            pulumi.set(__self__, "locations", locations)
+            _setter("locations", locations)
         if methods is not None:
-            pulumi.set(__self__, "methods", methods)
+            _setter("methods", methods)
         if versions is not None:
-            pulumi.set(__self__, "versions", versions)
+            _setter("versions", versions)
 
     @property
     @pulumi.getter
@@ -3151,8 +3595,17 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability(d
         """
         :param bool enabled: Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
         """
+        SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
 
     @property
     @pulumi.getter
@@ -3172,7 +3625,16 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency(dict):
                Good service is defined to be the count of requests made to
                this service that return in no more than threshold.
         """
-        pulumi.set(__self__, "threshold", threshold)
+        SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            threshold=threshold,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             threshold: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("threshold", threshold)
 
     @property
     @pulumi.getter
@@ -3223,10 +3685,21 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformance(dict):
                will be assumed.
                Structure is documented below.
         """
+        SloWindowsBasedSliGoodTotalRatioThresholdPerformance._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            distribution_cut=distribution_cut,
+            good_total_ratio=good_total_ratio,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             distribution_cut: Optional['outputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut'] = None,
+             good_total_ratio: Optional['outputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if distribution_cut is not None:
-            pulumi.set(__self__, "distribution_cut", distribution_cut)
+            _setter("distribution_cut", distribution_cut)
         if good_total_ratio is not None:
-            pulumi.set(__self__, "good_total_ratio", good_total_ratio)
+            _setter("good_total_ratio", good_total_ratio)
 
     @property
     @pulumi.getter(name="distributionCut")
@@ -3289,8 +3762,19 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut(dict):
                just one of min or max.
                Structure is documented below.
         """
-        pulumi.set(__self__, "distribution_filter", distribution_filter)
-        pulumi.set(__self__, "range", range)
+        SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            distribution_filter=distribution_filter,
+            range=range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             distribution_filter: str,
+             range: 'outputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("distribution_filter", distribution_filter)
+        _setter("range", range)
 
     @property
     @pulumi.getter(name="distributionFilter")
@@ -3330,10 +3814,21 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange(d
                will be set to "-infinity", defining an open range
                "< range.max"
         """
+        SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max=max,
+            min=min,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max: Optional[float] = None,
+             min: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if max is not None:
-            pulumi.set(__self__, "max", max)
+            _setter("max", max)
         if min is not None:
-            pulumi.set(__self__, "min", min)
+            _setter("min", min)
 
     @property
     @pulumi.getter
@@ -3405,12 +3900,25 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio(dict):
                Must have ValueType = DOUBLE or ValueType = INT64 and
                must have MetricKind = DELTA or MetricKind = CUMULATIVE.
         """
+        SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bad_service_filter=bad_service_filter,
+            good_service_filter=good_service_filter,
+            total_service_filter=total_service_filter,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bad_service_filter: Optional[str] = None,
+             good_service_filter: Optional[str] = None,
+             total_service_filter: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bad_service_filter is not None:
-            pulumi.set(__self__, "bad_service_filter", bad_service_filter)
+            _setter("bad_service_filter", bad_service_filter)
         if good_service_filter is not None:
-            pulumi.set(__self__, "good_service_filter", good_service_filter)
+            _setter("good_service_filter", good_service_filter)
         if total_service_filter is not None:
-            pulumi.set(__self__, "total_service_filter", total_service_filter)
+            _setter("total_service_filter", total_service_filter)
 
     @property
     @pulumi.getter(name="badServiceFilter")
@@ -3492,8 +4000,19 @@ class SloWindowsBasedSliMetricMeanInRange(dict):
                should satisfy `range.min <= X <= range.max`
                under good service.
         """
-        pulumi.set(__self__, "range", range)
-        pulumi.set(__self__, "time_series", time_series)
+        SloWindowsBasedSliMetricMeanInRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            range=range,
+            time_series=time_series,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             range: 'outputs.SloWindowsBasedSliMetricMeanInRangeRange',
+             time_series: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("range", range)
+        _setter("time_series", time_series)
 
     @property
     @pulumi.getter
@@ -3537,10 +4056,21 @@ class SloWindowsBasedSliMetricMeanInRangeRange(dict):
                will be set to "-infinity", defining an open range
                "< range.max"
         """
+        SloWindowsBasedSliMetricMeanInRangeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max=max,
+            min=min,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max: Optional[float] = None,
+             min: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if max is not None:
-            pulumi.set(__self__, "max", max)
+            _setter("max", max)
         if min is not None:
-            pulumi.set(__self__, "min", min)
+            _setter("min", min)
 
     @property
     @pulumi.getter
@@ -3601,8 +4131,19 @@ class SloWindowsBasedSliMetricSumInRange(dict):
                Summed value `X` should satisfy
                `range.min <= X <= range.max` for a good window.
         """
-        pulumi.set(__self__, "range", range)
-        pulumi.set(__self__, "time_series", time_series)
+        SloWindowsBasedSliMetricSumInRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            range=range,
+            time_series=time_series,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             range: 'outputs.SloWindowsBasedSliMetricSumInRangeRange',
+             time_series: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("range", range)
+        _setter("time_series", time_series)
 
     @property
     @pulumi.getter
@@ -3646,10 +4187,21 @@ class SloWindowsBasedSliMetricSumInRangeRange(dict):
                will be set to "-infinity", defining an open range
                "< range.max"
         """
+        SloWindowsBasedSliMetricSumInRangeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max=max,
+            min=min,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max: Optional[float] = None,
+             min: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if max is not None:
-            pulumi.set(__self__, "max", max)
+            _setter("max", max)
         if min is not None:
-            pulumi.set(__self__, "min", min)
+            _setter("min", min)
 
     @property
     @pulumi.getter
@@ -3703,11 +4255,24 @@ class UptimeCheckConfigContentMatcher(dict):
                Default value is `CONTAINS_STRING`.
                Possible values are: `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, `NOT_MATCHES_JSON_PATH`.
         """
-        pulumi.set(__self__, "content", content)
+        UptimeCheckConfigContentMatcher._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            content=content,
+            json_path_matcher=json_path_matcher,
+            matcher=matcher,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             content: str,
+             json_path_matcher: Optional['outputs.UptimeCheckConfigContentMatcherJsonPathMatcher'] = None,
+             matcher: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("content", content)
         if json_path_matcher is not None:
-            pulumi.set(__self__, "json_path_matcher", json_path_matcher)
+            _setter("json_path_matcher", json_path_matcher)
         if matcher is not None:
-            pulumi.set(__self__, "matcher", matcher)
+            _setter("matcher", matcher)
 
     @property
     @pulumi.getter
@@ -3767,9 +4332,20 @@ class UptimeCheckConfigContentMatcherJsonPathMatcher(dict):
                Default value is `EXACT_MATCH`.
                Possible values are: `EXACT_MATCH`, `REGEX_MATCH`.
         """
-        pulumi.set(__self__, "json_path", json_path)
+        UptimeCheckConfigContentMatcherJsonPathMatcher._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            json_path=json_path,
+            json_matcher=json_matcher,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             json_path: str,
+             json_matcher: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("json_path", json_path)
         if json_matcher is not None:
-            pulumi.set(__self__, "json_matcher", json_matcher)
+            _setter("json_matcher", json_matcher)
 
     @property
     @pulumi.getter(name="jsonPath")
@@ -3851,28 +4427,57 @@ class UptimeCheckConfigHttpCheck(dict):
         :param bool use_ssl: If true, use HTTPS instead of HTTP to run the check.
         :param bool validate_ssl: Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitoredResource is set to uptime_url. If useSsl is false, setting validateSsl to true has no effect.
         """
+        UptimeCheckConfigHttpCheck._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accepted_response_status_codes=accepted_response_status_codes,
+            auth_info=auth_info,
+            body=body,
+            content_type=content_type,
+            headers=headers,
+            mask_headers=mask_headers,
+            path=path,
+            port=port,
+            request_method=request_method,
+            use_ssl=use_ssl,
+            validate_ssl=validate_ssl,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accepted_response_status_codes: Optional[Sequence['outputs.UptimeCheckConfigHttpCheckAcceptedResponseStatusCode']] = None,
+             auth_info: Optional['outputs.UptimeCheckConfigHttpCheckAuthInfo'] = None,
+             body: Optional[str] = None,
+             content_type: Optional[str] = None,
+             headers: Optional[Mapping[str, str]] = None,
+             mask_headers: Optional[bool] = None,
+             path: Optional[str] = None,
+             port: Optional[int] = None,
+             request_method: Optional[str] = None,
+             use_ssl: Optional[bool] = None,
+             validate_ssl: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if accepted_response_status_codes is not None:
-            pulumi.set(__self__, "accepted_response_status_codes", accepted_response_status_codes)
+            _setter("accepted_response_status_codes", accepted_response_status_codes)
         if auth_info is not None:
-            pulumi.set(__self__, "auth_info", auth_info)
+            _setter("auth_info", auth_info)
         if body is not None:
-            pulumi.set(__self__, "body", body)
+            _setter("body", body)
         if content_type is not None:
-            pulumi.set(__self__, "content_type", content_type)
+            _setter("content_type", content_type)
         if headers is not None:
-            pulumi.set(__self__, "headers", headers)
+            _setter("headers", headers)
         if mask_headers is not None:
-            pulumi.set(__self__, "mask_headers", mask_headers)
+            _setter("mask_headers", mask_headers)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if request_method is not None:
-            pulumi.set(__self__, "request_method", request_method)
+            _setter("request_method", request_method)
         if use_ssl is not None:
-            pulumi.set(__self__, "use_ssl", use_ssl)
+            _setter("use_ssl", use_ssl)
         if validate_ssl is not None:
-            pulumi.set(__self__, "validate_ssl", validate_ssl)
+            _setter("validate_ssl", validate_ssl)
 
     @property
     @pulumi.getter(name="acceptedResponseStatusCodes")
@@ -3997,10 +4602,21 @@ class UptimeCheckConfigHttpCheckAcceptedResponseStatusCode(dict):
                Possible values are: `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, `STATUS_CLASS_ANY`.
         :param int status_value: A status code to accept.
         """
+        UptimeCheckConfigHttpCheckAcceptedResponseStatusCode._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            status_class=status_class,
+            status_value=status_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             status_class: Optional[str] = None,
+             status_value: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if status_class is not None:
-            pulumi.set(__self__, "status_class", status_class)
+            _setter("status_class", status_class)
         if status_value is not None:
-            pulumi.set(__self__, "status_value", status_value)
+            _setter("status_value", status_value)
 
     @property
     @pulumi.getter(name="statusClass")
@@ -4030,8 +4646,19 @@ class UptimeCheckConfigHttpCheckAuthInfo(dict):
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param str username: The username to authenticate.
         """
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "username", username)
+        UptimeCheckConfigHttpCheckAuthInfo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            password=password,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             password: str,
+             username: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("password", password)
+        _setter("username", username)
 
     @property
     @pulumi.getter
@@ -4060,8 +4687,19 @@ class UptimeCheckConfigMonitoredResource(dict):
         :param Mapping[str, str] labels: Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
         :param str type: The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.monitoredResourceDescriptors#MonitoredResourceDescriptor) object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
         """
-        pulumi.set(__self__, "labels", labels)
-        pulumi.set(__self__, "type", type)
+        UptimeCheckConfigMonitoredResource._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            labels=labels,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             labels: Mapping[str, str],
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("labels", labels)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -4109,10 +4747,21 @@ class UptimeCheckConfigResourceGroup(dict):
         :param str resource_type: The resource type of the group members.
                Possible values are: `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, `AWS_ELB_LOAD_BALANCER`.
         """
+        UptimeCheckConfigResourceGroup._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_id=group_id,
+            resource_type=resource_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_id: Optional[str] = None,
+             resource_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if resource_type is not None:
-            pulumi.set(__self__, "resource_type", resource_type)
+            _setter("resource_type", resource_type)
 
     @property
     @pulumi.getter(name="groupId")
@@ -4160,7 +4809,16 @@ class UptimeCheckConfigSyntheticMonitor(dict):
                
                <a name="nested_cloud_function_v2"></a>The `cloud_function_v2` block supports:
         """
-        pulumi.set(__self__, "cloud_function_v2", cloud_function_v2)
+        UptimeCheckConfigSyntheticMonitor._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cloud_function_v2=cloud_function_v2,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cloud_function_v2: 'outputs.UptimeCheckConfigSyntheticMonitorCloudFunctionV2',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cloud_function_v2", cloud_function_v2)
 
     @property
     @pulumi.getter(name="cloudFunctionV2")
@@ -4182,7 +4840,16 @@ class UptimeCheckConfigSyntheticMonitorCloudFunctionV2(dict):
         """
         :param str name: The fully qualified name of the cloud function resource.
         """
-        pulumi.set(__self__, "name", name)
+        UptimeCheckConfigSyntheticMonitorCloudFunctionV2._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -4200,7 +4867,16 @@ class UptimeCheckConfigTcpCheck(dict):
         """
         :param int port: The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
         """
-        pulumi.set(__self__, "port", port)
+        UptimeCheckConfigTcpCheck._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            port=port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             port: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("port", port)
 
     @property
     @pulumi.getter
@@ -4220,7 +4896,16 @@ class GetAppEngineServiceTelemetryResult(dict):
                Formatted as described in
                https://cloud.google.com/apis/design/resource_names.
         """
-        pulumi.set(__self__, "resource_name", resource_name)
+        GetAppEngineServiceTelemetryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_name=resource_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("resource_name", resource_name)
 
     @property
     @pulumi.getter(name="resourceName")
@@ -4242,7 +4927,16 @@ class GetClusterIstioServiceTelemetryResult(dict):
                Formatted as described in
                https://cloud.google.com/apis/design/resource_names.
         """
-        pulumi.set(__self__, "resource_name", resource_name)
+        GetClusterIstioServiceTelemetryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_name=resource_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("resource_name", resource_name)
 
     @property
     @pulumi.getter(name="resourceName")
@@ -4264,7 +4958,16 @@ class GetIstioCanonicalServiceTelemetryResult(dict):
                Formatted as described in
                https://cloud.google.com/apis/design/resource_names.
         """
-        pulumi.set(__self__, "resource_name", resource_name)
+        GetIstioCanonicalServiceTelemetryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_name=resource_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("resource_name", resource_name)
 
     @property
     @pulumi.getter(name="resourceName")
@@ -4286,7 +4989,16 @@ class GetMeshIstioServiceTelemetryResult(dict):
                Formatted as described in
                https://cloud.google.com/apis/design/resource_names.
         """
-        pulumi.set(__self__, "resource_name", resource_name)
+        GetMeshIstioServiceTelemetryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_name=resource_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("resource_name", resource_name)
 
     @property
     @pulumi.getter(name="resourceName")
@@ -4305,9 +5017,22 @@ class GetNotificationChannelSensitiveLabelResult(dict):
                  auth_token: str,
                  password: str,
                  service_key: str):
-        pulumi.set(__self__, "auth_token", auth_token)
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "service_key", service_key)
+        GetNotificationChannelSensitiveLabelResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auth_token=auth_token,
+            password=password,
+            service_key=service_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auth_token: str,
+             password: str,
+             service_key: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("auth_token", auth_token)
+        _setter("password", password)
+        _setter("service_key", service_key)
 
     @property
     @pulumi.getter(name="authToken")
@@ -4340,9 +5065,22 @@ class GetUptimeCheckIPsUptimeCheckIpResult(dict):
                (and its containing state/province or country) within the broader umbrella region category.
         :param str region: A broad region category in which the IP address is located.
         """
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "region", region)
+        GetUptimeCheckIPsUptimeCheckIpResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_address=ip_address,
+            location=location,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_address: str,
+             location: str,
+             region: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ip_address", ip_address)
+        _setter("location", location)
+        _setter("region", region)
 
     @property
     @pulumi.getter(name="ipAddress")

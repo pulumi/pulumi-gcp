@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['KeyArgs', 'Key']
@@ -37,17 +37,36 @@ class KeyArgs:
         :param pulumi.Input[str] public_key_data: Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
         :param pulumi.Input[str] public_key_type: The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
         """
-        pulumi.set(__self__, "service_account_id", service_account_id)
+        KeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service_account_id=service_account_id,
+            keepers=keepers,
+            key_algorithm=key_algorithm,
+            private_key_type=private_key_type,
+            public_key_data=public_key_data,
+            public_key_type=public_key_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service_account_id: pulumi.Input[str],
+             keepers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             key_algorithm: Optional[pulumi.Input[str]] = None,
+             private_key_type: Optional[pulumi.Input[str]] = None,
+             public_key_data: Optional[pulumi.Input[str]] = None,
+             public_key_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("service_account_id", service_account_id)
         if keepers is not None:
-            pulumi.set(__self__, "keepers", keepers)
+            _setter("keepers", keepers)
         if key_algorithm is not None:
-            pulumi.set(__self__, "key_algorithm", key_algorithm)
+            _setter("key_algorithm", key_algorithm)
         if private_key_type is not None:
-            pulumi.set(__self__, "private_key_type", private_key_type)
+            _setter("private_key_type", private_key_type)
         if public_key_data is not None:
-            pulumi.set(__self__, "public_key_data", public_key_data)
+            _setter("public_key_data", public_key_data)
         if public_key_type is not None:
-            pulumi.set(__self__, "public_key_type", public_key_type)
+            _setter("public_key_type", public_key_type)
 
     @property
     @pulumi.getter(name="serviceAccountId")
@@ -168,28 +187,57 @@ class _KeyState:
         :param pulumi.Input[str] valid_before: The key can be used before this timestamp.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
+        _KeyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            keepers=keepers,
+            key_algorithm=key_algorithm,
+            name=name,
+            private_key=private_key,
+            private_key_type=private_key_type,
+            public_key=public_key,
+            public_key_data=public_key_data,
+            public_key_type=public_key_type,
+            service_account_id=service_account_id,
+            valid_after=valid_after,
+            valid_before=valid_before,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             keepers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             key_algorithm: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             private_key: Optional[pulumi.Input[str]] = None,
+             private_key_type: Optional[pulumi.Input[str]] = None,
+             public_key: Optional[pulumi.Input[str]] = None,
+             public_key_data: Optional[pulumi.Input[str]] = None,
+             public_key_type: Optional[pulumi.Input[str]] = None,
+             service_account_id: Optional[pulumi.Input[str]] = None,
+             valid_after: Optional[pulumi.Input[str]] = None,
+             valid_before: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if keepers is not None:
-            pulumi.set(__self__, "keepers", keepers)
+            _setter("keepers", keepers)
         if key_algorithm is not None:
-            pulumi.set(__self__, "key_algorithm", key_algorithm)
+            _setter("key_algorithm", key_algorithm)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if private_key is not None:
-            pulumi.set(__self__, "private_key", private_key)
+            _setter("private_key", private_key)
         if private_key_type is not None:
-            pulumi.set(__self__, "private_key_type", private_key_type)
+            _setter("private_key_type", private_key_type)
         if public_key is not None:
-            pulumi.set(__self__, "public_key", public_key)
+            _setter("public_key", public_key)
         if public_key_data is not None:
-            pulumi.set(__self__, "public_key_data", public_key_data)
+            _setter("public_key_data", public_key_data)
         if public_key_type is not None:
-            pulumi.set(__self__, "public_key_type", public_key_type)
+            _setter("public_key_type", public_key_type)
         if service_account_id is not None:
-            pulumi.set(__self__, "service_account_id", service_account_id)
+            _setter("service_account_id", service_account_id)
         if valid_after is not None:
-            pulumi.set(__self__, "valid_after", valid_after)
+            _setter("valid_after", valid_after)
         if valid_before is not None:
-            pulumi.set(__self__, "valid_before", valid_before)
+            _setter("valid_before", valid_before)
 
     @property
     @pulumi.getter
@@ -455,6 +503,10 @@ class Key(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            KeyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -101,15 +101,6 @@ namespace Pulumi.Gcp.DataCatalog
     public partial class TagTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The display name for this field.
-        /// 
-        /// (Required)
-        /// The display name of the enum value.
-        /// 
-        /// - - -
-        /// 
-        /// 
-        /// (Optional)
         /// The display name for this template.
         /// </summary>
         [Output("displayName")]
@@ -201,15 +192,6 @@ namespace Pulumi.Gcp.DataCatalog
     public sealed class TagTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The display name for this field.
-        /// 
-        /// (Required)
-        /// The display name of the enum value.
-        /// 
-        /// - - -
-        /// 
-        /// 
-        /// (Optional)
         /// The display name for this template.
         /// </summary>
         [Input("displayName")]
@@ -262,15 +244,6 @@ namespace Pulumi.Gcp.DataCatalog
     public sealed class TagTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The display name for this field.
-        /// 
-        /// (Required)
-        /// The display name of the enum value.
-        /// 
-        /// - - -
-        /// 
-        /// 
-        /// (Optional)
         /// The display name for this template.
         /// </summary>
         [Input("displayName")]

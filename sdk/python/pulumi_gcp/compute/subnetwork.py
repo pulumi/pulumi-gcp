@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -87,32 +87,67 @@ class SubnetworkArgs:
                If not specified IPV4_ONLY will be used.
                Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
         """
-        pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
-        pulumi.set(__self__, "network", network)
+        SubnetworkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_cidr_range=ip_cidr_range,
+            network=network,
+            description=description,
+            ipv6_access_type=ipv6_access_type,
+            log_config=log_config,
+            name=name,
+            private_ip_google_access=private_ip_google_access,
+            private_ipv6_google_access=private_ipv6_google_access,
+            project=project,
+            purpose=purpose,
+            region=region,
+            role=role,
+            secondary_ip_ranges=secondary_ip_ranges,
+            stack_type=stack_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_cidr_range: pulumi.Input[str],
+             network: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             ipv6_access_type: Optional[pulumi.Input[str]] = None,
+             log_config: Optional[pulumi.Input['SubnetworkLogConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             private_ip_google_access: Optional[pulumi.Input[bool]] = None,
+             private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             purpose: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]] = None,
+             stack_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ip_cidr_range", ip_cidr_range)
+        _setter("network", network)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if ipv6_access_type is not None:
-            pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
+            _setter("ipv6_access_type", ipv6_access_type)
         if log_config is not None:
-            pulumi.set(__self__, "log_config", log_config)
+            _setter("log_config", log_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if private_ip_google_access is not None:
-            pulumi.set(__self__, "private_ip_google_access", private_ip_google_access)
+            _setter("private_ip_google_access", private_ip_google_access)
         if private_ipv6_google_access is not None:
-            pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
+            _setter("private_ipv6_google_access", private_ipv6_google_access)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if purpose is not None:
-            pulumi.set(__self__, "purpose", purpose)
+            _setter("purpose", purpose)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if secondary_ip_ranges is not None:
-            pulumi.set(__self__, "secondary_ip_ranges", secondary_ip_ranges)
+            _setter("secondary_ip_ranges", secondary_ip_ranges)
         if stack_type is not None:
-            pulumi.set(__self__, "stack_type", stack_type)
+            _setter("stack_type", stack_type)
 
     @property
     @pulumi.getter(name="ipCidrRange")
@@ -412,51 +447,100 @@ class _SubnetworkState:
                If not specified IPV4_ONLY will be used.
                Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
         """
+        _SubnetworkState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            creation_timestamp=creation_timestamp,
+            description=description,
+            external_ipv6_prefix=external_ipv6_prefix,
+            fingerprint=fingerprint,
+            gateway_address=gateway_address,
+            internal_ipv6_prefix=internal_ipv6_prefix,
+            ip_cidr_range=ip_cidr_range,
+            ipv6_access_type=ipv6_access_type,
+            ipv6_cidr_range=ipv6_cidr_range,
+            log_config=log_config,
+            name=name,
+            network=network,
+            private_ip_google_access=private_ip_google_access,
+            private_ipv6_google_access=private_ipv6_google_access,
+            project=project,
+            purpose=purpose,
+            region=region,
+            role=role,
+            secondary_ip_ranges=secondary_ip_ranges,
+            self_link=self_link,
+            stack_type=stack_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             creation_timestamp: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             external_ipv6_prefix: Optional[pulumi.Input[str]] = None,
+             fingerprint: Optional[pulumi.Input[str]] = None,
+             gateway_address: Optional[pulumi.Input[str]] = None,
+             internal_ipv6_prefix: Optional[pulumi.Input[str]] = None,
+             ip_cidr_range: Optional[pulumi.Input[str]] = None,
+             ipv6_access_type: Optional[pulumi.Input[str]] = None,
+             ipv6_cidr_range: Optional[pulumi.Input[str]] = None,
+             log_config: Optional[pulumi.Input['SubnetworkLogConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             private_ip_google_access: Optional[pulumi.Input[bool]] = None,
+             private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             purpose: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             stack_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+            _setter("creation_timestamp", creation_timestamp)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if external_ipv6_prefix is not None:
-            pulumi.set(__self__, "external_ipv6_prefix", external_ipv6_prefix)
+            _setter("external_ipv6_prefix", external_ipv6_prefix)
         if fingerprint is not None:
             warnings.warn("""This field is not useful for users, and has been removed as an output.""", DeprecationWarning)
             pulumi.log.warn("""fingerprint is deprecated: This field is not useful for users, and has been removed as an output.""")
         if fingerprint is not None:
-            pulumi.set(__self__, "fingerprint", fingerprint)
+            _setter("fingerprint", fingerprint)
         if gateway_address is not None:
-            pulumi.set(__self__, "gateway_address", gateway_address)
+            _setter("gateway_address", gateway_address)
         if internal_ipv6_prefix is not None:
-            pulumi.set(__self__, "internal_ipv6_prefix", internal_ipv6_prefix)
+            _setter("internal_ipv6_prefix", internal_ipv6_prefix)
         if ip_cidr_range is not None:
-            pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
+            _setter("ip_cidr_range", ip_cidr_range)
         if ipv6_access_type is not None:
-            pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
+            _setter("ipv6_access_type", ipv6_access_type)
         if ipv6_cidr_range is not None:
-            pulumi.set(__self__, "ipv6_cidr_range", ipv6_cidr_range)
+            _setter("ipv6_cidr_range", ipv6_cidr_range)
         if log_config is not None:
-            pulumi.set(__self__, "log_config", log_config)
+            _setter("log_config", log_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if private_ip_google_access is not None:
-            pulumi.set(__self__, "private_ip_google_access", private_ip_google_access)
+            _setter("private_ip_google_access", private_ip_google_access)
         if private_ipv6_google_access is not None:
-            pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
+            _setter("private_ipv6_google_access", private_ipv6_google_access)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if purpose is not None:
-            pulumi.set(__self__, "purpose", purpose)
+            _setter("purpose", purpose)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if secondary_ip_ranges is not None:
-            pulumi.set(__self__, "secondary_ip_ranges", secondary_ip_ranges)
+            _setter("secondary_ip_ranges", secondary_ip_ranges)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if stack_type is not None:
-            pulumi.set(__self__, "stack_type", stack_type)
+            _setter("stack_type", stack_type)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -1112,6 +1196,10 @@ class Subnetwork(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SubnetworkArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1145,6 +1233,11 @@ class Subnetwork(pulumi.CustomResource):
                 raise TypeError("Missing required property 'ip_cidr_range'")
             __props__.__dict__["ip_cidr_range"] = ip_cidr_range
             __props__.__dict__["ipv6_access_type"] = ipv6_access_type
+            if log_config is not None and not isinstance(log_config, SubnetworkLogConfigArgs):
+                log_config = log_config or {}
+                def _setter(key, value):
+                    log_config[key] = value
+                SubnetworkLogConfigArgs._configure(_setter, **log_config)
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["name"] = name
             if network is None and not opts.urn:

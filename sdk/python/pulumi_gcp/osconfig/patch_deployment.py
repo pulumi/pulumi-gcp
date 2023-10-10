@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -49,22 +49,47 @@ class PatchDeploymentArgs:
         :param pulumi.Input['PatchDeploymentRolloutArgs'] rollout: Rollout strategy of the patch job.
                Structure is documented below.
         """
-        pulumi.set(__self__, "instance_filter", instance_filter)
-        pulumi.set(__self__, "patch_deployment_id", patch_deployment_id)
+        PatchDeploymentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_filter=instance_filter,
+            patch_deployment_id=patch_deployment_id,
+            description=description,
+            duration=duration,
+            one_time_schedule=one_time_schedule,
+            patch_config=patch_config,
+            project=project,
+            recurring_schedule=recurring_schedule,
+            rollout=rollout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_filter: pulumi.Input['PatchDeploymentInstanceFilterArgs'],
+             patch_deployment_id: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             duration: Optional[pulumi.Input[str]] = None,
+             one_time_schedule: Optional[pulumi.Input['PatchDeploymentOneTimeScheduleArgs']] = None,
+             patch_config: Optional[pulumi.Input['PatchDeploymentPatchConfigArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             recurring_schedule: Optional[pulumi.Input['PatchDeploymentRecurringScheduleArgs']] = None,
+             rollout: Optional[pulumi.Input['PatchDeploymentRolloutArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_filter", instance_filter)
+        _setter("patch_deployment_id", patch_deployment_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if duration is not None:
-            pulumi.set(__self__, "duration", duration)
+            _setter("duration", duration)
         if one_time_schedule is not None:
-            pulumi.set(__self__, "one_time_schedule", one_time_schedule)
+            _setter("one_time_schedule", one_time_schedule)
         if patch_config is not None:
-            pulumi.set(__self__, "patch_config", patch_config)
+            _setter("patch_config", patch_config)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if recurring_schedule is not None:
-            pulumi.set(__self__, "recurring_schedule", recurring_schedule)
+            _setter("recurring_schedule", recurring_schedule)
         if rollout is not None:
-            pulumi.set(__self__, "rollout", rollout)
+            _setter("rollout", rollout)
 
     @property
     @pulumi.getter(name="instanceFilter")
@@ -236,32 +261,65 @@ class _PatchDeploymentState:
         :param pulumi.Input[str] update_time: Time the patch deployment was last updated. Timestamp is in RFC3339 text format.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
+        _PatchDeploymentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            duration=duration,
+            instance_filter=instance_filter,
+            last_execute_time=last_execute_time,
+            name=name,
+            one_time_schedule=one_time_schedule,
+            patch_config=patch_config,
+            patch_deployment_id=patch_deployment_id,
+            project=project,
+            recurring_schedule=recurring_schedule,
+            rollout=rollout,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             duration: Optional[pulumi.Input[str]] = None,
+             instance_filter: Optional[pulumi.Input['PatchDeploymentInstanceFilterArgs']] = None,
+             last_execute_time: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             one_time_schedule: Optional[pulumi.Input['PatchDeploymentOneTimeScheduleArgs']] = None,
+             patch_config: Optional[pulumi.Input['PatchDeploymentPatchConfigArgs']] = None,
+             patch_deployment_id: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             recurring_schedule: Optional[pulumi.Input['PatchDeploymentRecurringScheduleArgs']] = None,
+             rollout: Optional[pulumi.Input['PatchDeploymentRolloutArgs']] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if duration is not None:
-            pulumi.set(__self__, "duration", duration)
+            _setter("duration", duration)
         if instance_filter is not None:
-            pulumi.set(__self__, "instance_filter", instance_filter)
+            _setter("instance_filter", instance_filter)
         if last_execute_time is not None:
-            pulumi.set(__self__, "last_execute_time", last_execute_time)
+            _setter("last_execute_time", last_execute_time)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if one_time_schedule is not None:
-            pulumi.set(__self__, "one_time_schedule", one_time_schedule)
+            _setter("one_time_schedule", one_time_schedule)
         if patch_config is not None:
-            pulumi.set(__self__, "patch_config", patch_config)
+            _setter("patch_config", patch_config)
         if patch_deployment_id is not None:
-            pulumi.set(__self__, "patch_deployment_id", patch_deployment_id)
+            _setter("patch_deployment_id", patch_deployment_id)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if recurring_schedule is not None:
-            pulumi.set(__self__, "recurring_schedule", recurring_schedule)
+            _setter("recurring_schedule", recurring_schedule)
         if rollout is not None:
-            pulumi.set(__self__, "rollout", rollout)
+            _setter("rollout", rollout)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -992,6 +1050,10 @@ class PatchDeployment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PatchDeploymentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1017,16 +1079,41 @@ class PatchDeployment(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["duration"] = duration
+            if instance_filter is not None and not isinstance(instance_filter, PatchDeploymentInstanceFilterArgs):
+                instance_filter = instance_filter or {}
+                def _setter(key, value):
+                    instance_filter[key] = value
+                PatchDeploymentInstanceFilterArgs._configure(_setter, **instance_filter)
             if instance_filter is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_filter'")
             __props__.__dict__["instance_filter"] = instance_filter
+            if one_time_schedule is not None and not isinstance(one_time_schedule, PatchDeploymentOneTimeScheduleArgs):
+                one_time_schedule = one_time_schedule or {}
+                def _setter(key, value):
+                    one_time_schedule[key] = value
+                PatchDeploymentOneTimeScheduleArgs._configure(_setter, **one_time_schedule)
             __props__.__dict__["one_time_schedule"] = one_time_schedule
+            if patch_config is not None and not isinstance(patch_config, PatchDeploymentPatchConfigArgs):
+                patch_config = patch_config or {}
+                def _setter(key, value):
+                    patch_config[key] = value
+                PatchDeploymentPatchConfigArgs._configure(_setter, **patch_config)
             __props__.__dict__["patch_config"] = patch_config
             if patch_deployment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'patch_deployment_id'")
             __props__.__dict__["patch_deployment_id"] = patch_deployment_id
             __props__.__dict__["project"] = project
+            if recurring_schedule is not None and not isinstance(recurring_schedule, PatchDeploymentRecurringScheduleArgs):
+                recurring_schedule = recurring_schedule or {}
+                def _setter(key, value):
+                    recurring_schedule[key] = value
+                PatchDeploymentRecurringScheduleArgs._configure(_setter, **recurring_schedule)
             __props__.__dict__["recurring_schedule"] = recurring_schedule
+            if rollout is not None and not isinstance(rollout, PatchDeploymentRolloutArgs):
+                rollout = rollout or {}
+                def _setter(key, value):
+                    rollout[key] = value
+                PatchDeploymentRolloutArgs._configure(_setter, **rollout)
             __props__.__dict__["rollout"] = rollout
             __props__.__dict__["create_time"] = None
             __props__.__dict__["last_execute_time"] = None

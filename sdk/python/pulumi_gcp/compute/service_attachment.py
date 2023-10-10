@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -65,26 +65,57 @@ class ServiceAttachmentArgs:
                For newly created service attachment, this boolean defaults to true.
         :param pulumi.Input[str] region: URL of the region where the resource resides.
         """
-        pulumi.set(__self__, "connection_preference", connection_preference)
-        pulumi.set(__self__, "enable_proxy_protocol", enable_proxy_protocol)
-        pulumi.set(__self__, "nat_subnets", nat_subnets)
-        pulumi.set(__self__, "target_service", target_service)
+        ServiceAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connection_preference=connection_preference,
+            enable_proxy_protocol=enable_proxy_protocol,
+            nat_subnets=nat_subnets,
+            target_service=target_service,
+            consumer_accept_lists=consumer_accept_lists,
+            consumer_reject_lists=consumer_reject_lists,
+            description=description,
+            domain_names=domain_names,
+            name=name,
+            project=project,
+            reconcile_connections=reconcile_connections,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connection_preference: pulumi.Input[str],
+             enable_proxy_protocol: pulumi.Input[bool],
+             nat_subnets: pulumi.Input[Sequence[pulumi.Input[str]]],
+             target_service: pulumi.Input[str],
+             consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]]] = None,
+             consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             reconcile_connections: Optional[pulumi.Input[bool]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("connection_preference", connection_preference)
+        _setter("enable_proxy_protocol", enable_proxy_protocol)
+        _setter("nat_subnets", nat_subnets)
+        _setter("target_service", target_service)
         if consumer_accept_lists is not None:
-            pulumi.set(__self__, "consumer_accept_lists", consumer_accept_lists)
+            _setter("consumer_accept_lists", consumer_accept_lists)
         if consumer_reject_lists is not None:
-            pulumi.set(__self__, "consumer_reject_lists", consumer_reject_lists)
+            _setter("consumer_reject_lists", consumer_reject_lists)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if domain_names is not None:
-            pulumi.set(__self__, "domain_names", domain_names)
+            _setter("domain_names", domain_names)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if reconcile_connections is not None:
-            pulumi.set(__self__, "reconcile_connections", reconcile_connections)
+            _setter("reconcile_connections", reconcile_connections)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="connectionPreference")
@@ -314,36 +345,73 @@ class _ServiceAttachmentState:
         :param pulumi.Input[str] target_service: The URL of a forwarding rule that represents the service identified by
                this service attachment.
         """
+        _ServiceAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connected_endpoints=connected_endpoints,
+            connection_preference=connection_preference,
+            consumer_accept_lists=consumer_accept_lists,
+            consumer_reject_lists=consumer_reject_lists,
+            description=description,
+            domain_names=domain_names,
+            enable_proxy_protocol=enable_proxy_protocol,
+            fingerprint=fingerprint,
+            name=name,
+            nat_subnets=nat_subnets,
+            project=project,
+            reconcile_connections=reconcile_connections,
+            region=region,
+            self_link=self_link,
+            target_service=target_service,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connected_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConnectedEndpointArgs']]]] = None,
+             connection_preference: Optional[pulumi.Input[str]] = None,
+             consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]]] = None,
+             consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
+             fingerprint: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             nat_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             reconcile_connections: Optional[pulumi.Input[bool]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             target_service: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if connected_endpoints is not None:
-            pulumi.set(__self__, "connected_endpoints", connected_endpoints)
+            _setter("connected_endpoints", connected_endpoints)
         if connection_preference is not None:
-            pulumi.set(__self__, "connection_preference", connection_preference)
+            _setter("connection_preference", connection_preference)
         if consumer_accept_lists is not None:
-            pulumi.set(__self__, "consumer_accept_lists", consumer_accept_lists)
+            _setter("consumer_accept_lists", consumer_accept_lists)
         if consumer_reject_lists is not None:
-            pulumi.set(__self__, "consumer_reject_lists", consumer_reject_lists)
+            _setter("consumer_reject_lists", consumer_reject_lists)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if domain_names is not None:
-            pulumi.set(__self__, "domain_names", domain_names)
+            _setter("domain_names", domain_names)
         if enable_proxy_protocol is not None:
-            pulumi.set(__self__, "enable_proxy_protocol", enable_proxy_protocol)
+            _setter("enable_proxy_protocol", enable_proxy_protocol)
         if fingerprint is not None:
-            pulumi.set(__self__, "fingerprint", fingerprint)
+            _setter("fingerprint", fingerprint)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if nat_subnets is not None:
-            pulumi.set(__self__, "nat_subnets", nat_subnets)
+            _setter("nat_subnets", nat_subnets)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if reconcile_connections is not None:
-            pulumi.set(__self__, "reconcile_connections", reconcile_connections)
+            _setter("reconcile_connections", reconcile_connections)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if target_service is not None:
-            pulumi.set(__self__, "target_service", target_service)
+            _setter("target_service", target_service)
 
     @property
     @pulumi.getter(name="connectedEndpoints")
@@ -684,6 +752,10 @@ class ServiceAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServiceAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,10 +27,7 @@ class CertificateTemplateArgs:
         """
         The set of arguments for constructing a CertificateTemplate resource.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] description: Optional. A human-readable description of scenarios this template is intended for.
-               
-               (Optional)
-               Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        :param pulumi.Input[str] description: Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         :param pulumi.Input['CertificateTemplateIdentityConstraintsArgs'] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
         :param pulumi.Input[str] name: The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
@@ -38,21 +35,44 @@ class CertificateTemplateArgs:
         :param pulumi.Input['CertificateTemplatePredefinedValuesArgs'] predefined_values: Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
         :param pulumi.Input[str] project: The project for the resource
         """
-        pulumi.set(__self__, "location", location)
+        CertificateTemplateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            description=description,
+            identity_constraints=identity_constraints,
+            labels=labels,
+            name=name,
+            passthrough_extensions=passthrough_extensions,
+            predefined_values=predefined_values,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             identity_constraints: Optional[pulumi.Input['CertificateTemplateIdentityConstraintsArgs']] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             passthrough_extensions: Optional[pulumi.Input['CertificateTemplatePassthroughExtensionsArgs']] = None,
+             predefined_values: Optional[pulumi.Input['CertificateTemplatePredefinedValuesArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("location", location)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if identity_constraints is not None:
-            pulumi.set(__self__, "identity_constraints", identity_constraints)
+            _setter("identity_constraints", identity_constraints)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if passthrough_extensions is not None:
-            pulumi.set(__self__, "passthrough_extensions", passthrough_extensions)
+            _setter("passthrough_extensions", passthrough_extensions)
         if predefined_values is not None:
-            pulumi.set(__self__, "predefined_values", predefined_values)
+            _setter("predefined_values", predefined_values)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -70,9 +90,6 @@ class CertificateTemplateArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. A human-readable description of scenarios this template is intended for.
-
-        (Optional)
         Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         return pulumi.get(self, "description")
@@ -170,10 +187,7 @@ class _CertificateTemplateState:
         """
         Input properties used for looking up and filtering CertificateTemplate resources.
         :param pulumi.Input[str] create_time: Output only. The time at which this CertificateTemplate was created.
-        :param pulumi.Input[str] description: Optional. A human-readable description of scenarios this template is intended for.
-               
-               (Optional)
-               Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        :param pulumi.Input[str] description: Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         :param pulumi.Input['CertificateTemplateIdentityConstraintsArgs'] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
         :param pulumi.Input[str] location: The location for the resource
@@ -183,26 +197,53 @@ class _CertificateTemplateState:
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] update_time: Output only. The time at which this CertificateTemplate was updated.
         """
+        _CertificateTemplateState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            identity_constraints=identity_constraints,
+            labels=labels,
+            location=location,
+            name=name,
+            passthrough_extensions=passthrough_extensions,
+            predefined_values=predefined_values,
+            project=project,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             identity_constraints: Optional[pulumi.Input['CertificateTemplateIdentityConstraintsArgs']] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             passthrough_extensions: Optional[pulumi.Input['CertificateTemplatePassthroughExtensionsArgs']] = None,
+             predefined_values: Optional[pulumi.Input['CertificateTemplatePredefinedValuesArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if identity_constraints is not None:
-            pulumi.set(__self__, "identity_constraints", identity_constraints)
+            _setter("identity_constraints", identity_constraints)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if passthrough_extensions is not None:
-            pulumi.set(__self__, "passthrough_extensions", passthrough_extensions)
+            _setter("passthrough_extensions", passthrough_extensions)
         if predefined_values is not None:
-            pulumi.set(__self__, "predefined_values", predefined_values)
+            _setter("predefined_values", predefined_values)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -220,9 +261,6 @@ class _CertificateTemplateState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. A human-readable description of scenarios this template is intended for.
-
-        (Optional)
         Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         return pulumi.get(self, "description")
@@ -368,10 +406,7 @@ class CertificateTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Optional. A human-readable description of scenarios this template is intended for.
-               
-               (Optional)
-               Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        :param pulumi.Input[str] description: Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         :param pulumi.Input[pulumi.InputType['CertificateTemplateIdentityConstraintsArgs']] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
         :param pulumi.Input[str] location: The location for the resource
@@ -420,6 +455,10 @@ class CertificateTemplate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CertificateTemplateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -443,13 +482,28 @@ class CertificateTemplate(pulumi.CustomResource):
             __props__ = CertificateTemplateArgs.__new__(CertificateTemplateArgs)
 
             __props__.__dict__["description"] = description
+            if identity_constraints is not None and not isinstance(identity_constraints, CertificateTemplateIdentityConstraintsArgs):
+                identity_constraints = identity_constraints or {}
+                def _setter(key, value):
+                    identity_constraints[key] = value
+                CertificateTemplateIdentityConstraintsArgs._configure(_setter, **identity_constraints)
             __props__.__dict__["identity_constraints"] = identity_constraints
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
+            if passthrough_extensions is not None and not isinstance(passthrough_extensions, CertificateTemplatePassthroughExtensionsArgs):
+                passthrough_extensions = passthrough_extensions or {}
+                def _setter(key, value):
+                    passthrough_extensions[key] = value
+                CertificateTemplatePassthroughExtensionsArgs._configure(_setter, **passthrough_extensions)
             __props__.__dict__["passthrough_extensions"] = passthrough_extensions
+            if predefined_values is not None and not isinstance(predefined_values, CertificateTemplatePredefinedValuesArgs):
+                predefined_values = predefined_values or {}
+                def _setter(key, value):
+                    predefined_values[key] = value
+                CertificateTemplatePredefinedValuesArgs._configure(_setter, **predefined_values)
             __props__.__dict__["predefined_values"] = predefined_values
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
@@ -482,10 +536,7 @@ class CertificateTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Output only. The time at which this CertificateTemplate was created.
-        :param pulumi.Input[str] description: Optional. A human-readable description of scenarios this template is intended for.
-               
-               (Optional)
-               Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        :param pulumi.Input[str] description: Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         :param pulumi.Input[pulumi.InputType['CertificateTemplateIdentityConstraintsArgs']] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
         :param pulumi.Input[str] location: The location for the resource
@@ -523,9 +574,6 @@ class CertificateTemplate(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Optional. A human-readable description of scenarios this template is intended for.
-
-        (Optional)
         Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         return pulumi.get(self, "description")

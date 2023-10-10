@@ -785,24 +785,12 @@ public class CxPage extends com.pulumi.resources.CustomResource {
      * (Output)
      * The unique identifier of this event handler.
      * 
-     * (Output)
-     * The unique identifier of this transition route.
-     * 
-     * (Output)
-     * The unique identifier of this event handler.
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return (Output)
-     * The unique identifier of this event handler.
-     * 
-     * (Output)
-     * The unique identifier of this transition route.
-     * 
-     * (Output)
      * The unique identifier of this event handler.
      * 
      */

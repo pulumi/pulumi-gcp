@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['NetworkFirewallPolicyArgs', 'NetworkFirewallPolicy']
@@ -27,12 +27,25 @@ class NetworkFirewallPolicyArgs:
                - - -
         :param pulumi.Input[str] project: The project for the resource
         """
+        NetworkFirewallPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -103,24 +116,49 @@ class _NetworkFirewallPolicyState:
         :param pulumi.Input[str] self_link: Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: Server-defined URL for this resource with the resource id.
         """
+        _NetworkFirewallPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            creation_timestamp=creation_timestamp,
+            description=description,
+            fingerprint=fingerprint,
+            name=name,
+            network_firewall_policy_id=network_firewall_policy_id,
+            project=project,
+            rule_tuple_count=rule_tuple_count,
+            self_link=self_link,
+            self_link_with_id=self_link_with_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             creation_timestamp: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             fingerprint: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_firewall_policy_id: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             rule_tuple_count: Optional[pulumi.Input[int]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             self_link_with_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+            _setter("creation_timestamp", creation_timestamp)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if fingerprint is not None:
-            pulumi.set(__self__, "fingerprint", fingerprint)
+            _setter("fingerprint", fingerprint)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_firewall_policy_id is not None:
-            pulumi.set(__self__, "network_firewall_policy_id", network_firewall_policy_id)
+            _setter("network_firewall_policy_id", network_firewall_policy_id)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if rule_tuple_count is not None:
-            pulumi.set(__self__, "rule_tuple_count", rule_tuple_count)
+            _setter("rule_tuple_count", rule_tuple_count)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if self_link_with_id is not None:
-            pulumi.set(__self__, "self_link_with_id", self_link_with_id)
+            _setter("self_link_with_id", self_link_with_id)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -330,6 +368,10 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NetworkFirewallPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

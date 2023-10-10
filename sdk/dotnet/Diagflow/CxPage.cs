@@ -1020,12 +1020,6 @@ namespace Pulumi.Gcp.Diagflow
         /// <summary>
         /// (Output)
         /// The unique identifier of this event handler.
-        /// 
-        /// (Output)
-        /// The unique identifier of this transition route.
-        /// 
-        /// (Output)
-        /// The unique identifier of this event handler.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -1263,12 +1257,6 @@ namespace Pulumi.Gcp.Diagflow
         public Input<string>? LanguageCode { get; set; }
 
         /// <summary>
-        /// (Output)
-        /// The unique identifier of this event handler.
-        /// 
-        /// (Output)
-        /// The unique identifier of this transition route.
-        /// 
         /// (Output)
         /// The unique identifier of this event handler.
         /// </summary>

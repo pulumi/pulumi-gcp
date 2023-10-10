@@ -35,9 +35,6 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Optional. A human-readable description of scenarios this template is intended for.
-     * 
-     * (Optional)
      * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
      */
@@ -45,10 +42,7 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
     private @Nullable Output<String> description;
 
     /**
-     * @return Optional. A human-readable description of scenarios this template is intended for.
-     * 
-     * (Optional)
-     * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+     * @return Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
      */
     public Optional<Output<String>> description() {
@@ -230,10 +224,7 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param description Optional. A human-readable description of scenarios this template is intended for.
-         * 
-         * (Optional)
-         * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         * @param description Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          * 
          * @return builder
          * 
@@ -244,10 +235,7 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param description Optional. A human-readable description of scenarios this template is intended for.
-         * 
-         * (Optional)
-         * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         * @param description Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          * 
          * @return builder
          * 

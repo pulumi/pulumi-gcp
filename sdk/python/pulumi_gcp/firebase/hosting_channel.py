@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['HostingChannelArgs', 'HostingChannel']
@@ -37,16 +37,35 @@ class HostingChannelArgs:
                duration past the time of the request. A duration in seconds with up to nine fractional
                digits, terminated by 's'. Example: "86400s" (one day).
         """
-        pulumi.set(__self__, "channel_id", channel_id)
-        pulumi.set(__self__, "site_id", site_id)
+        HostingChannelArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            channel_id=channel_id,
+            site_id=site_id,
+            expire_time=expire_time,
+            labels=labels,
+            retained_release_count=retained_release_count,
+            ttl=ttl,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             channel_id: pulumi.Input[str],
+             site_id: pulumi.Input[str],
+             expire_time: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             retained_release_count: Optional[pulumi.Input[int]] = None,
+             ttl: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("channel_id", channel_id)
+        _setter("site_id", site_id)
         if expire_time is not None:
-            pulumi.set(__self__, "expire_time", expire_time)
+            _setter("expire_time", expire_time)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if retained_release_count is not None:
-            pulumi.set(__self__, "retained_release_count", retained_release_count)
+            _setter("retained_release_count", retained_release_count)
         if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
+            _setter("ttl", ttl)
 
     @property
     @pulumi.getter(name="channelId")
@@ -158,20 +177,41 @@ class _HostingChannelState:
                duration past the time of the request. A duration in seconds with up to nine fractional
                digits, terminated by 's'. Example: "86400s" (one day).
         """
+        _HostingChannelState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            channel_id=channel_id,
+            expire_time=expire_time,
+            labels=labels,
+            name=name,
+            retained_release_count=retained_release_count,
+            site_id=site_id,
+            ttl=ttl,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             channel_id: Optional[pulumi.Input[str]] = None,
+             expire_time: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             retained_release_count: Optional[pulumi.Input[int]] = None,
+             site_id: Optional[pulumi.Input[str]] = None,
+             ttl: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if channel_id is not None:
-            pulumi.set(__self__, "channel_id", channel_id)
+            _setter("channel_id", channel_id)
         if expire_time is not None:
-            pulumi.set(__self__, "expire_time", expire_time)
+            _setter("expire_time", expire_time)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if retained_release_count is not None:
-            pulumi.set(__self__, "retained_release_count", retained_release_count)
+            _setter("retained_release_count", retained_release_count)
         if site_id is not None:
-            pulumi.set(__self__, "site_id", site_id)
+            _setter("site_id", site_id)
         if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
+            _setter("ttl", ttl)
 
     @property
     @pulumi.getter(name="channelId")
@@ -412,6 +452,10 @@ class HostingChannel(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            HostingChannelArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

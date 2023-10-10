@@ -428,6 +428,7 @@ import javax.annotation.Nullable;
 public class Job extends com.pulumi.resources.CustomResource {
     /**
      * Copies a table.
+     * Structure is documented below.
      * 
      */
     @Export(name="copy", refs={JobCopy.class}, tree="[0]")
@@ -435,6 +436,7 @@ public class Job extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Copies a table.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<JobCopy>> copy() {
@@ -442,6 +444,7 @@ public class Job extends com.pulumi.resources.CustomResource {
     }
     /**
      * Configures an extract job.
+     * Structure is documented below.
      * 
      */
     @Export(name="extract", refs={JobExtract.class}, tree="[0]")
@@ -449,6 +452,7 @@ public class Job extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Configures an extract job.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<JobExtract>> extract() {
@@ -514,6 +518,7 @@ public class Job extends com.pulumi.resources.CustomResource {
     }
     /**
      * Configures a load job.
+     * Structure is documented below.
      * 
      */
     @Export(name="load", refs={JobLoad.class}, tree="[0]")
@@ -521,6 +526,7 @@ public class Job extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Configures a load job.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<JobLoad>> load() {
@@ -557,14 +563,18 @@ public class Job extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Configures a query job.
+     * SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+     * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+     * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = &#34;&#34;` and `write_disposition = &#34;&#34;`.
      * 
      */
     @Export(name="query", refs={JobQuery.class}, tree="[0]")
     private Output</* @Nullable */ JobQuery> query;
 
     /**
-     * @return Configures a query job.
+     * @return SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+     * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+     * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = &#34;&#34;` and `write_disposition = &#34;&#34;`.
      * 
      */
     public Output<Optional<JobQuery>> query() {

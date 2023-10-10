@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -231,54 +231,109 @@ class ForwardingRuleArgs:
                
                For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
         """
+        ForwardingRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            all_ports=all_ports,
+            allow_global_access=allow_global_access,
+            allow_psc_global_access=allow_psc_global_access,
+            backend_service=backend_service,
+            description=description,
+            ip_address=ip_address,
+            ip_protocol=ip_protocol,
+            ip_version=ip_version,
+            is_mirroring_collector=is_mirroring_collector,
+            labels=labels,
+            load_balancing_scheme=load_balancing_scheme,
+            name=name,
+            network=network,
+            network_tier=network_tier,
+            no_automate_dns_zone=no_automate_dns_zone,
+            port_range=port_range,
+            ports=ports,
+            project=project,
+            region=region,
+            service_directory_registrations=service_directory_registrations,
+            service_label=service_label,
+            source_ip_ranges=source_ip_ranges,
+            subnetwork=subnetwork,
+            target=target,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             all_ports: Optional[pulumi.Input[bool]] = None,
+             allow_global_access: Optional[pulumi.Input[bool]] = None,
+             allow_psc_global_access: Optional[pulumi.Input[bool]] = None,
+             backend_service: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             ip_protocol: Optional[pulumi.Input[str]] = None,
+             ip_version: Optional[pulumi.Input[str]] = None,
+             is_mirroring_collector: Optional[pulumi.Input[bool]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             load_balancing_scheme: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             network_tier: Optional[pulumi.Input[str]] = None,
+             no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
+             port_range: Optional[pulumi.Input[str]] = None,
+             ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]]] = None,
+             service_label: Optional[pulumi.Input[str]] = None,
+             source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             subnetwork: Optional[pulumi.Input[str]] = None,
+             target: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if all_ports is not None:
-            pulumi.set(__self__, "all_ports", all_ports)
+            _setter("all_ports", all_ports)
         if allow_global_access is not None:
-            pulumi.set(__self__, "allow_global_access", allow_global_access)
+            _setter("allow_global_access", allow_global_access)
         if allow_psc_global_access is not None:
-            pulumi.set(__self__, "allow_psc_global_access", allow_psc_global_access)
+            _setter("allow_psc_global_access", allow_psc_global_access)
         if backend_service is not None:
-            pulumi.set(__self__, "backend_service", backend_service)
+            _setter("backend_service", backend_service)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if ip_protocol is not None:
-            pulumi.set(__self__, "ip_protocol", ip_protocol)
+            _setter("ip_protocol", ip_protocol)
         if ip_version is not None:
-            pulumi.set(__self__, "ip_version", ip_version)
+            _setter("ip_version", ip_version)
         if is_mirroring_collector is not None:
-            pulumi.set(__self__, "is_mirroring_collector", is_mirroring_collector)
+            _setter("is_mirroring_collector", is_mirroring_collector)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if load_balancing_scheme is not None:
-            pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
+            _setter("load_balancing_scheme", load_balancing_scheme)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if network_tier is not None:
-            pulumi.set(__self__, "network_tier", network_tier)
+            _setter("network_tier", network_tier)
         if no_automate_dns_zone is not None:
-            pulumi.set(__self__, "no_automate_dns_zone", no_automate_dns_zone)
+            _setter("no_automate_dns_zone", no_automate_dns_zone)
         if port_range is not None:
-            pulumi.set(__self__, "port_range", port_range)
+            _setter("port_range", port_range)
         if ports is not None:
-            pulumi.set(__self__, "ports", ports)
+            _setter("ports", ports)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if service_directory_registrations is not None:
-            pulumi.set(__self__, "service_directory_registrations", service_directory_registrations)
+            _setter("service_directory_registrations", service_directory_registrations)
         if service_label is not None:
-            pulumi.set(__self__, "service_label", service_label)
+            _setter("service_label", service_label)
         if source_ip_ranges is not None:
-            pulumi.set(__self__, "source_ip_ranges", source_ip_ranges)
+            _setter("source_ip_ranges", source_ip_ranges)
         if subnetwork is not None:
-            pulumi.set(__self__, "subnetwork", subnetwork)
+            _setter("subnetwork", subnetwork)
         if target is not None:
-            pulumi.set(__self__, "target", target)
+            _setter("target", target)
 
     @property
     @pulumi.getter(name="allPorts")
@@ -967,68 +1022,137 @@ class _ForwardingRuleState:
                
                For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
         """
+        _ForwardingRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            all_ports=all_ports,
+            allow_global_access=allow_global_access,
+            allow_psc_global_access=allow_psc_global_access,
+            backend_service=backend_service,
+            base_forwarding_rule=base_forwarding_rule,
+            creation_timestamp=creation_timestamp,
+            description=description,
+            ip_address=ip_address,
+            ip_protocol=ip_protocol,
+            ip_version=ip_version,
+            is_mirroring_collector=is_mirroring_collector,
+            label_fingerprint=label_fingerprint,
+            labels=labels,
+            load_balancing_scheme=load_balancing_scheme,
+            name=name,
+            network=network,
+            network_tier=network_tier,
+            no_automate_dns_zone=no_automate_dns_zone,
+            port_range=port_range,
+            ports=ports,
+            project=project,
+            psc_connection_id=psc_connection_id,
+            psc_connection_status=psc_connection_status,
+            region=region,
+            self_link=self_link,
+            service_directory_registrations=service_directory_registrations,
+            service_label=service_label,
+            service_name=service_name,
+            source_ip_ranges=source_ip_ranges,
+            subnetwork=subnetwork,
+            target=target,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             all_ports: Optional[pulumi.Input[bool]] = None,
+             allow_global_access: Optional[pulumi.Input[bool]] = None,
+             allow_psc_global_access: Optional[pulumi.Input[bool]] = None,
+             backend_service: Optional[pulumi.Input[str]] = None,
+             base_forwarding_rule: Optional[pulumi.Input[str]] = None,
+             creation_timestamp: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             ip_protocol: Optional[pulumi.Input[str]] = None,
+             ip_version: Optional[pulumi.Input[str]] = None,
+             is_mirroring_collector: Optional[pulumi.Input[bool]] = None,
+             label_fingerprint: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             load_balancing_scheme: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             network_tier: Optional[pulumi.Input[str]] = None,
+             no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
+             port_range: Optional[pulumi.Input[str]] = None,
+             ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             psc_connection_id: Optional[pulumi.Input[str]] = None,
+             psc_connection_status: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]]] = None,
+             service_label: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             subnetwork: Optional[pulumi.Input[str]] = None,
+             target: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if all_ports is not None:
-            pulumi.set(__self__, "all_ports", all_ports)
+            _setter("all_ports", all_ports)
         if allow_global_access is not None:
-            pulumi.set(__self__, "allow_global_access", allow_global_access)
+            _setter("allow_global_access", allow_global_access)
         if allow_psc_global_access is not None:
-            pulumi.set(__self__, "allow_psc_global_access", allow_psc_global_access)
+            _setter("allow_psc_global_access", allow_psc_global_access)
         if backend_service is not None:
-            pulumi.set(__self__, "backend_service", backend_service)
+            _setter("backend_service", backend_service)
         if base_forwarding_rule is not None:
-            pulumi.set(__self__, "base_forwarding_rule", base_forwarding_rule)
+            _setter("base_forwarding_rule", base_forwarding_rule)
         if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+            _setter("creation_timestamp", creation_timestamp)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if ip_protocol is not None:
-            pulumi.set(__self__, "ip_protocol", ip_protocol)
+            _setter("ip_protocol", ip_protocol)
         if ip_version is not None:
-            pulumi.set(__self__, "ip_version", ip_version)
+            _setter("ip_version", ip_version)
         if is_mirroring_collector is not None:
-            pulumi.set(__self__, "is_mirroring_collector", is_mirroring_collector)
+            _setter("is_mirroring_collector", is_mirroring_collector)
         if label_fingerprint is not None:
-            pulumi.set(__self__, "label_fingerprint", label_fingerprint)
+            _setter("label_fingerprint", label_fingerprint)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if load_balancing_scheme is not None:
-            pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
+            _setter("load_balancing_scheme", load_balancing_scheme)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if network_tier is not None:
-            pulumi.set(__self__, "network_tier", network_tier)
+            _setter("network_tier", network_tier)
         if no_automate_dns_zone is not None:
-            pulumi.set(__self__, "no_automate_dns_zone", no_automate_dns_zone)
+            _setter("no_automate_dns_zone", no_automate_dns_zone)
         if port_range is not None:
-            pulumi.set(__self__, "port_range", port_range)
+            _setter("port_range", port_range)
         if ports is not None:
-            pulumi.set(__self__, "ports", ports)
+            _setter("ports", ports)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if psc_connection_id is not None:
-            pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+            _setter("psc_connection_id", psc_connection_id)
         if psc_connection_status is not None:
-            pulumi.set(__self__, "psc_connection_status", psc_connection_status)
+            _setter("psc_connection_status", psc_connection_status)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if service_directory_registrations is not None:
-            pulumi.set(__self__, "service_directory_registrations", service_directory_registrations)
+            _setter("service_directory_registrations", service_directory_registrations)
         if service_label is not None:
-            pulumi.set(__self__, "service_label", service_label)
+            _setter("service_label", service_label)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if source_ip_ranges is not None:
-            pulumi.set(__self__, "source_ip_ranges", source_ip_ranges)
+            _setter("source_ip_ranges", source_ip_ranges)
         if subnetwork is not None:
-            pulumi.set(__self__, "subnetwork", subnetwork)
+            _setter("subnetwork", subnetwork)
         if target is not None:
-            pulumi.set(__self__, "target", target)
+            _setter("target", target)
 
     @property
     @pulumi.getter(name="allPorts")
@@ -1946,6 +2070,10 @@ class ForwardingRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ForwardingRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

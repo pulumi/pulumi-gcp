@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -42,10 +42,21 @@ class NodeNetworkEndpoint(dict):
         :param int port: (Output)
                The port of this network endpoint.
         """
+        NodeNetworkEndpoint._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_address=ip_address,
+            port=port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_address: Optional[str] = None,
+             port: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -73,7 +84,16 @@ class NodeSchedulingConfig(dict):
         """
         :param bool preemptible: Defines whether the TPU instance is preemptible.
         """
-        pulumi.set(__self__, "preemptible", preemptible)
+        NodeSchedulingConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            preemptible=preemptible,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             preemptible: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("preemptible", preemptible)
 
     @property
     @pulumi.getter

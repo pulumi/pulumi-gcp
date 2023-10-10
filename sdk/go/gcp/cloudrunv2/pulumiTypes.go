@@ -11746,9 +11746,6 @@ type ServiceTrafficStatus struct {
 	// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
 	Percent *int `pulumi:"percent"`
 	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
-	//
-	// (Optional)
-	// Revision to which to send this portion of traffic, if traffic allocation is by revision.
 	Revision *string `pulumi:"revision"`
 	// Indicates a string to be part of the URI to exclusively reference this target.
 	Tag *string `pulumi:"tag"`
@@ -11775,9 +11772,6 @@ type ServiceTrafficStatusArgs struct {
 	// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
 	Percent pulumi.IntPtrInput `pulumi:"percent"`
 	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
-	//
-	// (Optional)
-	// Revision to which to send this portion of traffic, if traffic allocation is by revision.
 	Revision pulumi.StringPtrInput `pulumi:"revision"`
 	// Indicates a string to be part of the URI to exclusively reference this target.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
@@ -11864,9 +11858,6 @@ func (o ServiceTrafficStatusOutput) Percent() pulumi.IntPtrOutput {
 }
 
 // The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
-//
-// (Optional)
-// Revision to which to send this portion of traffic, if traffic allocation is by revision.
 func (o ServiceTrafficStatusOutput) Revision() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTrafficStatus) *string { return v.Revision }).(pulumi.StringPtrOutput)
 }

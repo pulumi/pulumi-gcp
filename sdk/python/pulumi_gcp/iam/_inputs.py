@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -35,10 +35,21 @@ class AccessBoundaryPolicyRuleArgs:
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the rule.
         """
+        AccessBoundaryPolicyRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_boundary_rule=access_boundary_rule,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_boundary_rule: Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_boundary_rule is not None:
-            pulumi.set(__self__, "access_boundary_rule", access_boundary_rule)
+            _setter("access_boundary_rule", access_boundary_rule)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="accessBoundaryRule")
@@ -78,12 +89,25 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] available_permissions: A list of permissions that may be allowed for use on the specified resource.
         :param pulumi.Input[str] available_resource: The full resource name of a Google Cloud resource entity.
         """
+        AccessBoundaryPolicyRuleAccessBoundaryRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            availability_condition=availability_condition,
+            available_permissions=available_permissions,
+            available_resource=available_resource,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             availability_condition: Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs']] = None,
+             available_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             available_resource: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if availability_condition is not None:
-            pulumi.set(__self__, "availability_condition", availability_condition)
+            _setter("availability_condition", availability_condition)
         if available_permissions is not None:
-            pulumi.set(__self__, "available_permissions", available_permissions)
+            _setter("available_permissions", available_permissions)
         if available_resource is not None:
-            pulumi.set(__self__, "available_resource", available_resource)
+            _setter("available_resource", available_resource)
 
     @property
     @pulumi.getter(name="availabilityCondition")
@@ -141,13 +165,28 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs:
         :param pulumi.Input[str] title: Title for the expression, i.e. a short string describing its purpose.
                This can be used e.g. in UIs which allow to enter the expression.
         """
-        pulumi.set(__self__, "expression", expression)
+        AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            description=description,
+            location=location,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter
@@ -213,10 +252,21 @@ class DenyPolicyRuleArgs:
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the rule.
         """
+        DenyPolicyRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            deny_rule=deny_rule,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             deny_rule: Optional[pulumi.Input['DenyPolicyRuleDenyRuleArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if deny_rule is not None:
-            pulumi.set(__self__, "deny_rule", deny_rule)
+            _setter("deny_rule", deny_rule)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="denyRule")
@@ -264,16 +314,33 @@ class DenyPolicyRuleDenyRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exception_principals: The identities that are excluded from the deny rule, even if they are listed in the deniedPrincipals.
                For example, you could add a Google group to the deniedPrincipals, then exclude specific users who belong to that group.
         """
+        DenyPolicyRuleDenyRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            denial_condition=denial_condition,
+            denied_permissions=denied_permissions,
+            denied_principals=denied_principals,
+            exception_permissions=exception_permissions,
+            exception_principals=exception_principals,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             denial_condition: Optional[pulumi.Input['DenyPolicyRuleDenyRuleDenialConditionArgs']] = None,
+             denied_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             denied_principals: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             exception_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             exception_principals: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if denial_condition is not None:
-            pulumi.set(__self__, "denial_condition", denial_condition)
+            _setter("denial_condition", denial_condition)
         if denied_permissions is not None:
-            pulumi.set(__self__, "denied_permissions", denied_permissions)
+            _setter("denied_permissions", denied_permissions)
         if denied_principals is not None:
-            pulumi.set(__self__, "denied_principals", denied_principals)
+            _setter("denied_principals", denied_principals)
         if exception_permissions is not None:
-            pulumi.set(__self__, "exception_permissions", exception_permissions)
+            _setter("exception_permissions", exception_permissions)
         if exception_principals is not None:
-            pulumi.set(__self__, "exception_principals", exception_principals)
+            _setter("exception_principals", exception_principals)
 
     @property
     @pulumi.getter(name="denialCondition")
@@ -359,13 +426,28 @@ class DenyPolicyRuleDenyRuleDenialConditionArgs:
         :param pulumi.Input[str] title: Title for the expression, i.e. a short string describing its purpose.
                This can be used e.g. in UIs which allow to enter the expression.
         """
-        pulumi.set(__self__, "expression", expression)
+        DenyPolicyRuleDenyRuleDenialConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            description=description,
+            location=location,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter
@@ -437,14 +519,31 @@ class WorkforcePoolProviderOidcArgs:
         :param pulumi.Input['WorkforcePoolProviderOidcWebSsoConfigArgs'] web_sso_config: Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
                Structure is documented below.
         """
-        pulumi.set(__self__, "client_id", client_id)
-        pulumi.set(__self__, "issuer_uri", issuer_uri)
+        WorkforcePoolProviderOidcArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            client_id=client_id,
+            issuer_uri=issuer_uri,
+            client_secret=client_secret,
+            jwks_json=jwks_json,
+            web_sso_config=web_sso_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             client_id: pulumi.Input[str],
+             issuer_uri: pulumi.Input[str],
+             client_secret: Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretArgs']] = None,
+             jwks_json: Optional[pulumi.Input[str]] = None,
+             web_sso_config: Optional[pulumi.Input['WorkforcePoolProviderOidcWebSsoConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("client_id", client_id)
+        _setter("issuer_uri", issuer_uri)
         if client_secret is not None:
-            pulumi.set(__self__, "client_secret", client_secret)
+            _setter("client_secret", client_secret)
         if jwks_json is not None:
-            pulumi.set(__self__, "jwks_json", jwks_json)
+            _setter("jwks_json", jwks_json)
         if web_sso_config is not None:
-            pulumi.set(__self__, "web_sso_config", web_sso_config)
+            _setter("web_sso_config", web_sso_config)
 
     @property
     @pulumi.getter(name="clientId")
@@ -514,8 +613,17 @@ class WorkforcePoolProviderOidcClientSecretArgs:
         :param pulumi.Input['WorkforcePoolProviderOidcClientSecretValueArgs'] value: The value of the client secret.
                Structure is documented below.
         """
+        WorkforcePoolProviderOidcClientSecretArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             value: Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretValueArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -542,9 +650,20 @@ class WorkforcePoolProviderOidcClientSecretValueArgs:
         :param pulumi.Input[str] thumbprint: (Output)
                A thumbprint to represent the current client secret value.
         """
-        pulumi.set(__self__, "plain_text", plain_text)
+        WorkforcePoolProviderOidcClientSecretValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            plain_text=plain_text,
+            thumbprint=thumbprint,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             plain_text: pulumi.Input[str],
+             thumbprint: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("plain_text", plain_text)
         if thumbprint is not None:
-            pulumi.set(__self__, "thumbprint", thumbprint)
+            _setter("thumbprint", thumbprint)
 
     @property
     @pulumi.getter(name="plainText")
@@ -592,10 +711,23 @@ class WorkforcePoolProviderOidcWebSsoConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_scopes: Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
                Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
         """
-        pulumi.set(__self__, "assertion_claims_behavior", assertion_claims_behavior)
-        pulumi.set(__self__, "response_type", response_type)
+        WorkforcePoolProviderOidcWebSsoConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            assertion_claims_behavior=assertion_claims_behavior,
+            response_type=response_type,
+            additional_scopes=additional_scopes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             assertion_claims_behavior: pulumi.Input[str],
+             response_type: pulumi.Input[str],
+             additional_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("assertion_claims_behavior", assertion_claims_behavior)
+        _setter("response_type", response_type)
         if additional_scopes is not None:
-            pulumi.set(__self__, "additional_scopes", additional_scopes)
+            _setter("additional_scopes", additional_scopes)
 
     @property
     @pulumi.getter(name="assertionClaimsBehavior")
@@ -661,7 +793,16 @@ class WorkforcePoolProviderSamlArgs:
                must overlap with the existing metadata. This requirement is skipped if there are
                no non-expired signing keys present in the existing metadata.
         """
-        pulumi.set(__self__, "idp_metadata_xml", idp_metadata_xml)
+        WorkforcePoolProviderSamlArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            idp_metadata_xml=idp_metadata_xml,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             idp_metadata_xml: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("idp_metadata_xml", idp_metadata_xml)
 
     @property
     @pulumi.getter(name="idpMetadataXml")
@@ -695,7 +836,16 @@ class WorkloadIdentityPoolProviderAwsArgs:
         """
         :param pulumi.Input[str] account_id: The AWS account ID.
         """
-        pulumi.set(__self__, "account_id", account_id)
+        WorkloadIdentityPoolProviderAwsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -738,11 +888,24 @@ class WorkloadIdentityPoolProviderOidcArgs:
                import pulumi
                ```
         """
-        pulumi.set(__self__, "issuer_uri", issuer_uri)
+        WorkloadIdentityPoolProviderOidcArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            issuer_uri=issuer_uri,
+            allowed_audiences=allowed_audiences,
+            jwks_json=jwks_json,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             issuer_uri: pulumi.Input[str],
+             allowed_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             jwks_json: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("issuer_uri", issuer_uri)
         if allowed_audiences is not None:
-            pulumi.set(__self__, "allowed_audiences", allowed_audiences)
+            _setter("allowed_audiences", allowed_audiences)
         if jwks_json is not None:
-            pulumi.set(__self__, "jwks_json", jwks_json)
+            _setter("jwks_json", jwks_json)
 
     @property
     @pulumi.getter(name="issuerUri")

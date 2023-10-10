@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -34,15 +34,32 @@ class FeatureArgs:
         :param pulumi.Input['FeatureSpecArgs'] spec: Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
                Structure is documented below.
         """
-        pulumi.set(__self__, "location", location)
+        FeatureArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            labels=labels,
+            name=name,
+            project=project,
+            spec=spec,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: pulumi.Input[str],
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             spec: Optional[pulumi.Input['FeatureSpecArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("location", location)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if spec is not None:
-            pulumi.set(__self__, "spec", spec)
+            _setter("spec", spec)
 
     @property
     @pulumi.getter
@@ -145,26 +162,53 @@ class _FeatureState:
         :param pulumi.Input[str] update_time: (Output)
                The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         """
+        _FeatureState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            delete_time=delete_time,
+            labels=labels,
+            location=location,
+            name=name,
+            project=project,
+            resource_states=resource_states,
+            spec=spec,
+            states=states,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             delete_time: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             resource_states: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureResourceStateArgs']]]] = None,
+             spec: Optional[pulumi.Input['FeatureSpecArgs']] = None,
+             states: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateArgs']]]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if delete_time is not None:
-            pulumi.set(__self__, "delete_time", delete_time)
+            _setter("delete_time", delete_time)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if resource_states is not None:
-            pulumi.set(__self__, "resource_states", resource_states)
+            _setter("resource_states", resource_states)
         if spec is not None:
-            pulumi.set(__self__, "spec", spec)
+            _setter("spec", spec)
         if states is not None:
-            pulumi.set(__self__, "states", states)
+            _setter("states", states)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -594,6 +638,10 @@ class Feature(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FeatureArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -619,6 +667,11 @@ class Feature(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            if spec is not None and not isinstance(spec, FeatureSpecArgs):
+                spec = spec or {}
+                def _setter(key, value):
+                    spec[key] = value
+                FeatureSpecArgs._configure(_setter, **spec)
             __props__.__dict__["spec"] = spec
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None

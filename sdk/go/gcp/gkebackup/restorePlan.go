@@ -526,10 +526,6 @@ type RestorePlan struct {
 	BackupPlan pulumi.StringOutput `pulumi:"backupPlan"`
 	// The source cluster from which Restores will be created via this RestorePlan.
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
-	// The description is a user specified string description
-	// of the transformation rule.
-	//
-	// (Optional)
 	// User specified descriptive string for this RestorePlan.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Description: A set of custom labels supplied by the user.
@@ -601,10 +597,6 @@ type restorePlanState struct {
 	BackupPlan *string `pulumi:"backupPlan"`
 	// The source cluster from which Restores will be created via this RestorePlan.
 	Cluster *string `pulumi:"cluster"`
-	// The description is a user specified string description
-	// of the transformation rule.
-	//
-	// (Optional)
 	// User specified descriptive string for this RestorePlan.
 	Description *string `pulumi:"description"`
 	// Description: A set of custom labels supplied by the user.
@@ -635,10 +627,6 @@ type RestorePlanState struct {
 	BackupPlan pulumi.StringPtrInput
 	// The source cluster from which Restores will be created via this RestorePlan.
 	Cluster pulumi.StringPtrInput
-	// The description is a user specified string description
-	// of the transformation rule.
-	//
-	// (Optional)
 	// User specified descriptive string for this RestorePlan.
 	Description pulumi.StringPtrInput
 	// Description: A set of custom labels supplied by the user.
@@ -673,10 +661,6 @@ type restorePlanArgs struct {
 	BackupPlan string `pulumi:"backupPlan"`
 	// The source cluster from which Restores will be created via this RestorePlan.
 	Cluster string `pulumi:"cluster"`
-	// The description is a user specified string description
-	// of the transformation rule.
-	//
-	// (Optional)
 	// User specified descriptive string for this RestorePlan.
 	Description *string `pulumi:"description"`
 	// Description: A set of custom labels supplied by the user.
@@ -702,10 +686,6 @@ type RestorePlanArgs struct {
 	BackupPlan pulumi.StringInput
 	// The source cluster from which Restores will be created via this RestorePlan.
 	Cluster pulumi.StringInput
-	// The description is a user specified string description
-	// of the transformation rule.
-	//
-	// (Optional)
 	// User specified descriptive string for this RestorePlan.
 	Description pulumi.StringPtrInput
 	// Description: A set of custom labels supplied by the user.
@@ -846,10 +826,6 @@ func (o RestorePlanOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.Cluster }).(pulumi.StringOutput)
 }
 
-// The description is a user specified string description
-// of the transformation rule.
-//
-// (Optional)
 // User specified descriptive string for this RestorePlan.
 func (o RestorePlanOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RestorePlan) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)

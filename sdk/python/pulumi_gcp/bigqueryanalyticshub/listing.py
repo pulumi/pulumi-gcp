@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,41 +45,70 @@ class ListingArgs:
         :param pulumi.Input[str] documentation: Documentation describing the listing.
         :param pulumi.Input[str] icon: Base64 encoded image representing the listing.
         :param pulumi.Input[str] primary_contact: Email or URL of the primary point of contact of the listing.
-               
-               (Optional)
-               Email or URL of the data provider.
-               
-               (Optional)
-               Email or URL of the listing publisher.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['ListingPublisherArgs'] publisher: Details of the publisher who owns the listing and who can share the source data.
                Structure is documented below.
         :param pulumi.Input[str] request_access: Email or URL of the request access of the listing. Subscribers can use this reference to request access.
         """
-        pulumi.set(__self__, "bigquery_dataset", bigquery_dataset)
-        pulumi.set(__self__, "data_exchange_id", data_exchange_id)
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "listing_id", listing_id)
-        pulumi.set(__self__, "location", location)
+        ListingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bigquery_dataset=bigquery_dataset,
+            data_exchange_id=data_exchange_id,
+            display_name=display_name,
+            listing_id=listing_id,
+            location=location,
+            categories=categories,
+            data_provider=data_provider,
+            description=description,
+            documentation=documentation,
+            icon=icon,
+            primary_contact=primary_contact,
+            project=project,
+            publisher=publisher,
+            request_access=request_access,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bigquery_dataset: pulumi.Input['ListingBigqueryDatasetArgs'],
+             data_exchange_id: pulumi.Input[str],
+             display_name: pulumi.Input[str],
+             listing_id: pulumi.Input[str],
+             location: pulumi.Input[str],
+             categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             data_provider: Optional[pulumi.Input['ListingDataProviderArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             documentation: Optional[pulumi.Input[str]] = None,
+             icon: Optional[pulumi.Input[str]] = None,
+             primary_contact: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             publisher: Optional[pulumi.Input['ListingPublisherArgs']] = None,
+             request_access: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bigquery_dataset", bigquery_dataset)
+        _setter("data_exchange_id", data_exchange_id)
+        _setter("display_name", display_name)
+        _setter("listing_id", listing_id)
+        _setter("location", location)
         if categories is not None:
-            pulumi.set(__self__, "categories", categories)
+            _setter("categories", categories)
         if data_provider is not None:
-            pulumi.set(__self__, "data_provider", data_provider)
+            _setter("data_provider", data_provider)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if documentation is not None:
-            pulumi.set(__self__, "documentation", documentation)
+            _setter("documentation", documentation)
         if icon is not None:
-            pulumi.set(__self__, "icon", icon)
+            _setter("icon", icon)
         if primary_contact is not None:
-            pulumi.set(__self__, "primary_contact", primary_contact)
+            _setter("primary_contact", primary_contact)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if publisher is not None:
-            pulumi.set(__self__, "publisher", publisher)
+            _setter("publisher", publisher)
         if request_access is not None:
-            pulumi.set(__self__, "request_access", request_access)
+            _setter("request_access", request_access)
 
     @property
     @pulumi.getter(name="bigqueryDataset")
@@ -208,12 +237,6 @@ class ListingArgs:
     def primary_contact(self) -> Optional[pulumi.Input[str]]:
         """
         Email or URL of the primary point of contact of the listing.
-
-        (Optional)
-        Email or URL of the data provider.
-
-        (Optional)
-        Email or URL of the listing publisher.
         """
         return pulumi.get(self, "primary_contact")
 
@@ -293,52 +316,80 @@ class _ListingState:
         :param pulumi.Input[str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[str] location: The name of the location this data exchange listing.
         :param pulumi.Input[str] name: Name of the data provider.
-               
-               (Required)
-               Name of the listing publisher.
         :param pulumi.Input[str] primary_contact: Email or URL of the primary point of contact of the listing.
-               
-               (Optional)
-               Email or URL of the data provider.
-               
-               (Optional)
-               Email or URL of the listing publisher.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['ListingPublisherArgs'] publisher: Details of the publisher who owns the listing and who can share the source data.
                Structure is documented below.
         :param pulumi.Input[str] request_access: Email or URL of the request access of the listing. Subscribers can use this reference to request access.
         """
+        _ListingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bigquery_dataset=bigquery_dataset,
+            categories=categories,
+            data_exchange_id=data_exchange_id,
+            data_provider=data_provider,
+            description=description,
+            display_name=display_name,
+            documentation=documentation,
+            icon=icon,
+            listing_id=listing_id,
+            location=location,
+            name=name,
+            primary_contact=primary_contact,
+            project=project,
+            publisher=publisher,
+            request_access=request_access,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bigquery_dataset: Optional[pulumi.Input['ListingBigqueryDatasetArgs']] = None,
+             categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             data_exchange_id: Optional[pulumi.Input[str]] = None,
+             data_provider: Optional[pulumi.Input['ListingDataProviderArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             documentation: Optional[pulumi.Input[str]] = None,
+             icon: Optional[pulumi.Input[str]] = None,
+             listing_id: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             primary_contact: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             publisher: Optional[pulumi.Input['ListingPublisherArgs']] = None,
+             request_access: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bigquery_dataset is not None:
-            pulumi.set(__self__, "bigquery_dataset", bigquery_dataset)
+            _setter("bigquery_dataset", bigquery_dataset)
         if categories is not None:
-            pulumi.set(__self__, "categories", categories)
+            _setter("categories", categories)
         if data_exchange_id is not None:
-            pulumi.set(__self__, "data_exchange_id", data_exchange_id)
+            _setter("data_exchange_id", data_exchange_id)
         if data_provider is not None:
-            pulumi.set(__self__, "data_provider", data_provider)
+            _setter("data_provider", data_provider)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if documentation is not None:
-            pulumi.set(__self__, "documentation", documentation)
+            _setter("documentation", documentation)
         if icon is not None:
-            pulumi.set(__self__, "icon", icon)
+            _setter("icon", icon)
         if listing_id is not None:
-            pulumi.set(__self__, "listing_id", listing_id)
+            _setter("listing_id", listing_id)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if primary_contact is not None:
-            pulumi.set(__self__, "primary_contact", primary_contact)
+            _setter("primary_contact", primary_contact)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if publisher is not None:
-            pulumi.set(__self__, "publisher", publisher)
+            _setter("publisher", publisher)
         if request_access is not None:
-            pulumi.set(__self__, "request_access", request_access)
+            _setter("request_access", request_access)
 
     @property
     @pulumi.getter(name="bigqueryDataset")
@@ -467,9 +518,6 @@ class _ListingState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the data provider.
-
-        (Required)
-        Name of the listing publisher.
         """
         return pulumi.get(self, "name")
 
@@ -482,12 +530,6 @@ class _ListingState:
     def primary_contact(self) -> Optional[pulumi.Input[str]]:
         """
         Email or URL of the primary point of contact of the listing.
-
-        (Optional)
-        Email or URL of the data provider.
-
-        (Optional)
-        Email or URL of the listing publisher.
         """
         return pulumi.get(self, "primary_contact")
 
@@ -622,12 +664,6 @@ class Listing(pulumi.CustomResource):
         :param pulumi.Input[str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[str] location: The name of the location this data exchange listing.
         :param pulumi.Input[str] primary_contact: Email or URL of the primary point of contact of the listing.
-               
-               (Optional)
-               Email or URL of the data provider.
-               
-               (Optional)
-               Email or URL of the listing publisher.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['ListingPublisherArgs']] publisher: Details of the publisher who owns the listing and who can share the source data.
@@ -703,6 +739,10 @@ class Listing(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ListingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -731,6 +771,11 @@ class Listing(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ListingArgs.__new__(ListingArgs)
 
+            if bigquery_dataset is not None and not isinstance(bigquery_dataset, ListingBigqueryDatasetArgs):
+                bigquery_dataset = bigquery_dataset or {}
+                def _setter(key, value):
+                    bigquery_dataset[key] = value
+                ListingBigqueryDatasetArgs._configure(_setter, **bigquery_dataset)
             if bigquery_dataset is None and not opts.urn:
                 raise TypeError("Missing required property 'bigquery_dataset'")
             __props__.__dict__["bigquery_dataset"] = bigquery_dataset
@@ -738,6 +783,11 @@ class Listing(pulumi.CustomResource):
             if data_exchange_id is None and not opts.urn:
                 raise TypeError("Missing required property 'data_exchange_id'")
             __props__.__dict__["data_exchange_id"] = data_exchange_id
+            if data_provider is not None and not isinstance(data_provider, ListingDataProviderArgs):
+                data_provider = data_provider or {}
+                def _setter(key, value):
+                    data_provider[key] = value
+                ListingDataProviderArgs._configure(_setter, **data_provider)
             __props__.__dict__["data_provider"] = data_provider
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
@@ -753,6 +803,11 @@ class Listing(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["primary_contact"] = primary_contact
             __props__.__dict__["project"] = project
+            if publisher is not None and not isinstance(publisher, ListingPublisherArgs):
+                publisher = publisher or {}
+                def _setter(key, value):
+                    publisher[key] = value
+                ListingPublisherArgs._configure(_setter, **publisher)
             __props__.__dict__["publisher"] = publisher
             __props__.__dict__["request_access"] = request_access
             __props__.__dict__["name"] = None
@@ -801,16 +856,7 @@ class Listing(pulumi.CustomResource):
         :param pulumi.Input[str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[str] location: The name of the location this data exchange listing.
         :param pulumi.Input[str] name: Name of the data provider.
-               
-               (Required)
-               Name of the listing publisher.
         :param pulumi.Input[str] primary_contact: Email or URL of the primary point of contact of the listing.
-               
-               (Optional)
-               Email or URL of the data provider.
-               
-               (Optional)
-               Email or URL of the listing publisher.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['ListingPublisherArgs']] publisher: Details of the publisher who owns the listing and who can share the source data.
@@ -925,9 +971,6 @@ class Listing(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Name of the data provider.
-
-        (Required)
-        Name of the listing publisher.
         """
         return pulumi.get(self, "name")
 
@@ -936,12 +979,6 @@ class Listing(pulumi.CustomResource):
     def primary_contact(self) -> pulumi.Output[Optional[str]]:
         """
         Email or URL of the primary point of contact of the listing.
-
-        (Optional)
-        Email or URL of the data provider.
-
-        (Optional)
-        Email or URL of the listing publisher.
         """
         return pulumi.get(self, "primary_contact")
 

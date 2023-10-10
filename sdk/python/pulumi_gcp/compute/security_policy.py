@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -48,22 +48,45 @@ class SecurityPolicyArgs:
                * CLOUD_ARMOR_INTERNAL_SERVICE - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
                managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
         """
+        SecurityPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            adaptive_protection_config=adaptive_protection_config,
+            advanced_options_config=advanced_options_config,
+            description=description,
+            name=name,
+            project=project,
+            recaptcha_options_config=recaptcha_options_config,
+            rules=rules,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             adaptive_protection_config: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs']] = None,
+             advanced_options_config: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             recaptcha_options_config: Optional[pulumi.Input['SecurityPolicyRecaptchaOptionsConfigArgs']] = None,
+             rules: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if adaptive_protection_config is not None:
-            pulumi.set(__self__, "adaptive_protection_config", adaptive_protection_config)
+            _setter("adaptive_protection_config", adaptive_protection_config)
         if advanced_options_config is not None:
-            pulumi.set(__self__, "advanced_options_config", advanced_options_config)
+            _setter("advanced_options_config", advanced_options_config)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if recaptcha_options_config is not None:
-            pulumi.set(__self__, "recaptcha_options_config", recaptcha_options_config)
+            _setter("recaptcha_options_config", recaptcha_options_config)
         if rules is not None:
-            pulumi.set(__self__, "rules", rules)
+            _setter("rules", rules)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="adaptiveProtectionConfig")
@@ -214,26 +237,53 @@ class _SecurityPolicyState:
                * CLOUD_ARMOR_INTERNAL_SERVICE - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
                managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
         """
+        _SecurityPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            adaptive_protection_config=adaptive_protection_config,
+            advanced_options_config=advanced_options_config,
+            description=description,
+            fingerprint=fingerprint,
+            name=name,
+            project=project,
+            recaptcha_options_config=recaptcha_options_config,
+            rules=rules,
+            self_link=self_link,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             adaptive_protection_config: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs']] = None,
+             advanced_options_config: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             fingerprint: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             recaptcha_options_config: Optional[pulumi.Input['SecurityPolicyRecaptchaOptionsConfigArgs']] = None,
+             rules: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if adaptive_protection_config is not None:
-            pulumi.set(__self__, "adaptive_protection_config", adaptive_protection_config)
+            _setter("adaptive_protection_config", adaptive_protection_config)
         if advanced_options_config is not None:
-            pulumi.set(__self__, "advanced_options_config", advanced_options_config)
+            _setter("advanced_options_config", advanced_options_config)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if fingerprint is not None:
-            pulumi.set(__self__, "fingerprint", fingerprint)
+            _setter("fingerprint", fingerprint)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if recaptcha_options_config is not None:
-            pulumi.set(__self__, "recaptcha_options_config", recaptcha_options_config)
+            _setter("recaptcha_options_config", recaptcha_options_config)
         if rules is not None:
-            pulumi.set(__self__, "rules", rules)
+            _setter("rules", rules)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="adaptiveProtectionConfig")
@@ -705,6 +755,10 @@ class SecurityPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SecurityPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -727,11 +781,26 @@ class SecurityPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SecurityPolicyArgs.__new__(SecurityPolicyArgs)
 
+            if adaptive_protection_config is not None and not isinstance(adaptive_protection_config, SecurityPolicyAdaptiveProtectionConfigArgs):
+                adaptive_protection_config = adaptive_protection_config or {}
+                def _setter(key, value):
+                    adaptive_protection_config[key] = value
+                SecurityPolicyAdaptiveProtectionConfigArgs._configure(_setter, **adaptive_protection_config)
             __props__.__dict__["adaptive_protection_config"] = adaptive_protection_config
+            if advanced_options_config is not None and not isinstance(advanced_options_config, SecurityPolicyAdvancedOptionsConfigArgs):
+                advanced_options_config = advanced_options_config or {}
+                def _setter(key, value):
+                    advanced_options_config[key] = value
+                SecurityPolicyAdvancedOptionsConfigArgs._configure(_setter, **advanced_options_config)
             __props__.__dict__["advanced_options_config"] = advanced_options_config
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            if recaptcha_options_config is not None and not isinstance(recaptcha_options_config, SecurityPolicyRecaptchaOptionsConfigArgs):
+                recaptcha_options_config = recaptcha_options_config or {}
+                def _setter(key, value):
+                    recaptcha_options_config[key] = value
+                SecurityPolicyRecaptchaOptionsConfigArgs._configure(_setter, **recaptcha_options_config)
             __props__.__dict__["recaptcha_options_config"] = recaptcha_options_config
             __props__.__dict__["rules"] = rules
             __props__.__dict__["type"] = type

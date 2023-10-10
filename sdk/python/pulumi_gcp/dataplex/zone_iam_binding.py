@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -44,16 +44,37 @@ class ZoneIamBindingArgs:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        pulumi.set(__self__, "dataplex_zone", dataplex_zone)
-        pulumi.set(__self__, "lake", lake)
-        pulumi.set(__self__, "members", members)
-        pulumi.set(__self__, "role", role)
+        ZoneIamBindingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dataplex_zone=dataplex_zone,
+            lake=lake,
+            members=members,
+            role=role,
+            condition=condition,
+            location=location,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dataplex_zone: pulumi.Input[str],
+             lake: pulumi.Input[str],
+             members: pulumi.Input[Sequence[pulumi.Input[str]]],
+             role: pulumi.Input[str],
+             condition: Optional[pulumi.Input['ZoneIamBindingConditionArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dataplex_zone", dataplex_zone)
+        _setter("lake", lake)
+        _setter("members", members)
+        _setter("role", role)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="dataplexZone")
@@ -176,22 +197,45 @@ class _ZoneIamBindingState:
                `dataplex.ZoneIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
+        _ZoneIamBindingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            dataplex_zone=dataplex_zone,
+            etag=etag,
+            lake=lake,
+            location=location,
+            members=members,
+            project=project,
+            role=role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: Optional[pulumi.Input['ZoneIamBindingConditionArgs']] = None,
+             dataplex_zone: Optional[pulumi.Input[str]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             lake: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if dataplex_zone is not None:
-            pulumi.set(__self__, "dataplex_zone", dataplex_zone)
+            _setter("dataplex_zone", dataplex_zone)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if lake is not None:
-            pulumi.set(__self__, "lake", lake)
+            _setter("lake", lake)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
 
     @property
     @pulumi.getter
@@ -517,6 +561,10 @@ class ZoneIamBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ZoneIamBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -538,6 +586,11 @@ class ZoneIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZoneIamBindingArgs.__new__(ZoneIamBindingArgs)
 
+            if condition is not None and not isinstance(condition, ZoneIamBindingConditionArgs):
+                condition = condition or {}
+                def _setter(key, value):
+                    condition[key] = value
+                ZoneIamBindingConditionArgs._configure(_setter, **condition)
             __props__.__dict__["condition"] = condition
             if dataplex_zone is None and not opts.urn:
                 raise TypeError("Missing required property 'dataplex_zone'")

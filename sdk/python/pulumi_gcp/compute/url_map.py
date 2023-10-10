@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -65,26 +65,53 @@ class URLMapArgs:
                tests per UrlMap.
                Structure is documented below.
         """
+        URLMapArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default_route_action=default_route_action,
+            default_service=default_service,
+            default_url_redirect=default_url_redirect,
+            description=description,
+            header_action=header_action,
+            host_rules=host_rules,
+            name=name,
+            path_matchers=path_matchers,
+            project=project,
+            tests=tests,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default_route_action: Optional[pulumi.Input['URLMapDefaultRouteActionArgs']] = None,
+             default_service: Optional[pulumi.Input[str]] = None,
+             default_url_redirect: Optional[pulumi.Input['URLMapDefaultUrlRedirectArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             header_action: Optional[pulumi.Input['URLMapHeaderActionArgs']] = None,
+             host_rules: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapHostRuleArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherArgs']]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             tests: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapTestArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if default_route_action is not None:
-            pulumi.set(__self__, "default_route_action", default_route_action)
+            _setter("default_route_action", default_route_action)
         if default_service is not None:
-            pulumi.set(__self__, "default_service", default_service)
+            _setter("default_service", default_service)
         if default_url_redirect is not None:
-            pulumi.set(__self__, "default_url_redirect", default_url_redirect)
+            _setter("default_url_redirect", default_url_redirect)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if header_action is not None:
-            pulumi.set(__self__, "header_action", header_action)
+            _setter("header_action", header_action)
         if host_rules is not None:
-            pulumi.set(__self__, "host_rules", host_rules)
+            _setter("host_rules", host_rules)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if path_matchers is not None:
-            pulumi.set(__self__, "path_matchers", path_matchers)
+            _setter("path_matchers", path_matchers)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if tests is not None:
-            pulumi.set(__self__, "tests", tests)
+            _setter("tests", tests)
 
     @property
     @pulumi.getter(name="defaultRouteAction")
@@ -294,34 +321,69 @@ class _URLMapState:
                tests per UrlMap.
                Structure is documented below.
         """
+        _URLMapState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            creation_timestamp=creation_timestamp,
+            default_route_action=default_route_action,
+            default_service=default_service,
+            default_url_redirect=default_url_redirect,
+            description=description,
+            fingerprint=fingerprint,
+            header_action=header_action,
+            host_rules=host_rules,
+            map_id=map_id,
+            name=name,
+            path_matchers=path_matchers,
+            project=project,
+            self_link=self_link,
+            tests=tests,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             creation_timestamp: Optional[pulumi.Input[str]] = None,
+             default_route_action: Optional[pulumi.Input['URLMapDefaultRouteActionArgs']] = None,
+             default_service: Optional[pulumi.Input[str]] = None,
+             default_url_redirect: Optional[pulumi.Input['URLMapDefaultUrlRedirectArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             fingerprint: Optional[pulumi.Input[str]] = None,
+             header_action: Optional[pulumi.Input['URLMapHeaderActionArgs']] = None,
+             host_rules: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapHostRuleArgs']]]] = None,
+             map_id: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherArgs']]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             tests: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapTestArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+            _setter("creation_timestamp", creation_timestamp)
         if default_route_action is not None:
-            pulumi.set(__self__, "default_route_action", default_route_action)
+            _setter("default_route_action", default_route_action)
         if default_service is not None:
-            pulumi.set(__self__, "default_service", default_service)
+            _setter("default_service", default_service)
         if default_url_redirect is not None:
-            pulumi.set(__self__, "default_url_redirect", default_url_redirect)
+            _setter("default_url_redirect", default_url_redirect)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if fingerprint is not None:
-            pulumi.set(__self__, "fingerprint", fingerprint)
+            _setter("fingerprint", fingerprint)
         if header_action is not None:
-            pulumi.set(__self__, "header_action", header_action)
+            _setter("header_action", header_action)
         if host_rules is not None:
-            pulumi.set(__self__, "host_rules", host_rules)
+            _setter("host_rules", host_rules)
         if map_id is not None:
-            pulumi.set(__self__, "map_id", map_id)
+            _setter("map_id", map_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if path_matchers is not None:
-            pulumi.set(__self__, "path_matchers", path_matchers)
+            _setter("path_matchers", path_matchers)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if tests is not None:
-            pulumi.set(__self__, "tests", tests)
+            _setter("tests", tests)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -642,6 +704,10 @@ class URLMap(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            URLMapArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -666,10 +732,25 @@ class URLMap(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = URLMapArgs.__new__(URLMapArgs)
 
+            if default_route_action is not None and not isinstance(default_route_action, URLMapDefaultRouteActionArgs):
+                default_route_action = default_route_action or {}
+                def _setter(key, value):
+                    default_route_action[key] = value
+                URLMapDefaultRouteActionArgs._configure(_setter, **default_route_action)
             __props__.__dict__["default_route_action"] = default_route_action
             __props__.__dict__["default_service"] = default_service
+            if default_url_redirect is not None and not isinstance(default_url_redirect, URLMapDefaultUrlRedirectArgs):
+                default_url_redirect = default_url_redirect or {}
+                def _setter(key, value):
+                    default_url_redirect[key] = value
+                URLMapDefaultUrlRedirectArgs._configure(_setter, **default_url_redirect)
             __props__.__dict__["default_url_redirect"] = default_url_redirect
             __props__.__dict__["description"] = description
+            if header_action is not None and not isinstance(header_action, URLMapHeaderActionArgs):
+                header_action = header_action or {}
+                def _setter(key, value):
+                    header_action[key] = value
+                URLMapHeaderActionArgs._configure(_setter, **header_action)
             __props__.__dict__["header_action"] = header_action
             __props__.__dict__["host_rules"] = host_rules
             __props__.__dict__["name"] = name

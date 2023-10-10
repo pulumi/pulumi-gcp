@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -79,6 +79,11 @@ __all__ = [
 class ConnectionProfileBigqueryProfile(dict):
     def __init__(__self__):
         pass
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        pass
 
 
 @pulumi.output_type
@@ -115,14 +120,31 @@ class ConnectionProfileForwardSshConnectivity(dict):
         :param str private_key: SSH private key.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
-        pulumi.set(__self__, "hostname", hostname)
-        pulumi.set(__self__, "username", username)
+        ConnectionProfileForwardSshConnectivity._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hostname=hostname,
+            username=username,
+            password=password,
+            port=port,
+            private_key=private_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hostname: str,
+             username: str,
+             password: Optional[str] = None,
+             port: Optional[int] = None,
+             private_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("hostname", hostname)
+        _setter("username", username)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if private_key is not None:
-            pulumi.set(__self__, "private_key", private_key)
+            _setter("private_key", private_key)
 
     @property
     @pulumi.getter
@@ -193,9 +215,20 @@ class ConnectionProfileGcsProfile(dict):
         :param str bucket: The Cloud Storage bucket name.
         :param str root_path: The root path inside the Cloud Storage bucket.
         """
-        pulumi.set(__self__, "bucket", bucket)
+        ConnectionProfileGcsProfile._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucket=bucket,
+            root_path=root_path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucket: str,
+             root_path: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bucket", bucket)
         if root_path is not None:
-            pulumi.set(__self__, "root_path", root_path)
+            _setter("root_path", root_path)
 
     @property
     @pulumi.getter
@@ -248,13 +281,30 @@ class ConnectionProfileMysqlProfile(dict):
         :param 'ConnectionProfileMysqlProfileSslConfigArgs' ssl_config: SSL configuration for the MySQL connection.
                Structure is documented below.
         """
-        pulumi.set(__self__, "hostname", hostname)
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "username", username)
+        ConnectionProfileMysqlProfile._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hostname=hostname,
+            password=password,
+            username=username,
+            port=port,
+            ssl_config=ssl_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hostname: str,
+             password: str,
+             username: str,
+             port: Optional[int] = None,
+             ssl_config: Optional['outputs.ConnectionProfileMysqlProfileSslConfig'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("hostname", hostname)
+        _setter("password", password)
+        _setter("username", username)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if ssl_config is not None:
-            pulumi.set(__self__, "ssl_config", ssl_config)
+            _setter("ssl_config", ssl_config)
 
     @property
     @pulumi.getter
@@ -355,18 +405,37 @@ class ConnectionProfileMysqlProfileSslConfig(dict):
         :param bool client_key_set: (Output)
                Indicates whether the clientKey field is set.
         """
+        ConnectionProfileMysqlProfileSslConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ca_certificate=ca_certificate,
+            ca_certificate_set=ca_certificate_set,
+            client_certificate=client_certificate,
+            client_certificate_set=client_certificate_set,
+            client_key=client_key,
+            client_key_set=client_key_set,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ca_certificate: Optional[str] = None,
+             ca_certificate_set: Optional[bool] = None,
+             client_certificate: Optional[str] = None,
+             client_certificate_set: Optional[bool] = None,
+             client_key: Optional[str] = None,
+             client_key_set: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ca_certificate is not None:
-            pulumi.set(__self__, "ca_certificate", ca_certificate)
+            _setter("ca_certificate", ca_certificate)
         if ca_certificate_set is not None:
-            pulumi.set(__self__, "ca_certificate_set", ca_certificate_set)
+            _setter("ca_certificate_set", ca_certificate_set)
         if client_certificate is not None:
-            pulumi.set(__self__, "client_certificate", client_certificate)
+            _setter("client_certificate", client_certificate)
         if client_certificate_set is not None:
-            pulumi.set(__self__, "client_certificate_set", client_certificate_set)
+            _setter("client_certificate_set", client_certificate_set)
         if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
+            _setter("client_key", client_key)
         if client_key_set is not None:
-            pulumi.set(__self__, "client_key_set", client_key_set)
+            _setter("client_key_set", client_key_set)
 
     @property
     @pulumi.getter(name="caCertificate")
@@ -466,14 +535,33 @@ class ConnectionProfileOracleProfile(dict):
         :param Mapping[str, str] connection_attributes: Connection string attributes
         :param int port: Port for the Oracle connection.
         """
-        pulumi.set(__self__, "database_service", database_service)
-        pulumi.set(__self__, "hostname", hostname)
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "username", username)
+        ConnectionProfileOracleProfile._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            database_service=database_service,
+            hostname=hostname,
+            password=password,
+            username=username,
+            connection_attributes=connection_attributes,
+            port=port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             database_service: str,
+             hostname: str,
+             password: str,
+             username: str,
+             connection_attributes: Optional[Mapping[str, str]] = None,
+             port: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("database_service", database_service)
+        _setter("hostname", hostname)
+        _setter("password", password)
+        _setter("username", username)
         if connection_attributes is not None:
-            pulumi.set(__self__, "connection_attributes", connection_attributes)
+            _setter("connection_attributes", connection_attributes)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
 
     @property
     @pulumi.getter(name="databaseService")
@@ -541,12 +629,29 @@ class ConnectionProfilePostgresqlProfile(dict):
         :param str username: Username for the PostgreSQL connection.
         :param int port: Port for the PostgreSQL connection.
         """
-        pulumi.set(__self__, "database", database)
-        pulumi.set(__self__, "hostname", hostname)
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "username", username)
+        ConnectionProfilePostgresqlProfile._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            database=database,
+            hostname=hostname,
+            password=password,
+            username=username,
+            port=port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             database: str,
+             hostname: str,
+             password: str,
+             username: str,
+             port: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("database", database)
+        _setter("hostname", hostname)
+        _setter("password", password)
+        _setter("username", username)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
 
     @property
     @pulumi.getter
@@ -614,7 +719,16 @@ class ConnectionProfilePrivateConnectivity(dict):
         """
         :param str private_connection: A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
         """
-        pulumi.set(__self__, "private_connection", private_connection)
+        ConnectionProfilePrivateConnectivity._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            private_connection=private_connection,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             private_connection: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("private_connection", private_connection)
 
     @property
     @pulumi.getter(name="privateConnection")
@@ -634,10 +748,21 @@ class PrivateConnectionError(dict):
         :param Mapping[str, str] details: A list of messages that carry the error details.
         :param str message: A message containing more information about the error that occurred.
         """
+        PrivateConnectionError._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            details=details,
+            message=message,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             details: Optional[Mapping[str, str]] = None,
+             message: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if details is not None:
-            pulumi.set(__self__, "details", details)
+            _setter("details", details)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
 
     @property
     @pulumi.getter
@@ -668,8 +793,19 @@ class PrivateConnectionVpcPeeringConfig(dict):
         :param str vpc: Fully qualified name of the VPC that Datastream will peer to.
                Format: projects/{project}/global/{networks}/{name}
         """
-        pulumi.set(__self__, "subnet", subnet)
-        pulumi.set(__self__, "vpc", vpc)
+        PrivateConnectionVpcPeeringConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            subnet=subnet,
+            vpc=vpc,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             subnet: str,
+             vpc: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("subnet", subnet)
+        _setter("vpc", vpc)
 
     @property
     @pulumi.getter
@@ -726,12 +862,25 @@ class StreamBackfillAll(dict):
         :param 'StreamBackfillAllPostgresqlExcludedObjectsArgs' postgresql_excluded_objects: PostgreSQL data source objects to avoid backfilling.
                Structure is documented below.
         """
+        StreamBackfillAll._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            mysql_excluded_objects=mysql_excluded_objects,
+            oracle_excluded_objects=oracle_excluded_objects,
+            postgresql_excluded_objects=postgresql_excluded_objects,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             mysql_excluded_objects: Optional['outputs.StreamBackfillAllMysqlExcludedObjects'] = None,
+             oracle_excluded_objects: Optional['outputs.StreamBackfillAllOracleExcludedObjects'] = None,
+             postgresql_excluded_objects: Optional['outputs.StreamBackfillAllPostgresqlExcludedObjects'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if mysql_excluded_objects is not None:
-            pulumi.set(__self__, "mysql_excluded_objects", mysql_excluded_objects)
+            _setter("mysql_excluded_objects", mysql_excluded_objects)
         if oracle_excluded_objects is not None:
-            pulumi.set(__self__, "oracle_excluded_objects", oracle_excluded_objects)
+            _setter("oracle_excluded_objects", oracle_excluded_objects)
         if postgresql_excluded_objects is not None:
-            pulumi.set(__self__, "postgresql_excluded_objects", postgresql_excluded_objects)
+            _setter("postgresql_excluded_objects", postgresql_excluded_objects)
 
     @property
     @pulumi.getter(name="mysqlExcludedObjects")
@@ -786,7 +935,16 @@ class StreamBackfillAllMysqlExcludedObjects(dict):
         :param Sequence['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs'] mysql_databases: MySQL databases on the server
                Structure is documented below.
         """
-        pulumi.set(__self__, "mysql_databases", mysql_databases)
+        StreamBackfillAllMysqlExcludedObjects._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            mysql_databases=mysql_databases,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             mysql_databases: Sequence['outputs.StreamBackfillAllMysqlExcludedObjectsMysqlDatabase'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("mysql_databases", mysql_databases)
 
     @property
     @pulumi.getter(name="mysqlDatabases")
@@ -825,9 +983,20 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabase(dict):
         :param Sequence['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs'] mysql_tables: Tables in the database.
                Structure is documented below.
         """
-        pulumi.set(__self__, "database", database)
+        StreamBackfillAllMysqlExcludedObjectsMysqlDatabase._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            database=database,
+            mysql_tables=mysql_tables,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             database: str,
+             mysql_tables: Optional[Sequence['outputs.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("database", database)
         if mysql_tables is not None:
-            pulumi.set(__self__, "mysql_tables", mysql_tables)
+            _setter("mysql_tables", mysql_tables)
 
     @property
     @pulumi.getter
@@ -874,9 +1043,20 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable(dict):
         :param Sequence['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs'] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
-        pulumi.set(__self__, "table", table)
+        StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            table=table,
+            mysql_columns=mysql_columns,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             table: str,
+             mysql_columns: Optional[Sequence['outputs.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("table", table)
         if mysql_columns is not None:
-            pulumi.set(__self__, "mysql_columns", mysql_columns)
+            _setter("mysql_columns", mysql_columns)
 
     @property
     @pulumi.getter
@@ -938,20 +1118,41 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn(di
         :param int ordinal_position: The ordinal position of the column in the table.
         :param bool primary_key: Whether or not the column represents a primary key.
         """
+        StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            collation=collation,
+            column=column,
+            data_type=data_type,
+            length=length,
+            nullable=nullable,
+            ordinal_position=ordinal_position,
+            primary_key=primary_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             collation: Optional[str] = None,
+             column: Optional[str] = None,
+             data_type: Optional[str] = None,
+             length: Optional[int] = None,
+             nullable: Optional[bool] = None,
+             ordinal_position: Optional[int] = None,
+             primary_key: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if collation is not None:
-            pulumi.set(__self__, "collation", collation)
+            _setter("collation", collation)
         if column is not None:
-            pulumi.set(__self__, "column", column)
+            _setter("column", column)
         if data_type is not None:
-            pulumi.set(__self__, "data_type", data_type)
+            _setter("data_type", data_type)
         if length is not None:
-            pulumi.set(__self__, "length", length)
+            _setter("length", length)
         if nullable is not None:
-            pulumi.set(__self__, "nullable", nullable)
+            _setter("nullable", nullable)
         if ordinal_position is not None:
-            pulumi.set(__self__, "ordinal_position", ordinal_position)
+            _setter("ordinal_position", ordinal_position)
         if primary_key is not None:
-            pulumi.set(__self__, "primary_key", primary_key)
+            _setter("primary_key", primary_key)
 
     @property
     @pulumi.getter
@@ -1037,7 +1238,16 @@ class StreamBackfillAllOracleExcludedObjects(dict):
         :param Sequence['StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs'] oracle_schemas: Oracle schemas/databases in the database server
                Structure is documented below.
         """
-        pulumi.set(__self__, "oracle_schemas", oracle_schemas)
+        StreamBackfillAllOracleExcludedObjects._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            oracle_schemas=oracle_schemas,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             oracle_schemas: Sequence['outputs.StreamBackfillAllOracleExcludedObjectsOracleSchema'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("oracle_schemas", oracle_schemas)
 
     @property
     @pulumi.getter(name="oracleSchemas")
@@ -1076,9 +1286,20 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchema(dict):
         :param Sequence['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs'] oracle_tables: Tables in the database.
                Structure is documented below.
         """
-        pulumi.set(__self__, "schema", schema)
+        StreamBackfillAllOracleExcludedObjectsOracleSchema._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            schema=schema,
+            oracle_tables=oracle_tables,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             schema: str,
+             oracle_tables: Optional[Sequence['outputs.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("schema", schema)
         if oracle_tables is not None:
-            pulumi.set(__self__, "oracle_tables", oracle_tables)
+            _setter("oracle_tables", oracle_tables)
 
     @property
     @pulumi.getter
@@ -1125,9 +1346,20 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable(dict):
         :param Sequence['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs'] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
-        pulumi.set(__self__, "table", table)
+        StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            table=table,
+            oracle_columns=oracle_columns,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             table: str,
+             oracle_columns: Optional[Sequence['outputs.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("table", table)
         if oracle_columns is not None:
-            pulumi.set(__self__, "oracle_columns", oracle_columns)
+            _setter("oracle_columns", oracle_columns)
 
     @property
     @pulumi.getter
@@ -1199,24 +1431,49 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn(
         :param int scale: (Output)
                Column scale.
         """
+        StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            column=column,
+            data_type=data_type,
+            encoding=encoding,
+            length=length,
+            nullable=nullable,
+            ordinal_position=ordinal_position,
+            precision=precision,
+            primary_key=primary_key,
+            scale=scale,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             column: Optional[str] = None,
+             data_type: Optional[str] = None,
+             encoding: Optional[str] = None,
+             length: Optional[int] = None,
+             nullable: Optional[bool] = None,
+             ordinal_position: Optional[int] = None,
+             precision: Optional[int] = None,
+             primary_key: Optional[bool] = None,
+             scale: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if column is not None:
-            pulumi.set(__self__, "column", column)
+            _setter("column", column)
         if data_type is not None:
-            pulumi.set(__self__, "data_type", data_type)
+            _setter("data_type", data_type)
         if encoding is not None:
-            pulumi.set(__self__, "encoding", encoding)
+            _setter("encoding", encoding)
         if length is not None:
-            pulumi.set(__self__, "length", length)
+            _setter("length", length)
         if nullable is not None:
-            pulumi.set(__self__, "nullable", nullable)
+            _setter("nullable", nullable)
         if ordinal_position is not None:
-            pulumi.set(__self__, "ordinal_position", ordinal_position)
+            _setter("ordinal_position", ordinal_position)
         if precision is not None:
-            pulumi.set(__self__, "precision", precision)
+            _setter("precision", precision)
         if primary_key is not None:
-            pulumi.set(__self__, "primary_key", primary_key)
+            _setter("primary_key", primary_key)
         if scale is not None:
-            pulumi.set(__self__, "scale", scale)
+            _setter("scale", scale)
 
     @property
     @pulumi.getter
@@ -1324,7 +1581,16 @@ class StreamBackfillAllPostgresqlExcludedObjects(dict):
         :param Sequence['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs'] postgresql_schemas: PostgreSQL schemas on the server
                Structure is documented below.
         """
-        pulumi.set(__self__, "postgresql_schemas", postgresql_schemas)
+        StreamBackfillAllPostgresqlExcludedObjects._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            postgresql_schemas=postgresql_schemas,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             postgresql_schemas: Sequence['outputs.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("postgresql_schemas", postgresql_schemas)
 
     @property
     @pulumi.getter(name="postgresqlSchemas")
@@ -1363,9 +1629,20 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema(dict):
         :param Sequence['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs'] postgresql_tables: Tables in the schema.
                Structure is documented below.
         """
-        pulumi.set(__self__, "schema", schema)
+        StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            schema=schema,
+            postgresql_tables=postgresql_tables,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             schema: str,
+             postgresql_tables: Optional[Sequence['outputs.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("schema", schema)
         if postgresql_tables is not None:
-            pulumi.set(__self__, "postgresql_tables", postgresql_tables)
+            _setter("postgresql_tables", postgresql_tables)
 
     @property
     @pulumi.getter
@@ -1412,9 +1689,20 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable(
         :param Sequence['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs'] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
-        pulumi.set(__self__, "table", table)
+        StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            table=table,
+            postgresql_columns=postgresql_columns,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             table: str,
+             postgresql_columns: Optional[Sequence['outputs.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("table", table)
         if postgresql_columns is not None:
-            pulumi.set(__self__, "postgresql_columns", postgresql_columns)
+            _setter("postgresql_columns", postgresql_columns)
 
     @property
     @pulumi.getter
@@ -1480,22 +1768,45 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
         :param int scale: (Output)
                Column scale.
         """
+        StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            column=column,
+            data_type=data_type,
+            length=length,
+            nullable=nullable,
+            ordinal_position=ordinal_position,
+            precision=precision,
+            primary_key=primary_key,
+            scale=scale,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             column: Optional[str] = None,
+             data_type: Optional[str] = None,
+             length: Optional[int] = None,
+             nullable: Optional[bool] = None,
+             ordinal_position: Optional[int] = None,
+             precision: Optional[int] = None,
+             primary_key: Optional[bool] = None,
+             scale: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if column is not None:
-            pulumi.set(__self__, "column", column)
+            _setter("column", column)
         if data_type is not None:
-            pulumi.set(__self__, "data_type", data_type)
+            _setter("data_type", data_type)
         if length is not None:
-            pulumi.set(__self__, "length", length)
+            _setter("length", length)
         if nullable is not None:
-            pulumi.set(__self__, "nullable", nullable)
+            _setter("nullable", nullable)
         if ordinal_position is not None:
-            pulumi.set(__self__, "ordinal_position", ordinal_position)
+            _setter("ordinal_position", ordinal_position)
         if precision is not None:
-            pulumi.set(__self__, "precision", precision)
+            _setter("precision", precision)
         if primary_key is not None:
-            pulumi.set(__self__, "primary_key", primary_key)
+            _setter("primary_key", primary_key)
         if scale is not None:
-            pulumi.set(__self__, "scale", scale)
+            _setter("scale", scale)
 
     @property
     @pulumi.getter
@@ -1570,6 +1881,11 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
 class StreamBackfillNone(dict):
     def __init__(__self__):
         pass
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        pass
 
 
 @pulumi.output_type
@@ -1606,11 +1922,24 @@ class StreamDestinationConfig(dict):
         :param 'StreamDestinationConfigGcsDestinationConfigArgs' gcs_destination_config: A configuration for how data should be loaded to Cloud Storage.
                Structure is documented below.
         """
-        pulumi.set(__self__, "destination_connection_profile", destination_connection_profile)
+        StreamDestinationConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            destination_connection_profile=destination_connection_profile,
+            bigquery_destination_config=bigquery_destination_config,
+            gcs_destination_config=gcs_destination_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             destination_connection_profile: str,
+             bigquery_destination_config: Optional['outputs.StreamDestinationConfigBigqueryDestinationConfig'] = None,
+             gcs_destination_config: Optional['outputs.StreamDestinationConfigGcsDestinationConfig'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("destination_connection_profile", destination_connection_profile)
         if bigquery_destination_config is not None:
-            pulumi.set(__self__, "bigquery_destination_config", bigquery_destination_config)
+            _setter("bigquery_destination_config", bigquery_destination_config)
         if gcs_destination_config is not None:
-            pulumi.set(__self__, "gcs_destination_config", gcs_destination_config)
+            _setter("gcs_destination_config", gcs_destination_config)
 
     @property
     @pulumi.getter(name="destinationConnectionProfile")
@@ -1676,12 +2005,25 @@ class StreamDestinationConfigBigqueryDestinationConfig(dict):
         :param 'StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs' source_hierarchy_datasets: Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
                Structure is documented below.
         """
+        StreamDestinationConfigBigqueryDestinationConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            data_freshness=data_freshness,
+            single_target_dataset=single_target_dataset,
+            source_hierarchy_datasets=source_hierarchy_datasets,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             data_freshness: Optional[str] = None,
+             single_target_dataset: Optional['outputs.StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset'] = None,
+             source_hierarchy_datasets: Optional['outputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if data_freshness is not None:
-            pulumi.set(__self__, "data_freshness", data_freshness)
+            _setter("data_freshness", data_freshness)
         if single_target_dataset is not None:
-            pulumi.set(__self__, "single_target_dataset", single_target_dataset)
+            _setter("single_target_dataset", single_target_dataset)
         if source_hierarchy_datasets is not None:
-            pulumi.set(__self__, "source_hierarchy_datasets", source_hierarchy_datasets)
+            _setter("source_hierarchy_datasets", source_hierarchy_datasets)
 
     @property
     @pulumi.getter(name="dataFreshness")
@@ -1738,7 +2080,16 @@ class StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset(dict):
         :param str dataset_id: Dataset ID in the format projects/{project}/datasets/{dataset_id} or
                {project}:{dataset_id}
         """
-        pulumi.set(__self__, "dataset_id", dataset_id)
+        StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dataset_id=dataset_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dataset_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dataset_id", dataset_id)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -1775,7 +2126,16 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets(di
         :param 'StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs' dataset_template: Dataset template used for dynamic dataset creation.
                Structure is documented below.
         """
-        pulumi.set(__self__, "dataset_template", dataset_template)
+        StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dataset_template=dataset_template,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dataset_template: 'outputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dataset_template", dataset_template)
 
     @property
     @pulumi.getter(name="datasetTemplate")
@@ -1824,11 +2184,24 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDat
                
                - - -
         """
-        pulumi.set(__self__, "location", location)
+        StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            dataset_id_prefix=dataset_id_prefix,
+            kms_key_name=kms_key_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: str,
+             dataset_id_prefix: Optional[str] = None,
+             kms_key_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("location", location)
         if dataset_id_prefix is not None:
-            pulumi.set(__self__, "dataset_id_prefix", dataset_id_prefix)
+            _setter("dataset_id_prefix", dataset_id_prefix)
         if kms_key_name is not None:
-            pulumi.set(__self__, "kms_key_name", kms_key_name)
+            _setter("kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter
@@ -1902,16 +2275,33 @@ class StreamDestinationConfigGcsDestinationConfig(dict):
                Structure is documented below.
         :param str path: Path inside the Cloud Storage bucket to write data to.
         """
+        StreamDestinationConfigGcsDestinationConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            avro_file_format=avro_file_format,
+            file_rotation_interval=file_rotation_interval,
+            file_rotation_mb=file_rotation_mb,
+            json_file_format=json_file_format,
+            path=path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             avro_file_format: Optional['outputs.StreamDestinationConfigGcsDestinationConfigAvroFileFormat'] = None,
+             file_rotation_interval: Optional[str] = None,
+             file_rotation_mb: Optional[int] = None,
+             json_file_format: Optional['outputs.StreamDestinationConfigGcsDestinationConfigJsonFileFormat'] = None,
+             path: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if avro_file_format is not None:
-            pulumi.set(__self__, "avro_file_format", avro_file_format)
+            _setter("avro_file_format", avro_file_format)
         if file_rotation_interval is not None:
-            pulumi.set(__self__, "file_rotation_interval", file_rotation_interval)
+            _setter("file_rotation_interval", file_rotation_interval)
         if file_rotation_mb is not None:
-            pulumi.set(__self__, "file_rotation_mb", file_rotation_mb)
+            _setter("file_rotation_mb", file_rotation_mb)
         if json_file_format is not None:
-            pulumi.set(__self__, "json_file_format", json_file_format)
+            _setter("json_file_format", json_file_format)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
 
     @property
     @pulumi.getter(name="avroFileFormat")
@@ -1960,6 +2350,11 @@ class StreamDestinationConfigGcsDestinationConfig(dict):
 class StreamDestinationConfigGcsDestinationConfigAvroFileFormat(dict):
     def __init__(__self__):
         pass
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        pass
 
 
 @pulumi.output_type
@@ -1990,10 +2385,21 @@ class StreamDestinationConfigGcsDestinationConfigJsonFileFormat(dict):
         :param str schema_file_format: The schema file format along JSON data files.
                Possible values are: `NO_SCHEMA_FILE`, `AVRO_SCHEMA_FILE`.
         """
+        StreamDestinationConfigGcsDestinationConfigJsonFileFormat._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compression=compression,
+            schema_file_format=schema_file_format,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compression: Optional[str] = None,
+             schema_file_format: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if compression is not None:
-            pulumi.set(__self__, "compression", compression)
+            _setter("compression", compression)
         if schema_file_format is not None:
-            pulumi.set(__self__, "schema_file_format", schema_file_format)
+            _setter("schema_file_format", schema_file_format)
 
     @property
     @pulumi.getter
@@ -2053,13 +2459,28 @@ class StreamSourceConfig(dict):
         :param 'StreamSourceConfigPostgresqlSourceConfigArgs' postgresql_source_config: PostgreSQL data source configuration.
                Structure is documented below.
         """
-        pulumi.set(__self__, "source_connection_profile", source_connection_profile)
+        StreamSourceConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            source_connection_profile=source_connection_profile,
+            mysql_source_config=mysql_source_config,
+            oracle_source_config=oracle_source_config,
+            postgresql_source_config=postgresql_source_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             source_connection_profile: str,
+             mysql_source_config: Optional['outputs.StreamSourceConfigMysqlSourceConfig'] = None,
+             oracle_source_config: Optional['outputs.StreamSourceConfigOracleSourceConfig'] = None,
+             postgresql_source_config: Optional['outputs.StreamSourceConfigPostgresqlSourceConfig'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("source_connection_profile", source_connection_profile)
         if mysql_source_config is not None:
-            pulumi.set(__self__, "mysql_source_config", mysql_source_config)
+            _setter("mysql_source_config", mysql_source_config)
         if oracle_source_config is not None:
-            pulumi.set(__self__, "oracle_source_config", oracle_source_config)
+            _setter("oracle_source_config", oracle_source_config)
         if postgresql_source_config is not None:
-            pulumi.set(__self__, "postgresql_source_config", postgresql_source_config)
+            _setter("postgresql_source_config", postgresql_source_config)
 
     @property
     @pulumi.getter(name="sourceConnectionProfile")
@@ -2137,14 +2558,29 @@ class StreamSourceConfigMysqlSourceConfig(dict):
         :param int max_concurrent_cdc_tasks: Maximum number of concurrent CDC tasks. The number should be non negative.
                If not set (or set to 0), the system's default value will be used.
         """
+        StreamSourceConfigMysqlSourceConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            exclude_objects=exclude_objects,
+            include_objects=include_objects,
+            max_concurrent_backfill_tasks=max_concurrent_backfill_tasks,
+            max_concurrent_cdc_tasks=max_concurrent_cdc_tasks,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             exclude_objects: Optional['outputs.StreamSourceConfigMysqlSourceConfigExcludeObjects'] = None,
+             include_objects: Optional['outputs.StreamSourceConfigMysqlSourceConfigIncludeObjects'] = None,
+             max_concurrent_backfill_tasks: Optional[int] = None,
+             max_concurrent_cdc_tasks: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if exclude_objects is not None:
-            pulumi.set(__self__, "exclude_objects", exclude_objects)
+            _setter("exclude_objects", exclude_objects)
         if include_objects is not None:
-            pulumi.set(__self__, "include_objects", include_objects)
+            _setter("include_objects", include_objects)
         if max_concurrent_backfill_tasks is not None:
-            pulumi.set(__self__, "max_concurrent_backfill_tasks", max_concurrent_backfill_tasks)
+            _setter("max_concurrent_backfill_tasks", max_concurrent_backfill_tasks)
         if max_concurrent_cdc_tasks is not None:
-            pulumi.set(__self__, "max_concurrent_cdc_tasks", max_concurrent_cdc_tasks)
+            _setter("max_concurrent_cdc_tasks", max_concurrent_cdc_tasks)
 
     @property
     @pulumi.getter(name="excludeObjects")
@@ -2208,7 +2644,16 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjects(dict):
         :param Sequence['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs'] mysql_databases: MySQL databases on the server
                Structure is documented below.
         """
-        pulumi.set(__self__, "mysql_databases", mysql_databases)
+        StreamSourceConfigMysqlSourceConfigExcludeObjects._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            mysql_databases=mysql_databases,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             mysql_databases: Sequence['outputs.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("mysql_databases", mysql_databases)
 
     @property
     @pulumi.getter(name="mysqlDatabases")
@@ -2247,9 +2692,20 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase(dict):
         :param Sequence['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs'] mysql_tables: Tables in the database.
                Structure is documented below.
         """
-        pulumi.set(__self__, "database", database)
+        StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            database=database,
+            mysql_tables=mysql_tables,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             database: str,
+             mysql_tables: Optional[Sequence['outputs.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("database", database)
         if mysql_tables is not None:
-            pulumi.set(__self__, "mysql_tables", mysql_tables)
+            _setter("mysql_tables", mysql_tables)
 
     @property
     @pulumi.getter
@@ -2296,9 +2752,20 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable(d
         :param Sequence['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs'] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
-        pulumi.set(__self__, "table", table)
+        StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            table=table,
+            mysql_columns=mysql_columns,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             table: str,
+             mysql_columns: Optional[Sequence['outputs.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("table", table)
         if mysql_columns is not None:
-            pulumi.set(__self__, "mysql_columns", mysql_columns)
+            _setter("mysql_columns", mysql_columns)
 
     @property
     @pulumi.getter
@@ -2360,20 +2827,41 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMy
         :param int ordinal_position: The ordinal position of the column in the table.
         :param bool primary_key: Whether or not the column represents a primary key.
         """
+        StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            collation=collation,
+            column=column,
+            data_type=data_type,
+            length=length,
+            nullable=nullable,
+            ordinal_position=ordinal_position,
+            primary_key=primary_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             collation: Optional[str] = None,
+             column: Optional[str] = None,
+             data_type: Optional[str] = None,
+             length: Optional[int] = None,
+             nullable: Optional[bool] = None,
+             ordinal_position: Optional[int] = None,
+             primary_key: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if collation is not None:
-            pulumi.set(__self__, "collation", collation)
+            _setter("collation", collation)
         if column is not None:
-            pulumi.set(__self__, "column", column)
+            _setter("column", column)
         if data_type is not None:
-            pulumi.set(__self__, "data_type", data_type)
+            _setter("data_type", data_type)
         if length is not None:
-            pulumi.set(__self__, "length", length)
+            _setter("length", length)
         if nullable is not None:
-            pulumi.set(__self__, "nullable", nullable)
+            _setter("nullable", nullable)
         if ordinal_position is not None:
-            pulumi.set(__self__, "ordinal_position", ordinal_position)
+            _setter("ordinal_position", ordinal_position)
         if primary_key is not None:
-            pulumi.set(__self__, "primary_key", primary_key)
+            _setter("primary_key", primary_key)
 
     @property
     @pulumi.getter
@@ -2459,7 +2947,16 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjects(dict):
         :param Sequence['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs'] mysql_databases: MySQL databases on the server
                Structure is documented below.
         """
-        pulumi.set(__self__, "mysql_databases", mysql_databases)
+        StreamSourceConfigMysqlSourceConfigIncludeObjects._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            mysql_databases=mysql_databases,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             mysql_databases: Sequence['outputs.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("mysql_databases", mysql_databases)
 
     @property
     @pulumi.getter(name="mysqlDatabases")
@@ -2498,9 +2995,20 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase(dict):
         :param Sequence['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs'] mysql_tables: Tables in the database.
                Structure is documented below.
         """
-        pulumi.set(__self__, "database", database)
+        StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            database=database,
+            mysql_tables=mysql_tables,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             database: str,
+             mysql_tables: Optional[Sequence['outputs.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("database", database)
         if mysql_tables is not None:
-            pulumi.set(__self__, "mysql_tables", mysql_tables)
+            _setter("mysql_tables", mysql_tables)
 
     @property
     @pulumi.getter
@@ -2547,9 +3055,20 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable(d
         :param Sequence['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs'] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
-        pulumi.set(__self__, "table", table)
+        StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            table=table,
+            mysql_columns=mysql_columns,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             table: str,
+             mysql_columns: Optional[Sequence['outputs.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("table", table)
         if mysql_columns is not None:
-            pulumi.set(__self__, "mysql_columns", mysql_columns)
+            _setter("mysql_columns", mysql_columns)
 
     @property
     @pulumi.getter
@@ -2611,20 +3130,41 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMy
         :param int ordinal_position: The ordinal position of the column in the table.
         :param bool primary_key: Whether or not the column represents a primary key.
         """
+        StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            collation=collation,
+            column=column,
+            data_type=data_type,
+            length=length,
+            nullable=nullable,
+            ordinal_position=ordinal_position,
+            primary_key=primary_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             collation: Optional[str] = None,
+             column: Optional[str] = None,
+             data_type: Optional[str] = None,
+             length: Optional[int] = None,
+             nullable: Optional[bool] = None,
+             ordinal_position: Optional[int] = None,
+             primary_key: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if collation is not None:
-            pulumi.set(__self__, "collation", collation)
+            _setter("collation", collation)
         if column is not None:
-            pulumi.set(__self__, "column", column)
+            _setter("column", column)
         if data_type is not None:
-            pulumi.set(__self__, "data_type", data_type)
+            _setter("data_type", data_type)
         if length is not None:
-            pulumi.set(__self__, "length", length)
+            _setter("length", length)
         if nullable is not None:
-            pulumi.set(__self__, "nullable", nullable)
+            _setter("nullable", nullable)
         if ordinal_position is not None:
-            pulumi.set(__self__, "ordinal_position", ordinal_position)
+            _setter("ordinal_position", ordinal_position)
         if primary_key is not None:
-            pulumi.set(__self__, "primary_key", primary_key)
+            _setter("primary_key", primary_key)
 
     @property
     @pulumi.getter
@@ -2733,18 +3273,37 @@ class StreamSourceConfigOracleSourceConfig(dict):
                If not set (or set to 0), the system's default value will be used.
         :param 'StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs' stream_large_objects: Configuration to drop large object values.
         """
+        StreamSourceConfigOracleSourceConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            drop_large_objects=drop_large_objects,
+            exclude_objects=exclude_objects,
+            include_objects=include_objects,
+            max_concurrent_backfill_tasks=max_concurrent_backfill_tasks,
+            max_concurrent_cdc_tasks=max_concurrent_cdc_tasks,
+            stream_large_objects=stream_large_objects,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             drop_large_objects: Optional['outputs.StreamSourceConfigOracleSourceConfigDropLargeObjects'] = None,
+             exclude_objects: Optional['outputs.StreamSourceConfigOracleSourceConfigExcludeObjects'] = None,
+             include_objects: Optional['outputs.StreamSourceConfigOracleSourceConfigIncludeObjects'] = None,
+             max_concurrent_backfill_tasks: Optional[int] = None,
+             max_concurrent_cdc_tasks: Optional[int] = None,
+             stream_large_objects: Optional['outputs.StreamSourceConfigOracleSourceConfigStreamLargeObjects'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if drop_large_objects is not None:
-            pulumi.set(__self__, "drop_large_objects", drop_large_objects)
+            _setter("drop_large_objects", drop_large_objects)
         if exclude_objects is not None:
-            pulumi.set(__self__, "exclude_objects", exclude_objects)
+            _setter("exclude_objects", exclude_objects)
         if include_objects is not None:
-            pulumi.set(__self__, "include_objects", include_objects)
+            _setter("include_objects", include_objects)
         if max_concurrent_backfill_tasks is not None:
-            pulumi.set(__self__, "max_concurrent_backfill_tasks", max_concurrent_backfill_tasks)
+            _setter("max_concurrent_backfill_tasks", max_concurrent_backfill_tasks)
         if max_concurrent_cdc_tasks is not None:
-            pulumi.set(__self__, "max_concurrent_cdc_tasks", max_concurrent_cdc_tasks)
+            _setter("max_concurrent_cdc_tasks", max_concurrent_cdc_tasks)
         if stream_large_objects is not None:
-            pulumi.set(__self__, "stream_large_objects", stream_large_objects)
+            _setter("stream_large_objects", stream_large_objects)
 
     @property
     @pulumi.getter(name="dropLargeObjects")
@@ -2803,6 +3362,11 @@ class StreamSourceConfigOracleSourceConfig(dict):
 class StreamSourceConfigOracleSourceConfigDropLargeObjects(dict):
     def __init__(__self__):
         pass
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        pass
 
 
 @pulumi.output_type
@@ -2830,7 +3394,16 @@ class StreamSourceConfigOracleSourceConfigExcludeObjects(dict):
         :param Sequence['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs'] oracle_schemas: Oracle schemas/databases in the database server
                Structure is documented below.
         """
-        pulumi.set(__self__, "oracle_schemas", oracle_schemas)
+        StreamSourceConfigOracleSourceConfigExcludeObjects._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            oracle_schemas=oracle_schemas,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             oracle_schemas: Sequence['outputs.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("oracle_schemas", oracle_schemas)
 
     @property
     @pulumi.getter(name="oracleSchemas")
@@ -2869,9 +3442,20 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema(dict):
         :param Sequence['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs'] oracle_tables: Tables in the database.
                Structure is documented below.
         """
-        pulumi.set(__self__, "schema", schema)
+        StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            schema=schema,
+            oracle_tables=oracle_tables,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             schema: str,
+             oracle_tables: Optional[Sequence['outputs.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("schema", schema)
         if oracle_tables is not None:
-            pulumi.set(__self__, "oracle_tables", oracle_tables)
+            _setter("oracle_tables", oracle_tables)
 
     @property
     @pulumi.getter
@@ -2918,9 +3502,20 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable(
         :param Sequence['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs'] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
-        pulumi.set(__self__, "table", table)
+        StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            table=table,
+            oracle_columns=oracle_columns,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             table: str,
+             oracle_columns: Optional[Sequence['outputs.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("table", table)
         if oracle_columns is not None:
-            pulumi.set(__self__, "oracle_columns", oracle_columns)
+            _setter("oracle_columns", oracle_columns)
 
     @property
     @pulumi.getter
@@ -2992,24 +3587,49 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
         :param int scale: (Output)
                Column scale.
         """
+        StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            column=column,
+            data_type=data_type,
+            encoding=encoding,
+            length=length,
+            nullable=nullable,
+            ordinal_position=ordinal_position,
+            precision=precision,
+            primary_key=primary_key,
+            scale=scale,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             column: Optional[str] = None,
+             data_type: Optional[str] = None,
+             encoding: Optional[str] = None,
+             length: Optional[int] = None,
+             nullable: Optional[bool] = None,
+             ordinal_position: Optional[int] = None,
+             precision: Optional[int] = None,
+             primary_key: Optional[bool] = None,
+             scale: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if column is not None:
-            pulumi.set(__self__, "column", column)
+            _setter("column", column)
         if data_type is not None:
-            pulumi.set(__self__, "data_type", data_type)
+            _setter("data_type", data_type)
         if encoding is not None:
-            pulumi.set(__self__, "encoding", encoding)
+            _setter("encoding", encoding)
         if length is not None:
-            pulumi.set(__self__, "length", length)
+            _setter("length", length)
         if nullable is not None:
-            pulumi.set(__self__, "nullable", nullable)
+            _setter("nullable", nullable)
         if ordinal_position is not None:
-            pulumi.set(__self__, "ordinal_position", ordinal_position)
+            _setter("ordinal_position", ordinal_position)
         if precision is not None:
-            pulumi.set(__self__, "precision", precision)
+            _setter("precision", precision)
         if primary_key is not None:
-            pulumi.set(__self__, "primary_key", primary_key)
+            _setter("primary_key", primary_key)
         if scale is not None:
-            pulumi.set(__self__, "scale", scale)
+            _setter("scale", scale)
 
     @property
     @pulumi.getter
@@ -3117,7 +3737,16 @@ class StreamSourceConfigOracleSourceConfigIncludeObjects(dict):
         :param Sequence['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs'] oracle_schemas: Oracle schemas/databases in the database server
                Structure is documented below.
         """
-        pulumi.set(__self__, "oracle_schemas", oracle_schemas)
+        StreamSourceConfigOracleSourceConfigIncludeObjects._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            oracle_schemas=oracle_schemas,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             oracle_schemas: Sequence['outputs.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("oracle_schemas", oracle_schemas)
 
     @property
     @pulumi.getter(name="oracleSchemas")
@@ -3156,9 +3785,20 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema(dict):
         :param Sequence['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs'] oracle_tables: Tables in the database.
                Structure is documented below.
         """
-        pulumi.set(__self__, "schema", schema)
+        StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            schema=schema,
+            oracle_tables=oracle_tables,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             schema: str,
+             oracle_tables: Optional[Sequence['outputs.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("schema", schema)
         if oracle_tables is not None:
-            pulumi.set(__self__, "oracle_tables", oracle_tables)
+            _setter("oracle_tables", oracle_tables)
 
     @property
     @pulumi.getter
@@ -3205,9 +3845,20 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable(
         :param Sequence['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs'] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
-        pulumi.set(__self__, "table", table)
+        StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            table=table,
+            oracle_columns=oracle_columns,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             table: str,
+             oracle_columns: Optional[Sequence['outputs.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("table", table)
         if oracle_columns is not None:
-            pulumi.set(__self__, "oracle_columns", oracle_columns)
+            _setter("oracle_columns", oracle_columns)
 
     @property
     @pulumi.getter
@@ -3279,24 +3930,49 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
         :param int scale: (Output)
                Column scale.
         """
+        StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            column=column,
+            data_type=data_type,
+            encoding=encoding,
+            length=length,
+            nullable=nullable,
+            ordinal_position=ordinal_position,
+            precision=precision,
+            primary_key=primary_key,
+            scale=scale,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             column: Optional[str] = None,
+             data_type: Optional[str] = None,
+             encoding: Optional[str] = None,
+             length: Optional[int] = None,
+             nullable: Optional[bool] = None,
+             ordinal_position: Optional[int] = None,
+             precision: Optional[int] = None,
+             primary_key: Optional[bool] = None,
+             scale: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if column is not None:
-            pulumi.set(__self__, "column", column)
+            _setter("column", column)
         if data_type is not None:
-            pulumi.set(__self__, "data_type", data_type)
+            _setter("data_type", data_type)
         if encoding is not None:
-            pulumi.set(__self__, "encoding", encoding)
+            _setter("encoding", encoding)
         if length is not None:
-            pulumi.set(__self__, "length", length)
+            _setter("length", length)
         if nullable is not None:
-            pulumi.set(__self__, "nullable", nullable)
+            _setter("nullable", nullable)
         if ordinal_position is not None:
-            pulumi.set(__self__, "ordinal_position", ordinal_position)
+            _setter("ordinal_position", ordinal_position)
         if precision is not None:
-            pulumi.set(__self__, "precision", precision)
+            _setter("precision", precision)
         if primary_key is not None:
-            pulumi.set(__self__, "primary_key", primary_key)
+            _setter("primary_key", primary_key)
         if scale is not None:
-            pulumi.set(__self__, "scale", scale)
+            _setter("scale", scale)
 
     @property
     @pulumi.getter
@@ -3383,6 +4059,11 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
 class StreamSourceConfigOracleSourceConfigStreamLargeObjects(dict):
     def __init__(__self__):
         pass
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        pass
 
 
 @pulumi.output_type
@@ -3428,14 +4109,31 @@ class StreamSourceConfigPostgresqlSourceConfig(dict):
         :param int max_concurrent_backfill_tasks: Maximum number of concurrent backfill tasks. The number should be non
                negative. If not set (or set to 0), the system's default value will be used.
         """
-        pulumi.set(__self__, "publication", publication)
-        pulumi.set(__self__, "replication_slot", replication_slot)
+        StreamSourceConfigPostgresqlSourceConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            publication=publication,
+            replication_slot=replication_slot,
+            exclude_objects=exclude_objects,
+            include_objects=include_objects,
+            max_concurrent_backfill_tasks=max_concurrent_backfill_tasks,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             publication: str,
+             replication_slot: str,
+             exclude_objects: Optional['outputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjects'] = None,
+             include_objects: Optional['outputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjects'] = None,
+             max_concurrent_backfill_tasks: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("publication", publication)
+        _setter("replication_slot", replication_slot)
         if exclude_objects is not None:
-            pulumi.set(__self__, "exclude_objects", exclude_objects)
+            _setter("exclude_objects", exclude_objects)
         if include_objects is not None:
-            pulumi.set(__self__, "include_objects", include_objects)
+            _setter("include_objects", include_objects)
         if max_concurrent_backfill_tasks is not None:
-            pulumi.set(__self__, "max_concurrent_backfill_tasks", max_concurrent_backfill_tasks)
+            _setter("max_concurrent_backfill_tasks", max_concurrent_backfill_tasks)
 
     @property
     @pulumi.getter
@@ -3508,7 +4206,16 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjects(dict):
         :param Sequence['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs'] postgresql_schemas: PostgreSQL schemas on the server
                Structure is documented below.
         """
-        pulumi.set(__self__, "postgresql_schemas", postgresql_schemas)
+        StreamSourceConfigPostgresqlSourceConfigExcludeObjects._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            postgresql_schemas=postgresql_schemas,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             postgresql_schemas: Sequence['outputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("postgresql_schemas", postgresql_schemas)
 
     @property
     @pulumi.getter(name="postgresqlSchemas")
@@ -3547,9 +4254,20 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema(dic
         :param Sequence['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs'] postgresql_tables: Tables in the schema.
                Structure is documented below.
         """
-        pulumi.set(__self__, "schema", schema)
+        StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            schema=schema,
+            postgresql_tables=postgresql_tables,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             schema: str,
+             postgresql_tables: Optional[Sequence['outputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("schema", schema)
         if postgresql_tables is not None:
-            pulumi.set(__self__, "postgresql_tables", postgresql_tables)
+            _setter("postgresql_tables", postgresql_tables)
 
     @property
     @pulumi.getter
@@ -3596,9 +4314,20 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
         :param Sequence['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs'] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
-        pulumi.set(__self__, "table", table)
+        StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            table=table,
+            postgresql_columns=postgresql_columns,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             table: str,
+             postgresql_columns: Optional[Sequence['outputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("table", table)
         if postgresql_columns is not None:
-            pulumi.set(__self__, "postgresql_columns", postgresql_columns)
+            _setter("postgresql_columns", postgresql_columns)
 
     @property
     @pulumi.getter
@@ -3664,22 +4393,45 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
         :param int scale: (Output)
                Column scale.
         """
+        StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            column=column,
+            data_type=data_type,
+            length=length,
+            nullable=nullable,
+            ordinal_position=ordinal_position,
+            precision=precision,
+            primary_key=primary_key,
+            scale=scale,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             column: Optional[str] = None,
+             data_type: Optional[str] = None,
+             length: Optional[int] = None,
+             nullable: Optional[bool] = None,
+             ordinal_position: Optional[int] = None,
+             precision: Optional[int] = None,
+             primary_key: Optional[bool] = None,
+             scale: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if column is not None:
-            pulumi.set(__self__, "column", column)
+            _setter("column", column)
         if data_type is not None:
-            pulumi.set(__self__, "data_type", data_type)
+            _setter("data_type", data_type)
         if length is not None:
-            pulumi.set(__self__, "length", length)
+            _setter("length", length)
         if nullable is not None:
-            pulumi.set(__self__, "nullable", nullable)
+            _setter("nullable", nullable)
         if ordinal_position is not None:
-            pulumi.set(__self__, "ordinal_position", ordinal_position)
+            _setter("ordinal_position", ordinal_position)
         if precision is not None:
-            pulumi.set(__self__, "precision", precision)
+            _setter("precision", precision)
         if primary_key is not None:
-            pulumi.set(__self__, "primary_key", primary_key)
+            _setter("primary_key", primary_key)
         if scale is not None:
-            pulumi.set(__self__, "scale", scale)
+            _setter("scale", scale)
 
     @property
     @pulumi.getter
@@ -3775,7 +4527,16 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjects(dict):
         :param Sequence['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs'] postgresql_schemas: PostgreSQL schemas on the server
                Structure is documented below.
         """
-        pulumi.set(__self__, "postgresql_schemas", postgresql_schemas)
+        StreamSourceConfigPostgresqlSourceConfigIncludeObjects._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            postgresql_schemas=postgresql_schemas,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             postgresql_schemas: Sequence['outputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("postgresql_schemas", postgresql_schemas)
 
     @property
     @pulumi.getter(name="postgresqlSchemas")
@@ -3814,9 +4575,20 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema(dic
         :param Sequence['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs'] postgresql_tables: Tables in the schema.
                Structure is documented below.
         """
-        pulumi.set(__self__, "schema", schema)
+        StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            schema=schema,
+            postgresql_tables=postgresql_tables,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             schema: str,
+             postgresql_tables: Optional[Sequence['outputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("schema", schema)
         if postgresql_tables is not None:
-            pulumi.set(__self__, "postgresql_tables", postgresql_tables)
+            _setter("postgresql_tables", postgresql_tables)
 
     @property
     @pulumi.getter
@@ -3863,9 +4635,20 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
         :param Sequence['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs'] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
-        pulumi.set(__self__, "table", table)
+        StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            table=table,
+            postgresql_columns=postgresql_columns,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             table: str,
+             postgresql_columns: Optional[Sequence['outputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("table", table)
         if postgresql_columns is not None:
-            pulumi.set(__self__, "postgresql_columns", postgresql_columns)
+            _setter("postgresql_columns", postgresql_columns)
 
     @property
     @pulumi.getter
@@ -3931,22 +4714,45 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
         :param int scale: (Output)
                Column scale.
         """
+        StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            column=column,
+            data_type=data_type,
+            length=length,
+            nullable=nullable,
+            ordinal_position=ordinal_position,
+            precision=precision,
+            primary_key=primary_key,
+            scale=scale,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             column: Optional[str] = None,
+             data_type: Optional[str] = None,
+             length: Optional[int] = None,
+             nullable: Optional[bool] = None,
+             ordinal_position: Optional[int] = None,
+             precision: Optional[int] = None,
+             primary_key: Optional[bool] = None,
+             scale: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if column is not None:
-            pulumi.set(__self__, "column", column)
+            _setter("column", column)
         if data_type is not None:
-            pulumi.set(__self__, "data_type", data_type)
+            _setter("data_type", data_type)
         if length is not None:
-            pulumi.set(__self__, "length", length)
+            _setter("length", length)
         if nullable is not None:
-            pulumi.set(__self__, "nullable", nullable)
+            _setter("nullable", nullable)
         if ordinal_position is not None:
-            pulumi.set(__self__, "ordinal_position", ordinal_position)
+            _setter("ordinal_position", ordinal_position)
         if precision is not None:
-            pulumi.set(__self__, "precision", precision)
+            _setter("precision", precision)
         if primary_key is not None:
-            pulumi.set(__self__, "primary_key", primary_key)
+            _setter("primary_key", primary_key)
         if scale is not None:
-            pulumi.set(__self__, "scale", scale)
+            _setter("scale", scale)
 
     @property
     @pulumi.getter

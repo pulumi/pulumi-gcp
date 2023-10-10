@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -64,9 +64,20 @@ class ConfigBlockingFunctions(dict):
         :param 'ConfigBlockingFunctionsForwardInboundCredentialsArgs' forward_inbound_credentials: The user credentials to include in the JWT payload that is sent to the registered Blocking Functions.
                Structure is documented below.
         """
-        pulumi.set(__self__, "triggers", triggers)
+        ConfigBlockingFunctions._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            triggers=triggers,
+            forward_inbound_credentials=forward_inbound_credentials,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             triggers: Sequence['outputs.ConfigBlockingFunctionsTrigger'],
+             forward_inbound_credentials: Optional['outputs.ConfigBlockingFunctionsForwardInboundCredentials'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("triggers", triggers)
         if forward_inbound_credentials is not None:
-            pulumi.set(__self__, "forward_inbound_credentials", forward_inbound_credentials)
+            _setter("forward_inbound_credentials", forward_inbound_credentials)
 
     @property
     @pulumi.getter
@@ -119,12 +130,25 @@ class ConfigBlockingFunctionsForwardInboundCredentials(dict):
         :param bool id_token: Whether to pass the user's OIDC identity provider's ID token.
         :param bool refresh_token: Whether to pass the user's OAuth identity provider's refresh token.
         """
+        ConfigBlockingFunctionsForwardInboundCredentials._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_token=access_token,
+            id_token=id_token,
+            refresh_token=refresh_token,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_token: Optional[bool] = None,
+             id_token: Optional[bool] = None,
+             refresh_token: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_token is not None:
-            pulumi.set(__self__, "access_token", access_token)
+            _setter("access_token", access_token)
         if id_token is not None:
-            pulumi.set(__self__, "id_token", id_token)
+            _setter("id_token", id_token)
         if refresh_token is not None:
-            pulumi.set(__self__, "refresh_token", refresh_token)
+            _setter("refresh_token", refresh_token)
 
     @property
     @pulumi.getter(name="accessToken")
@@ -184,10 +208,23 @@ class ConfigBlockingFunctionsTrigger(dict):
         :param str update_time: (Output)
                When the trigger was changed.
         """
-        pulumi.set(__self__, "event_type", event_type)
-        pulumi.set(__self__, "function_uri", function_uri)
+        ConfigBlockingFunctionsTrigger._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            event_type=event_type,
+            function_uri=function_uri,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             event_type: str,
+             function_uri: str,
+             update_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("event_type", event_type)
+        _setter("function_uri", function_uri)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="eventType")
@@ -240,8 +277,17 @@ class ConfigQuota(dict):
         :param 'ConfigQuotaSignUpQuotaConfigArgs' sign_up_quota_config: Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
                Structure is documented below.
         """
+        ConfigQuota._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            sign_up_quota_config=sign_up_quota_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             sign_up_quota_config: Optional['outputs.ConfigQuotaSignUpQuotaConfig'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if sign_up_quota_config is not None:
-            pulumi.set(__self__, "sign_up_quota_config", sign_up_quota_config)
+            _setter("sign_up_quota_config", sign_up_quota_config)
 
     @property
     @pulumi.getter(name="signUpQuotaConfig")
@@ -283,12 +329,25 @@ class ConfigQuotaSignUpQuotaConfig(dict):
         :param str quota_duration: How long this quota will be active for. It is measurred in seconds, e.g., Example: "9.615s".
         :param str start_time: When this quota will take affect.
         """
+        ConfigQuotaSignUpQuotaConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            quota=quota,
+            quota_duration=quota_duration,
+            start_time=start_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             quota: Optional[int] = None,
+             quota_duration: Optional[str] = None,
+             start_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if quota is not None:
-            pulumi.set(__self__, "quota", quota)
+            _setter("quota", quota)
         if quota_duration is not None:
-            pulumi.set(__self__, "quota_duration", quota_duration)
+            _setter("quota_duration", quota_duration)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
 
     @property
     @pulumi.getter
@@ -356,16 +415,33 @@ class ConfigSignIn(dict):
         :param 'ConfigSignInPhoneNumberArgs' phone_number: Configuration options related to authenticated a user by their phone number.
                Structure is documented below.
         """
+        ConfigSignIn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_duplicate_emails=allow_duplicate_emails,
+            anonymous=anonymous,
+            email=email,
+            hash_configs=hash_configs,
+            phone_number=phone_number,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_duplicate_emails: Optional[bool] = None,
+             anonymous: Optional['outputs.ConfigSignInAnonymous'] = None,
+             email: Optional['outputs.ConfigSignInEmail'] = None,
+             hash_configs: Optional[Sequence['outputs.ConfigSignInHashConfig']] = None,
+             phone_number: Optional['outputs.ConfigSignInPhoneNumber'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if allow_duplicate_emails is not None:
-            pulumi.set(__self__, "allow_duplicate_emails", allow_duplicate_emails)
+            _setter("allow_duplicate_emails", allow_duplicate_emails)
         if anonymous is not None:
-            pulumi.set(__self__, "anonymous", anonymous)
+            _setter("anonymous", anonymous)
         if email is not None:
-            pulumi.set(__self__, "email", email)
+            _setter("email", email)
         if hash_configs is not None:
-            pulumi.set(__self__, "hash_configs", hash_configs)
+            _setter("hash_configs", hash_configs)
         if phone_number is not None:
-            pulumi.set(__self__, "phone_number", phone_number)
+            _setter("phone_number", phone_number)
 
     @property
     @pulumi.getter(name="allowDuplicateEmails")
@@ -422,7 +498,16 @@ class ConfigSignInAnonymous(dict):
                
                <a name="nested_hash_config"></a>The `hash_config` block contains:
         """
-        pulumi.set(__self__, "enabled", enabled)
+        ConfigSignInAnonymous._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("enabled", enabled)
 
     @property
     @pulumi.getter
@@ -463,9 +548,20 @@ class ConfigSignInEmail(dict):
                password must be provided to sign in. If false, a user may sign in via either
                email/password or email link.
         """
-        pulumi.set(__self__, "enabled", enabled)
+        ConfigSignInEmail._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            password_required=password_required,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: bool,
+             password_required: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("enabled", enabled)
         if password_required is not None:
-            pulumi.set(__self__, "password_required", password_required)
+            _setter("password_required", password_required)
 
     @property
     @pulumi.getter
@@ -527,16 +623,33 @@ class ConfigSignInHashConfig(dict):
         :param str signer_key: (Output)
                Signer key in base64.
         """
+        ConfigSignInHashConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            algorithm=algorithm,
+            memory_cost=memory_cost,
+            rounds=rounds,
+            salt_separator=salt_separator,
+            signer_key=signer_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             algorithm: Optional[str] = None,
+             memory_cost: Optional[int] = None,
+             rounds: Optional[int] = None,
+             salt_separator: Optional[str] = None,
+             signer_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if algorithm is not None:
-            pulumi.set(__self__, "algorithm", algorithm)
+            _setter("algorithm", algorithm)
         if memory_cost is not None:
-            pulumi.set(__self__, "memory_cost", memory_cost)
+            _setter("memory_cost", memory_cost)
         if rounds is not None:
-            pulumi.set(__self__, "rounds", rounds)
+            _setter("rounds", rounds)
         if salt_separator is not None:
-            pulumi.set(__self__, "salt_separator", salt_separator)
+            _setter("salt_separator", salt_separator)
         if signer_key is not None:
-            pulumi.set(__self__, "signer_key", signer_key)
+            _setter("signer_key", signer_key)
 
     @property
     @pulumi.getter
@@ -610,9 +723,20 @@ class ConfigSignInPhoneNumber(dict):
         :param bool enabled: Whether phone number auth is enabled for the project or not.
         :param Mapping[str, str] test_phone_numbers: A map of <test phone number, fake code> that can be used for phone auth testing.
         """
-        pulumi.set(__self__, "enabled", enabled)
+        ConfigSignInPhoneNumber._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            test_phone_numbers=test_phone_numbers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: bool,
+             test_phone_numbers: Optional[Mapping[str, str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("enabled", enabled)
         if test_phone_numbers is not None:
-            pulumi.set(__self__, "test_phone_numbers", test_phone_numbers)
+            _setter("test_phone_numbers", test_phone_numbers)
 
     @property
     @pulumi.getter
@@ -668,11 +792,26 @@ class InboundSamlConfigIdpConfig(dict):
         :param str sso_url: URL to send Authentication request to.
         :param bool sign_request: Indicates if outbounding SAMLRequest should be signed.
         """
-        pulumi.set(__self__, "idp_certificates", idp_certificates)
-        pulumi.set(__self__, "idp_entity_id", idp_entity_id)
-        pulumi.set(__self__, "sso_url", sso_url)
+        InboundSamlConfigIdpConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            idp_certificates=idp_certificates,
+            idp_entity_id=idp_entity_id,
+            sso_url=sso_url,
+            sign_request=sign_request,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             idp_certificates: Sequence['outputs.InboundSamlConfigIdpConfigIdpCertificate'],
+             idp_entity_id: str,
+             sso_url: str,
+             sign_request: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("idp_certificates", idp_certificates)
+        _setter("idp_entity_id", idp_entity_id)
+        _setter("sso_url", sso_url)
         if sign_request is not None:
-            pulumi.set(__self__, "sign_request", sign_request)
+            _setter("sign_request", sign_request)
 
     @property
     @pulumi.getter(name="idpCertificates")
@@ -732,8 +871,17 @@ class InboundSamlConfigIdpConfigIdpCertificate(dict):
         """
         :param str x509_certificate: The IdP's x509 certificate.
         """
+        InboundSamlConfigIdpConfigIdpCertificate._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            x509_certificate=x509_certificate,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             x509_certificate: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if x509_certificate is not None:
-            pulumi.set(__self__, "x509_certificate", x509_certificate)
+            _setter("x509_certificate", x509_certificate)
 
     @property
     @pulumi.getter(name="x509Certificate")
@@ -781,12 +929,25 @@ class InboundSamlConfigSpConfig(dict):
                <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
         :param str sp_entity_id: Unique identifier for all SAML entities.
         """
+        InboundSamlConfigSpConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            callback_uri=callback_uri,
+            sp_certificates=sp_certificates,
+            sp_entity_id=sp_entity_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             callback_uri: Optional[str] = None,
+             sp_certificates: Optional[Sequence['outputs.InboundSamlConfigSpConfigSpCertificate']] = None,
+             sp_entity_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if callback_uri is not None:
-            pulumi.set(__self__, "callback_uri", callback_uri)
+            _setter("callback_uri", callback_uri)
         if sp_certificates is not None:
-            pulumi.set(__self__, "sp_certificates", sp_certificates)
+            _setter("sp_certificates", sp_certificates)
         if sp_entity_id is not None:
-            pulumi.set(__self__, "sp_entity_id", sp_entity_id)
+            _setter("sp_entity_id", sp_entity_id)
 
     @property
     @pulumi.getter(name="callbackUri")
@@ -841,25 +1002,24 @@ class InboundSamlConfigSpConfigSpCertificate(dict):
                  x509_certificate: Optional[str] = None):
         """
         :param str x509_certificate: The IdP's x509 certificate.
-               
-               (Output)
-               The x509 certificate
-               
-               - - -
         """
+        InboundSamlConfigSpConfigSpCertificate._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            x509_certificate=x509_certificate,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             x509_certificate: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if x509_certificate is not None:
-            pulumi.set(__self__, "x509_certificate", x509_certificate)
+            _setter("x509_certificate", x509_certificate)
 
     @property
     @pulumi.getter(name="x509Certificate")
     def x509_certificate(self) -> Optional[str]:
         """
         The IdP's x509 certificate.
-
-        (Output)
-        The x509 certificate
-
-        - - -
         """
         return pulumi.get(self, "x509_certificate")
 
@@ -905,16 +1065,33 @@ class ProjectDefaultConfigSignIn(dict):
         :param 'ProjectDefaultConfigSignInPhoneNumberArgs' phone_number: Configuration options related to authenticated a user by their phone number.
                Structure is documented below.
         """
+        ProjectDefaultConfigSignIn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_duplicate_emails=allow_duplicate_emails,
+            anonymous=anonymous,
+            email=email,
+            hash_configs=hash_configs,
+            phone_number=phone_number,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_duplicate_emails: Optional[bool] = None,
+             anonymous: Optional['outputs.ProjectDefaultConfigSignInAnonymous'] = None,
+             email: Optional['outputs.ProjectDefaultConfigSignInEmail'] = None,
+             hash_configs: Optional[Sequence['outputs.ProjectDefaultConfigSignInHashConfig']] = None,
+             phone_number: Optional['outputs.ProjectDefaultConfigSignInPhoneNumber'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if allow_duplicate_emails is not None:
-            pulumi.set(__self__, "allow_duplicate_emails", allow_duplicate_emails)
+            _setter("allow_duplicate_emails", allow_duplicate_emails)
         if anonymous is not None:
-            pulumi.set(__self__, "anonymous", anonymous)
+            _setter("anonymous", anonymous)
         if email is not None:
-            pulumi.set(__self__, "email", email)
+            _setter("email", email)
         if hash_configs is not None:
-            pulumi.set(__self__, "hash_configs", hash_configs)
+            _setter("hash_configs", hash_configs)
         if phone_number is not None:
-            pulumi.set(__self__, "phone_number", phone_number)
+            _setter("phone_number", phone_number)
 
     @property
     @pulumi.getter(name="allowDuplicateEmails")
@@ -971,7 +1148,16 @@ class ProjectDefaultConfigSignInAnonymous(dict):
                
                <a name="nested_hash_config"></a>The `hash_config` block contains:
         """
-        pulumi.set(__self__, "enabled", enabled)
+        ProjectDefaultConfigSignInAnonymous._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("enabled", enabled)
 
     @property
     @pulumi.getter
@@ -1012,10 +1198,21 @@ class ProjectDefaultConfigSignInEmail(dict):
                password must be provided to sign in. If false, a user may sign in via either
                email/password or email link.
         """
+        ProjectDefaultConfigSignInEmail._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            password_required=password_required,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[bool] = None,
+             password_required: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if password_required is not None:
-            pulumi.set(__self__, "password_required", password_required)
+            _setter("password_required", password_required)
 
     @property
     @pulumi.getter
@@ -1077,16 +1274,33 @@ class ProjectDefaultConfigSignInHashConfig(dict):
         :param str signer_key: (Output)
                Signer key in base64.
         """
+        ProjectDefaultConfigSignInHashConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            algorithm=algorithm,
+            memory_cost=memory_cost,
+            rounds=rounds,
+            salt_separator=salt_separator,
+            signer_key=signer_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             algorithm: Optional[str] = None,
+             memory_cost: Optional[int] = None,
+             rounds: Optional[int] = None,
+             salt_separator: Optional[str] = None,
+             signer_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if algorithm is not None:
-            pulumi.set(__self__, "algorithm", algorithm)
+            _setter("algorithm", algorithm)
         if memory_cost is not None:
-            pulumi.set(__self__, "memory_cost", memory_cost)
+            _setter("memory_cost", memory_cost)
         if rounds is not None:
-            pulumi.set(__self__, "rounds", rounds)
+            _setter("rounds", rounds)
         if salt_separator is not None:
-            pulumi.set(__self__, "salt_separator", salt_separator)
+            _setter("salt_separator", salt_separator)
         if signer_key is not None:
-            pulumi.set(__self__, "signer_key", signer_key)
+            _setter("signer_key", signer_key)
 
     @property
     @pulumi.getter
@@ -1160,10 +1374,21 @@ class ProjectDefaultConfigSignInPhoneNumber(dict):
         :param bool enabled: Whether phone number auth is enabled for the project or not.
         :param Mapping[str, str] test_phone_numbers: A map of <test phone number, fake code> that can be used for phone auth testing.
         """
+        ProjectDefaultConfigSignInPhoneNumber._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            test_phone_numbers=test_phone_numbers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[bool] = None,
+             test_phone_numbers: Optional[Mapping[str, str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if test_phone_numbers is not None:
-            pulumi.set(__self__, "test_phone_numbers", test_phone_numbers)
+            _setter("test_phone_numbers", test_phone_numbers)
 
     @property
     @pulumi.getter
@@ -1219,11 +1444,26 @@ class TenantInboundSamlConfigIdpConfig(dict):
         :param str sso_url: URL to send Authentication request to.
         :param bool sign_request: Indicates if outbounding SAMLRequest should be signed.
         """
-        pulumi.set(__self__, "idp_certificates", idp_certificates)
-        pulumi.set(__self__, "idp_entity_id", idp_entity_id)
-        pulumi.set(__self__, "sso_url", sso_url)
+        TenantInboundSamlConfigIdpConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            idp_certificates=idp_certificates,
+            idp_entity_id=idp_entity_id,
+            sso_url=sso_url,
+            sign_request=sign_request,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             idp_certificates: Sequence['outputs.TenantInboundSamlConfigIdpConfigIdpCertificate'],
+             idp_entity_id: str,
+             sso_url: str,
+             sign_request: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("idp_certificates", idp_certificates)
+        _setter("idp_entity_id", idp_entity_id)
+        _setter("sso_url", sso_url)
         if sign_request is not None:
-            pulumi.set(__self__, "sign_request", sign_request)
+            _setter("sign_request", sign_request)
 
     @property
     @pulumi.getter(name="idpCertificates")
@@ -1283,8 +1523,17 @@ class TenantInboundSamlConfigIdpConfigIdpCertificate(dict):
         """
         :param str x509_certificate: The x509 certificate
         """
+        TenantInboundSamlConfigIdpConfigIdpCertificate._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            x509_certificate=x509_certificate,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             x509_certificate: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if x509_certificate is not None:
-            pulumi.set(__self__, "x509_certificate", x509_certificate)
+            _setter("x509_certificate", x509_certificate)
 
     @property
     @pulumi.getter(name="x509Certificate")
@@ -1332,10 +1581,23 @@ class TenantInboundSamlConfigSpConfig(dict):
                
                <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
         """
-        pulumi.set(__self__, "callback_uri", callback_uri)
-        pulumi.set(__self__, "sp_entity_id", sp_entity_id)
+        TenantInboundSamlConfigSpConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            callback_uri=callback_uri,
+            sp_entity_id=sp_entity_id,
+            sp_certificates=sp_certificates,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             callback_uri: str,
+             sp_entity_id: str,
+             sp_certificates: Optional[Sequence['outputs.TenantInboundSamlConfigSpConfigSpCertificate']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("callback_uri", callback_uri)
+        _setter("sp_entity_id", sp_entity_id)
         if sp_certificates is not None:
-            pulumi.set(__self__, "sp_certificates", sp_certificates)
+            _setter("sp_certificates", sp_certificates)
 
     @property
     @pulumi.getter(name="callbackUri")
@@ -1390,25 +1652,24 @@ class TenantInboundSamlConfigSpConfigSpCertificate(dict):
                  x509_certificate: Optional[str] = None):
         """
         :param str x509_certificate: The x509 certificate
-               
-               (Output)
-               The x509 certificate
-               
-               - - -
         """
+        TenantInboundSamlConfigSpConfigSpCertificate._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            x509_certificate=x509_certificate,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             x509_certificate: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if x509_certificate is not None:
-            pulumi.set(__self__, "x509_certificate", x509_certificate)
+            _setter("x509_certificate", x509_certificate)
 
     @property
     @pulumi.getter(name="x509Certificate")
     def x509_certificate(self) -> Optional[str]:
         """
         The x509 certificate
-
-        (Output)
-        The x509 certificate
-
-        - - -
         """
         return pulumi.get(self, "x509_certificate")
 

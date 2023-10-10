@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -35,14 +35,29 @@ class QueueAppEngineRoutingOverrideArgs:
         :param pulumi.Input[str] version: App version.
                By default, the task is sent to the version which is the default version when the task is attempted.
         """
+        QueueAppEngineRoutingOverrideArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host=host,
+            instance=instance,
+            service=service,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host: Optional[pulumi.Input[str]] = None,
+             instance: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if instance is not None:
-            pulumi.set(__self__, "instance", instance)
+            _setter("instance", instance)
         if service is not None:
-            pulumi.set(__self__, "service", service)
+            _setter("service", service)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -103,10 +118,23 @@ class QueueIamBindingConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        QueueIamBindingConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: pulumi.Input[str],
+             title: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -142,10 +170,23 @@ class QueueIamMemberConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        QueueIamMemberConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: pulumi.Input[str],
+             title: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -195,12 +236,25 @@ class QueueRateLimitsArgs:
         :param pulumi.Input[float] max_dispatches_per_second: The maximum rate at which tasks are dispatched from this queue.
                If unspecified when the queue is created, Cloud Tasks will pick the default.
         """
+        QueueRateLimitsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_burst_size=max_burst_size,
+            max_concurrent_dispatches=max_concurrent_dispatches,
+            max_dispatches_per_second=max_dispatches_per_second,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_burst_size: Optional[pulumi.Input[int]] = None,
+             max_concurrent_dispatches: Optional[pulumi.Input[int]] = None,
+             max_dispatches_per_second: Optional[pulumi.Input[float]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if max_burst_size is not None:
-            pulumi.set(__self__, "max_burst_size", max_burst_size)
+            _setter("max_burst_size", max_burst_size)
         if max_concurrent_dispatches is not None:
-            pulumi.set(__self__, "max_concurrent_dispatches", max_concurrent_dispatches)
+            _setter("max_concurrent_dispatches", max_concurrent_dispatches)
         if max_dispatches_per_second is not None:
-            pulumi.set(__self__, "max_dispatches_per_second", max_dispatches_per_second)
+            _setter("max_dispatches_per_second", max_dispatches_per_second)
 
     @property
     @pulumi.getter(name="maxBurstSize")
@@ -281,16 +335,33 @@ class QueueRetryConfigArgs:
                maxBackoff duration after it fails, if the queue's RetryConfig
                specifies that the task should be retried.
         """
+        QueueRetryConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_attempts=max_attempts,
+            max_backoff=max_backoff,
+            max_doublings=max_doublings,
+            max_retry_duration=max_retry_duration,
+            min_backoff=min_backoff,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_attempts: Optional[pulumi.Input[int]] = None,
+             max_backoff: Optional[pulumi.Input[str]] = None,
+             max_doublings: Optional[pulumi.Input[int]] = None,
+             max_retry_duration: Optional[pulumi.Input[str]] = None,
+             min_backoff: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if max_attempts is not None:
-            pulumi.set(__self__, "max_attempts", max_attempts)
+            _setter("max_attempts", max_attempts)
         if max_backoff is not None:
-            pulumi.set(__self__, "max_backoff", max_backoff)
+            _setter("max_backoff", max_backoff)
         if max_doublings is not None:
-            pulumi.set(__self__, "max_doublings", max_doublings)
+            _setter("max_doublings", max_doublings)
         if max_retry_duration is not None:
-            pulumi.set(__self__, "max_retry_duration", max_retry_duration)
+            _setter("max_retry_duration", max_retry_duration)
         if min_backoff is not None:
-            pulumi.set(__self__, "min_backoff", min_backoff)
+            _setter("min_backoff", min_backoff)
 
     @property
     @pulumi.getter(name="maxAttempts")
@@ -380,7 +451,16 @@ class QueueStackdriverLoggingConfigArgs:
                This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the
                default and means that no operations are logged.
         """
-        pulumi.set(__self__, "sampling_ratio", sampling_ratio)
+        QueueStackdriverLoggingConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            sampling_ratio=sampling_ratio,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             sampling_ratio: pulumi.Input[float],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("sampling_ratio", sampling_ratio)
 
     @property
     @pulumi.getter(name="samplingRatio")
