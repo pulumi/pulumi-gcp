@@ -311,7 +311,7 @@ func stringValue(vars resource.PropertyMap, prop resource.PropertyKey, envs []st
 	return ""
 }
 
-// httpAutoName provides a schema info with automating set to lowercase names for resources that don't support capital casing in names.
+// httpAutoName provides a schema info with autonaming set to lowercase names for resources that don't support capital casing in names.
 // This seems to be the case for many resources where a name ends up being in HTTP URLs.
 func httpAutoName() *tfbridge.SchemaInfo {
 	return tfbridge.AutoNameWithCustomOptions("name", tfbridge.AutoNameOptions{
