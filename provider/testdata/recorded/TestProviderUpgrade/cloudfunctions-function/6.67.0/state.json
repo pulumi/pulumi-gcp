@@ -1,0 +1,235 @@
+{
+    "version": 3,
+    "deployment": {
+        "manifest": {
+            "time": "2023-10-10T10:37:14.521254-04:00",
+            "magic": "cdb46f20d3397474c4b7038ce63a3c40fb0da4b95458ef275b6ce689aec88d17",
+            "version": "v3.86.0"
+        },
+        "secrets_providers": {
+            "type": "passphrase",
+            "state": {
+                "salt": "v1:FS04KVZVtIg=:v1:/NnTBSnq9nvp+Sga:xRjT5I8gkf4HCe2CEbEYGOlYa0/M4A=="
+            }
+        },
+        "resources": [
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-cloudfunct-224e8d2c::test::pulumi:pulumi:Stack::test-p-it-antons-mac-cloudfunct-224e8d2c",
+                "custom": false,
+                "type": "pulumi:pulumi:Stack",
+                "created": "2023-10-10T14:35:27.45083Z",
+                "modified": "2023-10-10T14:35:27.45083Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-cloudfunct-224e8d2c::test::pulumi:providers:gcp::provider",
+                "custom": true,
+                "id": "d0e65266-ec24-4552-ad9f-3e6a33352d0c",
+                "type": "pulumi:providers:gcp",
+                "inputs": {
+                    "project": "pulumi-development",
+                    "region": "us-central1",
+                    "version": "6.67.0"
+                },
+                "outputs": {
+                    "project": "pulumi-development",
+                    "region": "us-central1",
+                    "version": "6.67.0"
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-cloudfunct-224e8d2c::test::pulumi:pulumi:Stack::test-p-it-antons-mac-cloudfunct-224e8d2c",
+                "propertyDependencies": {
+                    "project": null,
+                    "region": null
+                },
+                "created": "2023-10-10T14:35:28.221171Z",
+                "modified": "2023-10-10T14:35:28.221171Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-cloudfunct-224e8d2c::test::gcp:storage/bucket:Bucket::bucket",
+                "custom": true,
+                "id": "bucket-8b6d05c",
+                "type": "gcp:storage/bucket:Bucket",
+                "inputs": {
+                    "__defaults": [
+                        "forceDestroy",
+                        "name",
+                        "storageClass"
+                    ],
+                    "forceDestroy": false,
+                    "location": "US",
+                    "name": "bucket-8b6d05c",
+                    "storageClass": "STANDARD"
+                },
+                "outputs": {
+                    "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":600000000000,\"read\":240000000000,\"update\":240000000000}}",
+                    "autoclass": null,
+                    "cors": [],
+                    "customPlacementConfig": null,
+                    "defaultEventBasedHold": false,
+                    "encryption": null,
+                    "forceDestroy": false,
+                    "id": "bucket-8b6d05c",
+                    "labels": {},
+                    "lifecycleRules": [],
+                    "location": "US",
+                    "logging": null,
+                    "name": "bucket-8b6d05c",
+                    "project": "pulumi-development",
+                    "publicAccessPrevention": "inherited",
+                    "requesterPays": false,
+                    "retentionPolicy": null,
+                    "selfLink": "https://www.googleapis.com/storage/v1/b/bucket-8b6d05c",
+                    "storageClass": "STANDARD",
+                    "uniformBucketLevelAccess": false,
+                    "url": "gs://bucket-8b6d05c",
+                    "versioning": null,
+                    "website": null
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-cloudfunct-224e8d2c::test::pulumi:pulumi:Stack::test-p-it-antons-mac-cloudfunct-224e8d2c",
+                "provider": "urn:pulumi:p-it-antons-mac-cloudfunct-224e8d2c::test::pulumi:providers:gcp::provider::d0e65266-ec24-4552-ad9f-3e6a33352d0c",
+                "propertyDependencies": {
+                    "location": null
+                },
+                "created": "2023-10-10T14:35:31.981684Z",
+                "modified": "2023-10-10T14:35:31.981684Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-cloudfunct-224e8d2c::test::gcp:storage/bucketObject:BucketObject::archive",
+                "custom": true,
+                "id": "bucket-8b6d05c-archive-6b8c30a",
+                "type": "gcp:storage/bucketObject:BucketObject",
+                "inputs": {
+                    "__defaults": [
+                        "detectMd5hash",
+                        "name"
+                    ],
+                    "bucket": "bucket-8b6d05c",
+                    "detectMd5hash": "different hash",
+                    "name": "archive-6b8c30a",
+                    "source": {
+                        "4dabf18193072939515e22adb298388d": "c44067f5952c0a294b673a41bacd8c17",
+                        "hash": "69da022006aa5ede7c9fb5c733ac769e40d626609c29108396257a01f865f77d",
+                        "path": "/private/var/folders/gk/cchgxh512m72f_dmkcc3d09h0000gp/T/p-it-antons-mac-cloudfunct-224e8d2c-3044907155/src/src.zip"
+                    }
+                },
+                "outputs": {
+                    "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":240000000000,\"delete\":240000000000,\"update\":240000000000}}",
+                    "bucket": "bucket-8b6d05c",
+                    "cacheControl": "",
+                    "contentDisposition": "",
+                    "contentEncoding": "",
+                    "contentLanguage": "",
+                    "contentType": "application/zip",
+                    "crc32c": "JI8a0g==",
+                    "detectMd5hash": "8OiGQD1Aim/8SE0jXnm5Wg==",
+                    "eventBasedHold": false,
+                    "id": "bucket-8b6d05c-archive-6b8c30a",
+                    "kmsKeyName": "",
+                    "md5hash": "8OiGQD1Aim/8SE0jXnm5Wg==",
+                    "mediaLink": "https://storage.googleapis.com/download/storage/v1/b/bucket-8b6d05c/o/archive-6b8c30a?generation=1696948532359468&alt=media",
+                    "metadata": {},
+                    "name": "archive-6b8c30a",
+                    "outputName": "archive-6b8c30a",
+                    "selfLink": "https://www.googleapis.com/storage/v1/b/bucket-8b6d05c/o/archive-6b8c30a",
+                    "source": {
+                        "4dabf18193072939515e22adb298388d": "c44067f5952c0a294b673a41bacd8c17",
+                        "hash": "69da022006aa5ede7c9fb5c733ac769e40d626609c29108396257a01f865f77d",
+                        "path": "/private/var/folders/gk/cchgxh512m72f_dmkcc3d09h0000gp/T/p-it-antons-mac-cloudfunct-224e8d2c-3044907155/src/src.zip"
+                    },
+                    "storageClass": "STANDARD",
+                    "temporaryHold": false
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-cloudfunct-224e8d2c::test::pulumi:pulumi:Stack::test-p-it-antons-mac-cloudfunct-224e8d2c",
+                "dependencies": [
+                    "urn:pulumi:p-it-antons-mac-cloudfunct-224e8d2c::test::gcp:storage/bucket:Bucket::bucket"
+                ],
+                "provider": "urn:pulumi:p-it-antons-mac-cloudfunct-224e8d2c::test::pulumi:providers:gcp::provider::d0e65266-ec24-4552-ad9f-3e6a33352d0c",
+                "propertyDependencies": {
+                    "bucket": [
+                        "urn:pulumi:p-it-antons-mac-cloudfunct-224e8d2c::test::gcp:storage/bucket:Bucket::bucket"
+                    ],
+                    "source": null
+                },
+                "created": "2023-10-10T14:35:32.471341Z",
+                "modified": "2023-10-10T14:35:32.471341Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-cloudfunct-224e8d2c::test::gcp:cloudfunctions/function:Function::tested-resource",
+                "custom": true,
+                "id": "projects/pulumi-development/locations/us-central1/functions/tested-resource-700d96c",
+                "type": "gcp:cloudfunctions/function:Function",
+                "inputs": {
+                    "__defaults": [
+                        "ingressSettings",
+                        "name",
+                        "timeout"
+                    ],
+                    "availableMemoryMb": 128,
+                    "description": "My function",
+                    "entryPoint": "helloGET",
+                    "ingressSettings": "ALLOW_ALL",
+                    "name": "tested-resource-700d96c",
+                    "runtime": "nodejs16",
+                    "sourceArchiveBucket": "bucket-8b6d05c",
+                    "sourceArchiveObject": "archive-6b8c30a",
+                    "timeout": 60,
+                    "triggerHttp": true
+                },
+                "outputs": {
+                    "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":300000000000,\"delete\":300000000000,\"read\":300000000000,\"update\":300000000000}}",
+                    "availableMemoryMb": 128,
+                    "buildWorkerPool": "",
+                    "description": "My function",
+                    "dockerRegistry": "CONTAINER_REGISTRY",
+                    "dockerRepository": "",
+                    "entryPoint": "helloGET",
+                    "environmentVariables": {},
+                    "eventTrigger": null,
+                    "httpsTriggerSecurityLevel": "SECURE_OPTIONAL",
+                    "httpsTriggerUrl": "https://us-central1-pulumi-development.cloudfunctions.net/tested-resource-700d96c",
+                    "id": "projects/pulumi-development/locations/us-central1/functions/tested-resource-700d96c",
+                    "ingressSettings": "ALLOW_ALL",
+                    "kmsKeyName": "",
+                    "labels": {},
+                    "maxInstances": 0,
+                    "minInstances": 0,
+                    "name": "tested-resource-700d96c",
+                    "project": "pulumi-development",
+                    "region": "us-central1",
+                    "runtime": "nodejs16",
+                    "secretEnvironmentVariables": [],
+                    "secretVolumes": [],
+                    "serviceAccountEmail": "pulumi-development@appspot.gserviceaccount.com",
+                    "sourceArchiveBucket": "bucket-8b6d05c",
+                    "sourceArchiveObject": "archive-6b8c30a",
+                    "sourceRepository": null,
+                    "status": "ACTIVE",
+                    "timeout": 60,
+                    "triggerHttp": true,
+                    "vpcConnector": "",
+                    "vpcConnectorEgressSettings": ""
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-cloudfunct-224e8d2c::test::pulumi:pulumi:Stack::test-p-it-antons-mac-cloudfunct-224e8d2c",
+                "dependencies": [
+                    "urn:pulumi:p-it-antons-mac-cloudfunct-224e8d2c::test::gcp:storage/bucket:Bucket::bucket",
+                    "urn:pulumi:p-it-antons-mac-cloudfunct-224e8d2c::test::gcp:storage/bucketObject:BucketObject::archive"
+                ],
+                "provider": "urn:pulumi:p-it-antons-mac-cloudfunct-224e8d2c::test::pulumi:providers:gcp::provider::d0e65266-ec24-4552-ad9f-3e6a33352d0c",
+                "propertyDependencies": {
+                    "availableMemoryMb": null,
+                    "description": null,
+                    "entryPoint": null,
+                    "runtime": null,
+                    "sourceArchiveBucket": [
+                        "urn:pulumi:p-it-antons-mac-cloudfunct-224e8d2c::test::gcp:storage/bucket:Bucket::bucket"
+                    ],
+                    "sourceArchiveObject": [
+                        "urn:pulumi:p-it-antons-mac-cloudfunct-224e8d2c::test::gcp:storage/bucketObject:BucketObject::archive"
+                    ],
+                    "triggerHttp": null
+                },
+                "created": "2023-10-10T14:37:14.521194Z",
+                "modified": "2023-10-10T14:37:14.521194Z"
+            }
+        ]
+    }
+}

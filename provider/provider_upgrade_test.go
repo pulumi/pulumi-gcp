@@ -35,6 +35,7 @@ func TestProviderUpgrade(t *testing.T) {
 		// extracted from schema examples and manually corrected
 		{"bigquery-table"},
 		{"compute-firewall"},
+		{"cloudfunctions-function"},
 
 		// extracted as-is from schema examples
 		{"bigquery-datasetaccess-3"},
