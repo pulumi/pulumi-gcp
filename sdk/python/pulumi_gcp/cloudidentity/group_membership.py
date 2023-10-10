@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,12 +31,27 @@ class GroupMembershipArgs:
         :param pulumi.Input['GroupMembershipPreferredMemberKeyArgs'] preferred_member_key: EntityKey of the member.
                Structure is documented below.
         """
-        pulumi.set(__self__, "group", group)
-        pulumi.set(__self__, "roles", roles)
+        GroupMembershipArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group=group,
+            roles=roles,
+            member_key=member_key,
+            preferred_member_key=preferred_member_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group: pulumi.Input[str],
+             roles: pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArgs']]],
+             member_key: Optional[pulumi.Input['GroupMembershipMemberKeyArgs']] = None,
+             preferred_member_key: Optional[pulumi.Input['GroupMembershipPreferredMemberKeyArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group", group)
+        _setter("roles", roles)
         if member_key is not None:
-            pulumi.set(__self__, "member_key", member_key)
+            _setter("member_key", member_key)
         if preferred_member_key is not None:
-            pulumi.set(__self__, "preferred_member_key", preferred_member_key)
+            _setter("preferred_member_key", preferred_member_key)
 
     @property
     @pulumi.getter
@@ -120,22 +135,45 @@ class _GroupMembershipState:
         :param pulumi.Input[str] type: The type of the membership.
         :param pulumi.Input[str] update_time: The time when the Membership was last updated.
         """
+        _GroupMembershipState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            group=group,
+            member_key=member_key,
+            name=name,
+            preferred_member_key=preferred_member_key,
+            roles=roles,
+            type=type,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             group: Optional[pulumi.Input[str]] = None,
+             member_key: Optional[pulumi.Input['GroupMembershipMemberKeyArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             preferred_member_key: Optional[pulumi.Input['GroupMembershipPreferredMemberKeyArgs']] = None,
+             roles: Optional[pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArgs']]]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if group is not None:
-            pulumi.set(__self__, "group", group)
+            _setter("group", group)
         if member_key is not None:
-            pulumi.set(__self__, "member_key", member_key)
+            _setter("member_key", member_key)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if preferred_member_key is not None:
-            pulumi.set(__self__, "preferred_member_key", preferred_member_key)
+            _setter("preferred_member_key", preferred_member_key)
         if roles is not None:
-            pulumi.set(__self__, "roles", roles)
+            _setter("roles", roles)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -452,6 +490,10 @@ class GroupMembership(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GroupMembershipArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -473,7 +515,17 @@ class GroupMembership(pulumi.CustomResource):
             if group is None and not opts.urn:
                 raise TypeError("Missing required property 'group'")
             __props__.__dict__["group"] = group
+            if member_key is not None and not isinstance(member_key, GroupMembershipMemberKeyArgs):
+                member_key = member_key or {}
+                def _setter(key, value):
+                    member_key[key] = value
+                GroupMembershipMemberKeyArgs._configure(_setter, **member_key)
             __props__.__dict__["member_key"] = member_key
+            if preferred_member_key is not None and not isinstance(preferred_member_key, GroupMembershipPreferredMemberKeyArgs):
+                preferred_member_key = preferred_member_key or {}
+                def _setter(key, value):
+                    preferred_member_key[key] = value
+                GroupMembershipPreferredMemberKeyArgs._configure(_setter, **preferred_member_key)
             __props__.__dict__["preferred_member_key"] = preferred_member_key
             if roles is None and not opts.urn:
                 raise TypeError("Missing required property 'roles'")

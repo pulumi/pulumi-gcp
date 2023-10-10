@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceArgs', 'Instance']
@@ -51,20 +51,43 @@ class InstanceArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "config", config)
-        pulumi.set(__self__, "display_name", display_name)
+        InstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config=config,
+            display_name=display_name,
+            force_destroy=force_destroy,
+            labels=labels,
+            name=name,
+            num_nodes=num_nodes,
+            processing_units=processing_units,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config: pulumi.Input[str],
+             display_name: pulumi.Input[str],
+             force_destroy: Optional[pulumi.Input[bool]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             num_nodes: Optional[pulumi.Input[int]] = None,
+             processing_units: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("config", config)
+        _setter("display_name", display_name)
         if force_destroy is not None:
-            pulumi.set(__self__, "force_destroy", force_destroy)
+            _setter("force_destroy", force_destroy)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if num_nodes is not None:
-            pulumi.set(__self__, "num_nodes", num_nodes)
+            _setter("num_nodes", num_nodes)
         if processing_units is not None:
-            pulumi.set(__self__, "processing_units", processing_units)
+            _setter("processing_units", processing_units)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -223,24 +246,49 @@ class _InstanceState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: Instance status: `CREATING` or `READY`.
         """
+        _InstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config=config,
+            display_name=display_name,
+            force_destroy=force_destroy,
+            labels=labels,
+            name=name,
+            num_nodes=num_nodes,
+            processing_units=processing_units,
+            project=project,
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             force_destroy: Optional[pulumi.Input[bool]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             num_nodes: Optional[pulumi.Input[int]] = None,
+             processing_units: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if force_destroy is not None:
-            pulumi.set(__self__, "force_destroy", force_destroy)
+            _setter("force_destroy", force_destroy)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if num_nodes is not None:
-            pulumi.set(__self__, "num_nodes", num_nodes)
+            _setter("num_nodes", num_nodes)
         if processing_units is not None:
-            pulumi.set(__self__, "processing_units", processing_units)
+            _setter("processing_units", processing_units)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
 
     @property
     @pulumi.getter
@@ -568,6 +616,10 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -16,28 +16,12 @@ public final class ClusterAddonsConfigDnsCacheConfigArgs extends com.pulumi.reso
     /**
      * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
      * 
-     * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-     * 
-     * enforce encryption of data in-use.
-     * 
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
-     * 
-     * not.
-     * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
      * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-     * 
-     * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-     * 
-     * enforce encryption of data in-use.
-     * 
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
-     * 
-     * not.
      * 
      */
     public Output<Boolean> enabled() {
@@ -71,14 +55,6 @@ public final class ClusterAddonsConfigDnsCacheConfigArgs extends com.pulumi.reso
         /**
          * @param enabled Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
          * 
-         * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-         * 
-         * enforce encryption of data in-use.
-         * 
-         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
-         * 
-         * not.
-         * 
          * @return builder
          * 
          */
@@ -89,14 +65,6 @@ public final class ClusterAddonsConfigDnsCacheConfigArgs extends com.pulumi.reso
 
         /**
          * @param enabled Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-         * 
-         * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-         * 
-         * enforce encryption of data in-use.
-         * 
-         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
-         * 
-         * not.
          * 
          * @return builder
          * 

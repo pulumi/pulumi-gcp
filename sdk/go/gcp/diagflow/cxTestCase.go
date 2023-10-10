@@ -245,10 +245,6 @@ type CxTestCase struct {
 	// The latest test result.
 	// Structure is documented below.
 	LastTestResults CxTestCaseLastTestResultArrayOutput `pulumi:"lastTestResults"`
-	// The unique identifier of the intent.
-	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
-	//
-	// (Optional)
 	// The unique identifier of the page.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -310,10 +306,6 @@ type cxTestCaseState struct {
 	// The latest test result.
 	// Structure is documented below.
 	LastTestResults []CxTestCaseLastTestResult `pulumi:"lastTestResults"`
-	// The unique identifier of the intent.
-	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
-	//
-	// (Optional)
 	// The unique identifier of the page.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
 	Name *string `pulumi:"name"`
@@ -343,10 +335,6 @@ type CxTestCaseState struct {
 	// The latest test result.
 	// Structure is documented below.
 	LastTestResults CxTestCaseLastTestResultArrayInput
-	// The unique identifier of the intent.
-	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
-	//
-	// (Optional)
 	// The unique identifier of the page.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
 	Name pulumi.StringPtrInput
@@ -542,10 +530,6 @@ func (o CxTestCaseOutput) LastTestResults() CxTestCaseLastTestResultArrayOutput 
 	return o.ApplyT(func(v *CxTestCase) CxTestCaseLastTestResultArrayOutput { return v.LastTestResults }).(CxTestCaseLastTestResultArrayOutput)
 }
 
-// The unique identifier of the intent.
-// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
-//
-// (Optional)
 // The unique identifier of the page.
 // Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
 func (o CxTestCaseOutput) Name() pulumi.StringOutput {

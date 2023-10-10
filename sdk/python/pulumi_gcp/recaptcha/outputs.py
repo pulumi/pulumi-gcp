@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -44,10 +44,21 @@ class EnterpriseKeyAndroidSettings(dict):
         :param bool allow_all_package_names: If set to true, it means allowed_package_names will not be enforced.
         :param Sequence[str] allowed_package_names: Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
         """
+        EnterpriseKeyAndroidSettings._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_all_package_names=allow_all_package_names,
+            allowed_package_names=allowed_package_names,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_all_package_names: Optional[bool] = None,
+             allowed_package_names: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if allow_all_package_names is not None:
-            pulumi.set(__self__, "allow_all_package_names", allow_all_package_names)
+            _setter("allow_all_package_names", allow_all_package_names)
         if allowed_package_names is not None:
-            pulumi.set(__self__, "allowed_package_names", allowed_package_names)
+            _setter("allowed_package_names", allowed_package_names)
 
     @property
     @pulumi.getter(name="allowAllPackageNames")
@@ -94,10 +105,21 @@ class EnterpriseKeyIosSettings(dict):
         :param bool allow_all_bundle_ids: If set to true, it means allowed_bundle_ids will not be enforced.
         :param Sequence[str] allowed_bundle_ids: iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
         """
+        EnterpriseKeyIosSettings._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_all_bundle_ids=allow_all_bundle_ids,
+            allowed_bundle_ids=allowed_bundle_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_all_bundle_ids: Optional[bool] = None,
+             allowed_bundle_ids: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if allow_all_bundle_ids is not None:
-            pulumi.set(__self__, "allow_all_bundle_ids", allow_all_bundle_ids)
+            _setter("allow_all_bundle_ids", allow_all_bundle_ids)
         if allowed_bundle_ids is not None:
-            pulumi.set(__self__, "allowed_bundle_ids", allowed_bundle_ids)
+            _setter("allowed_bundle_ids", allowed_bundle_ids)
 
     @property
     @pulumi.getter(name="allowAllBundleIds")
@@ -144,10 +166,21 @@ class EnterpriseKeyTestingOptions(dict):
         :param str testing_challenge: For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if UNSOLVABLE_CHALLENGE. Possible values: TESTING_CHALLENGE_UNSPECIFIED, NOCAPTCHA, UNSOLVABLE_CHALLENGE
         :param float testing_score: All assessments for this Key will return this score. Must be between 0 (likely not legitimate) and 1 (likely legitimate) inclusive.
         """
+        EnterpriseKeyTestingOptions._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            testing_challenge=testing_challenge,
+            testing_score=testing_score,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             testing_challenge: Optional[str] = None,
+             testing_score: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if testing_challenge is not None:
-            pulumi.set(__self__, "testing_challenge", testing_challenge)
+            _setter("testing_challenge", testing_challenge)
         if testing_score is not None:
-            pulumi.set(__self__, "testing_score", testing_score)
+            _setter("testing_score", testing_score)
 
     @property
     @pulumi.getter(name="testingChallenge")
@@ -206,15 +239,32 @@ class EnterpriseKeyWebSettings(dict):
         :param Sequence[str] allowed_domains: Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com'
         :param str challenge_security_preference: Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE. Possible values: CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED, USABILITY, BALANCE, SECURITY
         """
-        pulumi.set(__self__, "integration_type", integration_type)
+        EnterpriseKeyWebSettings._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            integration_type=integration_type,
+            allow_all_domains=allow_all_domains,
+            allow_amp_traffic=allow_amp_traffic,
+            allowed_domains=allowed_domains,
+            challenge_security_preference=challenge_security_preference,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             integration_type: str,
+             allow_all_domains: Optional[bool] = None,
+             allow_amp_traffic: Optional[bool] = None,
+             allowed_domains: Optional[Sequence[str]] = None,
+             challenge_security_preference: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("integration_type", integration_type)
         if allow_all_domains is not None:
-            pulumi.set(__self__, "allow_all_domains", allow_all_domains)
+            _setter("allow_all_domains", allow_all_domains)
         if allow_amp_traffic is not None:
-            pulumi.set(__self__, "allow_amp_traffic", allow_amp_traffic)
+            _setter("allow_amp_traffic", allow_amp_traffic)
         if allowed_domains is not None:
-            pulumi.set(__self__, "allowed_domains", allowed_domains)
+            _setter("allowed_domains", allowed_domains)
         if challenge_security_preference is not None:
-            pulumi.set(__self__, "challenge_security_preference", challenge_security_preference)
+            _setter("challenge_security_preference", challenge_security_preference)
 
     @property
     @pulumi.getter(name="integrationType")

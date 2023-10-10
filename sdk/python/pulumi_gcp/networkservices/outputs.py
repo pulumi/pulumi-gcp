@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -98,11 +98,24 @@ class EdgeCacheKeysetPublicKey(dict):
                Representations or encodings of the public key other than this will be rejected with an error.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
-        pulumi.set(__self__, "id", id)
+        EdgeCacheKeysetPublicKey._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            managed=managed,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             managed: Optional[bool] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
         if managed is not None:
-            pulumi.set(__self__, "managed", managed)
+            _setter("managed", managed)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -162,7 +175,16 @@ class EdgeCacheKeysetValidationSharedKey(dict):
                * If you are using HMAC-SHA256, we suggest 32-byte secrets.
                See RFC 2104, Section 3 for more details on these recommendations.
         """
-        pulumi.set(__self__, "secret_version", secret_version)
+        EdgeCacheKeysetValidationSharedKey._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            secret_version=secret_version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             secret_version: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("secret_version", secret_version)
 
     @property
     @pulumi.getter(name="secretVersion")
@@ -211,9 +233,22 @@ class EdgeCacheOriginAwsV4Authentication(dict):
         :param str secret_access_key_version: The Secret Manager secret version of the secret access key used by your origin.
                This is the resource name of the secret version in the format `projects/*/secrets/*/versions/*` where the `*` values are replaced by the project, secret, and version you require.
         """
-        pulumi.set(__self__, "access_key_id", access_key_id)
-        pulumi.set(__self__, "origin_region", origin_region)
-        pulumi.set(__self__, "secret_access_key_version", secret_access_key_version)
+        EdgeCacheOriginAwsV4Authentication._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_key_id=access_key_id,
+            origin_region=origin_region,
+            secret_access_key_version=secret_access_key_version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_key_id: str,
+             origin_region: str,
+             secret_access_key_version: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_key_id", access_key_id)
+        _setter("origin_region", origin_region)
+        _setter("secret_access_key_version", secret_access_key_version)
 
     @property
     @pulumi.getter(name="accessKeyId")
@@ -273,10 +308,21 @@ class EdgeCacheOriginOriginOverrideAction(dict):
                handled by this origin.
                Structure is documented below.
         """
+        EdgeCacheOriginOriginOverrideAction._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            header_action=header_action,
+            url_rewrite=url_rewrite,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             header_action: Optional['outputs.EdgeCacheOriginOriginOverrideActionHeaderAction'] = None,
+             url_rewrite: Optional['outputs.EdgeCacheOriginOriginOverrideActionUrlRewrite'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if header_action is not None:
-            pulumi.set(__self__, "header_action", header_action)
+            _setter("header_action", header_action)
         if url_rewrite is not None:
-            pulumi.set(__self__, "url_rewrite", url_rewrite)
+            _setter("url_rewrite", url_rewrite)
 
     @property
     @pulumi.getter(name="headerAction")
@@ -325,8 +371,17 @@ class EdgeCacheOriginOriginOverrideActionHeaderAction(dict):
                You may add a maximum of 25 request headers.
                Structure is documented below.
         """
+        EdgeCacheOriginOriginOverrideActionHeaderAction._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            request_headers_to_adds=request_headers_to_adds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             request_headers_to_adds: Optional[Sequence['outputs.EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if request_headers_to_adds is not None:
-            pulumi.set(__self__, "request_headers_to_adds", request_headers_to_adds)
+            _setter("request_headers_to_adds", request_headers_to_adds)
 
     @property
     @pulumi.getter(name="requestHeadersToAdds")
@@ -374,10 +429,23 @@ class EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd(dict):
                separated by commas.
                To overwrite existing values, set `replace` to `true`.
         """
-        pulumi.set(__self__, "header_name", header_name)
-        pulumi.set(__self__, "header_value", header_value)
+        EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            header_name=header_name,
+            header_value=header_value,
+            replace=replace,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             header_name: str,
+             header_value: str,
+             replace: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("header_name", header_name)
+        _setter("header_value", header_value)
         if replace is not None:
-            pulumi.set(__self__, "replace", replace)
+            _setter("replace", replace)
 
     @property
     @pulumi.getter(name="headerName")
@@ -436,8 +504,17 @@ class EdgeCacheOriginOriginOverrideActionUrlRewrite(dict):
                contents of the hostRewrite.
                This value must be between 1 and 255 characters.
         """
+        EdgeCacheOriginOriginOverrideActionUrlRewrite._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host_rewrite=host_rewrite,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host_rewrite: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if host_rewrite is not None:
-            pulumi.set(__self__, "host_rewrite", host_rewrite)
+            _setter("host_rewrite", host_rewrite)
 
     @property
     @pulumi.getter(name="hostRewrite")
@@ -478,8 +555,17 @@ class EdgeCacheOriginOriginRedirect(dict):
                [RedirectConditions](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins#redirectconditions)
                are accepted.
         """
+        EdgeCacheOriginOriginRedirect._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            redirect_conditions=redirect_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             redirect_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if redirect_conditions is not None:
-            pulumi.set(__self__, "redirect_conditions", redirect_conditions)
+            _setter("redirect_conditions", redirect_conditions)
 
     @property
     @pulumi.getter(name="redirectConditions")
@@ -542,14 +628,29 @@ class EdgeCacheOriginTimeout(dict):
                This also applies to HTTP Chunked Transfer Encoding responses, and/or when an open-ended Range request is made to the origin. Origins that take longer to write additional bytes to the response than the configured responseTimeout will result in an error being returned to the client.
                If the response headers have already been written to the connection, the response will be truncated and logged.
         """
+        EdgeCacheOriginTimeout._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connect_timeout=connect_timeout,
+            max_attempts_timeout=max_attempts_timeout,
+            read_timeout=read_timeout,
+            response_timeout=response_timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connect_timeout: Optional[str] = None,
+             max_attempts_timeout: Optional[str] = None,
+             read_timeout: Optional[str] = None,
+             response_timeout: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if connect_timeout is not None:
-            pulumi.set(__self__, "connect_timeout", connect_timeout)
+            _setter("connect_timeout", connect_timeout)
         if max_attempts_timeout is not None:
-            pulumi.set(__self__, "max_attempts_timeout", max_attempts_timeout)
+            _setter("max_attempts_timeout", max_attempts_timeout)
         if read_timeout is not None:
-            pulumi.set(__self__, "read_timeout", read_timeout)
+            _setter("read_timeout", read_timeout)
         if response_timeout is not None:
-            pulumi.set(__self__, "response_timeout", response_timeout)
+            _setter("response_timeout", response_timeout)
 
     @property
     @pulumi.getter(name="connectTimeout")
@@ -624,10 +725,21 @@ class EdgeCacheServiceLogConfig(dict):
         :param float sample_rate: Configures the sampling rate of requests, where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0, and the value of the field must be in [0, 1].
                This field can only be specified if logging is enabled for this service.
         """
+        EdgeCacheServiceLogConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enable=enable,
+            sample_rate=sample_rate,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enable: Optional[bool] = None,
+             sample_rate: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enable is not None:
-            pulumi.set(__self__, "enable", enable)
+            _setter("enable", enable)
         if sample_rate is not None:
-            pulumi.set(__self__, "sample_rate", sample_rate)
+            _setter("sample_rate", sample_rate)
 
     @property
     @pulumi.getter
@@ -677,8 +789,19 @@ class EdgeCacheServiceRouting(dict):
         :param Sequence['EdgeCacheServiceRoutingPathMatcherArgs'] path_matchers: The list of pathMatchers referenced via name by hostRules. PathMatcher is used to match the path portion of the URL when a HostRule matches the URL's host portion.
                Structure is documented below.
         """
-        pulumi.set(__self__, "host_rules", host_rules)
-        pulumi.set(__self__, "path_matchers", path_matchers)
+        EdgeCacheServiceRouting._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host_rules=host_rules,
+            path_matchers=path_matchers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host_rules: Sequence['outputs.EdgeCacheServiceRoutingHostRule'],
+             path_matchers: Sequence['outputs.EdgeCacheServiceRoutingPathMatcher'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("host_rules", host_rules)
+        _setter("path_matchers", path_matchers)
 
     @property
     @pulumi.getter(name="hostRules")
@@ -737,10 +860,23 @@ class EdgeCacheServiceRoutingHostRule(dict):
         :param str path_matcher: The name of the pathMatcher associated with this hostRule.
         :param str description: A human-readable description of the hostRule.
         """
-        pulumi.set(__self__, "hosts", hosts)
-        pulumi.set(__self__, "path_matcher", path_matcher)
+        EdgeCacheServiceRoutingHostRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hosts=hosts,
+            path_matcher=path_matcher,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hosts: Sequence[str],
+             path_matcher: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("hosts", hosts)
+        _setter("path_matcher", path_matcher)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -806,10 +942,23 @@ class EdgeCacheServiceRoutingPathMatcher(dict):
                Structure is documented below.
         :param str description: A human-readable description of the resource.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "route_rules", route_rules)
+        EdgeCacheServiceRoutingPathMatcher._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            route_rules=route_rules,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             route_rules: Sequence['outputs.EdgeCacheServiceRoutingPathMatcherRouteRule'],
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("route_rules", route_rules)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -888,18 +1037,39 @@ class EdgeCacheServiceRoutingPathMatcherRouteRule(dict):
         :param 'EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs' url_redirect: The URL redirect configuration for requests that match this route.
                Structure is documented below.
         """
-        pulumi.set(__self__, "match_rules", match_rules)
-        pulumi.set(__self__, "priority", priority)
+        EdgeCacheServiceRoutingPathMatcherRouteRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            match_rules=match_rules,
+            priority=priority,
+            description=description,
+            header_action=header_action,
+            origin=origin,
+            route_action=route_action,
+            url_redirect=url_redirect,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             match_rules: Sequence['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule'],
+             priority: str,
+             description: Optional[str] = None,
+             header_action: Optional['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction'] = None,
+             origin: Optional[str] = None,
+             route_action: Optional['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction'] = None,
+             url_redirect: Optional['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("match_rules", match_rules)
+        _setter("priority", priority)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if header_action is not None:
-            pulumi.set(__self__, "header_action", header_action)
+            _setter("header_action", header_action)
         if origin is not None:
-            pulumi.set(__self__, "origin", origin)
+            _setter("origin", origin)
         if route_action is not None:
-            pulumi.set(__self__, "route_action", route_action)
+            _setter("route_action", route_action)
         if url_redirect is not None:
-            pulumi.set(__self__, "url_redirect", url_redirect)
+            _setter("url_redirect", url_redirect)
 
     @property
     @pulumi.getter(name="matchRules")
@@ -1008,14 +1178,29 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction(dict):
         :param Sequence['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgs'] response_header_to_removes: A list of header names for headers that need to be removed from the request prior to forwarding the request to the origin.
                Structure is documented below.
         """
+        EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            request_header_to_adds=request_header_to_adds,
+            request_header_to_removes=request_header_to_removes,
+            response_header_to_adds=response_header_to_adds,
+            response_header_to_removes=response_header_to_removes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             request_header_to_adds: Optional[Sequence['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd']] = None,
+             request_header_to_removes: Optional[Sequence['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove']] = None,
+             response_header_to_adds: Optional[Sequence['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd']] = None,
+             response_header_to_removes: Optional[Sequence['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if request_header_to_adds is not None:
-            pulumi.set(__self__, "request_header_to_adds", request_header_to_adds)
+            _setter("request_header_to_adds", request_header_to_adds)
         if request_header_to_removes is not None:
-            pulumi.set(__self__, "request_header_to_removes", request_header_to_removes)
+            _setter("request_header_to_removes", request_header_to_removes)
         if response_header_to_adds is not None:
-            pulumi.set(__self__, "response_header_to_adds", response_header_to_adds)
+            _setter("response_header_to_adds", response_header_to_adds)
         if response_header_to_removes is not None:
-            pulumi.set(__self__, "response_header_to_removes", response_header_to_removes)
+            _setter("response_header_to_removes", response_header_to_removes)
 
     @property
     @pulumi.getter(name="requestHeaderToAdds")
@@ -1085,10 +1270,23 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd(
         :param str header_value: The value of the header to add.
         :param bool replace: Whether to replace all existing headers with the same name.
         """
-        pulumi.set(__self__, "header_name", header_name)
-        pulumi.set(__self__, "header_value", header_value)
+        EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            header_name=header_name,
+            header_value=header_value,
+            replace=replace,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             header_name: str,
+             header_value: str,
+             replace: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("header_name", header_name)
+        _setter("header_value", header_value)
         if replace is not None:
-            pulumi.set(__self__, "replace", replace)
+            _setter("replace", replace)
 
     @property
     @pulumi.getter(name="headerName")
@@ -1139,7 +1337,16 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemo
         """
         :param str header_name: The name of the header to remove.
         """
-        pulumi.set(__self__, "header_name", header_name)
+        EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            header_name=header_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             header_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("header_name", header_name)
 
     @property
     @pulumi.getter(name="headerName")
@@ -1180,10 +1387,23 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd
         :param str header_value: The value of the header to add.
         :param bool replace: Whether to replace all existing headers with the same name.
         """
-        pulumi.set(__self__, "header_name", header_name)
-        pulumi.set(__self__, "header_value", header_value)
+        EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            header_name=header_name,
+            header_value=header_value,
+            replace=replace,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             header_name: str,
+             header_value: str,
+             replace: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("header_name", header_name)
+        _setter("header_value", header_value)
         if replace is not None:
-            pulumi.set(__self__, "replace", replace)
+            _setter("replace", replace)
 
     @property
     @pulumi.getter(name="headerName")
@@ -1235,7 +1455,16 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRem
         :param str header_name: Headers to remove from the response prior to sending it back to the client.
                Response headers are only sent to the client, and do not have an effect on the cache serving the response.
         """
-        pulumi.set(__self__, "header_name", header_name)
+        EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            header_name=header_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             header_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("header_name", header_name)
 
     @property
     @pulumi.getter(name="headerName")
@@ -1300,18 +1529,37 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule(dict):
         :param Sequence['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs'] query_parameter_matches: Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request.
                Structure is documented below.
         """
+        EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            full_path_match=full_path_match,
+            header_matches=header_matches,
+            ignore_case=ignore_case,
+            path_template_match=path_template_match,
+            prefix_match=prefix_match,
+            query_parameter_matches=query_parameter_matches,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             full_path_match: Optional[str] = None,
+             header_matches: Optional[Sequence['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch']] = None,
+             ignore_case: Optional[bool] = None,
+             path_template_match: Optional[str] = None,
+             prefix_match: Optional[str] = None,
+             query_parameter_matches: Optional[Sequence['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if full_path_match is not None:
-            pulumi.set(__self__, "full_path_match", full_path_match)
+            _setter("full_path_match", full_path_match)
         if header_matches is not None:
-            pulumi.set(__self__, "header_matches", header_matches)
+            _setter("header_matches", header_matches)
         if ignore_case is not None:
-            pulumi.set(__self__, "ignore_case", ignore_case)
+            _setter("ignore_case", ignore_case)
         if path_template_match is not None:
-            pulumi.set(__self__, "path_template_match", path_template_match)
+            _setter("path_template_match", path_template_match)
         if prefix_match is not None:
-            pulumi.set(__self__, "prefix_match", prefix_match)
+            _setter("prefix_match", prefix_match)
         if query_parameter_matches is not None:
-            pulumi.set(__self__, "query_parameter_matches", query_parameter_matches)
+            _setter("query_parameter_matches", query_parameter_matches)
 
     @property
     @pulumi.getter(name="fullPathMatch")
@@ -1416,17 +1664,36 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch(dict):
         :param bool present_match: A header with the contents of headerName must exist. The match takes place whether or not the request's header has a value.
         :param str suffix_match: The value of the header must end with the contents of suffixMatch.
         """
-        pulumi.set(__self__, "header_name", header_name)
+        EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            header_name=header_name,
+            exact_match=exact_match,
+            invert_match=invert_match,
+            prefix_match=prefix_match,
+            present_match=present_match,
+            suffix_match=suffix_match,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             header_name: str,
+             exact_match: Optional[str] = None,
+             invert_match: Optional[bool] = None,
+             prefix_match: Optional[str] = None,
+             present_match: Optional[bool] = None,
+             suffix_match: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("header_name", header_name)
         if exact_match is not None:
-            pulumi.set(__self__, "exact_match", exact_match)
+            _setter("exact_match", exact_match)
         if invert_match is not None:
-            pulumi.set(__self__, "invert_match", invert_match)
+            _setter("invert_match", invert_match)
         if prefix_match is not None:
-            pulumi.set(__self__, "prefix_match", prefix_match)
+            _setter("prefix_match", prefix_match)
         if present_match is not None:
-            pulumi.set(__self__, "present_match", present_match)
+            _setter("present_match", present_match)
         if suffix_match is not None:
-            pulumi.set(__self__, "suffix_match", suffix_match)
+            _setter("suffix_match", suffix_match)
 
     @property
     @pulumi.getter(name="headerName")
@@ -1508,11 +1775,24 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch(di
         :param str exact_match: The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch.
         :param bool present_match: Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not.
         """
-        pulumi.set(__self__, "name", name)
+        EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            exact_match=exact_match,
+            present_match=present_match,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             exact_match: Optional[str] = None,
+             present_match: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if exact_match is not None:
-            pulumi.set(__self__, "exact_match", exact_match)
+            _setter("exact_match", exact_match)
         if present_match is not None:
-            pulumi.set(__self__, "present_match", present_match)
+            _setter("present_match", present_match)
 
     @property
     @pulumi.getter
@@ -1574,12 +1854,25 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction(dict):
         :param 'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs' url_rewrite: The URL rewrite configuration for requests that match this route.
                Structure is documented below.
         """
+        EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cdn_policy=cdn_policy,
+            cors_policy=cors_policy,
+            url_rewrite=url_rewrite,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cdn_policy: Optional['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy'] = None,
+             cors_policy: Optional['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy'] = None,
+             url_rewrite: Optional['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cdn_policy is not None:
-            pulumi.set(__self__, "cdn_policy", cdn_policy)
+            _setter("cdn_policy", cdn_policy)
         if cors_policy is not None:
-            pulumi.set(__self__, "cors_policy", cors_policy)
+            _setter("cors_policy", cors_policy)
         if url_rewrite is not None:
-            pulumi.set(__self__, "url_rewrite", url_rewrite)
+            _setter("url_rewrite", url_rewrite)
 
     @property
     @pulumi.getter(name="cdnPolicy")
@@ -1722,30 +2015,61 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy(dict):
                signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
                Structure is documented below.
         """
+        EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            add_signatures=add_signatures,
+            cache_key_policy=cache_key_policy,
+            cache_mode=cache_mode,
+            client_ttl=client_ttl,
+            default_ttl=default_ttl,
+            max_ttl=max_ttl,
+            negative_caching=negative_caching,
+            negative_caching_policy=negative_caching_policy,
+            signed_request_keyset=signed_request_keyset,
+            signed_request_maximum_expiration_ttl=signed_request_maximum_expiration_ttl,
+            signed_request_mode=signed_request_mode,
+            signed_token_options=signed_token_options,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             add_signatures: Optional['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures'] = None,
+             cache_key_policy: Optional['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy'] = None,
+             cache_mode: Optional[str] = None,
+             client_ttl: Optional[str] = None,
+             default_ttl: Optional[str] = None,
+             max_ttl: Optional[str] = None,
+             negative_caching: Optional[bool] = None,
+             negative_caching_policy: Optional[Mapping[str, str]] = None,
+             signed_request_keyset: Optional[str] = None,
+             signed_request_maximum_expiration_ttl: Optional[str] = None,
+             signed_request_mode: Optional[str] = None,
+             signed_token_options: Optional['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if add_signatures is not None:
-            pulumi.set(__self__, "add_signatures", add_signatures)
+            _setter("add_signatures", add_signatures)
         if cache_key_policy is not None:
-            pulumi.set(__self__, "cache_key_policy", cache_key_policy)
+            _setter("cache_key_policy", cache_key_policy)
         if cache_mode is not None:
-            pulumi.set(__self__, "cache_mode", cache_mode)
+            _setter("cache_mode", cache_mode)
         if client_ttl is not None:
-            pulumi.set(__self__, "client_ttl", client_ttl)
+            _setter("client_ttl", client_ttl)
         if default_ttl is not None:
-            pulumi.set(__self__, "default_ttl", default_ttl)
+            _setter("default_ttl", default_ttl)
         if max_ttl is not None:
-            pulumi.set(__self__, "max_ttl", max_ttl)
+            _setter("max_ttl", max_ttl)
         if negative_caching is not None:
-            pulumi.set(__self__, "negative_caching", negative_caching)
+            _setter("negative_caching", negative_caching)
         if negative_caching_policy is not None:
-            pulumi.set(__self__, "negative_caching_policy", negative_caching_policy)
+            _setter("negative_caching_policy", negative_caching_policy)
         if signed_request_keyset is not None:
-            pulumi.set(__self__, "signed_request_keyset", signed_request_keyset)
+            _setter("signed_request_keyset", signed_request_keyset)
         if signed_request_maximum_expiration_ttl is not None:
-            pulumi.set(__self__, "signed_request_maximum_expiration_ttl", signed_request_maximum_expiration_ttl)
+            _setter("signed_request_maximum_expiration_ttl", signed_request_maximum_expiration_ttl)
         if signed_request_mode is not None:
-            pulumi.set(__self__, "signed_request_mode", signed_request_mode)
+            _setter("signed_request_mode", signed_request_mode)
         if signed_token_options is not None:
-            pulumi.set(__self__, "signed_token_options", signed_token_options)
+            _setter("signed_token_options", signed_token_options)
 
     @property
     @pulumi.getter(name="addSignatures")
@@ -1936,15 +2260,32 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatur
                This field may only be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
-        pulumi.set(__self__, "actions", actions)
+        EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            actions=actions,
+            copied_parameters=copied_parameters,
+            keyset=keyset,
+            token_query_parameter=token_query_parameter,
+            token_ttl=token_ttl,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             actions: str,
+             copied_parameters: Optional[Sequence[str]] = None,
+             keyset: Optional[str] = None,
+             token_query_parameter: Optional[str] = None,
+             token_ttl: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("actions", actions)
         if copied_parameters is not None:
-            pulumi.set(__self__, "copied_parameters", copied_parameters)
+            _setter("copied_parameters", copied_parameters)
         if keyset is not None:
-            pulumi.set(__self__, "keyset", keyset)
+            _setter("keyset", keyset)
         if token_query_parameter is not None:
-            pulumi.set(__self__, "token_query_parameter", token_query_parameter)
+            _setter("token_query_parameter", token_query_parameter)
         if token_ttl is not None:
-            pulumi.set(__self__, "token_ttl", token_ttl)
+            _setter("token_ttl", token_ttl)
 
     @property
     @pulumi.getter
@@ -2064,20 +2405,41 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPol
         :param Sequence[str] included_query_parameters: Names of query string parameters to include in cache keys. All other parameters will be excluded.
                Either specify includedQueryParameters or excludedQueryParameters, not both. '&' and '=' will be percent encoded and not treated as delimiters.
         """
+        EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            exclude_host=exclude_host,
+            exclude_query_string=exclude_query_string,
+            excluded_query_parameters=excluded_query_parameters,
+            include_protocol=include_protocol,
+            included_cookie_names=included_cookie_names,
+            included_header_names=included_header_names,
+            included_query_parameters=included_query_parameters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             exclude_host: Optional[bool] = None,
+             exclude_query_string: Optional[bool] = None,
+             excluded_query_parameters: Optional[Sequence[str]] = None,
+             include_protocol: Optional[bool] = None,
+             included_cookie_names: Optional[Sequence[str]] = None,
+             included_header_names: Optional[Sequence[str]] = None,
+             included_query_parameters: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if exclude_host is not None:
-            pulumi.set(__self__, "exclude_host", exclude_host)
+            _setter("exclude_host", exclude_host)
         if exclude_query_string is not None:
-            pulumi.set(__self__, "exclude_query_string", exclude_query_string)
+            _setter("exclude_query_string", exclude_query_string)
         if excluded_query_parameters is not None:
-            pulumi.set(__self__, "excluded_query_parameters", excluded_query_parameters)
+            _setter("excluded_query_parameters", excluded_query_parameters)
         if include_protocol is not None:
-            pulumi.set(__self__, "include_protocol", include_protocol)
+            _setter("include_protocol", include_protocol)
         if included_cookie_names is not None:
-            pulumi.set(__self__, "included_cookie_names", included_cookie_names)
+            _setter("included_cookie_names", included_cookie_names)
         if included_header_names is not None:
-            pulumi.set(__self__, "included_header_names", included_header_names)
+            _setter("included_header_names", included_header_names)
         if included_query_parameters is not None:
-            pulumi.set(__self__, "included_query_parameters", included_query_parameters)
+            _setter("included_query_parameters", included_query_parameters)
 
     @property
     @pulumi.getter(name="excludeHost")
@@ -2187,10 +2549,21 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedToken
                The name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
                Defaults to `edge-cache-token`.
         """
+        EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allowed_signature_algorithms=allowed_signature_algorithms,
+            token_query_parameter=token_query_parameter,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allowed_signature_algorithms: Optional[Sequence[str]] = None,
+             token_query_parameter: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if allowed_signature_algorithms is not None:
-            pulumi.set(__self__, "allowed_signature_algorithms", allowed_signature_algorithms)
+            _setter("allowed_signature_algorithms", allowed_signature_algorithms)
         if token_query_parameter is not None:
-            pulumi.set(__self__, "token_query_parameter", token_query_parameter)
+            _setter("token_query_parameter", token_query_parameter)
 
     @property
     @pulumi.getter(name="allowedSignatureAlgorithms")
@@ -2266,19 +2639,40 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy(dict):
         :param bool disabled: If true, specifies the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
         :param Sequence[str] expose_headers: Specifies the content for the Access-Control-Allow-Headers response header.
         """
-        pulumi.set(__self__, "max_age", max_age)
+        EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_age=max_age,
+            allow_credentials=allow_credentials,
+            allow_headers=allow_headers,
+            allow_methods=allow_methods,
+            allow_origins=allow_origins,
+            disabled=disabled,
+            expose_headers=expose_headers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_age: str,
+             allow_credentials: Optional[bool] = None,
+             allow_headers: Optional[Sequence[str]] = None,
+             allow_methods: Optional[Sequence[str]] = None,
+             allow_origins: Optional[Sequence[str]] = None,
+             disabled: Optional[bool] = None,
+             expose_headers: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("max_age", max_age)
         if allow_credentials is not None:
-            pulumi.set(__self__, "allow_credentials", allow_credentials)
+            _setter("allow_credentials", allow_credentials)
         if allow_headers is not None:
-            pulumi.set(__self__, "allow_headers", allow_headers)
+            _setter("allow_headers", allow_headers)
         if allow_methods is not None:
-            pulumi.set(__self__, "allow_methods", allow_methods)
+            _setter("allow_methods", allow_methods)
         if allow_origins is not None:
-            pulumi.set(__self__, "allow_origins", allow_origins)
+            _setter("allow_origins", allow_origins)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if expose_headers is not None:
-            pulumi.set(__self__, "expose_headers", expose_headers)
+            _setter("expose_headers", expose_headers)
 
     @property
     @pulumi.getter(name="maxAge")
@@ -2385,12 +2779,25 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite(dict):
                Only one of pathPrefixRewrite and pathTemplateRewrite may be
                specified.
         """
+        EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host_rewrite=host_rewrite,
+            path_prefix_rewrite=path_prefix_rewrite,
+            path_template_rewrite=path_template_rewrite,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host_rewrite: Optional[str] = None,
+             path_prefix_rewrite: Optional[str] = None,
+             path_template_rewrite: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if host_rewrite is not None:
-            pulumi.set(__self__, "host_rewrite", host_rewrite)
+            _setter("host_rewrite", host_rewrite)
         if path_prefix_rewrite is not None:
-            pulumi.set(__self__, "path_prefix_rewrite", path_prefix_rewrite)
+            _setter("path_prefix_rewrite", path_prefix_rewrite)
         if path_template_rewrite is not None:
-            pulumi.set(__self__, "path_template_rewrite", path_template_rewrite)
+            _setter("path_template_rewrite", path_template_rewrite)
 
     @property
     @pulumi.getter(name="hostRewrite")
@@ -2478,18 +2885,37 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect(dict):
                
                - - -
         """
+        EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host_redirect=host_redirect,
+            https_redirect=https_redirect,
+            path_redirect=path_redirect,
+            prefix_redirect=prefix_redirect,
+            redirect_response_code=redirect_response_code,
+            strip_query=strip_query,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host_redirect: Optional[str] = None,
+             https_redirect: Optional[bool] = None,
+             path_redirect: Optional[str] = None,
+             prefix_redirect: Optional[str] = None,
+             redirect_response_code: Optional[str] = None,
+             strip_query: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if host_redirect is not None:
-            pulumi.set(__self__, "host_redirect", host_redirect)
+            _setter("host_redirect", host_redirect)
         if https_redirect is not None:
-            pulumi.set(__self__, "https_redirect", https_redirect)
+            _setter("https_redirect", https_redirect)
         if path_redirect is not None:
-            pulumi.set(__self__, "path_redirect", path_redirect)
+            _setter("path_redirect", path_redirect)
         if prefix_redirect is not None:
-            pulumi.set(__self__, "prefix_redirect", prefix_redirect)
+            _setter("prefix_redirect", prefix_redirect)
         if redirect_response_code is not None:
-            pulumi.set(__self__, "redirect_response_code", redirect_response_code)
+            _setter("redirect_response_code", redirect_response_code)
         if strip_query is not None:
-            pulumi.set(__self__, "strip_query", strip_query)
+            _setter("strip_query", strip_query)
 
     @property
     @pulumi.getter(name="hostRedirect")
@@ -2572,7 +2998,16 @@ class EndpointPolicyEndpointMatcher(dict):
         :param 'EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs' metadata_label_matcher: The matcher is based on node metadata presented by xDS clients.
                Structure is documented below.
         """
-        pulumi.set(__self__, "metadata_label_matcher", metadata_label_matcher)
+        EndpointPolicyEndpointMatcher._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            metadata_label_matcher=metadata_label_matcher,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             metadata_label_matcher: 'outputs.EndpointPolicyEndpointMatcherMetadataLabelMatcher',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("metadata_label_matcher", metadata_label_matcher)
 
     @property
     @pulumi.getter(name="metadataLabelMatcher")
@@ -2614,9 +3049,20 @@ class EndpointPolicyEndpointMatcherMetadataLabelMatcher(dict):
         :param Sequence['EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs'] metadata_labels: The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria
                Structure is documented below.
         """
-        pulumi.set(__self__, "metadata_label_match_criteria", metadata_label_match_criteria)
+        EndpointPolicyEndpointMatcherMetadataLabelMatcher._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            metadata_label_match_criteria=metadata_label_match_criteria,
+            metadata_labels=metadata_labels,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             metadata_label_match_criteria: str,
+             metadata_labels: Optional[Sequence['outputs.EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("metadata_label_match_criteria", metadata_label_match_criteria)
         if metadata_labels is not None:
-            pulumi.set(__self__, "metadata_labels", metadata_labels)
+            _setter("metadata_labels", metadata_labels)
 
     @property
     @pulumi.getter(name="metadataLabelMatchCriteria")
@@ -2667,8 +3113,19 @@ class EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel(dict):
                
                - - -
         """
-        pulumi.set(__self__, "label_name", label_name)
-        pulumi.set(__self__, "label_value", label_value)
+        EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            label_name=label_name,
+            label_value=label_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             label_name: str,
+             label_value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("label_name", label_name)
+        _setter("label_value", label_value)
 
     @property
     @pulumi.getter(name="labelName")
@@ -2696,7 +3153,16 @@ class EndpointPolicyTrafficPortSelector(dict):
         """
         :param Sequence[str] ports: List of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
         """
-        pulumi.set(__self__, "ports", ports)
+        EndpointPolicyTrafficPortSelector._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ports=ports,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ports: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ports", ports)
 
     @property
     @pulumi.getter
@@ -2718,10 +3184,21 @@ class GrpcRouteRule(dict):
         :param Sequence['GrpcRouteRuleMatchArgs'] matches: Matches define conditions used for matching the rule against incoming gRPC requests.
                Structure is documented below.
         """
+        GrpcRouteRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            matches=matches,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional['outputs.GrpcRouteRuleAction'] = None,
+             matches: Optional[Sequence['outputs.GrpcRouteRuleMatch']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if action is not None:
-            pulumi.set(__self__, "action", action)
+            _setter("action", action)
         if matches is not None:
-            pulumi.set(__self__, "matches", matches)
+            _setter("matches", matches)
 
     @property
     @pulumi.getter
@@ -2777,14 +3254,29 @@ class GrpcRouteRuleAction(dict):
                Structure is documented below.
         :param str timeout: Specifies the timeout for selected route.
         """
+        GrpcRouteRuleAction._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            destinations=destinations,
+            fault_injection_policy=fault_injection_policy,
+            retry_policy=retry_policy,
+            timeout=timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             destinations: Optional[Sequence['outputs.GrpcRouteRuleActionDestination']] = None,
+             fault_injection_policy: Optional['outputs.GrpcRouteRuleActionFaultInjectionPolicy'] = None,
+             retry_policy: Optional['outputs.GrpcRouteRuleActionRetryPolicy'] = None,
+             timeout: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if destinations is not None:
-            pulumi.set(__self__, "destinations", destinations)
+            _setter("destinations", destinations)
         if fault_injection_policy is not None:
-            pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
+            _setter("fault_injection_policy", fault_injection_policy)
         if retry_policy is not None:
-            pulumi.set(__self__, "retry_policy", retry_policy)
+            _setter("retry_policy", retry_policy)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
 
     @property
     @pulumi.getter
@@ -2848,10 +3340,21 @@ class GrpcRouteRuleActionDestination(dict):
         :param str service_name: The URL of a BackendService to route traffic to.
         :param int weight: Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
         """
+        GrpcRouteRuleActionDestination._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service_name=service_name,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service_name: Optional[str] = None,
+             weight: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter(name="serviceName")
@@ -2881,10 +3384,21 @@ class GrpcRouteRuleActionFaultInjectionPolicy(dict):
         :param 'GrpcRouteRuleActionFaultInjectionPolicyDelayArgs' delay: Specification of how client requests are delayed as part of fault injection before being sent to a destination.
                Structure is documented below.
         """
+        GrpcRouteRuleActionFaultInjectionPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            abort=abort,
+            delay=delay,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             abort: Optional['outputs.GrpcRouteRuleActionFaultInjectionPolicyAbort'] = None,
+             delay: Optional['outputs.GrpcRouteRuleActionFaultInjectionPolicyDelay'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if abort is not None:
-            pulumi.set(__self__, "abort", abort)
+            _setter("abort", abort)
         if delay is not None:
-            pulumi.set(__self__, "delay", delay)
+            _setter("delay", delay)
 
     @property
     @pulumi.getter
@@ -2931,10 +3445,21 @@ class GrpcRouteRuleActionFaultInjectionPolicyAbort(dict):
         :param int http_status: The HTTP status code used to abort the request.
         :param int percentage: The percentage of traffic which will be aborted.
         """
+        GrpcRouteRuleActionFaultInjectionPolicyAbort._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            http_status=http_status,
+            percentage=percentage,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             http_status: Optional[int] = None,
+             percentage: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if http_status is not None:
-            pulumi.set(__self__, "http_status", http_status)
+            _setter("http_status", http_status)
         if percentage is not None:
-            pulumi.set(__self__, "percentage", percentage)
+            _setter("percentage", percentage)
 
     @property
     @pulumi.getter(name="httpStatus")
@@ -2979,10 +3504,21 @@ class GrpcRouteRuleActionFaultInjectionPolicyDelay(dict):
         :param str fixed_delay: Specify a fixed delay before forwarding the request.
         :param int percentage: The percentage of traffic on which delay will be injected.
         """
+        GrpcRouteRuleActionFaultInjectionPolicyDelay._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fixed_delay=fixed_delay,
+            percentage=percentage,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fixed_delay: Optional[str] = None,
+             percentage: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if fixed_delay is not None:
-            pulumi.set(__self__, "fixed_delay", fixed_delay)
+            _setter("fixed_delay", fixed_delay)
         if percentage is not None:
-            pulumi.set(__self__, "percentage", percentage)
+            _setter("percentage", percentage)
 
     @property
     @pulumi.getter(name="fixedDelay")
@@ -3032,10 +3568,21 @@ class GrpcRouteRuleActionRetryPolicy(dict):
         :param Sequence[str] retry_conditions: Specifies one or more conditions when this retry policy applies.
                Each value may be one of: `connect-failure`, `refused-stream`, `cancelled`, `deadline-exceeded`, `resource-exhausted`, `unavailable`.
         """
+        GrpcRouteRuleActionRetryPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            num_retries=num_retries,
+            retry_conditions=retry_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             num_retries: Optional[int] = None,
+             retry_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if num_retries is not None:
-            pulumi.set(__self__, "num_retries", num_retries)
+            _setter("num_retries", num_retries)
         if retry_conditions is not None:
-            pulumi.set(__self__, "retry_conditions", retry_conditions)
+            _setter("retry_conditions", retry_conditions)
 
     @property
     @pulumi.getter(name="numRetries")
@@ -3068,10 +3615,21 @@ class GrpcRouteRuleMatch(dict):
         :param 'GrpcRouteRuleMatchMethodArgs' method: A gRPC method to match against. If this field is empty or omitted, will match all methods.
                Structure is documented below.
         """
+        GrpcRouteRuleMatch._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            headers=headers,
+            method=method,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             headers: Optional[Sequence['outputs.GrpcRouteRuleMatchHeader']] = None,
+             method: Optional['outputs.GrpcRouteRuleMatchMethod'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if headers is not None:
-            pulumi.set(__self__, "headers", headers)
+            _setter("headers", headers)
         if method is not None:
-            pulumi.set(__self__, "method", method)
+            _setter("method", method)
 
     @property
     @pulumi.getter
@@ -3105,10 +3663,23 @@ class GrpcRouteRuleMatchHeader(dict):
                Default value is `EXACT`.
                Possible values are: `TYPE_UNSPECIFIED`, `EXACT`, `REGULAR_EXPRESSION`.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        GrpcRouteRuleMatchHeader._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -3169,10 +3740,23 @@ class GrpcRouteRuleMatchMethod(dict):
         :param str grpc_service: Required. Name of the service to match against.
         :param bool case_sensitive: Specifies that matches are case sensitive. The default value is true.
         """
-        pulumi.set(__self__, "grpc_method", grpc_method)
-        pulumi.set(__self__, "grpc_service", grpc_service)
+        GrpcRouteRuleMatchMethod._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            grpc_method=grpc_method,
+            grpc_service=grpc_service,
+            case_sensitive=case_sensitive,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             grpc_method: str,
+             grpc_service: str,
+             case_sensitive: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("grpc_method", grpc_method)
+        _setter("grpc_service", grpc_service)
         if case_sensitive is not None:
-            pulumi.set(__self__, "case_sensitive", case_sensitive)
+            _setter("case_sensitive", case_sensitive)
 
     @property
     @pulumi.getter(name="grpcMethod")
@@ -3212,10 +3796,21 @@ class HttpRouteRule(dict):
                If a default rule is desired to be configured, add a rule with no matches specified to the end of the rules list.
                Structure is documented below.
         """
+        HttpRouteRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            matches=matches,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional['outputs.HttpRouteRuleAction'] = None,
+             matches: Optional[Sequence['outputs.HttpRouteRuleMatch']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if action is not None:
-            pulumi.set(__self__, "action", action)
+            _setter("action", action)
         if matches is not None:
-            pulumi.set(__self__, "matches", matches)
+            _setter("matches", matches)
 
     @property
     @pulumi.getter
@@ -3301,26 +3896,53 @@ class HttpRouteRuleAction(dict):
         :param 'HttpRouteRuleActionUrlRewriteArgs' url_rewrite: The specification for rewrite URL before forwarding requests to the destination.
                Structure is documented below.
         """
+        HttpRouteRuleAction._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cors_policy=cors_policy,
+            destinations=destinations,
+            fault_injection_policy=fault_injection_policy,
+            redirect=redirect,
+            request_header_modifier=request_header_modifier,
+            request_mirror_policy=request_mirror_policy,
+            response_header_modifier=response_header_modifier,
+            retry_policy=retry_policy,
+            timeout=timeout,
+            url_rewrite=url_rewrite,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cors_policy: Optional['outputs.HttpRouteRuleActionCorsPolicy'] = None,
+             destinations: Optional[Sequence['outputs.HttpRouteRuleActionDestination']] = None,
+             fault_injection_policy: Optional['outputs.HttpRouteRuleActionFaultInjectionPolicy'] = None,
+             redirect: Optional['outputs.HttpRouteRuleActionRedirect'] = None,
+             request_header_modifier: Optional['outputs.HttpRouteRuleActionRequestHeaderModifier'] = None,
+             request_mirror_policy: Optional['outputs.HttpRouteRuleActionRequestMirrorPolicy'] = None,
+             response_header_modifier: Optional['outputs.HttpRouteRuleActionResponseHeaderModifier'] = None,
+             retry_policy: Optional['outputs.HttpRouteRuleActionRetryPolicy'] = None,
+             timeout: Optional[str] = None,
+             url_rewrite: Optional['outputs.HttpRouteRuleActionUrlRewrite'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cors_policy is not None:
-            pulumi.set(__self__, "cors_policy", cors_policy)
+            _setter("cors_policy", cors_policy)
         if destinations is not None:
-            pulumi.set(__self__, "destinations", destinations)
+            _setter("destinations", destinations)
         if fault_injection_policy is not None:
-            pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
+            _setter("fault_injection_policy", fault_injection_policy)
         if redirect is not None:
-            pulumi.set(__self__, "redirect", redirect)
+            _setter("redirect", redirect)
         if request_header_modifier is not None:
-            pulumi.set(__self__, "request_header_modifier", request_header_modifier)
+            _setter("request_header_modifier", request_header_modifier)
         if request_mirror_policy is not None:
-            pulumi.set(__self__, "request_mirror_policy", request_mirror_policy)
+            _setter("request_mirror_policy", request_mirror_policy)
         if response_header_modifier is not None:
-            pulumi.set(__self__, "response_header_modifier", response_header_modifier)
+            _setter("response_header_modifier", response_header_modifier)
         if retry_policy is not None:
-            pulumi.set(__self__, "retry_policy", retry_policy)
+            _setter("retry_policy", retry_policy)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
         if url_rewrite is not None:
-            pulumi.set(__self__, "url_rewrite", url_rewrite)
+            _setter("url_rewrite", url_rewrite)
 
     @property
     @pulumi.getter(name="corsPolicy")
@@ -3464,22 +4086,45 @@ class HttpRouteRuleActionCorsPolicy(dict):
         :param Sequence[str] expose_headers: Specifies the content for Access-Control-Expose-Headers header.
         :param str max_age: Specifies how long result of a preflight request can be cached in seconds.
         """
+        HttpRouteRuleActionCorsPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_credentials=allow_credentials,
+            allow_headers=allow_headers,
+            allow_methods=allow_methods,
+            allow_origin_regexes=allow_origin_regexes,
+            allow_origins=allow_origins,
+            disabled=disabled,
+            expose_headers=expose_headers,
+            max_age=max_age,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_credentials: Optional[bool] = None,
+             allow_headers: Optional[Sequence[str]] = None,
+             allow_methods: Optional[Sequence[str]] = None,
+             allow_origin_regexes: Optional[Sequence[str]] = None,
+             allow_origins: Optional[Sequence[str]] = None,
+             disabled: Optional[bool] = None,
+             expose_headers: Optional[Sequence[str]] = None,
+             max_age: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if allow_credentials is not None:
-            pulumi.set(__self__, "allow_credentials", allow_credentials)
+            _setter("allow_credentials", allow_credentials)
         if allow_headers is not None:
-            pulumi.set(__self__, "allow_headers", allow_headers)
+            _setter("allow_headers", allow_headers)
         if allow_methods is not None:
-            pulumi.set(__self__, "allow_methods", allow_methods)
+            _setter("allow_methods", allow_methods)
         if allow_origin_regexes is not None:
-            pulumi.set(__self__, "allow_origin_regexes", allow_origin_regexes)
+            _setter("allow_origin_regexes", allow_origin_regexes)
         if allow_origins is not None:
-            pulumi.set(__self__, "allow_origins", allow_origins)
+            _setter("allow_origins", allow_origins)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if expose_headers is not None:
-            pulumi.set(__self__, "expose_headers", expose_headers)
+            _setter("expose_headers", expose_headers)
         if max_age is not None:
-            pulumi.set(__self__, "max_age", max_age)
+            _setter("max_age", max_age)
 
     @property
     @pulumi.getter(name="allowCredentials")
@@ -3577,10 +4222,21 @@ class HttpRouteRuleActionDestination(dict):
                If weights are specified for any one service name, they need to be specified for all of them.
                If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
         """
+        HttpRouteRuleActionDestination._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service_name=service_name,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service_name: Optional[str] = None,
+             weight: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter(name="serviceName")
@@ -3613,10 +4269,21 @@ class HttpRouteRuleActionFaultInjectionPolicy(dict):
         :param 'HttpRouteRuleActionFaultInjectionPolicyDelayArgs' delay: Specification of how client requests are delayed as part of fault injection before being sent to a destination.
                Structure is documented below.
         """
+        HttpRouteRuleActionFaultInjectionPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            abort=abort,
+            delay=delay,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             abort: Optional['outputs.HttpRouteRuleActionFaultInjectionPolicyAbort'] = None,
+             delay: Optional['outputs.HttpRouteRuleActionFaultInjectionPolicyDelay'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if abort is not None:
-            pulumi.set(__self__, "abort", abort)
+            _setter("abort", abort)
         if delay is not None:
-            pulumi.set(__self__, "delay", delay)
+            _setter("delay", delay)
 
     @property
     @pulumi.getter
@@ -3663,10 +4330,21 @@ class HttpRouteRuleActionFaultInjectionPolicyAbort(dict):
         :param int http_status: The HTTP status code used to abort the request.
         :param int percentage: The percentage of traffic which will be aborted.
         """
+        HttpRouteRuleActionFaultInjectionPolicyAbort._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            http_status=http_status,
+            percentage=percentage,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             http_status: Optional[int] = None,
+             percentage: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if http_status is not None:
-            pulumi.set(__self__, "http_status", http_status)
+            _setter("http_status", http_status)
         if percentage is not None:
-            pulumi.set(__self__, "percentage", percentage)
+            _setter("percentage", percentage)
 
     @property
     @pulumi.getter(name="httpStatus")
@@ -3711,10 +4389,21 @@ class HttpRouteRuleActionFaultInjectionPolicyDelay(dict):
         :param str fixed_delay: Specify a fixed delay before forwarding the request.
         :param int percentage: The percentage of traffic on which delay will be injected.
         """
+        HttpRouteRuleActionFaultInjectionPolicyDelay._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fixed_delay=fixed_delay,
+            percentage=percentage,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fixed_delay: Optional[str] = None,
+             percentage: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if fixed_delay is not None:
-            pulumi.set(__self__, "fixed_delay", fixed_delay)
+            _setter("fixed_delay", fixed_delay)
         if percentage is not None:
-            pulumi.set(__self__, "percentage", percentage)
+            _setter("percentage", percentage)
 
     @property
     @pulumi.getter(name="fixedDelay")
@@ -3781,20 +4470,41 @@ class HttpRouteRuleActionRedirect(dict):
         :param str response_code: The HTTP Status code to use for the redirect.
         :param bool strip_query: If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request.
         """
+        HttpRouteRuleActionRedirect._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host_redirect=host_redirect,
+            https_redirect=https_redirect,
+            path_redirect=path_redirect,
+            port_redirect=port_redirect,
+            prefix_rewrite=prefix_rewrite,
+            response_code=response_code,
+            strip_query=strip_query,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host_redirect: Optional[str] = None,
+             https_redirect: Optional[bool] = None,
+             path_redirect: Optional[str] = None,
+             port_redirect: Optional[int] = None,
+             prefix_rewrite: Optional[str] = None,
+             response_code: Optional[str] = None,
+             strip_query: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if host_redirect is not None:
-            pulumi.set(__self__, "host_redirect", host_redirect)
+            _setter("host_redirect", host_redirect)
         if https_redirect is not None:
-            pulumi.set(__self__, "https_redirect", https_redirect)
+            _setter("https_redirect", https_redirect)
         if path_redirect is not None:
-            pulumi.set(__self__, "path_redirect", path_redirect)
+            _setter("path_redirect", path_redirect)
         if port_redirect is not None:
-            pulumi.set(__self__, "port_redirect", port_redirect)
+            _setter("port_redirect", port_redirect)
         if prefix_rewrite is not None:
-            pulumi.set(__self__, "prefix_rewrite", prefix_rewrite)
+            _setter("prefix_rewrite", prefix_rewrite)
         if response_code is not None:
-            pulumi.set(__self__, "response_code", response_code)
+            _setter("response_code", response_code)
         if strip_query is not None:
-            pulumi.set(__self__, "strip_query", strip_query)
+            _setter("strip_query", strip_query)
 
     @property
     @pulumi.getter(name="hostRedirect")
@@ -3864,12 +4574,25 @@ class HttpRouteRuleActionRequestHeaderModifier(dict):
         :param Sequence[str] removes: Remove headers (matching by header names) specified in the list.
         :param Mapping[str, str] set: Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
         """
+        HttpRouteRuleActionRequestHeaderModifier._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            add=add,
+            removes=removes,
+            set=set,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             add: Optional[Mapping[str, str]] = None,
+             removes: Optional[Sequence[str]] = None,
+             set: Optional[Mapping[str, str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if add is not None:
-            pulumi.set(__self__, "add", add)
+            _setter("add", add)
         if removes is not None:
-            pulumi.set(__self__, "removes", removes)
+            _setter("removes", removes)
         if set is not None:
-            pulumi.set(__self__, "set", set)
+            _setter("set", set)
 
     @property
     @pulumi.getter
@@ -3904,8 +4627,17 @@ class HttpRouteRuleActionRequestMirrorPolicy(dict):
         :param 'HttpRouteRuleActionRequestMirrorPolicyDestinationArgs' destination: The destination the requests will be mirrored to.
                Structure is documented below.
         """
+        HttpRouteRuleActionRequestMirrorPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            destination=destination,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             destination: Optional['outputs.HttpRouteRuleActionRequestMirrorPolicyDestination'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+            _setter("destination", destination)
 
     @property
     @pulumi.getter
@@ -3946,10 +4678,21 @@ class HttpRouteRuleActionRequestMirrorPolicyDestination(dict):
                If weights are specified for any one service name, they need to be specified for all of them.
                If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
         """
+        HttpRouteRuleActionRequestMirrorPolicyDestination._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service_name=service_name,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service_name: Optional[str] = None,
+             weight: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter(name="serviceName")
@@ -3982,12 +4725,25 @@ class HttpRouteRuleActionResponseHeaderModifier(dict):
         :param Sequence[str] removes: Remove headers (matching by header names) specified in the list.
         :param Mapping[str, str] set: Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
         """
+        HttpRouteRuleActionResponseHeaderModifier._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            add=add,
+            removes=removes,
+            set=set,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             add: Optional[Mapping[str, str]] = None,
+             removes: Optional[Sequence[str]] = None,
+             set: Optional[Mapping[str, str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if add is not None:
-            pulumi.set(__self__, "add", add)
+            _setter("add", add)
         if removes is not None:
-            pulumi.set(__self__, "removes", removes)
+            _setter("removes", removes)
         if set is not None:
-            pulumi.set(__self__, "set", set)
+            _setter("set", set)
 
     @property
     @pulumi.getter
@@ -4046,12 +4802,25 @@ class HttpRouteRuleActionRetryPolicy(dict):
         :param str per_try_timeout: Specifies a non-zero timeout per retry attempt. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param Sequence[str] retry_conditions: Specifies one or more conditions when this retry policy applies.
         """
+        HttpRouteRuleActionRetryPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            num_retries=num_retries,
+            per_try_timeout=per_try_timeout,
+            retry_conditions=retry_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             num_retries: Optional[int] = None,
+             per_try_timeout: Optional[str] = None,
+             retry_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if num_retries is not None:
-            pulumi.set(__self__, "num_retries", num_retries)
+            _setter("num_retries", num_retries)
         if per_try_timeout is not None:
-            pulumi.set(__self__, "per_try_timeout", per_try_timeout)
+            _setter("per_try_timeout", per_try_timeout)
         if retry_conditions is not None:
-            pulumi.set(__self__, "retry_conditions", retry_conditions)
+            _setter("retry_conditions", retry_conditions)
 
     @property
     @pulumi.getter(name="numRetries")
@@ -4106,10 +4875,21 @@ class HttpRouteRuleActionUrlRewrite(dict):
         :param str host_rewrite: Prior to forwarding the request to the selected destination, the requests host header is replaced by this value.
         :param str path_prefix_rewrite: Prior to forwarding the request to the selected destination, the matching portion of the requests path is replaced by this value.
         """
+        HttpRouteRuleActionUrlRewrite._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host_rewrite=host_rewrite,
+            path_prefix_rewrite=path_prefix_rewrite,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host_rewrite: Optional[str] = None,
+             path_prefix_rewrite: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if host_rewrite is not None:
-            pulumi.set(__self__, "host_rewrite", host_rewrite)
+            _setter("host_rewrite", host_rewrite)
         if path_prefix_rewrite is not None:
-            pulumi.set(__self__, "path_prefix_rewrite", path_prefix_rewrite)
+            _setter("path_prefix_rewrite", path_prefix_rewrite)
 
     @property
     @pulumi.getter(name="hostRewrite")
@@ -4172,18 +4952,37 @@ class HttpRouteRuleMatch(dict):
                Structure is documented below.
         :param str regex_match: The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
         """
+        HttpRouteRuleMatch._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            full_path_match=full_path_match,
+            headers=headers,
+            ignore_case=ignore_case,
+            prefix_match=prefix_match,
+            query_parameters=query_parameters,
+            regex_match=regex_match,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             full_path_match: Optional[str] = None,
+             headers: Optional[Sequence['outputs.HttpRouteRuleMatchHeader']] = None,
+             ignore_case: Optional[bool] = None,
+             prefix_match: Optional[str] = None,
+             query_parameters: Optional[Sequence['outputs.HttpRouteRuleMatchQueryParameter']] = None,
+             regex_match: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if full_path_match is not None:
-            pulumi.set(__self__, "full_path_match", full_path_match)
+            _setter("full_path_match", full_path_match)
         if headers is not None:
-            pulumi.set(__self__, "headers", headers)
+            _setter("headers", headers)
         if ignore_case is not None:
-            pulumi.set(__self__, "ignore_case", ignore_case)
+            _setter("ignore_case", ignore_case)
         if prefix_match is not None:
-            pulumi.set(__self__, "prefix_match", prefix_match)
+            _setter("prefix_match", prefix_match)
         if query_parameters is not None:
-            pulumi.set(__self__, "query_parameters", query_parameters)
+            _setter("query_parameters", query_parameters)
         if regex_match is not None:
-            pulumi.set(__self__, "regex_match", regex_match)
+            _setter("regex_match", regex_match)
 
     @property
     @pulumi.getter(name="fullPathMatch")
@@ -4287,22 +5086,45 @@ class HttpRouteRuleMatchHeader(dict):
         :param str regex_match: The value of the header must match the regular expression specified in regexMatch.
         :param str suffix_match: The value of the header must end with the contents of suffixMatch.
         """
+        HttpRouteRuleMatchHeader._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            exact_match=exact_match,
+            header=header,
+            invert_match=invert_match,
+            prefix_match=prefix_match,
+            present_match=present_match,
+            range_match=range_match,
+            regex_match=regex_match,
+            suffix_match=suffix_match,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             exact_match: Optional[str] = None,
+             header: Optional[str] = None,
+             invert_match: Optional[bool] = None,
+             prefix_match: Optional[str] = None,
+             present_match: Optional[bool] = None,
+             range_match: Optional['outputs.HttpRouteRuleMatchHeaderRangeMatch'] = None,
+             regex_match: Optional[str] = None,
+             suffix_match: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if exact_match is not None:
-            pulumi.set(__self__, "exact_match", exact_match)
+            _setter("exact_match", exact_match)
         if header is not None:
-            pulumi.set(__self__, "header", header)
+            _setter("header", header)
         if invert_match is not None:
-            pulumi.set(__self__, "invert_match", invert_match)
+            _setter("invert_match", invert_match)
         if prefix_match is not None:
-            pulumi.set(__self__, "prefix_match", prefix_match)
+            _setter("prefix_match", prefix_match)
         if present_match is not None:
-            pulumi.set(__self__, "present_match", present_match)
+            _setter("present_match", present_match)
         if range_match is not None:
-            pulumi.set(__self__, "range_match", range_match)
+            _setter("range_match", range_match)
         if regex_match is not None:
-            pulumi.set(__self__, "regex_match", regex_match)
+            _setter("regex_match", regex_match)
         if suffix_match is not None:
-            pulumi.set(__self__, "suffix_match", suffix_match)
+            _setter("suffix_match", suffix_match)
 
     @property
     @pulumi.getter(name="exactMatch")
@@ -4379,8 +5201,19 @@ class HttpRouteRuleMatchHeaderRangeMatch(dict):
         :param int end: End of the range (exclusive).
         :param int start: Start of the range (inclusive).
         """
-        pulumi.set(__self__, "end", end)
-        pulumi.set(__self__, "start", start)
+        HttpRouteRuleMatchHeaderRangeMatch._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            end=end,
+            start=start,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             end: int,
+             start: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("end", end)
+        _setter("start", start)
 
     @property
     @pulumi.getter
@@ -4435,14 +5268,29 @@ class HttpRouteRuleMatchQueryParameter(dict):
         :param str query_parameter: The name of the query parameter to match.
         :param str regex_match: The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
         """
+        HttpRouteRuleMatchQueryParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            exact_match=exact_match,
+            present_match=present_match,
+            query_parameter=query_parameter,
+            regex_match=regex_match,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             exact_match: Optional[str] = None,
+             present_match: Optional[bool] = None,
+             query_parameter: Optional[str] = None,
+             regex_match: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if exact_match is not None:
-            pulumi.set(__self__, "exact_match", exact_match)
+            _setter("exact_match", exact_match)
         if present_match is not None:
-            pulumi.set(__self__, "present_match", present_match)
+            _setter("present_match", present_match)
         if query_parameter is not None:
-            pulumi.set(__self__, "query_parameter", query_parameter)
+            _setter("query_parameter", query_parameter)
         if regex_match is not None:
-            pulumi.set(__self__, "regex_match", regex_match)
+            _setter("regex_match", regex_match)
 
     @property
     @pulumi.getter(name="exactMatch")
@@ -4489,9 +5337,20 @@ class TcpRouteRule(dict):
                If no routeMatch field is specified, this rule will unconditionally match traffic.
                Structure is documented below.
         """
-        pulumi.set(__self__, "action", action)
+        TcpRouteRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            matches=matches,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: 'outputs.TcpRouteRuleAction',
+             matches: Optional[Sequence['outputs.TcpRouteRuleMatch']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("action", action)
         if matches is not None:
-            pulumi.set(__self__, "matches", matches)
+            _setter("matches", matches)
 
     @property
     @pulumi.getter
@@ -4540,10 +5399,21 @@ class TcpRouteRuleAction(dict):
                Structure is documented below.
         :param bool original_destination: If true, Router will use the destination IP and port of the original connection as the destination of the request.
         """
+        TcpRouteRuleAction._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            destinations=destinations,
+            original_destination=original_destination,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             destinations: Optional[Sequence['outputs.TcpRouteRuleActionDestination']] = None,
+             original_destination: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if destinations is not None:
-            pulumi.set(__self__, "destinations", destinations)
+            _setter("destinations", destinations)
         if original_destination is not None:
-            pulumi.set(__self__, "original_destination", original_destination)
+            _setter("original_destination", original_destination)
 
     @property
     @pulumi.getter
@@ -4594,10 +5464,21 @@ class TcpRouteRuleActionDestination(dict):
                
                - - -
         """
+        TcpRouteRuleActionDestination._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service_name=service_name,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service_name: Optional[str] = None,
+             weight: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter(name="serviceName")
@@ -4631,8 +5512,19 @@ class TcpRouteRuleMatch(dict):
                By default, the prefix length is 32 (i.e. matches a single IP address). Only IPV4 addresses are supported. Examples: "10.0.0.1" - matches against this exact IP address. "10.0.0.0/8" - matches against any IP address within the 10.0.0.0 subnet and 255.255.255.0 mask. "0.0.0.0/0" - matches against any IP address'.
         :param str port: Specifies the destination port to match against.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "port", port)
+        TcpRouteRuleMatch._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            port=port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: str,
+             port: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("port", port)
 
     @property
     @pulumi.getter
@@ -4663,8 +5555,19 @@ class TlsRouteRule(dict):
         :param Sequence['TlsRouteRuleMatchArgs'] matches: Matches define the predicate used to match requests to a given action.
                Structure is documented below.
         """
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "matches", matches)
+        TlsRouteRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            matches=matches,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: 'outputs.TlsRouteRuleAction',
+             matches: Sequence['outputs.TlsRouteRuleMatch'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("action", action)
+        _setter("matches", matches)
 
     @property
     @pulumi.getter
@@ -4693,8 +5596,17 @@ class TlsRouteRuleAction(dict):
         :param Sequence['TlsRouteRuleActionDestinationArgs'] destinations: The destination to which traffic should be forwarded.
                Structure is documented below.
         """
+        TlsRouteRuleAction._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            destinations=destinations,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             destinations: Optional[Sequence['outputs.TlsRouteRuleActionDestination']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if destinations is not None:
-            pulumi.set(__self__, "destinations", destinations)
+            _setter("destinations", destinations)
 
     @property
     @pulumi.getter
@@ -4734,10 +5646,21 @@ class TlsRouteRuleActionDestination(dict):
                
                - - -
         """
+        TlsRouteRuleActionDestination._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service_name=service_name,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service_name: Optional[str] = None,
+             weight: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter(name="serviceName")
@@ -4785,10 +5708,21 @@ class TlsRouteRuleMatch(dict):
         :param Sequence[str] sni_hosts: SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. www.example.com will be first matched against www.example.com, then *.example.com, then *.com.
                Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sniHost and alpn is required. Up to 5 sni hosts across all matches can be set.
         """
+        TlsRouteRuleMatch._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alpns=alpns,
+            sni_hosts=sni_hosts,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alpns: Optional[Sequence[str]] = None,
+             sni_hosts: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if alpns is not None:
-            pulumi.set(__self__, "alpns", alpns)
+            _setter("alpns", alpns)
         if sni_hosts is not None:
-            pulumi.set(__self__, "sni_hosts", sni_hosts)
+            _setter("sni_hosts", sni_hosts)
 
     @property
     @pulumi.getter

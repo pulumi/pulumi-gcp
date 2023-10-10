@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -44,19 +44,40 @@ class RouterArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the router resides.
         """
-        pulumi.set(__self__, "network", network)
+        RouterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network=network,
+            bgp=bgp,
+            description=description,
+            encrypted_interconnect_router=encrypted_interconnect_router,
+            name=name,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network: pulumi.Input[str],
+             bgp: Optional[pulumi.Input['RouterBgpArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             encrypted_interconnect_router: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("network", network)
         if bgp is not None:
-            pulumi.set(__self__, "bgp", bgp)
+            _setter("bgp", bgp)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if encrypted_interconnect_router is not None:
-            pulumi.set(__self__, "encrypted_interconnect_router", encrypted_interconnect_router)
+            _setter("encrypted_interconnect_router", encrypted_interconnect_router)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter
@@ -189,24 +210,49 @@ class _RouterState:
         :param pulumi.Input[str] region: Region where the router resides.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
+        _RouterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bgp=bgp,
+            creation_timestamp=creation_timestamp,
+            description=description,
+            encrypted_interconnect_router=encrypted_interconnect_router,
+            name=name,
+            network=network,
+            project=project,
+            region=region,
+            self_link=self_link,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bgp: Optional[pulumi.Input['RouterBgpArgs']] = None,
+             creation_timestamp: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             encrypted_interconnect_router: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bgp is not None:
-            pulumi.set(__self__, "bgp", bgp)
+            _setter("bgp", bgp)
         if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+            _setter("creation_timestamp", creation_timestamp)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if encrypted_interconnect_router is not None:
-            pulumi.set(__self__, "encrypted_interconnect_router", encrypted_interconnect_router)
+            _setter("encrypted_interconnect_router", encrypted_interconnect_router)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
 
     @property
     @pulumi.getter
@@ -514,6 +560,10 @@ class Router(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RouterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -535,6 +585,11 @@ class Router(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RouterArgs.__new__(RouterArgs)
 
+            if bgp is not None and not isinstance(bgp, RouterBgpArgs):
+                bgp = bgp or {}
+                def _setter(key, value):
+                    bgp[key] = value
+                RouterBgpArgs._configure(_setter, **bgp)
             __props__.__dict__["bgp"] = bgp
             __props__.__dict__["description"] = description
             __props__.__dict__["encrypted_interconnect_router"] = encrypted_interconnect_router

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EndpointArgs', 'Endpoint']
@@ -36,17 +36,38 @@ class EndpointArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] threat_exceptions: Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
         """
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "network", network)
-        pulumi.set(__self__, "severity", severity)
+        EndpointArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            network=network,
+            severity=severity,
+            description=description,
+            name=name,
+            project=project,
+            threat_exceptions=threat_exceptions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: pulumi.Input[str],
+             network: pulumi.Input[str],
+             severity: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             threat_exceptions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("location", location)
+        _setter("network", network)
+        _setter("severity", severity)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if threat_exceptions is not None:
-            pulumi.set(__self__, "threat_exceptions", threat_exceptions)
+            _setter("threat_exceptions", threat_exceptions)
 
     @property
     @pulumi.getter
@@ -171,28 +192,57 @@ class _EndpointState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] threat_exceptions: Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
         :param pulumi.Input[str] update_time: Last update timestamp in RFC 3339 text format.
         """
+        _EndpointState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            endpoint_forwarding_rule=endpoint_forwarding_rule,
+            endpoint_ip=endpoint_ip,
+            location=location,
+            name=name,
+            network=network,
+            project=project,
+            severity=severity,
+            threat_exceptions=threat_exceptions,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             endpoint_forwarding_rule: Optional[pulumi.Input[str]] = None,
+             endpoint_ip: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             severity: Optional[pulumi.Input[str]] = None,
+             threat_exceptions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if endpoint_forwarding_rule is not None:
-            pulumi.set(__self__, "endpoint_forwarding_rule", endpoint_forwarding_rule)
+            _setter("endpoint_forwarding_rule", endpoint_forwarding_rule)
         if endpoint_ip is not None:
-            pulumi.set(__self__, "endpoint_ip", endpoint_ip)
+            _setter("endpoint_ip", endpoint_ip)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if severity is not None:
-            pulumi.set(__self__, "severity", severity)
+            _setter("severity", severity)
         if threat_exceptions is not None:
-            pulumi.set(__self__, "threat_exceptions", threat_exceptions)
+            _setter("threat_exceptions", threat_exceptions)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -470,6 +520,10 @@ class Endpoint(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EndpointArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

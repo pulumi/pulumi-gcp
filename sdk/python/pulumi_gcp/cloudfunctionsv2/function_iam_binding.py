@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -44,15 +44,34 @@ class FunctionIamBindingArgs:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        pulumi.set(__self__, "cloud_function", cloud_function)
-        pulumi.set(__self__, "members", members)
-        pulumi.set(__self__, "role", role)
+        FunctionIamBindingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cloud_function=cloud_function,
+            members=members,
+            role=role,
+            condition=condition,
+            location=location,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cloud_function: pulumi.Input[str],
+             members: pulumi.Input[Sequence[pulumi.Input[str]]],
+             role: pulumi.Input[str],
+             condition: Optional[pulumi.Input['FunctionIamBindingConditionArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cloud_function", cloud_function)
+        _setter("members", members)
+        _setter("role", role)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="cloudFunction")
@@ -169,20 +188,41 @@ class _FunctionIamBindingState:
                `cloudfunctionsv2.FunctionIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
+        _FunctionIamBindingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cloud_function=cloud_function,
+            condition=condition,
+            etag=etag,
+            location=location,
+            members=members,
+            project=project,
+            role=role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cloud_function: Optional[pulumi.Input[str]] = None,
+             condition: Optional[pulumi.Input['FunctionIamBindingConditionArgs']] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cloud_function is not None:
-            pulumi.set(__self__, "cloud_function", cloud_function)
+            _setter("cloud_function", cloud_function)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
 
     @property
     @pulumi.getter(name="cloudFunction")
@@ -496,6 +536,10 @@ class FunctionIamBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FunctionIamBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -519,6 +563,11 @@ class FunctionIamBinding(pulumi.CustomResource):
             if cloud_function is None and not opts.urn:
                 raise TypeError("Missing required property 'cloud_function'")
             __props__.__dict__["cloud_function"] = cloud_function
+            if condition is not None and not isinstance(condition, FunctionIamBindingConditionArgs):
+                condition = condition or {}
+                def _setter(key, value):
+                    condition[key] = value
+                FunctionIamBindingConditionArgs._configure(_setter, **condition)
             __props__.__dict__["condition"] = condition
             __props__.__dict__["location"] = location
             if members is None and not opts.urn:

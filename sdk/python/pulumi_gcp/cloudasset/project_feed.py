@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -53,20 +53,43 @@ class ProjectFeedArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "feed_id", feed_id)
-        pulumi.set(__self__, "feed_output_config", feed_output_config)
+        ProjectFeedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            feed_id=feed_id,
+            feed_output_config=feed_output_config,
+            asset_names=asset_names,
+            asset_types=asset_types,
+            billing_project=billing_project,
+            condition=condition,
+            content_type=content_type,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             feed_id: pulumi.Input[str],
+             feed_output_config: pulumi.Input['ProjectFeedFeedOutputConfigArgs'],
+             asset_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             asset_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             billing_project: Optional[pulumi.Input[str]] = None,
+             condition: Optional[pulumi.Input['ProjectFeedConditionArgs']] = None,
+             content_type: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("feed_id", feed_id)
+        _setter("feed_output_config", feed_output_config)
         if asset_names is not None:
-            pulumi.set(__self__, "asset_names", asset_names)
+            _setter("asset_names", asset_names)
         if asset_types is not None:
-            pulumi.set(__self__, "asset_types", asset_types)
+            _setter("asset_types", asset_types)
         if billing_project is not None:
-            pulumi.set(__self__, "billing_project", billing_project)
+            _setter("billing_project", billing_project)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if content_type is not None:
-            pulumi.set(__self__, "content_type", content_type)
+            _setter("content_type", content_type)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="feedId")
@@ -225,24 +248,49 @@ class _ProjectFeedState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        _ProjectFeedState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            asset_names=asset_names,
+            asset_types=asset_types,
+            billing_project=billing_project,
+            condition=condition,
+            content_type=content_type,
+            feed_id=feed_id,
+            feed_output_config=feed_output_config,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             asset_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             asset_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             billing_project: Optional[pulumi.Input[str]] = None,
+             condition: Optional[pulumi.Input['ProjectFeedConditionArgs']] = None,
+             content_type: Optional[pulumi.Input[str]] = None,
+             feed_id: Optional[pulumi.Input[str]] = None,
+             feed_output_config: Optional[pulumi.Input['ProjectFeedFeedOutputConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if asset_names is not None:
-            pulumi.set(__self__, "asset_names", asset_names)
+            _setter("asset_names", asset_names)
         if asset_types is not None:
-            pulumi.set(__self__, "asset_types", asset_types)
+            _setter("asset_types", asset_types)
         if billing_project is not None:
-            pulumi.set(__self__, "billing_project", billing_project)
+            _setter("billing_project", billing_project)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if content_type is not None:
-            pulumi.set(__self__, "content_type", content_type)
+            _setter("content_type", content_type)
         if feed_id is not None:
-            pulumi.set(__self__, "feed_id", feed_id)
+            _setter("feed_id", feed_id)
         if feed_output_config is not None:
-            pulumi.set(__self__, "feed_output_config", feed_output_config)
+            _setter("feed_output_config", feed_output_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="assetNames")
@@ -484,6 +532,10 @@ class ProjectFeed(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProjectFeedArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -509,11 +561,21 @@ class ProjectFeed(pulumi.CustomResource):
             __props__.__dict__["asset_names"] = asset_names
             __props__.__dict__["asset_types"] = asset_types
             __props__.__dict__["billing_project"] = billing_project
+            if condition is not None and not isinstance(condition, ProjectFeedConditionArgs):
+                condition = condition or {}
+                def _setter(key, value):
+                    condition[key] = value
+                ProjectFeedConditionArgs._configure(_setter, **condition)
             __props__.__dict__["condition"] = condition
             __props__.__dict__["content_type"] = content_type
             if feed_id is None and not opts.urn:
                 raise TypeError("Missing required property 'feed_id'")
             __props__.__dict__["feed_id"] = feed_id
+            if feed_output_config is not None and not isinstance(feed_output_config, ProjectFeedFeedOutputConfigArgs):
+                feed_output_config = feed_output_config or {}
+                def _setter(key, value):
+                    feed_output_config[key] = value
+                ProjectFeedFeedOutputConfigArgs._configure(_setter, **feed_output_config)
             if feed_output_config is None and not opts.urn:
                 raise TypeError("Missing required property 'feed_output_config'")
             __props__.__dict__["feed_output_config"] = feed_output_config

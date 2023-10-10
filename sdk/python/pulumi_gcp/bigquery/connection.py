@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -51,26 +51,53 @@ class ConnectionArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        ConnectionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            aws=aws,
+            azure=azure,
+            cloud_resource=cloud_resource,
+            cloud_spanner=cloud_spanner,
+            cloud_sql=cloud_sql,
+            connection_id=connection_id,
+            description=description,
+            friendly_name=friendly_name,
+            location=location,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             aws: Optional[pulumi.Input['ConnectionAwsArgs']] = None,
+             azure: Optional[pulumi.Input['ConnectionAzureArgs']] = None,
+             cloud_resource: Optional[pulumi.Input['ConnectionCloudResourceArgs']] = None,
+             cloud_spanner: Optional[pulumi.Input['ConnectionCloudSpannerArgs']] = None,
+             cloud_sql: Optional[pulumi.Input['ConnectionCloudSqlArgs']] = None,
+             connection_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             friendly_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if aws is not None:
-            pulumi.set(__self__, "aws", aws)
+            _setter("aws", aws)
         if azure is not None:
-            pulumi.set(__self__, "azure", azure)
+            _setter("azure", azure)
         if cloud_resource is not None:
-            pulumi.set(__self__, "cloud_resource", cloud_resource)
+            _setter("cloud_resource", cloud_resource)
         if cloud_spanner is not None:
-            pulumi.set(__self__, "cloud_spanner", cloud_spanner)
+            _setter("cloud_spanner", cloud_spanner)
         if cloud_sql is not None:
-            pulumi.set(__self__, "cloud_sql", cloud_sql)
+            _setter("cloud_sql", cloud_sql)
         if connection_id is not None:
-            pulumi.set(__self__, "connection_id", connection_id)
+            _setter("connection_id", connection_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if friendly_name is not None:
-            pulumi.set(__self__, "friendly_name", friendly_name)
+            _setter("friendly_name", friendly_name)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -248,30 +275,61 @@ class _ConnectionState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        _ConnectionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            aws=aws,
+            azure=azure,
+            cloud_resource=cloud_resource,
+            cloud_spanner=cloud_spanner,
+            cloud_sql=cloud_sql,
+            connection_id=connection_id,
+            description=description,
+            friendly_name=friendly_name,
+            has_credential=has_credential,
+            location=location,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             aws: Optional[pulumi.Input['ConnectionAwsArgs']] = None,
+             azure: Optional[pulumi.Input['ConnectionAzureArgs']] = None,
+             cloud_resource: Optional[pulumi.Input['ConnectionCloudResourceArgs']] = None,
+             cloud_spanner: Optional[pulumi.Input['ConnectionCloudSpannerArgs']] = None,
+             cloud_sql: Optional[pulumi.Input['ConnectionCloudSqlArgs']] = None,
+             connection_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             friendly_name: Optional[pulumi.Input[str]] = None,
+             has_credential: Optional[pulumi.Input[bool]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if aws is not None:
-            pulumi.set(__self__, "aws", aws)
+            _setter("aws", aws)
         if azure is not None:
-            pulumi.set(__self__, "azure", azure)
+            _setter("azure", azure)
         if cloud_resource is not None:
-            pulumi.set(__self__, "cloud_resource", cloud_resource)
+            _setter("cloud_resource", cloud_resource)
         if cloud_spanner is not None:
-            pulumi.set(__self__, "cloud_spanner", cloud_spanner)
+            _setter("cloud_spanner", cloud_spanner)
         if cloud_sql is not None:
-            pulumi.set(__self__, "cloud_sql", cloud_sql)
+            _setter("cloud_sql", cloud_sql)
         if connection_id is not None:
-            pulumi.set(__self__, "connection_id", connection_id)
+            _setter("connection_id", connection_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if friendly_name is not None:
-            pulumi.set(__self__, "friendly_name", friendly_name)
+            _setter("friendly_name", friendly_name)
         if has_credential is not None:
-            pulumi.set(__self__, "has_credential", has_credential)
+            _setter("has_credential", has_credential)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -814,6 +872,10 @@ class Connection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConnectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -838,10 +900,35 @@ class Connection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectionArgs.__new__(ConnectionArgs)
 
+            if aws is not None and not isinstance(aws, ConnectionAwsArgs):
+                aws = aws or {}
+                def _setter(key, value):
+                    aws[key] = value
+                ConnectionAwsArgs._configure(_setter, **aws)
             __props__.__dict__["aws"] = aws
+            if azure is not None and not isinstance(azure, ConnectionAzureArgs):
+                azure = azure or {}
+                def _setter(key, value):
+                    azure[key] = value
+                ConnectionAzureArgs._configure(_setter, **azure)
             __props__.__dict__["azure"] = azure
+            if cloud_resource is not None and not isinstance(cloud_resource, ConnectionCloudResourceArgs):
+                cloud_resource = cloud_resource or {}
+                def _setter(key, value):
+                    cloud_resource[key] = value
+                ConnectionCloudResourceArgs._configure(_setter, **cloud_resource)
             __props__.__dict__["cloud_resource"] = cloud_resource
+            if cloud_spanner is not None and not isinstance(cloud_spanner, ConnectionCloudSpannerArgs):
+                cloud_spanner = cloud_spanner or {}
+                def _setter(key, value):
+                    cloud_spanner[key] = value
+                ConnectionCloudSpannerArgs._configure(_setter, **cloud_spanner)
             __props__.__dict__["cloud_spanner"] = cloud_spanner
+            if cloud_sql is not None and not isinstance(cloud_sql, ConnectionCloudSqlArgs):
+                cloud_sql = cloud_sql or {}
+                def _setter(key, value):
+                    cloud_sql[key] = value
+                ConnectionCloudSqlArgs._configure(_setter, **cloud_sql)
             __props__.__dict__["cloud_sql"] = cloud_sql
             __props__.__dict__["connection_id"] = connection_id
             __props__.__dict__["description"] = description

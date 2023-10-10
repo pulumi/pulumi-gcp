@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -147,19 +147,40 @@ class DomainMappingMetadata(dict):
                allowed to change on PUT operations.
                More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids
         """
-        pulumi.set(__self__, "namespace", namespace)
+        DomainMappingMetadata._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace=namespace,
+            annotations=annotations,
+            generation=generation,
+            labels=labels,
+            resource_version=resource_version,
+            self_link=self_link,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace: str,
+             annotations: Optional[Mapping[str, str]] = None,
+             generation: Optional[int] = None,
+             labels: Optional[Mapping[str, str]] = None,
+             resource_version: Optional[str] = None,
+             self_link: Optional[str] = None,
+             uid: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("namespace", namespace)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if generation is not None:
-            pulumi.set(__self__, "generation", generation)
+            _setter("generation", generation)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if resource_version is not None:
-            pulumi.set(__self__, "resource_version", resource_version)
+            _setter("resource_version", resource_version)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter
@@ -279,11 +300,24 @@ class DomainMappingSpec(dict):
                warning about a potential conflict and only set it once the respective UI
                has given such a warning.
         """
-        pulumi.set(__self__, "route_name", route_name)
+        DomainMappingSpec._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            route_name=route_name,
+            certificate_mode=certificate_mode,
+            force_override=force_override,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             route_name: str,
+             certificate_mode: Optional[str] = None,
+             force_override: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("route_name", route_name)
         if certificate_mode is not None:
-            pulumi.set(__self__, "certificate_mode", certificate_mode)
+            _setter("certificate_mode", certificate_mode)
         if force_override is not None:
-            pulumi.set(__self__, "force_override", force_override)
+            _setter("force_override", force_override)
 
     @property
     @pulumi.getter(name="routeName")
@@ -359,14 +393,29 @@ class DomainMappingStatus(dict):
                serve the application via this domain mapping.
                Structure is documented below.
         """
+        DomainMappingStatus._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            conditions=conditions,
+            mapped_route_name=mapped_route_name,
+            observed_generation=observed_generation,
+            resource_records=resource_records,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             conditions: Optional[Sequence['outputs.DomainMappingStatusCondition']] = None,
+             mapped_route_name: Optional[str] = None,
+             observed_generation: Optional[int] = None,
+             resource_records: Optional[Sequence['outputs.DomainMappingStatusResourceRecord']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if conditions is not None:
-            pulumi.set(__self__, "conditions", conditions)
+            _setter("conditions", conditions)
         if mapped_route_name is not None:
-            pulumi.set(__self__, "mapped_route_name", mapped_route_name)
+            _setter("mapped_route_name", mapped_route_name)
         if observed_generation is not None:
-            pulumi.set(__self__, "observed_generation", observed_generation)
+            _setter("observed_generation", observed_generation)
         if resource_records is not None:
-            pulumi.set(__self__, "resource_records", resource_records)
+            _setter("resource_records", resource_records)
 
     @property
     @pulumi.getter
@@ -427,14 +476,29 @@ class DomainMappingStatusCondition(dict):
         :param str type: Resource record type. Example: `AAAA`.
                Possible values are: `A`, `AAAA`, `CNAME`.
         """
+        DomainMappingStatusCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            message=message,
+            reason=reason,
+            status=status,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             message: Optional[str] = None,
+             reason: Optional[str] = None,
+             status: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if reason is not None:
-            pulumi.set(__self__, "reason", reason)
+            _setter("reason", reason)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -487,12 +551,25 @@ class DomainMappingStatusResourceRecord(dict):
         :param str type: Resource record type. Example: `AAAA`.
                Possible values are: `A`, `AAAA`, `CNAME`.
         """
+        DomainMappingStatusResourceRecord._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            rrdata=rrdata,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             rrdata: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if rrdata is not None:
-            pulumi.set(__self__, "rrdata", rrdata)
+            _setter("rrdata", rrdata)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -528,10 +605,23 @@ class IamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        IamBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -555,10 +645,23 @@ class IamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        IamMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -643,20 +746,41 @@ class ServiceMetadata(dict):
                UID is a unique id generated by the server on successful creation of a resource and is not
                allowed to change on PUT operations.
         """
+        ServiceMetadata._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            generation=generation,
+            labels=labels,
+            namespace=namespace,
+            resource_version=resource_version,
+            self_link=self_link,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[Mapping[str, str]] = None,
+             generation: Optional[int] = None,
+             labels: Optional[Mapping[str, str]] = None,
+             namespace: Optional[str] = None,
+             resource_version: Optional[str] = None,
+             self_link: Optional[str] = None,
+             uid: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if generation is not None:
-            pulumi.set(__self__, "generation", generation)
+            _setter("generation", generation)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if resource_version is not None:
-            pulumi.set(__self__, "resource_version", resource_version)
+            _setter("resource_version", resource_version)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter
@@ -791,8 +915,7 @@ class ServiceStatus(dict):
                controller.
                Clients polling for completed reconciliation should poll until observedGeneration =
                metadata.generation and the Ready condition's status is True or False.
-        :param Sequence['ServiceStatusTrafficArgs'] traffics: (Output)
-               Traffic specifies how to distribute traffic over a collection of Knative Revisions
+        :param Sequence['ServiceStatusTrafficArgs'] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions
                and Configurations
                Structure is documented below.
         :param str url: (Output)
@@ -800,18 +923,37 @@ class ServiceStatus(dict):
                and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
                but may not contain anything else (e.g. basic auth, url path, etc.)
         """
+        ServiceStatus._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            conditions=conditions,
+            latest_created_revision_name=latest_created_revision_name,
+            latest_ready_revision_name=latest_ready_revision_name,
+            observed_generation=observed_generation,
+            traffics=traffics,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             conditions: Optional[Sequence['outputs.ServiceStatusCondition']] = None,
+             latest_created_revision_name: Optional[str] = None,
+             latest_ready_revision_name: Optional[str] = None,
+             observed_generation: Optional[int] = None,
+             traffics: Optional[Sequence['outputs.ServiceStatusTraffic']] = None,
+             url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if conditions is not None:
-            pulumi.set(__self__, "conditions", conditions)
+            _setter("conditions", conditions)
         if latest_created_revision_name is not None:
-            pulumi.set(__self__, "latest_created_revision_name", latest_created_revision_name)
+            _setter("latest_created_revision_name", latest_created_revision_name)
         if latest_ready_revision_name is not None:
-            pulumi.set(__self__, "latest_ready_revision_name", latest_ready_revision_name)
+            _setter("latest_ready_revision_name", latest_ready_revision_name)
         if observed_generation is not None:
-            pulumi.set(__self__, "observed_generation", observed_generation)
+            _setter("observed_generation", observed_generation)
         if traffics is not None:
-            pulumi.set(__self__, "traffics", traffics)
+            _setter("traffics", traffics)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter
@@ -861,7 +1003,6 @@ class ServiceStatus(dict):
     @pulumi.getter
     def traffics(self) -> Optional[Sequence['outputs.ServiceStatusTraffic']]:
         """
-        (Output)
         Traffic specifies how to distribute traffic over a collection of Knative Revisions
         and Configurations
         Structure is documented below.
@@ -897,14 +1038,29 @@ class ServiceStatusCondition(dict):
         :param str type: (Output)
                Type of domain mapping condition.
         """
+        ServiceStatusCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            message=message,
+            reason=reason,
+            status=status,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             message: Optional[str] = None,
+             reason: Optional[str] = None,
+             status: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if reason is not None:
-            pulumi.set(__self__, "reason", reason)
+            _setter("reason", reason)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -983,16 +1139,33 @@ class ServiceStatusTraffic(dict):
                and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
                but may not contain anything else (e.g. basic auth, url path, etc.)
         """
+        ServiceStatusTraffic._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            latest_revision=latest_revision,
+            percent=percent,
+            revision_name=revision_name,
+            tag=tag,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             latest_revision: Optional[bool] = None,
+             percent: Optional[int] = None,
+             revision_name: Optional[str] = None,
+             tag: Optional[str] = None,
+             url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if latest_revision is not None:
-            pulumi.set(__self__, "latest_revision", latest_revision)
+            _setter("latest_revision", latest_revision)
         if percent is not None:
-            pulumi.set(__self__, "percent", percent)
+            _setter("percent", percent)
         if revision_name is not None:
-            pulumi.set(__self__, "revision_name", revision_name)
+            _setter("revision_name", revision_name)
         if tag is not None:
-            pulumi.set(__self__, "tag", tag)
+            _setter("tag", tag)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter(name="latestRevision")
@@ -1058,10 +1231,21 @@ class ServiceTemplate(dict):
         :param 'ServiceTemplateSpecArgs' spec: RevisionSpec holds the desired state of the Revision (from the client).
                Structure is documented below.
         """
+        ServiceTemplate._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            metadata=metadata,
+            spec=spec,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             metadata: Optional['outputs.ServiceTemplateMetadata'] = None,
+             spec: Optional['outputs.ServiceTemplateSpec'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
+            _setter("metadata", metadata)
         if spec is not None:
-            pulumi.set(__self__, "spec", spec)
+            _setter("spec", spec)
 
     @property
     @pulumi.getter
@@ -1159,22 +1343,45 @@ class ServiceTemplateMetadata(dict):
                UID is a unique id generated by the server on successful creation of a resource and is not
                allowed to change on PUT operations.
         """
+        ServiceTemplateMetadata._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            generation=generation,
+            labels=labels,
+            name=name,
+            namespace=namespace,
+            resource_version=resource_version,
+            self_link=self_link,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[Mapping[str, str]] = None,
+             generation: Optional[int] = None,
+             labels: Optional[Mapping[str, str]] = None,
+             name: Optional[str] = None,
+             namespace: Optional[str] = None,
+             resource_version: Optional[str] = None,
+             self_link: Optional[str] = None,
+             uid: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if generation is not None:
-            pulumi.set(__self__, "generation", generation)
+            _setter("generation", generation)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if resource_version is not None:
-            pulumi.set(__self__, "resource_version", resource_version)
+            _setter("resource_version", resource_version)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter
@@ -1324,18 +1531,37 @@ class ServiceTemplateSpec(dict):
         :param Sequence['ServiceTemplateSpecVolumeArgs'] volumes: Volume represents a named volume in a container.
                Structure is documented below.
         """
+        ServiceTemplateSpec._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            container_concurrency=container_concurrency,
+            containers=containers,
+            service_account_name=service_account_name,
+            serving_state=serving_state,
+            timeout_seconds=timeout_seconds,
+            volumes=volumes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             container_concurrency: Optional[int] = None,
+             containers: Optional[Sequence['outputs.ServiceTemplateSpecContainer']] = None,
+             service_account_name: Optional[str] = None,
+             serving_state: Optional[str] = None,
+             timeout_seconds: Optional[int] = None,
+             volumes: Optional[Sequence['outputs.ServiceTemplateSpecVolume']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if container_concurrency is not None:
-            pulumi.set(__self__, "container_concurrency", container_concurrency)
+            _setter("container_concurrency", container_concurrency)
         if containers is not None:
-            pulumi.set(__self__, "containers", containers)
+            _setter("containers", containers)
         if service_account_name is not None:
-            pulumi.set(__self__, "service_account_name", service_account_name)
+            _setter("service_account_name", service_account_name)
         if serving_state is not None:
-            pulumi.set(__self__, "serving_state", serving_state)
+            _setter("serving_state", serving_state)
         if timeout_seconds is not None:
-            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+            _setter("timeout_seconds", timeout_seconds)
         if volumes is not None:
-            pulumi.set(__self__, "volumes", volumes)
+            _setter("volumes", volumes)
 
     @property
     @pulumi.getter(name="containerConcurrency")
@@ -1481,29 +1707,60 @@ class ServiceTemplateSpecContainer(dict):
                
                > **Warning:** `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         """
-        pulumi.set(__self__, "image", image)
+        ServiceTemplateSpecContainer._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            image=image,
+            args=args,
+            commands=commands,
+            env_froms=env_froms,
+            envs=envs,
+            liveness_probe=liveness_probe,
+            name=name,
+            ports=ports,
+            resources=resources,
+            startup_probe=startup_probe,
+            volume_mounts=volume_mounts,
+            working_dir=working_dir,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             image: str,
+             args: Optional[Sequence[str]] = None,
+             commands: Optional[Sequence[str]] = None,
+             env_froms: Optional[Sequence['outputs.ServiceTemplateSpecContainerEnvFrom']] = None,
+             envs: Optional[Sequence['outputs.ServiceTemplateSpecContainerEnv']] = None,
+             liveness_probe: Optional['outputs.ServiceTemplateSpecContainerLivenessProbe'] = None,
+             name: Optional[str] = None,
+             ports: Optional[Sequence['outputs.ServiceTemplateSpecContainerPort']] = None,
+             resources: Optional['outputs.ServiceTemplateSpecContainerResources'] = None,
+             startup_probe: Optional['outputs.ServiceTemplateSpecContainerStartupProbe'] = None,
+             volume_mounts: Optional[Sequence['outputs.ServiceTemplateSpecContainerVolumeMount']] = None,
+             working_dir: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("image", image)
         if args is not None:
-            pulumi.set(__self__, "args", args)
+            _setter("args", args)
         if commands is not None:
-            pulumi.set(__self__, "commands", commands)
+            _setter("commands", commands)
         if env_froms is not None:
-            pulumi.set(__self__, "env_froms", env_froms)
+            _setter("env_froms", env_froms)
         if envs is not None:
-            pulumi.set(__self__, "envs", envs)
+            _setter("envs", envs)
         if liveness_probe is not None:
-            pulumi.set(__self__, "liveness_probe", liveness_probe)
+            _setter("liveness_probe", liveness_probe)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if ports is not None:
-            pulumi.set(__self__, "ports", ports)
+            _setter("ports", ports)
         if resources is not None:
-            pulumi.set(__self__, "resources", resources)
+            _setter("resources", resources)
         if startup_probe is not None:
-            pulumi.set(__self__, "startup_probe", startup_probe)
+            _setter("startup_probe", startup_probe)
         if volume_mounts is not None:
-            pulumi.set(__self__, "volume_mounts", volume_mounts)
+            _setter("volume_mounts", volume_mounts)
         if working_dir is not None:
-            pulumi.set(__self__, "working_dir", working_dir)
+            _setter("working_dir", working_dir)
 
     @property
     @pulumi.getter
@@ -1663,12 +1920,25 @@ class ServiceTemplateSpecContainerEnv(dict):
         :param 'ServiceTemplateSpecContainerEnvValueFromArgs' value_from: Source for the environment variable's value. Only supports secret_key_ref.
                Structure is documented below.
         """
+        ServiceTemplateSpecContainerEnv._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+            value_from=value_from,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             value_from: Optional['outputs.ServiceTemplateSpecContainerEnvValueFrom'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
         if value_from is not None:
-            pulumi.set(__self__, "value_from", value_from)
+            _setter("value_from", value_from)
 
     @property
     @pulumi.getter
@@ -1728,12 +1998,25 @@ class ServiceTemplateSpecContainerEnvFrom(dict):
         :param 'ServiceTemplateSpecContainerEnvFromSecretRefArgs' secret_ref: The Secret to select from.
                Structure is documented below.
         """
+        ServiceTemplateSpecContainerEnvFrom._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_map_ref=config_map_ref,
+            prefix=prefix,
+            secret_ref=secret_ref,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_map_ref: Optional['outputs.ServiceTemplateSpecContainerEnvFromConfigMapRef'] = None,
+             prefix: Optional[str] = None,
+             secret_ref: Optional['outputs.ServiceTemplateSpecContainerEnvFromSecretRef'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if config_map_ref is not None:
-            pulumi.set(__self__, "config_map_ref", config_map_ref)
+            _setter("config_map_ref", config_map_ref)
         if prefix is not None:
-            pulumi.set(__self__, "prefix", prefix)
+            _setter("prefix", prefix)
         if secret_ref is not None:
-            pulumi.set(__self__, "secret_ref", secret_ref)
+            _setter("secret_ref", secret_ref)
 
     @property
     @pulumi.getter(name="configMapRef")
@@ -1789,10 +2072,21 @@ class ServiceTemplateSpecContainerEnvFromConfigMapRef(dict):
                Structure is documented below.
         :param bool optional: Specify whether the ConfigMap must be defined
         """
+        ServiceTemplateSpecContainerEnvFromConfigMapRef._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            local_object_reference=local_object_reference,
+            optional=optional,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             local_object_reference: Optional['outputs.ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference'] = None,
+             optional: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if local_object_reference is not None:
-            pulumi.set(__self__, "local_object_reference", local_object_reference)
+            _setter("local_object_reference", local_object_reference)
         if optional is not None:
-            pulumi.set(__self__, "optional", optional)
+            _setter("optional", optional)
 
     @property
     @pulumi.getter(name="localObjectReference")
@@ -1819,7 +2113,16 @@ class ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference(dict):
         """
         :param str name: Name of the referent.
         """
-        pulumi.set(__self__, "name", name)
+        ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -1857,10 +2160,21 @@ class ServiceTemplateSpecContainerEnvFromSecretRef(dict):
                Structure is documented below.
         :param bool optional: Specify whether the Secret must be defined
         """
+        ServiceTemplateSpecContainerEnvFromSecretRef._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            local_object_reference=local_object_reference,
+            optional=optional,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             local_object_reference: Optional['outputs.ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference'] = None,
+             optional: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if local_object_reference is not None:
-            pulumi.set(__self__, "local_object_reference", local_object_reference)
+            _setter("local_object_reference", local_object_reference)
         if optional is not None:
-            pulumi.set(__self__, "optional", optional)
+            _setter("optional", optional)
 
     @property
     @pulumi.getter(name="localObjectReference")
@@ -1887,7 +2201,16 @@ class ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference(dict):
         """
         :param str name: Name of the referent.
         """
-        pulumi.set(__self__, "name", name)
+        ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -1923,7 +2246,16 @@ class ServiceTemplateSpecContainerEnvValueFrom(dict):
         :param 'ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs' secret_key_ref: Selects a key (version) of a secret in Secret Manager.
                Structure is documented below.
         """
-        pulumi.set(__self__, "secret_key_ref", secret_key_ref)
+        ServiceTemplateSpecContainerEnvValueFrom._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            secret_key_ref=secret_key_ref,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             secret_key_ref: 'outputs.ServiceTemplateSpecContainerEnvValueFromSecretKeyRef',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("secret_key_ref", secret_key_ref)
 
     @property
     @pulumi.getter(name="secretKeyRef")
@@ -1949,8 +2281,19 @@ class ServiceTemplateSpecContainerEnvValueFromSecretKeyRef(dict):
                If multiple alias definitions are needed, they must be separated by commas.
                The alias definitions must be set on the run.googleapis.com/secrets annotation.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "name", name)
+        ServiceTemplateSpecContainerEnvValueFromSecretKeyRef._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -2024,18 +2367,37 @@ class ServiceTemplateSpecContainerLivenessProbe(dict):
                Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
                Must be smaller than period_seconds.
         """
+        ServiceTemplateSpecContainerLivenessProbe._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            failure_threshold=failure_threshold,
+            grpc=grpc,
+            http_get=http_get,
+            initial_delay_seconds=initial_delay_seconds,
+            period_seconds=period_seconds,
+            timeout_seconds=timeout_seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             failure_threshold: Optional[int] = None,
+             grpc: Optional['outputs.ServiceTemplateSpecContainerLivenessProbeGrpc'] = None,
+             http_get: Optional['outputs.ServiceTemplateSpecContainerLivenessProbeHttpGet'] = None,
+             initial_delay_seconds: Optional[int] = None,
+             period_seconds: Optional[int] = None,
+             timeout_seconds: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if failure_threshold is not None:
-            pulumi.set(__self__, "failure_threshold", failure_threshold)
+            _setter("failure_threshold", failure_threshold)
         if grpc is not None:
-            pulumi.set(__self__, "grpc", grpc)
+            _setter("grpc", grpc)
         if http_get is not None:
-            pulumi.set(__self__, "http_get", http_get)
+            _setter("http_get", http_get)
         if initial_delay_seconds is not None:
-            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+            _setter("initial_delay_seconds", initial_delay_seconds)
         if period_seconds is not None:
-            pulumi.set(__self__, "period_seconds", period_seconds)
+            _setter("period_seconds", period_seconds)
         if timeout_seconds is not None:
-            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+            _setter("timeout_seconds", timeout_seconds)
 
     @property
     @pulumi.getter(name="failureThreshold")
@@ -2106,10 +2468,21 @@ class ServiceTemplateSpecContainerLivenessProbeGrpc(dict):
                (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
                If this is not specified, the default behavior is defined by gRPC.
         """
+        ServiceTemplateSpecContainerLivenessProbeGrpc._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            port=port,
+            service=service,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             port: Optional[int] = None,
+             service: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if service is not None:
-            pulumi.set(__self__, "service", service)
+            _setter("service", service)
 
     @property
     @pulumi.getter
@@ -2161,12 +2534,25 @@ class ServiceTemplateSpecContainerLivenessProbeHttpGet(dict):
         :param int port: Port number to access on the container. Number must be in the range 1 to 65535.
                If not specified, defaults to the same value as container.ports[0].containerPort.
         """
+        ServiceTemplateSpecContainerLivenessProbeHttpGet._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            http_headers=http_headers,
+            path=path,
+            port=port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             http_headers: Optional[Sequence['outputs.ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader']] = None,
+             path: Optional[str] = None,
+             port: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if http_headers is not None:
-            pulumi.set(__self__, "http_headers", http_headers)
+            _setter("http_headers", http_headers)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
 
     @property
     @pulumi.getter(name="httpHeaders")
@@ -2204,9 +2590,20 @@ class ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader(dict):
         :param str name: The header field name.
         :param str value: The header field value.
         """
-        pulumi.set(__self__, "name", name)
+        ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -2253,12 +2650,25 @@ class ServiceTemplateSpecContainerPort(dict):
         :param str name: If specified, used to specify which protocol to use. Allowed values are "http1" (HTTP/1) and "h2c" (HTTP/2 end-to-end). Defaults to "http1".
         :param str protocol: Protocol for port. Must be "TCP". Defaults to "TCP".
         """
+        ServiceTemplateSpecContainerPort._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            container_port=container_port,
+            name=name,
+            protocol=protocol,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             container_port: Optional[int] = None,
+             name: Optional[str] = None,
+             protocol: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if container_port is not None:
-            pulumi.set(__self__, "container_port", container_port)
+            _setter("container_port", container_port)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
 
     @property
     @pulumi.getter(name="containerPort")
@@ -2300,10 +2710,21 @@ class ServiceTemplateSpecContainerResources(dict):
                The values of the map is string form of the 'quantity' k8s type:
                https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
+        ServiceTemplateSpecContainerResources._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            limits=limits,
+            requests=requests,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             limits: Optional[Mapping[str, str]] = None,
+             requests: Optional[Mapping[str, str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if limits is not None:
-            pulumi.set(__self__, "limits", limits)
+            _setter("limits", limits)
         if requests is not None:
-            pulumi.set(__self__, "requests", requests)
+            _setter("requests", requests)
 
     @property
     @pulumi.getter
@@ -2383,20 +2804,41 @@ class ServiceTemplateSpecContainerStartupProbe(dict):
                Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
                Must be smaller than periodSeconds.
         """
+        ServiceTemplateSpecContainerStartupProbe._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            failure_threshold=failure_threshold,
+            grpc=grpc,
+            http_get=http_get,
+            initial_delay_seconds=initial_delay_seconds,
+            period_seconds=period_seconds,
+            tcp_socket=tcp_socket,
+            timeout_seconds=timeout_seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             failure_threshold: Optional[int] = None,
+             grpc: Optional['outputs.ServiceTemplateSpecContainerStartupProbeGrpc'] = None,
+             http_get: Optional['outputs.ServiceTemplateSpecContainerStartupProbeHttpGet'] = None,
+             initial_delay_seconds: Optional[int] = None,
+             period_seconds: Optional[int] = None,
+             tcp_socket: Optional['outputs.ServiceTemplateSpecContainerStartupProbeTcpSocket'] = None,
+             timeout_seconds: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if failure_threshold is not None:
-            pulumi.set(__self__, "failure_threshold", failure_threshold)
+            _setter("failure_threshold", failure_threshold)
         if grpc is not None:
-            pulumi.set(__self__, "grpc", grpc)
+            _setter("grpc", grpc)
         if http_get is not None:
-            pulumi.set(__self__, "http_get", http_get)
+            _setter("http_get", http_get)
         if initial_delay_seconds is not None:
-            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+            _setter("initial_delay_seconds", initial_delay_seconds)
         if period_seconds is not None:
-            pulumi.set(__self__, "period_seconds", period_seconds)
+            _setter("period_seconds", period_seconds)
         if tcp_socket is not None:
-            pulumi.set(__self__, "tcp_socket", tcp_socket)
+            _setter("tcp_socket", tcp_socket)
         if timeout_seconds is not None:
-            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+            _setter("timeout_seconds", timeout_seconds)
 
     @property
     @pulumi.getter(name="failureThreshold")
@@ -2476,10 +2918,21 @@ class ServiceTemplateSpecContainerStartupProbeGrpc(dict):
                (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
                If this is not specified, the default behavior is defined by gRPC.
         """
+        ServiceTemplateSpecContainerStartupProbeGrpc._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            port=port,
+            service=service,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             port: Optional[int] = None,
+             service: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if service is not None:
-            pulumi.set(__self__, "service", service)
+            _setter("service", service)
 
     @property
     @pulumi.getter
@@ -2531,12 +2984,25 @@ class ServiceTemplateSpecContainerStartupProbeHttpGet(dict):
         :param int port: Port number to access on the container. Number must be in the range 1 to 65535.
                If not specified, defaults to the same value as container.ports[0].containerPort.
         """
+        ServiceTemplateSpecContainerStartupProbeHttpGet._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            http_headers=http_headers,
+            path=path,
+            port=port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             http_headers: Optional[Sequence['outputs.ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader']] = None,
+             path: Optional[str] = None,
+             port: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if http_headers is not None:
-            pulumi.set(__self__, "http_headers", http_headers)
+            _setter("http_headers", http_headers)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
 
     @property
     @pulumi.getter(name="httpHeaders")
@@ -2574,9 +3040,20 @@ class ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader(dict):
         :param str name: The header field name.
         :param str value: The header field value.
         """
-        pulumi.set(__self__, "name", name)
+        ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -2603,8 +3080,17 @@ class ServiceTemplateSpecContainerStartupProbeTcpSocket(dict):
         :param int port: Port number to access on the container. Number must be in the range 1 to 65535.
                If not specified, defaults to the same value as container.ports[0].containerPort.
         """
+        ServiceTemplateSpecContainerStartupProbeTcpSocket._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            port=port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             port: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
 
     @property
     @pulumi.getter
@@ -2643,8 +3129,19 @@ class ServiceTemplateSpecContainerVolumeMount(dict):
                not contain ':'.
         :param str name: This must match the Name of a Volume.
         """
-        pulumi.set(__self__, "mount_path", mount_path)
-        pulumi.set(__self__, "name", name)
+        ServiceTemplateSpecContainerVolumeMount._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            mount_path=mount_path,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             mount_path: str,
+             name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("mount_path", mount_path)
+        _setter("name", name)
 
     @property
     @pulumi.getter(name="mountPath")
@@ -2694,11 +3191,24 @@ class ServiceTemplateSpecVolume(dict):
                the file is the secret_name.
                Structure is documented below.
         """
-        pulumi.set(__self__, "name", name)
+        ServiceTemplateSpecVolume._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            empty_dir=empty_dir,
+            secret=secret,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             empty_dir: Optional['outputs.ServiceTemplateSpecVolumeEmptyDir'] = None,
+             secret: Optional['outputs.ServiceTemplateSpecVolumeSecret'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if empty_dir is not None:
-            pulumi.set(__self__, "empty_dir", empty_dir)
+            _setter("empty_dir", empty_dir)
         if secret is not None:
-            pulumi.set(__self__, "secret", secret)
+            _setter("secret", secret)
 
     @property
     @pulumi.getter
@@ -2753,10 +3263,21 @@ class ServiceTemplateSpecVolumeEmptyDir(dict):
                
                - - -
         """
+        ServiceTemplateSpecVolumeEmptyDir._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            medium=medium,
+            size_limit=size_limit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             medium: Optional[str] = None,
+             size_limit: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if medium is not None:
-            pulumi.set(__self__, "medium", medium)
+            _setter("medium", medium)
         if size_limit is not None:
-            pulumi.set(__self__, "size_limit", size_limit)
+            _setter("size_limit", size_limit)
 
     @property
     @pulumi.getter
@@ -2823,11 +3344,24 @@ class ServiceTemplateSpecVolumeSecret(dict):
                volume. When items are defined, they must specify a key and a path.
                Structure is documented below.
         """
-        pulumi.set(__self__, "secret_name", secret_name)
+        ServiceTemplateSpecVolumeSecret._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            secret_name=secret_name,
+            default_mode=default_mode,
+            items=items,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             secret_name: str,
+             default_mode: Optional[int] = None,
+             items: Optional[Sequence['outputs.ServiceTemplateSpecVolumeSecretItem']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("secret_name", secret_name)
         if default_mode is not None:
-            pulumi.set(__self__, "default_mode", default_mode)
+            _setter("default_mode", default_mode)
         if items is not None:
-            pulumi.set(__self__, "items", items)
+            _setter("items", items)
 
     @property
     @pulumi.getter(name="secretName")
@@ -2888,10 +3422,23 @@ class ServiceTemplateSpecVolumeSecretItem(dict):
                conflict with other options that affect the file mode, like fsGroup, and
                the result can be other mode bits set.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "path", path)
+        ServiceTemplateSpecVolumeSecretItem._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            path=path,
+            mode=mode,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             path: str,
+             mode: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("path", path)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
 
     @property
     @pulumi.getter
@@ -2965,15 +3512,32 @@ class ServiceTraffic(dict):
                and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
                but may not contain anything else (e.g. basic auth, url path, etc.)
         """
-        pulumi.set(__self__, "percent", percent)
+        ServiceTraffic._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            percent=percent,
+            latest_revision=latest_revision,
+            revision_name=revision_name,
+            tag=tag,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             percent: int,
+             latest_revision: Optional[bool] = None,
+             revision_name: Optional[str] = None,
+             tag: Optional[str] = None,
+             url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("percent", percent)
         if latest_revision is not None:
-            pulumi.set(__self__, "latest_revision", latest_revision)
+            _setter("latest_revision", latest_revision)
         if revision_name is not None:
-            pulumi.set(__self__, "revision_name", revision_name)
+            _setter("revision_name", revision_name)
         if tag is not None:
-            pulumi.set(__self__, "tag", tag)
+            _setter("tag", tag)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter
@@ -3032,13 +3596,34 @@ class GetServiceMetadataResult(dict):
                  resource_version: str,
                  self_link: str,
                  uid: str):
-        pulumi.set(__self__, "annotations", annotations)
-        pulumi.set(__self__, "generation", generation)
-        pulumi.set(__self__, "labels", labels)
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "resource_version", resource_version)
-        pulumi.set(__self__, "self_link", self_link)
-        pulumi.set(__self__, "uid", uid)
+        GetServiceMetadataResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            generation=generation,
+            labels=labels,
+            namespace=namespace,
+            resource_version=resource_version,
+            self_link=self_link,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Mapping[str, str],
+             generation: int,
+             labels: Mapping[str, str],
+             namespace: str,
+             resource_version: str,
+             self_link: str,
+             uid: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("annotations", annotations)
+        _setter("generation", generation)
+        _setter("labels", labels)
+        _setter("namespace", namespace)
+        _setter("resource_version", resource_version)
+        _setter("self_link", self_link)
+        _setter("uid", uid)
 
     @property
     @pulumi.getter
@@ -3085,12 +3670,31 @@ class GetServiceStatusResult(dict):
                  observed_generation: int,
                  traffics: Sequence['outputs.GetServiceStatusTrafficResult'],
                  url: str):
-        pulumi.set(__self__, "conditions", conditions)
-        pulumi.set(__self__, "latest_created_revision_name", latest_created_revision_name)
-        pulumi.set(__self__, "latest_ready_revision_name", latest_ready_revision_name)
-        pulumi.set(__self__, "observed_generation", observed_generation)
-        pulumi.set(__self__, "traffics", traffics)
-        pulumi.set(__self__, "url", url)
+        GetServiceStatusResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            conditions=conditions,
+            latest_created_revision_name=latest_created_revision_name,
+            latest_ready_revision_name=latest_ready_revision_name,
+            observed_generation=observed_generation,
+            traffics=traffics,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             conditions: Sequence['outputs.GetServiceStatusConditionResult'],
+             latest_created_revision_name: str,
+             latest_ready_revision_name: str,
+             observed_generation: int,
+             traffics: Sequence['outputs.GetServiceStatusTrafficResult'],
+             url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("conditions", conditions)
+        _setter("latest_created_revision_name", latest_created_revision_name)
+        _setter("latest_ready_revision_name", latest_ready_revision_name)
+        _setter("observed_generation", observed_generation)
+        _setter("traffics", traffics)
+        _setter("url", url)
 
     @property
     @pulumi.getter
@@ -3130,10 +3734,25 @@ class GetServiceStatusConditionResult(dict):
                  reason: str,
                  status: str,
                  type: str):
-        pulumi.set(__self__, "message", message)
-        pulumi.set(__self__, "reason", reason)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "type", type)
+        GetServiceStatusConditionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            message=message,
+            reason=reason,
+            status=status,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             message: str,
+             reason: str,
+             status: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("message", message)
+        _setter("reason", reason)
+        _setter("status", status)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -3164,11 +3783,28 @@ class GetServiceStatusTrafficResult(dict):
                  revision_name: str,
                  tag: str,
                  url: str):
-        pulumi.set(__self__, "latest_revision", latest_revision)
-        pulumi.set(__self__, "percent", percent)
-        pulumi.set(__self__, "revision_name", revision_name)
-        pulumi.set(__self__, "tag", tag)
-        pulumi.set(__self__, "url", url)
+        GetServiceStatusTrafficResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            latest_revision=latest_revision,
+            percent=percent,
+            revision_name=revision_name,
+            tag=tag,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             latest_revision: bool,
+             percent: int,
+             revision_name: str,
+             tag: str,
+             url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("latest_revision", latest_revision)
+        _setter("percent", percent)
+        _setter("revision_name", revision_name)
+        _setter("tag", tag)
+        _setter("url", url)
 
     @property
     @pulumi.getter(name="latestRevision")
@@ -3201,8 +3837,19 @@ class GetServiceTemplateResult(dict):
     def __init__(__self__, *,
                  metadatas: Sequence['outputs.GetServiceTemplateMetadataResult'],
                  specs: Sequence['outputs.GetServiceTemplateSpecResult']):
-        pulumi.set(__self__, "metadatas", metadatas)
-        pulumi.set(__self__, "specs", specs)
+        GetServiceTemplateResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            metadatas=metadatas,
+            specs=specs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             metadatas: Sequence['outputs.GetServiceTemplateMetadataResult'],
+             specs: Sequence['outputs.GetServiceTemplateSpecResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("metadatas", metadatas)
+        _setter("specs", specs)
 
     @property
     @pulumi.getter
@@ -3229,14 +3876,37 @@ class GetServiceTemplateMetadataResult(dict):
         """
         :param str name: The name of the Cloud Run Service.
         """
-        pulumi.set(__self__, "annotations", annotations)
-        pulumi.set(__self__, "generation", generation)
-        pulumi.set(__self__, "labels", labels)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "resource_version", resource_version)
-        pulumi.set(__self__, "self_link", self_link)
-        pulumi.set(__self__, "uid", uid)
+        GetServiceTemplateMetadataResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            generation=generation,
+            labels=labels,
+            name=name,
+            namespace=namespace,
+            resource_version=resource_version,
+            self_link=self_link,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Mapping[str, str],
+             generation: int,
+             labels: Mapping[str, str],
+             name: str,
+             namespace: str,
+             resource_version: str,
+             self_link: str,
+             uid: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("annotations", annotations)
+        _setter("generation", generation)
+        _setter("labels", labels)
+        _setter("name", name)
+        _setter("namespace", namespace)
+        _setter("resource_version", resource_version)
+        _setter("self_link", self_link)
+        _setter("uid", uid)
 
     @property
     @pulumi.getter
@@ -3291,12 +3961,31 @@ class GetServiceTemplateSpecResult(dict):
                  serving_state: str,
                  timeout_seconds: int,
                  volumes: Sequence['outputs.GetServiceTemplateSpecVolumeResult']):
-        pulumi.set(__self__, "container_concurrency", container_concurrency)
-        pulumi.set(__self__, "containers", containers)
-        pulumi.set(__self__, "service_account_name", service_account_name)
-        pulumi.set(__self__, "serving_state", serving_state)
-        pulumi.set(__self__, "timeout_seconds", timeout_seconds)
-        pulumi.set(__self__, "volumes", volumes)
+        GetServiceTemplateSpecResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            container_concurrency=container_concurrency,
+            containers=containers,
+            service_account_name=service_account_name,
+            serving_state=serving_state,
+            timeout_seconds=timeout_seconds,
+            volumes=volumes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             container_concurrency: int,
+             containers: Sequence['outputs.GetServiceTemplateSpecContainerResult'],
+             service_account_name: str,
+             serving_state: str,
+             timeout_seconds: int,
+             volumes: Sequence['outputs.GetServiceTemplateSpecVolumeResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("container_concurrency", container_concurrency)
+        _setter("containers", containers)
+        _setter("service_account_name", service_account_name)
+        _setter("serving_state", serving_state)
+        _setter("timeout_seconds", timeout_seconds)
+        _setter("volumes", volumes)
 
     @property
     @pulumi.getter(name="containerConcurrency")
@@ -3347,18 +4036,49 @@ class GetServiceTemplateSpecContainerResult(dict):
         """
         :param str name: The name of the Cloud Run Service.
         """
-        pulumi.set(__self__, "args", args)
-        pulumi.set(__self__, "commands", commands)
-        pulumi.set(__self__, "env_froms", env_froms)
-        pulumi.set(__self__, "envs", envs)
-        pulumi.set(__self__, "image", image)
-        pulumi.set(__self__, "liveness_probes", liveness_probes)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "ports", ports)
-        pulumi.set(__self__, "resources", resources)
-        pulumi.set(__self__, "startup_probes", startup_probes)
-        pulumi.set(__self__, "volume_mounts", volume_mounts)
-        pulumi.set(__self__, "working_dir", working_dir)
+        GetServiceTemplateSpecContainerResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            args=args,
+            commands=commands,
+            env_froms=env_froms,
+            envs=envs,
+            image=image,
+            liveness_probes=liveness_probes,
+            name=name,
+            ports=ports,
+            resources=resources,
+            startup_probes=startup_probes,
+            volume_mounts=volume_mounts,
+            working_dir=working_dir,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             args: Sequence[str],
+             commands: Sequence[str],
+             env_froms: Sequence['outputs.GetServiceTemplateSpecContainerEnvFromResult'],
+             envs: Sequence['outputs.GetServiceTemplateSpecContainerEnvResult'],
+             image: str,
+             liveness_probes: Sequence['outputs.GetServiceTemplateSpecContainerLivenessProbeResult'],
+             name: str,
+             ports: Sequence['outputs.GetServiceTemplateSpecContainerPortResult'],
+             resources: Sequence['outputs.GetServiceTemplateSpecContainerResourceResult'],
+             startup_probes: Sequence['outputs.GetServiceTemplateSpecContainerStartupProbeResult'],
+             volume_mounts: Sequence['outputs.GetServiceTemplateSpecContainerVolumeMountResult'],
+             working_dir: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("args", args)
+        _setter("commands", commands)
+        _setter("env_froms", env_froms)
+        _setter("envs", envs)
+        _setter("image", image)
+        _setter("liveness_probes", liveness_probes)
+        _setter("name", name)
+        _setter("ports", ports)
+        _setter("resources", resources)
+        _setter("startup_probes", startup_probes)
+        _setter("volume_mounts", volume_mounts)
+        _setter("working_dir", working_dir)
 
     @property
     @pulumi.getter
@@ -3433,9 +4153,22 @@ class GetServiceTemplateSpecContainerEnvResult(dict):
         """
         :param str name: The name of the Cloud Run Service.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
-        pulumi.set(__self__, "value_froms", value_froms)
+        GetServiceTemplateSpecContainerEnvResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+            value_froms=value_froms,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             value: str,
+             value_froms: Sequence['outputs.GetServiceTemplateSpecContainerEnvValueFromResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("value", value)
+        _setter("value_froms", value_froms)
 
     @property
     @pulumi.getter
@@ -3462,9 +4195,22 @@ class GetServiceTemplateSpecContainerEnvFromResult(dict):
                  config_map_reves: Sequence['outputs.GetServiceTemplateSpecContainerEnvFromConfigMapRefResult'],
                  prefix: str,
                  secret_reves: Sequence['outputs.GetServiceTemplateSpecContainerEnvFromSecretRefResult']):
-        pulumi.set(__self__, "config_map_reves", config_map_reves)
-        pulumi.set(__self__, "prefix", prefix)
-        pulumi.set(__self__, "secret_reves", secret_reves)
+        GetServiceTemplateSpecContainerEnvFromResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_map_reves=config_map_reves,
+            prefix=prefix,
+            secret_reves=secret_reves,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_map_reves: Sequence['outputs.GetServiceTemplateSpecContainerEnvFromConfigMapRefResult'],
+             prefix: str,
+             secret_reves: Sequence['outputs.GetServiceTemplateSpecContainerEnvFromSecretRefResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("config_map_reves", config_map_reves)
+        _setter("prefix", prefix)
+        _setter("secret_reves", secret_reves)
 
     @property
     @pulumi.getter(name="configMapReves")
@@ -3487,8 +4233,19 @@ class GetServiceTemplateSpecContainerEnvFromConfigMapRefResult(dict):
     def __init__(__self__, *,
                  local_object_references: Sequence['outputs.GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceResult'],
                  optional: bool):
-        pulumi.set(__self__, "local_object_references", local_object_references)
-        pulumi.set(__self__, "optional", optional)
+        GetServiceTemplateSpecContainerEnvFromConfigMapRefResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            local_object_references=local_object_references,
+            optional=optional,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             local_object_references: Sequence['outputs.GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceResult'],
+             optional: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("local_object_references", local_object_references)
+        _setter("optional", optional)
 
     @property
     @pulumi.getter(name="localObjectReferences")
@@ -3508,7 +4265,16 @@ class GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceResu
         """
         :param str name: The name of the Cloud Run Service.
         """
-        pulumi.set(__self__, "name", name)
+        GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -3524,8 +4290,19 @@ class GetServiceTemplateSpecContainerEnvFromSecretRefResult(dict):
     def __init__(__self__, *,
                  local_object_references: Sequence['outputs.GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceResult'],
                  optional: bool):
-        pulumi.set(__self__, "local_object_references", local_object_references)
-        pulumi.set(__self__, "optional", optional)
+        GetServiceTemplateSpecContainerEnvFromSecretRefResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            local_object_references=local_object_references,
+            optional=optional,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             local_object_references: Sequence['outputs.GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceResult'],
+             optional: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("local_object_references", local_object_references)
+        _setter("optional", optional)
 
     @property
     @pulumi.getter(name="localObjectReferences")
@@ -3545,7 +4322,16 @@ class GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceResult(
         """
         :param str name: The name of the Cloud Run Service.
         """
-        pulumi.set(__self__, "name", name)
+        GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -3560,7 +4346,16 @@ class GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceResult(
 class GetServiceTemplateSpecContainerEnvValueFromResult(dict):
     def __init__(__self__, *,
                  secret_key_reves: Sequence['outputs.GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefResult']):
-        pulumi.set(__self__, "secret_key_reves", secret_key_reves)
+        GetServiceTemplateSpecContainerEnvValueFromResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            secret_key_reves=secret_key_reves,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             secret_key_reves: Sequence['outputs.GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("secret_key_reves", secret_key_reves)
 
     @property
     @pulumi.getter(name="secretKeyReves")
@@ -3576,8 +4371,19 @@ class GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefResult(dict):
         """
         :param str name: The name of the Cloud Run Service.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "name", name)
+        GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -3602,12 +4408,31 @@ class GetServiceTemplateSpecContainerLivenessProbeResult(dict):
                  initial_delay_seconds: int,
                  period_seconds: int,
                  timeout_seconds: int):
-        pulumi.set(__self__, "failure_threshold", failure_threshold)
-        pulumi.set(__self__, "grpcs", grpcs)
-        pulumi.set(__self__, "http_gets", http_gets)
-        pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
-        pulumi.set(__self__, "period_seconds", period_seconds)
-        pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+        GetServiceTemplateSpecContainerLivenessProbeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            failure_threshold=failure_threshold,
+            grpcs=grpcs,
+            http_gets=http_gets,
+            initial_delay_seconds=initial_delay_seconds,
+            period_seconds=period_seconds,
+            timeout_seconds=timeout_seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             failure_threshold: int,
+             grpcs: Sequence['outputs.GetServiceTemplateSpecContainerLivenessProbeGrpcResult'],
+             http_gets: Sequence['outputs.GetServiceTemplateSpecContainerLivenessProbeHttpGetResult'],
+             initial_delay_seconds: int,
+             period_seconds: int,
+             timeout_seconds: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("failure_threshold", failure_threshold)
+        _setter("grpcs", grpcs)
+        _setter("http_gets", http_gets)
+        _setter("initial_delay_seconds", initial_delay_seconds)
+        _setter("period_seconds", period_seconds)
+        _setter("timeout_seconds", timeout_seconds)
 
     @property
     @pulumi.getter(name="failureThreshold")
@@ -3645,8 +4470,19 @@ class GetServiceTemplateSpecContainerLivenessProbeGrpcResult(dict):
     def __init__(__self__, *,
                  port: int,
                  service: str):
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "service", service)
+        GetServiceTemplateSpecContainerLivenessProbeGrpcResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            port=port,
+            service=service,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             port: int,
+             service: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("port", port)
+        _setter("service", service)
 
     @property
     @pulumi.getter
@@ -3665,9 +4501,22 @@ class GetServiceTemplateSpecContainerLivenessProbeHttpGetResult(dict):
                  http_headers: Sequence['outputs.GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderResult'],
                  path: str,
                  port: int):
-        pulumi.set(__self__, "http_headers", http_headers)
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "port", port)
+        GetServiceTemplateSpecContainerLivenessProbeHttpGetResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            http_headers=http_headers,
+            path=path,
+            port=port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             http_headers: Sequence['outputs.GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderResult'],
+             path: str,
+             port: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("http_headers", http_headers)
+        _setter("path", path)
+        _setter("port", port)
 
     @property
     @pulumi.getter(name="httpHeaders")
@@ -3693,8 +4542,19 @@ class GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderResult(dict):
         """
         :param str name: The name of the Cloud Run Service.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -3719,9 +4579,22 @@ class GetServiceTemplateSpecContainerPortResult(dict):
         """
         :param str name: The name of the Cloud Run Service.
         """
-        pulumi.set(__self__, "container_port", container_port)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "protocol", protocol)
+        GetServiceTemplateSpecContainerPortResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            container_port=container_port,
+            name=name,
+            protocol=protocol,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             container_port: int,
+             name: str,
+             protocol: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("container_port", container_port)
+        _setter("name", name)
+        _setter("protocol", protocol)
 
     @property
     @pulumi.getter(name="containerPort")
@@ -3747,8 +4620,19 @@ class GetServiceTemplateSpecContainerResourceResult(dict):
     def __init__(__self__, *,
                  limits: Mapping[str, str],
                  requests: Mapping[str, str]):
-        pulumi.set(__self__, "limits", limits)
-        pulumi.set(__self__, "requests", requests)
+        GetServiceTemplateSpecContainerResourceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            limits=limits,
+            requests=requests,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             limits: Mapping[str, str],
+             requests: Mapping[str, str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("limits", limits)
+        _setter("requests", requests)
 
     @property
     @pulumi.getter
@@ -3771,13 +4655,34 @@ class GetServiceTemplateSpecContainerStartupProbeResult(dict):
                  period_seconds: int,
                  tcp_sockets: Sequence['outputs.GetServiceTemplateSpecContainerStartupProbeTcpSocketResult'],
                  timeout_seconds: int):
-        pulumi.set(__self__, "failure_threshold", failure_threshold)
-        pulumi.set(__self__, "grpcs", grpcs)
-        pulumi.set(__self__, "http_gets", http_gets)
-        pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
-        pulumi.set(__self__, "period_seconds", period_seconds)
-        pulumi.set(__self__, "tcp_sockets", tcp_sockets)
-        pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+        GetServiceTemplateSpecContainerStartupProbeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            failure_threshold=failure_threshold,
+            grpcs=grpcs,
+            http_gets=http_gets,
+            initial_delay_seconds=initial_delay_seconds,
+            period_seconds=period_seconds,
+            tcp_sockets=tcp_sockets,
+            timeout_seconds=timeout_seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             failure_threshold: int,
+             grpcs: Sequence['outputs.GetServiceTemplateSpecContainerStartupProbeGrpcResult'],
+             http_gets: Sequence['outputs.GetServiceTemplateSpecContainerStartupProbeHttpGetResult'],
+             initial_delay_seconds: int,
+             period_seconds: int,
+             tcp_sockets: Sequence['outputs.GetServiceTemplateSpecContainerStartupProbeTcpSocketResult'],
+             timeout_seconds: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("failure_threshold", failure_threshold)
+        _setter("grpcs", grpcs)
+        _setter("http_gets", http_gets)
+        _setter("initial_delay_seconds", initial_delay_seconds)
+        _setter("period_seconds", period_seconds)
+        _setter("tcp_sockets", tcp_sockets)
+        _setter("timeout_seconds", timeout_seconds)
 
     @property
     @pulumi.getter(name="failureThreshold")
@@ -3820,8 +4725,19 @@ class GetServiceTemplateSpecContainerStartupProbeGrpcResult(dict):
     def __init__(__self__, *,
                  port: int,
                  service: str):
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "service", service)
+        GetServiceTemplateSpecContainerStartupProbeGrpcResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            port=port,
+            service=service,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             port: int,
+             service: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("port", port)
+        _setter("service", service)
 
     @property
     @pulumi.getter
@@ -3840,9 +4756,22 @@ class GetServiceTemplateSpecContainerStartupProbeHttpGetResult(dict):
                  http_headers: Sequence['outputs.GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderResult'],
                  path: str,
                  port: int):
-        pulumi.set(__self__, "http_headers", http_headers)
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "port", port)
+        GetServiceTemplateSpecContainerStartupProbeHttpGetResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            http_headers=http_headers,
+            path=path,
+            port=port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             http_headers: Sequence['outputs.GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderResult'],
+             path: str,
+             port: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("http_headers", http_headers)
+        _setter("path", path)
+        _setter("port", port)
 
     @property
     @pulumi.getter(name="httpHeaders")
@@ -3868,8 +4797,19 @@ class GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderResult(dict):
         """
         :param str name: The name of the Cloud Run Service.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -3889,7 +4829,16 @@ class GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderResult(dict):
 class GetServiceTemplateSpecContainerStartupProbeTcpSocketResult(dict):
     def __init__(__self__, *,
                  port: int):
-        pulumi.set(__self__, "port", port)
+        GetServiceTemplateSpecContainerStartupProbeTcpSocketResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            port=port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             port: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("port", port)
 
     @property
     @pulumi.getter
@@ -3905,8 +4854,19 @@ class GetServiceTemplateSpecContainerVolumeMountResult(dict):
         """
         :param str name: The name of the Cloud Run Service.
         """
-        pulumi.set(__self__, "mount_path", mount_path)
-        pulumi.set(__self__, "name", name)
+        GetServiceTemplateSpecContainerVolumeMountResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            mount_path=mount_path,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             mount_path: str,
+             name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("mount_path", mount_path)
+        _setter("name", name)
 
     @property
     @pulumi.getter(name="mountPath")
@@ -3931,9 +4891,22 @@ class GetServiceTemplateSpecVolumeResult(dict):
         """
         :param str name: The name of the Cloud Run Service.
         """
-        pulumi.set(__self__, "empty_dirs", empty_dirs)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "secrets", secrets)
+        GetServiceTemplateSpecVolumeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            empty_dirs=empty_dirs,
+            name=name,
+            secrets=secrets,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             empty_dirs: Sequence['outputs.GetServiceTemplateSpecVolumeEmptyDirResult'],
+             name: str,
+             secrets: Sequence['outputs.GetServiceTemplateSpecVolumeSecretResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("empty_dirs", empty_dirs)
+        _setter("name", name)
+        _setter("secrets", secrets)
 
     @property
     @pulumi.getter(name="emptyDirs")
@@ -3959,8 +4932,19 @@ class GetServiceTemplateSpecVolumeEmptyDirResult(dict):
     def __init__(__self__, *,
                  medium: str,
                  size_limit: str):
-        pulumi.set(__self__, "medium", medium)
-        pulumi.set(__self__, "size_limit", size_limit)
+        GetServiceTemplateSpecVolumeEmptyDirResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            medium=medium,
+            size_limit=size_limit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             medium: str,
+             size_limit: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("medium", medium)
+        _setter("size_limit", size_limit)
 
     @property
     @pulumi.getter
@@ -3979,9 +4963,22 @@ class GetServiceTemplateSpecVolumeSecretResult(dict):
                  default_mode: int,
                  items: Sequence['outputs.GetServiceTemplateSpecVolumeSecretItemResult'],
                  secret_name: str):
-        pulumi.set(__self__, "default_mode", default_mode)
-        pulumi.set(__self__, "items", items)
-        pulumi.set(__self__, "secret_name", secret_name)
+        GetServiceTemplateSpecVolumeSecretResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default_mode=default_mode,
+            items=items,
+            secret_name=secret_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default_mode: int,
+             items: Sequence['outputs.GetServiceTemplateSpecVolumeSecretItemResult'],
+             secret_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("default_mode", default_mode)
+        _setter("items", items)
+        _setter("secret_name", secret_name)
 
     @property
     @pulumi.getter(name="defaultMode")
@@ -4005,9 +5002,22 @@ class GetServiceTemplateSpecVolumeSecretItemResult(dict):
                  key: str,
                  mode: int,
                  path: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "mode", mode)
-        pulumi.set(__self__, "path", path)
+        GetServiceTemplateSpecVolumeSecretItemResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            mode=mode,
+            path=path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             mode: int,
+             path: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("mode", mode)
+        _setter("path", path)
 
     @property
     @pulumi.getter
@@ -4033,11 +5043,28 @@ class GetServiceTrafficResult(dict):
                  revision_name: str,
                  tag: str,
                  url: str):
-        pulumi.set(__self__, "latest_revision", latest_revision)
-        pulumi.set(__self__, "percent", percent)
-        pulumi.set(__self__, "revision_name", revision_name)
-        pulumi.set(__self__, "tag", tag)
-        pulumi.set(__self__, "url", url)
+        GetServiceTrafficResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            latest_revision=latest_revision,
+            percent=percent,
+            revision_name=revision_name,
+            tag=tag,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             latest_revision: bool,
+             percent: int,
+             revision_name: str,
+             tag: str,
+             url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("latest_revision", latest_revision)
+        _setter("percent", percent)
+        _setter("revision_name", revision_name)
+        _setter("tag", tag)
+        _setter("url", url)
 
     @property
     @pulumi.getter(name="latestRevision")

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -84,34 +84,69 @@ class ImageArgs:
                (regional or multi-regional).
                Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
         """
+        ImageArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            disk_size_gb=disk_size_gb,
+            family=family,
+            guest_os_features=guest_os_features,
+            image_encryption_key=image_encryption_key,
+            labels=labels,
+            licenses=licenses,
+            name=name,
+            project=project,
+            raw_disk=raw_disk,
+            source_disk=source_disk,
+            source_image=source_image,
+            source_snapshot=source_snapshot,
+            storage_locations=storage_locations,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             disk_size_gb: Optional[pulumi.Input[int]] = None,
+             family: Optional[pulumi.Input[str]] = None,
+             guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]]] = None,
+             image_encryption_key: Optional[pulumi.Input['ImageImageEncryptionKeyArgs']] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             raw_disk: Optional[pulumi.Input['ImageRawDiskArgs']] = None,
+             source_disk: Optional[pulumi.Input[str]] = None,
+             source_image: Optional[pulumi.Input[str]] = None,
+             source_snapshot: Optional[pulumi.Input[str]] = None,
+             storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disk_size_gb is not None:
-            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+            _setter("disk_size_gb", disk_size_gb)
         if family is not None:
-            pulumi.set(__self__, "family", family)
+            _setter("family", family)
         if guest_os_features is not None:
-            pulumi.set(__self__, "guest_os_features", guest_os_features)
+            _setter("guest_os_features", guest_os_features)
         if image_encryption_key is not None:
-            pulumi.set(__self__, "image_encryption_key", image_encryption_key)
+            _setter("image_encryption_key", image_encryption_key)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if licenses is not None:
-            pulumi.set(__self__, "licenses", licenses)
+            _setter("licenses", licenses)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if raw_disk is not None:
-            pulumi.set(__self__, "raw_disk", raw_disk)
+            _setter("raw_disk", raw_disk)
         if source_disk is not None:
-            pulumi.set(__self__, "source_disk", source_disk)
+            _setter("source_disk", source_disk)
         if source_image is not None:
-            pulumi.set(__self__, "source_image", source_image)
+            _setter("source_image", source_image)
         if source_snapshot is not None:
-            pulumi.set(__self__, "source_snapshot", source_snapshot)
+            _setter("source_snapshot", source_snapshot)
         if storage_locations is not None:
-            pulumi.set(__self__, "storage_locations", storage_locations)
+            _setter("storage_locations", storage_locations)
 
     @property
     @pulumi.getter
@@ -400,42 +435,85 @@ class _ImageState:
                (regional or multi-regional).
                Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
         """
+        _ImageState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            archive_size_bytes=archive_size_bytes,
+            creation_timestamp=creation_timestamp,
+            description=description,
+            disk_size_gb=disk_size_gb,
+            family=family,
+            guest_os_features=guest_os_features,
+            image_encryption_key=image_encryption_key,
+            label_fingerprint=label_fingerprint,
+            labels=labels,
+            licenses=licenses,
+            name=name,
+            project=project,
+            raw_disk=raw_disk,
+            self_link=self_link,
+            source_disk=source_disk,
+            source_image=source_image,
+            source_snapshot=source_snapshot,
+            storage_locations=storage_locations,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             archive_size_bytes: Optional[pulumi.Input[int]] = None,
+             creation_timestamp: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disk_size_gb: Optional[pulumi.Input[int]] = None,
+             family: Optional[pulumi.Input[str]] = None,
+             guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]]] = None,
+             image_encryption_key: Optional[pulumi.Input['ImageImageEncryptionKeyArgs']] = None,
+             label_fingerprint: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             raw_disk: Optional[pulumi.Input['ImageRawDiskArgs']] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             source_disk: Optional[pulumi.Input[str]] = None,
+             source_image: Optional[pulumi.Input[str]] = None,
+             source_snapshot: Optional[pulumi.Input[str]] = None,
+             storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if archive_size_bytes is not None:
-            pulumi.set(__self__, "archive_size_bytes", archive_size_bytes)
+            _setter("archive_size_bytes", archive_size_bytes)
         if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+            _setter("creation_timestamp", creation_timestamp)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disk_size_gb is not None:
-            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+            _setter("disk_size_gb", disk_size_gb)
         if family is not None:
-            pulumi.set(__self__, "family", family)
+            _setter("family", family)
         if guest_os_features is not None:
-            pulumi.set(__self__, "guest_os_features", guest_os_features)
+            _setter("guest_os_features", guest_os_features)
         if image_encryption_key is not None:
-            pulumi.set(__self__, "image_encryption_key", image_encryption_key)
+            _setter("image_encryption_key", image_encryption_key)
         if label_fingerprint is not None:
-            pulumi.set(__self__, "label_fingerprint", label_fingerprint)
+            _setter("label_fingerprint", label_fingerprint)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if licenses is not None:
-            pulumi.set(__self__, "licenses", licenses)
+            _setter("licenses", licenses)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if raw_disk is not None:
-            pulumi.set(__self__, "raw_disk", raw_disk)
+            _setter("raw_disk", raw_disk)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if source_disk is not None:
-            pulumi.set(__self__, "source_disk", source_disk)
+            _setter("source_disk", source_disk)
         if source_image is not None:
-            pulumi.set(__self__, "source_image", source_image)
+            _setter("source_image", source_image)
         if source_snapshot is not None:
-            pulumi.set(__self__, "source_snapshot", source_snapshot)
+            _setter("source_snapshot", source_snapshot)
         if storage_locations is not None:
-            pulumi.set(__self__, "storage_locations", storage_locations)
+            _setter("storage_locations", storage_locations)
 
     @property
     @pulumi.getter(name="archiveSizeBytes")
@@ -949,6 +1027,10 @@ class Image(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ImageArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -981,11 +1063,21 @@ class Image(pulumi.CustomResource):
             __props__.__dict__["disk_size_gb"] = disk_size_gb
             __props__.__dict__["family"] = family
             __props__.__dict__["guest_os_features"] = guest_os_features
+            if image_encryption_key is not None and not isinstance(image_encryption_key, ImageImageEncryptionKeyArgs):
+                image_encryption_key = image_encryption_key or {}
+                def _setter(key, value):
+                    image_encryption_key[key] = value
+                ImageImageEncryptionKeyArgs._configure(_setter, **image_encryption_key)
             __props__.__dict__["image_encryption_key"] = image_encryption_key
             __props__.__dict__["labels"] = labels
             __props__.__dict__["licenses"] = licenses
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            if raw_disk is not None and not isinstance(raw_disk, ImageRawDiskArgs):
+                raw_disk = raw_disk or {}
+                def _setter(key, value):
+                    raw_disk[key] = value
+                ImageRawDiskArgs._configure(_setter, **raw_disk)
             __props__.__dict__["raw_disk"] = raw_disk
             __props__.__dict__["source_disk"] = source_disk
             __props__.__dict__["source_image"] = source_image

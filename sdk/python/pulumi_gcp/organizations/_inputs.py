@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -48,9 +48,20 @@ class AccessApprovalSettingsEnrolledServiceArgs:
                
                - - -
         """
-        pulumi.set(__self__, "cloud_product", cloud_product)
+        AccessApprovalSettingsEnrolledServiceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cloud_product=cloud_product,
+            enrollment_level=enrollment_level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cloud_product: pulumi.Input[str],
+             enrollment_level: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cloud_product", cloud_product)
         if enrollment_level is not None:
-            pulumi.set(__self__, "enrollment_level", enrollment_level)
+            _setter("enrollment_level", enrollment_level)
 
     @property
     @pulumi.getter(name="cloudProduct")
@@ -97,10 +108,23 @@ class IAMBindingConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        IAMBindingConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: pulumi.Input[str],
+             title: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -145,10 +169,23 @@ class IAMMemberConditionArgs:
                identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
                consider it to be an entirely different resource and will treat it as such.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        IAMMemberConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: pulumi.Input[str],
+             title: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -205,9 +242,20 @@ class IamAuditConfigAuditLogConfigArgs:
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
-        pulumi.set(__self__, "log_type", log_type)
+        IamAuditConfigAuditLogConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            log_type=log_type,
+            exempted_members=exempted_members,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             log_type: pulumi.Input[str],
+             exempted_members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("log_type", log_type)
         if exempted_members is not None:
-            pulumi.set(__self__, "exempted_members", exempted_members)
+            _setter("exempted_members", exempted_members)
 
     @property
     @pulumi.getter(name="logType")
@@ -246,7 +294,16 @@ class PolicyBooleanPolicyArgs:
         """
         :param pulumi.Input[bool] enforced: If true, then the Policy is enforced. If false, then any configuration is acceptable.
         """
-        pulumi.set(__self__, "enforced", enforced)
+        PolicyBooleanPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enforced=enforced,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enforced: pulumi.Input[bool],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("enforced", enforced)
 
     @property
     @pulumi.getter
@@ -276,14 +333,29 @@ class PolicyListPolicyArgs:
                The `allow` or `deny` blocks support:
         :param pulumi.Input[str] suggested_value: The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
         """
+        PolicyListPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow=allow,
+            deny=deny,
+            inherit_from_parent=inherit_from_parent,
+            suggested_value=suggested_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow: Optional[pulumi.Input['PolicyListPolicyAllowArgs']] = None,
+             deny: Optional[pulumi.Input['PolicyListPolicyDenyArgs']] = None,
+             inherit_from_parent: Optional[pulumi.Input[bool]] = None,
+             suggested_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if allow is not None:
-            pulumi.set(__self__, "allow", allow)
+            _setter("allow", allow)
         if deny is not None:
-            pulumi.set(__self__, "deny", deny)
+            _setter("deny", deny)
         if inherit_from_parent is not None:
-            pulumi.set(__self__, "inherit_from_parent", inherit_from_parent)
+            _setter("inherit_from_parent", inherit_from_parent)
         if suggested_value is not None:
-            pulumi.set(__self__, "suggested_value", suggested_value)
+            _setter("suggested_value", suggested_value)
 
     @property
     @pulumi.getter
@@ -343,10 +415,21 @@ class PolicyListPolicyAllowArgs:
         :param pulumi.Input[bool] all: The policy allows or denies all values.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The policy can define specific values that are allowed or denied.
         """
+        PolicyListPolicyAllowArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            all=all,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             all: Optional[pulumi.Input[bool]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if all is not None:
-            pulumi.set(__self__, "all", all)
+            _setter("all", all)
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
 
     @property
     @pulumi.getter
@@ -382,10 +465,21 @@ class PolicyListPolicyDenyArgs:
         :param pulumi.Input[bool] all: The policy allows or denies all values.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The policy can define specific values that are allowed or denied.
         """
+        PolicyListPolicyDenyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            all=all,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             all: Optional[pulumi.Input[bool]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if all is not None:
-            pulumi.set(__self__, "all", all)
+            _setter("all", all)
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
 
     @property
     @pulumi.getter
@@ -419,7 +513,16 @@ class PolicyRestorePolicyArgs:
         """
         :param pulumi.Input[bool] default: May only be set to true. If set, then the default Policy is restored.
         """
-        pulumi.set(__self__, "default", default)
+        PolicyRestorePolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default=default,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default: pulumi.Input[bool],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("default", default)
 
     @property
     @pulumi.getter
@@ -443,8 +546,19 @@ class GetIAMPolicyAuditConfigArgs:
         :param Sequence['GetIAMPolicyAuditConfigAuditLogConfigArgs'] audit_log_configs: A nested block that defines the operations you'd like to log.
         :param str service: Defines a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
         """
-        pulumi.set(__self__, "audit_log_configs", audit_log_configs)
-        pulumi.set(__self__, "service", service)
+        GetIAMPolicyAuditConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            audit_log_configs=audit_log_configs,
+            service=service,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             audit_log_configs: Sequence['GetIAMPolicyAuditConfigAuditLogConfigArgs'],
+             service: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("audit_log_configs", audit_log_configs)
+        _setter("service", service)
 
     @property
     @pulumi.getter(name="auditLogConfigs")
@@ -480,9 +594,20 @@ class GetIAMPolicyAuditConfigAuditLogConfigArgs:
         :param str log_type: Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
         :param Sequence[str] exempted_members: Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
         """
-        pulumi.set(__self__, "log_type", log_type)
+        GetIAMPolicyAuditConfigAuditLogConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            log_type=log_type,
+            exempted_members=exempted_members,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             log_type: str,
+             exempted_members: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("log_type", log_type)
         if exempted_members is not None:
-            pulumi.set(__self__, "exempted_members", exempted_members)
+            _setter("exempted_members", exempted_members)
 
     @property
     @pulumi.getter(name="logType")
@@ -529,10 +654,23 @@ class GetIAMPolicyBindingArgs:
                Note that custom roles must be of the format `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param 'GetIAMPolicyBindingConditionArgs' condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
         """
-        pulumi.set(__self__, "members", members)
-        pulumi.set(__self__, "role", role)
+        GetIAMPolicyBindingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            members=members,
+            role=role,
+            condition=condition,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             members: Sequence[str],
+             role: str,
+             condition: Optional['GetIAMPolicyBindingConditionArgs'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("members", members)
+        _setter("role", role)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
 
     @property
     @pulumi.getter
@@ -591,10 +729,23 @@ class GetIAMPolicyBindingConditionArgs:
         :param str title: A title for the expression, i.e. a short string describing its purpose.
         :param str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        GetIAMPolicyBindingConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -57,10 +57,23 @@ class DnsManagedZoneIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        DnsManagedZoneIamBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -84,10 +97,23 @@ class DnsManagedZoneIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        DnsManagedZoneIamMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -129,7 +155,16 @@ class ManagedZoneCloudLoggingConfig(dict):
         """
         :param bool enable_logging: If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
         """
-        pulumi.set(__self__, "enable_logging", enable_logging)
+        ManagedZoneCloudLoggingConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enable_logging=enable_logging,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enable_logging: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("enable_logging", enable_logging)
 
     @property
     @pulumi.getter(name="enableLogging")
@@ -179,14 +214,29 @@ class ManagedZoneDnssecConfig(dict):
         :param str state: Specifies whether DNSSEC is enabled, and what mode it is in
                Possible values are: `off`, `on`, `transfer`.
         """
+        ManagedZoneDnssecConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default_key_specs=default_key_specs,
+            kind=kind,
+            non_existence=non_existence,
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default_key_specs: Optional[Sequence['outputs.ManagedZoneDnssecConfigDefaultKeySpec']] = None,
+             kind: Optional[str] = None,
+             non_existence: Optional[str] = None,
+             state: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if default_key_specs is not None:
-            pulumi.set(__self__, "default_key_specs", default_key_specs)
+            _setter("default_key_specs", default_key_specs)
         if kind is not None:
-            pulumi.set(__self__, "kind", kind)
+            _setter("kind", kind)
         if non_existence is not None:
-            pulumi.set(__self__, "non_existence", non_existence)
+            _setter("non_existence", non_existence)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
 
     @property
     @pulumi.getter(name="defaultKeySpecs")
@@ -267,14 +317,29 @@ class ManagedZoneDnssecConfigDefaultKeySpec(dict):
                Possible values are: `keySigning`, `zoneSigning`.
         :param str kind: Identifies what kind of resource this is
         """
+        ManagedZoneDnssecConfigDefaultKeySpec._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            algorithm=algorithm,
+            key_length=key_length,
+            key_type=key_type,
+            kind=kind,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             algorithm: Optional[str] = None,
+             key_length: Optional[int] = None,
+             key_type: Optional[str] = None,
+             kind: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if algorithm is not None:
-            pulumi.set(__self__, "algorithm", algorithm)
+            _setter("algorithm", algorithm)
         if key_length is not None:
-            pulumi.set(__self__, "key_length", key_length)
+            _setter("key_length", key_length)
         if key_type is not None:
-            pulumi.set(__self__, "key_type", key_type)
+            _setter("key_type", key_type)
         if kind is not None:
-            pulumi.set(__self__, "kind", kind)
+            _setter("kind", kind)
 
     @property
     @pulumi.getter
@@ -343,7 +408,16 @@ class ManagedZoneForwardingConfig(dict):
                one target is given.
                Structure is documented below.
         """
-        pulumi.set(__self__, "target_name_servers", target_name_servers)
+        ManagedZoneForwardingConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            target_name_servers=target_name_servers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             target_name_servers: Sequence['outputs.ManagedZoneForwardingConfigTargetNameServer'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("target_name_servers", target_name_servers)
 
     @property
     @pulumi.getter(name="targetNameServers")
@@ -388,9 +462,20 @@ class ManagedZoneForwardingConfigTargetNameServer(dict):
                to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
                Possible values are: `default`, `private`.
         """
-        pulumi.set(__self__, "ipv4_address", ipv4_address)
+        ManagedZoneForwardingConfigTargetNameServer._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ipv4_address=ipv4_address,
+            forwarding_path=forwarding_path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ipv4_address: str,
+             forwarding_path: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ipv4_address", ipv4_address)
         if forwarding_path is not None:
-            pulumi.set(__self__, "forwarding_path", forwarding_path)
+            _setter("forwarding_path", forwarding_path)
 
     @property
     @pulumi.getter(name="ipv4Address")
@@ -437,7 +522,16 @@ class ManagedZonePeeringConfig(dict):
         :param 'ManagedZonePeeringConfigTargetNetworkArgs' target_network: The network with which to peer.
                Structure is documented below.
         """
-        pulumi.set(__self__, "target_network", target_network)
+        ManagedZonePeeringConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            target_network=target_network,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             target_network: 'outputs.ManagedZonePeeringConfigTargetNetwork',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("target_network", target_network)
 
     @property
     @pulumi.getter(name="targetNetwork")
@@ -475,7 +569,16 @@ class ManagedZonePeeringConfigTargetNetwork(dict):
                This should be formatted like `projects/{project}/global/networks/{network}` or
                `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
         """
-        pulumi.set(__self__, "network_url", network_url)
+        ManagedZonePeeringConfigTargetNetwork._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network_url=network_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network_url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("network_url", network_url)
 
     @property
     @pulumi.getter(name="networkUrl")
@@ -514,10 +617,21 @@ class ManagedZonePrivateVisibilityConfig(dict):
         :param Sequence['ManagedZonePrivateVisibilityConfigGkeClusterArgs'] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
                Structure is documented below.
         """
+        ManagedZonePrivateVisibilityConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            gke_clusters=gke_clusters,
+            networks=networks,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             gke_clusters: Optional[Sequence['outputs.ManagedZonePrivateVisibilityConfigGkeCluster']] = None,
+             networks: Optional[Sequence['outputs.ManagedZonePrivateVisibilityConfigNetwork']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if gke_clusters is not None:
-            pulumi.set(__self__, "gke_clusters", gke_clusters)
+            _setter("gke_clusters", gke_clusters)
         if networks is not None:
-            pulumi.set(__self__, "networks", networks)
+            _setter("networks", networks)
 
     @property
     @pulumi.getter(name="gkeClusters")
@@ -560,7 +674,16 @@ class ManagedZonePrivateVisibilityConfigGkeCluster(dict):
                This should be specified in the format like
                `projects/*/locations/*/clusters/*`
         """
-        pulumi.set(__self__, "gke_cluster_name", gke_cluster_name)
+        ManagedZonePrivateVisibilityConfigGkeCluster._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            gke_cluster_name=gke_cluster_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             gke_cluster_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("gke_cluster_name", gke_cluster_name)
 
     @property
     @pulumi.getter(name="gkeClusterName")
@@ -599,7 +722,16 @@ class ManagedZonePrivateVisibilityConfigNetwork(dict):
                This should be formatted like `projects/{project}/global/networks/{network}` or
                `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
         """
-        pulumi.set(__self__, "network_url", network_url)
+        ManagedZonePrivateVisibilityConfigNetwork._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network_url=network_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network_url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("network_url", network_url)
 
     @property
     @pulumi.getter(name="networkUrl")
@@ -620,7 +752,16 @@ class ManagedZoneServiceDirectoryConfig(dict):
         :param 'ManagedZoneServiceDirectoryConfigNamespaceArgs' namespace: The namespace associated with the zone.
                Structure is documented below.
         """
-        pulumi.set(__self__, "namespace", namespace)
+        ManagedZoneServiceDirectoryConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace=namespace,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace: 'outputs.ManagedZoneServiceDirectoryConfigNamespace',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("namespace", namespace)
 
     @property
     @pulumi.getter
@@ -660,7 +801,16 @@ class ManagedZoneServiceDirectoryConfigNamespace(dict):
                or simply `projects/{project}/locations/{location}/namespaces/{namespace_id}`
                Ignored for `public` visibility zones.
         """
-        pulumi.set(__self__, "namespace_url", namespace_url)
+        ManagedZoneServiceDirectoryConfigNamespace._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace_url=namespace_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace_url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("namespace_url", namespace_url)
 
     @property
     @pulumi.getter(name="namespaceUrl")
@@ -702,7 +852,16 @@ class PolicyAlternativeNameServerConfig(dict):
                are not available when an alternative name server is specified.
                Structure is documented below.
         """
-        pulumi.set(__self__, "target_name_servers", target_name_servers)
+        PolicyAlternativeNameServerConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            target_name_servers=target_name_servers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             target_name_servers: Sequence['outputs.PolicyAlternativeNameServerConfigTargetNameServer'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("target_name_servers", target_name_servers)
 
     @property
     @pulumi.getter(name="targetNameServers")
@@ -747,9 +906,20 @@ class PolicyAlternativeNameServerConfigTargetNameServer(dict):
                to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
                Possible values are: `default`, `private`.
         """
-        pulumi.set(__self__, "ipv4_address", ipv4_address)
+        PolicyAlternativeNameServerConfigTargetNameServer._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ipv4_address=ipv4_address,
+            forwarding_path=forwarding_path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ipv4_address: str,
+             forwarding_path: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ipv4_address", ipv4_address)
         if forwarding_path is not None:
-            pulumi.set(__self__, "forwarding_path", forwarding_path)
+            _setter("forwarding_path", forwarding_path)
 
     @property
     @pulumi.getter(name="ipv4Address")
@@ -797,7 +967,16 @@ class PolicyNetwork(dict):
                This should be formatted like `projects/{project}/global/networks/{network}` or
                `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
         """
-        pulumi.set(__self__, "network_url", network_url)
+        PolicyNetwork._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network_url=network_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network_url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("network_url", network_url)
 
     @property
     @pulumi.getter(name="networkUrl")
@@ -845,14 +1024,29 @@ class RecordSetRoutingPolicy(dict):
         :param Sequence['RecordSetRoutingPolicyWrrArgs'] wrrs: The configuration for Weighted Round Robin based routing policy.
                Structure is document below.
         """
+        RecordSetRoutingPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enable_geo_fencing=enable_geo_fencing,
+            geos=geos,
+            primary_backup=primary_backup,
+            wrrs=wrrs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enable_geo_fencing: Optional[bool] = None,
+             geos: Optional[Sequence['outputs.RecordSetRoutingPolicyGeo']] = None,
+             primary_backup: Optional['outputs.RecordSetRoutingPolicyPrimaryBackup'] = None,
+             wrrs: Optional[Sequence['outputs.RecordSetRoutingPolicyWrr']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enable_geo_fencing is not None:
-            pulumi.set(__self__, "enable_geo_fencing", enable_geo_fencing)
+            _setter("enable_geo_fencing", enable_geo_fencing)
         if geos is not None:
-            pulumi.set(__self__, "geos", geos)
+            _setter("geos", geos)
         if primary_backup is not None:
-            pulumi.set(__self__, "primary_backup", primary_backup)
+            _setter("primary_backup", primary_backup)
         if wrrs is not None:
-            pulumi.set(__self__, "wrrs", wrrs)
+            _setter("wrrs", wrrs)
 
     @property
     @pulumi.getter(name="enableGeoFencing")
@@ -919,11 +1113,24 @@ class RecordSetRoutingPolicyGeo(dict):
                Structure is document below.
         :param Sequence[str] rrdatas: Same as `rrdatas` above.
         """
-        pulumi.set(__self__, "location", location)
+        RecordSetRoutingPolicyGeo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            health_checked_targets=health_checked_targets,
+            rrdatas=rrdatas,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: str,
+             health_checked_targets: Optional['outputs.RecordSetRoutingPolicyGeoHealthCheckedTargets'] = None,
+             rrdatas: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("location", location)
         if health_checked_targets is not None:
-            pulumi.set(__self__, "health_checked_targets", health_checked_targets)
+            _setter("health_checked_targets", health_checked_targets)
         if rrdatas is not None:
-            pulumi.set(__self__, "rrdatas", rrdatas)
+            _setter("rrdatas", rrdatas)
 
     @property
     @pulumi.getter
@@ -976,7 +1183,16 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargets(dict):
         :param Sequence['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs'] internal_load_balancers: The list of internal load balancers to health check.
                Structure is document below.
         """
-        pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
+        RecordSetRoutingPolicyGeoHealthCheckedTargets._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            internal_load_balancers=internal_load_balancers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             internal_load_balancers: Sequence['outputs.RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("internal_load_balancers", internal_load_balancers)
 
     @property
     @pulumi.getter(name="internalLoadBalancers")
@@ -1030,14 +1246,35 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer(dict):
         :param str project: The ID of the project in which the load balancer belongs.
         :param str region: The region of the load balancer. Only needed for regional load balancers.
         """
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "ip_protocol", ip_protocol)
-        pulumi.set(__self__, "load_balancer_type", load_balancer_type)
-        pulumi.set(__self__, "network_url", network_url)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "project", project)
+        RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_address=ip_address,
+            ip_protocol=ip_protocol,
+            load_balancer_type=load_balancer_type,
+            network_url=network_url,
+            port=port,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_address: str,
+             ip_protocol: str,
+             load_balancer_type: str,
+             network_url: str,
+             port: str,
+             project: str,
+             region: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ip_address", ip_address)
+        _setter("ip_protocol", ip_protocol)
+        _setter("load_balancer_type", load_balancer_type)
+        _setter("network_url", network_url)
+        _setter("port", port)
+        _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -1132,12 +1369,27 @@ class RecordSetRoutingPolicyPrimaryBackup(dict):
         :param bool enable_geo_fencing_for_backups: Specifies whether to enable fencing for backup geo queries.
         :param float trickle_ratio: Specifies the percentage of traffic to send to the backup targets even when the primary targets are healthy.
         """
-        pulumi.set(__self__, "backup_geos", backup_geos)
-        pulumi.set(__self__, "primary", primary)
+        RecordSetRoutingPolicyPrimaryBackup._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_geos=backup_geos,
+            primary=primary,
+            enable_geo_fencing_for_backups=enable_geo_fencing_for_backups,
+            trickle_ratio=trickle_ratio,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_geos: Sequence['outputs.RecordSetRoutingPolicyPrimaryBackupBackupGeo'],
+             primary: 'outputs.RecordSetRoutingPolicyPrimaryBackupPrimary',
+             enable_geo_fencing_for_backups: Optional[bool] = None,
+             trickle_ratio: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("backup_geos", backup_geos)
+        _setter("primary", primary)
         if enable_geo_fencing_for_backups is not None:
-            pulumi.set(__self__, "enable_geo_fencing_for_backups", enable_geo_fencing_for_backups)
+            _setter("enable_geo_fencing_for_backups", enable_geo_fencing_for_backups)
         if trickle_ratio is not None:
-            pulumi.set(__self__, "trickle_ratio", trickle_ratio)
+            _setter("trickle_ratio", trickle_ratio)
 
     @property
     @pulumi.getter(name="backupGeos")
@@ -1199,16 +1451,27 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeo(dict):
                  rrdatas: Optional[Sequence[str]] = None):
         """
         :param str location: The location name defined in Google Cloud.
-        :param 'RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs' health_checked_targets: The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
-               Structure is document below.
-               
+        :param 'RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs' health_checked_targets: For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
                Structure is document below.
         """
-        pulumi.set(__self__, "location", location)
+        RecordSetRoutingPolicyPrimaryBackupBackupGeo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            health_checked_targets=health_checked_targets,
+            rrdatas=rrdatas,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: str,
+             health_checked_targets: Optional['outputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets'] = None,
+             rrdatas: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("location", location)
         if health_checked_targets is not None:
-            pulumi.set(__self__, "health_checked_targets", health_checked_targets)
+            _setter("health_checked_targets", health_checked_targets)
         if rrdatas is not None:
-            pulumi.set(__self__, "rrdatas", rrdatas)
+            _setter("rrdatas", rrdatas)
 
     @property
     @pulumi.getter
@@ -1222,9 +1485,7 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeo(dict):
     @pulumi.getter(name="healthCheckedTargets")
     def health_checked_targets(self) -> Optional['outputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets']:
         """
-        The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
-        Structure is document below.
-
+        For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
         Structure is document below.
         """
         return pulumi.get(self, "health_checked_targets")
@@ -1260,7 +1521,16 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets(dict):
         :param Sequence['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs'] internal_load_balancers: The list of internal load balancers to health check.
                Structure is document below.
         """
-        pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
+        RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            internal_load_balancers=internal_load_balancers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             internal_load_balancers: Sequence['outputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("internal_load_balancers", internal_load_balancers)
 
     @property
     @pulumi.getter(name="internalLoadBalancers")
@@ -1314,14 +1584,35 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLo
         :param str project: The ID of the project in which the load balancer belongs.
         :param str region: The region of the load balancer. Only needed for regional load balancers.
         """
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "ip_protocol", ip_protocol)
-        pulumi.set(__self__, "load_balancer_type", load_balancer_type)
-        pulumi.set(__self__, "network_url", network_url)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "project", project)
+        RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_address=ip_address,
+            ip_protocol=ip_protocol,
+            load_balancer_type=load_balancer_type,
+            network_url=network_url,
+            port=port,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_address: str,
+             ip_protocol: str,
+             load_balancer_type: str,
+             network_url: str,
+             port: str,
+             project: str,
+             region: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ip_address", ip_address)
+        _setter("ip_protocol", ip_protocol)
+        _setter("load_balancer_type", load_balancer_type)
+        _setter("network_url", network_url)
+        _setter("port", port)
+        _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -1405,7 +1696,16 @@ class RecordSetRoutingPolicyPrimaryBackupPrimary(dict):
         :param Sequence['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs'] internal_load_balancers: The list of internal load balancers to health check.
                Structure is document below.
         """
-        pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
+        RecordSetRoutingPolicyPrimaryBackupPrimary._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            internal_load_balancers=internal_load_balancers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             internal_load_balancers: Sequence['outputs.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("internal_load_balancers", internal_load_balancers)
 
     @property
     @pulumi.getter(name="internalLoadBalancers")
@@ -1459,14 +1759,35 @@ class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer(dict):
         :param str project: The ID of the project in which the load balancer belongs.
         :param str region: The region of the load balancer. Only needed for regional load balancers.
         """
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "ip_protocol", ip_protocol)
-        pulumi.set(__self__, "load_balancer_type", load_balancer_type)
-        pulumi.set(__self__, "network_url", network_url)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "project", project)
+        RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_address=ip_address,
+            ip_protocol=ip_protocol,
+            load_balancer_type=load_balancer_type,
+            network_url=network_url,
+            port=port,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_address: str,
+             ip_protocol: str,
+             load_balancer_type: str,
+             network_url: str,
+             port: str,
+             project: str,
+             region: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ip_address", ip_address)
+        _setter("ip_protocol", ip_protocol)
+        _setter("load_balancer_type", load_balancer_type)
+        _setter("network_url", network_url)
+        _setter("port", port)
+        _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -1554,11 +1875,24 @@ class RecordSetRoutingPolicyWrr(dict):
                Structure is document below.
         :param Sequence[str] rrdatas: Same as `rrdatas` above.
         """
-        pulumi.set(__self__, "weight", weight)
+        RecordSetRoutingPolicyWrr._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            weight=weight,
+            health_checked_targets=health_checked_targets,
+            rrdatas=rrdatas,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             weight: float,
+             health_checked_targets: Optional['outputs.RecordSetRoutingPolicyWrrHealthCheckedTargets'] = None,
+             rrdatas: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("weight", weight)
         if health_checked_targets is not None:
-            pulumi.set(__self__, "health_checked_targets", health_checked_targets)
+            _setter("health_checked_targets", health_checked_targets)
         if rrdatas is not None:
-            pulumi.set(__self__, "rrdatas", rrdatas)
+            _setter("rrdatas", rrdatas)
 
     @property
     @pulumi.getter
@@ -1611,7 +1945,16 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargets(dict):
         :param Sequence['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs'] internal_load_balancers: The list of internal load balancers to health check.
                Structure is document below.
         """
-        pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
+        RecordSetRoutingPolicyWrrHealthCheckedTargets._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            internal_load_balancers=internal_load_balancers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             internal_load_balancers: Sequence['outputs.RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("internal_load_balancers", internal_load_balancers)
 
     @property
     @pulumi.getter(name="internalLoadBalancers")
@@ -1665,14 +2008,35 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer(dict):
         :param str project: The ID of the project in which the load balancer belongs.
         :param str region: The region of the load balancer. Only needed for regional load balancers.
         """
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "ip_protocol", ip_protocol)
-        pulumi.set(__self__, "load_balancer_type", load_balancer_type)
-        pulumi.set(__self__, "network_url", network_url)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "project", project)
+        RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_address=ip_address,
+            ip_protocol=ip_protocol,
+            load_balancer_type=load_balancer_type,
+            network_url=network_url,
+            port=port,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_address: str,
+             ip_protocol: str,
+             load_balancer_type: str,
+             network_url: str,
+             port: str,
+             project: str,
+             region: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ip_address", ip_address)
+        _setter("ip_protocol", ip_protocol)
+        _setter("load_balancer_type", load_balancer_type)
+        _setter("network_url", network_url)
+        _setter("port", port)
+        _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -1757,7 +2121,16 @@ class ResponsePolicyGkeCluster(dict):
                This should be specified in the format like
                `projects/*/locations/*/clusters/*`
         """
-        pulumi.set(__self__, "gke_cluster_name", gke_cluster_name)
+        ResponsePolicyGkeCluster._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            gke_cluster_name=gke_cluster_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             gke_cluster_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("gke_cluster_name", gke_cluster_name)
 
     @property
     @pulumi.getter(name="gkeClusterName")
@@ -1796,7 +2169,16 @@ class ResponsePolicyNetwork(dict):
                This should be formatted like
                `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
         """
-        pulumi.set(__self__, "network_url", network_url)
+        ResponsePolicyNetwork._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network_url=network_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network_url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("network_url", network_url)
 
     @property
     @pulumi.getter(name="networkUrl")
@@ -1834,7 +2216,16 @@ class ResponsePolicyRuleLocalData(dict):
         :param Sequence['ResponsePolicyRuleLocalDataLocalDataArgs'] local_datas: All resource record sets for this selector, one per resource record type. The name must match the dns_name.
                Structure is documented below.
         """
-        pulumi.set(__self__, "local_datas", local_datas)
+        ResponsePolicyRuleLocalData._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            local_datas=local_datas,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             local_datas: Sequence['outputs.ResponsePolicyRuleLocalDataLocalData'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("local_datas", local_datas)
 
     @property
     @pulumi.getter(name="localDatas")
@@ -1861,12 +2252,27 @@ class ResponsePolicyRuleLocalDataLocalData(dict):
         :param int ttl: Number of seconds that this ResourceRecordSet can be cached by
                resolvers.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
+        ResponsePolicyRuleLocalDataLocalData._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            type=type,
+            rrdatas=rrdatas,
+            ttl=ttl,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             type: str,
+             rrdatas: Optional[Sequence[str]] = None,
+             ttl: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("type", type)
         if rrdatas is not None:
-            pulumi.set(__self__, "rrdatas", rrdatas)
+            _setter("rrdatas", rrdatas)
         if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
+            _setter("ttl", ttl)
 
     @property
     @pulumi.getter
@@ -1928,16 +2334,43 @@ class GetKeysKeySigningKeyResult(dict):
         :param int key_tag: The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B.
         :param str public_key: Base64 encoded public half of this key.
         """
-        pulumi.set(__self__, "algorithm", algorithm)
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "digests", digests)
-        pulumi.set(__self__, "ds_record", ds_record)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_active", is_active)
-        pulumi.set(__self__, "key_length", key_length)
-        pulumi.set(__self__, "key_tag", key_tag)
-        pulumi.set(__self__, "public_key", public_key)
+        GetKeysKeySigningKeyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            algorithm=algorithm,
+            creation_time=creation_time,
+            description=description,
+            digests=digests,
+            ds_record=ds_record,
+            id=id,
+            is_active=is_active,
+            key_length=key_length,
+            key_tag=key_tag,
+            public_key=public_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             algorithm: str,
+             creation_time: str,
+             description: str,
+             digests: Sequence['outputs.GetKeysKeySigningKeyDigestResult'],
+             ds_record: str,
+             id: str,
+             is_active: bool,
+             key_length: int,
+             key_tag: int,
+             public_key: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("algorithm", algorithm)
+        _setter("creation_time", creation_time)
+        _setter("description", description)
+        _setter("digests", digests)
+        _setter("ds_record", ds_record)
+        _setter("id", id)
+        _setter("is_active", is_active)
+        _setter("key_length", key_length)
+        _setter("key_tag", key_tag)
+        _setter("public_key", public_key)
 
     @property
     @pulumi.getter
@@ -2029,8 +2462,19 @@ class GetKeysKeySigningKeyDigestResult(dict):
         :param str digest: The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
         :param str type: Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
         """
-        pulumi.set(__self__, "digest", digest)
-        pulumi.set(__self__, "type", type)
+        GetKeysKeySigningKeyDigestResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            digest=digest,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             digest: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("digest", digest)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -2072,15 +2516,40 @@ class GetKeysZoneSigningKeyResult(dict):
         :param int key_tag: The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B.
         :param str public_key: Base64 encoded public half of this key.
         """
-        pulumi.set(__self__, "algorithm", algorithm)
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "digests", digests)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_active", is_active)
-        pulumi.set(__self__, "key_length", key_length)
-        pulumi.set(__self__, "key_tag", key_tag)
-        pulumi.set(__self__, "public_key", public_key)
+        GetKeysZoneSigningKeyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            algorithm=algorithm,
+            creation_time=creation_time,
+            description=description,
+            digests=digests,
+            id=id,
+            is_active=is_active,
+            key_length=key_length,
+            key_tag=key_tag,
+            public_key=public_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             algorithm: str,
+             creation_time: str,
+             description: str,
+             digests: Sequence['outputs.GetKeysZoneSigningKeyDigestResult'],
+             id: str,
+             is_active: bool,
+             key_length: int,
+             key_tag: int,
+             public_key: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("algorithm", algorithm)
+        _setter("creation_time", creation_time)
+        _setter("description", description)
+        _setter("digests", digests)
+        _setter("id", id)
+        _setter("is_active", is_active)
+        _setter("key_length", key_length)
+        _setter("key_tag", key_tag)
+        _setter("public_key", public_key)
 
     @property
     @pulumi.getter
@@ -2164,8 +2633,19 @@ class GetKeysZoneSigningKeyDigestResult(dict):
         :param str digest: The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
         :param str type: Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
         """
-        pulumi.set(__self__, "digest", digest)
-        pulumi.set(__self__, "type", type)
+        GetKeysZoneSigningKeyDigestResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            digest=digest,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             digest: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("digest", digest)
+        _setter("type", type)
 
     @property
     @pulumi.getter

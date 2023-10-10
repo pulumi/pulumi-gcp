@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -30,12 +30,29 @@ class DocumentAiWarehouseDocumentSchemaArgs:
                Structure is documented below.
         :param pulumi.Input[bool] document_is_folder: Tells whether the document is a folder or a typical document.
         """
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project_number", project_number)
-        pulumi.set(__self__, "property_definitions", property_definitions)
+        DocumentAiWarehouseDocumentSchemaArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            location=location,
+            project_number=project_number,
+            property_definitions=property_definitions,
+            document_is_folder=document_is_folder,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: pulumi.Input[str],
+             location: pulumi.Input[str],
+             project_number: pulumi.Input[str],
+             property_definitions: pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]],
+             document_is_folder: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("display_name", display_name)
+        _setter("location", location)
+        _setter("project_number", project_number)
+        _setter("property_definitions", property_definitions)
         if document_is_folder is not None:
-            pulumi.set(__self__, "document_is_folder", document_is_folder)
+            _setter("document_is_folder", document_is_folder)
 
     @property
     @pulumi.getter(name="displayName")
@@ -114,31 +131,41 @@ class _DocumentAiWarehouseDocumentSchemaState:
         :param pulumi.Input[bool] document_is_folder: Tells whether the document is a folder or a typical document.
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input[str] name: The name of the metadata property.
-               
-               (Optional)
-               The schema name in the source.
-               
-               (Required)
-               The name of the metadata property.
-               
-               (Optional)
-               The schema name in the source.
         :param pulumi.Input[str] project_number: The unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]] property_definitions: Defines the metadata for a schema property.
                Structure is documented below.
         """
+        _DocumentAiWarehouseDocumentSchemaState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            document_is_folder=document_is_folder,
+            location=location,
+            name=name,
+            project_number=project_number,
+            property_definitions=property_definitions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: Optional[pulumi.Input[str]] = None,
+             document_is_folder: Optional[pulumi.Input[bool]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project_number: Optional[pulumi.Input[str]] = None,
+             property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if document_is_folder is not None:
-            pulumi.set(__self__, "document_is_folder", document_is_folder)
+            _setter("document_is_folder", document_is_folder)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project_number is not None:
-            pulumi.set(__self__, "project_number", project_number)
+            _setter("project_number", project_number)
         if property_definitions is not None:
-            pulumi.set(__self__, "property_definitions", property_definitions)
+            _setter("property_definitions", property_definitions)
 
     @property
     @pulumi.getter(name="displayName")
@@ -181,15 +208,6 @@ class _DocumentAiWarehouseDocumentSchemaState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the metadata property.
-
-        (Optional)
-        The schema name in the source.
-
-        (Required)
-        The name of the metadata property.
-
-        (Optional)
-        The schema name in the source.
         """
         return pulumi.get(self, "name")
 
@@ -889,6 +907,10 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DocumentAiWarehouseDocumentSchemaArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -949,15 +971,6 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         :param pulumi.Input[bool] document_is_folder: Tells whether the document is a folder or a typical document.
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input[str] name: The name of the metadata property.
-               
-               (Optional)
-               The schema name in the source.
-               
-               (Required)
-               The name of the metadata property.
-               
-               (Optional)
-               The schema name in the source.
         :param pulumi.Input[str] project_number: The unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]] property_definitions: Defines the metadata for a schema property.
                Structure is documented below.
@@ -1003,15 +1016,6 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The name of the metadata property.
-
-        (Optional)
-        The schema name in the source.
-
-        (Required)
-        The name of the metadata property.
-
-        (Optional)
-        The schema name in the source.
         """
         return pulumi.get(self, "name")
 

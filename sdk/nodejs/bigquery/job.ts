@@ -294,10 +294,12 @@ export class Job extends pulumi.CustomResource {
 
     /**
      * Copies a table.
+     * Structure is documented below.
      */
     public readonly copy!: pulumi.Output<outputs.bigquery.JobCopy | undefined>;
     /**
      * Configures an extract job.
+     * Structure is documented below.
      */
     public readonly extract!: pulumi.Output<outputs.bigquery.JobExtract | undefined>;
     /**
@@ -319,6 +321,7 @@ export class Job extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Configures a load job.
+     * Structure is documented below.
      */
     public readonly load!: pulumi.Output<outputs.bigquery.JobLoad | undefined>;
     /**
@@ -331,7 +334,9 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Configures a query job.
+     * SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+     * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+     * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = ""` and `writeDisposition = ""`.
      */
     public readonly query!: pulumi.Output<outputs.bigquery.JobQuery | undefined>;
     /**
@@ -398,10 +403,12 @@ export class Job extends pulumi.CustomResource {
 export interface JobState {
     /**
      * Copies a table.
+     * Structure is documented below.
      */
     copy?: pulumi.Input<inputs.bigquery.JobCopy>;
     /**
      * Configures an extract job.
+     * Structure is documented below.
      */
     extract?: pulumi.Input<inputs.bigquery.JobExtract>;
     /**
@@ -423,6 +430,7 @@ export interface JobState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Configures a load job.
+     * Structure is documented below.
      */
     load?: pulumi.Input<inputs.bigquery.JobLoad>;
     /**
@@ -435,7 +443,9 @@ export interface JobState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Configures a query job.
+     * SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+     * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+     * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = ""` and `writeDisposition = ""`.
      */
     query?: pulumi.Input<inputs.bigquery.JobQuery>;
     /**
@@ -455,10 +465,12 @@ export interface JobState {
 export interface JobArgs {
     /**
      * Copies a table.
+     * Structure is documented below.
      */
     copy?: pulumi.Input<inputs.bigquery.JobCopy>;
     /**
      * Configures an extract job.
+     * Structure is documented below.
      */
     extract?: pulumi.Input<inputs.bigquery.JobExtract>;
     /**
@@ -475,6 +487,7 @@ export interface JobArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Configures a load job.
+     * Structure is documented below.
      */
     load?: pulumi.Input<inputs.bigquery.JobLoad>;
     /**
@@ -487,7 +500,9 @@ export interface JobArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * Configures a query job.
+     * SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+     * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+     * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = ""` and `writeDisposition = ""`.
      */
     query?: pulumi.Input<inputs.bigquery.JobQuery>;
 }

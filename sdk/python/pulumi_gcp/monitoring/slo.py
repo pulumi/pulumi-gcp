@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -74,26 +74,55 @@ class SloArgs:
                `basic_sli`, `request_based_sli`, `windows_based_sli`
                Structure is documented below.
         """
-        pulumi.set(__self__, "goal", goal)
-        pulumi.set(__self__, "service", service)
+        SloArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            goal=goal,
+            service=service,
+            basic_sli=basic_sli,
+            calendar_period=calendar_period,
+            display_name=display_name,
+            project=project,
+            request_based_sli=request_based_sli,
+            rolling_period_days=rolling_period_days,
+            slo_id=slo_id,
+            user_labels=user_labels,
+            windows_based_sli=windows_based_sli,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             goal: pulumi.Input[float],
+             service: pulumi.Input[str],
+             basic_sli: Optional[pulumi.Input['SloBasicSliArgs']] = None,
+             calendar_period: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             request_based_sli: Optional[pulumi.Input['SloRequestBasedSliArgs']] = None,
+             rolling_period_days: Optional[pulumi.Input[int]] = None,
+             slo_id: Optional[pulumi.Input[str]] = None,
+             user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             windows_based_sli: Optional[pulumi.Input['SloWindowsBasedSliArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("goal", goal)
+        _setter("service", service)
         if basic_sli is not None:
-            pulumi.set(__self__, "basic_sli", basic_sli)
+            _setter("basic_sli", basic_sli)
         if calendar_period is not None:
-            pulumi.set(__self__, "calendar_period", calendar_period)
+            _setter("calendar_period", calendar_period)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if request_based_sli is not None:
-            pulumi.set(__self__, "request_based_sli", request_based_sli)
+            _setter("request_based_sli", request_based_sli)
         if rolling_period_days is not None:
-            pulumi.set(__self__, "rolling_period_days", rolling_period_days)
+            _setter("rolling_period_days", rolling_period_days)
         if slo_id is not None:
-            pulumi.set(__self__, "slo_id", slo_id)
+            _setter("slo_id", slo_id)
         if user_labels is not None:
-            pulumi.set(__self__, "user_labels", user_labels)
+            _setter("user_labels", user_labels)
         if windows_based_sli is not None:
-            pulumi.set(__self__, "windows_based_sli", windows_based_sli)
+            _setter("windows_based_sli", windows_based_sli)
 
     @property
     @pulumi.getter
@@ -325,30 +354,61 @@ class _SloState:
                `basic_sli`, `request_based_sli`, `windows_based_sli`
                Structure is documented below.
         """
+        _SloState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            basic_sli=basic_sli,
+            calendar_period=calendar_period,
+            display_name=display_name,
+            goal=goal,
+            name=name,
+            project=project,
+            request_based_sli=request_based_sli,
+            rolling_period_days=rolling_period_days,
+            service=service,
+            slo_id=slo_id,
+            user_labels=user_labels,
+            windows_based_sli=windows_based_sli,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             basic_sli: Optional[pulumi.Input['SloBasicSliArgs']] = None,
+             calendar_period: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             goal: Optional[pulumi.Input[float]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             request_based_sli: Optional[pulumi.Input['SloRequestBasedSliArgs']] = None,
+             rolling_period_days: Optional[pulumi.Input[int]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             slo_id: Optional[pulumi.Input[str]] = None,
+             user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             windows_based_sli: Optional[pulumi.Input['SloWindowsBasedSliArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if basic_sli is not None:
-            pulumi.set(__self__, "basic_sli", basic_sli)
+            _setter("basic_sli", basic_sli)
         if calendar_period is not None:
-            pulumi.set(__self__, "calendar_period", calendar_period)
+            _setter("calendar_period", calendar_period)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if goal is not None:
-            pulumi.set(__self__, "goal", goal)
+            _setter("goal", goal)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if request_based_sli is not None:
-            pulumi.set(__self__, "request_based_sli", request_based_sli)
+            _setter("request_based_sli", request_based_sli)
         if rolling_period_days is not None:
-            pulumi.set(__self__, "rolling_period_days", rolling_period_days)
+            _setter("rolling_period_days", rolling_period_days)
         if service is not None:
-            pulumi.set(__self__, "service", service)
+            _setter("service", service)
         if slo_id is not None:
-            pulumi.set(__self__, "slo_id", slo_id)
+            _setter("slo_id", slo_id)
         if user_labels is not None:
-            pulumi.set(__self__, "user_labels", user_labels)
+            _setter("user_labels", user_labels)
         if windows_based_sli is not None:
-            pulumi.set(__self__, "windows_based_sli", windows_based_sli)
+            _setter("windows_based_sli", windows_based_sli)
 
     @property
     @pulumi.getter(name="basicSli")
@@ -755,6 +815,10 @@ class Slo(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SloArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -780,6 +844,11 @@ class Slo(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SloArgs.__new__(SloArgs)
 
+            if basic_sli is not None and not isinstance(basic_sli, SloBasicSliArgs):
+                basic_sli = basic_sli or {}
+                def _setter(key, value):
+                    basic_sli[key] = value
+                SloBasicSliArgs._configure(_setter, **basic_sli)
             __props__.__dict__["basic_sli"] = basic_sli
             __props__.__dict__["calendar_period"] = calendar_period
             __props__.__dict__["display_name"] = display_name
@@ -787,6 +856,11 @@ class Slo(pulumi.CustomResource):
                 raise TypeError("Missing required property 'goal'")
             __props__.__dict__["goal"] = goal
             __props__.__dict__["project"] = project
+            if request_based_sli is not None and not isinstance(request_based_sli, SloRequestBasedSliArgs):
+                request_based_sli = request_based_sli or {}
+                def _setter(key, value):
+                    request_based_sli[key] = value
+                SloRequestBasedSliArgs._configure(_setter, **request_based_sli)
             __props__.__dict__["request_based_sli"] = request_based_sli
             __props__.__dict__["rolling_period_days"] = rolling_period_days
             if service is None and not opts.urn:
@@ -794,6 +868,11 @@ class Slo(pulumi.CustomResource):
             __props__.__dict__["service"] = service
             __props__.__dict__["slo_id"] = slo_id
             __props__.__dict__["user_labels"] = user_labels
+            if windows_based_sli is not None and not isinstance(windows_based_sli, SloWindowsBasedSliArgs):
+                windows_based_sli = windows_based_sli or {}
+                def _setter(key, value):
+                    windows_based_sli[key] = value
+                SloWindowsBasedSliArgs._configure(_setter, **windows_based_sli)
             __props__.__dict__["windows_based_sli"] = windows_based_sli
             __props__.__dict__["name"] = None
         super(Slo, __self__).__init__(

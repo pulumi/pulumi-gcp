@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -28,9 +28,20 @@ class CryptoKeyVersionArgs:
         :param pulumi.Input[str] state: The current state of the CryptoKeyVersion.
                Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         """
-        pulumi.set(__self__, "crypto_key", crypto_key)
+        CryptoKeyVersionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            crypto_key=crypto_key,
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             crypto_key: pulumi.Input[str],
+             state: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("crypto_key", crypto_key)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
 
     @property
     @pulumi.getter(name="cryptoKey")
@@ -89,20 +100,41 @@ class _CryptoKeyVersionState:
         :param pulumi.Input[str] state: The current state of the CryptoKeyVersion.
                Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         """
+        _CryptoKeyVersionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            algorithm=algorithm,
+            attestations=attestations,
+            crypto_key=crypto_key,
+            generate_time=generate_time,
+            name=name,
+            protection_level=protection_level,
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             algorithm: Optional[pulumi.Input[str]] = None,
+             attestations: Optional[pulumi.Input[Sequence[pulumi.Input['CryptoKeyVersionAttestationArgs']]]] = None,
+             crypto_key: Optional[pulumi.Input[str]] = None,
+             generate_time: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             protection_level: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if algorithm is not None:
-            pulumi.set(__self__, "algorithm", algorithm)
+            _setter("algorithm", algorithm)
         if attestations is not None:
-            pulumi.set(__self__, "attestations", attestations)
+            _setter("attestations", attestations)
         if crypto_key is not None:
-            pulumi.set(__self__, "crypto_key", crypto_key)
+            _setter("crypto_key", crypto_key)
         if generate_time is not None:
-            pulumi.set(__self__, "generate_time", generate_time)
+            _setter("generate_time", generate_time)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if protection_level is not None:
-            pulumi.set(__self__, "protection_level", protection_level)
+            _setter("protection_level", protection_level)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
 
     @property
     @pulumi.getter
@@ -296,6 +328,10 @@ class CryptoKeyVersion(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CryptoKeyVersionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

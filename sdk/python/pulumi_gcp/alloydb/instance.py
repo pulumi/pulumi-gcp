@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -54,25 +54,54 @@ class InstanceArgs:
         :param pulumi.Input['InstanceReadPoolConfigArgs'] read_pool_config: Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
                Structure is documented below.
         """
-        pulumi.set(__self__, "cluster", cluster)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_type", instance_type)
+        InstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster=cluster,
+            instance_id=instance_id,
+            instance_type=instance_type,
+            annotations=annotations,
+            availability_type=availability_type,
+            database_flags=database_flags,
+            display_name=display_name,
+            gce_zone=gce_zone,
+            labels=labels,
+            machine_config=machine_config,
+            read_pool_config=read_pool_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster: pulumi.Input[str],
+             instance_id: pulumi.Input[str],
+             instance_type: pulumi.Input[str],
+             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             availability_type: Optional[pulumi.Input[str]] = None,
+             database_flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             gce_zone: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             machine_config: Optional[pulumi.Input['InstanceMachineConfigArgs']] = None,
+             read_pool_config: Optional[pulumi.Input['InstanceReadPoolConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster", cluster)
+        _setter("instance_id", instance_id)
+        _setter("instance_type", instance_type)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if availability_type is not None:
-            pulumi.set(__self__, "availability_type", availability_type)
+            _setter("availability_type", availability_type)
         if database_flags is not None:
-            pulumi.set(__self__, "database_flags", database_flags)
+            _setter("database_flags", database_flags)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if gce_zone is not None:
-            pulumi.set(__self__, "gce_zone", gce_zone)
+            _setter("gce_zone", gce_zone)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if machine_config is not None:
-            pulumi.set(__self__, "machine_config", machine_config)
+            _setter("machine_config", machine_config)
         if read_pool_config is not None:
-            pulumi.set(__self__, "read_pool_config", read_pool_config)
+            _setter("read_pool_config", read_pool_config)
 
     @property
     @pulumi.getter
@@ -275,42 +304,85 @@ class _InstanceState:
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         :param pulumi.Input[str] update_time: Time the Instance was updated in UTC.
         """
+        _InstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            availability_type=availability_type,
+            cluster=cluster,
+            create_time=create_time,
+            database_flags=database_flags,
+            display_name=display_name,
+            gce_zone=gce_zone,
+            instance_id=instance_id,
+            instance_type=instance_type,
+            ip_address=ip_address,
+            labels=labels,
+            machine_config=machine_config,
+            name=name,
+            read_pool_config=read_pool_config,
+            reconciling=reconciling,
+            state=state,
+            uid=uid,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             availability_type: Optional[pulumi.Input[str]] = None,
+             cluster: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             database_flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             gce_zone: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             machine_config: Optional[pulumi.Input['InstanceMachineConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             read_pool_config: Optional[pulumi.Input['InstanceReadPoolConfigArgs']] = None,
+             reconciling: Optional[pulumi.Input[bool]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if availability_type is not None:
-            pulumi.set(__self__, "availability_type", availability_type)
+            _setter("availability_type", availability_type)
         if cluster is not None:
-            pulumi.set(__self__, "cluster", cluster)
+            _setter("cluster", cluster)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if database_flags is not None:
-            pulumi.set(__self__, "database_flags", database_flags)
+            _setter("database_flags", database_flags)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if gce_zone is not None:
-            pulumi.set(__self__, "gce_zone", gce_zone)
+            _setter("gce_zone", gce_zone)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if machine_config is not None:
-            pulumi.set(__self__, "machine_config", machine_config)
+            _setter("machine_config", machine_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if read_pool_config is not None:
-            pulumi.set(__self__, "read_pool_config", read_pool_config)
+            _setter("read_pool_config", read_pool_config)
         if reconciling is not None:
-            pulumi.set(__self__, "reconciling", reconciling)
+            _setter("reconciling", reconciling)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter
@@ -722,6 +794,10 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -762,7 +838,17 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'instance_type'")
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["labels"] = labels
+            if machine_config is not None and not isinstance(machine_config, InstanceMachineConfigArgs):
+                machine_config = machine_config or {}
+                def _setter(key, value):
+                    machine_config[key] = value
+                InstanceMachineConfigArgs._configure(_setter, **machine_config)
             __props__.__dict__["machine_config"] = machine_config
+            if read_pool_config is not None and not isinstance(read_pool_config, InstanceReadPoolConfigArgs):
+                read_pool_config = read_pool_config or {}
+                def _setter(key, value):
+                    read_pool_config[key] = value
+                InstanceReadPoolConfigArgs._configure(_setter, **read_pool_config)
             __props__.__dict__["read_pool_config"] = read_pool_config
             __props__.__dict__["create_time"] = None
             __props__.__dict__["ip_address"] = None

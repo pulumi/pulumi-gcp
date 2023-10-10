@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,21 +35,44 @@ class DeliveryPipelineArgs:
         :param pulumi.Input['DeliveryPipelineSerialPipelineArgs'] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
         :param pulumi.Input[bool] suspended: When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
         """
-        pulumi.set(__self__, "location", location)
+        DeliveryPipelineArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            annotations=annotations,
+            description=description,
+            labels=labels,
+            name=name,
+            project=project,
+            serial_pipeline=serial_pipeline,
+            suspended=suspended,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: pulumi.Input[str],
+             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             serial_pipeline: Optional[pulumi.Input['DeliveryPipelineSerialPipelineArgs']] = None,
+             suspended: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("location", location)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if serial_pipeline is not None:
-            pulumi.set(__self__, "serial_pipeline", serial_pipeline)
+            _setter("serial_pipeline", serial_pipeline)
         if suspended is not None:
-            pulumi.set(__self__, "suspended", suspended)
+            _setter("suspended", suspended)
 
     @property
     @pulumi.getter
@@ -180,32 +203,65 @@ class _DeliveryPipelineState:
         :param pulumi.Input[str] uid: Output only. Unique identifier of the `DeliveryPipeline`.
         :param pulumi.Input[str] update_time: Output only. Most recent time at which the pipeline was updated.
         """
+        _DeliveryPipelineState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            conditions=conditions,
+            create_time=create_time,
+            description=description,
+            etag=etag,
+            labels=labels,
+            location=location,
+            name=name,
+            project=project,
+            serial_pipeline=serial_pipeline,
+            suspended=suspended,
+            uid=uid,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             conditions: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionArgs']]]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             serial_pipeline: Optional[pulumi.Input['DeliveryPipelineSerialPipelineArgs']] = None,
+             suspended: Optional[pulumi.Input[bool]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if conditions is not None:
-            pulumi.set(__self__, "conditions", conditions)
+            _setter("conditions", conditions)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if serial_pipeline is not None:
-            pulumi.set(__self__, "serial_pipeline", serial_pipeline)
+            _setter("serial_pipeline", serial_pipeline)
         if suspended is not None:
-            pulumi.set(__self__, "suspended", suspended)
+            _setter("suspended", suspended)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter
@@ -855,6 +911,10 @@ class DeliveryPipeline(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DeliveryPipelineArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -885,6 +945,11 @@ class DeliveryPipeline(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            if serial_pipeline is not None and not isinstance(serial_pipeline, DeliveryPipelineSerialPipelineArgs):
+                serial_pipeline = serial_pipeline or {}
+                def _setter(key, value):
+                    serial_pipeline[key] = value
+                DeliveryPipelineSerialPipelineArgs._configure(_setter, **serial_pipeline)
             __props__.__dict__["serial_pipeline"] = serial_pipeline
             __props__.__dict__["suspended"] = suspended
             __props__.__dict__["conditions"] = None

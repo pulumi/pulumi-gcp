@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ConnectionArgs', 'Connection']
@@ -27,9 +27,22 @@ class ConnectionArgs:
                service provider organization. For Google services that support this functionality it is
                'servicenetworking.googleapis.com'.
         """
-        pulumi.set(__self__, "network", network)
-        pulumi.set(__self__, "reserved_peering_ranges", reserved_peering_ranges)
-        pulumi.set(__self__, "service", service)
+        ConnectionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network=network,
+            reserved_peering_ranges=reserved_peering_ranges,
+            service=service,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network: pulumi.Input[str],
+             reserved_peering_ranges: pulumi.Input[Sequence[pulumi.Input[str]]],
+             service: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("network", network)
+        _setter("reserved_peering_ranges", reserved_peering_ranges)
+        _setter("service", service)
 
     @property
     @pulumi.getter
@@ -90,14 +103,29 @@ class _ConnectionState:
                service provider organization. For Google services that support this functionality it is
                'servicenetworking.googleapis.com'.
         """
+        _ConnectionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network=network,
+            peering=peering,
+            reserved_peering_ranges=reserved_peering_ranges,
+            service=service,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network: Optional[pulumi.Input[str]] = None,
+             peering: Optional[pulumi.Input[str]] = None,
+             reserved_peering_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if peering is not None:
-            pulumi.set(__self__, "peering", peering)
+            _setter("peering", peering)
         if reserved_peering_ranges is not None:
-            pulumi.set(__self__, "reserved_peering_ranges", reserved_peering_ranges)
+            _setter("reserved_peering_ranges", reserved_peering_ranges)
         if service is not None:
-            pulumi.set(__self__, "service", service)
+            _setter("service", service)
 
     @property
     @pulumi.getter
@@ -277,6 +305,10 @@ class Connection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConnectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

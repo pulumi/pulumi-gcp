@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,19 +37,40 @@ class WorkerPoolArgs:
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input['WorkerPoolWorkerConfigArgs'] worker_config: Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
         """
-        pulumi.set(__self__, "location", location)
+        WorkerPoolArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            annotations=annotations,
+            display_name=display_name,
+            name=name,
+            network_config=network_config,
+            project=project,
+            worker_config=worker_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: pulumi.Input[str],
+             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_config: Optional[pulumi.Input['WorkerPoolNetworkConfigArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             worker_config: Optional[pulumi.Input['WorkerPoolWorkerConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("location", location)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_config is not None:
-            pulumi.set(__self__, "network_config", network_config)
+            _setter("network_config", network_config)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if worker_config is not None:
-            pulumi.set(__self__, "worker_config", worker_config)
+            _setter("worker_config", worker_config)
 
     @property
     @pulumi.getter
@@ -174,30 +195,61 @@ class _WorkerPoolState:
         :param pulumi.Input[str] update_time: Output only. Time at which the request to update the `WorkerPool` was received.
         :param pulumi.Input['WorkerPoolWorkerConfigArgs'] worker_config: Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
         """
+        _WorkerPoolState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            create_time=create_time,
+            delete_time=delete_time,
+            display_name=display_name,
+            location=location,
+            name=name,
+            network_config=network_config,
+            project=project,
+            state=state,
+            uid=uid,
+            update_time=update_time,
+            worker_config=worker_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             delete_time: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_config: Optional[pulumi.Input['WorkerPoolNetworkConfigArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             worker_config: Optional[pulumi.Input['WorkerPoolWorkerConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if delete_time is not None:
-            pulumi.set(__self__, "delete_time", delete_time)
+            _setter("delete_time", delete_time)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_config is not None:
-            pulumi.set(__self__, "network_config", network_config)
+            _setter("network_config", network_config)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
         if worker_config is not None:
-            pulumi.set(__self__, "worker_config", worker_config)
+            _setter("worker_config", worker_config)
 
     @property
     @pulumi.getter
@@ -527,6 +579,10 @@ class WorkerPool(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            WorkerPoolArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -554,8 +610,18 @@ class WorkerPool(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
+            if network_config is not None and not isinstance(network_config, WorkerPoolNetworkConfigArgs):
+                network_config = network_config or {}
+                def _setter(key, value):
+                    network_config[key] = value
+                WorkerPoolNetworkConfigArgs._configure(_setter, **network_config)
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["project"] = project
+            if worker_config is not None and not isinstance(worker_config, WorkerPoolWorkerConfigArgs):
+                worker_config = worker_config or {}
+                def _setter(key, value):
+                    worker_config[key] = value
+                WorkerPoolWorkerConfigArgs._configure(_setter, **worker_config)
             __props__.__dict__["worker_config"] = worker_config
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None

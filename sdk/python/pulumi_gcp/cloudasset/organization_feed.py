@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -51,18 +51,41 @@ class OrganizationFeedArgs:
         :param pulumi.Input[str] content_type: Asset content type. If not specified, no content but the asset name and type will be returned.
                Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
         """
-        pulumi.set(__self__, "billing_project", billing_project)
-        pulumi.set(__self__, "feed_id", feed_id)
-        pulumi.set(__self__, "feed_output_config", feed_output_config)
-        pulumi.set(__self__, "org_id", org_id)
+        OrganizationFeedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            billing_project=billing_project,
+            feed_id=feed_id,
+            feed_output_config=feed_output_config,
+            org_id=org_id,
+            asset_names=asset_names,
+            asset_types=asset_types,
+            condition=condition,
+            content_type=content_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             billing_project: pulumi.Input[str],
+             feed_id: pulumi.Input[str],
+             feed_output_config: pulumi.Input['OrganizationFeedFeedOutputConfigArgs'],
+             org_id: pulumi.Input[str],
+             asset_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             asset_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             condition: Optional[pulumi.Input['OrganizationFeedConditionArgs']] = None,
+             content_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("billing_project", billing_project)
+        _setter("feed_id", feed_id)
+        _setter("feed_output_config", feed_output_config)
+        _setter("org_id", org_id)
         if asset_names is not None:
-            pulumi.set(__self__, "asset_names", asset_names)
+            _setter("asset_names", asset_names)
         if asset_types is not None:
-            pulumi.set(__self__, "asset_types", asset_types)
+            _setter("asset_types", asset_types)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if content_type is not None:
-            pulumi.set(__self__, "content_type", content_type)
+            _setter("content_type", content_type)
 
     @property
     @pulumi.getter(name="billingProject")
@@ -217,24 +240,49 @@ class _OrganizationFeedState:
         :param pulumi.Input[str] name: The format will be organizations/{organization_number}/feeds/{client-assigned_feed_identifier}.
         :param pulumi.Input[str] org_id: The organization this feed should be created in.
         """
+        _OrganizationFeedState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            asset_names=asset_names,
+            asset_types=asset_types,
+            billing_project=billing_project,
+            condition=condition,
+            content_type=content_type,
+            feed_id=feed_id,
+            feed_output_config=feed_output_config,
+            name=name,
+            org_id=org_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             asset_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             asset_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             billing_project: Optional[pulumi.Input[str]] = None,
+             condition: Optional[pulumi.Input['OrganizationFeedConditionArgs']] = None,
+             content_type: Optional[pulumi.Input[str]] = None,
+             feed_id: Optional[pulumi.Input[str]] = None,
+             feed_output_config: Optional[pulumi.Input['OrganizationFeedFeedOutputConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if asset_names is not None:
-            pulumi.set(__self__, "asset_names", asset_names)
+            _setter("asset_names", asset_names)
         if asset_types is not None:
-            pulumi.set(__self__, "asset_types", asset_types)
+            _setter("asset_types", asset_types)
         if billing_project is not None:
-            pulumi.set(__self__, "billing_project", billing_project)
+            _setter("billing_project", billing_project)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if content_type is not None:
-            pulumi.set(__self__, "content_type", content_type)
+            _setter("content_type", content_type)
         if feed_id is not None:
-            pulumi.set(__self__, "feed_id", feed_id)
+            _setter("feed_id", feed_id)
         if feed_output_config is not None:
-            pulumi.set(__self__, "feed_output_config", feed_output_config)
+            _setter("feed_output_config", feed_output_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
 
     @property
     @pulumi.getter(name="assetNames")
@@ -464,6 +512,10 @@ class OrganizationFeed(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OrganizationFeedArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -491,11 +543,21 @@ class OrganizationFeed(pulumi.CustomResource):
             if billing_project is None and not opts.urn:
                 raise TypeError("Missing required property 'billing_project'")
             __props__.__dict__["billing_project"] = billing_project
+            if condition is not None and not isinstance(condition, OrganizationFeedConditionArgs):
+                condition = condition or {}
+                def _setter(key, value):
+                    condition[key] = value
+                OrganizationFeedConditionArgs._configure(_setter, **condition)
             __props__.__dict__["condition"] = condition
             __props__.__dict__["content_type"] = content_type
             if feed_id is None and not opts.urn:
                 raise TypeError("Missing required property 'feed_id'")
             __props__.__dict__["feed_id"] = feed_id
+            if feed_output_config is not None and not isinstance(feed_output_config, OrganizationFeedFeedOutputConfigArgs):
+                feed_output_config = feed_output_config or {}
+                def _setter(key, value):
+                    feed_output_config[key] = value
+                OrganizationFeedFeedOutputConfigArgs._configure(_setter, **feed_output_config)
             if feed_output_config is None and not opts.urn:
                 raise TypeError("Missing required property 'feed_output_config'")
             __props__.__dict__["feed_output_config"] = feed_output_config

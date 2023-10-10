@@ -165,9 +165,7 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
      */
     public /*out*/ readonly deleted!: pulumi.Output<boolean>;
     /**
-     * Policy description. Length of the description is
-     * limited to 1024 characters.
-     *
+     * OS policy assignment description. Length of the
      * description is limited to 1024 characters.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -319,9 +317,7 @@ export interface OsPolicyAssignmentState {
      */
     deleted?: pulumi.Input<boolean>;
     /**
-     * Policy description. Length of the description is
-     * limited to 1024 characters.
-     *
+     * OS policy assignment description. Length of the
      * description is limited to 1024 characters.
      */
     description?: pulumi.Input<string>;
@@ -397,9 +393,7 @@ export interface OsPolicyAssignmentState {
  */
 export interface OsPolicyAssignmentArgs {
     /**
-     * Policy description. Length of the description is
-     * limited to 1024 characters.
-     *
+     * OS policy assignment description. Length of the
      * description is limited to 1024 characters.
      */
     description?: pulumi.Input<string>;

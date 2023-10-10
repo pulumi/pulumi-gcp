@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -61,27 +61,56 @@ class OrganizationArgs:
                Default value is `CLOUD`.
                Possible values are: `CLOUD`, `HYBRID`.
         """
-        pulumi.set(__self__, "project_id", project_id)
+        OrganizationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project_id=project_id,
+            analytics_region=analytics_region,
+            authorized_network=authorized_network,
+            billing_type=billing_type,
+            description=description,
+            disable_vpc_peering=disable_vpc_peering,
+            display_name=display_name,
+            properties=properties,
+            retention=retention,
+            runtime_database_encryption_key_name=runtime_database_encryption_key_name,
+            runtime_type=runtime_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project_id: pulumi.Input[str],
+             analytics_region: Optional[pulumi.Input[str]] = None,
+             authorized_network: Optional[pulumi.Input[str]] = None,
+             billing_type: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disable_vpc_peering: Optional[pulumi.Input[bool]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             properties: Optional[pulumi.Input['OrganizationPropertiesArgs']] = None,
+             retention: Optional[pulumi.Input[str]] = None,
+             runtime_database_encryption_key_name: Optional[pulumi.Input[str]] = None,
+             runtime_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("project_id", project_id)
         if analytics_region is not None:
-            pulumi.set(__self__, "analytics_region", analytics_region)
+            _setter("analytics_region", analytics_region)
         if authorized_network is not None:
-            pulumi.set(__self__, "authorized_network", authorized_network)
+            _setter("authorized_network", authorized_network)
         if billing_type is not None:
-            pulumi.set(__self__, "billing_type", billing_type)
+            _setter("billing_type", billing_type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disable_vpc_peering is not None:
-            pulumi.set(__self__, "disable_vpc_peering", disable_vpc_peering)
+            _setter("disable_vpc_peering", disable_vpc_peering)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if properties is not None:
-            pulumi.set(__self__, "properties", properties)
+            _setter("properties", properties)
         if retention is not None:
-            pulumi.set(__self__, "retention", retention)
+            _setter("retention", retention)
         if runtime_database_encryption_key_name is not None:
-            pulumi.set(__self__, "runtime_database_encryption_key_name", runtime_database_encryption_key_name)
+            _setter("runtime_database_encryption_key_name", runtime_database_encryption_key_name)
         if runtime_type is not None:
-            pulumi.set(__self__, "runtime_type", runtime_type)
+            _setter("runtime_type", runtime_type)
 
     @property
     @pulumi.getter(name="projectId")
@@ -294,36 +323,73 @@ class _OrganizationState:
         :param pulumi.Input[str] subscription_type: Output only. Subscription type of the Apigee organization.
                Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased).
         """
+        _OrganizationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            analytics_region=analytics_region,
+            apigee_project_id=apigee_project_id,
+            authorized_network=authorized_network,
+            billing_type=billing_type,
+            ca_certificate=ca_certificate,
+            description=description,
+            disable_vpc_peering=disable_vpc_peering,
+            display_name=display_name,
+            name=name,
+            project_id=project_id,
+            properties=properties,
+            retention=retention,
+            runtime_database_encryption_key_name=runtime_database_encryption_key_name,
+            runtime_type=runtime_type,
+            subscription_type=subscription_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             analytics_region: Optional[pulumi.Input[str]] = None,
+             apigee_project_id: Optional[pulumi.Input[str]] = None,
+             authorized_network: Optional[pulumi.Input[str]] = None,
+             billing_type: Optional[pulumi.Input[str]] = None,
+             ca_certificate: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disable_vpc_peering: Optional[pulumi.Input[bool]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             properties: Optional[pulumi.Input['OrganizationPropertiesArgs']] = None,
+             retention: Optional[pulumi.Input[str]] = None,
+             runtime_database_encryption_key_name: Optional[pulumi.Input[str]] = None,
+             runtime_type: Optional[pulumi.Input[str]] = None,
+             subscription_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if analytics_region is not None:
-            pulumi.set(__self__, "analytics_region", analytics_region)
+            _setter("analytics_region", analytics_region)
         if apigee_project_id is not None:
-            pulumi.set(__self__, "apigee_project_id", apigee_project_id)
+            _setter("apigee_project_id", apigee_project_id)
         if authorized_network is not None:
-            pulumi.set(__self__, "authorized_network", authorized_network)
+            _setter("authorized_network", authorized_network)
         if billing_type is not None:
-            pulumi.set(__self__, "billing_type", billing_type)
+            _setter("billing_type", billing_type)
         if ca_certificate is not None:
-            pulumi.set(__self__, "ca_certificate", ca_certificate)
+            _setter("ca_certificate", ca_certificate)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disable_vpc_peering is not None:
-            pulumi.set(__self__, "disable_vpc_peering", disable_vpc_peering)
+            _setter("disable_vpc_peering", disable_vpc_peering)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if properties is not None:
-            pulumi.set(__self__, "properties", properties)
+            _setter("properties", properties)
         if retention is not None:
-            pulumi.set(__self__, "retention", retention)
+            _setter("retention", retention)
         if runtime_database_encryption_key_name is not None:
-            pulumi.set(__self__, "runtime_database_encryption_key_name", runtime_database_encryption_key_name)
+            _setter("runtime_database_encryption_key_name", runtime_database_encryption_key_name)
         if runtime_type is not None:
-            pulumi.set(__self__, "runtime_type", runtime_type)
+            _setter("runtime_type", runtime_type)
         if subscription_type is not None:
-            pulumi.set(__self__, "subscription_type", subscription_type)
+            _setter("subscription_type", subscription_type)
 
     @property
     @pulumi.getter(name="analyticsRegion")
@@ -843,6 +909,10 @@ class Organization(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OrganizationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -877,6 +947,11 @@ class Organization(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
+            if properties is not None and not isinstance(properties, OrganizationPropertiesArgs):
+                properties = properties or {}
+                def _setter(key, value):
+                    properties[key] = value
+                OrganizationPropertiesArgs._configure(_setter, **properties)
             __props__.__dict__["properties"] = properties
             __props__.__dict__["retention"] = retention
             __props__.__dict__["runtime_database_encryption_key_name"] = runtime_database_encryption_key_name

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -66,27 +66,56 @@ class DatasetAccessInitArgs:
                needs to be granted again via an update operation.
                Structure is documented below.
         """
-        pulumi.set(__self__, "dataset_id", dataset_id)
+        DatasetAccessInitArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dataset_id=dataset_id,
+            authorized_dataset=authorized_dataset,
+            domain=domain,
+            group_by_email=group_by_email,
+            iam_member=iam_member,
+            project=project,
+            role=role,
+            routine=routine,
+            special_group=special_group,
+            user_by_email=user_by_email,
+            view=view,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dataset_id: pulumi.Input[str],
+             authorized_dataset: Optional[pulumi.Input['DatasetAccessAuthorizedDatasetArgs']] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             group_by_email: Optional[pulumi.Input[str]] = None,
+             iam_member: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             routine: Optional[pulumi.Input['DatasetAccessRoutineArgs']] = None,
+             special_group: Optional[pulumi.Input[str]] = None,
+             user_by_email: Optional[pulumi.Input[str]] = None,
+             view: Optional[pulumi.Input['DatasetAccessViewArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dataset_id", dataset_id)
         if authorized_dataset is not None:
-            pulumi.set(__self__, "authorized_dataset", authorized_dataset)
+            _setter("authorized_dataset", authorized_dataset)
         if domain is not None:
-            pulumi.set(__self__, "domain", domain)
+            _setter("domain", domain)
         if group_by_email is not None:
-            pulumi.set(__self__, "group_by_email", group_by_email)
+            _setter("group_by_email", group_by_email)
         if iam_member is not None:
-            pulumi.set(__self__, "iam_member", iam_member)
+            _setter("iam_member", iam_member)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if routine is not None:
-            pulumi.set(__self__, "routine", routine)
+            _setter("routine", routine)
         if special_group is not None:
-            pulumi.set(__self__, "special_group", special_group)
+            _setter("special_group", special_group)
         if user_by_email is not None:
-            pulumi.set(__self__, "user_by_email", user_by_email)
+            _setter("user_by_email", user_by_email)
         if view is not None:
-            pulumi.set(__self__, "view", view)
+            _setter("view", view)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -302,30 +331,61 @@ class _DatasetAccessState:
                needs to be granted again via an update operation.
                Structure is documented below.
         """
+        _DatasetAccessState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_updated_member=api_updated_member,
+            authorized_dataset=authorized_dataset,
+            dataset_id=dataset_id,
+            domain=domain,
+            group_by_email=group_by_email,
+            iam_member=iam_member,
+            project=project,
+            role=role,
+            routine=routine,
+            special_group=special_group,
+            user_by_email=user_by_email,
+            view=view,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_updated_member: Optional[pulumi.Input[bool]] = None,
+             authorized_dataset: Optional[pulumi.Input['DatasetAccessAuthorizedDatasetArgs']] = None,
+             dataset_id: Optional[pulumi.Input[str]] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             group_by_email: Optional[pulumi.Input[str]] = None,
+             iam_member: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             routine: Optional[pulumi.Input['DatasetAccessRoutineArgs']] = None,
+             special_group: Optional[pulumi.Input[str]] = None,
+             user_by_email: Optional[pulumi.Input[str]] = None,
+             view: Optional[pulumi.Input['DatasetAccessViewArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if api_updated_member is not None:
-            pulumi.set(__self__, "api_updated_member", api_updated_member)
+            _setter("api_updated_member", api_updated_member)
         if authorized_dataset is not None:
-            pulumi.set(__self__, "authorized_dataset", authorized_dataset)
+            _setter("authorized_dataset", authorized_dataset)
         if dataset_id is not None:
-            pulumi.set(__self__, "dataset_id", dataset_id)
+            _setter("dataset_id", dataset_id)
         if domain is not None:
-            pulumi.set(__self__, "domain", domain)
+            _setter("domain", domain)
         if group_by_email is not None:
-            pulumi.set(__self__, "group_by_email", group_by_email)
+            _setter("group_by_email", group_by_email)
         if iam_member is not None:
-            pulumi.set(__self__, "iam_member", iam_member)
+            _setter("iam_member", iam_member)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if routine is not None:
-            pulumi.set(__self__, "routine", routine)
+            _setter("routine", routine)
         if special_group is not None:
-            pulumi.set(__self__, "special_group", special_group)
+            _setter("special_group", special_group)
         if user_by_email is not None:
-            pulumi.set(__self__, "user_by_email", user_by_email)
+            _setter("user_by_email", user_by_email)
         if view is not None:
-            pulumi.set(__self__, "view", view)
+            _setter("view", view)
 
     @property
     @pulumi.getter(name="apiUpdatedMember")
@@ -778,6 +838,10 @@ class DatasetAccess(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DatasetAccessInitArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -803,6 +867,11 @@ class DatasetAccess(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatasetAccessInitArgs.__new__(DatasetAccessInitArgs)
 
+            if authorized_dataset is not None and not isinstance(authorized_dataset, DatasetAccessAuthorizedDatasetArgs):
+                authorized_dataset = authorized_dataset or {}
+                def _setter(key, value):
+                    authorized_dataset[key] = value
+                DatasetAccessAuthorizedDatasetArgs._configure(_setter, **authorized_dataset)
             __props__.__dict__["authorized_dataset"] = authorized_dataset
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")
@@ -812,9 +881,19 @@ class DatasetAccess(pulumi.CustomResource):
             __props__.__dict__["iam_member"] = iam_member
             __props__.__dict__["project"] = project
             __props__.__dict__["role"] = role
+            if routine is not None and not isinstance(routine, DatasetAccessRoutineArgs):
+                routine = routine or {}
+                def _setter(key, value):
+                    routine[key] = value
+                DatasetAccessRoutineArgs._configure(_setter, **routine)
             __props__.__dict__["routine"] = routine
             __props__.__dict__["special_group"] = special_group
             __props__.__dict__["user_by_email"] = user_by_email
+            if view is not None and not isinstance(view, DatasetAccessViewArgs):
+                view = view or {}
+                def _setter(key, value):
+                    view[key] = value
+                DatasetAccessViewArgs._configure(_setter, **view)
             __props__.__dict__["view"] = view
             __props__.__dict__["api_updated_member"] = None
         super(DatasetAccess, __self__).__init__(

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['MuteConfigArgs', 'MuteConfig']
@@ -34,11 +34,26 @@ class MuteConfigArgs:
                - - -
         :param pulumi.Input[str] description: A description of the mute config.
         """
-        pulumi.set(__self__, "filter", filter)
-        pulumi.set(__self__, "mute_config_id", mute_config_id)
-        pulumi.set(__self__, "parent", parent)
+        MuteConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter=filter,
+            mute_config_id=mute_config_id,
+            parent=parent,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter: pulumi.Input[str],
+             mute_config_id: pulumi.Input[str],
+             parent: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter", filter)
+        _setter("mute_config_id", mute_config_id)
+        _setter("parent", parent)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -137,22 +152,45 @@ class _MuteConfigState:
                updated. This field is set by the server and will be ignored if
                provided on config creation or update.
         """
+        _MuteConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            filter=filter,
+            most_recent_editor=most_recent_editor,
+            mute_config_id=mute_config_id,
+            name=name,
+            parent=parent,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             filter: Optional[pulumi.Input[str]] = None,
+             most_recent_editor: Optional[pulumi.Input[str]] = None,
+             mute_config_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if most_recent_editor is not None:
-            pulumi.set(__self__, "most_recent_editor", most_recent_editor)
+            _setter("most_recent_editor", most_recent_editor)
         if mute_config_id is not None:
-            pulumi.set(__self__, "mute_config_id", mute_config_id)
+            _setter("mute_config_id", mute_config_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent is not None:
-            pulumi.set(__self__, "parent", parent)
+            _setter("parent", parent)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -374,6 +412,10 @@ class MuteConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MuteConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

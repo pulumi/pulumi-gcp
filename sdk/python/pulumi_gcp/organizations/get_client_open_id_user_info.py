@@ -6,13 +6,14 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
     'GetClientOpenIdUserInfoResult',
     'AwaitableGetClientOpenIdUserInfoResult',
     'get_client_open_id_user_info',
+    'get_client_open_id_user_info_output',
 ]
 
 @pulumi.output_type
@@ -84,3 +85,32 @@ def get_client_open_id_user_info(opts: Optional[pulumi.InvokeOptions] = None) ->
     return AwaitableGetClientOpenIdUserInfoResult(
         email=pulumi.get(__ret__, 'email'),
         id=pulumi.get(__ret__, 'id'))
+
+
+@_utilities.lift_output_func(get_client_open_id_user_info)
+def get_client_open_id_user_info_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClientOpenIdUserInfoResult]:
+    """
+    Get OpenID userinfo about the credentials used with the Google provider,
+    specifically the email.
+
+    This datasource enables you to export the email of the account you've
+    authenticated the provider with; this can be used alongside
+    `data.google_client_config`'s `access_token` to perform OpenID Connect
+    authentication with GKE and configure an RBAC role for the email used.
+
+    > This resource will only work as expected if the provider is configured to
+    use the `https://www.googleapis.com/auth/userinfo.email` scope! You will
+    receive an error otherwise. The provider uses this scope by default.
+
+    ## Example Usage
+    ### Exporting An Email
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    me = gcp.organizations.get_client_open_id_user_info()
+    pulumi.export("my-email", me.email)
+    ```
+    """
+    ...

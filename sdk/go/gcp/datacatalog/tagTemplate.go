@@ -100,14 +100,6 @@ import (
 type TagTemplate struct {
 	pulumi.CustomResourceState
 
-	// The display name for this field.
-	//
-	// (Required)
-	// The display name of the enum value.
-	//
-	// ***
-	//
-	// (Optional)
 	// The display name for this template.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
@@ -163,14 +155,6 @@ func GetTagTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TagTemplate resources.
 type tagTemplateState struct {
-	// The display name for this field.
-	//
-	// (Required)
-	// The display name of the enum value.
-	//
-	// ***
-	//
-	// (Optional)
 	// The display name for this template.
 	DisplayName *string `pulumi:"displayName"`
 	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
@@ -191,14 +175,6 @@ type tagTemplateState struct {
 }
 
 type TagTemplateState struct {
-	// The display name for this field.
-	//
-	// (Required)
-	// The display name of the enum value.
-	//
-	// ***
-	//
-	// (Optional)
 	// The display name for this template.
 	DisplayName pulumi.StringPtrInput
 	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
@@ -223,14 +199,6 @@ func (TagTemplateState) ElementType() reflect.Type {
 }
 
 type tagTemplateArgs struct {
-	// The display name for this field.
-	//
-	// (Required)
-	// The display name of the enum value.
-	//
-	// ***
-	//
-	// (Optional)
 	// The display name for this template.
 	DisplayName *string `pulumi:"displayName"`
 	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
@@ -249,14 +217,6 @@ type tagTemplateArgs struct {
 
 // The set of arguments for constructing a TagTemplate resource.
 type TagTemplateArgs struct {
-	// The display name for this field.
-	//
-	// (Required)
-	// The display name of the enum value.
-	//
-	// ***
-	//
-	// (Optional)
 	// The display name for this template.
 	DisplayName pulumi.StringPtrInput
 	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
@@ -384,14 +344,6 @@ func (o TagTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*TagTemp
 	}
 }
 
-// The display name for this field.
-//
-// (Required)
-// The display name of the enum value.
-//
-// ***
-//
-// (Optional)
 // The display name for this template.
 func (o TagTemplateOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TagTemplate) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)

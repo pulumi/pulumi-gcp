@@ -50,10 +50,6 @@ public final class CxTestCaseLastTestResultArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The unique identifier of the intent.
-     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/intents/&lt;Intent ID&gt;.
-     * 
-     * (Optional)
      * The unique identifier of the page.
      * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/pages/&lt;Page ID&gt;.
      * 
@@ -62,11 +58,7 @@ public final class CxTestCaseLastTestResultArgs extends com.pulumi.resources.Res
     private @Nullable Output<String> name;
 
     /**
-     * @return The unique identifier of the intent.
-     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/intents/&lt;Intent ID&gt;.
-     * 
-     * (Optional)
-     * The unique identifier of the page.
+     * @return The unique identifier of the page.
      * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/pages/&lt;Page ID&gt;.
      * 
      */
@@ -194,11 +186,7 @@ public final class CxTestCaseLastTestResultArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param name The unique identifier of the intent.
-         * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/intents/&lt;Intent ID&gt;.
-         * 
-         * (Optional)
-         * The unique identifier of the page.
+         * @param name The unique identifier of the page.
          * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/pages/&lt;Page ID&gt;.
          * 
          * @return builder
@@ -210,11 +198,7 @@ public final class CxTestCaseLastTestResultArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param name The unique identifier of the intent.
-         * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/intents/&lt;Intent ID&gt;.
-         * 
-         * (Optional)
-         * The unique identifier of the page.
+         * @param name The unique identifier of the page.
          * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/pages/&lt;Page ID&gt;.
          * 
          * @return builder

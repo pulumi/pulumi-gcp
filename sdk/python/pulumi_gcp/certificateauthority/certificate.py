@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -54,24 +54,51 @@ class CertificateArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "pool", pool)
+        CertificateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            pool=pool,
+            certificate_authority=certificate_authority,
+            certificate_template=certificate_template,
+            config=config,
+            labels=labels,
+            lifetime=lifetime,
+            name=name,
+            pem_csr=pem_csr,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: pulumi.Input[str],
+             pool: pulumi.Input[str],
+             certificate_authority: Optional[pulumi.Input[str]] = None,
+             certificate_template: Optional[pulumi.Input[str]] = None,
+             config: Optional[pulumi.Input['CertificateConfigArgs']] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             lifetime: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             pem_csr: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("location", location)
+        _setter("pool", pool)
         if certificate_authority is not None:
-            pulumi.set(__self__, "certificate_authority", certificate_authority)
+            _setter("certificate_authority", certificate_authority)
         if certificate_template is not None:
-            pulumi.set(__self__, "certificate_template", certificate_template)
+            _setter("certificate_template", certificate_template)
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if lifetime is not None:
-            pulumi.set(__self__, "lifetime", lifetime)
+            _setter("lifetime", lifetime)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if pem_csr is not None:
-            pulumi.set(__self__, "pem_csr", pem_csr)
+            _setter("pem_csr", pem_csr)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -272,45 +299,88 @@ class _CertificateState:
         :param pulumi.Input[str] update_time: Output only. The time at which this CertificateAuthority was updated.
                This is in RFC3339 text format.
         """
+        _CertificateState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            certificate_authority=certificate_authority,
+            certificate_descriptions=certificate_descriptions,
+            certificate_template=certificate_template,
+            config=config,
+            create_time=create_time,
+            issuer_certificate_authority=issuer_certificate_authority,
+            labels=labels,
+            lifetime=lifetime,
+            location=location,
+            name=name,
+            pem_certificate=pem_certificate,
+            pem_certificate_chains=pem_certificate_chains,
+            pem_certificates=pem_certificates,
+            pem_csr=pem_csr,
+            pool=pool,
+            project=project,
+            revocation_details=revocation_details,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             certificate_authority: Optional[pulumi.Input[str]] = None,
+             certificate_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionArgs']]]] = None,
+             certificate_template: Optional[pulumi.Input[str]] = None,
+             config: Optional[pulumi.Input['CertificateConfigArgs']] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             issuer_certificate_authority: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             lifetime: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             pem_certificate: Optional[pulumi.Input[str]] = None,
+             pem_certificate_chains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             pem_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             pem_csr: Optional[pulumi.Input[str]] = None,
+             pool: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             revocation_details: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateRevocationDetailArgs']]]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if certificate_authority is not None:
-            pulumi.set(__self__, "certificate_authority", certificate_authority)
+            _setter("certificate_authority", certificate_authority)
         if certificate_descriptions is not None:
-            pulumi.set(__self__, "certificate_descriptions", certificate_descriptions)
+            _setter("certificate_descriptions", certificate_descriptions)
         if certificate_template is not None:
-            pulumi.set(__self__, "certificate_template", certificate_template)
+            _setter("certificate_template", certificate_template)
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if issuer_certificate_authority is not None:
-            pulumi.set(__self__, "issuer_certificate_authority", issuer_certificate_authority)
+            _setter("issuer_certificate_authority", issuer_certificate_authority)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if lifetime is not None:
-            pulumi.set(__self__, "lifetime", lifetime)
+            _setter("lifetime", lifetime)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if pem_certificate is not None:
-            pulumi.set(__self__, "pem_certificate", pem_certificate)
+            _setter("pem_certificate", pem_certificate)
         if pem_certificate_chains is not None:
-            pulumi.set(__self__, "pem_certificate_chains", pem_certificate_chains)
+            _setter("pem_certificate_chains", pem_certificate_chains)
         if pem_certificates is not None:
             warnings.warn("""`pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.""", DeprecationWarning)
             pulumi.log.warn("""pem_certificates is deprecated: `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.""")
         if pem_certificates is not None:
-            pulumi.set(__self__, "pem_certificates", pem_certificates)
+            _setter("pem_certificates", pem_certificates)
         if pem_csr is not None:
-            pulumi.set(__self__, "pem_csr", pem_csr)
+            _setter("pem_csr", pem_csr)
         if pool is not None:
-            pulumi.set(__self__, "pool", pool)
+            _setter("pool", pool)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if revocation_details is not None:
-            pulumi.set(__self__, "revocation_details", revocation_details)
+            _setter("revocation_details", revocation_details)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="certificateAuthority")
@@ -1179,6 +1249,10 @@ class Certificate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CertificateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1205,6 +1279,11 @@ class Certificate(pulumi.CustomResource):
 
             __props__.__dict__["certificate_authority"] = certificate_authority
             __props__.__dict__["certificate_template"] = certificate_template
+            if config is not None and not isinstance(config, CertificateConfigArgs):
+                config = config or {}
+                def _setter(key, value):
+                    config[key] = value
+                CertificateConfigArgs._configure(_setter, **config)
             __props__.__dict__["config"] = config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["lifetime"] = lifetime

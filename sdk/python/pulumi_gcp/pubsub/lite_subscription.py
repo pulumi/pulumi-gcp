@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -36,17 +36,36 @@ class LiteSubscriptionArgs:
         :param pulumi.Input[str] region: The region of the pubsub lite topic.
         :param pulumi.Input[str] zone: The zone of the pubsub lite topic.
         """
-        pulumi.set(__self__, "topic", topic)
+        LiteSubscriptionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            topic=topic,
+            delivery_config=delivery_config,
+            name=name,
+            project=project,
+            region=region,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             topic: pulumi.Input[str],
+             delivery_config: Optional[pulumi.Input['LiteSubscriptionDeliveryConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("topic", topic)
         if delivery_config is not None:
-            pulumi.set(__self__, "delivery_config", delivery_config)
+            _setter("delivery_config", delivery_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter
@@ -149,18 +168,37 @@ class _LiteSubscriptionState:
         :param pulumi.Input[str] topic: A reference to a Topic resource.
         :param pulumi.Input[str] zone: The zone of the pubsub lite topic.
         """
+        _LiteSubscriptionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            delivery_config=delivery_config,
+            name=name,
+            project=project,
+            region=region,
+            topic=topic,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             delivery_config: Optional[pulumi.Input['LiteSubscriptionDeliveryConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             topic: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if delivery_config is not None:
-            pulumi.set(__self__, "delivery_config", delivery_config)
+            _setter("delivery_config", delivery_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if topic is not None:
-            pulumi.set(__self__, "topic", topic)
+            _setter("topic", topic)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter(name="deliveryConfig")
@@ -396,6 +434,10 @@ class LiteSubscription(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            LiteSubscriptionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -416,6 +458,11 @@ class LiteSubscription(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = LiteSubscriptionArgs.__new__(LiteSubscriptionArgs)
 
+            if delivery_config is not None and not isinstance(delivery_config, LiteSubscriptionDeliveryConfigArgs):
+                delivery_config = delivery_config or {}
+                def _setter(key, value):
+                    delivery_config[key] = value
+                LiteSubscriptionDeliveryConfigArgs._configure(_setter, **delivery_config)
             __props__.__dict__["delivery_config"] = delivery_config
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

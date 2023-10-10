@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,32 +29,62 @@ class JobArgs:
         The set of arguments for constructing a Job resource.
         :param pulumi.Input[str] job_id: The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
         :param pulumi.Input['JobCopyArgs'] copy: Copies a table.
+               Structure is documented below.
         :param pulumi.Input['JobExtractArgs'] extract: Configures an extract job.
+               Structure is documented below.
         :param pulumi.Input[str] job_timeout_ms: Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
         :param pulumi.Input['JobLoadArgs'] load: Configures a load job.
+               Structure is documented below.
         :param pulumi.Input[str] location: The geographic location of the job. The default value is US.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['JobQueryArgs'] query: Configures a query job.
+        :param pulumi.Input['JobQueryArgs'] query: SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+               *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+               (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
         """
-        pulumi.set(__self__, "job_id", job_id)
+        JobArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            job_id=job_id,
+            copy=copy,
+            extract=extract,
+            job_timeout_ms=job_timeout_ms,
+            labels=labels,
+            load=load,
+            location=location,
+            project=project,
+            query=query,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             job_id: pulumi.Input[str],
+             copy: Optional[pulumi.Input['JobCopyArgs']] = None,
+             extract: Optional[pulumi.Input['JobExtractArgs']] = None,
+             job_timeout_ms: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             load: Optional[pulumi.Input['JobLoadArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             query: Optional[pulumi.Input['JobQueryArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("job_id", job_id)
         if copy is not None:
-            pulumi.set(__self__, "copy", copy)
+            _setter("copy", copy)
         if extract is not None:
-            pulumi.set(__self__, "extract", extract)
+            _setter("extract", extract)
         if job_timeout_ms is not None:
-            pulumi.set(__self__, "job_timeout_ms", job_timeout_ms)
+            _setter("job_timeout_ms", job_timeout_ms)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if load is not None:
-            pulumi.set(__self__, "load", load)
+            _setter("load", load)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if query is not None:
-            pulumi.set(__self__, "query", query)
+            _setter("query", query)
 
     @property
     @pulumi.getter(name="jobId")
@@ -73,6 +103,7 @@ class JobArgs:
     def copy(self) -> Optional[pulumi.Input['JobCopyArgs']]:
         """
         Copies a table.
+        Structure is documented below.
         """
         return pulumi.get(self, "copy")
 
@@ -85,6 +116,7 @@ class JobArgs:
     def extract(self) -> Optional[pulumi.Input['JobExtractArgs']]:
         """
         Configures an extract job.
+        Structure is documented below.
         """
         return pulumi.get(self, "extract")
 
@@ -121,6 +153,7 @@ class JobArgs:
     def load(self) -> Optional[pulumi.Input['JobLoadArgs']]:
         """
         Configures a load job.
+        Structure is documented below.
         """
         return pulumi.get(self, "load")
 
@@ -157,7 +190,9 @@ class JobArgs:
     @pulumi.getter
     def query(self) -> Optional[pulumi.Input['JobQueryArgs']]:
         """
-        Configures a query job.
+        SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+        *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+        (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
         """
         return pulumi.get(self, "query")
 
@@ -184,51 +219,88 @@ class _JobState:
         """
         Input properties used for looking up and filtering Job resources.
         :param pulumi.Input['JobCopyArgs'] copy: Copies a table.
+               Structure is documented below.
         :param pulumi.Input['JobExtractArgs'] extract: Configures an extract job.
+               Structure is documented below.
         :param pulumi.Input[str] job_id: The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
         :param pulumi.Input[str] job_timeout_ms: Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
         :param pulumi.Input[str] job_type: (Output)
                The type of the job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
         :param pulumi.Input['JobLoadArgs'] load: Configures a load job.
+               Structure is documented below.
         :param pulumi.Input[str] location: The geographic location of the job. The default value is US.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['JobQueryArgs'] query: Configures a query job.
+        :param pulumi.Input['JobQueryArgs'] query: SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+               *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+               (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
         :param pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]] statuses: The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
                Structure is documented below.
         :param pulumi.Input[str] user_email: Email address of the user who ran the job.
         """
+        _JobState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            copy=copy,
+            extract=extract,
+            job_id=job_id,
+            job_timeout_ms=job_timeout_ms,
+            job_type=job_type,
+            labels=labels,
+            load=load,
+            location=location,
+            project=project,
+            query=query,
+            statuses=statuses,
+            user_email=user_email,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             copy: Optional[pulumi.Input['JobCopyArgs']] = None,
+             extract: Optional[pulumi.Input['JobExtractArgs']] = None,
+             job_id: Optional[pulumi.Input[str]] = None,
+             job_timeout_ms: Optional[pulumi.Input[str]] = None,
+             job_type: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             load: Optional[pulumi.Input['JobLoadArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             query: Optional[pulumi.Input['JobQueryArgs']] = None,
+             statuses: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]] = None,
+             user_email: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if copy is not None:
-            pulumi.set(__self__, "copy", copy)
+            _setter("copy", copy)
         if extract is not None:
-            pulumi.set(__self__, "extract", extract)
+            _setter("extract", extract)
         if job_id is not None:
-            pulumi.set(__self__, "job_id", job_id)
+            _setter("job_id", job_id)
         if job_timeout_ms is not None:
-            pulumi.set(__self__, "job_timeout_ms", job_timeout_ms)
+            _setter("job_timeout_ms", job_timeout_ms)
         if job_type is not None:
-            pulumi.set(__self__, "job_type", job_type)
+            _setter("job_type", job_type)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if load is not None:
-            pulumi.set(__self__, "load", load)
+            _setter("load", load)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if query is not None:
-            pulumi.set(__self__, "query", query)
+            _setter("query", query)
         if statuses is not None:
-            pulumi.set(__self__, "statuses", statuses)
+            _setter("statuses", statuses)
         if user_email is not None:
-            pulumi.set(__self__, "user_email", user_email)
+            _setter("user_email", user_email)
 
     @property
     @pulumi.getter
     def copy(self) -> Optional[pulumi.Input['JobCopyArgs']]:
         """
         Copies a table.
+        Structure is documented below.
         """
         return pulumi.get(self, "copy")
 
@@ -241,6 +313,7 @@ class _JobState:
     def extract(self) -> Optional[pulumi.Input['JobExtractArgs']]:
         """
         Configures an extract job.
+        Structure is documented below.
         """
         return pulumi.get(self, "extract")
 
@@ -302,6 +375,7 @@ class _JobState:
     def load(self) -> Optional[pulumi.Input['JobLoadArgs']]:
         """
         Configures a load job.
+        Structure is documented below.
         """
         return pulumi.get(self, "load")
 
@@ -338,7 +412,9 @@ class _JobState:
     @pulumi.getter
     def query(self) -> Optional[pulumi.Input['JobQueryArgs']]:
         """
-        Configures a query job.
+        SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+        *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+        (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
         """
         return pulumi.get(self, "query")
 
@@ -630,15 +706,20 @@ class Job(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['JobCopyArgs']] copy: Copies a table.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['JobExtractArgs']] extract: Configures an extract job.
+               Structure is documented below.
         :param pulumi.Input[str] job_id: The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
         :param pulumi.Input[str] job_timeout_ms: Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
         :param pulumi.Input[pulumi.InputType['JobLoadArgs']] load: Configures a load job.
+               Structure is documented below.
         :param pulumi.Input[str] location: The geographic location of the job. The default value is US.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['JobQueryArgs']] query: Configures a query job.
+        :param pulumi.Input[pulumi.InputType['JobQueryArgs']] query: SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+               *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+               (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
         """
         ...
     @overload
@@ -896,6 +977,10 @@ class Job(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            JobArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -919,16 +1004,36 @@ class Job(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = JobArgs.__new__(JobArgs)
 
+            if copy is not None and not isinstance(copy, JobCopyArgs):
+                copy = copy or {}
+                def _setter(key, value):
+                    copy[key] = value
+                JobCopyArgs._configure(_setter, **copy)
             __props__.__dict__["copy"] = copy
+            if extract is not None and not isinstance(extract, JobExtractArgs):
+                extract = extract or {}
+                def _setter(key, value):
+                    extract[key] = value
+                JobExtractArgs._configure(_setter, **extract)
             __props__.__dict__["extract"] = extract
             if job_id is None and not opts.urn:
                 raise TypeError("Missing required property 'job_id'")
             __props__.__dict__["job_id"] = job_id
             __props__.__dict__["job_timeout_ms"] = job_timeout_ms
             __props__.__dict__["labels"] = labels
+            if load is not None and not isinstance(load, JobLoadArgs):
+                load = load or {}
+                def _setter(key, value):
+                    load[key] = value
+                JobLoadArgs._configure(_setter, **load)
             __props__.__dict__["load"] = load
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
+            if query is not None and not isinstance(query, JobQueryArgs):
+                query = query or {}
+                def _setter(key, value):
+                    query[key] = value
+                JobQueryArgs._configure(_setter, **query)
             __props__.__dict__["query"] = query
             __props__.__dict__["job_type"] = None
             __props__.__dict__["statuses"] = None
@@ -963,17 +1068,22 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['JobCopyArgs']] copy: Copies a table.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['JobExtractArgs']] extract: Configures an extract job.
+               Structure is documented below.
         :param pulumi.Input[str] job_id: The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
         :param pulumi.Input[str] job_timeout_ms: Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
         :param pulumi.Input[str] job_type: (Output)
                The type of the job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
         :param pulumi.Input[pulumi.InputType['JobLoadArgs']] load: Configures a load job.
+               Structure is documented below.
         :param pulumi.Input[str] location: The geographic location of the job. The default value is US.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['JobQueryArgs']] query: Configures a query job.
+        :param pulumi.Input[pulumi.InputType['JobQueryArgs']] query: SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+               *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+               (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobStatusArgs']]]] statuses: The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
                Structure is documented below.
         :param pulumi.Input[str] user_email: Email address of the user who ran the job.
@@ -1001,6 +1111,7 @@ class Job(pulumi.CustomResource):
     def copy(self) -> pulumi.Output[Optional['outputs.JobCopy']]:
         """
         Copies a table.
+        Structure is documented below.
         """
         return pulumi.get(self, "copy")
 
@@ -1009,6 +1120,7 @@ class Job(pulumi.CustomResource):
     def extract(self) -> pulumi.Output[Optional['outputs.JobExtract']]:
         """
         Configures an extract job.
+        Structure is documented below.
         """
         return pulumi.get(self, "extract")
 
@@ -1050,6 +1162,7 @@ class Job(pulumi.CustomResource):
     def load(self) -> pulumi.Output[Optional['outputs.JobLoad']]:
         """
         Configures a load job.
+        Structure is documented below.
         """
         return pulumi.get(self, "load")
 
@@ -1074,7 +1187,9 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def query(self) -> pulumi.Output[Optional['outputs.JobQuery']]:
         """
-        Configures a query job.
+        SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+        *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+        (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
         """
         return pulumi.get(self, "query")
 

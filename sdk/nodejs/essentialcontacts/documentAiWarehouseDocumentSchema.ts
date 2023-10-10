@@ -372,15 +372,6 @@ export class DocumentAiWarehouseDocumentSchema extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string>;
     /**
      * The name of the metadata property.
-     *
-     * (Optional)
-     * The schema name in the source.
-     *
-     * (Required)
-     * The name of the metadata property.
-     *
-     * (Optional)
-     * The schema name in the source.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -456,15 +447,6 @@ export interface DocumentAiWarehouseDocumentSchemaState {
     location?: pulumi.Input<string>;
     /**
      * The name of the metadata property.
-     *
-     * (Optional)
-     * The schema name in the source.
-     *
-     * (Required)
-     * The name of the metadata property.
-     *
-     * (Optional)
-     * The schema name in the source.
      */
     name?: pulumi.Input<string>;
     /**

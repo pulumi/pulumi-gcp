@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FlowhookArgs', 'Flowhook']
@@ -29,14 +29,33 @@ class FlowhookArgs:
         :param pulumi.Input[bool] continue_on_error: Flag that specifies whether execution should continue if the flow hook throws an exception. Set to true to continue execution. Set to false to stop execution if the flow hook throws an exception. Defaults to true.
         :param pulumi.Input[str] description: Description of the flow hook.
         """
-        pulumi.set(__self__, "environment", environment)
-        pulumi.set(__self__, "flow_hook_point", flow_hook_point)
-        pulumi.set(__self__, "org_id", org_id)
-        pulumi.set(__self__, "sharedflow", sharedflow)
+        FlowhookArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            environment=environment,
+            flow_hook_point=flow_hook_point,
+            org_id=org_id,
+            sharedflow=sharedflow,
+            continue_on_error=continue_on_error,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             environment: pulumi.Input[str],
+             flow_hook_point: pulumi.Input[str],
+             org_id: pulumi.Input[str],
+             sharedflow: pulumi.Input[str],
+             continue_on_error: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("environment", environment)
+        _setter("flow_hook_point", flow_hook_point)
+        _setter("org_id", org_id)
+        _setter("sharedflow", sharedflow)
         if continue_on_error is not None:
-            pulumi.set(__self__, "continue_on_error", continue_on_error)
+            _setter("continue_on_error", continue_on_error)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -129,18 +148,37 @@ class _FlowhookState:
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the environment
         :param pulumi.Input[str] sharedflow: Id of the Sharedflow attaching to a flowhook point.
         """
+        _FlowhookState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            continue_on_error=continue_on_error,
+            description=description,
+            environment=environment,
+            flow_hook_point=flow_hook_point,
+            org_id=org_id,
+            sharedflow=sharedflow,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             continue_on_error: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             environment: Optional[pulumi.Input[str]] = None,
+             flow_hook_point: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             sharedflow: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if continue_on_error is not None:
-            pulumi.set(__self__, "continue_on_error", continue_on_error)
+            _setter("continue_on_error", continue_on_error)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if environment is not None:
-            pulumi.set(__self__, "environment", environment)
+            _setter("environment", environment)
         if flow_hook_point is not None:
-            pulumi.set(__self__, "flow_hook_point", flow_hook_point)
+            _setter("flow_hook_point", flow_hook_point)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if sharedflow is not None:
-            pulumi.set(__self__, "sharedflow", sharedflow)
+            _setter("sharedflow", sharedflow)
 
     @property
     @pulumi.getter(name="continueOnError")
@@ -294,6 +332,10 @@ class Flowhook(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FlowhookArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

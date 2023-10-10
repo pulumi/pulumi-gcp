@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -50,8 +50,17 @@ class AiDatasetEncryptionSpecArgs:
         :param pulumi.Input[str] kms_key_name: Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
                Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
         """
+        AiDatasetEncryptionSpecArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_key_name=kms_key_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_key_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if kms_key_name is not None:
-            pulumi.set(__self__, "kms_key_name", kms_key_name)
+            _setter("kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -110,30 +119,61 @@ class AiEndpointDeployedModelArgs:
         :param pulumi.Input[str] shared_resources: (Output)
                The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
         """
+        AiEndpointDeployedModelArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            automatic_resources=automatic_resources,
+            create_time=create_time,
+            dedicated_resources=dedicated_resources,
+            display_name=display_name,
+            enable_access_logging=enable_access_logging,
+            enable_container_logging=enable_container_logging,
+            id=id,
+            model=model,
+            model_version_id=model_version_id,
+            private_endpoints=private_endpoints,
+            service_account=service_account,
+            shared_resources=shared_resources,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             automatic_resources: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArgs']]]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             dedicated_resources: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceArgs']]]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             enable_access_logging: Optional[pulumi.Input[bool]] = None,
+             enable_container_logging: Optional[pulumi.Input[bool]] = None,
+             id: Optional[pulumi.Input[str]] = None,
+             model: Optional[pulumi.Input[str]] = None,
+             model_version_id: Optional[pulumi.Input[str]] = None,
+             private_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelPrivateEndpointArgs']]]] = None,
+             service_account: Optional[pulumi.Input[str]] = None,
+             shared_resources: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if automatic_resources is not None:
-            pulumi.set(__self__, "automatic_resources", automatic_resources)
+            _setter("automatic_resources", automatic_resources)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if dedicated_resources is not None:
-            pulumi.set(__self__, "dedicated_resources", dedicated_resources)
+            _setter("dedicated_resources", dedicated_resources)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if enable_access_logging is not None:
-            pulumi.set(__self__, "enable_access_logging", enable_access_logging)
+            _setter("enable_access_logging", enable_access_logging)
         if enable_container_logging is not None:
-            pulumi.set(__self__, "enable_container_logging", enable_container_logging)
+            _setter("enable_container_logging", enable_container_logging)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if model is not None:
-            pulumi.set(__self__, "model", model)
+            _setter("model", model)
         if model_version_id is not None:
-            pulumi.set(__self__, "model_version_id", model_version_id)
+            _setter("model_version_id", model_version_id)
         if private_endpoints is not None:
-            pulumi.set(__self__, "private_endpoints", private_endpoints)
+            _setter("private_endpoints", private_endpoints)
         if service_account is not None:
-            pulumi.set(__self__, "service_account", service_account)
+            _setter("service_account", service_account)
         if shared_resources is not None:
-            pulumi.set(__self__, "shared_resources", shared_resources)
+            _setter("shared_resources", shared_resources)
 
     @property
     @pulumi.getter(name="automaticResources")
@@ -305,10 +345,21 @@ class AiEndpointDeployedModelAutomaticResourceArgs:
         :param pulumi.Input[int] min_replica_count: (Output)
                The minimum number of replicas this DeployedModel will be always deployed on. If traffic against it increases, it may dynamically be deployed onto more replicas up to max_replica_count, and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
         """
+        AiEndpointDeployedModelAutomaticResourceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_replica_count=max_replica_count,
+            min_replica_count=min_replica_count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_replica_count: Optional[pulumi.Input[int]] = None,
+             min_replica_count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if max_replica_count is not None:
-            pulumi.set(__self__, "max_replica_count", max_replica_count)
+            _setter("max_replica_count", max_replica_count)
         if min_replica_count is not None:
-            pulumi.set(__self__, "min_replica_count", min_replica_count)
+            _setter("min_replica_count", min_replica_count)
 
     @property
     @pulumi.getter(name="maxReplicaCount")
@@ -356,14 +407,29 @@ class AiEndpointDeployedModelDedicatedResourceArgs:
         :param pulumi.Input[int] min_replica_count: (Output)
                The minimum number of replicas this DeployedModel will be always deployed on. If traffic against it increases, it may dynamically be deployed onto more replicas up to max_replica_count, and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
         """
+        AiEndpointDeployedModelDedicatedResourceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            autoscaling_metric_specs=autoscaling_metric_specs,
+            machine_specs=machine_specs,
+            max_replica_count=max_replica_count,
+            min_replica_count=min_replica_count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             autoscaling_metric_specs: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs']]]] = None,
+             machine_specs: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceMachineSpecArgs']]]] = None,
+             max_replica_count: Optional[pulumi.Input[int]] = None,
+             min_replica_count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if autoscaling_metric_specs is not None:
-            pulumi.set(__self__, "autoscaling_metric_specs", autoscaling_metric_specs)
+            _setter("autoscaling_metric_specs", autoscaling_metric_specs)
         if machine_specs is not None:
-            pulumi.set(__self__, "machine_specs", machine_specs)
+            _setter("machine_specs", machine_specs)
         if max_replica_count is not None:
-            pulumi.set(__self__, "max_replica_count", max_replica_count)
+            _setter("max_replica_count", max_replica_count)
         if min_replica_count is not None:
-            pulumi.set(__self__, "min_replica_count", min_replica_count)
+            _setter("min_replica_count", min_replica_count)
 
     @property
     @pulumi.getter(name="autoscalingMetricSpecs")
@@ -431,10 +497,21 @@ class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs:
         :param pulumi.Input[int] target: (Output)
                The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
         """
+        AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            metric_name=metric_name,
+            target=target,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             metric_name: Optional[pulumi.Input[str]] = None,
+             target: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if metric_name is not None:
-            pulumi.set(__self__, "metric_name", metric_name)
+            _setter("metric_name", metric_name)
         if target is not None:
-            pulumi.set(__self__, "target", target)
+            _setter("target", target)
 
     @property
     @pulumi.getter(name="metricName")
@@ -477,12 +554,25 @@ class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs:
         :param pulumi.Input[str] machine_type: (Output)
                The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO(rsurowka): Try to better unify the required vs optional.
         """
+        AiEndpointDeployedModelDedicatedResourceMachineSpecArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_count=accelerator_count,
+            accelerator_type=accelerator_type,
+            machine_type=machine_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_count: Optional[pulumi.Input[int]] = None,
+             accelerator_type: Optional[pulumi.Input[str]] = None,
+             machine_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if accelerator_count is not None:
-            pulumi.set(__self__, "accelerator_count", accelerator_count)
+            _setter("accelerator_count", accelerator_count)
         if accelerator_type is not None:
-            pulumi.set(__self__, "accelerator_type", accelerator_type)
+            _setter("accelerator_type", accelerator_type)
         if machine_type is not None:
-            pulumi.set(__self__, "machine_type", machine_type)
+            _setter("machine_type", machine_type)
 
     @property
     @pulumi.getter(name="acceleratorCount")
@@ -541,14 +631,29 @@ class AiEndpointDeployedModelPrivateEndpointArgs:
         :param pulumi.Input[str] service_attachment: (Output)
                Output only. The name of the service attachment resource. Populated if private service connect is enabled.
         """
+        AiEndpointDeployedModelPrivateEndpointArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            explain_http_uri=explain_http_uri,
+            health_http_uri=health_http_uri,
+            predict_http_uri=predict_http_uri,
+            service_attachment=service_attachment,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             explain_http_uri: Optional[pulumi.Input[str]] = None,
+             health_http_uri: Optional[pulumi.Input[str]] = None,
+             predict_http_uri: Optional[pulumi.Input[str]] = None,
+             service_attachment: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if explain_http_uri is not None:
-            pulumi.set(__self__, "explain_http_uri", explain_http_uri)
+            _setter("explain_http_uri", explain_http_uri)
         if health_http_uri is not None:
-            pulumi.set(__self__, "health_http_uri", health_http_uri)
+            _setter("health_http_uri", health_http_uri)
         if predict_http_uri is not None:
-            pulumi.set(__self__, "predict_http_uri", predict_http_uri)
+            _setter("predict_http_uri", predict_http_uri)
         if service_attachment is not None:
-            pulumi.set(__self__, "service_attachment", service_attachment)
+            _setter("service_attachment", service_attachment)
 
     @property
     @pulumi.getter(name="explainHttpUri")
@@ -610,7 +715,16 @@ class AiEndpointEncryptionSpecArgs:
         """
         :param pulumi.Input[str] kms_key_name: Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
         """
-        pulumi.set(__self__, "kms_key_name", kms_key_name)
+        AiEndpointEncryptionSpecArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_key_name=kms_key_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_key_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -632,7 +746,16 @@ class AiFeatureStoreEncryptionSpecArgs:
         """
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
         """
-        pulumi.set(__self__, "kms_key_name", kms_key_name)
+        AiFeatureStoreEncryptionSpecArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_key_name=kms_key_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_key_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -653,10 +776,23 @@ class AiFeatureStoreEntityTypeIamBindingConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        AiFeatureStoreEntityTypeIamBindingConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: pulumi.Input[str],
+             title: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -692,10 +828,23 @@ class AiFeatureStoreEntityTypeIamMemberConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        AiFeatureStoreEntityTypeIamMemberConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: pulumi.Input[str],
+             title: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -742,14 +891,29 @@ class AiFeatureStoreEntityTypeMonitoringConfigArgs:
         :param pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs'] snapshot_analysis: The config for Snapshot Analysis Based Feature Monitoring.
                Structure is documented below.
         """
+        AiFeatureStoreEntityTypeMonitoringConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            categorical_threshold_config=categorical_threshold_config,
+            import_features_analysis=import_features_analysis,
+            numerical_threshold_config=numerical_threshold_config,
+            snapshot_analysis=snapshot_analysis,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             categorical_threshold_config: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs']] = None,
+             import_features_analysis: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs']] = None,
+             numerical_threshold_config: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs']] = None,
+             snapshot_analysis: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if categorical_threshold_config is not None:
-            pulumi.set(__self__, "categorical_threshold_config", categorical_threshold_config)
+            _setter("categorical_threshold_config", categorical_threshold_config)
         if import_features_analysis is not None:
-            pulumi.set(__self__, "import_features_analysis", import_features_analysis)
+            _setter("import_features_analysis", import_features_analysis)
         if numerical_threshold_config is not None:
-            pulumi.set(__self__, "numerical_threshold_config", numerical_threshold_config)
+            _setter("numerical_threshold_config", numerical_threshold_config)
         if snapshot_analysis is not None:
-            pulumi.set(__self__, "snapshot_analysis", snapshot_analysis)
+            _setter("snapshot_analysis", snapshot_analysis)
 
     @property
     @pulumi.getter(name="categoricalThresholdConfig")
@@ -811,7 +975,16 @@ class AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs:
         """
         :param pulumi.Input[float] value: Specify a threshold value that can trigger the alert. For categorical feature, the distribution distance is calculated by L-inifinity norm. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
         """
-        pulumi.set(__self__, "value", value)
+        AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             value: pulumi.Input[float],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -841,10 +1014,21 @@ class AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs:
                * ENABLED: Explicitly enables import features analysis. EntityType-level config: by default enables import features analysis for all Features under it.
                * DISABLED: Explicitly disables import features analysis. EntityType-level config: by default disables import features analysis for all Features under it.
         """
+        AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            anomaly_detection_baseline=anomaly_detection_baseline,
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             anomaly_detection_baseline: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if anomaly_detection_baseline is not None:
-            pulumi.set(__self__, "anomaly_detection_baseline", anomaly_detection_baseline)
+            _setter("anomaly_detection_baseline", anomaly_detection_baseline)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
 
     @property
     @pulumi.getter(name="anomalyDetectionBaseline")
@@ -884,7 +1068,16 @@ class AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs:
         """
         :param pulumi.Input[float] value: Specify a threshold value that can trigger the alert. For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
         """
-        pulumi.set(__self__, "value", value)
+        AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             value: pulumi.Input[float],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -912,17 +1105,32 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs:
                If both FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days and [FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval][] are set when creating/updating EntityTypes/Features, FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days will be used.
         :param pulumi.Input[int] staleness_days: Customized export features time window for snapshot analysis. Unit is one day. The default value is 21 days. Minimum value is 1 day. Maximum value is 4000 days.
         """
+        AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disabled=disabled,
+            monitoring_interval=monitoring_interval,
+            monitoring_interval_days=monitoring_interval_days,
+            staleness_days=staleness_days,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disabled: Optional[pulumi.Input[bool]] = None,
+             monitoring_interval: Optional[pulumi.Input[str]] = None,
+             monitoring_interval_days: Optional[pulumi.Input[int]] = None,
+             staleness_days: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if monitoring_interval is not None:
             warnings.warn("""`monitoring_interval` is deprecated and will be removed in a future release.""", DeprecationWarning)
             pulumi.log.warn("""monitoring_interval is deprecated: `monitoring_interval` is deprecated and will be removed in a future release.""")
         if monitoring_interval is not None:
-            pulumi.set(__self__, "monitoring_interval", monitoring_interval)
+            _setter("monitoring_interval", monitoring_interval)
         if monitoring_interval_days is not None:
-            pulumi.set(__self__, "monitoring_interval_days", monitoring_interval_days)
+            _setter("monitoring_interval_days", monitoring_interval_days)
         if staleness_days is not None:
-            pulumi.set(__self__, "staleness_days", staleness_days)
+            _setter("staleness_days", staleness_days)
 
     @property
     @pulumi.getter
@@ -980,10 +1188,23 @@ class AiFeatureStoreIamBindingConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        AiFeatureStoreIamBindingConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: pulumi.Input[str],
+             title: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -1019,10 +1240,23 @@ class AiFeatureStoreIamMemberConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        AiFeatureStoreIamMemberConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: pulumi.Input[str],
+             title: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -1062,10 +1296,21 @@ class AiFeatureStoreOnlineServingConfigArgs:
         :param pulumi.Input['AiFeatureStoreOnlineServingConfigScalingArgs'] scaling: Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
                Structure is documented below.
         """
+        AiFeatureStoreOnlineServingConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fixed_node_count=fixed_node_count,
+            scaling=scaling,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fixed_node_count: Optional[pulumi.Input[int]] = None,
+             scaling: Optional[pulumi.Input['AiFeatureStoreOnlineServingConfigScalingArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if fixed_node_count is not None:
-            pulumi.set(__self__, "fixed_node_count", fixed_node_count)
+            _setter("fixed_node_count", fixed_node_count)
         if scaling is not None:
-            pulumi.set(__self__, "scaling", scaling)
+            _setter("scaling", scaling)
 
     @property
     @pulumi.getter(name="fixedNodeCount")
@@ -1102,8 +1347,19 @@ class AiFeatureStoreOnlineServingConfigScalingArgs:
         :param pulumi.Input[int] max_node_count: The maximum number of nodes to scale up to. Must be greater than minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
         :param pulumi.Input[int] min_node_count: The minimum number of nodes to scale down to. Must be greater than or equal to 1.
         """
-        pulumi.set(__self__, "max_node_count", max_node_count)
-        pulumi.set(__self__, "min_node_count", min_node_count)
+        AiFeatureStoreOnlineServingConfigScalingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_node_count=max_node_count,
+            min_node_count=min_node_count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_node_count: pulumi.Input[int],
+             min_node_count: pulumi.Input[int],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("max_node_count", max_node_count)
+        _setter("min_node_count", min_node_count)
 
     @property
     @pulumi.getter(name="maxNodeCount")
@@ -1141,10 +1397,21 @@ class AiIndexDeployedIndexArgs:
         :param pulumi.Input[str] index_endpoint: (Output)
                A resource name of the IndexEndpoint.
         """
+        AiIndexDeployedIndexArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            deployed_index_id=deployed_index_id,
+            index_endpoint=index_endpoint,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             deployed_index_id: Optional[pulumi.Input[str]] = None,
+             index_endpoint: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if deployed_index_id is not None:
-            pulumi.set(__self__, "deployed_index_id", deployed_index_id)
+            _setter("deployed_index_id", deployed_index_id)
         if index_endpoint is not None:
-            pulumi.set(__self__, "index_endpoint", index_endpoint)
+            _setter("index_endpoint", index_endpoint)
 
     @property
     @pulumi.getter(name="deployedIndexId")
@@ -1184,10 +1451,21 @@ class AiIndexIndexStatArgs:
         :param pulumi.Input[str] vectors_count: (Output)
                The number of vectors in the Index.
         """
+        AiIndexIndexStatArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            shards_count=shards_count,
+            vectors_count=vectors_count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             shards_count: Optional[pulumi.Input[int]] = None,
+             vectors_count: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if shards_count is not None:
-            pulumi.set(__self__, "shards_count", shards_count)
+            _setter("shards_count", shards_count)
         if vectors_count is not None:
-            pulumi.set(__self__, "vectors_count", vectors_count)
+            _setter("vectors_count", vectors_count)
 
     @property
     @pulumi.getter(name="shardsCount")
@@ -1234,12 +1512,25 @@ class AiIndexMetadataArgs:
         :param pulumi.Input[bool] is_complete_overwrite: If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
                then existing content of the Index will be replaced by the data from the contentsDeltaUri.
         """
+        AiIndexMetadataArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config=config,
+            contents_delta_uri=contents_delta_uri,
+            is_complete_overwrite=is_complete_overwrite,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config: Optional[pulumi.Input['AiIndexMetadataConfigArgs']] = None,
+             contents_delta_uri: Optional[pulumi.Input[str]] = None,
+             is_complete_overwrite: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if contents_delta_uri is not None:
-            pulumi.set(__self__, "contents_delta_uri", contents_delta_uri)
+            _setter("contents_delta_uri", contents_delta_uri)
         if is_complete_overwrite is not None:
-            pulumi.set(__self__, "is_complete_overwrite", is_complete_overwrite)
+            _setter("is_complete_overwrite", is_complete_overwrite)
 
     @property
     @pulumi.getter
@@ -1316,17 +1607,36 @@ class AiIndexMetadataConfigArgs:
                * SHARD_SIZE_MEDIUM: Medium (20GB)
                * SHARD_SIZE_LARGE: Large (50GB)
         """
-        pulumi.set(__self__, "dimensions", dimensions)
+        AiIndexMetadataConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dimensions=dimensions,
+            algorithm_config=algorithm_config,
+            approximate_neighbors_count=approximate_neighbors_count,
+            distance_measure_type=distance_measure_type,
+            feature_norm_type=feature_norm_type,
+            shard_size=shard_size,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dimensions: pulumi.Input[int],
+             algorithm_config: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigArgs']] = None,
+             approximate_neighbors_count: Optional[pulumi.Input[int]] = None,
+             distance_measure_type: Optional[pulumi.Input[str]] = None,
+             feature_norm_type: Optional[pulumi.Input[str]] = None,
+             shard_size: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dimensions", dimensions)
         if algorithm_config is not None:
-            pulumi.set(__self__, "algorithm_config", algorithm_config)
+            _setter("algorithm_config", algorithm_config)
         if approximate_neighbors_count is not None:
-            pulumi.set(__self__, "approximate_neighbors_count", approximate_neighbors_count)
+            _setter("approximate_neighbors_count", approximate_neighbors_count)
         if distance_measure_type is not None:
-            pulumi.set(__self__, "distance_measure_type", distance_measure_type)
+            _setter("distance_measure_type", distance_measure_type)
         if feature_norm_type is not None:
-            pulumi.set(__self__, "feature_norm_type", feature_norm_type)
+            _setter("feature_norm_type", feature_norm_type)
         if shard_size is not None:
-            pulumi.set(__self__, "shard_size", shard_size)
+            _setter("shard_size", shard_size)
 
     @property
     @pulumi.getter
@@ -1427,10 +1737,21 @@ class AiIndexMetadataConfigAlgorithmConfigArgs:
                Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
                Structure is documented below.
         """
+        AiIndexMetadataConfigAlgorithmConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            brute_force_config=brute_force_config,
+            tree_ah_config=tree_ah_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             brute_force_config: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs']] = None,
+             tree_ah_config: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if brute_force_config is not None:
-            pulumi.set(__self__, "brute_force_config", brute_force_config)
+            _setter("brute_force_config", brute_force_config)
         if tree_ah_config is not None:
-            pulumi.set(__self__, "tree_ah_config", tree_ah_config)
+            _setter("tree_ah_config", tree_ah_config)
 
     @property
     @pulumi.getter(name="bruteForceConfig")
@@ -1464,6 +1785,11 @@ class AiIndexMetadataConfigAlgorithmConfigArgs:
 class AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs:
     def __init__(__self__):
         pass
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        pass
 
 
 @pulumi.input_type
@@ -1476,10 +1802,21 @@ class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs:
         :param pulumi.Input[int] leaf_nodes_to_search_percent: The default percentage of leaf nodes that any query may be searched. Must be in
                range 1-100, inclusive. The default value is 10 (means 10%) if not set.
         """
+        AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            leaf_node_embedding_count=leaf_node_embedding_count,
+            leaf_nodes_to_search_percent=leaf_nodes_to_search_percent,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             leaf_node_embedding_count: Optional[pulumi.Input[int]] = None,
+             leaf_nodes_to_search_percent: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if leaf_node_embedding_count is not None:
-            pulumi.set(__self__, "leaf_node_embedding_count", leaf_node_embedding_count)
+            _setter("leaf_node_embedding_count", leaf_node_embedding_count)
         if leaf_nodes_to_search_percent is not None:
-            pulumi.set(__self__, "leaf_nodes_to_search_percent", leaf_nodes_to_search_percent)
+            _setter("leaf_nodes_to_search_percent", leaf_nodes_to_search_percent)
 
     @property
     @pulumi.getter(name="leafNodeEmbeddingCount")
@@ -1515,8 +1852,17 @@ class AiMetadataStoreEncryptionSpecArgs:
         :param pulumi.Input[str] kms_key_name: Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
                Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
         """
+        AiMetadataStoreEncryptionSpecArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_key_name=kms_key_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_key_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if kms_key_name is not None:
-            pulumi.set(__self__, "kms_key_name", kms_key_name)
+            _setter("kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -1540,8 +1886,17 @@ class AiMetadataStoreStateArgs:
         :param pulumi.Input[str] disk_utilization_bytes: (Output)
                The disk utilization of the MetadataStore in bytes.
         """
+        AiMetadataStoreStateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_utilization_bytes=disk_utilization_bytes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_utilization_bytes: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if disk_utilization_bytes is not None:
-            pulumi.set(__self__, "disk_utilization_bytes", disk_utilization_bytes)
+            _setter("disk_utilization_bytes", disk_utilization_bytes)
 
     @property
     @pulumi.getter(name="diskUtilizationBytes")
@@ -1565,7 +1920,16 @@ class AiTensorboardEncryptionSpecArgs:
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
                Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
         """
-        pulumi.set(__self__, "kms_key_name", kms_key_name)
+        AiTensorboardEncryptionSpecArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_key_name=kms_key_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_key_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")

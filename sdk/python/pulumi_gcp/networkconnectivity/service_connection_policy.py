@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,19 +41,42 @@ class ServiceConnectionPolicyArgs:
         :param pulumi.Input['ServiceConnectionPolicyPscConfigArgs'] psc_config: Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
                Structure is documented below.
         """
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "network", network)
-        pulumi.set(__self__, "service_class", service_class)
+        ServiceConnectionPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            network=network,
+            service_class=service_class,
+            description=description,
+            labels=labels,
+            name=name,
+            project=project,
+            psc_config=psc_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: pulumi.Input[str],
+             network: pulumi.Input[str],
+             service_class: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             psc_config: Optional[pulumi.Input['ServiceConnectionPolicyPscConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("location", location)
+        _setter("network", network)
+        _setter("service_class", service_class)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if psc_config is not None:
-            pulumi.set(__self__, "psc_config", psc_config)
+            _setter("psc_config", psc_config)
 
     @property
     @pulumi.getter
@@ -197,32 +220,65 @@ class _ServiceConnectionPolicyState:
                It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
         :param pulumi.Input[str] update_time: The timestamp when the resource was updated.
         """
+        _ServiceConnectionPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            etag=etag,
+            infrastructure=infrastructure,
+            labels=labels,
+            location=location,
+            name=name,
+            network=network,
+            project=project,
+            psc_config=psc_config,
+            psc_connections=psc_connections,
+            service_class=service_class,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             infrastructure: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             psc_config: Optional[pulumi.Input['ServiceConnectionPolicyPscConfigArgs']] = None,
+             psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceConnectionPolicyPscConnectionArgs']]]] = None,
+             service_class: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if infrastructure is not None:
-            pulumi.set(__self__, "infrastructure", infrastructure)
+            _setter("infrastructure", infrastructure)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if psc_config is not None:
-            pulumi.set(__self__, "psc_config", psc_config)
+            _setter("psc_config", psc_config)
         if psc_connections is not None:
-            pulumi.set(__self__, "psc_connections", psc_connections)
+            _setter("psc_connections", psc_connections)
         if service_class is not None:
-            pulumi.set(__self__, "service_class", service_class)
+            _setter("service_class", service_class)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -531,6 +587,10 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServiceConnectionPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -563,6 +623,11 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network
             __props__.__dict__["project"] = project
+            if psc_config is not None and not isinstance(psc_config, ServiceConnectionPolicyPscConfigArgs):
+                psc_config = psc_config or {}
+                def _setter(key, value):
+                    psc_config[key] = value
+                ServiceConnectionPolicyPscConfigArgs._configure(_setter, **psc_config)
             __props__.__dict__["psc_config"] = psc_config
             if service_class is None and not opts.urn:
                 raise TypeError("Missing required property 'service_class'")

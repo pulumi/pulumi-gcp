@@ -192,11 +192,6 @@ type AppConnection struct {
 	// The type of network connectivity used by the AppConnection. Refer to
 	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
 	// for a list of possible values.
-	//
-	// (Optional)
-	// The type of hosting used by the gateway. Refer to
-	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
-	// for a list of possible values.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -255,11 +250,6 @@ type appConnectionState struct {
 	// The type of network connectivity used by the AppConnection. Refer to
 	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
 	// for a list of possible values.
-	//
-	// (Optional)
-	// The type of hosting used by the gateway. Refer to
-	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
-	// for a list of possible values.
 	Type *string `pulumi:"type"`
 }
 
@@ -285,11 +275,6 @@ type AppConnectionState struct {
 	Region pulumi.StringPtrInput
 	// The type of network connectivity used by the AppConnection. Refer to
 	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
-	// for a list of possible values.
-	//
-	// (Optional)
-	// The type of hosting used by the gateway. Refer to
-	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
 	// for a list of possible values.
 	Type pulumi.StringPtrInput
 }
@@ -321,11 +306,6 @@ type appConnectionArgs struct {
 	// The type of network connectivity used by the AppConnection. Refer to
 	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
 	// for a list of possible values.
-	//
-	// (Optional)
-	// The type of hosting used by the gateway. Refer to
-	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
-	// for a list of possible values.
 	Type *string `pulumi:"type"`
 }
 
@@ -352,11 +332,6 @@ type AppConnectionArgs struct {
 	Region pulumi.StringPtrInput
 	// The type of network connectivity used by the AppConnection. Refer to
 	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
-	// for a list of possible values.
-	//
-	// (Optional)
-	// The type of hosting used by the gateway. Refer to
-	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
 	// for a list of possible values.
 	Type pulumi.StringPtrInput
 }
@@ -517,11 +492,6 @@ func (o AppConnectionOutput) Region() pulumi.StringPtrOutput {
 
 // The type of network connectivity used by the AppConnection. Refer to
 // https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
-// for a list of possible values.
-//
-// (Optional)
-// The type of hosting used by the gateway. Refer to
-// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
 // for a list of possible values.
 func (o AppConnectionOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppConnection) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)

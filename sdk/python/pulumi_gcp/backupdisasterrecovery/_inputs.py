@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -25,10 +25,21 @@ class ManagementServerManagementUriArgs:
         :param pulumi.Input[str] web_ui: (Output)
                The management console webUi.
         """
+        ManagementServerManagementUriArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api=api,
+            web_ui=web_ui,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api: Optional[pulumi.Input[str]] = None,
+             web_ui: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if api is not None:
-            pulumi.set(__self__, "api", api)
+            _setter("api", api)
         if web_ui is not None:
-            pulumi.set(__self__, "web_ui", web_ui)
+            _setter("web_ui", web_ui)
 
     @property
     @pulumi.getter
@@ -70,9 +81,20 @@ class ManagementServerNetworkArgs:
                
                - - -
         """
-        pulumi.set(__self__, "network", network)
+        ManagementServerNetworkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network=network,
+            peering_mode=peering_mode,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network: pulumi.Input[str],
+             peering_mode: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("network", network)
         if peering_mode is not None:
-            pulumi.set(__self__, "peering_mode", peering_mode)
+            _setter("peering_mode", peering_mode)
 
     @property
     @pulumi.getter

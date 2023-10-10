@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -110,35 +110,72 @@ class InterconnectAttachmentArgs:
         :param pulumi.Input[int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
                using PARTNER type this will be managed upstream.
         """
-        pulumi.set(__self__, "router", router)
+        InterconnectAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            router=router,
+            admin_enabled=admin_enabled,
+            bandwidth=bandwidth,
+            candidate_subnets=candidate_subnets,
+            description=description,
+            edge_availability_domain=edge_availability_domain,
+            encryption=encryption,
+            interconnect=interconnect,
+            ipsec_internal_addresses=ipsec_internal_addresses,
+            mtu=mtu,
+            name=name,
+            project=project,
+            region=region,
+            type=type,
+            vlan_tag8021q=vlan_tag8021q,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             router: pulumi.Input[str],
+             admin_enabled: Optional[pulumi.Input[bool]] = None,
+             bandwidth: Optional[pulumi.Input[str]] = None,
+             candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             edge_availability_domain: Optional[pulumi.Input[str]] = None,
+             encryption: Optional[pulumi.Input[str]] = None,
+             interconnect: Optional[pulumi.Input[str]] = None,
+             ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             mtu: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             vlan_tag8021q: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("router", router)
         if admin_enabled is not None:
-            pulumi.set(__self__, "admin_enabled", admin_enabled)
+            _setter("admin_enabled", admin_enabled)
         if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
+            _setter("bandwidth", bandwidth)
         if candidate_subnets is not None:
-            pulumi.set(__self__, "candidate_subnets", candidate_subnets)
+            _setter("candidate_subnets", candidate_subnets)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if edge_availability_domain is not None:
-            pulumi.set(__self__, "edge_availability_domain", edge_availability_domain)
+            _setter("edge_availability_domain", edge_availability_domain)
         if encryption is not None:
-            pulumi.set(__self__, "encryption", encryption)
+            _setter("encryption", encryption)
         if interconnect is not None:
-            pulumi.set(__self__, "interconnect", interconnect)
+            _setter("interconnect", interconnect)
         if ipsec_internal_addresses is not None:
-            pulumi.set(__self__, "ipsec_internal_addresses", ipsec_internal_addresses)
+            _setter("ipsec_internal_addresses", ipsec_internal_addresses)
         if mtu is not None:
-            pulumi.set(__self__, "mtu", mtu)
+            _setter("mtu", mtu)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if vlan_tag8021q is not None:
-            pulumi.set(__self__, "vlan_tag8021q", vlan_tag8021q)
+            _setter("vlan_tag8021q", vlan_tag8021q)
 
     @property
     @pulumi.getter
@@ -506,54 +543,109 @@ class _InterconnectAttachmentState:
         :param pulumi.Input[int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
                using PARTNER type this will be managed upstream.
         """
+        _InterconnectAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            admin_enabled=admin_enabled,
+            bandwidth=bandwidth,
+            candidate_subnets=candidate_subnets,
+            cloud_router_ip_address=cloud_router_ip_address,
+            creation_timestamp=creation_timestamp,
+            customer_router_ip_address=customer_router_ip_address,
+            description=description,
+            edge_availability_domain=edge_availability_domain,
+            encryption=encryption,
+            google_reference_id=google_reference_id,
+            interconnect=interconnect,
+            ipsec_internal_addresses=ipsec_internal_addresses,
+            mtu=mtu,
+            name=name,
+            pairing_key=pairing_key,
+            partner_asn=partner_asn,
+            private_interconnect_infos=private_interconnect_infos,
+            project=project,
+            region=region,
+            router=router,
+            self_link=self_link,
+            state=state,
+            type=type,
+            vlan_tag8021q=vlan_tag8021q,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             admin_enabled: Optional[pulumi.Input[bool]] = None,
+             bandwidth: Optional[pulumi.Input[str]] = None,
+             candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             cloud_router_ip_address: Optional[pulumi.Input[str]] = None,
+             creation_timestamp: Optional[pulumi.Input[str]] = None,
+             customer_router_ip_address: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             edge_availability_domain: Optional[pulumi.Input[str]] = None,
+             encryption: Optional[pulumi.Input[str]] = None,
+             google_reference_id: Optional[pulumi.Input[str]] = None,
+             interconnect: Optional[pulumi.Input[str]] = None,
+             ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             mtu: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             pairing_key: Optional[pulumi.Input[str]] = None,
+             partner_asn: Optional[pulumi.Input[str]] = None,
+             private_interconnect_infos: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentPrivateInterconnectInfoArgs']]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             router: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             vlan_tag8021q: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if admin_enabled is not None:
-            pulumi.set(__self__, "admin_enabled", admin_enabled)
+            _setter("admin_enabled", admin_enabled)
         if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
+            _setter("bandwidth", bandwidth)
         if candidate_subnets is not None:
-            pulumi.set(__self__, "candidate_subnets", candidate_subnets)
+            _setter("candidate_subnets", candidate_subnets)
         if cloud_router_ip_address is not None:
-            pulumi.set(__self__, "cloud_router_ip_address", cloud_router_ip_address)
+            _setter("cloud_router_ip_address", cloud_router_ip_address)
         if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+            _setter("creation_timestamp", creation_timestamp)
         if customer_router_ip_address is not None:
-            pulumi.set(__self__, "customer_router_ip_address", customer_router_ip_address)
+            _setter("customer_router_ip_address", customer_router_ip_address)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if edge_availability_domain is not None:
-            pulumi.set(__self__, "edge_availability_domain", edge_availability_domain)
+            _setter("edge_availability_domain", edge_availability_domain)
         if encryption is not None:
-            pulumi.set(__self__, "encryption", encryption)
+            _setter("encryption", encryption)
         if google_reference_id is not None:
-            pulumi.set(__self__, "google_reference_id", google_reference_id)
+            _setter("google_reference_id", google_reference_id)
         if interconnect is not None:
-            pulumi.set(__self__, "interconnect", interconnect)
+            _setter("interconnect", interconnect)
         if ipsec_internal_addresses is not None:
-            pulumi.set(__self__, "ipsec_internal_addresses", ipsec_internal_addresses)
+            _setter("ipsec_internal_addresses", ipsec_internal_addresses)
         if mtu is not None:
-            pulumi.set(__self__, "mtu", mtu)
+            _setter("mtu", mtu)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if pairing_key is not None:
-            pulumi.set(__self__, "pairing_key", pairing_key)
+            _setter("pairing_key", pairing_key)
         if partner_asn is not None:
-            pulumi.set(__self__, "partner_asn", partner_asn)
+            _setter("partner_asn", partner_asn)
         if private_interconnect_infos is not None:
-            pulumi.set(__self__, "private_interconnect_infos", private_interconnect_infos)
+            _setter("private_interconnect_infos", private_interconnect_infos)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if router is not None:
-            pulumi.set(__self__, "router", router)
+            _setter("router", router)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if vlan_tag8021q is not None:
-            pulumi.set(__self__, "vlan_tag8021q", vlan_tag8021q)
+            _setter("vlan_tag8021q", vlan_tag8021q)
 
     @property
     @pulumi.getter(name="adminEnabled")
@@ -1170,6 +1262,10 @@ class InterconnectAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InterconnectAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

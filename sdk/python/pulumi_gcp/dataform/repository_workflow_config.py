@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -40,21 +40,44 @@ class RepositoryWorkflowConfigArgs:
         :param pulumi.Input[str] repository: A reference to the Dataform repository
         :param pulumi.Input[str] time_zone: Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
         """
-        pulumi.set(__self__, "release_config", release_config)
+        RepositoryWorkflowConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            release_config=release_config,
+            cron_schedule=cron_schedule,
+            invocation_config=invocation_config,
+            name=name,
+            project=project,
+            region=region,
+            repository=repository,
+            time_zone=time_zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             release_config: pulumi.Input[str],
+             cron_schedule: Optional[pulumi.Input[str]] = None,
+             invocation_config: Optional[pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             repository: Optional[pulumi.Input[str]] = None,
+             time_zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("release_config", release_config)
         if cron_schedule is not None:
-            pulumi.set(__self__, "cron_schedule", cron_schedule)
+            _setter("cron_schedule", cron_schedule)
         if invocation_config is not None:
-            pulumi.set(__self__, "invocation_config", invocation_config)
+            _setter("invocation_config", invocation_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if repository is not None:
-            pulumi.set(__self__, "repository", repository)
+            _setter("repository", repository)
         if time_zone is not None:
-            pulumi.set(__self__, "time_zone", time_zone)
+            _setter("time_zone", time_zone)
 
     @property
     @pulumi.getter(name="releaseConfig")
@@ -188,24 +211,49 @@ class _RepositoryWorkflowConfigState:
         :param pulumi.Input[str] repository: A reference to the Dataform repository
         :param pulumi.Input[str] time_zone: Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
         """
+        _RepositoryWorkflowConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cron_schedule=cron_schedule,
+            invocation_config=invocation_config,
+            name=name,
+            project=project,
+            recent_scheduled_execution_records=recent_scheduled_execution_records,
+            region=region,
+            release_config=release_config,
+            repository=repository,
+            time_zone=time_zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cron_schedule: Optional[pulumi.Input[str]] = None,
+             invocation_config: Optional[pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             recent_scheduled_execution_records: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs']]]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             release_config: Optional[pulumi.Input[str]] = None,
+             repository: Optional[pulumi.Input[str]] = None,
+             time_zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cron_schedule is not None:
-            pulumi.set(__self__, "cron_schedule", cron_schedule)
+            _setter("cron_schedule", cron_schedule)
         if invocation_config is not None:
-            pulumi.set(__self__, "invocation_config", invocation_config)
+            _setter("invocation_config", invocation_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if recent_scheduled_execution_records is not None:
-            pulumi.set(__self__, "recent_scheduled_execution_records", recent_scheduled_execution_records)
+            _setter("recent_scheduled_execution_records", recent_scheduled_execution_records)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if release_config is not None:
-            pulumi.set(__self__, "release_config", release_config)
+            _setter("release_config", release_config)
         if repository is not None:
-            pulumi.set(__self__, "repository", repository)
+            _setter("repository", repository)
         if time_zone is not None:
-            pulumi.set(__self__, "time_zone", time_zone)
+            _setter("time_zone", time_zone)
 
     @property
     @pulumi.getter(name="cronSchedule")
@@ -578,6 +626,10 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RepositoryWorkflowConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -601,6 +653,11 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             __props__ = RepositoryWorkflowConfigArgs.__new__(RepositoryWorkflowConfigArgs)
 
             __props__.__dict__["cron_schedule"] = cron_schedule
+            if invocation_config is not None and not isinstance(invocation_config, RepositoryWorkflowConfigInvocationConfigArgs):
+                invocation_config = invocation_config or {}
+                def _setter(key, value):
+                    invocation_config[key] = value
+                RepositoryWorkflowConfigInvocationConfigArgs._configure(_setter, **invocation_config)
             __props__.__dict__["invocation_config"] = invocation_config
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

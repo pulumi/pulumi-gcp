@@ -19,14 +19,6 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
     /**
      * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
      * 
-     * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-     * 
-     * enforce encryption of data in-use.
-     * 
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
-     * 
-     * not.
-     * 
      * @deprecated
      * Deprecated in favor of evaluation_mode.
      * 
@@ -37,14 +29,6 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
 
     /**
      * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-     * 
-     * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-     * 
-     * enforce encryption of data in-use.
-     * 
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
-     * 
-     * not.
      * 
      * @deprecated
      * Deprecated in favor of evaluation_mode.
@@ -102,14 +86,6 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
         /**
          * @param enabled Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
          * 
-         * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-         * 
-         * enforce encryption of data in-use.
-         * 
-         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
-         * 
-         * not.
-         * 
          * @return builder
          * 
          * @deprecated
@@ -124,14 +100,6 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
 
         /**
          * @param enabled Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-         * 
-         * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-         * 
-         * enforce encryption of data in-use.
-         * 
-         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
-         * 
-         * not.
          * 
          * @return builder
          * 

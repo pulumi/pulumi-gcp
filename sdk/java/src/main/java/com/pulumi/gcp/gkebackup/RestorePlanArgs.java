@@ -50,10 +50,6 @@ public final class RestorePlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description is a user specified string description
-     * of the transformation rule.
-     * 
-     * (Optional)
      * User specified descriptive string for this RestorePlan.
      * 
      */
@@ -61,11 +57,7 @@ public final class RestorePlanArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> description;
 
     /**
-     * @return The description is a user specified string description
-     * of the transformation rule.
-     * 
-     * (Optional)
-     * User specified descriptive string for this RestorePlan.
+     * @return User specified descriptive string for this RestorePlan.
      * 
      */
     public Optional<Output<String>> description() {
@@ -231,11 +223,7 @@ public final class RestorePlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description is a user specified string description
-         * of the transformation rule.
-         * 
-         * (Optional)
-         * User specified descriptive string for this RestorePlan.
+         * @param description User specified descriptive string for this RestorePlan.
          * 
          * @return builder
          * 
@@ -246,11 +234,7 @@ public final class RestorePlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description is a user specified string description
-         * of the transformation rule.
-         * 
-         * (Optional)
-         * User specified descriptive string for this RestorePlan.
+         * @param description User specified descriptive string for this RestorePlan.
          * 
          * @return builder
          * 

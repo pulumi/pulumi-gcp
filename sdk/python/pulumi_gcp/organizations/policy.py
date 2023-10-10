@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,16 +39,35 @@ class PolicyArgs:
                - - -
         :param pulumi.Input[int] version: Version of the Policy. Default version is 0.
         """
-        pulumi.set(__self__, "constraint", constraint)
-        pulumi.set(__self__, "org_id", org_id)
+        PolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            constraint=constraint,
+            org_id=org_id,
+            boolean_policy=boolean_policy,
+            list_policy=list_policy,
+            restore_policy=restore_policy,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             constraint: pulumi.Input[str],
+             org_id: pulumi.Input[str],
+             boolean_policy: Optional[pulumi.Input['PolicyBooleanPolicyArgs']] = None,
+             list_policy: Optional[pulumi.Input['PolicyListPolicyArgs']] = None,
+             restore_policy: Optional[pulumi.Input['PolicyRestorePolicyArgs']] = None,
+             version: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("constraint", constraint)
+        _setter("org_id", org_id)
         if boolean_policy is not None:
-            pulumi.set(__self__, "boolean_policy", boolean_policy)
+            _setter("boolean_policy", boolean_policy)
         if list_policy is not None:
-            pulumi.set(__self__, "list_policy", list_policy)
+            _setter("list_policy", list_policy)
         if restore_policy is not None:
-            pulumi.set(__self__, "restore_policy", restore_policy)
+            _setter("restore_policy", restore_policy)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -161,22 +180,45 @@ class _PolicyState:
         :param pulumi.Input[str] update_time: (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
         :param pulumi.Input[int] version: Version of the Policy. Default version is 0.
         """
+        _PolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            boolean_policy=boolean_policy,
+            constraint=constraint,
+            etag=etag,
+            list_policy=list_policy,
+            org_id=org_id,
+            restore_policy=restore_policy,
+            update_time=update_time,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             boolean_policy: Optional[pulumi.Input['PolicyBooleanPolicyArgs']] = None,
+             constraint: Optional[pulumi.Input[str]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             list_policy: Optional[pulumi.Input['PolicyListPolicyArgs']] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             restore_policy: Optional[pulumi.Input['PolicyRestorePolicyArgs']] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if boolean_policy is not None:
-            pulumi.set(__self__, "boolean_policy", boolean_policy)
+            _setter("boolean_policy", boolean_policy)
         if constraint is not None:
-            pulumi.set(__self__, "constraint", constraint)
+            _setter("constraint", constraint)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if list_policy is not None:
-            pulumi.set(__self__, "list_policy", list_policy)
+            _setter("list_policy", list_policy)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if restore_policy is not None:
-            pulumi.set(__self__, "restore_policy", restore_policy)
+            _setter("restore_policy", restore_policy)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter(name="booleanPolicy")
@@ -494,6 +536,10 @@ class Policy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -514,14 +560,29 @@ class Policy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PolicyArgs.__new__(PolicyArgs)
 
+            if boolean_policy is not None and not isinstance(boolean_policy, PolicyBooleanPolicyArgs):
+                boolean_policy = boolean_policy or {}
+                def _setter(key, value):
+                    boolean_policy[key] = value
+                PolicyBooleanPolicyArgs._configure(_setter, **boolean_policy)
             __props__.__dict__["boolean_policy"] = boolean_policy
             if constraint is None and not opts.urn:
                 raise TypeError("Missing required property 'constraint'")
             __props__.__dict__["constraint"] = constraint
+            if list_policy is not None and not isinstance(list_policy, PolicyListPolicyArgs):
+                list_policy = list_policy or {}
+                def _setter(key, value):
+                    list_policy[key] = value
+                PolicyListPolicyArgs._configure(_setter, **list_policy)
             __props__.__dict__["list_policy"] = list_policy
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
             __props__.__dict__["org_id"] = org_id
+            if restore_policy is not None and not isinstance(restore_policy, PolicyRestorePolicyArgs):
+                restore_policy = restore_policy or {}
+                def _setter(key, value):
+                    restore_policy[key] = value
+                PolicyRestorePolicyArgs._configure(_setter, **restore_policy)
             __props__.__dict__["restore_policy"] = restore_policy
             __props__.__dict__["version"] = version
             __props__.__dict__["etag"] = None

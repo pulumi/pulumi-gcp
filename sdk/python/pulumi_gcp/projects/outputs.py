@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -77,9 +77,20 @@ class AccessApprovalSettingsEnrolledService(dict):
                
                - - -
         """
-        pulumi.set(__self__, "cloud_product", cloud_product)
+        AccessApprovalSettingsEnrolledService._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cloud_product=cloud_product,
+            enrollment_level=enrollment_level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cloud_product: str,
+             enrollment_level: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cloud_product", cloud_product)
         if enrollment_level is not None:
-            pulumi.set(__self__, "enrollment_level", enrollment_level)
+            _setter("enrollment_level", enrollment_level)
 
     @property
     @pulumi.getter(name="cloudProduct")
@@ -152,16 +163,33 @@ class ApiKeyRestrictions(dict):
         :param 'ApiKeyRestrictionsIosKeyRestrictionsArgs' ios_key_restrictions: The iOS apps that are allowed to use the key.
         :param 'ApiKeyRestrictionsServerKeyRestrictionsArgs' server_key_restrictions: The IP addresses of callers that are allowed to use the key.
         """
+        ApiKeyRestrictions._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            android_key_restrictions=android_key_restrictions,
+            api_targets=api_targets,
+            browser_key_restrictions=browser_key_restrictions,
+            ios_key_restrictions=ios_key_restrictions,
+            server_key_restrictions=server_key_restrictions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             android_key_restrictions: Optional['outputs.ApiKeyRestrictionsAndroidKeyRestrictions'] = None,
+             api_targets: Optional[Sequence['outputs.ApiKeyRestrictionsApiTarget']] = None,
+             browser_key_restrictions: Optional['outputs.ApiKeyRestrictionsBrowserKeyRestrictions'] = None,
+             ios_key_restrictions: Optional['outputs.ApiKeyRestrictionsIosKeyRestrictions'] = None,
+             server_key_restrictions: Optional['outputs.ApiKeyRestrictionsServerKeyRestrictions'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if android_key_restrictions is not None:
-            pulumi.set(__self__, "android_key_restrictions", android_key_restrictions)
+            _setter("android_key_restrictions", android_key_restrictions)
         if api_targets is not None:
-            pulumi.set(__self__, "api_targets", api_targets)
+            _setter("api_targets", api_targets)
         if browser_key_restrictions is not None:
-            pulumi.set(__self__, "browser_key_restrictions", browser_key_restrictions)
+            _setter("browser_key_restrictions", browser_key_restrictions)
         if ios_key_restrictions is not None:
-            pulumi.set(__self__, "ios_key_restrictions", ios_key_restrictions)
+            _setter("ios_key_restrictions", ios_key_restrictions)
         if server_key_restrictions is not None:
-            pulumi.set(__self__, "server_key_restrictions", server_key_restrictions)
+            _setter("server_key_restrictions", server_key_restrictions)
 
     @property
     @pulumi.getter(name="androidKeyRestrictions")
@@ -228,7 +256,16 @@ class ApiKeyRestrictionsAndroidKeyRestrictions(dict):
         """
         :param Sequence['ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs'] allowed_applications: A list of Android applications that are allowed to make API calls with this key.
         """
-        pulumi.set(__self__, "allowed_applications", allowed_applications)
+        ApiKeyRestrictionsAndroidKeyRestrictions._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allowed_applications=allowed_applications,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allowed_applications: Sequence['outputs.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("allowed_applications", allowed_applications)
 
     @property
     @pulumi.getter(name="allowedApplications")
@@ -269,8 +306,19 @@ class ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication(dict):
                
                - - -
         """
-        pulumi.set(__self__, "package_name", package_name)
-        pulumi.set(__self__, "sha1_fingerprint", sha1_fingerprint)
+        ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            package_name=package_name,
+            sha1_fingerprint=sha1_fingerprint,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             package_name: str,
+             sha1_fingerprint: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("package_name", package_name)
+        _setter("sha1_fingerprint", sha1_fingerprint)
 
     @property
     @pulumi.getter(name="packageName")
@@ -300,9 +348,20 @@ class ApiKeyRestrictionsApiTarget(dict):
         :param str service: The service for this restriction. It should be the canonical service name, for example: `translate.googleapis.com`. You can use `gcloud services list` to get a list of services that are enabled in the project.
         :param Sequence[str] methods: Optional. List of one or more methods that can be called. If empty, all methods for the service are allowed. A wildcard (*) can be used as the last symbol. Valid examples: `google.cloud.translate.v2.TranslateService.GetSupportedLanguage` `TranslateText` `Get*` `translate.googleapis.com.Get*`
         """
-        pulumi.set(__self__, "service", service)
+        ApiKeyRestrictionsApiTarget._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service=service,
+            methods=methods,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service: str,
+             methods: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("service", service)
         if methods is not None:
-            pulumi.set(__self__, "methods", methods)
+            _setter("methods", methods)
 
     @property
     @pulumi.getter
@@ -345,7 +404,16 @@ class ApiKeyRestrictionsBrowserKeyRestrictions(dict):
         """
         :param Sequence[str] allowed_referrers: A list of regular expressions for the referrer URLs that are allowed to make API calls with this key.
         """
-        pulumi.set(__self__, "allowed_referrers", allowed_referrers)
+        ApiKeyRestrictionsBrowserKeyRestrictions._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allowed_referrers=allowed_referrers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allowed_referrers: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("allowed_referrers", allowed_referrers)
 
     @property
     @pulumi.getter(name="allowedReferrers")
@@ -380,7 +448,16 @@ class ApiKeyRestrictionsIosKeyRestrictions(dict):
         """
         :param Sequence[str] allowed_bundle_ids: A list of bundle IDs that are allowed when making API calls with this key.
         """
-        pulumi.set(__self__, "allowed_bundle_ids", allowed_bundle_ids)
+        ApiKeyRestrictionsIosKeyRestrictions._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allowed_bundle_ids=allowed_bundle_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allowed_bundle_ids: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("allowed_bundle_ids", allowed_bundle_ids)
 
     @property
     @pulumi.getter(name="allowedBundleIds")
@@ -415,7 +492,16 @@ class ApiKeyRestrictionsServerKeyRestrictions(dict):
         """
         :param Sequence[str] allowed_ips: A list of the caller IP addresses that are allowed to make API calls with this key.
         """
-        pulumi.set(__self__, "allowed_ips", allowed_ips)
+        ApiKeyRestrictionsServerKeyRestrictions._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allowed_ips=allowed_ips,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allowed_ips: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("allowed_ips", allowed_ips)
 
     @property
     @pulumi.getter(name="allowedIps")
@@ -454,9 +540,20 @@ class IAMAuditConfigAuditLogConfig(dict):
         :param str log_type: Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
         :param Sequence[str] exempted_members: Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
         """
-        pulumi.set(__self__, "log_type", log_type)
+        IAMAuditConfigAuditLogConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            log_type=log_type,
+            exempted_members=exempted_members,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             log_type: str,
+             exempted_members: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("log_type", log_type)
         if exempted_members is not None:
-            pulumi.set(__self__, "exempted_members", exempted_members)
+            _setter("exempted_members", exempted_members)
 
     @property
     @pulumi.getter(name="logType")
@@ -490,10 +587,23 @@ class IAMBindingCondition(dict):
                identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
                consider it to be an entirely different resource and will treat it as such.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        IAMBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -539,10 +649,23 @@ class IAMMemberCondition(dict):
                identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
                consider it to be an entirely different resource and will treat it as such.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        IAMMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -580,7 +703,16 @@ class OrganizationPolicyBooleanPolicy(dict):
         """
         :param bool enforced: If true, then the Policy is enforced. If false, then any configuration is acceptable.
         """
-        pulumi.set(__self__, "enforced", enforced)
+        OrganizationPolicyBooleanPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enforced=enforced,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enforced: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("enforced", enforced)
 
     @property
     @pulumi.getter
@@ -625,14 +757,29 @@ class OrganizationPolicyListPolicy(dict):
                The `allow` or `deny` blocks support:
         :param str suggested_value: The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
         """
+        OrganizationPolicyListPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow=allow,
+            deny=deny,
+            inherit_from_parent=inherit_from_parent,
+            suggested_value=suggested_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow: Optional['outputs.OrganizationPolicyListPolicyAllow'] = None,
+             deny: Optional['outputs.OrganizationPolicyListPolicyDeny'] = None,
+             inherit_from_parent: Optional[bool] = None,
+             suggested_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if allow is not None:
-            pulumi.set(__self__, "allow", allow)
+            _setter("allow", allow)
         if deny is not None:
-            pulumi.set(__self__, "deny", deny)
+            _setter("deny", deny)
         if inherit_from_parent is not None:
-            pulumi.set(__self__, "inherit_from_parent", inherit_from_parent)
+            _setter("inherit_from_parent", inherit_from_parent)
         if suggested_value is not None:
-            pulumi.set(__self__, "suggested_value", suggested_value)
+            _setter("suggested_value", suggested_value)
 
     @property
     @pulumi.getter
@@ -676,10 +823,21 @@ class OrganizationPolicyListPolicyAllow(dict):
         :param bool all: The policy allows or denies all values.
         :param Sequence[str] values: The policy can define specific values that are allowed or denied.
         """
+        OrganizationPolicyListPolicyAllow._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            all=all,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             all: Optional[bool] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if all is not None:
-            pulumi.set(__self__, "all", all)
+            _setter("all", all)
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
 
     @property
     @pulumi.getter
@@ -707,10 +865,21 @@ class OrganizationPolicyListPolicyDeny(dict):
         :param bool all: The policy allows or denies all values.
         :param Sequence[str] values: The policy can define specific values that are allowed or denied.
         """
+        OrganizationPolicyListPolicyDeny._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            all=all,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             all: Optional[bool] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if all is not None:
-            pulumi.set(__self__, "all", all)
+            _setter("all", all)
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
 
     @property
     @pulumi.getter
@@ -736,7 +905,16 @@ class OrganizationPolicyRestorePolicy(dict):
         """
         :param bool default: May only be set to true. If set, then the default Policy is restored.
         """
-        pulumi.set(__self__, "default", default)
+        OrganizationPolicyRestorePolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default=default,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("default", default)
 
     @property
     @pulumi.getter
@@ -751,7 +929,16 @@ class OrganizationPolicyRestorePolicy(dict):
 class GetOrganizationPolicyBooleanPolicyResult(dict):
     def __init__(__self__, *,
                  enforced: bool):
-        pulumi.set(__self__, "enforced", enforced)
+        GetOrganizationPolicyBooleanPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enforced=enforced,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enforced: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("enforced", enforced)
 
     @property
     @pulumi.getter
@@ -766,10 +953,25 @@ class GetOrganizationPolicyListPolicyResult(dict):
                  denies: Sequence['outputs.GetOrganizationPolicyListPolicyDenyResult'],
                  inherit_from_parent: bool,
                  suggested_value: str):
-        pulumi.set(__self__, "allows", allows)
-        pulumi.set(__self__, "denies", denies)
-        pulumi.set(__self__, "inherit_from_parent", inherit_from_parent)
-        pulumi.set(__self__, "suggested_value", suggested_value)
+        GetOrganizationPolicyListPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allows=allows,
+            denies=denies,
+            inherit_from_parent=inherit_from_parent,
+            suggested_value=suggested_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allows: Sequence['outputs.GetOrganizationPolicyListPolicyAllowResult'],
+             denies: Sequence['outputs.GetOrganizationPolicyListPolicyDenyResult'],
+             inherit_from_parent: bool,
+             suggested_value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("allows", allows)
+        _setter("denies", denies)
+        _setter("inherit_from_parent", inherit_from_parent)
+        _setter("suggested_value", suggested_value)
 
     @property
     @pulumi.getter
@@ -797,8 +999,19 @@ class GetOrganizationPolicyListPolicyAllowResult(dict):
     def __init__(__self__, *,
                  all: bool,
                  values: Sequence[str]):
-        pulumi.set(__self__, "all", all)
-        pulumi.set(__self__, "values", values)
+        GetOrganizationPolicyListPolicyAllowResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            all=all,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             all: bool,
+             values: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("all", all)
+        _setter("values", values)
 
     @property
     @pulumi.getter
@@ -816,8 +1029,19 @@ class GetOrganizationPolicyListPolicyDenyResult(dict):
     def __init__(__self__, *,
                  all: bool,
                  values: Sequence[str]):
-        pulumi.set(__self__, "all", all)
-        pulumi.set(__self__, "values", values)
+        GetOrganizationPolicyListPolicyDenyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            all=all,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             all: bool,
+             values: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("all", all)
+        _setter("values", values)
 
     @property
     @pulumi.getter
@@ -834,7 +1058,16 @@ class GetOrganizationPolicyListPolicyDenyResult(dict):
 class GetOrganizationPolicyRestorePolicyResult(dict):
     def __init__(__self__, *,
                  default: bool):
-        pulumi.set(__self__, "default", default)
+        GetOrganizationPolicyRestorePolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default=default,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("default", default)
 
     @property
     @pulumi.getter
@@ -861,13 +1094,34 @@ class GetProjectProjectResult(dict):
         :param Mapping[str, str] parent: An optional reference to a parent resource.
         :param str project_id: The project id of the project.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "labels", labels)
-        pulumi.set(__self__, "lifecycle_state", lifecycle_state)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "number", number)
-        pulumi.set(__self__, "parent", parent)
-        pulumi.set(__self__, "project_id", project_id)
+        GetProjectProjectResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            labels=labels,
+            lifecycle_state=lifecycle_state,
+            name=name,
+            number=number,
+            parent=parent,
+            project_id=project_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             labels: Mapping[str, str],
+             lifecycle_state: str,
+             name: str,
+             number: str,
+             parent: Mapping[str, str],
+             project_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("labels", labels)
+        _setter("lifecycle_state", lifecycle_state)
+        _setter("name", name)
+        _setter("number", number)
+        _setter("parent", parent)
+        _setter("project_id", project_id)
 
     @property
     @pulumi.getter(name="createTime")

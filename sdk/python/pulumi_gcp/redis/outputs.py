@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -63,12 +63,25 @@ class ClusterDiscoveryEndpoint(dict):
                is created and accessed from.
                Structure is documented below.
         """
+        ClusterDiscoveryEndpoint._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            port=port,
+            psc_config=psc_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[str] = None,
+             port: Optional[int] = None,
+             psc_config: Optional['outputs.ClusterDiscoveryEndpointPscConfig'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if address is not None:
-            pulumi.set(__self__, "address", address)
+            _setter("address", address)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if psc_config is not None:
-            pulumi.set(__self__, "psc_config", psc_config)
+            _setter("psc_config", psc_config)
 
     @property
     @pulumi.getter
@@ -108,8 +121,17 @@ class ClusterDiscoveryEndpointPscConfig(dict):
                
                - - -
         """
+        ClusterDiscoveryEndpointPscConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network=network,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
 
     @property
     @pulumi.getter
@@ -135,7 +157,16 @@ class ClusterPscConfig(dict):
                
                - - -
         """
-        pulumi.set(__self__, "network", network)
+        ClusterPscConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network=network,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("network", network)
 
     @property
     @pulumi.getter
@@ -190,16 +221,33 @@ class ClusterPscConnection(dict):
         :param str project_id: Output only. The consumer projectId where the forwarding rule is created from.
         :param str psc_connection_id: Output only. The PSC connection id of the forwarding rule connected to the service attachment.
         """
+        ClusterPscConnection._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            forwarding_rule=forwarding_rule,
+            network=network,
+            project_id=project_id,
+            psc_connection_id=psc_connection_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[str] = None,
+             forwarding_rule: Optional[str] = None,
+             network: Optional[str] = None,
+             project_id: Optional[str] = None,
+             psc_connection_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if address is not None:
-            pulumi.set(__self__, "address", address)
+            _setter("address", address)
         if forwarding_rule is not None:
-            pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+            _setter("forwarding_rule", forwarding_rule)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if psc_connection_id is not None:
-            pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+            _setter("psc_connection_id", psc_connection_id)
 
     @property
     @pulumi.getter
@@ -271,8 +319,17 @@ class ClusterStateInfo(dict):
         :param 'ClusterStateInfoUpdateInfoArgs' update_info: A nested object resource
                Structure is documented below.
         """
+        ClusterStateInfo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            update_info=update_info,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             update_info: Optional['outputs.ClusterStateInfoUpdateInfo'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if update_info is not None:
-            pulumi.set(__self__, "update_info", update_info)
+            _setter("update_info", update_info)
 
     @property
     @pulumi.getter(name="updateInfo")
@@ -312,10 +369,21 @@ class ClusterStateInfoUpdateInfo(dict):
         :param int target_replica_count: Target number of replica nodes per shard.
         :param int target_shard_count: Target number of shards for redis cluster.
         """
+        ClusterStateInfoUpdateInfo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            target_replica_count=target_replica_count,
+            target_shard_count=target_shard_count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             target_replica_count: Optional[int] = None,
+             target_shard_count: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if target_replica_count is not None:
-            pulumi.set(__self__, "target_replica_count", target_replica_count)
+            _setter("target_replica_count", target_replica_count)
         if target_shard_count is not None:
-            pulumi.set(__self__, "target_shard_count", target_shard_count)
+            _setter("target_shard_count", target_shard_count)
 
     @property
     @pulumi.getter(name="targetReplicaCount")
@@ -379,14 +447,29 @@ class InstanceMaintenancePolicy(dict):
                of weekly_window is expected to be one.
                Structure is documented below.
         """
+        InstanceMaintenancePolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            update_time=update_time,
+            weekly_maintenance_windows=weekly_maintenance_windows,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             update_time: Optional[str] = None,
+             weekly_maintenance_windows: Optional[Sequence['outputs.InstanceMaintenancePolicyWeeklyMaintenanceWindow']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
         if weekly_maintenance_windows is not None:
-            pulumi.set(__self__, "weekly_maintenance_windows", weekly_maintenance_windows)
+            _setter("weekly_maintenance_windows", weekly_maintenance_windows)
 
     @property
     @pulumi.getter(name="createTime")
@@ -474,10 +557,23 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindow(dict):
                A duration in seconds with up to nine fractional digits,
                terminated by 's'. Example: "3.5s".
         """
-        pulumi.set(__self__, "day", day)
-        pulumi.set(__self__, "start_time", start_time)
+        InstanceMaintenancePolicyWeeklyMaintenanceWindow._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day=day,
+            start_time=start_time,
+            duration=duration,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day: str,
+             start_time: 'outputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime',
+             duration: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("day", day)
+        _setter("start_time", start_time)
         if duration is not None:
-            pulumi.set(__self__, "duration", duration)
+            _setter("duration", duration)
 
     @property
     @pulumi.getter
@@ -533,14 +629,29 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime(dict):
         :param int seconds: Seconds of minutes of the time. Must normally be from 0 to 59.
                An API may allow the value 60 if it allows leap-seconds.
         """
+        InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hours=hours,
+            minutes=minutes,
+            nanos=nanos,
+            seconds=seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hours: Optional[int] = None,
+             minutes: Optional[int] = None,
+             nanos: Optional[int] = None,
+             seconds: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if hours is not None:
-            pulumi.set(__self__, "hours", hours)
+            _setter("hours", hours)
         if minutes is not None:
-            pulumi.set(__self__, "minutes", minutes)
+            _setter("minutes", minutes)
         if nanos is not None:
-            pulumi.set(__self__, "nanos", nanos)
+            _setter("nanos", nanos)
         if seconds is not None:
-            pulumi.set(__self__, "seconds", seconds)
+            _setter("seconds", seconds)
 
     @property
     @pulumi.getter
@@ -617,12 +728,25 @@ class InstanceMaintenanceSchedule(dict):
         :param str start_time: Required. Start time of the window in UTC time.
                Structure is documented below.
         """
+        InstanceMaintenanceSchedule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            end_time=end_time,
+            schedule_deadline_time=schedule_deadline_time,
+            start_time=start_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             end_time: Optional[str] = None,
+             schedule_deadline_time: Optional[str] = None,
+             start_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if schedule_deadline_time is not None:
-            pulumi.set(__self__, "schedule_deadline_time", schedule_deadline_time)
+            _setter("schedule_deadline_time", schedule_deadline_time)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
 
     @property
     @pulumi.getter(name="endTime")
@@ -668,10 +792,21 @@ class InstanceNode(dict):
         :param str zone: (Output)
                Location of the node.
         """
+        InstanceNode._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             zone: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter
@@ -745,14 +880,29 @@ class InstancePersistenceConfig(dict):
                and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        InstancePersistenceConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            persistence_mode=persistence_mode,
+            rdb_next_snapshot_time=rdb_next_snapshot_time,
+            rdb_snapshot_period=rdb_snapshot_period,
+            rdb_snapshot_start_time=rdb_snapshot_start_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             persistence_mode: Optional[str] = None,
+             rdb_next_snapshot_time: Optional[str] = None,
+             rdb_snapshot_period: Optional[str] = None,
+             rdb_snapshot_start_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if persistence_mode is not None:
-            pulumi.set(__self__, "persistence_mode", persistence_mode)
+            _setter("persistence_mode", persistence_mode)
         if rdb_next_snapshot_time is not None:
-            pulumi.set(__self__, "rdb_next_snapshot_time", rdb_next_snapshot_time)
+            _setter("rdb_next_snapshot_time", rdb_next_snapshot_time)
         if rdb_snapshot_period is not None:
-            pulumi.set(__self__, "rdb_snapshot_period", rdb_snapshot_period)
+            _setter("rdb_snapshot_period", rdb_snapshot_period)
         if rdb_snapshot_start_time is not None:
-            pulumi.set(__self__, "rdb_snapshot_start_time", rdb_snapshot_start_time)
+            _setter("rdb_snapshot_start_time", rdb_snapshot_start_time)
 
     @property
     @pulumi.getter(name="persistenceMode")
@@ -849,16 +999,33 @@ class InstanceServerCaCert(dict):
         :param str sha1_fingerprint: (Output)
                Sha1 Fingerprint of the certificate.
         """
+        InstanceServerCaCert._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cert=cert,
+            create_time=create_time,
+            expire_time=expire_time,
+            serial_number=serial_number,
+            sha1_fingerprint=sha1_fingerprint,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cert: Optional[str] = None,
+             create_time: Optional[str] = None,
+             expire_time: Optional[str] = None,
+             serial_number: Optional[str] = None,
+             sha1_fingerprint: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cert is not None:
-            pulumi.set(__self__, "cert", cert)
+            _setter("cert", cert)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if expire_time is not None:
-            pulumi.set(__self__, "expire_time", expire_time)
+            _setter("expire_time", expire_time)
         if serial_number is not None:
-            pulumi.set(__self__, "serial_number", serial_number)
+            _setter("serial_number", serial_number)
         if sha1_fingerprint is not None:
-            pulumi.set(__self__, "sha1_fingerprint", sha1_fingerprint)
+            _setter("sha1_fingerprint", sha1_fingerprint)
 
     @property
     @pulumi.getter
@@ -915,10 +1082,25 @@ class GetInstanceMaintenancePolicyResult(dict):
                  description: str,
                  update_time: str,
                  weekly_maintenance_windows: Sequence['outputs.GetInstanceMaintenancePolicyWeeklyMaintenanceWindowResult']):
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "update_time", update_time)
-        pulumi.set(__self__, "weekly_maintenance_windows", weekly_maintenance_windows)
+        GetInstanceMaintenancePolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            update_time=update_time,
+            weekly_maintenance_windows=weekly_maintenance_windows,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             description: str,
+             update_time: str,
+             weekly_maintenance_windows: Sequence['outputs.GetInstanceMaintenancePolicyWeeklyMaintenanceWindowResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("update_time", update_time)
+        _setter("weekly_maintenance_windows", weekly_maintenance_windows)
 
     @property
     @pulumi.getter(name="createTime")
@@ -947,9 +1129,22 @@ class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowResult(dict):
                  day: str,
                  duration: str,
                  start_times: Sequence['outputs.GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult']):
-        pulumi.set(__self__, "day", day)
-        pulumi.set(__self__, "duration", duration)
-        pulumi.set(__self__, "start_times", start_times)
+        GetInstanceMaintenancePolicyWeeklyMaintenanceWindowResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day=day,
+            duration=duration,
+            start_times=start_times,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day: str,
+             duration: str,
+             start_times: Sequence['outputs.GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("day", day)
+        _setter("duration", duration)
+        _setter("start_times", start_times)
 
     @property
     @pulumi.getter
@@ -974,10 +1169,25 @@ class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult(dict):
                  minutes: int,
                  nanos: int,
                  seconds: int):
-        pulumi.set(__self__, "hours", hours)
-        pulumi.set(__self__, "minutes", minutes)
-        pulumi.set(__self__, "nanos", nanos)
-        pulumi.set(__self__, "seconds", seconds)
+        GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hours=hours,
+            minutes=minutes,
+            nanos=nanos,
+            seconds=seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hours: int,
+             minutes: int,
+             nanos: int,
+             seconds: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("hours", hours)
+        _setter("minutes", minutes)
+        _setter("nanos", nanos)
+        _setter("seconds", seconds)
 
     @property
     @pulumi.getter
@@ -1006,9 +1216,22 @@ class GetInstanceMaintenanceScheduleResult(dict):
                  end_time: str,
                  schedule_deadline_time: str,
                  start_time: str):
-        pulumi.set(__self__, "end_time", end_time)
-        pulumi.set(__self__, "schedule_deadline_time", schedule_deadline_time)
-        pulumi.set(__self__, "start_time", start_time)
+        GetInstanceMaintenanceScheduleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            end_time=end_time,
+            schedule_deadline_time=schedule_deadline_time,
+            start_time=start_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             end_time: str,
+             schedule_deadline_time: str,
+             start_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("end_time", end_time)
+        _setter("schedule_deadline_time", schedule_deadline_time)
+        _setter("start_time", start_time)
 
     @property
     @pulumi.getter(name="endTime")
@@ -1031,8 +1254,19 @@ class GetInstanceNodeResult(dict):
     def __init__(__self__, *,
                  id: str,
                  zone: str):
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "zone", zone)
+        GetInstanceNodeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             zone: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("zone", zone)
 
     @property
     @pulumi.getter
@@ -1052,10 +1286,25 @@ class GetInstancePersistenceConfigResult(dict):
                  rdb_next_snapshot_time: str,
                  rdb_snapshot_period: str,
                  rdb_snapshot_start_time: str):
-        pulumi.set(__self__, "persistence_mode", persistence_mode)
-        pulumi.set(__self__, "rdb_next_snapshot_time", rdb_next_snapshot_time)
-        pulumi.set(__self__, "rdb_snapshot_period", rdb_snapshot_period)
-        pulumi.set(__self__, "rdb_snapshot_start_time", rdb_snapshot_start_time)
+        GetInstancePersistenceConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            persistence_mode=persistence_mode,
+            rdb_next_snapshot_time=rdb_next_snapshot_time,
+            rdb_snapshot_period=rdb_snapshot_period,
+            rdb_snapshot_start_time=rdb_snapshot_start_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             persistence_mode: str,
+             rdb_next_snapshot_time: str,
+             rdb_snapshot_period: str,
+             rdb_snapshot_start_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("persistence_mode", persistence_mode)
+        _setter("rdb_next_snapshot_time", rdb_next_snapshot_time)
+        _setter("rdb_snapshot_period", rdb_snapshot_period)
+        _setter("rdb_snapshot_start_time", rdb_snapshot_start_time)
 
     @property
     @pulumi.getter(name="persistenceMode")
@@ -1086,11 +1335,28 @@ class GetInstanceServerCaCertResult(dict):
                  expire_time: str,
                  serial_number: str,
                  sha1_fingerprint: str):
-        pulumi.set(__self__, "cert", cert)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "serial_number", serial_number)
-        pulumi.set(__self__, "sha1_fingerprint", sha1_fingerprint)
+        GetInstanceServerCaCertResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cert=cert,
+            create_time=create_time,
+            expire_time=expire_time,
+            serial_number=serial_number,
+            sha1_fingerprint=sha1_fingerprint,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cert: str,
+             create_time: str,
+             expire_time: str,
+             serial_number: str,
+             sha1_fingerprint: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cert", cert)
+        _setter("create_time", create_time)
+        _setter("expire_time", expire_time)
+        _setter("serial_number", serial_number)
+        _setter("sha1_fingerprint", sha1_fingerprint)
 
     @property
     @pulumi.getter

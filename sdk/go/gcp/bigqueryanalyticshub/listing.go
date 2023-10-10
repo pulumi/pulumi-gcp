@@ -121,17 +121,8 @@ type Listing struct {
 	// The name of the location this data exchange listing.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Name of the data provider.
-	//
-	// (Required)
-	// Name of the listing publisher.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Email or URL of the primary point of contact of the listing.
-	//
-	// (Optional)
-	// Email or URL of the data provider.
-	//
-	// (Optional)
-	// Email or URL of the listing publisher.
 	PrimaryContact pulumi.StringPtrOutput `pulumi:"primaryContact"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -211,17 +202,8 @@ type listingState struct {
 	// The name of the location this data exchange listing.
 	Location *string `pulumi:"location"`
 	// Name of the data provider.
-	//
-	// (Required)
-	// Name of the listing publisher.
 	Name *string `pulumi:"name"`
 	// Email or URL of the primary point of contact of the listing.
-	//
-	// (Optional)
-	// Email or URL of the data provider.
-	//
-	// (Optional)
-	// Email or URL of the listing publisher.
 	PrimaryContact *string `pulumi:"primaryContact"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -257,17 +239,8 @@ type ListingState struct {
 	// The name of the location this data exchange listing.
 	Location pulumi.StringPtrInput
 	// Name of the data provider.
-	//
-	// (Required)
-	// Name of the listing publisher.
 	Name pulumi.StringPtrInput
 	// Email or URL of the primary point of contact of the listing.
-	//
-	// (Optional)
-	// Email or URL of the data provider.
-	//
-	// (Optional)
-	// Email or URL of the listing publisher.
 	PrimaryContact pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -307,12 +280,6 @@ type listingArgs struct {
 	// The name of the location this data exchange listing.
 	Location string `pulumi:"location"`
 	// Email or URL of the primary point of contact of the listing.
-	//
-	// (Optional)
-	// Email or URL of the data provider.
-	//
-	// (Optional)
-	// Email or URL of the listing publisher.
 	PrimaryContact *string `pulumi:"primaryContact"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -349,12 +316,6 @@ type ListingArgs struct {
 	// The name of the location this data exchange listing.
 	Location pulumi.StringInput
 	// Email or URL of the primary point of contact of the listing.
-	//
-	// (Optional)
-	// Email or URL of the data provider.
-	//
-	// (Optional)
-	// Email or URL of the listing publisher.
 	PrimaryContact pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -530,20 +491,11 @@ func (o ListingOutput) Location() pulumi.StringOutput {
 }
 
 // Name of the data provider.
-//
-// (Required)
-// Name of the listing publisher.
 func (o ListingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listing) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // Email or URL of the primary point of contact of the listing.
-//
-// (Optional)
-// Email or URL of the data provider.
-//
-// (Optional)
-// Email or URL of the listing publisher.
 func (o ListingOutput) PrimaryContact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Listing) pulumi.StringPtrOutput { return v.PrimaryContact }).(pulumi.StringPtrOutput)
 }

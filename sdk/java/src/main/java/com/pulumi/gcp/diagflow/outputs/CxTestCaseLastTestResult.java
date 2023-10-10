@@ -25,11 +25,7 @@ public final class CxTestCaseLastTestResult {
      */
     private @Nullable String environment;
     /**
-     * @return The unique identifier of the intent.
-     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/intents/&lt;Intent ID&gt;.
-     * 
-     * (Optional)
-     * The unique identifier of the page.
+     * @return The unique identifier of the page.
      * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/pages/&lt;Page ID&gt;.
      * 
      */
@@ -65,11 +61,7 @@ public final class CxTestCaseLastTestResult {
         return Optional.ofNullable(this.environment);
     }
     /**
-     * @return The unique identifier of the intent.
-     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/intents/&lt;Intent ID&gt;.
-     * 
-     * (Optional)
-     * The unique identifier of the page.
+     * @return The unique identifier of the page.
      * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/pages/&lt;Page ID&gt;.
      * 
      */

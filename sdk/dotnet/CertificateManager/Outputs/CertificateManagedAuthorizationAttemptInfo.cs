@@ -15,13 +15,6 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
     {
         /// <summary>
         /// (Output)
-        /// Human readable explanation about the issue. Provided to help address
-        /// the configuration issues.
-        /// Not guaranteed to be stable. For programmatic access use `reason` field.
-        /// 
-        /// &lt;a name="nested_authorization_attempt_info"&gt;&lt;/a&gt;The `authorization_attempt_info` block contains:
-        /// 
-        /// (Output)
         /// Human readable explanation for reaching the state. Provided to help
         /// address the configuration issues.
         /// Not guaranteed to be stable. For programmatic access use `failure_reason` field.
@@ -38,9 +31,6 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
         /// </summary>
         public readonly string? FailureReason;
         /// <summary>
-        /// (Output)
-        /// A state of this Managed Certificate.
-        /// 
         /// (Output)
         /// State of the domain for managed certificate issuance.
         /// </summary>

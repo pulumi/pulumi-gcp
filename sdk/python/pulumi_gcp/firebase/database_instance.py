@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DatabaseInstanceArgs', 'DatabaseInstance']
@@ -38,14 +38,31 @@ class DatabaseInstanceArgs:
                Default value is `USER_DATABASE`.
                Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
         """
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "region", region)
+        DatabaseInstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            region=region,
+            desired_state=desired_state,
+            project=project,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: pulumi.Input[str],
+             region: pulumi.Input[str],
+             desired_state: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_id", instance_id)
+        _setter("region", region)
         if desired_state is not None:
-            pulumi.set(__self__, "desired_state", desired_state)
+            _setter("desired_state", desired_state)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -156,22 +173,45 @@ class _DatabaseInstanceState:
                Default value is `USER_DATABASE`.
                Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
         """
+        _DatabaseInstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            database_url=database_url,
+            desired_state=desired_state,
+            instance_id=instance_id,
+            name=name,
+            project=project,
+            region=region,
+            state=state,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             database_url: Optional[pulumi.Input[str]] = None,
+             desired_state: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if database_url is not None:
-            pulumi.set(__self__, "database_url", database_url)
+            _setter("database_url", database_url)
         if desired_state is not None:
-            pulumi.set(__self__, "desired_state", desired_state)
+            _setter("desired_state", desired_state)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="databaseUrl")
@@ -483,6 +523,10 @@ class DatabaseInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DatabaseInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

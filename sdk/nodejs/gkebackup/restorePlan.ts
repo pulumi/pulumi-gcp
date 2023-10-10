@@ -389,10 +389,6 @@ export class RestorePlan extends pulumi.CustomResource {
      */
     public readonly cluster!: pulumi.Output<string>;
     /**
-     * The description is a user specified string description
-     * of the transformation rule.
-     *
-     * (Optional)
      * User specified descriptive string for this RestorePlan.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -502,10 +498,6 @@ export interface RestorePlanState {
      */
     cluster?: pulumi.Input<string>;
     /**
-     * The description is a user specified string description
-     * of the transformation rule.
-     *
-     * (Optional)
      * User specified descriptive string for this RestorePlan.
      */
     description?: pulumi.Input<string>;
@@ -561,10 +553,6 @@ export interface RestorePlanArgs {
      */
     cluster: pulumi.Input<string>;
     /**
-     * The description is a user specified string description
-     * of the transformation rule.
-     *
-     * (Optional)
      * User specified descriptive string for this RestorePlan.
      */
     description?: pulumi.Input<string>;

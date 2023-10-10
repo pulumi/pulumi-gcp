@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RouteArgs', 'Route']
@@ -85,30 +85,63 @@ class RouteArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of instance tags to which this route applies.
         """
-        pulumi.set(__self__, "dest_range", dest_range)
-        pulumi.set(__self__, "network", network)
+        RouteArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dest_range=dest_range,
+            network=network,
+            description=description,
+            name=name,
+            next_hop_gateway=next_hop_gateway,
+            next_hop_ilb=next_hop_ilb,
+            next_hop_instance=next_hop_instance,
+            next_hop_instance_zone=next_hop_instance_zone,
+            next_hop_ip=next_hop_ip,
+            next_hop_vpn_tunnel=next_hop_vpn_tunnel,
+            priority=priority,
+            project=project,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dest_range: pulumi.Input[str],
+             network: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             next_hop_gateway: Optional[pulumi.Input[str]] = None,
+             next_hop_ilb: Optional[pulumi.Input[str]] = None,
+             next_hop_instance: Optional[pulumi.Input[str]] = None,
+             next_hop_instance_zone: Optional[pulumi.Input[str]] = None,
+             next_hop_ip: Optional[pulumi.Input[str]] = None,
+             next_hop_vpn_tunnel: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dest_range", dest_range)
+        _setter("network", network)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if next_hop_gateway is not None:
-            pulumi.set(__self__, "next_hop_gateway", next_hop_gateway)
+            _setter("next_hop_gateway", next_hop_gateway)
         if next_hop_ilb is not None:
-            pulumi.set(__self__, "next_hop_ilb", next_hop_ilb)
+            _setter("next_hop_ilb", next_hop_ilb)
         if next_hop_instance is not None:
-            pulumi.set(__self__, "next_hop_instance", next_hop_instance)
+            _setter("next_hop_instance", next_hop_instance)
         if next_hop_instance_zone is not None:
-            pulumi.set(__self__, "next_hop_instance_zone", next_hop_instance_zone)
+            _setter("next_hop_instance_zone", next_hop_instance_zone)
         if next_hop_ip is not None:
-            pulumi.set(__self__, "next_hop_ip", next_hop_ip)
+            _setter("next_hop_ip", next_hop_ip)
         if next_hop_vpn_tunnel is not None:
-            pulumi.set(__self__, "next_hop_vpn_tunnel", next_hop_vpn_tunnel)
+            _setter("next_hop_vpn_tunnel", next_hop_vpn_tunnel)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="destRange")
@@ -387,36 +420,73 @@ class _RouteState:
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of instance tags to which this route applies.
         """
+        _RouteState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            dest_range=dest_range,
+            name=name,
+            network=network,
+            next_hop_gateway=next_hop_gateway,
+            next_hop_ilb=next_hop_ilb,
+            next_hop_instance=next_hop_instance,
+            next_hop_instance_zone=next_hop_instance_zone,
+            next_hop_ip=next_hop_ip,
+            next_hop_network=next_hop_network,
+            next_hop_vpn_tunnel=next_hop_vpn_tunnel,
+            priority=priority,
+            project=project,
+            self_link=self_link,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             dest_range: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             next_hop_gateway: Optional[pulumi.Input[str]] = None,
+             next_hop_ilb: Optional[pulumi.Input[str]] = None,
+             next_hop_instance: Optional[pulumi.Input[str]] = None,
+             next_hop_instance_zone: Optional[pulumi.Input[str]] = None,
+             next_hop_ip: Optional[pulumi.Input[str]] = None,
+             next_hop_network: Optional[pulumi.Input[str]] = None,
+             next_hop_vpn_tunnel: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dest_range is not None:
-            pulumi.set(__self__, "dest_range", dest_range)
+            _setter("dest_range", dest_range)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if next_hop_gateway is not None:
-            pulumi.set(__self__, "next_hop_gateway", next_hop_gateway)
+            _setter("next_hop_gateway", next_hop_gateway)
         if next_hop_ilb is not None:
-            pulumi.set(__self__, "next_hop_ilb", next_hop_ilb)
+            _setter("next_hop_ilb", next_hop_ilb)
         if next_hop_instance is not None:
-            pulumi.set(__self__, "next_hop_instance", next_hop_instance)
+            _setter("next_hop_instance", next_hop_instance)
         if next_hop_instance_zone is not None:
-            pulumi.set(__self__, "next_hop_instance_zone", next_hop_instance_zone)
+            _setter("next_hop_instance_zone", next_hop_instance_zone)
         if next_hop_ip is not None:
-            pulumi.set(__self__, "next_hop_ip", next_hop_ip)
+            _setter("next_hop_ip", next_hop_ip)
         if next_hop_network is not None:
-            pulumi.set(__self__, "next_hop_network", next_hop_network)
+            _setter("next_hop_network", next_hop_network)
         if next_hop_vpn_tunnel is not None:
-            pulumi.set(__self__, "next_hop_vpn_tunnel", next_hop_vpn_tunnel)
+            _setter("next_hop_vpn_tunnel", next_hop_vpn_tunnel)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -856,6 +926,10 @@ class Route(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RouteArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

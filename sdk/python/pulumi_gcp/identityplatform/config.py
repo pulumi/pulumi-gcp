@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,18 +35,37 @@ class ConfigArgs:
         :param pulumi.Input['ConfigSignInArgs'] sign_in: Configuration related to local sign in methods.
                Structure is documented below.
         """
+        ConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authorized_domains=authorized_domains,
+            autodelete_anonymous_users=autodelete_anonymous_users,
+            blocking_functions=blocking_functions,
+            project=project,
+            quota=quota,
+            sign_in=sign_in,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authorized_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             autodelete_anonymous_users: Optional[pulumi.Input[bool]] = None,
+             blocking_functions: Optional[pulumi.Input['ConfigBlockingFunctionsArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             quota: Optional[pulumi.Input['ConfigQuotaArgs']] = None,
+             sign_in: Optional[pulumi.Input['ConfigSignInArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if authorized_domains is not None:
-            pulumi.set(__self__, "authorized_domains", authorized_domains)
+            _setter("authorized_domains", authorized_domains)
         if autodelete_anonymous_users is not None:
-            pulumi.set(__self__, "autodelete_anonymous_users", autodelete_anonymous_users)
+            _setter("autodelete_anonymous_users", autodelete_anonymous_users)
         if blocking_functions is not None:
-            pulumi.set(__self__, "blocking_functions", blocking_functions)
+            _setter("blocking_functions", blocking_functions)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if quota is not None:
-            pulumi.set(__self__, "quota", quota)
+            _setter("quota", quota)
         if sign_in is not None:
-            pulumi.set(__self__, "sign_in", sign_in)
+            _setter("sign_in", sign_in)
 
     @property
     @pulumi.getter(name="authorizedDomains")
@@ -149,20 +168,41 @@ class _ConfigState:
         :param pulumi.Input['ConfigSignInArgs'] sign_in: Configuration related to local sign in methods.
                Structure is documented below.
         """
+        _ConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authorized_domains=authorized_domains,
+            autodelete_anonymous_users=autodelete_anonymous_users,
+            blocking_functions=blocking_functions,
+            name=name,
+            project=project,
+            quota=quota,
+            sign_in=sign_in,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authorized_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             autodelete_anonymous_users: Optional[pulumi.Input[bool]] = None,
+             blocking_functions: Optional[pulumi.Input['ConfigBlockingFunctionsArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             quota: Optional[pulumi.Input['ConfigQuotaArgs']] = None,
+             sign_in: Optional[pulumi.Input['ConfigSignInArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if authorized_domains is not None:
-            pulumi.set(__self__, "authorized_domains", authorized_domains)
+            _setter("authorized_domains", authorized_domains)
         if autodelete_anonymous_users is not None:
-            pulumi.set(__self__, "autodelete_anonymous_users", autodelete_anonymous_users)
+            _setter("autodelete_anonymous_users", autodelete_anonymous_users)
         if blocking_functions is not None:
-            pulumi.set(__self__, "blocking_functions", blocking_functions)
+            _setter("blocking_functions", blocking_functions)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if quota is not None:
-            pulumi.set(__self__, "quota", quota)
+            _setter("quota", quota)
         if sign_in is not None:
-            pulumi.set(__self__, "sign_in", sign_in)
+            _setter("sign_in", sign_in)
 
     @property
     @pulumi.getter(name="authorizedDomains")
@@ -478,6 +518,10 @@ class Config(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -500,9 +544,24 @@ class Config(pulumi.CustomResource):
 
             __props__.__dict__["authorized_domains"] = authorized_domains
             __props__.__dict__["autodelete_anonymous_users"] = autodelete_anonymous_users
+            if blocking_functions is not None and not isinstance(blocking_functions, ConfigBlockingFunctionsArgs):
+                blocking_functions = blocking_functions or {}
+                def _setter(key, value):
+                    blocking_functions[key] = value
+                ConfigBlockingFunctionsArgs._configure(_setter, **blocking_functions)
             __props__.__dict__["blocking_functions"] = blocking_functions
             __props__.__dict__["project"] = project
+            if quota is not None and not isinstance(quota, ConfigQuotaArgs):
+                quota = quota or {}
+                def _setter(key, value):
+                    quota[key] = value
+                ConfigQuotaArgs._configure(_setter, **quota)
             __props__.__dict__["quota"] = quota
+            if sign_in is not None and not isinstance(sign_in, ConfigSignInArgs):
+                sign_in = sign_in or {}
+                def _setter(key, value):
+                    sign_in[key] = value
+                ConfigSignInArgs._configure(_setter, **sign_in)
             __props__.__dict__["sign_in"] = sign_in
             __props__.__dict__["name"] = None
         super(Config, __self__).__init__(

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -32,13 +32,30 @@ class DomainMappingArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "metadata", metadata)
-        pulumi.set(__self__, "spec", spec)
+        DomainMappingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            metadata=metadata,
+            spec=spec,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: pulumi.Input[str],
+             metadata: pulumi.Input['DomainMappingMetadataArgs'],
+             spec: pulumi.Input['DomainMappingSpecArgs'],
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("location", location)
+        _setter("metadata", metadata)
+        _setter("spec", spec)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -126,18 +143,37 @@ class _DomainMappingState:
         :param pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusArgs']]] statuses: (Output)
                Status of the condition, one of True, False, Unknown.
         """
+        _DomainMappingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            metadata=metadata,
+            name=name,
+            project=project,
+            spec=spec,
+            statuses=statuses,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: Optional[pulumi.Input[str]] = None,
+             metadata: Optional[pulumi.Input['DomainMappingMetadataArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             spec: Optional[pulumi.Input['DomainMappingSpecArgs']] = None,
+             statuses: Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
+            _setter("metadata", metadata)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if spec is not None:
-            pulumi.set(__self__, "spec", spec)
+            _setter("spec", spec)
         if statuses is not None:
-            pulumi.set(__self__, "statuses", statuses)
+            _setter("statuses", statuses)
 
     @property
     @pulumi.getter
@@ -362,6 +398,10 @@ class DomainMapping(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DomainMappingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -384,11 +424,21 @@ class DomainMapping(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            if metadata is not None and not isinstance(metadata, DomainMappingMetadataArgs):
+                metadata = metadata or {}
+                def _setter(key, value):
+                    metadata[key] = value
+                DomainMappingMetadataArgs._configure(_setter, **metadata)
             if metadata is None and not opts.urn:
                 raise TypeError("Missing required property 'metadata'")
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            if spec is not None and not isinstance(spec, DomainMappingSpecArgs):
+                spec = spec or {}
+                def _setter(key, value):
+                    spec[key] = value
+                DomainMappingSpecArgs._configure(_setter, **spec)
             if spec is None and not opts.urn:
                 raise TypeError("Missing required property 'spec'")
             __props__.__dict__["spec"] = spec

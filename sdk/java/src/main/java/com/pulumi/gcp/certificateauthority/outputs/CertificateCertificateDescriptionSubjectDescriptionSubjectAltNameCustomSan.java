@@ -18,9 +18,6 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
      * @return Indicates whether or not this extension is critical (i.e., if the client does not know how to
      * handle this extension, the client should consider this to be an error).
      * 
-     * (Required)
-     * Indicates whether or not the name constraints are marked critical.
-     * 
      */
     private @Nullable Boolean critical;
     /**
@@ -40,9 +37,6 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
     /**
      * @return Indicates whether or not this extension is critical (i.e., if the client does not know how to
      * handle this extension, the client should consider this to be an error).
-     * 
-     * (Required)
-     * Indicates whether or not the name constraints are marked critical.
      * 
      */
     public Optional<Boolean> critical() {

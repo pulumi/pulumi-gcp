@@ -66,30 +66,12 @@ public final class DocumentAiWarehouseDocumentSchemaState extends com.pulumi.res
     /**
      * The name of the metadata property.
      * 
-     * (Optional)
-     * The schema name in the source.
-     * 
-     * (Required)
-     * The name of the metadata property.
-     * 
-     * (Optional)
-     * The schema name in the source.
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The name of the metadata property.
-     * 
-     * (Optional)
-     * The schema name in the source.
-     * 
-     * (Required)
-     * The name of the metadata property.
-     * 
-     * (Optional)
-     * The schema name in the source.
      * 
      */
     public Optional<Output<String>> name() {
@@ -223,15 +205,6 @@ public final class DocumentAiWarehouseDocumentSchemaState extends com.pulumi.res
         /**
          * @param name The name of the metadata property.
          * 
-         * (Optional)
-         * The schema name in the source.
-         * 
-         * (Required)
-         * The name of the metadata property.
-         * 
-         * (Optional)
-         * The schema name in the source.
-         * 
          * @return builder
          * 
          */
@@ -242,15 +215,6 @@ public final class DocumentAiWarehouseDocumentSchemaState extends com.pulumi.res
 
         /**
          * @param name The name of the metadata property.
-         * 
-         * (Optional)
-         * The schema name in the source.
-         * 
-         * (Required)
-         * The name of the metadata property.
-         * 
-         * (Optional)
-         * The schema name in the source.
          * 
          * @return builder
          * 

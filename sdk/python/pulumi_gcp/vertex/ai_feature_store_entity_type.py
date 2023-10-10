@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -38,17 +38,36 @@ class AiFeatureStoreEntityTypeArgs:
                storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
                since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
         """
-        pulumi.set(__self__, "featurestore", featurestore)
+        AiFeatureStoreEntityTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            featurestore=featurestore,
+            description=description,
+            labels=labels,
+            monitoring_config=monitoring_config,
+            name=name,
+            offline_storage_ttl_days=offline_storage_ttl_days,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             featurestore: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             monitoring_config: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             offline_storage_ttl_days: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("featurestore", featurestore)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if monitoring_config is not None:
-            pulumi.set(__self__, "monitoring_config", monitoring_config)
+            _setter("monitoring_config", monitoring_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if offline_storage_ttl_days is not None:
-            pulumi.set(__self__, "offline_storage_ttl_days", offline_storage_ttl_days)
+            _setter("offline_storage_ttl_days", offline_storage_ttl_days)
 
     @property
     @pulumi.getter
@@ -163,26 +182,53 @@ class _AiFeatureStoreEntityTypeState:
         :param pulumi.Input[str] region: The region of the EntityType.
         :param pulumi.Input[str] update_time: The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
+        _AiFeatureStoreEntityTypeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            etag=etag,
+            featurestore=featurestore,
+            labels=labels,
+            monitoring_config=monitoring_config,
+            name=name,
+            offline_storage_ttl_days=offline_storage_ttl_days,
+            region=region,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             featurestore: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             monitoring_config: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             offline_storage_ttl_days: Optional[pulumi.Input[int]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if featurestore is not None:
-            pulumi.set(__self__, "featurestore", featurestore)
+            _setter("featurestore", featurestore)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if monitoring_config is not None:
-            pulumi.set(__self__, "monitoring_config", monitoring_config)
+            _setter("monitoring_config", monitoring_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if offline_storage_ttl_days is not None:
-            pulumi.set(__self__, "offline_storage_ttl_days", offline_storage_ttl_days)
+            _setter("offline_storage_ttl_days", offline_storage_ttl_days)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -552,6 +598,10 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AiFeatureStoreEntityTypeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -577,6 +627,11 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                 raise TypeError("Missing required property 'featurestore'")
             __props__.__dict__["featurestore"] = featurestore
             __props__.__dict__["labels"] = labels
+            if monitoring_config is not None and not isinstance(monitoring_config, AiFeatureStoreEntityTypeMonitoringConfigArgs):
+                monitoring_config = monitoring_config or {}
+                def _setter(key, value):
+                    monitoring_config[key] = value
+                AiFeatureStoreEntityTypeMonitoringConfigArgs._configure(_setter, **monitoring_config)
             __props__.__dict__["monitoring_config"] = monitoring_config
             __props__.__dict__["name"] = name
             __props__.__dict__["offline_storage_ttl_days"] = offline_storage_ttl_days

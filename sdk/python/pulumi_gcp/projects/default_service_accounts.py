@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DefaultServiceAccountsArgs', 'DefaultServiceAccounts']
@@ -26,10 +26,23 @@ class DefaultServiceAccountsArgs:
                If set to REVERT it attempts to restore all default SAs but the DEPRIVILEGE action.
                If set to REVERT_AND_IGNORE_FAILURE it is the same behavior as REVERT but ignores errors returned by the API.
         """
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "project", project)
+        DefaultServiceAccountsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            project=project,
+            restore_policy=restore_policy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: pulumi.Input[str],
+             project: pulumi.Input[str],
+             restore_policy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("action", action)
+        _setter("project", project)
         if restore_policy is not None:
-            pulumi.set(__self__, "restore_policy", restore_policy)
+            _setter("restore_policy", restore_policy)
 
     @property
     @pulumi.getter
@@ -88,14 +101,29 @@ class _DefaultServiceAccountsState:
                If set to REVERT_AND_IGNORE_FAILURE it is the same behavior as REVERT but ignores errors returned by the API.
         :param pulumi.Input[Mapping[str, Any]] service_accounts: The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
         """
+        _DefaultServiceAccountsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            project=project,
+            restore_policy=restore_policy,
+            service_accounts=service_accounts,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             restore_policy: Optional[pulumi.Input[str]] = None,
+             service_accounts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if action is not None:
-            pulumi.set(__self__, "action", action)
+            _setter("action", action)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if restore_policy is not None:
-            pulumi.set(__self__, "restore_policy", restore_policy)
+            _setter("restore_policy", restore_policy)
         if service_accounts is not None:
-            pulumi.set(__self__, "service_accounts", service_accounts)
+            _setter("service_accounts", service_accounts)
 
     @property
     @pulumi.getter
@@ -269,6 +297,10 @@ class DefaultServiceAccounts(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DefaultServiceAccountsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

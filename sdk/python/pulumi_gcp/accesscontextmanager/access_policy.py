@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AccessPolicyArgs', 'AccessPolicy']
@@ -28,10 +28,23 @@ class AccessPolicyArgs:
         :param pulumi.Input[str] scopes: Folder or project on which this policy is applicable.
                Format: folders/{{folder_id}} or projects/{{project_id}}
         """
-        pulumi.set(__self__, "parent", parent)
-        pulumi.set(__self__, "title", title)
+        AccessPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parent=parent,
+            title=title,
+            scopes=scopes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parent: pulumi.Input[str],
+             title: pulumi.Input[str],
+             scopes: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("parent", parent)
+        _setter("title", title)
         if scopes is not None:
-            pulumi.set(__self__, "scopes", scopes)
+            _setter("scopes", scopes)
 
     @property
     @pulumi.getter
@@ -98,18 +111,37 @@ class _AccessPolicyState:
                - - -
         :param pulumi.Input[str] update_time: Time the AccessPolicy was updated in UTC.
         """
+        _AccessPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            name=name,
+            parent=parent,
+            scopes=scopes,
+            title=title,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             scopes: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent is not None:
-            pulumi.set(__self__, "parent", parent)
+            _setter("parent", parent)
         if scopes is not None:
-            pulumi.set(__self__, "scopes", scopes)
+            _setter("scopes", scopes)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -331,6 +363,10 @@ class AccessPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccessPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

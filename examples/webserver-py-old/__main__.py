@@ -45,7 +45,7 @@ compute_instance = compute.Instance(
     machine_type="f1-micro",
     zone=region_zone,
     boot_disk={
-        "initializeParams": {
+        "initialize_params": {
             "image": "debian-cloud/debian-11",
         },
     },

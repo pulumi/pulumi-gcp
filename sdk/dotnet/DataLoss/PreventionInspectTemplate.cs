@@ -268,28 +268,8 @@ namespace Pulumi.Gcp.DataLoss
         public Output<Outputs.PreventionInspectTemplateInspectConfig?> InspectConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        /// 
-        /// (Required)
-        /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        /// 
-        /// (Required)
-        /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        /// 
-        /// (Required)
-        /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        /// 
-        /// (Required)
         /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
         /// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        /// 
-        /// (Required)
-        /// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-        /// or `projects/project-id/storedInfoTypes/432452342`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -429,28 +409,8 @@ namespace Pulumi.Gcp.DataLoss
         public Input<Inputs.PreventionInspectTemplateInspectConfigGetArgs>? InspectConfig { get; set; }
 
         /// <summary>
-        /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        /// 
-        /// (Required)
-        /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        /// 
-        /// (Required)
-        /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        /// 
-        /// (Required)
-        /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        /// 
-        /// (Required)
         /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
         /// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        /// 
-        /// (Required)
-        /// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-        /// or `projects/project-id/storedInfoTypes/432452342`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

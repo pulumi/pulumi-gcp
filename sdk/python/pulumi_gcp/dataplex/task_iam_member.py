@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -47,16 +47,37 @@ class TaskIamMemberArgs:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        pulumi.set(__self__, "lake", lake)
-        pulumi.set(__self__, "member", member)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "task_id", task_id)
+        TaskIamMemberArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            lake=lake,
+            member=member,
+            role=role,
+            task_id=task_id,
+            condition=condition,
+            location=location,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             lake: pulumi.Input[str],
+             member: pulumi.Input[str],
+             role: pulumi.Input[str],
+             task_id: pulumi.Input[str],
+             condition: Optional[pulumi.Input['TaskIamMemberConditionArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("lake", lake)
+        _setter("member", member)
+        _setter("role", role)
+        _setter("task_id", task_id)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -187,22 +208,45 @@ class _TaskIamMemberState:
                `dataplex.TaskIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
+        _TaskIamMemberState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            etag=etag,
+            lake=lake,
+            location=location,
+            member=member,
+            project=project,
+            role=role,
+            task_id=task_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: Optional[pulumi.Input['TaskIamMemberConditionArgs']] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             lake: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             task_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if lake is not None:
-            pulumi.set(__self__, "lake", lake)
+            _setter("lake", lake)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if member is not None:
-            pulumi.set(__self__, "member", member)
+            _setter("member", member)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if task_id is not None:
-            pulumi.set(__self__, "task_id", task_id)
+            _setter("task_id", task_id)
 
     @property
     @pulumi.getter
@@ -536,6 +580,10 @@ class TaskIamMember(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TaskIamMemberArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -557,6 +605,11 @@ class TaskIamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TaskIamMemberArgs.__new__(TaskIamMemberArgs)
 
+            if condition is not None and not isinstance(condition, TaskIamMemberConditionArgs):
+                condition = condition or {}
+                def _setter(key, value):
+                    condition[key] = value
+                TaskIamMemberConditionArgs._configure(_setter, **condition)
             __props__.__dict__["condition"] = condition
             if lake is None and not opts.urn:
                 raise TypeError("Missing required property 'lake'")

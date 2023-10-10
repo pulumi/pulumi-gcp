@@ -205,9 +205,6 @@ public class GameServerConfig extends com.pulumi.resources.CustomResource {
      * The labels associated with this game server config. Each label is a
      * key-value pair.
      * 
-     * (Optional)
-     * Set of labels to group by.
-     * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
@@ -215,9 +212,6 @@ public class GameServerConfig extends com.pulumi.resources.CustomResource {
     /**
      * @return The labels associated with this game server config. Each label is a
      * key-value pair.
-     * 
-     * (Optional)
-     * Set of labels to group by.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -242,9 +236,6 @@ public class GameServerConfig extends com.pulumi.resources.CustomResource {
      * 
      * ***
      * 
-     * (Required)
-     * The name of the ScalingConfig
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -253,9 +244,6 @@ public class GameServerConfig extends com.pulumi.resources.CustomResource {
      * @return The name of the FleetConfig.
      * 
      * ***
-     * 
-     * (Required)
-     * The name of the ScalingConfig
      * 
      */
     public Output<String> name() {

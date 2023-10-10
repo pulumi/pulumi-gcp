@@ -58,7 +58,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         private InputList<Inputs.ServiceStatusTrafficGetArgs>? _traffics;
 
         /// <summary>
-        /// (Output)
         /// Traffic specifies how to distribute traffic over a collection of Knative Revisions
         /// and Configurations
         /// Structure is documented below.

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,15 +45,34 @@ class CertificateTemplateIamBindingArgs:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        pulumi.set(__self__, "certificate_template", certificate_template)
-        pulumi.set(__self__, "members", members)
-        pulumi.set(__self__, "role", role)
+        CertificateTemplateIamBindingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            certificate_template=certificate_template,
+            members=members,
+            role=role,
+            condition=condition,
+            location=location,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             certificate_template: pulumi.Input[str],
+             members: pulumi.Input[Sequence[pulumi.Input[str]]],
+             role: pulumi.Input[str],
+             condition: Optional[pulumi.Input['CertificateTemplateIamBindingConditionArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("certificate_template", certificate_template)
+        _setter("members", members)
+        _setter("role", role)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="certificateTemplate")
@@ -172,20 +191,41 @@ class _CertificateTemplateIamBindingState:
                `certificateauthority.CertificateTemplateIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
+        _CertificateTemplateIamBindingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            certificate_template=certificate_template,
+            condition=condition,
+            etag=etag,
+            location=location,
+            members=members,
+            project=project,
+            role=role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             certificate_template: Optional[pulumi.Input[str]] = None,
+             condition: Optional[pulumi.Input['CertificateTemplateIamBindingConditionArgs']] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if certificate_template is not None:
-            pulumi.set(__self__, "certificate_template", certificate_template)
+            _setter("certificate_template", certificate_template)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
 
     @property
     @pulumi.getter(name="certificateTemplate")
@@ -597,6 +637,10 @@ class CertificateTemplateIamBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CertificateTemplateIamBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -620,6 +664,11 @@ class CertificateTemplateIamBinding(pulumi.CustomResource):
             if certificate_template is None and not opts.urn:
                 raise TypeError("Missing required property 'certificate_template'")
             __props__.__dict__["certificate_template"] = certificate_template
+            if condition is not None and not isinstance(condition, CertificateTemplateIamBindingConditionArgs):
+                condition = condition or {}
+                def _setter(key, value):
+                    condition[key] = value
+                CertificateTemplateIamBindingConditionArgs._configure(_setter, **condition)
             __props__.__dict__["condition"] = condition
             __props__.__dict__["location"] = location
             if members is None and not opts.urn:

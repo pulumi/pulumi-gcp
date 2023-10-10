@@ -254,11 +254,6 @@ type Autoscaler struct {
 	AutoscalingPolicy AutoscalerAutoscalingPolicyOutput `pulumi:"autoscalingPolicy"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
-	// A description of a scaling schedule.
-	//
-	// ***
-	//
-	// (Optional)
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Name of the resource. The name must be 1-63 characters long and match
@@ -329,11 +324,6 @@ type autoscalerState struct {
 	AutoscalingPolicy *AutoscalerAutoscalingPolicy `pulumi:"autoscalingPolicy"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
-	// A description of a scaling schedule.
-	//
-	// ***
-	//
-	// (Optional)
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Name of the resource. The name must be 1-63 characters long and match
@@ -363,11 +353,6 @@ type AutoscalerState struct {
 	AutoscalingPolicy AutoscalerAutoscalingPolicyPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
-	// A description of a scaling schedule.
-	//
-	// ***
-	//
-	// (Optional)
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Name of the resource. The name must be 1-63 characters long and match
@@ -399,11 +384,6 @@ type autoscalerArgs struct {
 	// on cpuUtilization to 0.6 or 60%.
 	// Structure is documented below.
 	AutoscalingPolicy AutoscalerAutoscalingPolicy `pulumi:"autoscalingPolicy"`
-	// A description of a scaling schedule.
-	//
-	// ***
-	//
-	// (Optional)
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Name of the resource. The name must be 1-63 characters long and match
@@ -430,11 +410,6 @@ type AutoscalerArgs struct {
 	// on cpuUtilization to 0.6 or 60%.
 	// Structure is documented below.
 	AutoscalingPolicy AutoscalerAutoscalingPolicyInput
-	// A description of a scaling schedule.
-	//
-	// ***
-	//
-	// (Optional)
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Name of the resource. The name must be 1-63 characters long and match
@@ -578,11 +553,6 @@ func (o AutoscalerOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Autoscaler) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
-// A description of a scaling schedule.
-//
-// ***
-//
-// (Optional)
 // An optional description of this resource.
 func (o AutoscalerOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Autoscaler) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)

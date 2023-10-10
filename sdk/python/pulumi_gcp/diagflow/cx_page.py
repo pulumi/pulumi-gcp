@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -64,21 +64,44 @@ class CxPageArgs:
                TransitionRoutes defined in the transition route groups with only condition specified.
                Structure is documented below.
         """
-        pulumi.set(__self__, "display_name", display_name)
+        CxPageArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            entry_fulfillment=entry_fulfillment,
+            event_handlers=event_handlers,
+            form=form,
+            language_code=language_code,
+            parent=parent,
+            transition_route_groups=transition_route_groups,
+            transition_routes=transition_routes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: pulumi.Input[str],
+             entry_fulfillment: Optional[pulumi.Input['CxPageEntryFulfillmentArgs']] = None,
+             event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArgs']]]] = None,
+             form: Optional[pulumi.Input['CxPageFormArgs']] = None,
+             language_code: Optional[pulumi.Input[str]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("display_name", display_name)
         if entry_fulfillment is not None:
-            pulumi.set(__self__, "entry_fulfillment", entry_fulfillment)
+            _setter("entry_fulfillment", entry_fulfillment)
         if event_handlers is not None:
-            pulumi.set(__self__, "event_handlers", event_handlers)
+            _setter("event_handlers", event_handlers)
         if form is not None:
-            pulumi.set(__self__, "form", form)
+            _setter("form", form)
         if language_code is not None:
-            pulumi.set(__self__, "language_code", language_code)
+            _setter("language_code", language_code)
         if parent is not None:
-            pulumi.set(__self__, "parent", parent)
+            _setter("parent", parent)
         if transition_route_groups is not None:
-            pulumi.set(__self__, "transition_route_groups", transition_route_groups)
+            _setter("transition_route_groups", transition_route_groups)
         if transition_routes is not None:
-            pulumi.set(__self__, "transition_routes", transition_routes)
+            _setter("transition_routes", transition_routes)
 
     @property
     @pulumi.getter(name="displayName")
@@ -244,12 +267,6 @@ class _CxPageState:
                If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
         :param pulumi.Input[str] name: (Output)
                The unique identifier of this event handler.
-               
-               (Output)
-               The unique identifier of this transition route.
-               
-               (Output)
-               The unique identifier of this event handler.
         :param pulumi.Input[str] parent: The flow to create a page for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] transition_route_groups: Ordered list of TransitionRouteGroups associated with the page. Transition route groups must be unique within a page.
@@ -266,24 +283,49 @@ class _CxPageState:
                TransitionRoutes defined in the transition route groups with only condition specified.
                Structure is documented below.
         """
+        _CxPageState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            entry_fulfillment=entry_fulfillment,
+            event_handlers=event_handlers,
+            form=form,
+            language_code=language_code,
+            name=name,
+            parent=parent,
+            transition_route_groups=transition_route_groups,
+            transition_routes=transition_routes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: Optional[pulumi.Input[str]] = None,
+             entry_fulfillment: Optional[pulumi.Input['CxPageEntryFulfillmentArgs']] = None,
+             event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArgs']]]] = None,
+             form: Optional[pulumi.Input['CxPageFormArgs']] = None,
+             language_code: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if entry_fulfillment is not None:
-            pulumi.set(__self__, "entry_fulfillment", entry_fulfillment)
+            _setter("entry_fulfillment", entry_fulfillment)
         if event_handlers is not None:
-            pulumi.set(__self__, "event_handlers", event_handlers)
+            _setter("event_handlers", event_handlers)
         if form is not None:
-            pulumi.set(__self__, "form", form)
+            _setter("form", form)
         if language_code is not None:
-            pulumi.set(__self__, "language_code", language_code)
+            _setter("language_code", language_code)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent is not None:
-            pulumi.set(__self__, "parent", parent)
+            _setter("parent", parent)
         if transition_route_groups is not None:
-            pulumi.set(__self__, "transition_route_groups", transition_route_groups)
+            _setter("transition_route_groups", transition_route_groups)
         if transition_routes is not None:
-            pulumi.set(__self__, "transition_routes", transition_routes)
+            _setter("transition_routes", transition_routes)
 
     @property
     @pulumi.getter(name="displayName")
@@ -366,12 +408,6 @@ class _CxPageState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        (Output)
-        The unique identifier of this event handler.
-
-        (Output)
-        The unique identifier of this transition route.
-
         (Output)
         The unique identifier of this event handler.
         """
@@ -1650,6 +1686,10 @@ class CxPage(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CxPageArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1675,8 +1715,18 @@ class CxPage(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            if entry_fulfillment is not None and not isinstance(entry_fulfillment, CxPageEntryFulfillmentArgs):
+                entry_fulfillment = entry_fulfillment or {}
+                def _setter(key, value):
+                    entry_fulfillment[key] = value
+                CxPageEntryFulfillmentArgs._configure(_setter, **entry_fulfillment)
             __props__.__dict__["entry_fulfillment"] = entry_fulfillment
             __props__.__dict__["event_handlers"] = event_handlers
+            if form is not None and not isinstance(form, CxPageFormArgs):
+                form = form or {}
+                def _setter(key, value):
+                    form[key] = value
+                CxPageFormArgs._configure(_setter, **form)
             __props__.__dict__["form"] = form
             __props__.__dict__["language_code"] = language_code
             __props__.__dict__["parent"] = parent
@@ -1732,12 +1782,6 @@ class CxPage(pulumi.CustomResource):
                Page.transition_routes.trigger_fulfillment.conditional_cases
                If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
         :param pulumi.Input[str] name: (Output)
-               The unique identifier of this event handler.
-               
-               (Output)
-               The unique identifier of this transition route.
-               
-               (Output)
                The unique identifier of this event handler.
         :param pulumi.Input[str] parent: The flow to create a page for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
@@ -1831,12 +1875,6 @@ class CxPage(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        (Output)
-        The unique identifier of this event handler.
-
-        (Output)
-        The unique identifier of this transition route.
-
         (Output)
         The unique identifier of this event handler.
         """

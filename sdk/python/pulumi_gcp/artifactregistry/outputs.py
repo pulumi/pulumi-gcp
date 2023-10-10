@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -66,13 +66,28 @@ class RepositoryCleanupPolicy(dict):
         """
         :param str id: The identifier for this object. Format specified above.
         """
-        pulumi.set(__self__, "id", id)
+        RepositoryCleanupPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            action=action,
+            condition=condition,
+            most_recent_versions=most_recent_versions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             action: Optional[str] = None,
+             condition: Optional['outputs.RepositoryCleanupPolicyCondition'] = None,
+             most_recent_versions: Optional['outputs.RepositoryCleanupPolicyMostRecentVersions'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
         if action is not None:
-            pulumi.set(__self__, "action", action)
+            _setter("action", action)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if most_recent_versions is not None:
-            pulumi.set(__self__, "most_recent_versions", most_recent_versions)
+            _setter("most_recent_versions", most_recent_versions)
 
     @property
     @pulumi.getter
@@ -134,18 +149,37 @@ class RepositoryCleanupPolicyCondition(dict):
                  tag_prefixes: Optional[Sequence[str]] = None,
                  tag_state: Optional[str] = None,
                  version_name_prefixes: Optional[Sequence[str]] = None):
+        RepositoryCleanupPolicyCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            newer_than=newer_than,
+            older_than=older_than,
+            package_name_prefixes=package_name_prefixes,
+            tag_prefixes=tag_prefixes,
+            tag_state=tag_state,
+            version_name_prefixes=version_name_prefixes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             newer_than: Optional[str] = None,
+             older_than: Optional[str] = None,
+             package_name_prefixes: Optional[Sequence[str]] = None,
+             tag_prefixes: Optional[Sequence[str]] = None,
+             tag_state: Optional[str] = None,
+             version_name_prefixes: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if newer_than is not None:
-            pulumi.set(__self__, "newer_than", newer_than)
+            _setter("newer_than", newer_than)
         if older_than is not None:
-            pulumi.set(__self__, "older_than", older_than)
+            _setter("older_than", older_than)
         if package_name_prefixes is not None:
-            pulumi.set(__self__, "package_name_prefixes", package_name_prefixes)
+            _setter("package_name_prefixes", package_name_prefixes)
         if tag_prefixes is not None:
-            pulumi.set(__self__, "tag_prefixes", tag_prefixes)
+            _setter("tag_prefixes", tag_prefixes)
         if tag_state is not None:
-            pulumi.set(__self__, "tag_state", tag_state)
+            _setter("tag_state", tag_state)
         if version_name_prefixes is not None:
-            pulumi.set(__self__, "version_name_prefixes", version_name_prefixes)
+            _setter("version_name_prefixes", version_name_prefixes)
 
     @property
     @pulumi.getter(name="newerThan")
@@ -202,10 +236,21 @@ class RepositoryCleanupPolicyMostRecentVersions(dict):
     def __init__(__self__, *,
                  keep_count: Optional[int] = None,
                  package_name_prefixes: Optional[Sequence[str]] = None):
+        RepositoryCleanupPolicyMostRecentVersions._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            keep_count=keep_count,
+            package_name_prefixes=package_name_prefixes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             keep_count: Optional[int] = None,
+             package_name_prefixes: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if keep_count is not None:
-            pulumi.set(__self__, "keep_count", keep_count)
+            _setter("keep_count", keep_count)
         if package_name_prefixes is not None:
-            pulumi.set(__self__, "package_name_prefixes", package_name_prefixes)
+            _setter("package_name_prefixes", package_name_prefixes)
 
     @property
     @pulumi.getter(name="keepCount")
@@ -242,8 +287,17 @@ class RepositoryDockerConfig(dict):
         """
         :param bool immutable_tags: The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
         """
+        RepositoryDockerConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            immutable_tags=immutable_tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             immutable_tags: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if immutable_tags is not None:
-            pulumi.set(__self__, "immutable_tags", immutable_tags)
+            _setter("immutable_tags", immutable_tags)
 
     @property
     @pulumi.getter(name="immutableTags")
@@ -260,10 +314,23 @@ class RepositoryIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        RepositoryIamBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -287,10 +354,23 @@ class RepositoryIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        RepositoryIamMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -339,10 +419,21 @@ class RepositoryMavenConfig(dict):
                Default value is `VERSION_POLICY_UNSPECIFIED`.
                Possible values are: `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, `SNAPSHOT`.
         """
+        RepositoryMavenConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_snapshot_overwrites=allow_snapshot_overwrites,
+            version_policy=version_policy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_snapshot_overwrites: Optional[bool] = None,
+             version_policy: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if allow_snapshot_overwrites is not None:
-            pulumi.set(__self__, "allow_snapshot_overwrites", allow_snapshot_overwrites)
+            _setter("allow_snapshot_overwrites", allow_snapshot_overwrites)
         if version_policy is not None:
-            pulumi.set(__self__, "version_policy", version_policy)
+            _setter("version_policy", version_policy)
 
     @property
     @pulumi.getter(name="allowSnapshotOverwrites")
@@ -406,16 +497,33 @@ class RepositoryRemoteRepositoryConfig(dict):
         :param 'RepositoryRemoteRepositoryConfigPythonRepositoryArgs' python_repository: Specific settings for a Python remote repository.
                Structure is documented below.
         """
+        RepositoryRemoteRepositoryConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            docker_repository=docker_repository,
+            maven_repository=maven_repository,
+            npm_repository=npm_repository,
+            python_repository=python_repository,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[str] = None,
+             docker_repository: Optional['outputs.RepositoryRemoteRepositoryConfigDockerRepository'] = None,
+             maven_repository: Optional['outputs.RepositoryRemoteRepositoryConfigMavenRepository'] = None,
+             npm_repository: Optional['outputs.RepositoryRemoteRepositoryConfigNpmRepository'] = None,
+             python_repository: Optional['outputs.RepositoryRemoteRepositoryConfigPythonRepository'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if docker_repository is not None:
-            pulumi.set(__self__, "docker_repository", docker_repository)
+            _setter("docker_repository", docker_repository)
         if maven_repository is not None:
-            pulumi.set(__self__, "maven_repository", maven_repository)
+            _setter("maven_repository", maven_repository)
         if npm_repository is not None:
-            pulumi.set(__self__, "npm_repository", npm_repository)
+            _setter("npm_repository", npm_repository)
         if python_repository is not None:
-            pulumi.set(__self__, "python_repository", python_repository)
+            _setter("python_repository", python_repository)
 
     @property
     @pulumi.getter
@@ -488,8 +596,17 @@ class RepositoryRemoteRepositoryConfigDockerRepository(dict):
                Default value is `DOCKER_HUB`.
                Possible values are: `DOCKER_HUB`.
         """
+        RepositoryRemoteRepositoryConfigDockerRepository._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            public_repository=public_repository,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             public_repository: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if public_repository is not None:
-            pulumi.set(__self__, "public_repository", public_repository)
+            _setter("public_repository", public_repository)
 
     @property
     @pulumi.getter(name="publicRepository")
@@ -528,8 +645,17 @@ class RepositoryRemoteRepositoryConfigMavenRepository(dict):
                Default value is `MAVEN_CENTRAL`.
                Possible values are: `MAVEN_CENTRAL`.
         """
+        RepositoryRemoteRepositoryConfigMavenRepository._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            public_repository=public_repository,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             public_repository: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if public_repository is not None:
-            pulumi.set(__self__, "public_repository", public_repository)
+            _setter("public_repository", public_repository)
 
     @property
     @pulumi.getter(name="publicRepository")
@@ -568,8 +694,17 @@ class RepositoryRemoteRepositoryConfigNpmRepository(dict):
                Default value is `NPMJS`.
                Possible values are: `NPMJS`.
         """
+        RepositoryRemoteRepositoryConfigNpmRepository._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            public_repository=public_repository,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             public_repository: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if public_repository is not None:
-            pulumi.set(__self__, "public_repository", public_repository)
+            _setter("public_repository", public_repository)
 
     @property
     @pulumi.getter(name="publicRepository")
@@ -608,8 +743,17 @@ class RepositoryRemoteRepositoryConfigPythonRepository(dict):
                Default value is `PYPI`.
                Possible values are: `PYPI`.
         """
+        RepositoryRemoteRepositoryConfigPythonRepository._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            public_repository=public_repository,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             public_repository: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if public_repository is not None:
-            pulumi.set(__self__, "public_repository", public_repository)
+            _setter("public_repository", public_repository)
 
     @property
     @pulumi.getter(name="publicRepository")
@@ -648,8 +792,17 @@ class RepositoryVirtualRepositoryConfig(dict):
                Repository. Upstream policies cannot be set on a standard repository.
                Structure is documented below.
         """
+        RepositoryVirtualRepositoryConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            upstream_policies=upstream_policies,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             upstream_policies: Optional[Sequence['outputs.RepositoryVirtualRepositoryConfigUpstreamPolicy']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if upstream_policies is not None:
-            pulumi.set(__self__, "upstream_policies", upstream_policies)
+            _setter("upstream_policies", upstream_policies)
 
     @property
     @pulumi.getter(name="upstreamPolicies")
@@ -674,12 +827,25 @@ class RepositoryVirtualRepositoryConfigUpstreamPolicy(dict):
         :param str repository: A reference to the repository resource, for example:
                "projects/p1/locations/us-central1/repository/repo1".
         """
+        RepositoryVirtualRepositoryConfigUpstreamPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            priority=priority,
+            repository=repository,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             priority: Optional[int] = None,
+             repository: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if repository is not None:
-            pulumi.set(__self__, "repository", repository)
+            _setter("repository", repository)
 
     @property
     @pulumi.getter
@@ -714,10 +880,25 @@ class GetRepositoryCleanupPolicyResult(dict):
                  conditions: Sequence['outputs.GetRepositoryCleanupPolicyConditionResult'],
                  id: str,
                  most_recent_versions: Sequence['outputs.GetRepositoryCleanupPolicyMostRecentVersionResult']):
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "conditions", conditions)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "most_recent_versions", most_recent_versions)
+        GetRepositoryCleanupPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            conditions=conditions,
+            id=id,
+            most_recent_versions=most_recent_versions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: str,
+             conditions: Sequence['outputs.GetRepositoryCleanupPolicyConditionResult'],
+             id: str,
+             most_recent_versions: Sequence['outputs.GetRepositoryCleanupPolicyMostRecentVersionResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("action", action)
+        _setter("conditions", conditions)
+        _setter("id", id)
+        _setter("most_recent_versions", most_recent_versions)
 
     @property
     @pulumi.getter
@@ -749,12 +930,31 @@ class GetRepositoryCleanupPolicyConditionResult(dict):
                  tag_prefixes: Sequence[str],
                  tag_state: str,
                  version_name_prefixes: Sequence[str]):
-        pulumi.set(__self__, "newer_than", newer_than)
-        pulumi.set(__self__, "older_than", older_than)
-        pulumi.set(__self__, "package_name_prefixes", package_name_prefixes)
-        pulumi.set(__self__, "tag_prefixes", tag_prefixes)
-        pulumi.set(__self__, "tag_state", tag_state)
-        pulumi.set(__self__, "version_name_prefixes", version_name_prefixes)
+        GetRepositoryCleanupPolicyConditionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            newer_than=newer_than,
+            older_than=older_than,
+            package_name_prefixes=package_name_prefixes,
+            tag_prefixes=tag_prefixes,
+            tag_state=tag_state,
+            version_name_prefixes=version_name_prefixes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             newer_than: str,
+             older_than: str,
+             package_name_prefixes: Sequence[str],
+             tag_prefixes: Sequence[str],
+             tag_state: str,
+             version_name_prefixes: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("newer_than", newer_than)
+        _setter("older_than", older_than)
+        _setter("package_name_prefixes", package_name_prefixes)
+        _setter("tag_prefixes", tag_prefixes)
+        _setter("tag_state", tag_state)
+        _setter("version_name_prefixes", version_name_prefixes)
 
     @property
     @pulumi.getter(name="newerThan")
@@ -792,8 +992,19 @@ class GetRepositoryCleanupPolicyMostRecentVersionResult(dict):
     def __init__(__self__, *,
                  keep_count: int,
                  package_name_prefixes: Sequence[str]):
-        pulumi.set(__self__, "keep_count", keep_count)
-        pulumi.set(__self__, "package_name_prefixes", package_name_prefixes)
+        GetRepositoryCleanupPolicyMostRecentVersionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            keep_count=keep_count,
+            package_name_prefixes=package_name_prefixes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             keep_count: int,
+             package_name_prefixes: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("keep_count", keep_count)
+        _setter("package_name_prefixes", package_name_prefixes)
 
     @property
     @pulumi.getter(name="keepCount")
@@ -810,7 +1021,16 @@ class GetRepositoryCleanupPolicyMostRecentVersionResult(dict):
 class GetRepositoryDockerConfigResult(dict):
     def __init__(__self__, *,
                  immutable_tags: bool):
-        pulumi.set(__self__, "immutable_tags", immutable_tags)
+        GetRepositoryDockerConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            immutable_tags=immutable_tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             immutable_tags: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("immutable_tags", immutable_tags)
 
     @property
     @pulumi.getter(name="immutableTags")
@@ -823,8 +1043,19 @@ class GetRepositoryMavenConfigResult(dict):
     def __init__(__self__, *,
                  allow_snapshot_overwrites: bool,
                  version_policy: str):
-        pulumi.set(__self__, "allow_snapshot_overwrites", allow_snapshot_overwrites)
-        pulumi.set(__self__, "version_policy", version_policy)
+        GetRepositoryMavenConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_snapshot_overwrites=allow_snapshot_overwrites,
+            version_policy=version_policy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_snapshot_overwrites: bool,
+             version_policy: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("allow_snapshot_overwrites", allow_snapshot_overwrites)
+        _setter("version_policy", version_policy)
 
     @property
     @pulumi.getter(name="allowSnapshotOverwrites")
@@ -845,11 +1076,28 @@ class GetRepositoryRemoteRepositoryConfigResult(dict):
                  maven_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigMavenRepositoryResult'],
                  npm_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigNpmRepositoryResult'],
                  python_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigPythonRepositoryResult']):
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "docker_repositories", docker_repositories)
-        pulumi.set(__self__, "maven_repositories", maven_repositories)
-        pulumi.set(__self__, "npm_repositories", npm_repositories)
-        pulumi.set(__self__, "python_repositories", python_repositories)
+        GetRepositoryRemoteRepositoryConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            docker_repositories=docker_repositories,
+            maven_repositories=maven_repositories,
+            npm_repositories=npm_repositories,
+            python_repositories=python_repositories,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             docker_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigDockerRepositoryResult'],
+             maven_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigMavenRepositoryResult'],
+             npm_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigNpmRepositoryResult'],
+             python_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigPythonRepositoryResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("docker_repositories", docker_repositories)
+        _setter("maven_repositories", maven_repositories)
+        _setter("npm_repositories", npm_repositories)
+        _setter("python_repositories", python_repositories)
 
     @property
     @pulumi.getter
@@ -881,7 +1129,16 @@ class GetRepositoryRemoteRepositoryConfigResult(dict):
 class GetRepositoryRemoteRepositoryConfigDockerRepositoryResult(dict):
     def __init__(__self__, *,
                  public_repository: str):
-        pulumi.set(__self__, "public_repository", public_repository)
+        GetRepositoryRemoteRepositoryConfigDockerRepositoryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            public_repository=public_repository,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             public_repository: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("public_repository", public_repository)
 
     @property
     @pulumi.getter(name="publicRepository")
@@ -893,7 +1150,16 @@ class GetRepositoryRemoteRepositoryConfigDockerRepositoryResult(dict):
 class GetRepositoryRemoteRepositoryConfigMavenRepositoryResult(dict):
     def __init__(__self__, *,
                  public_repository: str):
-        pulumi.set(__self__, "public_repository", public_repository)
+        GetRepositoryRemoteRepositoryConfigMavenRepositoryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            public_repository=public_repository,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             public_repository: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("public_repository", public_repository)
 
     @property
     @pulumi.getter(name="publicRepository")
@@ -905,7 +1171,16 @@ class GetRepositoryRemoteRepositoryConfigMavenRepositoryResult(dict):
 class GetRepositoryRemoteRepositoryConfigNpmRepositoryResult(dict):
     def __init__(__self__, *,
                  public_repository: str):
-        pulumi.set(__self__, "public_repository", public_repository)
+        GetRepositoryRemoteRepositoryConfigNpmRepositoryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            public_repository=public_repository,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             public_repository: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("public_repository", public_repository)
 
     @property
     @pulumi.getter(name="publicRepository")
@@ -917,7 +1192,16 @@ class GetRepositoryRemoteRepositoryConfigNpmRepositoryResult(dict):
 class GetRepositoryRemoteRepositoryConfigPythonRepositoryResult(dict):
     def __init__(__self__, *,
                  public_repository: str):
-        pulumi.set(__self__, "public_repository", public_repository)
+        GetRepositoryRemoteRepositoryConfigPythonRepositoryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            public_repository=public_repository,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             public_repository: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("public_repository", public_repository)
 
     @property
     @pulumi.getter(name="publicRepository")
@@ -929,7 +1213,16 @@ class GetRepositoryRemoteRepositoryConfigPythonRepositoryResult(dict):
 class GetRepositoryVirtualRepositoryConfigResult(dict):
     def __init__(__self__, *,
                  upstream_policies: Sequence['outputs.GetRepositoryVirtualRepositoryConfigUpstreamPolicyResult']):
-        pulumi.set(__self__, "upstream_policies", upstream_policies)
+        GetRepositoryVirtualRepositoryConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            upstream_policies=upstream_policies,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             upstream_policies: Sequence['outputs.GetRepositoryVirtualRepositoryConfigUpstreamPolicyResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("upstream_policies", upstream_policies)
 
     @property
     @pulumi.getter(name="upstreamPolicies")
@@ -943,9 +1236,22 @@ class GetRepositoryVirtualRepositoryConfigUpstreamPolicyResult(dict):
                  id: str,
                  priority: int,
                  repository: str):
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "repository", repository)
+        GetRepositoryVirtualRepositoryConfigUpstreamPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            priority=priority,
+            repository=repository,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             priority: int,
+             repository: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("priority", priority)
+        _setter("repository", repository)
 
     @property
     @pulumi.getter

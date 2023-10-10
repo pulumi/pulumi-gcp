@@ -367,12 +367,14 @@ namespace Pulumi.Gcp.BigQuery
     {
         /// <summary>
         /// Copies a table.
+        /// Structure is documented below.
         /// </summary>
         [Output("copy")]
         public Output<Outputs.JobCopy?> Copy { get; private set; } = null!;
 
         /// <summary>
         /// Configures an extract job.
+        /// Structure is documented below.
         /// </summary>
         [Output("extract")]
         public Output<Outputs.JobExtract?> Extract { get; private set; } = null!;
@@ -404,6 +406,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// Configures a load job.
+        /// Structure is documented below.
         /// </summary>
         [Output("load")]
         public Output<Outputs.JobLoad?> Load { get; private set; } = null!;
@@ -422,7 +425,9 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Configures a query job.
+        /// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+        /// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+        /// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
         /// </summary>
         [Output("query")]
         public Output<Outputs.JobQuery?> Query { get; private set; } = null!;
@@ -488,12 +493,14 @@ namespace Pulumi.Gcp.BigQuery
     {
         /// <summary>
         /// Copies a table.
+        /// Structure is documented below.
         /// </summary>
         [Input("copy")]
         public Input<Inputs.JobCopyArgs>? Copy { get; set; }
 
         /// <summary>
         /// Configures an extract job.
+        /// Structure is documented below.
         /// </summary>
         [Input("extract")]
         public Input<Inputs.JobExtractArgs>? Extract { get; set; }
@@ -524,6 +531,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// Configures a load job.
+        /// Structure is documented below.
         /// </summary>
         [Input("load")]
         public Input<Inputs.JobLoadArgs>? Load { get; set; }
@@ -542,7 +550,9 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Configures a query job.
+        /// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+        /// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+        /// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
         /// </summary>
         [Input("query")]
         public Input<Inputs.JobQueryArgs>? Query { get; set; }
@@ -557,12 +567,14 @@ namespace Pulumi.Gcp.BigQuery
     {
         /// <summary>
         /// Copies a table.
+        /// Structure is documented below.
         /// </summary>
         [Input("copy")]
         public Input<Inputs.JobCopyGetArgs>? Copy { get; set; }
 
         /// <summary>
         /// Configures an extract job.
+        /// Structure is documented below.
         /// </summary>
         [Input("extract")]
         public Input<Inputs.JobExtractGetArgs>? Extract { get; set; }
@@ -600,6 +612,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// Configures a load job.
+        /// Structure is documented below.
         /// </summary>
         [Input("load")]
         public Input<Inputs.JobLoadGetArgs>? Load { get; set; }
@@ -618,7 +631,9 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Configures a query job.
+        /// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+        /// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+        /// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
         /// </summary>
         [Input("query")]
         public Input<Inputs.JobQueryGetArgs>? Query { get; set; }

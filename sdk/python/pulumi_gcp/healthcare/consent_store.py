@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ConsentStoreArgs', 'ConsentStore']
@@ -40,15 +40,32 @@ class ConsentStoreArgs:
         :param pulumi.Input[str] name: The name of this ConsentStore, for example:
                "consent1"
         """
-        pulumi.set(__self__, "dataset", dataset)
+        ConsentStoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dataset=dataset,
+            default_consent_ttl=default_consent_ttl,
+            enable_consent_create_on_update=enable_consent_create_on_update,
+            labels=labels,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dataset: pulumi.Input[str],
+             default_consent_ttl: Optional[pulumi.Input[str]] = None,
+             enable_consent_create_on_update: Optional[pulumi.Input[bool]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dataset", dataset)
         if default_consent_ttl is not None:
-            pulumi.set(__self__, "default_consent_ttl", default_consent_ttl)
+            _setter("default_consent_ttl", default_consent_ttl)
         if enable_consent_create_on_update is not None:
-            pulumi.set(__self__, "enable_consent_create_on_update", enable_consent_create_on_update)
+            _setter("enable_consent_create_on_update", enable_consent_create_on_update)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -153,16 +170,33 @@ class _ConsentStoreState:
         :param pulumi.Input[str] name: The name of this ConsentStore, for example:
                "consent1"
         """
+        _ConsentStoreState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dataset=dataset,
+            default_consent_ttl=default_consent_ttl,
+            enable_consent_create_on_update=enable_consent_create_on_update,
+            labels=labels,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dataset: Optional[pulumi.Input[str]] = None,
+             default_consent_ttl: Optional[pulumi.Input[str]] = None,
+             enable_consent_create_on_update: Optional[pulumi.Input[bool]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if dataset is not None:
-            pulumi.set(__self__, "dataset", dataset)
+            _setter("dataset", dataset)
         if default_consent_ttl is not None:
-            pulumi.set(__self__, "default_consent_ttl", default_consent_ttl)
+            _setter("default_consent_ttl", default_consent_ttl)
         if enable_consent_create_on_update is not None:
-            pulumi.set(__self__, "enable_consent_create_on_update", enable_consent_create_on_update)
+            _setter("enable_consent_create_on_update", enable_consent_create_on_update)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -406,6 +440,10 @@ class ConsentStore(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConsentStoreArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

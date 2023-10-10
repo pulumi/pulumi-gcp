@@ -522,15 +522,6 @@ namespace Pulumi.Gcp.EssentialContacts
 
         /// <summary>
         /// The name of the metadata property.
-        /// 
-        /// (Optional)
-        /// The schema name in the source.
-        /// 
-        /// (Required)
-        /// The name of the metadata property.
-        /// 
-        /// (Optional)
-        /// The schema name in the source.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -659,15 +650,6 @@ namespace Pulumi.Gcp.EssentialContacts
 
         /// <summary>
         /// The name of the metadata property.
-        /// 
-        /// (Optional)
-        /// The schema name in the source.
-        /// 
-        /// (Required)
-        /// The name of the metadata property.
-        /// 
-        /// (Optional)
-        /// The schema name in the source.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -121,42 +121,83 @@ class FirewallArgs:
                If no targetTags are specified, the firewall rule applies to all
                instances on the specified network.
         """
-        pulumi.set(__self__, "network", network)
+        FirewallArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network=network,
+            allows=allows,
+            denies=denies,
+            description=description,
+            destination_ranges=destination_ranges,
+            direction=direction,
+            disabled=disabled,
+            enable_logging=enable_logging,
+            log_config=log_config,
+            name=name,
+            priority=priority,
+            project=project,
+            source_ranges=source_ranges,
+            source_service_accounts=source_service_accounts,
+            source_tags=source_tags,
+            target_service_accounts=target_service_accounts,
+            target_tags=target_tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network: pulumi.Input[str],
+             allows: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallAllowArgs']]]] = None,
+             denies: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallDenyArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             destination_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             direction: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             enable_logging: Optional[pulumi.Input[bool]] = None,
+             log_config: Optional[pulumi.Input['FirewallLogConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             source_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             source_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             source_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             target_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("network", network)
         if allows is not None:
-            pulumi.set(__self__, "allows", allows)
+            _setter("allows", allows)
         if denies is not None:
-            pulumi.set(__self__, "denies", denies)
+            _setter("denies", denies)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if destination_ranges is not None:
-            pulumi.set(__self__, "destination_ranges", destination_ranges)
+            _setter("destination_ranges", destination_ranges)
         if direction is not None:
-            pulumi.set(__self__, "direction", direction)
+            _setter("direction", direction)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if enable_logging is not None:
             warnings.warn("""Deprecated in favor of log_config""", DeprecationWarning)
             pulumi.log.warn("""enable_logging is deprecated: Deprecated in favor of log_config""")
         if enable_logging is not None:
-            pulumi.set(__self__, "enable_logging", enable_logging)
+            _setter("enable_logging", enable_logging)
         if log_config is not None:
-            pulumi.set(__self__, "log_config", log_config)
+            _setter("log_config", log_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if source_ranges is not None:
-            pulumi.set(__self__, "source_ranges", source_ranges)
+            _setter("source_ranges", source_ranges)
         if source_service_accounts is not None:
-            pulumi.set(__self__, "source_service_accounts", source_service_accounts)
+            _setter("source_service_accounts", source_service_accounts)
         if source_tags is not None:
-            pulumi.set(__self__, "source_tags", source_tags)
+            _setter("source_tags", source_tags)
         if target_service_accounts is not None:
-            pulumi.set(__self__, "target_service_accounts", target_service_accounts)
+            _setter("target_service_accounts", target_service_accounts)
         if target_tags is not None:
-            pulumi.set(__self__, "target_tags", target_tags)
+            _setter("target_tags", target_tags)
 
     @property
     @pulumi.getter
@@ -546,47 +587,92 @@ class _FirewallState:
                If no targetTags are specified, the firewall rule applies to all
                instances on the specified network.
         """
+        _FirewallState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allows=allows,
+            creation_timestamp=creation_timestamp,
+            denies=denies,
+            description=description,
+            destination_ranges=destination_ranges,
+            direction=direction,
+            disabled=disabled,
+            enable_logging=enable_logging,
+            log_config=log_config,
+            name=name,
+            network=network,
+            priority=priority,
+            project=project,
+            self_link=self_link,
+            source_ranges=source_ranges,
+            source_service_accounts=source_service_accounts,
+            source_tags=source_tags,
+            target_service_accounts=target_service_accounts,
+            target_tags=target_tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allows: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallAllowArgs']]]] = None,
+             creation_timestamp: Optional[pulumi.Input[str]] = None,
+             denies: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallDenyArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             destination_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             direction: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             enable_logging: Optional[pulumi.Input[bool]] = None,
+             log_config: Optional[pulumi.Input['FirewallLogConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             source_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             source_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             source_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             target_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if allows is not None:
-            pulumi.set(__self__, "allows", allows)
+            _setter("allows", allows)
         if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+            _setter("creation_timestamp", creation_timestamp)
         if denies is not None:
-            pulumi.set(__self__, "denies", denies)
+            _setter("denies", denies)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if destination_ranges is not None:
-            pulumi.set(__self__, "destination_ranges", destination_ranges)
+            _setter("destination_ranges", destination_ranges)
         if direction is not None:
-            pulumi.set(__self__, "direction", direction)
+            _setter("direction", direction)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if enable_logging is not None:
             warnings.warn("""Deprecated in favor of log_config""", DeprecationWarning)
             pulumi.log.warn("""enable_logging is deprecated: Deprecated in favor of log_config""")
         if enable_logging is not None:
-            pulumi.set(__self__, "enable_logging", enable_logging)
+            _setter("enable_logging", enable_logging)
         if log_config is not None:
-            pulumi.set(__self__, "log_config", log_config)
+            _setter("log_config", log_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if source_ranges is not None:
-            pulumi.set(__self__, "source_ranges", source_ranges)
+            _setter("source_ranges", source_ranges)
         if source_service_accounts is not None:
-            pulumi.set(__self__, "source_service_accounts", source_service_accounts)
+            _setter("source_service_accounts", source_service_accounts)
         if source_tags is not None:
-            pulumi.set(__self__, "source_tags", source_tags)
+            _setter("source_tags", source_tags)
         if target_service_accounts is not None:
-            pulumi.set(__self__, "target_service_accounts", target_service_accounts)
+            _setter("target_service_accounts", target_service_accounts)
         if target_tags is not None:
-            pulumi.set(__self__, "target_tags", target_tags)
+            _setter("target_tags", target_tags)
 
     @property
     @pulumi.getter
@@ -1181,6 +1267,10 @@ class Firewall(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FirewallArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1218,10 +1308,12 @@ class Firewall(pulumi.CustomResource):
             __props__.__dict__["destination_ranges"] = destination_ranges
             __props__.__dict__["direction"] = direction
             __props__.__dict__["disabled"] = disabled
-            if enable_logging is not None and not opts.urn:
-                warnings.warn("""Deprecated in favor of log_config""", DeprecationWarning)
-                pulumi.log.warn("""enable_logging is deprecated: Deprecated in favor of log_config""")
             __props__.__dict__["enable_logging"] = enable_logging
+            if log_config is not None and not isinstance(log_config, FirewallLogConfigArgs):
+                log_config = log_config or {}
+                def _setter(key, value):
+                    log_config[key] = value
+                FirewallLogConfigArgs._configure(_setter, **log_config)
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["name"] = name
             if network is None and not opts.urn:

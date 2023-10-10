@@ -202,11 +202,6 @@ namespace Pulumi.Gcp.Beyondcorp
         /// The type of network connectivity used by the AppConnection. Refer to
         /// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
         /// for a list of possible values.
-        /// 
-        /// (Optional)
-        /// The type of hosting used by the gateway. Refer to
-        /// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
-        /// for a list of possible values.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -324,11 +319,6 @@ namespace Pulumi.Gcp.Beyondcorp
         /// The type of network connectivity used by the AppConnection. Refer to
         /// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
         /// for a list of possible values.
-        /// 
-        /// (Optional)
-        /// The type of hosting used by the gateway. Refer to
-        /// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
-        /// for a list of possible values.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -407,11 +397,6 @@ namespace Pulumi.Gcp.Beyondcorp
         /// <summary>
         /// The type of network connectivity used by the AppConnection. Refer to
         /// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
-        /// for a list of possible values.
-        /// 
-        /// (Optional)
-        /// The type of hosting used by the gateway. Refer to
-        /// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
         /// for a list of possible values.
         /// </summary>
         [Input("type")]

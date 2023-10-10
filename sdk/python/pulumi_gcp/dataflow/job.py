@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['JobArgs', 'Job']
@@ -62,44 +62,91 @@ class JobArgs:
         :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
         :param pulumi.Input[str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.
         """
-        pulumi.set(__self__, "temp_gcs_location", temp_gcs_location)
-        pulumi.set(__self__, "template_gcs_path", template_gcs_path)
+        JobArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            temp_gcs_location=temp_gcs_location,
+            template_gcs_path=template_gcs_path,
+            additional_experiments=additional_experiments,
+            enable_streaming_engine=enable_streaming_engine,
+            ip_configuration=ip_configuration,
+            kms_key_name=kms_key_name,
+            labels=labels,
+            machine_type=machine_type,
+            max_workers=max_workers,
+            name=name,
+            network=network,
+            on_delete=on_delete,
+            parameters=parameters,
+            project=project,
+            region=region,
+            service_account_email=service_account_email,
+            skip_wait_on_job_termination=skip_wait_on_job_termination,
+            subnetwork=subnetwork,
+            transform_name_mapping=transform_name_mapping,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             temp_gcs_location: pulumi.Input[str],
+             template_gcs_path: pulumi.Input[str],
+             additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             enable_streaming_engine: Optional[pulumi.Input[bool]] = None,
+             ip_configuration: Optional[pulumi.Input[str]] = None,
+             kms_key_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             machine_type: Optional[pulumi.Input[str]] = None,
+             max_workers: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             on_delete: Optional[pulumi.Input[str]] = None,
+             parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             service_account_email: Optional[pulumi.Input[str]] = None,
+             skip_wait_on_job_termination: Optional[pulumi.Input[bool]] = None,
+             subnetwork: Optional[pulumi.Input[str]] = None,
+             transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("temp_gcs_location", temp_gcs_location)
+        _setter("template_gcs_path", template_gcs_path)
         if additional_experiments is not None:
-            pulumi.set(__self__, "additional_experiments", additional_experiments)
+            _setter("additional_experiments", additional_experiments)
         if enable_streaming_engine is not None:
-            pulumi.set(__self__, "enable_streaming_engine", enable_streaming_engine)
+            _setter("enable_streaming_engine", enable_streaming_engine)
         if ip_configuration is not None:
-            pulumi.set(__self__, "ip_configuration", ip_configuration)
+            _setter("ip_configuration", ip_configuration)
         if kms_key_name is not None:
-            pulumi.set(__self__, "kms_key_name", kms_key_name)
+            _setter("kms_key_name", kms_key_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if machine_type is not None:
-            pulumi.set(__self__, "machine_type", machine_type)
+            _setter("machine_type", machine_type)
         if max_workers is not None:
-            pulumi.set(__self__, "max_workers", max_workers)
+            _setter("max_workers", max_workers)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if on_delete is not None:
-            pulumi.set(__self__, "on_delete", on_delete)
+            _setter("on_delete", on_delete)
         if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
+            _setter("parameters", parameters)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if service_account_email is not None:
-            pulumi.set(__self__, "service_account_email", service_account_email)
+            _setter("service_account_email", service_account_email)
         if skip_wait_on_job_termination is not None:
-            pulumi.set(__self__, "skip_wait_on_job_termination", skip_wait_on_job_termination)
+            _setter("skip_wait_on_job_termination", skip_wait_on_job_termination)
         if subnetwork is not None:
-            pulumi.set(__self__, "subnetwork", subnetwork)
+            _setter("subnetwork", subnetwork)
         if transform_name_mapping is not None:
-            pulumi.set(__self__, "transform_name_mapping", transform_name_mapping)
+            _setter("transform_name_mapping", transform_name_mapping)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter(name="tempGcsLocation")
@@ -404,52 +451,105 @@ class _JobState:
         :param pulumi.Input[str] type: The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
         :param pulumi.Input[str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.
         """
+        _JobState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            additional_experiments=additional_experiments,
+            enable_streaming_engine=enable_streaming_engine,
+            ip_configuration=ip_configuration,
+            job_id=job_id,
+            kms_key_name=kms_key_name,
+            labels=labels,
+            machine_type=machine_type,
+            max_workers=max_workers,
+            name=name,
+            network=network,
+            on_delete=on_delete,
+            parameters=parameters,
+            project=project,
+            region=region,
+            service_account_email=service_account_email,
+            skip_wait_on_job_termination=skip_wait_on_job_termination,
+            state=state,
+            subnetwork=subnetwork,
+            temp_gcs_location=temp_gcs_location,
+            template_gcs_path=template_gcs_path,
+            transform_name_mapping=transform_name_mapping,
+            type=type,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             enable_streaming_engine: Optional[pulumi.Input[bool]] = None,
+             ip_configuration: Optional[pulumi.Input[str]] = None,
+             job_id: Optional[pulumi.Input[str]] = None,
+             kms_key_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             machine_type: Optional[pulumi.Input[str]] = None,
+             max_workers: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             on_delete: Optional[pulumi.Input[str]] = None,
+             parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             service_account_email: Optional[pulumi.Input[str]] = None,
+             skip_wait_on_job_termination: Optional[pulumi.Input[bool]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             subnetwork: Optional[pulumi.Input[str]] = None,
+             temp_gcs_location: Optional[pulumi.Input[str]] = None,
+             template_gcs_path: Optional[pulumi.Input[str]] = None,
+             transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if additional_experiments is not None:
-            pulumi.set(__self__, "additional_experiments", additional_experiments)
+            _setter("additional_experiments", additional_experiments)
         if enable_streaming_engine is not None:
-            pulumi.set(__self__, "enable_streaming_engine", enable_streaming_engine)
+            _setter("enable_streaming_engine", enable_streaming_engine)
         if ip_configuration is not None:
-            pulumi.set(__self__, "ip_configuration", ip_configuration)
+            _setter("ip_configuration", ip_configuration)
         if job_id is not None:
-            pulumi.set(__self__, "job_id", job_id)
+            _setter("job_id", job_id)
         if kms_key_name is not None:
-            pulumi.set(__self__, "kms_key_name", kms_key_name)
+            _setter("kms_key_name", kms_key_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if machine_type is not None:
-            pulumi.set(__self__, "machine_type", machine_type)
+            _setter("machine_type", machine_type)
         if max_workers is not None:
-            pulumi.set(__self__, "max_workers", max_workers)
+            _setter("max_workers", max_workers)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if on_delete is not None:
-            pulumi.set(__self__, "on_delete", on_delete)
+            _setter("on_delete", on_delete)
         if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
+            _setter("parameters", parameters)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if service_account_email is not None:
-            pulumi.set(__self__, "service_account_email", service_account_email)
+            _setter("service_account_email", service_account_email)
         if skip_wait_on_job_termination is not None:
-            pulumi.set(__self__, "skip_wait_on_job_termination", skip_wait_on_job_termination)
+            _setter("skip_wait_on_job_termination", skip_wait_on_job_termination)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if subnetwork is not None:
-            pulumi.set(__self__, "subnetwork", subnetwork)
+            _setter("subnetwork", subnetwork)
         if temp_gcs_location is not None:
-            pulumi.set(__self__, "temp_gcs_location", temp_gcs_location)
+            _setter("temp_gcs_location", temp_gcs_location)
         if template_gcs_path is not None:
-            pulumi.set(__self__, "template_gcs_path", template_gcs_path)
+            _setter("template_gcs_path", template_gcs_path)
         if transform_name_mapping is not None:
-            pulumi.set(__self__, "transform_name_mapping", transform_name_mapping)
+            _setter("transform_name_mapping", transform_name_mapping)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter(name="additionalExperiments")
@@ -981,6 +1081,10 @@ class Job(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            JobArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

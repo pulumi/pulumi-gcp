@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -14,6 +14,7 @@ __all__ = [
     'GetUptimeCheckIPsResult',
     'AwaitableGetUptimeCheckIPsResult',
     'get_uptime_check_i_ps',
+    'get_uptime_check_i_ps_output',
 ]
 
 @pulumi.output_type
@@ -78,3 +79,22 @@ def get_uptime_check_i_ps(opts: Optional[pulumi.InvokeOptions] = None) -> Awaita
     return AwaitableGetUptimeCheckIPsResult(
         id=pulumi.get(__ret__, 'id'),
         uptime_check_ips=pulumi.get(__ret__, 'uptime_check_ips'))
+
+
+@_utilities.lift_output_func(get_uptime_check_i_ps)
+def get_uptime_check_i_ps_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUptimeCheckIPsResult]:
+    """
+    Returns the list of IP addresses that checkers run from. For more information see
+    the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    ips = gcp.monitoring.get_uptime_check_i_ps()
+    pulumi.export("ipList", ips.uptime_check_ips)
+    ```
+    """
+    ...

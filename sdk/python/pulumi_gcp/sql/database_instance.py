@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -79,33 +79,68 @@ class DatabaseInstanceArgs:
         :param pulumi.Input['DatabaseInstanceSettingsArgs'] settings: The settings to use for the database. The
                configuration is detailed below. Required if `clone` is not set.
         """
-        pulumi.set(__self__, "database_version", database_version)
+        DatabaseInstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            database_version=database_version,
+            clone=clone,
+            deletion_protection=deletion_protection,
+            encryption_key_name=encryption_key_name,
+            instance_type=instance_type,
+            maintenance_version=maintenance_version,
+            master_instance_name=master_instance_name,
+            name=name,
+            project=project,
+            region=region,
+            replica_configuration=replica_configuration,
+            restore_backup_context=restore_backup_context,
+            root_password=root_password,
+            settings=settings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             database_version: pulumi.Input[str],
+             clone: Optional[pulumi.Input['DatabaseInstanceCloneArgs']] = None,
+             deletion_protection: Optional[pulumi.Input[bool]] = None,
+             encryption_key_name: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             maintenance_version: Optional[pulumi.Input[str]] = None,
+             master_instance_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             replica_configuration: Optional[pulumi.Input['DatabaseInstanceReplicaConfigurationArgs']] = None,
+             restore_backup_context: Optional[pulumi.Input['DatabaseInstanceRestoreBackupContextArgs']] = None,
+             root_password: Optional[pulumi.Input[str]] = None,
+             settings: Optional[pulumi.Input['DatabaseInstanceSettingsArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("database_version", database_version)
         if clone is not None:
-            pulumi.set(__self__, "clone", clone)
+            _setter("clone", clone)
         if deletion_protection is not None:
-            pulumi.set(__self__, "deletion_protection", deletion_protection)
+            _setter("deletion_protection", deletion_protection)
         if encryption_key_name is not None:
-            pulumi.set(__self__, "encryption_key_name", encryption_key_name)
+            _setter("encryption_key_name", encryption_key_name)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if maintenance_version is not None:
-            pulumi.set(__self__, "maintenance_version", maintenance_version)
+            _setter("maintenance_version", maintenance_version)
         if master_instance_name is not None:
-            pulumi.set(__self__, "master_instance_name", master_instance_name)
+            _setter("master_instance_name", master_instance_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if replica_configuration is not None:
-            pulumi.set(__self__, "replica_configuration", replica_configuration)
+            _setter("replica_configuration", replica_configuration)
         if restore_backup_context is not None:
-            pulumi.set(__self__, "restore_backup_context", restore_backup_context)
+            _setter("restore_backup_context", restore_backup_context)
         if root_password is not None:
-            pulumi.set(__self__, "root_password", root_password)
+            _setter("root_password", root_password)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
 
     @property
     @pulumi.getter(name="databaseVersion")
@@ -396,56 +431,113 @@ class _DatabaseInstanceState:
         :param pulumi.Input['DatabaseInstanceSettingsArgs'] settings: The settings to use for the database. The
                configuration is detailed below. Required if `clone` is not set.
         """
+        _DatabaseInstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            available_maintenance_versions=available_maintenance_versions,
+            clone=clone,
+            connection_name=connection_name,
+            database_version=database_version,
+            deletion_protection=deletion_protection,
+            dns_name=dns_name,
+            encryption_key_name=encryption_key_name,
+            first_ip_address=first_ip_address,
+            instance_type=instance_type,
+            ip_addresses=ip_addresses,
+            maintenance_version=maintenance_version,
+            master_instance_name=master_instance_name,
+            name=name,
+            private_ip_address=private_ip_address,
+            project=project,
+            psc_service_attachment_link=psc_service_attachment_link,
+            public_ip_address=public_ip_address,
+            region=region,
+            replica_configuration=replica_configuration,
+            restore_backup_context=restore_backup_context,
+            root_password=root_password,
+            self_link=self_link,
+            server_ca_certs=server_ca_certs,
+            service_account_email_address=service_account_email_address,
+            settings=settings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             available_maintenance_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             clone: Optional[pulumi.Input['DatabaseInstanceCloneArgs']] = None,
+             connection_name: Optional[pulumi.Input[str]] = None,
+             database_version: Optional[pulumi.Input[str]] = None,
+             deletion_protection: Optional[pulumi.Input[bool]] = None,
+             dns_name: Optional[pulumi.Input[str]] = None,
+             encryption_key_name: Optional[pulumi.Input[str]] = None,
+             first_ip_address: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceIpAddressArgs']]]] = None,
+             maintenance_version: Optional[pulumi.Input[str]] = None,
+             master_instance_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             private_ip_address: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             psc_service_attachment_link: Optional[pulumi.Input[str]] = None,
+             public_ip_address: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             replica_configuration: Optional[pulumi.Input['DatabaseInstanceReplicaConfigurationArgs']] = None,
+             restore_backup_context: Optional[pulumi.Input['DatabaseInstanceRestoreBackupContextArgs']] = None,
+             root_password: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceServerCaCertArgs']]]] = None,
+             service_account_email_address: Optional[pulumi.Input[str]] = None,
+             settings: Optional[pulumi.Input['DatabaseInstanceSettingsArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if available_maintenance_versions is not None:
-            pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
+            _setter("available_maintenance_versions", available_maintenance_versions)
         if clone is not None:
-            pulumi.set(__self__, "clone", clone)
+            _setter("clone", clone)
         if connection_name is not None:
-            pulumi.set(__self__, "connection_name", connection_name)
+            _setter("connection_name", connection_name)
         if database_version is not None:
-            pulumi.set(__self__, "database_version", database_version)
+            _setter("database_version", database_version)
         if deletion_protection is not None:
-            pulumi.set(__self__, "deletion_protection", deletion_protection)
+            _setter("deletion_protection", deletion_protection)
         if dns_name is not None:
-            pulumi.set(__self__, "dns_name", dns_name)
+            _setter("dns_name", dns_name)
         if encryption_key_name is not None:
-            pulumi.set(__self__, "encryption_key_name", encryption_key_name)
+            _setter("encryption_key_name", encryption_key_name)
         if first_ip_address is not None:
-            pulumi.set(__self__, "first_ip_address", first_ip_address)
+            _setter("first_ip_address", first_ip_address)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if ip_addresses is not None:
-            pulumi.set(__self__, "ip_addresses", ip_addresses)
+            _setter("ip_addresses", ip_addresses)
         if maintenance_version is not None:
-            pulumi.set(__self__, "maintenance_version", maintenance_version)
+            _setter("maintenance_version", maintenance_version)
         if master_instance_name is not None:
-            pulumi.set(__self__, "master_instance_name", master_instance_name)
+            _setter("master_instance_name", master_instance_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if private_ip_address is not None:
-            pulumi.set(__self__, "private_ip_address", private_ip_address)
+            _setter("private_ip_address", private_ip_address)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if psc_service_attachment_link is not None:
-            pulumi.set(__self__, "psc_service_attachment_link", psc_service_attachment_link)
+            _setter("psc_service_attachment_link", psc_service_attachment_link)
         if public_ip_address is not None:
-            pulumi.set(__self__, "public_ip_address", public_ip_address)
+            _setter("public_ip_address", public_ip_address)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if replica_configuration is not None:
-            pulumi.set(__self__, "replica_configuration", replica_configuration)
+            _setter("replica_configuration", replica_configuration)
         if restore_backup_context is not None:
-            pulumi.set(__self__, "restore_backup_context", restore_backup_context)
+            _setter("restore_backup_context", restore_backup_context)
         if root_password is not None:
-            pulumi.set(__self__, "root_password", root_password)
+            _setter("root_password", root_password)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if server_ca_certs is not None:
-            pulumi.set(__self__, "server_ca_certs", server_ca_certs)
+            _setter("server_ca_certs", server_ca_certs)
         if service_account_email_address is not None:
-            pulumi.set(__self__, "service_account_email_address", service_account_email_address)
+            _setter("service_account_email_address", service_account_email_address)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
 
     @property
     @pulumi.getter(name="availableMaintenanceVersions")
@@ -1055,6 +1147,10 @@ class DatabaseInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DatabaseInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1083,6 +1179,11 @@ class DatabaseInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatabaseInstanceArgs.__new__(DatabaseInstanceArgs)
 
+            if clone is not None and not isinstance(clone, DatabaseInstanceCloneArgs):
+                clone = clone or {}
+                def _setter(key, value):
+                    clone[key] = value
+                DatabaseInstanceCloneArgs._configure(_setter, **clone)
             __props__.__dict__["clone"] = clone
             if database_version is None and not opts.urn:
                 raise TypeError("Missing required property 'database_version'")
@@ -1095,9 +1196,24 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
+            if replica_configuration is not None and not isinstance(replica_configuration, DatabaseInstanceReplicaConfigurationArgs):
+                replica_configuration = replica_configuration or {}
+                def _setter(key, value):
+                    replica_configuration[key] = value
+                DatabaseInstanceReplicaConfigurationArgs._configure(_setter, **replica_configuration)
             __props__.__dict__["replica_configuration"] = replica_configuration
+            if restore_backup_context is not None and not isinstance(restore_backup_context, DatabaseInstanceRestoreBackupContextArgs):
+                restore_backup_context = restore_backup_context or {}
+                def _setter(key, value):
+                    restore_backup_context[key] = value
+                DatabaseInstanceRestoreBackupContextArgs._configure(_setter, **restore_backup_context)
             __props__.__dict__["restore_backup_context"] = restore_backup_context
             __props__.__dict__["root_password"] = None if root_password is None else pulumi.Output.secret(root_password)
+            if settings is not None and not isinstance(settings, DatabaseInstanceSettingsArgs):
+                settings = settings or {}
+                def _setter(key, value):
+                    settings[key] = value
+                DatabaseInstanceSettingsArgs._configure(_setter, **settings)
             __props__.__dict__["settings"] = settings
             __props__.__dict__["available_maintenance_versions"] = None
             __props__.__dict__["connection_name"] = None

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -28,8 +28,19 @@ class AppConnectionApplicationEndpointArgs:
                
                - - -
         """
-        pulumi.set(__self__, "host", host)
-        pulumi.set(__self__, "port", port)
+        AppConnectionApplicationEndpointArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host=host,
+            port=port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host: pulumi.Input[str],
+             port: pulumi.Input[int],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("host", host)
+        _setter("port", port)
 
     @property
     @pulumi.getter
@@ -75,13 +86,28 @@ class AppConnectionGatewayArgs:
         :param pulumi.Input[str] uri: (Output)
                Server-defined URI for this resource.
         """
-        pulumi.set(__self__, "app_gateway", app_gateway)
+        AppConnectionGatewayArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_gateway=app_gateway,
+            ingress_port=ingress_port,
+            type=type,
+            uri=uri,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_gateway: pulumi.Input[str],
+             ingress_port: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             uri: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("app_gateway", app_gateway)
         if ingress_port is not None:
-            pulumi.set(__self__, "ingress_port", ingress_port)
+            _setter("ingress_port", ingress_port)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if uri is not None:
-            pulumi.set(__self__, "uri", uri)
+            _setter("uri", uri)
 
     @property
     @pulumi.getter(name="appGateway")
@@ -144,7 +170,16 @@ class AppConnectorPrincipalInfoArgs:
         :param pulumi.Input['AppConnectorPrincipalInfoServiceAccountArgs'] service_account: ServiceAccount represents a GCP service account.
                Structure is documented below.
         """
-        pulumi.set(__self__, "service_account", service_account)
+        AppConnectorPrincipalInfoArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service_account=service_account,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service_account: pulumi.Input['AppConnectorPrincipalInfoServiceAccountArgs'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("service_account", service_account)
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -169,7 +204,16 @@ class AppConnectorPrincipalInfoServiceAccountArgs:
                
                - - -
         """
-        pulumi.set(__self__, "email", email)
+        AppConnectorPrincipalInfoServiceAccountArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            email=email,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             email: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("email", email)
 
     @property
     @pulumi.getter
@@ -195,10 +239,21 @@ class AppGatewayAllocatedConnectionArgs:
         :param pulumi.Input[int] ingress_port: The ingress port of an allocated connection.
         :param pulumi.Input[str] psc_uri: The PSC uri of an allocated connection.
         """
+        AppGatewayAllocatedConnectionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ingress_port=ingress_port,
+            psc_uri=psc_uri,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ingress_port: Optional[pulumi.Input[int]] = None,
+             psc_uri: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ingress_port is not None:
-            pulumi.set(__self__, "ingress_port", ingress_port)
+            _setter("ingress_port", ingress_port)
         if psc_uri is not None:
-            pulumi.set(__self__, "psc_uri", psc_uri)
+            _setter("psc_uri", psc_uri)
 
     @property
     @pulumi.getter(name="ingressPort")

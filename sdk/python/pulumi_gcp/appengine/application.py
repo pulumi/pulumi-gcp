@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,19 +41,40 @@ class ApplicationArgs:
                you may get a "Permission denied" error.
         :param pulumi.Input[str] serving_status: The serving status of the app.
         """
-        pulumi.set(__self__, "location_id", location_id)
+        ApplicationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location_id=location_id,
+            auth_domain=auth_domain,
+            database_type=database_type,
+            feature_settings=feature_settings,
+            iap=iap,
+            project=project,
+            serving_status=serving_status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location_id: pulumi.Input[str],
+             auth_domain: Optional[pulumi.Input[str]] = None,
+             database_type: Optional[pulumi.Input[str]] = None,
+             feature_settings: Optional[pulumi.Input['ApplicationFeatureSettingsArgs']] = None,
+             iap: Optional[pulumi.Input['ApplicationIapArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             serving_status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("location_id", location_id)
         if auth_domain is not None:
-            pulumi.set(__self__, "auth_domain", auth_domain)
+            _setter("auth_domain", auth_domain)
         if database_type is not None:
-            pulumi.set(__self__, "database_type", database_type)
+            _setter("database_type", database_type)
         if feature_settings is not None:
-            pulumi.set(__self__, "feature_settings", feature_settings)
+            _setter("feature_settings", feature_settings)
         if iap is not None:
-            pulumi.set(__self__, "iap", iap)
+            _setter("iap", iap)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if serving_status is not None:
-            pulumi.set(__self__, "serving_status", serving_status)
+            _setter("serving_status", serving_status)
 
     @property
     @pulumi.getter(name="locationId")
@@ -190,34 +211,69 @@ class _ApplicationState:
         :param pulumi.Input[str] serving_status: The serving status of the app.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationUrlDispatchRuleArgs']]] url_dispatch_rules: A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
         """
+        _ApplicationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_id=app_id,
+            auth_domain=auth_domain,
+            code_bucket=code_bucket,
+            database_type=database_type,
+            default_bucket=default_bucket,
+            default_hostname=default_hostname,
+            feature_settings=feature_settings,
+            gcr_domain=gcr_domain,
+            iap=iap,
+            location_id=location_id,
+            name=name,
+            project=project,
+            serving_status=serving_status,
+            url_dispatch_rules=url_dispatch_rules,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_id: Optional[pulumi.Input[str]] = None,
+             auth_domain: Optional[pulumi.Input[str]] = None,
+             code_bucket: Optional[pulumi.Input[str]] = None,
+             database_type: Optional[pulumi.Input[str]] = None,
+             default_bucket: Optional[pulumi.Input[str]] = None,
+             default_hostname: Optional[pulumi.Input[str]] = None,
+             feature_settings: Optional[pulumi.Input['ApplicationFeatureSettingsArgs']] = None,
+             gcr_domain: Optional[pulumi.Input[str]] = None,
+             iap: Optional[pulumi.Input['ApplicationIapArgs']] = None,
+             location_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             serving_status: Optional[pulumi.Input[str]] = None,
+             url_dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationUrlDispatchRuleArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if app_id is not None:
-            pulumi.set(__self__, "app_id", app_id)
+            _setter("app_id", app_id)
         if auth_domain is not None:
-            pulumi.set(__self__, "auth_domain", auth_domain)
+            _setter("auth_domain", auth_domain)
         if code_bucket is not None:
-            pulumi.set(__self__, "code_bucket", code_bucket)
+            _setter("code_bucket", code_bucket)
         if database_type is not None:
-            pulumi.set(__self__, "database_type", database_type)
+            _setter("database_type", database_type)
         if default_bucket is not None:
-            pulumi.set(__self__, "default_bucket", default_bucket)
+            _setter("default_bucket", default_bucket)
         if default_hostname is not None:
-            pulumi.set(__self__, "default_hostname", default_hostname)
+            _setter("default_hostname", default_hostname)
         if feature_settings is not None:
-            pulumi.set(__self__, "feature_settings", feature_settings)
+            _setter("feature_settings", feature_settings)
         if gcr_domain is not None:
-            pulumi.set(__self__, "gcr_domain", gcr_domain)
+            _setter("gcr_domain", gcr_domain)
         if iap is not None:
-            pulumi.set(__self__, "iap", iap)
+            _setter("iap", iap)
         if location_id is not None:
-            pulumi.set(__self__, "location_id", location_id)
+            _setter("location_id", location_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if serving_status is not None:
-            pulumi.set(__self__, "serving_status", serving_status)
+            _setter("serving_status", serving_status)
         if url_dispatch_rules is not None:
-            pulumi.set(__self__, "url_dispatch_rules", url_dispatch_rules)
+            _setter("url_dispatch_rules", url_dispatch_rules)
 
     @property
     @pulumi.getter(name="appId")
@@ -509,6 +565,10 @@ class Application(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApplicationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -532,7 +592,17 @@ class Application(pulumi.CustomResource):
 
             __props__.__dict__["auth_domain"] = auth_domain
             __props__.__dict__["database_type"] = database_type
+            if feature_settings is not None and not isinstance(feature_settings, ApplicationFeatureSettingsArgs):
+                feature_settings = feature_settings or {}
+                def _setter(key, value):
+                    feature_settings[key] = value
+                ApplicationFeatureSettingsArgs._configure(_setter, **feature_settings)
             __props__.__dict__["feature_settings"] = feature_settings
+            if iap is not None and not isinstance(iap, ApplicationIapArgs):
+                iap = iap or {}
+                def _setter(key, value):
+                    iap[key] = value
+                ApplicationIapArgs._configure(_setter, **iap)
             __props__.__dict__["iap"] = iap
             if location_id is None and not opts.urn:
                 raise TypeError("Missing required property 'location_id'")

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -37,9 +37,20 @@ class GroupGroupKeyArgs:
                
                - - -
         """
-        pulumi.set(__self__, "id", id)
+        GroupGroupKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            namespace=namespace,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: pulumi.Input[str],
+             namespace: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
 
     @property
     @pulumi.getter
@@ -97,9 +108,20 @@ class GroupMembershipMemberKeyArgs:
                The namespace must correspond to an identity source created in Admin Console
                and must be in the form of `identitysources/{identity_source_id}`.
         """
-        pulumi.set(__self__, "id", id)
+        GroupMembershipMemberKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            namespace=namespace,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: pulumi.Input[str],
+             namespace: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
 
     @property
     @pulumi.getter
@@ -155,9 +177,20 @@ class GroupMembershipPreferredMemberKeyArgs:
                The namespace must correspond to an identity source created in Admin Console
                and must be in the form of `identitysources/{identity_source_id}`.
         """
-        pulumi.set(__self__, "id", id)
+        GroupMembershipPreferredMemberKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            namespace=namespace,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: pulumi.Input[str],
+             namespace: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
 
     @property
     @pulumi.getter
@@ -204,7 +237,16 @@ class GroupMembershipRoleArgs:
                
                - - -
         """
-        pulumi.set(__self__, "name", name)
+        GroupMembershipRoleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter

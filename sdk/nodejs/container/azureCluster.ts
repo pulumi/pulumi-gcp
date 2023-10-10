@@ -219,9 +219,6 @@ export class AzureCluster extends pulumi.CustomResource {
     public readonly networking!: pulumi.Output<outputs.container.AzureClusterNetworking>;
     /**
      * The number of the Fleet host project where this cluster will be registered.
-     *
-     * (Optional)
-     * The project for the resource
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -401,9 +398,6 @@ export interface AzureClusterState {
     networking?: pulumi.Input<inputs.container.AzureClusterNetworking>;
     /**
      * The number of the Fleet host project where this cluster will be registered.
-     *
-     * (Optional)
-     * The project for the resource
      */
     project?: pulumi.Input<string>;
     /**
@@ -486,9 +480,6 @@ export interface AzureClusterArgs {
     networking: pulumi.Input<inputs.container.AzureClusterNetworking>;
     /**
      * The number of the Fleet host project where this cluster will be registered.
-     *
-     * (Optional)
-     * The project for the resource
      */
     project?: pulumi.Input<string>;
     /**

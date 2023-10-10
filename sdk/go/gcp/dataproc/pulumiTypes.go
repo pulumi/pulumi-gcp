@@ -4477,12 +4477,6 @@ type ClusterClusterConfigMasterConfigAccelerator struct {
 	// if you are trying to use accelerators in a given zone.
 	//
 	// ***
-	//
-	// > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
-	// zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
-	// if you are trying to use accelerators in a given zone.
-	//
-	// ***
 	AcceleratorCount int `pulumi:"acceleratorCount"`
 	// The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
 	AcceleratorType string `pulumi:"acceleratorType"`
@@ -4501,12 +4495,6 @@ type ClusterClusterConfigMasterConfigAcceleratorInput interface {
 
 type ClusterClusterConfigMasterConfigAcceleratorArgs struct {
 	// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
-	//
-	// > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
-	// zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
-	// if you are trying to use accelerators in a given zone.
-	//
-	// ***
 	//
 	// > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
 	// zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
@@ -4594,12 +4582,6 @@ func (o ClusterClusterConfigMasterConfigAcceleratorOutput) ToOutput(ctx context.
 // if you are trying to use accelerators in a given zone.
 //
 // ***
-//
-// > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
-// zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
-// if you are trying to use accelerators in a given zone.
-//
-// ***
 func (o ClusterClusterConfigMasterConfigAcceleratorOutput) AcceleratorCount() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterClusterConfigMasterConfigAccelerator) int { return v.AcceleratorCount }).(pulumi.IntOutput)
 }
@@ -4641,30 +4623,12 @@ type ClusterClusterConfigMasterConfigDiskConfig struct {
 	// smallest allowed disk size is 10GB. GCP will default to a predetermined
 	// computed value if not set (currently 500GB). Note: If SSDs are not
 	// attached, it also contains the HDFS data blocks and Hadoop working directories.
-	//
-	// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-	// computed value if not set (currently 500GB). Note: If SSDs are not
-	// attached, it also contains the HDFS data blocks and Hadoop working directories.
-	//
-	// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-	// computed value if not set (currently 500GB). Note: If SSDs are not
-	// attached, it also contains the HDFS data blocks and Hadoop working directories.
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
 	// The disk type of the primary disk attached to each node.
-	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-	//
-	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-	//
 	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 	BootDiskType *string `pulumi:"bootDiskType"`
 	// The amount of local SSD disks that will be
 	// attached to each master cluster node. Defaults to 0.
-	//
-	// attached to each worker cluster node. Defaults to 0.
-	//
-	// attached to each preemptible worker node. Defaults to 0.
-	//
-	// ***
 	NumLocalSsds *int `pulumi:"numLocalSsds"`
 }
 
@@ -4685,30 +4649,12 @@ type ClusterClusterConfigMasterConfigDiskConfigArgs struct {
 	// smallest allowed disk size is 10GB. GCP will default to a predetermined
 	// computed value if not set (currently 500GB). Note: If SSDs are not
 	// attached, it also contains the HDFS data blocks and Hadoop working directories.
-	//
-	// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-	// computed value if not set (currently 500GB). Note: If SSDs are not
-	// attached, it also contains the HDFS data blocks and Hadoop working directories.
-	//
-	// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-	// computed value if not set (currently 500GB). Note: If SSDs are not
-	// attached, it also contains the HDFS data blocks and Hadoop working directories.
 	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
 	// The disk type of the primary disk attached to each node.
-	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-	//
-	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-	//
 	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
 	// The amount of local SSD disks that will be
 	// attached to each master cluster node. Defaults to 0.
-	//
-	// attached to each worker cluster node. Defaults to 0.
-	//
-	// attached to each preemptible worker node. Defaults to 0.
-	//
-	// ***
 	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
 }
 
@@ -4812,23 +4758,11 @@ func (o ClusterClusterConfigMasterConfigDiskConfigOutput) ToOutput(ctx context.C
 // smallest allowed disk size is 10GB. GCP will default to a predetermined
 // computed value if not set (currently 500GB). Note: If SSDs are not
 // attached, it also contains the HDFS data blocks and Hadoop working directories.
-//
-// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-// computed value if not set (currently 500GB). Note: If SSDs are not
-// attached, it also contains the HDFS data blocks and Hadoop working directories.
-//
-// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-// computed value if not set (currently 500GB). Note: If SSDs are not
-// attached, it also contains the HDFS data blocks and Hadoop working directories.
 func (o ClusterClusterConfigMasterConfigDiskConfigOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigMasterConfigDiskConfig) *int { return v.BootDiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
 // The disk type of the primary disk attached to each node.
-// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-//
-// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-//
 // One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 func (o ClusterClusterConfigMasterConfigDiskConfigOutput) BootDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigMasterConfigDiskConfig) *string { return v.BootDiskType }).(pulumi.StringPtrOutput)
@@ -4836,12 +4770,6 @@ func (o ClusterClusterConfigMasterConfigDiskConfigOutput) BootDiskType() pulumi.
 
 // The amount of local SSD disks that will be
 // attached to each master cluster node. Defaults to 0.
-//
-// attached to each worker cluster node. Defaults to 0.
-//
-// attached to each preemptible worker node. Defaults to 0.
-//
-// ***
 func (o ClusterClusterConfigMasterConfigDiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigMasterConfigDiskConfig) *int { return v.NumLocalSsds }).(pulumi.IntPtrOutput)
 }
@@ -4881,14 +4809,6 @@ func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) Elem() ClusterClust
 // smallest allowed disk size is 10GB. GCP will default to a predetermined
 // computed value if not set (currently 500GB). Note: If SSDs are not
 // attached, it also contains the HDFS data blocks and Hadoop working directories.
-//
-// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-// computed value if not set (currently 500GB). Note: If SSDs are not
-// attached, it also contains the HDFS data blocks and Hadoop working directories.
-//
-// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-// computed value if not set (currently 500GB). Note: If SSDs are not
-// attached, it also contains the HDFS data blocks and Hadoop working directories.
 func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigMasterConfigDiskConfig) *int {
 		if v == nil {
@@ -4899,10 +4819,6 @@ func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) BootDiskSizeGb() pu
 }
 
 // The disk type of the primary disk attached to each node.
-// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-//
-// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-//
 // One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) BootDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigMasterConfigDiskConfig) *string {
@@ -4915,12 +4831,6 @@ func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) BootDiskType() pulu
 
 // The amount of local SSD disks that will be
 // attached to each master cluster node. Defaults to 0.
-//
-// attached to each worker cluster node. Defaults to 0.
-//
-// attached to each preemptible worker node. Defaults to 0.
-//
-// ***
 func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigMasterConfigDiskConfig) *int {
 		if v == nil {
@@ -5349,30 +5259,12 @@ type ClusterClusterConfigPreemptibleWorkerConfigDiskConfig struct {
 	// smallest allowed disk size is 10GB. GCP will default to a predetermined
 	// computed value if not set (currently 500GB). Note: If SSDs are not
 	// attached, it also contains the HDFS data blocks and Hadoop working directories.
-	//
-	// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-	// computed value if not set (currently 500GB). Note: If SSDs are not
-	// attached, it also contains the HDFS data blocks and Hadoop working directories.
-	//
-	// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-	// computed value if not set (currently 500GB). Note: If SSDs are not
-	// attached, it also contains the HDFS data blocks and Hadoop working directories.
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
 	// The disk type of the primary disk attached to each node.
-	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-	//
-	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-	//
 	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 	BootDiskType *string `pulumi:"bootDiskType"`
 	// The amount of local SSD disks that will be
 	// attached to each master cluster node. Defaults to 0.
-	//
-	// attached to each worker cluster node. Defaults to 0.
-	//
-	// attached to each preemptible worker node. Defaults to 0.
-	//
-	// ***
 	NumLocalSsds *int `pulumi:"numLocalSsds"`
 }
 
@@ -5393,30 +5285,12 @@ type ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs struct {
 	// smallest allowed disk size is 10GB. GCP will default to a predetermined
 	// computed value if not set (currently 500GB). Note: If SSDs are not
 	// attached, it also contains the HDFS data blocks and Hadoop working directories.
-	//
-	// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-	// computed value if not set (currently 500GB). Note: If SSDs are not
-	// attached, it also contains the HDFS data blocks and Hadoop working directories.
-	//
-	// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-	// computed value if not set (currently 500GB). Note: If SSDs are not
-	// attached, it also contains the HDFS data blocks and Hadoop working directories.
 	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
 	// The disk type of the primary disk attached to each node.
-	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-	//
-	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-	//
 	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
 	// The amount of local SSD disks that will be
 	// attached to each master cluster node. Defaults to 0.
-	//
-	// attached to each worker cluster node. Defaults to 0.
-	//
-	// attached to each preemptible worker node. Defaults to 0.
-	//
-	// ***
 	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
 }
 
@@ -5520,23 +5394,11 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput) ToOutput(ct
 // smallest allowed disk size is 10GB. GCP will default to a predetermined
 // computed value if not set (currently 500GB). Note: If SSDs are not
 // attached, it also contains the HDFS data blocks and Hadoop working directories.
-//
-// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-// computed value if not set (currently 500GB). Note: If SSDs are not
-// attached, it also contains the HDFS data blocks and Hadoop working directories.
-//
-// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-// computed value if not set (currently 500GB). Note: If SSDs are not
-// attached, it also contains the HDFS data blocks and Hadoop working directories.
 func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigDiskConfig) *int { return v.BootDiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
 // The disk type of the primary disk attached to each node.
-// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-//
-// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-//
 // One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput) BootDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigDiskConfig) *string { return v.BootDiskType }).(pulumi.StringPtrOutput)
@@ -5544,12 +5406,6 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput) BootDiskTyp
 
 // The amount of local SSD disks that will be
 // attached to each master cluster node. Defaults to 0.
-//
-// attached to each worker cluster node. Defaults to 0.
-//
-// attached to each preemptible worker node. Defaults to 0.
-//
-// ***
 func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigDiskConfig) *int { return v.NumLocalSsds }).(pulumi.IntPtrOutput)
 }
@@ -5589,14 +5445,6 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput) Elem() C
 // smallest allowed disk size is 10GB. GCP will default to a predetermined
 // computed value if not set (currently 500GB). Note: If SSDs are not
 // attached, it also contains the HDFS data blocks and Hadoop working directories.
-//
-// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-// computed value if not set (currently 500GB). Note: If SSDs are not
-// attached, it also contains the HDFS data blocks and Hadoop working directories.
-//
-// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-// computed value if not set (currently 500GB). Note: If SSDs are not
-// attached, it also contains the HDFS data blocks and Hadoop working directories.
 func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigPreemptibleWorkerConfigDiskConfig) *int {
 		if v == nil {
@@ -5607,10 +5455,6 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput) BootDisk
 }
 
 // The disk type of the primary disk attached to each node.
-// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-//
-// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-//
 // One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput) BootDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigPreemptibleWorkerConfigDiskConfig) *string {
@@ -5623,12 +5467,6 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput) BootDisk
 
 // The amount of local SSD disks that will be
 // attached to each master cluster node. Defaults to 0.
-//
-// attached to each worker cluster node. Defaults to 0.
-//
-// attached to each preemptible worker node. Defaults to 0.
-//
-// ***
 func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigPreemptibleWorkerConfigDiskConfig) *int {
 		if v == nil {
@@ -6891,12 +6729,6 @@ type ClusterClusterConfigWorkerConfigAccelerator struct {
 	// if you are trying to use accelerators in a given zone.
 	//
 	// ***
-	//
-	// > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
-	// zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
-	// if you are trying to use accelerators in a given zone.
-	//
-	// ***
 	AcceleratorCount int `pulumi:"acceleratorCount"`
 	// The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
 	AcceleratorType string `pulumi:"acceleratorType"`
@@ -6915,12 +6747,6 @@ type ClusterClusterConfigWorkerConfigAcceleratorInput interface {
 
 type ClusterClusterConfigWorkerConfigAcceleratorArgs struct {
 	// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
-	//
-	// > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
-	// zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
-	// if you are trying to use accelerators in a given zone.
-	//
-	// ***
 	//
 	// > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
 	// zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
@@ -7008,12 +6834,6 @@ func (o ClusterClusterConfigWorkerConfigAcceleratorOutput) ToOutput(ctx context.
 // if you are trying to use accelerators in a given zone.
 //
 // ***
-//
-// > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
-// zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
-// if you are trying to use accelerators in a given zone.
-//
-// ***
 func (o ClusterClusterConfigWorkerConfigAcceleratorOutput) AcceleratorCount() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigAccelerator) int { return v.AcceleratorCount }).(pulumi.IntOutput)
 }
@@ -7055,30 +6875,12 @@ type ClusterClusterConfigWorkerConfigDiskConfig struct {
 	// smallest allowed disk size is 10GB. GCP will default to a predetermined
 	// computed value if not set (currently 500GB). Note: If SSDs are not
 	// attached, it also contains the HDFS data blocks and Hadoop working directories.
-	//
-	// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-	// computed value if not set (currently 500GB). Note: If SSDs are not
-	// attached, it also contains the HDFS data blocks and Hadoop working directories.
-	//
-	// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-	// computed value if not set (currently 500GB). Note: If SSDs are not
-	// attached, it also contains the HDFS data blocks and Hadoop working directories.
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
 	// The disk type of the primary disk attached to each node.
-	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-	//
-	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-	//
 	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 	BootDiskType *string `pulumi:"bootDiskType"`
 	// The amount of local SSD disks that will be
 	// attached to each master cluster node. Defaults to 0.
-	//
-	// attached to each worker cluster node. Defaults to 0.
-	//
-	// attached to each preemptible worker node. Defaults to 0.
-	//
-	// ***
 	NumLocalSsds *int `pulumi:"numLocalSsds"`
 }
 
@@ -7099,30 +6901,12 @@ type ClusterClusterConfigWorkerConfigDiskConfigArgs struct {
 	// smallest allowed disk size is 10GB. GCP will default to a predetermined
 	// computed value if not set (currently 500GB). Note: If SSDs are not
 	// attached, it also contains the HDFS data blocks and Hadoop working directories.
-	//
-	// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-	// computed value if not set (currently 500GB). Note: If SSDs are not
-	// attached, it also contains the HDFS data blocks and Hadoop working directories.
-	//
-	// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-	// computed value if not set (currently 500GB). Note: If SSDs are not
-	// attached, it also contains the HDFS data blocks and Hadoop working directories.
 	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
 	// The disk type of the primary disk attached to each node.
-	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-	//
-	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-	//
 	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
 	// The amount of local SSD disks that will be
 	// attached to each master cluster node. Defaults to 0.
-	//
-	// attached to each worker cluster node. Defaults to 0.
-	//
-	// attached to each preemptible worker node. Defaults to 0.
-	//
-	// ***
 	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
 }
 
@@ -7226,23 +7010,11 @@ func (o ClusterClusterConfigWorkerConfigDiskConfigOutput) ToOutput(ctx context.C
 // smallest allowed disk size is 10GB. GCP will default to a predetermined
 // computed value if not set (currently 500GB). Note: If SSDs are not
 // attached, it also contains the HDFS data blocks and Hadoop working directories.
-//
-// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-// computed value if not set (currently 500GB). Note: If SSDs are not
-// attached, it also contains the HDFS data blocks and Hadoop working directories.
-//
-// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-// computed value if not set (currently 500GB). Note: If SSDs are not
-// attached, it also contains the HDFS data blocks and Hadoop working directories.
 func (o ClusterClusterConfigWorkerConfigDiskConfigOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigDiskConfig) *int { return v.BootDiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
 // The disk type of the primary disk attached to each node.
-// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-//
-// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-//
 // One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 func (o ClusterClusterConfigWorkerConfigDiskConfigOutput) BootDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigDiskConfig) *string { return v.BootDiskType }).(pulumi.StringPtrOutput)
@@ -7250,12 +7022,6 @@ func (o ClusterClusterConfigWorkerConfigDiskConfigOutput) BootDiskType() pulumi.
 
 // The amount of local SSD disks that will be
 // attached to each master cluster node. Defaults to 0.
-//
-// attached to each worker cluster node. Defaults to 0.
-//
-// attached to each preemptible worker node. Defaults to 0.
-//
-// ***
 func (o ClusterClusterConfigWorkerConfigDiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigDiskConfig) *int { return v.NumLocalSsds }).(pulumi.IntPtrOutput)
 }
@@ -7295,14 +7061,6 @@ func (o ClusterClusterConfigWorkerConfigDiskConfigPtrOutput) Elem() ClusterClust
 // smallest allowed disk size is 10GB. GCP will default to a predetermined
 // computed value if not set (currently 500GB). Note: If SSDs are not
 // attached, it also contains the HDFS data blocks and Hadoop working directories.
-//
-// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-// computed value if not set (currently 500GB). Note: If SSDs are not
-// attached, it also contains the HDFS data blocks and Hadoop working directories.
-//
-// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-// computed value if not set (currently 500GB). Note: If SSDs are not
-// attached, it also contains the HDFS data blocks and Hadoop working directories.
 func (o ClusterClusterConfigWorkerConfigDiskConfigPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigWorkerConfigDiskConfig) *int {
 		if v == nil {
@@ -7313,10 +7071,6 @@ func (o ClusterClusterConfigWorkerConfigDiskConfigPtrOutput) BootDiskSizeGb() pu
 }
 
 // The disk type of the primary disk attached to each node.
-// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-//
-// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-//
 // One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 func (o ClusterClusterConfigWorkerConfigDiskConfigPtrOutput) BootDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigWorkerConfigDiskConfig) *string {
@@ -7329,12 +7083,6 @@ func (o ClusterClusterConfigWorkerConfigDiskConfigPtrOutput) BootDiskType() pulu
 
 // The amount of local SSD disks that will be
 // attached to each master cluster node. Defaults to 0.
-//
-// attached to each worker cluster node. Defaults to 0.
-//
-// attached to each preemptible worker node. Defaults to 0.
-//
-// ***
 func (o ClusterClusterConfigWorkerConfigDiskConfigPtrOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigWorkerConfigDiskConfig) *int {
 		if v == nil {
@@ -9461,24 +9209,10 @@ type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolT
 	// which is limited by the maximum number of disks allowable per zone.
 	LocalSsdCount *int `pulumi:"localSsdCount"`
 	// The name of a Compute Engine machine type.
-	//
-	// to create for the master. If not specified, GCP will default to a predetermined
-	// computed value (currently `n1-standard-4`).
-	//
-	// to create for the worker nodes. If not specified, GCP will default to a predetermined
-	// computed value (currently `n1-standard-4`).
 	MachineType *string `pulumi:"machineType"`
 	// Minimum CPU platform to be used by this instance.
 	// The instance may be scheduled on the specified or a newer CPU platform.
 	// Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
-	//
-	// for the master. If not specified, GCP will default to a predetermined computed value
-	// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-	// for details about which CPU families are available (and defaulted) for each zone.
-	//
-	// for the master. If not specified, GCP will default to a predetermined computed value
-	// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-	// for details about which CPU families are available (and defaulted) for each zone.
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// Whether the nodes are created as preemptible VM instances.
 	// Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
@@ -9504,24 +9238,10 @@ type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolT
 	// which is limited by the maximum number of disks allowable per zone.
 	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
 	// The name of a Compute Engine machine type.
-	//
-	// to create for the master. If not specified, GCP will default to a predetermined
-	// computed value (currently `n1-standard-4`).
-	//
-	// to create for the worker nodes. If not specified, GCP will default to a predetermined
-	// computed value (currently `n1-standard-4`).
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// Minimum CPU platform to be used by this instance.
 	// The instance may be scheduled on the specified or a newer CPU platform.
 	// Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
-	//
-	// for the master. If not specified, GCP will default to a predetermined computed value
-	// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-	// for details about which CPU families are available (and defaulted) for each zone.
-	//
-	// for the master. If not specified, GCP will default to a predetermined computed value
-	// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-	// for details about which CPU families are available (and defaulted) for each zone.
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
 	// Whether the nodes are created as preemptible VM instances.
 	// Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
@@ -9635,12 +9355,6 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 }
 
 // The name of a Compute Engine machine type.
-//
-// to create for the master. If not specified, GCP will default to a predetermined
-// computed value (currently `n1-standard-4`).
-//
-// to create for the worker nodes. If not specified, GCP will default to a predetermined
-// computed value (currently `n1-standard-4`).
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) *string {
 		return v.MachineType
@@ -9650,14 +9364,6 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 // Minimum CPU platform to be used by this instance.
 // The instance may be scheduled on the specified or a newer CPU platform.
 // Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
-//
-// for the master. If not specified, GCP will default to a predetermined computed value
-// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-// for details about which CPU families are available (and defaulted) for each zone.
-//
-// for the master. If not specified, GCP will default to a predetermined computed value
-// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-// for details about which CPU families are available (and defaulted) for each zone.
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) *string {
 		return v.MinCpuPlatform
@@ -9722,12 +9428,6 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 }
 
 // The name of a Compute Engine machine type.
-//
-// to create for the master. If not specified, GCP will default to a predetermined
-// computed value (currently `n1-standard-4`).
-//
-// to create for the worker nodes. If not specified, GCP will default to a predetermined
-// computed value (currently `n1-standard-4`).
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) *string {
 		if v == nil {
@@ -9740,14 +9440,6 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 // Minimum CPU platform to be used by this instance.
 // The instance may be scheduled on the specified or a newer CPU platform.
 // Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
-//
-// for the master. If not specified, GCP will default to a predetermined computed value
-// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-// for details about which CPU families are available (and defaulted) for each zone.
-//
-// for the master. If not specified, GCP will default to a predetermined computed value
-// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-// for details about which CPU families are available (and defaulted) for each zone.
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) *string {
 		if v == nil {

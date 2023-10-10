@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EnvKeystoreArgs', 'EnvKeystore']
@@ -25,9 +25,20 @@ class EnvKeystoreArgs:
                - - -
         :param pulumi.Input[str] name: The name of the newly created keystore.
         """
-        pulumi.set(__self__, "env_id", env_id)
+        EnvKeystoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            env_id=env_id,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             env_id: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("env_id", env_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="envId")
@@ -74,12 +85,25 @@ class _EnvKeystoreState:
                - - -
         :param pulumi.Input[str] name: The name of the newly created keystore.
         """
+        _EnvKeystoreState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            aliases=aliases,
+            env_id=env_id,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             env_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if aliases is not None:
-            pulumi.set(__self__, "aliases", aliases)
+            _setter("aliases", aliases)
         if env_id is not None:
-            pulumi.set(__self__, "env_id", env_id)
+            _setter("env_id", env_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -197,6 +221,10 @@ class EnvKeystore(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EnvKeystoreArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

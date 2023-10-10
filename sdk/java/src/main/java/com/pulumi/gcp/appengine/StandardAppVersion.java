@@ -378,24 +378,12 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
     /**
      * The identifier for this object. Format specified above.
      * 
-     * (Optional)
-     * Name of the library. Example &#34;django&#34;.
-     * 
-     * (Required)
-     * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The identifier for this object. Format specified above.
-     * 
-     * (Optional)
-     * Name of the library. Example &#34;django&#34;.
-     * 
-     * (Required)
-     * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
      * 
      */
     public Output<String> name() {

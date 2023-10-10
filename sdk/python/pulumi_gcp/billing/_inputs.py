@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -28,10 +28,23 @@ class AccountIamBindingConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        AccountIamBindingConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: pulumi.Input[str],
+             title: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -67,10 +80,23 @@ class AccountIamMemberConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        AccountIamMemberConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: pulumi.Input[str],
+             title: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -124,14 +150,29 @@ class BudgetAllUpdatesRuleArgs:
                accepted. It represents the JSON schema as defined in
                https://cloud.google.com/billing/docs/how-to/budgets#notification_format.
         """
+        BudgetAllUpdatesRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disable_default_iam_recipients=disable_default_iam_recipients,
+            monitoring_notification_channels=monitoring_notification_channels,
+            pubsub_topic=pubsub_topic,
+            schema_version=schema_version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disable_default_iam_recipients: Optional[pulumi.Input[bool]] = None,
+             monitoring_notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             pubsub_topic: Optional[pulumi.Input[str]] = None,
+             schema_version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if disable_default_iam_recipients is not None:
-            pulumi.set(__self__, "disable_default_iam_recipients", disable_default_iam_recipients)
+            _setter("disable_default_iam_recipients", disable_default_iam_recipients)
         if monitoring_notification_channels is not None:
-            pulumi.set(__self__, "monitoring_notification_channels", monitoring_notification_channels)
+            _setter("monitoring_notification_channels", monitoring_notification_channels)
         if pubsub_topic is not None:
-            pulumi.set(__self__, "pubsub_topic", pubsub_topic)
+            _setter("pubsub_topic", pubsub_topic)
         if schema_version is not None:
-            pulumi.set(__self__, "schema_version", schema_version)
+            _setter("schema_version", schema_version)
 
     @property
     @pulumi.getter(name="disableDefaultIamRecipients")
@@ -208,10 +249,21 @@ class BudgetAmountArgs:
                billing account. The currencyCode is provided on output.
                Structure is documented below.
         """
+        BudgetAmountArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            last_period_amount=last_period_amount,
+            specified_amount=specified_amount,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             last_period_amount: Optional[pulumi.Input[bool]] = None,
+             specified_amount: Optional[pulumi.Input['BudgetAmountSpecifiedAmountArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if last_period_amount is not None:
-            pulumi.set(__self__, "last_period_amount", last_period_amount)
+            _setter("last_period_amount", last_period_amount)
         if specified_amount is not None:
-            pulumi.set(__self__, "specified_amount", specified_amount)
+            _setter("specified_amount", specified_amount)
 
     @property
     @pulumi.getter(name="lastPeriodAmount")
@@ -264,12 +316,25 @@ class BudgetAmountSpecifiedAmountArgs:
         :param pulumi.Input[str] units: The whole units of the amount. For example if currencyCode
                is "USD", then 1 unit is one US dollar.
         """
+        BudgetAmountSpecifiedAmountArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            currency_code=currency_code,
+            nanos=nanos,
+            units=units,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             currency_code: Optional[pulumi.Input[str]] = None,
+             nanos: Optional[pulumi.Input[int]] = None,
+             units: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if currency_code is not None:
-            pulumi.set(__self__, "currency_code", currency_code)
+            _setter("currency_code", currency_code)
         if nanos is not None:
-            pulumi.set(__self__, "nanos", nanos)
+            _setter("nanos", nanos)
         if units is not None:
-            pulumi.set(__self__, "units", units)
+            _setter("units", units)
 
     @property
     @pulumi.getter(name="currencyCode")
@@ -372,24 +437,49 @@ class BudgetBudgetFilterArgs:
                account and all subaccounts, if they exist.
                **Note:** If the field has a value in the config and needs to be removed, the field has to be an emtpy array in the config.
         """
+        BudgetBudgetFilterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            calendar_period=calendar_period,
+            credit_types=credit_types,
+            credit_types_treatment=credit_types_treatment,
+            custom_period=custom_period,
+            labels=labels,
+            projects=projects,
+            resource_ancestors=resource_ancestors,
+            services=services,
+            subaccounts=subaccounts,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             calendar_period: Optional[pulumi.Input[str]] = None,
+             credit_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             credit_types_treatment: Optional[pulumi.Input[str]] = None,
+             custom_period: Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodArgs']] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             resource_ancestors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             subaccounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if calendar_period is not None:
-            pulumi.set(__self__, "calendar_period", calendar_period)
+            _setter("calendar_period", calendar_period)
         if credit_types is not None:
-            pulumi.set(__self__, "credit_types", credit_types)
+            _setter("credit_types", credit_types)
         if credit_types_treatment is not None:
-            pulumi.set(__self__, "credit_types_treatment", credit_types_treatment)
+            _setter("credit_types_treatment", credit_types_treatment)
         if custom_period is not None:
-            pulumi.set(__self__, "custom_period", custom_period)
+            _setter("custom_period", custom_period)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if projects is not None:
-            pulumi.set(__self__, "projects", projects)
+            _setter("projects", projects)
         if resource_ancestors is not None:
-            pulumi.set(__self__, "resource_ancestors", resource_ancestors)
+            _setter("resource_ancestors", resource_ancestors)
         if services is not None:
-            pulumi.set(__self__, "services", services)
+            _setter("services", services)
         if subaccounts is not None:
-            pulumi.set(__self__, "subaccounts", subaccounts)
+            _setter("subaccounts", subaccounts)
 
     @property
     @pulumi.getter(name="calendarPeriod")
@@ -544,9 +634,20 @@ class BudgetBudgetFilterCustomPeriodArgs:
                If unset, specifies to track all usage incurred since the startDate.
                Structure is documented below.
         """
-        pulumi.set(__self__, "start_date", start_date)
+        BudgetBudgetFilterCustomPeriodArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            start_date=start_date,
+            end_date=end_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             start_date: pulumi.Input['BudgetBudgetFilterCustomPeriodStartDateArgs'],
+             end_date: Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodEndDateArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("start_date", start_date)
         if end_date is not None:
-            pulumi.set(__self__, "end_date", end_date)
+            _setter("end_date", end_date)
 
     @property
     @pulumi.getter(name="startDate")
@@ -587,9 +688,22 @@ class BudgetBudgetFilterCustomPeriodEndDateArgs:
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999.
         """
-        pulumi.set(__self__, "day", day)
-        pulumi.set(__self__, "month", month)
-        pulumi.set(__self__, "year", year)
+        BudgetBudgetFilterCustomPeriodEndDateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day=day,
+            month=month,
+            year=year,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day: pulumi.Input[int],
+             month: pulumi.Input[int],
+             year: pulumi.Input[int],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("day", day)
+        _setter("month", month)
+        _setter("year", year)
 
     @property
     @pulumi.getter
@@ -639,9 +753,22 @@ class BudgetBudgetFilterCustomPeriodStartDateArgs:
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999.
         """
-        pulumi.set(__self__, "day", day)
-        pulumi.set(__self__, "month", month)
-        pulumi.set(__self__, "year", year)
+        BudgetBudgetFilterCustomPeriodStartDateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day=day,
+            month=month,
+            year=year,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day: pulumi.Input[int],
+             month: pulumi.Input[int],
+             year: pulumi.Input[int],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("day", day)
+        _setter("month", month)
+        _setter("year", year)
 
     @property
     @pulumi.getter
@@ -693,9 +820,20 @@ class BudgetThresholdRuleArgs:
                Default value is `CURRENT_SPEND`.
                Possible values are: `CURRENT_SPEND`, `FORECASTED_SPEND`.
         """
-        pulumi.set(__self__, "threshold_percent", threshold_percent)
+        BudgetThresholdRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            threshold_percent=threshold_percent,
+            spend_basis=spend_basis,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             threshold_percent: pulumi.Input[float],
+             spend_basis: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("threshold_percent", threshold_percent)
         if spend_basis is not None:
-            pulumi.set(__self__, "spend_basis", spend_basis)
+            _setter("spend_basis", spend_basis)
 
     @property
     @pulumi.getter(name="thresholdPercent")

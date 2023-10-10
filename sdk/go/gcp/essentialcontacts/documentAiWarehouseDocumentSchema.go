@@ -564,15 +564,6 @@ type DocumentAiWarehouseDocumentSchema struct {
 	// The location of the resource.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the metadata property.
-	//
-	// (Optional)
-	// The schema name in the source.
-	//
-	// (Required)
-	// The name of the metadata property.
-	//
-	// (Optional)
-	// The schema name in the source.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The unique identifier of the project.
 	ProjectNumber pulumi.StringOutput `pulumi:"projectNumber"`
@@ -630,15 +621,6 @@ type documentAiWarehouseDocumentSchemaState struct {
 	// The location of the resource.
 	Location *string `pulumi:"location"`
 	// The name of the metadata property.
-	//
-	// (Optional)
-	// The schema name in the source.
-	//
-	// (Required)
-	// The name of the metadata property.
-	//
-	// (Optional)
-	// The schema name in the source.
 	Name *string `pulumi:"name"`
 	// The unique identifier of the project.
 	ProjectNumber *string `pulumi:"projectNumber"`
@@ -655,15 +637,6 @@ type DocumentAiWarehouseDocumentSchemaState struct {
 	// The location of the resource.
 	Location pulumi.StringPtrInput
 	// The name of the metadata property.
-	//
-	// (Optional)
-	// The schema name in the source.
-	//
-	// (Required)
-	// The name of the metadata property.
-	//
-	// (Optional)
-	// The schema name in the source.
 	Name pulumi.StringPtrInput
 	// The unique identifier of the project.
 	ProjectNumber pulumi.StringPtrInput
@@ -832,15 +805,6 @@ func (o DocumentAiWarehouseDocumentSchemaOutput) Location() pulumi.StringOutput 
 }
 
 // The name of the metadata property.
-//
-// (Optional)
-// The schema name in the source.
-//
-// (Required)
-// The name of the metadata property.
-//
-// (Optional)
-// The schema name in the source.
 func (o DocumentAiWarehouseDocumentSchemaOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DocumentAiWarehouseDocumentSchema) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -664,13 +664,6 @@ func (o CertificateManagedPtrOutput) State() pulumi.StringPtrOutput {
 
 type CertificateManagedAuthorizationAttemptInfo struct {
 	// (Output)
-	// Human readable explanation about the issue. Provided to help address
-	// the configuration issues.
-	// Not guaranteed to be stable. For programmatic access use `reason` field.
-	//
-	// <a name="nestedAuthorizationAttemptInfo"></a>The `authorizationAttemptInfo` block contains:
-	//
-	// (Output)
 	// Human readable explanation for reaching the state. Provided to help
 	// address the configuration issues.
 	// Not guaranteed to be stable. For programmatic access use `failureReason` field.
@@ -681,9 +674,6 @@ type CertificateManagedAuthorizationAttemptInfo struct {
 	// (Output)
 	// Reason for failure of the authorization attempt for the domain.
 	FailureReason *string `pulumi:"failureReason"`
-	// (Output)
-	// A state of this Managed Certificate.
-	//
 	// (Output)
 	// State of the domain for managed certificate issuance.
 	State *string `pulumi:"state"`
@@ -702,13 +692,6 @@ type CertificateManagedAuthorizationAttemptInfoInput interface {
 
 type CertificateManagedAuthorizationAttemptInfoArgs struct {
 	// (Output)
-	// Human readable explanation about the issue. Provided to help address
-	// the configuration issues.
-	// Not guaranteed to be stable. For programmatic access use `reason` field.
-	//
-	// <a name="nestedAuthorizationAttemptInfo"></a>The `authorizationAttemptInfo` block contains:
-	//
-	// (Output)
 	// Human readable explanation for reaching the state. Provided to help
 	// address the configuration issues.
 	// Not guaranteed to be stable. For programmatic access use `failureReason` field.
@@ -719,9 +702,6 @@ type CertificateManagedAuthorizationAttemptInfoArgs struct {
 	// (Output)
 	// Reason for failure of the authorization attempt for the domain.
 	FailureReason pulumi.StringPtrInput `pulumi:"failureReason"`
-	// (Output)
-	// A state of this Managed Certificate.
-	//
 	// (Output)
 	// State of the domain for managed certificate issuance.
 	State pulumi.StringPtrInput `pulumi:"state"`
@@ -797,13 +777,6 @@ func (o CertificateManagedAuthorizationAttemptInfoOutput) ToOutput(ctx context.C
 }
 
 // (Output)
-// Human readable explanation about the issue. Provided to help address
-// the configuration issues.
-// Not guaranteed to be stable. For programmatic access use `reason` field.
-//
-// <a name="nestedAuthorizationAttemptInfo"></a>The `authorizationAttemptInfo` block contains:
-//
-// (Output)
 // Human readable explanation for reaching the state. Provided to help
 // address the configuration issues.
 // Not guaranteed to be stable. For programmatic access use `failureReason` field.
@@ -823,9 +796,6 @@ func (o CertificateManagedAuthorizationAttemptInfoOutput) FailureReason() pulumi
 	return o.ApplyT(func(v CertificateManagedAuthorizationAttemptInfo) *string { return v.FailureReason }).(pulumi.StringPtrOutput)
 }
 
-// (Output)
-// A state of this Managed Certificate.
-//
 // (Output)
 // State of the domain for managed certificate issuance.
 func (o CertificateManagedAuthorizationAttemptInfoOutput) State() pulumi.StringPtrOutput {
@@ -860,13 +830,6 @@ func (o CertificateManagedAuthorizationAttemptInfoArrayOutput) Index(i pulumi.In
 
 type CertificateManagedProvisioningIssue struct {
 	// (Output)
-	// Human readable explanation about the issue. Provided to help address
-	// the configuration issues.
-	// Not guaranteed to be stable. For programmatic access use `reason` field.
-	//
-	// <a name="nestedAuthorizationAttemptInfo"></a>The `authorizationAttemptInfo` block contains:
-	//
-	// (Output)
 	// Human readable explanation for reaching the state. Provided to help
 	// address the configuration issues.
 	// Not guaranteed to be stable. For programmatic access use `failureReason` field.
@@ -888,13 +851,6 @@ type CertificateManagedProvisioningIssueInput interface {
 }
 
 type CertificateManagedProvisioningIssueArgs struct {
-	// (Output)
-	// Human readable explanation about the issue. Provided to help address
-	// the configuration issues.
-	// Not guaranteed to be stable. For programmatic access use `reason` field.
-	//
-	// <a name="nestedAuthorizationAttemptInfo"></a>The `authorizationAttemptInfo` block contains:
-	//
 	// (Output)
 	// Human readable explanation for reaching the state. Provided to help
 	// address the configuration issues.
@@ -974,13 +930,6 @@ func (o CertificateManagedProvisioningIssueOutput) ToOutput(ctx context.Context)
 	}
 }
 
-// (Output)
-// Human readable explanation about the issue. Provided to help address
-// the configuration issues.
-// Not guaranteed to be stable. For programmatic access use `reason` field.
-//
-// <a name="nestedAuthorizationAttemptInfo"></a>The `authorizationAttemptInfo` block contains:
-//
 // (Output)
 // Human readable explanation for reaching the state. Provided to help
 // address the configuration issues.

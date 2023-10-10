@@ -250,18 +250,12 @@ public class Listing extends com.pulumi.resources.CustomResource {
     /**
      * Name of the data provider.
      * 
-     * (Required)
-     * Name of the listing publisher.
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return Name of the data provider.
-     * 
-     * (Required)
-     * Name of the listing publisher.
      * 
      */
     public Output<String> name() {
@@ -270,24 +264,12 @@ public class Listing extends com.pulumi.resources.CustomResource {
     /**
      * Email or URL of the primary point of contact of the listing.
      * 
-     * (Optional)
-     * Email or URL of the data provider.
-     * 
-     * (Optional)
-     * Email or URL of the listing publisher.
-     * 
      */
     @Export(name="primaryContact", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> primaryContact;
 
     /**
      * @return Email or URL of the primary point of contact of the listing.
-     * 
-     * (Optional)
-     * Email or URL of the data provider.
-     * 
-     * (Optional)
-     * Email or URL of the listing publisher.
      * 
      */
     public Output<Optional<String>> primaryContact() {

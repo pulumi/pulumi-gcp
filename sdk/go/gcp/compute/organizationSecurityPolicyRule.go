@@ -94,9 +94,6 @@ type OrganizationSecurityPolicyRule struct {
 	// "allow", "deny" or "gotoNext".
 	Action pulumi.StringOutput `pulumi:"action"`
 	// A description of the rule.
-	//
-	// (Optional)
-	// A description of the rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The direction in which this rule applies. If unspecified an INGRESS rule is created.
 	// Possible values are: `INGRESS`, `EGRESS`.
@@ -172,9 +169,6 @@ type organizationSecurityPolicyRuleState struct {
 	// "allow", "deny" or "gotoNext".
 	Action *string `pulumi:"action"`
 	// A description of the rule.
-	//
-	// (Optional)
-	// A description of the rule.
 	Description *string `pulumi:"description"`
 	// The direction in which this rule applies. If unspecified an INGRESS rule is created.
 	// Possible values are: `INGRESS`, `EGRESS`.
@@ -208,9 +202,6 @@ type OrganizationSecurityPolicyRuleState struct {
 	// The Action to perform when the client connection triggers the rule. Can currently be either
 	// "allow", "deny" or "gotoNext".
 	Action pulumi.StringPtrInput
-	// A description of the rule.
-	//
-	// (Optional)
 	// A description of the rule.
 	Description pulumi.StringPtrInput
 	// The direction in which this rule applies. If unspecified an INGRESS rule is created.
@@ -250,9 +241,6 @@ type organizationSecurityPolicyRuleArgs struct {
 	// "allow", "deny" or "gotoNext".
 	Action string `pulumi:"action"`
 	// A description of the rule.
-	//
-	// (Optional)
-	// A description of the rule.
 	Description *string `pulumi:"description"`
 	// The direction in which this rule applies. If unspecified an INGRESS rule is created.
 	// Possible values are: `INGRESS`, `EGRESS`.
@@ -287,9 +275,6 @@ type OrganizationSecurityPolicyRuleArgs struct {
 	// The Action to perform when the client connection triggers the rule. Can currently be either
 	// "allow", "deny" or "gotoNext".
 	Action pulumi.StringInput
-	// A description of the rule.
-	//
-	// (Optional)
 	// A description of the rule.
 	Description pulumi.StringPtrInput
 	// The direction in which this rule applies. If unspecified an INGRESS rule is created.
@@ -437,9 +422,6 @@ func (o OrganizationSecurityPolicyRuleOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationSecurityPolicyRule) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }
 
-// A description of the rule.
-//
-// (Optional)
 // A description of the rule.
 func (o OrganizationSecurityPolicyRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OrganizationSecurityPolicyRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)

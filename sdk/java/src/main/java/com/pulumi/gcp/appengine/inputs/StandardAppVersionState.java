@@ -233,24 +233,12 @@ public final class StandardAppVersionState extends com.pulumi.resources.Resource
     /**
      * The identifier for this object. Format specified above.
      * 
-     * (Optional)
-     * Name of the library. Example &#34;django&#34;.
-     * 
-     * (Required)
-     * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The identifier for this object. Format specified above.
-     * 
-     * (Optional)
-     * Name of the library. Example &#34;django&#34;.
-     * 
-     * (Required)
-     * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
      * 
      */
     public Optional<Output<String>> name() {
@@ -758,12 +746,6 @@ public final class StandardAppVersionState extends com.pulumi.resources.Resource
         /**
          * @param name The identifier for this object. Format specified above.
          * 
-         * (Optional)
-         * Name of the library. Example &#34;django&#34;.
-         * 
-         * (Required)
-         * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
-         * 
          * @return builder
          * 
          */
@@ -774,12 +756,6 @@ public final class StandardAppVersionState extends com.pulumi.resources.Resource
 
         /**
          * @param name The identifier for this object. Format specified above.
-         * 
-         * (Optional)
-         * Name of the library. Example &#34;django&#34;.
-         * 
-         * (Required)
-         * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
          * 
          * @return builder
          * 

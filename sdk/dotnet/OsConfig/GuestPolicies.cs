@@ -309,17 +309,7 @@ namespace Pulumi.Gcp.OsConfig
         public Output<string> GuestPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the package. A package is uniquely identified for conflict validation
-        /// by checking the package name and the manager(s) that the package targets.
-        /// 
-        /// (Required)
         /// The name of the repository.
-        /// 
-        /// (Required)
-        /// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-        /// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-        /// This means that requests to create multiple recipes with the same name and version are rejected since they
-        /// could potentially have conflicting assignments.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -543,17 +533,7 @@ namespace Pulumi.Gcp.OsConfig
         public Input<string>? GuestPolicyId { get; set; }
 
         /// <summary>
-        /// The name of the package. A package is uniquely identified for conflict validation
-        /// by checking the package name and the manager(s) that the package targets.
-        /// 
-        /// (Required)
         /// The name of the repository.
-        /// 
-        /// (Required)
-        /// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-        /// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-        /// This means that requests to create multiple recipes with the same name and version are rejected since they
-        /// could potentially have conflicting assignments.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

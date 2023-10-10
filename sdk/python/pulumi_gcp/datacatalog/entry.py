@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -60,24 +60,51 @@ class EntryArgs:
                userSpecifiedType strings must begin with a letter or underscore and can only contain letters,
                numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
         """
-        pulumi.set(__self__, "entry_group", entry_group)
-        pulumi.set(__self__, "entry_id", entry_id)
+        EntryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entry_group=entry_group,
+            entry_id=entry_id,
+            description=description,
+            display_name=display_name,
+            gcs_fileset_spec=gcs_fileset_spec,
+            linked_resource=linked_resource,
+            schema=schema,
+            type=type,
+            user_specified_system=user_specified_system,
+            user_specified_type=user_specified_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entry_group: pulumi.Input[str],
+             entry_id: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             gcs_fileset_spec: Optional[pulumi.Input['EntryGcsFilesetSpecArgs']] = None,
+             linked_resource: Optional[pulumi.Input[str]] = None,
+             schema: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             user_specified_system: Optional[pulumi.Input[str]] = None,
+             user_specified_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entry_group", entry_group)
+        _setter("entry_id", entry_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if gcs_fileset_spec is not None:
-            pulumi.set(__self__, "gcs_fileset_spec", gcs_fileset_spec)
+            _setter("gcs_fileset_spec", gcs_fileset_spec)
         if linked_resource is not None:
-            pulumi.set(__self__, "linked_resource", linked_resource)
+            _setter("linked_resource", linked_resource)
         if schema is not None:
-            pulumi.set(__self__, "schema", schema)
+            _setter("schema", schema)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if user_specified_system is not None:
-            pulumi.set(__self__, "user_specified_system", user_specified_system)
+            _setter("user_specified_system", user_specified_system)
         if user_specified_type is not None:
-            pulumi.set(__self__, "user_specified_type", user_specified_type)
+            _setter("user_specified_type", user_specified_type)
 
     @property
     @pulumi.getter(name="entryGroup")
@@ -281,34 +308,69 @@ class _EntryState:
                userSpecifiedType strings must begin with a letter or underscore and can only contain letters,
                numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
         """
+        _EntryState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bigquery_date_sharded_specs=bigquery_date_sharded_specs,
+            bigquery_table_specs=bigquery_table_specs,
+            description=description,
+            display_name=display_name,
+            entry_group=entry_group,
+            entry_id=entry_id,
+            gcs_fileset_spec=gcs_fileset_spec,
+            integrated_system=integrated_system,
+            linked_resource=linked_resource,
+            name=name,
+            schema=schema,
+            type=type,
+            user_specified_system=user_specified_system,
+            user_specified_type=user_specified_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bigquery_date_sharded_specs: Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryDateShardedSpecArgs']]]] = None,
+             bigquery_table_specs: Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             entry_group: Optional[pulumi.Input[str]] = None,
+             entry_id: Optional[pulumi.Input[str]] = None,
+             gcs_fileset_spec: Optional[pulumi.Input['EntryGcsFilesetSpecArgs']] = None,
+             integrated_system: Optional[pulumi.Input[str]] = None,
+             linked_resource: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             schema: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             user_specified_system: Optional[pulumi.Input[str]] = None,
+             user_specified_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bigquery_date_sharded_specs is not None:
-            pulumi.set(__self__, "bigquery_date_sharded_specs", bigquery_date_sharded_specs)
+            _setter("bigquery_date_sharded_specs", bigquery_date_sharded_specs)
         if bigquery_table_specs is not None:
-            pulumi.set(__self__, "bigquery_table_specs", bigquery_table_specs)
+            _setter("bigquery_table_specs", bigquery_table_specs)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if entry_group is not None:
-            pulumi.set(__self__, "entry_group", entry_group)
+            _setter("entry_group", entry_group)
         if entry_id is not None:
-            pulumi.set(__self__, "entry_id", entry_id)
+            _setter("entry_id", entry_id)
         if gcs_fileset_spec is not None:
-            pulumi.set(__self__, "gcs_fileset_spec", gcs_fileset_spec)
+            _setter("gcs_fileset_spec", gcs_fileset_spec)
         if integrated_system is not None:
-            pulumi.set(__self__, "integrated_system", integrated_system)
+            _setter("integrated_system", integrated_system)
         if linked_resource is not None:
-            pulumi.set(__self__, "linked_resource", linked_resource)
+            _setter("linked_resource", linked_resource)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if schema is not None:
-            pulumi.set(__self__, "schema", schema)
+            _setter("schema", schema)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if user_specified_system is not None:
-            pulumi.set(__self__, "user_specified_system", user_specified_system)
+            _setter("user_specified_system", user_specified_system)
         if user_specified_type is not None:
-            pulumi.set(__self__, "user_specified_type", user_specified_type)
+            _setter("user_specified_type", user_specified_type)
 
     @property
     @pulumi.getter(name="bigqueryDateShardedSpecs")
@@ -781,6 +843,10 @@ class Entry(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EntryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -813,6 +879,11 @@ class Entry(pulumi.CustomResource):
             if entry_id is None and not opts.urn:
                 raise TypeError("Missing required property 'entry_id'")
             __props__.__dict__["entry_id"] = entry_id
+            if gcs_fileset_spec is not None and not isinstance(gcs_fileset_spec, EntryGcsFilesetSpecArgs):
+                gcs_fileset_spec = gcs_fileset_spec or {}
+                def _setter(key, value):
+                    gcs_fileset_spec[key] = value
+                EntryGcsFilesetSpecArgs._configure(_setter, **gcs_fileset_spec)
             __props__.__dict__["gcs_fileset_spec"] = gcs_fileset_spec
             __props__.__dict__["linked_resource"] = linked_resource
             __props__.__dict__["schema"] = schema

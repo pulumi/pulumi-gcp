@@ -166,9 +166,6 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Optional. A human-readable description of scenarios this template is intended for.
-     * 
-     * (Optional)
      * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
      */
@@ -176,10 +173,7 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Optional. A human-readable description of scenarios this template is intended for.
-     * 
-     * (Optional)
-     * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+     * @return Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
      */
     public Output<Optional<String>> description() {

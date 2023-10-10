@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -47,19 +47,40 @@ class EnvironmentArgs:
         :param pulumi.Input['EnvironmentNodeConfigArgs'] node_config: NodeConfig for setting the min/max number of nodes associated with the environment.
                Structure is documented below.
         """
-        pulumi.set(__self__, "org_id", org_id)
+        EnvironmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            org_id=org_id,
+            api_proxy_type=api_proxy_type,
+            deployment_type=deployment_type,
+            description=description,
+            display_name=display_name,
+            name=name,
+            node_config=node_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             org_id: pulumi.Input[str],
+             api_proxy_type: Optional[pulumi.Input[str]] = None,
+             deployment_type: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             node_config: Optional[pulumi.Input['EnvironmentNodeConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("org_id", org_id)
         if api_proxy_type is not None:
-            pulumi.set(__self__, "api_proxy_type", api_proxy_type)
+            _setter("api_proxy_type", api_proxy_type)
         if deployment_type is not None:
-            pulumi.set(__self__, "deployment_type", deployment_type)
+            _setter("deployment_type", deployment_type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if node_config is not None:
-            pulumi.set(__self__, "node_config", node_config)
+            _setter("node_config", node_config)
 
     @property
     @pulumi.getter(name="orgId")
@@ -194,20 +215,41 @@ class _EnvironmentState:
                
                - - -
         """
+        _EnvironmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_proxy_type=api_proxy_type,
+            deployment_type=deployment_type,
+            description=description,
+            display_name=display_name,
+            name=name,
+            node_config=node_config,
+            org_id=org_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_proxy_type: Optional[pulumi.Input[str]] = None,
+             deployment_type: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             node_config: Optional[pulumi.Input['EnvironmentNodeConfigArgs']] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if api_proxy_type is not None:
-            pulumi.set(__self__, "api_proxy_type", api_proxy_type)
+            _setter("api_proxy_type", api_proxy_type)
         if deployment_type is not None:
-            pulumi.set(__self__, "deployment_type", deployment_type)
+            _setter("deployment_type", deployment_type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if node_config is not None:
-            pulumi.set(__self__, "node_config", node_config)
+            _setter("node_config", node_config)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
 
     @property
     @pulumi.getter(name="apiProxyType")
@@ -461,6 +503,10 @@ class Environment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EnvironmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -487,6 +533,11 @@ class Environment(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["name"] = name
+            if node_config is not None and not isinstance(node_config, EnvironmentNodeConfigArgs):
+                node_config = node_config or {}
+                def _setter(key, value):
+                    node_config[key] = value
+                EnvironmentNodeConfigArgs._configure(_setter, **node_config)
             __props__.__dict__["node_config"] = node_config
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")

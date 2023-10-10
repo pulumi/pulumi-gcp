@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -39,13 +39,28 @@ class FolderFeedCondition(dict):
         :param str title: Title for the expression, i.e. a short string describing its purpose.
                This can be used e.g. in UIs which allow to enter the expression.
         """
-        pulumi.set(__self__, "expression", expression)
+        FolderFeedCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            description=description,
+            location=location,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             description: Optional[str] = None,
+             location: Optional[str] = None,
+             title: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter
@@ -108,7 +123,16 @@ class FolderFeedFeedOutputConfig(dict):
         :param 'FolderFeedFeedOutputConfigPubsubDestinationArgs' pubsub_destination: Destination on Cloud Pubsub.
                Structure is documented below.
         """
-        pulumi.set(__self__, "pubsub_destination", pubsub_destination)
+        FolderFeedFeedOutputConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pubsub_destination=pubsub_destination,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pubsub_destination: 'outputs.FolderFeedFeedOutputConfigPubsubDestination',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("pubsub_destination", pubsub_destination)
 
     @property
     @pulumi.getter(name="pubsubDestination")
@@ -129,7 +153,16 @@ class FolderFeedFeedOutputConfigPubsubDestination(dict):
                
                - - -
         """
-        pulumi.set(__self__, "topic", topic)
+        FolderFeedFeedOutputConfigPubsubDestination._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            topic=topic,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             topic: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("topic", topic)
 
     @property
     @pulumi.getter
@@ -158,13 +191,28 @@ class OrganizationFeedCondition(dict):
         :param str title: Title for the expression, i.e. a short string describing its purpose.
                This can be used e.g. in UIs which allow to enter the expression.
         """
-        pulumi.set(__self__, "expression", expression)
+        OrganizationFeedCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            description=description,
+            location=location,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             description: Optional[str] = None,
+             location: Optional[str] = None,
+             title: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter
@@ -227,7 +275,16 @@ class OrganizationFeedFeedOutputConfig(dict):
         :param 'OrganizationFeedFeedOutputConfigPubsubDestinationArgs' pubsub_destination: Destination on Cloud Pubsub.
                Structure is documented below.
         """
-        pulumi.set(__self__, "pubsub_destination", pubsub_destination)
+        OrganizationFeedFeedOutputConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pubsub_destination=pubsub_destination,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pubsub_destination: 'outputs.OrganizationFeedFeedOutputConfigPubsubDestination',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("pubsub_destination", pubsub_destination)
 
     @property
     @pulumi.getter(name="pubsubDestination")
@@ -248,7 +305,16 @@ class OrganizationFeedFeedOutputConfigPubsubDestination(dict):
                
                - - -
         """
-        pulumi.set(__self__, "topic", topic)
+        OrganizationFeedFeedOutputConfigPubsubDestination._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            topic=topic,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             topic: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("topic", topic)
 
     @property
     @pulumi.getter
@@ -277,13 +343,28 @@ class ProjectFeedCondition(dict):
         :param str title: Title for the expression, i.e. a short string describing its purpose.
                This can be used e.g. in UIs which allow to enter the expression.
         """
-        pulumi.set(__self__, "expression", expression)
+        ProjectFeedCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            description=description,
+            location=location,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             description: Optional[str] = None,
+             location: Optional[str] = None,
+             title: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter
@@ -346,7 +427,16 @@ class ProjectFeedFeedOutputConfig(dict):
         :param 'ProjectFeedFeedOutputConfigPubsubDestinationArgs' pubsub_destination: Destination on Cloud Pubsub.
                Structure is documented below.
         """
-        pulumi.set(__self__, "pubsub_destination", pubsub_destination)
+        ProjectFeedFeedOutputConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pubsub_destination=pubsub_destination,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pubsub_destination: 'outputs.ProjectFeedFeedOutputConfigPubsubDestination',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("pubsub_destination", pubsub_destination)
 
     @property
     @pulumi.getter(name="pubsubDestination")
@@ -367,7 +457,16 @@ class ProjectFeedFeedOutputConfigPubsubDestination(dict):
                
                - - -
         """
-        pulumi.set(__self__, "topic", topic)
+        ProjectFeedFeedOutputConfigPubsubDestination._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            topic=topic,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             topic: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("topic", topic)
 
     @property
     @pulumi.getter
@@ -403,15 +502,40 @@ class GetResourcesSearchAllResultResult(dict):
         :param Sequence[str] network_tags: Network tags associated with this resource.
         :param str project: The project that this resource belongs to, in the form of `projects/{project_number}`.
         """
-        pulumi.set(__self__, "additional_attributes", additional_attributes)
-        pulumi.set(__self__, "asset_type", asset_type)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "labels", labels)
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "network_tags", network_tags)
-        pulumi.set(__self__, "project", project)
+        GetResourcesSearchAllResultResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            additional_attributes=additional_attributes,
+            asset_type=asset_type,
+            description=description,
+            display_name=display_name,
+            labels=labels,
+            location=location,
+            name=name,
+            network_tags=network_tags,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             additional_attributes: Sequence[str],
+             asset_type: str,
+             description: str,
+             display_name: str,
+             labels: Mapping[str, str],
+             location: str,
+             name: str,
+             network_tags: Sequence[str],
+             project: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("additional_attributes", additional_attributes)
+        _setter("asset_type", asset_type)
+        _setter("description", description)
+        _setter("display_name", display_name)
+        _setter("labels", labels)
+        _setter("location", location)
+        _setter("name", name)
+        _setter("network_tags", network_tags)
+        _setter("project", project)
 
     @property
     @pulumi.getter(name="additionalAttributes")

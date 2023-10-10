@@ -427,18 +427,12 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
     /**
      * The number of the Fleet host project where this cluster will be registered.
      * 
-     * (Optional)
-     * The project for the resource
-     * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
      * @return The number of the Fleet host project where this cluster will be registered.
-     * 
-     * (Optional)
-     * The project for the resource
      * 
      */
     public Output<String> project() {

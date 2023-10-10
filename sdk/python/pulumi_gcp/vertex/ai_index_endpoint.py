@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AiIndexEndpointArgs', 'AiIndexEndpoint']
@@ -38,19 +38,40 @@ class AiIndexEndpointArgs:
         :param pulumi.Input[bool] public_endpoint_enabled: If true, the deployed index will be accessible through public endpoint.
         :param pulumi.Input[str] region: The region of the index endpoint. eg us-central1
         """
-        pulumi.set(__self__, "display_name", display_name)
+        AiIndexEndpointArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            description=description,
+            labels=labels,
+            network=network,
+            project=project,
+            public_endpoint_enabled=public_endpoint_enabled,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             public_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("display_name", display_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if public_endpoint_enabled is not None:
-            pulumi.set(__self__, "public_endpoint_enabled", public_endpoint_enabled)
+            _setter("public_endpoint_enabled", public_endpoint_enabled)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="displayName")
@@ -181,30 +202,61 @@ class _AiIndexEndpointState:
         :param pulumi.Input[str] region: The region of the index endpoint. eg us-central1
         :param pulumi.Input[str] update_time: The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
+        _AiIndexEndpointState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            display_name=display_name,
+            etag=etag,
+            labels=labels,
+            name=name,
+            network=network,
+            project=project,
+            public_endpoint_domain_name=public_endpoint_domain_name,
+            public_endpoint_enabled=public_endpoint_enabled,
+            region=region,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             public_endpoint_domain_name: Optional[pulumi.Input[str]] = None,
+             public_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if public_endpoint_domain_name is not None:
-            pulumi.set(__self__, "public_endpoint_domain_name", public_endpoint_domain_name)
+            _setter("public_endpoint_domain_name", public_endpoint_domain_name)
         if public_endpoint_enabled is not None:
-            pulumi.set(__self__, "public_endpoint_enabled", public_endpoint_enabled)
+            _setter("public_endpoint_enabled", public_endpoint_enabled)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -546,6 +598,10 @@ class AiIndexEndpoint(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AiIndexEndpointArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

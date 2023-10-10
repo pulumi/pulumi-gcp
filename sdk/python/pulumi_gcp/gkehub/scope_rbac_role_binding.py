@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -40,17 +40,38 @@ class ScopeRbacRoleBindingArgs:
                user is the name of the user as seen by the kubernetes cluster, example
                "alice" or "alice@domain.tld"
         """
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "scope_id", scope_id)
-        pulumi.set(__self__, "scope_rbac_role_binding_id", scope_rbac_role_binding_id)
+        ScopeRbacRoleBindingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            role=role,
+            scope_id=scope_id,
+            scope_rbac_role_binding_id=scope_rbac_role_binding_id,
+            group=group,
+            labels=labels,
+            project=project,
+            user=user,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             role: pulumi.Input['ScopeRbacRoleBindingRoleArgs'],
+             scope_id: pulumi.Input[str],
+             scope_rbac_role_binding_id: pulumi.Input[str],
+             group: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("role", role)
+        _setter("scope_id", scope_id)
+        _setter("scope_rbac_role_binding_id", scope_rbac_role_binding_id)
         if group is not None:
-            pulumi.set(__self__, "group", group)
+            _setter("group", group)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if user is not None:
-            pulumi.set(__self__, "user", user)
+            _setter("user", user)
 
     @property
     @pulumi.getter
@@ -184,32 +205,65 @@ class _ScopeRbacRoleBindingState:
                user is the name of the user as seen by the kubernetes cluster, example
                "alice" or "alice@domain.tld"
         """
+        _ScopeRbacRoleBindingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            delete_time=delete_time,
+            group=group,
+            labels=labels,
+            name=name,
+            project=project,
+            role=role,
+            scope_id=scope_id,
+            scope_rbac_role_binding_id=scope_rbac_role_binding_id,
+            states=states,
+            uid=uid,
+            update_time=update_time,
+            user=user,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             delete_time: Optional[pulumi.Input[str]] = None,
+             group: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input['ScopeRbacRoleBindingRoleArgs']] = None,
+             scope_id: Optional[pulumi.Input[str]] = None,
+             scope_rbac_role_binding_id: Optional[pulumi.Input[str]] = None,
+             states: Optional[pulumi.Input[Sequence[pulumi.Input['ScopeRbacRoleBindingStateArgs']]]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if delete_time is not None:
-            pulumi.set(__self__, "delete_time", delete_time)
+            _setter("delete_time", delete_time)
         if group is not None:
-            pulumi.set(__self__, "group", group)
+            _setter("group", group)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if scope_id is not None:
-            pulumi.set(__self__, "scope_id", scope_id)
+            _setter("scope_id", scope_id)
         if scope_rbac_role_binding_id is not None:
-            pulumi.set(__self__, "scope_rbac_role_binding_id", scope_rbac_role_binding_id)
+            _setter("scope_rbac_role_binding_id", scope_rbac_role_binding_id)
         if states is not None:
-            pulumi.set(__self__, "states", states)
+            _setter("states", states)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
         if user is not None:
-            pulumi.set(__self__, "user", user)
+            _setter("user", user)
 
     @property
     @pulumi.getter(name="createTime")
@@ -476,6 +530,10 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ScopeRbacRoleBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -500,6 +558,11 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
             __props__.__dict__["group"] = group
             __props__.__dict__["labels"] = labels
             __props__.__dict__["project"] = project
+            if role is not None and not isinstance(role, ScopeRbacRoleBindingRoleArgs):
+                role = role or {}
+                def _setter(key, value):
+                    role[key] = value
+                ScopeRbacRoleBindingRoleArgs._configure(_setter, **role)
             if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
             __props__.__dict__["role"] = role

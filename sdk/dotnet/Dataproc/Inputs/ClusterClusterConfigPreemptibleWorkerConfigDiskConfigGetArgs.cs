@@ -18,24 +18,12 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// smallest allowed disk size is 10GB. GCP will default to a predetermined
         /// computed value if not set (currently 500GB). Note: If SSDs are not
         /// attached, it also contains the HDFS data blocks and Hadoop working directories.
-        /// 
-        /// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-        /// computed value if not set (currently 500GB). Note: If SSDs are not
-        /// attached, it also contains the HDFS data blocks and Hadoop working directories.
-        /// 
-        /// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-        /// computed value if not set (currently 500GB). Note: If SSDs are not
-        /// attached, it also contains the HDFS data blocks and Hadoop working directories.
         /// </summary>
         [Input("bootDiskSizeGb")]
         public Input<int>? BootDiskSizeGb { get; set; }
 
         /// <summary>
         /// The disk type of the primary disk attached to each node.
-        /// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-        /// 
-        /// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-        /// 
         /// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
         /// </summary>
         [Input("bootDiskType")]
@@ -44,12 +32,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// <summary>
         /// The amount of local SSD disks that will be
         /// attached to each master cluster node. Defaults to 0.
-        /// 
-        /// attached to each worker cluster node. Defaults to 0.
-        /// 
-        /// attached to each preemptible worker node. Defaults to 0.
-        /// 
-        /// - - -
         /// </summary>
         [Input("numLocalSsds")]
         public Input<int>? NumLocalSsds { get; set; }

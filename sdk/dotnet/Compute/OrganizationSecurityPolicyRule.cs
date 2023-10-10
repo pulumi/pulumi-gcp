@@ -99,9 +99,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A description of the rule.
-        /// 
-        /// (Optional)
-        /// A description of the rule.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -219,9 +216,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A description of the rule.
-        /// 
-        /// (Optional)
-        /// A description of the rule.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -312,9 +306,6 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Action { get; set; }
 
         /// <summary>
-        /// A description of the rule.
-        /// 
-        /// (Optional)
         /// A description of the rule.
         /// </summary>
         [Input("description")]

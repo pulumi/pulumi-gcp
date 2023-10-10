@@ -9406,12 +9406,6 @@ func (o CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUs
 
 type CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId struct {
 	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-	//
-	// (Required)
-	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-	//
-	// (Required)
-	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 	ObjectIdPaths []int `pulumi:"objectIdPaths"`
 }
 
@@ -9427,12 +9421,6 @@ type CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage
 }
 
 type CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs struct {
-	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-	//
-	// (Required)
-	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-	//
-	// (Required)
 	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 	ObjectIdPaths pulumi.IntArrayInput `pulumi:"objectIdPaths"`
 }
@@ -9506,12 +9494,6 @@ func (o CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUs
 	}
 }
 
-// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-//
-// (Required)
-// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-//
-// (Required)
 // An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 func (o CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdOutput) ObjectIdPaths() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId) []int {
@@ -10227,9 +10209,6 @@ func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArrayOu
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan struct {
 	// Indicates whether or not this extension is critical (i.e., if the client does not know how to
 	// handle this extension, the client should consider this to be an error).
-	//
-	// (Required)
-	// Indicates whether or not the name constraints are marked critical.
 	Critical *bool `pulumi:"critical"`
 	// (Output)
 	// Required. Describes how some of the technical fields in a certificate should be populated.
@@ -10253,9 +10232,6 @@ type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanI
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs struct {
 	// Indicates whether or not this extension is critical (i.e., if the client does not know how to
 	// handle this extension, the client should consider this to be an error).
-	//
-	// (Required)
-	// Indicates whether or not the name constraints are marked critical.
 	Critical pulumi.BoolPtrInput `pulumi:"critical"`
 	// (Output)
 	// Required. Describes how some of the technical fields in a certificate should be populated.
@@ -10336,9 +10312,6 @@ func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomS
 
 // Indicates whether or not this extension is critical (i.e., if the client does not know how to
 // handle this extension, the client should consider this to be an error).
-//
-// (Required)
-// Indicates whether or not the name constraints are marked critical.
 func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput) Critical() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan) *bool {
 		return v.Critical
@@ -10389,12 +10362,6 @@ func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomS
 
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId struct {
 	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-	//
-	// (Required)
-	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-	//
-	// (Required)
-	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 	ObjectIdPaths []int `pulumi:"objectIdPaths"`
 }
 
@@ -10410,12 +10377,6 @@ type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanO
 }
 
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs struct {
-	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-	//
-	// (Required)
-	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-	//
-	// (Required)
 	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 	ObjectIdPaths pulumi.IntArrayInput `pulumi:"objectIdPaths"`
 }
@@ -10489,12 +10450,6 @@ func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomS
 	}
 }
 
-// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-//
-// (Required)
-// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-//
-// (Required)
 // An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutput) ObjectIdPaths() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId) []int {

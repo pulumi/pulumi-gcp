@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -48,20 +48,41 @@ class RegionSecurityPolicyArgs:
                Rules may then specify matching values for these fields.
                Structure is documented below.
         """
+        RegionSecurityPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ddos_protection_config=ddos_protection_config,
+            description=description,
+            name=name,
+            project=project,
+            region=region,
+            type=type,
+            user_defined_fields=user_defined_fields,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ddos_protection_config: Optional[pulumi.Input['RegionSecurityPolicyDdosProtectionConfigArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ddos_protection_config is not None:
-            pulumi.set(__self__, "ddos_protection_config", ddos_protection_config)
+            _setter("ddos_protection_config", ddos_protection_config)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if user_defined_fields is not None:
-            pulumi.set(__self__, "user_defined_fields", user_defined_fields)
+            _setter("user_defined_fields", user_defined_fields)
 
     @property
     @pulumi.getter(name="ddosProtectionConfig")
@@ -207,28 +228,57 @@ class _RegionSecurityPolicyState:
                Rules may then specify matching values for these fields.
                Structure is documented below.
         """
+        _RegionSecurityPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ddos_protection_config=ddos_protection_config,
+            description=description,
+            fingerprint=fingerprint,
+            name=name,
+            policy_id=policy_id,
+            project=project,
+            region=region,
+            self_link=self_link,
+            self_link_with_policy_id=self_link_with_policy_id,
+            type=type,
+            user_defined_fields=user_defined_fields,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ddos_protection_config: Optional[pulumi.Input['RegionSecurityPolicyDdosProtectionConfigArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             fingerprint: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             policy_id: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             self_link_with_policy_id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ddos_protection_config is not None:
-            pulumi.set(__self__, "ddos_protection_config", ddos_protection_config)
+            _setter("ddos_protection_config", ddos_protection_config)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if fingerprint is not None:
-            pulumi.set(__self__, "fingerprint", fingerprint)
+            _setter("fingerprint", fingerprint)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if policy_id is not None:
-            pulumi.set(__self__, "policy_id", policy_id)
+            _setter("policy_id", policy_id)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if self_link_with_policy_id is not None:
-            pulumi.set(__self__, "self_link_with_policy_id", self_link_with_policy_id)
+            _setter("self_link_with_policy_id", self_link_with_policy_id)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if user_defined_fields is not None:
-            pulumi.set(__self__, "user_defined_fields", user_defined_fields)
+            _setter("user_defined_fields", user_defined_fields)
 
     @property
     @pulumi.getter(name="ddosProtectionConfig")
@@ -583,6 +633,10 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RegionSecurityPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -604,6 +658,11 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RegionSecurityPolicyArgs.__new__(RegionSecurityPolicyArgs)
 
+            if ddos_protection_config is not None and not isinstance(ddos_protection_config, RegionSecurityPolicyDdosProtectionConfigArgs):
+                ddos_protection_config = ddos_protection_config or {}
+                def _setter(key, value):
+                    ddos_protection_config[key] = value
+                RegionSecurityPolicyDdosProtectionConfigArgs._configure(_setter, **ddos_protection_config)
             __props__.__dict__["ddos_protection_config"] = ddos_protection_config
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name

@@ -285,11 +285,6 @@ public class Autoscalar extends com.pulumi.resources.CustomResource {
         return this.creationTimestamp;
     }
     /**
-     * A description of a scaling schedule.
-     * 
-     * ***
-     * 
-     * (Optional)
      * An optional description of this resource.
      * 
      */
@@ -297,12 +292,7 @@ public class Autoscalar extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return A description of a scaling schedule.
-     * 
-     * ***
-     * 
-     * (Optional)
-     * An optional description of this resource.
+     * @return An optional description of this resource.
      * 
      */
     public Output<Optional<String>> description() {

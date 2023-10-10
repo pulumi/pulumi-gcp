@@ -43,9 +43,6 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. A human-readable description of scenarios this template is intended for.
-        /// 
-        /// (Optional)
         /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         /// </summary>
         [Output("description")]
@@ -146,9 +143,6 @@ namespace Pulumi.Gcp.CertificateAuthority
     public sealed class CertificateTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. A human-readable description of scenarios this template is intended for.
-        /// 
-        /// (Optional)
         /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         /// </summary>
         [Input("description")]
@@ -217,9 +211,6 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Optional. A human-readable description of scenarios this template is intended for.
-        /// 
-        /// (Optional)
         /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         /// </summary>
         [Input("description")]

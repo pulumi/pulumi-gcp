@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PublicDelegatedPrefixArgs', 'PublicDelegatedPrefix']
@@ -40,17 +40,38 @@ class PublicDelegatedPrefixArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
-        pulumi.set(__self__, "parent_prefix", parent_prefix)
-        pulumi.set(__self__, "region", region)
+        PublicDelegatedPrefixArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_cidr_range=ip_cidr_range,
+            parent_prefix=parent_prefix,
+            region=region,
+            description=description,
+            is_live_migration=is_live_migration,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_cidr_range: pulumi.Input[str],
+             parent_prefix: pulumi.Input[str],
+             region: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             is_live_migration: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ip_cidr_range", ip_cidr_range)
+        _setter("parent_prefix", parent_prefix)
+        _setter("region", region)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if is_live_migration is not None:
-            pulumi.set(__self__, "is_live_migration", is_live_migration)
+            _setter("is_live_migration", is_live_migration)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="ipCidrRange")
@@ -177,22 +198,45 @@ class _PublicDelegatedPrefixState:
         :param pulumi.Input[str] region: A region where the prefix will reside.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
+        _PublicDelegatedPrefixState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            ip_cidr_range=ip_cidr_range,
+            is_live_migration=is_live_migration,
+            name=name,
+            parent_prefix=parent_prefix,
+            project=project,
+            region=region,
+            self_link=self_link,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             ip_cidr_range: Optional[pulumi.Input[str]] = None,
+             is_live_migration: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parent_prefix: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if ip_cidr_range is not None:
-            pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
+            _setter("ip_cidr_range", ip_cidr_range)
         if is_live_migration is not None:
-            pulumi.set(__self__, "is_live_migration", is_live_migration)
+            _setter("is_live_migration", is_live_migration)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent_prefix is not None:
-            pulumi.set(__self__, "parent_prefix", parent_prefix)
+            _setter("parent_prefix", parent_prefix)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
 
     @property
     @pulumi.getter
@@ -442,6 +486,10 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PublicDelegatedPrefixArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

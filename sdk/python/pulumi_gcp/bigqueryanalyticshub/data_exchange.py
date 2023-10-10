@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DataExchangeArgs', 'DataExchange']
@@ -37,19 +37,42 @@ class DataExchangeArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "data_exchange_id", data_exchange_id)
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "location", location)
+        DataExchangeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            data_exchange_id=data_exchange_id,
+            display_name=display_name,
+            location=location,
+            description=description,
+            documentation=documentation,
+            icon=icon,
+            primary_contact=primary_contact,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             data_exchange_id: pulumi.Input[str],
+             display_name: pulumi.Input[str],
+             location: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             documentation: Optional[pulumi.Input[str]] = None,
+             icon: Optional[pulumi.Input[str]] = None,
+             primary_contact: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("data_exchange_id", data_exchange_id)
+        _setter("display_name", display_name)
+        _setter("location", location)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if documentation is not None:
-            pulumi.set(__self__, "documentation", documentation)
+            _setter("documentation", documentation)
         if icon is not None:
-            pulumi.set(__self__, "icon", icon)
+            _setter("icon", icon)
         if primary_contact is not None:
-            pulumi.set(__self__, "primary_contact", primary_contact)
+            _setter("primary_contact", primary_contact)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="dataExchangeId")
@@ -183,26 +206,53 @@ class _DataExchangeState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        _DataExchangeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            data_exchange_id=data_exchange_id,
+            description=description,
+            display_name=display_name,
+            documentation=documentation,
+            icon=icon,
+            listing_count=listing_count,
+            location=location,
+            name=name,
+            primary_contact=primary_contact,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             data_exchange_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             documentation: Optional[pulumi.Input[str]] = None,
+             icon: Optional[pulumi.Input[str]] = None,
+             listing_count: Optional[pulumi.Input[int]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             primary_contact: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if data_exchange_id is not None:
-            pulumi.set(__self__, "data_exchange_id", data_exchange_id)
+            _setter("data_exchange_id", data_exchange_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if documentation is not None:
-            pulumi.set(__self__, "documentation", documentation)
+            _setter("documentation", documentation)
         if icon is not None:
-            pulumi.set(__self__, "icon", icon)
+            _setter("icon", icon)
         if listing_count is not None:
-            pulumi.set(__self__, "listing_count", listing_count)
+            _setter("listing_count", listing_count)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if primary_contact is not None:
-            pulumi.set(__self__, "primary_contact", primary_contact)
+            _setter("primary_contact", primary_contact)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="dataExchangeId")
@@ -461,6 +511,10 @@ class DataExchange(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DataExchangeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

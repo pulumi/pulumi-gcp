@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -46,17 +46,40 @@ class WorkstationIamBindingArgs:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        pulumi.set(__self__, "members", members)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "workstation_cluster_id", workstation_cluster_id)
-        pulumi.set(__self__, "workstation_config_id", workstation_config_id)
-        pulumi.set(__self__, "workstation_id", workstation_id)
+        WorkstationIamBindingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            members=members,
+            role=role,
+            workstation_cluster_id=workstation_cluster_id,
+            workstation_config_id=workstation_config_id,
+            workstation_id=workstation_id,
+            condition=condition,
+            location=location,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             members: pulumi.Input[Sequence[pulumi.Input[str]]],
+             role: pulumi.Input[str],
+             workstation_cluster_id: pulumi.Input[str],
+             workstation_config_id: pulumi.Input[str],
+             workstation_id: pulumi.Input[str],
+             condition: Optional[pulumi.Input['WorkstationIamBindingConditionArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("members", members)
+        _setter("role", role)
+        _setter("workstation_cluster_id", workstation_cluster_id)
+        _setter("workstation_config_id", workstation_config_id)
+        _setter("workstation_id", workstation_id)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -191,24 +214,49 @@ class _WorkstationIamBindingState:
                `workstations.WorkstationIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
+        _WorkstationIamBindingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            etag=etag,
+            location=location,
+            members=members,
+            project=project,
+            role=role,
+            workstation_cluster_id=workstation_cluster_id,
+            workstation_config_id=workstation_config_id,
+            workstation_id=workstation_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: Optional[pulumi.Input['WorkstationIamBindingConditionArgs']] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             workstation_cluster_id: Optional[pulumi.Input[str]] = None,
+             workstation_config_id: Optional[pulumi.Input[str]] = None,
+             workstation_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if workstation_cluster_id is not None:
-            pulumi.set(__self__, "workstation_cluster_id", workstation_cluster_id)
+            _setter("workstation_cluster_id", workstation_cluster_id)
         if workstation_config_id is not None:
-            pulumi.set(__self__, "workstation_config_id", workstation_config_id)
+            _setter("workstation_config_id", workstation_config_id)
         if workstation_id is not None:
-            pulumi.set(__self__, "workstation_id", workstation_id)
+            _setter("workstation_id", workstation_id)
 
     @property
     @pulumi.getter
@@ -422,6 +470,10 @@ class WorkstationIamBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            WorkstationIamBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -444,6 +496,11 @@ class WorkstationIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkstationIamBindingArgs.__new__(WorkstationIamBindingArgs)
 
+            if condition is not None and not isinstance(condition, WorkstationIamBindingConditionArgs):
+                condition = condition or {}
+                def _setter(key, value):
+                    condition[key] = value
+                WorkstationIamBindingConditionArgs._configure(_setter, **condition)
             __props__.__dict__["condition"] = condition
             __props__.__dict__["location"] = location
             if members is None and not opts.urn:

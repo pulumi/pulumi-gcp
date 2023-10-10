@@ -603,30 +603,12 @@ public class DocumentAiWarehouseDocumentSchema extends com.pulumi.resources.Cust
     /**
      * The name of the metadata property.
      * 
-     * (Optional)
-     * The schema name in the source.
-     * 
-     * (Required)
-     * The name of the metadata property.
-     * 
-     * (Optional)
-     * The schema name in the source.
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The name of the metadata property.
-     * 
-     * (Optional)
-     * The schema name in the source.
-     * 
-     * (Required)
-     * The name of the metadata property.
-     * 
-     * (Optional)
-     * The schema name in the source.
      * 
      */
     public Output<String> name() {

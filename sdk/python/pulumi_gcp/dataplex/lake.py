@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,19 +37,40 @@ class LakeArgs:
                - - -
         :param pulumi.Input[str] project: The project for the resource
         """
-        pulumi.set(__self__, "location", location)
+        LakeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            description=description,
+            display_name=display_name,
+            labels=labels,
+            metastore=metastore,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             metastore: Optional[pulumi.Input['LakeMetastoreArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("location", location)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if metastore is not None:
-            pulumi.set(__self__, "metastore", metastore)
+            _setter("metastore", metastore)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -178,34 +199,69 @@ class _LakeState:
         :param pulumi.Input[str] uid: Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
         :param pulumi.Input[str] update_time: Output only. The time when the lake was last updated.
         """
+        _LakeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            asset_statuses=asset_statuses,
+            create_time=create_time,
+            description=description,
+            display_name=display_name,
+            labels=labels,
+            location=location,
+            metastore=metastore,
+            metastore_statuses=metastore_statuses,
+            name=name,
+            project=project,
+            service_account=service_account,
+            state=state,
+            uid=uid,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             asset_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['LakeAssetStatusArgs']]]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             metastore: Optional[pulumi.Input['LakeMetastoreArgs']] = None,
+             metastore_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['LakeMetastoreStatusArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_account: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if asset_statuses is not None:
-            pulumi.set(__self__, "asset_statuses", asset_statuses)
+            _setter("asset_statuses", asset_statuses)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if metastore is not None:
-            pulumi.set(__self__, "metastore", metastore)
+            _setter("metastore", metastore)
         if metastore_statuses is not None:
-            pulumi.set(__self__, "metastore_statuses", metastore_statuses)
+            _setter("metastore_statuses", metastore_statuses)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if service_account is not None:
-            pulumi.set(__self__, "service_account", service_account)
+            _setter("service_account", service_account)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="assetStatuses")
@@ -495,6 +551,10 @@ class Lake(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            LakeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -522,6 +582,11 @@ class Lake(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            if metastore is not None and not isinstance(metastore, LakeMetastoreArgs):
+                metastore = metastore or {}
+                def _setter(key, value):
+                    metastore[key] = value
+                LakeMetastoreArgs._configure(_setter, **metastore)
             __props__.__dict__["metastore"] = metastore
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,14 +39,31 @@ class EntityTypeArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "kind", kind)
+        EntityTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            kind=kind,
+            enable_fuzzy_extraction=enable_fuzzy_extraction,
+            entities=entities,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: pulumi.Input[str],
+             kind: pulumi.Input[str],
+             enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
+             entities: Optional[pulumi.Input[Sequence[pulumi.Input['EntityTypeEntityArgs']]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("display_name", display_name)
+        _setter("kind", kind)
         if enable_fuzzy_extraction is not None:
-            pulumi.set(__self__, "enable_fuzzy_extraction", enable_fuzzy_extraction)
+            _setter("enable_fuzzy_extraction", enable_fuzzy_extraction)
         if entities is not None:
-            pulumi.set(__self__, "entities", entities)
+            _setter("entities", entities)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="displayName")
@@ -148,18 +165,37 @@ class _EntityTypeState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        _EntityTypeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            enable_fuzzy_extraction=enable_fuzzy_extraction,
+            entities=entities,
+            kind=kind,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: Optional[pulumi.Input[str]] = None,
+             enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
+             entities: Optional[pulumi.Input[Sequence[pulumi.Input['EntityTypeEntityArgs']]]] = None,
+             kind: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if enable_fuzzy_extraction is not None:
-            pulumi.set(__self__, "enable_fuzzy_extraction", enable_fuzzy_extraction)
+            _setter("enable_fuzzy_extraction", enable_fuzzy_extraction)
         if entities is not None:
-            pulumi.set(__self__, "entities", entities)
+            _setter("entities", entities)
         if kind is not None:
-            pulumi.set(__self__, "kind", kind)
+            _setter("kind", kind)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="displayName")
@@ -390,6 +426,10 @@ class EntityType(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EntityTypeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

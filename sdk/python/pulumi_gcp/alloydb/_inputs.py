@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -41,8 +41,17 @@ class BackupEncryptionConfigArgs:
         """
         :param pulumi.Input[str] kms_key_name: The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
         """
+        BackupEncryptionConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_key_name=kms_key_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_key_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if kms_key_name is not None:
-            pulumi.set(__self__, "kms_key_name", kms_key_name)
+            _setter("kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -68,10 +77,21 @@ class BackupEncryptionInfoArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kms_key_versions: (Output)
                Output only. Cloud KMS key versions that are being used to protect the database or the backup.
         """
+        BackupEncryptionInfoArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            encryption_type=encryption_type,
+            kms_key_versions=kms_key_versions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             encryption_type: Optional[pulumi.Input[str]] = None,
+             kms_key_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if encryption_type is not None:
-            pulumi.set(__self__, "encryption_type", encryption_type)
+            _setter("encryption_type", encryption_type)
         if kms_key_versions is not None:
-            pulumi.set(__self__, "kms_key_versions", kms_key_versions)
+            _setter("kms_key_versions", kms_key_versions)
 
     @property
     @pulumi.getter(name="encryptionType")
@@ -127,22 +147,45 @@ class ClusterAutomatedBackupPolicyArgs:
         :param pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleArgs'] weekly_schedule: Weekly schedule for the Backup.
                Structure is documented below.
         """
+        ClusterAutomatedBackupPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_window=backup_window,
+            enabled=enabled,
+            encryption_config=encryption_config,
+            labels=labels,
+            location=location,
+            quantity_based_retention=quantity_based_retention,
+            time_based_retention=time_based_retention,
+            weekly_schedule=weekly_schedule,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_window: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             encryption_config: Optional[pulumi.Input['ClusterAutomatedBackupPolicyEncryptionConfigArgs']] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             quantity_based_retention: Optional[pulumi.Input['ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs']] = None,
+             time_based_retention: Optional[pulumi.Input['ClusterAutomatedBackupPolicyTimeBasedRetentionArgs']] = None,
+             weekly_schedule: Optional[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if backup_window is not None:
-            pulumi.set(__self__, "backup_window", backup_window)
+            _setter("backup_window", backup_window)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if encryption_config is not None:
-            pulumi.set(__self__, "encryption_config", encryption_config)
+            _setter("encryption_config", encryption_config)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if quantity_based_retention is not None:
-            pulumi.set(__self__, "quantity_based_retention", quantity_based_retention)
+            _setter("quantity_based_retention", quantity_based_retention)
         if time_based_retention is not None:
-            pulumi.set(__self__, "time_based_retention", time_based_retention)
+            _setter("time_based_retention", time_based_retention)
         if weekly_schedule is not None:
-            pulumi.set(__self__, "weekly_schedule", weekly_schedule)
+            _setter("weekly_schedule", weekly_schedule)
 
     @property
     @pulumi.getter(name="backupWindow")
@@ -254,8 +297,17 @@ class ClusterAutomatedBackupPolicyEncryptionConfigArgs:
         """
         :param pulumi.Input[str] kms_key_name: The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
         """
+        ClusterAutomatedBackupPolicyEncryptionConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_key_name=kms_key_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_key_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if kms_key_name is not None:
-            pulumi.set(__self__, "kms_key_name", kms_key_name)
+            _setter("kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -277,8 +329,17 @@ class ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs:
         """
         :param pulumi.Input[int] count: The number of backups to retain.
         """
+        ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            count=count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if count is not None:
-            pulumi.set(__self__, "count", count)
+            _setter("count", count)
 
     @property
     @pulumi.getter
@@ -301,8 +362,17 @@ class ClusterAutomatedBackupPolicyTimeBasedRetentionArgs:
         :param pulumi.Input[str] retention_period: The retention period.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
+        ClusterAutomatedBackupPolicyTimeBasedRetentionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            retention_period=retention_period,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             retention_period: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if retention_period is not None:
-            pulumi.set(__self__, "retention_period", retention_period)
+            _setter("retention_period", retention_period)
 
     @property
     @pulumi.getter(name="retentionPeriod")
@@ -329,9 +399,20 @@ class ClusterAutomatedBackupPolicyWeeklyScheduleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] days_of_weeks: The days of the week to perform a backup. At least one day of the week must be provided.
                Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
-        pulumi.set(__self__, "start_times", start_times)
+        ClusterAutomatedBackupPolicyWeeklyScheduleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            start_times=start_times,
+            days_of_weeks=days_of_weeks,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             start_times: pulumi.Input[Sequence[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs']]],
+             days_of_weeks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("start_times", start_times)
         if days_of_weeks is not None:
-            pulumi.set(__self__, "days_of_weeks", days_of_weeks)
+            _setter("days_of_weeks", days_of_weeks)
 
     @property
     @pulumi.getter(name="startTimes")
@@ -373,14 +454,29 @@ class ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs:
         :param pulumi.Input[int] nanos: Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
         :param pulumi.Input[int] seconds: Seconds of minutes of the time. Currently, only the value 0 is supported.
         """
+        ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hours=hours,
+            minutes=minutes,
+            nanos=nanos,
+            seconds=seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hours: Optional[pulumi.Input[int]] = None,
+             minutes: Optional[pulumi.Input[int]] = None,
+             nanos: Optional[pulumi.Input[int]] = None,
+             seconds: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if hours is not None:
-            pulumi.set(__self__, "hours", hours)
+            _setter("hours", hours)
         if minutes is not None:
-            pulumi.set(__self__, "minutes", minutes)
+            _setter("minutes", minutes)
         if nanos is not None:
-            pulumi.set(__self__, "nanos", nanos)
+            _setter("nanos", nanos)
         if seconds is not None:
-            pulumi.set(__self__, "seconds", seconds)
+            _setter("seconds", seconds)
 
     @property
     @pulumi.getter
@@ -438,8 +534,17 @@ class ClusterBackupSourceArgs:
         """
         :param pulumi.Input[str] backup_name: The name of the backup that this cluster is restored from.
         """
+        ClusterBackupSourceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_name=backup_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if backup_name is not None:
-            pulumi.set(__self__, "backup_name", backup_name)
+            _setter("backup_name", backup_name)
 
     @property
     @pulumi.getter(name="backupName")
@@ -467,12 +572,25 @@ class ClusterContinuousBackupConfigArgs:
         :param pulumi.Input[int] recovery_window_days: The numbers of days that are eligible to restore from using PITR. To support the entire recovery window, backups and logs are retained for one day more than the recovery window.
                If not set, defaults to 14 days.
         """
+        ClusterContinuousBackupConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            encryption_config=encryption_config,
+            recovery_window_days=recovery_window_days,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             encryption_config: Optional[pulumi.Input['ClusterContinuousBackupConfigEncryptionConfigArgs']] = None,
+             recovery_window_days: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if encryption_config is not None:
-            pulumi.set(__self__, "encryption_config", encryption_config)
+            _setter("encryption_config", encryption_config)
         if recovery_window_days is not None:
-            pulumi.set(__self__, "recovery_window_days", recovery_window_days)
+            _setter("recovery_window_days", recovery_window_days)
 
     @property
     @pulumi.getter
@@ -520,8 +638,17 @@ class ClusterContinuousBackupConfigEncryptionConfigArgs:
         """
         :param pulumi.Input[str] kms_key_name: The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
         """
+        ClusterContinuousBackupConfigEncryptionConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_key_name=kms_key_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_key_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if kms_key_name is not None:
-            pulumi.set(__self__, "kms_key_name", kms_key_name)
+            _setter("kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -554,14 +681,29 @@ class ClusterContinuousBackupInfoArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] schedules: (Output)
                Days of the week on which a continuous backup is taken. Output only field. Ignored if passed into the request.
         """
+        ClusterContinuousBackupInfoArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            earliest_restorable_time=earliest_restorable_time,
+            enabled_time=enabled_time,
+            encryption_infos=encryption_infos,
+            schedules=schedules,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             earliest_restorable_time: Optional[pulumi.Input[str]] = None,
+             enabled_time: Optional[pulumi.Input[str]] = None,
+             encryption_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoEncryptionInfoArgs']]]] = None,
+             schedules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if earliest_restorable_time is not None:
-            pulumi.set(__self__, "earliest_restorable_time", earliest_restorable_time)
+            _setter("earliest_restorable_time", earliest_restorable_time)
         if enabled_time is not None:
-            pulumi.set(__self__, "enabled_time", enabled_time)
+            _setter("enabled_time", enabled_time)
         if encryption_infos is not None:
-            pulumi.set(__self__, "encryption_infos", encryption_infos)
+            _setter("encryption_infos", encryption_infos)
         if schedules is not None:
-            pulumi.set(__self__, "schedules", schedules)
+            _setter("schedules", schedules)
 
     @property
     @pulumi.getter(name="earliestRestorableTime")
@@ -628,10 +770,21 @@ class ClusterContinuousBackupInfoEncryptionInfoArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kms_key_versions: (Output)
                Output only. Cloud KMS key versions that are being used to protect the database or the backup.
         """
+        ClusterContinuousBackupInfoEncryptionInfoArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            encryption_type=encryption_type,
+            kms_key_versions=kms_key_versions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             encryption_type: Optional[pulumi.Input[str]] = None,
+             kms_key_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if encryption_type is not None:
-            pulumi.set(__self__, "encryption_type", encryption_type)
+            _setter("encryption_type", encryption_type)
         if kms_key_versions is not None:
-            pulumi.set(__self__, "kms_key_versions", kms_key_versions)
+            _setter("kms_key_versions", kms_key_versions)
 
     @property
     @pulumi.getter(name="encryptionType")
@@ -667,8 +820,17 @@ class ClusterEncryptionConfigArgs:
         """
         :param pulumi.Input[str] kms_key_name: The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
         """
+        ClusterEncryptionConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_key_name=kms_key_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_key_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if kms_key_name is not None:
-            pulumi.set(__self__, "kms_key_name", kms_key_name)
+            _setter("kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -694,10 +856,21 @@ class ClusterEncryptionInfoArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kms_key_versions: (Output)
                Output only. Cloud KMS key versions that are being used to protect the database or the backup.
         """
+        ClusterEncryptionInfoArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            encryption_type=encryption_type,
+            kms_key_versions=kms_key_versions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             encryption_type: Optional[pulumi.Input[str]] = None,
+             kms_key_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if encryption_type is not None:
-            pulumi.set(__self__, "encryption_type", encryption_type)
+            _setter("encryption_type", encryption_type)
         if kms_key_versions is not None:
-            pulumi.set(__self__, "kms_key_versions", kms_key_versions)
+            _setter("kms_key_versions", kms_key_versions)
 
     @property
     @pulumi.getter(name="encryptionType")
@@ -736,9 +909,20 @@ class ClusterInitialUserArgs:
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] user: The database username.
         """
-        pulumi.set(__self__, "password", password)
+        ClusterInitialUserArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            password=password,
+            user=user,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             password: pulumi.Input[str],
+             user: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("password", password)
         if user is not None:
-            pulumi.set(__self__, "user", user)
+            _setter("user", user)
 
     @property
     @pulumi.getter
@@ -777,12 +961,25 @@ class ClusterMigrationSourceArgs:
         :param pulumi.Input[str] reference_id: Place holder for the external source identifier(e.g DMS job name) that created the cluster.
         :param pulumi.Input[str] source_type: Type of migration source.
         """
+        ClusterMigrationSourceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host_port=host_port,
+            reference_id=reference_id,
+            source_type=source_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host_port: Optional[pulumi.Input[str]] = None,
+             reference_id: Optional[pulumi.Input[str]] = None,
+             source_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if host_port is not None:
-            pulumi.set(__self__, "host_port", host_port)
+            _setter("host_port", host_port)
         if reference_id is not None:
-            pulumi.set(__self__, "reference_id", reference_id)
+            _setter("reference_id", reference_id)
         if source_type is not None:
-            pulumi.set(__self__, "source_type", source_type)
+            _setter("source_type", source_type)
 
     @property
     @pulumi.getter(name="hostPort")
@@ -832,10 +1029,21 @@ class ClusterNetworkConfigArgs:
         :param pulumi.Input[str] network: The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
                It is specified in the form: "projects/{projectNumber}/global/networks/{network_id}".
         """
+        ClusterNetworkConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allocated_ip_range=allocated_ip_range,
+            network=network,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allocated_ip_range: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if allocated_ip_range is not None:
-            pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
+            _setter("allocated_ip_range", allocated_ip_range)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
 
     @property
     @pulumi.getter(name="allocatedIpRange")
@@ -871,7 +1079,16 @@ class ClusterRestoreBackupSourceArgs:
         """
         :param pulumi.Input[str] backup_name: The name of the backup that this cluster is restored from.
         """
-        pulumi.set(__self__, "backup_name", backup_name)
+        ClusterRestoreBackupSourceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_name=backup_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("backup_name", backup_name)
 
     @property
     @pulumi.getter(name="backupName")
@@ -895,8 +1112,19 @@ class ClusterRestoreContinuousBackupSourceArgs:
         :param pulumi.Input[str] cluster: The name of the source cluster that this cluster is restored from.
         :param pulumi.Input[str] point_in_time: The point in time that this cluster is restored to, in RFC 3339 format.
         """
-        pulumi.set(__self__, "cluster", cluster)
-        pulumi.set(__self__, "point_in_time", point_in_time)
+        ClusterRestoreContinuousBackupSourceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster=cluster,
+            point_in_time=point_in_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster: pulumi.Input[str],
+             point_in_time: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster", cluster)
+        _setter("point_in_time", point_in_time)
 
     @property
     @pulumi.getter
@@ -930,8 +1158,17 @@ class InstanceMachineConfigArgs:
         """
         :param pulumi.Input[int] cpu_count: The number of CPU's in the VM instance.
         """
+        InstanceMachineConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cpu_count=cpu_count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cpu_count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cpu_count is not None:
-            pulumi.set(__self__, "cpu_count", cpu_count)
+            _setter("cpu_count", cpu_count)
 
     @property
     @pulumi.getter(name="cpuCount")
@@ -953,8 +1190,17 @@ class InstanceReadPoolConfigArgs:
         """
         :param pulumi.Input[int] node_count: Read capacity, i.e. number of nodes in a read pool instance.
         """
+        InstanceReadPoolConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            node_count=node_count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             node_count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if node_count is not None:
-            pulumi.set(__self__, "node_count", node_count)
+            _setter("node_count", node_count)
 
     @property
     @pulumi.getter(name="nodeCount")

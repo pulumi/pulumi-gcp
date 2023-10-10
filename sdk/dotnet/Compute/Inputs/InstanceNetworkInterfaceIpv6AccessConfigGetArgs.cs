@@ -35,23 +35,14 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The [networking tier][network-tier] used for configuring this instance.
-        /// This field can take the following values: PREMIUM, FIXED_STANDARD or STANDARD. If this field is
-        /// not specified, it is assumed to be PREMIUM.
-        /// 
-        /// &lt;a name="nested_ipv6_access_config"&gt;&lt;/a&gt;The `ipv6_access_config` block supports:
-        /// 
+        /// The service-level to be provided for IPv6 traffic when the
         /// subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
         /// </summary>
         [Input("networkTier", required: true)]
         public Input<string> NetworkTier { get; set; } = null!;
 
         /// <summary>
-        /// The DNS domain name for the public PTR record.
-        /// To set this field on an instance, you must be verified as the owner of the domain.
-        /// See [the docs](https://cloud.google.com/compute/docs/instances/create-ptr-record) for how
-        /// to become verified as a domain owner.
-        /// 
+        /// The domain name to be used when creating DNSv6
         /// records for the external IPv6 ranges..
         /// </summary>
         [Input("publicPtrDomainName")]

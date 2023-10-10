@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -53,10 +53,23 @@ class FeatureIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        FeatureIamBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -80,10 +93,23 @@ class FeatureIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        FeatureIamMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -137,16 +163,33 @@ class FeatureMembershipConfigmanagement(dict):
         :param 'FeatureMembershipConfigmanagementPolicyControllerArgs' policy_controller: Policy Controller configuration for the cluster. Structure is documented below.
         :param str version: Version of ACM installed.
         """
+        FeatureMembershipConfigmanagement._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            binauthz=binauthz,
+            config_sync=config_sync,
+            hierarchy_controller=hierarchy_controller,
+            policy_controller=policy_controller,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             binauthz: Optional['outputs.FeatureMembershipConfigmanagementBinauthz'] = None,
+             config_sync: Optional['outputs.FeatureMembershipConfigmanagementConfigSync'] = None,
+             hierarchy_controller: Optional['outputs.FeatureMembershipConfigmanagementHierarchyController'] = None,
+             policy_controller: Optional['outputs.FeatureMembershipConfigmanagementPolicyController'] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if binauthz is not None:
-            pulumi.set(__self__, "binauthz", binauthz)
+            _setter("binauthz", binauthz)
         if config_sync is not None:
-            pulumi.set(__self__, "config_sync", config_sync)
+            _setter("config_sync", config_sync)
         if hierarchy_controller is not None:
-            pulumi.set(__self__, "hierarchy_controller", hierarchy_controller)
+            _setter("hierarchy_controller", hierarchy_controller)
         if policy_controller is not None:
-            pulumi.set(__self__, "policy_controller", policy_controller)
+            _setter("policy_controller", policy_controller)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -196,8 +239,17 @@ class FeatureMembershipConfigmanagementBinauthz(dict):
         """
         :param bool enabled: Whether binauthz is enabled in this cluster.
         """
+        FeatureMembershipConfigmanagementBinauthz._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
 
     @property
     @pulumi.getter
@@ -242,14 +294,29 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
         :param bool prevent_drift: Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
         :param str source_format: Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
         """
+        FeatureMembershipConfigmanagementConfigSync._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            git=git,
+            oci=oci,
+            prevent_drift=prevent_drift,
+            source_format=source_format,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             git: Optional['outputs.FeatureMembershipConfigmanagementConfigSyncGit'] = None,
+             oci: Optional['outputs.FeatureMembershipConfigmanagementConfigSyncOci'] = None,
+             prevent_drift: Optional[bool] = None,
+             source_format: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if git is not None:
-            pulumi.set(__self__, "git", git)
+            _setter("git", git)
         if oci is not None:
-            pulumi.set(__self__, "oci", oci)
+            _setter("oci", oci)
         if prevent_drift is not None:
-            pulumi.set(__self__, "prevent_drift", prevent_drift)
+            _setter("prevent_drift", prevent_drift)
         if source_format is not None:
-            pulumi.set(__self__, "source_format", source_format)
+            _setter("source_format", source_format)
 
     @property
     @pulumi.getter
@@ -338,22 +405,45 @@ class FeatureMembershipConfigmanagementConfigSyncGit(dict):
         :param str sync_rev: Git revision (tag or hash) to check out. Default HEAD.
         :param str sync_wait_secs: Period in seconds between consecutive syncs. Default: 15.
         """
+        FeatureMembershipConfigmanagementConfigSyncGit._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            gcp_service_account_email=gcp_service_account_email,
+            https_proxy=https_proxy,
+            policy_dir=policy_dir,
+            secret_type=secret_type,
+            sync_branch=sync_branch,
+            sync_repo=sync_repo,
+            sync_rev=sync_rev,
+            sync_wait_secs=sync_wait_secs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             gcp_service_account_email: Optional[str] = None,
+             https_proxy: Optional[str] = None,
+             policy_dir: Optional[str] = None,
+             secret_type: Optional[str] = None,
+             sync_branch: Optional[str] = None,
+             sync_repo: Optional[str] = None,
+             sync_rev: Optional[str] = None,
+             sync_wait_secs: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if gcp_service_account_email is not None:
-            pulumi.set(__self__, "gcp_service_account_email", gcp_service_account_email)
+            _setter("gcp_service_account_email", gcp_service_account_email)
         if https_proxy is not None:
-            pulumi.set(__self__, "https_proxy", https_proxy)
+            _setter("https_proxy", https_proxy)
         if policy_dir is not None:
-            pulumi.set(__self__, "policy_dir", policy_dir)
+            _setter("policy_dir", policy_dir)
         if secret_type is not None:
-            pulumi.set(__self__, "secret_type", secret_type)
+            _setter("secret_type", secret_type)
         if sync_branch is not None:
-            pulumi.set(__self__, "sync_branch", sync_branch)
+            _setter("sync_branch", sync_branch)
         if sync_repo is not None:
-            pulumi.set(__self__, "sync_repo", sync_repo)
+            _setter("sync_repo", sync_repo)
         if sync_rev is not None:
-            pulumi.set(__self__, "sync_rev", sync_rev)
+            _setter("sync_rev", sync_rev)
         if sync_wait_secs is not None:
-            pulumi.set(__self__, "sync_wait_secs", sync_wait_secs)
+            _setter("sync_wait_secs", sync_wait_secs)
 
     @property
     @pulumi.getter(name="gcpServiceAccountEmail")
@@ -460,16 +550,33 @@ class FeatureMembershipConfigmanagementConfigSyncOci(dict):
         :param str sync_repo: The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
         :param str sync_wait_secs: Period in seconds(int64 format) between consecutive syncs. Default: 15.
         """
+        FeatureMembershipConfigmanagementConfigSyncOci._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            gcp_service_account_email=gcp_service_account_email,
+            policy_dir=policy_dir,
+            secret_type=secret_type,
+            sync_repo=sync_repo,
+            sync_wait_secs=sync_wait_secs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             gcp_service_account_email: Optional[str] = None,
+             policy_dir: Optional[str] = None,
+             secret_type: Optional[str] = None,
+             sync_repo: Optional[str] = None,
+             sync_wait_secs: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if gcp_service_account_email is not None:
-            pulumi.set(__self__, "gcp_service_account_email", gcp_service_account_email)
+            _setter("gcp_service_account_email", gcp_service_account_email)
         if policy_dir is not None:
-            pulumi.set(__self__, "policy_dir", policy_dir)
+            _setter("policy_dir", policy_dir)
         if secret_type is not None:
-            pulumi.set(__self__, "secret_type", secret_type)
+            _setter("secret_type", secret_type)
         if sync_repo is not None:
-            pulumi.set(__self__, "sync_repo", sync_repo)
+            _setter("sync_repo", sync_repo)
         if sync_wait_secs is not None:
-            pulumi.set(__self__, "sync_wait_secs", sync_wait_secs)
+            _setter("sync_wait_secs", sync_wait_secs)
 
     @property
     @pulumi.getter(name="gcpServiceAccountEmail")
@@ -542,12 +649,25 @@ class FeatureMembershipConfigmanagementHierarchyController(dict):
         :param bool enable_pod_tree_labels: Whether pod tree labels are enabled in this cluster.
         :param bool enabled: Whether Hierarchy Controller is enabled in this cluster.
         """
+        FeatureMembershipConfigmanagementHierarchyController._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enable_hierarchical_resource_quota=enable_hierarchical_resource_quota,
+            enable_pod_tree_labels=enable_pod_tree_labels,
+            enabled=enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enable_hierarchical_resource_quota: Optional[bool] = None,
+             enable_pod_tree_labels: Optional[bool] = None,
+             enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enable_hierarchical_resource_quota is not None:
-            pulumi.set(__self__, "enable_hierarchical_resource_quota", enable_hierarchical_resource_quota)
+            _setter("enable_hierarchical_resource_quota", enable_hierarchical_resource_quota)
         if enable_pod_tree_labels is not None:
-            pulumi.set(__self__, "enable_pod_tree_labels", enable_pod_tree_labels)
+            _setter("enable_pod_tree_labels", enable_pod_tree_labels)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
 
     @property
     @pulumi.getter(name="enableHierarchicalResourceQuota")
@@ -622,22 +742,45 @@ class FeatureMembershipConfigmanagementPolicyController(dict):
         :param bool referential_rules_enabled: Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
         :param bool template_library_installed: Installs the default template library along with Policy Controller.
         """
+        FeatureMembershipConfigmanagementPolicyController._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            audit_interval_seconds=audit_interval_seconds,
+            enabled=enabled,
+            exemptable_namespaces=exemptable_namespaces,
+            log_denies_enabled=log_denies_enabled,
+            monitoring=monitoring,
+            mutation_enabled=mutation_enabled,
+            referential_rules_enabled=referential_rules_enabled,
+            template_library_installed=template_library_installed,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             audit_interval_seconds: Optional[str] = None,
+             enabled: Optional[bool] = None,
+             exemptable_namespaces: Optional[Sequence[str]] = None,
+             log_denies_enabled: Optional[bool] = None,
+             monitoring: Optional['outputs.FeatureMembershipConfigmanagementPolicyControllerMonitoring'] = None,
+             mutation_enabled: Optional[bool] = None,
+             referential_rules_enabled: Optional[bool] = None,
+             template_library_installed: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if audit_interval_seconds is not None:
-            pulumi.set(__self__, "audit_interval_seconds", audit_interval_seconds)
+            _setter("audit_interval_seconds", audit_interval_seconds)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if exemptable_namespaces is not None:
-            pulumi.set(__self__, "exemptable_namespaces", exemptable_namespaces)
+            _setter("exemptable_namespaces", exemptable_namespaces)
         if log_denies_enabled is not None:
-            pulumi.set(__self__, "log_denies_enabled", log_denies_enabled)
+            _setter("log_denies_enabled", log_denies_enabled)
         if monitoring is not None:
-            pulumi.set(__self__, "monitoring", monitoring)
+            _setter("monitoring", monitoring)
         if mutation_enabled is not None:
-            pulumi.set(__self__, "mutation_enabled", mutation_enabled)
+            _setter("mutation_enabled", mutation_enabled)
         if referential_rules_enabled is not None:
-            pulumi.set(__self__, "referential_rules_enabled", referential_rules_enabled)
+            _setter("referential_rules_enabled", referential_rules_enabled)
         if template_library_installed is not None:
-            pulumi.set(__self__, "template_library_installed", template_library_installed)
+            _setter("template_library_installed", template_library_installed)
 
     @property
     @pulumi.getter(name="auditIntervalSeconds")
@@ -708,8 +851,17 @@ class FeatureMembershipConfigmanagementPolicyController(dict):
 class FeatureMembershipConfigmanagementPolicyControllerMonitoring(dict):
     def __init__(__self__, *,
                  backends: Optional[Sequence[str]] = None):
+        FeatureMembershipConfigmanagementPolicyControllerMonitoring._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backends=backends,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backends: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if backends is not None:
-            pulumi.set(__self__, "backends", backends)
+            _setter("backends", backends)
 
     @property
     @pulumi.getter
@@ -742,10 +894,21 @@ class FeatureMembershipMesh(dict):
         """
         :param str management: Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
         """
+        FeatureMembershipMesh._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            control_plane=control_plane,
+            management=management,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             control_plane: Optional[str] = None,
+             management: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if control_plane is not None:
-            pulumi.set(__self__, "control_plane", control_plane)
+            _setter("control_plane", control_plane)
         if management is not None:
-            pulumi.set(__self__, "management", management)
+            _setter("management", management)
 
     @property
     @pulumi.getter(name="controlPlane")
@@ -793,10 +956,21 @@ class FeatureResourceState(dict):
                Output only. The "running state" of the Feature in this Hub.
                Structure is documented below.
         """
+        FeatureResourceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            has_resources=has_resources,
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             has_resources: Optional[bool] = None,
+             state: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if has_resources is not None:
-            pulumi.set(__self__, "has_resources", has_resources)
+            _setter("has_resources", has_resources)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
 
     @property
     @pulumi.getter(name="hasResources")
@@ -829,10 +1003,21 @@ class FeatureSpec(dict):
         :param 'FeatureSpecMulticlusteringressArgs' multiclusteringress: Multicluster Ingress-specific spec.
                Structure is documented below.
         """
+        FeatureSpec._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fleetobservability=fleetobservability,
+            multiclusteringress=multiclusteringress,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fleetobservability: Optional['outputs.FeatureSpecFleetobservability'] = None,
+             multiclusteringress: Optional['outputs.FeatureSpecMulticlusteringress'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if fleetobservability is not None:
-            pulumi.set(__self__, "fleetobservability", fleetobservability)
+            _setter("fleetobservability", fleetobservability)
         if multiclusteringress is not None:
-            pulumi.set(__self__, "multiclusteringress", multiclusteringress)
+            _setter("multiclusteringress", multiclusteringress)
 
     @property
     @pulumi.getter
@@ -878,8 +1063,17 @@ class FeatureSpecFleetobservability(dict):
         :param 'FeatureSpecFleetobservabilityLoggingConfigArgs' logging_config: Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
                Structure is documented below.
         """
+        FeatureSpecFleetobservability._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            logging_config=logging_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             logging_config: Optional['outputs.FeatureSpecFleetobservabilityLoggingConfig'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if logging_config is not None:
-            pulumi.set(__self__, "logging_config", logging_config)
+            _setter("logging_config", logging_config)
 
     @property
     @pulumi.getter(name="loggingConfig")
@@ -921,10 +1115,21 @@ class FeatureSpecFleetobservabilityLoggingConfig(dict):
         :param 'FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs' fleet_scope_logs_config: Specified if applying the routing config to all logs for all fleet scopes.
                Structure is documented below.
         """
+        FeatureSpecFleetobservabilityLoggingConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default_config=default_config,
+            fleet_scope_logs_config=fleet_scope_logs_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default_config: Optional['outputs.FeatureSpecFleetobservabilityLoggingConfigDefaultConfig'] = None,
+             fleet_scope_logs_config: Optional['outputs.FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if default_config is not None:
-            pulumi.set(__self__, "default_config", default_config)
+            _setter("default_config", default_config)
         if fleet_scope_logs_config is not None:
-            pulumi.set(__self__, "fleet_scope_logs_config", fleet_scope_logs_config)
+            _setter("fleet_scope_logs_config", fleet_scope_logs_config)
 
     @property
     @pulumi.getter(name="defaultConfig")
@@ -953,8 +1158,17 @@ class FeatureSpecFleetobservabilityLoggingConfigDefaultConfig(dict):
         :param str mode: Specified if fleet logging feature is enabled.
                Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
         """
+        FeatureSpecFleetobservabilityLoggingConfigDefaultConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            mode=mode,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             mode: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
 
     @property
     @pulumi.getter
@@ -974,8 +1188,17 @@ class FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig(dict):
         :param str mode: Specified if fleet logging feature is enabled.
                Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
         """
+        FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            mode=mode,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             mode: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
 
     @property
     @pulumi.getter
@@ -1011,7 +1234,16 @@ class FeatureSpecMulticlusteringress(dict):
         """
         :param str config_membership: Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
         """
-        pulumi.set(__self__, "config_membership", config_membership)
+        FeatureSpecMulticlusteringress._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_membership=config_membership,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_membership: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("config_membership", config_membership)
 
     @property
     @pulumi.getter(name="configMembership")
@@ -1031,8 +1263,17 @@ class FeatureState(dict):
                Output only. The "running state" of the Feature in this Hub.
                Structure is documented below.
         """
+        FeatureState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            states=states,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             states: Optional[Sequence['outputs.FeatureStateState']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if states is not None:
-            pulumi.set(__self__, "states", states)
+            _setter("states", states)
 
     @property
     @pulumi.getter
@@ -1076,12 +1317,25 @@ class FeatureStateState(dict):
         :param str update_time: (Output)
                The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         """
+        FeatureStateState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code=code,
+            description=description,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code: Optional[str] = None,
+             description: Optional[str] = None,
+             update_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if code is not None:
-            pulumi.set(__self__, "code", code)
+            _setter("code", code)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter
@@ -1115,7 +1369,16 @@ class FeatureStateState(dict):
 class MembershipAuthority(dict):
     def __init__(__self__, *,
                  issuer: str):
-        pulumi.set(__self__, "issuer", issuer)
+        MembershipAuthority._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            issuer=issuer,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             issuer: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("issuer", issuer)
 
     @property
     @pulumi.getter
@@ -1131,8 +1394,17 @@ class MembershipBindingState(dict):
         :param str code: (Output)
                Code describes the state of a MembershipBinding resource.
         """
+        MembershipBindingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code=code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if code is not None:
-            pulumi.set(__self__, "code", code)
+            _setter("code", code)
 
     @property
     @pulumi.getter
@@ -1169,8 +1441,17 @@ class MembershipEndpoint(dict):
         :param 'MembershipEndpointGkeClusterArgs' gke_cluster: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
                Structure is documented below.
         """
+        MembershipEndpoint._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            gke_cluster=gke_cluster,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             gke_cluster: Optional['outputs.MembershipEndpointGkeCluster'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if gke_cluster is not None:
-            pulumi.set(__self__, "gke_cluster", gke_cluster)
+            _setter("gke_cluster", gke_cluster)
 
     @property
     @pulumi.getter(name="gkeCluster")
@@ -1203,7 +1484,16 @@ class MembershipEndpointGkeCluster(dict):
 
     def __init__(__self__, *,
                  resource_link: str):
-        pulumi.set(__self__, "resource_link", resource_link)
+        MembershipEndpointGkeCluster._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_link=resource_link,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_link: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("resource_link", resource_link)
 
     @property
     @pulumi.getter(name="resourceLink")
@@ -1217,10 +1507,23 @@ class MembershipIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        MembershipIamBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -1244,10 +1547,23 @@ class MembershipIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        MembershipIamMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -1292,7 +1608,16 @@ class MembershipRbacRoleBindingRole(dict):
                
                - - -
         """
-        pulumi.set(__self__, "predefined_role", predefined_role)
+        MembershipRbacRoleBindingRole._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            predefined_role=predefined_role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             predefined_role: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("predefined_role", predefined_role)
 
     @property
     @pulumi.getter(name="predefinedRole")
@@ -1314,8 +1639,17 @@ class MembershipRbacRoleBindingState(dict):
         :param str code: (Output)
                Code describes the state of a RBAC Role Binding resource.
         """
+        MembershipRbacRoleBindingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code=code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if code is not None:
-            pulumi.set(__self__, "code", code)
+            _setter("code", code)
 
     @property
     @pulumi.getter
@@ -1335,8 +1669,17 @@ class NamespaceState(dict):
         :param str code: (Output)
                Code describes the state of a Namespace resource.
         """
+        NamespaceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code=code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if code is not None:
-            pulumi.set(__self__, "code", code)
+            _setter("code", code)
 
     @property
     @pulumi.getter
@@ -1354,10 +1697,23 @@ class ScopeIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        ScopeIamBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -1381,10 +1737,23 @@ class ScopeIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        ScopeIamMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -1429,8 +1798,17 @@ class ScopeRbacRoleBindingRole(dict):
                
                - - -
         """
+        ScopeRbacRoleBindingRole._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            predefined_role=predefined_role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             predefined_role: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if predefined_role is not None:
-            pulumi.set(__self__, "predefined_role", predefined_role)
+            _setter("predefined_role", predefined_role)
 
     @property
     @pulumi.getter(name="predefinedRole")
@@ -1452,8 +1830,17 @@ class ScopeRbacRoleBindingState(dict):
         :param str code: (Output)
                Code describes the state of a RBAC Role Binding resource.
         """
+        ScopeRbacRoleBindingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code=code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if code is not None:
-            pulumi.set(__self__, "code", code)
+            _setter("code", code)
 
     @property
     @pulumi.getter
@@ -1473,8 +1860,17 @@ class ScopeState(dict):
         :param str code: (Output)
                Code describes the state of a Scope resource.
         """
+        ScopeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code=code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if code is not None:
-            pulumi.set(__self__, "code", code)
+            _setter("code", code)
 
     @property
     @pulumi.getter

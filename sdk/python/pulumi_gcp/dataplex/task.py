@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -40,36 +40,61 @@ class TaskArgs:
         :param pulumi.Input[str] location: The location in which the task will be created in.
         :param pulumi.Input['TaskNotebookArgs'] notebook: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
-               
-               (Required)
-               Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
-        :param pulumi.Input[str] project: The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
-               
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['TaskSparkArgs'] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
         :param pulumi.Input[str] task_id: The task Id of the task.
         """
-        pulumi.set(__self__, "execution_spec", execution_spec)
-        pulumi.set(__self__, "trigger_spec", trigger_spec)
+        TaskArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            execution_spec=execution_spec,
+            trigger_spec=trigger_spec,
+            description=description,
+            display_name=display_name,
+            labels=labels,
+            lake=lake,
+            location=location,
+            notebook=notebook,
+            project=project,
+            spark=spark,
+            task_id=task_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             execution_spec: pulumi.Input['TaskExecutionSpecArgs'],
+             trigger_spec: pulumi.Input['TaskTriggerSpecArgs'],
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             lake: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             notebook: Optional[pulumi.Input['TaskNotebookArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             spark: Optional[pulumi.Input['TaskSparkArgs']] = None,
+             task_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("execution_spec", execution_spec)
+        _setter("trigger_spec", trigger_spec)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if lake is not None:
-            pulumi.set(__self__, "lake", lake)
+            _setter("lake", lake)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if notebook is not None:
-            pulumi.set(__self__, "notebook", notebook)
+            _setter("notebook", notebook)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if spark is not None:
-            pulumi.set(__self__, "spark", spark)
+            _setter("spark", spark)
         if task_id is not None:
-            pulumi.set(__self__, "task_id", task_id)
+            _setter("task_id", task_id)
 
     @property
     @pulumi.getter(name="executionSpec")
@@ -163,9 +188,6 @@ class TaskArgs:
         """
         A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
         Structure is documented below.
-
-        (Required)
-        Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
         """
         return pulumi.get(self, "notebook")
 
@@ -177,8 +199,7 @@ class TaskArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
-
+        The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
@@ -249,11 +270,7 @@ class _TaskState:
                The relative resource name of the job, of the form: projects/{project_number}/locations/{locationId}/lakes/{lakeId}/tasks/{taskId}/jobs/{jobId}.
         :param pulumi.Input['TaskNotebookArgs'] notebook: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
-               
-               (Required)
-               Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
-        :param pulumi.Input[str] project: The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
-               
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['TaskSparkArgs'] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
@@ -267,40 +284,81 @@ class _TaskState:
         :param pulumi.Input[str] update_time: (Output)
                Last update time of the status.
         """
+        _TaskState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            display_name=display_name,
+            execution_spec=execution_spec,
+            execution_statuses=execution_statuses,
+            labels=labels,
+            lake=lake,
+            location=location,
+            name=name,
+            notebook=notebook,
+            project=project,
+            spark=spark,
+            state=state,
+            task_id=task_id,
+            trigger_spec=trigger_spec,
+            uid=uid,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             execution_spec: Optional[pulumi.Input['TaskExecutionSpecArgs']] = None,
+             execution_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['TaskExecutionStatusArgs']]]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             lake: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             notebook: Optional[pulumi.Input['TaskNotebookArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             spark: Optional[pulumi.Input['TaskSparkArgs']] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             task_id: Optional[pulumi.Input[str]] = None,
+             trigger_spec: Optional[pulumi.Input['TaskTriggerSpecArgs']] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if execution_spec is not None:
-            pulumi.set(__self__, "execution_spec", execution_spec)
+            _setter("execution_spec", execution_spec)
         if execution_statuses is not None:
-            pulumi.set(__self__, "execution_statuses", execution_statuses)
+            _setter("execution_statuses", execution_statuses)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if lake is not None:
-            pulumi.set(__self__, "lake", lake)
+            _setter("lake", lake)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if notebook is not None:
-            pulumi.set(__self__, "notebook", notebook)
+            _setter("notebook", notebook)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if spark is not None:
-            pulumi.set(__self__, "spark", spark)
+            _setter("spark", spark)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if task_id is not None:
-            pulumi.set(__self__, "task_id", task_id)
+            _setter("task_id", task_id)
         if trigger_spec is not None:
-            pulumi.set(__self__, "trigger_spec", trigger_spec)
+            _setter("trigger_spec", trigger_spec)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -419,9 +477,6 @@ class _TaskState:
         """
         A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
         Structure is documented below.
-
-        (Required)
-        Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
         """
         return pulumi.get(self, "notebook")
 
@@ -433,8 +488,7 @@ class _TaskState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
-
+        The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
@@ -576,11 +630,7 @@ class Task(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location in which the task will be created in.
         :param pulumi.Input[pulumi.InputType['TaskNotebookArgs']] notebook: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
-               
-               (Required)
-               Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
-        :param pulumi.Input[str] project: The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
-               
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['TaskSparkArgs']] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
@@ -631,6 +681,10 @@ class Task(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TaskArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -658,16 +712,36 @@ class Task(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
+            if execution_spec is not None and not isinstance(execution_spec, TaskExecutionSpecArgs):
+                execution_spec = execution_spec or {}
+                def _setter(key, value):
+                    execution_spec[key] = value
+                TaskExecutionSpecArgs._configure(_setter, **execution_spec)
             if execution_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'execution_spec'")
             __props__.__dict__["execution_spec"] = execution_spec
             __props__.__dict__["labels"] = labels
             __props__.__dict__["lake"] = lake
             __props__.__dict__["location"] = location
+            if notebook is not None and not isinstance(notebook, TaskNotebookArgs):
+                notebook = notebook or {}
+                def _setter(key, value):
+                    notebook[key] = value
+                TaskNotebookArgs._configure(_setter, **notebook)
             __props__.__dict__["notebook"] = notebook
             __props__.__dict__["project"] = project
+            if spark is not None and not isinstance(spark, TaskSparkArgs):
+                spark = spark or {}
+                def _setter(key, value):
+                    spark[key] = value
+                TaskSparkArgs._configure(_setter, **spark)
             __props__.__dict__["spark"] = spark
             __props__.__dict__["task_id"] = task_id
+            if trigger_spec is not None and not isinstance(trigger_spec, TaskTriggerSpecArgs):
+                trigger_spec = trigger_spec or {}
+                def _setter(key, value):
+                    trigger_spec[key] = value
+                TaskTriggerSpecArgs._configure(_setter, **trigger_spec)
             if trigger_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'trigger_spec'")
             __props__.__dict__["trigger_spec"] = trigger_spec
@@ -725,11 +799,7 @@ class Task(pulumi.CustomResource):
                The relative resource name of the job, of the form: projects/{project_number}/locations/{locationId}/lakes/{lakeId}/tasks/{taskId}/jobs/{jobId}.
         :param pulumi.Input[pulumi.InputType['TaskNotebookArgs']] notebook: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
-               
-               (Required)
-               Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
-        :param pulumi.Input[str] project: The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
-               
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['TaskSparkArgs']] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
@@ -847,9 +917,6 @@ class Task(pulumi.CustomResource):
         """
         A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
         Structure is documented below.
-
-        (Required)
-        Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
         """
         return pulumi.get(self, "notebook")
 
@@ -857,8 +924,7 @@ class Task(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
-
+        The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")

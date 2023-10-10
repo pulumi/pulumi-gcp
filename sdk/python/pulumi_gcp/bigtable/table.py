@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -38,19 +38,40 @@ class TableArgs:
                !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
                to delete/recreate the entire `bigtable.Table` resource.
         """
-        pulumi.set(__self__, "instance_name", instance_name)
+        TableArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_name=instance_name,
+            change_stream_retention=change_stream_retention,
+            column_families=column_families,
+            deletion_protection=deletion_protection,
+            name=name,
+            project=project,
+            split_keys=split_keys,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_name: pulumi.Input[str],
+             change_stream_retention: Optional[pulumi.Input[str]] = None,
+             column_families: Optional[pulumi.Input[Sequence[pulumi.Input['TableColumnFamilyArgs']]]] = None,
+             deletion_protection: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             split_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_name", instance_name)
         if change_stream_retention is not None:
-            pulumi.set(__self__, "change_stream_retention", change_stream_retention)
+            _setter("change_stream_retention", change_stream_retention)
         if column_families is not None:
-            pulumi.set(__self__, "column_families", column_families)
+            _setter("column_families", column_families)
         if deletion_protection is not None:
-            pulumi.set(__self__, "deletion_protection", deletion_protection)
+            _setter("deletion_protection", deletion_protection)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if split_keys is not None:
-            pulumi.set(__self__, "split_keys", split_keys)
+            _setter("split_keys", split_keys)
 
     @property
     @pulumi.getter(name="instanceName")
@@ -167,20 +188,41 @@ class _TableState:
                !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
                to delete/recreate the entire `bigtable.Table` resource.
         """
+        _TableState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            change_stream_retention=change_stream_retention,
+            column_families=column_families,
+            deletion_protection=deletion_protection,
+            instance_name=instance_name,
+            name=name,
+            project=project,
+            split_keys=split_keys,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             change_stream_retention: Optional[pulumi.Input[str]] = None,
+             column_families: Optional[pulumi.Input[Sequence[pulumi.Input['TableColumnFamilyArgs']]]] = None,
+             deletion_protection: Optional[pulumi.Input[str]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             split_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if change_stream_retention is not None:
-            pulumi.set(__self__, "change_stream_retention", change_stream_retention)
+            _setter("change_stream_retention", change_stream_retention)
         if column_families is not None:
-            pulumi.set(__self__, "column_families", column_families)
+            _setter("column_families", column_families)
         if deletion_protection is not None:
-            pulumi.set(__self__, "deletion_protection", deletion_protection)
+            _setter("deletion_protection", deletion_protection)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if split_keys is not None:
-            pulumi.set(__self__, "split_keys", split_keys)
+            _setter("split_keys", split_keys)
 
     @property
     @pulumi.getter(name="changeStreamRetention")
@@ -422,6 +464,10 @@ class Table(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TableArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,17 +39,40 @@ class KeystoresAliasesKeyCertFileArgs:
         :param pulumi.Input[str] key: Private Key content, omit if uploading to truststore
         :param pulumi.Input[str] password: Password for the Private Key if it's encrypted
         """
-        pulumi.set(__self__, "alias", alias)
-        pulumi.set(__self__, "cert", cert)
-        pulumi.set(__self__, "environment", environment)
-        pulumi.set(__self__, "keystore", keystore)
-        pulumi.set(__self__, "org_id", org_id)
+        KeystoresAliasesKeyCertFileArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alias=alias,
+            cert=cert,
+            environment=environment,
+            keystore=keystore,
+            org_id=org_id,
+            certs_info=certs_info,
+            key=key,
+            password=password,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alias: pulumi.Input[str],
+             cert: pulumi.Input[str],
+             environment: pulumi.Input[str],
+             keystore: pulumi.Input[str],
+             org_id: pulumi.Input[str],
+             certs_info: Optional[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs']] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alias", alias)
+        _setter("cert", cert)
+        _setter("environment", environment)
+        _setter("keystore", keystore)
+        _setter("org_id", org_id)
         if certs_info is not None:
-            pulumi.set(__self__, "certs_info", certs_info)
+            _setter("certs_info", certs_info)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
 
     @property
     @pulumi.getter
@@ -180,24 +203,49 @@ class _KeystoresAliasesKeyCertFileState:
         :param pulumi.Input[str] password: Password for the Private Key if it's encrypted
         :param pulumi.Input[str] type: Optional.Type of Alias
         """
+        _KeystoresAliasesKeyCertFileState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alias=alias,
+            cert=cert,
+            certs_info=certs_info,
+            environment=environment,
+            key=key,
+            keystore=keystore,
+            org_id=org_id,
+            password=password,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alias: Optional[pulumi.Input[str]] = None,
+             cert: Optional[pulumi.Input[str]] = None,
+             certs_info: Optional[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs']] = None,
+             environment: Optional[pulumi.Input[str]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             keystore: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if alias is not None:
-            pulumi.set(__self__, "alias", alias)
+            _setter("alias", alias)
         if cert is not None:
-            pulumi.set(__self__, "cert", cert)
+            _setter("cert", cert)
         if certs_info is not None:
-            pulumi.set(__self__, "certs_info", certs_info)
+            _setter("certs_info", certs_info)
         if environment is not None:
-            pulumi.set(__self__, "environment", environment)
+            _setter("environment", environment)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if keystore is not None:
-            pulumi.set(__self__, "keystore", keystore)
+            _setter("keystore", keystore)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -399,6 +447,10 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            KeystoresAliasesKeyCertFileArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -427,6 +479,11 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
             if cert is None and not opts.urn:
                 raise TypeError("Missing required property 'cert'")
             __props__.__dict__["cert"] = cert
+            if certs_info is not None and not isinstance(certs_info, KeystoresAliasesKeyCertFileCertsInfoArgs):
+                certs_info = certs_info or {}
+                def _setter(key, value):
+                    certs_info[key] = value
+                KeystoresAliasesKeyCertFileCertsInfoArgs._configure(_setter, **certs_info)
             __props__.__dict__["certs_info"] = certs_info
             if environment is None and not opts.urn:
                 raise TypeError("Missing required property 'environment'")

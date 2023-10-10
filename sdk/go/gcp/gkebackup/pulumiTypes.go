@@ -1741,10 +1741,6 @@ func (o BackupPlanRetentionPolicyPtrOutput) Locked() pulumi.BoolPtrOutput {
 }
 
 type RestorePlanIamBindingCondition struct {
-	// The description is a user specified string description
-	// of the transformation rule.
-	//
-	// (Optional)
 	// User specified descriptive string for this RestorePlan.
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -1763,10 +1759,6 @@ type RestorePlanIamBindingConditionInput interface {
 }
 
 type RestorePlanIamBindingConditionArgs struct {
-	// The description is a user specified string description
-	// of the transformation rule.
-	//
-	// (Optional)
 	// User specified descriptive string for this RestorePlan.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	Expression  pulumi.StringInput    `pulumi:"expression"`
@@ -1868,10 +1860,6 @@ func (o RestorePlanIamBindingConditionOutput) ToOutput(ctx context.Context) pulu
 	}
 }
 
-// The description is a user specified string description
-// of the transformation rule.
-//
-// (Optional)
 // User specified descriptive string for this RestorePlan.
 func (o RestorePlanIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RestorePlanIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -1915,10 +1903,6 @@ func (o RestorePlanIamBindingConditionPtrOutput) Elem() RestorePlanIamBindingCon
 	}).(RestorePlanIamBindingConditionOutput)
 }
 
-// The description is a user specified string description
-// of the transformation rule.
-//
-// (Optional)
 // User specified descriptive string for this RestorePlan.
 func (o RestorePlanIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RestorePlanIamBindingCondition) *string {
@@ -1948,10 +1932,6 @@ func (o RestorePlanIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput 
 }
 
 type RestorePlanIamMemberCondition struct {
-	// The description is a user specified string description
-	// of the transformation rule.
-	//
-	// (Optional)
 	// User specified descriptive string for this RestorePlan.
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -1970,10 +1950,6 @@ type RestorePlanIamMemberConditionInput interface {
 }
 
 type RestorePlanIamMemberConditionArgs struct {
-	// The description is a user specified string description
-	// of the transformation rule.
-	//
-	// (Optional)
 	// User specified descriptive string for this RestorePlan.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	Expression  pulumi.StringInput    `pulumi:"expression"`
@@ -2075,10 +2051,6 @@ func (o RestorePlanIamMemberConditionOutput) ToOutput(ctx context.Context) pulum
 	}
 }
 
-// The description is a user specified string description
-// of the transformation rule.
-//
-// (Optional)
 // User specified descriptive string for this RestorePlan.
 func (o RestorePlanIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RestorePlanIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -2122,10 +2094,6 @@ func (o RestorePlanIamMemberConditionPtrOutput) Elem() RestorePlanIamMemberCondi
 	}).(RestorePlanIamMemberConditionOutput)
 }
 
-// The description is a user specified string description
-// of the transformation rule.
-//
-// (Optional)
 // User specified descriptive string for this RestorePlan.
 func (o RestorePlanIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RestorePlanIamMemberCondition) *string {

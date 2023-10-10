@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -32,11 +32,7 @@ class RestorePlanArgs:
         :param pulumi.Input[str] location: The region of the Restore Plan.
         :param pulumi.Input['RestorePlanRestoreConfigArgs'] restore_config: Defines the configuration of Restores created via this RestorePlan.
                Structure is documented below.
-        :param pulumi.Input[str] description: The description is a user specified string description
-               of the transformation rule.
-               
-               (Optional)
-               User specified descriptive string for this RestorePlan.
+        :param pulumi.Input[str] description: User specified descriptive string for this RestorePlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Description: A set of custom labels supplied by the user.
                A list of key->value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -44,18 +40,41 @@ class RestorePlanArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "backup_plan", backup_plan)
-        pulumi.set(__self__, "cluster", cluster)
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "restore_config", restore_config)
+        RestorePlanArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_plan=backup_plan,
+            cluster=cluster,
+            location=location,
+            restore_config=restore_config,
+            description=description,
+            labels=labels,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_plan: pulumi.Input[str],
+             cluster: pulumi.Input[str],
+             location: pulumi.Input[str],
+             restore_config: pulumi.Input['RestorePlanRestoreConfigArgs'],
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("backup_plan", backup_plan)
+        _setter("cluster", cluster)
+        _setter("location", location)
+        _setter("restore_config", restore_config)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="backupPlan")
@@ -111,10 +130,6 @@ class RestorePlanArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description is a user specified string description
-        of the transformation rule.
-
-        (Optional)
         User specified descriptive string for this RestorePlan.
         """
         return pulumi.get(self, "description")
@@ -182,11 +197,7 @@ class _RestorePlanState:
         :param pulumi.Input[str] backup_plan: A reference to the BackupPlan from which Backups may be used
                as the source for Restores created via this RestorePlan.
         :param pulumi.Input[str] cluster: The source cluster from which Restores will be created via this RestorePlan.
-        :param pulumi.Input[str] description: The description is a user specified string description
-               of the transformation rule.
-               
-               (Optional)
-               User specified descriptive string for this RestorePlan.
+        :param pulumi.Input[str] description: User specified descriptive string for this RestorePlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Description: A set of custom labels supplied by the user.
                A list of key->value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -200,28 +211,57 @@ class _RestorePlanState:
         :param pulumi.Input[str] state_reason: Detailed description of why RestorePlan is in its current state.
         :param pulumi.Input[str] uid: Server generated, unique identifier of UUID format.
         """
+        _RestorePlanState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_plan=backup_plan,
+            cluster=cluster,
+            description=description,
+            labels=labels,
+            location=location,
+            name=name,
+            project=project,
+            restore_config=restore_config,
+            state=state,
+            state_reason=state_reason,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_plan: Optional[pulumi.Input[str]] = None,
+             cluster: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             restore_config: Optional[pulumi.Input['RestorePlanRestoreConfigArgs']] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             state_reason: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if backup_plan is not None:
-            pulumi.set(__self__, "backup_plan", backup_plan)
+            _setter("backup_plan", backup_plan)
         if cluster is not None:
-            pulumi.set(__self__, "cluster", cluster)
+            _setter("cluster", cluster)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if restore_config is not None:
-            pulumi.set(__self__, "restore_config", restore_config)
+            _setter("restore_config", restore_config)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if state_reason is not None:
-            pulumi.set(__self__, "state_reason", state_reason)
+            _setter("state_reason", state_reason)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter(name="backupPlan")
@@ -252,10 +292,6 @@ class _RestorePlanState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description is a user specified string description
-        of the transformation rule.
-
-        (Optional)
         User specified descriptive string for this RestorePlan.
         """
         return pulumi.get(self, "description")
@@ -711,11 +747,7 @@ class RestorePlan(pulumi.CustomResource):
         :param pulumi.Input[str] backup_plan: A reference to the BackupPlan from which Backups may be used
                as the source for Restores created via this RestorePlan.
         :param pulumi.Input[str] cluster: The source cluster from which Restores will be created via this RestorePlan.
-        :param pulumi.Input[str] description: The description is a user specified string description
-               of the transformation rule.
-               
-               (Optional)
-               User specified descriptive string for this RestorePlan.
+        :param pulumi.Input[str] description: User specified descriptive string for this RestorePlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Description: A set of custom labels supplied by the user.
                A list of key->value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -1069,6 +1101,10 @@ class RestorePlan(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RestorePlanArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1104,6 +1140,11 @@ class RestorePlan(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            if restore_config is not None and not isinstance(restore_config, RestorePlanRestoreConfigArgs):
+                restore_config = restore_config or {}
+                def _setter(key, value):
+                    restore_config[key] = value
+                RestorePlanRestoreConfigArgs._configure(_setter, **restore_config)
             if restore_config is None and not opts.urn:
                 raise TypeError("Missing required property 'restore_config'")
             __props__.__dict__["restore_config"] = restore_config
@@ -1141,11 +1182,7 @@ class RestorePlan(pulumi.CustomResource):
         :param pulumi.Input[str] backup_plan: A reference to the BackupPlan from which Backups may be used
                as the source for Restores created via this RestorePlan.
         :param pulumi.Input[str] cluster: The source cluster from which Restores will be created via this RestorePlan.
-        :param pulumi.Input[str] description: The description is a user specified string description
-               of the transformation rule.
-               
-               (Optional)
-               User specified descriptive string for this RestorePlan.
+        :param pulumi.Input[str] description: User specified descriptive string for this RestorePlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Description: A set of custom labels supplied by the user.
                A list of key->value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -1197,10 +1234,6 @@ class RestorePlan(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description is a user specified string description
-        of the transformation rule.
-
-        (Optional)
         User specified descriptive string for this RestorePlan.
         """
         return pulumi.get(self, "description")

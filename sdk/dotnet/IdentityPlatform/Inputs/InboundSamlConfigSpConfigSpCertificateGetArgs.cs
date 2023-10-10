@@ -14,11 +14,6 @@ namespace Pulumi.Gcp.IdentityPlatform.Inputs
     {
         /// <summary>
         /// The IdP's x509 certificate.
-        /// 
-        /// (Output)
-        /// The x509 certificate
-        /// 
-        /// - - -
         /// </summary>
         [Input("x509Certificate")]
         public Input<string>? X509Certificate { get; set; }

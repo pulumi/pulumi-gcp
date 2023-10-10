@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -40,19 +40,40 @@ class AiIndexArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the index. eg us-central1
         """
-        pulumi.set(__self__, "display_name", display_name)
+        AiIndexArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            description=description,
+            index_update_method=index_update_method,
+            labels=labels,
+            metadata=metadata,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             index_update_method: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             metadata: Optional[pulumi.Input['AiIndexMetadataArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("display_name", display_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if index_update_method is not None:
-            pulumi.set(__self__, "index_update_method", index_update_method)
+            _setter("index_update_method", index_update_method)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
+            _setter("metadata", metadata)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="displayName")
@@ -189,34 +210,69 @@ class _AiIndexState:
         :param pulumi.Input[str] region: The region of the index. eg us-central1
         :param pulumi.Input[str] update_time: The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
+        _AiIndexState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            deployed_indexes=deployed_indexes,
+            description=description,
+            display_name=display_name,
+            etag=etag,
+            index_stats=index_stats,
+            index_update_method=index_update_method,
+            labels=labels,
+            metadata=metadata,
+            metadata_schema_uri=metadata_schema_uri,
+            name=name,
+            project=project,
+            region=region,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             deployed_indexes: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexDeployedIndexArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             index_stats: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexIndexStatArgs']]]] = None,
+             index_update_method: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             metadata: Optional[pulumi.Input['AiIndexMetadataArgs']] = None,
+             metadata_schema_uri: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if deployed_indexes is not None:
-            pulumi.set(__self__, "deployed_indexes", deployed_indexes)
+            _setter("deployed_indexes", deployed_indexes)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if index_stats is not None:
-            pulumi.set(__self__, "index_stats", index_stats)
+            _setter("index_stats", index_stats)
         if index_update_method is not None:
-            pulumi.set(__self__, "index_update_method", index_update_method)
+            _setter("index_update_method", index_update_method)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
+            _setter("metadata", metadata)
         if metadata_schema_uri is not None:
-            pulumi.set(__self__, "metadata_schema_uri", metadata_schema_uri)
+            _setter("metadata_schema_uri", metadata_schema_uri)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -654,6 +710,10 @@ class AiIndex(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AiIndexArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -681,6 +741,11 @@ class AiIndex(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["index_update_method"] = index_update_method
             __props__.__dict__["labels"] = labels
+            if metadata is not None and not isinstance(metadata, AiIndexMetadataArgs):
+                metadata = metadata or {}
+                def _setter(key, value):
+                    metadata[key] = value
+                AiIndexMetadataArgs._configure(_setter, **metadata)
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region

@@ -652,12 +652,6 @@ export class CxPage extends pulumi.CustomResource {
     /**
      * (Output)
      * The unique identifier of this event handler.
-     *
-     * (Output)
-     * The unique identifier of this transition route.
-     *
-     * (Output)
-     * The unique identifier of this event handler.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -769,12 +763,6 @@ export interface CxPageState {
      */
     languageCode?: pulumi.Input<string>;
     /**
-     * (Output)
-     * The unique identifier of this event handler.
-     *
-     * (Output)
-     * The unique identifier of this transition route.
-     *
      * (Output)
      * The unique identifier of this event handler.
      */

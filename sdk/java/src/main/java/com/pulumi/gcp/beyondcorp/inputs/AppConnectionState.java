@@ -150,11 +150,6 @@ public final class AppConnectionState extends com.pulumi.resources.ResourceArgs 
      * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
      * for a list of possible values.
      * 
-     * (Optional)
-     * The type of hosting used by the gateway. Refer to
-     * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
-     * for a list of possible values.
-     * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
@@ -162,11 +157,6 @@ public final class AppConnectionState extends com.pulumi.resources.ResourceArgs 
     /**
      * @return The type of network connectivity used by the AppConnection. Refer to
      * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
-     * for a list of possible values.
-     * 
-     * (Optional)
-     * The type of hosting used by the gateway. Refer to
-     * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
      * for a list of possible values.
      * 
      */
@@ -395,11 +385,6 @@ public final class AppConnectionState extends com.pulumi.resources.ResourceArgs 
          * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
          * for a list of possible values.
          * 
-         * (Optional)
-         * The type of hosting used by the gateway. Refer to
-         * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
-         * for a list of possible values.
-         * 
          * @return builder
          * 
          */
@@ -411,11 +396,6 @@ public final class AppConnectionState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param type The type of network connectivity used by the AppConnection. Refer to
          * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
-         * for a list of possible values.
-         * 
-         * (Optional)
-         * The type of hosting used by the gateway. Refer to
-         * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
          * for a list of possible values.
          * 
          * @return builder

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['IAMPolicyArgs', 'IAMPolicy']
@@ -28,8 +28,19 @@ class IAMPolicyArgs:
                Deleting this removes all policies from the folder, locking out users without
                folder-level access.
         """
-        pulumi.set(__self__, "folder", folder)
-        pulumi.set(__self__, "policy_data", policy_data)
+        IAMPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            folder=folder,
+            policy_data=policy_data,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             folder: pulumi.Input[str],
+             policy_data: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("folder", folder)
+        _setter("policy_data", policy_data)
 
     @property
     @pulumi.getter
@@ -82,12 +93,25 @@ class _IAMPolicyState:
                Deleting this removes all policies from the folder, locking out users without
                folder-level access.
         """
+        _IAMPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            etag=etag,
+            folder=folder,
+            policy_data=policy_data,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             etag: Optional[pulumi.Input[str]] = None,
+             folder: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if folder is not None:
-            pulumi.set(__self__, "folder", folder)
+            _setter("folder", folder)
         if policy_data is not None:
-            pulumi.set(__self__, "policy_data", policy_data)
+            _setter("policy_data", policy_data)
 
     @property
     @pulumi.getter
@@ -521,6 +545,10 @@ class IAMPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IAMPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

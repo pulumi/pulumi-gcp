@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -22,10 +22,23 @@ class RepositoryIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        RepositoryIamBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -49,10 +62,23 @@ class RepositoryIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        RepositoryIamMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -106,10 +132,23 @@ class RepositoryPubsubConfig(dict):
                the caller needs to have iam.serviceAccounts.actAs permission on this service account.
                If unspecified, it defaults to the compute engine default service account.
         """
-        pulumi.set(__self__, "message_format", message_format)
-        pulumi.set(__self__, "topic", topic)
+        RepositoryPubsubConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            message_format=message_format,
+            topic=topic,
+            service_account_email=service_account_email,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             message_format: str,
+             topic: str,
+             service_account_email: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("message_format", message_format)
+        _setter("topic", topic)
         if service_account_email is not None:
-            pulumi.set(__self__, "service_account_email", service_account_email)
+            _setter("service_account_email", service_account_email)
 
     @property
     @pulumi.getter(name="messageFormat")
@@ -148,9 +187,22 @@ class GetRepositoryPubsubConfigResult(dict):
                  message_format: str,
                  service_account_email: str,
                  topic: str):
-        pulumi.set(__self__, "message_format", message_format)
-        pulumi.set(__self__, "service_account_email", service_account_email)
-        pulumi.set(__self__, "topic", topic)
+        GetRepositoryPubsubConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            message_format=message_format,
+            service_account_email=service_account_email,
+            topic=topic,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             message_format: str,
+             service_account_email: str,
+             topic: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("message_format", message_format)
+        _setter("service_account_email", service_account_email)
+        _setter("topic", topic)
 
     @property
     @pulumi.getter(name="messageFormat")

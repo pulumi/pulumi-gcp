@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['WorkstationIamPolicyArgs', 'WorkstationIamPolicy']
@@ -41,14 +41,33 @@ class WorkstationIamPolicyArgs:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        pulumi.set(__self__, "policy_data", policy_data)
-        pulumi.set(__self__, "workstation_cluster_id", workstation_cluster_id)
-        pulumi.set(__self__, "workstation_config_id", workstation_config_id)
-        pulumi.set(__self__, "workstation_id", workstation_id)
+        WorkstationIamPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            policy_data=policy_data,
+            workstation_cluster_id=workstation_cluster_id,
+            workstation_config_id=workstation_config_id,
+            workstation_id=workstation_id,
+            location=location,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             policy_data: pulumi.Input[str],
+             workstation_cluster_id: pulumi.Input[str],
+             workstation_config_id: pulumi.Input[str],
+             workstation_id: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("policy_data", policy_data)
+        _setter("workstation_cluster_id", workstation_cluster_id)
+        _setter("workstation_config_id", workstation_config_id)
+        _setter("workstation_id", workstation_id)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="policyData")
@@ -161,20 +180,41 @@ class _WorkstationIamPolicyState:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
+        _WorkstationIamPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            etag=etag,
+            location=location,
+            policy_data=policy_data,
+            project=project,
+            workstation_cluster_id=workstation_cluster_id,
+            workstation_config_id=workstation_config_id,
+            workstation_id=workstation_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             etag: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             workstation_cluster_id: Optional[pulumi.Input[str]] = None,
+             workstation_config_id: Optional[pulumi.Input[str]] = None,
+             workstation_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if policy_data is not None:
-            pulumi.set(__self__, "policy_data", policy_data)
+            _setter("policy_data", policy_data)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if workstation_cluster_id is not None:
-            pulumi.set(__self__, "workstation_cluster_id", workstation_cluster_id)
+            _setter("workstation_cluster_id", workstation_cluster_id)
         if workstation_config_id is not None:
-            pulumi.set(__self__, "workstation_config_id", workstation_config_id)
+            _setter("workstation_config_id", workstation_config_id)
         if workstation_id is not None:
-            pulumi.set(__self__, "workstation_id", workstation_id)
+            _setter("workstation_id", workstation_id)
 
     @property
     @pulumi.getter
@@ -366,6 +406,10 @@ class WorkstationIamPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            WorkstationIamPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

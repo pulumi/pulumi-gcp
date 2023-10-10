@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['HostingReleaseArgs', 'HostingRelease']
@@ -39,15 +39,32 @@ class HostingReleaseArgs:
                The Version must belong to the same site as in the `site_id`.
                This parameter must be empty if the `type` of the release is `SITE_DISABLE`.
         """
-        pulumi.set(__self__, "site_id", site_id)
+        HostingReleaseArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            site_id=site_id,
+            channel_id=channel_id,
+            message=message,
+            type=type,
+            version_name=version_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             site_id: pulumi.Input[str],
+             channel_id: Optional[pulumi.Input[str]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             version_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("site_id", site_id)
         if channel_id is not None:
-            pulumi.set(__self__, "channel_id", channel_id)
+            _setter("channel_id", channel_id)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if version_name is not None:
-            pulumi.set(__self__, "version_name", version_name)
+            _setter("version_name", version_name)
 
     @property
     @pulumi.getter(name="siteId")
@@ -156,20 +173,41 @@ class _HostingReleaseState:
                The Version must belong to the same site as in the `site_id`.
                This parameter must be empty if the `type` of the release is `SITE_DISABLE`.
         """
+        _HostingReleaseState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            channel_id=channel_id,
+            message=message,
+            name=name,
+            release_id=release_id,
+            site_id=site_id,
+            type=type,
+            version_name=version_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             channel_id: Optional[pulumi.Input[str]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             release_id: Optional[pulumi.Input[str]] = None,
+             site_id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             version_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if channel_id is not None:
-            pulumi.set(__self__, "channel_id", channel_id)
+            _setter("channel_id", channel_id)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if release_id is not None:
-            pulumi.set(__self__, "release_id", release_id)
+            _setter("release_id", release_id)
         if site_id is not None:
-            pulumi.set(__self__, "site_id", site_id)
+            _setter("site_id", site_id)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if version_name is not None:
-            pulumi.set(__self__, "version_name", version_name)
+            _setter("version_name", version_name)
 
     @property
     @pulumi.getter(name="channelId")
@@ -509,6 +547,10 @@ class HostingRelease(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            HostingReleaseArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

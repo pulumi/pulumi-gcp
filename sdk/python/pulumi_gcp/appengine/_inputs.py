@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -64,7 +64,16 @@ class ApplicationFeatureSettingsArgs:
         :param pulumi.Input[bool] split_health_checks: Set to false to use the legacy health check instead of the readiness
                and liveness checks.
         """
-        pulumi.set(__self__, "split_health_checks", split_health_checks)
+        ApplicationFeatureSettingsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            split_health_checks=split_health_checks,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             split_health_checks: pulumi.Input[bool],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("split_health_checks", split_health_checks)
 
     @property
     @pulumi.getter(name="splitHealthChecks")
@@ -95,12 +104,27 @@ class ApplicationIapArgs:
                (default is false)
         :param pulumi.Input[str] oauth2_client_secret_sha256: Hex-encoded SHA-256 hash of the client secret.
         """
-        pulumi.set(__self__, "oauth2_client_id", oauth2_client_id)
-        pulumi.set(__self__, "oauth2_client_secret", oauth2_client_secret)
+        ApplicationIapArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            oauth2_client_id=oauth2_client_id,
+            oauth2_client_secret=oauth2_client_secret,
+            enabled=enabled,
+            oauth2_client_secret_sha256=oauth2_client_secret_sha256,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             oauth2_client_id: pulumi.Input[str],
+             oauth2_client_secret: pulumi.Input[str],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             oauth2_client_secret_sha256: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("oauth2_client_id", oauth2_client_id)
+        _setter("oauth2_client_secret", oauth2_client_secret)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if oauth2_client_secret_sha256 is not None:
-            pulumi.set(__self__, "oauth2_client_secret_sha256", oauth2_client_secret_sha256)
+            _setter("oauth2_client_secret_sha256", oauth2_client_secret_sha256)
 
     @property
     @pulumi.getter(name="oauth2ClientId")
@@ -159,12 +183,25 @@ class ApplicationUrlDispatchRuleArgs:
                  domain: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None):
+        ApplicationUrlDispatchRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain=domain,
+            path=path,
+            service=service,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if domain is not None:
-            pulumi.set(__self__, "domain", domain)
+            _setter("domain", domain)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
         if service is not None:
-            pulumi.set(__self__, "service", service)
+            _setter("service", service)
 
     @property
     @pulumi.getter
@@ -210,10 +247,23 @@ class ApplicationUrlDispatchRulesDispatchRuleArgs:
         :param pulumi.Input[str] domain: Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".
                Defaults to matching all domains: "*".
         """
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "service", service)
+        ApplicationUrlDispatchRulesDispatchRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            path=path,
+            service=service,
+            domain=domain,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             path: pulumi.Input[str],
+             service: pulumi.Input[str],
+             domain: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("path", path)
+        _setter("service", service)
         if domain is not None:
-            pulumi.set(__self__, "domain", domain)
+            _setter("domain", domain)
 
     @property
     @pulumi.getter
@@ -269,12 +319,25 @@ class DomainMappingResourceRecordArgs:
         :param pulumi.Input[str] type: Resource record type. Example: `AAAA`.
                Possible values are: `A`, `AAAA`, `CNAME`.
         """
+        DomainMappingResourceRecordArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            rrdata=rrdata,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             rrdata: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if rrdata is not None:
-            pulumi.set(__self__, "rrdata", rrdata)
+            _setter("rrdata", rrdata)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -337,11 +400,24 @@ class DomainMappingSslSettingsArgs:
                field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the
                `certificateId` field with an update request.
         """
-        pulumi.set(__self__, "ssl_management_type", ssl_management_type)
+        DomainMappingSslSettingsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ssl_management_type=ssl_management_type,
+            certificate_id=certificate_id,
+            pending_managed_certificate_id=pending_managed_certificate_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ssl_management_type: pulumi.Input[str],
+             certificate_id: Optional[pulumi.Input[str]] = None,
+             pending_managed_certificate_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ssl_management_type", ssl_management_type)
         if certificate_id is not None:
-            pulumi.set(__self__, "certificate_id", certificate_id)
+            _setter("certificate_id", certificate_id)
         if pending_managed_certificate_id is not None:
-            pulumi.set(__self__, "pending_managed_certificate_id", pending_managed_certificate_id)
+            _setter("pending_managed_certificate_id", pending_managed_certificate_id)
 
     @property
     @pulumi.getter(name="sslManagementType")
@@ -404,9 +480,20 @@ class EngineSplitTrafficSplitArgs:
         :param pulumi.Input[str] shard_by: Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
                Possible values are: `UNSPECIFIED`, `COOKIE`, `IP`, `RANDOM`.
         """
-        pulumi.set(__self__, "allocations", allocations)
+        EngineSplitTrafficSplitArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allocations=allocations,
+            shard_by=shard_by,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allocations: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+             shard_by: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("allocations", allocations)
         if shard_by is not None:
-            pulumi.set(__self__, "shard_by", shard_by)
+            _setter("shard_by", shard_by)
 
     @property
     @pulumi.getter
@@ -456,15 +543,32 @@ class FlexibleAppVersionApiConfigArgs:
                Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
         :param pulumi.Input[str] url: URL to serve the endpoint at.
         """
-        pulumi.set(__self__, "script", script)
+        FlexibleAppVersionApiConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            script=script,
+            auth_fail_action=auth_fail_action,
+            login=login,
+            security_level=security_level,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             script: pulumi.Input[str],
+             auth_fail_action: Optional[pulumi.Input[str]] = None,
+             login: Optional[pulumi.Input[str]] = None,
+             security_level: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("script", script)
         if auth_fail_action is not None:
-            pulumi.set(__self__, "auth_fail_action", auth_fail_action)
+            _setter("auth_fail_action", auth_fail_action)
         if login is not None:
-            pulumi.set(__self__, "login", login)
+            _setter("login", login)
         if security_level is not None:
-            pulumi.set(__self__, "security_level", security_level)
+            _setter("security_level", security_level)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter
@@ -568,29 +672,60 @@ class FlexibleAppVersionAutomaticScalingArgs:
         :param pulumi.Input['FlexibleAppVersionAutomaticScalingRequestUtilizationArgs'] request_utilization: Target scaling by request utilization.
                Structure is documented below.
         """
-        pulumi.set(__self__, "cpu_utilization", cpu_utilization)
+        FlexibleAppVersionAutomaticScalingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cpu_utilization=cpu_utilization,
+            cool_down_period=cool_down_period,
+            disk_utilization=disk_utilization,
+            max_concurrent_requests=max_concurrent_requests,
+            max_idle_instances=max_idle_instances,
+            max_pending_latency=max_pending_latency,
+            max_total_instances=max_total_instances,
+            min_idle_instances=min_idle_instances,
+            min_pending_latency=min_pending_latency,
+            min_total_instances=min_total_instances,
+            network_utilization=network_utilization,
+            request_utilization=request_utilization,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cpu_utilization: pulumi.Input['FlexibleAppVersionAutomaticScalingCpuUtilizationArgs'],
+             cool_down_period: Optional[pulumi.Input[str]] = None,
+             disk_utilization: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingDiskUtilizationArgs']] = None,
+             max_concurrent_requests: Optional[pulumi.Input[int]] = None,
+             max_idle_instances: Optional[pulumi.Input[int]] = None,
+             max_pending_latency: Optional[pulumi.Input[str]] = None,
+             max_total_instances: Optional[pulumi.Input[int]] = None,
+             min_idle_instances: Optional[pulumi.Input[int]] = None,
+             min_pending_latency: Optional[pulumi.Input[str]] = None,
+             min_total_instances: Optional[pulumi.Input[int]] = None,
+             network_utilization: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs']] = None,
+             request_utilization: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingRequestUtilizationArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cpu_utilization", cpu_utilization)
         if cool_down_period is not None:
-            pulumi.set(__self__, "cool_down_period", cool_down_period)
+            _setter("cool_down_period", cool_down_period)
         if disk_utilization is not None:
-            pulumi.set(__self__, "disk_utilization", disk_utilization)
+            _setter("disk_utilization", disk_utilization)
         if max_concurrent_requests is not None:
-            pulumi.set(__self__, "max_concurrent_requests", max_concurrent_requests)
+            _setter("max_concurrent_requests", max_concurrent_requests)
         if max_idle_instances is not None:
-            pulumi.set(__self__, "max_idle_instances", max_idle_instances)
+            _setter("max_idle_instances", max_idle_instances)
         if max_pending_latency is not None:
-            pulumi.set(__self__, "max_pending_latency", max_pending_latency)
+            _setter("max_pending_latency", max_pending_latency)
         if max_total_instances is not None:
-            pulumi.set(__self__, "max_total_instances", max_total_instances)
+            _setter("max_total_instances", max_total_instances)
         if min_idle_instances is not None:
-            pulumi.set(__self__, "min_idle_instances", min_idle_instances)
+            _setter("min_idle_instances", min_idle_instances)
         if min_pending_latency is not None:
-            pulumi.set(__self__, "min_pending_latency", min_pending_latency)
+            _setter("min_pending_latency", min_pending_latency)
         if min_total_instances is not None:
-            pulumi.set(__self__, "min_total_instances", min_total_instances)
+            _setter("min_total_instances", min_total_instances)
         if network_utilization is not None:
-            pulumi.set(__self__, "network_utilization", network_utilization)
+            _setter("network_utilization", network_utilization)
         if request_utilization is not None:
-            pulumi.set(__self__, "request_utilization", request_utilization)
+            _setter("request_utilization", request_utilization)
 
     @property
     @pulumi.getter(name="cpuUtilization")
@@ -753,9 +888,20 @@ class FlexibleAppVersionAutomaticScalingCpuUtilizationArgs:
         :param pulumi.Input[float] target_utilization: Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
         :param pulumi.Input[str] aggregation_window_length: Period of time over which CPU utilization is calculated.
         """
-        pulumi.set(__self__, "target_utilization", target_utilization)
+        FlexibleAppVersionAutomaticScalingCpuUtilizationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            target_utilization=target_utilization,
+            aggregation_window_length=aggregation_window_length,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             target_utilization: pulumi.Input[float],
+             aggregation_window_length: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("target_utilization", target_utilization)
         if aggregation_window_length is not None:
-            pulumi.set(__self__, "aggregation_window_length", aggregation_window_length)
+            _setter("aggregation_window_length", aggregation_window_length)
 
     @property
     @pulumi.getter(name="targetUtilization")
@@ -795,14 +941,29 @@ class FlexibleAppVersionAutomaticScalingDiskUtilizationArgs:
         :param pulumi.Input[int] target_write_bytes_per_second: Target bytes written per second.
         :param pulumi.Input[int] target_write_ops_per_second: Target ops written per second.
         """
+        FlexibleAppVersionAutomaticScalingDiskUtilizationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            target_read_bytes_per_second=target_read_bytes_per_second,
+            target_read_ops_per_second=target_read_ops_per_second,
+            target_write_bytes_per_second=target_write_bytes_per_second,
+            target_write_ops_per_second=target_write_ops_per_second,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             target_read_bytes_per_second: Optional[pulumi.Input[int]] = None,
+             target_read_ops_per_second: Optional[pulumi.Input[int]] = None,
+             target_write_bytes_per_second: Optional[pulumi.Input[int]] = None,
+             target_write_ops_per_second: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if target_read_bytes_per_second is not None:
-            pulumi.set(__self__, "target_read_bytes_per_second", target_read_bytes_per_second)
+            _setter("target_read_bytes_per_second", target_read_bytes_per_second)
         if target_read_ops_per_second is not None:
-            pulumi.set(__self__, "target_read_ops_per_second", target_read_ops_per_second)
+            _setter("target_read_ops_per_second", target_read_ops_per_second)
         if target_write_bytes_per_second is not None:
-            pulumi.set(__self__, "target_write_bytes_per_second", target_write_bytes_per_second)
+            _setter("target_write_bytes_per_second", target_write_bytes_per_second)
         if target_write_ops_per_second is not None:
-            pulumi.set(__self__, "target_write_ops_per_second", target_write_ops_per_second)
+            _setter("target_write_ops_per_second", target_write_ops_per_second)
 
     @property
     @pulumi.getter(name="targetReadBytesPerSecond")
@@ -866,14 +1027,29 @@ class FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs:
         :param pulumi.Input[int] target_sent_bytes_per_second: Target bytes sent per second.
         :param pulumi.Input[int] target_sent_packets_per_second: Target packets sent per second.
         """
+        FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            target_received_bytes_per_second=target_received_bytes_per_second,
+            target_received_packets_per_second=target_received_packets_per_second,
+            target_sent_bytes_per_second=target_sent_bytes_per_second,
+            target_sent_packets_per_second=target_sent_packets_per_second,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             target_received_bytes_per_second: Optional[pulumi.Input[int]] = None,
+             target_received_packets_per_second: Optional[pulumi.Input[int]] = None,
+             target_sent_bytes_per_second: Optional[pulumi.Input[int]] = None,
+             target_sent_packets_per_second: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if target_received_bytes_per_second is not None:
-            pulumi.set(__self__, "target_received_bytes_per_second", target_received_bytes_per_second)
+            _setter("target_received_bytes_per_second", target_received_bytes_per_second)
         if target_received_packets_per_second is not None:
-            pulumi.set(__self__, "target_received_packets_per_second", target_received_packets_per_second)
+            _setter("target_received_packets_per_second", target_received_packets_per_second)
         if target_sent_bytes_per_second is not None:
-            pulumi.set(__self__, "target_sent_bytes_per_second", target_sent_bytes_per_second)
+            _setter("target_sent_bytes_per_second", target_sent_bytes_per_second)
         if target_sent_packets_per_second is not None:
-            pulumi.set(__self__, "target_sent_packets_per_second", target_sent_packets_per_second)
+            _setter("target_sent_packets_per_second", target_sent_packets_per_second)
 
     @property
     @pulumi.getter(name="targetReceivedBytesPerSecond")
@@ -933,10 +1109,21 @@ class FlexibleAppVersionAutomaticScalingRequestUtilizationArgs:
         :param pulumi.Input[float] target_concurrent_requests: Target number of concurrent requests.
         :param pulumi.Input[str] target_request_count_per_second: Target requests per second.
         """
+        FlexibleAppVersionAutomaticScalingRequestUtilizationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            target_concurrent_requests=target_concurrent_requests,
+            target_request_count_per_second=target_request_count_per_second,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             target_concurrent_requests: Optional[pulumi.Input[float]] = None,
+             target_request_count_per_second: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if target_concurrent_requests is not None:
-            pulumi.set(__self__, "target_concurrent_requests", target_concurrent_requests)
+            _setter("target_concurrent_requests", target_concurrent_requests)
         if target_request_count_per_second is not None:
-            pulumi.set(__self__, "target_request_count_per_second", target_request_count_per_second)
+            _setter("target_request_count_per_second", target_request_count_per_second)
 
     @property
     @pulumi.getter(name="targetConcurrentRequests")
@@ -981,14 +1168,29 @@ class FlexibleAppVersionDeploymentArgs:
         :param pulumi.Input['FlexibleAppVersionDeploymentZipArgs'] zip: Zip File
                Structure is documented below.
         """
+        FlexibleAppVersionDeploymentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cloud_build_options=cloud_build_options,
+            container=container,
+            files=files,
+            zip=zip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cloud_build_options: Optional[pulumi.Input['FlexibleAppVersionDeploymentCloudBuildOptionsArgs']] = None,
+             container: Optional[pulumi.Input['FlexibleAppVersionDeploymentContainerArgs']] = None,
+             files: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionDeploymentFileArgs']]]] = None,
+             zip: Optional[pulumi.Input['FlexibleAppVersionDeploymentZipArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cloud_build_options is not None:
-            pulumi.set(__self__, "cloud_build_options", cloud_build_options)
+            _setter("cloud_build_options", cloud_build_options)
         if container is not None:
-            pulumi.set(__self__, "container", container)
+            _setter("container", container)
         if files is not None:
-            pulumi.set(__self__, "files", files)
+            _setter("files", files)
         if zip is not None:
-            pulumi.set(__self__, "zip", zip)
+            _setter("zip", zip)
 
     @property
     @pulumi.getter(name="cloudBuildOptions")
@@ -1054,9 +1256,20 @@ class FlexibleAppVersionDeploymentCloudBuildOptionsArgs:
         :param pulumi.Input[str] cloud_build_timeout: The Cloud Build timeout used as part of any dependent builds performed by version creation. Defaults to 10 minutes.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
-        pulumi.set(__self__, "app_yaml_path", app_yaml_path)
+        FlexibleAppVersionDeploymentCloudBuildOptionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_yaml_path=app_yaml_path,
+            cloud_build_timeout=cloud_build_timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_yaml_path: pulumi.Input[str],
+             cloud_build_timeout: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("app_yaml_path", app_yaml_path)
         if cloud_build_timeout is not None:
-            pulumi.set(__self__, "cloud_build_timeout", cloud_build_timeout)
+            _setter("cloud_build_timeout", cloud_build_timeout)
 
     @property
     @pulumi.getter(name="appYamlPath")
@@ -1092,7 +1305,16 @@ class FlexibleAppVersionDeploymentContainerArgs:
         :param pulumi.Input[str] image: URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest.
                Examples: "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest"
         """
-        pulumi.set(__self__, "image", image)
+        FlexibleAppVersionDeploymentContainerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            image=image,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             image: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("image", image)
 
     @property
     @pulumi.getter
@@ -1119,10 +1341,23 @@ class FlexibleAppVersionDeploymentFileArgs:
         :param pulumi.Input[str] source_url: Source URL
         :param pulumi.Input[str] sha1_sum: SHA1 checksum of the file
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "source_url", source_url)
+        FlexibleAppVersionDeploymentFileArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            source_url=source_url,
+            sha1_sum=sha1_sum,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             source_url: pulumi.Input[str],
+             sha1_sum: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("source_url", source_url)
         if sha1_sum is not None:
-            pulumi.set(__self__, "sha1_sum", sha1_sum)
+            _setter("sha1_sum", sha1_sum)
 
     @property
     @pulumi.getter
@@ -1170,9 +1405,20 @@ class FlexibleAppVersionDeploymentZipArgs:
         :param pulumi.Input[str] source_url: Source URL
         :param pulumi.Input[int] files_count: files count
         """
-        pulumi.set(__self__, "source_url", source_url)
+        FlexibleAppVersionDeploymentZipArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            source_url=source_url,
+            files_count=files_count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             source_url: pulumi.Input[str],
+             files_count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("source_url", source_url)
         if files_count is not None:
-            pulumi.set(__self__, "files_count", files_count)
+            _setter("files_count", files_count)
 
     @property
     @pulumi.getter(name="sourceUrl")
@@ -1220,13 +1466,28 @@ class FlexibleAppVersionEndpointsApiServiceArgs:
                Default value is `FIXED`.
                Possible values are: `FIXED`, `MANAGED`.
         """
-        pulumi.set(__self__, "name", name)
+        FlexibleAppVersionEndpointsApiServiceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            config_id=config_id,
+            disable_trace_sampling=disable_trace_sampling,
+            rollout_strategy=rollout_strategy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             config_id: Optional[pulumi.Input[str]] = None,
+             disable_trace_sampling: Optional[pulumi.Input[bool]] = None,
+             rollout_strategy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if config_id is not None:
-            pulumi.set(__self__, "config_id", config_id)
+            _setter("config_id", config_id)
         if disable_trace_sampling is not None:
-            pulumi.set(__self__, "disable_trace_sampling", disable_trace_sampling)
+            _setter("disable_trace_sampling", disable_trace_sampling)
         if rollout_strategy is not None:
-            pulumi.set(__self__, "rollout_strategy", rollout_strategy)
+            _setter("rollout_strategy", rollout_strategy)
 
     @property
     @pulumi.getter
@@ -1292,7 +1553,16 @@ class FlexibleAppVersionEntrypointArgs:
         """
         :param pulumi.Input[str] shell: The format should be a shell command that can be fed to bash -c.
         """
-        pulumi.set(__self__, "shell", shell)
+        FlexibleAppVersionEntrypointArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            shell=shell,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             shell: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("shell", shell)
 
     @property
     @pulumi.getter
@@ -1335,20 +1605,41 @@ class FlexibleAppVersionHandlerArgs:
         :param pulumi.Input[str] url_regex: URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
                All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
         """
+        FlexibleAppVersionHandlerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auth_fail_action=auth_fail_action,
+            login=login,
+            redirect_http_response_code=redirect_http_response_code,
+            script=script,
+            security_level=security_level,
+            static_files=static_files,
+            url_regex=url_regex,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auth_fail_action: Optional[pulumi.Input[str]] = None,
+             login: Optional[pulumi.Input[str]] = None,
+             redirect_http_response_code: Optional[pulumi.Input[str]] = None,
+             script: Optional[pulumi.Input['FlexibleAppVersionHandlerScriptArgs']] = None,
+             security_level: Optional[pulumi.Input[str]] = None,
+             static_files: Optional[pulumi.Input['FlexibleAppVersionHandlerStaticFilesArgs']] = None,
+             url_regex: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auth_fail_action is not None:
-            pulumi.set(__self__, "auth_fail_action", auth_fail_action)
+            _setter("auth_fail_action", auth_fail_action)
         if login is not None:
-            pulumi.set(__self__, "login", login)
+            _setter("login", login)
         if redirect_http_response_code is not None:
-            pulumi.set(__self__, "redirect_http_response_code", redirect_http_response_code)
+            _setter("redirect_http_response_code", redirect_http_response_code)
         if script is not None:
-            pulumi.set(__self__, "script", script)
+            _setter("script", script)
         if security_level is not None:
-            pulumi.set(__self__, "security_level", security_level)
+            _setter("security_level", security_level)
         if static_files is not None:
-            pulumi.set(__self__, "static_files", static_files)
+            _setter("static_files", static_files)
         if url_regex is not None:
-            pulumi.set(__self__, "url_regex", url_regex)
+            _setter("url_regex", url_regex)
 
     @property
     @pulumi.getter(name="authFailAction")
@@ -1451,7 +1742,16 @@ class FlexibleAppVersionHandlerScriptArgs:
         """
         :param pulumi.Input[str] script_path: Path to the script from the application root directory.
         """
-        pulumi.set(__self__, "script_path", script_path)
+        FlexibleAppVersionHandlerScriptArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            script_path=script_path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             script_path: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("script_path", script_path)
 
     @property
     @pulumi.getter(name="scriptPath")
@@ -1492,20 +1792,41 @@ class FlexibleAppVersionHandlerStaticFilesArgs:
         :param pulumi.Input[bool] require_matching_file: Whether this handler should match the request if the file referenced by the handler does not exist.
         :param pulumi.Input[str] upload_path_regex: Regular expression that matches the file paths for all files that should be referenced by this handler.
         """
+        FlexibleAppVersionHandlerStaticFilesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_readable=application_readable,
+            expiration=expiration,
+            http_headers=http_headers,
+            mime_type=mime_type,
+            path=path,
+            require_matching_file=require_matching_file,
+            upload_path_regex=upload_path_regex,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_readable: Optional[pulumi.Input[bool]] = None,
+             expiration: Optional[pulumi.Input[str]] = None,
+             http_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             mime_type: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             require_matching_file: Optional[pulumi.Input[bool]] = None,
+             upload_path_regex: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if application_readable is not None:
-            pulumi.set(__self__, "application_readable", application_readable)
+            _setter("application_readable", application_readable)
         if expiration is not None:
-            pulumi.set(__self__, "expiration", expiration)
+            _setter("expiration", expiration)
         if http_headers is not None:
-            pulumi.set(__self__, "http_headers", http_headers)
+            _setter("http_headers", http_headers)
         if mime_type is not None:
-            pulumi.set(__self__, "mime_type", mime_type)
+            _setter("mime_type", mime_type)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
         if require_matching_file is not None:
-            pulumi.set(__self__, "require_matching_file", require_matching_file)
+            _setter("require_matching_file", require_matching_file)
         if upload_path_regex is not None:
-            pulumi.set(__self__, "upload_path_regex", upload_path_regex)
+            _setter("upload_path_regex", upload_path_regex)
 
     @property
     @pulumi.getter(name="applicationReadable")
@@ -1620,19 +1941,40 @@ class FlexibleAppVersionLivenessCheckArgs:
         :param pulumi.Input[float] success_threshold: Number of consecutive successful checks required before considering the VM healthy. Default: 2.
         :param pulumi.Input[str] timeout: Time before the check is considered failed. Default: "4s"
         """
-        pulumi.set(__self__, "path", path)
+        FlexibleAppVersionLivenessCheckArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            path=path,
+            check_interval=check_interval,
+            failure_threshold=failure_threshold,
+            host=host,
+            initial_delay=initial_delay,
+            success_threshold=success_threshold,
+            timeout=timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             path: pulumi.Input[str],
+             check_interval: Optional[pulumi.Input[str]] = None,
+             failure_threshold: Optional[pulumi.Input[float]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             initial_delay: Optional[pulumi.Input[str]] = None,
+             success_threshold: Optional[pulumi.Input[float]] = None,
+             timeout: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("path", path)
         if check_interval is not None:
-            pulumi.set(__self__, "check_interval", check_interval)
+            _setter("check_interval", check_interval)
         if failure_threshold is not None:
-            pulumi.set(__self__, "failure_threshold", failure_threshold)
+            _setter("failure_threshold", failure_threshold)
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if initial_delay is not None:
-            pulumi.set(__self__, "initial_delay", initial_delay)
+            _setter("initial_delay", initial_delay)
         if success_threshold is not None:
-            pulumi.set(__self__, "success_threshold", success_threshold)
+            _setter("success_threshold", success_threshold)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
 
     @property
     @pulumi.getter
@@ -1730,7 +2072,16 @@ class FlexibleAppVersionManualScalingArgs:
                **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
                Modules API set_num_instances() you must use `lifecycle.ignore_changes = ["manual_scaling"[0].instances]` to prevent drift detection.
         """
-        pulumi.set(__self__, "instances", instances)
+        FlexibleAppVersionManualScalingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instances=instances,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instances: pulumi.Input[int],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instances", instances)
 
     @property
     @pulumi.getter
@@ -1766,15 +2117,32 @@ class FlexibleAppVersionNetworkArgs:
                If the network that the instance is being created in is a custom Subnet Mode Network, then the subnetworkName must be specified and the IP address is created from the IPCidrRange of the subnetwork.
                If specified, the subnetwork must exist in the same region as the App Engine flexible environment application.
         """
-        pulumi.set(__self__, "name", name)
+        FlexibleAppVersionNetworkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            forwarded_ports=forwarded_ports,
+            instance_tag=instance_tag,
+            session_affinity=session_affinity,
+            subnetwork=subnetwork,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             forwarded_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             instance_tag: Optional[pulumi.Input[str]] = None,
+             session_affinity: Optional[pulumi.Input[bool]] = None,
+             subnetwork: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if forwarded_ports is not None:
-            pulumi.set(__self__, "forwarded_ports", forwarded_ports)
+            _setter("forwarded_ports", forwarded_ports)
         if instance_tag is not None:
-            pulumi.set(__self__, "instance_tag", instance_tag)
+            _setter("instance_tag", instance_tag)
         if session_affinity is not None:
-            pulumi.set(__self__, "session_affinity", session_affinity)
+            _setter("session_affinity", session_affinity)
         if subnetwork is not None:
-            pulumi.set(__self__, "subnetwork", subnetwork)
+            _setter("subnetwork", subnetwork)
 
     @property
     @pulumi.getter
@@ -1861,19 +2229,40 @@ class FlexibleAppVersionReadinessCheckArgs:
         :param pulumi.Input[float] success_threshold: Number of consecutive successful checks required before receiving traffic. Default: 2.
         :param pulumi.Input[str] timeout: Time before the check is considered failed. Default: "4s"
         """
-        pulumi.set(__self__, "path", path)
+        FlexibleAppVersionReadinessCheckArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            path=path,
+            app_start_timeout=app_start_timeout,
+            check_interval=check_interval,
+            failure_threshold=failure_threshold,
+            host=host,
+            success_threshold=success_threshold,
+            timeout=timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             path: pulumi.Input[str],
+             app_start_timeout: Optional[pulumi.Input[str]] = None,
+             check_interval: Optional[pulumi.Input[str]] = None,
+             failure_threshold: Optional[pulumi.Input[float]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             success_threshold: Optional[pulumi.Input[float]] = None,
+             timeout: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("path", path)
         if app_start_timeout is not None:
-            pulumi.set(__self__, "app_start_timeout", app_start_timeout)
+            _setter("app_start_timeout", app_start_timeout)
         if check_interval is not None:
-            pulumi.set(__self__, "check_interval", check_interval)
+            _setter("check_interval", check_interval)
         if failure_threshold is not None:
-            pulumi.set(__self__, "failure_threshold", failure_threshold)
+            _setter("failure_threshold", failure_threshold)
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if success_threshold is not None:
-            pulumi.set(__self__, "success_threshold", success_threshold)
+            _setter("success_threshold", success_threshold)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
 
     @property
     @pulumi.getter
@@ -1975,14 +2364,29 @@ class FlexibleAppVersionResourcesArgs:
         :param pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionResourcesVolumeArgs']]] volumes: List of ports, or port pairs, to forward from the virtual machine to the application container.
                Structure is documented below.
         """
+        FlexibleAppVersionResourcesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cpu=cpu,
+            disk_gb=disk_gb,
+            memory_gb=memory_gb,
+            volumes=volumes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cpu: Optional[pulumi.Input[int]] = None,
+             disk_gb: Optional[pulumi.Input[int]] = None,
+             memory_gb: Optional[pulumi.Input[float]] = None,
+             volumes: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionResourcesVolumeArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cpu is not None:
-            pulumi.set(__self__, "cpu", cpu)
+            _setter("cpu", cpu)
         if disk_gb is not None:
-            pulumi.set(__self__, "disk_gb", disk_gb)
+            _setter("disk_gb", disk_gb)
         if memory_gb is not None:
-            pulumi.set(__self__, "memory_gb", memory_gb)
+            _setter("memory_gb", memory_gb)
         if volumes is not None:
-            pulumi.set(__self__, "volumes", volumes)
+            _setter("volumes", volumes)
 
     @property
     @pulumi.getter
@@ -2045,9 +2449,22 @@ class FlexibleAppVersionResourcesVolumeArgs:
         :param pulumi.Input[int] size_gb: Volume size in gigabytes.
         :param pulumi.Input[str] volume_type: Underlying volume type, e.g. 'tmpfs'.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "size_gb", size_gb)
-        pulumi.set(__self__, "volume_type", volume_type)
+        FlexibleAppVersionResourcesVolumeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            size_gb=size_gb,
+            volume_type=volume_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             size_gb: pulumi.Input[int],
+             volume_type: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("size_gb", size_gb)
+        _setter("volume_type", volume_type)
 
     @property
     @pulumi.getter
@@ -2093,7 +2510,16 @@ class FlexibleAppVersionVpcAccessConnectorArgs:
         """
         :param pulumi.Input[str] name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         """
-        pulumi.set(__self__, "name", name)
+        FlexibleAppVersionVpcAccessConnectorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -2119,8 +2545,17 @@ class ServiceNetworkSettingsNetworkSettingsArgs:
                
                - - -
         """
+        ServiceNetworkSettingsNetworkSettingsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ingress_traffic_allowed=ingress_traffic_allowed,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ingress_traffic_allowed: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ingress_traffic_allowed is not None:
-            pulumi.set(__self__, "ingress_traffic_allowed", ingress_traffic_allowed)
+            _setter("ingress_traffic_allowed", ingress_traffic_allowed)
 
     @property
     @pulumi.getter(name="ingressTrafficAllowed")
@@ -2160,18 +2595,37 @@ class StandardAppVersionAutomaticScalingArgs:
         :param pulumi.Input['StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs'] standard_scheduler_settings: Scheduler settings for standard environment.
                Structure is documented below.
         """
+        StandardAppVersionAutomaticScalingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_concurrent_requests=max_concurrent_requests,
+            max_idle_instances=max_idle_instances,
+            max_pending_latency=max_pending_latency,
+            min_idle_instances=min_idle_instances,
+            min_pending_latency=min_pending_latency,
+            standard_scheduler_settings=standard_scheduler_settings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_concurrent_requests: Optional[pulumi.Input[int]] = None,
+             max_idle_instances: Optional[pulumi.Input[int]] = None,
+             max_pending_latency: Optional[pulumi.Input[str]] = None,
+             min_idle_instances: Optional[pulumi.Input[int]] = None,
+             min_pending_latency: Optional[pulumi.Input[str]] = None,
+             standard_scheduler_settings: Optional[pulumi.Input['StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if max_concurrent_requests is not None:
-            pulumi.set(__self__, "max_concurrent_requests", max_concurrent_requests)
+            _setter("max_concurrent_requests", max_concurrent_requests)
         if max_idle_instances is not None:
-            pulumi.set(__self__, "max_idle_instances", max_idle_instances)
+            _setter("max_idle_instances", max_idle_instances)
         if max_pending_latency is not None:
-            pulumi.set(__self__, "max_pending_latency", max_pending_latency)
+            _setter("max_pending_latency", max_pending_latency)
         if min_idle_instances is not None:
-            pulumi.set(__self__, "min_idle_instances", min_idle_instances)
+            _setter("min_idle_instances", min_idle_instances)
         if min_pending_latency is not None:
-            pulumi.set(__self__, "min_pending_latency", min_pending_latency)
+            _setter("min_pending_latency", min_pending_latency)
         if standard_scheduler_settings is not None:
-            pulumi.set(__self__, "standard_scheduler_settings", standard_scheduler_settings)
+            _setter("standard_scheduler_settings", standard_scheduler_settings)
 
     @property
     @pulumi.getter(name="maxConcurrentRequests")
@@ -2263,14 +2717,29 @@ class StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs:
         :param pulumi.Input[float] target_cpu_utilization: Target CPU utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
         :param pulumi.Input[float] target_throughput_utilization: Target throughput utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
         """
+        StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_instances=max_instances,
+            min_instances=min_instances,
+            target_cpu_utilization=target_cpu_utilization,
+            target_throughput_utilization=target_throughput_utilization,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_instances: Optional[pulumi.Input[int]] = None,
+             min_instances: Optional[pulumi.Input[int]] = None,
+             target_cpu_utilization: Optional[pulumi.Input[float]] = None,
+             target_throughput_utilization: Optional[pulumi.Input[float]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if max_instances is not None:
-            pulumi.set(__self__, "max_instances", max_instances)
+            _setter("max_instances", max_instances)
         if min_instances is not None:
-            pulumi.set(__self__, "min_instances", min_instances)
+            _setter("min_instances", min_instances)
         if target_cpu_utilization is not None:
-            pulumi.set(__self__, "target_cpu_utilization", target_cpu_utilization)
+            _setter("target_cpu_utilization", target_cpu_utilization)
         if target_throughput_utilization is not None:
-            pulumi.set(__self__, "target_throughput_utilization", target_throughput_utilization)
+            _setter("target_throughput_utilization", target_throughput_utilization)
 
     @property
     @pulumi.getter(name="maxInstances")
@@ -2331,9 +2800,20 @@ class StandardAppVersionBasicScalingArgs:
         :param pulumi.Input[str] idle_timeout: Duration of time after the last request that an instance must wait before the instance is shut down.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
         """
-        pulumi.set(__self__, "max_instances", max_instances)
+        StandardAppVersionBasicScalingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_instances=max_instances,
+            idle_timeout=idle_timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_instances: pulumi.Input[int],
+             idle_timeout: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("max_instances", max_instances)
         if idle_timeout is not None:
-            pulumi.set(__self__, "idle_timeout", idle_timeout)
+            _setter("idle_timeout", idle_timeout)
 
     @property
     @pulumi.getter(name="maxInstances")
@@ -2373,10 +2853,21 @@ class StandardAppVersionDeploymentArgs:
         :param pulumi.Input['StandardAppVersionDeploymentZipArgs'] zip: Zip File
                Structure is documented below.
         """
+        StandardAppVersionDeploymentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            files=files,
+            zip=zip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             files: Optional[pulumi.Input[Sequence[pulumi.Input['StandardAppVersionDeploymentFileArgs']]]] = None,
+             zip: Optional[pulumi.Input['StandardAppVersionDeploymentZipArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if files is not None:
-            pulumi.set(__self__, "files", files)
+            _setter("files", files)
         if zip is not None:
-            pulumi.set(__self__, "zip", zip)
+            _setter("zip", zip)
 
     @property
     @pulumi.getter
@@ -2417,10 +2908,23 @@ class StandardAppVersionDeploymentFileArgs:
         :param pulumi.Input[str] source_url: Source URL
         :param pulumi.Input[str] sha1_sum: SHA1 checksum of the file
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "source_url", source_url)
+        StandardAppVersionDeploymentFileArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            source_url=source_url,
+            sha1_sum=sha1_sum,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             source_url: pulumi.Input[str],
+             sha1_sum: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("source_url", source_url)
         if sha1_sum is not None:
-            pulumi.set(__self__, "sha1_sum", sha1_sum)
+            _setter("sha1_sum", sha1_sum)
 
     @property
     @pulumi.getter
@@ -2468,9 +2972,20 @@ class StandardAppVersionDeploymentZipArgs:
         :param pulumi.Input[str] source_url: Source URL
         :param pulumi.Input[int] files_count: files count
         """
-        pulumi.set(__self__, "source_url", source_url)
+        StandardAppVersionDeploymentZipArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            source_url=source_url,
+            files_count=files_count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             source_url: pulumi.Input[str],
+             files_count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("source_url", source_url)
         if files_count is not None:
-            pulumi.set(__self__, "files_count", files_count)
+            _setter("files_count", files_count)
 
     @property
     @pulumi.getter(name="sourceUrl")
@@ -2506,7 +3021,16 @@ class StandardAppVersionEntrypointArgs:
                
                - - -
         """
-        pulumi.set(__self__, "shell", shell)
+        StandardAppVersionEntrypointArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            shell=shell,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             shell: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("shell", shell)
 
     @property
     @pulumi.getter
@@ -2550,20 +3074,41 @@ class StandardAppVersionHandlerArgs:
         :param pulumi.Input[str] url_regex: URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
                All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
         """
+        StandardAppVersionHandlerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auth_fail_action=auth_fail_action,
+            login=login,
+            redirect_http_response_code=redirect_http_response_code,
+            script=script,
+            security_level=security_level,
+            static_files=static_files,
+            url_regex=url_regex,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auth_fail_action: Optional[pulumi.Input[str]] = None,
+             login: Optional[pulumi.Input[str]] = None,
+             redirect_http_response_code: Optional[pulumi.Input[str]] = None,
+             script: Optional[pulumi.Input['StandardAppVersionHandlerScriptArgs']] = None,
+             security_level: Optional[pulumi.Input[str]] = None,
+             static_files: Optional[pulumi.Input['StandardAppVersionHandlerStaticFilesArgs']] = None,
+             url_regex: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auth_fail_action is not None:
-            pulumi.set(__self__, "auth_fail_action", auth_fail_action)
+            _setter("auth_fail_action", auth_fail_action)
         if login is not None:
-            pulumi.set(__self__, "login", login)
+            _setter("login", login)
         if redirect_http_response_code is not None:
-            pulumi.set(__self__, "redirect_http_response_code", redirect_http_response_code)
+            _setter("redirect_http_response_code", redirect_http_response_code)
         if script is not None:
-            pulumi.set(__self__, "script", script)
+            _setter("script", script)
         if security_level is not None:
-            pulumi.set(__self__, "security_level", security_level)
+            _setter("security_level", security_level)
         if static_files is not None:
-            pulumi.set(__self__, "static_files", static_files)
+            _setter("static_files", static_files)
         if url_regex is not None:
-            pulumi.set(__self__, "url_regex", url_regex)
+            _setter("url_regex", url_regex)
 
     @property
     @pulumi.getter(name="authFailAction")
@@ -2665,7 +3210,16 @@ class StandardAppVersionHandlerScriptArgs:
         """
         :param pulumi.Input[str] script_path: Path to the script from the application root directory.
         """
-        pulumi.set(__self__, "script_path", script_path)
+        StandardAppVersionHandlerScriptArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            script_path=script_path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             script_path: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("script_path", script_path)
 
     @property
     @pulumi.getter(name="scriptPath")
@@ -2704,20 +3258,41 @@ class StandardAppVersionHandlerStaticFilesArgs:
         :param pulumi.Input[bool] require_matching_file: Whether this handler should match the request if the file referenced by the handler does not exist.
         :param pulumi.Input[str] upload_path_regex: Regular expression that matches the file paths for all files that should be referenced by this handler.
         """
+        StandardAppVersionHandlerStaticFilesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_readable=application_readable,
+            expiration=expiration,
+            http_headers=http_headers,
+            mime_type=mime_type,
+            path=path,
+            require_matching_file=require_matching_file,
+            upload_path_regex=upload_path_regex,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_readable: Optional[pulumi.Input[bool]] = None,
+             expiration: Optional[pulumi.Input[str]] = None,
+             http_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             mime_type: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             require_matching_file: Optional[pulumi.Input[bool]] = None,
+             upload_path_regex: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if application_readable is not None:
-            pulumi.set(__self__, "application_readable", application_readable)
+            _setter("application_readable", application_readable)
         if expiration is not None:
-            pulumi.set(__self__, "expiration", expiration)
+            _setter("expiration", expiration)
         if http_headers is not None:
-            pulumi.set(__self__, "http_headers", http_headers)
+            _setter("http_headers", http_headers)
         if mime_type is not None:
-            pulumi.set(__self__, "mime_type", mime_type)
+            _setter("mime_type", mime_type)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
         if require_matching_file is not None:
-            pulumi.set(__self__, "require_matching_file", require_matching_file)
+            _setter("require_matching_file", require_matching_file)
         if upload_path_regex is not None:
-            pulumi.set(__self__, "upload_path_regex", upload_path_regex)
+            _setter("upload_path_regex", upload_path_regex)
 
     @property
     @pulumi.getter(name="applicationReadable")
@@ -2818,10 +3393,21 @@ class StandardAppVersionLibraryArgs:
         :param pulumi.Input[str] name: Name of the library. Example "django".
         :param pulumi.Input[str] version: Version of the library to select, or "latest".
         """
+        StandardAppVersionLibraryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -2857,7 +3443,16 @@ class StandardAppVersionManualScalingArgs:
                **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
                Modules API set_num_instances() you must use `lifecycle.ignore_changes = ["manual_scaling"[0].instances]` to prevent drift detection.
         """
-        pulumi.set(__self__, "instances", instances)
+        StandardAppVersionManualScalingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instances=instances,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instances: pulumi.Input[int],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instances", instances)
 
     @property
     @pulumi.getter
@@ -2883,9 +3478,20 @@ class StandardAppVersionVpcAccessConnectorArgs:
         :param pulumi.Input[str] name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         :param pulumi.Input[str] egress_setting: The egress setting for the connector, controlling what traffic is diverted through it.
         """
-        pulumi.set(__self__, "name", name)
+        StandardAppVersionVpcAccessConnectorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            egress_setting=egress_setting,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             egress_setting: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if egress_setting is not None:
-            pulumi.set(__self__, "egress_setting", egress_setting)
+            _setter("egress_setting", egress_setting)
 
     @property
     @pulumi.getter

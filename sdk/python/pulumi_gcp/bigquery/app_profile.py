@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -43,21 +43,44 @@ class AppProfileArgs:
         :param pulumi.Input['AppProfileSingleClusterRoutingArgs'] single_cluster_routing: Use a single-cluster routing policy.
                Structure is documented below.
         """
-        pulumi.set(__self__, "app_profile_id", app_profile_id)
+        AppProfileArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_profile_id=app_profile_id,
+            description=description,
+            ignore_warnings=ignore_warnings,
+            instance=instance,
+            multi_cluster_routing_cluster_ids=multi_cluster_routing_cluster_ids,
+            multi_cluster_routing_use_any=multi_cluster_routing_use_any,
+            project=project,
+            single_cluster_routing=single_cluster_routing,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_profile_id: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             ignore_warnings: Optional[pulumi.Input[bool]] = None,
+             instance: Optional[pulumi.Input[str]] = None,
+             multi_cluster_routing_cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             multi_cluster_routing_use_any: Optional[pulumi.Input[bool]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             single_cluster_routing: Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("app_profile_id", app_profile_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if ignore_warnings is not None:
-            pulumi.set(__self__, "ignore_warnings", ignore_warnings)
+            _setter("ignore_warnings", ignore_warnings)
         if instance is not None:
-            pulumi.set(__self__, "instance", instance)
+            _setter("instance", instance)
         if multi_cluster_routing_cluster_ids is not None:
-            pulumi.set(__self__, "multi_cluster_routing_cluster_ids", multi_cluster_routing_cluster_ids)
+            _setter("multi_cluster_routing_cluster_ids", multi_cluster_routing_cluster_ids)
         if multi_cluster_routing_use_any is not None:
-            pulumi.set(__self__, "multi_cluster_routing_use_any", multi_cluster_routing_use_any)
+            _setter("multi_cluster_routing_use_any", multi_cluster_routing_use_any)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if single_cluster_routing is not None:
-            pulumi.set(__self__, "single_cluster_routing", single_cluster_routing)
+            _setter("single_cluster_routing", single_cluster_routing)
 
     @property
     @pulumi.getter(name="appProfileId")
@@ -196,24 +219,49 @@ class _AppProfileState:
         :param pulumi.Input['AppProfileSingleClusterRoutingArgs'] single_cluster_routing: Use a single-cluster routing policy.
                Structure is documented below.
         """
+        _AppProfileState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_profile_id=app_profile_id,
+            description=description,
+            ignore_warnings=ignore_warnings,
+            instance=instance,
+            multi_cluster_routing_cluster_ids=multi_cluster_routing_cluster_ids,
+            multi_cluster_routing_use_any=multi_cluster_routing_use_any,
+            name=name,
+            project=project,
+            single_cluster_routing=single_cluster_routing,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_profile_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             ignore_warnings: Optional[pulumi.Input[bool]] = None,
+             instance: Optional[pulumi.Input[str]] = None,
+             multi_cluster_routing_cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             multi_cluster_routing_use_any: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             single_cluster_routing: Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if app_profile_id is not None:
-            pulumi.set(__self__, "app_profile_id", app_profile_id)
+            _setter("app_profile_id", app_profile_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if ignore_warnings is not None:
-            pulumi.set(__self__, "ignore_warnings", ignore_warnings)
+            _setter("ignore_warnings", ignore_warnings)
         if instance is not None:
-            pulumi.set(__self__, "instance", instance)
+            _setter("instance", instance)
         if multi_cluster_routing_cluster_ids is not None:
-            pulumi.set(__self__, "multi_cluster_routing_cluster_ids", multi_cluster_routing_cluster_ids)
+            _setter("multi_cluster_routing_cluster_ids", multi_cluster_routing_cluster_ids)
         if multi_cluster_routing_use_any is not None:
-            pulumi.set(__self__, "multi_cluster_routing_use_any", multi_cluster_routing_use_any)
+            _setter("multi_cluster_routing_use_any", multi_cluster_routing_use_any)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if single_cluster_routing is not None:
-            pulumi.set(__self__, "single_cluster_routing", single_cluster_routing)
+            _setter("single_cluster_routing", single_cluster_routing)
 
     @property
     @pulumi.getter(name="appProfileId")
@@ -621,6 +669,10 @@ class AppProfile(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AppProfileArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -652,6 +704,11 @@ class AppProfile(pulumi.CustomResource):
             __props__.__dict__["multi_cluster_routing_cluster_ids"] = multi_cluster_routing_cluster_ids
             __props__.__dict__["multi_cluster_routing_use_any"] = multi_cluster_routing_use_any
             __props__.__dict__["project"] = project
+            if single_cluster_routing is not None and not isinstance(single_cluster_routing, AppProfileSingleClusterRoutingArgs):
+                single_cluster_routing = single_cluster_routing or {}
+                def _setter(key, value):
+                    single_cluster_routing[key] = value
+                AppProfileSingleClusterRoutingArgs._configure(_setter, **single_cluster_routing)
             __props__.__dict__["single_cluster_routing"] = single_cluster_routing
             __props__.__dict__["name"] = None
         super(AppProfile, __self__).__init__(

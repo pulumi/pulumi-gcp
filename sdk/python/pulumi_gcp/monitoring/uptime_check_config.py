@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -54,28 +54,59 @@ class UptimeCheckConfigArgs:
         :param pulumi.Input['UptimeCheckConfigTcpCheckArgs'] tcp_check: Contains information needed to make a TCP check.
                Structure is documented below.
         """
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "timeout", timeout)
+        UptimeCheckConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            timeout=timeout,
+            checker_type=checker_type,
+            content_matchers=content_matchers,
+            http_check=http_check,
+            monitored_resource=monitored_resource,
+            period=period,
+            project=project,
+            resource_group=resource_group,
+            selected_regions=selected_regions,
+            synthetic_monitor=synthetic_monitor,
+            tcp_check=tcp_check,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: pulumi.Input[str],
+             timeout: pulumi.Input[str],
+             checker_type: Optional[pulumi.Input[str]] = None,
+             content_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]]] = None,
+             http_check: Optional[pulumi.Input['UptimeCheckConfigHttpCheckArgs']] = None,
+             monitored_resource: Optional[pulumi.Input['UptimeCheckConfigMonitoredResourceArgs']] = None,
+             period: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             resource_group: Optional[pulumi.Input['UptimeCheckConfigResourceGroupArgs']] = None,
+             selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             synthetic_monitor: Optional[pulumi.Input['UptimeCheckConfigSyntheticMonitorArgs']] = None,
+             tcp_check: Optional[pulumi.Input['UptimeCheckConfigTcpCheckArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("display_name", display_name)
+        _setter("timeout", timeout)
         if checker_type is not None:
-            pulumi.set(__self__, "checker_type", checker_type)
+            _setter("checker_type", checker_type)
         if content_matchers is not None:
-            pulumi.set(__self__, "content_matchers", content_matchers)
+            _setter("content_matchers", content_matchers)
         if http_check is not None:
-            pulumi.set(__self__, "http_check", http_check)
+            _setter("http_check", http_check)
         if monitored_resource is not None:
-            pulumi.set(__self__, "monitored_resource", monitored_resource)
+            _setter("monitored_resource", monitored_resource)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if resource_group is not None:
-            pulumi.set(__self__, "resource_group", resource_group)
+            _setter("resource_group", resource_group)
         if selected_regions is not None:
-            pulumi.set(__self__, "selected_regions", selected_regions)
+            _setter("selected_regions", selected_regions)
         if synthetic_monitor is not None:
-            pulumi.set(__self__, "synthetic_monitor", synthetic_monitor)
+            _setter("synthetic_monitor", synthetic_monitor)
         if tcp_check is not None:
-            pulumi.set(__self__, "tcp_check", tcp_check)
+            _setter("tcp_check", tcp_check)
 
     @property
     @pulumi.getter(name="displayName")
@@ -278,34 +309,69 @@ class _UptimeCheckConfigState:
                - - -
         :param pulumi.Input[str] uptime_check_id: The id of the uptime check
         """
+        _UptimeCheckConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            checker_type=checker_type,
+            content_matchers=content_matchers,
+            display_name=display_name,
+            http_check=http_check,
+            monitored_resource=monitored_resource,
+            name=name,
+            period=period,
+            project=project,
+            resource_group=resource_group,
+            selected_regions=selected_regions,
+            synthetic_monitor=synthetic_monitor,
+            tcp_check=tcp_check,
+            timeout=timeout,
+            uptime_check_id=uptime_check_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             checker_type: Optional[pulumi.Input[str]] = None,
+             content_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             http_check: Optional[pulumi.Input['UptimeCheckConfigHttpCheckArgs']] = None,
+             monitored_resource: Optional[pulumi.Input['UptimeCheckConfigMonitoredResourceArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             resource_group: Optional[pulumi.Input['UptimeCheckConfigResourceGroupArgs']] = None,
+             selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             synthetic_monitor: Optional[pulumi.Input['UptimeCheckConfigSyntheticMonitorArgs']] = None,
+             tcp_check: Optional[pulumi.Input['UptimeCheckConfigTcpCheckArgs']] = None,
+             timeout: Optional[pulumi.Input[str]] = None,
+             uptime_check_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if checker_type is not None:
-            pulumi.set(__self__, "checker_type", checker_type)
+            _setter("checker_type", checker_type)
         if content_matchers is not None:
-            pulumi.set(__self__, "content_matchers", content_matchers)
+            _setter("content_matchers", content_matchers)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if http_check is not None:
-            pulumi.set(__self__, "http_check", http_check)
+            _setter("http_check", http_check)
         if monitored_resource is not None:
-            pulumi.set(__self__, "monitored_resource", monitored_resource)
+            _setter("monitored_resource", monitored_resource)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if resource_group is not None:
-            pulumi.set(__self__, "resource_group", resource_group)
+            _setter("resource_group", resource_group)
         if selected_regions is not None:
-            pulumi.set(__self__, "selected_regions", selected_regions)
+            _setter("selected_regions", selected_regions)
         if synthetic_monitor is not None:
-            pulumi.set(__self__, "synthetic_monitor", synthetic_monitor)
+            _setter("synthetic_monitor", synthetic_monitor)
         if tcp_check is not None:
-            pulumi.set(__self__, "tcp_check", tcp_check)
+            _setter("tcp_check", tcp_check)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
         if uptime_check_id is not None:
-            pulumi.set(__self__, "uptime_check_id", uptime_check_id)
+            _setter("uptime_check_id", uptime_check_id)
 
     @property
     @pulumi.getter(name="checkerType")
@@ -925,6 +991,10 @@ class UptimeCheckConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            UptimeCheckConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -956,13 +1026,38 @@ class UptimeCheckConfig(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            if http_check is not None and not isinstance(http_check, UptimeCheckConfigHttpCheckArgs):
+                http_check = http_check or {}
+                def _setter(key, value):
+                    http_check[key] = value
+                UptimeCheckConfigHttpCheckArgs._configure(_setter, **http_check)
             __props__.__dict__["http_check"] = http_check
+            if monitored_resource is not None and not isinstance(monitored_resource, UptimeCheckConfigMonitoredResourceArgs):
+                monitored_resource = monitored_resource or {}
+                def _setter(key, value):
+                    monitored_resource[key] = value
+                UptimeCheckConfigMonitoredResourceArgs._configure(_setter, **monitored_resource)
             __props__.__dict__["monitored_resource"] = monitored_resource
             __props__.__dict__["period"] = period
             __props__.__dict__["project"] = project
+            if resource_group is not None and not isinstance(resource_group, UptimeCheckConfigResourceGroupArgs):
+                resource_group = resource_group or {}
+                def _setter(key, value):
+                    resource_group[key] = value
+                UptimeCheckConfigResourceGroupArgs._configure(_setter, **resource_group)
             __props__.__dict__["resource_group"] = resource_group
             __props__.__dict__["selected_regions"] = selected_regions
+            if synthetic_monitor is not None and not isinstance(synthetic_monitor, UptimeCheckConfigSyntheticMonitorArgs):
+                synthetic_monitor = synthetic_monitor or {}
+                def _setter(key, value):
+                    synthetic_monitor[key] = value
+                UptimeCheckConfigSyntheticMonitorArgs._configure(_setter, **synthetic_monitor)
             __props__.__dict__["synthetic_monitor"] = synthetic_monitor
+            if tcp_check is not None and not isinstance(tcp_check, UptimeCheckConfigTcpCheckArgs):
+                tcp_check = tcp_check or {}
+                def _setter(key, value):
+                    tcp_check[key] = value
+                UptimeCheckConfigTcpCheckArgs._configure(_setter, **tcp_check)
             __props__.__dict__["tcp_check"] = tcp_check
             if timeout is None and not opts.urn:
                 raise TypeError("Missing required property 'timeout'")

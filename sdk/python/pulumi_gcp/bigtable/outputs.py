@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -33,10 +33,21 @@ class GCPolicyMaxAge(dict):
                
                -----
         """
+        GCPolicyMaxAge._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            days=days,
+            duration=duration,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             days: Optional[int] = None,
+             duration: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if days is not None:
-            pulumi.set(__self__, "days", days)
+            _setter("days", days)
         if duration is not None:
-            pulumi.set(__self__, "duration", duration)
+            _setter("duration", duration)
 
     @property
     @pulumi.getter
@@ -70,7 +81,16 @@ class GCPolicyMaxVersion(dict):
                -----
                `gc_rules` include 2 fields:
         """
-        pulumi.set(__self__, "number", number)
+        GCPolicyMaxVersion._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            number=number,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             number: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("number", number)
 
     @property
     @pulumi.getter
@@ -139,17 +159,36 @@ class InstanceCluster(dict):
                specified, the provider zone is used. Each cluster must have a different zone in the same region. Zones that support
                Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
+        InstanceCluster._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            autoscaling_config=autoscaling_config,
+            kms_key_name=kms_key_name,
+            num_nodes=num_nodes,
+            storage_type=storage_type,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: str,
+             autoscaling_config: Optional['outputs.InstanceClusterAutoscalingConfig'] = None,
+             kms_key_name: Optional[str] = None,
+             num_nodes: Optional[int] = None,
+             storage_type: Optional[str] = None,
+             zone: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster_id", cluster_id)
         if autoscaling_config is not None:
-            pulumi.set(__self__, "autoscaling_config", autoscaling_config)
+            _setter("autoscaling_config", autoscaling_config)
         if kms_key_name is not None:
-            pulumi.set(__self__, "kms_key_name", kms_key_name)
+            _setter("kms_key_name", kms_key_name)
         if num_nodes is not None:
-            pulumi.set(__self__, "num_nodes", num_nodes)
+            _setter("num_nodes", num_nodes)
         if storage_type is not None:
-            pulumi.set(__self__, "storage_type", storage_type)
+            _setter("storage_type", storage_type)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -251,11 +290,26 @@ class InstanceClusterAutoscalingConfig(dict):
                
                !> **Warning**: Only one of `autoscaling_config` or `num_nodes` should be set for a cluster. If both are set, `num_nodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
         """
-        pulumi.set(__self__, "cpu_target", cpu_target)
-        pulumi.set(__self__, "max_nodes", max_nodes)
-        pulumi.set(__self__, "min_nodes", min_nodes)
+        InstanceClusterAutoscalingConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cpu_target=cpu_target,
+            max_nodes=max_nodes,
+            min_nodes=min_nodes,
+            storage_target=storage_target,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cpu_target: int,
+             max_nodes: int,
+             min_nodes: int,
+             storage_target: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cpu_target", cpu_target)
+        _setter("max_nodes", max_nodes)
+        _setter("min_nodes", min_nodes)
         if storage_target is not None:
-            pulumi.set(__self__, "storage_target", storage_target)
+            _setter("storage_target", storage_target)
 
     @property
     @pulumi.getter(name="cpuTarget")
@@ -298,10 +352,23 @@ class InstanceIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        InstanceIamBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -325,10 +392,23 @@ class InstanceIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        InstanceIamMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -353,7 +433,16 @@ class TableColumnFamily(dict):
         """
         :param str family: The name of the column family.
         """
-        pulumi.set(__self__, "family", family)
+        TableColumnFamily._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            family=family,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             family: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("family", family)
 
     @property
     @pulumi.getter
@@ -370,10 +459,23 @@ class TableIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        TableIamBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -397,10 +499,23 @@ class TableIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        TableIamMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             title: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter

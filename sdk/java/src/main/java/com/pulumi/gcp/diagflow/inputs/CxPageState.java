@@ -131,24 +131,12 @@ public final class CxPageState extends com.pulumi.resources.ResourceArgs {
      * (Output)
      * The unique identifier of this event handler.
      * 
-     * (Output)
-     * The unique identifier of this transition route.
-     * 
-     * (Output)
-     * The unique identifier of this event handler.
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return (Output)
-     * The unique identifier of this event handler.
-     * 
-     * (Output)
-     * The unique identifier of this transition route.
-     * 
-     * (Output)
      * The unique identifier of this event handler.
      * 
      */
@@ -409,12 +397,6 @@ public final class CxPageState extends com.pulumi.resources.ResourceArgs {
          * @param name (Output)
          * The unique identifier of this event handler.
          * 
-         * (Output)
-         * The unique identifier of this transition route.
-         * 
-         * (Output)
-         * The unique identifier of this event handler.
-         * 
          * @return builder
          * 
          */
@@ -425,12 +407,6 @@ public final class CxPageState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name (Output)
-         * The unique identifier of this event handler.
-         * 
-         * (Output)
-         * The unique identifier of this transition route.
-         * 
-         * (Output)
          * The unique identifier of this event handler.
          * 
          * @return builder

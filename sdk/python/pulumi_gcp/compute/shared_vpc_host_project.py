@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SharedVPCHostProjectArgs', 'SharedVPCHostProject']
@@ -19,7 +19,16 @@ class SharedVPCHostProjectArgs:
         The set of arguments for constructing a SharedVPCHostProject resource.
         :param pulumi.Input[str] project: The ID of the project that will serve as a Shared VPC host project
         """
-        pulumi.set(__self__, "project", project)
+        SharedVPCHostProjectArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("project", project)
 
     @property
     @pulumi.getter
@@ -42,8 +51,17 @@ class _SharedVPCHostProjectState:
         Input properties used for looking up and filtering SharedVPCHostProject resources.
         :param pulumi.Input[str] project: The ID of the project that will serve as a Shared VPC host project
         """
+        _SharedVPCHostProjectState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -155,6 +173,10 @@ class SharedVPCHostProject(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SharedVPCHostProjectArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

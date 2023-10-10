@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -26,9 +26,22 @@ class IAMAuditConfigArgs:
                inferred from the provider.
         :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_project\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
-        pulumi.set(__self__, "audit_log_configs", audit_log_configs)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "service", service)
+        IAMAuditConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            audit_log_configs=audit_log_configs,
+            project=project,
+            service=service,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             audit_log_configs: pulumi.Input[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArgs']]],
+             project: pulumi.Input[str],
+             service: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("audit_log_configs", audit_log_configs)
+        _setter("project", project)
+        _setter("service", service)
 
     @property
     @pulumi.getter(name="auditLogConfigs")
@@ -83,14 +96,29 @@ class _IAMAuditConfigState:
                inferred from the provider.
         :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_project\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
+        _IAMAuditConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            audit_log_configs=audit_log_configs,
+            etag=etag,
+            project=project,
+            service=service,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArgs']]]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if audit_log_configs is not None:
-            pulumi.set(__self__, "audit_log_configs", audit_log_configs)
+            _setter("audit_log_configs", audit_log_configs)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if service is not None:
-            pulumi.set(__self__, "service", service)
+            _setter("service", service)
 
     @property
     @pulumi.getter(name="auditLogConfigs")
@@ -526,6 +554,10 @@ class IAMAuditConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IAMAuditConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

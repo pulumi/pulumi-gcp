@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -55,12 +55,27 @@ class InstanceFileShares(dict):
                projects/{projectId}/locations/{locationId}/backups/{backupId},
                that this file share has been restored from.
         """
-        pulumi.set(__self__, "capacity_gb", capacity_gb)
-        pulumi.set(__self__, "name", name)
+        InstanceFileShares._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            capacity_gb=capacity_gb,
+            name=name,
+            nfs_export_options=nfs_export_options,
+            source_backup=source_backup,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             capacity_gb: int,
+             name: str,
+             nfs_export_options: Optional[Sequence['outputs.InstanceFileSharesNfsExportOption']] = None,
+             source_backup: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("capacity_gb", capacity_gb)
+        _setter("name", name)
         if nfs_export_options is not None:
-            pulumi.set(__self__, "nfs_export_options", nfs_export_options)
+            _setter("nfs_export_options", nfs_export_options)
         if source_backup is not None:
-            pulumi.set(__self__, "source_backup", source_backup)
+            _setter("source_backup", source_backup)
 
     @property
     @pulumi.getter(name="capacityGb")
@@ -152,16 +167,33 @@ class InstanceFileSharesNfsExportOption(dict):
                Default value is `NO_ROOT_SQUASH`.
                Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`.
         """
+        InstanceFileSharesNfsExportOption._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_mode=access_mode,
+            anon_gid=anon_gid,
+            anon_uid=anon_uid,
+            ip_ranges=ip_ranges,
+            squash_mode=squash_mode,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_mode: Optional[str] = None,
+             anon_gid: Optional[int] = None,
+             anon_uid: Optional[int] = None,
+             ip_ranges: Optional[Sequence[str]] = None,
+             squash_mode: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_mode is not None:
-            pulumi.set(__self__, "access_mode", access_mode)
+            _setter("access_mode", access_mode)
         if anon_gid is not None:
-            pulumi.set(__self__, "anon_gid", anon_gid)
+            _setter("anon_gid", anon_gid)
         if anon_uid is not None:
-            pulumi.set(__self__, "anon_uid", anon_uid)
+            _setter("anon_uid", anon_uid)
         if ip_ranges is not None:
-            pulumi.set(__self__, "ip_ranges", ip_ranges)
+            _setter("ip_ranges", ip_ranges)
         if squash_mode is not None:
-            pulumi.set(__self__, "squash_mode", squash_mode)
+            _setter("squash_mode", squash_mode)
 
     @property
     @pulumi.getter(name="accessMode")
@@ -263,14 +295,31 @@ class InstanceNetwork(dict):
         :param str reserved_ip_range: A /29 CIDR block that identifies the range of IP
                addresses reserved for this instance.
         """
-        pulumi.set(__self__, "modes", modes)
-        pulumi.set(__self__, "network", network)
+        InstanceNetwork._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            modes=modes,
+            network=network,
+            connect_mode=connect_mode,
+            ip_addresses=ip_addresses,
+            reserved_ip_range=reserved_ip_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             modes: Sequence[str],
+             network: str,
+             connect_mode: Optional[str] = None,
+             ip_addresses: Optional[Sequence[str]] = None,
+             reserved_ip_range: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("modes", modes)
+        _setter("network", network)
         if connect_mode is not None:
-            pulumi.set(__self__, "connect_mode", connect_mode)
+            _setter("connect_mode", connect_mode)
         if ip_addresses is not None:
-            pulumi.set(__self__, "ip_addresses", ip_addresses)
+            _setter("ip_addresses", ip_addresses)
         if reserved_ip_range is not None:
-            pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
+            _setter("reserved_ip_range", reserved_ip_range)
 
     @property
     @pulumi.getter

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DocumentAiProcessorDefaultVersionArgs', 'DocumentAiProcessorDefaultVersion']
@@ -25,8 +25,19 @@ class DocumentAiProcessorDefaultVersionArgs:
         :param pulumi.Input[str] version: The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
                Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
         """
-        pulumi.set(__self__, "processor", processor)
-        pulumi.set(__self__, "version", version)
+        DocumentAiProcessorDefaultVersionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            processor=processor,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             processor: pulumi.Input[str],
+             version: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("processor", processor)
+        _setter("version", version)
 
     @property
     @pulumi.getter
@@ -71,10 +82,21 @@ class _DocumentAiProcessorDefaultVersionState:
         :param pulumi.Input[str] version: The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
                Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
         """
+        _DocumentAiProcessorDefaultVersionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            processor=processor,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             processor: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if processor is not None:
-            pulumi.set(__self__, "processor", processor)
+            _setter("processor", processor)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -192,6 +214,10 @@ class DocumentAiProcessorDefaultVersion(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DocumentAiProcessorDefaultVersionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

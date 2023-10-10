@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,9 +27,20 @@ class AddonsConfigArgs:
         :param pulumi.Input['AddonsConfigAddonsConfigArgs'] addons_config: Addon configurations of the Apigee organization.
                Structure is documented below.
         """
-        pulumi.set(__self__, "org", org)
+        AddonsConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            org=org,
+            addons_config=addons_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             org: pulumi.Input[str],
+             addons_config: Optional[pulumi.Input['AddonsConfigAddonsConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("org", org)
         if addons_config is not None:
-            pulumi.set(__self__, "addons_config", addons_config)
+            _setter("addons_config", addons_config)
 
     @property
     @pulumi.getter
@@ -74,10 +85,21 @@ class _AddonsConfigState:
                
                - - -
         """
+        _AddonsConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            addons_config=addons_config,
+            org=org,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             addons_config: Optional[pulumi.Input['AddonsConfigAddonsConfigArgs']] = None,
+             org: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if addons_config is not None:
-            pulumi.set(__self__, "addons_config", addons_config)
+            _setter("addons_config", addons_config)
         if org is not None:
-            pulumi.set(__self__, "org", org)
+            _setter("org", org)
 
     @property
     @pulumi.getter(name="addonsConfig")
@@ -335,6 +357,10 @@ class AddonsConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AddonsConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -351,6 +377,11 @@ class AddonsConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AddonsConfigArgs.__new__(AddonsConfigArgs)
 
+            if addons_config is not None and not isinstance(addons_config, AddonsConfigAddonsConfigArgs):
+                addons_config = addons_config or {}
+                def _setter(key, value):
+                    addons_config[key] = value
+                AddonsConfigAddonsConfigArgs._configure(_setter, **addons_config)
             __props__.__dict__["addons_config"] = addons_config
             if org is None and not opts.urn:
                 raise TypeError("Missing required property 'org'")
