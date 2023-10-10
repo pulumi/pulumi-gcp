@@ -29,14 +29,19 @@ func TestProviderUpgrade(t *testing.T) {
 		{"pubsub-topic"},
 		{"serviceaccount-account"},
 		{"storage-bucket"},
-		{"storage-bucketobject"},
+
+		// TODO[pulumi/providertest#2] skipping because Assets are not working yet
+		// {"storage-bucketobject"},
+
 		{"secretmanager-secret"},
 		{"sql-user"},
 
 		// extracted from schema examples and manually corrected
 		{"bigquery-table"},
 		{"compute-firewall"},
-		{"cloudfunctions-function"},
+
+		// TODO[pulumi/providertest#2] skipping because Assets are not working yet
+		// {"cloudfunctions-function"},
 
 		// extracted as-is from schema examples
 		{"monitoring-alertpolicy-1"},
