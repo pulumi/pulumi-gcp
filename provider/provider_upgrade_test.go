@@ -56,20 +56,14 @@ func TestProviderUpgrade(t *testing.T) {
 		{"compute-disk-3"},
 	}
 
-	test := func(t *testing.T, tc testCase) {
-		ptest.VerifyUpgrade(t).
-			WithProviderName("gcp").
-			WithBaselineVersion(baseline).
-			WithProgram(filepath.Join("test-programs", tc.program)).
-			WithResourceProviderServer(providerServer(t)).
-			WithConfig("gcp:project", "pulumi-development").
-			Run()
-	}
-
 	for _, tc := range testCases {
 		tc := tc
 		t.Run(tc.program, func(t *testing.T) {
-			test(t, tc)
+			ptest.VerifyUpgrade(t, filepath.Join("test-programs", tc.program),
+				ptest.WithProviderName("gcp"),
+				ptest.WithBaselineVersion(baseline),
+				ptest.WithResourceProviderServer(providerServer(t)),
+				ptest.WithConfig("gcp:project", "pulumi-development"))
 		})
 	}
 

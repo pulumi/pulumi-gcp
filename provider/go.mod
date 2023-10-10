@@ -4,7 +4,7 @@ go 1.21.0
 
 require (
 	github.com/hashicorp/terraform-provider-google-beta v0.0.0
-	github.com/pulumi/providertest v0.0.0-20231006192600-0aafe6fee951
+	github.com/pulumi/providertest v0.0.0-20231010194741-bb24e12fedd0
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.17.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.61.0
 	github.com/pulumi/pulumi/pkg/v3 v3.86.0
@@ -111,6 +111,7 @@ require (
 	github.com/envoyproxy/protoc-gen-validate v0.10.1 // indirect
 	github.com/ettle/strcase v0.1.1 // indirect
 	github.com/fatih/color v1.15.0 // indirect
+	github.com/fsnotify/fsnotify v1.5.4 // indirect
 	github.com/gammazero/deque v0.0.0-20180920172122-f6adf94963e4 // indirect
 	github.com/gammazero/workerpool v0.0.0-20181230203049-86a96b5d5d92 // indirect
 	github.com/gedex/inflector v0.0.0-20170307190818-16278e9db813 // indirect
@@ -208,6 +209,7 @@ require (
 	github.com/muesli/reflow v0.3.0 // indirect
 	github.com/muesli/termenv v0.15.1 // indirect
 	github.com/natefinch/atomic v1.0.1 // indirect
+	github.com/nxadm/tail v1.4.8 // indirect
 	github.com/oklog/run v1.1.0 // indirect
 	github.com/opentracing/basictracer-go v1.1.0 // indirect
 	github.com/opentracing/opentracing-go v1.2.0 // indirect
@@ -277,6 +279,7 @@ require (
 	google.golang.org/grpc v1.57.0 // indirect
 	google.golang.org/protobuf v1.31.0 // indirect
 	gopkg.in/square/go-jose.v2 v2.6.0 // indirect
+	gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	lukechampine.com/frand v1.4.2 // indirect
