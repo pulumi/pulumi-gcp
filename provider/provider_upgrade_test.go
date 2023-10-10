@@ -9,15 +9,10 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
-	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
-
-	"encoding/json"
 	ptest "github.com/pulumi/providertest"
 	"github.com/pulumi/pulumi-gcp/provider/v6/pkg/version"
-	"os"
-	"sort"
-	"strings"
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
 )
 
 func TestProviderUpgrade(t *testing.T) {
@@ -56,6 +51,8 @@ func TestProviderUpgrade(t *testing.T) {
 		{"compute-disk-3"},
 	}
 
+	cov := &ptest.UpgradeCoverage{}
+
 	for _, tc := range testCases {
 		tc := tc
 		t.Run(tc.program, func(t *testing.T) {
@@ -63,56 +60,12 @@ func TestProviderUpgrade(t *testing.T) {
 				ptest.WithProviderName("gcp"),
 				ptest.WithBaselineVersion(baseline),
 				ptest.WithResourceProviderServer(providerServer(t)),
-				ptest.WithConfig("gcp:project", "pulumi-development"))
+				ptest.WithConfig("gcp:project", "pulumi-development"),
+				ptest.WithUpgradeCoverage(cov))
 		})
 	}
 
-	t.Run("coverage", func(t *testing.T) {
-		// This assumes passing/unskipped tests.
-
-		covered := map[string]struct{}{}
-
-		for _, tc := range testCases {
-			tc := tc
-			s := filepath.Join("testdata", "recorded", "TestProviderUpgrade",
-				tc.program, baseline, "state.json")
-
-			type stack struct {
-				Deployment struct {
-					Resources []struct {
-						Type string `json:"type"`
-					} `json:"resources"`
-				} `json:"deployment"`
-			}
-
-			b, err := os.ReadFile(s)
-			require.NoError(t, err)
-
-			var st stack
-			require.NoError(t, json.Unmarshal(b, &st))
-
-			for _, r := range st.Deployment.Resources {
-				if strings.Contains(r.Type, "providers") {
-					continue
-				}
-				if strings.Contains(r.Type, "Stack") {
-					continue
-				}
-				covered[r.Type] = struct{}{}
-			}
-		}
-
-		t.Logf("Resources covered: %d", len(covered))
-
-		sorted := []string{}
-		for k := range covered {
-			sorted = append(sorted, k)
-		}
-		sort.Strings(sorted)
-		for _, s := range sorted {
-			t.Logf("- %s", s)
-		}
-	})
+	cov.Report(t)
 }
 
 func providerServer(t *testing.T) pulumirpc.ResourceProviderServer {
