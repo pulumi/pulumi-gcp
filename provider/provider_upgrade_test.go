@@ -32,6 +32,9 @@ func TestProviderUpgrade(t *testing.T) {
 		{"storage-bucketobject"},
 		{"secretmanager-secret"},
 
+		// extracted from schema examples and manually corrected
+		{"bigquery-table"},
+
 		// extracted as-is from schema examples
 		{"bigquery-datasetaccess-3"},
 		{"bigquery-routine-1"},
