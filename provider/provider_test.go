@@ -97,7 +97,6 @@ func test(t *testing.T, dir string) *providertest.ProviderTest {
 		providertest.WithBaselineVersion("6.67.0"),
 		providertest.WithConfig("gcp:project", "pulumi-development"),
 		providertest.WithResourceProviderServer(providerServer(t)),
-	// 			ptest.WithUpgradeCoverage(cov))
 	)
 }
 
