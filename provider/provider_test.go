@@ -4,6 +4,7 @@ package gcp
 
 import (
 	"context"
+	"path/filepath"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -12,7 +13,6 @@ import (
 	"github.com/pulumi/pulumi-gcp/provider/v6/pkg/version"
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
-	"path/filepath"
 )
 
 func TestDNSRecordSet(t *testing.T) {
