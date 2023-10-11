@@ -94,6 +94,10 @@ func TestAutoExtractedPrograms(t *testing.T) {
 	}
 }
 
+func TestUpgradeCoverage(t *testing.T) {
+	providertest.ReportUpgradeCoverage(t)
+}
+
 func test(t *testing.T, dir string, opts ...providertest.Option) *providertest.ProviderTest {
 	opts = append(opts,
 		providertest.WithProviderName("gcp"),
