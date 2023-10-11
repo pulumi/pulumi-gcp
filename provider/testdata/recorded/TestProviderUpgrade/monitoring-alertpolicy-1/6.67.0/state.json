@@ -1,0 +1,142 @@
+{
+    "version": 3,
+    "deployment": {
+        "manifest": {
+            "time": "2023-10-10T10:41:36.494421-04:00",
+            "magic": "cdb46f20d3397474c4b7038ce63a3c40fb0da4b95458ef275b6ce689aec88d17",
+            "version": "v3.86.0"
+        },
+        "secrets_providers": {
+            "type": "passphrase",
+            "state": {
+                "salt": "v1:SsBk+X46P3A=:v1:VY5ndIczidA/KM/w:HW/eTpfDORarN+52SXTaf6HAiFhLKw=="
+            }
+        },
+        "resources": [
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-monitoring-7b7cf1a6::test::pulumi:pulumi:Stack::test-p-it-antons-mac-monitoring-7b7cf1a6",
+                "custom": false,
+                "type": "pulumi:pulumi:Stack",
+                "created": "2023-10-10T14:41:31.949932Z",
+                "modified": "2023-10-10T14:41:31.949932Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-monitoring-7b7cf1a6::test::pulumi:providers:gcp::provider",
+                "custom": true,
+                "id": "f7c7ed9a-8cdb-4173-b83a-53b90f4a705e",
+                "type": "pulumi:providers:gcp",
+                "inputs": {
+                    "project": "pulumi-development",
+                    "version": "6.67.0"
+                },
+                "outputs": {
+                    "project": "pulumi-development",
+                    "version": "6.67.0"
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-monitoring-7b7cf1a6::test::pulumi:pulumi:Stack::test-p-it-antons-mac-monitoring-7b7cf1a6",
+                "propertyDependencies": {
+                    "project": null
+                },
+                "created": "2023-10-10T14:41:32.726597Z",
+                "modified": "2023-10-10T14:41:32.726597Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-monitoring-7b7cf1a6::test::gcp:monitoring/alertPolicy:AlertPolicy::tested-resource",
+                "custom": true,
+                "id": "projects/pulumi-development/alertPolicies/3265642716557756309",
+                "type": "gcp:monitoring/alertPolicy:AlertPolicy",
+                "inputs": {
+                    "__defaults": [
+                        "enabled"
+                    ],
+                    "combiner": "OR",
+                    "conditions": [
+                        {
+                            "__defaults": [],
+                            "conditionThreshold": {
+                                "__defaults": [],
+                                "aggregations": [
+                                    {
+                                        "__defaults": [],
+                                        "alignmentPeriod": "60s",
+                                        "perSeriesAligner": "ALIGN_RATE"
+                                    }
+                                ],
+                                "comparison": "COMPARISON_GT",
+                                "duration": "60s",
+                                "filter": "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\""
+                            },
+                            "displayName": "test condition"
+                        }
+                    ],
+                    "displayName": "My Alert Policy",
+                    "enabled": true,
+                    "userLabels": {
+                        "__defaults": [],
+                        "foo": "bar"
+                    }
+                },
+                "outputs": {
+                    "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
+                    "alertStrategy": null,
+                    "combiner": "OR",
+                    "conditions": [
+                        {
+                            "conditionAbsent": null,
+                            "conditionMatchedLog": null,
+                            "conditionMonitoringQueryLanguage": null,
+                            "conditionPrometheusQueryLanguage": null,
+                            "conditionThreshold": {
+                                "aggregations": [
+                                    {
+                                        "alignmentPeriod": "60s",
+                                        "crossSeriesReducer": "",
+                                        "groupByFields": [],
+                                        "perSeriesAligner": "ALIGN_RATE"
+                                    }
+                                ],
+                                "comparison": "COMPARISON_GT",
+                                "denominatorAggregations": [],
+                                "denominatorFilter": "",
+                                "duration": "60s",
+                                "evaluationMissingData": "",
+                                "filter": "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
+                                "forecastOptions": null,
+                                "thresholdValue": 0,
+                                "trigger": null
+                            },
+                            "displayName": "test condition",
+                            "name": "projects/pulumi-development/alertPolicies/3265642716557756309/conditions/3265642716557754896"
+                        }
+                    ],
+                    "creationRecords": [
+                        {
+                            "mutateTime": "2023-10-10T14:41:33.273757984Z",
+                            "mutatedBy": "anton@pulumi.com"
+                        }
+                    ],
+                    "displayName": "My Alert Policy",
+                    "documentation": null,
+                    "enabled": true,
+                    "id": "projects/pulumi-development/alertPolicies/3265642716557756309",
+                    "name": "projects/pulumi-development/alertPolicies/3265642716557756309",
+                    "notificationChannels": [],
+                    "project": "pulumi-development",
+                    "userLabels": {
+                        "foo": "bar"
+                    }
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-monitoring-7b7cf1a6::test::pulumi:pulumi:Stack::test-p-it-antons-mac-monitoring-7b7cf1a6",
+                "provider": "urn:pulumi:p-it-antons-mac-monitoring-7b7cf1a6::test::pulumi:providers:gcp::provider::f7c7ed9a-8cdb-4173-b83a-53b90f4a705e",
+                "propertyDependencies": {
+                    "combiner": null,
+                    "conditions": null,
+                    "displayName": null,
+                    "userLabels": null
+                },
+                "created": "2023-10-10T14:41:36.494349Z",
+                "modified": "2023-10-10T14:41:36.494349Z"
+            }
+        ]
+    }
+}

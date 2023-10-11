@@ -1,0 +1,125 @@
+{
+    "version": 3,
+    "deployment": {
+        "manifest": {
+            "time": "2023-10-09T18:08:30.196402-04:00",
+            "magic": "cdb46f20d3397474c4b7038ce63a3c40fb0da4b95458ef275b6ce689aec88d17",
+            "version": "v3.86.0"
+        },
+        "secrets_providers": {
+            "type": "passphrase",
+            "state": {
+                "salt": "v1:IJco2VIamRk=:v1:efP8yMP2mw5hmiQr:X4WeMnNQK19jODhdwxsyUOlXuiX/iA=="
+            }
+        },
+        "resources": [
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-compute-di-4a0551c9::test::pulumi:pulumi:Stack::test-p-it-antons-mac-compute-di-4a0551c9",
+                "custom": false,
+                "type": "pulumi:pulumi:Stack",
+                "created": "2023-10-09T22:08:17.695439Z",
+                "modified": "2023-10-09T22:08:17.695439Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-compute-di-4a0551c9::test::pulumi:providers:gcp::provider",
+                "custom": true,
+                "id": "eab8a606-15a7-4663-a2e6-0756bff285e6",
+                "type": "pulumi:providers:gcp",
+                "inputs": {
+                    "project": "pulumi-development",
+                    "version": "6.67.0"
+                },
+                "outputs": {
+                    "project": "pulumi-development",
+                    "version": "6.67.0"
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-compute-di-4a0551c9::test::pulumi:pulumi:Stack::test-p-it-antons-mac-compute-di-4a0551c9",
+                "propertyDependencies": {
+                    "project": null
+                },
+                "created": "2023-10-09T22:08:18.561315Z",
+                "modified": "2023-10-09T22:08:18.561315Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-compute-di-4a0551c9::test::gcp:compute/disk:Disk::tested-resource",
+                "custom": true,
+                "id": "projects/pulumi-development/zones/us-central1-a/disks/tested-resource-19e2552",
+                "type": "gcp:compute/disk:Disk",
+                "inputs": {
+                    "__defaults": [
+                        "name"
+                    ],
+                    "image": "debian-11-bullseye-v20220719",
+                    "labels": {
+                        "__defaults": [],
+                        "environment": "dev"
+                    },
+                    "name": "tested-resource-19e2552",
+                    "physicalBlockSizeBytes": 4096,
+                    "type": "pd-ssd",
+                    "zone": "us-central1-a"
+                },
+                "outputs": {
+                    "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
+                    "asyncPrimaryDisk": null,
+                    "creationTimestamp": "2023-10-09T15:08:19.652-07:00",
+                    "description": "",
+                    "diskEncryptionKey": null,
+                    "enableConfidentialCompute": false,
+                    "guestOsFeatures": [
+                        {
+                            "type": "GVNIC"
+                        },
+                        {
+                            "type": "VIRTIO_SCSI_MULTIQUEUE"
+                        },
+                        {
+                            "type": "UEFI_COMPATIBLE"
+                        }
+                    ],
+                    "id": "projects/pulumi-development/zones/us-central1-a/disks/tested-resource-19e2552",
+                    "image": "https://www.googleapis.com/compute/beta/projects/debian-cloud/global/images/debian-11-bullseye-v20220719",
+                    "labelFingerprint": "a6HI36FuYIQ=",
+                    "labels": {
+                        "environment": "dev"
+                    },
+                    "lastAttachTimestamp": "",
+                    "lastDetachTimestamp": "",
+                    "licenses": [
+                        "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-11-bullseye"
+                    ],
+                    "multiWriter": false,
+                    "name": "tested-resource-19e2552",
+                    "physicalBlockSizeBytes": 4096,
+                    "project": "pulumi-development",
+                    "provisionedIops": 0,
+                    "provisionedThroughput": 0,
+                    "resourcePolicies": [],
+                    "selfLink": "https://www.googleapis.com/compute/v1/projects/pulumi-development/zones/us-central1-a/disks/tested-resource-19e2552",
+                    "size": 10,
+                    "snapshot": "",
+                    "sourceDisk": "",
+                    "sourceDiskId": "",
+                    "sourceImageEncryptionKey": null,
+                    "sourceImageId": "4932115930768171344",
+                    "sourceSnapshotEncryptionKey": null,
+                    "sourceSnapshotId": "",
+                    "type": "pd-ssd",
+                    "users": [],
+                    "zone": "us-central1-a"
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-compute-di-4a0551c9::test::pulumi:pulumi:Stack::test-p-it-antons-mac-compute-di-4a0551c9",
+                "provider": "urn:pulumi:p-it-antons-mac-compute-di-4a0551c9::test::pulumi:providers:gcp::provider::eab8a606-15a7-4663-a2e6-0756bff285e6",
+                "propertyDependencies": {
+                    "image": null,
+                    "labels": null,
+                    "physicalBlockSizeBytes": null,
+                    "type": null,
+                    "zone": null
+                },
+                "created": "2023-10-09T22:08:30.196349Z",
+                "modified": "2023-10-09T22:08:30.196349Z"
+            }
+        ]
+    }
+}

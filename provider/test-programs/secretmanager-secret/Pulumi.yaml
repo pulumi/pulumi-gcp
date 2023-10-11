@@ -1,0 +1,27 @@
+name: test
+
+runtime:
+  name: yaml
+
+resources:
+
+  provider:
+    type: pulumi:providers:gcp
+    options:
+      version: 6.67.0
+    properties:
+      project: ${gcp:project}
+
+  tested-resource:
+    type: gcp:secretmanager:Secret
+    properties:
+      labels:
+        label: my-label
+      replication:
+        userManaged:
+          replicas:
+            - location: us-central1
+            - location: us-east1
+      secretId: secret
+    options:
+      provider: ${provider}

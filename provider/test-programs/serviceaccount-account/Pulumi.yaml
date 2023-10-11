@@ -1,0 +1,27 @@
+name: test
+
+runtime:
+  name: yaml
+
+resources:
+
+  provider:
+    type: pulumi:providers:gcp
+    options:
+      version: 6.67.0
+
+  tested-resource:
+    type: gcp:serviceAccount:Account
+    properties:
+      accountId:
+        fn::invoke:
+          function: str:replace
+          arguments:
+            old: "p-it-"
+            new: ""
+            string: ${pulumi.stack}
+          return: result
+      displayName: Test Service Account
+      project: ${gcp:project}
+    options:
+      provider: ${provider}

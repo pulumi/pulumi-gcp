@@ -1,0 +1,213 @@
+{
+    "version": 3,
+    "deployment": {
+        "manifest": {
+            "time": "2023-10-09T18:08:37.20777-04:00",
+            "magic": "cdb46f20d3397474c4b7038ce63a3c40fb0da4b95458ef275b6ce689aec88d17",
+            "version": "v3.86.0"
+        },
+        "secrets_providers": {
+            "type": "passphrase",
+            "state": {
+                "salt": "v1:sezCsqipQ64=:v1:z4xSolgWvvJWcMMh:sX2wbRiaVXvRRw5AlTzqQwvsL3M9RA=="
+            }
+        },
+        "resources": [
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-bigquery-r-c9bf1a1f::test::pulumi:pulumi:Stack::test-p-it-antons-mac-bigquery-r-c9bf1a1f",
+                "custom": false,
+                "type": "pulumi:pulumi:Stack",
+                "created": "2023-10-09T22:08:33.993769Z",
+                "modified": "2023-10-09T22:08:33.993769Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-bigquery-r-c9bf1a1f::test::pulumi:providers:gcp::provider",
+                "custom": true,
+                "id": "5545a978-cca5-4f77-82e0-fb4904abdd82",
+                "type": "pulumi:providers:gcp",
+                "inputs": {
+                    "project": "pulumi-development",
+                    "version": "6.67.0"
+                },
+                "outputs": {
+                    "project": "pulumi-development",
+                    "version": "6.67.0"
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-bigquery-r-c9bf1a1f::test::pulumi:pulumi:Stack::test-p-it-antons-mac-bigquery-r-c9bf1a1f",
+                "propertyDependencies": {
+                    "project": null
+                },
+                "created": "2023-10-09T22:08:35.063762Z",
+                "modified": "2023-10-09T22:08:35.063762Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-bigquery-r-c9bf1a1f::test::gcp:bigquery/dataset:Dataset::test",
+                "custom": true,
+                "id": "projects/pulumi-development/datasets/dataset_id",
+                "type": "gcp:bigquery/dataset:Dataset",
+                "inputs": {
+                    "__defaults": [
+                        "deleteContentsOnDestroy",
+                        "location"
+                    ],
+                    "datasetId": "dataset_id",
+                    "deleteContentsOnDestroy": false,
+                    "location": "US"
+                },
+                "outputs": {
+                    "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
+                    "accesses": [
+                        {
+                            "dataset": null,
+                            "domain": "",
+                            "groupByEmail": "",
+                            "role": "OWNER",
+                            "routine": null,
+                            "specialGroup": "",
+                            "userByEmail": "anton@pulumi.com",
+                            "view": null
+                        },
+                        {
+                            "dataset": null,
+                            "domain": "",
+                            "groupByEmail": "",
+                            "role": "READER",
+                            "routine": null,
+                            "specialGroup": "projectReaders",
+                            "userByEmail": "",
+                            "view": null
+                        },
+                        {
+                            "dataset": null,
+                            "domain": "",
+                            "groupByEmail": "",
+                            "role": "WRITER",
+                            "routine": null,
+                            "specialGroup": "projectWriters",
+                            "userByEmail": "",
+                            "view": null
+                        },
+                        {
+                            "dataset": null,
+                            "domain": "",
+                            "groupByEmail": "",
+                            "role": "OWNER",
+                            "routine": null,
+                            "specialGroup": "projectOwners",
+                            "userByEmail": "",
+                            "view": null
+                        }
+                    ],
+                    "creationTime": 1696889316135,
+                    "datasetId": "dataset_id",
+                    "defaultCollation": "",
+                    "defaultEncryptionConfiguration": null,
+                    "defaultPartitionExpirationMs": 0,
+                    "defaultTableExpirationMs": 0,
+                    "deleteContentsOnDestroy": false,
+                    "description": "",
+                    "etag": "sDidaOn8tkqG95IYXBjemw==",
+                    "friendlyName": "",
+                    "id": "projects/pulumi-development/datasets/dataset_id",
+                    "isCaseInsensitive": false,
+                    "labels": {},
+                    "lastModifiedTime": 1696889316135,
+                    "location": "US",
+                    "maxTimeTravelHours": "",
+                    "project": "pulumi-development",
+                    "selfLink": "https://bigquery.googleapis.com/bigquery/v2/projects/pulumi-development/datasets/dataset_id",
+                    "storageBillingModel": ""
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-bigquery-r-c9bf1a1f::test::pulumi:pulumi:Stack::test-p-it-antons-mac-bigquery-r-c9bf1a1f",
+                "provider": "urn:pulumi:p-it-antons-mac-bigquery-r-c9bf1a1f::test::pulumi:providers:gcp::provider::5545a978-cca5-4f77-82e0-fb4904abdd82",
+                "propertyDependencies": {
+                    "datasetId": null
+                },
+                "created": "2023-10-09T22:08:36.669984Z",
+                "modified": "2023-10-09T22:08:36.669984Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-bigquery-r-c9bf1a1f::test::gcp:bigquery/routine:Routine::tested-resource",
+                "custom": true,
+                "id": "projects/pulumi-development/datasets/dataset_id/routines/routine_id",
+                "type": "gcp:bigquery/routine:Routine",
+                "inputs": {
+                    "__defaults": [],
+                    "arguments": [
+                        {
+                            "__defaults": [
+                                "argumentKind"
+                            ],
+                            "argumentKind": "FIXED_TYPE",
+                            "dataType": "{\"typeKind\" :  \"FLOAT64\"}",
+                            "name": "x"
+                        },
+                        {
+                            "__defaults": [
+                                "argumentKind"
+                            ],
+                            "argumentKind": "FIXED_TYPE",
+                            "dataType": "{\"typeKind\" :  \"FLOAT64\"}",
+                            "name": "y"
+                        }
+                    ],
+                    "datasetId": "dataset_id",
+                    "definitionBody": "CREATE FUNCTION multiplyInputs return x*y;",
+                    "language": "JAVASCRIPT",
+                    "returnType": "{\"typeKind\" :  \"FLOAT64\"}",
+                    "routineId": "routine_id",
+                    "routineType": "SCALAR_FUNCTION"
+                },
+                "outputs": {
+                    "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
+                    "arguments": [
+                        {
+                            "argumentKind": "FIXED_TYPE",
+                            "dataType": "{\"typeKind\":\"FLOAT64\"}",
+                            "mode": "",
+                            "name": "x"
+                        },
+                        {
+                            "argumentKind": "FIXED_TYPE",
+                            "dataType": "{\"typeKind\":\"FLOAT64\"}",
+                            "mode": "",
+                            "name": "y"
+                        }
+                    ],
+                    "creationTime": 1696889316949,
+                    "datasetId": "dataset_id",
+                    "definitionBody": "CREATE FUNCTION multiplyInputs return x*y;",
+                    "description": "",
+                    "determinismLevel": "",
+                    "id": "projects/pulumi-development/datasets/dataset_id/routines/routine_id",
+                    "importedLibraries": [],
+                    "language": "JAVASCRIPT",
+                    "lastModifiedTime": 1696889316949,
+                    "project": "pulumi-development",
+                    "returnTableType": "",
+                    "returnType": "{\"typeKind\":\"FLOAT64\"}",
+                    "routineId": "routine_id",
+                    "routineType": "SCALAR_FUNCTION"
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-bigquery-r-c9bf1a1f::test::pulumi:pulumi:Stack::test-p-it-antons-mac-bigquery-r-c9bf1a1f",
+                "dependencies": [
+                    "urn:pulumi:p-it-antons-mac-bigquery-r-c9bf1a1f::test::gcp:bigquery/dataset:Dataset::test"
+                ],
+                "provider": "urn:pulumi:p-it-antons-mac-bigquery-r-c9bf1a1f::test::pulumi:providers:gcp::provider::5545a978-cca5-4f77-82e0-fb4904abdd82",
+                "propertyDependencies": {
+                    "arguments": null,
+                    "datasetId": [
+                        "urn:pulumi:p-it-antons-mac-bigquery-r-c9bf1a1f::test::gcp:bigquery/dataset:Dataset::test"
+                    ],
+                    "definitionBody": null,
+                    "language": null,
+                    "returnType": null,
+                    "routineId": null,
+                    "routineType": null
+                },
+                "created": "2023-10-09T22:08:37.207734Z",
+                "modified": "2023-10-09T22:08:37.207734Z"
+            }
+        ]
+    }
+}

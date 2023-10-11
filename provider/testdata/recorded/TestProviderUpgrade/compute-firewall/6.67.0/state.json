@@ -1,0 +1,169 @@
+{
+    "version": 3,
+    "deployment": {
+        "manifest": {
+            "time": "2023-10-10T10:00:33.944499-04:00",
+            "magic": "cdb46f20d3397474c4b7038ce63a3c40fb0da4b95458ef275b6ce689aec88d17",
+            "version": "v3.86.0"
+        },
+        "secrets_providers": {
+            "type": "passphrase",
+            "state": {
+                "salt": "v1:Gej1H+GqhmI=:v1:gFx7zpznlDuF2TiI:9sMp3vBR7XgModLJ6f1lDvjQkbEQIA=="
+            }
+        },
+        "resources": [
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-compute-fi-02d64745::test::pulumi:pulumi:Stack::test-p-it-antons-mac-compute-fi-02d64745",
+                "custom": false,
+                "type": "pulumi:pulumi:Stack",
+                "created": "2023-10-10T13:59:17.822448Z",
+                "modified": "2023-10-10T13:59:17.822448Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-compute-fi-02d64745::test::pulumi:providers:gcp::provider",
+                "custom": true,
+                "id": "916f00a1-77e1-4086-8bc6-6ec824c22cc5",
+                "type": "pulumi:providers:gcp",
+                "inputs": {
+                    "project": "pulumi-development",
+                    "version": "6.67.0"
+                },
+                "outputs": {
+                    "project": "pulumi-development",
+                    "version": "6.67.0"
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-compute-fi-02d64745::test::pulumi:pulumi:Stack::test-p-it-antons-mac-compute-fi-02d64745",
+                "propertyDependencies": {
+                    "project": null
+                },
+                "created": "2023-10-10T13:59:18.611713Z",
+                "modified": "2023-10-10T13:59:18.611713Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-compute-fi-02d64745::test::gcp:compute/network:Network::defaultNetwork",
+                "custom": true,
+                "id": "projects/pulumi-development/global/networks/dnetp-it-antons-mac-compute-fi-02d64745",
+                "type": "gcp:compute/network:Network",
+                "inputs": {
+                    "__defaults": [
+                        "autoCreateSubnetworks",
+                        "deleteDefaultRoutesOnCreate",
+                        "networkFirewallPolicyEnforcementOrder"
+                    ],
+                    "autoCreateSubnetworks": true,
+                    "deleteDefaultRoutesOnCreate": false,
+                    "name": "dnetp-it-antons-mac-compute-fi-02d64745",
+                    "networkFirewallPolicyEnforcementOrder": "AFTER_CLASSIC_FIREWALL"
+                },
+                "outputs": {
+                    "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
+                    "autoCreateSubnetworks": true,
+                    "deleteDefaultRoutesOnCreate": false,
+                    "description": "",
+                    "enableUlaInternalIpv6": false,
+                    "gatewayIpv4": "",
+                    "id": "projects/pulumi-development/global/networks/dnetp-it-antons-mac-compute-fi-02d64745",
+                    "internalIpv6Range": "",
+                    "mtu": 0,
+                    "name": "dnetp-it-antons-mac-compute-fi-02d64745",
+                    "networkFirewallPolicyEnforcementOrder": "AFTER_CLASSIC_FIREWALL",
+                    "project": "pulumi-development",
+                    "routingMode": "REGIONAL",
+                    "selfLink": "https://www.googleapis.com/compute/v1/projects/pulumi-development/global/networks/dnetp-it-antons-mac-compute-fi-02d64745"
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-compute-fi-02d64745::test::pulumi:pulumi:Stack::test-p-it-antons-mac-compute-fi-02d64745",
+                "provider": "urn:pulumi:p-it-antons-mac-compute-fi-02d64745::test::pulumi:providers:gcp::provider::916f00a1-77e1-4086-8bc6-6ec824c22cc5",
+                "propertyDependencies": {
+                    "name": null
+                },
+                "created": "2023-10-10T14:00:22.168684Z",
+                "modified": "2023-10-10T14:00:22.168684Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-compute-fi-02d64745::test::gcp:compute/firewall:Firewall::tested-resource",
+                "custom": true,
+                "id": "projects/pulumi-development/global/firewalls/tested-resource-cd556d3",
+                "type": "gcp:compute/firewall:Firewall",
+                "inputs": {
+                    "__defaults": [
+                        "name",
+                        "priority"
+                    ],
+                    "allows": [
+                        {
+                            "__defaults": [],
+                            "protocol": "icmp"
+                        },
+                        {
+                            "__defaults": [],
+                            "ports": [
+                                "80",
+                                "8080",
+                                "1000-2000"
+                            ],
+                            "protocol": "tcp"
+                        }
+                    ],
+                    "name": "tested-resource-cd556d3",
+                    "network": "dnetp-it-antons-mac-compute-fi-02d64745",
+                    "priority": 1000,
+                    "sourceTags": [
+                        "web"
+                    ]
+                },
+                "outputs": {
+                    "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000},\"schema_version\":\"1\"}",
+                    "allows": [
+                        {
+                            "ports": [],
+                            "protocol": "icmp"
+                        },
+                        {
+                            "ports": [
+                                "80",
+                                "8080",
+                                "1000-2000"
+                            ],
+                            "protocol": "tcp"
+                        }
+                    ],
+                    "creationTimestamp": "2023-10-10T07:00:22.736-07:00",
+                    "denies": [],
+                    "description": "",
+                    "destinationRanges": [],
+                    "direction": "INGRESS",
+                    "disabled": false,
+                    "id": "projects/pulumi-development/global/firewalls/tested-resource-cd556d3",
+                    "logConfig": null,
+                    "name": "tested-resource-cd556d3",
+                    "network": "https://www.googleapis.com/compute/v1/projects/pulumi-development/global/networks/dnetp-it-antons-mac-compute-fi-02d64745",
+                    "priority": 1000,
+                    "project": "pulumi-development",
+                    "selfLink": "https://www.googleapis.com/compute/v1/projects/pulumi-development/global/firewalls/tested-resource-cd556d3",
+                    "sourceRanges": [],
+                    "sourceServiceAccounts": [],
+                    "sourceTags": [
+                        "web"
+                    ],
+                    "targetServiceAccounts": [],
+                    "targetTags": []
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-compute-fi-02d64745::test::pulumi:pulumi:Stack::test-p-it-antons-mac-compute-fi-02d64745",
+                "dependencies": [
+                    "urn:pulumi:p-it-antons-mac-compute-fi-02d64745::test::gcp:compute/network:Network::defaultNetwork"
+                ],
+                "provider": "urn:pulumi:p-it-antons-mac-compute-fi-02d64745::test::pulumi:providers:gcp::provider::916f00a1-77e1-4086-8bc6-6ec824c22cc5",
+                "propertyDependencies": {
+                    "allows": null,
+                    "network": [
+                        "urn:pulumi:p-it-antons-mac-compute-fi-02d64745::test::gcp:compute/network:Network::defaultNetwork"
+                    ],
+                    "sourceTags": null
+                },
+                "created": "2023-10-10T14:00:33.944433Z",
+                "modified": "2023-10-10T14:00:33.944433Z"
+            }
+        ]
+    }
+}

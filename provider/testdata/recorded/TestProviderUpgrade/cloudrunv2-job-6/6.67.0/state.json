@@ -1,0 +1,196 @@
+{
+    "version": 3,
+    "deployment": {
+        "manifest": {
+            "time": "2023-10-09T18:08:33.920547-04:00",
+            "magic": "cdb46f20d3397474c4b7038ce63a3c40fb0da4b95458ef275b6ce689aec88d17",
+            "version": "v3.86.0"
+        },
+        "secrets_providers": {
+            "type": "passphrase",
+            "state": {
+                "salt": "v1:MwinYsuSgtU=:v1:DrWzW5NU0zGh6SoN:yW14BoL0LgPiBAnxqc/pPcSugLrTEw=="
+            }
+        },
+        "resources": [
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-cloudrunv2-998b6b3e::test::pulumi:pulumi:Stack::test-p-it-antons-mac-cloudrunv2-998b6b3e",
+                "custom": false,
+                "type": "pulumi:pulumi:Stack",
+                "created": "2023-10-09T22:08:31.824196Z",
+                "modified": "2023-10-09T22:08:31.824196Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-cloudrunv2-998b6b3e::test::pulumi:providers:gcp::provider",
+                "custom": true,
+                "id": "260961ac-e8d1-47bf-b0f4-89f07167c081",
+                "type": "pulumi:providers:gcp",
+                "inputs": {
+                    "project": "pulumi-development",
+                    "version": "6.67.0"
+                },
+                "outputs": {
+                    "project": "pulumi-development",
+                    "version": "6.67.0"
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-cloudrunv2-998b6b3e::test::pulumi:pulumi:Stack::test-p-it-antons-mac-cloudrunv2-998b6b3e",
+                "propertyDependencies": {
+                    "project": null
+                },
+                "created": "2023-10-09T22:08:32.78058Z",
+                "modified": "2023-10-09T22:08:32.78058Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-cloudrunv2-998b6b3e::test::gcp:cloudrunv2/job:Job::tested-resource",
+                "custom": true,
+                "id": "projects/pulumi-development/locations/us-central1/jobs/tested-resource-abb7505",
+                "type": "gcp:cloudrunv2/job:Job",
+                "inputs": {
+                    "__defaults": [
+                        "name"
+                    ],
+                    "launchStage": "BETA",
+                    "location": "us-central1",
+                    "name": "tested-resource-abb7505",
+                    "template": {
+                        "__defaults": [],
+                        "template": {
+                            "__defaults": [
+                                "maxRetries"
+                            ],
+                            "containers": [
+                                {
+                                    "__defaults": [],
+                                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                                    "volumeMounts": [
+                                        {
+                                            "__defaults": [],
+                                            "mountPath": "/mnt",
+                                            "name": "empty-dir-volume"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "maxRetries": 3,
+                            "volumes": [
+                                {
+                                    "__defaults": [],
+                                    "emptyDir": {
+                                        "__defaults": [],
+                                        "medium": "MEMORY",
+                                        "sizeLimit": "128Mi"
+                                    },
+                                    "name": "empty-dir-volume"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "outputs": {
+                    "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
+                    "annotations": {},
+                    "binaryAuthorization": null,
+                    "client": "",
+                    "clientVersion": "",
+                    "conditions": [],
+                    "createTime": "2023-10-09T22:08:33.343298Z",
+                    "creator": "",
+                    "deleteTime": "",
+                    "etag": "\"COHzkakGENCf2aMB/cHJvamVjdHMvcHVsdW1pLWRldmVsb3BtZW50L2xvY2F0aW9ucy91cy1jZW50cmFsMS9qb2JzL3Rlc3RlZC1yZXNvdXJjZS1hYmI3NTA1\"",
+                    "executionCount": 0,
+                    "expireTime": "",
+                    "generation": "1",
+                    "id": "projects/pulumi-development/locations/us-central1/jobs/tested-resource-abb7505",
+                    "labels": {},
+                    "lastModifier": "",
+                    "latestCreatedExecutions": [
+                        {
+                            "completionTime": "1970-01-01T00:00:00Z",
+                            "createTime": "1970-01-01T00:00:00Z",
+                            "name": ""
+                        }
+                    ],
+                    "launchStage": "BETA",
+                    "location": "us-central1",
+                    "name": "tested-resource-abb7505",
+                    "observedGeneration": "1",
+                    "project": "pulumi-development",
+                    "reconciling": false,
+                    "template": {
+                        "annotations": {},
+                        "labels": {},
+                        "parallelism": 0,
+                        "taskCount": 1,
+                        "template": {
+                            "containers": [
+                                {
+                                    "args": [],
+                                    "commands": [],
+                                    "envs": [],
+                                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                                    "livenessProbe": null,
+                                    "name": "",
+                                    "ports": [],
+                                    "resources": {
+                                        "limits": {
+                                            "cpu": "1000m",
+                                            "memory": "512Mi"
+                                        }
+                                    },
+                                    "startupProbe": null,
+                                    "volumeMounts": [
+                                        {
+                                            "mountPath": "/mnt",
+                                            "name": "empty-dir-volume"
+                                        }
+                                    ],
+                                    "workingDir": ""
+                                }
+                            ],
+                            "encryptionKey": "",
+                            "executionEnvironment": "EXECUTION_ENVIRONMENT_GEN2",
+                            "maxRetries": 3,
+                            "serviceAccount": "921927215178-compute@developer.gserviceaccount.com",
+                            "timeout": "600s",
+                            "volumes": [
+                                {
+                                    "cloudSqlInstance": null,
+                                    "emptyDir": {
+                                        "medium": "MEMORY",
+                                        "sizeLimit": "128Mi"
+                                    },
+                                    "name": "empty-dir-volume",
+                                    "secret": null
+                                }
+                            ],
+                            "vpcAccess": null
+                        }
+                    },
+                    "terminalConditions": [
+                        {
+                            "executionReason": "",
+                            "lastTransitionTime": "2023-10-09T22:08:33.436410Z",
+                            "message": "",
+                            "reason": "",
+                            "revisionReason": "",
+                            "severity": "",
+                            "state": "CONDITION_SUCCEEDED",
+                            "type": "Ready"
+                        }
+                    ],
+                    "uid": "6e0a5885-4a10-4551-a5e4-cff32a35b4c3",
+                    "updateTime": "2023-10-09T22:08:33.343298Z"
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-cloudrunv2-998b6b3e::test::pulumi:pulumi:Stack::test-p-it-antons-mac-cloudrunv2-998b6b3e",
+                "provider": "urn:pulumi:p-it-antons-mac-cloudrunv2-998b6b3e::test::pulumi:providers:gcp::provider::260961ac-e8d1-47bf-b0f4-89f07167c081",
+                "propertyDependencies": {
+                    "launchStage": null,
+                    "location": null,
+                    "template": null
+                },
+                "created": "2023-10-09T22:08:33.9205Z",
+                "modified": "2023-10-09T22:08:33.9205Z"
+            }
+        ]
+    }
+}
