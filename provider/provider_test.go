@@ -28,8 +28,10 @@ func TestPubSubTopic(t *testing.T) {
 }
 
 func TestServiceAccount(t *testing.T) {
-	t.Skipf("TODO no changes were expected but changes were proposed")
-	test(t, "test-programs/serviceaccount-account").Run(t)
+	test(t, "test-programs/serviceaccount-account",
+		providertest.WithSkippedUpgradeTestMode(providertest.UpgradeTestMode_PreviewOnly,
+			"TODO[pulumi/providertest#7] PreviewOnly is confused about stack names"),
+	).Run(t)
 }
 
 func TestStorageBucket(t *testing.T) {
@@ -50,8 +52,10 @@ func TestSqlUser(t *testing.T) {
 }
 
 func TestBigQueryTable(t *testing.T) {
-	t.Skipf("TODO no changes were expected but changes were proposed")
-	test(t, "test-programs/bigquery-table").Run(t)
+	test(t, "test-programs/bigquery-table",
+		providertest.WithSkippedUpgradeTestMode(providertest.UpgradeTestMode_PreviewOnly,
+			"TODO[pulumi/providertest#7] PreviewOnly is confused about stack names"),
+	).Run(t)
 }
 
 func TestComputeFirewall(t *testing.T) {
@@ -90,14 +94,13 @@ func TestAutoExtractedPrograms(t *testing.T) {
 	}
 }
 
-func test(t *testing.T, dir string) *providertest.ProviderTest {
-	return providertest.NewProviderTest(
-		dir,
+func test(t *testing.T, dir string, opts ...providertest.Option) *providertest.ProviderTest {
+	opts = append(opts,
 		providertest.WithProviderName("gcp"),
 		providertest.WithBaselineVersion("6.67.0"),
 		providertest.WithConfig("gcp:project", "pulumi-development"),
-		providertest.WithResourceProviderServer(providerServer(t)),
-	)
+		providertest.WithResourceProviderServer(providerServer(t)))
+	return providertest.NewProviderTest(dir, opts...)
 }
 
 func providerServer(t *testing.T) pulumirpc.ResourceProviderServer {
