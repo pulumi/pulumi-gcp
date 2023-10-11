@@ -53,11 +53,9 @@ func TestAccLoadbalancer(t *testing.T) {
 }
 
 func TestAccTopic(t *testing.T) {
-	t.Skip("Temp skipping due to major version upgrade")
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir:           filepath.Join(getCwd(t), "topic"),
-			RunUpdateTest: true,
+			Dir: filepath.Join(getCwd(t), "topic"),
 			// One change is known to occur during refresh of the resources in this example:
 			// * `~  gcp:storage:Bucket f-bucket updated changes: + websites`
 			ExpectRefreshChanges: true,
@@ -67,11 +65,9 @@ func TestAccTopic(t *testing.T) {
 }
 
 func TestAccBucket(t *testing.T) {
-	t.Skip("Temp skipping due to major version upgrade")
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir:           filepath.Join(getCwd(t), "bucket"),
-			RunUpdateTest: true,
+			Dir: filepath.Join(getCwd(t), "bucket"),
 			// One change is known to occur during refresh of the resources in this example:
 			// * `~  gcp:storage:Bucket f-bucket updated changes: + websites`
 			ExpectRefreshChanges: true,
@@ -90,11 +86,9 @@ func TestAccMinimal(t *testing.T) {
 }
 
 func TestAccServerless(t *testing.T) {
-	t.Skip("Temp skipping due to major version upgrade")
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir:           filepath.Join(getCwd(t), "serverless"),
-			RunUpdateTest: true,
+			Dir: filepath.Join(getCwd(t), "serverless"),
 			// One change is known to occur during refresh of the resources in this example:
 			// * `~  gcp:storage:Bucket f-bucket updated changes: + websites`
 			ExpectRefreshChanges: true,
