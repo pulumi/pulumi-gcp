@@ -311,9 +311,9 @@ func stringValue(vars resource.PropertyMap, prop resource.PropertyKey, envs []st
 	return ""
 }
 
-// httpAutoName provides a schema info with autonaming set to lowercase names for resources that don't support capital casing in names.
+// lowercaseAutoName provides a schema info with autonaming set to lowercase names for resources that don't support capital casing in names.
 // This seems to be the case for many resources where a name ends up being in HTTP URLs.
-func httpAutoName() *tfbridge.SchemaInfo {
+func lowercaseAutoName() *tfbridge.SchemaInfo {
 	return tfbridge.AutoNameWithCustomOptions("name", tfbridge.AutoNameOptions{
 		Separator: "-",
 		Maxlen:    63,
@@ -1088,7 +1088,7 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "compute_backend_service.html.markdown",
 				},
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"name": httpAutoName(),
+					"name": lowercaseAutoName(),
 				},
 			},
 			"google_compute_backend_service_signed_url_key": {
@@ -1113,13 +1113,13 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_http_health_check": {
 				Tok: gcpResource(gcpCompute, "HttpHealthCheck"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"name": httpAutoName(),
+					"name": lowercaseAutoName(),
 				},
 			},
 			"google_compute_https_health_check": {
 				Tok: gcpResource(gcpCompute, "HttpsHealthCheck"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"name": httpAutoName(),
+					"name": lowercaseAutoName(),
 				},
 			},
 			"google_compute_image":                       {Tok: gcpResource(gcpCompute, "Image")},
@@ -1181,12 +1181,17 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "compute_network_endpoint_group.html.markdown",
 				},
 			},
-			"google_compute_network_firewall_policy":                    {Tok: gcpResource(gcpCompute, "NetworkFirewallPolicy")},
-			"google_compute_network_firewall_policy_association":        {Tok: gcpResource(gcpCompute, "NetworkFirewallPolicyAssociation")},
-			"google_compute_network_firewall_policy_rule":               {Tok: gcpResource(gcpCompute, "NetworkFirewallPolicyRule")},
-			"google_compute_network_peering":                            {Tok: gcpResource(gcpCompute, "NetworkPeering")},
-			"google_compute_network_peering_routes_config":              {Tok: gcpResource(gcpCompute, "NetworkPeeringRoutesConfig")},
-			"google_compute_network":                                    {Tok: gcpResource(gcpCompute, "Network")},
+			"google_compute_network_firewall_policy":             {Tok: gcpResource(gcpCompute, "NetworkFirewallPolicy")},
+			"google_compute_network_firewall_policy_association": {Tok: gcpResource(gcpCompute, "NetworkFirewallPolicyAssociation")},
+			"google_compute_network_firewall_policy_rule":        {Tok: gcpResource(gcpCompute, "NetworkFirewallPolicyRule")},
+			"google_compute_network_peering":                     {Tok: gcpResource(gcpCompute, "NetworkPeering")},
+			"google_compute_network_peering_routes_config":       {Tok: gcpResource(gcpCompute, "NetworkPeeringRoutesConfig")},
+			"google_compute_network": {
+				Tok: gcpResource(gcpCompute, "Network"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"name": lowercaseAutoName(),
+				},
+			},
 			"google_compute_project_default_network_tier":               {Tok: gcpResource(gcpCompute, "ProjectDefaultNetworkTier")},
 			"google_compute_project_metadata":                           {Tok: gcpResource(gcpCompute, "ProjectMetadata")},
 			"google_compute_project_metadata_item":                      {Tok: gcpResource(gcpCompute, "ProjectMetadataItem")},
@@ -1261,13 +1266,13 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_target_http_proxy": {
 				Tok: gcpResource(gcpCompute, "TargetHttpProxy"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"name": httpAutoName(),
+					"name": lowercaseAutoName(),
 				},
 			},
 			"google_compute_target_https_proxy": {
 				Tok: gcpResource(gcpCompute, "TargetHttpsProxy"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"name": httpAutoName(),
+					"name": lowercaseAutoName(),
 				},
 			},
 			"google_compute_target_instance":   {Tok: gcpResource(gcpCompute, "TargetInstance")},
@@ -1278,7 +1283,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_url_map": {
 				Tok: gcpResource(gcpCompute, "URLMap"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"name": httpAutoName(),
+					"name": lowercaseAutoName(),
 				},
 			},
 			"google_compute_vpn_gateway":         {Tok: gcpResource(gcpCompute, "VPNGateway")},
