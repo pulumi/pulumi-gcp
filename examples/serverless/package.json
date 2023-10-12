@@ -6,7 +6,7 @@
     },
     "dependencies": {
         "@pulumi/pulumi": "^3.0.0",
-        "@pulumi/gcp": "^5.0.0"
+        "@pulumi/gcp": "latest"
     },
     "devDependencies": {
         "@types/node": "^8.0.0"
