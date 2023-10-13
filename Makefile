@@ -12,7 +12,7 @@ JAVA_GEN := pulumi-java-gen
 TESTPARALLELISM := 10
 WORKING_DIR := $(shell pwd)
 PULUMI_PROVIDER_BUILD_PARALLELISM ?= -p 2
-PULUMI_CONVERT := 0
+PULUMI_CONVERT := 1
 
 development: install_plugins provider build_sdks install_sdks
 
