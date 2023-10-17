@@ -5,5 +5,4 @@ upstream-provider-name: terraform-provider-google-beta
 pulumi-infer-version: true
 remove-plugins: true
 pr-reviewers: pulumi/Providers,lukehoban
-
 javaVersion: "v0.9.7"
