@@ -65,13 +65,15 @@ func TestAccTopic(t *testing.T) {
 }
 
 func TestAccBucket(t *testing.T) {
-	t.Skip("Skipping due to high failure rates. See pulumi/pulumi-gcp#1267")
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: filepath.Join(getCwd(t), "bucket"),
 			// One change is known to occur during refresh of the resources in this example:
 			// * `~  gcp:storage:Bucket f-bucket updated changes: + websites`
 			ExpectRefreshChanges: true,
+			// GCP buckets seem to be eventually consistent, so we need to retry on failure when deploying a cloud function
+			// that uses the bucket as a trigger.
+			RetryFailedSteps: true,
 		})
 
 	integration.ProgramTest(t, &test)
