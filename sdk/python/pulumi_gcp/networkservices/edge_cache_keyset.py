@@ -65,7 +65,13 @@ class EdgeCacheKeysetArgs:
              project: Optional[pulumi.Input[str]] = None,
              public_keys: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetPublicKeyArgs']]]] = None,
              validation_shared_keys: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetValidationSharedKeyArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if public_keys is None and 'publicKeys' in kwargs:
+            public_keys = kwargs['publicKeys']
+        if validation_shared_keys is None and 'validationSharedKeys' in kwargs:
+            validation_shared_keys = kwargs['validationSharedKeys']
+
         if description is not None:
             _setter("description", description)
         if labels is not None:
@@ -220,7 +226,13 @@ class _EdgeCacheKeysetState:
              project: Optional[pulumi.Input[str]] = None,
              public_keys: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetPublicKeyArgs']]]] = None,
              validation_shared_keys: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetValidationSharedKeyArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if public_keys is None and 'publicKeys' in kwargs:
+            public_keys = kwargs['publicKeys']
+        if validation_shared_keys is None and 'validationSharedKeys' in kwargs:
+            validation_shared_keys = kwargs['validationSharedKeys']
+
         if description is not None:
             _setter("description", description)
         if labels is not None:

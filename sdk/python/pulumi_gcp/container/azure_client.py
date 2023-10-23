@@ -42,12 +42,24 @@ class AzureClientArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_id: pulumi.Input[str],
-             location: pulumi.Input[str],
-             tenant_id: pulumi.Input[str],
+             application_id: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if application_id is None and 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if application_id is None:
+            raise TypeError("Missing 'application_id' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if tenant_id is None:
+            raise TypeError("Missing 'tenant_id' argument")
+
         _setter("application_id", application_id)
         _setter("location", location)
         _setter("tenant_id", tenant_id)
@@ -169,7 +181,15 @@ class _AzureClientState:
              project: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if application_id is None and 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         if application_id is not None:
             _setter("application_id", application_id)
         if certificate is not None:

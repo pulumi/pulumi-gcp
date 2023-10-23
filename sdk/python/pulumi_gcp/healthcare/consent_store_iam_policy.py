@@ -47,10 +47,22 @@ class ConsentStoreIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             consent_store_id: pulumi.Input[str],
-             dataset: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             consent_store_id: Optional[pulumi.Input[str]] = None,
+             dataset: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if consent_store_id is None and 'consentStoreId' in kwargs:
+            consent_store_id = kwargs['consentStoreId']
+        if consent_store_id is None:
+            raise TypeError("Missing 'consent_store_id' argument")
+        if dataset is None:
+            raise TypeError("Missing 'dataset' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("consent_store_id", consent_store_id)
         _setter("dataset", dataset)
         _setter("policy_data", policy_data)
@@ -150,7 +162,13 @@ class _ConsentStoreIamPolicyState:
              dataset: Optional[pulumi.Input[str]] = None,
              etag: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if consent_store_id is None and 'consentStoreId' in kwargs:
+            consent_store_id = kwargs['consentStoreId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if consent_store_id is not None:
             _setter("consent_store_id", consent_store_id)
         if dataset is not None:

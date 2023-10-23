@@ -43,7 +43,9 @@ class GCPolicyMaxAge(dict):
              _setter: Callable[[Any, Any], None],
              days: Optional[int] = None,
              duration: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if days is not None:
             _setter("days", days)
         if duration is not None:
@@ -88,8 +90,12 @@ class GCPolicyMaxVersion(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             number: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             number: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if number is None:
+            raise TypeError("Missing 'number' argument")
+
         _setter("number", number)
 
     @property
@@ -171,13 +177,27 @@ class InstanceCluster(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: str,
+             cluster_id: Optional[str] = None,
              autoscaling_config: Optional['outputs.InstanceClusterAutoscalingConfig'] = None,
              kms_key_name: Optional[str] = None,
              num_nodes: Optional[int] = None,
              storage_type: Optional[str] = None,
              zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if autoscaling_config is None and 'autoscalingConfig' in kwargs:
+            autoscaling_config = kwargs['autoscalingConfig']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if num_nodes is None and 'numNodes' in kwargs:
+            num_nodes = kwargs['numNodes']
+        if storage_type is None and 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+
         _setter("cluster_id", cluster_id)
         if autoscaling_config is not None:
             _setter("autoscaling_config", autoscaling_config)
@@ -300,11 +320,27 @@ class InstanceClusterAutoscalingConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cpu_target: int,
-             max_nodes: int,
-             min_nodes: int,
+             cpu_target: Optional[int] = None,
+             max_nodes: Optional[int] = None,
+             min_nodes: Optional[int] = None,
              storage_target: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cpu_target is None and 'cpuTarget' in kwargs:
+            cpu_target = kwargs['cpuTarget']
+        if cpu_target is None:
+            raise TypeError("Missing 'cpu_target' argument")
+        if max_nodes is None and 'maxNodes' in kwargs:
+            max_nodes = kwargs['maxNodes']
+        if max_nodes is None:
+            raise TypeError("Missing 'max_nodes' argument")
+        if min_nodes is None and 'minNodes' in kwargs:
+            min_nodes = kwargs['minNodes']
+        if min_nodes is None:
+            raise TypeError("Missing 'min_nodes' argument")
+        if storage_target is None and 'storageTarget' in kwargs:
+            storage_target = kwargs['storageTarget']
+
         _setter("cpu_target", cpu_target)
         _setter("max_nodes", max_nodes)
         _setter("min_nodes", min_nodes)
@@ -361,10 +397,16 @@ class InstanceIamBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -401,10 +443,16 @@ class InstanceIamMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -440,8 +488,12 @@ class TableColumnFamily(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             family: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             family: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if family is None:
+            raise TypeError("Missing 'family' argument")
+
         _setter("family", family)
 
     @property
@@ -468,10 +520,16 @@ class TableIamBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -508,10 +566,16 @@ class TableIamMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:

@@ -60,13 +60,23 @@ class CaPoolIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ca_pool: pulumi.Input[str],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
+             ca_pool: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['CaPoolIamMemberConditionArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ca_pool is None and 'caPool' in kwargs:
+            ca_pool = kwargs['caPool']
+        if ca_pool is None:
+            raise TypeError("Missing 'ca_pool' argument")
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("ca_pool", ca_pool)
         _setter("member", member)
         _setter("role", role)
@@ -222,7 +232,11 @@ class _CaPoolIamMemberState:
              member: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ca_pool is None and 'caPool' in kwargs:
+            ca_pool = kwargs['caPool']
+
         if ca_pool is not None:
             _setter("ca_pool", ca_pool)
         if condition is not None:

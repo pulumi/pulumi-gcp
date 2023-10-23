@@ -55,13 +55,23 @@ class EntryGroupIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entry_group: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             entry_group: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['EntryGroupIamBindingConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if entry_group is None and 'entryGroup' in kwargs:
+            entry_group = kwargs['entryGroup']
+        if entry_group is None:
+            raise TypeError("Missing 'entry_group' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("entry_group", entry_group)
         _setter("members", members)
         _setter("role", role)
@@ -203,7 +213,11 @@ class _EntryGroupIamBindingState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if entry_group is None and 'entryGroup' in kwargs:
+            entry_group = kwargs['entryGroup']
+
         if condition is not None:
             _setter("condition", condition)
         if entry_group is not None:

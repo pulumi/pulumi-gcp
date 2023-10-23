@@ -34,9 +34,17 @@ class ServicePerimeterResourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             perimeter_name: pulumi.Input[str],
-             resource: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             perimeter_name: Optional[pulumi.Input[str]] = None,
+             resource: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if perimeter_name is None and 'perimeterName' in kwargs:
+            perimeter_name = kwargs['perimeterName']
+        if perimeter_name is None:
+            raise TypeError("Missing 'perimeter_name' argument")
+        if resource is None:
+            raise TypeError("Missing 'resource' argument")
+
         _setter("perimeter_name", perimeter_name)
         _setter("resource", resource)
 
@@ -95,7 +103,11 @@ class _ServicePerimeterResourceState:
              _setter: Callable[[Any, Any], None],
              perimeter_name: Optional[pulumi.Input[str]] = None,
              resource: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if perimeter_name is None and 'perimeterName' in kwargs:
+            perimeter_name = kwargs['perimeterName']
+
         if perimeter_name is not None:
             _setter("perimeter_name", perimeter_name)
         if resource is not None:

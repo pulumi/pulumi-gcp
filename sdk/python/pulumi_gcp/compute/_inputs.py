@@ -596,8 +596,8 @@ class AutoscalarAutoscalingPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max_replicas: pulumi.Input[int],
-             min_replicas: pulumi.Input[int],
+             max_replicas: Optional[pulumi.Input[int]] = None,
+             min_replicas: Optional[pulumi.Input[int]] = None,
              cooldown_period: Optional[pulumi.Input[int]] = None,
              cpu_utilization: Optional[pulumi.Input['AutoscalarAutoscalingPolicyCpuUtilizationArgs']] = None,
              load_balancing_utilization: Optional[pulumi.Input['AutoscalarAutoscalingPolicyLoadBalancingUtilizationArgs']] = None,
@@ -606,7 +606,29 @@ class AutoscalarAutoscalingPolicyArgs:
              scale_down_control: Optional[pulumi.Input['AutoscalarAutoscalingPolicyScaleDownControlArgs']] = None,
              scale_in_control: Optional[pulumi.Input['AutoscalarAutoscalingPolicyScaleInControlArgs']] = None,
              scaling_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['AutoscalarAutoscalingPolicyScalingScheduleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_replicas is None and 'maxReplicas' in kwargs:
+            max_replicas = kwargs['maxReplicas']
+        if max_replicas is None:
+            raise TypeError("Missing 'max_replicas' argument")
+        if min_replicas is None and 'minReplicas' in kwargs:
+            min_replicas = kwargs['minReplicas']
+        if min_replicas is None:
+            raise TypeError("Missing 'min_replicas' argument")
+        if cooldown_period is None and 'cooldownPeriod' in kwargs:
+            cooldown_period = kwargs['cooldownPeriod']
+        if cpu_utilization is None and 'cpuUtilization' in kwargs:
+            cpu_utilization = kwargs['cpuUtilization']
+        if load_balancing_utilization is None and 'loadBalancingUtilization' in kwargs:
+            load_balancing_utilization = kwargs['loadBalancingUtilization']
+        if scale_down_control is None and 'scaleDownControl' in kwargs:
+            scale_down_control = kwargs['scaleDownControl']
+        if scale_in_control is None and 'scaleInControl' in kwargs:
+            scale_in_control = kwargs['scaleInControl']
+        if scaling_schedules is None and 'scalingSchedules' in kwargs:
+            scaling_schedules = kwargs['scalingSchedules']
+
         _setter("max_replicas", max_replicas)
         _setter("min_replicas", min_replicas)
         if cooldown_period is not None:
@@ -800,9 +822,15 @@ class AutoscalarAutoscalingPolicyCpuUtilizationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             target: pulumi.Input[float],
+             target: Optional[pulumi.Input[float]] = None,
              predictive_method: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+        if predictive_method is None and 'predictiveMethod' in kwargs:
+            predictive_method = kwargs['predictiveMethod']
+
         _setter("target", target)
         if predictive_method is not None:
             _setter("predictive_method", predictive_method)
@@ -860,8 +888,12 @@ class AutoscalarAutoscalingPolicyLoadBalancingUtilizationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             target: pulumi.Input[float],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             target: Optional[pulumi.Input[float]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+
         _setter("target", target)
 
     @property
@@ -955,12 +987,18 @@ class AutoscalarAutoscalingPolicyMetricArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              filter: Optional[pulumi.Input[str]] = None,
              single_instance_assignment: Optional[pulumi.Input[float]] = None,
              target: Optional[pulumi.Input[float]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if single_instance_assignment is None and 'singleInstanceAssignment' in kwargs:
+            single_instance_assignment = kwargs['singleInstanceAssignment']
+
         _setter("name", name)
         if filter is not None:
             _setter("filter", filter)
@@ -1103,7 +1141,13 @@ class AutoscalarAutoscalingPolicyScaleDownControlArgs:
              _setter: Callable[[Any, Any], None],
              max_scaled_down_replicas: Optional[pulumi.Input['AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs']] = None,
              time_window_sec: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_scaled_down_replicas is None and 'maxScaledDownReplicas' in kwargs:
+            max_scaled_down_replicas = kwargs['maxScaledDownReplicas']
+        if time_window_sec is None and 'timeWindowSec' in kwargs:
+            time_window_sec = kwargs['timeWindowSec']
+
         if max_scaled_down_replicas is not None:
             _setter("max_scaled_down_replicas", max_scaled_down_replicas)
         if time_window_sec is not None:
@@ -1157,7 +1201,9 @@ class AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs:
              _setter: Callable[[Any, Any], None],
              fixed: Optional[pulumi.Input[int]] = None,
              percent: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if fixed is not None:
             _setter("fixed", fixed)
         if percent is not None:
@@ -1211,7 +1257,13 @@ class AutoscalarAutoscalingPolicyScaleInControlArgs:
              _setter: Callable[[Any, Any], None],
              max_scaled_in_replicas: Optional[pulumi.Input['AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs']] = None,
              time_window_sec: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_scaled_in_replicas is None and 'maxScaledInReplicas' in kwargs:
+            max_scaled_in_replicas = kwargs['maxScaledInReplicas']
+        if time_window_sec is None and 'timeWindowSec' in kwargs:
+            time_window_sec = kwargs['timeWindowSec']
+
         if max_scaled_in_replicas is not None:
             _setter("max_scaled_in_replicas", max_scaled_in_replicas)
         if time_window_sec is not None:
@@ -1265,7 +1317,9 @@ class AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs:
              _setter: Callable[[Any, Any], None],
              fixed: Optional[pulumi.Input[int]] = None,
              percent: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if fixed is not None:
             _setter("fixed", fixed)
         if percent is not None:
@@ -1330,14 +1384,30 @@ class AutoscalarAutoscalingPolicyScalingScheduleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             duration_sec: pulumi.Input[int],
-             min_required_replicas: pulumi.Input[int],
-             name: pulumi.Input[str],
-             schedule: pulumi.Input[str],
+             duration_sec: Optional[pulumi.Input[int]] = None,
+             min_required_replicas: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             schedule: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if duration_sec is None and 'durationSec' in kwargs:
+            duration_sec = kwargs['durationSec']
+        if duration_sec is None:
+            raise TypeError("Missing 'duration_sec' argument")
+        if min_required_replicas is None and 'minRequiredReplicas' in kwargs:
+            min_required_replicas = kwargs['minRequiredReplicas']
+        if min_required_replicas is None:
+            raise TypeError("Missing 'min_required_replicas' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if schedule is None:
+            raise TypeError("Missing 'schedule' argument")
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         _setter("duration_sec", duration_sec)
         _setter("min_required_replicas", min_required_replicas)
         _setter("name", name)
@@ -1499,8 +1569,8 @@ class AutoscalerAutoscalingPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max_replicas: pulumi.Input[int],
-             min_replicas: pulumi.Input[int],
+             max_replicas: Optional[pulumi.Input[int]] = None,
+             min_replicas: Optional[pulumi.Input[int]] = None,
              cooldown_period: Optional[pulumi.Input[int]] = None,
              cpu_utilization: Optional[pulumi.Input['AutoscalerAutoscalingPolicyCpuUtilizationArgs']] = None,
              load_balancing_utilization: Optional[pulumi.Input['AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs']] = None,
@@ -1509,7 +1579,29 @@ class AutoscalerAutoscalingPolicyArgs:
              scale_down_control: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlArgs']] = None,
              scale_in_control: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlArgs']] = None,
              scaling_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['AutoscalerAutoscalingPolicyScalingScheduleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_replicas is None and 'maxReplicas' in kwargs:
+            max_replicas = kwargs['maxReplicas']
+        if max_replicas is None:
+            raise TypeError("Missing 'max_replicas' argument")
+        if min_replicas is None and 'minReplicas' in kwargs:
+            min_replicas = kwargs['minReplicas']
+        if min_replicas is None:
+            raise TypeError("Missing 'min_replicas' argument")
+        if cooldown_period is None and 'cooldownPeriod' in kwargs:
+            cooldown_period = kwargs['cooldownPeriod']
+        if cpu_utilization is None and 'cpuUtilization' in kwargs:
+            cpu_utilization = kwargs['cpuUtilization']
+        if load_balancing_utilization is None and 'loadBalancingUtilization' in kwargs:
+            load_balancing_utilization = kwargs['loadBalancingUtilization']
+        if scale_down_control is None and 'scaleDownControl' in kwargs:
+            scale_down_control = kwargs['scaleDownControl']
+        if scale_in_control is None and 'scaleInControl' in kwargs:
+            scale_in_control = kwargs['scaleInControl']
+        if scaling_schedules is None and 'scalingSchedules' in kwargs:
+            scaling_schedules = kwargs['scalingSchedules']
+
         _setter("max_replicas", max_replicas)
         _setter("min_replicas", min_replicas)
         if cooldown_period is not None:
@@ -1703,9 +1795,15 @@ class AutoscalerAutoscalingPolicyCpuUtilizationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             target: pulumi.Input[float],
+             target: Optional[pulumi.Input[float]] = None,
              predictive_method: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+        if predictive_method is None and 'predictiveMethod' in kwargs:
+            predictive_method = kwargs['predictiveMethod']
+
         _setter("target", target)
         if predictive_method is not None:
             _setter("predictive_method", predictive_method)
@@ -1763,8 +1861,12 @@ class AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             target: pulumi.Input[float],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             target: Optional[pulumi.Input[float]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+
         _setter("target", target)
 
     @property
@@ -1858,12 +1960,18 @@ class AutoscalerAutoscalingPolicyMetricArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              filter: Optional[pulumi.Input[str]] = None,
              single_instance_assignment: Optional[pulumi.Input[float]] = None,
              target: Optional[pulumi.Input[float]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if single_instance_assignment is None and 'singleInstanceAssignment' in kwargs:
+            single_instance_assignment = kwargs['singleInstanceAssignment']
+
         _setter("name", name)
         if filter is not None:
             _setter("filter", filter)
@@ -2006,7 +2114,13 @@ class AutoscalerAutoscalingPolicyScaleDownControlArgs:
              _setter: Callable[[Any, Any], None],
              max_scaled_down_replicas: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs']] = None,
              time_window_sec: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_scaled_down_replicas is None and 'maxScaledDownReplicas' in kwargs:
+            max_scaled_down_replicas = kwargs['maxScaledDownReplicas']
+        if time_window_sec is None and 'timeWindowSec' in kwargs:
+            time_window_sec = kwargs['timeWindowSec']
+
         if max_scaled_down_replicas is not None:
             _setter("max_scaled_down_replicas", max_scaled_down_replicas)
         if time_window_sec is not None:
@@ -2060,7 +2174,9 @@ class AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs:
              _setter: Callable[[Any, Any], None],
              fixed: Optional[pulumi.Input[int]] = None,
              percent: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if fixed is not None:
             _setter("fixed", fixed)
         if percent is not None:
@@ -2114,7 +2230,13 @@ class AutoscalerAutoscalingPolicyScaleInControlArgs:
              _setter: Callable[[Any, Any], None],
              max_scaled_in_replicas: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs']] = None,
              time_window_sec: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_scaled_in_replicas is None and 'maxScaledInReplicas' in kwargs:
+            max_scaled_in_replicas = kwargs['maxScaledInReplicas']
+        if time_window_sec is None and 'timeWindowSec' in kwargs:
+            time_window_sec = kwargs['timeWindowSec']
+
         if max_scaled_in_replicas is not None:
             _setter("max_scaled_in_replicas", max_scaled_in_replicas)
         if time_window_sec is not None:
@@ -2168,7 +2290,9 @@ class AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs:
              _setter: Callable[[Any, Any], None],
              fixed: Optional[pulumi.Input[int]] = None,
              percent: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if fixed is not None:
             _setter("fixed", fixed)
         if percent is not None:
@@ -2233,14 +2357,30 @@ class AutoscalerAutoscalingPolicyScalingScheduleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             duration_sec: pulumi.Input[int],
-             min_required_replicas: pulumi.Input[int],
-             name: pulumi.Input[str],
-             schedule: pulumi.Input[str],
+             duration_sec: Optional[pulumi.Input[int]] = None,
+             min_required_replicas: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             schedule: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if duration_sec is None and 'durationSec' in kwargs:
+            duration_sec = kwargs['durationSec']
+        if duration_sec is None:
+            raise TypeError("Missing 'duration_sec' argument")
+        if min_required_replicas is None and 'minRequiredReplicas' in kwargs:
+            min_required_replicas = kwargs['minRequiredReplicas']
+        if min_required_replicas is None:
+            raise TypeError("Missing 'min_required_replicas' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if schedule is None:
+            raise TypeError("Missing 'schedule' argument")
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         _setter("duration_sec", duration_sec)
         _setter("min_required_replicas", min_required_replicas)
         _setter("name", name)
@@ -2406,7 +2546,31 @@ class BackendBucketCdnPolicyArgs:
              request_coalescing: Optional[pulumi.Input[bool]] = None,
              serve_while_stale: Optional[pulumi.Input[int]] = None,
              signed_url_cache_max_age_sec: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bypass_cache_on_request_headers is None and 'bypassCacheOnRequestHeaders' in kwargs:
+            bypass_cache_on_request_headers = kwargs['bypassCacheOnRequestHeaders']
+        if cache_key_policy is None and 'cacheKeyPolicy' in kwargs:
+            cache_key_policy = kwargs['cacheKeyPolicy']
+        if cache_mode is None and 'cacheMode' in kwargs:
+            cache_mode = kwargs['cacheMode']
+        if client_ttl is None and 'clientTtl' in kwargs:
+            client_ttl = kwargs['clientTtl']
+        if default_ttl is None and 'defaultTtl' in kwargs:
+            default_ttl = kwargs['defaultTtl']
+        if max_ttl is None and 'maxTtl' in kwargs:
+            max_ttl = kwargs['maxTtl']
+        if negative_caching is None and 'negativeCaching' in kwargs:
+            negative_caching = kwargs['negativeCaching']
+        if negative_caching_policies is None and 'negativeCachingPolicies' in kwargs:
+            negative_caching_policies = kwargs['negativeCachingPolicies']
+        if request_coalescing is None and 'requestCoalescing' in kwargs:
+            request_coalescing = kwargs['requestCoalescing']
+        if serve_while_stale is None and 'serveWhileStale' in kwargs:
+            serve_while_stale = kwargs['serveWhileStale']
+        if signed_url_cache_max_age_sec is None and 'signedUrlCacheMaxAgeSec' in kwargs:
+            signed_url_cache_max_age_sec = kwargs['signedUrlCacheMaxAgeSec']
+
         if bypass_cache_on_request_headers is not None:
             _setter("bypass_cache_on_request_headers", bypass_cache_on_request_headers)
         if cache_key_policy is not None:
@@ -2592,7 +2756,11 @@ class BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              header_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+
         if header_name is not None:
             _setter("header_name", header_name)
 
@@ -2631,7 +2799,13 @@ class BackendBucketCdnPolicyCacheKeyPolicyArgs:
              _setter: Callable[[Any, Any], None],
              include_http_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              query_string_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if include_http_headers is None and 'includeHttpHeaders' in kwargs:
+            include_http_headers = kwargs['includeHttpHeaders']
+        if query_string_whitelists is None and 'queryStringWhitelists' in kwargs:
+            query_string_whitelists = kwargs['queryStringWhitelists']
+
         if include_http_headers is not None:
             _setter("include_http_headers", include_http_headers)
         if query_string_whitelists is not None:
@@ -2686,7 +2860,9 @@ class BackendBucketCdnPolicyNegativeCachingPolicyArgs:
              _setter: Callable[[Any, Any], None],
              code: Optional[pulumi.Input[int]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if code is not None:
             _setter("code", code)
         if ttl is not None:
@@ -2734,10 +2910,16 @@ class BackendBucketIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -2786,10 +2968,16 @@ class BackendBucketIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -2918,7 +3106,7 @@ class BackendServiceBackendArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group: pulumi.Input[str],
+             group: Optional[pulumi.Input[str]] = None,
              balancing_mode: Optional[pulumi.Input[str]] = None,
              capacity_scaler: Optional[pulumi.Input[float]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -2929,7 +3117,29 @@ class BackendServiceBackendArgs:
              max_rate_per_endpoint: Optional[pulumi.Input[float]] = None,
              max_rate_per_instance: Optional[pulumi.Input[float]] = None,
              max_utilization: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if balancing_mode is None and 'balancingMode' in kwargs:
+            balancing_mode = kwargs['balancingMode']
+        if capacity_scaler is None and 'capacityScaler' in kwargs:
+            capacity_scaler = kwargs['capacityScaler']
+        if max_connections is None and 'maxConnections' in kwargs:
+            max_connections = kwargs['maxConnections']
+        if max_connections_per_endpoint is None and 'maxConnectionsPerEndpoint' in kwargs:
+            max_connections_per_endpoint = kwargs['maxConnectionsPerEndpoint']
+        if max_connections_per_instance is None and 'maxConnectionsPerInstance' in kwargs:
+            max_connections_per_instance = kwargs['maxConnectionsPerInstance']
+        if max_rate is None and 'maxRate' in kwargs:
+            max_rate = kwargs['maxRate']
+        if max_rate_per_endpoint is None and 'maxRatePerEndpoint' in kwargs:
+            max_rate_per_endpoint = kwargs['maxRatePerEndpoint']
+        if max_rate_per_instance is None and 'maxRatePerInstance' in kwargs:
+            max_rate_per_instance = kwargs['maxRatePerInstance']
+        if max_utilization is None and 'maxUtilization' in kwargs:
+            max_utilization = kwargs['maxUtilization']
+
         _setter("group", group)
         if balancing_mode is not None:
             _setter("balancing_mode", balancing_mode)
@@ -3203,7 +3413,29 @@ class BackendServiceCdnPolicyArgs:
              negative_caching_policies: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyNegativeCachingPolicyArgs']]]] = None,
              serve_while_stale: Optional[pulumi.Input[int]] = None,
              signed_url_cache_max_age_sec: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bypass_cache_on_request_headers is None and 'bypassCacheOnRequestHeaders' in kwargs:
+            bypass_cache_on_request_headers = kwargs['bypassCacheOnRequestHeaders']
+        if cache_key_policy is None and 'cacheKeyPolicy' in kwargs:
+            cache_key_policy = kwargs['cacheKeyPolicy']
+        if cache_mode is None and 'cacheMode' in kwargs:
+            cache_mode = kwargs['cacheMode']
+        if client_ttl is None and 'clientTtl' in kwargs:
+            client_ttl = kwargs['clientTtl']
+        if default_ttl is None and 'defaultTtl' in kwargs:
+            default_ttl = kwargs['defaultTtl']
+        if max_ttl is None and 'maxTtl' in kwargs:
+            max_ttl = kwargs['maxTtl']
+        if negative_caching is None and 'negativeCaching' in kwargs:
+            negative_caching = kwargs['negativeCaching']
+        if negative_caching_policies is None and 'negativeCachingPolicies' in kwargs:
+            negative_caching_policies = kwargs['negativeCachingPolicies']
+        if serve_while_stale is None and 'serveWhileStale' in kwargs:
+            serve_while_stale = kwargs['serveWhileStale']
+        if signed_url_cache_max_age_sec is None and 'signedUrlCacheMaxAgeSec' in kwargs:
+            signed_url_cache_max_age_sec = kwargs['signedUrlCacheMaxAgeSec']
+
         if bypass_cache_on_request_headers is not None:
             _setter("bypass_cache_on_request_headers", bypass_cache_on_request_headers)
         if cache_key_policy is not None:
@@ -3376,8 +3608,14 @@ class BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             header_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_name is None:
+            raise TypeError("Missing 'header_name' argument")
+
         _setter("header_name", header_name)
 
     @property
@@ -3446,7 +3684,23 @@ class BackendServiceCdnPolicyCacheKeyPolicyArgs:
              include_query_string: Optional[pulumi.Input[bool]] = None,
              query_string_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              query_string_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if include_host is None and 'includeHost' in kwargs:
+            include_host = kwargs['includeHost']
+        if include_http_headers is None and 'includeHttpHeaders' in kwargs:
+            include_http_headers = kwargs['includeHttpHeaders']
+        if include_named_cookies is None and 'includeNamedCookies' in kwargs:
+            include_named_cookies = kwargs['includeNamedCookies']
+        if include_protocol is None and 'includeProtocol' in kwargs:
+            include_protocol = kwargs['includeProtocol']
+        if include_query_string is None and 'includeQueryString' in kwargs:
+            include_query_string = kwargs['includeQueryString']
+        if query_string_blacklists is None and 'queryStringBlacklists' in kwargs:
+            query_string_blacklists = kwargs['queryStringBlacklists']
+        if query_string_whitelists is None and 'queryStringWhitelists' in kwargs:
+            query_string_whitelists = kwargs['queryStringWhitelists']
+
         if include_host is not None:
             _setter("include_host", include_host)
         if include_http_headers is not None:
@@ -3582,7 +3836,9 @@ class BackendServiceCdnPolicyNegativeCachingPolicyArgs:
              _setter: Callable[[Any, Any], None],
              code: Optional[pulumi.Input[int]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if code is not None:
             _setter("code", code)
         if ttl is not None:
@@ -3658,7 +3914,21 @@ class BackendServiceCircuitBreakersArgs:
              max_requests: Optional[pulumi.Input[int]] = None,
              max_requests_per_connection: Optional[pulumi.Input[int]] = None,
              max_retries: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connect_timeout is None and 'connectTimeout' in kwargs:
+            connect_timeout = kwargs['connectTimeout']
+        if max_connections is None and 'maxConnections' in kwargs:
+            max_connections = kwargs['maxConnections']
+        if max_pending_requests is None and 'maxPendingRequests' in kwargs:
+            max_pending_requests = kwargs['maxPendingRequests']
+        if max_requests is None and 'maxRequests' in kwargs:
+            max_requests = kwargs['maxRequests']
+        if max_requests_per_connection is None and 'maxRequestsPerConnection' in kwargs:
+            max_requests_per_connection = kwargs['maxRequestsPerConnection']
+        if max_retries is None and 'maxRetries' in kwargs:
+            max_retries = kwargs['maxRetries']
+
         if connect_timeout is not None:
             _setter("connect_timeout", connect_timeout)
         if max_connections is not None:
@@ -3774,9 +4044,13 @@ class BackendServiceCircuitBreakersConnectTimeoutArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[int],
+             seconds: Optional[pulumi.Input[int]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -3843,7 +4117,15 @@ class BackendServiceConsistentHashArgs:
              http_cookie: Optional[pulumi.Input['BackendServiceConsistentHashHttpCookieArgs']] = None,
              http_header_name: Optional[pulumi.Input[str]] = None,
              minimum_ring_size: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if http_cookie is None and 'httpCookie' in kwargs:
+            http_cookie = kwargs['httpCookie']
+        if http_header_name is None and 'httpHeaderName' in kwargs:
+            http_header_name = kwargs['httpHeaderName']
+        if minimum_ring_size is None and 'minimumRingSize' in kwargs:
+            minimum_ring_size = kwargs['minimumRingSize']
+
         if http_cookie is not None:
             _setter("http_cookie", http_cookie)
         if http_header_name is not None:
@@ -3922,7 +4204,9 @@ class BackendServiceConsistentHashHttpCookieArgs:
              name: Optional[pulumi.Input[str]] = None,
              path: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input['BackendServiceConsistentHashHttpCookieTtlArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if path is not None:
@@ -3989,9 +4273,13 @@ class BackendServiceConsistentHashHttpCookieTtlArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[int],
+             seconds: Optional[pulumi.Input[int]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -4044,10 +4332,16 @@ class BackendServiceIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -4106,10 +4400,16 @@ class BackendServiceIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -4172,10 +4472,22 @@ class BackendServiceIapArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             oauth2_client_id: pulumi.Input[str],
-             oauth2_client_secret: pulumi.Input[str],
+             oauth2_client_id: Optional[pulumi.Input[str]] = None,
+             oauth2_client_secret: Optional[pulumi.Input[str]] = None,
              oauth2_client_secret_sha256: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if oauth2_client_id is None and 'oauth2ClientId' in kwargs:
+            oauth2_client_id = kwargs['oauth2ClientId']
+        if oauth2_client_id is None:
+            raise TypeError("Missing 'oauth2_client_id' argument")
+        if oauth2_client_secret is None and 'oauth2ClientSecret' in kwargs:
+            oauth2_client_secret = kwargs['oauth2ClientSecret']
+        if oauth2_client_secret is None:
+            raise TypeError("Missing 'oauth2_client_secret' argument")
+        if oauth2_client_secret_sha256 is None and 'oauth2ClientSecretSha256' in kwargs:
+            oauth2_client_secret_sha256 = kwargs['oauth2ClientSecretSha256']
+
         _setter("oauth2_client_id", oauth2_client_id)
         _setter("oauth2_client_secret", oauth2_client_secret)
         if oauth2_client_secret_sha256 is not None:
@@ -4243,7 +4555,11 @@ class BackendServiceLocalityLbPolicyArgs:
              _setter: Callable[[Any, Any], None],
              custom_policy: Optional[pulumi.Input['BackendServiceLocalityLbPolicyCustomPolicyArgs']] = None,
              policy: Optional[pulumi.Input['BackendServiceLocalityLbPolicyPolicyArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if custom_policy is None and 'customPolicy' in kwargs:
+            custom_policy = kwargs['customPolicy']
+
         if custom_policy is not None:
             _setter("custom_policy", custom_policy)
         if policy is not None:
@@ -4301,9 +4617,13 @@ class BackendServiceLocalityLbPolicyCustomPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
         if data is not None:
             _setter("data", data)
@@ -4361,8 +4681,12 @@ class BackendServiceLocalityLbPolicyPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -4407,7 +4731,11 @@ class BackendServiceLogConfigArgs:
              _setter: Callable[[Any, Any], None],
              enable: Optional[pulumi.Input[bool]] = None,
              sample_rate: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if sample_rate is None and 'sampleRate' in kwargs:
+            sample_rate = kwargs['sampleRate']
+
         if enable is not None:
             _setter("enable", enable)
         if sample_rate is not None:
@@ -4524,7 +4852,29 @@ class BackendServiceOutlierDetectionArgs:
              success_rate_minimum_hosts: Optional[pulumi.Input[int]] = None,
              success_rate_request_volume: Optional[pulumi.Input[int]] = None,
              success_rate_stdev_factor: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if base_ejection_time is None and 'baseEjectionTime' in kwargs:
+            base_ejection_time = kwargs['baseEjectionTime']
+        if consecutive_errors is None and 'consecutiveErrors' in kwargs:
+            consecutive_errors = kwargs['consecutiveErrors']
+        if consecutive_gateway_failure is None and 'consecutiveGatewayFailure' in kwargs:
+            consecutive_gateway_failure = kwargs['consecutiveGatewayFailure']
+        if enforcing_consecutive_errors is None and 'enforcingConsecutiveErrors' in kwargs:
+            enforcing_consecutive_errors = kwargs['enforcingConsecutiveErrors']
+        if enforcing_consecutive_gateway_failure is None and 'enforcingConsecutiveGatewayFailure' in kwargs:
+            enforcing_consecutive_gateway_failure = kwargs['enforcingConsecutiveGatewayFailure']
+        if enforcing_success_rate is None and 'enforcingSuccessRate' in kwargs:
+            enforcing_success_rate = kwargs['enforcingSuccessRate']
+        if max_ejection_percent is None and 'maxEjectionPercent' in kwargs:
+            max_ejection_percent = kwargs['maxEjectionPercent']
+        if success_rate_minimum_hosts is None and 'successRateMinimumHosts' in kwargs:
+            success_rate_minimum_hosts = kwargs['successRateMinimumHosts']
+        if success_rate_request_volume is None and 'successRateRequestVolume' in kwargs:
+            success_rate_request_volume = kwargs['successRateRequestVolume']
+        if success_rate_stdev_factor is None and 'successRateStdevFactor' in kwargs:
+            success_rate_stdev_factor = kwargs['successRateStdevFactor']
+
         if base_ejection_time is not None:
             _setter("base_ejection_time", base_ejection_time)
         if consecutive_errors is not None:
@@ -4729,9 +5079,13 @@ class BackendServiceOutlierDetectionBaseEjectionTimeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[int],
+             seconds: Optional[pulumi.Input[int]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -4784,9 +5138,13 @@ class BackendServiceOutlierDetectionIntervalArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[int],
+             seconds: Optional[pulumi.Input[int]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -4840,9 +5198,19 @@ class BackendServiceSecuritySettingsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             client_tls_policy: pulumi.Input[str],
-             subject_alt_names: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             client_tls_policy: Optional[pulumi.Input[str]] = None,
+             subject_alt_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if client_tls_policy is None and 'clientTlsPolicy' in kwargs:
+            client_tls_policy = kwargs['clientTlsPolicy']
+        if client_tls_policy is None:
+            raise TypeError("Missing 'client_tls_policy' argument")
+        if subject_alt_names is None and 'subjectAltNames' in kwargs:
+            subject_alt_names = kwargs['subjectAltNames']
+        if subject_alt_names is None:
+            raise TypeError("Missing 'subject_alt_names' argument")
+
         _setter("client_tls_policy", client_tls_policy)
         _setter("subject_alt_names", subject_alt_names)
 
@@ -4889,8 +5257,12 @@ class DiskAsyncPrimaryDiskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disk: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             disk: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disk is None:
+            raise TypeError("Missing 'disk' argument")
+
         _setter("disk", disk)
 
     @property
@@ -4925,9 +5297,13 @@ class DiskAsyncReplicationSecondaryDiskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disk: pulumi.Input[str],
+             disk: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disk is None:
+            raise TypeError("Missing 'disk' argument")
+
         _setter("disk", disk)
         if state is not None:
             _setter("state", state)
@@ -5002,7 +5378,17 @@ class DiskDiskEncryptionKeyArgs:
              raw_key: Optional[pulumi.Input[str]] = None,
              rsa_encrypted_key: Optional[pulumi.Input[str]] = None,
              sha256: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_self_link is None and 'kmsKeySelfLink' in kwargs:
+            kms_key_self_link = kwargs['kmsKeySelfLink']
+        if kms_key_service_account is None and 'kmsKeyServiceAccount' in kwargs:
+            kms_key_service_account = kwargs['kmsKeyServiceAccount']
+        if raw_key is None and 'rawKey' in kwargs:
+            raw_key = kwargs['rawKey']
+        if rsa_encrypted_key is None and 'rsaEncryptedKey' in kwargs:
+            rsa_encrypted_key = kwargs['rsaEncryptedKey']
+
         if kms_key_self_link is not None:
             _setter("kms_key_self_link", kms_key_self_link)
         if kms_key_service_account is not None:
@@ -5102,8 +5488,12 @@ class DiskGuestOsFeatureArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("type", type)
 
     @property
@@ -5135,10 +5525,16 @@ class DiskIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -5187,10 +5583,16 @@ class DiskIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -5259,7 +5661,15 @@ class DiskSourceImageEncryptionKeyArgs:
              kms_key_service_account: Optional[pulumi.Input[str]] = None,
              raw_key: Optional[pulumi.Input[str]] = None,
              sha256: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_self_link is None and 'kmsKeySelfLink' in kwargs:
+            kms_key_self_link = kwargs['kmsKeySelfLink']
+        if kms_key_service_account is None and 'kmsKeyServiceAccount' in kwargs:
+            kms_key_service_account = kwargs['kmsKeyServiceAccount']
+        if raw_key is None and 'rawKey' in kwargs:
+            raw_key = kwargs['rawKey']
+
         if kms_key_self_link is not None:
             _setter("kms_key_self_link", kms_key_self_link)
         if kms_key_service_account is not None:
@@ -5361,7 +5771,15 @@ class DiskSourceSnapshotEncryptionKeyArgs:
              kms_key_service_account: Optional[pulumi.Input[str]] = None,
              raw_key: Optional[pulumi.Input[str]] = None,
              sha256: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_self_link is None and 'kmsKeySelfLink' in kwargs:
+            kms_key_self_link = kwargs['kmsKeySelfLink']
+        if kms_key_service_account is None and 'kmsKeyServiceAccount' in kwargs:
+            kms_key_service_account = kwargs['kmsKeyServiceAccount']
+        if raw_key is None and 'rawKey' in kwargs:
+            raw_key = kwargs['rawKey']
+
         if kms_key_self_link is not None:
             _setter("kms_key_self_link", kms_key_self_link)
         if kms_key_service_account is not None:
@@ -5454,7 +5872,11 @@ class ExternalVpnGatewayInterfaceArgs:
              _setter: Callable[[Any, Any], None],
              id: Optional[pulumi.Input[int]] = None,
              ip_address: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         if id is not None:
             _setter("id", id)
         if ip_address is not None:
@@ -5517,9 +5939,13 @@ class FirewallAllowArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             protocol: pulumi.Input[str],
+             protocol: Optional[pulumi.Input[str]] = None,
              ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+
         _setter("protocol", protocol)
         if ports is not None:
             _setter("ports", ports)
@@ -5582,9 +6008,13 @@ class FirewallDenyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             protocol: pulumi.Input[str],
+             protocol: Optional[pulumi.Input[str]] = None,
              ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+
         _setter("protocol", protocol)
         if ports is not None:
             _setter("ports", ports)
@@ -5637,8 +6067,12 @@ class FirewallLogConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             metadata: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             metadata: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if metadata is None:
+            raise TypeError("Missing 'metadata' argument")
+
         _setter("metadata", metadata)
 
     @property
@@ -5701,7 +6135,7 @@ class FirewallPolicyRuleMatchArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             layer4_configs: pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArgs']]],
+             layer4_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArgs']]]] = None,
              dest_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              dest_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -5712,7 +6146,33 @@ class FirewallPolicyRuleMatchArgs:
              src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              src_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if layer4_configs is None and 'layer4Configs' in kwargs:
+            layer4_configs = kwargs['layer4Configs']
+        if layer4_configs is None:
+            raise TypeError("Missing 'layer4_configs' argument")
+        if dest_address_groups is None and 'destAddressGroups' in kwargs:
+            dest_address_groups = kwargs['destAddressGroups']
+        if dest_fqdns is None and 'destFqdns' in kwargs:
+            dest_fqdns = kwargs['destFqdns']
+        if dest_ip_ranges is None and 'destIpRanges' in kwargs:
+            dest_ip_ranges = kwargs['destIpRanges']
+        if dest_region_codes is None and 'destRegionCodes' in kwargs:
+            dest_region_codes = kwargs['destRegionCodes']
+        if dest_threat_intelligences is None and 'destThreatIntelligences' in kwargs:
+            dest_threat_intelligences = kwargs['destThreatIntelligences']
+        if src_address_groups is None and 'srcAddressGroups' in kwargs:
+            src_address_groups = kwargs['srcAddressGroups']
+        if src_fqdns is None and 'srcFqdns' in kwargs:
+            src_fqdns = kwargs['srcFqdns']
+        if src_ip_ranges is None and 'srcIpRanges' in kwargs:
+            src_ip_ranges = kwargs['srcIpRanges']
+        if src_region_codes is None and 'srcRegionCodes' in kwargs:
+            src_region_codes = kwargs['srcRegionCodes']
+        if src_threat_intelligences is None and 'srcThreatIntelligences' in kwargs:
+            src_threat_intelligences = kwargs['srcThreatIntelligences']
+
         _setter("layer4_configs", layer4_configs)
         if dest_address_groups is not None:
             _setter("dest_address_groups", dest_address_groups)
@@ -5889,9 +6349,15 @@ class FirewallPolicyRuleMatchLayer4ConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_protocol: pulumi.Input[str],
+             ip_protocol: Optional[pulumi.Input[str]] = None,
              ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_protocol is None and 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if ip_protocol is None:
+            raise TypeError("Missing 'ip_protocol' argument")
+
         _setter("ip_protocol", ip_protocol)
         if ports is not None:
             _setter("ports", ports)
@@ -5942,7 +6408,9 @@ class ForwardingRuleServiceDirectoryRegistrationArgs:
              _setter: Callable[[Any, Any], None],
              namespace: Optional[pulumi.Input[str]] = None,
              service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if namespace is not None:
             _setter("namespace", namespace)
         if service is not None:
@@ -5999,9 +6467,19 @@ class GlobalForwardingRuleMetadataFilterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter_labels: pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterFilterLabelArgs']]],
-             filter_match_criteria: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             filter_labels: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterFilterLabelArgs']]]] = None,
+             filter_match_criteria: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if filter_labels is None and 'filterLabels' in kwargs:
+            filter_labels = kwargs['filterLabels']
+        if filter_labels is None:
+            raise TypeError("Missing 'filter_labels' argument")
+        if filter_match_criteria is None and 'filterMatchCriteria' in kwargs:
+            filter_match_criteria = kwargs['filterMatchCriteria']
+        if filter_match_criteria is None:
+            raise TypeError("Missing 'filter_match_criteria' argument")
+
         _setter("filter_labels", filter_labels)
         _setter("filter_match_criteria", filter_match_criteria)
 
@@ -6058,9 +6536,15 @@ class GlobalForwardingRuleMetadataFilterFilterLabelArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("name", name)
         _setter("value", value)
 
@@ -6120,7 +6604,13 @@ class HaVpnGatewayVpnInterfaceArgs:
              id: Optional[pulumi.Input[int]] = None,
              interconnect_attachment: Optional[pulumi.Input[str]] = None,
              ip_address: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if interconnect_attachment is None and 'interconnectAttachment' in kwargs:
+            interconnect_attachment = kwargs['interconnectAttachment']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         if id is not None:
             _setter("id", id)
         if interconnect_attachment is not None:
@@ -6206,7 +6696,15 @@ class HealthCheckGrpcHealthCheckArgs:
              port: Optional[pulumi.Input[int]] = None,
              port_name: Optional[pulumi.Input[str]] = None,
              port_specification: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if grpc_service_name is None and 'grpcServiceName' in kwargs:
+            grpc_service_name = kwargs['grpcServiceName']
+        if port_name is None and 'portName' in kwargs:
+            port_name = kwargs['portName']
+        if port_specification is None and 'portSpecification' in kwargs:
+            port_specification = kwargs['portSpecification']
+
         if grpc_service_name is not None:
             _setter("grpc_service_name", grpc_service_name)
         if port is not None:
@@ -6324,7 +6822,17 @@ class HealthCheckHttp2HealthCheckArgs:
              proxy_header: Optional[pulumi.Input[str]] = None,
              request_path: Optional[pulumi.Input[str]] = None,
              response: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if port_name is None and 'portName' in kwargs:
+            port_name = kwargs['portName']
+        if port_specification is None and 'portSpecification' in kwargs:
+            port_specification = kwargs['portSpecification']
+        if proxy_header is None and 'proxyHeader' in kwargs:
+            proxy_header = kwargs['proxyHeader']
+        if request_path is None and 'requestPath' in kwargs:
+            request_path = kwargs['requestPath']
+
         if host is not None:
             _setter("host", host)
         if port is not None:
@@ -6487,7 +6995,17 @@ class HealthCheckHttpHealthCheckArgs:
              proxy_header: Optional[pulumi.Input[str]] = None,
              request_path: Optional[pulumi.Input[str]] = None,
              response: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if port_name is None and 'portName' in kwargs:
+            port_name = kwargs['portName']
+        if port_specification is None and 'portSpecification' in kwargs:
+            port_specification = kwargs['portSpecification']
+        if proxy_header is None and 'proxyHeader' in kwargs:
+            proxy_header = kwargs['proxyHeader']
+        if request_path is None and 'requestPath' in kwargs:
+            request_path = kwargs['requestPath']
+
         if host is not None:
             _setter("host", host)
         if port is not None:
@@ -6649,7 +7167,17 @@ class HealthCheckHttpsHealthCheckArgs:
              proxy_header: Optional[pulumi.Input[str]] = None,
              request_path: Optional[pulumi.Input[str]] = None,
              response: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if port_name is None and 'portName' in kwargs:
+            port_name = kwargs['portName']
+        if port_specification is None and 'portSpecification' in kwargs:
+            port_specification = kwargs['portSpecification']
+        if proxy_header is None and 'proxyHeader' in kwargs:
+            proxy_header = kwargs['proxyHeader']
+        if request_path is None and 'requestPath' in kwargs:
+            request_path = kwargs['requestPath']
+
         if host is not None:
             _setter("host", host)
         if port is not None:
@@ -6777,7 +7305,9 @@ class HealthCheckLogConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              enable: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if enable is not None:
             _setter("enable", enable)
 
@@ -6841,7 +7371,15 @@ class HealthCheckSslHealthCheckArgs:
              proxy_header: Optional[pulumi.Input[str]] = None,
              request: Optional[pulumi.Input[str]] = None,
              response: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if port_name is None and 'portName' in kwargs:
+            port_name = kwargs['portName']
+        if port_specification is None and 'portSpecification' in kwargs:
+            port_specification = kwargs['portSpecification']
+        if proxy_header is None and 'proxyHeader' in kwargs:
+            proxy_header = kwargs['proxyHeader']
+
         if port is not None:
             _setter("port", port)
         if port_name is not None:
@@ -6985,7 +7523,15 @@ class HealthCheckTcpHealthCheckArgs:
              proxy_header: Optional[pulumi.Input[str]] = None,
              request: Optional[pulumi.Input[str]] = None,
              response: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if port_name is None and 'portName' in kwargs:
+            port_name = kwargs['portName']
+        if port_specification is None and 'portSpecification' in kwargs:
+            port_specification = kwargs['portSpecification']
+        if proxy_header is None and 'proxyHeader' in kwargs:
+            proxy_header = kwargs['proxyHeader']
+
         if port is not None:
             _setter("port", port)
         if port_name is not None:
@@ -7098,8 +7644,12 @@ class ImageGuestOsFeatureArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("type", type)
 
     @property
@@ -7140,10 +7690,16 @@ class ImageIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -7214,10 +7770,16 @@ class ImageIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -7286,7 +7848,13 @@ class ImageImageEncryptionKeyArgs:
              _setter: Callable[[Any, Any], None],
              kms_key_self_link: Optional[pulumi.Input[str]] = None,
              kms_key_service_account: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_self_link is None and 'kmsKeySelfLink' in kwargs:
+            kms_key_self_link = kwargs['kmsKeySelfLink']
+        if kms_key_service_account is None and 'kmsKeyServiceAccount' in kwargs:
+            kms_key_service_account = kwargs['kmsKeyServiceAccount']
+
         if kms_key_self_link is not None:
             _setter("kms_key_self_link", kms_key_self_link)
         if kms_key_service_account is not None:
@@ -7348,10 +7916,16 @@ class ImageRawDiskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source: pulumi.Input[str],
+             source: Optional[pulumi.Input[str]] = None,
              container_type: Optional[pulumi.Input[str]] = None,
              sha1: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if container_type is None and 'containerType' in kwargs:
+            container_type = kwargs['containerType']
+
         _setter("source", source)
         if container_type is not None:
             _setter("container_type", container_type)
@@ -7426,7 +8000,15 @@ class InstanceAdvancedMachineFeaturesArgs:
              enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
              threads_per_core: Optional[pulumi.Input[int]] = None,
              visible_core_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_nested_virtualization is None and 'enableNestedVirtualization' in kwargs:
+            enable_nested_virtualization = kwargs['enableNestedVirtualization']
+        if threads_per_core is None and 'threadsPerCore' in kwargs:
+            threads_per_core = kwargs['threadsPerCore']
+        if visible_core_count is None and 'visibleCoreCount' in kwargs:
+            visible_core_count = kwargs['visibleCoreCount']
+
         if enable_nested_virtualization is not None:
             _setter("enable_nested_virtualization", enable_nested_virtualization)
         if threads_per_core is not None:
@@ -7508,13 +8090,25 @@ class InstanceAttachedDiskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source: pulumi.Input[str],
+             source: Optional[pulumi.Input[str]] = None,
              device_name: Optional[pulumi.Input[str]] = None,
              disk_encryption_key_raw: Optional[pulumi.Input[str]] = None,
              disk_encryption_key_sha256: Optional[pulumi.Input[str]] = None,
              kms_key_self_link: Optional[pulumi.Input[str]] = None,
              mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if device_name is None and 'deviceName' in kwargs:
+            device_name = kwargs['deviceName']
+        if disk_encryption_key_raw is None and 'diskEncryptionKeyRaw' in kwargs:
+            disk_encryption_key_raw = kwargs['diskEncryptionKeyRaw']
+        if disk_encryption_key_sha256 is None and 'diskEncryptionKeySha256' in kwargs:
+            disk_encryption_key_sha256 = kwargs['diskEncryptionKeySha256']
+        if kms_key_self_link is None and 'kmsKeySelfLink' in kwargs:
+            kms_key_self_link = kwargs['kmsKeySelfLink']
+
         _setter("source", source)
         if device_name is not None:
             _setter("device_name", device_name)
@@ -7661,7 +8255,21 @@ class InstanceBootDiskArgs:
              kms_key_self_link: Optional[pulumi.Input[str]] = None,
              mode: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_delete is None and 'autoDelete' in kwargs:
+            auto_delete = kwargs['autoDelete']
+        if device_name is None and 'deviceName' in kwargs:
+            device_name = kwargs['deviceName']
+        if disk_encryption_key_raw is None and 'diskEncryptionKeyRaw' in kwargs:
+            disk_encryption_key_raw = kwargs['diskEncryptionKeyRaw']
+        if disk_encryption_key_sha256 is None and 'diskEncryptionKeySha256' in kwargs:
+            disk_encryption_key_sha256 = kwargs['diskEncryptionKeySha256']
+        if initialize_params is None and 'initializeParams' in kwargs:
+            initialize_params = kwargs['initializeParams']
+        if kms_key_self_link is None and 'kmsKeySelfLink' in kwargs:
+            kms_key_self_link = kwargs['kmsKeySelfLink']
+
         if auto_delete is not None:
             _setter("auto_delete", auto_delete)
         if device_name is not None:
@@ -7826,7 +8434,11 @@ class InstanceBootDiskInitializeParamsArgs:
              resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              size: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if resource_manager_tags is None and 'resourceManagerTags' in kwargs:
+            resource_manager_tags = kwargs['resourceManagerTags']
+
         if image is not None:
             _setter("image", image)
         if labels is not None:
@@ -7920,8 +8532,14 @@ class InstanceConfidentialInstanceConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enable_confidential_compute: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_confidential_compute is None and 'enableConfidentialCompute' in kwargs:
+            enable_confidential_compute = kwargs['enableConfidentialCompute']
+        if enable_confidential_compute is None:
+            raise TypeError("Missing 'enable_confidential_compute' argument")
+
         _setter("enable_confidential_compute", enable_confidential_compute)
 
     @property
@@ -7955,7 +8573,15 @@ class InstanceFromMachineImageAdvancedMachineFeaturesArgs:
              enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
              threads_per_core: Optional[pulumi.Input[int]] = None,
              visible_core_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_nested_virtualization is None and 'enableNestedVirtualization' in kwargs:
+            enable_nested_virtualization = kwargs['enableNestedVirtualization']
+        if threads_per_core is None and 'threadsPerCore' in kwargs:
+            threads_per_core = kwargs['threadsPerCore']
+        if visible_core_count is None and 'visibleCoreCount' in kwargs:
+            visible_core_count = kwargs['visibleCoreCount']
+
         if enable_nested_virtualization is not None:
             _setter("enable_nested_virtualization", enable_nested_virtualization)
         if threads_per_core is not None:
@@ -8012,13 +8638,25 @@ class InstanceFromMachineImageAttachedDiskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source: pulumi.Input[str],
+             source: Optional[pulumi.Input[str]] = None,
              device_name: Optional[pulumi.Input[str]] = None,
              disk_encryption_key_raw: Optional[pulumi.Input[str]] = None,
              disk_encryption_key_sha256: Optional[pulumi.Input[str]] = None,
              kms_key_self_link: Optional[pulumi.Input[str]] = None,
              mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if device_name is None and 'deviceName' in kwargs:
+            device_name = kwargs['deviceName']
+        if disk_encryption_key_raw is None and 'diskEncryptionKeyRaw' in kwargs:
+            disk_encryption_key_raw = kwargs['diskEncryptionKeyRaw']
+        if disk_encryption_key_sha256 is None and 'diskEncryptionKeySha256' in kwargs:
+            disk_encryption_key_sha256 = kwargs['diskEncryptionKeySha256']
+        if kms_key_self_link is None and 'kmsKeySelfLink' in kwargs:
+            kms_key_self_link = kwargs['kmsKeySelfLink']
+
         _setter("source", source)
         if device_name is not None:
             _setter("device_name", device_name)
@@ -8119,7 +8757,21 @@ class InstanceFromMachineImageBootDiskArgs:
              kms_key_self_link: Optional[pulumi.Input[str]] = None,
              mode: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_delete is None and 'autoDelete' in kwargs:
+            auto_delete = kwargs['autoDelete']
+        if device_name is None and 'deviceName' in kwargs:
+            device_name = kwargs['deviceName']
+        if disk_encryption_key_raw is None and 'diskEncryptionKeyRaw' in kwargs:
+            disk_encryption_key_raw = kwargs['diskEncryptionKeyRaw']
+        if disk_encryption_key_sha256 is None and 'diskEncryptionKeySha256' in kwargs:
+            disk_encryption_key_sha256 = kwargs['diskEncryptionKeySha256']
+        if initialize_params is None and 'initializeParams' in kwargs:
+            initialize_params = kwargs['initializeParams']
+        if kms_key_self_link is None and 'kmsKeySelfLink' in kwargs:
+            kms_key_self_link = kwargs['kmsKeySelfLink']
+
         if auto_delete is not None:
             _setter("auto_delete", auto_delete)
         if device_name is not None:
@@ -8234,7 +8886,11 @@ class InstanceFromMachineImageBootDiskInitializeParamsArgs:
              resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              size: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if resource_manager_tags is None and 'resourceManagerTags' in kwargs:
+            resource_manager_tags = kwargs['resourceManagerTags']
+
         if image is not None:
             _setter("image", image)
         if labels is not None:
@@ -8303,8 +8959,14 @@ class InstanceFromMachineImageConfidentialInstanceConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enable_confidential_compute: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_confidential_compute is None and 'enableConfidentialCompute' in kwargs:
+            enable_confidential_compute = kwargs['enableConfidentialCompute']
+        if enable_confidential_compute is None:
+            raise TypeError("Missing 'enable_confidential_compute' argument")
+
         _setter("enable_confidential_compute", enable_confidential_compute)
 
     @property
@@ -8330,9 +8992,15 @@ class InstanceFromMachineImageGuestAcceleratorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             count: pulumi.Input[int],
-             type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             count: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if count is None:
+            raise TypeError("Missing 'count' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("count", count)
         _setter("type", type)
 
@@ -8410,7 +9078,31 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
              stack_type: Optional[pulumi.Input[str]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
              subnetwork_project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_configs is None and 'accessConfigs' in kwargs:
+            access_configs = kwargs['accessConfigs']
+        if alias_ip_ranges is None and 'aliasIpRanges' in kwargs:
+            alias_ip_ranges = kwargs['aliasIpRanges']
+        if internal_ipv6_prefix_length is None and 'internalIpv6PrefixLength' in kwargs:
+            internal_ipv6_prefix_length = kwargs['internalIpv6PrefixLength']
+        if ipv6_access_configs is None and 'ipv6AccessConfigs' in kwargs:
+            ipv6_access_configs = kwargs['ipv6AccessConfigs']
+        if ipv6_access_type is None and 'ipv6AccessType' in kwargs:
+            ipv6_access_type = kwargs['ipv6AccessType']
+        if ipv6_address is None and 'ipv6Address' in kwargs:
+            ipv6_address = kwargs['ipv6Address']
+        if network_ip is None and 'networkIp' in kwargs:
+            network_ip = kwargs['networkIp']
+        if nic_type is None and 'nicType' in kwargs:
+            nic_type = kwargs['nicType']
+        if queue_count is None and 'queueCount' in kwargs:
+            queue_count = kwargs['queueCount']
+        if stack_type is None and 'stackType' in kwargs:
+            stack_type = kwargs['stackType']
+        if subnetwork_project is None and 'subnetworkProject' in kwargs:
+            subnetwork_project = kwargs['subnetworkProject']
+
         if access_configs is not None:
             _setter("access_configs", access_configs)
         if alias_ip_ranges is not None:
@@ -8589,7 +9281,15 @@ class InstanceFromMachineImageNetworkInterfaceAccessConfigArgs:
              nat_ip: Optional[pulumi.Input[str]] = None,
              network_tier: Optional[pulumi.Input[str]] = None,
              public_ptr_domain_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if nat_ip is None and 'natIp' in kwargs:
+            nat_ip = kwargs['natIp']
+        if network_tier is None and 'networkTier' in kwargs:
+            network_tier = kwargs['networkTier']
+        if public_ptr_domain_name is None and 'publicPtrDomainName' in kwargs:
+            public_ptr_domain_name = kwargs['publicPtrDomainName']
+
         if nat_ip is not None:
             _setter("nat_ip", nat_ip)
         if network_tier is not None:
@@ -8638,9 +9338,17 @@ class InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_cidr_range: pulumi.Input[str],
+             ip_cidr_range: Optional[pulumi.Input[str]] = None,
              subnetwork_range_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_cidr_range is None and 'ipCidrRange' in kwargs:
+            ip_cidr_range = kwargs['ipCidrRange']
+        if ip_cidr_range is None:
+            raise TypeError("Missing 'ip_cidr_range' argument")
+        if subnetwork_range_name is None and 'subnetworkRangeName' in kwargs:
+            subnetwork_range_name = kwargs['subnetworkRangeName']
+
         _setter("ip_cidr_range", ip_cidr_range)
         if subnetwork_range_name is not None:
             _setter("subnetwork_range_name", subnetwork_range_name)
@@ -8687,12 +9395,24 @@ class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network_tier: pulumi.Input[str],
+             network_tier: Optional[pulumi.Input[str]] = None,
              external_ipv6: Optional[pulumi.Input[str]] = None,
              external_ipv6_prefix_length: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              public_ptr_domain_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network_tier is None and 'networkTier' in kwargs:
+            network_tier = kwargs['networkTier']
+        if network_tier is None:
+            raise TypeError("Missing 'network_tier' argument")
+        if external_ipv6 is None and 'externalIpv6' in kwargs:
+            external_ipv6 = kwargs['externalIpv6']
+        if external_ipv6_prefix_length is None and 'externalIpv6PrefixLength' in kwargs:
+            external_ipv6_prefix_length = kwargs['externalIpv6PrefixLength']
+        if public_ptr_domain_name is None and 'publicPtrDomainName' in kwargs:
+            public_ptr_domain_name = kwargs['publicPtrDomainName']
+
         _setter("network_tier", network_tier)
         if external_ipv6 is not None:
             _setter("external_ipv6", external_ipv6)
@@ -8764,8 +9484,14 @@ class InstanceFromMachineImageNetworkPerformanceConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             total_egress_bandwidth_tier: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             total_egress_bandwidth_tier: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if total_egress_bandwidth_tier is None and 'totalEgressBandwidthTier' in kwargs:
+            total_egress_bandwidth_tier = kwargs['totalEgressBandwidthTier']
+        if total_egress_bandwidth_tier is None:
+            raise TypeError("Missing 'total_egress_bandwidth_tier' argument")
+
         _setter("total_egress_bandwidth_tier", total_egress_bandwidth_tier)
 
     @property
@@ -8790,7 +9516,11 @@ class InstanceFromMachineImageParamsArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if resource_manager_tags is None and 'resourceManagerTags' in kwargs:
+            resource_manager_tags = kwargs['resourceManagerTags']
+
         if resource_manager_tags is not None:
             _setter("resource_manager_tags", resource_manager_tags)
 
@@ -8817,9 +9547,15 @@ class InstanceFromMachineImageReservationAffinityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              specific_reservation: Optional[pulumi.Input['InstanceFromMachineImageReservationAffinitySpecificReservationArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if specific_reservation is None and 'specificReservation' in kwargs:
+            specific_reservation = kwargs['specificReservation']
+
         _setter("type", type)
         if specific_reservation is not None:
             _setter("specific_reservation", specific_reservation)
@@ -8856,9 +9592,15 @@ class InstanceFromMachineImageReservationAffinitySpecificReservationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             values: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("key", key)
         _setter("values", values)
 
@@ -8920,7 +9662,27 @@ class InstanceFromMachineImageSchedulingArgs:
              on_host_maintenance: Optional[pulumi.Input[str]] = None,
              preemptible: Optional[pulumi.Input[bool]] = None,
              provisioning_model: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if automatic_restart is None and 'automaticRestart' in kwargs:
+            automatic_restart = kwargs['automaticRestart']
+        if instance_termination_action is None and 'instanceTerminationAction' in kwargs:
+            instance_termination_action = kwargs['instanceTerminationAction']
+        if local_ssd_recovery_timeout is None and 'localSsdRecoveryTimeout' in kwargs:
+            local_ssd_recovery_timeout = kwargs['localSsdRecoveryTimeout']
+        if maintenance_interval is None and 'maintenanceInterval' in kwargs:
+            maintenance_interval = kwargs['maintenanceInterval']
+        if max_run_duration is None and 'maxRunDuration' in kwargs:
+            max_run_duration = kwargs['maxRunDuration']
+        if min_node_cpus is None and 'minNodeCpus' in kwargs:
+            min_node_cpus = kwargs['minNodeCpus']
+        if node_affinities is None and 'nodeAffinities' in kwargs:
+            node_affinities = kwargs['nodeAffinities']
+        if on_host_maintenance is None and 'onHostMaintenance' in kwargs:
+            on_host_maintenance = kwargs['onHostMaintenance']
+        if provisioning_model is None and 'provisioningModel' in kwargs:
+            provisioning_model = kwargs['provisioningModel']
+
         if automatic_restart is not None:
             _setter("automatic_restart", automatic_restart)
         if instance_termination_action is not None:
@@ -9046,9 +9808,13 @@ class InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[int],
+             seconds: Optional[pulumi.Input[int]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -9085,9 +9851,13 @@ class InstanceFromMachineImageSchedulingMaxRunDurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[int],
+             seconds: Optional[pulumi.Input[int]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -9126,10 +9896,18 @@ class InstanceFromMachineImageSchedulingNodeAffinityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             operator: pulumi.Input[str],
-             values: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             operator: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("key", key)
         _setter("operator", operator)
         _setter("values", values)
@@ -9175,9 +9953,13 @@ class InstanceFromMachineImageScratchDiskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             interface: pulumi.Input[str],
+             interface: Optional[pulumi.Input[str]] = None,
              size: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if interface is None:
+            raise TypeError("Missing 'interface' argument")
+
         _setter("interface", interface)
         if size is not None:
             _setter("size", size)
@@ -9214,9 +9996,13 @@ class InstanceFromMachineImageServiceAccountArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
+             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              email: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if scopes is None:
+            raise TypeError("Missing 'scopes' argument")
+
         _setter("scopes", scopes)
         if email is not None:
             _setter("email", email)
@@ -9258,7 +10044,15 @@ class InstanceFromMachineImageShieldedInstanceConfigArgs:
              enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
              enable_secure_boot: Optional[pulumi.Input[bool]] = None,
              enable_vtpm: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_integrity_monitoring is None and 'enableIntegrityMonitoring' in kwargs:
+            enable_integrity_monitoring = kwargs['enableIntegrityMonitoring']
+        if enable_secure_boot is None and 'enableSecureBoot' in kwargs:
+            enable_secure_boot = kwargs['enableSecureBoot']
+        if enable_vtpm is None and 'enableVtpm' in kwargs:
+            enable_vtpm = kwargs['enableVtpm']
+
         if enable_integrity_monitoring is not None:
             _setter("enable_integrity_monitoring", enable_integrity_monitoring)
         if enable_secure_boot is not None:
@@ -9312,7 +10106,15 @@ class InstanceFromTemplateAdvancedMachineFeaturesArgs:
              enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
              threads_per_core: Optional[pulumi.Input[int]] = None,
              visible_core_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_nested_virtualization is None and 'enableNestedVirtualization' in kwargs:
+            enable_nested_virtualization = kwargs['enableNestedVirtualization']
+        if threads_per_core is None and 'threadsPerCore' in kwargs:
+            threads_per_core = kwargs['threadsPerCore']
+        if visible_core_count is None and 'visibleCoreCount' in kwargs:
+            visible_core_count = kwargs['visibleCoreCount']
+
         if enable_nested_virtualization is not None:
             _setter("enable_nested_virtualization", enable_nested_virtualization)
         if threads_per_core is not None:
@@ -9369,13 +10171,25 @@ class InstanceFromTemplateAttachedDiskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source: pulumi.Input[str],
+             source: Optional[pulumi.Input[str]] = None,
              device_name: Optional[pulumi.Input[str]] = None,
              disk_encryption_key_raw: Optional[pulumi.Input[str]] = None,
              disk_encryption_key_sha256: Optional[pulumi.Input[str]] = None,
              kms_key_self_link: Optional[pulumi.Input[str]] = None,
              mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if device_name is None and 'deviceName' in kwargs:
+            device_name = kwargs['deviceName']
+        if disk_encryption_key_raw is None and 'diskEncryptionKeyRaw' in kwargs:
+            disk_encryption_key_raw = kwargs['diskEncryptionKeyRaw']
+        if disk_encryption_key_sha256 is None and 'diskEncryptionKeySha256' in kwargs:
+            disk_encryption_key_sha256 = kwargs['diskEncryptionKeySha256']
+        if kms_key_self_link is None and 'kmsKeySelfLink' in kwargs:
+            kms_key_self_link = kwargs['kmsKeySelfLink']
+
         _setter("source", source)
         if device_name is not None:
             _setter("device_name", device_name)
@@ -9476,7 +10290,21 @@ class InstanceFromTemplateBootDiskArgs:
              kms_key_self_link: Optional[pulumi.Input[str]] = None,
              mode: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_delete is None and 'autoDelete' in kwargs:
+            auto_delete = kwargs['autoDelete']
+        if device_name is None and 'deviceName' in kwargs:
+            device_name = kwargs['deviceName']
+        if disk_encryption_key_raw is None and 'diskEncryptionKeyRaw' in kwargs:
+            disk_encryption_key_raw = kwargs['diskEncryptionKeyRaw']
+        if disk_encryption_key_sha256 is None and 'diskEncryptionKeySha256' in kwargs:
+            disk_encryption_key_sha256 = kwargs['diskEncryptionKeySha256']
+        if initialize_params is None and 'initializeParams' in kwargs:
+            initialize_params = kwargs['initializeParams']
+        if kms_key_self_link is None and 'kmsKeySelfLink' in kwargs:
+            kms_key_self_link = kwargs['kmsKeySelfLink']
+
         if auto_delete is not None:
             _setter("auto_delete", auto_delete)
         if device_name is not None:
@@ -9591,7 +10419,11 @@ class InstanceFromTemplateBootDiskInitializeParamsArgs:
              resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              size: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if resource_manager_tags is None and 'resourceManagerTags' in kwargs:
+            resource_manager_tags = kwargs['resourceManagerTags']
+
         if image is not None:
             _setter("image", image)
         if labels is not None:
@@ -9660,8 +10492,14 @@ class InstanceFromTemplateConfidentialInstanceConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enable_confidential_compute: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_confidential_compute is None and 'enableConfidentialCompute' in kwargs:
+            enable_confidential_compute = kwargs['enableConfidentialCompute']
+        if enable_confidential_compute is None:
+            raise TypeError("Missing 'enable_confidential_compute' argument")
+
         _setter("enable_confidential_compute", enable_confidential_compute)
 
     @property
@@ -9687,9 +10525,15 @@ class InstanceFromTemplateGuestAcceleratorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             count: pulumi.Input[int],
-             type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             count: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if count is None:
+            raise TypeError("Missing 'count' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("count", count)
         _setter("type", type)
 
@@ -9767,7 +10611,31 @@ class InstanceFromTemplateNetworkInterfaceArgs:
              stack_type: Optional[pulumi.Input[str]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
              subnetwork_project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_configs is None and 'accessConfigs' in kwargs:
+            access_configs = kwargs['accessConfigs']
+        if alias_ip_ranges is None and 'aliasIpRanges' in kwargs:
+            alias_ip_ranges = kwargs['aliasIpRanges']
+        if internal_ipv6_prefix_length is None and 'internalIpv6PrefixLength' in kwargs:
+            internal_ipv6_prefix_length = kwargs['internalIpv6PrefixLength']
+        if ipv6_access_configs is None and 'ipv6AccessConfigs' in kwargs:
+            ipv6_access_configs = kwargs['ipv6AccessConfigs']
+        if ipv6_access_type is None and 'ipv6AccessType' in kwargs:
+            ipv6_access_type = kwargs['ipv6AccessType']
+        if ipv6_address is None and 'ipv6Address' in kwargs:
+            ipv6_address = kwargs['ipv6Address']
+        if network_ip is None and 'networkIp' in kwargs:
+            network_ip = kwargs['networkIp']
+        if nic_type is None and 'nicType' in kwargs:
+            nic_type = kwargs['nicType']
+        if queue_count is None and 'queueCount' in kwargs:
+            queue_count = kwargs['queueCount']
+        if stack_type is None and 'stackType' in kwargs:
+            stack_type = kwargs['stackType']
+        if subnetwork_project is None and 'subnetworkProject' in kwargs:
+            subnetwork_project = kwargs['subnetworkProject']
+
         if access_configs is not None:
             _setter("access_configs", access_configs)
         if alias_ip_ranges is not None:
@@ -9946,7 +10814,15 @@ class InstanceFromTemplateNetworkInterfaceAccessConfigArgs:
              nat_ip: Optional[pulumi.Input[str]] = None,
              network_tier: Optional[pulumi.Input[str]] = None,
              public_ptr_domain_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if nat_ip is None and 'natIp' in kwargs:
+            nat_ip = kwargs['natIp']
+        if network_tier is None and 'networkTier' in kwargs:
+            network_tier = kwargs['networkTier']
+        if public_ptr_domain_name is None and 'publicPtrDomainName' in kwargs:
+            public_ptr_domain_name = kwargs['publicPtrDomainName']
+
         if nat_ip is not None:
             _setter("nat_ip", nat_ip)
         if network_tier is not None:
@@ -9995,9 +10871,17 @@ class InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_cidr_range: pulumi.Input[str],
+             ip_cidr_range: Optional[pulumi.Input[str]] = None,
              subnetwork_range_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_cidr_range is None and 'ipCidrRange' in kwargs:
+            ip_cidr_range = kwargs['ipCidrRange']
+        if ip_cidr_range is None:
+            raise TypeError("Missing 'ip_cidr_range' argument")
+        if subnetwork_range_name is None and 'subnetworkRangeName' in kwargs:
+            subnetwork_range_name = kwargs['subnetworkRangeName']
+
         _setter("ip_cidr_range", ip_cidr_range)
         if subnetwork_range_name is not None:
             _setter("subnetwork_range_name", subnetwork_range_name)
@@ -10044,12 +10928,24 @@ class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network_tier: pulumi.Input[str],
+             network_tier: Optional[pulumi.Input[str]] = None,
              external_ipv6: Optional[pulumi.Input[str]] = None,
              external_ipv6_prefix_length: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              public_ptr_domain_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network_tier is None and 'networkTier' in kwargs:
+            network_tier = kwargs['networkTier']
+        if network_tier is None:
+            raise TypeError("Missing 'network_tier' argument")
+        if external_ipv6 is None and 'externalIpv6' in kwargs:
+            external_ipv6 = kwargs['externalIpv6']
+        if external_ipv6_prefix_length is None and 'externalIpv6PrefixLength' in kwargs:
+            external_ipv6_prefix_length = kwargs['externalIpv6PrefixLength']
+        if public_ptr_domain_name is None and 'publicPtrDomainName' in kwargs:
+            public_ptr_domain_name = kwargs['publicPtrDomainName']
+
         _setter("network_tier", network_tier)
         if external_ipv6 is not None:
             _setter("external_ipv6", external_ipv6)
@@ -10121,8 +11017,14 @@ class InstanceFromTemplateNetworkPerformanceConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             total_egress_bandwidth_tier: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             total_egress_bandwidth_tier: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if total_egress_bandwidth_tier is None and 'totalEgressBandwidthTier' in kwargs:
+            total_egress_bandwidth_tier = kwargs['totalEgressBandwidthTier']
+        if total_egress_bandwidth_tier is None:
+            raise TypeError("Missing 'total_egress_bandwidth_tier' argument")
+
         _setter("total_egress_bandwidth_tier", total_egress_bandwidth_tier)
 
     @property
@@ -10147,7 +11049,11 @@ class InstanceFromTemplateParamsArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if resource_manager_tags is None and 'resourceManagerTags' in kwargs:
+            resource_manager_tags = kwargs['resourceManagerTags']
+
         if resource_manager_tags is not None:
             _setter("resource_manager_tags", resource_manager_tags)
 
@@ -10174,9 +11080,15 @@ class InstanceFromTemplateReservationAffinityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              specific_reservation: Optional[pulumi.Input['InstanceFromTemplateReservationAffinitySpecificReservationArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if specific_reservation is None and 'specificReservation' in kwargs:
+            specific_reservation = kwargs['specificReservation']
+
         _setter("type", type)
         if specific_reservation is not None:
             _setter("specific_reservation", specific_reservation)
@@ -10213,9 +11125,15 @@ class InstanceFromTemplateReservationAffinitySpecificReservationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             values: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("key", key)
         _setter("values", values)
 
@@ -10277,7 +11195,27 @@ class InstanceFromTemplateSchedulingArgs:
              on_host_maintenance: Optional[pulumi.Input[str]] = None,
              preemptible: Optional[pulumi.Input[bool]] = None,
              provisioning_model: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if automatic_restart is None and 'automaticRestart' in kwargs:
+            automatic_restart = kwargs['automaticRestart']
+        if instance_termination_action is None and 'instanceTerminationAction' in kwargs:
+            instance_termination_action = kwargs['instanceTerminationAction']
+        if local_ssd_recovery_timeout is None and 'localSsdRecoveryTimeout' in kwargs:
+            local_ssd_recovery_timeout = kwargs['localSsdRecoveryTimeout']
+        if maintenance_interval is None and 'maintenanceInterval' in kwargs:
+            maintenance_interval = kwargs['maintenanceInterval']
+        if max_run_duration is None and 'maxRunDuration' in kwargs:
+            max_run_duration = kwargs['maxRunDuration']
+        if min_node_cpus is None and 'minNodeCpus' in kwargs:
+            min_node_cpus = kwargs['minNodeCpus']
+        if node_affinities is None and 'nodeAffinities' in kwargs:
+            node_affinities = kwargs['nodeAffinities']
+        if on_host_maintenance is None and 'onHostMaintenance' in kwargs:
+            on_host_maintenance = kwargs['onHostMaintenance']
+        if provisioning_model is None and 'provisioningModel' in kwargs:
+            provisioning_model = kwargs['provisioningModel']
+
         if automatic_restart is not None:
             _setter("automatic_restart", automatic_restart)
         if instance_termination_action is not None:
@@ -10403,9 +11341,13 @@ class InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[int],
+             seconds: Optional[pulumi.Input[int]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -10442,9 +11384,13 @@ class InstanceFromTemplateSchedulingMaxRunDurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[int],
+             seconds: Optional[pulumi.Input[int]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -10483,10 +11429,18 @@ class InstanceFromTemplateSchedulingNodeAffinityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             operator: pulumi.Input[str],
-             values: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             operator: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("key", key)
         _setter("operator", operator)
         _setter("values", values)
@@ -10532,9 +11486,13 @@ class InstanceFromTemplateScratchDiskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             interface: pulumi.Input[str],
+             interface: Optional[pulumi.Input[str]] = None,
              size: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if interface is None:
+            raise TypeError("Missing 'interface' argument")
+
         _setter("interface", interface)
         if size is not None:
             _setter("size", size)
@@ -10571,9 +11529,13 @@ class InstanceFromTemplateServiceAccountArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
+             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              email: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if scopes is None:
+            raise TypeError("Missing 'scopes' argument")
+
         _setter("scopes", scopes)
         if email is not None:
             _setter("email", email)
@@ -10615,7 +11577,15 @@ class InstanceFromTemplateShieldedInstanceConfigArgs:
              enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
              enable_secure_boot: Optional[pulumi.Input[bool]] = None,
              enable_vtpm: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_integrity_monitoring is None and 'enableIntegrityMonitoring' in kwargs:
+            enable_integrity_monitoring = kwargs['enableIntegrityMonitoring']
+        if enable_secure_boot is None and 'enableSecureBoot' in kwargs:
+            enable_secure_boot = kwargs['enableSecureBoot']
+        if enable_vtpm is None and 'enableVtpm' in kwargs:
+            enable_vtpm = kwargs['enableVtpm']
+
         if enable_integrity_monitoring is not None:
             _setter("enable_integrity_monitoring", enable_integrity_monitoring)
         if enable_secure_boot is not None:
@@ -10672,7 +11642,9 @@ class InstanceGroupManagerAllInstancesConfigArgs:
              _setter: Callable[[Any, Any], None],
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if labels is not None:
             _setter("labels", labels)
         if metadata is not None:
@@ -10723,9 +11695,19 @@ class InstanceGroupManagerAutoHealingPoliciesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             health_check: pulumi.Input[str],
-             initial_delay_sec: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             health_check: Optional[pulumi.Input[str]] = None,
+             initial_delay_sec: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if health_check is None and 'healthCheck' in kwargs:
+            health_check = kwargs['healthCheck']
+        if health_check is None:
+            raise TypeError("Missing 'health_check' argument")
+        if initial_delay_sec is None and 'initialDelaySec' in kwargs:
+            initial_delay_sec = kwargs['initialDelaySec']
+        if initial_delay_sec is None:
+            raise TypeError("Missing 'initial_delay_sec' argument")
+
         _setter("health_check", health_check)
         _setter("initial_delay_sec", initial_delay_sec)
 
@@ -10772,7 +11754,11 @@ class InstanceGroupManagerInstanceLifecyclePolicyArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              force_update_on_repair: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if force_update_on_repair is None and 'forceUpdateOnRepair' in kwargs:
+            force_update_on_repair = kwargs['forceUpdateOnRepair']
+
         if force_update_on_repair is not None:
             _setter("force_update_on_repair", force_update_on_repair)
 
@@ -10809,9 +11795,15 @@ class InstanceGroupManagerNamedPortArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             port: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+
         _setter("name", name)
         _setter("port", port)
 
@@ -10858,9 +11850,17 @@ class InstanceGroupManagerStatefulDiskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             device_name: pulumi.Input[str],
+             device_name: Optional[pulumi.Input[str]] = None,
              delete_rule: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if device_name is None and 'deviceName' in kwargs:
+            device_name = kwargs['deviceName']
+        if device_name is None:
+            raise TypeError("Missing 'device_name' argument")
+        if delete_rule is None and 'deleteRule' in kwargs:
+            delete_rule = kwargs['deleteRule']
+
         _setter("device_name", device_name)
         if delete_rule is not None:
             _setter("delete_rule", delete_rule)
@@ -10909,7 +11909,13 @@ class InstanceGroupManagerStatefulExternalIpArgs:
              _setter: Callable[[Any, Any], None],
              delete_rule: Optional[pulumi.Input[str]] = None,
              interface_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if delete_rule is None and 'deleteRule' in kwargs:
+            delete_rule = kwargs['deleteRule']
+        if interface_name is None and 'interfaceName' in kwargs:
+            interface_name = kwargs['interfaceName']
+
         if delete_rule is not None:
             _setter("delete_rule", delete_rule)
         if interface_name is not None:
@@ -10959,7 +11965,13 @@ class InstanceGroupManagerStatefulInternalIpArgs:
              _setter: Callable[[Any, Any], None],
              delete_rule: Optional[pulumi.Input[str]] = None,
              interface_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if delete_rule is None and 'deleteRule' in kwargs:
+            delete_rule = kwargs['deleteRule']
+        if interface_name is None and 'interfaceName' in kwargs:
+            interface_name = kwargs['interfaceName']
+
         if delete_rule is not None:
             _setter("delete_rule", delete_rule)
         if interface_name is not None:
@@ -11020,7 +12032,15 @@ class InstanceGroupManagerStatusArgs:
              is_stable: Optional[pulumi.Input[bool]] = None,
              statefuls: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulArgs']]]] = None,
              version_targets: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusVersionTargetArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if all_instances_configs is None and 'allInstancesConfigs' in kwargs:
+            all_instances_configs = kwargs['allInstancesConfigs']
+        if is_stable is None and 'isStable' in kwargs:
+            is_stable = kwargs['isStable']
+        if version_targets is None and 'versionTargets' in kwargs:
+            version_targets = kwargs['versionTargets']
+
         if all_instances_configs is not None:
             _setter("all_instances_configs", all_instances_configs)
         if is_stable is not None:
@@ -11094,7 +12114,9 @@ class InstanceGroupManagerStatusAllInstancesConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              effective: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if effective is not None:
             _setter("effective", effective)
 
@@ -11127,7 +12149,13 @@ class InstanceGroupManagerStatusStatefulArgs:
              _setter: Callable[[Any, Any], None],
              has_stateful_config: Optional[pulumi.Input[bool]] = None,
              per_instance_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulPerInstanceConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if has_stateful_config is None and 'hasStatefulConfig' in kwargs:
+            has_stateful_config = kwargs['hasStatefulConfig']
+        if per_instance_configs is None and 'perInstanceConfigs' in kwargs:
+            per_instance_configs = kwargs['perInstanceConfigs']
+
         if has_stateful_config is not None:
             _setter("has_stateful_config", has_stateful_config)
         if per_instance_configs is not None:
@@ -11173,7 +12201,11 @@ class InstanceGroupManagerStatusStatefulPerInstanceConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              all_effective: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if all_effective is None and 'allEffective' in kwargs:
+            all_effective = kwargs['allEffective']
+
         if all_effective is not None:
             _setter("all_effective", all_effective)
 
@@ -11202,7 +12234,11 @@ class InstanceGroupManagerStatusVersionTargetArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              is_reached: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if is_reached is None and 'isReached' in kwargs:
+            is_reached = kwargs['isReached']
+
         if is_reached is not None:
             _setter("is_reached", is_reached)
 
@@ -11255,8 +12291,8 @@ class InstanceGroupManagerUpdatePolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             minimal_action: pulumi.Input[str],
-             type: pulumi.Input[str],
+             minimal_action: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              max_surge_fixed: Optional[pulumi.Input[int]] = None,
              max_surge_percent: Optional[pulumi.Input[int]] = None,
              max_unavailable_fixed: Optional[pulumi.Input[int]] = None,
@@ -11264,7 +12300,29 @@ class InstanceGroupManagerUpdatePolicyArgs:
              min_ready_sec: Optional[pulumi.Input[int]] = None,
              most_disruptive_allowed_action: Optional[pulumi.Input[str]] = None,
              replacement_method: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if minimal_action is None and 'minimalAction' in kwargs:
+            minimal_action = kwargs['minimalAction']
+        if minimal_action is None:
+            raise TypeError("Missing 'minimal_action' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if max_surge_fixed is None and 'maxSurgeFixed' in kwargs:
+            max_surge_fixed = kwargs['maxSurgeFixed']
+        if max_surge_percent is None and 'maxSurgePercent' in kwargs:
+            max_surge_percent = kwargs['maxSurgePercent']
+        if max_unavailable_fixed is None and 'maxUnavailableFixed' in kwargs:
+            max_unavailable_fixed = kwargs['maxUnavailableFixed']
+        if max_unavailable_percent is None and 'maxUnavailablePercent' in kwargs:
+            max_unavailable_percent = kwargs['maxUnavailablePercent']
+        if min_ready_sec is None and 'minReadySec' in kwargs:
+            min_ready_sec = kwargs['minReadySec']
+        if most_disruptive_allowed_action is None and 'mostDisruptiveAllowedAction' in kwargs:
+            most_disruptive_allowed_action = kwargs['mostDisruptiveAllowedAction']
+        if replacement_method is None and 'replacementMethod' in kwargs:
+            replacement_method = kwargs['replacementMethod']
+
         _setter("minimal_action", minimal_action)
         _setter("type", type)
         if max_surge_fixed is not None:
@@ -11415,10 +12473,18 @@ class InstanceGroupManagerVersionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_template: pulumi.Input[str],
+             instance_template: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              target_size: Optional[pulumi.Input['InstanceGroupManagerVersionTargetSizeArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_template is None and 'instanceTemplate' in kwargs:
+            instance_template = kwargs['instanceTemplate']
+        if instance_template is None:
+            raise TypeError("Missing 'instance_template' argument")
+        if target_size is None and 'targetSize' in kwargs:
+            target_size = kwargs['targetSize']
+
         _setter("instance_template", instance_template)
         if name is not None:
             _setter("name", name)
@@ -11486,7 +12552,9 @@ class InstanceGroupManagerVersionTargetSizeArgs:
              _setter: Callable[[Any, Any], None],
              fixed: Optional[pulumi.Input[int]] = None,
              percent: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if fixed is not None:
             _setter("fixed", fixed)
         if percent is not None:
@@ -11536,9 +12604,15 @@ class InstanceGroupNamedPortArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             port: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+
         _setter("name", name)
         _setter("port", port)
 
@@ -11584,9 +12658,15 @@ class InstanceGuestAcceleratorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             count: pulumi.Input[int],
-             type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             count: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if count is None:
+            raise TypeError("Missing 'count' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("count", count)
         _setter("type", type)
 
@@ -11639,10 +12719,16 @@ class InstanceIAMBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -11713,10 +12799,16 @@ class InstanceIAMMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -11845,7 +12937,31 @@ class InstanceNetworkInterfaceArgs:
              stack_type: Optional[pulumi.Input[str]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
              subnetwork_project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_configs is None and 'accessConfigs' in kwargs:
+            access_configs = kwargs['accessConfigs']
+        if alias_ip_ranges is None and 'aliasIpRanges' in kwargs:
+            alias_ip_ranges = kwargs['aliasIpRanges']
+        if internal_ipv6_prefix_length is None and 'internalIpv6PrefixLength' in kwargs:
+            internal_ipv6_prefix_length = kwargs['internalIpv6PrefixLength']
+        if ipv6_access_configs is None and 'ipv6AccessConfigs' in kwargs:
+            ipv6_access_configs = kwargs['ipv6AccessConfigs']
+        if ipv6_access_type is None and 'ipv6AccessType' in kwargs:
+            ipv6_access_type = kwargs['ipv6AccessType']
+        if ipv6_address is None and 'ipv6Address' in kwargs:
+            ipv6_address = kwargs['ipv6Address']
+        if network_ip is None and 'networkIp' in kwargs:
+            network_ip = kwargs['networkIp']
+        if nic_type is None and 'nicType' in kwargs:
+            nic_type = kwargs['nicType']
+        if queue_count is None and 'queueCount' in kwargs:
+            queue_count = kwargs['queueCount']
+        if stack_type is None and 'stackType' in kwargs:
+            stack_type = kwargs['stackType']
+        if subnetwork_project is None and 'subnetworkProject' in kwargs:
+            subnetwork_project = kwargs['subnetworkProject']
+
         if access_configs is not None:
             _setter("access_configs", access_configs)
         if alias_ip_ranges is not None:
@@ -12079,7 +13195,15 @@ class InstanceNetworkInterfaceAccessConfigArgs:
              nat_ip: Optional[pulumi.Input[str]] = None,
              network_tier: Optional[pulumi.Input[str]] = None,
              public_ptr_domain_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if nat_ip is None and 'natIp' in kwargs:
+            nat_ip = kwargs['natIp']
+        if network_tier is None and 'networkTier' in kwargs:
+            network_tier = kwargs['networkTier']
+        if public_ptr_domain_name is None and 'publicPtrDomainName' in kwargs:
+            public_ptr_domain_name = kwargs['publicPtrDomainName']
+
         if nat_ip is not None:
             _setter("nat_ip", nat_ip)
         if network_tier is not None:
@@ -12149,9 +13273,17 @@ class InstanceNetworkInterfaceAliasIpRangeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_cidr_range: pulumi.Input[str],
+             ip_cidr_range: Optional[pulumi.Input[str]] = None,
              subnetwork_range_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_cidr_range is None and 'ipCidrRange' in kwargs:
+            ip_cidr_range = kwargs['ipCidrRange']
+        if ip_cidr_range is None:
+            raise TypeError("Missing 'ip_cidr_range' argument")
+        if subnetwork_range_name is None and 'subnetworkRangeName' in kwargs:
+            subnetwork_range_name = kwargs['subnetworkRangeName']
+
         _setter("ip_cidr_range", ip_cidr_range)
         if subnetwork_range_name is not None:
             _setter("subnetwork_range_name", subnetwork_range_name)
@@ -12218,12 +13350,24 @@ class InstanceNetworkInterfaceIpv6AccessConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network_tier: pulumi.Input[str],
+             network_tier: Optional[pulumi.Input[str]] = None,
              external_ipv6: Optional[pulumi.Input[str]] = None,
              external_ipv6_prefix_length: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              public_ptr_domain_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network_tier is None and 'networkTier' in kwargs:
+            network_tier = kwargs['networkTier']
+        if network_tier is None:
+            raise TypeError("Missing 'network_tier' argument")
+        if external_ipv6 is None and 'externalIpv6' in kwargs:
+            external_ipv6 = kwargs['externalIpv6']
+        if external_ipv6_prefix_length is None and 'externalIpv6PrefixLength' in kwargs:
+            external_ipv6_prefix_length = kwargs['externalIpv6PrefixLength']
+        if public_ptr_domain_name is None and 'publicPtrDomainName' in kwargs:
+            public_ptr_domain_name = kwargs['publicPtrDomainName']
+
         _setter("network_tier", network_tier)
         if external_ipv6 is not None:
             _setter("external_ipv6", external_ipv6)
@@ -12316,8 +13460,14 @@ class InstanceNetworkPerformanceConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             total_egress_bandwidth_tier: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             total_egress_bandwidth_tier: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if total_egress_bandwidth_tier is None and 'totalEgressBandwidthTier' in kwargs:
+            total_egress_bandwidth_tier = kwargs['totalEgressBandwidthTier']
+        if total_egress_bandwidth_tier is None:
+            raise TypeError("Missing 'total_egress_bandwidth_tier' argument")
+
         _setter("total_egress_bandwidth_tier", total_egress_bandwidth_tier)
 
     @property
@@ -12346,7 +13496,11 @@ class InstanceParamsArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if resource_manager_tags is None and 'resourceManagerTags' in kwargs:
+            resource_manager_tags = kwargs['resourceManagerTags']
+
         if resource_manager_tags is not None:
             _setter("resource_manager_tags", resource_manager_tags)
 
@@ -12378,9 +13532,15 @@ class InstanceReservationAffinityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              specific_reservation: Optional[pulumi.Input['InstanceReservationAffinitySpecificReservationArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if specific_reservation is None and 'specificReservation' in kwargs:
+            specific_reservation = kwargs['specificReservation']
+
         _setter("type", type)
         if specific_reservation is not None:
             _setter("specific_reservation", specific_reservation)
@@ -12428,9 +13588,15 @@ class InstanceReservationAffinitySpecificReservationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             values: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("key", key)
         _setter("values", values)
 
@@ -12520,7 +13686,27 @@ class InstanceSchedulingArgs:
              on_host_maintenance: Optional[pulumi.Input[str]] = None,
              preemptible: Optional[pulumi.Input[bool]] = None,
              provisioning_model: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if automatic_restart is None and 'automaticRestart' in kwargs:
+            automatic_restart = kwargs['automaticRestart']
+        if instance_termination_action is None and 'instanceTerminationAction' in kwargs:
+            instance_termination_action = kwargs['instanceTerminationAction']
+        if local_ssd_recovery_timeout is None and 'localSsdRecoveryTimeout' in kwargs:
+            local_ssd_recovery_timeout = kwargs['localSsdRecoveryTimeout']
+        if maintenance_interval is None and 'maintenanceInterval' in kwargs:
+            maintenance_interval = kwargs['maintenanceInterval']
+        if max_run_duration is None and 'maxRunDuration' in kwargs:
+            max_run_duration = kwargs['maxRunDuration']
+        if min_node_cpus is None and 'minNodeCpus' in kwargs:
+            min_node_cpus = kwargs['minNodeCpus']
+        if node_affinities is None and 'nodeAffinities' in kwargs:
+            node_affinities = kwargs['nodeAffinities']
+        if on_host_maintenance is None and 'onHostMaintenance' in kwargs:
+            on_host_maintenance = kwargs['onHostMaintenance']
+        if provisioning_model is None and 'provisioningModel' in kwargs:
+            provisioning_model = kwargs['provisioningModel']
+
         if automatic_restart is not None:
             _setter("automatic_restart", automatic_restart)
         if instance_termination_action is not None:
@@ -12689,9 +13875,13 @@ class InstanceSchedulingLocalSsdRecoveryTimeoutArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[int],
+             seconds: Optional[pulumi.Input[int]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -12748,9 +13938,13 @@ class InstanceSchedulingMaxRunDurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[int],
+             seconds: Optional[pulumi.Input[int]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -12806,10 +14000,18 @@ class InstanceSchedulingNodeAffinityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             operator: pulumi.Input[str],
-             values: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             operator: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("key", key)
         _setter("operator", operator)
         _setter("values", values)
@@ -12870,9 +14072,13 @@ class InstanceScratchDiskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             interface: pulumi.Input[str],
+             interface: Optional[pulumi.Input[str]] = None,
              size: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if interface is None:
+            raise TypeError("Missing 'interface' argument")
+
         _setter("interface", interface)
         if size is not None:
             _setter("size", size)
@@ -12924,9 +14130,13 @@ class InstanceServiceAccountArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
+             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              email: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if scopes is None:
+            raise TypeError("Missing 'scopes' argument")
+
         _setter("scopes", scopes)
         if email is not None:
             _setter("email", email)
@@ -12986,7 +14196,15 @@ class InstanceShieldedInstanceConfigArgs:
              enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
              enable_secure_boot: Optional[pulumi.Input[bool]] = None,
              enable_vtpm: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_integrity_monitoring is None and 'enableIntegrityMonitoring' in kwargs:
+            enable_integrity_monitoring = kwargs['enableIntegrityMonitoring']
+        if enable_secure_boot is None and 'enableSecureBoot' in kwargs:
+            enable_secure_boot = kwargs['enableSecureBoot']
+        if enable_vtpm is None and 'enableVtpm' in kwargs:
+            enable_vtpm = kwargs['enableVtpm']
+
         if enable_integrity_monitoring is not None:
             _setter("enable_integrity_monitoring", enable_integrity_monitoring)
         if enable_secure_boot is not None:
@@ -13057,7 +14275,15 @@ class InstanceTemplateAdvancedMachineFeaturesArgs:
              enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
              threads_per_core: Optional[pulumi.Input[int]] = None,
              visible_core_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_nested_virtualization is None and 'enableNestedVirtualization' in kwargs:
+            enable_nested_virtualization = kwargs['enableNestedVirtualization']
+        if threads_per_core is None and 'threadsPerCore' in kwargs:
+            threads_per_core = kwargs['threadsPerCore']
+        if visible_core_count is None and 'visibleCoreCount' in kwargs:
+            visible_core_count = kwargs['visibleCoreCount']
+
         if enable_nested_virtualization is not None:
             _setter("enable_nested_virtualization", enable_nested_virtualization)
         if threads_per_core is not None:
@@ -13116,8 +14342,14 @@ class InstanceTemplateConfidentialInstanceConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enable_confidential_compute: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_confidential_compute is None and 'enableConfidentialCompute' in kwargs:
+            enable_confidential_compute = kwargs['enableConfidentialCompute']
+        if enable_confidential_compute is None:
+            raise TypeError("Missing 'enable_confidential_compute' argument")
+
         _setter("enable_confidential_compute", enable_confidential_compute)
 
     @property
@@ -13255,7 +14487,33 @@ class InstanceTemplateDiskArgs:
              source_snapshot: Optional[pulumi.Input[str]] = None,
              source_snapshot_encryption_key: Optional[pulumi.Input['InstanceTemplateDiskSourceSnapshotEncryptionKeyArgs']] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_delete is None and 'autoDelete' in kwargs:
+            auto_delete = kwargs['autoDelete']
+        if device_name is None and 'deviceName' in kwargs:
+            device_name = kwargs['deviceName']
+        if disk_encryption_key is None and 'diskEncryptionKey' in kwargs:
+            disk_encryption_key = kwargs['diskEncryptionKey']
+        if disk_name is None and 'diskName' in kwargs:
+            disk_name = kwargs['diskName']
+        if disk_size_gb is None and 'diskSizeGb' in kwargs:
+            disk_size_gb = kwargs['diskSizeGb']
+        if disk_type is None and 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if provisioned_iops is None and 'provisionedIops' in kwargs:
+            provisioned_iops = kwargs['provisionedIops']
+        if resource_policies is None and 'resourcePolicies' in kwargs:
+            resource_policies = kwargs['resourcePolicies']
+        if source_image is None and 'sourceImage' in kwargs:
+            source_image = kwargs['sourceImage']
+        if source_image_encryption_key is None and 'sourceImageEncryptionKey' in kwargs:
+            source_image_encryption_key = kwargs['sourceImageEncryptionKey']
+        if source_snapshot is None and 'sourceSnapshot' in kwargs:
+            source_snapshot = kwargs['sourceSnapshot']
+        if source_snapshot_encryption_key is None and 'sourceSnapshotEncryptionKey' in kwargs:
+            source_snapshot_encryption_key = kwargs['sourceSnapshotEncryptionKey']
+
         if auto_delete is not None:
             _setter("auto_delete", auto_delete)
         if boot is not None:
@@ -13561,8 +14819,14 @@ class InstanceTemplateDiskDiskEncryptionKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kms_key_self_link: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             kms_key_self_link: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_self_link is None and 'kmsKeySelfLink' in kwargs:
+            kms_key_self_link = kwargs['kmsKeySelfLink']
+        if kms_key_self_link is None:
+            raise TypeError("Missing 'kms_key_self_link' argument")
+
         _setter("kms_key_self_link", kms_key_self_link)
 
     @property
@@ -13598,9 +14862,17 @@ class InstanceTemplateDiskSourceImageEncryptionKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kms_key_self_link: pulumi.Input[str],
+             kms_key_self_link: Optional[pulumi.Input[str]] = None,
              kms_key_service_account: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_self_link is None and 'kmsKeySelfLink' in kwargs:
+            kms_key_self_link = kwargs['kmsKeySelfLink']
+        if kms_key_self_link is None:
+            raise TypeError("Missing 'kms_key_self_link' argument")
+        if kms_key_service_account is None and 'kmsKeyServiceAccount' in kwargs:
+            kms_key_service_account = kwargs['kmsKeyServiceAccount']
+
         _setter("kms_key_self_link", kms_key_self_link)
         if kms_key_service_account is not None:
             _setter("kms_key_service_account", kms_key_service_account)
@@ -13653,9 +14925,17 @@ class InstanceTemplateDiskSourceSnapshotEncryptionKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kms_key_self_link: pulumi.Input[str],
+             kms_key_self_link: Optional[pulumi.Input[str]] = None,
              kms_key_service_account: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_self_link is None and 'kmsKeySelfLink' in kwargs:
+            kms_key_self_link = kwargs['kmsKeySelfLink']
+        if kms_key_self_link is None:
+            raise TypeError("Missing 'kms_key_self_link' argument")
+        if kms_key_service_account is None and 'kmsKeyServiceAccount' in kwargs:
+            kms_key_service_account = kwargs['kmsKeyServiceAccount']
+
         _setter("kms_key_self_link", kms_key_self_link)
         if kms_key_service_account is not None:
             _setter("kms_key_service_account", kms_key_service_account)
@@ -13706,9 +14986,15 @@ class InstanceTemplateGuestAcceleratorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             count: pulumi.Input[int],
-             type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             count: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if count is None:
+            raise TypeError("Missing 'count' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("count", count)
         _setter("type", type)
 
@@ -13821,7 +15107,33 @@ class InstanceTemplateNetworkInterfaceArgs:
              stack_type: Optional[pulumi.Input[str]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
              subnetwork_project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_configs is None and 'accessConfigs' in kwargs:
+            access_configs = kwargs['accessConfigs']
+        if alias_ip_ranges is None and 'aliasIpRanges' in kwargs:
+            alias_ip_ranges = kwargs['aliasIpRanges']
+        if internal_ipv6_prefix_length is None and 'internalIpv6PrefixLength' in kwargs:
+            internal_ipv6_prefix_length = kwargs['internalIpv6PrefixLength']
+        if ipv6_access_configs is None and 'ipv6AccessConfigs' in kwargs:
+            ipv6_access_configs = kwargs['ipv6AccessConfigs']
+        if ipv6_access_type is None and 'ipv6AccessType' in kwargs:
+            ipv6_access_type = kwargs['ipv6AccessType']
+        if ipv6_address is None and 'ipv6Address' in kwargs:
+            ipv6_address = kwargs['ipv6Address']
+        if network_attachment is None and 'networkAttachment' in kwargs:
+            network_attachment = kwargs['networkAttachment']
+        if network_ip is None and 'networkIp' in kwargs:
+            network_ip = kwargs['networkIp']
+        if nic_type is None and 'nicType' in kwargs:
+            nic_type = kwargs['nicType']
+        if queue_count is None and 'queueCount' in kwargs:
+            queue_count = kwargs['queueCount']
+        if stack_type is None and 'stackType' in kwargs:
+            stack_type = kwargs['stackType']
+        if subnetwork_project is None and 'subnetworkProject' in kwargs:
+            subnetwork_project = kwargs['subnetworkProject']
+
         if access_configs is not None:
             _setter("access_configs", access_configs)
         if alias_ip_ranges is not None:
@@ -14062,7 +15374,15 @@ class InstanceTemplateNetworkInterfaceAccessConfigArgs:
              nat_ip: Optional[pulumi.Input[str]] = None,
              network_tier: Optional[pulumi.Input[str]] = None,
              public_ptr_domain_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if nat_ip is None and 'natIp' in kwargs:
+            nat_ip = kwargs['natIp']
+        if network_tier is None and 'networkTier' in kwargs:
+            network_tier = kwargs['networkTier']
+        if public_ptr_domain_name is None and 'publicPtrDomainName' in kwargs:
+            public_ptr_domain_name = kwargs['publicPtrDomainName']
+
         if nat_ip is not None:
             _setter("nat_ip", nat_ip)
         if network_tier is not None:
@@ -14129,9 +15449,17 @@ class InstanceTemplateNetworkInterfaceAliasIpRangeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_cidr_range: pulumi.Input[str],
+             ip_cidr_range: Optional[pulumi.Input[str]] = None,
              subnetwork_range_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_cidr_range is None and 'ipCidrRange' in kwargs:
+            ip_cidr_range = kwargs['ipCidrRange']
+        if ip_cidr_range is None:
+            raise TypeError("Missing 'ip_cidr_range' argument")
+        if subnetwork_range_name is None and 'subnetworkRangeName' in kwargs:
+            subnetwork_range_name = kwargs['subnetworkRangeName']
+
         _setter("ip_cidr_range", ip_cidr_range)
         if subnetwork_range_name is not None:
             _setter("subnetwork_range_name", subnetwork_range_name)
@@ -14192,12 +15520,24 @@ class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network_tier: pulumi.Input[str],
+             network_tier: Optional[pulumi.Input[str]] = None,
              external_ipv6: Optional[pulumi.Input[str]] = None,
              external_ipv6_prefix_length: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              public_ptr_domain_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network_tier is None and 'networkTier' in kwargs:
+            network_tier = kwargs['networkTier']
+        if network_tier is None:
+            raise TypeError("Missing 'network_tier' argument")
+        if external_ipv6 is None and 'externalIpv6' in kwargs:
+            external_ipv6 = kwargs['externalIpv6']
+        if external_ipv6_prefix_length is None and 'externalIpv6PrefixLength' in kwargs:
+            external_ipv6_prefix_length = kwargs['externalIpv6PrefixLength']
+        if public_ptr_domain_name is None and 'publicPtrDomainName' in kwargs:
+            public_ptr_domain_name = kwargs['publicPtrDomainName']
+
         _setter("network_tier", network_tier)
         if external_ipv6 is not None:
             _setter("external_ipv6", external_ipv6)
@@ -14276,8 +15616,14 @@ class InstanceTemplateNetworkPerformanceConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             total_egress_bandwidth_tier: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             total_egress_bandwidth_tier: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if total_egress_bandwidth_tier is None and 'totalEgressBandwidthTier' in kwargs:
+            total_egress_bandwidth_tier = kwargs['totalEgressBandwidthTier']
+        if total_egress_bandwidth_tier is None:
+            raise TypeError("Missing 'total_egress_bandwidth_tier' argument")
+
         _setter("total_egress_bandwidth_tier", total_egress_bandwidth_tier)
 
     @property
@@ -14311,9 +15657,15 @@ class InstanceTemplateReservationAffinityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              specific_reservation: Optional[pulumi.Input['InstanceTemplateReservationAffinitySpecificReservationArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if specific_reservation is None and 'specificReservation' in kwargs:
+            specific_reservation = kwargs['specificReservation']
+
         _setter("type", type)
         if specific_reservation is not None:
             _setter("specific_reservation", specific_reservation)
@@ -14361,9 +15713,15 @@ class InstanceTemplateReservationAffinitySpecificReservationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             values: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("key", key)
         _setter("values", values)
 
@@ -14453,7 +15811,27 @@ class InstanceTemplateSchedulingArgs:
              on_host_maintenance: Optional[pulumi.Input[str]] = None,
              preemptible: Optional[pulumi.Input[bool]] = None,
              provisioning_model: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if automatic_restart is None and 'automaticRestart' in kwargs:
+            automatic_restart = kwargs['automaticRestart']
+        if instance_termination_action is None and 'instanceTerminationAction' in kwargs:
+            instance_termination_action = kwargs['instanceTerminationAction']
+        if local_ssd_recovery_timeouts is None and 'localSsdRecoveryTimeouts' in kwargs:
+            local_ssd_recovery_timeouts = kwargs['localSsdRecoveryTimeouts']
+        if maintenance_interval is None and 'maintenanceInterval' in kwargs:
+            maintenance_interval = kwargs['maintenanceInterval']
+        if max_run_duration is None and 'maxRunDuration' in kwargs:
+            max_run_duration = kwargs['maxRunDuration']
+        if min_node_cpus is None and 'minNodeCpus' in kwargs:
+            min_node_cpus = kwargs['minNodeCpus']
+        if node_affinities is None and 'nodeAffinities' in kwargs:
+            node_affinities = kwargs['nodeAffinities']
+        if on_host_maintenance is None and 'onHostMaintenance' in kwargs:
+            on_host_maintenance = kwargs['onHostMaintenance']
+        if provisioning_model is None and 'provisioningModel' in kwargs:
+            provisioning_model = kwargs['provisioningModel']
+
         if automatic_restart is not None:
             _setter("automatic_restart", automatic_restart)
         if instance_termination_action is not None:
@@ -14622,9 +16000,13 @@ class InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[int],
+             seconds: Optional[pulumi.Input[int]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -14681,9 +16063,13 @@ class InstanceTemplateSchedulingMaxRunDurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[int],
+             seconds: Optional[pulumi.Input[int]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -14739,10 +16125,18 @@ class InstanceTemplateSchedulingNodeAffinityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             operator: pulumi.Input[str],
-             values: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             operator: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("key", key)
         _setter("operator", operator)
         _setter("values", values)
@@ -14812,9 +16206,13 @@ class InstanceTemplateServiceAccountArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
+             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              email: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if scopes is None:
+            raise TypeError("Missing 'scopes' argument")
+
         _setter("scopes", scopes)
         if email is not None:
             _setter("email", email)
@@ -14877,7 +16275,15 @@ class InstanceTemplateShieldedInstanceConfigArgs:
              enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
              enable_secure_boot: Optional[pulumi.Input[bool]] = None,
              enable_vtpm: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_integrity_monitoring is None and 'enableIntegrityMonitoring' in kwargs:
+            enable_integrity_monitoring = kwargs['enableIntegrityMonitoring']
+        if enable_secure_boot is None and 'enableSecureBoot' in kwargs:
+            enable_secure_boot = kwargs['enableSecureBoot']
+        if enable_vtpm is None and 'enableVtpm' in kwargs:
+            enable_vtpm = kwargs['enableVtpm']
+
         if enable_integrity_monitoring is not None:
             _setter("enable_integrity_monitoring", enable_integrity_monitoring)
         if enable_secure_boot is not None:
@@ -14939,7 +16345,9 @@ class InterconnectAttachmentPrivateInterconnectInfoArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              tag8021q: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if tag8021q is not None:
             _setter("tag8021q", tag8021q)
 
@@ -14978,10 +16386,16 @@ class MachineImageIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -15044,10 +16458,16 @@ class MachineImageIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -15121,7 +16541,15 @@ class MachineImageMachineImageEncryptionKeyArgs:
              kms_key_service_account: Optional[pulumi.Input[str]] = None,
              raw_key: Optional[pulumi.Input[str]] = None,
              sha256: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if kms_key_service_account is None and 'kmsKeyServiceAccount' in kwargs:
+            kms_key_service_account = kwargs['kmsKeyServiceAccount']
+        if raw_key is None and 'rawKey' in kwargs:
+            raw_key = kwargs['rawKey']
+
         if kms_key_name is not None:
             _setter("kms_key_name", kms_key_name)
         if kms_key_service_account is not None:
@@ -15199,8 +16627,12 @@ class ManagedSslCertificateManagedArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domains: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if domains is None:
+            raise TypeError("Missing 'domains' argument")
+
         _setter("domains", domains)
 
     @property
@@ -15232,8 +16664,12 @@ class MangedSslCertificateManagedArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domains: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if domains is None:
+            raise TypeError("Missing 'domains' argument")
+
         _setter("domains", domains)
 
     @property
@@ -15286,7 +16722,15 @@ class NetworkAttachmentConnectionEndpointArgs:
              secondary_ip_cidr_ranges: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if project_id_or_num is None and 'projectIdOrNum' in kwargs:
+            project_id_or_num = kwargs['projectIdOrNum']
+        if secondary_ip_cidr_ranges is None and 'secondaryIpCidrRanges' in kwargs:
+            secondary_ip_cidr_ranges = kwargs['secondaryIpCidrRanges']
+
         if ip_address is not None:
             _setter("ip_address", ip_address)
         if project_id_or_num is not None:
@@ -15390,10 +16834,16 @@ class NetworkEndpointListNetworkEndpointArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_address: pulumi.Input[str],
+             ip_address: Optional[pulumi.Input[str]] = None,
              instance: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+
         _setter("ip_address", ip_address)
         if instance is not None:
             _setter("instance", instance)
@@ -15492,7 +16942,7 @@ class NetworkFirewallPolicyRuleMatchArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             layer4_configs: pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchLayer4ConfigArgs']]],
+             layer4_configs: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchLayer4ConfigArgs']]]] = None,
              dest_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              dest_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -15504,7 +16954,35 @@ class NetworkFirewallPolicyRuleMatchArgs:
              src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchSrcSecureTagArgs']]]] = None,
              src_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if layer4_configs is None and 'layer4Configs' in kwargs:
+            layer4_configs = kwargs['layer4Configs']
+        if layer4_configs is None:
+            raise TypeError("Missing 'layer4_configs' argument")
+        if dest_address_groups is None and 'destAddressGroups' in kwargs:
+            dest_address_groups = kwargs['destAddressGroups']
+        if dest_fqdns is None and 'destFqdns' in kwargs:
+            dest_fqdns = kwargs['destFqdns']
+        if dest_ip_ranges is None and 'destIpRanges' in kwargs:
+            dest_ip_ranges = kwargs['destIpRanges']
+        if dest_region_codes is None and 'destRegionCodes' in kwargs:
+            dest_region_codes = kwargs['destRegionCodes']
+        if dest_threat_intelligences is None and 'destThreatIntelligences' in kwargs:
+            dest_threat_intelligences = kwargs['destThreatIntelligences']
+        if src_address_groups is None and 'srcAddressGroups' in kwargs:
+            src_address_groups = kwargs['srcAddressGroups']
+        if src_fqdns is None and 'srcFqdns' in kwargs:
+            src_fqdns = kwargs['srcFqdns']
+        if src_ip_ranges is None and 'srcIpRanges' in kwargs:
+            src_ip_ranges = kwargs['srcIpRanges']
+        if src_region_codes is None and 'srcRegionCodes' in kwargs:
+            src_region_codes = kwargs['srcRegionCodes']
+        if src_secure_tags is None and 'srcSecureTags' in kwargs:
+            src_secure_tags = kwargs['srcSecureTags']
+        if src_threat_intelligences is None and 'srcThreatIntelligences' in kwargs:
+            src_threat_intelligences = kwargs['srcThreatIntelligences']
+
         _setter("layer4_configs", layer4_configs)
         if dest_address_groups is not None:
             _setter("dest_address_groups", dest_address_groups)
@@ -15695,9 +17173,15 @@ class NetworkFirewallPolicyRuleMatchLayer4ConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_protocol: pulumi.Input[str],
+             ip_protocol: Optional[pulumi.Input[str]] = None,
              ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_protocol is None and 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if ip_protocol is None:
+            raise TypeError("Missing 'ip_protocol' argument")
+
         _setter("ip_protocol", ip_protocol)
         if ports is not None:
             _setter("ports", ports)
@@ -15746,9 +17230,13 @@ class NetworkFirewallPolicyRuleMatchSrcSecureTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
         if state is not None:
             _setter("state", state)
@@ -15795,9 +17283,13 @@ class NetworkFirewallPolicyRuleTargetSecureTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
         if state is not None:
             _setter("state", state)
@@ -15858,7 +17350,13 @@ class NodeGroupAutoscalingPolicyArgs:
              max_nodes: Optional[pulumi.Input[int]] = None,
              min_nodes: Optional[pulumi.Input[int]] = None,
              mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_nodes is None and 'maxNodes' in kwargs:
+            max_nodes = kwargs['maxNodes']
+        if min_nodes is None and 'minNodes' in kwargs:
+            min_nodes = kwargs['minNodes']
+
         if max_nodes is not None:
             _setter("max_nodes", max_nodes)
         if min_nodes is not None:
@@ -15925,8 +17423,14 @@ class NodeGroupMaintenanceWindowArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             start_time: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             start_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+
         _setter("start_time", start_time)
 
     @property
@@ -15961,9 +17465,17 @@ class NodeGroupShareSettingsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             share_type: pulumi.Input[str],
+             share_type: Optional[pulumi.Input[str]] = None,
              project_maps: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupShareSettingsProjectMapArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if share_type is None and 'shareType' in kwargs:
+            share_type = kwargs['shareType']
+        if share_type is None:
+            raise TypeError("Missing 'share_type' argument")
+        if project_maps is None and 'projectMaps' in kwargs:
+            project_maps = kwargs['projectMaps']
+
         _setter("share_type", share_type)
         if project_maps is not None:
             _setter("project_maps", project_maps)
@@ -16012,9 +17524,17 @@ class NodeGroupShareSettingsProjectMapArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: pulumi.Input[str],
-             project_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+
         _setter("id", id)
         _setter("project_id", project_id)
 
@@ -16067,7 +17587,11 @@ class NodeTemplateNodeTypeFlexibilityArgs:
              cpus: Optional[pulumi.Input[str]] = None,
              local_ssd: Optional[pulumi.Input[str]] = None,
              memory: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if local_ssd is None and 'localSsd' in kwargs:
+            local_ssd = kwargs['localSsd']
+
         if cpus is not None:
             _setter("cpus", cpus)
         if local_ssd is not None:
@@ -16138,8 +17662,12 @@ class NodeTemplateServerBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("type", type)
 
     @property
@@ -16190,10 +17718,16 @@ class OrganizationSecurityPolicyRuleMatchArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config: pulumi.Input['OrganizationSecurityPolicyRuleMatchConfigArgs'],
+             config: Optional[pulumi.Input['OrganizationSecurityPolicyRuleMatchConfigArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              versioned_expr: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+        if versioned_expr is None and 'versionedExpr' in kwargs:
+            versioned_expr = kwargs['versionedExpr']
+
         _setter("config", config)
         if description is not None:
             _setter("description", description)
@@ -16267,10 +17801,20 @@ class OrganizationSecurityPolicyRuleMatchConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             layer4_configs: pulumi.Input[Sequence[pulumi.Input['OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs']]],
+             layer4_configs: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs']]]] = None,
              dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if layer4_configs is None and 'layer4Configs' in kwargs:
+            layer4_configs = kwargs['layer4Configs']
+        if layer4_configs is None:
+            raise TypeError("Missing 'layer4_configs' argument")
+        if dest_ip_ranges is None and 'destIpRanges' in kwargs:
+            dest_ip_ranges = kwargs['destIpRanges']
+        if src_ip_ranges is None and 'srcIpRanges' in kwargs:
+            src_ip_ranges = kwargs['srcIpRanges']
+
         _setter("layer4_configs", layer4_configs)
         if dest_ip_ranges is not None:
             _setter("dest_ip_ranges", dest_ip_ranges)
@@ -16348,9 +17892,15 @@ class OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_protocol: pulumi.Input[str],
+             ip_protocol: Optional[pulumi.Input[str]] = None,
              ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_protocol is None and 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if ip_protocol is None:
+            raise TypeError("Missing 'ip_protocol' argument")
+
         _setter("ip_protocol", ip_protocol)
         if ports is not None:
             _setter("ports", ports)
@@ -16405,8 +17955,12 @@ class PacketMirroringCollectorIlbArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             url: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+
         _setter("url", url)
 
     @property
@@ -16448,7 +18002,13 @@ class PacketMirroringFilterArgs:
              cidr_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              direction: Optional[pulumi.Input[str]] = None,
              ip_protocols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cidr_ranges is None and 'cidrRanges' in kwargs:
+            cidr_ranges = kwargs['cidrRanges']
+        if ip_protocols is None and 'ipProtocols' in kwargs:
+            ip_protocols = kwargs['ipProtocols']
+
         if cidr_ranges is not None:
             _setter("cidr_ranges", cidr_ranges)
         if direction is not None:
@@ -16521,7 +18081,9 @@ class PacketMirroringMirroredResourcesArgs:
              instances: Optional[pulumi.Input[Sequence[pulumi.Input['PacketMirroringMirroredResourcesInstanceArgs']]]] = None,
              subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input['PacketMirroringMirroredResourcesSubnetworkArgs']]]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if instances is not None:
             _setter("instances", instances)
         if subnetworks is not None:
@@ -16584,8 +18146,12 @@ class PacketMirroringMirroredResourcesInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             url: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+
         _setter("url", url)
 
     @property
@@ -16617,8 +18183,12 @@ class PacketMirroringMirroredResourcesSubnetworkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             url: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+
         _setter("url", url)
 
     @property
@@ -16648,8 +18218,12 @@ class PacketMirroringNetworkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             url: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+
         _setter("url", url)
 
     @property
@@ -16691,7 +18265,13 @@ class PerInstanceConfigPreservedStateArgs:
              external_ips: Optional[pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateExternalIpArgs']]]] = None,
              internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateInternalIpArgs']]]] = None,
              metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if external_ips is None and 'externalIps' in kwargs:
+            external_ips = kwargs['externalIps']
+        if internal_ips is None and 'internalIps' in kwargs:
+            internal_ips = kwargs['internalIps']
+
         if disks is not None:
             _setter("disks", disks)
         if external_ips is not None:
@@ -16777,11 +18357,21 @@ class PerInstanceConfigPreservedStateDiskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             device_name: pulumi.Input[str],
-             source: pulumi.Input[str],
+             device_name: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
              delete_rule: Optional[pulumi.Input[str]] = None,
              mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if device_name is None and 'deviceName' in kwargs:
+            device_name = kwargs['deviceName']
+        if device_name is None:
+            raise TypeError("Missing 'device_name' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if delete_rule is None and 'deleteRule' in kwargs:
+            delete_rule = kwargs['deleteRule']
+
         _setter("device_name", device_name)
         _setter("source", source)
         if delete_rule is not None:
@@ -16870,10 +18460,20 @@ class PerInstanceConfigPreservedStateExternalIpArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             interface_name: pulumi.Input[str],
+             interface_name: Optional[pulumi.Input[str]] = None,
              auto_delete: Optional[pulumi.Input[str]] = None,
              ip_address: Optional[pulumi.Input['PerInstanceConfigPreservedStateExternalIpIpAddressArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if interface_name is None and 'interfaceName' in kwargs:
+            interface_name = kwargs['interfaceName']
+        if interface_name is None:
+            raise TypeError("Missing 'interface_name' argument")
+        if auto_delete is None and 'autoDelete' in kwargs:
+            auto_delete = kwargs['autoDelete']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         _setter("interface_name", interface_name)
         if auto_delete is not None:
             _setter("auto_delete", auto_delete)
@@ -16935,7 +18535,9 @@ class PerInstanceConfigPreservedStateExternalIpIpAddressArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              address: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if address is not None:
             _setter("address", address)
 
@@ -16975,10 +18577,20 @@ class PerInstanceConfigPreservedStateInternalIpArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             interface_name: pulumi.Input[str],
+             interface_name: Optional[pulumi.Input[str]] = None,
              auto_delete: Optional[pulumi.Input[str]] = None,
              ip_address: Optional[pulumi.Input['PerInstanceConfigPreservedStateInternalIpIpAddressArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if interface_name is None and 'interfaceName' in kwargs:
+            interface_name = kwargs['interfaceName']
+        if interface_name is None:
+            raise TypeError("Missing 'interface_name' argument")
+        if auto_delete is None and 'autoDelete' in kwargs:
+            auto_delete = kwargs['autoDelete']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         _setter("interface_name", interface_name)
         if auto_delete is not None:
             _setter("auto_delete", auto_delete)
@@ -17040,7 +18652,9 @@ class PerInstanceConfigPreservedStateInternalIpIpAddressArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              address: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if address is not None:
             _setter("address", address)
 
@@ -17122,8 +18736,8 @@ class RegionAutoscalerAutoscalingPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max_replicas: pulumi.Input[int],
-             min_replicas: pulumi.Input[int],
+             max_replicas: Optional[pulumi.Input[int]] = None,
+             min_replicas: Optional[pulumi.Input[int]] = None,
              cooldown_period: Optional[pulumi.Input[int]] = None,
              cpu_utilization: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs']] = None,
              load_balancing_utilization: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs']] = None,
@@ -17132,7 +18746,29 @@ class RegionAutoscalerAutoscalingPolicyArgs:
              scale_down_control: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlArgs']] = None,
              scale_in_control: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlArgs']] = None,
              scaling_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['RegionAutoscalerAutoscalingPolicyScalingScheduleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_replicas is None and 'maxReplicas' in kwargs:
+            max_replicas = kwargs['maxReplicas']
+        if max_replicas is None:
+            raise TypeError("Missing 'max_replicas' argument")
+        if min_replicas is None and 'minReplicas' in kwargs:
+            min_replicas = kwargs['minReplicas']
+        if min_replicas is None:
+            raise TypeError("Missing 'min_replicas' argument")
+        if cooldown_period is None and 'cooldownPeriod' in kwargs:
+            cooldown_period = kwargs['cooldownPeriod']
+        if cpu_utilization is None and 'cpuUtilization' in kwargs:
+            cpu_utilization = kwargs['cpuUtilization']
+        if load_balancing_utilization is None and 'loadBalancingUtilization' in kwargs:
+            load_balancing_utilization = kwargs['loadBalancingUtilization']
+        if scale_down_control is None and 'scaleDownControl' in kwargs:
+            scale_down_control = kwargs['scaleDownControl']
+        if scale_in_control is None and 'scaleInControl' in kwargs:
+            scale_in_control = kwargs['scaleInControl']
+        if scaling_schedules is None and 'scalingSchedules' in kwargs:
+            scaling_schedules = kwargs['scalingSchedules']
+
         _setter("max_replicas", max_replicas)
         _setter("min_replicas", min_replicas)
         if cooldown_period is not None:
@@ -17326,9 +18962,15 @@ class RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             target: pulumi.Input[float],
+             target: Optional[pulumi.Input[float]] = None,
              predictive_method: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+        if predictive_method is None and 'predictiveMethod' in kwargs:
+            predictive_method = kwargs['predictiveMethod']
+
         _setter("target", target)
         if predictive_method is not None:
             _setter("predictive_method", predictive_method)
@@ -17386,8 +19028,12 @@ class RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             target: pulumi.Input[float],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             target: Optional[pulumi.Input[float]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+
         _setter("target", target)
 
     @property
@@ -17481,12 +19127,18 @@ class RegionAutoscalerAutoscalingPolicyMetricArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              filter: Optional[pulumi.Input[str]] = None,
              single_instance_assignment: Optional[pulumi.Input[float]] = None,
              target: Optional[pulumi.Input[float]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if single_instance_assignment is None and 'singleInstanceAssignment' in kwargs:
+            single_instance_assignment = kwargs['singleInstanceAssignment']
+
         _setter("name", name)
         if filter is not None:
             _setter("filter", filter)
@@ -17629,7 +19281,13 @@ class RegionAutoscalerAutoscalingPolicyScaleDownControlArgs:
              _setter: Callable[[Any, Any], None],
              max_scaled_down_replicas: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs']] = None,
              time_window_sec: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_scaled_down_replicas is None and 'maxScaledDownReplicas' in kwargs:
+            max_scaled_down_replicas = kwargs['maxScaledDownReplicas']
+        if time_window_sec is None and 'timeWindowSec' in kwargs:
+            time_window_sec = kwargs['timeWindowSec']
+
         if max_scaled_down_replicas is not None:
             _setter("max_scaled_down_replicas", max_scaled_down_replicas)
         if time_window_sec is not None:
@@ -17683,7 +19341,9 @@ class RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs
              _setter: Callable[[Any, Any], None],
              fixed: Optional[pulumi.Input[int]] = None,
              percent: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if fixed is not None:
             _setter("fixed", fixed)
         if percent is not None:
@@ -17737,7 +19397,13 @@ class RegionAutoscalerAutoscalingPolicyScaleInControlArgs:
              _setter: Callable[[Any, Any], None],
              max_scaled_in_replicas: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs']] = None,
              time_window_sec: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_scaled_in_replicas is None and 'maxScaledInReplicas' in kwargs:
+            max_scaled_in_replicas = kwargs['maxScaledInReplicas']
+        if time_window_sec is None and 'timeWindowSec' in kwargs:
+            time_window_sec = kwargs['timeWindowSec']
+
         if max_scaled_in_replicas is not None:
             _setter("max_scaled_in_replicas", max_scaled_in_replicas)
         if time_window_sec is not None:
@@ -17791,7 +19457,9 @@ class RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs:
              _setter: Callable[[Any, Any], None],
              fixed: Optional[pulumi.Input[int]] = None,
              percent: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if fixed is not None:
             _setter("fixed", fixed)
         if percent is not None:
@@ -17856,14 +19524,30 @@ class RegionAutoscalerAutoscalingPolicyScalingScheduleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             duration_sec: pulumi.Input[int],
-             min_required_replicas: pulumi.Input[int],
-             name: pulumi.Input[str],
-             schedule: pulumi.Input[str],
+             duration_sec: Optional[pulumi.Input[int]] = None,
+             min_required_replicas: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             schedule: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if duration_sec is None and 'durationSec' in kwargs:
+            duration_sec = kwargs['durationSec']
+        if duration_sec is None:
+            raise TypeError("Missing 'duration_sec' argument")
+        if min_required_replicas is None and 'minRequiredReplicas' in kwargs:
+            min_required_replicas = kwargs['minRequiredReplicas']
+        if min_required_replicas is None:
+            raise TypeError("Missing 'min_required_replicas' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if schedule is None:
+            raise TypeError("Missing 'schedule' argument")
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         _setter("duration_sec", duration_sec)
         _setter("min_required_replicas", min_required_replicas)
         _setter("name", name)
@@ -18067,7 +19751,7 @@ class RegionBackendServiceBackendArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group: pulumi.Input[str],
+             group: Optional[pulumi.Input[str]] = None,
              balancing_mode: Optional[pulumi.Input[str]] = None,
              capacity_scaler: Optional[pulumi.Input[float]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -18079,7 +19763,29 @@ class RegionBackendServiceBackendArgs:
              max_rate_per_endpoint: Optional[pulumi.Input[float]] = None,
              max_rate_per_instance: Optional[pulumi.Input[float]] = None,
              max_utilization: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if balancing_mode is None and 'balancingMode' in kwargs:
+            balancing_mode = kwargs['balancingMode']
+        if capacity_scaler is None and 'capacityScaler' in kwargs:
+            capacity_scaler = kwargs['capacityScaler']
+        if max_connections is None and 'maxConnections' in kwargs:
+            max_connections = kwargs['maxConnections']
+        if max_connections_per_endpoint is None and 'maxConnectionsPerEndpoint' in kwargs:
+            max_connections_per_endpoint = kwargs['maxConnectionsPerEndpoint']
+        if max_connections_per_instance is None and 'maxConnectionsPerInstance' in kwargs:
+            max_connections_per_instance = kwargs['maxConnectionsPerInstance']
+        if max_rate is None and 'maxRate' in kwargs:
+            max_rate = kwargs['maxRate']
+        if max_rate_per_endpoint is None and 'maxRatePerEndpoint' in kwargs:
+            max_rate_per_endpoint = kwargs['maxRatePerEndpoint']
+        if max_rate_per_instance is None and 'maxRatePerInstance' in kwargs:
+            max_rate_per_instance = kwargs['maxRatePerInstance']
+        if max_utilization is None and 'maxUtilization' in kwargs:
+            max_utilization = kwargs['maxUtilization']
+
         _setter("group", group)
         if balancing_mode is not None:
             _setter("balancing_mode", balancing_mode)
@@ -18370,7 +20076,27 @@ class RegionBackendServiceCdnPolicyArgs:
              negative_caching_policies: Optional[pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs']]]] = None,
              serve_while_stale: Optional[pulumi.Input[int]] = None,
              signed_url_cache_max_age_sec: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cache_key_policy is None and 'cacheKeyPolicy' in kwargs:
+            cache_key_policy = kwargs['cacheKeyPolicy']
+        if cache_mode is None and 'cacheMode' in kwargs:
+            cache_mode = kwargs['cacheMode']
+        if client_ttl is None and 'clientTtl' in kwargs:
+            client_ttl = kwargs['clientTtl']
+        if default_ttl is None and 'defaultTtl' in kwargs:
+            default_ttl = kwargs['defaultTtl']
+        if max_ttl is None and 'maxTtl' in kwargs:
+            max_ttl = kwargs['maxTtl']
+        if negative_caching is None and 'negativeCaching' in kwargs:
+            negative_caching = kwargs['negativeCaching']
+        if negative_caching_policies is None and 'negativeCachingPolicies' in kwargs:
+            negative_caching_policies = kwargs['negativeCachingPolicies']
+        if serve_while_stale is None and 'serveWhileStale' in kwargs:
+            serve_while_stale = kwargs['serveWhileStale']
+        if signed_url_cache_max_age_sec is None and 'signedUrlCacheMaxAgeSec' in kwargs:
+            signed_url_cache_max_age_sec = kwargs['signedUrlCacheMaxAgeSec']
+
         if cache_key_policy is not None:
             _setter("cache_key_policy", cache_key_policy)
         if cache_mode is not None:
@@ -18561,7 +20287,21 @@ class RegionBackendServiceCdnPolicyCacheKeyPolicyArgs:
              include_query_string: Optional[pulumi.Input[bool]] = None,
              query_string_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              query_string_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if include_host is None and 'includeHost' in kwargs:
+            include_host = kwargs['includeHost']
+        if include_named_cookies is None and 'includeNamedCookies' in kwargs:
+            include_named_cookies = kwargs['includeNamedCookies']
+        if include_protocol is None and 'includeProtocol' in kwargs:
+            include_protocol = kwargs['includeProtocol']
+        if include_query_string is None and 'includeQueryString' in kwargs:
+            include_query_string = kwargs['includeQueryString']
+        if query_string_blacklists is None and 'queryStringBlacklists' in kwargs:
+            query_string_blacklists = kwargs['queryStringBlacklists']
+        if query_string_whitelists is None and 'queryStringWhitelists' in kwargs:
+            query_string_whitelists = kwargs['queryStringWhitelists']
+
         if include_host is not None:
             _setter("include_host", include_host)
         if include_named_cookies is not None:
@@ -18682,7 +20422,9 @@ class RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs:
              _setter: Callable[[Any, Any], None],
              code: Optional[pulumi.Input[int]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if code is not None:
             _setter("code", code)
         if ttl is not None:
@@ -18758,7 +20500,21 @@ class RegionBackendServiceCircuitBreakersArgs:
              max_requests: Optional[pulumi.Input[int]] = None,
              max_requests_per_connection: Optional[pulumi.Input[int]] = None,
              max_retries: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connect_timeout is None and 'connectTimeout' in kwargs:
+            connect_timeout = kwargs['connectTimeout']
+        if max_connections is None and 'maxConnections' in kwargs:
+            max_connections = kwargs['maxConnections']
+        if max_pending_requests is None and 'maxPendingRequests' in kwargs:
+            max_pending_requests = kwargs['maxPendingRequests']
+        if max_requests is None and 'maxRequests' in kwargs:
+            max_requests = kwargs['maxRequests']
+        if max_requests_per_connection is None and 'maxRequestsPerConnection' in kwargs:
+            max_requests_per_connection = kwargs['maxRequestsPerConnection']
+        if max_retries is None and 'maxRetries' in kwargs:
+            max_retries = kwargs['maxRetries']
+
         if connect_timeout is not None:
             _setter("connect_timeout", connect_timeout)
         if max_connections is not None:
@@ -18874,9 +20630,13 @@ class RegionBackendServiceCircuitBreakersConnectTimeoutArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[int],
+             seconds: Optional[pulumi.Input[int]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -18960,7 +20720,17 @@ class RegionBackendServiceConnectionTrackingPolicyArgs:
              enable_strong_affinity: Optional[pulumi.Input[bool]] = None,
              idle_timeout_sec: Optional[pulumi.Input[int]] = None,
              tracking_mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connection_persistence_on_unhealthy_backends is None and 'connectionPersistenceOnUnhealthyBackends' in kwargs:
+            connection_persistence_on_unhealthy_backends = kwargs['connectionPersistenceOnUnhealthyBackends']
+        if enable_strong_affinity is None and 'enableStrongAffinity' in kwargs:
+            enable_strong_affinity = kwargs['enableStrongAffinity']
+        if idle_timeout_sec is None and 'idleTimeoutSec' in kwargs:
+            idle_timeout_sec = kwargs['idleTimeoutSec']
+        if tracking_mode is None and 'trackingMode' in kwargs:
+            tracking_mode = kwargs['trackingMode']
+
         if connection_persistence_on_unhealthy_backends is not None:
             _setter("connection_persistence_on_unhealthy_backends", connection_persistence_on_unhealthy_backends)
         if enable_strong_affinity is not None:
@@ -19075,7 +20845,15 @@ class RegionBackendServiceConsistentHashArgs:
              http_cookie: Optional[pulumi.Input['RegionBackendServiceConsistentHashHttpCookieArgs']] = None,
              http_header_name: Optional[pulumi.Input[str]] = None,
              minimum_ring_size: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if http_cookie is None and 'httpCookie' in kwargs:
+            http_cookie = kwargs['httpCookie']
+        if http_header_name is None and 'httpHeaderName' in kwargs:
+            http_header_name = kwargs['httpHeaderName']
+        if minimum_ring_size is None and 'minimumRingSize' in kwargs:
+            minimum_ring_size = kwargs['minimumRingSize']
+
         if http_cookie is not None:
             _setter("http_cookie", http_cookie)
         if http_header_name is not None:
@@ -19154,7 +20932,9 @@ class RegionBackendServiceConsistentHashHttpCookieArgs:
              name: Optional[pulumi.Input[str]] = None,
              path: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input['RegionBackendServiceConsistentHashHttpCookieTtlArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if path is not None:
@@ -19221,9 +21001,13 @@ class RegionBackendServiceConsistentHashHttpCookieTtlArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[int],
+             seconds: Optional[pulumi.Input[int]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -19297,7 +21081,15 @@ class RegionBackendServiceFailoverPolicyArgs:
              disable_connection_drain_on_failover: Optional[pulumi.Input[bool]] = None,
              drop_traffic_if_unhealthy: Optional[pulumi.Input[bool]] = None,
              failover_ratio: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disable_connection_drain_on_failover is None and 'disableConnectionDrainOnFailover' in kwargs:
+            disable_connection_drain_on_failover = kwargs['disableConnectionDrainOnFailover']
+        if drop_traffic_if_unhealthy is None and 'dropTrafficIfUnhealthy' in kwargs:
+            drop_traffic_if_unhealthy = kwargs['dropTrafficIfUnhealthy']
+        if failover_ratio is None and 'failoverRatio' in kwargs:
+            failover_ratio = kwargs['failoverRatio']
+
         if disable_connection_drain_on_failover is not None:
             _setter("disable_connection_drain_on_failover", disable_connection_drain_on_failover)
         if drop_traffic_if_unhealthy is not None:
@@ -19378,10 +21170,16 @@ class RegionBackendServiceIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -19440,10 +21238,16 @@ class RegionBackendServiceIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -19506,10 +21310,22 @@ class RegionBackendServiceIapArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             oauth2_client_id: pulumi.Input[str],
-             oauth2_client_secret: pulumi.Input[str],
+             oauth2_client_id: Optional[pulumi.Input[str]] = None,
+             oauth2_client_secret: Optional[pulumi.Input[str]] = None,
              oauth2_client_secret_sha256: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if oauth2_client_id is None and 'oauth2ClientId' in kwargs:
+            oauth2_client_id = kwargs['oauth2ClientId']
+        if oauth2_client_id is None:
+            raise TypeError("Missing 'oauth2_client_id' argument")
+        if oauth2_client_secret is None and 'oauth2ClientSecret' in kwargs:
+            oauth2_client_secret = kwargs['oauth2ClientSecret']
+        if oauth2_client_secret is None:
+            raise TypeError("Missing 'oauth2_client_secret' argument")
+        if oauth2_client_secret_sha256 is None and 'oauth2ClientSecretSha256' in kwargs:
+            oauth2_client_secret_sha256 = kwargs['oauth2ClientSecretSha256']
+
         _setter("oauth2_client_id", oauth2_client_id)
         _setter("oauth2_client_secret", oauth2_client_secret)
         if oauth2_client_secret_sha256 is not None:
@@ -19577,7 +21393,11 @@ class RegionBackendServiceLogConfigArgs:
              _setter: Callable[[Any, Any], None],
              enable: Optional[pulumi.Input[bool]] = None,
              sample_rate: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if sample_rate is None and 'sampleRate' in kwargs:
+            sample_rate = kwargs['sampleRate']
+
         if enable is not None:
             _setter("enable", enable)
         if sample_rate is not None:
@@ -19694,7 +21514,29 @@ class RegionBackendServiceOutlierDetectionArgs:
              success_rate_minimum_hosts: Optional[pulumi.Input[int]] = None,
              success_rate_request_volume: Optional[pulumi.Input[int]] = None,
              success_rate_stdev_factor: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if base_ejection_time is None and 'baseEjectionTime' in kwargs:
+            base_ejection_time = kwargs['baseEjectionTime']
+        if consecutive_errors is None and 'consecutiveErrors' in kwargs:
+            consecutive_errors = kwargs['consecutiveErrors']
+        if consecutive_gateway_failure is None and 'consecutiveGatewayFailure' in kwargs:
+            consecutive_gateway_failure = kwargs['consecutiveGatewayFailure']
+        if enforcing_consecutive_errors is None and 'enforcingConsecutiveErrors' in kwargs:
+            enforcing_consecutive_errors = kwargs['enforcingConsecutiveErrors']
+        if enforcing_consecutive_gateway_failure is None and 'enforcingConsecutiveGatewayFailure' in kwargs:
+            enforcing_consecutive_gateway_failure = kwargs['enforcingConsecutiveGatewayFailure']
+        if enforcing_success_rate is None and 'enforcingSuccessRate' in kwargs:
+            enforcing_success_rate = kwargs['enforcingSuccessRate']
+        if max_ejection_percent is None and 'maxEjectionPercent' in kwargs:
+            max_ejection_percent = kwargs['maxEjectionPercent']
+        if success_rate_minimum_hosts is None and 'successRateMinimumHosts' in kwargs:
+            success_rate_minimum_hosts = kwargs['successRateMinimumHosts']
+        if success_rate_request_volume is None and 'successRateRequestVolume' in kwargs:
+            success_rate_request_volume = kwargs['successRateRequestVolume']
+        if success_rate_stdev_factor is None and 'successRateStdevFactor' in kwargs:
+            success_rate_stdev_factor = kwargs['successRateStdevFactor']
+
         if base_ejection_time is not None:
             _setter("base_ejection_time", base_ejection_time)
         if consecutive_errors is not None:
@@ -19899,9 +21741,13 @@ class RegionBackendServiceOutlierDetectionBaseEjectionTimeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[int],
+             seconds: Optional[pulumi.Input[int]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -19954,9 +21800,13 @@ class RegionBackendServiceOutlierDetectionIntervalArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[int],
+             seconds: Optional[pulumi.Input[int]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -20004,8 +21854,12 @@ class RegionBackendServiceSubsettingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             policy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy is None:
+            raise TypeError("Missing 'policy' argument")
+
         _setter("policy", policy)
 
     @property
@@ -20042,10 +21896,16 @@ class RegionCommitmentLicenseResourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             license: pulumi.Input[str],
+             license: Optional[pulumi.Input[str]] = None,
              amount: Optional[pulumi.Input[str]] = None,
              cores_per_license: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if license is None:
+            raise TypeError("Missing 'license' argument")
+        if cores_per_license is None and 'coresPerLicense' in kwargs:
+            cores_per_license = kwargs['coresPerLicense']
+
         _setter("license", license)
         if amount is not None:
             _setter("amount", amount)
@@ -20116,7 +21976,11 @@ class RegionCommitmentResourceArgs:
              accelerator_type: Optional[pulumi.Input[str]] = None,
              amount: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerator_type is None and 'acceleratorType' in kwargs:
+            accelerator_type = kwargs['acceleratorType']
+
         if accelerator_type is not None:
             _setter("accelerator_type", accelerator_type)
         if amount is not None:
@@ -20179,8 +22043,12 @@ class RegionDiskAsyncPrimaryDiskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disk: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             disk: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disk is None:
+            raise TypeError("Missing 'disk' argument")
+
         _setter("disk", disk)
 
     @property
@@ -20223,7 +22091,13 @@ class RegionDiskDiskEncryptionKeyArgs:
              kms_key_name: Optional[pulumi.Input[str]] = None,
              raw_key: Optional[pulumi.Input[str]] = None,
              sha256: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if raw_key is None and 'rawKey' in kwargs:
+            raw_key = kwargs['rawKey']
+
         if kms_key_name is not None:
             _setter("kms_key_name", kms_key_name)
         if raw_key is not None:
@@ -20287,8 +22161,12 @@ class RegionDiskGuestOsFeatureArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("type", type)
 
     @property
@@ -20320,10 +22198,16 @@ class RegionDiskIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -20372,10 +22256,16 @@ class RegionDiskIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -20435,7 +22325,13 @@ class RegionDiskSourceSnapshotEncryptionKeyArgs:
              kms_key_name: Optional[pulumi.Input[str]] = None,
              raw_key: Optional[pulumi.Input[str]] = None,
              sha256: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if raw_key is None and 'rawKey' in kwargs:
+            raw_key = kwargs['rawKey']
+
         if kms_key_name is not None:
             _setter("kms_key_name", kms_key_name)
         if raw_key is not None:
@@ -20518,7 +22414,15 @@ class RegionHealthCheckGrpcHealthCheckArgs:
              port: Optional[pulumi.Input[int]] = None,
              port_name: Optional[pulumi.Input[str]] = None,
              port_specification: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if grpc_service_name is None and 'grpcServiceName' in kwargs:
+            grpc_service_name = kwargs['grpcServiceName']
+        if port_name is None and 'portName' in kwargs:
+            port_name = kwargs['portName']
+        if port_specification is None and 'portSpecification' in kwargs:
+            port_specification = kwargs['portSpecification']
+
         if grpc_service_name is not None:
             _setter("grpc_service_name", grpc_service_name)
         if port is not None:
@@ -20636,7 +22540,17 @@ class RegionHealthCheckHttp2HealthCheckArgs:
              proxy_header: Optional[pulumi.Input[str]] = None,
              request_path: Optional[pulumi.Input[str]] = None,
              response: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if port_name is None and 'portName' in kwargs:
+            port_name = kwargs['portName']
+        if port_specification is None and 'portSpecification' in kwargs:
+            port_specification = kwargs['portSpecification']
+        if proxy_header is None and 'proxyHeader' in kwargs:
+            proxy_header = kwargs['proxyHeader']
+        if request_path is None and 'requestPath' in kwargs:
+            request_path = kwargs['requestPath']
+
         if host is not None:
             _setter("host", host)
         if port is not None:
@@ -20799,7 +22713,17 @@ class RegionHealthCheckHttpHealthCheckArgs:
              proxy_header: Optional[pulumi.Input[str]] = None,
              request_path: Optional[pulumi.Input[str]] = None,
              response: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if port_name is None and 'portName' in kwargs:
+            port_name = kwargs['portName']
+        if port_specification is None and 'portSpecification' in kwargs:
+            port_specification = kwargs['portSpecification']
+        if proxy_header is None and 'proxyHeader' in kwargs:
+            proxy_header = kwargs['proxyHeader']
+        if request_path is None and 'requestPath' in kwargs:
+            request_path = kwargs['requestPath']
+
         if host is not None:
             _setter("host", host)
         if port is not None:
@@ -20961,7 +22885,17 @@ class RegionHealthCheckHttpsHealthCheckArgs:
              proxy_header: Optional[pulumi.Input[str]] = None,
              request_path: Optional[pulumi.Input[str]] = None,
              response: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if port_name is None and 'portName' in kwargs:
+            port_name = kwargs['portName']
+        if port_specification is None and 'portSpecification' in kwargs:
+            port_specification = kwargs['portSpecification']
+        if proxy_header is None and 'proxyHeader' in kwargs:
+            proxy_header = kwargs['proxyHeader']
+        if request_path is None and 'requestPath' in kwargs:
+            request_path = kwargs['requestPath']
+
         if host is not None:
             _setter("host", host)
         if port is not None:
@@ -21089,7 +23023,9 @@ class RegionHealthCheckLogConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              enable: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if enable is not None:
             _setter("enable", enable)
 
@@ -21153,7 +23089,15 @@ class RegionHealthCheckSslHealthCheckArgs:
              proxy_header: Optional[pulumi.Input[str]] = None,
              request: Optional[pulumi.Input[str]] = None,
              response: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if port_name is None and 'portName' in kwargs:
+            port_name = kwargs['portName']
+        if port_specification is None and 'portSpecification' in kwargs:
+            port_specification = kwargs['portSpecification']
+        if proxy_header is None and 'proxyHeader' in kwargs:
+            proxy_header = kwargs['proxyHeader']
+
         if port is not None:
             _setter("port", port)
         if port_name is not None:
@@ -21297,7 +23241,15 @@ class RegionHealthCheckTcpHealthCheckArgs:
              proxy_header: Optional[pulumi.Input[str]] = None,
              request: Optional[pulumi.Input[str]] = None,
              response: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if port_name is None and 'portName' in kwargs:
+            port_name = kwargs['portName']
+        if port_specification is None and 'portSpecification' in kwargs:
+            port_specification = kwargs['portSpecification']
+        if proxy_header is None and 'proxyHeader' in kwargs:
+            proxy_header = kwargs['proxyHeader']
+
         if port is not None:
             _setter("port", port)
         if port_name is not None:
@@ -21416,7 +23368,9 @@ class RegionInstanceGroupManagerAllInstancesConfigArgs:
              _setter: Callable[[Any, Any], None],
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if labels is not None:
             _setter("labels", labels)
         if metadata is not None:
@@ -21467,9 +23421,19 @@ class RegionInstanceGroupManagerAutoHealingPoliciesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             health_check: pulumi.Input[str],
-             initial_delay_sec: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             health_check: Optional[pulumi.Input[str]] = None,
+             initial_delay_sec: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if health_check is None and 'healthCheck' in kwargs:
+            health_check = kwargs['healthCheck']
+        if health_check is None:
+            raise TypeError("Missing 'health_check' argument")
+        if initial_delay_sec is None and 'initialDelaySec' in kwargs:
+            initial_delay_sec = kwargs['initialDelaySec']
+        if initial_delay_sec is None:
+            raise TypeError("Missing 'initial_delay_sec' argument")
+
         _setter("health_check", health_check)
         _setter("initial_delay_sec", initial_delay_sec)
 
@@ -21515,7 +23479,11 @@ class RegionInstanceGroupManagerInstanceLifecyclePolicyArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              force_update_on_repair: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if force_update_on_repair is None and 'forceUpdateOnRepair' in kwargs:
+            force_update_on_repair = kwargs['forceUpdateOnRepair']
+
         if force_update_on_repair is not None:
             _setter("force_update_on_repair", force_update_on_repair)
 
@@ -21551,9 +23519,15 @@ class RegionInstanceGroupManagerNamedPortArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             port: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+
         _setter("name", name)
         _setter("port", port)
 
@@ -21600,9 +23574,17 @@ class RegionInstanceGroupManagerStatefulDiskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             device_name: pulumi.Input[str],
+             device_name: Optional[pulumi.Input[str]] = None,
              delete_rule: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if device_name is None and 'deviceName' in kwargs:
+            device_name = kwargs['deviceName']
+        if device_name is None:
+            raise TypeError("Missing 'device_name' argument")
+        if delete_rule is None and 'deleteRule' in kwargs:
+            delete_rule = kwargs['deleteRule']
+
         _setter("device_name", device_name)
         if delete_rule is not None:
             _setter("delete_rule", delete_rule)
@@ -21651,7 +23633,13 @@ class RegionInstanceGroupManagerStatefulExternalIpArgs:
              _setter: Callable[[Any, Any], None],
              delete_rule: Optional[pulumi.Input[str]] = None,
              interface_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if delete_rule is None and 'deleteRule' in kwargs:
+            delete_rule = kwargs['deleteRule']
+        if interface_name is None and 'interfaceName' in kwargs:
+            interface_name = kwargs['interfaceName']
+
         if delete_rule is not None:
             _setter("delete_rule", delete_rule)
         if interface_name is not None:
@@ -21701,7 +23689,13 @@ class RegionInstanceGroupManagerStatefulInternalIpArgs:
              _setter: Callable[[Any, Any], None],
              delete_rule: Optional[pulumi.Input[str]] = None,
              interface_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if delete_rule is None and 'deleteRule' in kwargs:
+            delete_rule = kwargs['deleteRule']
+        if interface_name is None and 'interfaceName' in kwargs:
+            interface_name = kwargs['interfaceName']
+
         if delete_rule is not None:
             _setter("delete_rule", delete_rule)
         if interface_name is not None:
@@ -21762,7 +23756,15 @@ class RegionInstanceGroupManagerStatusArgs:
              is_stable: Optional[pulumi.Input[bool]] = None,
              statefuls: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulArgs']]]] = None,
              version_targets: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusVersionTargetArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if all_instances_configs is None and 'allInstancesConfigs' in kwargs:
+            all_instances_configs = kwargs['allInstancesConfigs']
+        if is_stable is None and 'isStable' in kwargs:
+            is_stable = kwargs['isStable']
+        if version_targets is None and 'versionTargets' in kwargs:
+            version_targets = kwargs['versionTargets']
+
         if all_instances_configs is not None:
             _setter("all_instances_configs", all_instances_configs)
         if is_stable is not None:
@@ -21836,7 +23838,9 @@ class RegionInstanceGroupManagerStatusAllInstancesConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              effective: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if effective is not None:
             _setter("effective", effective)
 
@@ -21869,7 +23873,13 @@ class RegionInstanceGroupManagerStatusStatefulArgs:
              _setter: Callable[[Any, Any], None],
              has_stateful_config: Optional[pulumi.Input[bool]] = None,
              per_instance_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if has_stateful_config is None and 'hasStatefulConfig' in kwargs:
+            has_stateful_config = kwargs['hasStatefulConfig']
+        if per_instance_configs is None and 'perInstanceConfigs' in kwargs:
+            per_instance_configs = kwargs['perInstanceConfigs']
+
         if has_stateful_config is not None:
             _setter("has_stateful_config", has_stateful_config)
         if per_instance_configs is not None:
@@ -21915,7 +23925,11 @@ class RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              all_effective: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if all_effective is None and 'allEffective' in kwargs:
+            all_effective = kwargs['allEffective']
+
         if all_effective is not None:
             _setter("all_effective", all_effective)
 
@@ -21944,7 +23958,11 @@ class RegionInstanceGroupManagerStatusVersionTargetArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              is_reached: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if is_reached is None and 'isReached' in kwargs:
+            is_reached = kwargs['isReached']
+
         if is_reached is not None:
             _setter("is_reached", is_reached)
 
@@ -22000,8 +24018,8 @@ class RegionInstanceGroupManagerUpdatePolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             minimal_action: pulumi.Input[str],
-             type: pulumi.Input[str],
+             minimal_action: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              instance_redistribution_type: Optional[pulumi.Input[str]] = None,
              max_surge_fixed: Optional[pulumi.Input[int]] = None,
              max_surge_percent: Optional[pulumi.Input[int]] = None,
@@ -22010,7 +24028,31 @@ class RegionInstanceGroupManagerUpdatePolicyArgs:
              min_ready_sec: Optional[pulumi.Input[int]] = None,
              most_disruptive_allowed_action: Optional[pulumi.Input[str]] = None,
              replacement_method: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if minimal_action is None and 'minimalAction' in kwargs:
+            minimal_action = kwargs['minimalAction']
+        if minimal_action is None:
+            raise TypeError("Missing 'minimal_action' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if instance_redistribution_type is None and 'instanceRedistributionType' in kwargs:
+            instance_redistribution_type = kwargs['instanceRedistributionType']
+        if max_surge_fixed is None and 'maxSurgeFixed' in kwargs:
+            max_surge_fixed = kwargs['maxSurgeFixed']
+        if max_surge_percent is None and 'maxSurgePercent' in kwargs:
+            max_surge_percent = kwargs['maxSurgePercent']
+        if max_unavailable_fixed is None and 'maxUnavailableFixed' in kwargs:
+            max_unavailable_fixed = kwargs['maxUnavailableFixed']
+        if max_unavailable_percent is None and 'maxUnavailablePercent' in kwargs:
+            max_unavailable_percent = kwargs['maxUnavailablePercent']
+        if min_ready_sec is None and 'minReadySec' in kwargs:
+            min_ready_sec = kwargs['minReadySec']
+        if most_disruptive_allowed_action is None and 'mostDisruptiveAllowedAction' in kwargs:
+            most_disruptive_allowed_action = kwargs['mostDisruptiveAllowedAction']
+        if replacement_method is None and 'replacementMethod' in kwargs:
+            replacement_method = kwargs['replacementMethod']
+
         _setter("minimal_action", minimal_action)
         _setter("type", type)
         if instance_redistribution_type is not None:
@@ -22175,10 +24217,18 @@ class RegionInstanceGroupManagerVersionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_template: pulumi.Input[str],
+             instance_template: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              target_size: Optional[pulumi.Input['RegionInstanceGroupManagerVersionTargetSizeArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_template is None and 'instanceTemplate' in kwargs:
+            instance_template = kwargs['instanceTemplate']
+        if instance_template is None:
+            raise TypeError("Missing 'instance_template' argument")
+        if target_size is None and 'targetSize' in kwargs:
+            target_size = kwargs['targetSize']
+
         _setter("instance_template", instance_template)
         if name is not None:
             _setter("name", name)
@@ -22246,7 +24296,9 @@ class RegionInstanceGroupManagerVersionTargetSizeArgs:
              _setter: Callable[[Any, Any], None],
              fixed: Optional[pulumi.Input[int]] = None,
              percent: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if fixed is not None:
             _setter("fixed", fixed)
         if percent is not None:
@@ -22302,7 +24354,15 @@ class RegionInstanceTemplateAdvancedMachineFeaturesArgs:
              enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
              threads_per_core: Optional[pulumi.Input[int]] = None,
              visible_core_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_nested_virtualization is None and 'enableNestedVirtualization' in kwargs:
+            enable_nested_virtualization = kwargs['enableNestedVirtualization']
+        if threads_per_core is None and 'threadsPerCore' in kwargs:
+            threads_per_core = kwargs['threadsPerCore']
+        if visible_core_count is None and 'visibleCoreCount' in kwargs:
+            visible_core_count = kwargs['visibleCoreCount']
+
         if enable_nested_virtualization is not None:
             _setter("enable_nested_virtualization", enable_nested_virtualization)
         if threads_per_core is not None:
@@ -22361,8 +24421,14 @@ class RegionInstanceTemplateConfidentialInstanceConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enable_confidential_compute: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_confidential_compute is None and 'enableConfidentialCompute' in kwargs:
+            enable_confidential_compute = kwargs['enableConfidentialCompute']
+        if enable_confidential_compute is None:
+            raise TypeError("Missing 'enable_confidential_compute' argument")
+
         _setter("enable_confidential_compute", enable_confidential_compute)
 
     @property
@@ -22500,7 +24566,33 @@ class RegionInstanceTemplateDiskArgs:
              source_snapshot: Optional[pulumi.Input[str]] = None,
              source_snapshot_encryption_key: Optional[pulumi.Input['RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs']] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_delete is None and 'autoDelete' in kwargs:
+            auto_delete = kwargs['autoDelete']
+        if device_name is None and 'deviceName' in kwargs:
+            device_name = kwargs['deviceName']
+        if disk_encryption_key is None and 'diskEncryptionKey' in kwargs:
+            disk_encryption_key = kwargs['diskEncryptionKey']
+        if disk_name is None and 'diskName' in kwargs:
+            disk_name = kwargs['diskName']
+        if disk_size_gb is None and 'diskSizeGb' in kwargs:
+            disk_size_gb = kwargs['diskSizeGb']
+        if disk_type is None and 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if provisioned_iops is None and 'provisionedIops' in kwargs:
+            provisioned_iops = kwargs['provisionedIops']
+        if resource_policies is None and 'resourcePolicies' in kwargs:
+            resource_policies = kwargs['resourcePolicies']
+        if source_image is None and 'sourceImage' in kwargs:
+            source_image = kwargs['sourceImage']
+        if source_image_encryption_key is None and 'sourceImageEncryptionKey' in kwargs:
+            source_image_encryption_key = kwargs['sourceImageEncryptionKey']
+        if source_snapshot is None and 'sourceSnapshot' in kwargs:
+            source_snapshot = kwargs['sourceSnapshot']
+        if source_snapshot_encryption_key is None and 'sourceSnapshotEncryptionKey' in kwargs:
+            source_snapshot_encryption_key = kwargs['sourceSnapshotEncryptionKey']
+
         if auto_delete is not None:
             _setter("auto_delete", auto_delete)
         if boot is not None:
@@ -22806,8 +24898,14 @@ class RegionInstanceTemplateDiskDiskEncryptionKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kms_key_self_link: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             kms_key_self_link: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_self_link is None and 'kmsKeySelfLink' in kwargs:
+            kms_key_self_link = kwargs['kmsKeySelfLink']
+        if kms_key_self_link is None:
+            raise TypeError("Missing 'kms_key_self_link' argument")
+
         _setter("kms_key_self_link", kms_key_self_link)
 
     @property
@@ -22843,9 +24941,17 @@ class RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kms_key_self_link: pulumi.Input[str],
+             kms_key_self_link: Optional[pulumi.Input[str]] = None,
              kms_key_service_account: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_self_link is None and 'kmsKeySelfLink' in kwargs:
+            kms_key_self_link = kwargs['kmsKeySelfLink']
+        if kms_key_self_link is None:
+            raise TypeError("Missing 'kms_key_self_link' argument")
+        if kms_key_service_account is None and 'kmsKeyServiceAccount' in kwargs:
+            kms_key_service_account = kwargs['kmsKeyServiceAccount']
+
         _setter("kms_key_self_link", kms_key_self_link)
         if kms_key_service_account is not None:
             _setter("kms_key_service_account", kms_key_service_account)
@@ -22898,9 +25004,17 @@ class RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kms_key_self_link: pulumi.Input[str],
+             kms_key_self_link: Optional[pulumi.Input[str]] = None,
              kms_key_service_account: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_self_link is None and 'kmsKeySelfLink' in kwargs:
+            kms_key_self_link = kwargs['kmsKeySelfLink']
+        if kms_key_self_link is None:
+            raise TypeError("Missing 'kms_key_self_link' argument")
+        if kms_key_service_account is None and 'kmsKeyServiceAccount' in kwargs:
+            kms_key_service_account = kwargs['kmsKeyServiceAccount']
+
         _setter("kms_key_self_link", kms_key_self_link)
         if kms_key_service_account is not None:
             _setter("kms_key_service_account", kms_key_service_account)
@@ -22951,9 +25065,15 @@ class RegionInstanceTemplateGuestAcceleratorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             count: pulumi.Input[int],
-             type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             count: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if count is None:
+            raise TypeError("Missing 'count' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("count", count)
         _setter("type", type)
 
@@ -23055,7 +25175,31 @@ class RegionInstanceTemplateNetworkInterfaceArgs:
              stack_type: Optional[pulumi.Input[str]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
              subnetwork_project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_configs is None and 'accessConfigs' in kwargs:
+            access_configs = kwargs['accessConfigs']
+        if alias_ip_ranges is None and 'aliasIpRanges' in kwargs:
+            alias_ip_ranges = kwargs['aliasIpRanges']
+        if internal_ipv6_prefix_length is None and 'internalIpv6PrefixLength' in kwargs:
+            internal_ipv6_prefix_length = kwargs['internalIpv6PrefixLength']
+        if ipv6_access_configs is None and 'ipv6AccessConfigs' in kwargs:
+            ipv6_access_configs = kwargs['ipv6AccessConfigs']
+        if ipv6_access_type is None and 'ipv6AccessType' in kwargs:
+            ipv6_access_type = kwargs['ipv6AccessType']
+        if ipv6_address is None and 'ipv6Address' in kwargs:
+            ipv6_address = kwargs['ipv6Address']
+        if network_ip is None and 'networkIp' in kwargs:
+            network_ip = kwargs['networkIp']
+        if nic_type is None and 'nicType' in kwargs:
+            nic_type = kwargs['nicType']
+        if queue_count is None and 'queueCount' in kwargs:
+            queue_count = kwargs['queueCount']
+        if stack_type is None and 'stackType' in kwargs:
+            stack_type = kwargs['stackType']
+        if subnetwork_project is None and 'subnetworkProject' in kwargs:
+            subnetwork_project = kwargs['subnetworkProject']
+
         if access_configs is not None:
             _setter("access_configs", access_configs)
         if alias_ip_ranges is not None:
@@ -23273,7 +25417,15 @@ class RegionInstanceTemplateNetworkInterfaceAccessConfigArgs:
              nat_ip: Optional[pulumi.Input[str]] = None,
              network_tier: Optional[pulumi.Input[str]] = None,
              public_ptr_domain_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if nat_ip is None and 'natIp' in kwargs:
+            nat_ip = kwargs['natIp']
+        if network_tier is None and 'networkTier' in kwargs:
+            network_tier = kwargs['networkTier']
+        if public_ptr_domain_name is None and 'publicPtrDomainName' in kwargs:
+            public_ptr_domain_name = kwargs['publicPtrDomainName']
+
         if nat_ip is not None:
             _setter("nat_ip", nat_ip)
         if network_tier is not None:
@@ -23340,9 +25492,17 @@ class RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_cidr_range: pulumi.Input[str],
+             ip_cidr_range: Optional[pulumi.Input[str]] = None,
              subnetwork_range_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_cidr_range is None and 'ipCidrRange' in kwargs:
+            ip_cidr_range = kwargs['ipCidrRange']
+        if ip_cidr_range is None:
+            raise TypeError("Missing 'ip_cidr_range' argument")
+        if subnetwork_range_name is None and 'subnetworkRangeName' in kwargs:
+            subnetwork_range_name = kwargs['subnetworkRangeName']
+
         _setter("ip_cidr_range", ip_cidr_range)
         if subnetwork_range_name is not None:
             _setter("subnetwork_range_name", subnetwork_range_name)
@@ -23401,12 +25561,24 @@ class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network_tier: pulumi.Input[str],
+             network_tier: Optional[pulumi.Input[str]] = None,
              external_ipv6: Optional[pulumi.Input[str]] = None,
              external_ipv6_prefix_length: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              public_ptr_domain_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network_tier is None and 'networkTier' in kwargs:
+            network_tier = kwargs['networkTier']
+        if network_tier is None:
+            raise TypeError("Missing 'network_tier' argument")
+        if external_ipv6 is None and 'externalIpv6' in kwargs:
+            external_ipv6 = kwargs['externalIpv6']
+        if external_ipv6_prefix_length is None and 'externalIpv6PrefixLength' in kwargs:
+            external_ipv6_prefix_length = kwargs['externalIpv6PrefixLength']
+        if public_ptr_domain_name is None and 'publicPtrDomainName' in kwargs:
+            public_ptr_domain_name = kwargs['publicPtrDomainName']
+
         _setter("network_tier", network_tier)
         if external_ipv6 is not None:
             _setter("external_ipv6", external_ipv6)
@@ -23481,8 +25653,14 @@ class RegionInstanceTemplateNetworkPerformanceConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             total_egress_bandwidth_tier: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             total_egress_bandwidth_tier: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if total_egress_bandwidth_tier is None and 'totalEgressBandwidthTier' in kwargs:
+            total_egress_bandwidth_tier = kwargs['totalEgressBandwidthTier']
+        if total_egress_bandwidth_tier is None:
+            raise TypeError("Missing 'total_egress_bandwidth_tier' argument")
+
         _setter("total_egress_bandwidth_tier", total_egress_bandwidth_tier)
 
     @property
@@ -23516,9 +25694,15 @@ class RegionInstanceTemplateReservationAffinityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              specific_reservation: Optional[pulumi.Input['RegionInstanceTemplateReservationAffinitySpecificReservationArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if specific_reservation is None and 'specificReservation' in kwargs:
+            specific_reservation = kwargs['specificReservation']
+
         _setter("type", type)
         if specific_reservation is not None:
             _setter("specific_reservation", specific_reservation)
@@ -23566,9 +25750,15 @@ class RegionInstanceTemplateReservationAffinitySpecificReservationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             values: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("key", key)
         _setter("values", values)
 
@@ -23659,7 +25849,27 @@ class RegionInstanceTemplateSchedulingArgs:
              on_host_maintenance: Optional[pulumi.Input[str]] = None,
              preemptible: Optional[pulumi.Input[bool]] = None,
              provisioning_model: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if automatic_restart is None and 'automaticRestart' in kwargs:
+            automatic_restart = kwargs['automaticRestart']
+        if instance_termination_action is None and 'instanceTerminationAction' in kwargs:
+            instance_termination_action = kwargs['instanceTerminationAction']
+        if local_ssd_recovery_timeouts is None and 'localSsdRecoveryTimeouts' in kwargs:
+            local_ssd_recovery_timeouts = kwargs['localSsdRecoveryTimeouts']
+        if maintenance_interval is None and 'maintenanceInterval' in kwargs:
+            maintenance_interval = kwargs['maintenanceInterval']
+        if max_run_duration is None and 'maxRunDuration' in kwargs:
+            max_run_duration = kwargs['maxRunDuration']
+        if min_node_cpus is None and 'minNodeCpus' in kwargs:
+            min_node_cpus = kwargs['minNodeCpus']
+        if node_affinities is None and 'nodeAffinities' in kwargs:
+            node_affinities = kwargs['nodeAffinities']
+        if on_host_maintenance is None and 'onHostMaintenance' in kwargs:
+            on_host_maintenance = kwargs['onHostMaintenance']
+        if provisioning_model is None and 'provisioningModel' in kwargs:
+            provisioning_model = kwargs['provisioningModel']
+
         if automatic_restart is not None:
             _setter("automatic_restart", automatic_restart)
         if instance_termination_action is not None:
@@ -23831,9 +26041,13 @@ class RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[int],
+             seconds: Optional[pulumi.Input[int]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -23890,9 +26104,13 @@ class RegionInstanceTemplateSchedulingMaxRunDurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[int],
+             seconds: Optional[pulumi.Input[int]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -23948,10 +26166,18 @@ class RegionInstanceTemplateSchedulingNodeAffinityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             operator: pulumi.Input[str],
-             values: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             operator: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("key", key)
         _setter("operator", operator)
         _setter("values", values)
@@ -24021,9 +26247,13 @@ class RegionInstanceTemplateServiceAccountArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
+             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              email: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if scopes is None:
+            raise TypeError("Missing 'scopes' argument")
+
         _setter("scopes", scopes)
         if email is not None:
             _setter("email", email)
@@ -24086,7 +26316,15 @@ class RegionInstanceTemplateShieldedInstanceConfigArgs:
              enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
              enable_secure_boot: Optional[pulumi.Input[bool]] = None,
              enable_vtpm: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_integrity_monitoring is None and 'enableIntegrityMonitoring' in kwargs:
+            enable_integrity_monitoring = kwargs['enableIntegrityMonitoring']
+        if enable_secure_boot is None and 'enableSecureBoot' in kwargs:
+            enable_secure_boot = kwargs['enableSecureBoot']
+        if enable_vtpm is None and 'enableVtpm' in kwargs:
+            enable_vtpm = kwargs['enableVtpm']
+
         if enable_integrity_monitoring is not None:
             _setter("enable_integrity_monitoring", enable_integrity_monitoring)
         if enable_secure_boot is not None:
@@ -24164,7 +26402,11 @@ class RegionNetworkEndpointGroupAppEngineArgs:
              service: Optional[pulumi.Input[str]] = None,
              url_mask: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if url_mask is None and 'urlMask' in kwargs:
+            url_mask = kwargs['urlMask']
+
         if service is not None:
             _setter("service", service)
         if url_mask is not None:
@@ -24245,7 +26487,11 @@ class RegionNetworkEndpointGroupCloudFunctionArgs:
              _setter: Callable[[Any, Any], None],
              function: Optional[pulumi.Input[str]] = None,
              url_mask: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if url_mask is None and 'urlMask' in kwargs:
+            url_mask = kwargs['urlMask']
+
         if function is not None:
             _setter("function", function)
         if url_mask is not None:
@@ -24317,7 +26563,11 @@ class RegionNetworkEndpointGroupCloudRunArgs:
              service: Optional[pulumi.Input[str]] = None,
              tag: Optional[pulumi.Input[str]] = None,
              url_mask: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if url_mask is None and 'urlMask' in kwargs:
+            url_mask = kwargs['urlMask']
+
         if service is not None:
             _setter("service", service)
         if tag is not None:
@@ -24403,11 +26653,17 @@ class RegionNetworkEndpointGroupServerlessDeploymentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             platform: pulumi.Input[str],
+             platform: Optional[pulumi.Input[str]] = None,
              resource: Optional[pulumi.Input[str]] = None,
              url_mask: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if platform is None:
+            raise TypeError("Missing 'platform' argument")
+        if url_mask is None and 'urlMask' in kwargs:
+            url_mask = kwargs['urlMask']
+
         _setter("platform", platform)
         if resource is not None:
             _setter("resource", resource)
@@ -24521,7 +26777,7 @@ class RegionNetworkFirewallPolicyRuleMatchArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             layer4_configs: pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs']]],
+             layer4_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs']]]] = None,
              dest_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              dest_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -24533,7 +26789,35 @@ class RegionNetworkFirewallPolicyRuleMatchArgs:
              src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs']]]] = None,
              src_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if layer4_configs is None and 'layer4Configs' in kwargs:
+            layer4_configs = kwargs['layer4Configs']
+        if layer4_configs is None:
+            raise TypeError("Missing 'layer4_configs' argument")
+        if dest_address_groups is None and 'destAddressGroups' in kwargs:
+            dest_address_groups = kwargs['destAddressGroups']
+        if dest_fqdns is None and 'destFqdns' in kwargs:
+            dest_fqdns = kwargs['destFqdns']
+        if dest_ip_ranges is None and 'destIpRanges' in kwargs:
+            dest_ip_ranges = kwargs['destIpRanges']
+        if dest_region_codes is None and 'destRegionCodes' in kwargs:
+            dest_region_codes = kwargs['destRegionCodes']
+        if dest_threat_intelligences is None and 'destThreatIntelligences' in kwargs:
+            dest_threat_intelligences = kwargs['destThreatIntelligences']
+        if src_address_groups is None and 'srcAddressGroups' in kwargs:
+            src_address_groups = kwargs['srcAddressGroups']
+        if src_fqdns is None and 'srcFqdns' in kwargs:
+            src_fqdns = kwargs['srcFqdns']
+        if src_ip_ranges is None and 'srcIpRanges' in kwargs:
+            src_ip_ranges = kwargs['srcIpRanges']
+        if src_region_codes is None and 'srcRegionCodes' in kwargs:
+            src_region_codes = kwargs['srcRegionCodes']
+        if src_secure_tags is None and 'srcSecureTags' in kwargs:
+            src_secure_tags = kwargs['srcSecureTags']
+        if src_threat_intelligences is None and 'srcThreatIntelligences' in kwargs:
+            src_threat_intelligences = kwargs['srcThreatIntelligences']
+
         _setter("layer4_configs", layer4_configs)
         if dest_address_groups is not None:
             _setter("dest_address_groups", dest_address_groups)
@@ -24724,9 +27008,15 @@ class RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_protocol: pulumi.Input[str],
+             ip_protocol: Optional[pulumi.Input[str]] = None,
              ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_protocol is None and 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if ip_protocol is None:
+            raise TypeError("Missing 'ip_protocol' argument")
+
         _setter("ip_protocol", ip_protocol)
         if ports is not None:
             _setter("ports", ports)
@@ -24775,9 +27065,13 @@ class RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
         if state is not None:
             _setter("state", state)
@@ -24824,9 +27118,13 @@ class RegionNetworkFirewallPolicyRuleTargetSecureTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
         if state is not None:
             _setter("state", state)
@@ -24882,7 +27180,13 @@ class RegionPerInstanceConfigPreservedStateArgs:
              external_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateExternalIpArgs']]]] = None,
              internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateInternalIpArgs']]]] = None,
              metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if external_ips is None and 'externalIps' in kwargs:
+            external_ips = kwargs['externalIps']
+        if internal_ips is None and 'internalIps' in kwargs:
+            internal_ips = kwargs['internalIps']
+
         if disks is not None:
             _setter("disks", disks)
         if external_ips is not None:
@@ -24968,11 +27272,21 @@ class RegionPerInstanceConfigPreservedStateDiskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             device_name: pulumi.Input[str],
-             source: pulumi.Input[str],
+             device_name: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
              delete_rule: Optional[pulumi.Input[str]] = None,
              mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if device_name is None and 'deviceName' in kwargs:
+            device_name = kwargs['deviceName']
+        if device_name is None:
+            raise TypeError("Missing 'device_name' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if delete_rule is None and 'deleteRule' in kwargs:
+            delete_rule = kwargs['deleteRule']
+
         _setter("device_name", device_name)
         _setter("source", source)
         if delete_rule is not None:
@@ -25061,10 +27375,20 @@ class RegionPerInstanceConfigPreservedStateExternalIpArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             interface_name: pulumi.Input[str],
+             interface_name: Optional[pulumi.Input[str]] = None,
              auto_delete: Optional[pulumi.Input[str]] = None,
              ip_address: Optional[pulumi.Input['RegionPerInstanceConfigPreservedStateExternalIpIpAddressArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if interface_name is None and 'interfaceName' in kwargs:
+            interface_name = kwargs['interfaceName']
+        if interface_name is None:
+            raise TypeError("Missing 'interface_name' argument")
+        if auto_delete is None and 'autoDelete' in kwargs:
+            auto_delete = kwargs['autoDelete']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         _setter("interface_name", interface_name)
         if auto_delete is not None:
             _setter("auto_delete", auto_delete)
@@ -25126,7 +27450,9 @@ class RegionPerInstanceConfigPreservedStateExternalIpIpAddressArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              address: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if address is not None:
             _setter("address", address)
 
@@ -25166,10 +27492,20 @@ class RegionPerInstanceConfigPreservedStateInternalIpArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             interface_name: pulumi.Input[str],
+             interface_name: Optional[pulumi.Input[str]] = None,
              auto_delete: Optional[pulumi.Input[str]] = None,
              ip_address: Optional[pulumi.Input['RegionPerInstanceConfigPreservedStateInternalIpIpAddressArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if interface_name is None and 'interfaceName' in kwargs:
+            interface_name = kwargs['interfaceName']
+        if interface_name is None:
+            raise TypeError("Missing 'interface_name' argument")
+        if auto_delete is None and 'autoDelete' in kwargs:
+            auto_delete = kwargs['autoDelete']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         _setter("interface_name", interface_name)
         if auto_delete is not None:
             _setter("auto_delete", auto_delete)
@@ -25231,7 +27567,9 @@ class RegionPerInstanceConfigPreservedStateInternalIpIpAddressArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              address: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if address is not None:
             _setter("address", address)
 
@@ -25266,8 +27604,14 @@ class RegionSecurityPolicyDdosProtectionConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ddos_protection: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             ddos_protection: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ddos_protection is None and 'ddosProtection' in kwargs:
+            ddos_protection = kwargs['ddosProtection']
+        if ddos_protection is None:
+            raise TypeError("Missing 'ddos_protection' argument")
+
         _setter("ddos_protection", ddos_protection)
 
     @property
@@ -25310,7 +27654,11 @@ class RegionSecurityPolicyRuleMatchArgs:
              _setter: Callable[[Any, Any], None],
              config: Optional[pulumi.Input['RegionSecurityPolicyRuleMatchConfigArgs']] = None,
              versioned_expr: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if versioned_expr is None and 'versionedExpr' in kwargs:
+            versioned_expr = kwargs['versionedExpr']
+
         if config is not None:
             _setter("config", config)
         if versioned_expr is not None:
@@ -25360,7 +27708,11 @@ class RegionSecurityPolicyRuleMatchConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if src_ip_ranges is None and 'srcIpRanges' in kwargs:
+            src_ip_ranges = kwargs['srcIpRanges']
+
         if src_ip_ranges is not None:
             _setter("src_ip_ranges", src_ip_ranges)
 
@@ -25421,7 +27773,25 @@ class RegionSecurityPolicyRuleNetworkMatchArgs:
              src_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dest_ip_ranges is None and 'destIpRanges' in kwargs:
+            dest_ip_ranges = kwargs['destIpRanges']
+        if dest_ports is None and 'destPorts' in kwargs:
+            dest_ports = kwargs['destPorts']
+        if ip_protocols is None and 'ipProtocols' in kwargs:
+            ip_protocols = kwargs['ipProtocols']
+        if src_asns is None and 'srcAsns' in kwargs:
+            src_asns = kwargs['srcAsns']
+        if src_ip_ranges is None and 'srcIpRanges' in kwargs:
+            src_ip_ranges = kwargs['srcIpRanges']
+        if src_ports is None and 'srcPorts' in kwargs:
+            src_ports = kwargs['srcPorts']
+        if src_region_codes is None and 'srcRegionCodes' in kwargs:
+            src_region_codes = kwargs['srcRegionCodes']
+        if user_defined_fields is None and 'userDefinedFields' in kwargs:
+            user_defined_fields = kwargs['userDefinedFields']
+
         if dest_ip_ranges is not None:
             _setter("dest_ip_ranges", dest_ip_ranges)
         if dest_ports is not None:
@@ -25556,7 +27926,9 @@ class RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs:
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
              values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if values is not None:
@@ -25620,12 +27992,16 @@ class RegionSecurityPolicyUserDefinedFieldArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             base: pulumi.Input[str],
+             base: Optional[pulumi.Input[str]] = None,
              mask: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              offset: Optional[pulumi.Input[int]] = None,
              size: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if base is None:
+            raise TypeError("Missing 'base' argument")
+
         _setter("base", base)
         if mask is not None:
             _setter("mask", mask)
@@ -25762,7 +28138,21 @@ class RegionUrlMapDefaultRouteActionArgs:
              timeout: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionTimeoutArgs']] = None,
              url_rewrite: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionUrlRewriteArgs']] = None,
              weighted_backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cors_policy is None and 'corsPolicy' in kwargs:
+            cors_policy = kwargs['corsPolicy']
+        if fault_injection_policy is None and 'faultInjectionPolicy' in kwargs:
+            fault_injection_policy = kwargs['faultInjectionPolicy']
+        if request_mirror_policy is None and 'requestMirrorPolicy' in kwargs:
+            request_mirror_policy = kwargs['requestMirrorPolicy']
+        if retry_policy is None and 'retryPolicy' in kwargs:
+            retry_policy = kwargs['retryPolicy']
+        if url_rewrite is None and 'urlRewrite' in kwargs:
+            url_rewrite = kwargs['urlRewrite']
+        if weighted_backend_services is None and 'weightedBackendServices' in kwargs:
+            weighted_backend_services = kwargs['weightedBackendServices']
+
         if cors_policy is not None:
             _setter("cors_policy", cors_policy)
         if fault_injection_policy is not None:
@@ -25930,7 +28320,23 @@ class RegionUrlMapDefaultRouteActionCorsPolicyArgs:
              disabled: Optional[pulumi.Input[bool]] = None,
              expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              max_age: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_credentials is None and 'allowCredentials' in kwargs:
+            allow_credentials = kwargs['allowCredentials']
+        if allow_headers is None and 'allowHeaders' in kwargs:
+            allow_headers = kwargs['allowHeaders']
+        if allow_methods is None and 'allowMethods' in kwargs:
+            allow_methods = kwargs['allowMethods']
+        if allow_origin_regexes is None and 'allowOriginRegexes' in kwargs:
+            allow_origin_regexes = kwargs['allowOriginRegexes']
+        if allow_origins is None and 'allowOrigins' in kwargs:
+            allow_origins = kwargs['allowOrigins']
+        if expose_headers is None and 'exposeHeaders' in kwargs:
+            expose_headers = kwargs['exposeHeaders']
+        if max_age is None and 'maxAge' in kwargs:
+            max_age = kwargs['maxAge']
+
         if allow_credentials is not None:
             _setter("allow_credentials", allow_credentials)
         if allow_headers is not None:
@@ -26071,7 +28477,9 @@ class RegionUrlMapDefaultRouteActionFaultInjectionPolicyArgs:
              _setter: Callable[[Any, Any], None],
              abort: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArgs']] = None,
              delay: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if abort is not None:
             _setter("abort", abort)
         if delay is not None:
@@ -26125,7 +28533,11 @@ class RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArgs:
              _setter: Callable[[Any, Any], None],
              http_status: Optional[pulumi.Input[int]] = None,
              percentage: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if http_status is None and 'httpStatus' in kwargs:
+            http_status = kwargs['httpStatus']
+
         if http_status is not None:
             _setter("http_status", http_status)
         if percentage is not None:
@@ -26179,7 +28591,11 @@ class RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArgs:
              _setter: Callable[[Any, Any], None],
              fixed_delay: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs']] = None,
              percentage: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if fixed_delay is None and 'fixedDelay' in kwargs:
+            fixed_delay = kwargs['fixedDelay']
+
         if fixed_delay is not None:
             _setter("fixed_delay", fixed_delay)
         if percentage is not None:
@@ -26233,7 +28649,9 @@ class RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs:
              _setter: Callable[[Any, Any], None],
              nanos: Optional[pulumi.Input[int]] = None,
              seconds: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if nanos is not None:
             _setter("nanos", nanos)
         if seconds is not None:
@@ -26283,7 +28701,11 @@ class RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              backend_service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backend_service is None and 'backendService' in kwargs:
+            backend_service = kwargs['backendService']
+
         if backend_service is not None:
             _setter("backend_service", backend_service)
 
@@ -26339,7 +28761,15 @@ class RegionUrlMapDefaultRouteActionRetryPolicyArgs:
              num_retries: Optional[pulumi.Input[int]] = None,
              per_try_timeout: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs']] = None,
              retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if num_retries is None and 'numRetries' in kwargs:
+            num_retries = kwargs['numRetries']
+        if per_try_timeout is None and 'perTryTimeout' in kwargs:
+            per_try_timeout = kwargs['perTryTimeout']
+        if retry_conditions is None and 'retryConditions' in kwargs:
+            retry_conditions = kwargs['retryConditions']
+
         if num_retries is not None:
             _setter("num_retries", num_retries)
         if per_try_timeout is not None:
@@ -26419,7 +28849,9 @@ class RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs:
              _setter: Callable[[Any, Any], None],
              nanos: Optional[pulumi.Input[int]] = None,
              seconds: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if nanos is not None:
             _setter("nanos", nanos)
         if seconds is not None:
@@ -26471,7 +28903,9 @@ class RegionUrlMapDefaultRouteActionTimeoutArgs:
              _setter: Callable[[Any, Any], None],
              nanos: Optional[pulumi.Input[int]] = None,
              seconds: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if nanos is not None:
             _setter("nanos", nanos)
         if seconds is not None:
@@ -26523,7 +28957,13 @@ class RegionUrlMapDefaultRouteActionUrlRewriteArgs:
              _setter: Callable[[Any, Any], None],
              host_rewrite: Optional[pulumi.Input[str]] = None,
              path_prefix_rewrite: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host_rewrite is None and 'hostRewrite' in kwargs:
+            host_rewrite = kwargs['hostRewrite']
+        if path_prefix_rewrite is None and 'pathPrefixRewrite' in kwargs:
+            path_prefix_rewrite = kwargs['pathPrefixRewrite']
+
         if host_rewrite is not None:
             _setter("host_rewrite", host_rewrite)
         if path_prefix_rewrite is not None:
@@ -26585,7 +29025,13 @@ class RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs:
              backend_service: Optional[pulumi.Input[str]] = None,
              header_action: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs']] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backend_service is None and 'backendService' in kwargs:
+            backend_service = kwargs['backendService']
+        if header_action is None and 'headerAction' in kwargs:
+            header_action = kwargs['headerAction']
+
         if backend_service is not None:
             _setter("backend_service", backend_service)
         if header_action is not None:
@@ -26665,7 +29111,17 @@ class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
              request_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]] = None,
              response_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if request_headers_to_adds is None and 'requestHeadersToAdds' in kwargs:
+            request_headers_to_adds = kwargs['requestHeadersToAdds']
+        if request_headers_to_removes is None and 'requestHeadersToRemoves' in kwargs:
+            request_headers_to_removes = kwargs['requestHeadersToRemoves']
+        if response_headers_to_adds is None and 'responseHeadersToAdds' in kwargs:
+            response_headers_to_adds = kwargs['responseHeadersToAdds']
+        if response_headers_to_removes is None and 'responseHeadersToRemoves' in kwargs:
+            response_headers_to_removes = kwargs['responseHeadersToRemoves']
+
         if request_headers_to_adds is not None:
             _setter("request_headers_to_adds", request_headers_to_adds)
         if request_headers_to_removes is not None:
@@ -26750,7 +29206,13 @@ class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHea
              header_name: Optional[pulumi.Input[str]] = None,
              header_value: Optional[pulumi.Input[str]] = None,
              replace: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_value is None and 'headerValue' in kwargs:
+            header_value = kwargs['headerValue']
+
         if header_name is not None:
             _setter("header_name", header_name)
         if header_value is not None:
@@ -26820,7 +29282,13 @@ class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHe
              header_name: Optional[pulumi.Input[str]] = None,
              header_value: Optional[pulumi.Input[str]] = None,
              replace: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_value is None and 'headerValue' in kwargs:
+            header_value = kwargs['headerValue']
+
         if header_name is not None:
             _setter("header_name", header_name)
         if header_value is not None:
@@ -26917,13 +29385,29 @@ class RegionUrlMapDefaultUrlRedirectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             strip_query: pulumi.Input[bool],
+             strip_query: Optional[pulumi.Input[bool]] = None,
              host_redirect: Optional[pulumi.Input[str]] = None,
              https_redirect: Optional[pulumi.Input[bool]] = None,
              path_redirect: Optional[pulumi.Input[str]] = None,
              prefix_redirect: Optional[pulumi.Input[str]] = None,
              redirect_response_code: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if strip_query is None and 'stripQuery' in kwargs:
+            strip_query = kwargs['stripQuery']
+        if strip_query is None:
+            raise TypeError("Missing 'strip_query' argument")
+        if host_redirect is None and 'hostRedirect' in kwargs:
+            host_redirect = kwargs['hostRedirect']
+        if https_redirect is None and 'httpsRedirect' in kwargs:
+            https_redirect = kwargs['httpsRedirect']
+        if path_redirect is None and 'pathRedirect' in kwargs:
+            path_redirect = kwargs['pathRedirect']
+        if prefix_redirect is None and 'prefixRedirect' in kwargs:
+            prefix_redirect = kwargs['prefixRedirect']
+        if redirect_response_code is None and 'redirectResponseCode' in kwargs:
+            redirect_response_code = kwargs['redirectResponseCode']
+
         _setter("strip_query", strip_query)
         if host_redirect is not None:
             _setter("host_redirect", host_redirect)
@@ -27056,10 +29540,18 @@ class RegionUrlMapHostRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hosts: pulumi.Input[Sequence[pulumi.Input[str]]],
-             path_matcher: pulumi.Input[str],
+             hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             path_matcher: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if hosts is None:
+            raise TypeError("Missing 'hosts' argument")
+        if path_matcher is None and 'pathMatcher' in kwargs:
+            path_matcher = kwargs['pathMatcher']
+        if path_matcher is None:
+            raise TypeError("Missing 'path_matcher' argument")
+
         _setter("hosts", hosts)
         _setter("path_matcher", path_matcher)
         if description is not None:
@@ -27153,13 +29645,25 @@ class RegionUrlMapPathMatcherArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              default_service: Optional[pulumi.Input[str]] = None,
              default_url_redirect: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultUrlRedirectArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              path_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleArgs']]]] = None,
              route_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if default_service is None and 'defaultService' in kwargs:
+            default_service = kwargs['defaultService']
+        if default_url_redirect is None and 'defaultUrlRedirect' in kwargs:
+            default_url_redirect = kwargs['defaultUrlRedirect']
+        if path_rules is None and 'pathRules' in kwargs:
+            path_rules = kwargs['pathRules']
+        if route_rules is None and 'routeRules' in kwargs:
+            route_rules = kwargs['routeRules']
+
         _setter("name", name)
         if default_service is not None:
             _setter("default_service", default_service)
@@ -27313,13 +29817,29 @@ class RegionUrlMapPathMatcherDefaultUrlRedirectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             strip_query: pulumi.Input[bool],
+             strip_query: Optional[pulumi.Input[bool]] = None,
              host_redirect: Optional[pulumi.Input[str]] = None,
              https_redirect: Optional[pulumi.Input[bool]] = None,
              path_redirect: Optional[pulumi.Input[str]] = None,
              prefix_redirect: Optional[pulumi.Input[str]] = None,
              redirect_response_code: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if strip_query is None and 'stripQuery' in kwargs:
+            strip_query = kwargs['stripQuery']
+        if strip_query is None:
+            raise TypeError("Missing 'strip_query' argument")
+        if host_redirect is None and 'hostRedirect' in kwargs:
+            host_redirect = kwargs['hostRedirect']
+        if https_redirect is None and 'httpsRedirect' in kwargs:
+            https_redirect = kwargs['httpsRedirect']
+        if path_redirect is None and 'pathRedirect' in kwargs:
+            path_redirect = kwargs['pathRedirect']
+        if prefix_redirect is None and 'prefixRedirect' in kwargs:
+            prefix_redirect = kwargs['prefixRedirect']
+        if redirect_response_code is None and 'redirectResponseCode' in kwargs:
+            redirect_response_code = kwargs['redirectResponseCode']
+
         _setter("strip_query", strip_query)
         if host_redirect is not None:
             _setter("host_redirect", host_redirect)
@@ -27468,11 +29988,19 @@ class RegionUrlMapPathMatcherPathRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             paths: pulumi.Input[Sequence[pulumi.Input[str]]],
+             paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              route_action: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionArgs']] = None,
              service: Optional[pulumi.Input[str]] = None,
              url_redirect: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleUrlRedirectArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if paths is None:
+            raise TypeError("Missing 'paths' argument")
+        if route_action is None and 'routeAction' in kwargs:
+            route_action = kwargs['routeAction']
+        if url_redirect is None and 'urlRedirect' in kwargs:
+            url_redirect = kwargs['urlRedirect']
+
         _setter("paths", paths)
         if route_action is not None:
             _setter("route_action", route_action)
@@ -27615,7 +30143,21 @@ class RegionUrlMapPathMatcherPathRuleRouteActionArgs:
              timeout: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs']] = None,
              url_rewrite: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs']] = None,
              weighted_backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cors_policy is None and 'corsPolicy' in kwargs:
+            cors_policy = kwargs['corsPolicy']
+        if fault_injection_policy is None and 'faultInjectionPolicy' in kwargs:
+            fault_injection_policy = kwargs['faultInjectionPolicy']
+        if request_mirror_policy is None and 'requestMirrorPolicy' in kwargs:
+            request_mirror_policy = kwargs['requestMirrorPolicy']
+        if retry_policy is None and 'retryPolicy' in kwargs:
+            retry_policy = kwargs['retryPolicy']
+        if url_rewrite is None and 'urlRewrite' in kwargs:
+            url_rewrite = kwargs['urlRewrite']
+        if weighted_backend_services is None and 'weightedBackendServices' in kwargs:
+            weighted_backend_services = kwargs['weightedBackendServices']
+
         if cors_policy is not None:
             _setter("cors_policy", cors_policy)
         if fault_injection_policy is not None:
@@ -27784,7 +30326,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disabled: pulumi.Input[bool],
+             disabled: Optional[pulumi.Input[bool]] = None,
              allow_credentials: Optional[pulumi.Input[bool]] = None,
              allow_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              allow_methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -27792,7 +30334,25 @@ class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs:
              allow_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              max_age: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disabled is None:
+            raise TypeError("Missing 'disabled' argument")
+        if allow_credentials is None and 'allowCredentials' in kwargs:
+            allow_credentials = kwargs['allowCredentials']
+        if allow_headers is None and 'allowHeaders' in kwargs:
+            allow_headers = kwargs['allowHeaders']
+        if allow_methods is None and 'allowMethods' in kwargs:
+            allow_methods = kwargs['allowMethods']
+        if allow_origin_regexes is None and 'allowOriginRegexes' in kwargs:
+            allow_origin_regexes = kwargs['allowOriginRegexes']
+        if allow_origins is None and 'allowOrigins' in kwargs:
+            allow_origins = kwargs['allowOrigins']
+        if expose_headers is None and 'exposeHeaders' in kwargs:
+            expose_headers = kwargs['exposeHeaders']
+        if max_age is None and 'maxAge' in kwargs:
+            max_age = kwargs['maxAge']
+
         _setter("disabled", disabled)
         if allow_credentials is not None:
             _setter("allow_credentials", allow_credentials)
@@ -27932,7 +30492,9 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs:
              _setter: Callable[[Any, Any], None],
              abort: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs']] = None,
              delay: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if abort is not None:
             _setter("abort", abort)
         if delay is not None:
@@ -27984,9 +30546,17 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             http_status: pulumi.Input[int],
-             percentage: pulumi.Input[float],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             http_status: Optional[pulumi.Input[int]] = None,
+             percentage: Optional[pulumi.Input[float]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if http_status is None and 'httpStatus' in kwargs:
+            http_status = kwargs['httpStatus']
+        if http_status is None:
+            raise TypeError("Missing 'http_status' argument")
+        if percentage is None:
+            raise TypeError("Missing 'percentage' argument")
+
         _setter("http_status", http_status)
         _setter("percentage", percentage)
 
@@ -28036,9 +30606,17 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             fixed_delay: pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs'],
-             percentage: pulumi.Input[float],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             fixed_delay: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs']] = None,
+             percentage: Optional[pulumi.Input[float]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if fixed_delay is None and 'fixedDelay' in kwargs:
+            fixed_delay = kwargs['fixedDelay']
+        if fixed_delay is None:
+            raise TypeError("Missing 'fixed_delay' argument")
+        if percentage is None:
+            raise TypeError("Missing 'percentage' argument")
+
         _setter("fixed_delay", fixed_delay)
         _setter("percentage", percentage)
 
@@ -28088,9 +30666,13 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDe
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[str],
+             seconds: Optional[pulumi.Input[str]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -28138,8 +30720,14 @@ class RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backend_service: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             backend_service: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backend_service is None and 'backendService' in kwargs:
+            backend_service = kwargs['backendService']
+        if backend_service is None:
+            raise TypeError("Missing 'backend_service' argument")
+
         _setter("backend_service", backend_service)
 
     @property
@@ -28194,7 +30782,15 @@ class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs:
              num_retries: Optional[pulumi.Input[int]] = None,
              per_try_timeout: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs']] = None,
              retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if num_retries is None and 'numRetries' in kwargs:
+            num_retries = kwargs['numRetries']
+        if per_try_timeout is None and 'perTryTimeout' in kwargs:
+            per_try_timeout = kwargs['perTryTimeout']
+        if retry_conditions is None and 'retryConditions' in kwargs:
+            retry_conditions = kwargs['retryConditions']
+
         if num_retries is not None:
             _setter("num_retries", num_retries)
         if per_try_timeout is not None:
@@ -28272,9 +30868,13 @@ class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[str],
+             seconds: Optional[pulumi.Input[str]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -28323,9 +30923,13 @@ class RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[str],
+             seconds: Optional[pulumi.Input[str]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -28376,7 +30980,13 @@ class RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs:
              _setter: Callable[[Any, Any], None],
              host_rewrite: Optional[pulumi.Input[str]] = None,
              path_prefix_rewrite: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host_rewrite is None and 'hostRewrite' in kwargs:
+            host_rewrite = kwargs['hostRewrite']
+        if path_prefix_rewrite is None and 'pathPrefixRewrite' in kwargs:
+            path_prefix_rewrite = kwargs['pathPrefixRewrite']
+
         if host_rewrite is not None:
             _setter("host_rewrite", host_rewrite)
         if path_prefix_rewrite is not None:
@@ -28435,10 +31045,20 @@ class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backend_service: pulumi.Input[str],
-             weight: pulumi.Input[int],
+             backend_service: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
              header_action: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backend_service is None and 'backendService' in kwargs:
+            backend_service = kwargs['backendService']
+        if backend_service is None:
+            raise TypeError("Missing 'backend_service' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
+        if header_action is None and 'headerAction' in kwargs:
+            header_action = kwargs['headerAction']
+
         _setter("backend_service", backend_service)
         _setter("weight", weight)
         if header_action is not None:
@@ -28516,7 +31136,17 @@ class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActi
              request_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]] = None,
              response_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if request_headers_to_adds is None and 'requestHeadersToAdds' in kwargs:
+            request_headers_to_adds = kwargs['requestHeadersToAdds']
+        if request_headers_to_removes is None and 'requestHeadersToRemoves' in kwargs:
+            request_headers_to_removes = kwargs['requestHeadersToRemoves']
+        if response_headers_to_adds is None and 'responseHeadersToAdds' in kwargs:
+            response_headers_to_adds = kwargs['responseHeadersToAdds']
+        if response_headers_to_removes is None and 'responseHeadersToRemoves' in kwargs:
+            response_headers_to_removes = kwargs['responseHeadersToRemoves']
+
         if request_headers_to_adds is not None:
             _setter("request_headers_to_adds", request_headers_to_adds)
         if request_headers_to_removes is not None:
@@ -28598,10 +31228,22 @@ class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActi
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header_name: pulumi.Input[str],
-             header_value: pulumi.Input[str],
-             replace: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             header_name: Optional[pulumi.Input[str]] = None,
+             header_value: Optional[pulumi.Input[str]] = None,
+             replace: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_name is None:
+            raise TypeError("Missing 'header_name' argument")
+        if header_value is None and 'headerValue' in kwargs:
+            header_value = kwargs['headerValue']
+        if header_value is None:
+            raise TypeError("Missing 'header_value' argument")
+        if replace is None:
+            raise TypeError("Missing 'replace' argument")
+
         _setter("header_name", header_name)
         _setter("header_value", header_value)
         _setter("replace", replace)
@@ -28665,10 +31307,22 @@ class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActi
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header_name: pulumi.Input[str],
-             header_value: pulumi.Input[str],
-             replace: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             header_name: Optional[pulumi.Input[str]] = None,
+             header_value: Optional[pulumi.Input[str]] = None,
+             replace: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_name is None:
+            raise TypeError("Missing 'header_name' argument")
+        if header_value is None and 'headerValue' in kwargs:
+            header_value = kwargs['headerValue']
+        if header_value is None:
+            raise TypeError("Missing 'header_value' argument")
+        if replace is None:
+            raise TypeError("Missing 'replace' argument")
+
         _setter("header_name", header_name)
         _setter("header_value", header_value)
         _setter("replace", replace)
@@ -28765,13 +31419,29 @@ class RegionUrlMapPathMatcherPathRuleUrlRedirectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             strip_query: pulumi.Input[bool],
+             strip_query: Optional[pulumi.Input[bool]] = None,
              host_redirect: Optional[pulumi.Input[str]] = None,
              https_redirect: Optional[pulumi.Input[bool]] = None,
              path_redirect: Optional[pulumi.Input[str]] = None,
              prefix_redirect: Optional[pulumi.Input[str]] = None,
              redirect_response_code: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if strip_query is None and 'stripQuery' in kwargs:
+            strip_query = kwargs['stripQuery']
+        if strip_query is None:
+            raise TypeError("Missing 'strip_query' argument")
+        if host_redirect is None and 'hostRedirect' in kwargs:
+            host_redirect = kwargs['hostRedirect']
+        if https_redirect is None and 'httpsRedirect' in kwargs:
+            https_redirect = kwargs['httpsRedirect']
+        if path_redirect is None and 'pathRedirect' in kwargs:
+            path_redirect = kwargs['pathRedirect']
+        if prefix_redirect is None and 'prefixRedirect' in kwargs:
+            prefix_redirect = kwargs['prefixRedirect']
+        if redirect_response_code is None and 'redirectResponseCode' in kwargs:
+            redirect_response_code = kwargs['redirectResponseCode']
+
         _setter("strip_query", strip_query)
         if host_redirect is not None:
             _setter("host_redirect", host_redirect)
@@ -28943,13 +31613,25 @@ class RegionUrlMapPathMatcherRouteRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             priority: pulumi.Input[int],
+             priority: Optional[pulumi.Input[int]] = None,
              header_action: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionArgs']] = None,
              match_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleArgs']]]] = None,
              route_action: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionArgs']] = None,
              service: Optional[pulumi.Input[str]] = None,
              url_redirect: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if header_action is None and 'headerAction' in kwargs:
+            header_action = kwargs['headerAction']
+        if match_rules is None and 'matchRules' in kwargs:
+            match_rules = kwargs['matchRules']
+        if route_action is None and 'routeAction' in kwargs:
+            route_action = kwargs['routeAction']
+        if url_redirect is None and 'urlRedirect' in kwargs:
+            url_redirect = kwargs['urlRedirect']
+
         _setter("priority", priority)
         if header_action is not None:
             _setter("header_action", header_action)
@@ -29096,7 +31778,17 @@ class RegionUrlMapPathMatcherRouteRuleHeaderActionArgs:
              request_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs']]]] = None,
              response_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if request_headers_to_adds is None and 'requestHeadersToAdds' in kwargs:
+            request_headers_to_adds = kwargs['requestHeadersToAdds']
+        if request_headers_to_removes is None and 'requestHeadersToRemoves' in kwargs:
+            request_headers_to_removes = kwargs['requestHeadersToRemoves']
+        if response_headers_to_adds is None and 'responseHeadersToAdds' in kwargs:
+            response_headers_to_adds = kwargs['responseHeadersToAdds']
+        if response_headers_to_removes is None and 'responseHeadersToRemoves' in kwargs:
+            response_headers_to_removes = kwargs['responseHeadersToRemoves']
+
         if request_headers_to_adds is not None:
             _setter("request_headers_to_adds", request_headers_to_adds)
         if request_headers_to_removes is not None:
@@ -29178,10 +31870,22 @@ class RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header_name: pulumi.Input[str],
-             header_value: pulumi.Input[str],
-             replace: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             header_name: Optional[pulumi.Input[str]] = None,
+             header_value: Optional[pulumi.Input[str]] = None,
+             replace: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_name is None:
+            raise TypeError("Missing 'header_name' argument")
+        if header_value is None and 'headerValue' in kwargs:
+            header_value = kwargs['headerValue']
+        if header_value is None:
+            raise TypeError("Missing 'header_value' argument")
+        if replace is None:
+            raise TypeError("Missing 'replace' argument")
+
         _setter("header_name", header_name)
         _setter("header_value", header_value)
         _setter("replace", replace)
@@ -29245,10 +31949,22 @@ class RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header_name: pulumi.Input[str],
-             header_value: pulumi.Input[str],
-             replace: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             header_name: Optional[pulumi.Input[str]] = None,
+             header_value: Optional[pulumi.Input[str]] = None,
+             replace: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_name is None:
+            raise TypeError("Missing 'header_name' argument")
+        if header_value is None and 'headerValue' in kwargs:
+            header_value = kwargs['headerValue']
+        if header_value is None:
+            raise TypeError("Missing 'header_value' argument")
+        if replace is None:
+            raise TypeError("Missing 'replace' argument")
+
         _setter("header_name", header_name)
         _setter("header_value", header_value)
         _setter("replace", replace)
@@ -29357,7 +32073,23 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleArgs:
              prefix_match: Optional[pulumi.Input[str]] = None,
              query_parameter_matches: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs']]]] = None,
              regex_match: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if full_path_match is None and 'fullPathMatch' in kwargs:
+            full_path_match = kwargs['fullPathMatch']
+        if header_matches is None and 'headerMatches' in kwargs:
+            header_matches = kwargs['headerMatches']
+        if ignore_case is None and 'ignoreCase' in kwargs:
+            ignore_case = kwargs['ignoreCase']
+        if metadata_filters is None and 'metadataFilters' in kwargs:
+            metadata_filters = kwargs['metadataFilters']
+        if prefix_match is None and 'prefixMatch' in kwargs:
+            prefix_match = kwargs['prefixMatch']
+        if query_parameter_matches is None and 'queryParameterMatches' in kwargs:
+            query_parameter_matches = kwargs['queryParameterMatches']
+        if regex_match is None and 'regexMatch' in kwargs:
+            regex_match = kwargs['regexMatch']
+
         if full_path_match is not None:
             _setter("full_path_match", full_path_match)
         if header_matches is not None:
@@ -29546,7 +32278,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header_name: pulumi.Input[str],
+             header_name: Optional[pulumi.Input[str]] = None,
              exact_match: Optional[pulumi.Input[str]] = None,
              invert_match: Optional[pulumi.Input[bool]] = None,
              prefix_match: Optional[pulumi.Input[str]] = None,
@@ -29554,7 +32286,27 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
              range_match: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs']] = None,
              regex_match: Optional[pulumi.Input[str]] = None,
              suffix_match: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_name is None:
+            raise TypeError("Missing 'header_name' argument")
+        if exact_match is None and 'exactMatch' in kwargs:
+            exact_match = kwargs['exactMatch']
+        if invert_match is None and 'invertMatch' in kwargs:
+            invert_match = kwargs['invertMatch']
+        if prefix_match is None and 'prefixMatch' in kwargs:
+            prefix_match = kwargs['prefixMatch']
+        if present_match is None and 'presentMatch' in kwargs:
+            present_match = kwargs['presentMatch']
+        if range_match is None and 'rangeMatch' in kwargs:
+            range_match = kwargs['rangeMatch']
+        if regex_match is None and 'regexMatch' in kwargs:
+            regex_match = kwargs['regexMatch']
+        if suffix_match is None and 'suffixMatch' in kwargs:
+            suffix_match = kwargs['suffixMatch']
+
         _setter("header_name", header_name)
         if exact_match is not None:
             _setter("exact_match", exact_match)
@@ -29711,9 +32463,19 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             range_end: pulumi.Input[int],
-             range_start: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             range_end: Optional[pulumi.Input[int]] = None,
+             range_start: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if range_end is None and 'rangeEnd' in kwargs:
+            range_end = kwargs['rangeEnd']
+        if range_end is None:
+            raise TypeError("Missing 'range_end' argument")
+        if range_start is None and 'rangeStart' in kwargs:
+            range_start = kwargs['rangeStart']
+        if range_start is None:
+            raise TypeError("Missing 'range_start' argument")
+
         _setter("range_end", range_end)
         _setter("range_start", range_start)
 
@@ -29768,9 +32530,19 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter_labels: pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs']]],
-             filter_match_criteria: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             filter_labels: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs']]]] = None,
+             filter_match_criteria: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if filter_labels is None and 'filterLabels' in kwargs:
+            filter_labels = kwargs['filterLabels']
+        if filter_labels is None:
+            raise TypeError("Missing 'filter_labels' argument")
+        if filter_match_criteria is None and 'filterMatchCriteria' in kwargs:
+            filter_match_criteria = kwargs['filterMatchCriteria']
+        if filter_match_criteria is None:
+            raise TypeError("Missing 'filter_match_criteria' argument")
+
         _setter("filter_labels", filter_labels)
         _setter("filter_match_criteria", filter_match_criteria)
 
@@ -29827,9 +32599,15 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("name", name)
         _setter("value", value)
 
@@ -29891,11 +32669,21 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              exact_match: Optional[pulumi.Input[str]] = None,
              present_match: Optional[pulumi.Input[bool]] = None,
              regex_match: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if exact_match is None and 'exactMatch' in kwargs:
+            exact_match = kwargs['exactMatch']
+        if present_match is None and 'presentMatch' in kwargs:
+            present_match = kwargs['presentMatch']
+        if regex_match is None and 'regexMatch' in kwargs:
+            regex_match = kwargs['regexMatch']
+
         _setter("name", name)
         if exact_match is not None:
             _setter("exact_match", exact_match)
@@ -30028,7 +32816,21 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionArgs:
              timeout: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArgs']] = None,
              url_rewrite: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs']] = None,
              weighted_backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cors_policy is None and 'corsPolicy' in kwargs:
+            cors_policy = kwargs['corsPolicy']
+        if fault_injection_policy is None and 'faultInjectionPolicy' in kwargs:
+            fault_injection_policy = kwargs['faultInjectionPolicy']
+        if request_mirror_policy is None and 'requestMirrorPolicy' in kwargs:
+            request_mirror_policy = kwargs['requestMirrorPolicy']
+        if retry_policy is None and 'retryPolicy' in kwargs:
+            retry_policy = kwargs['retryPolicy']
+        if url_rewrite is None and 'urlRewrite' in kwargs:
+            url_rewrite = kwargs['urlRewrite']
+        if weighted_backend_services is None and 'weightedBackendServices' in kwargs:
+            weighted_backend_services = kwargs['weightedBackendServices']
+
         if cors_policy is not None:
             _setter("cors_policy", cors_policy)
         if fault_injection_policy is not None:
@@ -30205,7 +33007,23 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArgs:
              disabled: Optional[pulumi.Input[bool]] = None,
              expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              max_age: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_credentials is None and 'allowCredentials' in kwargs:
+            allow_credentials = kwargs['allowCredentials']
+        if allow_headers is None and 'allowHeaders' in kwargs:
+            allow_headers = kwargs['allowHeaders']
+        if allow_methods is None and 'allowMethods' in kwargs:
+            allow_methods = kwargs['allowMethods']
+        if allow_origin_regexes is None and 'allowOriginRegexes' in kwargs:
+            allow_origin_regexes = kwargs['allowOriginRegexes']
+        if allow_origins is None and 'allowOrigins' in kwargs:
+            allow_origins = kwargs['allowOrigins']
+        if expose_headers is None and 'exposeHeaders' in kwargs:
+            expose_headers = kwargs['exposeHeaders']
+        if max_age is None and 'maxAge' in kwargs:
+            max_age = kwargs['maxAge']
+
         if allow_credentials is not None:
             _setter("allow_credentials", allow_credentials)
         if allow_headers is not None:
@@ -30346,7 +33164,9 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs:
              _setter: Callable[[Any, Any], None],
              abort: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs']] = None,
              delay: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if abort is not None:
             _setter("abort", abort)
         if delay is not None:
@@ -30400,7 +33220,11 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs:
              _setter: Callable[[Any, Any], None],
              http_status: Optional[pulumi.Input[int]] = None,
              percentage: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if http_status is None and 'httpStatus' in kwargs:
+            http_status = kwargs['httpStatus']
+
         if http_status is not None:
             _setter("http_status", http_status)
         if percentage is not None:
@@ -30454,7 +33278,11 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs:
              _setter: Callable[[Any, Any], None],
              fixed_delay: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs']] = None,
              percentage: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if fixed_delay is None and 'fixedDelay' in kwargs:
+            fixed_delay = kwargs['fixedDelay']
+
         if fixed_delay is not None:
             _setter("fixed_delay", fixed_delay)
         if percentage is not None:
@@ -30506,9 +33334,13 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedD
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[str],
+             seconds: Optional[pulumi.Input[str]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -30556,8 +33388,14 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backend_service: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             backend_service: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backend_service is None and 'backendService' in kwargs:
+            backend_service = kwargs['backendService']
+        if backend_service is None:
+            raise TypeError("Missing 'backend_service' argument")
+
         _setter("backend_service", backend_service)
 
     @property
@@ -30609,10 +33447,20 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             num_retries: pulumi.Input[int],
+             num_retries: Optional[pulumi.Input[int]] = None,
              per_try_timeout: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs']] = None,
              retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if num_retries is None and 'numRetries' in kwargs:
+            num_retries = kwargs['numRetries']
+        if num_retries is None:
+            raise TypeError("Missing 'num_retries' argument")
+        if per_try_timeout is None and 'perTryTimeout' in kwargs:
+            per_try_timeout = kwargs['perTryTimeout']
+        if retry_conditions is None and 'retryConditions' in kwargs:
+            retry_conditions = kwargs['retryConditions']
+
         _setter("num_retries", num_retries)
         if per_try_timeout is not None:
             _setter("per_try_timeout", per_try_timeout)
@@ -30689,9 +33537,13 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[str],
+             seconds: Optional[pulumi.Input[str]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -30740,9 +33592,13 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[str],
+             seconds: Optional[pulumi.Input[str]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -30793,7 +33649,13 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs:
              _setter: Callable[[Any, Any], None],
              host_rewrite: Optional[pulumi.Input[str]] = None,
              path_prefix_rewrite: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host_rewrite is None and 'hostRewrite' in kwargs:
+            host_rewrite = kwargs['hostRewrite']
+        if path_prefix_rewrite is None and 'pathPrefixRewrite' in kwargs:
+            path_prefix_rewrite = kwargs['pathPrefixRewrite']
+
         if host_rewrite is not None:
             _setter("host_rewrite", host_rewrite)
         if path_prefix_rewrite is not None:
@@ -30852,10 +33714,20 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backend_service: pulumi.Input[str],
-             weight: pulumi.Input[int],
+             backend_service: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
              header_action: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backend_service is None and 'backendService' in kwargs:
+            backend_service = kwargs['backendService']
+        if backend_service is None:
+            raise TypeError("Missing 'backend_service' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
+        if header_action is None and 'headerAction' in kwargs:
+            header_action = kwargs['headerAction']
+
         _setter("backend_service", backend_service)
         _setter("weight", weight)
         if header_action is not None:
@@ -30933,7 +33805,17 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAct
              request_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]] = None,
              response_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if request_headers_to_adds is None and 'requestHeadersToAdds' in kwargs:
+            request_headers_to_adds = kwargs['requestHeadersToAdds']
+        if request_headers_to_removes is None and 'requestHeadersToRemoves' in kwargs:
+            request_headers_to_removes = kwargs['requestHeadersToRemoves']
+        if response_headers_to_adds is None and 'responseHeadersToAdds' in kwargs:
+            response_headers_to_adds = kwargs['responseHeadersToAdds']
+        if response_headers_to_removes is None and 'responseHeadersToRemoves' in kwargs:
+            response_headers_to_removes = kwargs['responseHeadersToRemoves']
+
         if request_headers_to_adds is not None:
             _setter("request_headers_to_adds", request_headers_to_adds)
         if request_headers_to_removes is not None:
@@ -31015,10 +33897,22 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAct
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header_name: pulumi.Input[str],
-             header_value: pulumi.Input[str],
-             replace: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             header_name: Optional[pulumi.Input[str]] = None,
+             header_value: Optional[pulumi.Input[str]] = None,
+             replace: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_name is None:
+            raise TypeError("Missing 'header_name' argument")
+        if header_value is None and 'headerValue' in kwargs:
+            header_value = kwargs['headerValue']
+        if header_value is None:
+            raise TypeError("Missing 'header_value' argument")
+        if replace is None:
+            raise TypeError("Missing 'replace' argument")
+
         _setter("header_name", header_name)
         _setter("header_value", header_value)
         _setter("replace", replace)
@@ -31082,10 +33976,22 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAct
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header_name: pulumi.Input[str],
-             header_value: pulumi.Input[str],
-             replace: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             header_name: Optional[pulumi.Input[str]] = None,
+             header_value: Optional[pulumi.Input[str]] = None,
+             replace: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_name is None:
+            raise TypeError("Missing 'header_name' argument")
+        if header_value is None and 'headerValue' in kwargs:
+            header_value = kwargs['headerValue']
+        if header_value is None:
+            raise TypeError("Missing 'header_value' argument")
+        if replace is None:
+            raise TypeError("Missing 'replace' argument")
+
         _setter("header_name", header_name)
         _setter("header_value", header_value)
         _setter("replace", replace)
@@ -31188,7 +34094,21 @@ class RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs:
              prefix_redirect: Optional[pulumi.Input[str]] = None,
              redirect_response_code: Optional[pulumi.Input[str]] = None,
              strip_query: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host_redirect is None and 'hostRedirect' in kwargs:
+            host_redirect = kwargs['hostRedirect']
+        if https_redirect is None and 'httpsRedirect' in kwargs:
+            https_redirect = kwargs['httpsRedirect']
+        if path_redirect is None and 'pathRedirect' in kwargs:
+            path_redirect = kwargs['pathRedirect']
+        if prefix_redirect is None and 'prefixRedirect' in kwargs:
+            prefix_redirect = kwargs['prefixRedirect']
+        if redirect_response_code is None and 'redirectResponseCode' in kwargs:
+            redirect_response_code = kwargs['redirectResponseCode']
+        if strip_query is None and 'stripQuery' in kwargs:
+            strip_query = kwargs['stripQuery']
+
         if host_redirect is not None:
             _setter("host_redirect", host_redirect)
         if https_redirect is not None:
@@ -31323,11 +34243,19 @@ class RegionUrlMapTestArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             host: pulumi.Input[str],
-             path: pulumi.Input[str],
-             service: pulumi.Input[str],
+             host: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("host", host)
         _setter("path", path)
         _setter("service", service)
@@ -31404,7 +34332,13 @@ class ReservationShareSettingsArgs:
              _setter: Callable[[Any, Any], None],
              project_maps: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationShareSettingsProjectMapArgs']]]] = None,
              share_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project_maps is None and 'projectMaps' in kwargs:
+            project_maps = kwargs['projectMaps']
+        if share_type is None and 'shareType' in kwargs:
+            share_type = kwargs['shareType']
+
         if project_maps is not None:
             _setter("project_maps", project_maps)
         if share_type is not None:
@@ -31454,9 +34388,15 @@ class ReservationShareSettingsProjectMapArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: pulumi.Input[str],
+             id: Optional[pulumi.Input[str]] = None,
              project_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+
         _setter("id", id)
         if project_id is not None:
             _setter("project_id", project_id)
@@ -31508,10 +34448,20 @@ class ReservationSpecificReservationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             count: pulumi.Input[int],
-             instance_properties: pulumi.Input['ReservationSpecificReservationInstancePropertiesArgs'],
+             count: Optional[pulumi.Input[int]] = None,
+             instance_properties: Optional[pulumi.Input['ReservationSpecificReservationInstancePropertiesArgs']] = None,
              in_use_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if count is None:
+            raise TypeError("Missing 'count' argument")
+        if instance_properties is None and 'instanceProperties' in kwargs:
+            instance_properties = kwargs['instanceProperties']
+        if instance_properties is None:
+            raise TypeError("Missing 'instance_properties' argument")
+        if in_use_count is None and 'inUseCount' in kwargs:
+            in_use_count = kwargs['inUseCount']
+
         _setter("count", count)
         _setter("instance_properties", instance_properties)
         if in_use_count is not None:
@@ -31585,11 +34535,23 @@ class ReservationSpecificReservationInstancePropertiesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             machine_type: pulumi.Input[str],
+             machine_type: Optional[pulumi.Input[str]] = None,
              guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs']]]] = None,
              local_ssds: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesLocalSsdArgs']]]] = None,
              min_cpu_platform: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if machine_type is None:
+            raise TypeError("Missing 'machine_type' argument")
+        if guest_accelerators is None and 'guestAccelerators' in kwargs:
+            guest_accelerators = kwargs['guestAccelerators']
+        if local_ssds is None and 'localSsds' in kwargs:
+            local_ssds = kwargs['localSsds']
+        if min_cpu_platform is None and 'minCpuPlatform' in kwargs:
+            min_cpu_platform = kwargs['minCpuPlatform']
+
         _setter("machine_type", machine_type)
         if guest_accelerators is not None:
             _setter("guest_accelerators", guest_accelerators)
@@ -31674,9 +34636,19 @@ class ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_count: pulumi.Input[int],
-             accelerator_type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             accelerator_count: Optional[pulumi.Input[int]] = None,
+             accelerator_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerator_count is None and 'acceleratorCount' in kwargs:
+            accelerator_count = kwargs['acceleratorCount']
+        if accelerator_count is None:
+            raise TypeError("Missing 'accelerator_count' argument")
+        if accelerator_type is None and 'acceleratorType' in kwargs:
+            accelerator_type = kwargs['acceleratorType']
+        if accelerator_type is None:
+            raise TypeError("Missing 'accelerator_type' argument")
+
         _setter("accelerator_count", accelerator_count)
         _setter("accelerator_type", accelerator_type)
 
@@ -31730,9 +34702,15 @@ class ReservationSpecificReservationInstancePropertiesLocalSsdArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disk_size_gb: pulumi.Input[int],
+             disk_size_gb: Optional[pulumi.Input[int]] = None,
              interface: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disk_size_gb is None and 'diskSizeGb' in kwargs:
+            disk_size_gb = kwargs['diskSizeGb']
+        if disk_size_gb is None:
+            raise TypeError("Missing 'disk_size_gb' argument")
+
         _setter("disk_size_gb", disk_size_gb)
         if interface is not None:
             _setter("interface", interface)
@@ -31780,8 +34758,12 @@ class ResourcePolicyDiskConsistencyGroupPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -31830,7 +34812,15 @@ class ResourcePolicyGroupPlacementPolicyArgs:
              collocation: Optional[pulumi.Input[str]] = None,
              max_distance: Optional[pulumi.Input[int]] = None,
              vm_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if availability_domain_count is None and 'availabilityDomainCount' in kwargs:
+            availability_domain_count = kwargs['availabilityDomainCount']
+        if max_distance is None and 'maxDistance' in kwargs:
+            max_distance = kwargs['maxDistance']
+        if vm_count is None and 'vmCount' in kwargs:
+            vm_count = kwargs['vmCount']
+
         if availability_domain_count is not None:
             _setter("availability_domain_count", availability_domain_count)
         if collocation is not None:
@@ -31922,12 +34912,26 @@ class ResourcePolicyInstanceSchedulePolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             time_zone: pulumi.Input[str],
+             time_zone: Optional[pulumi.Input[str]] = None,
              expiration_time: Optional[pulumi.Input[str]] = None,
              start_time: Optional[pulumi.Input[str]] = None,
              vm_start_schedule: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs']] = None,
              vm_stop_schedule: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+        if time_zone is None:
+            raise TypeError("Missing 'time_zone' argument")
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if vm_start_schedule is None and 'vmStartSchedule' in kwargs:
+            vm_start_schedule = kwargs['vmStartSchedule']
+        if vm_stop_schedule is None and 'vmStopSchedule' in kwargs:
+            vm_stop_schedule = kwargs['vmStopSchedule']
+
         _setter("time_zone", time_zone)
         if expiration_time is not None:
             _setter("expiration_time", expiration_time)
@@ -32016,8 +35020,12 @@ class ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             schedule: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             schedule: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if schedule is None:
+            raise TypeError("Missing 'schedule' argument")
+
         _setter("schedule", schedule)
 
     @property
@@ -32047,8 +35055,12 @@ class ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             schedule: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             schedule: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if schedule is None:
+            raise TypeError("Missing 'schedule' argument")
+
         _setter("schedule", schedule)
 
     @property
@@ -32087,10 +35099,18 @@ class ResourcePolicySnapshotSchedulePolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             schedule: pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleArgs'],
+             schedule: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleArgs']] = None,
              retention_policy: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs']] = None,
              snapshot_properties: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if schedule is None:
+            raise TypeError("Missing 'schedule' argument")
+        if retention_policy is None and 'retentionPolicy' in kwargs:
+            retention_policy = kwargs['retentionPolicy']
+        if snapshot_properties is None and 'snapshotProperties' in kwargs:
+            snapshot_properties = kwargs['snapshotProperties']
+
         _setter("schedule", schedule)
         if retention_policy is not None:
             _setter("retention_policy", retention_policy)
@@ -32157,9 +35177,17 @@ class ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max_retention_days: pulumi.Input[int],
+             max_retention_days: Optional[pulumi.Input[int]] = None,
              on_source_disk_delete: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_retention_days is None and 'maxRetentionDays' in kwargs:
+            max_retention_days = kwargs['maxRetentionDays']
+        if max_retention_days is None:
+            raise TypeError("Missing 'max_retention_days' argument")
+        if on_source_disk_delete is None and 'onSourceDiskDelete' in kwargs:
+            on_source_disk_delete = kwargs['onSourceDiskDelete']
+
         _setter("max_retention_days", max_retention_days)
         if on_source_disk_delete is not None:
             _setter("on_source_disk_delete", on_source_disk_delete)
@@ -32218,7 +35246,15 @@ class ResourcePolicySnapshotSchedulePolicyScheduleArgs:
              daily_schedule: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs']] = None,
              hourly_schedule: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs']] = None,
              weekly_schedule: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if daily_schedule is None and 'dailySchedule' in kwargs:
+            daily_schedule = kwargs['dailySchedule']
+        if hourly_schedule is None and 'hourlySchedule' in kwargs:
+            hourly_schedule = kwargs['hourlySchedule']
+        if weekly_schedule is None and 'weeklySchedule' in kwargs:
+            weekly_schedule = kwargs['weeklySchedule']
+
         if daily_schedule is not None:
             _setter("daily_schedule", daily_schedule)
         if hourly_schedule is not None:
@@ -32285,9 +35321,19 @@ class ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             days_in_cycle: pulumi.Input[int],
-             start_time: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             days_in_cycle: Optional[pulumi.Input[int]] = None,
+             start_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if days_in_cycle is None and 'daysInCycle' in kwargs:
+            days_in_cycle = kwargs['daysInCycle']
+        if days_in_cycle is None:
+            raise TypeError("Missing 'days_in_cycle' argument")
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+
         _setter("days_in_cycle", days_in_cycle)
         _setter("start_time", start_time)
 
@@ -32338,9 +35384,19 @@ class ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hours_in_cycle: pulumi.Input[int],
-             start_time: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             hours_in_cycle: Optional[pulumi.Input[int]] = None,
+             start_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if hours_in_cycle is None and 'hoursInCycle' in kwargs:
+            hours_in_cycle = kwargs['hoursInCycle']
+        if hours_in_cycle is None:
+            raise TypeError("Missing 'hours_in_cycle' argument")
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+
         _setter("hours_in_cycle", hours_in_cycle)
         _setter("start_time", start_time)
 
@@ -32387,8 +35443,14 @@ class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             day_of_weeks: pulumi.Input[Sequence[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             day_of_weeks: Optional[pulumi.Input[Sequence[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if day_of_weeks is None and 'dayOfWeeks' in kwargs:
+            day_of_weeks = kwargs['dayOfWeeks']
+        if day_of_weeks is None:
+            raise TypeError("Missing 'day_of_weeks' argument")
+
         _setter("day_of_weeks", day_of_weeks)
 
     @property
@@ -32424,9 +35486,17 @@ class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             day: pulumi.Input[str],
-             start_time: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             day: Optional[pulumi.Input[str]] = None,
+             start_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if day is None:
+            raise TypeError("Missing 'day' argument")
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+
         _setter("day", day)
         _setter("start_time", start_time)
 
@@ -32487,7 +35557,15 @@ class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs:
              guest_flush: Optional[pulumi.Input[bool]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              storage_locations: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if chain_name is None and 'chainName' in kwargs:
+            chain_name = kwargs['chainName']
+        if guest_flush is None and 'guestFlush' in kwargs:
+            guest_flush = kwargs['guestFlush']
+        if storage_locations is None and 'storageLocations' in kwargs:
+            storage_locations = kwargs['storageLocations']
+
         if chain_name is not None:
             _setter("chain_name", chain_name)
         if guest_flush is not None:
@@ -32598,12 +35676,24 @@ class RouterBgpArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             asn: pulumi.Input[int],
+             asn: Optional[pulumi.Input[int]] = None,
              advertise_mode: Optional[pulumi.Input[str]] = None,
              advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterBgpAdvertisedIpRangeArgs']]]] = None,
              keepalive_interval: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if asn is None:
+            raise TypeError("Missing 'asn' argument")
+        if advertise_mode is None and 'advertiseMode' in kwargs:
+            advertise_mode = kwargs['advertiseMode']
+        if advertised_groups is None and 'advertisedGroups' in kwargs:
+            advertised_groups = kwargs['advertisedGroups']
+        if advertised_ip_ranges is None and 'advertisedIpRanges' in kwargs:
+            advertised_ip_ranges = kwargs['advertisedIpRanges']
+        if keepalive_interval is None and 'keepaliveInterval' in kwargs:
+            keepalive_interval = kwargs['keepaliveInterval']
+
         _setter("asn", asn)
         if advertise_mode is not None:
             _setter("advertise_mode", advertise_mode)
@@ -32716,9 +35806,13 @@ class RouterBgpAdvertisedIpRangeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             range: pulumi.Input[str],
+             range: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if range is None:
+            raise TypeError("Missing 'range' argument")
+
         _setter("range", range)
         if description is not None:
             _setter("description", description)
@@ -32767,9 +35861,15 @@ class RouterNatLogConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enable: pulumi.Input[bool],
-             filter: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enable: Optional[pulumi.Input[bool]] = None,
+             filter: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable is None:
+            raise TypeError("Missing 'enable' argument")
+        if filter is None:
+            raise TypeError("Missing 'filter' argument")
+
         _setter("enable", enable)
         _setter("filter", filter)
 
@@ -32830,11 +35930,19 @@ class RouterNatRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             match: pulumi.Input[str],
-             rule_number: pulumi.Input[int],
+             match: Optional[pulumi.Input[str]] = None,
+             rule_number: Optional[pulumi.Input[int]] = None,
              action: Optional[pulumi.Input['RouterNatRuleActionArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if match is None:
+            raise TypeError("Missing 'match' argument")
+        if rule_number is None and 'ruleNumber' in kwargs:
+            rule_number = kwargs['ruleNumber']
+        if rule_number is None:
+            raise TypeError("Missing 'rule_number' argument")
+
         _setter("match", match)
         _setter("rule_number", rule_number)
         if action is not None:
@@ -32923,7 +36031,13 @@ class RouterNatRuleActionArgs:
              _setter: Callable[[Any, Any], None],
              source_nat_active_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              source_nat_drain_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if source_nat_active_ips is None and 'sourceNatActiveIps' in kwargs:
+            source_nat_active_ips = kwargs['sourceNatActiveIps']
+        if source_nat_drain_ips is None and 'sourceNatDrainIps' in kwargs:
+            source_nat_drain_ips = kwargs['sourceNatDrainIps']
+
         if source_nat_active_ips is not None:
             _setter("source_nat_active_ips", source_nat_active_ips)
         if source_nat_drain_ips is not None:
@@ -32985,10 +36099,20 @@ class RouterNatSubnetworkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             source_ip_ranges_to_nats: pulumi.Input[Sequence[pulumi.Input[str]]],
+             name: Optional[pulumi.Input[str]] = None,
+             source_ip_ranges_to_nats: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              secondary_ip_range_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if source_ip_ranges_to_nats is None and 'sourceIpRangesToNats' in kwargs:
+            source_ip_ranges_to_nats = kwargs['sourceIpRangesToNats']
+        if source_ip_ranges_to_nats is None:
+            raise TypeError("Missing 'source_ip_ranges_to_nats' argument")
+        if secondary_ip_range_names is None and 'secondaryIpRangeNames' in kwargs:
+            secondary_ip_range_names = kwargs['secondaryIpRangeNames']
+
         _setter("name", name)
         _setter("source_ip_ranges_to_nats", source_ip_ranges_to_nats)
         if secondary_ip_range_names is not None:
@@ -33055,9 +36179,13 @@ class RouterPeerAdvertisedIpRangeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             range: pulumi.Input[str],
+             range: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if range is None:
+            raise TypeError("Missing 'range' argument")
+
         _setter("range", range)
         if description is not None:
             _setter("description", description)
@@ -33126,11 +36254,21 @@ class RouterPeerBfdArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             session_initialization_mode: pulumi.Input[str],
+             session_initialization_mode: Optional[pulumi.Input[str]] = None,
              min_receive_interval: Optional[pulumi.Input[int]] = None,
              min_transmit_interval: Optional[pulumi.Input[int]] = None,
              multiplier: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if session_initialization_mode is None and 'sessionInitializationMode' in kwargs:
+            session_initialization_mode = kwargs['sessionInitializationMode']
+        if session_initialization_mode is None:
+            raise TypeError("Missing 'session_initialization_mode' argument")
+        if min_receive_interval is None and 'minReceiveInterval' in kwargs:
+            min_receive_interval = kwargs['minReceiveInterval']
+        if min_transmit_interval is None and 'minTransmitInterval' in kwargs:
+            min_transmit_interval = kwargs['minTransmitInterval']
+
         _setter("session_initialization_mode", session_initialization_mode)
         if min_receive_interval is not None:
             _setter("min_receive_interval", min_receive_interval)
@@ -33224,7 +36362,13 @@ class SecurityPolicyAdaptiveProtectionConfigArgs:
              _setter: Callable[[Any, Any], None],
              auto_deploy_config: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs']] = None,
              layer7_ddos_defense_config: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_deploy_config is None and 'autoDeployConfig' in kwargs:
+            auto_deploy_config = kwargs['autoDeployConfig']
+        if layer7_ddos_defense_config is None and 'layer7DdosDefenseConfig' in kwargs:
+            layer7_ddos_defense_config = kwargs['layer7DdosDefenseConfig']
+
         if auto_deploy_config is not None:
             _setter("auto_deploy_config", auto_deploy_config)
         if layer7_ddos_defense_config is not None:
@@ -33284,7 +36428,17 @@ class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs:
              expiration_sec: Optional[pulumi.Input[int]] = None,
              impacted_baseline_threshold: Optional[pulumi.Input[float]] = None,
              load_threshold: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if confidence_threshold is None and 'confidenceThreshold' in kwargs:
+            confidence_threshold = kwargs['confidenceThreshold']
+        if expiration_sec is None and 'expirationSec' in kwargs:
+            expiration_sec = kwargs['expirationSec']
+        if impacted_baseline_threshold is None and 'impactedBaselineThreshold' in kwargs:
+            impacted_baseline_threshold = kwargs['impactedBaselineThreshold']
+        if load_threshold is None and 'loadThreshold' in kwargs:
+            load_threshold = kwargs['loadThreshold']
+
         if confidence_threshold is not None:
             _setter("confidence_threshold", confidence_threshold)
         if expiration_sec is not None:
@@ -33362,7 +36516,11 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs:
              _setter: Callable[[Any, Any], None],
              enable: Optional[pulumi.Input[bool]] = None,
              rule_visibility: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if rule_visibility is None and 'ruleVisibility' in kwargs:
+            rule_visibility = kwargs['ruleVisibility']
+
         if enable is not None:
             _setter("enable", enable)
         if rule_visibility is not None:
@@ -33425,7 +36583,17 @@ class SecurityPolicyAdvancedOptionsConfigArgs:
              json_parsing: Optional[pulumi.Input[str]] = None,
              log_level: Optional[pulumi.Input[str]] = None,
              user_ip_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if json_custom_config is None and 'jsonCustomConfig' in kwargs:
+            json_custom_config = kwargs['jsonCustomConfig']
+        if json_parsing is None and 'jsonParsing' in kwargs:
+            json_parsing = kwargs['jsonParsing']
+        if log_level is None and 'logLevel' in kwargs:
+            log_level = kwargs['logLevel']
+        if user_ip_request_headers is None and 'userIpRequestHeaders' in kwargs:
+            user_ip_request_headers = kwargs['userIpRequestHeaders']
+
         if json_custom_config is not None:
             _setter("json_custom_config", json_custom_config)
         if json_parsing is not None:
@@ -33506,8 +36674,14 @@ class SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             content_types: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             content_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if content_types is None and 'contentTypes' in kwargs:
+            content_types = kwargs['contentTypes']
+        if content_types is None:
+            raise TypeError("Missing 'content_types' argument")
+
         _setter("content_types", content_types)
 
     @property
@@ -33540,8 +36714,14 @@ class SecurityPolicyRecaptchaOptionsConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             redirect_site_key: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             redirect_site_key: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if redirect_site_key is None and 'redirectSiteKey' in kwargs:
+            redirect_site_key = kwargs['redirectSiteKey']
+        if redirect_site_key is None:
+            raise TypeError("Missing 'redirect_site_key' argument")
+
         _setter("redirect_site_key", redirect_site_key)
 
     @property
@@ -33603,16 +36783,32 @@ class SecurityPolicyRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input[str],
-             match: pulumi.Input['SecurityPolicyRuleMatchArgs'],
-             priority: pulumi.Input[int],
+             action: Optional[pulumi.Input[str]] = None,
+             match: Optional[pulumi.Input['SecurityPolicyRuleMatchArgs']] = None,
+             priority: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
              header_action: Optional[pulumi.Input['SecurityPolicyRuleHeaderActionArgs']] = None,
              preconfigured_waf_config: Optional[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArgs']] = None,
              preview: Optional[pulumi.Input[bool]] = None,
              rate_limit_options: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']] = None,
              redirect_options: Optional[pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if match is None:
+            raise TypeError("Missing 'match' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if header_action is None and 'headerAction' in kwargs:
+            header_action = kwargs['headerAction']
+        if preconfigured_waf_config is None and 'preconfiguredWafConfig' in kwargs:
+            preconfigured_waf_config = kwargs['preconfiguredWafConfig']
+        if rate_limit_options is None and 'rateLimitOptions' in kwargs:
+            rate_limit_options = kwargs['rateLimitOptions']
+        if redirect_options is None and 'redirectOptions' in kwargs:
+            redirect_options = kwargs['redirectOptions']
+
         _setter("action", action)
         _setter("match", match)
         _setter("priority", priority)
@@ -33760,8 +36956,14 @@ class SecurityPolicyRuleHeaderActionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             request_headers_to_adds: pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if request_headers_to_adds is None and 'requestHeadersToAdds' in kwargs:
+            request_headers_to_adds = kwargs['requestHeadersToAdds']
+        if request_headers_to_adds is None:
+            raise TypeError("Missing 'request_headers_to_adds' argument")
+
         _setter("request_headers_to_adds", request_headers_to_adds)
 
     @property
@@ -33794,9 +36996,17 @@ class SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header_name: pulumi.Input[str],
+             header_name: Optional[pulumi.Input[str]] = None,
              header_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_name is None:
+            raise TypeError("Missing 'header_name' argument")
+        if header_value is None and 'headerValue' in kwargs:
+            header_value = kwargs['headerValue']
+
         _setter("header_name", header_name)
         if header_value is not None:
             _setter("header_value", header_value)
@@ -33855,7 +37065,11 @@ class SecurityPolicyRuleMatchArgs:
              config: Optional[pulumi.Input['SecurityPolicyRuleMatchConfigArgs']] = None,
              expr: Optional[pulumi.Input['SecurityPolicyRuleMatchExprArgs']] = None,
              versioned_expr: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if versioned_expr is None and 'versionedExpr' in kwargs:
+            versioned_expr = kwargs['versionedExpr']
+
         if config is not None:
             _setter("config", config)
         if expr is not None:
@@ -33922,8 +37136,14 @@ class SecurityPolicyRuleMatchConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             src_ip_ranges: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if src_ip_ranges is None and 'srcIpRanges' in kwargs:
+            src_ip_ranges = kwargs['srcIpRanges']
+        if src_ip_ranges is None:
+            raise TypeError("Missing 'src_ip_ranges' argument")
+
         _setter("src_ip_ranges", src_ip_ranges)
 
     @property
@@ -33956,8 +37176,12 @@ class SecurityPolicyRuleMatchExprArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             expression: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+
         _setter("expression", expression)
 
     @property
@@ -33989,7 +37213,9 @@ class SecurityPolicyRulePreconfiguredWafConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if exclusions is not None:
             _setter("exclusions", exclusions)
 
@@ -34037,13 +37263,29 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             target_rule_set: pulumi.Input[str],
+             target_rule_set: Optional[pulumi.Input[str]] = None,
              request_cookies: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs']]]] = None,
              request_headers: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs']]]] = None,
              request_query_params: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs']]]] = None,
              request_uris: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs']]]] = None,
              target_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if target_rule_set is None and 'targetRuleSet' in kwargs:
+            target_rule_set = kwargs['targetRuleSet']
+        if target_rule_set is None:
+            raise TypeError("Missing 'target_rule_set' argument")
+        if request_cookies is None and 'requestCookies' in kwargs:
+            request_cookies = kwargs['requestCookies']
+        if request_headers is None and 'requestHeaders' in kwargs:
+            request_headers = kwargs['requestHeaders']
+        if request_query_params is None and 'requestQueryParams' in kwargs:
+            request_query_params = kwargs['requestQueryParams']
+        if request_uris is None and 'requestUris' in kwargs:
+            request_uris = kwargs['requestUris']
+        if target_rule_ids is None and 'targetRuleIds' in kwargs:
+            target_rule_ids = kwargs['targetRuleIds']
+
         _setter("target_rule_set", target_rule_set)
         if request_cookies is not None:
             _setter("request_cookies", request_cookies)
@@ -34155,9 +37397,13 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             operator: pulumi.Input[str],
+             operator: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+
         _setter("operator", operator)
         if value is not None:
             _setter("value", value)
@@ -34218,9 +37464,13 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             operator: pulumi.Input[str],
+             operator: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+
         _setter("operator", operator)
         if value is not None:
             _setter("value", value)
@@ -34281,9 +37531,13 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             operator: pulumi.Input[str],
+             operator: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+
         _setter("operator", operator)
         if value is not None:
             _setter("value", value)
@@ -34344,9 +37598,13 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             operator: pulumi.Input[str],
+             operator: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+
         _setter("operator", operator)
         if value is not None:
             _setter("value", value)
@@ -34438,16 +37696,42 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             conform_action: pulumi.Input[str],
-             exceed_action: pulumi.Input[str],
-             rate_limit_threshold: pulumi.Input['SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs'],
+             conform_action: Optional[pulumi.Input[str]] = None,
+             exceed_action: Optional[pulumi.Input[str]] = None,
+             rate_limit_threshold: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs']] = None,
              ban_duration_sec: Optional[pulumi.Input[int]] = None,
              ban_threshold: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsBanThresholdArgs']] = None,
              enforce_on_key: Optional[pulumi.Input[str]] = None,
              enforce_on_key_configs: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs']]]] = None,
              enforce_on_key_name: Optional[pulumi.Input[str]] = None,
              exceed_redirect_options: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if conform_action is None and 'conformAction' in kwargs:
+            conform_action = kwargs['conformAction']
+        if conform_action is None:
+            raise TypeError("Missing 'conform_action' argument")
+        if exceed_action is None and 'exceedAction' in kwargs:
+            exceed_action = kwargs['exceedAction']
+        if exceed_action is None:
+            raise TypeError("Missing 'exceed_action' argument")
+        if rate_limit_threshold is None and 'rateLimitThreshold' in kwargs:
+            rate_limit_threshold = kwargs['rateLimitThreshold']
+        if rate_limit_threshold is None:
+            raise TypeError("Missing 'rate_limit_threshold' argument")
+        if ban_duration_sec is None and 'banDurationSec' in kwargs:
+            ban_duration_sec = kwargs['banDurationSec']
+        if ban_threshold is None and 'banThreshold' in kwargs:
+            ban_threshold = kwargs['banThreshold']
+        if enforce_on_key is None and 'enforceOnKey' in kwargs:
+            enforce_on_key = kwargs['enforceOnKey']
+        if enforce_on_key_configs is None and 'enforceOnKeyConfigs' in kwargs:
+            enforce_on_key_configs = kwargs['enforceOnKeyConfigs']
+        if enforce_on_key_name is None and 'enforceOnKeyName' in kwargs:
+            enforce_on_key_name = kwargs['enforceOnKeyName']
+        if exceed_redirect_options is None and 'exceedRedirectOptions' in kwargs:
+            exceed_redirect_options = kwargs['exceedRedirectOptions']
+
         _setter("conform_action", conform_action)
         _setter("exceed_action", exceed_action)
         _setter("rate_limit_threshold", rate_limit_threshold)
@@ -34607,9 +37891,17 @@ class SecurityPolicyRuleRateLimitOptionsBanThresholdArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             count: pulumi.Input[int],
-             interval_sec: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             count: Optional[pulumi.Input[int]] = None,
+             interval_sec: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if count is None:
+            raise TypeError("Missing 'count' argument")
+        if interval_sec is None and 'intervalSec' in kwargs:
+            interval_sec = kwargs['intervalSec']
+        if interval_sec is None:
+            raise TypeError("Missing 'interval_sec' argument")
+
         _setter("count", count)
         _setter("interval_sec", interval_sec)
 
@@ -34666,7 +37958,13 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs:
              _setter: Callable[[Any, Any], None],
              enforce_on_key_name: Optional[pulumi.Input[str]] = None,
              enforce_on_key_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enforce_on_key_name is None and 'enforceOnKeyName' in kwargs:
+            enforce_on_key_name = kwargs['enforceOnKeyName']
+        if enforce_on_key_type is None and 'enforceOnKeyType' in kwargs:
+            enforce_on_key_type = kwargs['enforceOnKeyType']
+
         if enforce_on_key_name is not None:
             _setter("enforce_on_key_name", enforce_on_key_name)
         if enforce_on_key_type is not None:
@@ -34723,9 +38021,13 @@ class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              target: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("type", type)
         if target is not None:
             _setter("target", target)
@@ -34772,9 +38074,17 @@ class SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             count: pulumi.Input[int],
-             interval_sec: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             count: Optional[pulumi.Input[int]] = None,
+             interval_sec: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if count is None:
+            raise TypeError("Missing 'count' argument")
+        if interval_sec is None and 'intervalSec' in kwargs:
+            interval_sec = kwargs['intervalSec']
+        if interval_sec is None:
+            raise TypeError("Missing 'interval_sec' argument")
+
         _setter("count", count)
         _setter("interval_sec", interval_sec)
 
@@ -34823,9 +38133,13 @@ class SecurityPolicyRuleRedirectOptionsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              target: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("type", type)
         if target is not None:
             _setter("target", target)
@@ -34879,7 +38193,13 @@ class SecurityScanConfigAuthenticationArgs:
              _setter: Callable[[Any, Any], None],
              custom_account: Optional[pulumi.Input['SecurityScanConfigAuthenticationCustomAccountArgs']] = None,
              google_account: Optional[pulumi.Input['SecurityScanConfigAuthenticationGoogleAccountArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if custom_account is None and 'customAccount' in kwargs:
+            custom_account = kwargs['customAccount']
+        if google_account is None and 'googleAccount' in kwargs:
+            google_account = kwargs['googleAccount']
+
         if custom_account is not None:
             _setter("custom_account", custom_account)
         if google_account is not None:
@@ -34934,10 +38254,20 @@ class SecurityScanConfigAuthenticationCustomAccountArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             login_url: pulumi.Input[str],
-             password: pulumi.Input[str],
-             username: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             login_url: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if login_url is None and 'loginUrl' in kwargs:
+            login_url = kwargs['loginUrl']
+        if login_url is None:
+            raise TypeError("Missing 'login_url' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+
         _setter("login_url", login_url)
         _setter("password", password)
         _setter("username", username)
@@ -35000,9 +38330,15 @@ class SecurityScanConfigAuthenticationGoogleAccountArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             password: pulumi.Input[str],
-             username: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             password: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+
         _setter("password", password)
         _setter("username", username)
 
@@ -35052,9 +38388,17 @@ class SecurityScanConfigScheduleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             interval_duration_days: pulumi.Input[int],
+             interval_duration_days: Optional[pulumi.Input[int]] = None,
              schedule_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if interval_duration_days is None and 'intervalDurationDays' in kwargs:
+            interval_duration_days = kwargs['intervalDurationDays']
+        if interval_duration_days is None:
+            raise TypeError("Missing 'interval_duration_days' argument")
+        if schedule_time is None and 'scheduleTime' in kwargs:
+            schedule_time = kwargs['scheduleTime']
+
         _setter("interval_duration_days", interval_duration_days)
         if schedule_time is not None:
             _setter("schedule_time", schedule_time)
@@ -35108,7 +38452,9 @@ class ServiceAttachmentConnectedEndpointArgs:
              _setter: Callable[[Any, Any], None],
              endpoint: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if endpoint is not None:
             _setter("endpoint", endpoint)
         if status is not None:
@@ -35160,9 +38506,19 @@ class ServiceAttachmentConsumerAcceptListArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_limit: pulumi.Input[int],
-             project_id_or_num: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             connection_limit: Optional[pulumi.Input[int]] = None,
+             project_id_or_num: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connection_limit is None and 'connectionLimit' in kwargs:
+            connection_limit = kwargs['connectionLimit']
+        if connection_limit is None:
+            raise TypeError("Missing 'connection_limit' argument")
+        if project_id_or_num is None and 'projectIdOrNum' in kwargs:
+            project_id_or_num = kwargs['projectIdOrNum']
+        if project_id_or_num is None:
+            raise TypeError("Missing 'project_id_or_num' argument")
+
         _setter("connection_limit", connection_limit)
         _setter("project_id_or_num", project_id_or_num)
 
@@ -35207,10 +38563,16 @@ class SnapshotIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -35259,10 +38621,16 @@ class SnapshotIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -35328,7 +38696,15 @@ class SnapshotSnapshotEncryptionKeyArgs:
              kms_key_service_account: Optional[pulumi.Input[str]] = None,
              raw_key: Optional[pulumi.Input[str]] = None,
              sha256: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_self_link is None and 'kmsKeySelfLink' in kwargs:
+            kms_key_self_link = kwargs['kmsKeySelfLink']
+        if kms_key_service_account is None and 'kmsKeyServiceAccount' in kwargs:
+            kms_key_service_account = kwargs['kmsKeyServiceAccount']
+        if raw_key is None and 'rawKey' in kwargs:
+            raw_key = kwargs['rawKey']
+
         if kms_key_self_link is not None:
             _setter("kms_key_self_link", kms_key_self_link)
         if kms_key_service_account is not None:
@@ -35414,7 +38790,13 @@ class SnapshotSourceDiskEncryptionKeyArgs:
              _setter: Callable[[Any, Any], None],
              kms_key_service_account: Optional[pulumi.Input[str]] = None,
              raw_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_service_account is None and 'kmsKeyServiceAccount' in kwargs:
+            kms_key_service_account = kwargs['kmsKeyServiceAccount']
+        if raw_key is None and 'rawKey' in kwargs:
+            raw_key = kwargs['rawKey']
+
         if kms_key_service_account is not None:
             _setter("kms_key_service_account", kms_key_service_account)
         if raw_key is not None:
@@ -35472,10 +38854,16 @@ class SubnetworkIAMBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -35546,10 +38934,16 @@ class SubnetworkIAMMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -35643,7 +39037,17 @@ class SubnetworkLogConfigArgs:
              flow_sampling: Optional[pulumi.Input[float]] = None,
              metadata: Optional[pulumi.Input[str]] = None,
              metadata_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if aggregation_interval is None and 'aggregationInterval' in kwargs:
+            aggregation_interval = kwargs['aggregationInterval']
+        if filter_expr is None and 'filterExpr' in kwargs:
+            filter_expr = kwargs['filterExpr']
+        if flow_sampling is None and 'flowSampling' in kwargs:
+            flow_sampling = kwargs['flowSampling']
+        if metadata_fields is None and 'metadataFields' in kwargs:
+            metadata_fields = kwargs['metadataFields']
+
         if aggregation_interval is not None:
             _setter("aggregation_interval", aggregation_interval)
         if filter_expr is not None:
@@ -35755,9 +39159,19 @@ class SubnetworkSecondaryIpRangeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_cidr_range: pulumi.Input[str],
-             range_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             ip_cidr_range: Optional[pulumi.Input[str]] = None,
+             range_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_cidr_range is None and 'ipCidrRange' in kwargs:
+            ip_cidr_range = kwargs['ipCidrRange']
+        if ip_cidr_range is None:
+            raise TypeError("Missing 'ip_cidr_range' argument")
+        if range_name is None and 'rangeName' in kwargs:
+            range_name = kwargs['rangeName']
+        if range_name is None:
+            raise TypeError("Missing 'range_name' argument")
+
         _setter("ip_cidr_range", ip_cidr_range)
         _setter("range_name", range_name)
 
@@ -35853,7 +39267,21 @@ class URLMapDefaultRouteActionArgs:
              timeout: Optional[pulumi.Input['URLMapDefaultRouteActionTimeoutArgs']] = None,
              url_rewrite: Optional[pulumi.Input['URLMapDefaultRouteActionUrlRewriteArgs']] = None,
              weighted_backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cors_policy is None and 'corsPolicy' in kwargs:
+            cors_policy = kwargs['corsPolicy']
+        if fault_injection_policy is None and 'faultInjectionPolicy' in kwargs:
+            fault_injection_policy = kwargs['faultInjectionPolicy']
+        if request_mirror_policy is None and 'requestMirrorPolicy' in kwargs:
+            request_mirror_policy = kwargs['requestMirrorPolicy']
+        if retry_policy is None and 'retryPolicy' in kwargs:
+            retry_policy = kwargs['retryPolicy']
+        if url_rewrite is None and 'urlRewrite' in kwargs:
+            url_rewrite = kwargs['urlRewrite']
+        if weighted_backend_services is None and 'weightedBackendServices' in kwargs:
+            weighted_backend_services = kwargs['weightedBackendServices']
+
         if cors_policy is not None:
             _setter("cors_policy", cors_policy)
         if fault_injection_policy is not None:
@@ -36024,7 +39452,23 @@ class URLMapDefaultRouteActionCorsPolicyArgs:
              disabled: Optional[pulumi.Input[bool]] = None,
              expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              max_age: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_credentials is None and 'allowCredentials' in kwargs:
+            allow_credentials = kwargs['allowCredentials']
+        if allow_headers is None and 'allowHeaders' in kwargs:
+            allow_headers = kwargs['allowHeaders']
+        if allow_methods is None and 'allowMethods' in kwargs:
+            allow_methods = kwargs['allowMethods']
+        if allow_origin_regexes is None and 'allowOriginRegexes' in kwargs:
+            allow_origin_regexes = kwargs['allowOriginRegexes']
+        if allow_origins is None and 'allowOrigins' in kwargs:
+            allow_origins = kwargs['allowOrigins']
+        if expose_headers is None and 'exposeHeaders' in kwargs:
+            expose_headers = kwargs['exposeHeaders']
+        if max_age is None and 'maxAge' in kwargs:
+            max_age = kwargs['maxAge']
+
         if allow_credentials is not None:
             _setter("allow_credentials", allow_credentials)
         if allow_headers is not None:
@@ -36165,7 +39609,9 @@ class URLMapDefaultRouteActionFaultInjectionPolicyArgs:
              _setter: Callable[[Any, Any], None],
              abort: Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs']] = None,
              delay: Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if abort is not None:
             _setter("abort", abort)
         if delay is not None:
@@ -36219,7 +39665,11 @@ class URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs:
              _setter: Callable[[Any, Any], None],
              http_status: Optional[pulumi.Input[int]] = None,
              percentage: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if http_status is None and 'httpStatus' in kwargs:
+            http_status = kwargs['httpStatus']
+
         if http_status is not None:
             _setter("http_status", http_status)
         if percentage is not None:
@@ -36273,7 +39723,11 @@ class URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs:
              _setter: Callable[[Any, Any], None],
              fixed_delay: Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs']] = None,
              percentage: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if fixed_delay is None and 'fixedDelay' in kwargs:
+            fixed_delay = kwargs['fixedDelay']
+
         if fixed_delay is not None:
             _setter("fixed_delay", fixed_delay)
         if percentage is not None:
@@ -36327,7 +39781,9 @@ class URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs:
              _setter: Callable[[Any, Any], None],
              nanos: Optional[pulumi.Input[int]] = None,
              seconds: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if nanos is not None:
             _setter("nanos", nanos)
         if seconds is not None:
@@ -36374,8 +39830,14 @@ class URLMapDefaultRouteActionRequestMirrorPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backend_service: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             backend_service: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backend_service is None and 'backendService' in kwargs:
+            backend_service = kwargs['backendService']
+        if backend_service is None:
+            raise TypeError("Missing 'backend_service' argument")
+
         _setter("backend_service", backend_service)
 
     @property
@@ -36431,7 +39893,15 @@ class URLMapDefaultRouteActionRetryPolicyArgs:
              num_retries: Optional[pulumi.Input[int]] = None,
              per_try_timeout: Optional[pulumi.Input['URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs']] = None,
              retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if num_retries is None and 'numRetries' in kwargs:
+            num_retries = kwargs['numRetries']
+        if per_try_timeout is None and 'perTryTimeout' in kwargs:
+            per_try_timeout = kwargs['perTryTimeout']
+        if retry_conditions is None and 'retryConditions' in kwargs:
+            retry_conditions = kwargs['retryConditions']
+
         if num_retries is not None:
             _setter("num_retries", num_retries)
         if per_try_timeout is not None:
@@ -36514,7 +39984,9 @@ class URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs:
              _setter: Callable[[Any, Any], None],
              nanos: Optional[pulumi.Input[int]] = None,
              seconds: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if nanos is not None:
             _setter("nanos", nanos)
         if seconds is not None:
@@ -36568,7 +40040,9 @@ class URLMapDefaultRouteActionTimeoutArgs:
              _setter: Callable[[Any, Any], None],
              nanos: Optional[pulumi.Input[int]] = None,
              seconds: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if nanos is not None:
             _setter("nanos", nanos)
         if seconds is not None:
@@ -36624,7 +40098,13 @@ class URLMapDefaultRouteActionUrlRewriteArgs:
              _setter: Callable[[Any, Any], None],
              host_rewrite: Optional[pulumi.Input[str]] = None,
              path_prefix_rewrite: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host_rewrite is None and 'hostRewrite' in kwargs:
+            host_rewrite = kwargs['hostRewrite']
+        if path_prefix_rewrite is None and 'pathPrefixRewrite' in kwargs:
+            path_prefix_rewrite = kwargs['pathPrefixRewrite']
+
         if host_rewrite is not None:
             _setter("host_rewrite", host_rewrite)
         if path_prefix_rewrite is not None:
@@ -36693,7 +40173,13 @@ class URLMapDefaultRouteActionWeightedBackendServiceArgs:
              backend_service: Optional[pulumi.Input[str]] = None,
              header_action: Optional[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs']] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backend_service is None and 'backendService' in kwargs:
+            backend_service = kwargs['backendService']
+        if header_action is None and 'headerAction' in kwargs:
+            header_action = kwargs['headerAction']
+
         if backend_service is not None:
             _setter("backend_service", backend_service)
         if header_action is not None:
@@ -36780,7 +40266,17 @@ class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
              request_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]] = None,
              response_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if request_headers_to_adds is None and 'requestHeadersToAdds' in kwargs:
+            request_headers_to_adds = kwargs['requestHeadersToAdds']
+        if request_headers_to_removes is None and 'requestHeadersToRemoves' in kwargs:
+            request_headers_to_removes = kwargs['requestHeadersToRemoves']
+        if response_headers_to_adds is None and 'responseHeadersToAdds' in kwargs:
+            response_headers_to_adds = kwargs['responseHeadersToAdds']
+        if response_headers_to_removes is None and 'responseHeadersToRemoves' in kwargs:
+            response_headers_to_removes = kwargs['responseHeadersToRemoves']
+
         if request_headers_to_adds is not None:
             _setter("request_headers_to_adds", request_headers_to_adds)
         if request_headers_to_removes is not None:
@@ -36867,7 +40363,13 @@ class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersTo
              header_name: Optional[pulumi.Input[str]] = None,
              header_value: Optional[pulumi.Input[str]] = None,
              replace: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_value is None and 'headerValue' in kwargs:
+            header_value = kwargs['headerValue']
+
         if header_name is not None:
             _setter("header_name", header_name)
         if header_value is not None:
@@ -36937,7 +40439,13 @@ class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersT
              header_name: Optional[pulumi.Input[str]] = None,
              header_value: Optional[pulumi.Input[str]] = None,
              replace: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_value is None and 'headerValue' in kwargs:
+            header_value = kwargs['headerValue']
+
         if header_name is not None:
             _setter("header_name", header_name)
         if header_value is not None:
@@ -37034,13 +40542,29 @@ class URLMapDefaultUrlRedirectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             strip_query: pulumi.Input[bool],
+             strip_query: Optional[pulumi.Input[bool]] = None,
              host_redirect: Optional[pulumi.Input[str]] = None,
              https_redirect: Optional[pulumi.Input[bool]] = None,
              path_redirect: Optional[pulumi.Input[str]] = None,
              prefix_redirect: Optional[pulumi.Input[str]] = None,
              redirect_response_code: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if strip_query is None and 'stripQuery' in kwargs:
+            strip_query = kwargs['stripQuery']
+        if strip_query is None:
+            raise TypeError("Missing 'strip_query' argument")
+        if host_redirect is None and 'hostRedirect' in kwargs:
+            host_redirect = kwargs['hostRedirect']
+        if https_redirect is None and 'httpsRedirect' in kwargs:
+            https_redirect = kwargs['httpsRedirect']
+        if path_redirect is None and 'pathRedirect' in kwargs:
+            path_redirect = kwargs['pathRedirect']
+        if prefix_redirect is None and 'prefixRedirect' in kwargs:
+            prefix_redirect = kwargs['prefixRedirect']
+        if redirect_response_code is None and 'redirectResponseCode' in kwargs:
+            redirect_response_code = kwargs['redirectResponseCode']
+
         _setter("strip_query", strip_query)
         if host_redirect is not None:
             _setter("host_redirect", host_redirect)
@@ -37179,7 +40703,17 @@ class URLMapHeaderActionArgs:
              request_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapHeaderActionResponseHeadersToAddArgs']]]] = None,
              response_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if request_headers_to_adds is None and 'requestHeadersToAdds' in kwargs:
+            request_headers_to_adds = kwargs['requestHeadersToAdds']
+        if request_headers_to_removes is None and 'requestHeadersToRemoves' in kwargs:
+            request_headers_to_removes = kwargs['requestHeadersToRemoves']
+        if response_headers_to_adds is None and 'responseHeadersToAdds' in kwargs:
+            response_headers_to_adds = kwargs['responseHeadersToAdds']
+        if response_headers_to_removes is None and 'responseHeadersToRemoves' in kwargs:
+            response_headers_to_removes = kwargs['responseHeadersToRemoves']
+
         if request_headers_to_adds is not None:
             _setter("request_headers_to_adds", request_headers_to_adds)
         if request_headers_to_removes is not None:
@@ -37263,10 +40797,22 @@ class URLMapHeaderActionRequestHeadersToAddArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header_name: pulumi.Input[str],
-             header_value: pulumi.Input[str],
-             replace: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             header_name: Optional[pulumi.Input[str]] = None,
+             header_value: Optional[pulumi.Input[str]] = None,
+             replace: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_name is None:
+            raise TypeError("Missing 'header_name' argument")
+        if header_value is None and 'headerValue' in kwargs:
+            header_value = kwargs['headerValue']
+        if header_value is None:
+            raise TypeError("Missing 'header_value' argument")
+        if replace is None:
+            raise TypeError("Missing 'replace' argument")
+
         _setter("header_name", header_name)
         _setter("header_value", header_value)
         _setter("replace", replace)
@@ -37330,10 +40876,22 @@ class URLMapHeaderActionResponseHeadersToAddArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header_name: pulumi.Input[str],
-             header_value: pulumi.Input[str],
-             replace: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             header_name: Optional[pulumi.Input[str]] = None,
+             header_value: Optional[pulumi.Input[str]] = None,
+             replace: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_name is None:
+            raise TypeError("Missing 'header_name' argument")
+        if header_value is None and 'headerValue' in kwargs:
+            header_value = kwargs['headerValue']
+        if header_value is None:
+            raise TypeError("Missing 'header_value' argument")
+        if replace is None:
+            raise TypeError("Missing 'replace' argument")
+
         _setter("header_name", header_name)
         _setter("header_value", header_value)
         _setter("replace", replace)
@@ -37400,10 +40958,18 @@ class URLMapHostRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hosts: pulumi.Input[Sequence[pulumi.Input[str]]],
-             path_matcher: pulumi.Input[str],
+             hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             path_matcher: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if hosts is None:
+            raise TypeError("Missing 'hosts' argument")
+        if path_matcher is None and 'pathMatcher' in kwargs:
+            path_matcher = kwargs['pathMatcher']
+        if path_matcher is None:
+            raise TypeError("Missing 'path_matcher' argument")
+
         _setter("hosts", hosts)
         _setter("path_matcher", path_matcher)
         if description is not None:
@@ -37509,7 +41075,7 @@ class URLMapPathMatcherArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              default_route_action: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionArgs']] = None,
              default_service: Optional[pulumi.Input[str]] = None,
              default_url_redirect: Optional[pulumi.Input['URLMapPathMatcherDefaultUrlRedirectArgs']] = None,
@@ -37517,7 +41083,23 @@ class URLMapPathMatcherArgs:
              header_action: Optional[pulumi.Input['URLMapPathMatcherHeaderActionArgs']] = None,
              path_rules: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleArgs']]]] = None,
              route_rules: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if default_route_action is None and 'defaultRouteAction' in kwargs:
+            default_route_action = kwargs['defaultRouteAction']
+        if default_service is None and 'defaultService' in kwargs:
+            default_service = kwargs['defaultService']
+        if default_url_redirect is None and 'defaultUrlRedirect' in kwargs:
+            default_url_redirect = kwargs['defaultUrlRedirect']
+        if header_action is None and 'headerAction' in kwargs:
+            header_action = kwargs['headerAction']
+        if path_rules is None and 'pathRules' in kwargs:
+            path_rules = kwargs['pathRules']
+        if route_rules is None and 'routeRules' in kwargs:
+            route_rules = kwargs['routeRules']
+
         _setter("name", name)
         if default_route_action is not None:
             _setter("default_route_action", default_route_action)
@@ -37716,7 +41298,21 @@ class URLMapPathMatcherDefaultRouteActionArgs:
              timeout: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionTimeoutArgs']] = None,
              url_rewrite: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionUrlRewriteArgs']] = None,
              weighted_backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cors_policy is None and 'corsPolicy' in kwargs:
+            cors_policy = kwargs['corsPolicy']
+        if fault_injection_policy is None and 'faultInjectionPolicy' in kwargs:
+            fault_injection_policy = kwargs['faultInjectionPolicy']
+        if request_mirror_policy is None and 'requestMirrorPolicy' in kwargs:
+            request_mirror_policy = kwargs['requestMirrorPolicy']
+        if retry_policy is None and 'retryPolicy' in kwargs:
+            retry_policy = kwargs['retryPolicy']
+        if url_rewrite is None and 'urlRewrite' in kwargs:
+            url_rewrite = kwargs['urlRewrite']
+        if weighted_backend_services is None and 'weightedBackendServices' in kwargs:
+            weighted_backend_services = kwargs['weightedBackendServices']
+
         if cors_policy is not None:
             _setter("cors_policy", cors_policy)
         if fault_injection_policy is not None:
@@ -37887,7 +41483,23 @@ class URLMapPathMatcherDefaultRouteActionCorsPolicyArgs:
              disabled: Optional[pulumi.Input[bool]] = None,
              expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              max_age: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_credentials is None and 'allowCredentials' in kwargs:
+            allow_credentials = kwargs['allowCredentials']
+        if allow_headers is None and 'allowHeaders' in kwargs:
+            allow_headers = kwargs['allowHeaders']
+        if allow_methods is None and 'allowMethods' in kwargs:
+            allow_methods = kwargs['allowMethods']
+        if allow_origin_regexes is None and 'allowOriginRegexes' in kwargs:
+            allow_origin_regexes = kwargs['allowOriginRegexes']
+        if allow_origins is None and 'allowOrigins' in kwargs:
+            allow_origins = kwargs['allowOrigins']
+        if expose_headers is None and 'exposeHeaders' in kwargs:
+            expose_headers = kwargs['exposeHeaders']
+        if max_age is None and 'maxAge' in kwargs:
+            max_age = kwargs['maxAge']
+
         if allow_credentials is not None:
             _setter("allow_credentials", allow_credentials)
         if allow_headers is not None:
@@ -38028,7 +41640,9 @@ class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs:
              _setter: Callable[[Any, Any], None],
              abort: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgs']] = None,
              delay: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if abort is not None:
             _setter("abort", abort)
         if delay is not None:
@@ -38082,7 +41696,11 @@ class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgs:
              _setter: Callable[[Any, Any], None],
              http_status: Optional[pulumi.Input[int]] = None,
              percentage: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if http_status is None and 'httpStatus' in kwargs:
+            http_status = kwargs['httpStatus']
+
         if http_status is not None:
             _setter("http_status", http_status)
         if percentage is not None:
@@ -38136,7 +41754,11 @@ class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs:
              _setter: Callable[[Any, Any], None],
              fixed_delay: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs']] = None,
              percentage: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if fixed_delay is None and 'fixedDelay' in kwargs:
+            fixed_delay = kwargs['fixedDelay']
+
         if fixed_delay is not None:
             _setter("fixed_delay", fixed_delay)
         if percentage is not None:
@@ -38190,7 +41812,9 @@ class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs
              _setter: Callable[[Any, Any], None],
              nanos: Optional[pulumi.Input[int]] = None,
              seconds: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if nanos is not None:
             _setter("nanos", nanos)
         if seconds is not None:
@@ -38237,8 +41861,14 @@ class URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backend_service: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             backend_service: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backend_service is None and 'backendService' in kwargs:
+            backend_service = kwargs['backendService']
+        if backend_service is None:
+            raise TypeError("Missing 'backend_service' argument")
+
         _setter("backend_service", backend_service)
 
     @property
@@ -38294,7 +41924,15 @@ class URLMapPathMatcherDefaultRouteActionRetryPolicyArgs:
              num_retries: Optional[pulumi.Input[int]] = None,
              per_try_timeout: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgs']] = None,
              retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if num_retries is None and 'numRetries' in kwargs:
+            num_retries = kwargs['numRetries']
+        if per_try_timeout is None and 'perTryTimeout' in kwargs:
+            per_try_timeout = kwargs['perTryTimeout']
+        if retry_conditions is None and 'retryConditions' in kwargs:
+            retry_conditions = kwargs['retryConditions']
+
         if num_retries is not None:
             _setter("num_retries", num_retries)
         if per_try_timeout is not None:
@@ -38377,7 +42015,9 @@ class URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgs:
              _setter: Callable[[Any, Any], None],
              nanos: Optional[pulumi.Input[int]] = None,
              seconds: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if nanos is not None:
             _setter("nanos", nanos)
         if seconds is not None:
@@ -38431,7 +42071,9 @@ class URLMapPathMatcherDefaultRouteActionTimeoutArgs:
              _setter: Callable[[Any, Any], None],
              nanos: Optional[pulumi.Input[int]] = None,
              seconds: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if nanos is not None:
             _setter("nanos", nanos)
         if seconds is not None:
@@ -38487,7 +42129,13 @@ class URLMapPathMatcherDefaultRouteActionUrlRewriteArgs:
              _setter: Callable[[Any, Any], None],
              host_rewrite: Optional[pulumi.Input[str]] = None,
              path_prefix_rewrite: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host_rewrite is None and 'hostRewrite' in kwargs:
+            host_rewrite = kwargs['hostRewrite']
+        if path_prefix_rewrite is None and 'pathPrefixRewrite' in kwargs:
+            path_prefix_rewrite = kwargs['pathPrefixRewrite']
+
         if host_rewrite is not None:
             _setter("host_rewrite", host_rewrite)
         if path_prefix_rewrite is not None:
@@ -38556,7 +42204,13 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs:
              backend_service: Optional[pulumi.Input[str]] = None,
              header_action: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs']] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backend_service is None and 'backendService' in kwargs:
+            backend_service = kwargs['backendService']
+        if header_action is None and 'headerAction' in kwargs:
+            header_action = kwargs['headerAction']
+
         if backend_service is not None:
             _setter("backend_service", backend_service)
         if header_action is not None:
@@ -38643,7 +42297,17 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
              request_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]] = None,
              response_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if request_headers_to_adds is None and 'requestHeadersToAdds' in kwargs:
+            request_headers_to_adds = kwargs['requestHeadersToAdds']
+        if request_headers_to_removes is None and 'requestHeadersToRemoves' in kwargs:
+            request_headers_to_removes = kwargs['requestHeadersToRemoves']
+        if response_headers_to_adds is None and 'responseHeadersToAdds' in kwargs:
+            response_headers_to_adds = kwargs['responseHeadersToAdds']
+        if response_headers_to_removes is None and 'responseHeadersToRemoves' in kwargs:
+            response_headers_to_removes = kwargs['responseHeadersToRemoves']
+
         if request_headers_to_adds is not None:
             _setter("request_headers_to_adds", request_headers_to_adds)
         if request_headers_to_removes is not None:
@@ -38730,7 +42394,13 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionReque
              header_name: Optional[pulumi.Input[str]] = None,
              header_value: Optional[pulumi.Input[str]] = None,
              replace: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_value is None and 'headerValue' in kwargs:
+            header_value = kwargs['headerValue']
+
         if header_name is not None:
             _setter("header_name", header_name)
         if header_value is not None:
@@ -38800,7 +42470,13 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRespo
              header_name: Optional[pulumi.Input[str]] = None,
              header_value: Optional[pulumi.Input[str]] = None,
              replace: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_value is None and 'headerValue' in kwargs:
+            header_value = kwargs['headerValue']
+
         if header_name is not None:
             _setter("header_name", header_name)
         if header_value is not None:
@@ -38897,13 +42573,29 @@ class URLMapPathMatcherDefaultUrlRedirectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             strip_query: pulumi.Input[bool],
+             strip_query: Optional[pulumi.Input[bool]] = None,
              host_redirect: Optional[pulumi.Input[str]] = None,
              https_redirect: Optional[pulumi.Input[bool]] = None,
              path_redirect: Optional[pulumi.Input[str]] = None,
              prefix_redirect: Optional[pulumi.Input[str]] = None,
              redirect_response_code: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if strip_query is None and 'stripQuery' in kwargs:
+            strip_query = kwargs['stripQuery']
+        if strip_query is None:
+            raise TypeError("Missing 'strip_query' argument")
+        if host_redirect is None and 'hostRedirect' in kwargs:
+            host_redirect = kwargs['hostRedirect']
+        if https_redirect is None and 'httpsRedirect' in kwargs:
+            https_redirect = kwargs['httpsRedirect']
+        if path_redirect is None and 'pathRedirect' in kwargs:
+            path_redirect = kwargs['pathRedirect']
+        if prefix_redirect is None and 'prefixRedirect' in kwargs:
+            prefix_redirect = kwargs['prefixRedirect']
+        if redirect_response_code is None and 'redirectResponseCode' in kwargs:
+            redirect_response_code = kwargs['redirectResponseCode']
+
         _setter("strip_query", strip_query)
         if host_redirect is not None:
             _setter("host_redirect", host_redirect)
@@ -39042,7 +42734,17 @@ class URLMapPathMatcherHeaderActionArgs:
              request_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherHeaderActionResponseHeadersToAddArgs']]]] = None,
              response_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if request_headers_to_adds is None and 'requestHeadersToAdds' in kwargs:
+            request_headers_to_adds = kwargs['requestHeadersToAdds']
+        if request_headers_to_removes is None and 'requestHeadersToRemoves' in kwargs:
+            request_headers_to_removes = kwargs['requestHeadersToRemoves']
+        if response_headers_to_adds is None and 'responseHeadersToAdds' in kwargs:
+            response_headers_to_adds = kwargs['responseHeadersToAdds']
+        if response_headers_to_removes is None and 'responseHeadersToRemoves' in kwargs:
+            response_headers_to_removes = kwargs['responseHeadersToRemoves']
+
         if request_headers_to_adds is not None:
             _setter("request_headers_to_adds", request_headers_to_adds)
         if request_headers_to_removes is not None:
@@ -39126,10 +42828,22 @@ class URLMapPathMatcherHeaderActionRequestHeadersToAddArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header_name: pulumi.Input[str],
-             header_value: pulumi.Input[str],
-             replace: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             header_name: Optional[pulumi.Input[str]] = None,
+             header_value: Optional[pulumi.Input[str]] = None,
+             replace: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_name is None:
+            raise TypeError("Missing 'header_name' argument")
+        if header_value is None and 'headerValue' in kwargs:
+            header_value = kwargs['headerValue']
+        if header_value is None:
+            raise TypeError("Missing 'header_value' argument")
+        if replace is None:
+            raise TypeError("Missing 'replace' argument")
+
         _setter("header_name", header_name)
         _setter("header_value", header_value)
         _setter("replace", replace)
@@ -39193,10 +42907,22 @@ class URLMapPathMatcherHeaderActionResponseHeadersToAddArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header_name: pulumi.Input[str],
-             header_value: pulumi.Input[str],
-             replace: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             header_name: Optional[pulumi.Input[str]] = None,
+             header_value: Optional[pulumi.Input[str]] = None,
+             replace: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_name is None:
+            raise TypeError("Missing 'header_name' argument")
+        if header_value is None and 'headerValue' in kwargs:
+            header_value = kwargs['headerValue']
+        if header_value is None:
+            raise TypeError("Missing 'header_value' argument")
+        if replace is None:
+            raise TypeError("Missing 'replace' argument")
+
         _setter("header_name", header_name)
         _setter("header_value", header_value)
         _setter("replace", replace)
@@ -39274,11 +43000,19 @@ class URLMapPathMatcherPathRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             paths: pulumi.Input[Sequence[pulumi.Input[str]]],
+             paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              route_action: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionArgs']] = None,
              service: Optional[pulumi.Input[str]] = None,
              url_redirect: Optional[pulumi.Input['URLMapPathMatcherPathRuleUrlRedirectArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if paths is None:
+            raise TypeError("Missing 'paths' argument")
+        if route_action is None and 'routeAction' in kwargs:
+            route_action = kwargs['routeAction']
+        if url_redirect is None and 'urlRedirect' in kwargs:
+            url_redirect = kwargs['urlRedirect']
+
         _setter("paths", paths)
         if route_action is not None:
             _setter("route_action", route_action)
@@ -39415,7 +43149,21 @@ class URLMapPathMatcherPathRuleRouteActionArgs:
              timeout: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionTimeoutArgs']] = None,
              url_rewrite: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs']] = None,
              weighted_backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cors_policy is None and 'corsPolicy' in kwargs:
+            cors_policy = kwargs['corsPolicy']
+        if fault_injection_policy is None and 'faultInjectionPolicy' in kwargs:
+            fault_injection_policy = kwargs['faultInjectionPolicy']
+        if request_mirror_policy is None and 'requestMirrorPolicy' in kwargs:
+            request_mirror_policy = kwargs['requestMirrorPolicy']
+        if retry_policy is None and 'retryPolicy' in kwargs:
+            retry_policy = kwargs['retryPolicy']
+        if url_rewrite is None and 'urlRewrite' in kwargs:
+            url_rewrite = kwargs['urlRewrite']
+        if weighted_backend_services is None and 'weightedBackendServices' in kwargs:
+            weighted_backend_services = kwargs['weightedBackendServices']
+
         if cors_policy is not None:
             _setter("cors_policy", cors_policy)
         if fault_injection_policy is not None:
@@ -39584,7 +43332,7 @@ class URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disabled: pulumi.Input[bool],
+             disabled: Optional[pulumi.Input[bool]] = None,
              allow_credentials: Optional[pulumi.Input[bool]] = None,
              allow_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              allow_methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -39592,7 +43340,25 @@ class URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs:
              allow_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              max_age: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disabled is None:
+            raise TypeError("Missing 'disabled' argument")
+        if allow_credentials is None and 'allowCredentials' in kwargs:
+            allow_credentials = kwargs['allowCredentials']
+        if allow_headers is None and 'allowHeaders' in kwargs:
+            allow_headers = kwargs['allowHeaders']
+        if allow_methods is None and 'allowMethods' in kwargs:
+            allow_methods = kwargs['allowMethods']
+        if allow_origin_regexes is None and 'allowOriginRegexes' in kwargs:
+            allow_origin_regexes = kwargs['allowOriginRegexes']
+        if allow_origins is None and 'allowOrigins' in kwargs:
+            allow_origins = kwargs['allowOrigins']
+        if expose_headers is None and 'exposeHeaders' in kwargs:
+            expose_headers = kwargs['exposeHeaders']
+        if max_age is None and 'maxAge' in kwargs:
+            max_age = kwargs['maxAge']
+
         _setter("disabled", disabled)
         if allow_credentials is not None:
             _setter("allow_credentials", allow_credentials)
@@ -39732,7 +43498,9 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs:
              _setter: Callable[[Any, Any], None],
              abort: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs']] = None,
              delay: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if abort is not None:
             _setter("abort", abort)
         if delay is not None:
@@ -39784,9 +43552,17 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             http_status: pulumi.Input[int],
-             percentage: pulumi.Input[float],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             http_status: Optional[pulumi.Input[int]] = None,
+             percentage: Optional[pulumi.Input[float]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if http_status is None and 'httpStatus' in kwargs:
+            http_status = kwargs['httpStatus']
+        if http_status is None:
+            raise TypeError("Missing 'http_status' argument")
+        if percentage is None:
+            raise TypeError("Missing 'percentage' argument")
+
         _setter("http_status", http_status)
         _setter("percentage", percentage)
 
@@ -39836,9 +43612,17 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             fixed_delay: pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs'],
-             percentage: pulumi.Input[float],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             fixed_delay: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs']] = None,
+             percentage: Optional[pulumi.Input[float]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if fixed_delay is None and 'fixedDelay' in kwargs:
+            fixed_delay = kwargs['fixedDelay']
+        if fixed_delay is None:
+            raise TypeError("Missing 'fixed_delay' argument")
+        if percentage is None:
+            raise TypeError("Missing 'percentage' argument")
+
         _setter("fixed_delay", fixed_delay)
         _setter("percentage", percentage)
 
@@ -39888,9 +43672,13 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArg
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[str],
+             seconds: Optional[pulumi.Input[str]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -39936,8 +43724,14 @@ class URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backend_service: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             backend_service: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backend_service is None and 'backendService' in kwargs:
+            backend_service = kwargs['backendService']
+        if backend_service is None:
+            raise TypeError("Missing 'backend_service' argument")
+
         _setter("backend_service", backend_service)
 
     @property
@@ -39993,7 +43787,15 @@ class URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs:
              num_retries: Optional[pulumi.Input[int]] = None,
              per_try_timeout: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs']] = None,
              retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if num_retries is None and 'numRetries' in kwargs:
+            num_retries = kwargs['numRetries']
+        if per_try_timeout is None and 'perTryTimeout' in kwargs:
+            per_try_timeout = kwargs['perTryTimeout']
+        if retry_conditions is None and 'retryConditions' in kwargs:
+            retry_conditions = kwargs['retryConditions']
+
         if num_retries is not None:
             _setter("num_retries", num_retries)
         if per_try_timeout is not None:
@@ -40074,9 +43876,13 @@ class URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[str],
+             seconds: Optional[pulumi.Input[str]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -40127,9 +43933,13 @@ class URLMapPathMatcherPathRuleRouteActionTimeoutArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[str],
+             seconds: Optional[pulumi.Input[str]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -40184,7 +43994,13 @@ class URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs:
              _setter: Callable[[Any, Any], None],
              host_rewrite: Optional[pulumi.Input[str]] = None,
              path_prefix_rewrite: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host_rewrite is None and 'hostRewrite' in kwargs:
+            host_rewrite = kwargs['hostRewrite']
+        if path_prefix_rewrite is None and 'pathPrefixRewrite' in kwargs:
+            path_prefix_rewrite = kwargs['pathPrefixRewrite']
+
         if host_rewrite is not None:
             _setter("host_rewrite", host_rewrite)
         if path_prefix_rewrite is not None:
@@ -40250,10 +44066,20 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backend_service: pulumi.Input[str],
-             weight: pulumi.Input[int],
+             backend_service: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
              header_action: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backend_service is None and 'backendService' in kwargs:
+            backend_service = kwargs['backendService']
+        if backend_service is None:
+            raise TypeError("Missing 'backend_service' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
+        if header_action is None and 'headerAction' in kwargs:
+            header_action = kwargs['headerAction']
+
         _setter("backend_service", backend_service)
         _setter("weight", weight)
         if header_action is not None:
@@ -40338,7 +44164,17 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs
              request_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]] = None,
              response_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if request_headers_to_adds is None and 'requestHeadersToAdds' in kwargs:
+            request_headers_to_adds = kwargs['requestHeadersToAdds']
+        if request_headers_to_removes is None and 'requestHeadersToRemoves' in kwargs:
+            request_headers_to_removes = kwargs['requestHeadersToRemoves']
+        if response_headers_to_adds is None and 'responseHeadersToAdds' in kwargs:
+            response_headers_to_adds = kwargs['responseHeadersToAdds']
+        if response_headers_to_removes is None and 'responseHeadersToRemoves' in kwargs:
+            response_headers_to_removes = kwargs['responseHeadersToRemoves']
+
         if request_headers_to_adds is not None:
             _setter("request_headers_to_adds", request_headers_to_adds)
         if request_headers_to_removes is not None:
@@ -40422,10 +44258,22 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequ
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header_name: pulumi.Input[str],
-             header_value: pulumi.Input[str],
-             replace: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             header_name: Optional[pulumi.Input[str]] = None,
+             header_value: Optional[pulumi.Input[str]] = None,
+             replace: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_name is None:
+            raise TypeError("Missing 'header_name' argument")
+        if header_value is None and 'headerValue' in kwargs:
+            header_value = kwargs['headerValue']
+        if header_value is None:
+            raise TypeError("Missing 'header_value' argument")
+        if replace is None:
+            raise TypeError("Missing 'replace' argument")
+
         _setter("header_name", header_name)
         _setter("header_value", header_value)
         _setter("replace", replace)
@@ -40489,10 +44337,22 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResp
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header_name: pulumi.Input[str],
-             header_value: pulumi.Input[str],
-             replace: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             header_name: Optional[pulumi.Input[str]] = None,
+             header_value: Optional[pulumi.Input[str]] = None,
+             replace: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_name is None:
+            raise TypeError("Missing 'header_name' argument")
+        if header_value is None and 'headerValue' in kwargs:
+            header_value = kwargs['headerValue']
+        if header_value is None:
+            raise TypeError("Missing 'header_value' argument")
+        if replace is None:
+            raise TypeError("Missing 'replace' argument")
+
         _setter("header_name", header_name)
         _setter("header_value", header_value)
         _setter("replace", replace)
@@ -40578,13 +44438,29 @@ class URLMapPathMatcherPathRuleUrlRedirectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             strip_query: pulumi.Input[bool],
+             strip_query: Optional[pulumi.Input[bool]] = None,
              host_redirect: Optional[pulumi.Input[str]] = None,
              https_redirect: Optional[pulumi.Input[bool]] = None,
              path_redirect: Optional[pulumi.Input[str]] = None,
              prefix_redirect: Optional[pulumi.Input[str]] = None,
              redirect_response_code: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if strip_query is None and 'stripQuery' in kwargs:
+            strip_query = kwargs['stripQuery']
+        if strip_query is None:
+            raise TypeError("Missing 'strip_query' argument")
+        if host_redirect is None and 'hostRedirect' in kwargs:
+            host_redirect = kwargs['hostRedirect']
+        if https_redirect is None and 'httpsRedirect' in kwargs:
+            https_redirect = kwargs['httpsRedirect']
+        if path_redirect is None and 'pathRedirect' in kwargs:
+            path_redirect = kwargs['pathRedirect']
+        if prefix_redirect is None and 'prefixRedirect' in kwargs:
+            prefix_redirect = kwargs['prefixRedirect']
+        if redirect_response_code is None and 'redirectResponseCode' in kwargs:
+            redirect_response_code = kwargs['redirectResponseCode']
+
         _setter("strip_query", strip_query)
         if host_redirect is not None:
             _setter("host_redirect", host_redirect)
@@ -40745,13 +44621,25 @@ class URLMapPathMatcherRouteRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             priority: pulumi.Input[int],
+             priority: Optional[pulumi.Input[int]] = None,
              header_action: Optional[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionArgs']] = None,
              match_rules: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleArgs']]]] = None,
              route_action: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionArgs']] = None,
              service: Optional[pulumi.Input[str]] = None,
              url_redirect: Optional[pulumi.Input['URLMapPathMatcherRouteRuleUrlRedirectArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if header_action is None and 'headerAction' in kwargs:
+            header_action = kwargs['headerAction']
+        if match_rules is None and 'matchRules' in kwargs:
+            match_rules = kwargs['matchRules']
+        if route_action is None and 'routeAction' in kwargs:
+            route_action = kwargs['routeAction']
+        if url_redirect is None and 'urlRedirect' in kwargs:
+            url_redirect = kwargs['urlRedirect']
+
         _setter("priority", priority)
         if header_action is not None:
             _setter("header_action", header_action)
@@ -40900,7 +44788,17 @@ class URLMapPathMatcherRouteRuleHeaderActionArgs:
              request_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs']]]] = None,
              response_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if request_headers_to_adds is None and 'requestHeadersToAdds' in kwargs:
+            request_headers_to_adds = kwargs['requestHeadersToAdds']
+        if request_headers_to_removes is None and 'requestHeadersToRemoves' in kwargs:
+            request_headers_to_removes = kwargs['requestHeadersToRemoves']
+        if response_headers_to_adds is None and 'responseHeadersToAdds' in kwargs:
+            response_headers_to_adds = kwargs['responseHeadersToAdds']
+        if response_headers_to_removes is None and 'responseHeadersToRemoves' in kwargs:
+            response_headers_to_removes = kwargs['responseHeadersToRemoves']
+
         if request_headers_to_adds is not None:
             _setter("request_headers_to_adds", request_headers_to_adds)
         if request_headers_to_removes is not None:
@@ -40984,10 +44882,22 @@ class URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header_name: pulumi.Input[str],
-             header_value: pulumi.Input[str],
-             replace: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             header_name: Optional[pulumi.Input[str]] = None,
+             header_value: Optional[pulumi.Input[str]] = None,
+             replace: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_name is None:
+            raise TypeError("Missing 'header_name' argument")
+        if header_value is None and 'headerValue' in kwargs:
+            header_value = kwargs['headerValue']
+        if header_value is None:
+            raise TypeError("Missing 'header_value' argument")
+        if replace is None:
+            raise TypeError("Missing 'replace' argument")
+
         _setter("header_name", header_name)
         _setter("header_value", header_value)
         _setter("replace", replace)
@@ -41051,10 +44961,22 @@ class URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header_name: pulumi.Input[str],
-             header_value: pulumi.Input[str],
-             replace: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             header_name: Optional[pulumi.Input[str]] = None,
+             header_value: Optional[pulumi.Input[str]] = None,
+             replace: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_name is None:
+            raise TypeError("Missing 'header_name' argument")
+        if header_value is None and 'headerValue' in kwargs:
+            header_value = kwargs['headerValue']
+        if header_value is None:
+            raise TypeError("Missing 'header_value' argument")
+        if replace is None:
+            raise TypeError("Missing 'replace' argument")
+
         _setter("header_name", header_name)
         _setter("header_value", header_value)
         _setter("replace", replace)
@@ -41174,7 +45096,25 @@ class URLMapPathMatcherRouteRuleMatchRuleArgs:
              prefix_match: Optional[pulumi.Input[str]] = None,
              query_parameter_matches: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs']]]] = None,
              regex_match: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if full_path_match is None and 'fullPathMatch' in kwargs:
+            full_path_match = kwargs['fullPathMatch']
+        if header_matches is None and 'headerMatches' in kwargs:
+            header_matches = kwargs['headerMatches']
+        if ignore_case is None and 'ignoreCase' in kwargs:
+            ignore_case = kwargs['ignoreCase']
+        if metadata_filters is None and 'metadataFilters' in kwargs:
+            metadata_filters = kwargs['metadataFilters']
+        if path_template_match is None and 'pathTemplateMatch' in kwargs:
+            path_template_match = kwargs['pathTemplateMatch']
+        if prefix_match is None and 'prefixMatch' in kwargs:
+            prefix_match = kwargs['prefixMatch']
+        if query_parameter_matches is None and 'queryParameterMatches' in kwargs:
+            query_parameter_matches = kwargs['queryParameterMatches']
+        if regex_match is None and 'regexMatch' in kwargs:
+            regex_match = kwargs['regexMatch']
+
         if full_path_match is not None:
             _setter("full_path_match", full_path_match)
         if header_matches is not None:
@@ -41381,7 +45321,7 @@ class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header_name: pulumi.Input[str],
+             header_name: Optional[pulumi.Input[str]] = None,
              exact_match: Optional[pulumi.Input[str]] = None,
              invert_match: Optional[pulumi.Input[bool]] = None,
              prefix_match: Optional[pulumi.Input[str]] = None,
@@ -41389,7 +45329,27 @@ class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
              range_match: Optional[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs']] = None,
              regex_match: Optional[pulumi.Input[str]] = None,
              suffix_match: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_name is None:
+            raise TypeError("Missing 'header_name' argument")
+        if exact_match is None and 'exactMatch' in kwargs:
+            exact_match = kwargs['exactMatch']
+        if invert_match is None and 'invertMatch' in kwargs:
+            invert_match = kwargs['invertMatch']
+        if prefix_match is None and 'prefixMatch' in kwargs:
+            prefix_match = kwargs['prefixMatch']
+        if present_match is None and 'presentMatch' in kwargs:
+            present_match = kwargs['presentMatch']
+        if range_match is None and 'rangeMatch' in kwargs:
+            range_match = kwargs['rangeMatch']
+        if regex_match is None and 'regexMatch' in kwargs:
+            regex_match = kwargs['regexMatch']
+        if suffix_match is None and 'suffixMatch' in kwargs:
+            suffix_match = kwargs['suffixMatch']
+
         _setter("header_name", header_name)
         if exact_match is not None:
             _setter("exact_match", exact_match)
@@ -41543,9 +45503,19 @@ class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             range_end: pulumi.Input[int],
-             range_start: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             range_end: Optional[pulumi.Input[int]] = None,
+             range_start: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if range_end is None and 'rangeEnd' in kwargs:
+            range_end = kwargs['rangeEnd']
+        if range_end is None:
+            raise TypeError("Missing 'range_end' argument")
+        if range_start is None and 'rangeStart' in kwargs:
+            range_start = kwargs['rangeStart']
+        if range_start is None:
+            raise TypeError("Missing 'range_start' argument")
+
         _setter("range_end", range_end)
         _setter("range_start", range_start)
 
@@ -41600,9 +45570,19 @@ class URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter_labels: pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs']]],
-             filter_match_criteria: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             filter_labels: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs']]]] = None,
+             filter_match_criteria: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if filter_labels is None and 'filterLabels' in kwargs:
+            filter_labels = kwargs['filterLabels']
+        if filter_labels is None:
+            raise TypeError("Missing 'filter_labels' argument")
+        if filter_match_criteria is None and 'filterMatchCriteria' in kwargs:
+            filter_match_criteria = kwargs['filterMatchCriteria']
+        if filter_match_criteria is None:
+            raise TypeError("Missing 'filter_match_criteria' argument")
+
         _setter("filter_labels", filter_labels)
         _setter("filter_match_criteria", filter_match_criteria)
 
@@ -41659,9 +45639,15 @@ class URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("name", name)
         _setter("value", value)
 
@@ -41723,11 +45709,21 @@ class URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              exact_match: Optional[pulumi.Input[str]] = None,
              present_match: Optional[pulumi.Input[bool]] = None,
              regex_match: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if exact_match is None and 'exactMatch' in kwargs:
+            exact_match = kwargs['exactMatch']
+        if present_match is None and 'presentMatch' in kwargs:
+            present_match = kwargs['presentMatch']
+        if regex_match is None and 'regexMatch' in kwargs:
+            regex_match = kwargs['regexMatch']
+
         _setter("name", name)
         if exact_match is not None:
             _setter("exact_match", exact_match)
@@ -41860,7 +45856,21 @@ class URLMapPathMatcherRouteRuleRouteActionArgs:
              timeout: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionTimeoutArgs']] = None,
              url_rewrite: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs']] = None,
              weighted_backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cors_policy is None and 'corsPolicy' in kwargs:
+            cors_policy = kwargs['corsPolicy']
+        if fault_injection_policy is None and 'faultInjectionPolicy' in kwargs:
+            fault_injection_policy = kwargs['faultInjectionPolicy']
+        if request_mirror_policy is None and 'requestMirrorPolicy' in kwargs:
+            request_mirror_policy = kwargs['requestMirrorPolicy']
+        if retry_policy is None and 'retryPolicy' in kwargs:
+            retry_policy = kwargs['retryPolicy']
+        if url_rewrite is None and 'urlRewrite' in kwargs:
+            url_rewrite = kwargs['urlRewrite']
+        if weighted_backend_services is None and 'weightedBackendServices' in kwargs:
+            weighted_backend_services = kwargs['weightedBackendServices']
+
         if cors_policy is not None:
             _setter("cors_policy", cors_policy)
         if fault_injection_policy is not None:
@@ -42037,7 +46047,23 @@ class URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs:
              disabled: Optional[pulumi.Input[bool]] = None,
              expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              max_age: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_credentials is None and 'allowCredentials' in kwargs:
+            allow_credentials = kwargs['allowCredentials']
+        if allow_headers is None and 'allowHeaders' in kwargs:
+            allow_headers = kwargs['allowHeaders']
+        if allow_methods is None and 'allowMethods' in kwargs:
+            allow_methods = kwargs['allowMethods']
+        if allow_origin_regexes is None and 'allowOriginRegexes' in kwargs:
+            allow_origin_regexes = kwargs['allowOriginRegexes']
+        if allow_origins is None and 'allowOrigins' in kwargs:
+            allow_origins = kwargs['allowOrigins']
+        if expose_headers is None and 'exposeHeaders' in kwargs:
+            expose_headers = kwargs['exposeHeaders']
+        if max_age is None and 'maxAge' in kwargs:
+            max_age = kwargs['maxAge']
+
         if allow_credentials is not None:
             _setter("allow_credentials", allow_credentials)
         if allow_headers is not None:
@@ -42178,7 +46204,9 @@ class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs:
              _setter: Callable[[Any, Any], None],
              abort: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs']] = None,
              delay: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if abort is not None:
             _setter("abort", abort)
         if delay is not None:
@@ -42232,7 +46260,11 @@ class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs:
              _setter: Callable[[Any, Any], None],
              http_status: Optional[pulumi.Input[int]] = None,
              percentage: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if http_status is None and 'httpStatus' in kwargs:
+            http_status = kwargs['httpStatus']
+
         if http_status is not None:
             _setter("http_status", http_status)
         if percentage is not None:
@@ -42286,7 +46318,11 @@ class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs:
              _setter: Callable[[Any, Any], None],
              fixed_delay: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs']] = None,
              percentage: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if fixed_delay is None and 'fixedDelay' in kwargs:
+            fixed_delay = kwargs['fixedDelay']
+
         if fixed_delay is not None:
             _setter("fixed_delay", fixed_delay)
         if percentage is not None:
@@ -42338,9 +46374,13 @@ class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayAr
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[str],
+             seconds: Optional[pulumi.Input[str]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -42386,8 +46426,14 @@ class URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backend_service: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             backend_service: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backend_service is None and 'backendService' in kwargs:
+            backend_service = kwargs['backendService']
+        if backend_service is None:
+            raise TypeError("Missing 'backend_service' argument")
+
         _setter("backend_service", backend_service)
 
     @property
@@ -42440,10 +46486,20 @@ class URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             num_retries: pulumi.Input[int],
+             num_retries: Optional[pulumi.Input[int]] = None,
              per_try_timeout: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs']] = None,
              retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if num_retries is None and 'numRetries' in kwargs:
+            num_retries = kwargs['numRetries']
+        if num_retries is None:
+            raise TypeError("Missing 'num_retries' argument")
+        if per_try_timeout is None and 'perTryTimeout' in kwargs:
+            per_try_timeout = kwargs['perTryTimeout']
+        if retry_conditions is None and 'retryConditions' in kwargs:
+            retry_conditions = kwargs['retryConditions']
+
         _setter("num_retries", num_retries)
         if per_try_timeout is not None:
             _setter("per_try_timeout", per_try_timeout)
@@ -42523,9 +46579,13 @@ class URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[str],
+             seconds: Optional[pulumi.Input[str]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -42576,9 +46636,13 @@ class URLMapPathMatcherRouteRuleRouteActionTimeoutArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             seconds: pulumi.Input[str],
+             seconds: Optional[pulumi.Input[str]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("seconds", seconds)
         if nanos is not None:
             _setter("nanos", nanos)
@@ -42647,7 +46711,15 @@ class URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs:
              host_rewrite: Optional[pulumi.Input[str]] = None,
              path_prefix_rewrite: Optional[pulumi.Input[str]] = None,
              path_template_rewrite: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host_rewrite is None and 'hostRewrite' in kwargs:
+            host_rewrite = kwargs['hostRewrite']
+        if path_prefix_rewrite is None and 'pathPrefixRewrite' in kwargs:
+            path_prefix_rewrite = kwargs['pathPrefixRewrite']
+        if path_template_rewrite is None and 'pathTemplateRewrite' in kwargs:
+            path_template_rewrite = kwargs['pathTemplateRewrite']
+
         if host_rewrite is not None:
             _setter("host_rewrite", host_rewrite)
         if path_prefix_rewrite is not None:
@@ -42737,10 +46809,20 @@ class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backend_service: pulumi.Input[str],
-             weight: pulumi.Input[int],
+             backend_service: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
              header_action: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backend_service is None and 'backendService' in kwargs:
+            backend_service = kwargs['backendService']
+        if backend_service is None:
+            raise TypeError("Missing 'backend_service' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
+        if header_action is None and 'headerAction' in kwargs:
+            header_action = kwargs['headerAction']
+
         _setter("backend_service", backend_service)
         _setter("weight", weight)
         if header_action is not None:
@@ -42825,7 +46907,17 @@ class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArg
              request_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]] = None,
              response_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if request_headers_to_adds is None and 'requestHeadersToAdds' in kwargs:
+            request_headers_to_adds = kwargs['requestHeadersToAdds']
+        if request_headers_to_removes is None and 'requestHeadersToRemoves' in kwargs:
+            request_headers_to_removes = kwargs['requestHeadersToRemoves']
+        if response_headers_to_adds is None and 'responseHeadersToAdds' in kwargs:
+            response_headers_to_adds = kwargs['responseHeadersToAdds']
+        if response_headers_to_removes is None and 'responseHeadersToRemoves' in kwargs:
+            response_headers_to_removes = kwargs['responseHeadersToRemoves']
+
         if request_headers_to_adds is not None:
             _setter("request_headers_to_adds", request_headers_to_adds)
         if request_headers_to_removes is not None:
@@ -42909,10 +47001,22 @@ class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionReq
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header_name: pulumi.Input[str],
-             header_value: pulumi.Input[str],
-             replace: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             header_name: Optional[pulumi.Input[str]] = None,
+             header_value: Optional[pulumi.Input[str]] = None,
+             replace: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_name is None:
+            raise TypeError("Missing 'header_name' argument")
+        if header_value is None and 'headerValue' in kwargs:
+            header_value = kwargs['headerValue']
+        if header_value is None:
+            raise TypeError("Missing 'header_value' argument")
+        if replace is None:
+            raise TypeError("Missing 'replace' argument")
+
         _setter("header_name", header_name)
         _setter("header_value", header_value)
         _setter("replace", replace)
@@ -42976,10 +47080,22 @@ class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRes
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header_name: pulumi.Input[str],
-             header_value: pulumi.Input[str],
-             replace: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             header_name: Optional[pulumi.Input[str]] = None,
+             header_value: Optional[pulumi.Input[str]] = None,
+             replace: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_name is None:
+            raise TypeError("Missing 'header_name' argument")
+        if header_value is None and 'headerValue' in kwargs:
+            header_value = kwargs['headerValue']
+        if header_value is None:
+            raise TypeError("Missing 'header_value' argument")
+        if replace is None:
+            raise TypeError("Missing 'replace' argument")
+
         _setter("header_name", header_name)
         _setter("header_value", header_value)
         _setter("replace", replace)
@@ -43071,7 +47187,21 @@ class URLMapPathMatcherRouteRuleUrlRedirectArgs:
              prefix_redirect: Optional[pulumi.Input[str]] = None,
              redirect_response_code: Optional[pulumi.Input[str]] = None,
              strip_query: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host_redirect is None and 'hostRedirect' in kwargs:
+            host_redirect = kwargs['hostRedirect']
+        if https_redirect is None and 'httpsRedirect' in kwargs:
+            https_redirect = kwargs['httpsRedirect']
+        if path_redirect is None and 'pathRedirect' in kwargs:
+            path_redirect = kwargs['pathRedirect']
+        if prefix_redirect is None and 'prefixRedirect' in kwargs:
+            prefix_redirect = kwargs['prefixRedirect']
+        if redirect_response_code is None and 'redirectResponseCode' in kwargs:
+            redirect_response_code = kwargs['redirectResponseCode']
+        if strip_query is None and 'stripQuery' in kwargs:
+            strip_query = kwargs['stripQuery']
+
         if host_redirect is not None:
             _setter("host_redirect", host_redirect)
         if https_redirect is not None:
@@ -43195,11 +47325,19 @@ class URLMapTestArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             host: pulumi.Input[str],
-             path: pulumi.Input[str],
-             service: pulumi.Input[str],
+             host: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("host", host)
         _setter("path", path)
         _setter("service", service)

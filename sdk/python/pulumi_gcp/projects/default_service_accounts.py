@@ -35,10 +35,18 @@ class DefaultServiceAccountsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input[str],
-             project: pulumi.Input[str],
+             action: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
              restore_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if restore_policy is None and 'restorePolicy' in kwargs:
+            restore_policy = kwargs['restorePolicy']
+
         _setter("action", action)
         _setter("project", project)
         if restore_policy is not None:
@@ -115,7 +123,13 @@ class _DefaultServiceAccountsState:
              project: Optional[pulumi.Input[str]] = None,
              restore_policy: Optional[pulumi.Input[str]] = None,
              service_accounts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if restore_policy is None and 'restorePolicy' in kwargs:
+            restore_policy = kwargs['restorePolicy']
+        if service_accounts is None and 'serviceAccounts' in kwargs:
+            service_accounts = kwargs['serviceAccounts']
+
         if action is not None:
             _setter("action", action)
         if project is not None:

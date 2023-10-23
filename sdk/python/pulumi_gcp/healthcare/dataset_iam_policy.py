@@ -42,9 +42,19 @@ class DatasetIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset_id: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             dataset_id: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if dataset_id is None:
+            raise TypeError("Missing 'dataset_id' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("dataset_id", dataset_id)
         _setter("policy_data", policy_data)
 
@@ -123,7 +133,13 @@ class _DatasetIamPolicyState:
              dataset_id: Optional[pulumi.Input[str]] = None,
              etag: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if dataset_id is not None:
             _setter("dataset_id", dataset_id)
         if etag is not None:

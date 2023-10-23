@@ -53,7 +53,13 @@ class TransferAgentPoolArgs:
              display_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bandwidth_limit is None and 'bandwidthLimit' in kwargs:
+            bandwidth_limit = kwargs['bandwidthLimit']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if bandwidth_limit is not None:
             _setter("bandwidth_limit", bandwidth_limit)
         if display_name is not None:
@@ -168,7 +174,13 @@ class _TransferAgentPoolState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bandwidth_limit is None and 'bandwidthLimit' in kwargs:
+            bandwidth_limit = kwargs['bandwidthLimit']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if bandwidth_limit is not None:
             _setter("bandwidth_limit", bandwidth_limit)
         if display_name is not None:

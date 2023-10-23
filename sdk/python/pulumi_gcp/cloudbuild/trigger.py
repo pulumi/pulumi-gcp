@@ -167,7 +167,33 @@ class TriggerArgs:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              trigger_template: Optional[pulumi.Input['TriggerTriggerTemplateArgs']] = None,
              webhook_config: Optional[pulumi.Input['TriggerWebhookConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if approval_config is None and 'approvalConfig' in kwargs:
+            approval_config = kwargs['approvalConfig']
+        if bitbucket_server_trigger_config is None and 'bitbucketServerTriggerConfig' in kwargs:
+            bitbucket_server_trigger_config = kwargs['bitbucketServerTriggerConfig']
+        if git_file_source is None and 'gitFileSource' in kwargs:
+            git_file_source = kwargs['gitFileSource']
+        if ignored_files is None and 'ignoredFiles' in kwargs:
+            ignored_files = kwargs['ignoredFiles']
+        if include_build_logs is None and 'includeBuildLogs' in kwargs:
+            include_build_logs = kwargs['includeBuildLogs']
+        if included_files is None and 'includedFiles' in kwargs:
+            included_files = kwargs['includedFiles']
+        if pubsub_config is None and 'pubsubConfig' in kwargs:
+            pubsub_config = kwargs['pubsubConfig']
+        if repository_event_config is None and 'repositoryEventConfig' in kwargs:
+            repository_event_config = kwargs['repositoryEventConfig']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if source_to_build is None and 'sourceToBuild' in kwargs:
+            source_to_build = kwargs['sourceToBuild']
+        if trigger_template is None and 'triggerTemplate' in kwargs:
+            trigger_template = kwargs['triggerTemplate']
+        if webhook_config is None and 'webhookConfig' in kwargs:
+            webhook_config = kwargs['webhookConfig']
+
         if approval_config is not None:
             _setter("approval_config", approval_config)
         if bitbucket_server_trigger_config is not None:
@@ -704,7 +730,37 @@ class _TriggerState:
              trigger_id: Optional[pulumi.Input[str]] = None,
              trigger_template: Optional[pulumi.Input['TriggerTriggerTemplateArgs']] = None,
              webhook_config: Optional[pulumi.Input['TriggerWebhookConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if approval_config is None and 'approvalConfig' in kwargs:
+            approval_config = kwargs['approvalConfig']
+        if bitbucket_server_trigger_config is None and 'bitbucketServerTriggerConfig' in kwargs:
+            bitbucket_server_trigger_config = kwargs['bitbucketServerTriggerConfig']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if git_file_source is None and 'gitFileSource' in kwargs:
+            git_file_source = kwargs['gitFileSource']
+        if ignored_files is None and 'ignoredFiles' in kwargs:
+            ignored_files = kwargs['ignoredFiles']
+        if include_build_logs is None and 'includeBuildLogs' in kwargs:
+            include_build_logs = kwargs['includeBuildLogs']
+        if included_files is None and 'includedFiles' in kwargs:
+            included_files = kwargs['includedFiles']
+        if pubsub_config is None and 'pubsubConfig' in kwargs:
+            pubsub_config = kwargs['pubsubConfig']
+        if repository_event_config is None and 'repositoryEventConfig' in kwargs:
+            repository_event_config = kwargs['repositoryEventConfig']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if source_to_build is None and 'sourceToBuild' in kwargs:
+            source_to_build = kwargs['sourceToBuild']
+        if trigger_id is None and 'triggerId' in kwargs:
+            trigger_id = kwargs['triggerId']
+        if trigger_template is None and 'triggerTemplate' in kwargs:
+            trigger_template = kwargs['triggerTemplate']
+        if webhook_config is None and 'webhookConfig' in kwargs:
+            webhook_config = kwargs['webhookConfig']
+
         if approval_config is not None:
             _setter("approval_config", approval_config)
         if bitbucket_server_trigger_config is not None:

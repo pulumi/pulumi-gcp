@@ -49,13 +49,27 @@ class InboundSamlConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             idp_config: pulumi.Input['InboundSamlConfigIdpConfigArgs'],
-             sp_config: pulumi.Input['InboundSamlConfigSpConfigArgs'],
+             display_name: Optional[pulumi.Input[str]] = None,
+             idp_config: Optional[pulumi.Input['InboundSamlConfigIdpConfigArgs']] = None,
+             sp_config: Optional[pulumi.Input['InboundSamlConfigSpConfigArgs']] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if idp_config is None and 'idpConfig' in kwargs:
+            idp_config = kwargs['idpConfig']
+        if idp_config is None:
+            raise TypeError("Missing 'idp_config' argument")
+        if sp_config is None and 'spConfig' in kwargs:
+            sp_config = kwargs['spConfig']
+        if sp_config is None:
+            raise TypeError("Missing 'sp_config' argument")
+
         _setter("display_name", display_name)
         _setter("idp_config", idp_config)
         _setter("sp_config", sp_config)
@@ -187,7 +201,15 @@ class _InboundSamlConfigState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              sp_config: Optional[pulumi.Input['InboundSamlConfigSpConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if idp_config is None and 'idpConfig' in kwargs:
+            idp_config = kwargs['idpConfig']
+        if sp_config is None and 'spConfig' in kwargs:
+            sp_config = kwargs['spConfig']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if enabled is not None:

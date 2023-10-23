@@ -75,7 +75,7 @@ class JobArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             placement: pulumi.Input['JobPlacementArgs'],
+             placement: Optional[pulumi.Input['JobPlacementArgs']] = None,
              force_delete: Optional[pulumi.Input[bool]] = None,
              hadoop_config: Optional[pulumi.Input['JobHadoopConfigArgs']] = None,
              hive_config: Optional[pulumi.Input['JobHiveConfigArgs']] = None,
@@ -89,7 +89,27 @@ class JobArgs:
              scheduling: Optional[pulumi.Input['JobSchedulingArgs']] = None,
              spark_config: Optional[pulumi.Input['JobSparkConfigArgs']] = None,
              sparksql_config: Optional[pulumi.Input['JobSparksqlConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if placement is None:
+            raise TypeError("Missing 'placement' argument")
+        if force_delete is None and 'forceDelete' in kwargs:
+            force_delete = kwargs['forceDelete']
+        if hadoop_config is None and 'hadoopConfig' in kwargs:
+            hadoop_config = kwargs['hadoopConfig']
+        if hive_config is None and 'hiveConfig' in kwargs:
+            hive_config = kwargs['hiveConfig']
+        if pig_config is None and 'pigConfig' in kwargs:
+            pig_config = kwargs['pigConfig']
+        if presto_config is None and 'prestoConfig' in kwargs:
+            presto_config = kwargs['prestoConfig']
+        if pyspark_config is None and 'pysparkConfig' in kwargs:
+            pyspark_config = kwargs['pysparkConfig']
+        if spark_config is None and 'sparkConfig' in kwargs:
+            spark_config = kwargs['sparkConfig']
+        if sparksql_config is None and 'sparksqlConfig' in kwargs:
+            sparksql_config = kwargs['sparksqlConfig']
+
         _setter("placement", placement)
         if force_delete is not None:
             _setter("force_delete", force_delete)
@@ -383,7 +403,29 @@ class _JobState:
              spark_config: Optional[pulumi.Input['JobSparkConfigArgs']] = None,
              sparksql_config: Optional[pulumi.Input['JobSparksqlConfigArgs']] = None,
              statuses: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if driver_controls_files_uri is None and 'driverControlsFilesUri' in kwargs:
+            driver_controls_files_uri = kwargs['driverControlsFilesUri']
+        if driver_output_resource_uri is None and 'driverOutputResourceUri' in kwargs:
+            driver_output_resource_uri = kwargs['driverOutputResourceUri']
+        if force_delete is None and 'forceDelete' in kwargs:
+            force_delete = kwargs['forceDelete']
+        if hadoop_config is None and 'hadoopConfig' in kwargs:
+            hadoop_config = kwargs['hadoopConfig']
+        if hive_config is None and 'hiveConfig' in kwargs:
+            hive_config = kwargs['hiveConfig']
+        if pig_config is None and 'pigConfig' in kwargs:
+            pig_config = kwargs['pigConfig']
+        if presto_config is None and 'prestoConfig' in kwargs:
+            presto_config = kwargs['prestoConfig']
+        if pyspark_config is None and 'pysparkConfig' in kwargs:
+            pyspark_config = kwargs['pysparkConfig']
+        if spark_config is None and 'sparkConfig' in kwargs:
+            spark_config = kwargs['sparkConfig']
+        if sparksql_config is None and 'sparksqlConfig' in kwargs:
+            sparksql_config = kwargs['sparksqlConfig']
+
         if driver_controls_files_uri is not None:
             _setter("driver_controls_files_uri", driver_controls_files_uri)
         if driver_output_resource_uri is not None:

@@ -53,14 +53,26 @@ class ScopeRbacRoleBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             role: pulumi.Input['ScopeRbacRoleBindingRoleArgs'],
-             scope_id: pulumi.Input[str],
-             scope_rbac_role_binding_id: pulumi.Input[str],
+             role: Optional[pulumi.Input['ScopeRbacRoleBindingRoleArgs']] = None,
+             scope_id: Optional[pulumi.Input[str]] = None,
+             scope_rbac_role_binding_id: Optional[pulumi.Input[str]] = None,
              group: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if scope_id is None and 'scopeId' in kwargs:
+            scope_id = kwargs['scopeId']
+        if scope_id is None:
+            raise TypeError("Missing 'scope_id' argument")
+        if scope_rbac_role_binding_id is None and 'scopeRbacRoleBindingId' in kwargs:
+            scope_rbac_role_binding_id = kwargs['scopeRbacRoleBindingId']
+        if scope_rbac_role_binding_id is None:
+            raise TypeError("Missing 'scope_rbac_role_binding_id' argument")
+
         _setter("role", role)
         _setter("scope_id", scope_id)
         _setter("scope_rbac_role_binding_id", scope_rbac_role_binding_id)
@@ -237,7 +249,19 @@ class _ScopeRbacRoleBindingState:
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if delete_time is None and 'deleteTime' in kwargs:
+            delete_time = kwargs['deleteTime']
+        if scope_id is None and 'scopeId' in kwargs:
+            scope_id = kwargs['scopeId']
+        if scope_rbac_role_binding_id is None and 'scopeRbacRoleBindingId' in kwargs:
+            scope_rbac_role_binding_id = kwargs['scopeRbacRoleBindingId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if delete_time is not None:

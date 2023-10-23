@@ -67,7 +67,7 @@ import (
 //					Preemptible:      pulumi.Bool(false),
 //					AutomaticRestart: pulumi.Bool(true),
 //				},
-//				Metadata: pulumi.AnyMap{
+//				Metadata: pulumi.Map{
 //					"gce-software-declaration": pulumi.Any(`{
 //	  "softwareRecipes": [{
 //	    "name": "install-gce-service-proxy-agent",

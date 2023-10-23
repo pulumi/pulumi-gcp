@@ -83,7 +83,7 @@ class DatasetAccessInitArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset_id: pulumi.Input[str],
+             dataset_id: Optional[pulumi.Input[str]] = None,
              authorized_dataset: Optional[pulumi.Input['DatasetAccessAuthorizedDatasetArgs']] = None,
              domain: Optional[pulumi.Input[str]] = None,
              group_by_email: Optional[pulumi.Input[str]] = None,
@@ -94,7 +94,23 @@ class DatasetAccessInitArgs:
              special_group: Optional[pulumi.Input[str]] = None,
              user_by_email: Optional[pulumi.Input[str]] = None,
              view: Optional[pulumi.Input['DatasetAccessViewArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if dataset_id is None:
+            raise TypeError("Missing 'dataset_id' argument")
+        if authorized_dataset is None and 'authorizedDataset' in kwargs:
+            authorized_dataset = kwargs['authorizedDataset']
+        if group_by_email is None and 'groupByEmail' in kwargs:
+            group_by_email = kwargs['groupByEmail']
+        if iam_member is None and 'iamMember' in kwargs:
+            iam_member = kwargs['iamMember']
+        if special_group is None and 'specialGroup' in kwargs:
+            special_group = kwargs['specialGroup']
+        if user_by_email is None and 'userByEmail' in kwargs:
+            user_by_email = kwargs['userByEmail']
+
         _setter("dataset_id", dataset_id)
         if authorized_dataset is not None:
             _setter("authorized_dataset", authorized_dataset)
@@ -361,7 +377,23 @@ class _DatasetAccessState:
              special_group: Optional[pulumi.Input[str]] = None,
              user_by_email: Optional[pulumi.Input[str]] = None,
              view: Optional[pulumi.Input['DatasetAccessViewArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_updated_member is None and 'apiUpdatedMember' in kwargs:
+            api_updated_member = kwargs['apiUpdatedMember']
+        if authorized_dataset is None and 'authorizedDataset' in kwargs:
+            authorized_dataset = kwargs['authorizedDataset']
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if group_by_email is None and 'groupByEmail' in kwargs:
+            group_by_email = kwargs['groupByEmail']
+        if iam_member is None and 'iamMember' in kwargs:
+            iam_member = kwargs['iamMember']
+        if special_group is None and 'specialGroup' in kwargs:
+            special_group = kwargs['specialGroup']
+        if user_by_email is None and 'userByEmail' in kwargs:
+            user_by_email = kwargs['userByEmail']
+
         if api_updated_member is not None:
             _setter("api_updated_member", api_updated_member)
         if authorized_dataset is not None:

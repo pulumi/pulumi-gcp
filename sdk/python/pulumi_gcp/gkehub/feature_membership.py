@@ -43,13 +43,21 @@ class FeatureMembershipArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             feature: pulumi.Input[str],
-             location: pulumi.Input[str],
-             membership: pulumi.Input[str],
+             feature: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             membership: Optional[pulumi.Input[str]] = None,
              configmanagement: Optional[pulumi.Input['FeatureMembershipConfigmanagementArgs']] = None,
              mesh: Optional[pulumi.Input['FeatureMembershipMeshArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if feature is None:
+            raise TypeError("Missing 'feature' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if membership is None:
+            raise TypeError("Missing 'membership' argument")
+
         _setter("feature", feature)
         _setter("location", location)
         _setter("membership", membership)
@@ -169,7 +177,9 @@ class _FeatureMembershipState:
              membership: Optional[pulumi.Input[str]] = None,
              mesh: Optional[pulumi.Input['FeatureMembershipMeshArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if configmanagement is not None:
             _setter("configmanagement", configmanagement)
         if feature is not None:

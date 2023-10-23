@@ -60,14 +60,26 @@ class TaskIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             lake: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
-             task_id: pulumi.Input[str],
+             lake: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             task_id: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['TaskIamBindingConditionArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if lake is None:
+            raise TypeError("Missing 'lake' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if task_id is None and 'taskId' in kwargs:
+            task_id = kwargs['taskId']
+        if task_id is None:
+            raise TypeError("Missing 'task_id' argument")
+
         _setter("lake", lake)
         _setter("members", members)
         _setter("role", role)
@@ -230,7 +242,11 @@ class _TaskIamBindingState:
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              task_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if task_id is None and 'taskId' in kwargs:
+            task_id = kwargs['taskId']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

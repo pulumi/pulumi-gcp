@@ -42,7 +42,13 @@ class ConnectionGithubConfigArgs:
              _setter: Callable[[Any, Any], None],
              app_installation_id: Optional[pulumi.Input[int]] = None,
              authorizer_credential: Optional[pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_installation_id is None and 'appInstallationId' in kwargs:
+            app_installation_id = kwargs['appInstallationId']
+        if authorizer_credential is None and 'authorizerCredential' in kwargs:
+            authorizer_credential = kwargs['authorizerCredential']
+
         if app_installation_id is not None:
             _setter("app_installation_id", app_installation_id)
         if authorizer_credential is not None:
@@ -92,7 +98,11 @@ class ConnectionGithubConfigAuthorizerCredentialArgs:
              _setter: Callable[[Any, Any], None],
              oauth_token_secret_version: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if oauth_token_secret_version is None and 'oauthTokenSecretVersion' in kwargs:
+            oauth_token_secret_version = kwargs['oauthTokenSecretVersion']
+
         if oauth_token_secret_version is not None:
             _setter("oauth_token_secret_version", oauth_token_secret_version)
         if username is not None:
@@ -158,7 +168,7 @@ class ConnectionGithubEnterpriseConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             host_uri: pulumi.Input[str],
+             host_uri: Optional[pulumi.Input[str]] = None,
              app_id: Optional[pulumi.Input[int]] = None,
              app_installation_id: Optional[pulumi.Input[int]] = None,
              app_slug: Optional[pulumi.Input[str]] = None,
@@ -166,7 +176,27 @@ class ConnectionGithubEnterpriseConfigArgs:
              service_directory_config: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs']] = None,
              ssl_ca: Optional[pulumi.Input[str]] = None,
              webhook_secret_secret_version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host_uri is None and 'hostUri' in kwargs:
+            host_uri = kwargs['hostUri']
+        if host_uri is None:
+            raise TypeError("Missing 'host_uri' argument")
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if app_installation_id is None and 'appInstallationId' in kwargs:
+            app_installation_id = kwargs['appInstallationId']
+        if app_slug is None and 'appSlug' in kwargs:
+            app_slug = kwargs['appSlug']
+        if private_key_secret_version is None and 'privateKeySecretVersion' in kwargs:
+            private_key_secret_version = kwargs['privateKeySecretVersion']
+        if service_directory_config is None and 'serviceDirectoryConfig' in kwargs:
+            service_directory_config = kwargs['serviceDirectoryConfig']
+        if ssl_ca is None and 'sslCa' in kwargs:
+            ssl_ca = kwargs['sslCa']
+        if webhook_secret_secret_version is None and 'webhookSecretSecretVersion' in kwargs:
+            webhook_secret_secret_version = kwargs['webhookSecretSecretVersion']
+
         _setter("host_uri", host_uri)
         if app_id is not None:
             _setter("app_id", app_id)
@@ -294,8 +324,12 @@ class ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             service: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("service", service)
 
     @property
@@ -343,14 +377,36 @@ class ConnectionGitlabConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             authorizer_credential: pulumi.Input['ConnectionGitlabConfigAuthorizerCredentialArgs'],
-             read_authorizer_credential: pulumi.Input['ConnectionGitlabConfigReadAuthorizerCredentialArgs'],
-             webhook_secret_secret_version: pulumi.Input[str],
+             authorizer_credential: Optional[pulumi.Input['ConnectionGitlabConfigAuthorizerCredentialArgs']] = None,
+             read_authorizer_credential: Optional[pulumi.Input['ConnectionGitlabConfigReadAuthorizerCredentialArgs']] = None,
+             webhook_secret_secret_version: Optional[pulumi.Input[str]] = None,
              host_uri: Optional[pulumi.Input[str]] = None,
              server_version: Optional[pulumi.Input[str]] = None,
              service_directory_config: Optional[pulumi.Input['ConnectionGitlabConfigServiceDirectoryConfigArgs']] = None,
              ssl_ca: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if authorizer_credential is None and 'authorizerCredential' in kwargs:
+            authorizer_credential = kwargs['authorizerCredential']
+        if authorizer_credential is None:
+            raise TypeError("Missing 'authorizer_credential' argument")
+        if read_authorizer_credential is None and 'readAuthorizerCredential' in kwargs:
+            read_authorizer_credential = kwargs['readAuthorizerCredential']
+        if read_authorizer_credential is None:
+            raise TypeError("Missing 'read_authorizer_credential' argument")
+        if webhook_secret_secret_version is None and 'webhookSecretSecretVersion' in kwargs:
+            webhook_secret_secret_version = kwargs['webhookSecretSecretVersion']
+        if webhook_secret_secret_version is None:
+            raise TypeError("Missing 'webhook_secret_secret_version' argument")
+        if host_uri is None and 'hostUri' in kwargs:
+            host_uri = kwargs['hostUri']
+        if server_version is None and 'serverVersion' in kwargs:
+            server_version = kwargs['serverVersion']
+        if service_directory_config is None and 'serviceDirectoryConfig' in kwargs:
+            service_directory_config = kwargs['serviceDirectoryConfig']
+        if ssl_ca is None and 'sslCa' in kwargs:
+            ssl_ca = kwargs['sslCa']
+
         _setter("authorizer_credential", authorizer_credential)
         _setter("read_authorizer_credential", read_authorizer_credential)
         _setter("webhook_secret_secret_version", webhook_secret_secret_version)
@@ -465,9 +521,15 @@ class ConnectionGitlabConfigAuthorizerCredentialArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             user_token_secret_version: pulumi.Input[str],
+             user_token_secret_version: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if user_token_secret_version is None and 'userTokenSecretVersion' in kwargs:
+            user_token_secret_version = kwargs['userTokenSecretVersion']
+        if user_token_secret_version is None:
+            raise TypeError("Missing 'user_token_secret_version' argument")
+
         _setter("user_token_secret_version", user_token_secret_version)
         if username is not None:
             _setter("username", username)
@@ -516,9 +578,15 @@ class ConnectionGitlabConfigReadAuthorizerCredentialArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             user_token_secret_version: pulumi.Input[str],
+             user_token_secret_version: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if user_token_secret_version is None and 'userTokenSecretVersion' in kwargs:
+            user_token_secret_version = kwargs['userTokenSecretVersion']
+        if user_token_secret_version is None:
+            raise TypeError("Missing 'user_token_secret_version' argument")
+
         _setter("user_token_secret_version", user_token_secret_version)
         if username is not None:
             _setter("username", username)
@@ -564,8 +632,12 @@ class ConnectionGitlabConfigServiceDirectoryConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             service: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("service", service)
 
     @property
@@ -596,10 +668,16 @@ class ConnectionIAMBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -648,10 +726,16 @@ class ConnectionIAMMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -703,7 +787,11 @@ class ConnectionInstallationStateArgs:
              action_uri: Optional[pulumi.Input[str]] = None,
              message: Optional[pulumi.Input[str]] = None,
              stage: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if action_uri is None and 'actionUri' in kwargs:
+            action_uri = kwargs['actionUri']
+
         if action_uri is not None:
             _setter("action_uri", action_uri)
         if message is not None:

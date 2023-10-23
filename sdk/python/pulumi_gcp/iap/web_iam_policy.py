@@ -43,9 +43,15 @@ class WebIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_data: pulumi.Input[str],
+             policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("policy_data", policy_data)
         if project is not None:
             _setter("project", project)
@@ -127,7 +133,11 @@ class _WebIamPolicyState:
              etag: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if etag is not None:
             _setter("etag", etag)
         if policy_data is not None:

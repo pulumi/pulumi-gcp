@@ -144,7 +144,7 @@ class FirewallArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input[str],
+             network: Optional[pulumi.Input[str]] = None,
              allows: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallAllowArgs']]]] = None,
              denies: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallDenyArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -161,7 +161,27 @@ class FirewallArgs:
              source_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              target_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if destination_ranges is None and 'destinationRanges' in kwargs:
+            destination_ranges = kwargs['destinationRanges']
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if log_config is None and 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if source_ranges is None and 'sourceRanges' in kwargs:
+            source_ranges = kwargs['sourceRanges']
+        if source_service_accounts is None and 'sourceServiceAccounts' in kwargs:
+            source_service_accounts = kwargs['sourceServiceAccounts']
+        if source_tags is None and 'sourceTags' in kwargs:
+            source_tags = kwargs['sourceTags']
+        if target_service_accounts is None and 'targetServiceAccounts' in kwargs:
+            target_service_accounts = kwargs['targetServiceAccounts']
+        if target_tags is None and 'targetTags' in kwargs:
+            target_tags = kwargs['targetTags']
+
         _setter("network", network)
         if allows is not None:
             _setter("allows", allows)
@@ -631,7 +651,29 @@ class _FirewallState:
              source_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              target_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if destination_ranges is None and 'destinationRanges' in kwargs:
+            destination_ranges = kwargs['destinationRanges']
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if log_config is None and 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if source_ranges is None and 'sourceRanges' in kwargs:
+            source_ranges = kwargs['sourceRanges']
+        if source_service_accounts is None and 'sourceServiceAccounts' in kwargs:
+            source_service_accounts = kwargs['sourceServiceAccounts']
+        if source_tags is None and 'sourceTags' in kwargs:
+            source_tags = kwargs['sourceTags']
+        if target_service_accounts is None and 'targetServiceAccounts' in kwargs:
+            target_service_accounts = kwargs['targetServiceAccounts']
+        if target_tags is None and 'targetTags' in kwargs:
+            target_tags = kwargs['targetTags']
+
         if allows is not None:
             _setter("allows", allows)
         if creation_timestamp is not None:

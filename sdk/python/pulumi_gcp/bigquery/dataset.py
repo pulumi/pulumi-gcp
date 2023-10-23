@@ -129,7 +129,7 @@ class DatasetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset_id: pulumi.Input[str],
+             dataset_id: Optional[pulumi.Input[str]] = None,
              accesses: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessArgs']]]] = None,
              default_collation: Optional[pulumi.Input[str]] = None,
              default_encryption_configuration: Optional[pulumi.Input['DatasetDefaultEncryptionConfigurationArgs']] = None,
@@ -144,7 +144,31 @@ class DatasetArgs:
              max_time_travel_hours: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              storage_billing_model: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if dataset_id is None:
+            raise TypeError("Missing 'dataset_id' argument")
+        if default_collation is None and 'defaultCollation' in kwargs:
+            default_collation = kwargs['defaultCollation']
+        if default_encryption_configuration is None and 'defaultEncryptionConfiguration' in kwargs:
+            default_encryption_configuration = kwargs['defaultEncryptionConfiguration']
+        if default_partition_expiration_ms is None and 'defaultPartitionExpirationMs' in kwargs:
+            default_partition_expiration_ms = kwargs['defaultPartitionExpirationMs']
+        if default_table_expiration_ms is None and 'defaultTableExpirationMs' in kwargs:
+            default_table_expiration_ms = kwargs['defaultTableExpirationMs']
+        if delete_contents_on_destroy is None and 'deleteContentsOnDestroy' in kwargs:
+            delete_contents_on_destroy = kwargs['deleteContentsOnDestroy']
+        if friendly_name is None and 'friendlyName' in kwargs:
+            friendly_name = kwargs['friendlyName']
+        if is_case_insensitive is None and 'isCaseInsensitive' in kwargs:
+            is_case_insensitive = kwargs['isCaseInsensitive']
+        if max_time_travel_hours is None and 'maxTimeTravelHours' in kwargs:
+            max_time_travel_hours = kwargs['maxTimeTravelHours']
+        if storage_billing_model is None and 'storageBillingModel' in kwargs:
+            storage_billing_model = kwargs['storageBillingModel']
+
         _setter("dataset_id", dataset_id)
         if accesses is not None:
             _setter("accesses", accesses)
@@ -564,7 +588,35 @@ class _DatasetState:
              project: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              storage_billing_model: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if creation_time is None and 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if default_collation is None and 'defaultCollation' in kwargs:
+            default_collation = kwargs['defaultCollation']
+        if default_encryption_configuration is None and 'defaultEncryptionConfiguration' in kwargs:
+            default_encryption_configuration = kwargs['defaultEncryptionConfiguration']
+        if default_partition_expiration_ms is None and 'defaultPartitionExpirationMs' in kwargs:
+            default_partition_expiration_ms = kwargs['defaultPartitionExpirationMs']
+        if default_table_expiration_ms is None and 'defaultTableExpirationMs' in kwargs:
+            default_table_expiration_ms = kwargs['defaultTableExpirationMs']
+        if delete_contents_on_destroy is None and 'deleteContentsOnDestroy' in kwargs:
+            delete_contents_on_destroy = kwargs['deleteContentsOnDestroy']
+        if friendly_name is None and 'friendlyName' in kwargs:
+            friendly_name = kwargs['friendlyName']
+        if is_case_insensitive is None and 'isCaseInsensitive' in kwargs:
+            is_case_insensitive = kwargs['isCaseInsensitive']
+        if last_modified_time is None and 'lastModifiedTime' in kwargs:
+            last_modified_time = kwargs['lastModifiedTime']
+        if max_time_travel_hours is None and 'maxTimeTravelHours' in kwargs:
+            max_time_travel_hours = kwargs['maxTimeTravelHours']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if storage_billing_model is None and 'storageBillingModel' in kwargs:
+            storage_billing_model = kwargs['storageBillingModel']
+
         if accesses is not None:
             _setter("accesses", accesses)
         if creation_time is not None:

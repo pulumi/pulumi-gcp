@@ -51,11 +51,21 @@ class KeyRingIAMBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key_ring_id: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             key_ring_id: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['KeyRingIAMBindingConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key_ring_id is None and 'keyRingId' in kwargs:
+            key_ring_id = kwargs['keyRingId']
+        if key_ring_id is None:
+            raise TypeError("Missing 'key_ring_id' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("key_ring_id", key_ring_id)
         _setter("members", members)
         _setter("role", role)
@@ -169,7 +179,11 @@ class _KeyRingIAMBindingState:
              key_ring_id: Optional[pulumi.Input[str]] = None,
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key_ring_id is None and 'keyRingId' in kwargs:
+            key_ring_id = kwargs['keyRingId']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

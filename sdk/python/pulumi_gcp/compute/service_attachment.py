@@ -83,10 +83,10 @@ class ServiceAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_preference: pulumi.Input[str],
-             enable_proxy_protocol: pulumi.Input[bool],
-             nat_subnets: pulumi.Input[Sequence[pulumi.Input[str]]],
-             target_service: pulumi.Input[str],
+             connection_preference: Optional[pulumi.Input[str]] = None,
+             enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
+             nat_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             target_service: Optional[pulumi.Input[str]] = None,
              consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]]] = None,
              consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -95,7 +95,33 @@ class ServiceAttachmentArgs:
              project: Optional[pulumi.Input[str]] = None,
              reconcile_connections: Optional[pulumi.Input[bool]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connection_preference is None and 'connectionPreference' in kwargs:
+            connection_preference = kwargs['connectionPreference']
+        if connection_preference is None:
+            raise TypeError("Missing 'connection_preference' argument")
+        if enable_proxy_protocol is None and 'enableProxyProtocol' in kwargs:
+            enable_proxy_protocol = kwargs['enableProxyProtocol']
+        if enable_proxy_protocol is None:
+            raise TypeError("Missing 'enable_proxy_protocol' argument")
+        if nat_subnets is None and 'natSubnets' in kwargs:
+            nat_subnets = kwargs['natSubnets']
+        if nat_subnets is None:
+            raise TypeError("Missing 'nat_subnets' argument")
+        if target_service is None and 'targetService' in kwargs:
+            target_service = kwargs['targetService']
+        if target_service is None:
+            raise TypeError("Missing 'target_service' argument")
+        if consumer_accept_lists is None and 'consumerAcceptLists' in kwargs:
+            consumer_accept_lists = kwargs['consumerAcceptLists']
+        if consumer_reject_lists is None and 'consumerRejectLists' in kwargs:
+            consumer_reject_lists = kwargs['consumerRejectLists']
+        if domain_names is None and 'domainNames' in kwargs:
+            domain_names = kwargs['domainNames']
+        if reconcile_connections is None and 'reconcileConnections' in kwargs:
+            reconcile_connections = kwargs['reconcileConnections']
+
         _setter("connection_preference", connection_preference)
         _setter("enable_proxy_protocol", enable_proxy_protocol)
         _setter("nat_subnets", nat_subnets)
@@ -381,7 +407,29 @@ class _ServiceAttachmentState:
              region: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              target_service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connected_endpoints is None and 'connectedEndpoints' in kwargs:
+            connected_endpoints = kwargs['connectedEndpoints']
+        if connection_preference is None and 'connectionPreference' in kwargs:
+            connection_preference = kwargs['connectionPreference']
+        if consumer_accept_lists is None and 'consumerAcceptLists' in kwargs:
+            consumer_accept_lists = kwargs['consumerAcceptLists']
+        if consumer_reject_lists is None and 'consumerRejectLists' in kwargs:
+            consumer_reject_lists = kwargs['consumerRejectLists']
+        if domain_names is None and 'domainNames' in kwargs:
+            domain_names = kwargs['domainNames']
+        if enable_proxy_protocol is None and 'enableProxyProtocol' in kwargs:
+            enable_proxy_protocol = kwargs['enableProxyProtocol']
+        if nat_subnets is None and 'natSubnets' in kwargs:
+            nat_subnets = kwargs['natSubnets']
+        if reconcile_connections is None and 'reconcileConnections' in kwargs:
+            reconcile_connections = kwargs['reconcileConnections']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if target_service is None and 'targetService' in kwargs:
+            target_service = kwargs['targetService']
+
         if connected_endpoints is not None:
             _setter("connected_endpoints", connected_endpoints)
         if connection_preference is not None:

@@ -47,12 +47,20 @@ class FirewallRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input[str],
-             source_range: pulumi.Input[str],
+             action: Optional[pulumi.Input[str]] = None,
+             source_range: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if source_range is None and 'sourceRange' in kwargs:
+            source_range = kwargs['sourceRange']
+        if source_range is None:
+            raise TypeError("Missing 'source_range' argument")
+
         _setter("action", action)
         _setter("source_range", source_range)
         if description is not None:
@@ -173,7 +181,11 @@ class _FirewallRuleState:
              priority: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
              source_range: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if source_range is None and 'sourceRange' in kwargs:
+            source_range = kwargs['sourceRange']
+
         if action is not None:
             _setter("action", action)
         if description is not None:

@@ -35,9 +35,13 @@ class SyncAuthorizationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             identities: pulumi.Input[Sequence[pulumi.Input[str]]],
+             identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if identities is None:
+            raise TypeError("Missing 'identities' argument")
+
         _setter("identities", identities)
         if name is not None:
             _setter("name", name)
@@ -104,7 +108,9 @@ class _SyncAuthorizationState:
              etag: Optional[pulumi.Input[str]] = None,
              identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if etag is not None:
             _setter("etag", etag)
         if identities is not None:

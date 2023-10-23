@@ -48,10 +48,16 @@ class ConsentStoreIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -100,10 +106,16 @@ class ConsentStoreIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -152,10 +164,16 @@ class DatasetIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -204,10 +222,16 @@ class DatasetIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -256,10 +280,16 @@ class DicomStoreIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -308,10 +338,16 @@ class DicomStoreIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -364,8 +400,14 @@ class DicomStoreNotificationConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pubsub_topic: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             pubsub_topic: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pubsub_topic is None and 'pubsubTopic' in kwargs:
+            pubsub_topic = kwargs['pubsubTopic']
+        if pubsub_topic is None:
+            raise TypeError("Missing 'pubsub_topic' argument")
+
         _setter("pubsub_topic", pubsub_topic)
 
     @property
@@ -401,8 +443,14 @@ class DicomStoreStreamConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bigquery_destination: pulumi.Input['DicomStoreStreamConfigBigqueryDestinationArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bigquery_destination: Optional[pulumi.Input['DicomStoreStreamConfigBigqueryDestinationArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bigquery_destination is None and 'bigqueryDestination' in kwargs:
+            bigquery_destination = kwargs['bigqueryDestination']
+        if bigquery_destination is None:
+            raise TypeError("Missing 'bigquery_destination' argument")
+
         _setter("bigquery_destination", bigquery_destination)
 
     @property
@@ -433,8 +481,14 @@ class DicomStoreStreamConfigBigqueryDestinationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             table_uri: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             table_uri: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if table_uri is None and 'tableUri' in kwargs:
+            table_uri = kwargs['tableUri']
+        if table_uri is None:
+            raise TypeError("Missing 'table_uri' argument")
+
         _setter("table_uri", table_uri)
 
     @property
@@ -465,10 +519,16 @@ class FhirStoreIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -517,10 +577,16 @@ class FhirStoreIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -587,10 +653,20 @@ class FhirStoreNotificationConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pubsub_topic: pulumi.Input[str],
+             pubsub_topic: Optional[pulumi.Input[str]] = None,
              send_full_resource: Optional[pulumi.Input[bool]] = None,
              send_previous_resource_on_delete: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pubsub_topic is None and 'pubsubTopic' in kwargs:
+            pubsub_topic = kwargs['pubsubTopic']
+        if pubsub_topic is None:
+            raise TypeError("Missing 'pubsub_topic' argument")
+        if send_full_resource is None and 'sendFullResource' in kwargs:
+            send_full_resource = kwargs['sendFullResource']
+        if send_previous_resource_on_delete is None and 'sendPreviousResourceOnDelete' in kwargs:
+            send_previous_resource_on_delete = kwargs['sendPreviousResourceOnDelete']
+
         _setter("pubsub_topic", pubsub_topic)
         if send_full_resource is not None:
             _setter("send_full_resource", send_full_resource)
@@ -671,9 +747,17 @@ class FhirStoreStreamConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bigquery_destination: pulumi.Input['FhirStoreStreamConfigBigqueryDestinationArgs'],
+             bigquery_destination: Optional[pulumi.Input['FhirStoreStreamConfigBigqueryDestinationArgs']] = None,
              resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bigquery_destination is None and 'bigqueryDestination' in kwargs:
+            bigquery_destination = kwargs['bigqueryDestination']
+        if bigquery_destination is None:
+            raise TypeError("Missing 'bigquery_destination' argument")
+        if resource_types is None and 'resourceTypes' in kwargs:
+            resource_types = kwargs['resourceTypes']
+
         _setter("bigquery_destination", bigquery_destination)
         if resource_types is not None:
             _setter("resource_types", resource_types)
@@ -728,9 +812,19 @@ class FhirStoreStreamConfigBigqueryDestinationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset_uri: pulumi.Input[str],
-             schema_config: pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             dataset_uri: Optional[pulumi.Input[str]] = None,
+             schema_config: Optional[pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataset_uri is None and 'datasetUri' in kwargs:
+            dataset_uri = kwargs['datasetUri']
+        if dataset_uri is None:
+            raise TypeError("Missing 'dataset_uri' argument")
+        if schema_config is None and 'schemaConfig' in kwargs:
+            schema_config = kwargs['schemaConfig']
+        if schema_config is None:
+            raise TypeError("Missing 'schema_config' argument")
+
         _setter("dataset_uri", dataset_uri)
         _setter("schema_config", schema_config)
 
@@ -790,10 +884,20 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             recursive_structure_depth: pulumi.Input[int],
+             recursive_structure_depth: Optional[pulumi.Input[int]] = None,
              last_updated_partition_config: Optional[pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs']] = None,
              schema_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if recursive_structure_depth is None and 'recursiveStructureDepth' in kwargs:
+            recursive_structure_depth = kwargs['recursiveStructureDepth']
+        if recursive_structure_depth is None:
+            raise TypeError("Missing 'recursive_structure_depth' argument")
+        if last_updated_partition_config is None and 'lastUpdatedPartitionConfig' in kwargs:
+            last_updated_partition_config = kwargs['lastUpdatedPartitionConfig']
+        if schema_type is None and 'schemaType' in kwargs:
+            schema_type = kwargs['schemaType']
+
         _setter("recursive_structure_depth", recursive_structure_depth)
         if last_updated_partition_config is not None:
             _setter("last_updated_partition_config", last_updated_partition_config)
@@ -865,9 +969,15 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionCo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              expiration_ms: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if expiration_ms is None and 'expirationMs' in kwargs:
+            expiration_ms = kwargs['expirationMs']
+
         _setter("type", type)
         if expiration_ms is not None:
             _setter("expiration_ms", expiration_ms)
@@ -913,10 +1023,16 @@ class Hl7StoreIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -965,10 +1081,16 @@ class Hl7StoreIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -1021,8 +1143,14 @@ class Hl7StoreNotificationConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pubsub_topic: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             pubsub_topic: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pubsub_topic is None and 'pubsubTopic' in kwargs:
+            pubsub_topic = kwargs['pubsubTopic']
+        if pubsub_topic is None:
+            raise TypeError("Missing 'pubsub_topic' argument")
+
         _setter("pubsub_topic", pubsub_topic)
 
     @property
@@ -1074,9 +1202,15 @@ class Hl7StoreNotificationConfigsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pubsub_topic: pulumi.Input[str],
+             pubsub_topic: Optional[pulumi.Input[str]] = None,
              filter: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pubsub_topic is None and 'pubsubTopic' in kwargs:
+            pubsub_topic = kwargs['pubsubTopic']
+        if pubsub_topic is None:
+            raise TypeError("Missing 'pubsub_topic' argument")
+
         _setter("pubsub_topic", pubsub_topic)
         if filter is not None:
             _setter("filter", filter)
@@ -1151,7 +1285,13 @@ class Hl7StoreParserConfigArgs:
              schema: Optional[pulumi.Input[str]] = None,
              segment_terminator: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_null_header is None and 'allowNullHeader' in kwargs:
+            allow_null_header = kwargs['allowNullHeader']
+        if segment_terminator is None and 'segmentTerminator' in kwargs:
+            segment_terminator = kwargs['segmentTerminator']
+
         if allow_null_header is not None:
             _setter("allow_null_header", allow_null_header)
         if schema is not None:

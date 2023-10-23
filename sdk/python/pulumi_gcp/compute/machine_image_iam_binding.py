@@ -55,12 +55,22 @@ class MachineImageIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             machine_image: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             machine_image: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['MachineImageIamBindingConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if machine_image is None and 'machineImage' in kwargs:
+            machine_image = kwargs['machineImage']
+        if machine_image is None:
+            raise TypeError("Missing 'machine_image' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("machine_image", machine_image)
         _setter("members", members)
         _setter("role", role)
@@ -194,7 +204,11 @@ class _MachineImageIamBindingState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if machine_image is None and 'machineImage' in kwargs:
+            machine_image = kwargs['machineImage']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

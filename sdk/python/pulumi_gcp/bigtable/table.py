@@ -51,14 +51,28 @@ class TableArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_name: pulumi.Input[str],
+             instance_name: Optional[pulumi.Input[str]] = None,
              change_stream_retention: Optional[pulumi.Input[str]] = None,
              column_families: Optional[pulumi.Input[Sequence[pulumi.Input['TableColumnFamilyArgs']]]] = None,
              deletion_protection: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              split_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if change_stream_retention is None and 'changeStreamRetention' in kwargs:
+            change_stream_retention = kwargs['changeStreamRetention']
+        if column_families is None and 'columnFamilies' in kwargs:
+            column_families = kwargs['columnFamilies']
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if split_keys is None and 'splitKeys' in kwargs:
+            split_keys = kwargs['splitKeys']
+
         _setter("instance_name", instance_name)
         if change_stream_retention is not None:
             _setter("change_stream_retention", change_stream_retention)
@@ -208,7 +222,19 @@ class _TableState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              split_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if change_stream_retention is None and 'changeStreamRetention' in kwargs:
+            change_stream_retention = kwargs['changeStreamRetention']
+        if column_families is None and 'columnFamilies' in kwargs:
+            column_families = kwargs['columnFamilies']
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if split_keys is None and 'splitKeys' in kwargs:
+            split_keys = kwargs['splitKeys']
+
         if change_stream_retention is not None:
             _setter("change_stream_retention", change_stream_retention)
         if column_families is not None:

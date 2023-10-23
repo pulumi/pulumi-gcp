@@ -63,7 +63,17 @@ class AiFeatureStoreArgs:
              online_storage_ttl_days: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if encryption_spec is None and 'encryptionSpec' in kwargs:
+            encryption_spec = kwargs['encryptionSpec']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if online_serving_config is None and 'onlineServingConfig' in kwargs:
+            online_serving_config = kwargs['onlineServingConfig']
+        if online_storage_ttl_days is None and 'onlineStorageTtlDays' in kwargs:
+            online_storage_ttl_days = kwargs['onlineStorageTtlDays']
+
         if encryption_spec is not None:
             _setter("encryption_spec", encryption_spec)
         if force_destroy is not None:
@@ -246,7 +256,21 @@ class _AiFeatureStoreState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if encryption_spec is None and 'encryptionSpec' in kwargs:
+            encryption_spec = kwargs['encryptionSpec']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if online_serving_config is None and 'onlineServingConfig' in kwargs:
+            online_serving_config = kwargs['onlineServingConfig']
+        if online_storage_ttl_days is None and 'onlineStorageTtlDays' in kwargs:
+            online_storage_ttl_days = kwargs['onlineStorageTtlDays']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if encryption_spec is not None:

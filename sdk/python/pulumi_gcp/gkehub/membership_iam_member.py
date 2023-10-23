@@ -52,12 +52,22 @@ class MembershipIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             member: pulumi.Input[str],
-             membership_id: pulumi.Input[str],
-             role: pulumi.Input[str],
+             member: Optional[pulumi.Input[str]] = None,
+             membership_id: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['MembershipIamMemberConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if membership_id is None and 'membershipId' in kwargs:
+            membership_id = kwargs['membershipId']
+        if membership_id is None:
+            raise TypeError("Missing 'membership_id' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("member", member)
         _setter("membership_id", membership_id)
         _setter("role", role)
@@ -181,7 +191,11 @@ class _MembershipIamMemberState:
              membership_id: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if membership_id is None and 'membershipId' in kwargs:
+            membership_id = kwargs['membershipId']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

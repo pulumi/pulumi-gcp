@@ -64,8 +64,8 @@ class PatchDeploymentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_filter: pulumi.Input['PatchDeploymentInstanceFilterArgs'],
-             patch_deployment_id: pulumi.Input[str],
+             instance_filter: Optional[pulumi.Input['PatchDeploymentInstanceFilterArgs']] = None,
+             patch_deployment_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              duration: Optional[pulumi.Input[str]] = None,
              one_time_schedule: Optional[pulumi.Input['PatchDeploymentOneTimeScheduleArgs']] = None,
@@ -73,7 +73,23 @@ class PatchDeploymentArgs:
              project: Optional[pulumi.Input[str]] = None,
              recurring_schedule: Optional[pulumi.Input['PatchDeploymentRecurringScheduleArgs']] = None,
              rollout: Optional[pulumi.Input['PatchDeploymentRolloutArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_filter is None and 'instanceFilter' in kwargs:
+            instance_filter = kwargs['instanceFilter']
+        if instance_filter is None:
+            raise TypeError("Missing 'instance_filter' argument")
+        if patch_deployment_id is None and 'patchDeploymentId' in kwargs:
+            patch_deployment_id = kwargs['patchDeploymentId']
+        if patch_deployment_id is None:
+            raise TypeError("Missing 'patch_deployment_id' argument")
+        if one_time_schedule is None and 'oneTimeSchedule' in kwargs:
+            one_time_schedule = kwargs['oneTimeSchedule']
+        if patch_config is None and 'patchConfig' in kwargs:
+            patch_config = kwargs['patchConfig']
+        if recurring_schedule is None and 'recurringSchedule' in kwargs:
+            recurring_schedule = kwargs['recurringSchedule']
+
         _setter("instance_filter", instance_filter)
         _setter("patch_deployment_id", patch_deployment_id)
         if description is not None:
@@ -293,7 +309,25 @@ class _PatchDeploymentState:
              recurring_schedule: Optional[pulumi.Input['PatchDeploymentRecurringScheduleArgs']] = None,
              rollout: Optional[pulumi.Input['PatchDeploymentRolloutArgs']] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if instance_filter is None and 'instanceFilter' in kwargs:
+            instance_filter = kwargs['instanceFilter']
+        if last_execute_time is None and 'lastExecuteTime' in kwargs:
+            last_execute_time = kwargs['lastExecuteTime']
+        if one_time_schedule is None and 'oneTimeSchedule' in kwargs:
+            one_time_schedule = kwargs['oneTimeSchedule']
+        if patch_config is None and 'patchConfig' in kwargs:
+            patch_config = kwargs['patchConfig']
+        if patch_deployment_id is None and 'patchDeploymentId' in kwargs:
+            patch_deployment_id = kwargs['patchDeploymentId']
+        if recurring_schedule is None and 'recurringSchedule' in kwargs:
+            recurring_schedule = kwargs['recurringSchedule']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:

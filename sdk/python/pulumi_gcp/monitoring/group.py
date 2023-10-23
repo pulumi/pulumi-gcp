@@ -48,12 +48,24 @@ class GroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             filter: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
+             filter: Optional[pulumi.Input[str]] = None,
              is_cluster: Optional[pulumi.Input[bool]] = None,
              parent_name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if filter is None:
+            raise TypeError("Missing 'filter' argument")
+        if is_cluster is None and 'isCluster' in kwargs:
+            is_cluster = kwargs['isCluster']
+        if parent_name is None and 'parentName' in kwargs:
+            parent_name = kwargs['parentName']
+
         _setter("display_name", display_name)
         _setter("filter", filter)
         if is_cluster is not None:
@@ -181,7 +193,15 @@ class _GroupState:
              name: Optional[pulumi.Input[str]] = None,
              parent_name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if is_cluster is None and 'isCluster' in kwargs:
+            is_cluster = kwargs['isCluster']
+        if parent_name is None and 'parentName' in kwargs:
+            parent_name = kwargs['parentName']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if filter is not None:

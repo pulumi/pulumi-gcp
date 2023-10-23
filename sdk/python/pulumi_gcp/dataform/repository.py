@@ -51,7 +51,13 @@ class RepositoryArgs:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              workspace_compilation_overrides: Optional[pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if git_remote_settings is None and 'gitRemoteSettings' in kwargs:
+            git_remote_settings = kwargs['gitRemoteSettings']
+        if workspace_compilation_overrides is None and 'workspaceCompilationOverrides' in kwargs:
+            workspace_compilation_overrides = kwargs['workspaceCompilationOverrides']
+
         if git_remote_settings is not None:
             _setter("git_remote_settings", git_remote_settings)
         if name is not None:
@@ -168,7 +174,13 @@ class _RepositoryState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              workspace_compilation_overrides: Optional[pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if git_remote_settings is None and 'gitRemoteSettings' in kwargs:
+            git_remote_settings = kwargs['gitRemoteSettings']
+        if workspace_compilation_overrides is None and 'workspaceCompilationOverrides' in kwargs:
+            workspace_compilation_overrides = kwargs['workspaceCompilationOverrides']
+
         if git_remote_settings is not None:
             _setter("git_remote_settings", git_remote_settings)
         if name is not None:

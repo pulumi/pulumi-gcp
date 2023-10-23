@@ -55,12 +55,22 @@ class WebTypeAppEngingIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_id: pulumi.Input[str],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
+             app_id: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['WebTypeAppEngingIamMemberConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if app_id is None:
+            raise TypeError("Missing 'app_id' argument")
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("app_id", app_id)
         _setter("member", member)
         _setter("role", role)
@@ -194,7 +204,11 @@ class _WebTypeAppEngingIamMemberState:
              member: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+
         if app_id is not None:
             _setter("app_id", app_id)
         if condition is not None:

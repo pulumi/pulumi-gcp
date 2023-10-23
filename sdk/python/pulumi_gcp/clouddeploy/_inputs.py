@@ -59,7 +59,15 @@ class DeliveryPipelineConditionArgs:
              pipeline_ready_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionPipelineReadyConditionArgs']]]] = None,
              targets_present_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionTargetsPresentConditionArgs']]]] = None,
              targets_type_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionTargetsTypeConditionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pipeline_ready_conditions is None and 'pipelineReadyConditions' in kwargs:
+            pipeline_ready_conditions = kwargs['pipelineReadyConditions']
+        if targets_present_conditions is None and 'targetsPresentConditions' in kwargs:
+            targets_present_conditions = kwargs['targetsPresentConditions']
+        if targets_type_conditions is None and 'targetsTypeConditions' in kwargs:
+            targets_type_conditions = kwargs['targetsTypeConditions']
+
         if pipeline_ready_conditions is not None:
             _setter("pipeline_ready_conditions", pipeline_ready_conditions)
         if targets_present_conditions is not None:
@@ -113,7 +121,11 @@ class DeliveryPipelineConditionPipelineReadyConditionArgs:
              _setter: Callable[[Any, Any], None],
              status: Optional[pulumi.Input[bool]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if status is not None:
             _setter("status", status)
         if update_time is not None:
@@ -162,7 +174,13 @@ class DeliveryPipelineConditionTargetsPresentConditionArgs:
              missing_targets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              status: Optional[pulumi.Input[bool]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if missing_targets is None and 'missingTargets' in kwargs:
+            missing_targets = kwargs['missingTargets']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if missing_targets is not None:
             _setter("missing_targets", missing_targets)
         if status is not None:
@@ -216,7 +234,11 @@ class DeliveryPipelineConditionTargetsTypeConditionArgs:
              _setter: Callable[[Any, Any], None],
              error_details: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if error_details is None and 'errorDetails' in kwargs:
+            error_details = kwargs['errorDetails']
+
         if error_details is not None:
             _setter("error_details", error_details)
         if status is not None:
@@ -256,7 +278,9 @@ class DeliveryPipelineSerialPipelineArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              stages: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if stages is not None:
             _setter("stages", stages)
 
@@ -300,7 +324,13 @@ class DeliveryPipelineSerialPipelineStageArgs:
              profiles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              strategy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyArgs']] = None,
              target_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if deploy_parameters is None and 'deployParameters' in kwargs:
+            deploy_parameters = kwargs['deployParameters']
+        if target_id is None and 'targetId' in kwargs:
+            target_id = kwargs['targetId']
+
         if deploy_parameters is not None:
             _setter("deploy_parameters", deploy_parameters)
         if profiles is not None:
@@ -376,9 +406,15 @@ class DeliveryPipelineSerialPipelineStageDeployParameterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             values: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+             values: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              match_target_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_target_labels is None and 'matchTargetLabels' in kwargs:
+            match_target_labels = kwargs['matchTargetLabels']
+
         _setter("values", values)
         if match_target_labels is not None:
             _setter("match_target_labels", match_target_labels)
@@ -427,7 +463,9 @@ class DeliveryPipelineSerialPipelineStageStrategyArgs:
              _setter: Callable[[Any, Any], None],
              canary: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryArgs']] = None,
              standard: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if canary is not None:
             _setter("canary", canary)
         if standard is not None:
@@ -481,7 +519,15 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryArgs:
              canary_deployment: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs']] = None,
              custom_canary_deployment: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs']] = None,
              runtime_config: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if canary_deployment is None and 'canaryDeployment' in kwargs:
+            canary_deployment = kwargs['canaryDeployment']
+        if custom_canary_deployment is None and 'customCanaryDeployment' in kwargs:
+            custom_canary_deployment = kwargs['customCanaryDeployment']
+        if runtime_config is None and 'runtimeConfig' in kwargs:
+            runtime_config = kwargs['runtimeConfig']
+
         if canary_deployment is not None:
             _setter("canary_deployment", canary_deployment)
         if custom_canary_deployment is not None:
@@ -549,11 +595,15 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             percentages: pulumi.Input[Sequence[pulumi.Input[int]]],
+             percentages: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
              postdeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs']] = None,
              predeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs']] = None,
              verify: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if percentages is None:
+            raise TypeError("Missing 'percentages' argument")
+
         _setter("percentages", percentages)
         if postdeploy is not None:
             _setter("postdeploy", postdeploy)
@@ -626,7 +676,9 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeplo
     def _configure(
              _setter: Callable[[Any, Any], None],
              actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if actions is not None:
             _setter("actions", actions)
 
@@ -658,7 +710,9 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy
     def _configure(
              _setter: Callable[[Any, Any], None],
              actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if actions is not None:
             _setter("actions", actions)
 
@@ -689,8 +743,14 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArg
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             phase_configs: pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             phase_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if phase_configs is None and 'phaseConfigs' in kwargs:
+            phase_configs = kwargs['phaseConfigs']
+        if phase_configs is None:
+            raise TypeError("Missing 'phase_configs' argument")
+
         _setter("phase_configs", phase_configs)
 
     @property
@@ -737,13 +797,21 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             percentage: pulumi.Input[int],
-             phase_id: pulumi.Input[str],
+             percentage: Optional[pulumi.Input[int]] = None,
+             phase_id: Optional[pulumi.Input[str]] = None,
              postdeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs']] = None,
              predeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs']] = None,
              profiles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              verify: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if percentage is None:
+            raise TypeError("Missing 'percentage' argument")
+        if phase_id is None and 'phaseId' in kwargs:
+            phase_id = kwargs['phaseId']
+        if phase_id is None:
+            raise TypeError("Missing 'phase_id' argument")
+
         _setter("percentage", percentage)
         _setter("phase_id", phase_id)
         if postdeploy is not None:
@@ -845,7 +913,9 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
     def _configure(
              _setter: Callable[[Any, Any], None],
              actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if actions is not None:
             _setter("actions", actions)
 
@@ -877,7 +947,9 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
     def _configure(
              _setter: Callable[[Any, Any], None],
              actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if actions is not None:
             _setter("actions", actions)
 
@@ -913,7 +985,11 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs:
              _setter: Callable[[Any, Any], None],
              cloud_run: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs']] = None,
              kubernetes: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cloud_run is None and 'cloudRun' in kwargs:
+            cloud_run = kwargs['cloudRun']
+
         if cloud_run is not None:
             _setter("cloud_run", cloud_run)
         if kubernetes is not None:
@@ -959,7 +1035,11 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs
     def _configure(
              _setter: Callable[[Any, Any], None],
              automatic_traffic_control: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if automatic_traffic_control is None and 'automaticTrafficControl' in kwargs:
+            automatic_traffic_control = kwargs['automaticTrafficControl']
+
         if automatic_traffic_control is not None:
             _setter("automatic_traffic_control", automatic_traffic_control)
 
@@ -995,7 +1075,13 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesAr
              _setter: Callable[[Any, Any], None],
              gateway_service_mesh: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs']] = None,
              service_networking: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gateway_service_mesh is None and 'gatewayServiceMesh' in kwargs:
+            gateway_service_mesh = kwargs['gatewayServiceMesh']
+        if service_networking is None and 'serviceNetworking' in kwargs:
+            service_networking = kwargs['serviceNetworking']
+
         if gateway_service_mesh is not None:
             _setter("gateway_service_mesh", gateway_service_mesh)
         if service_networking is not None:
@@ -1049,11 +1135,23 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGa
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             deployment: pulumi.Input[str],
-             http_route: pulumi.Input[str],
-             service: pulumi.Input[str],
+             deployment: Optional[pulumi.Input[str]] = None,
+             http_route: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
              route_update_wait_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if deployment is None:
+            raise TypeError("Missing 'deployment' argument")
+        if http_route is None and 'httpRoute' in kwargs:
+            http_route = kwargs['httpRoute']
+        if http_route is None:
+            raise TypeError("Missing 'http_route' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+        if route_update_wait_time is None and 'routeUpdateWaitTime' in kwargs:
+            route_update_wait_time = kwargs['routeUpdateWaitTime']
+
         _setter("deployment", deployment)
         _setter("http_route", http_route)
         _setter("service", service)
@@ -1129,10 +1227,18 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesSe
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             deployment: pulumi.Input[str],
-             service: pulumi.Input[str],
+             deployment: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
              disable_pod_overprovisioning: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if deployment is None:
+            raise TypeError("Missing 'deployment' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+        if disable_pod_overprovisioning is None and 'disablePodOverprovisioning' in kwargs:
+            disable_pod_overprovisioning = kwargs['disablePodOverprovisioning']
+
         _setter("deployment", deployment)
         _setter("service", service)
         if disable_pod_overprovisioning is not None:
@@ -1198,7 +1304,9 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardArgs:
              postdeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs']] = None,
              predeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs']] = None,
              verify: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if postdeploy is not None:
             _setter("postdeploy", postdeploy)
         if predeploy is not None:
@@ -1258,7 +1366,9 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if actions is not None:
             _setter("actions", actions)
 
@@ -1290,7 +1400,9 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if actions is not None:
             _setter("actions", actions)
 
@@ -1322,7 +1434,9 @@ class TargetAnthosClusterArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              membership: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if membership is not None:
             _setter("membership", membership)
 
@@ -1365,12 +1479,24 @@ class TargetExecutionConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             usages: pulumi.Input[Sequence[pulumi.Input[str]]],
+             usages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              artifact_storage: Optional[pulumi.Input[str]] = None,
              execution_timeout: Optional[pulumi.Input[str]] = None,
              service_account: Optional[pulumi.Input[str]] = None,
              worker_pool: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if usages is None:
+            raise TypeError("Missing 'usages' argument")
+        if artifact_storage is None and 'artifactStorage' in kwargs:
+            artifact_storage = kwargs['artifactStorage']
+        if execution_timeout is None and 'executionTimeout' in kwargs:
+            execution_timeout = kwargs['executionTimeout']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if worker_pool is None and 'workerPool' in kwargs:
+            worker_pool = kwargs['workerPool']
+
         _setter("usages", usages)
         if artifact_storage is not None:
             _setter("artifact_storage", artifact_storage)
@@ -1461,7 +1587,11 @@ class TargetGkeArgs:
              _setter: Callable[[Any, Any], None],
              cluster: Optional[pulumi.Input[str]] = None,
              internal_ip: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if internal_ip is None and 'internalIp' in kwargs:
+            internal_ip = kwargs['internalIp']
+
         if cluster is not None:
             _setter("cluster", cluster)
         if internal_ip is not None:
@@ -1506,8 +1636,14 @@ class TargetMultiTargetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             target_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             target_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if target_ids is None and 'targetIds' in kwargs:
+            target_ids = kwargs['targetIds']
+        if target_ids is None:
+            raise TypeError("Missing 'target_ids' argument")
+
         _setter("target_ids", target_ids)
 
     @property
@@ -1537,8 +1673,12 @@ class TargetRunArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             location: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+
         _setter("location", location)
 
     @property

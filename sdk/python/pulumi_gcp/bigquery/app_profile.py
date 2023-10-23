@@ -57,7 +57,7 @@ class AppProfileArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_profile_id: pulumi.Input[str],
+             app_profile_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              ignore_warnings: Optional[pulumi.Input[bool]] = None,
              instance: Optional[pulumi.Input[str]] = None,
@@ -65,7 +65,21 @@ class AppProfileArgs:
              multi_cluster_routing_use_any: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
              single_cluster_routing: Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_profile_id is None and 'appProfileId' in kwargs:
+            app_profile_id = kwargs['appProfileId']
+        if app_profile_id is None:
+            raise TypeError("Missing 'app_profile_id' argument")
+        if ignore_warnings is None and 'ignoreWarnings' in kwargs:
+            ignore_warnings = kwargs['ignoreWarnings']
+        if multi_cluster_routing_cluster_ids is None and 'multiClusterRoutingClusterIds' in kwargs:
+            multi_cluster_routing_cluster_ids = kwargs['multiClusterRoutingClusterIds']
+        if multi_cluster_routing_use_any is None and 'multiClusterRoutingUseAny' in kwargs:
+            multi_cluster_routing_use_any = kwargs['multiClusterRoutingUseAny']
+        if single_cluster_routing is None and 'singleClusterRouting' in kwargs:
+            single_cluster_routing = kwargs['singleClusterRouting']
+
         _setter("app_profile_id", app_profile_id)
         if description is not None:
             _setter("description", description)
@@ -243,7 +257,19 @@ class _AppProfileState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              single_cluster_routing: Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_profile_id is None and 'appProfileId' in kwargs:
+            app_profile_id = kwargs['appProfileId']
+        if ignore_warnings is None and 'ignoreWarnings' in kwargs:
+            ignore_warnings = kwargs['ignoreWarnings']
+        if multi_cluster_routing_cluster_ids is None and 'multiClusterRoutingClusterIds' in kwargs:
+            multi_cluster_routing_cluster_ids = kwargs['multiClusterRoutingClusterIds']
+        if multi_cluster_routing_use_any is None and 'multiClusterRoutingUseAny' in kwargs:
+            multi_cluster_routing_use_any = kwargs['multiClusterRoutingUseAny']
+        if single_cluster_routing is None and 'singleClusterRouting' in kwargs:
+            single_cluster_routing = kwargs['singleClusterRouting']
+
         if app_profile_id is not None:
             _setter("app_profile_id", app_profile_id)
         if description is not None:

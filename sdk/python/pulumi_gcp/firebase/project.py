@@ -28,7 +28,9 @@ class ProjectArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if project is not None:
             _setter("project", project)
 
@@ -71,7 +73,13 @@ class _ProjectState:
              display_name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              project_number: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if project_number is None and 'projectNumber' in kwargs:
+            project_number = kwargs['projectNumber']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if project is not None:

@@ -51,14 +51,28 @@ class BackupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_id: pulumi.Input[str],
-             cluster_name: pulumi.Input[str],
-             location: pulumi.Input[str],
+             backup_id: Optional[pulumi.Input[str]] = None,
+             cluster_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              encryption_config: Optional[pulumi.Input['BackupEncryptionConfigArgs']] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_id is None and 'backupId' in kwargs:
+            backup_id = kwargs['backupId']
+        if backup_id is None:
+            raise TypeError("Missing 'backup_id' argument")
+        if cluster_name is None and 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if cluster_name is None:
+            raise TypeError("Missing 'cluster_name' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+
         _setter("backup_id", backup_id)
         _setter("cluster_name", cluster_name)
         _setter("location", location)
@@ -239,7 +253,21 @@ class _BackupState:
              state: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_id is None and 'backupId' in kwargs:
+            backup_id = kwargs['backupId']
+        if cluster_name is None and 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if encryption_infos is None and 'encryptionInfos' in kwargs:
+            encryption_infos = kwargs['encryptionInfos']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if backup_id is not None:
             _setter("backup_id", backup_id)
         if cluster_name is not None:

@@ -40,11 +40,17 @@ class AttestorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attestation_authority_note: pulumi.Input['AttestorAttestationAuthorityNoteArgs'],
+             attestation_authority_note: Optional[pulumi.Input['AttestorAttestationAuthorityNoteArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if attestation_authority_note is None and 'attestationAuthorityNote' in kwargs:
+            attestation_authority_note = kwargs['attestationAuthorityNote']
+        if attestation_authority_note is None:
+            raise TypeError("Missing 'attestation_authority_note' argument")
+
         _setter("attestation_authority_note", attestation_authority_note)
         if description is not None:
             _setter("description", description)
@@ -136,7 +142,11 @@ class _AttestorState:
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if attestation_authority_note is None and 'attestationAuthorityNote' in kwargs:
+            attestation_authority_note = kwargs['attestationAuthorityNote']
+
         if attestation_authority_note is not None:
             _setter("attestation_authority_note", attestation_authority_note)
         if description is not None:

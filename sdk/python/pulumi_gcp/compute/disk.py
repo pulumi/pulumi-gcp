@@ -191,7 +191,33 @@ class DiskArgs:
              source_snapshot_encryption_key: Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs']] = None,
              type: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if async_primary_disk is None and 'asyncPrimaryDisk' in kwargs:
+            async_primary_disk = kwargs['asyncPrimaryDisk']
+        if disk_encryption_key is None and 'diskEncryptionKey' in kwargs:
+            disk_encryption_key = kwargs['diskEncryptionKey']
+        if enable_confidential_compute is None and 'enableConfidentialCompute' in kwargs:
+            enable_confidential_compute = kwargs['enableConfidentialCompute']
+        if guest_os_features is None and 'guestOsFeatures' in kwargs:
+            guest_os_features = kwargs['guestOsFeatures']
+        if multi_writer is None and 'multiWriter' in kwargs:
+            multi_writer = kwargs['multiWriter']
+        if physical_block_size_bytes is None and 'physicalBlockSizeBytes' in kwargs:
+            physical_block_size_bytes = kwargs['physicalBlockSizeBytes']
+        if provisioned_iops is None and 'provisionedIops' in kwargs:
+            provisioned_iops = kwargs['provisionedIops']
+        if provisioned_throughput is None and 'provisionedThroughput' in kwargs:
+            provisioned_throughput = kwargs['provisionedThroughput']
+        if resource_policies is None and 'resourcePolicies' in kwargs:
+            resource_policies = kwargs['resourcePolicies']
+        if source_disk is None and 'sourceDisk' in kwargs:
+            source_disk = kwargs['sourceDisk']
+        if source_image_encryption_key is None and 'sourceImageEncryptionKey' in kwargs:
+            source_image_encryption_key = kwargs['sourceImageEncryptionKey']
+        if source_snapshot_encryption_key is None and 'sourceSnapshotEncryptionKey' in kwargs:
+            source_snapshot_encryption_key = kwargs['sourceSnapshotEncryptionKey']
+
         if async_primary_disk is not None:
             _setter("async_primary_disk", async_primary_disk)
         if description is not None:
@@ -823,7 +849,49 @@ class _DiskState:
              type: Optional[pulumi.Input[str]] = None,
              users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if async_primary_disk is None and 'asyncPrimaryDisk' in kwargs:
+            async_primary_disk = kwargs['asyncPrimaryDisk']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if disk_encryption_key is None and 'diskEncryptionKey' in kwargs:
+            disk_encryption_key = kwargs['diskEncryptionKey']
+        if enable_confidential_compute is None and 'enableConfidentialCompute' in kwargs:
+            enable_confidential_compute = kwargs['enableConfidentialCompute']
+        if guest_os_features is None and 'guestOsFeatures' in kwargs:
+            guest_os_features = kwargs['guestOsFeatures']
+        if label_fingerprint is None and 'labelFingerprint' in kwargs:
+            label_fingerprint = kwargs['labelFingerprint']
+        if last_attach_timestamp is None and 'lastAttachTimestamp' in kwargs:
+            last_attach_timestamp = kwargs['lastAttachTimestamp']
+        if last_detach_timestamp is None and 'lastDetachTimestamp' in kwargs:
+            last_detach_timestamp = kwargs['lastDetachTimestamp']
+        if multi_writer is None and 'multiWriter' in kwargs:
+            multi_writer = kwargs['multiWriter']
+        if physical_block_size_bytes is None and 'physicalBlockSizeBytes' in kwargs:
+            physical_block_size_bytes = kwargs['physicalBlockSizeBytes']
+        if provisioned_iops is None and 'provisionedIops' in kwargs:
+            provisioned_iops = kwargs['provisionedIops']
+        if provisioned_throughput is None and 'provisionedThroughput' in kwargs:
+            provisioned_throughput = kwargs['provisionedThroughput']
+        if resource_policies is None and 'resourcePolicies' in kwargs:
+            resource_policies = kwargs['resourcePolicies']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if source_disk is None and 'sourceDisk' in kwargs:
+            source_disk = kwargs['sourceDisk']
+        if source_disk_id is None and 'sourceDiskId' in kwargs:
+            source_disk_id = kwargs['sourceDiskId']
+        if source_image_encryption_key is None and 'sourceImageEncryptionKey' in kwargs:
+            source_image_encryption_key = kwargs['sourceImageEncryptionKey']
+        if source_image_id is None and 'sourceImageId' in kwargs:
+            source_image_id = kwargs['sourceImageId']
+        if source_snapshot_encryption_key is None and 'sourceSnapshotEncryptionKey' in kwargs:
+            source_snapshot_encryption_key = kwargs['sourceSnapshotEncryptionKey']
+        if source_snapshot_id is None and 'sourceSnapshotId' in kwargs:
+            source_snapshot_id = kwargs['sourceSnapshotId']
+
         if async_primary_disk is not None:
             _setter("async_primary_disk", async_primary_disk)
         if creation_timestamp is not None:

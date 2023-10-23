@@ -44,7 +44,11 @@ class RepositoryArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pubsub_configs is None and 'pubsubConfigs' in kwargs:
+            pubsub_configs = kwargs['pubsubConfigs']
+
         if name is not None:
             _setter("name", name)
         if project is not None:
@@ -135,7 +139,11 @@ class _RepositoryState:
              pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]] = None,
              size: Optional[pulumi.Input[int]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pubsub_configs is None and 'pubsubConfigs' in kwargs:
+            pubsub_configs = kwargs['pubsubConfigs']
+
         if name is not None:
             _setter("name", name)
         if project is not None:

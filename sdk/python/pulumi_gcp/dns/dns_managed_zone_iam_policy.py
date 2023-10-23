@@ -46,10 +46,20 @@ class DnsManagedZoneIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             managed_zone: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             managed_zone: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if managed_zone is None and 'managedZone' in kwargs:
+            managed_zone = kwargs['managedZone']
+        if managed_zone is None:
+            raise TypeError("Missing 'managed_zone' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("managed_zone", managed_zone)
         _setter("policy_data", policy_data)
         if project is not None:
@@ -148,7 +158,13 @@ class _DnsManagedZoneIamPolicyState:
              managed_zone: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if managed_zone is None and 'managedZone' in kwargs:
+            managed_zone = kwargs['managedZone']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if etag is not None:
             _setter("etag", etag)
         if managed_zone is not None:

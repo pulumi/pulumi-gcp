@@ -72,9 +72,15 @@ class ConfigBlockingFunctions(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             triggers: Sequence['outputs.ConfigBlockingFunctionsTrigger'],
+             triggers: Optional[Sequence['outputs.ConfigBlockingFunctionsTrigger']] = None,
              forward_inbound_credentials: Optional['outputs.ConfigBlockingFunctionsForwardInboundCredentials'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if triggers is None:
+            raise TypeError("Missing 'triggers' argument")
+        if forward_inbound_credentials is None and 'forwardInboundCredentials' in kwargs:
+            forward_inbound_credentials = kwargs['forwardInboundCredentials']
+
         _setter("triggers", triggers)
         if forward_inbound_credentials is not None:
             _setter("forward_inbound_credentials", forward_inbound_credentials)
@@ -142,7 +148,15 @@ class ConfigBlockingFunctionsForwardInboundCredentials(dict):
              access_token: Optional[bool] = None,
              id_token: Optional[bool] = None,
              refresh_token: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_token is None and 'accessToken' in kwargs:
+            access_token = kwargs['accessToken']
+        if id_token is None and 'idToken' in kwargs:
+            id_token = kwargs['idToken']
+        if refresh_token is None and 'refreshToken' in kwargs:
+            refresh_token = kwargs['refreshToken']
+
         if access_token is not None:
             _setter("access_token", access_token)
         if id_token is not None:
@@ -217,10 +231,22 @@ class ConfigBlockingFunctionsTrigger(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             event_type: str,
-             function_uri: str,
+             event_type: Optional[str] = None,
+             function_uri: Optional[str] = None,
              update_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if event_type is None and 'eventType' in kwargs:
+            event_type = kwargs['eventType']
+        if event_type is None:
+            raise TypeError("Missing 'event_type' argument")
+        if function_uri is None and 'functionUri' in kwargs:
+            function_uri = kwargs['functionUri']
+        if function_uri is None:
+            raise TypeError("Missing 'function_uri' argument")
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         _setter("event_type", event_type)
         _setter("function_uri", function_uri)
         if update_time is not None:
@@ -285,7 +311,11 @@ class ConfigQuota(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              sign_up_quota_config: Optional['outputs.ConfigQuotaSignUpQuotaConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if sign_up_quota_config is None and 'signUpQuotaConfig' in kwargs:
+            sign_up_quota_config = kwargs['signUpQuotaConfig']
+
         if sign_up_quota_config is not None:
             _setter("sign_up_quota_config", sign_up_quota_config)
 
@@ -341,7 +371,13 @@ class ConfigQuotaSignUpQuotaConfig(dict):
              quota: Optional[int] = None,
              quota_duration: Optional[str] = None,
              start_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if quota_duration is None and 'quotaDuration' in kwargs:
+            quota_duration = kwargs['quotaDuration']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+
         if quota is not None:
             _setter("quota", quota)
         if quota_duration is not None:
@@ -431,7 +467,15 @@ class ConfigSignIn(dict):
              email: Optional['outputs.ConfigSignInEmail'] = None,
              hash_configs: Optional[Sequence['outputs.ConfigSignInHashConfig']] = None,
              phone_number: Optional['outputs.ConfigSignInPhoneNumber'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_duplicate_emails is None and 'allowDuplicateEmails' in kwargs:
+            allow_duplicate_emails = kwargs['allowDuplicateEmails']
+        if hash_configs is None and 'hashConfigs' in kwargs:
+            hash_configs = kwargs['hashConfigs']
+        if phone_number is None and 'phoneNumber' in kwargs:
+            phone_number = kwargs['phoneNumber']
+
         if allow_duplicate_emails is not None:
             _setter("allow_duplicate_emails", allow_duplicate_emails)
         if anonymous is not None:
@@ -505,8 +549,12 @@ class ConfigSignInAnonymous(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -556,9 +604,15 @@ class ConfigSignInEmail(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
+             enabled: Optional[bool] = None,
              password_required: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if password_required is None and 'passwordRequired' in kwargs:
+            password_required = kwargs['passwordRequired']
+
         _setter("enabled", enabled)
         if password_required is not None:
             _setter("password_required", password_required)
@@ -639,7 +693,15 @@ class ConfigSignInHashConfig(dict):
              rounds: Optional[int] = None,
              salt_separator: Optional[str] = None,
              signer_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if memory_cost is None and 'memoryCost' in kwargs:
+            memory_cost = kwargs['memoryCost']
+        if salt_separator is None and 'saltSeparator' in kwargs:
+            salt_separator = kwargs['saltSeparator']
+        if signer_key is None and 'signerKey' in kwargs:
+            signer_key = kwargs['signerKey']
+
         if algorithm is not None:
             _setter("algorithm", algorithm)
         if memory_cost is not None:
@@ -731,9 +793,15 @@ class ConfigSignInPhoneNumber(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
+             enabled: Optional[bool] = None,
              test_phone_numbers: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if test_phone_numbers is None and 'testPhoneNumbers' in kwargs:
+            test_phone_numbers = kwargs['testPhoneNumbers']
+
         _setter("enabled", enabled)
         if test_phone_numbers is not None:
             _setter("test_phone_numbers", test_phone_numbers)
@@ -802,11 +870,27 @@ class InboundSamlConfigIdpConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             idp_certificates: Sequence['outputs.InboundSamlConfigIdpConfigIdpCertificate'],
-             idp_entity_id: str,
-             sso_url: str,
+             idp_certificates: Optional[Sequence['outputs.InboundSamlConfigIdpConfigIdpCertificate']] = None,
+             idp_entity_id: Optional[str] = None,
+             sso_url: Optional[str] = None,
              sign_request: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if idp_certificates is None and 'idpCertificates' in kwargs:
+            idp_certificates = kwargs['idpCertificates']
+        if idp_certificates is None:
+            raise TypeError("Missing 'idp_certificates' argument")
+        if idp_entity_id is None and 'idpEntityId' in kwargs:
+            idp_entity_id = kwargs['idpEntityId']
+        if idp_entity_id is None:
+            raise TypeError("Missing 'idp_entity_id' argument")
+        if sso_url is None and 'ssoUrl' in kwargs:
+            sso_url = kwargs['ssoUrl']
+        if sso_url is None:
+            raise TypeError("Missing 'sso_url' argument")
+        if sign_request is None and 'signRequest' in kwargs:
+            sign_request = kwargs['signRequest']
+
         _setter("idp_certificates", idp_certificates)
         _setter("idp_entity_id", idp_entity_id)
         _setter("sso_url", sso_url)
@@ -879,7 +963,11 @@ class InboundSamlConfigIdpConfigIdpCertificate(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              x509_certificate: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if x509_certificate is None and 'x509Certificate' in kwargs:
+            x509_certificate = kwargs['x509Certificate']
+
         if x509_certificate is not None:
             _setter("x509_certificate", x509_certificate)
 
@@ -941,7 +1029,15 @@ class InboundSamlConfigSpConfig(dict):
              callback_uri: Optional[str] = None,
              sp_certificates: Optional[Sequence['outputs.InboundSamlConfigSpConfigSpCertificate']] = None,
              sp_entity_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if callback_uri is None and 'callbackUri' in kwargs:
+            callback_uri = kwargs['callbackUri']
+        if sp_certificates is None and 'spCertificates' in kwargs:
+            sp_certificates = kwargs['spCertificates']
+        if sp_entity_id is None and 'spEntityId' in kwargs:
+            sp_entity_id = kwargs['spEntityId']
+
         if callback_uri is not None:
             _setter("callback_uri", callback_uri)
         if sp_certificates is not None:
@@ -1011,7 +1107,11 @@ class InboundSamlConfigSpConfigSpCertificate(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              x509_certificate: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if x509_certificate is None and 'x509Certificate' in kwargs:
+            x509_certificate = kwargs['x509Certificate']
+
         if x509_certificate is not None:
             _setter("x509_certificate", x509_certificate)
 
@@ -1081,7 +1181,15 @@ class ProjectDefaultConfigSignIn(dict):
              email: Optional['outputs.ProjectDefaultConfigSignInEmail'] = None,
              hash_configs: Optional[Sequence['outputs.ProjectDefaultConfigSignInHashConfig']] = None,
              phone_number: Optional['outputs.ProjectDefaultConfigSignInPhoneNumber'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_duplicate_emails is None and 'allowDuplicateEmails' in kwargs:
+            allow_duplicate_emails = kwargs['allowDuplicateEmails']
+        if hash_configs is None and 'hashConfigs' in kwargs:
+            hash_configs = kwargs['hashConfigs']
+        if phone_number is None and 'phoneNumber' in kwargs:
+            phone_number = kwargs['phoneNumber']
+
         if allow_duplicate_emails is not None:
             _setter("allow_duplicate_emails", allow_duplicate_emails)
         if anonymous is not None:
@@ -1155,8 +1263,12 @@ class ProjectDefaultConfigSignInAnonymous(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -1208,7 +1320,11 @@ class ProjectDefaultConfigSignInEmail(dict):
              _setter: Callable[[Any, Any], None],
              enabled: Optional[bool] = None,
              password_required: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if password_required is None and 'passwordRequired' in kwargs:
+            password_required = kwargs['passwordRequired']
+
         if enabled is not None:
             _setter("enabled", enabled)
         if password_required is not None:
@@ -1290,7 +1406,15 @@ class ProjectDefaultConfigSignInHashConfig(dict):
              rounds: Optional[int] = None,
              salt_separator: Optional[str] = None,
              signer_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if memory_cost is None and 'memoryCost' in kwargs:
+            memory_cost = kwargs['memoryCost']
+        if salt_separator is None and 'saltSeparator' in kwargs:
+            salt_separator = kwargs['saltSeparator']
+        if signer_key is None and 'signerKey' in kwargs:
+            signer_key = kwargs['signerKey']
+
         if algorithm is not None:
             _setter("algorithm", algorithm)
         if memory_cost is not None:
@@ -1384,7 +1508,11 @@ class ProjectDefaultConfigSignInPhoneNumber(dict):
              _setter: Callable[[Any, Any], None],
              enabled: Optional[bool] = None,
              test_phone_numbers: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if test_phone_numbers is None and 'testPhoneNumbers' in kwargs:
+            test_phone_numbers = kwargs['testPhoneNumbers']
+
         if enabled is not None:
             _setter("enabled", enabled)
         if test_phone_numbers is not None:
@@ -1454,11 +1582,27 @@ class TenantInboundSamlConfigIdpConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             idp_certificates: Sequence['outputs.TenantInboundSamlConfigIdpConfigIdpCertificate'],
-             idp_entity_id: str,
-             sso_url: str,
+             idp_certificates: Optional[Sequence['outputs.TenantInboundSamlConfigIdpConfigIdpCertificate']] = None,
+             idp_entity_id: Optional[str] = None,
+             sso_url: Optional[str] = None,
              sign_request: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if idp_certificates is None and 'idpCertificates' in kwargs:
+            idp_certificates = kwargs['idpCertificates']
+        if idp_certificates is None:
+            raise TypeError("Missing 'idp_certificates' argument")
+        if idp_entity_id is None and 'idpEntityId' in kwargs:
+            idp_entity_id = kwargs['idpEntityId']
+        if idp_entity_id is None:
+            raise TypeError("Missing 'idp_entity_id' argument")
+        if sso_url is None and 'ssoUrl' in kwargs:
+            sso_url = kwargs['ssoUrl']
+        if sso_url is None:
+            raise TypeError("Missing 'sso_url' argument")
+        if sign_request is None and 'signRequest' in kwargs:
+            sign_request = kwargs['signRequest']
+
         _setter("idp_certificates", idp_certificates)
         _setter("idp_entity_id", idp_entity_id)
         _setter("sso_url", sso_url)
@@ -1531,7 +1675,11 @@ class TenantInboundSamlConfigIdpConfigIdpCertificate(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              x509_certificate: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if x509_certificate is None and 'x509Certificate' in kwargs:
+            x509_certificate = kwargs['x509Certificate']
+
         if x509_certificate is not None:
             _setter("x509_certificate", x509_certificate)
 
@@ -1590,10 +1738,22 @@ class TenantInboundSamlConfigSpConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             callback_uri: str,
-             sp_entity_id: str,
+             callback_uri: Optional[str] = None,
+             sp_entity_id: Optional[str] = None,
              sp_certificates: Optional[Sequence['outputs.TenantInboundSamlConfigSpConfigSpCertificate']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if callback_uri is None and 'callbackUri' in kwargs:
+            callback_uri = kwargs['callbackUri']
+        if callback_uri is None:
+            raise TypeError("Missing 'callback_uri' argument")
+        if sp_entity_id is None and 'spEntityId' in kwargs:
+            sp_entity_id = kwargs['spEntityId']
+        if sp_entity_id is None:
+            raise TypeError("Missing 'sp_entity_id' argument")
+        if sp_certificates is None and 'spCertificates' in kwargs:
+            sp_certificates = kwargs['spCertificates']
+
         _setter("callback_uri", callback_uri)
         _setter("sp_entity_id", sp_entity_id)
         if sp_certificates is not None:
@@ -1661,7 +1821,11 @@ class TenantInboundSamlConfigSpConfigSpCertificate(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              x509_certificate: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if x509_certificate is None and 'x509Certificate' in kwargs:
+            x509_certificate = kwargs['x509Certificate']
+
         if x509_certificate is not None:
             _setter("x509_certificate", x509_certificate)
 

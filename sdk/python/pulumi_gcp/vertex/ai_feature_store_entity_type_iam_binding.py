@@ -52,12 +52,22 @@ class AiFeatureStoreEntityTypeIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entitytype: pulumi.Input[str],
-             featurestore: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             entitytype: Optional[pulumi.Input[str]] = None,
+             featurestore: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['AiFeatureStoreEntityTypeIamBindingConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if entitytype is None:
+            raise TypeError("Missing 'entitytype' argument")
+        if featurestore is None:
+            raise TypeError("Missing 'featurestore' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("entitytype", entitytype)
         _setter("featurestore", featurestore)
         _setter("members", members)
@@ -182,7 +192,9 @@ class _AiFeatureStoreEntityTypeIamBindingState:
              featurestore: Optional[pulumi.Input[str]] = None,
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
         if entitytype is not None:

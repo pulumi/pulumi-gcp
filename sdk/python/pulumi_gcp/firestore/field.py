@@ -52,13 +52,23 @@ class FieldArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             collection: pulumi.Input[str],
-             field: pulumi.Input[str],
+             collection: Optional[pulumi.Input[str]] = None,
+             field: Optional[pulumi.Input[str]] = None,
              database: Optional[pulumi.Input[str]] = None,
              index_config: Optional[pulumi.Input['FieldIndexConfigArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
              ttl_config: Optional[pulumi.Input['FieldTtlConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if collection is None:
+            raise TypeError("Missing 'collection' argument")
+        if field is None:
+            raise TypeError("Missing 'field' argument")
+        if index_config is None and 'indexConfig' in kwargs:
+            index_config = kwargs['indexConfig']
+        if ttl_config is None and 'ttlConfig' in kwargs:
+            ttl_config = kwargs['ttlConfig']
+
         _setter("collection", collection)
         _setter("field", field)
         if database is not None:
@@ -202,7 +212,13 @@ class _FieldState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              ttl_config: Optional[pulumi.Input['FieldTtlConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if index_config is None and 'indexConfig' in kwargs:
+            index_config = kwargs['indexConfig']
+        if ttl_config is None and 'ttlConfig' in kwargs:
+            ttl_config = kwargs['ttlConfig']
+
         if collection is not None:
             _setter("collection", collection)
         if database is not None:

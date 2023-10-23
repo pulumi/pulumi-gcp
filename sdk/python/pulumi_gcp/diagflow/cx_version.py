@@ -38,10 +38,16 @@ class CxVersionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+
         _setter("display_name", display_name)
         if description is not None:
             _setter("description", description)
@@ -137,7 +143,15 @@ class _CxVersionState:
              nlu_settings: Optional[pulumi.Input[Sequence[pulumi.Input['CxVersionNluSettingArgs']]]] = None,
              parent: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if nlu_settings is None and 'nluSettings' in kwargs:
+            nlu_settings = kwargs['nluSettings']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:

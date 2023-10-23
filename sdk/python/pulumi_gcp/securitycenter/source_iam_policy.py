@@ -34,10 +34,20 @@ class SourceIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             organization: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
-             source: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             organization: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if organization is None:
+            raise TypeError("Missing 'organization' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+
         _setter("organization", organization)
         _setter("policy_data", policy_data)
         _setter("source", source)
@@ -106,7 +116,11 @@ class _SourceIamPolicyState:
              organization: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if etag is not None:
             _setter("etag", etag)
         if organization is not None:

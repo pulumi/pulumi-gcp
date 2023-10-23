@@ -48,11 +48,21 @@ class CertificateTemplateIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             certificate_template: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             certificate_template: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if certificate_template is None and 'certificateTemplate' in kwargs:
+            certificate_template = kwargs['certificateTemplate']
+        if certificate_template is None:
+            raise TypeError("Missing 'certificate_template' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("certificate_template", certificate_template)
         _setter("policy_data", policy_data)
         if location is not None:
@@ -165,7 +175,13 @@ class _CertificateTemplateIamPolicyState:
              location: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if certificate_template is None and 'certificateTemplate' in kwargs:
+            certificate_template = kwargs['certificateTemplate']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if certificate_template is not None:
             _setter("certificate_template", certificate_template)
         if etag is not None:

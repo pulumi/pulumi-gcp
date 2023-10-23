@@ -42,11 +42,21 @@ class WebAppArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              api_key_id: Optional[pulumi.Input[str]] = None,
              deletion_policy: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if api_key_id is None and 'apiKeyId' in kwargs:
+            api_key_id = kwargs['apiKeyId']
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+
         _setter("display_name", display_name)
         if api_key_id is not None:
             _setter("api_key_id", api_key_id)
@@ -160,7 +170,19 @@ class _WebAppState:
              display_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_key_id is None and 'apiKeyId' in kwargs:
+            api_key_id = kwargs['apiKeyId']
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if app_urls is None and 'appUrls' in kwargs:
+            app_urls = kwargs['appUrls']
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if api_key_id is not None:
             _setter("api_key_id", api_key_id)
         if app_id is not None:

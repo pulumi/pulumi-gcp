@@ -45,11 +45,25 @@ class AccessApprovalSettingsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enrolled_services: pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]],
-             folder_id: pulumi.Input[str],
+             enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]]] = None,
+             folder_id: Optional[pulumi.Input[str]] = None,
              active_key_version: Optional[pulumi.Input[str]] = None,
              notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enrolled_services is None and 'enrolledServices' in kwargs:
+            enrolled_services = kwargs['enrolledServices']
+        if enrolled_services is None:
+            raise TypeError("Missing 'enrolled_services' argument")
+        if folder_id is None and 'folderId' in kwargs:
+            folder_id = kwargs['folderId']
+        if folder_id is None:
+            raise TypeError("Missing 'folder_id' argument")
+        if active_key_version is None and 'activeKeyVersion' in kwargs:
+            active_key_version = kwargs['activeKeyVersion']
+        if notification_emails is None and 'notificationEmails' in kwargs:
+            notification_emails = kwargs['notificationEmails']
+
         _setter("enrolled_services", enrolled_services)
         _setter("folder_id", folder_id)
         if active_key_version is not None:
@@ -169,7 +183,23 @@ class _AccessApprovalSettingsState:
              invalid_key_version: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if active_key_version is None and 'activeKeyVersion' in kwargs:
+            active_key_version = kwargs['activeKeyVersion']
+        if ancestor_has_active_key_version is None and 'ancestorHasActiveKeyVersion' in kwargs:
+            ancestor_has_active_key_version = kwargs['ancestorHasActiveKeyVersion']
+        if enrolled_ancestor is None and 'enrolledAncestor' in kwargs:
+            enrolled_ancestor = kwargs['enrolledAncestor']
+        if enrolled_services is None and 'enrolledServices' in kwargs:
+            enrolled_services = kwargs['enrolledServices']
+        if folder_id is None and 'folderId' in kwargs:
+            folder_id = kwargs['folderId']
+        if invalid_key_version is None and 'invalidKeyVersion' in kwargs:
+            invalid_key_version = kwargs['invalidKeyVersion']
+        if notification_emails is None and 'notificationEmails' in kwargs:
+            notification_emails = kwargs['notificationEmails']
+
         if active_key_version is not None:
             _setter("active_key_version", active_key_version)
         if ancestor_has_active_key_version is not None:

@@ -112,8 +112,8 @@ class WorkloadIdentityPoolProviderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             workload_identity_pool_id: pulumi.Input[str],
-             workload_identity_pool_provider_id: pulumi.Input[str],
+             workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
+             workload_identity_pool_provider_id: Optional[pulumi.Input[str]] = None,
              attribute_condition: Optional[pulumi.Input[str]] = None,
              attribute_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              aws: Optional[pulumi.Input['WorkloadIdentityPoolProviderAwsArgs']] = None,
@@ -122,7 +122,23 @@ class WorkloadIdentityPoolProviderArgs:
              display_name: Optional[pulumi.Input[str]] = None,
              oidc: Optional[pulumi.Input['WorkloadIdentityPoolProviderOidcArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if workload_identity_pool_id is None and 'workloadIdentityPoolId' in kwargs:
+            workload_identity_pool_id = kwargs['workloadIdentityPoolId']
+        if workload_identity_pool_id is None:
+            raise TypeError("Missing 'workload_identity_pool_id' argument")
+        if workload_identity_pool_provider_id is None and 'workloadIdentityPoolProviderId' in kwargs:
+            workload_identity_pool_provider_id = kwargs['workloadIdentityPoolProviderId']
+        if workload_identity_pool_provider_id is None:
+            raise TypeError("Missing 'workload_identity_pool_provider_id' argument")
+        if attribute_condition is None and 'attributeCondition' in kwargs:
+            attribute_condition = kwargs['attributeCondition']
+        if attribute_mapping is None and 'attributeMapping' in kwargs:
+            attribute_mapping = kwargs['attributeMapping']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("workload_identity_pool_id", workload_identity_pool_id)
         _setter("workload_identity_pool_provider_id", workload_identity_pool_provider_id)
         if attribute_condition is not None:
@@ -444,7 +460,19 @@ class _WorkloadIdentityPoolProviderState:
              state: Optional[pulumi.Input[str]] = None,
              workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
              workload_identity_pool_provider_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if attribute_condition is None and 'attributeCondition' in kwargs:
+            attribute_condition = kwargs['attributeCondition']
+        if attribute_mapping is None and 'attributeMapping' in kwargs:
+            attribute_mapping = kwargs['attributeMapping']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if workload_identity_pool_id is None and 'workloadIdentityPoolId' in kwargs:
+            workload_identity_pool_id = kwargs['workloadIdentityPoolId']
+        if workload_identity_pool_provider_id is None and 'workloadIdentityPoolProviderId' in kwargs:
+            workload_identity_pool_provider_id = kwargs['workloadIdentityPoolProviderId']
+
         if attribute_condition is not None:
             _setter("attribute_condition", attribute_condition)
         if attribute_mapping is not None:

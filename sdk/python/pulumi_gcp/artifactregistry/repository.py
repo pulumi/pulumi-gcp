@@ -92,8 +92,8 @@ class RepositoryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             format: pulumi.Input[str],
-             repository_id: pulumi.Input[str],
+             format: Optional[pulumi.Input[str]] = None,
+             repository_id: Optional[pulumi.Input[str]] = None,
              cleanup_policies: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]]] = None,
              cleanup_policy_dry_run: Optional[pulumi.Input[bool]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -106,7 +106,29 @@ class RepositoryArgs:
              project: Optional[pulumi.Input[str]] = None,
              remote_repository_config: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigArgs']] = None,
              virtual_repository_config: Optional[pulumi.Input['RepositoryVirtualRepositoryConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if format is None:
+            raise TypeError("Missing 'format' argument")
+        if repository_id is None and 'repositoryId' in kwargs:
+            repository_id = kwargs['repositoryId']
+        if repository_id is None:
+            raise TypeError("Missing 'repository_id' argument")
+        if cleanup_policies is None and 'cleanupPolicies' in kwargs:
+            cleanup_policies = kwargs['cleanupPolicies']
+        if cleanup_policy_dry_run is None and 'cleanupPolicyDryRun' in kwargs:
+            cleanup_policy_dry_run = kwargs['cleanupPolicyDryRun']
+        if docker_config is None and 'dockerConfig' in kwargs:
+            docker_config = kwargs['dockerConfig']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if maven_config is None and 'mavenConfig' in kwargs:
+            maven_config = kwargs['mavenConfig']
+        if remote_repository_config is None and 'remoteRepositoryConfig' in kwargs:
+            remote_repository_config = kwargs['remoteRepositoryConfig']
+        if virtual_repository_config is None and 'virtualRepositoryConfig' in kwargs:
+            virtual_repository_config = kwargs['virtualRepositoryConfig']
+
         _setter("format", format)
         _setter("repository_id", repository_id)
         if cleanup_policies is not None:
@@ -434,7 +456,29 @@ class _RepositoryState:
              repository_id: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              virtual_repository_config: Optional[pulumi.Input['RepositoryVirtualRepositoryConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cleanup_policies is None and 'cleanupPolicies' in kwargs:
+            cleanup_policies = kwargs['cleanupPolicies']
+        if cleanup_policy_dry_run is None and 'cleanupPolicyDryRun' in kwargs:
+            cleanup_policy_dry_run = kwargs['cleanupPolicyDryRun']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if docker_config is None and 'dockerConfig' in kwargs:
+            docker_config = kwargs['dockerConfig']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if maven_config is None and 'mavenConfig' in kwargs:
+            maven_config = kwargs['mavenConfig']
+        if remote_repository_config is None and 'remoteRepositoryConfig' in kwargs:
+            remote_repository_config = kwargs['remoteRepositoryConfig']
+        if repository_id is None and 'repositoryId' in kwargs:
+            repository_id = kwargs['repositoryId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if virtual_repository_config is None and 'virtualRepositoryConfig' in kwargs:
+            virtual_repository_config = kwargs['virtualRepositoryConfig']
+
         if cleanup_policies is not None:
             _setter("cleanup_policies", cleanup_policies)
         if cleanup_policy_dry_run is not None:

@@ -65,7 +65,7 @@ class CxIntentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              is_fallback: Optional[pulumi.Input[bool]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -74,7 +74,19 @@ class CxIntentArgs:
              parent: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[int]] = None,
              training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhraseArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if is_fallback is None and 'isFallback' in kwargs:
+            is_fallback = kwargs['isFallback']
+        if language_code is None and 'languageCode' in kwargs:
+            language_code = kwargs['languageCode']
+        if training_phrases is None and 'trainingPhrases' in kwargs:
+            training_phrases = kwargs['trainingPhrases']
+
         _setter("display_name", display_name)
         if description is not None:
             _setter("description", description)
@@ -281,7 +293,17 @@ class _CxIntentState:
              parent: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[int]] = None,
              training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhraseArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if is_fallback is None and 'isFallback' in kwargs:
+            is_fallback = kwargs['isFallback']
+        if language_code is None and 'languageCode' in kwargs:
+            language_code = kwargs['languageCode']
+        if training_phrases is None and 'trainingPhrases' in kwargs:
+            training_phrases = kwargs['trainingPhrases']
+
         if description is not None:
             _setter("description", description)
         if display_name is not None:

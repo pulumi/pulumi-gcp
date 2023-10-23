@@ -374,7 +374,15 @@ class PreventionDeidentifyTemplateDeidentifyConfig(dict):
              image_transformations: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformations'] = None,
              info_type_transformations: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations'] = None,
              record_transformations: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if image_transformations is None and 'imageTransformations' in kwargs:
+            image_transformations = kwargs['imageTransformations']
+        if info_type_transformations is None and 'infoTypeTransformations' in kwargs:
+            info_type_transformations = kwargs['infoTypeTransformations']
+        if record_transformations is None and 'recordTransformations' in kwargs:
+            record_transformations = kwargs['recordTransformations']
+
         if image_transformations is not None:
             _setter("image_transformations", image_transformations)
         if info_type_transformations is not None:
@@ -425,8 +433,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformations(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             transforms: Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             transforms: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if transforms is None:
+            raise TypeError("Missing 'transforms' argument")
+
         _setter("transforms", transforms)
 
     @property
@@ -491,7 +503,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform(
              all_text: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllText'] = None,
              redaction_color: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColor'] = None,
              selected_info_types: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypes'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if all_info_types is None and 'allInfoTypes' in kwargs:
+            all_info_types = kwargs['allInfoTypes']
+        if all_text is None and 'allText' in kwargs:
+            all_text = kwargs['allText']
+        if redaction_color is None and 'redactionColor' in kwargs:
+            redaction_color = kwargs['redactionColor']
+        if selected_info_types is None and 'selectedInfoTypes' in kwargs:
+            selected_info_types = kwargs['selectedInfoTypes']
+
         if all_info_types is not None:
             _setter("all_info_types", all_info_types)
         if all_text is not None:
@@ -543,8 +565,10 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformA
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
         pass
+
 
 
 @pulumi.output_type
@@ -554,8 +578,10 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformA
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
         pass
+
 
 
 @pulumi.output_type
@@ -581,7 +607,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformR
              blue: Optional[float] = None,
              green: Optional[float] = None,
              red: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if blue is not None:
             _setter("blue", blue)
         if green is not None:
@@ -647,8 +675,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformS
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             info_types: Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoType'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             info_types: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoType']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if info_types is None and 'infoTypes' in kwargs:
+            info_types = kwargs['infoTypes']
+        if info_types is None:
+            raise TypeError("Missing 'info_types' argument")
+
         _setter("info_types", info_types)
 
     @property
@@ -700,10 +734,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformS
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              sensitivity_score: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeSensitivityScore'] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if sensitivity_score is None and 'sensitivityScore' in kwargs:
+            sensitivity_score = kwargs['sensitivityScore']
+
         _setter("name", name)
         if sensitivity_score is not None:
             _setter("sensitivity_score", sensitivity_score)
@@ -751,8 +791,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformS
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             score: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             score: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if score is None:
+            raise TypeError("Missing 'score' argument")
+
         _setter("score", score)
 
     @property
@@ -780,8 +824,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             transformations: Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             transformations: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if transformations is None:
+            raise TypeError("Missing 'transformations' argument")
+
         _setter("transformations", transformations)
 
     @property
@@ -834,9 +882,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             primitive_transformation: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation',
+             primitive_transformation: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation'] = None,
              info_types: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if primitive_transformation is None and 'primitiveTransformation' in kwargs:
+            primitive_transformation = kwargs['primitiveTransformation']
+        if primitive_transformation is None:
+            raise TypeError("Missing 'primitive_transformation' argument")
+        if info_types is None and 'infoTypes' in kwargs:
+            info_types = kwargs['infoTypes']
+
         _setter("primitive_transformation", primitive_transformation)
         if info_types is not None:
             _setter("info_types", info_types)
@@ -900,10 +956,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              sensitivity_score: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeSensitivityScore'] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if sensitivity_score is None and 'sensitivityScore' in kwargs:
+            sensitivity_score = kwargs['sensitivityScore']
+
         _setter("name", name)
         if sensitivity_score is not None:
             _setter("sensitivity_score", sensitivity_score)
@@ -951,8 +1013,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             score: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             score: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if score is None:
+            raise TypeError("Missing 'score' argument")
+
         _setter("score", score)
 
     @property
@@ -1084,7 +1150,33 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
              replace_dictionary_config: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfig'] = None,
              replace_with_info_type_config: Optional[bool] = None,
              time_part_config: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucketing_config is None and 'bucketingConfig' in kwargs:
+            bucketing_config = kwargs['bucketingConfig']
+        if character_mask_config is None and 'characterMaskConfig' in kwargs:
+            character_mask_config = kwargs['characterMaskConfig']
+        if crypto_deterministic_config is None and 'cryptoDeterministicConfig' in kwargs:
+            crypto_deterministic_config = kwargs['cryptoDeterministicConfig']
+        if crypto_hash_config is None and 'cryptoHashConfig' in kwargs:
+            crypto_hash_config = kwargs['cryptoHashConfig']
+        if crypto_replace_ffx_fpe_config is None and 'cryptoReplaceFfxFpeConfig' in kwargs:
+            crypto_replace_ffx_fpe_config = kwargs['cryptoReplaceFfxFpeConfig']
+        if date_shift_config is None and 'dateShiftConfig' in kwargs:
+            date_shift_config = kwargs['dateShiftConfig']
+        if fixed_size_bucketing_config is None and 'fixedSizeBucketingConfig' in kwargs:
+            fixed_size_bucketing_config = kwargs['fixedSizeBucketingConfig']
+        if redact_config is None and 'redactConfig' in kwargs:
+            redact_config = kwargs['redactConfig']
+        if replace_config is None and 'replaceConfig' in kwargs:
+            replace_config = kwargs['replaceConfig']
+        if replace_dictionary_config is None and 'replaceDictionaryConfig' in kwargs:
+            replace_dictionary_config = kwargs['replaceDictionaryConfig']
+        if replace_with_info_type_config is None and 'replaceWithInfoTypeConfig' in kwargs:
+            replace_with_info_type_config = kwargs['replaceWithInfoTypeConfig']
+        if time_part_config is None and 'timePartConfig' in kwargs:
+            time_part_config = kwargs['timePartConfig']
+
         if bucketing_config is not None:
             _setter("bucketing_config", bucketing_config)
         if character_mask_config is not None:
@@ -1245,7 +1337,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def _configure(
              _setter: Callable[[Any, Any], None],
              buckets: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucket']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if buckets is not None:
             _setter("buckets", buckets)
 
@@ -1303,10 +1397,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             replacement_value: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue',
+             replacement_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue'] = None,
              max: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMax'] = None,
              min: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMin'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if replacement_value is None and 'replacementValue' in kwargs:
+            replacement_value = kwargs['replacementValue']
+        if replacement_value is None:
+            raise TypeError("Missing 'replacement_value' argument")
+
         _setter("replacement_value", replacement_value)
         if max is not None:
             _setter("max", max)
@@ -1415,7 +1515,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
              string_value: Optional[str] = None,
              time_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValue'] = None,
              timestamp_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if date_value is None and 'dateValue' in kwargs:
+            date_value = kwargs['dateValue']
+        if day_of_week_value is None and 'dayOfWeekValue' in kwargs:
+            day_of_week_value = kwargs['dayOfWeekValue']
+        if float_value is None and 'floatValue' in kwargs:
+            float_value = kwargs['floatValue']
+        if integer_value is None and 'integerValue' in kwargs:
+            integer_value = kwargs['integerValue']
+        if string_value is None and 'stringValue' in kwargs:
+            string_value = kwargs['stringValue']
+        if time_value is None and 'timeValue' in kwargs:
+            time_value = kwargs['timeValue']
+        if timestamp_value is None and 'timestampValue' in kwargs:
+            timestamp_value = kwargs['timestampValue']
+
         if date_value is not None:
             _setter("date_value", date_value)
         if day_of_week_value is not None:
@@ -1516,7 +1632,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
              day: Optional[int] = None,
              month: Optional[int] = None,
              year: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if day is not None:
             _setter("day", day)
         if month is not None:
@@ -1578,7 +1696,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
              minutes: Optional[int] = None,
              nanos: Optional[int] = None,
              seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if hours is not None:
             _setter("hours", hours)
         if minutes is not None:
@@ -1692,7 +1812,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
              string_value: Optional[str] = None,
              time_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValue'] = None,
              timestamp_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if date_value is None and 'dateValue' in kwargs:
+            date_value = kwargs['dateValue']
+        if day_of_week_value is None and 'dayOfWeekValue' in kwargs:
+            day_of_week_value = kwargs['dayOfWeekValue']
+        if float_value is None and 'floatValue' in kwargs:
+            float_value = kwargs['floatValue']
+        if integer_value is None and 'integerValue' in kwargs:
+            integer_value = kwargs['integerValue']
+        if string_value is None and 'stringValue' in kwargs:
+            string_value = kwargs['stringValue']
+        if time_value is None and 'timeValue' in kwargs:
+            time_value = kwargs['timeValue']
+        if timestamp_value is None and 'timestampValue' in kwargs:
+            timestamp_value = kwargs['timestampValue']
+
         if date_value is not None:
             _setter("date_value", date_value)
         if day_of_week_value is not None:
@@ -1793,7 +1929,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
              day: Optional[int] = None,
              month: Optional[int] = None,
              year: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if day is not None:
             _setter("day", day)
         if month is not None:
@@ -1855,7 +1993,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
              minutes: Optional[int] = None,
              nanos: Optional[int] = None,
              seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if hours is not None:
             _setter("hours", hours)
         if minutes is not None:
@@ -1969,7 +2109,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
              string_value: Optional[str] = None,
              time_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValue'] = None,
              timestamp_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if date_value is None and 'dateValue' in kwargs:
+            date_value = kwargs['dateValue']
+        if day_of_week_value is None and 'dayOfWeekValue' in kwargs:
+            day_of_week_value = kwargs['dayOfWeekValue']
+        if float_value is None and 'floatValue' in kwargs:
+            float_value = kwargs['floatValue']
+        if integer_value is None and 'integerValue' in kwargs:
+            integer_value = kwargs['integerValue']
+        if string_value is None and 'stringValue' in kwargs:
+            string_value = kwargs['stringValue']
+        if time_value is None and 'timeValue' in kwargs:
+            time_value = kwargs['timeValue']
+        if timestamp_value is None and 'timestampValue' in kwargs:
+            timestamp_value = kwargs['timestampValue']
+
         if date_value is not None:
             _setter("date_value", date_value)
         if day_of_week_value is not None:
@@ -2070,7 +2226,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
              day: Optional[int] = None,
              month: Optional[int] = None,
              year: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if day is not None:
             _setter("day", day)
         if month is not None:
@@ -2132,7 +2290,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
              minutes: Optional[int] = None,
              nanos: Optional[int] = None,
              seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if hours is not None:
             _setter("hours", hours)
         if minutes is not None:
@@ -2227,7 +2387,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
              masking_character: Optional[str] = None,
              number_to_mask: Optional[int] = None,
              reverse_order: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if characters_to_ignores is None and 'charactersToIgnores' in kwargs:
+            characters_to_ignores = kwargs['charactersToIgnores']
+        if masking_character is None and 'maskingCharacter' in kwargs:
+            masking_character = kwargs['maskingCharacter']
+        if number_to_mask is None and 'numberToMask' in kwargs:
+            number_to_mask = kwargs['numberToMask']
+        if reverse_order is None and 'reverseOrder' in kwargs:
+            reverse_order = kwargs['reverseOrder']
+
         if characters_to_ignores is not None:
             _setter("characters_to_ignores", characters_to_ignores)
         if masking_character is not None:
@@ -2311,7 +2481,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
              _setter: Callable[[Any, Any], None],
              characters_to_skip: Optional[str] = None,
              common_characters_to_ignore: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if characters_to_skip is None and 'charactersToSkip' in kwargs:
+            characters_to_skip = kwargs['charactersToSkip']
+        if common_characters_to_ignore is None and 'commonCharactersToIgnore' in kwargs:
+            common_characters_to_ignore = kwargs['commonCharactersToIgnore']
+
         if characters_to_skip is not None:
             _setter("characters_to_skip", characters_to_skip)
         if common_characters_to_ignore is not None:
@@ -2392,7 +2568,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
              context: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext'] = None,
              crypto_key: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey'] = None,
              surrogate_info_type: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key is None and 'cryptoKey' in kwargs:
+            crypto_key = kwargs['cryptoKey']
+        if surrogate_info_type is None and 'surrogateInfoType' in kwargs:
+            surrogate_info_type = kwargs['surrogateInfoType']
+
         if context is not None:
             _setter("context", context)
         if crypto_key is not None:
@@ -2455,7 +2637,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def _configure(
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
 
@@ -2514,7 +2698,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
              kms_wrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped'] = None,
              transient: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient'] = None,
              unwrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_wrapped is None and 'kmsWrapped' in kwargs:
+            kms_wrapped = kwargs['kmsWrapped']
+
         if kms_wrapped is not None:
             _setter("kms_wrapped", kms_wrapped)
         if transient is not None:
@@ -2590,9 +2778,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             crypto_key_name: str,
-             wrapped_key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             crypto_key_name: Optional[str] = None,
+             wrapped_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key_name is None and 'cryptoKeyName' in kwargs:
+            crypto_key_name = kwargs['cryptoKeyName']
+        if crypto_key_name is None:
+            raise TypeError("Missing 'crypto_key_name' argument")
+        if wrapped_key is None and 'wrappedKey' in kwargs:
+            wrapped_key = kwargs['wrappedKey']
+        if wrapped_key is None:
+            raise TypeError("Missing 'wrapped_key' argument")
+
         _setter("crypto_key_name", crypto_key_name)
         _setter("wrapped_key", wrapped_key)
 
@@ -2628,8 +2826,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -2657,8 +2859,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("key", key)
 
     @property
@@ -2713,7 +2919,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
              name: Optional[str] = None,
              sensitivity_score: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScore'] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if sensitivity_score is None and 'sensitivityScore' in kwargs:
+            sensitivity_score = kwargs['sensitivityScore']
+
         if name is not None:
             _setter("name", name)
         if sensitivity_score is not None:
@@ -2762,8 +2972,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             score: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             score: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if score is None:
+            raise TypeError("Missing 'score' argument")
+
         _setter("score", score)
 
     @property
@@ -2809,7 +3023,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def _configure(
              _setter: Callable[[Any, Any], None],
              crypto_key: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKey'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key is None and 'cryptoKey' in kwargs:
+            crypto_key = kwargs['cryptoKey']
+
         if crypto_key is not None:
             _setter("crypto_key", crypto_key)
 
@@ -2869,7 +3087,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
              kms_wrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrapped'] = None,
              transient: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransient'] = None,
              unwrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrapped'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_wrapped is None and 'kmsWrapped' in kwargs:
+            kms_wrapped = kwargs['kmsWrapped']
+
         if kms_wrapped is not None:
             _setter("kms_wrapped", kms_wrapped)
         if transient is not None:
@@ -2945,9 +3167,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             crypto_key_name: str,
-             wrapped_key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             crypto_key_name: Optional[str] = None,
+             wrapped_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key_name is None and 'cryptoKeyName' in kwargs:
+            crypto_key_name = kwargs['cryptoKeyName']
+        if crypto_key_name is None:
+            raise TypeError("Missing 'crypto_key_name' argument")
+        if wrapped_key is None and 'wrappedKey' in kwargs:
+            wrapped_key = kwargs['wrappedKey']
+        if wrapped_key is None:
+            raise TypeError("Missing 'wrapped_key' argument")
+
         _setter("crypto_key_name", crypto_key_name)
         _setter("wrapped_key", wrapped_key)
 
@@ -2983,8 +3215,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -3012,8 +3248,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("key", key)
 
     @property
@@ -3101,7 +3341,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
              custom_alphabet: Optional[str] = None,
              radix: Optional[int] = None,
              surrogate_info_type: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if common_alphabet is None and 'commonAlphabet' in kwargs:
+            common_alphabet = kwargs['commonAlphabet']
+        if crypto_key is None and 'cryptoKey' in kwargs:
+            crypto_key = kwargs['cryptoKey']
+        if custom_alphabet is None and 'customAlphabet' in kwargs:
+            custom_alphabet = kwargs['customAlphabet']
+        if surrogate_info_type is None and 'surrogateInfoType' in kwargs:
+            surrogate_info_type = kwargs['surrogateInfoType']
+
         if common_alphabet is not None:
             _setter("common_alphabet", common_alphabet)
         if context is not None:
@@ -3195,7 +3445,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def _configure(
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
 
@@ -3254,7 +3506,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
              kms_wrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped'] = None,
              transient: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient'] = None,
              unwrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_wrapped is None and 'kmsWrapped' in kwargs:
+            kms_wrapped = kwargs['kmsWrapped']
+
         if kms_wrapped is not None:
             _setter("kms_wrapped", kms_wrapped)
         if transient is not None:
@@ -3330,9 +3586,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             crypto_key_name: str,
-             wrapped_key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             crypto_key_name: Optional[str] = None,
+             wrapped_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key_name is None and 'cryptoKeyName' in kwargs:
+            crypto_key_name = kwargs['cryptoKeyName']
+        if crypto_key_name is None:
+            raise TypeError("Missing 'crypto_key_name' argument")
+        if wrapped_key is None and 'wrappedKey' in kwargs:
+            wrapped_key = kwargs['wrappedKey']
+        if wrapped_key is None:
+            raise TypeError("Missing 'wrapped_key' argument")
+
         _setter("crypto_key_name", crypto_key_name)
         _setter("wrapped_key", wrapped_key)
 
@@ -3368,8 +3634,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -3397,8 +3667,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("key", key)
 
     @property
@@ -3453,7 +3727,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
              name: Optional[str] = None,
              sensitivity_score: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScore'] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if sensitivity_score is None and 'sensitivityScore' in kwargs:
+            sensitivity_score = kwargs['sensitivityScore']
+
         if name is not None:
             _setter("name", name)
         if sensitivity_score is not None:
@@ -3502,8 +3780,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             score: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             score: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if score is None:
+            raise TypeError("Missing 'score' argument")
+
         _setter("score", score)
 
     @property
@@ -3564,11 +3846,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             lower_bound_days: int,
-             upper_bound_days: int,
+             lower_bound_days: Optional[int] = None,
+             upper_bound_days: Optional[int] = None,
              context: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContext'] = None,
              crypto_key: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKey'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if lower_bound_days is None and 'lowerBoundDays' in kwargs:
+            lower_bound_days = kwargs['lowerBoundDays']
+        if lower_bound_days is None:
+            raise TypeError("Missing 'lower_bound_days' argument")
+        if upper_bound_days is None and 'upperBoundDays' in kwargs:
+            upper_bound_days = kwargs['upperBoundDays']
+        if upper_bound_days is None:
+            raise TypeError("Missing 'upper_bound_days' argument")
+        if crypto_key is None and 'cryptoKey' in kwargs:
+            crypto_key = kwargs['cryptoKey']
+
         _setter("lower_bound_days", lower_bound_days)
         _setter("upper_bound_days", upper_bound_days)
         if context is not None:
@@ -3627,8 +3921,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -3686,7 +3984,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
              kms_wrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrapped'] = None,
              transient: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransient'] = None,
              unwrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrapped'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_wrapped is None and 'kmsWrapped' in kwargs:
+            kms_wrapped = kwargs['kmsWrapped']
+
         if kms_wrapped is not None:
             _setter("kms_wrapped", kms_wrapped)
         if transient is not None:
@@ -3762,9 +4064,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             crypto_key_name: str,
-             wrapped_key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             crypto_key_name: Optional[str] = None,
+             wrapped_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key_name is None and 'cryptoKeyName' in kwargs:
+            crypto_key_name = kwargs['cryptoKeyName']
+        if crypto_key_name is None:
+            raise TypeError("Missing 'crypto_key_name' argument")
+        if wrapped_key is None and 'wrappedKey' in kwargs:
+            wrapped_key = kwargs['wrappedKey']
+        if wrapped_key is None:
+            raise TypeError("Missing 'wrapped_key' argument")
+
         _setter("crypto_key_name", crypto_key_name)
         _setter("wrapped_key", wrapped_key)
 
@@ -3800,8 +4112,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -3829,8 +4145,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("key", key)
 
     @property
@@ -3893,10 +4213,24 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket_size: float,
-             lower_bound: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBound',
-             upper_bound: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bucket_size: Optional[float] = None,
+             lower_bound: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBound'] = None,
+             upper_bound: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket_size is None and 'bucketSize' in kwargs:
+            bucket_size = kwargs['bucketSize']
+        if bucket_size is None:
+            raise TypeError("Missing 'bucket_size' argument")
+        if lower_bound is None and 'lowerBound' in kwargs:
+            lower_bound = kwargs['lowerBound']
+        if lower_bound is None:
+            raise TypeError("Missing 'lower_bound' argument")
+        if upper_bound is None and 'upperBound' in kwargs:
+            upper_bound = kwargs['upperBound']
+        if upper_bound is None:
+            raise TypeError("Missing 'upper_bound' argument")
+
         _setter("bucket_size", bucket_size)
         _setter("lower_bound", lower_bound)
         _setter("upper_bound", upper_bound)
@@ -3972,7 +4306,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
              _setter: Callable[[Any, Any], None],
              float_value: Optional[float] = None,
              integer_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if float_value is None and 'floatValue' in kwargs:
+            float_value = kwargs['floatValue']
+        if integer_value is None and 'integerValue' in kwargs:
+            integer_value = kwargs['integerValue']
+
         if float_value is not None:
             _setter("float_value", float_value)
         if integer_value is not None:
@@ -4033,7 +4373,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
              _setter: Callable[[Any, Any], None],
              float_value: Optional[float] = None,
              integer_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if float_value is None and 'floatValue' in kwargs:
+            float_value = kwargs['floatValue']
+        if integer_value is None and 'integerValue' in kwargs:
+            integer_value = kwargs['integerValue']
+
         if float_value is not None:
             _setter("float_value", float_value)
         if integer_value is not None:
@@ -4063,8 +4409,10 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
         pass
+
 
 
 @pulumi.output_type
@@ -4100,8 +4448,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             new_value: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             new_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if new_value is None and 'newValue' in kwargs:
+            new_value = kwargs['newValue']
+        if new_value is None:
+            raise TypeError("Missing 'new_value' argument")
+
         _setter("new_value", new_value)
 
     @property
@@ -4193,7 +4547,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
              string_value: Optional[str] = None,
              time_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue'] = None,
              timestamp_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if boolean_value is None and 'booleanValue' in kwargs:
+            boolean_value = kwargs['booleanValue']
+        if date_value is None and 'dateValue' in kwargs:
+            date_value = kwargs['dateValue']
+        if day_of_week_value is None and 'dayOfWeekValue' in kwargs:
+            day_of_week_value = kwargs['dayOfWeekValue']
+        if float_value is None and 'floatValue' in kwargs:
+            float_value = kwargs['floatValue']
+        if integer_value is None and 'integerValue' in kwargs:
+            integer_value = kwargs['integerValue']
+        if string_value is None and 'stringValue' in kwargs:
+            string_value = kwargs['stringValue']
+        if time_value is None and 'timeValue' in kwargs:
+            time_value = kwargs['timeValue']
+        if timestamp_value is None and 'timestampValue' in kwargs:
+            timestamp_value = kwargs['timestampValue']
+
         if boolean_value is not None:
             _setter("boolean_value", boolean_value)
         if date_value is not None:
@@ -4305,7 +4677,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
              day: Optional[int] = None,
              month: Optional[int] = None,
              year: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if day is not None:
             _setter("day", day)
         if month is not None:
@@ -4367,7 +4741,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
              minutes: Optional[int] = None,
              nanos: Optional[int] = None,
              seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if hours is not None:
             _setter("hours", hours)
         if minutes is not None:
@@ -4442,8 +4818,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             word_list: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordList',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             word_list: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordList'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if word_list is None and 'wordList' in kwargs:
+            word_list = kwargs['wordList']
+        if word_list is None:
+            raise TypeError("Missing 'word_list' argument")
+
         _setter("word_list", word_list)
 
     @property
@@ -4470,8 +4852,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             words: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             words: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if words is None:
+            raise TypeError("Missing 'words' argument")
+
         _setter("words", words)
 
     @property
@@ -4516,7 +4902,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def _configure(
              _setter: Callable[[Any, Any], None],
              part_to_extract: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if part_to_extract is None and 'partToExtract' in kwargs:
+            part_to_extract = kwargs['partToExtract']
+
         if part_to_extract is not None:
             _setter("part_to_extract", part_to_extract)
 
@@ -4570,7 +4960,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations(dict):
              _setter: Callable[[Any, Any], None],
              field_transformations: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation']] = None,
              record_suppressions: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if field_transformations is None and 'fieldTransformations' in kwargs:
+            field_transformations = kwargs['fieldTransformations']
+        if record_suppressions is None and 'recordSuppressions' in kwargs:
+            record_suppressions = kwargs['recordSuppressions']
+
         if field_transformations is not None:
             _setter("field_transformations", field_transformations)
         if record_suppressions is not None:
@@ -4648,11 +5044,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             fields: Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField'],
+             fields: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField']] = None,
              condition: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition'] = None,
              info_type_transformations: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformations'] = None,
              primitive_transformation: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if fields is None:
+            raise TypeError("Missing 'fields' argument")
+        if info_type_transformations is None and 'infoTypeTransformations' in kwargs:
+            info_type_transformations = kwargs['infoTypeTransformations']
+        if primitive_transformation is None and 'primitiveTransformation' in kwargs:
+            primitive_transformation = kwargs['primitiveTransformation']
+
         _setter("fields", fields)
         if condition is not None:
             _setter("condition", condition)
@@ -4721,7 +5125,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def _configure(
              _setter: Callable[[Any, Any], None],
              expressions: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if expressions is not None:
             _setter("expressions", expressions)
 
@@ -4774,7 +5180,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              _setter: Callable[[Any, Any], None],
              conditions: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions'] = None,
              logical_operator: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if logical_operator is None and 'logicalOperator' in kwargs:
+            logical_operator = kwargs['logicalOperator']
+
         if conditions is not None:
             _setter("conditions", conditions)
         if logical_operator is not None:
@@ -4816,7 +5226,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def _configure(
              _setter: Callable[[Any, Any], None],
              conditions: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if conditions is not None:
             _setter("conditions", conditions)
 
@@ -4853,10 +5265,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             field: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionField',
-             operator: str,
+             field: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionField'] = None,
+             operator: Optional[str] = None,
              value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if field is None:
+            raise TypeError("Missing 'field' argument")
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+
         _setter("field", field)
         _setter("operator", operator)
         if value is not None:
@@ -4905,7 +5323,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def _configure(
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
 
@@ -4995,7 +5415,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              string_value: Optional[str] = None,
              time_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue'] = None,
              timestamp_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if boolean_value is None and 'booleanValue' in kwargs:
+            boolean_value = kwargs['booleanValue']
+        if date_value is None and 'dateValue' in kwargs:
+            date_value = kwargs['dateValue']
+        if day_of_week_value is None and 'dayOfWeekValue' in kwargs:
+            day_of_week_value = kwargs['dayOfWeekValue']
+        if float_value is None and 'floatValue' in kwargs:
+            float_value = kwargs['floatValue']
+        if integer_value is None and 'integerValue' in kwargs:
+            integer_value = kwargs['integerValue']
+        if string_value is None and 'stringValue' in kwargs:
+            string_value = kwargs['stringValue']
+        if time_value is None and 'timeValue' in kwargs:
+            time_value = kwargs['timeValue']
+        if timestamp_value is None and 'timestampValue' in kwargs:
+            timestamp_value = kwargs['timestampValue']
+
         if boolean_value is not None:
             _setter("boolean_value", boolean_value)
         if date_value is not None:
@@ -5106,7 +5544,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              day: Optional[int] = None,
              month: Optional[int] = None,
              year: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if day is not None:
             _setter("day", day)
         if month is not None:
@@ -5168,7 +5608,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              minutes: Optional[int] = None,
              nanos: Optional[int] = None,
              seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if hours is not None:
             _setter("hours", hours)
         if minutes is not None:
@@ -5226,7 +5668,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def _configure(
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
 
@@ -5254,8 +5698,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             transformations: Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformation'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             transformations: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformation']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if transformations is None:
+            raise TypeError("Missing 'transformations' argument")
+
         _setter("transformations", transformations)
 
     @property
@@ -5308,9 +5756,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             primitive_transformation: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformation',
+             primitive_transformation: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformation'] = None,
              info_types: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoType']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if primitive_transformation is None and 'primitiveTransformation' in kwargs:
+            primitive_transformation = kwargs['primitiveTransformation']
+        if primitive_transformation is None:
+            raise TypeError("Missing 'primitive_transformation' argument")
+        if info_types is None and 'infoTypes' in kwargs:
+            info_types = kwargs['infoTypes']
+
         _setter("primitive_transformation", primitive_transformation)
         if info_types is not None:
             _setter("info_types", info_types)
@@ -5374,10 +5830,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              sensitivity_score: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeSensitivityScore'] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if sensitivity_score is None and 'sensitivityScore' in kwargs:
+            sensitivity_score = kwargs['sensitivityScore']
+
         _setter("name", name)
         if sensitivity_score is not None:
             _setter("sensitivity_score", sensitivity_score)
@@ -5425,8 +5887,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             score: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             score: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if score is None:
+            raise TypeError("Missing 'score' argument")
+
         _setter("score", score)
 
     @property
@@ -5558,7 +6024,33 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              replace_dictionary_config: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfig'] = None,
              replace_with_info_type_config: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceWithInfoTypeConfig'] = None,
              time_part_config: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucketing_config is None and 'bucketingConfig' in kwargs:
+            bucketing_config = kwargs['bucketingConfig']
+        if character_mask_config is None and 'characterMaskConfig' in kwargs:
+            character_mask_config = kwargs['characterMaskConfig']
+        if crypto_deterministic_config is None and 'cryptoDeterministicConfig' in kwargs:
+            crypto_deterministic_config = kwargs['cryptoDeterministicConfig']
+        if crypto_hash_config is None and 'cryptoHashConfig' in kwargs:
+            crypto_hash_config = kwargs['cryptoHashConfig']
+        if crypto_replace_ffx_fpe_config is None and 'cryptoReplaceFfxFpeConfig' in kwargs:
+            crypto_replace_ffx_fpe_config = kwargs['cryptoReplaceFfxFpeConfig']
+        if date_shift_config is None and 'dateShiftConfig' in kwargs:
+            date_shift_config = kwargs['dateShiftConfig']
+        if fixed_size_bucketing_config is None and 'fixedSizeBucketingConfig' in kwargs:
+            fixed_size_bucketing_config = kwargs['fixedSizeBucketingConfig']
+        if redact_config is None and 'redactConfig' in kwargs:
+            redact_config = kwargs['redactConfig']
+        if replace_config is None and 'replaceConfig' in kwargs:
+            replace_config = kwargs['replaceConfig']
+        if replace_dictionary_config is None and 'replaceDictionaryConfig' in kwargs:
+            replace_dictionary_config = kwargs['replaceDictionaryConfig']
+        if replace_with_info_type_config is None and 'replaceWithInfoTypeConfig' in kwargs:
+            replace_with_info_type_config = kwargs['replaceWithInfoTypeConfig']
+        if time_part_config is None and 'timePartConfig' in kwargs:
+            time_part_config = kwargs['timePartConfig']
+
         if bucketing_config is not None:
             _setter("bucketing_config", bucketing_config)
         if character_mask_config is not None:
@@ -5718,8 +6210,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             buckets: Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucket'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             buckets: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucket']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if buckets is None:
+            raise TypeError("Missing 'buckets' argument")
+
         _setter("buckets", buckets)
 
     @property
@@ -5776,10 +6272,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             replacement_value: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue',
+             replacement_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue'] = None,
              max: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMax'] = None,
              min: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMin'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if replacement_value is None and 'replacementValue' in kwargs:
+            replacement_value = kwargs['replacementValue']
+        if replacement_value is None:
+            raise TypeError("Missing 'replacement_value' argument")
+
         _setter("replacement_value", replacement_value)
         if max is not None:
             _setter("max", max)
@@ -5888,7 +6390,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              string_value: Optional[str] = None,
              time_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValue'] = None,
              timestamp_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if date_value is None and 'dateValue' in kwargs:
+            date_value = kwargs['dateValue']
+        if day_of_week_value is None and 'dayOfWeekValue' in kwargs:
+            day_of_week_value = kwargs['dayOfWeekValue']
+        if float_value is None and 'floatValue' in kwargs:
+            float_value = kwargs['floatValue']
+        if integer_value is None and 'integerValue' in kwargs:
+            integer_value = kwargs['integerValue']
+        if string_value is None and 'stringValue' in kwargs:
+            string_value = kwargs['stringValue']
+        if time_value is None and 'timeValue' in kwargs:
+            time_value = kwargs['timeValue']
+        if timestamp_value is None and 'timestampValue' in kwargs:
+            timestamp_value = kwargs['timestampValue']
+
         if date_value is not None:
             _setter("date_value", date_value)
         if day_of_week_value is not None:
@@ -5989,7 +6507,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              day: Optional[int] = None,
              month: Optional[int] = None,
              year: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if day is not None:
             _setter("day", day)
         if month is not None:
@@ -6051,7 +6571,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              minutes: Optional[int] = None,
              nanos: Optional[int] = None,
              seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if hours is not None:
             _setter("hours", hours)
         if minutes is not None:
@@ -6165,7 +6687,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              string_value: Optional[str] = None,
              time_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValue'] = None,
              timestamp_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if date_value is None and 'dateValue' in kwargs:
+            date_value = kwargs['dateValue']
+        if day_of_week_value is None and 'dayOfWeekValue' in kwargs:
+            day_of_week_value = kwargs['dayOfWeekValue']
+        if float_value is None and 'floatValue' in kwargs:
+            float_value = kwargs['floatValue']
+        if integer_value is None and 'integerValue' in kwargs:
+            integer_value = kwargs['integerValue']
+        if string_value is None and 'stringValue' in kwargs:
+            string_value = kwargs['stringValue']
+        if time_value is None and 'timeValue' in kwargs:
+            time_value = kwargs['timeValue']
+        if timestamp_value is None and 'timestampValue' in kwargs:
+            timestamp_value = kwargs['timestampValue']
+
         if date_value is not None:
             _setter("date_value", date_value)
         if day_of_week_value is not None:
@@ -6266,7 +6804,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              day: Optional[int] = None,
              month: Optional[int] = None,
              year: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if day is not None:
             _setter("day", day)
         if month is not None:
@@ -6328,7 +6868,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              minutes: Optional[int] = None,
              nanos: Optional[int] = None,
              seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if hours is not None:
             _setter("hours", hours)
         if minutes is not None:
@@ -6442,7 +6984,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              string_value: Optional[str] = None,
              time_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValue'] = None,
              timestamp_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if date_value is None and 'dateValue' in kwargs:
+            date_value = kwargs['dateValue']
+        if day_of_week_value is None and 'dayOfWeekValue' in kwargs:
+            day_of_week_value = kwargs['dayOfWeekValue']
+        if float_value is None and 'floatValue' in kwargs:
+            float_value = kwargs['floatValue']
+        if integer_value is None and 'integerValue' in kwargs:
+            integer_value = kwargs['integerValue']
+        if string_value is None and 'stringValue' in kwargs:
+            string_value = kwargs['stringValue']
+        if time_value is None and 'timeValue' in kwargs:
+            time_value = kwargs['timeValue']
+        if timestamp_value is None and 'timestampValue' in kwargs:
+            timestamp_value = kwargs['timestampValue']
+
         if date_value is not None:
             _setter("date_value", date_value)
         if day_of_week_value is not None:
@@ -6543,7 +7101,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              day: Optional[int] = None,
              month: Optional[int] = None,
              year: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if day is not None:
             _setter("day", day)
         if month is not None:
@@ -6605,7 +7165,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              minutes: Optional[int] = None,
              nanos: Optional[int] = None,
              seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if hours is not None:
             _setter("hours", hours)
         if minutes is not None:
@@ -6700,7 +7262,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              masking_character: Optional[str] = None,
              number_to_mask: Optional[int] = None,
              reverse_order: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if characters_to_ignores is None and 'charactersToIgnores' in kwargs:
+            characters_to_ignores = kwargs['charactersToIgnores']
+        if masking_character is None and 'maskingCharacter' in kwargs:
+            masking_character = kwargs['maskingCharacter']
+        if number_to_mask is None and 'numberToMask' in kwargs:
+            number_to_mask = kwargs['numberToMask']
+        if reverse_order is None and 'reverseOrder' in kwargs:
+            reverse_order = kwargs['reverseOrder']
+
         if characters_to_ignores is not None:
             _setter("characters_to_ignores", characters_to_ignores)
         if masking_character is not None:
@@ -6784,7 +7356,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              _setter: Callable[[Any, Any], None],
              characters_to_skip: Optional[str] = None,
              common_characters_to_ignore: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if characters_to_skip is None and 'charactersToSkip' in kwargs:
+            characters_to_skip = kwargs['charactersToSkip']
+        if common_characters_to_ignore is None and 'commonCharactersToIgnore' in kwargs:
+            common_characters_to_ignore = kwargs['commonCharactersToIgnore']
+
         if characters_to_skip is not None:
             _setter("characters_to_skip", characters_to_skip)
         if common_characters_to_ignore is not None:
@@ -6862,10 +7440,20 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             crypto_key: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey',
-             surrogate_info_type: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType',
+             crypto_key: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey'] = None,
+             surrogate_info_type: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType'] = None,
              context: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key is None and 'cryptoKey' in kwargs:
+            crypto_key = kwargs['cryptoKey']
+        if crypto_key is None:
+            raise TypeError("Missing 'crypto_key' argument")
+        if surrogate_info_type is None and 'surrogateInfoType' in kwargs:
+            surrogate_info_type = kwargs['surrogateInfoType']
+        if surrogate_info_type is None:
+            raise TypeError("Missing 'surrogate_info_type' argument")
+
         _setter("crypto_key", crypto_key)
         _setter("surrogate_info_type", surrogate_info_type)
         if context is not None:
@@ -6925,8 +7513,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -6984,7 +7576,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              kms_wrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped'] = None,
              transient: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient'] = None,
              unwrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_wrapped is None and 'kmsWrapped' in kwargs:
+            kms_wrapped = kwargs['kmsWrapped']
+
         if kms_wrapped is not None:
             _setter("kms_wrapped", kms_wrapped)
         if transient is not None:
@@ -7060,9 +7656,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             crypto_key_name: str,
-             wrapped_key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             crypto_key_name: Optional[str] = None,
+             wrapped_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key_name is None and 'cryptoKeyName' in kwargs:
+            crypto_key_name = kwargs['cryptoKeyName']
+        if crypto_key_name is None:
+            raise TypeError("Missing 'crypto_key_name' argument")
+        if wrapped_key is None and 'wrappedKey' in kwargs:
+            wrapped_key = kwargs['wrappedKey']
+        if wrapped_key is None:
+            raise TypeError("Missing 'wrapped_key' argument")
+
         _setter("crypto_key_name", crypto_key_name)
         _setter("wrapped_key", wrapped_key)
 
@@ -7098,8 +7704,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -7127,8 +7737,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("key", key)
 
     @property
@@ -7180,10 +7794,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              sensitivity_score: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScore'] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if sensitivity_score is None and 'sensitivityScore' in kwargs:
+            sensitivity_score = kwargs['sensitivityScore']
+
         _setter("name", name)
         if sensitivity_score is not None:
             _setter("sensitivity_score", sensitivity_score)
@@ -7231,8 +7851,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             score: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             score: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if score is None:
+            raise TypeError("Missing 'score' argument")
+
         _setter("score", score)
 
     @property
@@ -7277,8 +7901,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             crypto_key: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKey',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             crypto_key: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKey'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key is None and 'cryptoKey' in kwargs:
+            crypto_key = kwargs['cryptoKey']
+        if crypto_key is None:
+            raise TypeError("Missing 'crypto_key' argument")
+
         _setter("crypto_key", crypto_key)
 
     @property
@@ -7337,7 +7967,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              kms_wrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrapped'] = None,
              transient: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransient'] = None,
              unwrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrapped'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_wrapped is None and 'kmsWrapped' in kwargs:
+            kms_wrapped = kwargs['kmsWrapped']
+
         if kms_wrapped is not None:
             _setter("kms_wrapped", kms_wrapped)
         if transient is not None:
@@ -7413,9 +8047,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             crypto_key_name: str,
-             wrapped_key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             crypto_key_name: Optional[str] = None,
+             wrapped_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key_name is None and 'cryptoKeyName' in kwargs:
+            crypto_key_name = kwargs['cryptoKeyName']
+        if crypto_key_name is None:
+            raise TypeError("Missing 'crypto_key_name' argument")
+        if wrapped_key is None and 'wrappedKey' in kwargs:
+            wrapped_key = kwargs['wrappedKey']
+        if wrapped_key is None:
+            raise TypeError("Missing 'wrapped_key' argument")
+
         _setter("crypto_key_name", crypto_key_name)
         _setter("wrapped_key", wrapped_key)
 
@@ -7451,8 +8095,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -7480,8 +8128,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("key", key)
 
     @property
@@ -7563,13 +8215,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             crypto_key: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey',
+             crypto_key: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey'] = None,
              common_alphabet: Optional[str] = None,
              context: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext'] = None,
              custom_alphabet: Optional[str] = None,
              radix: Optional[int] = None,
              surrogate_info_type: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key is None and 'cryptoKey' in kwargs:
+            crypto_key = kwargs['cryptoKey']
+        if crypto_key is None:
+            raise TypeError("Missing 'crypto_key' argument")
+        if common_alphabet is None and 'commonAlphabet' in kwargs:
+            common_alphabet = kwargs['commonAlphabet']
+        if custom_alphabet is None and 'customAlphabet' in kwargs:
+            custom_alphabet = kwargs['customAlphabet']
+        if surrogate_info_type is None and 'surrogateInfoType' in kwargs:
+            surrogate_info_type = kwargs['surrogateInfoType']
+
         _setter("crypto_key", crypto_key)
         if common_alphabet is not None:
             _setter("common_alphabet", common_alphabet)
@@ -7661,8 +8325,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -7720,7 +8388,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              kms_wrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped'] = None,
              transient: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient'] = None,
              unwrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_wrapped is None and 'kmsWrapped' in kwargs:
+            kms_wrapped = kwargs['kmsWrapped']
+
         if kms_wrapped is not None:
             _setter("kms_wrapped", kms_wrapped)
         if transient is not None:
@@ -7796,9 +8468,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             crypto_key_name: str,
-             wrapped_key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             crypto_key_name: Optional[str] = None,
+             wrapped_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key_name is None and 'cryptoKeyName' in kwargs:
+            crypto_key_name = kwargs['cryptoKeyName']
+        if crypto_key_name is None:
+            raise TypeError("Missing 'crypto_key_name' argument")
+        if wrapped_key is None and 'wrappedKey' in kwargs:
+            wrapped_key = kwargs['wrappedKey']
+        if wrapped_key is None:
+            raise TypeError("Missing 'wrapped_key' argument")
+
         _setter("crypto_key_name", crypto_key_name)
         _setter("wrapped_key", wrapped_key)
 
@@ -7834,8 +8516,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -7863,8 +8549,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("key", key)
 
     @property
@@ -7916,10 +8606,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              sensitivity_score: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScore'] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if sensitivity_score is None and 'sensitivityScore' in kwargs:
+            sensitivity_score = kwargs['sensitivityScore']
+
         _setter("name", name)
         if sensitivity_score is not None:
             _setter("sensitivity_score", sensitivity_score)
@@ -7967,8 +8663,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             score: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             score: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if score is None:
+            raise TypeError("Missing 'score' argument")
+
         _setter("score", score)
 
     @property
@@ -8029,11 +8729,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             lower_bound_days: int,
-             upper_bound_days: int,
+             lower_bound_days: Optional[int] = None,
+             upper_bound_days: Optional[int] = None,
              context: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContext'] = None,
              crypto_key: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKey'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if lower_bound_days is None and 'lowerBoundDays' in kwargs:
+            lower_bound_days = kwargs['lowerBoundDays']
+        if lower_bound_days is None:
+            raise TypeError("Missing 'lower_bound_days' argument")
+        if upper_bound_days is None and 'upperBoundDays' in kwargs:
+            upper_bound_days = kwargs['upperBoundDays']
+        if upper_bound_days is None:
+            raise TypeError("Missing 'upper_bound_days' argument")
+        if crypto_key is None and 'cryptoKey' in kwargs:
+            crypto_key = kwargs['cryptoKey']
+
         _setter("lower_bound_days", lower_bound_days)
         _setter("upper_bound_days", upper_bound_days)
         if context is not None:
@@ -8092,8 +8804,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -8151,7 +8867,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              kms_wrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrapped'] = None,
              transient: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransient'] = None,
              unwrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrapped'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_wrapped is None and 'kmsWrapped' in kwargs:
+            kms_wrapped = kwargs['kmsWrapped']
+
         if kms_wrapped is not None:
             _setter("kms_wrapped", kms_wrapped)
         if transient is not None:
@@ -8227,9 +8947,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             crypto_key_name: str,
-             wrapped_key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             crypto_key_name: Optional[str] = None,
+             wrapped_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key_name is None and 'cryptoKeyName' in kwargs:
+            crypto_key_name = kwargs['cryptoKeyName']
+        if crypto_key_name is None:
+            raise TypeError("Missing 'crypto_key_name' argument")
+        if wrapped_key is None and 'wrappedKey' in kwargs:
+            wrapped_key = kwargs['wrappedKey']
+        if wrapped_key is None:
+            raise TypeError("Missing 'wrapped_key' argument")
+
         _setter("crypto_key_name", crypto_key_name)
         _setter("wrapped_key", wrapped_key)
 
@@ -8265,8 +8995,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -8294,8 +9028,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("key", key)
 
     @property
@@ -8358,10 +9096,24 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket_size: float,
-             lower_bound: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBound',
-             upper_bound: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bucket_size: Optional[float] = None,
+             lower_bound: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBound'] = None,
+             upper_bound: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket_size is None and 'bucketSize' in kwargs:
+            bucket_size = kwargs['bucketSize']
+        if bucket_size is None:
+            raise TypeError("Missing 'bucket_size' argument")
+        if lower_bound is None and 'lowerBound' in kwargs:
+            lower_bound = kwargs['lowerBound']
+        if lower_bound is None:
+            raise TypeError("Missing 'lower_bound' argument")
+        if upper_bound is None and 'upperBound' in kwargs:
+            upper_bound = kwargs['upperBound']
+        if upper_bound is None:
+            raise TypeError("Missing 'upper_bound' argument")
+
         _setter("bucket_size", bucket_size)
         _setter("lower_bound", lower_bound)
         _setter("upper_bound", upper_bound)
@@ -8437,7 +9189,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              _setter: Callable[[Any, Any], None],
              float_value: Optional[float] = None,
              integer_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if float_value is None and 'floatValue' in kwargs:
+            float_value = kwargs['floatValue']
+        if integer_value is None and 'integerValue' in kwargs:
+            integer_value = kwargs['integerValue']
+
         if float_value is not None:
             _setter("float_value", float_value)
         if integer_value is not None:
@@ -8498,7 +9256,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              _setter: Callable[[Any, Any], None],
              float_value: Optional[float] = None,
              integer_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if float_value is None and 'floatValue' in kwargs:
+            float_value = kwargs['floatValue']
+        if integer_value is None and 'integerValue' in kwargs:
+            integer_value = kwargs['integerValue']
+
         if float_value is not None:
             _setter("float_value", float_value)
         if integer_value is not None:
@@ -8528,8 +9292,10 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
         pass
+
 
 
 @pulumi.output_type
@@ -8565,8 +9331,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             new_value: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             new_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if new_value is None and 'newValue' in kwargs:
+            new_value = kwargs['newValue']
+        if new_value is None:
+            raise TypeError("Missing 'new_value' argument")
+
         _setter("new_value", new_value)
 
     @property
@@ -8658,7 +9430,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              string_value: Optional[str] = None,
              time_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue'] = None,
              timestamp_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if boolean_value is None and 'booleanValue' in kwargs:
+            boolean_value = kwargs['booleanValue']
+        if date_value is None and 'dateValue' in kwargs:
+            date_value = kwargs['dateValue']
+        if day_of_week_value is None and 'dayOfWeekValue' in kwargs:
+            day_of_week_value = kwargs['dayOfWeekValue']
+        if float_value is None and 'floatValue' in kwargs:
+            float_value = kwargs['floatValue']
+        if integer_value is None and 'integerValue' in kwargs:
+            integer_value = kwargs['integerValue']
+        if string_value is None and 'stringValue' in kwargs:
+            string_value = kwargs['stringValue']
+        if time_value is None and 'timeValue' in kwargs:
+            time_value = kwargs['timeValue']
+        if timestamp_value is None and 'timestampValue' in kwargs:
+            timestamp_value = kwargs['timestampValue']
+
         if boolean_value is not None:
             _setter("boolean_value", boolean_value)
         if date_value is not None:
@@ -8770,7 +9560,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              day: Optional[int] = None,
              month: Optional[int] = None,
              year: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if day is not None:
             _setter("day", day)
         if month is not None:
@@ -8832,7 +9624,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              minutes: Optional[int] = None,
              nanos: Optional[int] = None,
              seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if hours is not None:
             _setter("hours", hours)
         if minutes is not None:
@@ -8907,8 +9701,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             word_list: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordList',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             word_list: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordList'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if word_list is None and 'wordList' in kwargs:
+            word_list = kwargs['wordList']
+        if word_list is None:
+            raise TypeError("Missing 'word_list' argument")
+
         _setter("word_list", word_list)
 
     @property
@@ -8935,8 +9735,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             words: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             words: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if words is None:
+            raise TypeError("Missing 'words' argument")
+
         _setter("words", words)
 
     @property
@@ -8955,8 +9759,10 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
         pass
+
 
 
 @pulumi.output_type
@@ -8991,8 +9797,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             part_to_extract: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             part_to_extract: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if part_to_extract is None and 'partToExtract' in kwargs:
+            part_to_extract = kwargs['partToExtract']
+        if part_to_extract is None:
+            raise TypeError("Missing 'part_to_extract' argument")
+
         _setter("part_to_extract", part_to_extract)
 
     @property
@@ -9118,7 +9930,31 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              replace_config: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig'] = None,
              replace_dictionary_config: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfig'] = None,
              time_part_config: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucketing_config is None and 'bucketingConfig' in kwargs:
+            bucketing_config = kwargs['bucketingConfig']
+        if character_mask_config is None and 'characterMaskConfig' in kwargs:
+            character_mask_config = kwargs['characterMaskConfig']
+        if crypto_deterministic_config is None and 'cryptoDeterministicConfig' in kwargs:
+            crypto_deterministic_config = kwargs['cryptoDeterministicConfig']
+        if crypto_hash_config is None and 'cryptoHashConfig' in kwargs:
+            crypto_hash_config = kwargs['cryptoHashConfig']
+        if crypto_replace_ffx_fpe_config is None and 'cryptoReplaceFfxFpeConfig' in kwargs:
+            crypto_replace_ffx_fpe_config = kwargs['cryptoReplaceFfxFpeConfig']
+        if date_shift_config is None and 'dateShiftConfig' in kwargs:
+            date_shift_config = kwargs['dateShiftConfig']
+        if fixed_size_bucketing_config is None and 'fixedSizeBucketingConfig' in kwargs:
+            fixed_size_bucketing_config = kwargs['fixedSizeBucketingConfig']
+        if redact_config is None and 'redactConfig' in kwargs:
+            redact_config = kwargs['redactConfig']
+        if replace_config is None and 'replaceConfig' in kwargs:
+            replace_config = kwargs['replaceConfig']
+        if replace_dictionary_config is None and 'replaceDictionaryConfig' in kwargs:
+            replace_dictionary_config = kwargs['replaceDictionaryConfig']
+        if time_part_config is None and 'timePartConfig' in kwargs:
+            time_part_config = kwargs['timePartConfig']
+
         if bucketing_config is not None:
             _setter("bucketing_config", bucketing_config)
         if character_mask_config is not None:
@@ -9269,7 +10105,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def _configure(
              _setter: Callable[[Any, Any], None],
              buckets: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucket']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if buckets is not None:
             _setter("buckets", buckets)
 
@@ -9327,10 +10165,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             replacement_value: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue',
+             replacement_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue'] = None,
              max: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMax'] = None,
              min: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMin'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if replacement_value is None and 'replacementValue' in kwargs:
+            replacement_value = kwargs['replacementValue']
+        if replacement_value is None:
+            raise TypeError("Missing 'replacement_value' argument")
+
         _setter("replacement_value", replacement_value)
         if max is not None:
             _setter("max", max)
@@ -9445,7 +10289,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              string_value: Optional[str] = None,
              time_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValue'] = None,
              timestamp_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if boolean_value is None and 'booleanValue' in kwargs:
+            boolean_value = kwargs['booleanValue']
+        if date_value is None and 'dateValue' in kwargs:
+            date_value = kwargs['dateValue']
+        if day_of_week_value is None and 'dayOfWeekValue' in kwargs:
+            day_of_week_value = kwargs['dayOfWeekValue']
+        if float_value is None and 'floatValue' in kwargs:
+            float_value = kwargs['floatValue']
+        if integer_value is None and 'integerValue' in kwargs:
+            integer_value = kwargs['integerValue']
+        if string_value is None and 'stringValue' in kwargs:
+            string_value = kwargs['stringValue']
+        if time_value is None and 'timeValue' in kwargs:
+            time_value = kwargs['timeValue']
+        if timestamp_value is None and 'timestampValue' in kwargs:
+            timestamp_value = kwargs['timestampValue']
+
         if boolean_value is not None:
             _setter("boolean_value", boolean_value)
         if date_value is not None:
@@ -9556,7 +10418,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              day: Optional[int] = None,
              month: Optional[int] = None,
              year: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if day is not None:
             _setter("day", day)
         if month is not None:
@@ -9618,7 +10482,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              minutes: Optional[int] = None,
              nanos: Optional[int] = None,
              seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if hours is not None:
             _setter("hours", hours)
         if minutes is not None:
@@ -9738,7 +10604,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              string_value: Optional[str] = None,
              time_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValue'] = None,
              timestamp_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if boolean_value is None and 'booleanValue' in kwargs:
+            boolean_value = kwargs['booleanValue']
+        if date_value is None and 'dateValue' in kwargs:
+            date_value = kwargs['dateValue']
+        if day_of_week_value is None and 'dayOfWeekValue' in kwargs:
+            day_of_week_value = kwargs['dayOfWeekValue']
+        if float_value is None and 'floatValue' in kwargs:
+            float_value = kwargs['floatValue']
+        if integer_value is None and 'integerValue' in kwargs:
+            integer_value = kwargs['integerValue']
+        if string_value is None and 'stringValue' in kwargs:
+            string_value = kwargs['stringValue']
+        if time_value is None and 'timeValue' in kwargs:
+            time_value = kwargs['timeValue']
+        if timestamp_value is None and 'timestampValue' in kwargs:
+            timestamp_value = kwargs['timestampValue']
+
         if boolean_value is not None:
             _setter("boolean_value", boolean_value)
         if date_value is not None:
@@ -9849,7 +10733,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              day: Optional[int] = None,
              month: Optional[int] = None,
              year: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if day is not None:
             _setter("day", day)
         if month is not None:
@@ -9911,7 +10797,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              minutes: Optional[int] = None,
              nanos: Optional[int] = None,
              seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if hours is not None:
             _setter("hours", hours)
         if minutes is not None:
@@ -10031,7 +10919,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              string_value: Optional[str] = None,
              time_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValue'] = None,
              timestamp_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if boolean_value is None and 'booleanValue' in kwargs:
+            boolean_value = kwargs['booleanValue']
+        if date_value is None and 'dateValue' in kwargs:
+            date_value = kwargs['dateValue']
+        if day_of_week_value is None and 'dayOfWeekValue' in kwargs:
+            day_of_week_value = kwargs['dayOfWeekValue']
+        if float_value is None and 'floatValue' in kwargs:
+            float_value = kwargs['floatValue']
+        if integer_value is None and 'integerValue' in kwargs:
+            integer_value = kwargs['integerValue']
+        if string_value is None and 'stringValue' in kwargs:
+            string_value = kwargs['stringValue']
+        if time_value is None and 'timeValue' in kwargs:
+            time_value = kwargs['timeValue']
+        if timestamp_value is None and 'timestampValue' in kwargs:
+            timestamp_value = kwargs['timestampValue']
+
         if boolean_value is not None:
             _setter("boolean_value", boolean_value)
         if date_value is not None:
@@ -10142,7 +11048,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              day: Optional[int] = None,
              month: Optional[int] = None,
              year: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if day is not None:
             _setter("day", day)
         if month is not None:
@@ -10204,7 +11112,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              minutes: Optional[int] = None,
              nanos: Optional[int] = None,
              seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if hours is not None:
             _setter("hours", hours)
         if minutes is not None:
@@ -10299,7 +11209,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              masking_character: Optional[str] = None,
              number_to_mask: Optional[int] = None,
              reverse_order: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if characters_to_ignores is None and 'charactersToIgnores' in kwargs:
+            characters_to_ignores = kwargs['charactersToIgnores']
+        if masking_character is None and 'maskingCharacter' in kwargs:
+            masking_character = kwargs['maskingCharacter']
+        if number_to_mask is None and 'numberToMask' in kwargs:
+            number_to_mask = kwargs['numberToMask']
+        if reverse_order is None and 'reverseOrder' in kwargs:
+            reverse_order = kwargs['reverseOrder']
+
         if characters_to_ignores is not None:
             _setter("characters_to_ignores", characters_to_ignores)
         if masking_character is not None:
@@ -10383,7 +11303,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              _setter: Callable[[Any, Any], None],
              characters_to_skip: Optional[str] = None,
              common_characters_to_ignore: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if characters_to_skip is None and 'charactersToSkip' in kwargs:
+            characters_to_skip = kwargs['charactersToSkip']
+        if common_characters_to_ignore is None and 'commonCharactersToIgnore' in kwargs:
+            common_characters_to_ignore = kwargs['commonCharactersToIgnore']
+
         if characters_to_skip is not None:
             _setter("characters_to_skip", characters_to_skip)
         if common_characters_to_ignore is not None:
@@ -10464,7 +11390,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              context: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigContext'] = None,
              crypto_key: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey'] = None,
              surrogate_info_type: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key is None and 'cryptoKey' in kwargs:
+            crypto_key = kwargs['cryptoKey']
+        if surrogate_info_type is None and 'surrogateInfoType' in kwargs:
+            surrogate_info_type = kwargs['surrogateInfoType']
+
         if context is not None:
             _setter("context", context)
         if crypto_key is not None:
@@ -10527,7 +11459,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def _configure(
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
 
@@ -10586,7 +11520,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              kms_wrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped'] = None,
              transient: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient'] = None,
              unwrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_wrapped is None and 'kmsWrapped' in kwargs:
+            kms_wrapped = kwargs['kmsWrapped']
+
         if kms_wrapped is not None:
             _setter("kms_wrapped", kms_wrapped)
         if transient is not None:
@@ -10662,9 +11600,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             crypto_key_name: str,
-             wrapped_key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             crypto_key_name: Optional[str] = None,
+             wrapped_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key_name is None and 'cryptoKeyName' in kwargs:
+            crypto_key_name = kwargs['cryptoKeyName']
+        if crypto_key_name is None:
+            raise TypeError("Missing 'crypto_key_name' argument")
+        if wrapped_key is None and 'wrappedKey' in kwargs:
+            wrapped_key = kwargs['wrappedKey']
+        if wrapped_key is None:
+            raise TypeError("Missing 'wrapped_key' argument")
+
         _setter("crypto_key_name", crypto_key_name)
         _setter("wrapped_key", wrapped_key)
 
@@ -10700,8 +11648,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -10729,8 +11681,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("key", key)
 
     @property
@@ -10785,7 +11741,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              name: Optional[str] = None,
              sensitivity_score: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScore'] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if sensitivity_score is None and 'sensitivityScore' in kwargs:
+            sensitivity_score = kwargs['sensitivityScore']
+
         if name is not None:
             _setter("name", name)
         if sensitivity_score is not None:
@@ -10834,8 +11794,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             score: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             score: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if score is None:
+            raise TypeError("Missing 'score' argument")
+
         _setter("score", score)
 
     @property
@@ -10881,7 +11845,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def _configure(
              _setter: Callable[[Any, Any], None],
              crypto_key: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKey'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key is None and 'cryptoKey' in kwargs:
+            crypto_key = kwargs['cryptoKey']
+
         if crypto_key is not None:
             _setter("crypto_key", crypto_key)
 
@@ -10941,7 +11909,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              kms_wrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrapped'] = None,
              transient: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransient'] = None,
              unwrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrapped'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_wrapped is None and 'kmsWrapped' in kwargs:
+            kms_wrapped = kwargs['kmsWrapped']
+
         if kms_wrapped is not None:
             _setter("kms_wrapped", kms_wrapped)
         if transient is not None:
@@ -11017,9 +11989,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             crypto_key_name: str,
-             wrapped_key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             crypto_key_name: Optional[str] = None,
+             wrapped_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key_name is None and 'cryptoKeyName' in kwargs:
+            crypto_key_name = kwargs['cryptoKeyName']
+        if crypto_key_name is None:
+            raise TypeError("Missing 'crypto_key_name' argument")
+        if wrapped_key is None and 'wrappedKey' in kwargs:
+            wrapped_key = kwargs['wrappedKey']
+        if wrapped_key is None:
+            raise TypeError("Missing 'wrapped_key' argument")
+
         _setter("crypto_key_name", crypto_key_name)
         _setter("wrapped_key", wrapped_key)
 
@@ -11055,8 +12037,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -11084,8 +12070,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("key", key)
 
     @property
@@ -11173,7 +12163,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              custom_alphabet: Optional[str] = None,
              radix: Optional[int] = None,
              surrogate_info_type: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if common_alphabet is None and 'commonAlphabet' in kwargs:
+            common_alphabet = kwargs['commonAlphabet']
+        if crypto_key is None and 'cryptoKey' in kwargs:
+            crypto_key = kwargs['cryptoKey']
+        if custom_alphabet is None and 'customAlphabet' in kwargs:
+            custom_alphabet = kwargs['customAlphabet']
+        if surrogate_info_type is None and 'surrogateInfoType' in kwargs:
+            surrogate_info_type = kwargs['surrogateInfoType']
+
         if common_alphabet is not None:
             _setter("common_alphabet", common_alphabet)
         if context is not None:
@@ -11267,7 +12267,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def _configure(
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
 
@@ -11326,7 +12328,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              kms_wrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped'] = None,
              transient: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient'] = None,
              unwrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_wrapped is None and 'kmsWrapped' in kwargs:
+            kms_wrapped = kwargs['kmsWrapped']
+
         if kms_wrapped is not None:
             _setter("kms_wrapped", kms_wrapped)
         if transient is not None:
@@ -11402,9 +12408,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             crypto_key_name: str,
-             wrapped_key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             crypto_key_name: Optional[str] = None,
+             wrapped_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key_name is None and 'cryptoKeyName' in kwargs:
+            crypto_key_name = kwargs['cryptoKeyName']
+        if crypto_key_name is None:
+            raise TypeError("Missing 'crypto_key_name' argument")
+        if wrapped_key is None and 'wrappedKey' in kwargs:
+            wrapped_key = kwargs['wrappedKey']
+        if wrapped_key is None:
+            raise TypeError("Missing 'wrapped_key' argument")
+
         _setter("crypto_key_name", crypto_key_name)
         _setter("wrapped_key", wrapped_key)
 
@@ -11440,8 +12456,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -11469,8 +12489,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("key", key)
 
     @property
@@ -11525,7 +12549,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              name: Optional[str] = None,
              sensitivity_score: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScore'] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if sensitivity_score is None and 'sensitivityScore' in kwargs:
+            sensitivity_score = kwargs['sensitivityScore']
+
         if name is not None:
             _setter("name", name)
         if sensitivity_score is not None:
@@ -11574,8 +12602,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             score: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             score: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if score is None:
+            raise TypeError("Missing 'score' argument")
+
         _setter("score", score)
 
     @property
@@ -11636,11 +12668,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             lower_bound_days: int,
-             upper_bound_days: int,
+             lower_bound_days: Optional[int] = None,
+             upper_bound_days: Optional[int] = None,
              context: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigContext'] = None,
              crypto_key: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKey'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if lower_bound_days is None and 'lowerBoundDays' in kwargs:
+            lower_bound_days = kwargs['lowerBoundDays']
+        if lower_bound_days is None:
+            raise TypeError("Missing 'lower_bound_days' argument")
+        if upper_bound_days is None and 'upperBoundDays' in kwargs:
+            upper_bound_days = kwargs['upperBoundDays']
+        if upper_bound_days is None:
+            raise TypeError("Missing 'upper_bound_days' argument")
+        if crypto_key is None and 'cryptoKey' in kwargs:
+            crypto_key = kwargs['cryptoKey']
+
         _setter("lower_bound_days", lower_bound_days)
         _setter("upper_bound_days", upper_bound_days)
         if context is not None:
@@ -11700,7 +12744,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def _configure(
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
 
@@ -11759,7 +12805,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              kms_wrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrapped'] = None,
              transient: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransient'] = None,
              unwrapped: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrapped'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_wrapped is None and 'kmsWrapped' in kwargs:
+            kms_wrapped = kwargs['kmsWrapped']
+
         if kms_wrapped is not None:
             _setter("kms_wrapped", kms_wrapped)
         if transient is not None:
@@ -11835,9 +12885,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             crypto_key_name: str,
-             wrapped_key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             crypto_key_name: Optional[str] = None,
+             wrapped_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key_name is None and 'cryptoKeyName' in kwargs:
+            crypto_key_name = kwargs['cryptoKeyName']
+        if crypto_key_name is None:
+            raise TypeError("Missing 'crypto_key_name' argument")
+        if wrapped_key is None and 'wrappedKey' in kwargs:
+            wrapped_key = kwargs['wrappedKey']
+        if wrapped_key is None:
+            raise TypeError("Missing 'wrapped_key' argument")
+
         _setter("crypto_key_name", crypto_key_name)
         _setter("wrapped_key", wrapped_key)
 
@@ -11873,8 +12933,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -11902,8 +12966,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("key", key)
 
     @property
@@ -11966,10 +13034,24 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket_size: float,
-             lower_bound: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBound',
-             upper_bound: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bucket_size: Optional[float] = None,
+             lower_bound: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBound'] = None,
+             upper_bound: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket_size is None and 'bucketSize' in kwargs:
+            bucket_size = kwargs['bucketSize']
+        if bucket_size is None:
+            raise TypeError("Missing 'bucket_size' argument")
+        if lower_bound is None and 'lowerBound' in kwargs:
+            lower_bound = kwargs['lowerBound']
+        if lower_bound is None:
+            raise TypeError("Missing 'lower_bound' argument")
+        if upper_bound is None and 'upperBound' in kwargs:
+            upper_bound = kwargs['upperBound']
+        if upper_bound is None:
+            raise TypeError("Missing 'upper_bound' argument")
+
         _setter("bucket_size", bucket_size)
         _setter("lower_bound", lower_bound)
         _setter("upper_bound", upper_bound)
@@ -12084,7 +13166,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              string_value: Optional[str] = None,
              time_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundTimeValue'] = None,
              timestamp_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if boolean_value is None and 'booleanValue' in kwargs:
+            boolean_value = kwargs['booleanValue']
+        if date_value is None and 'dateValue' in kwargs:
+            date_value = kwargs['dateValue']
+        if day_of_week_value is None and 'dayOfWeekValue' in kwargs:
+            day_of_week_value = kwargs['dayOfWeekValue']
+        if float_value is None and 'floatValue' in kwargs:
+            float_value = kwargs['floatValue']
+        if integer_value is None and 'integerValue' in kwargs:
+            integer_value = kwargs['integerValue']
+        if string_value is None and 'stringValue' in kwargs:
+            string_value = kwargs['stringValue']
+        if time_value is None and 'timeValue' in kwargs:
+            time_value = kwargs['timeValue']
+        if timestamp_value is None and 'timestampValue' in kwargs:
+            timestamp_value = kwargs['timestampValue']
+
         if boolean_value is not None:
             _setter("boolean_value", boolean_value)
         if date_value is not None:
@@ -12195,7 +13295,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              day: Optional[int] = None,
              month: Optional[int] = None,
              year: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if day is not None:
             _setter("day", day)
         if month is not None:
@@ -12257,7 +13359,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              minutes: Optional[int] = None,
              nanos: Optional[int] = None,
              seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if hours is not None:
             _setter("hours", hours)
         if minutes is not None:
@@ -12377,7 +13481,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              string_value: Optional[str] = None,
              time_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundTimeValue'] = None,
              timestamp_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if boolean_value is None and 'booleanValue' in kwargs:
+            boolean_value = kwargs['booleanValue']
+        if date_value is None and 'dateValue' in kwargs:
+            date_value = kwargs['dateValue']
+        if day_of_week_value is None and 'dayOfWeekValue' in kwargs:
+            day_of_week_value = kwargs['dayOfWeekValue']
+        if float_value is None and 'floatValue' in kwargs:
+            float_value = kwargs['floatValue']
+        if integer_value is None and 'integerValue' in kwargs:
+            integer_value = kwargs['integerValue']
+        if string_value is None and 'stringValue' in kwargs:
+            string_value = kwargs['stringValue']
+        if time_value is None and 'timeValue' in kwargs:
+            time_value = kwargs['timeValue']
+        if timestamp_value is None and 'timestampValue' in kwargs:
+            timestamp_value = kwargs['timestampValue']
+
         if boolean_value is not None:
             _setter("boolean_value", boolean_value)
         if date_value is not None:
@@ -12488,7 +13610,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              day: Optional[int] = None,
              month: Optional[int] = None,
              year: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if day is not None:
             _setter("day", day)
         if month is not None:
@@ -12550,7 +13674,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              minutes: Optional[int] = None,
              nanos: Optional[int] = None,
              seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if hours is not None:
             _setter("hours", hours)
         if minutes is not None:
@@ -12600,8 +13726,10 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
         pass
+
 
 
 @pulumi.output_type
@@ -12637,8 +13765,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             new_value: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             new_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if new_value is None and 'newValue' in kwargs:
+            new_value = kwargs['newValue']
+        if new_value is None:
+            raise TypeError("Missing 'new_value' argument")
+
         _setter("new_value", new_value)
 
     @property
@@ -12730,7 +13864,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              string_value: Optional[str] = None,
              time_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue'] = None,
              timestamp_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if boolean_value is None and 'booleanValue' in kwargs:
+            boolean_value = kwargs['booleanValue']
+        if date_value is None and 'dateValue' in kwargs:
+            date_value = kwargs['dateValue']
+        if day_of_week_value is None and 'dayOfWeekValue' in kwargs:
+            day_of_week_value = kwargs['dayOfWeekValue']
+        if float_value is None and 'floatValue' in kwargs:
+            float_value = kwargs['floatValue']
+        if integer_value is None and 'integerValue' in kwargs:
+            integer_value = kwargs['integerValue']
+        if string_value is None and 'stringValue' in kwargs:
+            string_value = kwargs['stringValue']
+        if time_value is None and 'timeValue' in kwargs:
+            time_value = kwargs['timeValue']
+        if timestamp_value is None and 'timestampValue' in kwargs:
+            timestamp_value = kwargs['timestampValue']
+
         if boolean_value is not None:
             _setter("boolean_value", boolean_value)
         if date_value is not None:
@@ -12842,7 +13994,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              day: Optional[int] = None,
              month: Optional[int] = None,
              year: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if day is not None:
             _setter("day", day)
         if month is not None:
@@ -12904,7 +14058,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
              minutes: Optional[int] = None,
              nanos: Optional[int] = None,
              seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if hours is not None:
             _setter("hours", hours)
         if minutes is not None:
@@ -12980,7 +14136,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def _configure(
              _setter: Callable[[Any, Any], None],
              word_list: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigWordList'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if word_list is None and 'wordList' in kwargs:
+            word_list = kwargs['wordList']
+
         if word_list is not None:
             _setter("word_list", word_list)
 
@@ -13008,8 +14168,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             words: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             words: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if words is None:
+            raise TypeError("Missing 'words' argument")
+
         _setter("words", words)
 
     @property
@@ -13054,7 +14218,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def _configure(
              _setter: Callable[[Any, Any], None],
              part_to_extract: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if part_to_extract is None and 'partToExtract' in kwargs:
+            part_to_extract = kwargs['partToExtract']
+
         if part_to_extract is not None:
             _setter("part_to_extract", part_to_extract)
 
@@ -13084,7 +14252,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
     def _configure(
              _setter: Callable[[Any, Any], None],
              condition: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
 
@@ -13114,7 +14284,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
     def _configure(
              _setter: Callable[[Any, Any], None],
              expressions: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if expressions is not None:
             _setter("expressions", expressions)
 
@@ -13167,7 +14339,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
              _setter: Callable[[Any, Any], None],
              conditions: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions'] = None,
              logical_operator: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if logical_operator is None and 'logicalOperator' in kwargs:
+            logical_operator = kwargs['logicalOperator']
+
         if conditions is not None:
             _setter("conditions", conditions)
         if logical_operator is not None:
@@ -13209,7 +14385,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
     def _configure(
              _setter: Callable[[Any, Any], None],
              conditions: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if conditions is not None:
             _setter("conditions", conditions)
 
@@ -13246,10 +14424,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             field: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionField',
-             operator: str,
+             field: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionField'] = None,
+             operator: Optional[str] = None,
              value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if field is None:
+            raise TypeError("Missing 'field' argument")
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+
         _setter("field", field)
         _setter("operator", operator)
         if value is not None:
@@ -13298,7 +14482,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
     def _configure(
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
 
@@ -13388,7 +14574,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
              string_value: Optional[str] = None,
              time_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue'] = None,
              timestamp_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if boolean_value is None and 'booleanValue' in kwargs:
+            boolean_value = kwargs['booleanValue']
+        if date_value is None and 'dateValue' in kwargs:
+            date_value = kwargs['dateValue']
+        if day_of_week_value is None and 'dayOfWeekValue' in kwargs:
+            day_of_week_value = kwargs['dayOfWeekValue']
+        if float_value is None and 'floatValue' in kwargs:
+            float_value = kwargs['floatValue']
+        if integer_value is None and 'integerValue' in kwargs:
+            integer_value = kwargs['integerValue']
+        if string_value is None and 'stringValue' in kwargs:
+            string_value = kwargs['stringValue']
+        if time_value is None and 'timeValue' in kwargs:
+            time_value = kwargs['timeValue']
+        if timestamp_value is None and 'timestampValue' in kwargs:
+            timestamp_value = kwargs['timestampValue']
+
         if boolean_value is not None:
             _setter("boolean_value", boolean_value)
         if date_value is not None:
@@ -13499,7 +14703,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
              day: Optional[int] = None,
              month: Optional[int] = None,
              year: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if day is not None:
             _setter("day", day)
         if month is not None:
@@ -13561,7 +14767,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
              minutes: Optional[int] = None,
              nanos: Optional[int] = None,
              seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if hours is not None:
             _setter("hours", hours)
         if minutes is not None:
@@ -13687,7 +14895,23 @@ class PreventionInspectTemplateInspectConfig(dict):
              limits: Optional['outputs.PreventionInspectTemplateInspectConfigLimits'] = None,
              min_likelihood: Optional[str] = None,
              rule_sets: Optional[Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSet']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if content_options is None and 'contentOptions' in kwargs:
+            content_options = kwargs['contentOptions']
+        if custom_info_types is None and 'customInfoTypes' in kwargs:
+            custom_info_types = kwargs['customInfoTypes']
+        if exclude_info_types is None and 'excludeInfoTypes' in kwargs:
+            exclude_info_types = kwargs['excludeInfoTypes']
+        if include_quote is None and 'includeQuote' in kwargs:
+            include_quote = kwargs['includeQuote']
+        if info_types is None and 'infoTypes' in kwargs:
+            info_types = kwargs['infoTypes']
+        if min_likelihood is None and 'minLikelihood' in kwargs:
+            min_likelihood = kwargs['minLikelihood']
+        if rule_sets is None and 'ruleSets' in kwargs:
+            rule_sets = kwargs['ruleSets']
+
         if content_options is not None:
             _setter("content_options", content_options)
         if custom_info_types is not None:
@@ -13853,7 +15077,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoType(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             info_type: 'outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType',
+             info_type: Optional['outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType'] = None,
              dictionary: Optional['outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary'] = None,
              exclusion_type: Optional[str] = None,
              likelihood: Optional[str] = None,
@@ -13861,7 +15085,21 @@ class PreventionInspectTemplateInspectConfigCustomInfoType(dict):
              sensitivity_score: Optional['outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore'] = None,
              stored_type: Optional['outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType'] = None,
              surrogate_type: Optional['outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateType'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if info_type is None and 'infoType' in kwargs:
+            info_type = kwargs['infoType']
+        if info_type is None:
+            raise TypeError("Missing 'info_type' argument")
+        if exclusion_type is None and 'exclusionType' in kwargs:
+            exclusion_type = kwargs['exclusionType']
+        if sensitivity_score is None and 'sensitivityScore' in kwargs:
+            sensitivity_score = kwargs['sensitivityScore']
+        if stored_type is None and 'storedType' in kwargs:
+            stored_type = kwargs['storedType']
+        if surrogate_type is None and 'surrogateType' in kwargs:
+            surrogate_type = kwargs['surrogateType']
+
         _setter("info_type", info_type)
         if dictionary is not None:
             _setter("dictionary", dictionary)
@@ -13995,7 +15233,13 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary(dict):
              _setter: Callable[[Any, Any], None],
              cloud_storage_path: Optional['outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath'] = None,
              word_list: Optional['outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cloud_storage_path is None and 'cloudStoragePath' in kwargs:
+            cloud_storage_path = kwargs['cloudStoragePath']
+        if word_list is None and 'wordList' in kwargs:
+            word_list = kwargs['wordList']
+
         if cloud_storage_path is not None:
             _setter("cloud_storage_path", cloud_storage_path)
         if word_list is not None:
@@ -14034,8 +15278,12 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStorage
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             path: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+
         _setter("path", path)
 
     @property
@@ -14062,8 +15310,12 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList(dic
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             words: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             words: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if words is None:
+            raise TypeError("Missing 'words' argument")
+
         _setter("words", words)
 
     @property
@@ -14115,10 +15367,16 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              sensitivity_score: Optional['outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeSensitivityScore'] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if sensitivity_score is None and 'sensitivityScore' in kwargs:
+            sensitivity_score = kwargs['sensitivityScore']
+
         _setter("name", name)
         if sensitivity_score is not None:
             _setter("sensitivity_score", sensitivity_score)
@@ -14167,8 +15425,12 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeSensitivitySco
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             score: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             score: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if score is None:
+            raise TypeError("Missing 'score' argument")
+
         _setter("score", score)
 
     @property
@@ -14216,9 +15478,15 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeRegex(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pattern: str,
+             pattern: Optional[str] = None,
              group_indexes: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pattern is None:
+            raise TypeError("Missing 'pattern' argument")
+        if group_indexes is None and 'groupIndexes' in kwargs:
+            group_indexes = kwargs['groupIndexes']
+
         _setter("pattern", pattern)
         if group_indexes is not None:
             _setter("group_indexes", group_indexes)
@@ -14256,8 +15524,12 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore(dict)
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             score: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             score: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if score is None:
+            raise TypeError("Missing 'score' argument")
+
         _setter("score", score)
 
     @property
@@ -14285,8 +15557,12 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -14306,8 +15582,10 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateType(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
         pass
+
 
 
 @pulumi.output_type
@@ -14349,10 +15627,16 @@ class PreventionInspectTemplateInspectConfigInfoType(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              sensitivity_score: Optional['outputs.PreventionInspectTemplateInspectConfigInfoTypeSensitivityScore'] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if sensitivity_score is None and 'sensitivityScore' in kwargs:
+            sensitivity_score = kwargs['sensitivityScore']
+
         _setter("name", name)
         if sensitivity_score is not None:
             _setter("sensitivity_score", sensitivity_score)
@@ -14401,8 +15685,12 @@ class PreventionInspectTemplateInspectConfigInfoTypeSensitivityScore(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             score: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             score: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if score is None:
+            raise TypeError("Missing 'score' argument")
+
         _setter("score", score)
 
     @property
@@ -14457,10 +15745,22 @@ class PreventionInspectTemplateInspectConfigLimits(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max_findings_per_item: int,
-             max_findings_per_request: int,
+             max_findings_per_item: Optional[int] = None,
+             max_findings_per_request: Optional[int] = None,
              max_findings_per_info_types: Optional[Sequence['outputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_findings_per_item is None and 'maxFindingsPerItem' in kwargs:
+            max_findings_per_item = kwargs['maxFindingsPerItem']
+        if max_findings_per_item is None:
+            raise TypeError("Missing 'max_findings_per_item' argument")
+        if max_findings_per_request is None and 'maxFindingsPerRequest' in kwargs:
+            max_findings_per_request = kwargs['maxFindingsPerRequest']
+        if max_findings_per_request is None:
+            raise TypeError("Missing 'max_findings_per_request' argument")
+        if max_findings_per_info_types is None and 'maxFindingsPerInfoTypes' in kwargs:
+            max_findings_per_info_types = kwargs['maxFindingsPerInfoTypes']
+
         _setter("max_findings_per_item", max_findings_per_item)
         _setter("max_findings_per_request", max_findings_per_request)
         if max_findings_per_info_types is not None:
@@ -14531,9 +15831,19 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             info_type: 'outputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType',
-             max_findings: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             info_type: Optional['outputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType'] = None,
+             max_findings: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if info_type is None and 'infoType' in kwargs:
+            info_type = kwargs['infoType']
+        if info_type is None:
+            raise TypeError("Missing 'info_type' argument")
+        if max_findings is None and 'maxFindings' in kwargs:
+            max_findings = kwargs['maxFindings']
+        if max_findings is None:
+            raise TypeError("Missing 'max_findings' argument")
+
         _setter("info_type", info_type)
         _setter("max_findings", max_findings)
 
@@ -14596,10 +15906,16 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              sensitivity_score: Optional['outputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore'] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if sensitivity_score is None and 'sensitivityScore' in kwargs:
+            sensitivity_score = kwargs['sensitivityScore']
+
         _setter("name", name)
         if sensitivity_score is not None:
             _setter("sensitivity_score", sensitivity_score)
@@ -14648,8 +15964,12 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             score: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             score: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if score is None:
+            raise TypeError("Missing 'score' argument")
+
         _setter("score", score)
 
     @property
@@ -14698,9 +16018,17 @@ class PreventionInspectTemplateInspectConfigRuleSet(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             info_types: Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSetInfoType'],
-             rules: Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSetRule'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             info_types: Optional[Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSetInfoType']] = None,
+             rules: Optional[Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSetRule']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if info_types is None and 'infoTypes' in kwargs:
+            info_types = kwargs['infoTypes']
+        if info_types is None:
+            raise TypeError("Missing 'info_types' argument")
+        if rules is None:
+            raise TypeError("Missing 'rules' argument")
+
         _setter("info_types", info_types)
         _setter("rules", rules)
 
@@ -14762,10 +16090,16 @@ class PreventionInspectTemplateInspectConfigRuleSetInfoType(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              sensitivity_score: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScore'] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if sensitivity_score is None and 'sensitivityScore' in kwargs:
+            sensitivity_score = kwargs['sensitivityScore']
+
         _setter("name", name)
         if sensitivity_score is not None:
             _setter("sensitivity_score", sensitivity_score)
@@ -14814,8 +16148,12 @@ class PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScore(dict
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             score: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             score: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if score is None:
+            raise TypeError("Missing 'score' argument")
+
         _setter("score", score)
 
     @property
@@ -14868,7 +16206,13 @@ class PreventionInspectTemplateInspectConfigRuleSetRule(dict):
              _setter: Callable[[Any, Any], None],
              exclusion_rule: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule'] = None,
              hotword_rule: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if exclusion_rule is None and 'exclusionRule' in kwargs:
+            exclusion_rule = kwargs['exclusionRule']
+        if hotword_rule is None and 'hotwordRule' in kwargs:
+            hotword_rule = kwargs['hotwordRule']
+
         if exclusion_rule is not None:
             _setter("exclusion_rule", exclusion_rule)
         if hotword_rule is not None:
@@ -14946,12 +16290,22 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             matching_type: str,
+             matching_type: Optional[str] = None,
              dictionary: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary'] = None,
              exclude_by_hotword: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword'] = None,
              exclude_info_types: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes'] = None,
              regex: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if matching_type is None and 'matchingType' in kwargs:
+            matching_type = kwargs['matchingType']
+        if matching_type is None:
+            raise TypeError("Missing 'matching_type' argument")
+        if exclude_by_hotword is None and 'excludeByHotword' in kwargs:
+            exclude_by_hotword = kwargs['excludeByHotword']
+        if exclude_info_types is None and 'excludeInfoTypes' in kwargs:
+            exclude_info_types = kwargs['excludeInfoTypes']
+
         _setter("matching_type", matching_type)
         if dictionary is not None:
             _setter("dictionary", dictionary)
@@ -15049,7 +16403,13 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary(d
              _setter: Callable[[Any, Any], None],
              cloud_storage_path: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath'] = None,
              word_list: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordList'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cloud_storage_path is None and 'cloudStoragePath' in kwargs:
+            cloud_storage_path = kwargs['cloudStoragePath']
+        if word_list is None and 'wordList' in kwargs:
+            word_list = kwargs['wordList']
+
         if cloud_storage_path is not None:
             _setter("cloud_storage_path", cloud_storage_path)
         if word_list is not None:
@@ -15088,8 +16448,12 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCl
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             path: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+
         _setter("path", path)
 
     @property
@@ -15116,8 +16480,12 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             words: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             words: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if words is None:
+            raise TypeError("Missing 'words' argument")
+
         _setter("words", words)
 
     @property
@@ -15170,9 +16538,17 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHot
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hotword_regex: 'outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex',
-             proximity: 'outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             hotword_regex: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex'] = None,
+             proximity: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if hotword_regex is None and 'hotwordRegex' in kwargs:
+            hotword_regex = kwargs['hotwordRegex']
+        if hotword_regex is None:
+            raise TypeError("Missing 'hotword_regex' argument")
+        if proximity is None:
+            raise TypeError("Missing 'proximity' argument")
+
         _setter("hotword_regex", hotword_regex)
         _setter("proximity", proximity)
 
@@ -15235,9 +16611,15 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHot
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pattern: str,
+             pattern: Optional[str] = None,
              group_indexes: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pattern is None:
+            raise TypeError("Missing 'pattern' argument")
+        if group_indexes is None and 'groupIndexes' in kwargs:
+            group_indexes = kwargs['groupIndexes']
+
         _setter("pattern", pattern)
         if group_indexes is not None:
             _setter("group_indexes", group_indexes)
@@ -15299,7 +16681,13 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHot
              _setter: Callable[[Any, Any], None],
              window_after: Optional[int] = None,
              window_before: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if window_after is None and 'windowAfter' in kwargs:
+            window_after = kwargs['windowAfter']
+        if window_before is None and 'windowBefore' in kwargs:
+            window_before = kwargs['windowBefore']
+
         if window_after is not None:
             _setter("window_after", window_after)
         if window_before is not None:
@@ -15354,8 +16742,14 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             info_types: Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             info_types: Optional[Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if info_types is None and 'infoTypes' in kwargs:
+            info_types = kwargs['infoTypes']
+        if info_types is None:
+            raise TypeError("Missing 'info_types' argument")
+
         _setter("info_types", info_types)
 
     @property
@@ -15407,10 +16801,16 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              sensitivity_score: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore'] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if sensitivity_score is None and 'sensitivityScore' in kwargs:
+            sensitivity_score = kwargs['sensitivityScore']
+
         _setter("name", name)
         if sensitivity_score is not None:
             _setter("sensitivity_score", sensitivity_score)
@@ -15459,8 +16859,12 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             score: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             score: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if score is None:
+            raise TypeError("Missing 'score' argument")
+
         _setter("score", score)
 
     @property
@@ -15508,9 +16912,15 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pattern: str,
+             pattern: Optional[str] = None,
              group_indexes: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pattern is None:
+            raise TypeError("Missing 'pattern' argument")
+        if group_indexes is None and 'groupIndexes' in kwargs:
+            group_indexes = kwargs['groupIndexes']
+
         _setter("pattern", pattern)
         if group_indexes is not None:
             _setter("group_indexes", group_indexes)
@@ -15579,10 +16989,22 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hotword_regex: 'outputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex',
-             likelihood_adjustment: 'outputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment',
-             proximity: 'outputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             hotword_regex: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex'] = None,
+             likelihood_adjustment: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment'] = None,
+             proximity: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if hotword_regex is None and 'hotwordRegex' in kwargs:
+            hotword_regex = kwargs['hotwordRegex']
+        if hotword_regex is None:
+            raise TypeError("Missing 'hotword_regex' argument")
+        if likelihood_adjustment is None and 'likelihoodAdjustment' in kwargs:
+            likelihood_adjustment = kwargs['likelihoodAdjustment']
+        if likelihood_adjustment is None:
+            raise TypeError("Missing 'likelihood_adjustment' argument")
+        if proximity is None:
+            raise TypeError("Missing 'proximity' argument")
+
         _setter("hotword_regex", hotword_regex)
         _setter("likelihood_adjustment", likelihood_adjustment)
         _setter("proximity", proximity)
@@ -15655,9 +17077,15 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex(d
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pattern: str,
+             pattern: Optional[str] = None,
              group_indexes: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pattern is None:
+            raise TypeError("Missing 'pattern' argument")
+        if group_indexes is None and 'groupIndexes' in kwargs:
+            group_indexes = kwargs['groupIndexes']
+
         _setter("pattern", pattern)
         if group_indexes is not None:
             _setter("group_indexes", group_indexes)
@@ -15725,7 +17153,13 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdju
              _setter: Callable[[Any, Any], None],
              fixed_likelihood: Optional[str] = None,
              relative_likelihood: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if fixed_likelihood is None and 'fixedLikelihood' in kwargs:
+            fixed_likelihood = kwargs['fixedLikelihood']
+        if relative_likelihood is None and 'relativeLikelihood' in kwargs:
+            relative_likelihood = kwargs['relativeLikelihood']
+
         if fixed_likelihood is not None:
             _setter("fixed_likelihood", fixed_likelihood)
         if relative_likelihood is not None:
@@ -15792,7 +17226,13 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity(dict
              _setter: Callable[[Any, Any], None],
              window_after: Optional[int] = None,
              window_before: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if window_after is None and 'windowAfter' in kwargs:
+            window_after = kwargs['windowAfter']
+        if window_before is None and 'windowBefore' in kwargs:
+            window_before = kwargs['windowBefore']
+
         if window_after is not None:
             _setter("window_after", window_after)
         if window_before is not None:
@@ -15862,11 +17302,21 @@ class PreventionJobTriggerInspectJob(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             storage_config: 'outputs.PreventionJobTriggerInspectJobStorageConfig',
+             storage_config: Optional['outputs.PreventionJobTriggerInspectJobStorageConfig'] = None,
              actions: Optional[Sequence['outputs.PreventionJobTriggerInspectJobAction']] = None,
              inspect_config: Optional['outputs.PreventionJobTriggerInspectJobInspectConfig'] = None,
              inspect_template_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if storage_config is None and 'storageConfig' in kwargs:
+            storage_config = kwargs['storageConfig']
+        if storage_config is None:
+            raise TypeError("Missing 'storage_config' argument")
+        if inspect_config is None and 'inspectConfig' in kwargs:
+            inspect_config = kwargs['inspectConfig']
+        if inspect_template_name is None and 'inspectTemplateName' in kwargs:
+            inspect_template_name = kwargs['inspectTemplateName']
+
         _setter("storage_config", storage_config)
         if actions is not None:
             _setter("actions", actions)
@@ -15980,7 +17430,21 @@ class PreventionJobTriggerInspectJobAction(dict):
              publish_summary_to_cscc: Optional['outputs.PreventionJobTriggerInspectJobActionPublishSummaryToCscc'] = None,
              publish_to_stackdriver: Optional['outputs.PreventionJobTriggerInspectJobActionPublishToStackdriver'] = None,
              save_findings: Optional['outputs.PreventionJobTriggerInspectJobActionSaveFindings'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if job_notification_emails is None and 'jobNotificationEmails' in kwargs:
+            job_notification_emails = kwargs['jobNotificationEmails']
+        if pub_sub is None and 'pubSub' in kwargs:
+            pub_sub = kwargs['pubSub']
+        if publish_findings_to_cloud_data_catalog is None and 'publishFindingsToCloudDataCatalog' in kwargs:
+            publish_findings_to_cloud_data_catalog = kwargs['publishFindingsToCloudDataCatalog']
+        if publish_summary_to_cscc is None and 'publishSummaryToCscc' in kwargs:
+            publish_summary_to_cscc = kwargs['publishSummaryToCscc']
+        if publish_to_stackdriver is None and 'publishToStackdriver' in kwargs:
+            publish_to_stackdriver = kwargs['publishToStackdriver']
+        if save_findings is None and 'saveFindings' in kwargs:
+            save_findings = kwargs['saveFindings']
+
         if deidentify is not None:
             _setter("deidentify", deidentify)
         if job_notification_emails is not None:
@@ -16111,11 +17575,23 @@ class PreventionJobTriggerInspectJobActionDeidentify(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cloud_storage_output: str,
+             cloud_storage_output: Optional[str] = None,
              file_types_to_transforms: Optional[Sequence[str]] = None,
              transformation_config: Optional['outputs.PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig'] = None,
              transformation_details_storage_config: Optional['outputs.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cloud_storage_output is None and 'cloudStorageOutput' in kwargs:
+            cloud_storage_output = kwargs['cloudStorageOutput']
+        if cloud_storage_output is None:
+            raise TypeError("Missing 'cloud_storage_output' argument")
+        if file_types_to_transforms is None and 'fileTypesToTransforms' in kwargs:
+            file_types_to_transforms = kwargs['fileTypesToTransforms']
+        if transformation_config is None and 'transformationConfig' in kwargs:
+            transformation_config = kwargs['transformationConfig']
+        if transformation_details_storage_config is None and 'transformationDetailsStorageConfig' in kwargs:
+            transformation_details_storage_config = kwargs['transformationDetailsStorageConfig']
+
         _setter("cloud_storage_output", cloud_storage_output)
         if file_types_to_transforms is not None:
             _setter("file_types_to_transforms", file_types_to_transforms)
@@ -16210,7 +17686,15 @@ class PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig(dict):
              deidentify_template: Optional[str] = None,
              image_redact_template: Optional[str] = None,
              structured_deidentify_template: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if deidentify_template is None and 'deidentifyTemplate' in kwargs:
+            deidentify_template = kwargs['deidentifyTemplate']
+        if image_redact_template is None and 'imageRedactTemplate' in kwargs:
+            image_redact_template = kwargs['imageRedactTemplate']
+        if structured_deidentify_template is None and 'structuredDeidentifyTemplate' in kwargs:
+            structured_deidentify_template = kwargs['structuredDeidentifyTemplate']
+
         if deidentify_template is not None:
             _setter("deidentify_template", deidentify_template)
         if image_redact_template is not None:
@@ -16258,8 +17742,12 @@ class PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorage
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             table: 'outputs.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             table: Optional['outputs.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if table is None:
+            raise TypeError("Missing 'table' argument")
+
         _setter("table", table)
 
     @property
@@ -16315,10 +17803,22 @@ class PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorage
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset_id: str,
-             project_id: str,
+             dataset_id: Optional[str] = None,
+             project_id: Optional[str] = None,
              table_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if dataset_id is None:
+            raise TypeError("Missing 'dataset_id' argument")
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if table_id is None and 'tableId' in kwargs:
+            table_id = kwargs['tableId']
+
         _setter("dataset_id", dataset_id)
         _setter("project_id", project_id)
         if table_id is not None:
@@ -16358,8 +17858,10 @@ class PreventionJobTriggerInspectJobActionJobNotificationEmails(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
         pass
+
 
 
 @pulumi.output_type
@@ -16376,8 +17878,12 @@ class PreventionJobTriggerInspectJobActionPubSub(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             topic: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             topic: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if topic is None:
+            raise TypeError("Missing 'topic' argument")
+
         _setter("topic", topic)
 
     @property
@@ -16396,8 +17902,10 @@ class PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog(dict
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
         pass
+
 
 
 @pulumi.output_type
@@ -16407,8 +17915,10 @@ class PreventionJobTriggerInspectJobActionPublishSummaryToCscc(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
         pass
+
 
 
 @pulumi.output_type
@@ -16418,8 +17928,10 @@ class PreventionJobTriggerInspectJobActionPublishToStackdriver(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
         pass
+
 
 
 @pulumi.output_type
@@ -16454,8 +17966,14 @@ class PreventionJobTriggerInspectJobActionSaveFindings(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             output_config: 'outputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             output_config: Optional['outputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if output_config is None and 'outputConfig' in kwargs:
+            output_config = kwargs['outputConfig']
+        if output_config is None:
+            raise TypeError("Missing 'output_config' argument")
+
         _setter("output_config", output_config)
 
     @property
@@ -16510,9 +18028,15 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             table: 'outputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable',
+             table: Optional['outputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable'] = None,
              output_schema: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if table is None:
+            raise TypeError("Missing 'table' argument")
+        if output_schema is None and 'outputSchema' in kwargs:
+            output_schema = kwargs['outputSchema']
+
         _setter("table", table)
         if output_schema is not None:
             _setter("output_schema", output_schema)
@@ -16585,10 +18109,22 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset_id: str,
-             project_id: str,
+             dataset_id: Optional[str] = None,
+             project_id: Optional[str] = None,
              table_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if dataset_id is None:
+            raise TypeError("Missing 'dataset_id' argument")
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if table_id is None and 'tableId' in kwargs:
+            table_id = kwargs['tableId']
+
         _setter("dataset_id", dataset_id)
         _setter("project_id", project_id)
         if table_id is not None:
@@ -16697,7 +18233,21 @@ class PreventionJobTriggerInspectJobInspectConfig(dict):
              limits: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigLimits'] = None,
              min_likelihood: Optional[str] = None,
              rule_sets: Optional[Sequence['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSet']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if custom_info_types is None and 'customInfoTypes' in kwargs:
+            custom_info_types = kwargs['customInfoTypes']
+        if exclude_info_types is None and 'excludeInfoTypes' in kwargs:
+            exclude_info_types = kwargs['excludeInfoTypes']
+        if include_quote is None and 'includeQuote' in kwargs:
+            include_quote = kwargs['includeQuote']
+        if info_types is None and 'infoTypes' in kwargs:
+            info_types = kwargs['infoTypes']
+        if min_likelihood is None and 'minLikelihood' in kwargs:
+            min_likelihood = kwargs['minLikelihood']
+        if rule_sets is None and 'ruleSets' in kwargs:
+            rule_sets = kwargs['ruleSets']
+
         if custom_info_types is not None:
             _setter("custom_info_types", custom_info_types)
         if exclude_info_types is not None:
@@ -16852,7 +18402,7 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoType(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             info_type: 'outputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoType',
+             info_type: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoType'] = None,
              dictionary: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary'] = None,
              exclusion_type: Optional[str] = None,
              likelihood: Optional[str] = None,
@@ -16860,7 +18410,21 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoType(dict):
              sensitivity_score: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScore'] = None,
              stored_type: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredType'] = None,
              surrogate_type: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateType'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if info_type is None and 'infoType' in kwargs:
+            info_type = kwargs['infoType']
+        if info_type is None:
+            raise TypeError("Missing 'info_type' argument")
+        if exclusion_type is None and 'exclusionType' in kwargs:
+            exclusion_type = kwargs['exclusionType']
+        if sensitivity_score is None and 'sensitivityScore' in kwargs:
+            sensitivity_score = kwargs['sensitivityScore']
+        if stored_type is None and 'storedType' in kwargs:
+            stored_type = kwargs['storedType']
+        if surrogate_type is None and 'surrogateType' in kwargs:
+            surrogate_type = kwargs['surrogateType']
+
         _setter("info_type", info_type)
         if dictionary is not None:
             _setter("dictionary", dictionary)
@@ -16994,7 +18558,13 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary(dict):
              _setter: Callable[[Any, Any], None],
              cloud_storage_path: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePath'] = None,
              word_list: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordList'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cloud_storage_path is None and 'cloudStoragePath' in kwargs:
+            cloud_storage_path = kwargs['cloudStoragePath']
+        if word_list is None and 'wordList' in kwargs:
+            word_list = kwargs['wordList']
+
         if cloud_storage_path is not None:
             _setter("cloud_storage_path", cloud_storage_path)
         if word_list is not None:
@@ -17033,8 +18603,12 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudSt
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             path: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+
         _setter("path", path)
 
     @property
@@ -17061,8 +18635,12 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordLis
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             words: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             words: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if words is None:
+            raise TypeError("Missing 'words' argument")
+
         _setter("words", words)
 
     @property
@@ -17114,10 +18692,16 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoType(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              sensitivity_score: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScore'] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if sensitivity_score is None and 'sensitivityScore' in kwargs:
+            sensitivity_score = kwargs['sensitivityScore']
+
         _setter("name", name)
         if sensitivity_score is not None:
             _setter("sensitivity_score", sensitivity_score)
@@ -17166,8 +18750,12 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivi
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             score: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             score: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if score is None:
+            raise TypeError("Missing 'score' argument")
+
         _setter("score", score)
 
     @property
@@ -17215,9 +18803,15 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegex(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pattern: str,
+             pattern: Optional[str] = None,
              group_indexes: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pattern is None:
+            raise TypeError("Missing 'pattern' argument")
+        if group_indexes is None and 'groupIndexes' in kwargs:
+            group_indexes = kwargs['groupIndexes']
+
         _setter("pattern", pattern)
         if group_indexes is not None:
             _setter("group_indexes", group_indexes)
@@ -17255,8 +18849,12 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScore(
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             score: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             score: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if score is None:
+            raise TypeError("Missing 'score' argument")
+
         _setter("score", score)
 
     @property
@@ -17305,9 +18903,15 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredType(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              create_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+
         _setter("name", name)
         if create_time is not None:
             _setter("create_time", create_time)
@@ -17338,8 +18942,10 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateType(dic
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
         pass
+
 
 
 @pulumi.output_type
@@ -17381,10 +18987,16 @@ class PreventionJobTriggerInspectJobInspectConfigInfoType(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              sensitivity_score: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScore'] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if sensitivity_score is None and 'sensitivityScore' in kwargs:
+            sensitivity_score = kwargs['sensitivityScore']
+
         _setter("name", name)
         if sensitivity_score is not None:
             _setter("sensitivity_score", sensitivity_score)
@@ -17433,8 +19045,12 @@ class PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScore(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             score: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             score: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if score is None:
+            raise TypeError("Missing 'score' argument")
+
         _setter("score", score)
 
     @property
@@ -17492,7 +19108,15 @@ class PreventionJobTriggerInspectJobInspectConfigLimits(dict):
              max_findings_per_info_types: Optional[Sequence['outputs.PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType']] = None,
              max_findings_per_item: Optional[int] = None,
              max_findings_per_request: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_findings_per_info_types is None and 'maxFindingsPerInfoTypes' in kwargs:
+            max_findings_per_info_types = kwargs['maxFindingsPerInfoTypes']
+        if max_findings_per_item is None and 'maxFindingsPerItem' in kwargs:
+            max_findings_per_item = kwargs['maxFindingsPerItem']
+        if max_findings_per_request is None and 'maxFindingsPerRequest' in kwargs:
+            max_findings_per_request = kwargs['maxFindingsPerRequest']
+
         if max_findings_per_info_types is not None:
             _setter("max_findings_per_info_types", max_findings_per_info_types)
         if max_findings_per_item is not None:
@@ -17567,7 +19191,13 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType(di
              _setter: Callable[[Any, Any], None],
              info_type: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoType'] = None,
              max_findings: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if info_type is None and 'infoType' in kwargs:
+            info_type = kwargs['infoType']
+        if max_findings is None and 'maxFindings' in kwargs:
+            max_findings = kwargs['maxFindings']
+
         if info_type is not None:
             _setter("info_type", info_type)
         if max_findings is not None:
@@ -17632,10 +19262,16 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInf
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              sensitivity_score: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore'] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if sensitivity_score is None and 'sensitivityScore' in kwargs:
+            sensitivity_score = kwargs['sensitivityScore']
+
         _setter("name", name)
         if sensitivity_score is not None:
             _setter("sensitivity_score", sensitivity_score)
@@ -17684,8 +19320,12 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInf
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             score: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             score: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if score is None:
+            raise TypeError("Missing 'score' argument")
+
         _setter("score", score)
 
     @property
@@ -17734,9 +19374,15 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSet(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             rules: Sequence['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRule'],
+             rules: Optional[Sequence['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRule']] = None,
              info_types: Optional[Sequence['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetInfoType']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if rules is None:
+            raise TypeError("Missing 'rules' argument")
+        if info_types is None and 'infoTypes' in kwargs:
+            info_types = kwargs['infoTypes']
+
         _setter("rules", rules)
         if info_types is not None:
             _setter("info_types", info_types)
@@ -17799,10 +19445,16 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetInfoType(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              sensitivity_score: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeSensitivityScore'] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if sensitivity_score is None and 'sensitivityScore' in kwargs:
+            sensitivity_score = kwargs['sensitivityScore']
+
         _setter("name", name)
         if sensitivity_score is not None:
             _setter("sensitivity_score", sensitivity_score)
@@ -17851,8 +19503,12 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeSensitivityScore
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             score: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             score: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if score is None:
+            raise TypeError("Missing 'score' argument")
+
         _setter("score", score)
 
     @property
@@ -17905,7 +19561,13 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRule(dict):
              _setter: Callable[[Any, Any], None],
              exclusion_rule: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule'] = None,
              hotword_rule: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRule'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if exclusion_rule is None and 'exclusionRule' in kwargs:
+            exclusion_rule = kwargs['exclusionRule']
+        if hotword_rule is None and 'hotwordRule' in kwargs:
+            hotword_rule = kwargs['hotwordRule']
+
         if exclusion_rule is not None:
             _setter("exclusion_rule", exclusion_rule)
         if hotword_rule is not None:
@@ -17982,12 +19644,22 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             matching_type: str,
+             matching_type: Optional[str] = None,
              dictionary: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary'] = None,
              exclude_by_hotword: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotword'] = None,
              exclude_info_types: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes'] = None,
              regex: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegex'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if matching_type is None and 'matchingType' in kwargs:
+            matching_type = kwargs['matchingType']
+        if matching_type is None:
+            raise TypeError("Missing 'matching_type' argument")
+        if exclude_by_hotword is None and 'excludeByHotword' in kwargs:
+            exclude_by_hotword = kwargs['excludeByHotword']
+        if exclude_info_types is None and 'excludeInfoTypes' in kwargs:
+            exclude_info_types = kwargs['excludeInfoTypes']
+
         _setter("matching_type", matching_type)
         if dictionary is not None:
             _setter("dictionary", dictionary)
@@ -18084,7 +19756,13 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDiction
              _setter: Callable[[Any, Any], None],
              cloud_storage_path: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath'] = None,
              word_list: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordList'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cloud_storage_path is None and 'cloudStoragePath' in kwargs:
+            cloud_storage_path = kwargs['cloudStoragePath']
+        if word_list is None and 'wordList' in kwargs:
+            word_list = kwargs['wordList']
+
         if cloud_storage_path is not None:
             _setter("cloud_storage_path", cloud_storage_path)
         if word_list is not None:
@@ -18123,8 +19801,12 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDiction
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             path: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+
         _setter("path", path)
 
     @property
@@ -18151,8 +19833,12 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDiction
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             words: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             words: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if words is None:
+            raise TypeError("Missing 'words' argument")
+
         _setter("words", words)
 
     @property
@@ -18207,7 +19893,11 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
              _setter: Callable[[Any, Any], None],
              hotword_regex: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex'] = None,
              proximity: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if hotword_regex is None and 'hotwordRegex' in kwargs:
+            hotword_regex = kwargs['hotwordRegex']
+
         if hotword_regex is not None:
             _setter("hotword_regex", hotword_regex)
         if proximity is not None:
@@ -18274,7 +19964,11 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
              _setter: Callable[[Any, Any], None],
              group_indexes: Optional[Sequence[int]] = None,
              pattern: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if group_indexes is None and 'groupIndexes' in kwargs:
+            group_indexes = kwargs['groupIndexes']
+
         if group_indexes is not None:
             _setter("group_indexes", group_indexes)
         if pattern is not None:
@@ -18337,7 +20031,13 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
              _setter: Callable[[Any, Any], None],
              window_after: Optional[int] = None,
              window_before: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if window_after is None and 'windowAfter' in kwargs:
+            window_after = kwargs['windowAfter']
+        if window_before is None and 'windowBefore' in kwargs:
+            window_before = kwargs['windowBefore']
+
         if window_after is not None:
             _setter("window_after", window_after)
         if window_before is not None:
@@ -18392,8 +20092,14 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             info_types: Sequence['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             info_types: Optional[Sequence['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if info_types is None and 'infoTypes' in kwargs:
+            info_types = kwargs['infoTypes']
+        if info_types is None:
+            raise TypeError("Missing 'info_types' argument")
+
         _setter("info_types", info_types)
 
     @property
@@ -18445,10 +20151,16 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              sensitivity_score: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore'] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if sensitivity_score is None and 'sensitivityScore' in kwargs:
+            sensitivity_score = kwargs['sensitivityScore']
+
         _setter("name", name)
         if sensitivity_score is not None:
             _setter("sensitivity_score", sensitivity_score)
@@ -18497,8 +20209,12 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             score: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             score: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if score is None:
+            raise TypeError("Missing 'score' argument")
+
         _setter("score", score)
 
     @property
@@ -18546,9 +20262,15 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegex(d
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pattern: str,
+             pattern: Optional[str] = None,
              group_indexes: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pattern is None:
+            raise TypeError("Missing 'pattern' argument")
+        if group_indexes is None and 'groupIndexes' in kwargs:
+            group_indexes = kwargs['groupIndexes']
+
         _setter("pattern", pattern)
         if group_indexes is not None:
             _setter("group_indexes", group_indexes)
@@ -18620,7 +20342,13 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRule(dict):
              hotword_regex: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegex'] = None,
              likelihood_adjustment: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment'] = None,
              proximity: Optional['outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximity'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if hotword_regex is None and 'hotwordRegex' in kwargs:
+            hotword_regex = kwargs['hotwordRegex']
+        if likelihood_adjustment is None and 'likelihoodAdjustment' in kwargs:
+            likelihood_adjustment = kwargs['likelihoodAdjustment']
+
         if hotword_regex is not None:
             _setter("hotword_regex", hotword_regex)
         if likelihood_adjustment is not None:
@@ -18698,7 +20426,11 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRe
              _setter: Callable[[Any, Any], None],
              group_indexes: Optional[Sequence[int]] = None,
              pattern: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if group_indexes is None and 'groupIndexes' in kwargs:
+            group_indexes = kwargs['groupIndexes']
+
         if group_indexes is not None:
             _setter("group_indexes", group_indexes)
         if pattern is not None:
@@ -18767,7 +20499,13 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoo
              _setter: Callable[[Any, Any], None],
              fixed_likelihood: Optional[str] = None,
              relative_likelihood: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if fixed_likelihood is None and 'fixedLikelihood' in kwargs:
+            fixed_likelihood = kwargs['fixedLikelihood']
+        if relative_likelihood is None and 'relativeLikelihood' in kwargs:
+            relative_likelihood = kwargs['relativeLikelihood']
+
         if fixed_likelihood is not None:
             _setter("fixed_likelihood", fixed_likelihood)
         if relative_likelihood is not None:
@@ -18834,7 +20572,13 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximity
              _setter: Callable[[Any, Any], None],
              window_after: Optional[int] = None,
              window_before: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if window_after is None and 'windowAfter' in kwargs:
+            window_after = kwargs['windowAfter']
+        if window_before is None and 'windowBefore' in kwargs:
+            window_before = kwargs['windowBefore']
+
         if window_after is not None:
             _setter("window_after", window_after)
         if window_before is not None:
@@ -18918,7 +20662,19 @@ class PreventionJobTriggerInspectJobStorageConfig(dict):
              datastore_options: Optional['outputs.PreventionJobTriggerInspectJobStorageConfigDatastoreOptions'] = None,
              hybrid_options: Optional['outputs.PreventionJobTriggerInspectJobStorageConfigHybridOptions'] = None,
              timespan_config: Optional['outputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if big_query_options is None and 'bigQueryOptions' in kwargs:
+            big_query_options = kwargs['bigQueryOptions']
+        if cloud_storage_options is None and 'cloudStorageOptions' in kwargs:
+            cloud_storage_options = kwargs['cloudStorageOptions']
+        if datastore_options is None and 'datastoreOptions' in kwargs:
+            datastore_options = kwargs['datastoreOptions']
+        if hybrid_options is None and 'hybridOptions' in kwargs:
+            hybrid_options = kwargs['hybridOptions']
+        if timespan_config is None and 'timespanConfig' in kwargs:
+            timespan_config = kwargs['timespanConfig']
+
         if big_query_options is not None:
             _setter("big_query_options", big_query_options)
         if cloud_storage_options is not None:
@@ -19050,14 +20806,32 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             table_reference: 'outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference',
+             table_reference: Optional['outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference'] = None,
              excluded_fields: Optional[Sequence['outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField']] = None,
              identifying_fields: Optional[Sequence['outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField']] = None,
              included_fields: Optional[Sequence['outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField']] = None,
              rows_limit: Optional[int] = None,
              rows_limit_percent: Optional[int] = None,
              sample_method: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if table_reference is None and 'tableReference' in kwargs:
+            table_reference = kwargs['tableReference']
+        if table_reference is None:
+            raise TypeError("Missing 'table_reference' argument")
+        if excluded_fields is None and 'excludedFields' in kwargs:
+            excluded_fields = kwargs['excludedFields']
+        if identifying_fields is None and 'identifyingFields' in kwargs:
+            identifying_fields = kwargs['identifyingFields']
+        if included_fields is None and 'includedFields' in kwargs:
+            included_fields = kwargs['includedFields']
+        if rows_limit is None and 'rowsLimit' in kwargs:
+            rows_limit = kwargs['rowsLimit']
+        if rows_limit_percent is None and 'rowsLimitPercent' in kwargs:
+            rows_limit_percent = kwargs['rowsLimitPercent']
+        if sample_method is None and 'sampleMethod' in kwargs:
+            sample_method = kwargs['sampleMethod']
+
         _setter("table_reference", table_reference)
         if excluded_fields is not None:
             _setter("excluded_fields", excluded_fields)
@@ -19156,8 +20930,12 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField(di
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -19183,8 +20961,12 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -19210,8 +20992,12 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField(di
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -19264,10 +21050,24 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference(d
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset_id: str,
-             project_id: str,
-             table_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             dataset_id: Optional[str] = None,
+             project_id: Optional[str] = None,
+             table_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if dataset_id is None:
+            raise TypeError("Missing 'dataset_id' argument")
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if table_id is None and 'tableId' in kwargs:
+            table_id = kwargs['tableId']
+        if table_id is None:
+            raise TypeError("Missing 'table_id' argument")
+
         _setter("dataset_id", dataset_id)
         _setter("project_id", project_id)
         _setter("table_id", table_id)
@@ -19362,13 +21162,29 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             file_set: 'outputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet',
+             file_set: Optional['outputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet'] = None,
              bytes_limit_per_file: Optional[int] = None,
              bytes_limit_per_file_percent: Optional[int] = None,
              file_types: Optional[Sequence[str]] = None,
              files_limit_percent: Optional[int] = None,
              sample_method: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if file_set is None and 'fileSet' in kwargs:
+            file_set = kwargs['fileSet']
+        if file_set is None:
+            raise TypeError("Missing 'file_set' argument")
+        if bytes_limit_per_file is None and 'bytesLimitPerFile' in kwargs:
+            bytes_limit_per_file = kwargs['bytesLimitPerFile']
+        if bytes_limit_per_file_percent is None and 'bytesLimitPerFilePercent' in kwargs:
+            bytes_limit_per_file_percent = kwargs['bytesLimitPerFilePercent']
+        if file_types is None and 'fileTypes' in kwargs:
+            file_types = kwargs['fileTypes']
+        if files_limit_percent is None and 'filesLimitPercent' in kwargs:
+            files_limit_percent = kwargs['filesLimitPercent']
+        if sample_method is None and 'sampleMethod' in kwargs:
+            sample_method = kwargs['sampleMethod']
+
         _setter("file_set", file_set)
         if bytes_limit_per_file is not None:
             _setter("bytes_limit_per_file", bytes_limit_per_file)
@@ -19480,7 +21296,11 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet(dict
              _setter: Callable[[Any, Any], None],
              regex_file_set: Optional['outputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet'] = None,
              url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if regex_file_set is None and 'regexFileSet' in kwargs:
+            regex_file_set = kwargs['regexFileSet']
+
         if regex_file_set is not None:
             _setter("regex_file_set", regex_file_set)
         if url is not None:
@@ -19553,10 +21373,20 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegex
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket_name: str,
+             bucket_name: Optional[str] = None,
              exclude_regexes: Optional[Sequence[str]] = None,
              include_regexes: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if bucket_name is None:
+            raise TypeError("Missing 'bucket_name' argument")
+        if exclude_regexes is None and 'excludeRegexes' in kwargs:
+            exclude_regexes = kwargs['excludeRegexes']
+        if include_regexes is None and 'includeRegexes' in kwargs:
+            include_regexes = kwargs['includeRegexes']
+
         _setter("bucket_name", bucket_name)
         if exclude_regexes is not None:
             _setter("exclude_regexes", exclude_regexes)
@@ -19629,9 +21459,17 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptions(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kind: 'outputs.PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind',
-             partition_id: 'outputs.PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             kind: Optional['outputs.PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind'] = None,
+             partition_id: Optional['outputs.PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kind is None:
+            raise TypeError("Missing 'kind' argument")
+        if partition_id is None and 'partitionId' in kwargs:
+            partition_id = kwargs['partitionId']
+        if partition_id is None:
+            raise TypeError("Missing 'partition_id' argument")
+
         _setter("kind", kind)
         _setter("partition_id", partition_id)
 
@@ -19669,8 +21507,12 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -19718,9 +21560,17 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId(dic
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project_id: str,
+             project_id: Optional[str] = None,
              namespace_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if namespace_id is None and 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+
         _setter("project_id", project_id)
         if namespace_id is not None:
             _setter("namespace_id", namespace_id)
@@ -19798,7 +21648,13 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptions(dict):
              labels: Optional[Mapping[str, str]] = None,
              required_finding_label_keys: Optional[Sequence[str]] = None,
              table_options: Optional['outputs.PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if required_finding_label_keys is None and 'requiredFindingLabelKeys' in kwargs:
+            required_finding_label_keys = kwargs['requiredFindingLabelKeys']
+        if table_options is None and 'tableOptions' in kwargs:
+            table_options = kwargs['tableOptions']
+
         if description is not None:
             _setter("description", description)
         if labels is not None:
@@ -19886,7 +21742,11 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions(dict)
     def _configure(
              _setter: Callable[[Any, Any], None],
              identifying_fields: Optional[Sequence['outputs.PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if identifying_fields is None and 'identifyingFields' in kwargs:
+            identifying_fields = kwargs['identifyingFields']
+
         if identifying_fields is not None:
             _setter("identifying_fields", identifying_fields)
 
@@ -19916,8 +21776,12 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdenti
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -19978,11 +21842,23 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             timestamp_field: 'outputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField',
+             timestamp_field: Optional['outputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField'] = None,
              enable_auto_population_of_timespan_config: Optional[bool] = None,
              end_time: Optional[str] = None,
              start_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if timestamp_field is None and 'timestampField' in kwargs:
+            timestamp_field = kwargs['timestampField']
+        if timestamp_field is None:
+            raise TypeError("Missing 'timestamp_field' argument")
+        if enable_auto_population_of_timespan_config is None and 'enableAutoPopulationOfTimespanConfig' in kwargs:
+            enable_auto_population_of_timespan_config = kwargs['enableAutoPopulationOfTimespanConfig']
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+
         _setter("timestamp_field", timestamp_field)
         if enable_auto_population_of_timespan_config is not None:
             _setter("enable_auto_population_of_timespan_config", enable_auto_population_of_timespan_config)
@@ -20046,8 +21922,12 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField(di
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -20084,7 +21964,9 @@ class PreventionJobTriggerTrigger(dict):
              _setter: Callable[[Any, Any], None],
              manual: Optional['outputs.PreventionJobTriggerTriggerManual'] = None,
              schedule: Optional['outputs.PreventionJobTriggerTriggerSchedule'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if manual is not None:
             _setter("manual", manual)
         if schedule is not None:
@@ -20115,8 +21997,10 @@ class PreventionJobTriggerTriggerManual(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
         pass
+
 
 
 @pulumi.output_type
@@ -20156,7 +22040,11 @@ class PreventionJobTriggerTriggerSchedule(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              recurrence_period_duration: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if recurrence_period_duration is None and 'recurrencePeriodDuration' in kwargs:
+            recurrence_period_duration = kwargs['recurrencePeriodDuration']
+
         if recurrence_period_duration is not None:
             _setter("recurrence_period_duration", recurrence_period_duration)
 
@@ -20214,7 +22102,13 @@ class PreventionStoredInfoTypeDictionary(dict):
              _setter: Callable[[Any, Any], None],
              cloud_storage_path: Optional['outputs.PreventionStoredInfoTypeDictionaryCloudStoragePath'] = None,
              word_list: Optional['outputs.PreventionStoredInfoTypeDictionaryWordList'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cloud_storage_path is None and 'cloudStoragePath' in kwargs:
+            cloud_storage_path = kwargs['cloudStoragePath']
+        if word_list is None and 'wordList' in kwargs:
+            word_list = kwargs['wordList']
+
         if cloud_storage_path is not None:
             _setter("cloud_storage_path", cloud_storage_path)
         if word_list is not None:
@@ -20253,8 +22147,12 @@ class PreventionStoredInfoTypeDictionaryCloudStoragePath(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             path: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+
         _setter("path", path)
 
     @property
@@ -20281,8 +22179,12 @@ class PreventionStoredInfoTypeDictionaryWordList(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             words: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             words: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if words is None:
+            raise TypeError("Missing 'words' argument")
+
         _setter("words", words)
 
     @property
@@ -20340,10 +22242,20 @@ class PreventionStoredInfoTypeLargeCustomDictionary(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             output_path: 'outputs.PreventionStoredInfoTypeLargeCustomDictionaryOutputPath',
+             output_path: Optional['outputs.PreventionStoredInfoTypeLargeCustomDictionaryOutputPath'] = None,
              big_query_field: Optional['outputs.PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField'] = None,
              cloud_storage_file_set: Optional['outputs.PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if output_path is None and 'outputPath' in kwargs:
+            output_path = kwargs['outputPath']
+        if output_path is None:
+            raise TypeError("Missing 'output_path' argument")
+        if big_query_field is None and 'bigQueryField' in kwargs:
+            big_query_field = kwargs['bigQueryField']
+        if cloud_storage_file_set is None and 'cloudStorageFileSet' in kwargs:
+            cloud_storage_file_set = kwargs['cloudStorageFileSet']
+
         _setter("output_path", output_path)
         if big_query_field is not None:
             _setter("big_query_field", big_query_field)
@@ -20398,9 +22310,15 @@ class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             field: 'outputs.PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField',
-             table: 'outputs.PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             field: Optional['outputs.PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField'] = None,
+             table: Optional['outputs.PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if field is None:
+            raise TypeError("Missing 'field' argument")
+        if table is None:
+            raise TypeError("Missing 'table' argument")
+
         _setter("field", field)
         _setter("table", table)
 
@@ -20437,8 +22355,12 @@ class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -20491,10 +22413,24 @@ class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset_id: str,
-             project_id: str,
-             table_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             dataset_id: Optional[str] = None,
+             project_id: Optional[str] = None,
+             table_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if dataset_id is None:
+            raise TypeError("Missing 'dataset_id' argument")
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if table_id is None and 'tableId' in kwargs:
+            table_id = kwargs['tableId']
+        if table_id is None:
+            raise TypeError("Missing 'table_id' argument")
+
         _setter("dataset_id", dataset_id)
         _setter("project_id", project_id)
         _setter("table_id", table_id)
@@ -20538,8 +22474,12 @@ class PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+
         _setter("url", url)
 
     @property
@@ -20565,8 +22505,12 @@ class PreventionStoredInfoTypeLargeCustomDictionaryOutputPath(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             path: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+
         _setter("path", path)
 
     @property
@@ -20613,9 +22557,15 @@ class PreventionStoredInfoTypeRegex(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pattern: str,
+             pattern: Optional[str] = None,
              group_indexes: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pattern is None:
+            raise TypeError("Missing 'pattern' argument")
+        if group_indexes is None and 'groupIndexes' in kwargs:
+            group_indexes = kwargs['groupIndexes']
+
         _setter("pattern", pattern)
         if group_indexes is not None:
             _setter("group_indexes", group_indexes)

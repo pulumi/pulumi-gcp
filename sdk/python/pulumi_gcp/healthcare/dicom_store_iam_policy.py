@@ -42,9 +42,19 @@ class DicomStoreIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dicom_store_id: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             dicom_store_id: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dicom_store_id is None and 'dicomStoreId' in kwargs:
+            dicom_store_id = kwargs['dicomStoreId']
+        if dicom_store_id is None:
+            raise TypeError("Missing 'dicom_store_id' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("dicom_store_id", dicom_store_id)
         _setter("policy_data", policy_data)
 
@@ -123,7 +133,13 @@ class _DicomStoreIamPolicyState:
              dicom_store_id: Optional[pulumi.Input[str]] = None,
              etag: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dicom_store_id is None and 'dicomStoreId' in kwargs:
+            dicom_store_id = kwargs['dicomStoreId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if dicom_store_id is not None:
             _setter("dicom_store_id", dicom_store_id)
         if etag is not None:

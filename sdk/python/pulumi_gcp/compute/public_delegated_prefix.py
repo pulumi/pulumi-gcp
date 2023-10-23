@@ -53,14 +53,28 @@ class PublicDelegatedPrefixArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_cidr_range: pulumi.Input[str],
-             parent_prefix: pulumi.Input[str],
-             region: pulumi.Input[str],
+             ip_cidr_range: Optional[pulumi.Input[str]] = None,
+             parent_prefix: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              is_live_migration: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_cidr_range is None and 'ipCidrRange' in kwargs:
+            ip_cidr_range = kwargs['ipCidrRange']
+        if ip_cidr_range is None:
+            raise TypeError("Missing 'ip_cidr_range' argument")
+        if parent_prefix is None and 'parentPrefix' in kwargs:
+            parent_prefix = kwargs['parentPrefix']
+        if parent_prefix is None:
+            raise TypeError("Missing 'parent_prefix' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if is_live_migration is None and 'isLiveMigration' in kwargs:
+            is_live_migration = kwargs['isLiveMigration']
+
         _setter("ip_cidr_range", ip_cidr_range)
         _setter("parent_prefix", parent_prefix)
         _setter("region", region)
@@ -220,7 +234,17 @@ class _PublicDelegatedPrefixState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_cidr_range is None and 'ipCidrRange' in kwargs:
+            ip_cidr_range = kwargs['ipCidrRange']
+        if is_live_migration is None and 'isLiveMigration' in kwargs:
+            is_live_migration = kwargs['isLiveMigration']
+        if parent_prefix is None and 'parentPrefix' in kwargs:
+            parent_prefix = kwargs['parentPrefix']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if description is not None:
             _setter("description", description)
         if ip_cidr_range is not None:

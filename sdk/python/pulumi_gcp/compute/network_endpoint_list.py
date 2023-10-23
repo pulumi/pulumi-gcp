@@ -44,11 +44,19 @@ class NetworkEndpointListArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network_endpoint_group: pulumi.Input[str],
+             network_endpoint_group: Optional[pulumi.Input[str]] = None,
              network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network_endpoint_group is None and 'networkEndpointGroup' in kwargs:
+            network_endpoint_group = kwargs['networkEndpointGroup']
+        if network_endpoint_group is None:
+            raise TypeError("Missing 'network_endpoint_group' argument")
+        if network_endpoints is None and 'networkEndpoints' in kwargs:
+            network_endpoints = kwargs['networkEndpoints']
+
         _setter("network_endpoint_group", network_endpoint_group)
         if network_endpoints is not None:
             _setter("network_endpoints", network_endpoints)
@@ -148,7 +156,13 @@ class _NetworkEndpointListState:
              network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network_endpoint_group is None and 'networkEndpointGroup' in kwargs:
+            network_endpoint_group = kwargs['networkEndpointGroup']
+        if network_endpoints is None and 'networkEndpoints' in kwargs:
+            network_endpoints = kwargs['networkEndpoints']
+
         if network_endpoint_group is not None:
             _setter("network_endpoint_group", network_endpoint_group)
         if network_endpoints is not None:

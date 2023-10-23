@@ -119,10 +119,10 @@ import (
 //				HttpsTriggerSecurityLevel: pulumi.String("SECURE_ALWAYS"),
 //				Timeout:                   pulumi.Int(60),
 //				EntryPoint:                pulumi.String("helloGET"),
-//				Labels: pulumi.AnyMap{
+//				Labels: pulumi.Map{
 //					"my-label": pulumi.Any("my-label-value"),
 //				},
-//				EnvironmentVariables: pulumi.AnyMap{
+//				EnvironmentVariables: pulumi.Map{
 //					"MY_ENV_VAR": pulumi.Any("my-env-var-value"),
 //				},
 //			})

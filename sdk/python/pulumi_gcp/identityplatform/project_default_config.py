@@ -35,7 +35,11 @@ class ProjectDefaultConfigArgs:
              _setter: Callable[[Any, Any], None],
              project: Optional[pulumi.Input[str]] = None,
              sign_in: Optional[pulumi.Input['ProjectDefaultConfigSignInArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if sign_in is None and 'signIn' in kwargs:
+            sign_in = kwargs['signIn']
+
         if project is not None:
             _setter("project", project)
         if sign_in is not None:
@@ -94,7 +98,11 @@ class _ProjectDefaultConfigState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              sign_in: Optional[pulumi.Input['ProjectDefaultConfigSignInArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if sign_in is None and 'signIn' in kwargs:
+            sign_in = kwargs['signIn']
+
         if name is not None:
             _setter("name", name)
         if project is not None:

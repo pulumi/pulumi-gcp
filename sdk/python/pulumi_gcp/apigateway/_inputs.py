@@ -41,8 +41,14 @@ class ApiConfigGatewayConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backend_config: pulumi.Input['ApiConfigGatewayConfigBackendConfigArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             backend_config: Optional[pulumi.Input['ApiConfigGatewayConfigBackendConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backend_config is None and 'backendConfig' in kwargs:
+            backend_config = kwargs['backendConfig']
+        if backend_config is None:
+            raise TypeError("Missing 'backend_config' argument")
+
         _setter("backend_config", backend_config)
 
     @property
@@ -74,8 +80,14 @@ class ApiConfigGatewayConfigBackendConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             google_service_account: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             google_service_account: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if google_service_account is None and 'googleServiceAccount' in kwargs:
+            google_service_account = kwargs['googleServiceAccount']
+        if google_service_account is None:
+            raise TypeError("Missing 'google_service_account' argument")
+
         _setter("google_service_account", google_service_account)
 
     @property
@@ -113,9 +125,15 @@ class ApiConfigGrpcServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             file_descriptor_set: pulumi.Input['ApiConfigGrpcServiceFileDescriptorSetArgs'],
+             file_descriptor_set: Optional[pulumi.Input['ApiConfigGrpcServiceFileDescriptorSetArgs']] = None,
              sources: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigGrpcServiceSourceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if file_descriptor_set is None and 'fileDescriptorSet' in kwargs:
+            file_descriptor_set = kwargs['fileDescriptorSet']
+        if file_descriptor_set is None:
+            raise TypeError("Missing 'file_descriptor_set' argument")
+
         _setter("file_descriptor_set", file_descriptor_set)
         if sources is not None:
             _setter("sources", sources)
@@ -166,9 +184,15 @@ class ApiConfigGrpcServiceFileDescriptorSetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             contents: pulumi.Input[str],
-             path: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             contents: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if contents is None:
+            raise TypeError("Missing 'contents' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+
         _setter("contents", contents)
         _setter("path", path)
 
@@ -214,9 +238,15 @@ class ApiConfigGrpcServiceSourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             contents: pulumi.Input[str],
-             path: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             contents: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if contents is None:
+            raise TypeError("Missing 'contents' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+
         _setter("contents", contents)
         _setter("path", path)
 
@@ -260,10 +290,16 @@ class ApiConfigIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -312,10 +348,16 @@ class ApiConfigIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -366,9 +408,15 @@ class ApiConfigManagedServiceConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             contents: pulumi.Input[str],
-             path: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             contents: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if contents is None:
+            raise TypeError("Missing 'contents' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+
         _setter("contents", contents)
         _setter("path", path)
 
@@ -412,8 +460,12 @@ class ApiConfigOpenapiDocumentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             document: pulumi.Input['ApiConfigOpenapiDocumentDocumentArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             document: Optional[pulumi.Input['ApiConfigOpenapiDocumentDocumentArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if document is None:
+            raise TypeError("Missing 'document' argument")
+
         _setter("document", document)
 
     @property
@@ -447,9 +499,15 @@ class ApiConfigOpenapiDocumentDocumentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             contents: pulumi.Input[str],
-             path: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             contents: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if contents is None:
+            raise TypeError("Missing 'contents' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+
         _setter("contents", contents)
         _setter("path", path)
 
@@ -493,10 +551,16 @@ class ApiIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -545,10 +609,16 @@ class ApiIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -597,10 +667,16 @@ class GatewayIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -649,10 +725,16 @@ class GatewayIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:

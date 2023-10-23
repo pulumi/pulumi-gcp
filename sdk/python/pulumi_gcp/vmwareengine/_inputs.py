@@ -43,10 +43,22 @@ class ClusterNodeTypeConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node_count: pulumi.Input[int],
-             node_type_id: pulumi.Input[str],
+             node_count: Optional[pulumi.Input[int]] = None,
+             node_type_id: Optional[pulumi.Input[str]] = None,
              custom_core_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+        if node_count is None:
+            raise TypeError("Missing 'node_count' argument")
+        if node_type_id is None and 'nodeTypeId' in kwargs:
+            node_type_id = kwargs['nodeTypeId']
+        if node_type_id is None:
+            raise TypeError("Missing 'node_type_id' argument")
+        if custom_core_count is None and 'customCoreCount' in kwargs:
+            custom_core_count = kwargs['customCoreCount']
+
         _setter("node_count", node_count)
         _setter("node_type_id", node_type_id)
         if custom_core_count is not None:
@@ -114,7 +126,9 @@ class NetworkVpcNetworkArgs:
              _setter: Callable[[Any, Any], None],
              network: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if network is not None:
             _setter("network", network)
         if type is not None:
@@ -176,7 +190,11 @@ class PrivateCloudHcxArgs:
              internal_ip: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if internal_ip is None and 'internalIp' in kwargs:
+            internal_ip = kwargs['internalIp']
+
         if fqdn is not None:
             _setter("fqdn", fqdn)
         if internal_ip is not None:
@@ -260,9 +278,17 @@ class PrivateCloudManagementClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
+             cluster_id: Optional[pulumi.Input[str]] = None,
              node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if node_type_configs is None and 'nodeTypeConfigs' in kwargs:
+            node_type_configs = kwargs['nodeTypeConfigs']
+
         _setter("cluster_id", cluster_id)
         if node_type_configs is not None:
             _setter("node_type_configs", node_type_configs)
@@ -324,10 +350,22 @@ class PrivateCloudManagementClusterNodeTypeConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node_count: pulumi.Input[int],
-             node_type_id: pulumi.Input[str],
+             node_count: Optional[pulumi.Input[int]] = None,
+             node_type_id: Optional[pulumi.Input[str]] = None,
              custom_core_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+        if node_count is None:
+            raise TypeError("Missing 'node_count' argument")
+        if node_type_id is None and 'nodeTypeId' in kwargs:
+            node_type_id = kwargs['nodeTypeId']
+        if node_type_id is None:
+            raise TypeError("Missing 'node_type_id' argument")
+        if custom_core_count is None and 'customCoreCount' in kwargs:
+            custom_core_count = kwargs['customCoreCount']
+
         _setter("node_count", node_count)
         _setter("node_type_id", node_type_id)
         if custom_core_count is not None:
@@ -408,11 +446,23 @@ class PrivateCloudNetworkConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             management_cidr: pulumi.Input[str],
+             management_cidr: Optional[pulumi.Input[str]] = None,
              management_ip_address_layout_version: Optional[pulumi.Input[int]] = None,
              vmware_engine_network: Optional[pulumi.Input[str]] = None,
              vmware_engine_network_canonical: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if management_cidr is None and 'managementCidr' in kwargs:
+            management_cidr = kwargs['managementCidr']
+        if management_cidr is None:
+            raise TypeError("Missing 'management_cidr' argument")
+        if management_ip_address_layout_version is None and 'managementIpAddressLayoutVersion' in kwargs:
+            management_ip_address_layout_version = kwargs['managementIpAddressLayoutVersion']
+        if vmware_engine_network is None and 'vmwareEngineNetwork' in kwargs:
+            vmware_engine_network = kwargs['vmwareEngineNetwork']
+        if vmware_engine_network_canonical is None and 'vmwareEngineNetworkCanonical' in kwargs:
+            vmware_engine_network_canonical = kwargs['vmwareEngineNetworkCanonical']
+
         _setter("management_cidr", management_cidr)
         if management_ip_address_layout_version is not None:
             _setter("management_ip_address_layout_version", management_ip_address_layout_version)
@@ -508,7 +558,11 @@ class PrivateCloudNsxArgs:
              internal_ip: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if internal_ip is None and 'internalIp' in kwargs:
+            internal_ip = kwargs['internalIp']
+
         if fqdn is not None:
             _setter("fqdn", fqdn)
         if internal_ip is not None:
@@ -596,7 +650,11 @@ class PrivateCloudVcenterArgs:
              internal_ip: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if internal_ip is None and 'internalIp' in kwargs:
+            internal_ip = kwargs['internalIp']
+
         if fqdn is not None:
             _setter("fqdn", fqdn)
         if internal_ip is not None:

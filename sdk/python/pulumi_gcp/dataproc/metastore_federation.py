@@ -47,13 +47,25 @@ class MetastoreFederationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backend_metastores: pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArgs']]],
-             federation_id: pulumi.Input[str],
-             version: pulumi.Input[str],
+             backend_metastores: Optional[pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArgs']]]] = None,
+             federation_id: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backend_metastores is None and 'backendMetastores' in kwargs:
+            backend_metastores = kwargs['backendMetastores']
+        if backend_metastores is None:
+            raise TypeError("Missing 'backend_metastores' argument")
+        if federation_id is None and 'federationId' in kwargs:
+            federation_id = kwargs['federationId']
+        if federation_id is None:
+            raise TypeError("Missing 'federation_id' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+
         _setter("backend_metastores", backend_metastores)
         _setter("federation_id", federation_id)
         _setter("version", version)
@@ -201,7 +213,17 @@ class _MetastoreFederationState:
              state_message: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backend_metastores is None and 'backendMetastores' in kwargs:
+            backend_metastores = kwargs['backendMetastores']
+        if endpoint_uri is None and 'endpointUri' in kwargs:
+            endpoint_uri = kwargs['endpointUri']
+        if federation_id is None and 'federationId' in kwargs:
+            federation_id = kwargs['federationId']
+        if state_message is None and 'stateMessage' in kwargs:
+            state_message = kwargs['stateMessage']
+
         if backend_metastores is not None:
             _setter("backend_metastores", backend_metastores)
         if endpoint_uri is not None:

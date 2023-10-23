@@ -56,14 +56,24 @@ class CaPoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             tier: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
+             tier: Optional[pulumi.Input[str]] = None,
              issuance_policy: Optional[pulumi.Input['CaPoolIssuancePolicyArgs']] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              publishing_options: Optional[pulumi.Input['CaPoolPublishingOptionsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if tier is None:
+            raise TypeError("Missing 'tier' argument")
+        if issuance_policy is None and 'issuancePolicy' in kwargs:
+            issuance_policy = kwargs['issuancePolicy']
+        if publishing_options is None and 'publishingOptions' in kwargs:
+            publishing_options = kwargs['publishingOptions']
+
         _setter("location", location)
         _setter("tier", tier)
         if issuance_policy is not None:
@@ -222,7 +232,13 @@ class _CaPoolState:
              project: Optional[pulumi.Input[str]] = None,
              publishing_options: Optional[pulumi.Input['CaPoolPublishingOptionsArgs']] = None,
              tier: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if issuance_policy is None and 'issuancePolicy' in kwargs:
+            issuance_policy = kwargs['issuancePolicy']
+        if publishing_options is None and 'publishingOptions' in kwargs:
+            publishing_options = kwargs['publishingOptions']
+
         if issuance_policy is not None:
             _setter("issuance_policy", issuance_policy)
         if labels is not None:

@@ -52,13 +52,23 @@ class MachineImageArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source_instance: pulumi.Input[str],
+             source_instance: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              guest_flush: Optional[pulumi.Input[bool]] = None,
              machine_image_encryption_key: Optional[pulumi.Input['MachineImageMachineImageEncryptionKeyArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if source_instance is None and 'sourceInstance' in kwargs:
+            source_instance = kwargs['sourceInstance']
+        if source_instance is None:
+            raise TypeError("Missing 'source_instance' argument")
+        if guest_flush is None and 'guestFlush' in kwargs:
+            guest_flush = kwargs['guestFlush']
+        if machine_image_encryption_key is None and 'machineImageEncryptionKey' in kwargs:
+            machine_image_encryption_key = kwargs['machineImageEncryptionKey']
+
         _setter("source_instance", source_instance)
         if description is not None:
             _setter("description", description)
@@ -206,7 +216,19 @@ class _MachineImageState:
              self_link: Optional[pulumi.Input[str]] = None,
              source_instance: Optional[pulumi.Input[str]] = None,
              storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if guest_flush is None and 'guestFlush' in kwargs:
+            guest_flush = kwargs['guestFlush']
+        if machine_image_encryption_key is None and 'machineImageEncryptionKey' in kwargs:
+            machine_image_encryption_key = kwargs['machineImageEncryptionKey']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if source_instance is None and 'sourceInstance' in kwargs:
+            source_instance = kwargs['sourceInstance']
+        if storage_locations is None and 'storageLocations' in kwargs:
+            storage_locations = kwargs['storageLocations']
+
         if description is not None:
             _setter("description", description)
         if guest_flush is not None:

@@ -36,10 +36,20 @@ class ConnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input[str],
-             reserved_peering_ranges: pulumi.Input[Sequence[pulumi.Input[str]]],
-             service: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             network: Optional[pulumi.Input[str]] = None,
+             reserved_peering_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if reserved_peering_ranges is None and 'reservedPeeringRanges' in kwargs:
+            reserved_peering_ranges = kwargs['reservedPeeringRanges']
+        if reserved_peering_ranges is None:
+            raise TypeError("Missing 'reserved_peering_ranges' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("network", network)
         _setter("reserved_peering_ranges", reserved_peering_ranges)
         _setter("service", service)
@@ -117,7 +127,11 @@ class _ConnectionState:
              peering: Optional[pulumi.Input[str]] = None,
              reserved_peering_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if reserved_peering_ranges is None and 'reservedPeeringRanges' in kwargs:
+            reserved_peering_ranges = kwargs['reservedPeeringRanges']
+
         if network is not None:
             _setter("network", network)
         if peering is not None:

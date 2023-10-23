@@ -51,14 +51,26 @@ class ConsumerQuotaOverrideArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             limit: pulumi.Input[str],
-             metric: pulumi.Input[str],
-             override_value: pulumi.Input[str],
-             service: pulumi.Input[str],
+             limit: Optional[pulumi.Input[str]] = None,
+             metric: Optional[pulumi.Input[str]] = None,
+             override_value: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
              dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              force: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if limit is None:
+            raise TypeError("Missing 'limit' argument")
+        if metric is None:
+            raise TypeError("Missing 'metric' argument")
+        if override_value is None and 'overrideValue' in kwargs:
+            override_value = kwargs['overrideValue']
+        if override_value is None:
+            raise TypeError("Missing 'override_value' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("limit", limit)
         _setter("metric", metric)
         _setter("override_value", override_value)
@@ -213,7 +225,11 @@ class _ConsumerQuotaOverrideState:
              override_value: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if override_value is None and 'overrideValue' in kwargs:
+            override_value = kwargs['overrideValue']
+
         if dimensions is not None:
             _setter("dimensions", dimensions)
         if force is not None:

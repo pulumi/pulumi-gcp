@@ -71,7 +71,17 @@ class TopicArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              schema_settings: Optional[pulumi.Input['TopicSchemaSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if message_retention_duration is None and 'messageRetentionDuration' in kwargs:
+            message_retention_duration = kwargs['messageRetentionDuration']
+        if message_storage_policy is None and 'messageStoragePolicy' in kwargs:
+            message_storage_policy = kwargs['messageStoragePolicy']
+        if schema_settings is None and 'schemaSettings' in kwargs:
+            schema_settings = kwargs['schemaSettings']
+
         if kms_key_name is not None:
             _setter("kms_key_name", kms_key_name)
         if labels is not None:
@@ -248,7 +258,17 @@ class _TopicState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              schema_settings: Optional[pulumi.Input['TopicSchemaSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if message_retention_duration is None and 'messageRetentionDuration' in kwargs:
+            message_retention_duration = kwargs['messageRetentionDuration']
+        if message_storage_policy is None and 'messageStoragePolicy' in kwargs:
+            message_storage_policy = kwargs['messageStoragePolicy']
+        if schema_settings is None and 'schemaSettings' in kwargs:
+            schema_settings = kwargs['schemaSettings']
+
         if kms_key_name is not None:
             _setter("kms_key_name", kms_key_name)
         if labels is not None:

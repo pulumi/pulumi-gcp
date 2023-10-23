@@ -53,7 +53,17 @@ class ConfigArgs:
              project: Optional[pulumi.Input[str]] = None,
              quota: Optional[pulumi.Input['ConfigQuotaArgs']] = None,
              sign_in: Optional[pulumi.Input['ConfigSignInArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if authorized_domains is None and 'authorizedDomains' in kwargs:
+            authorized_domains = kwargs['authorizedDomains']
+        if autodelete_anonymous_users is None and 'autodeleteAnonymousUsers' in kwargs:
+            autodelete_anonymous_users = kwargs['autodeleteAnonymousUsers']
+        if blocking_functions is None and 'blockingFunctions' in kwargs:
+            blocking_functions = kwargs['blockingFunctions']
+        if sign_in is None and 'signIn' in kwargs:
+            sign_in = kwargs['signIn']
+
         if authorized_domains is not None:
             _setter("authorized_domains", authorized_domains)
         if autodelete_anonymous_users is not None:
@@ -188,7 +198,17 @@ class _ConfigState:
              project: Optional[pulumi.Input[str]] = None,
              quota: Optional[pulumi.Input['ConfigQuotaArgs']] = None,
              sign_in: Optional[pulumi.Input['ConfigSignInArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if authorized_domains is None and 'authorizedDomains' in kwargs:
+            authorized_domains = kwargs['authorizedDomains']
+        if autodelete_anonymous_users is None and 'autodeleteAnonymousUsers' in kwargs:
+            autodelete_anonymous_users = kwargs['autodeleteAnonymousUsers']
+        if blocking_functions is None and 'blockingFunctions' in kwargs:
+            blocking_functions = kwargs['blockingFunctions']
+        if sign_in is None and 'signIn' in kwargs:
+            sign_in = kwargs['signIn']
+
         if authorized_domains is not None:
             _setter("authorized_domains", authorized_domains)
         if autodelete_anonymous_users is not None:

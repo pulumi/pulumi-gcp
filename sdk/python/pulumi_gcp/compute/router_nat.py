@@ -119,9 +119,9 @@ class RouterNatArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             nat_ip_allocate_option: pulumi.Input[str],
-             router: pulumi.Input[str],
-             source_subnetwork_ip_ranges_to_nat: pulumi.Input[str],
+             nat_ip_allocate_option: Optional[pulumi.Input[str]] = None,
+             router: Optional[pulumi.Input[str]] = None,
+             source_subnetwork_ip_ranges_to_nat: Optional[pulumi.Input[str]] = None,
              drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              enable_dynamic_port_allocation: Optional[pulumi.Input[bool]] = None,
              enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
@@ -139,7 +139,43 @@ class RouterNatArgs:
              tcp_time_wait_timeout_sec: Optional[pulumi.Input[int]] = None,
              tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
              udp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if nat_ip_allocate_option is None and 'natIpAllocateOption' in kwargs:
+            nat_ip_allocate_option = kwargs['natIpAllocateOption']
+        if nat_ip_allocate_option is None:
+            raise TypeError("Missing 'nat_ip_allocate_option' argument")
+        if router is None:
+            raise TypeError("Missing 'router' argument")
+        if source_subnetwork_ip_ranges_to_nat is None and 'sourceSubnetworkIpRangesToNat' in kwargs:
+            source_subnetwork_ip_ranges_to_nat = kwargs['sourceSubnetworkIpRangesToNat']
+        if source_subnetwork_ip_ranges_to_nat is None:
+            raise TypeError("Missing 'source_subnetwork_ip_ranges_to_nat' argument")
+        if drain_nat_ips is None and 'drainNatIps' in kwargs:
+            drain_nat_ips = kwargs['drainNatIps']
+        if enable_dynamic_port_allocation is None and 'enableDynamicPortAllocation' in kwargs:
+            enable_dynamic_port_allocation = kwargs['enableDynamicPortAllocation']
+        if enable_endpoint_independent_mapping is None and 'enableEndpointIndependentMapping' in kwargs:
+            enable_endpoint_independent_mapping = kwargs['enableEndpointIndependentMapping']
+        if icmp_idle_timeout_sec is None and 'icmpIdleTimeoutSec' in kwargs:
+            icmp_idle_timeout_sec = kwargs['icmpIdleTimeoutSec']
+        if log_config is None and 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if max_ports_per_vm is None and 'maxPortsPerVm' in kwargs:
+            max_ports_per_vm = kwargs['maxPortsPerVm']
+        if min_ports_per_vm is None and 'minPortsPerVm' in kwargs:
+            min_ports_per_vm = kwargs['minPortsPerVm']
+        if nat_ips is None and 'natIps' in kwargs:
+            nat_ips = kwargs['natIps']
+        if tcp_established_idle_timeout_sec is None and 'tcpEstablishedIdleTimeoutSec' in kwargs:
+            tcp_established_idle_timeout_sec = kwargs['tcpEstablishedIdleTimeoutSec']
+        if tcp_time_wait_timeout_sec is None and 'tcpTimeWaitTimeoutSec' in kwargs:
+            tcp_time_wait_timeout_sec = kwargs['tcpTimeWaitTimeoutSec']
+        if tcp_transitory_idle_timeout_sec is None and 'tcpTransitoryIdleTimeoutSec' in kwargs:
+            tcp_transitory_idle_timeout_sec = kwargs['tcpTransitoryIdleTimeoutSec']
+        if udp_idle_timeout_sec is None and 'udpIdleTimeoutSec' in kwargs:
+            udp_idle_timeout_sec = kwargs['udpIdleTimeoutSec']
+
         _setter("nat_ip_allocate_option", nat_ip_allocate_option)
         _setter("router", router)
         _setter("source_subnetwork_ip_ranges_to_nat", source_subnetwork_ip_ranges_to_nat)
@@ -579,7 +615,37 @@ class _RouterNatState:
              tcp_time_wait_timeout_sec: Optional[pulumi.Input[int]] = None,
              tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
              udp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if drain_nat_ips is None and 'drainNatIps' in kwargs:
+            drain_nat_ips = kwargs['drainNatIps']
+        if enable_dynamic_port_allocation is None and 'enableDynamicPortAllocation' in kwargs:
+            enable_dynamic_port_allocation = kwargs['enableDynamicPortAllocation']
+        if enable_endpoint_independent_mapping is None and 'enableEndpointIndependentMapping' in kwargs:
+            enable_endpoint_independent_mapping = kwargs['enableEndpointIndependentMapping']
+        if icmp_idle_timeout_sec is None and 'icmpIdleTimeoutSec' in kwargs:
+            icmp_idle_timeout_sec = kwargs['icmpIdleTimeoutSec']
+        if log_config is None and 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if max_ports_per_vm is None and 'maxPortsPerVm' in kwargs:
+            max_ports_per_vm = kwargs['maxPortsPerVm']
+        if min_ports_per_vm is None and 'minPortsPerVm' in kwargs:
+            min_ports_per_vm = kwargs['minPortsPerVm']
+        if nat_ip_allocate_option is None and 'natIpAllocateOption' in kwargs:
+            nat_ip_allocate_option = kwargs['natIpAllocateOption']
+        if nat_ips is None and 'natIps' in kwargs:
+            nat_ips = kwargs['natIps']
+        if source_subnetwork_ip_ranges_to_nat is None and 'sourceSubnetworkIpRangesToNat' in kwargs:
+            source_subnetwork_ip_ranges_to_nat = kwargs['sourceSubnetworkIpRangesToNat']
+        if tcp_established_idle_timeout_sec is None and 'tcpEstablishedIdleTimeoutSec' in kwargs:
+            tcp_established_idle_timeout_sec = kwargs['tcpEstablishedIdleTimeoutSec']
+        if tcp_time_wait_timeout_sec is None and 'tcpTimeWaitTimeoutSec' in kwargs:
+            tcp_time_wait_timeout_sec = kwargs['tcpTimeWaitTimeoutSec']
+        if tcp_transitory_idle_timeout_sec is None and 'tcpTransitoryIdleTimeoutSec' in kwargs:
+            tcp_transitory_idle_timeout_sec = kwargs['tcpTransitoryIdleTimeoutSec']
+        if udp_idle_timeout_sec is None and 'udpIdleTimeoutSec' in kwargs:
+            udp_idle_timeout_sec = kwargs['udpIdleTimeoutSec']
+
         if drain_nat_ips is not None:
             _setter("drain_nat_ips", drain_nat_ips)
         if enable_dynamic_port_allocation is not None:

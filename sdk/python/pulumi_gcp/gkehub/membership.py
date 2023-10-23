@@ -54,13 +54,19 @@ class MembershipArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             membership_id: pulumi.Input[str],
+             membership_id: Optional[pulumi.Input[str]] = None,
              authority: Optional[pulumi.Input['MembershipAuthorityArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              endpoint: Optional[pulumi.Input['MembershipEndpointArgs']] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if membership_id is None and 'membershipId' in kwargs:
+            membership_id = kwargs['membershipId']
+        if membership_id is None:
+            raise TypeError("Missing 'membership_id' argument")
+
         _setter("membership_id", membership_id)
         if authority is not None:
             _setter("authority", authority)
@@ -214,7 +220,11 @@ class _MembershipState:
              membership_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if membership_id is None and 'membershipId' in kwargs:
+            membership_id = kwargs['membershipId']
+
         if authority is not None:
             _setter("authority", authority)
         if description is not None:

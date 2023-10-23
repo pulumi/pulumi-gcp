@@ -54,16 +54,34 @@ class WorkstationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             workstation_cluster_id: pulumi.Input[str],
-             workstation_config_id: pulumi.Input[str],
-             workstation_id: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
+             workstation_cluster_id: Optional[pulumi.Input[str]] = None,
+             workstation_config_id: Optional[pulumi.Input[str]] = None,
+             workstation_id: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              env: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if workstation_cluster_id is None and 'workstationClusterId' in kwargs:
+            workstation_cluster_id = kwargs['workstationClusterId']
+        if workstation_cluster_id is None:
+            raise TypeError("Missing 'workstation_cluster_id' argument")
+        if workstation_config_id is None and 'workstationConfigId' in kwargs:
+            workstation_config_id = kwargs['workstationConfigId']
+        if workstation_config_id is None:
+            raise TypeError("Missing 'workstation_config_id' argument")
+        if workstation_id is None and 'workstationId' in kwargs:
+            workstation_id = kwargs['workstationId']
+        if workstation_id is None:
+            raise TypeError("Missing 'workstation_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("location", location)
         _setter("workstation_cluster_id", workstation_cluster_id)
         _setter("workstation_config_id", workstation_config_id)
@@ -266,7 +284,19 @@ class _WorkstationState:
              workstation_cluster_id: Optional[pulumi.Input[str]] = None,
              workstation_config_id: Optional[pulumi.Input[str]] = None,
              workstation_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if workstation_cluster_id is None and 'workstationClusterId' in kwargs:
+            workstation_cluster_id = kwargs['workstationClusterId']
+        if workstation_config_id is None and 'workstationConfigId' in kwargs:
+            workstation_config_id = kwargs['workstationConfigId']
+        if workstation_id is None and 'workstationId' in kwargs:
+            workstation_id = kwargs['workstationId']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if create_time is not None:

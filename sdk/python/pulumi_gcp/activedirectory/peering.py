@@ -45,14 +45,30 @@ class PeeringArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             authorized_network: pulumi.Input[str],
-             domain_resource: pulumi.Input[str],
-             peering_id: pulumi.Input[str],
+             authorized_network: Optional[pulumi.Input[str]] = None,
+             domain_resource: Optional[pulumi.Input[str]] = None,
+             peering_id: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              status_message: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if authorized_network is None and 'authorizedNetwork' in kwargs:
+            authorized_network = kwargs['authorizedNetwork']
+        if authorized_network is None:
+            raise TypeError("Missing 'authorized_network' argument")
+        if domain_resource is None and 'domainResource' in kwargs:
+            domain_resource = kwargs['domainResource']
+        if domain_resource is None:
+            raise TypeError("Missing 'domain_resource' argument")
+        if peering_id is None and 'peeringId' in kwargs:
+            peering_id = kwargs['peeringId']
+        if peering_id is None:
+            raise TypeError("Missing 'peering_id' argument")
+        if status_message is None and 'statusMessage' in kwargs:
+            status_message = kwargs['statusMessage']
+
         _setter("authorized_network", authorized_network)
         _setter("domain_resource", domain_resource)
         _setter("peering_id", peering_id)
@@ -196,7 +212,17 @@ class _PeeringState:
              project: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              status_message: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if authorized_network is None and 'authorizedNetwork' in kwargs:
+            authorized_network = kwargs['authorizedNetwork']
+        if domain_resource is None and 'domainResource' in kwargs:
+            domain_resource = kwargs['domainResource']
+        if peering_id is None and 'peeringId' in kwargs:
+            peering_id = kwargs['peeringId']
+        if status_message is None and 'statusMessage' in kwargs:
+            status_message = kwargs['statusMessage']
+
         if authorized_network is not None:
             _setter("authorized_network", authorized_network)
         if domain_resource is not None:

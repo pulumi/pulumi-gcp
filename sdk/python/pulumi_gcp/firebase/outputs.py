@@ -101,8 +101,8 @@ class ExtensionsInstanceConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             extension_ref: str,
-             params: Mapping[str, str],
+             extension_ref: Optional[str] = None,
+             params: Optional[Mapping[str, str]] = None,
              allowed_event_types: Optional[Sequence[str]] = None,
              create_time: Optional[str] = None,
              eventarc_channel: Optional[str] = None,
@@ -110,7 +110,27 @@ class ExtensionsInstanceConfig(dict):
              name: Optional[str] = None,
              populated_postinstall_content: Optional[str] = None,
              system_params: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if extension_ref is None and 'extensionRef' in kwargs:
+            extension_ref = kwargs['extensionRef']
+        if extension_ref is None:
+            raise TypeError("Missing 'extension_ref' argument")
+        if params is None:
+            raise TypeError("Missing 'params' argument")
+        if allowed_event_types is None and 'allowedEventTypes' in kwargs:
+            allowed_event_types = kwargs['allowedEventTypes']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if eventarc_channel is None and 'eventarcChannel' in kwargs:
+            eventarc_channel = kwargs['eventarcChannel']
+        if extension_version is None and 'extensionVersion' in kwargs:
+            extension_version = kwargs['extensionVersion']
+        if populated_postinstall_content is None and 'populatedPostinstallContent' in kwargs:
+            populated_postinstall_content = kwargs['populatedPostinstallContent']
+        if system_params is None and 'systemParams' in kwargs:
+            system_params = kwargs['systemParams']
+
         _setter("extension_ref", extension_ref)
         _setter("params", params)
         if allowed_event_types is not None:
@@ -236,7 +256,9 @@ class ExtensionsInstanceErrorStatus(dict):
              code: Optional[int] = None,
              details: Optional[Sequence[Mapping[str, Any]]] = None,
              message: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if code is not None:
             _setter("code", code)
         if details is not None:
@@ -315,7 +337,15 @@ class ExtensionsInstanceRuntimeData(dict):
              fatal_error: Optional['outputs.ExtensionsInstanceRuntimeDataFatalError'] = None,
              processing_state: Optional['outputs.ExtensionsInstanceRuntimeDataProcessingState'] = None,
              state_update_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if fatal_error is None and 'fatalError' in kwargs:
+            fatal_error = kwargs['fatalError']
+        if processing_state is None and 'processingState' in kwargs:
+            processing_state = kwargs['processingState']
+        if state_update_time is None and 'stateUpdateTime' in kwargs:
+            state_update_time = kwargs['stateUpdateTime']
+
         if fatal_error is not None:
             _setter("fatal_error", fatal_error)
         if processing_state is not None:
@@ -384,7 +414,11 @@ class ExtensionsInstanceRuntimeDataFatalError(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              error_message: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if error_message is None and 'errorMessage' in kwargs:
+            error_message = kwargs['errorMessage']
+
         if error_message is not None:
             _setter("error_message", error_message)
 
@@ -438,7 +472,11 @@ class ExtensionsInstanceRuntimeDataProcessingState(dict):
              _setter: Callable[[Any, Any], None],
              detail_message: Optional[str] = None,
              state: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if detail_message is None and 'detailMessage' in kwargs:
+            detail_message = kwargs['detailMessage']
+
         if detail_message is not None:
             _setter("detail_message", detail_message)
         if state is not None:
@@ -487,7 +525,9 @@ class HostingVersionConfig(dict):
              _setter: Callable[[Any, Any], None],
              redirects: Optional[Sequence['outputs.HostingVersionConfigRedirect']] = None,
              rewrites: Optional[Sequence['outputs.HostingVersionConfigRewrite']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if redirects is not None:
             _setter("redirects", redirects)
         if rewrites is not None:
@@ -559,11 +599,19 @@ class HostingVersionConfigRedirect(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: str,
-             status_code: int,
+             location: Optional[str] = None,
+             status_code: Optional[int] = None,
              glob: Optional[str] = None,
              regex: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if status_code is None and 'statusCode' in kwargs:
+            status_code = kwargs['statusCode']
+        if status_code is None:
+            raise TypeError("Missing 'status_code' argument")
+
         _setter("location", location)
         _setter("status_code", status_code)
         if glob is not None:
@@ -637,7 +685,9 @@ class HostingVersionConfigRewrite(dict):
              glob: Optional[str] = None,
              regex: Optional[str] = None,
              run: Optional['outputs.HostingVersionConfigRewriteRun'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if function is not None:
             _setter("function", function)
         if glob is not None:
@@ -715,9 +765,15 @@ class HostingVersionConfigRewriteRun(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_id: str,
+             service_id: Optional[str] = None,
              region: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if service_id is None:
+            raise TypeError("Missing 'service_id' argument")
+
         _setter("service_id", service_id)
         if region is not None:
             _setter("region", region)

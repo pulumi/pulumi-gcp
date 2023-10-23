@@ -57,13 +57,23 @@ class MetastoreServiceIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
-             service_id: pulumi.Input[str],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             service_id: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['MetastoreServiceIamBindingConditionArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if service_id is None:
+            raise TypeError("Missing 'service_id' argument")
+
         _setter("members", members)
         _setter("role", role)
         _setter("service_id", service_id)
@@ -209,7 +219,11 @@ class _MetastoreServiceIamBindingState:
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              service_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

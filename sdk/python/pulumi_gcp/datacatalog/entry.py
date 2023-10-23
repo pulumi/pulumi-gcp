@@ -76,8 +76,8 @@ class EntryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entry_group: pulumi.Input[str],
-             entry_id: pulumi.Input[str],
+             entry_group: Optional[pulumi.Input[str]] = None,
+             entry_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              gcs_fileset_spec: Optional[pulumi.Input['EntryGcsFilesetSpecArgs']] = None,
@@ -86,7 +86,27 @@ class EntryArgs:
              type: Optional[pulumi.Input[str]] = None,
              user_specified_system: Optional[pulumi.Input[str]] = None,
              user_specified_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if entry_group is None and 'entryGroup' in kwargs:
+            entry_group = kwargs['entryGroup']
+        if entry_group is None:
+            raise TypeError("Missing 'entry_group' argument")
+        if entry_id is None and 'entryId' in kwargs:
+            entry_id = kwargs['entryId']
+        if entry_id is None:
+            raise TypeError("Missing 'entry_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if gcs_fileset_spec is None and 'gcsFilesetSpec' in kwargs:
+            gcs_fileset_spec = kwargs['gcsFilesetSpec']
+        if linked_resource is None and 'linkedResource' in kwargs:
+            linked_resource = kwargs['linkedResource']
+        if user_specified_system is None and 'userSpecifiedSystem' in kwargs:
+            user_specified_system = kwargs['userSpecifiedSystem']
+        if user_specified_type is None and 'userSpecifiedType' in kwargs:
+            user_specified_type = kwargs['userSpecifiedType']
+
         _setter("entry_group", entry_group)
         _setter("entry_id", entry_id)
         if description is not None:
@@ -342,7 +362,29 @@ class _EntryState:
              type: Optional[pulumi.Input[str]] = None,
              user_specified_system: Optional[pulumi.Input[str]] = None,
              user_specified_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bigquery_date_sharded_specs is None and 'bigqueryDateShardedSpecs' in kwargs:
+            bigquery_date_sharded_specs = kwargs['bigqueryDateShardedSpecs']
+        if bigquery_table_specs is None and 'bigqueryTableSpecs' in kwargs:
+            bigquery_table_specs = kwargs['bigqueryTableSpecs']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if entry_group is None and 'entryGroup' in kwargs:
+            entry_group = kwargs['entryGroup']
+        if entry_id is None and 'entryId' in kwargs:
+            entry_id = kwargs['entryId']
+        if gcs_fileset_spec is None and 'gcsFilesetSpec' in kwargs:
+            gcs_fileset_spec = kwargs['gcsFilesetSpec']
+        if integrated_system is None and 'integratedSystem' in kwargs:
+            integrated_system = kwargs['integratedSystem']
+        if linked_resource is None and 'linkedResource' in kwargs:
+            linked_resource = kwargs['linkedResource']
+        if user_specified_system is None and 'userSpecifiedSystem' in kwargs:
+            user_specified_system = kwargs['userSpecifiedSystem']
+        if user_specified_type is None and 'userSpecifiedType' in kwargs:
+            user_specified_type = kwargs['userSpecifiedType']
+
         if bigquery_date_sharded_specs is not None:
             _setter("bigquery_date_sharded_specs", bigquery_date_sharded_specs)
         if bigquery_table_specs is not None:

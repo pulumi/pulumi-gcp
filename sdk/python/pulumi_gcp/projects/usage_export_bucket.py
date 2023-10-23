@@ -32,10 +32,16 @@ class UsageExportBucketArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket_name: pulumi.Input[str],
+             bucket_name: Optional[pulumi.Input[str]] = None,
              prefix: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if bucket_name is None:
+            raise TypeError("Missing 'bucket_name' argument")
+
         _setter("bucket_name", bucket_name)
         if prefix is not None:
             _setter("prefix", prefix)
@@ -103,7 +109,11 @@ class _UsageExportBucketState:
              bucket_name: Optional[pulumi.Input[str]] = None,
              prefix: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+
         if bucket_name is not None:
             _setter("bucket_name", bucket_name)
         if prefix is not None:

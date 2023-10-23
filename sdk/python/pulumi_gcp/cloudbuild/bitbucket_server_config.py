@@ -63,17 +63,43 @@ class BitbucketServerConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api_key: pulumi.Input[str],
-             config_id: pulumi.Input[str],
-             host_uri: pulumi.Input[str],
-             location: pulumi.Input[str],
-             secrets: pulumi.Input['BitbucketServerConfigSecretsArgs'],
-             username: pulumi.Input[str],
+             api_key: Optional[pulumi.Input[str]] = None,
+             config_id: Optional[pulumi.Input[str]] = None,
+             host_uri: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             secrets: Optional[pulumi.Input['BitbucketServerConfigSecretsArgs']] = None,
+             username: Optional[pulumi.Input[str]] = None,
              connected_repositories: Optional[pulumi.Input[Sequence[pulumi.Input['BitbucketServerConfigConnectedRepositoryArgs']]]] = None,
              peered_network: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              ssl_ca: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_key is None and 'apiKey' in kwargs:
+            api_key = kwargs['apiKey']
+        if api_key is None:
+            raise TypeError("Missing 'api_key' argument")
+        if config_id is None and 'configId' in kwargs:
+            config_id = kwargs['configId']
+        if config_id is None:
+            raise TypeError("Missing 'config_id' argument")
+        if host_uri is None and 'hostUri' in kwargs:
+            host_uri = kwargs['hostUri']
+        if host_uri is None:
+            raise TypeError("Missing 'host_uri' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if secrets is None:
+            raise TypeError("Missing 'secrets' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+        if connected_repositories is None and 'connectedRepositories' in kwargs:
+            connected_repositories = kwargs['connectedRepositories']
+        if peered_network is None and 'peeredNetwork' in kwargs:
+            peered_network = kwargs['peeredNetwork']
+        if ssl_ca is None and 'sslCa' in kwargs:
+            ssl_ca = kwargs['sslCa']
+
         _setter("api_key", api_key)
         _setter("config_id", config_id)
         _setter("host_uri", host_uri)
@@ -286,7 +312,23 @@ class _BitbucketServerConfigState:
              ssl_ca: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
              webhook_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_key is None and 'apiKey' in kwargs:
+            api_key = kwargs['apiKey']
+        if config_id is None and 'configId' in kwargs:
+            config_id = kwargs['configId']
+        if connected_repositories is None and 'connectedRepositories' in kwargs:
+            connected_repositories = kwargs['connectedRepositories']
+        if host_uri is None and 'hostUri' in kwargs:
+            host_uri = kwargs['hostUri']
+        if peered_network is None and 'peeredNetwork' in kwargs:
+            peered_network = kwargs['peeredNetwork']
+        if ssl_ca is None and 'sslCa' in kwargs:
+            ssl_ca = kwargs['sslCa']
+        if webhook_key is None and 'webhookKey' in kwargs:
+            webhook_key = kwargs['webhookKey']
+
         if api_key is not None:
             _setter("api_key", api_key)
         if config_id is not None:

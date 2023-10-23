@@ -104,10 +104,10 @@ class StandardAppVersionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             deployment: pulumi.Input['StandardAppVersionDeploymentArgs'],
-             entrypoint: pulumi.Input['StandardAppVersionEntrypointArgs'],
-             runtime: pulumi.Input[str],
-             service: pulumi.Input[str],
+             deployment: Optional[pulumi.Input['StandardAppVersionDeploymentArgs']] = None,
+             entrypoint: Optional[pulumi.Input['StandardAppVersionEntrypointArgs']] = None,
+             runtime: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
              app_engine_apis: Optional[pulumi.Input[bool]] = None,
              automatic_scaling: Optional[pulumi.Input['StandardAppVersionAutomaticScalingArgs']] = None,
              basic_scaling: Optional[pulumi.Input['StandardAppVersionBasicScalingArgs']] = None,
@@ -125,7 +125,43 @@ class StandardAppVersionArgs:
              threadsafe: Optional[pulumi.Input[bool]] = None,
              version_id: Optional[pulumi.Input[str]] = None,
              vpc_access_connector: Optional[pulumi.Input['StandardAppVersionVpcAccessConnectorArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if deployment is None:
+            raise TypeError("Missing 'deployment' argument")
+        if entrypoint is None:
+            raise TypeError("Missing 'entrypoint' argument")
+        if runtime is None:
+            raise TypeError("Missing 'runtime' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+        if app_engine_apis is None and 'appEngineApis' in kwargs:
+            app_engine_apis = kwargs['appEngineApis']
+        if automatic_scaling is None and 'automaticScaling' in kwargs:
+            automatic_scaling = kwargs['automaticScaling']
+        if basic_scaling is None and 'basicScaling' in kwargs:
+            basic_scaling = kwargs['basicScaling']
+        if delete_service_on_destroy is None and 'deleteServiceOnDestroy' in kwargs:
+            delete_service_on_destroy = kwargs['deleteServiceOnDestroy']
+        if env_variables is None and 'envVariables' in kwargs:
+            env_variables = kwargs['envVariables']
+        if inbound_services is None and 'inboundServices' in kwargs:
+            inbound_services = kwargs['inboundServices']
+        if instance_class is None and 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if manual_scaling is None and 'manualScaling' in kwargs:
+            manual_scaling = kwargs['manualScaling']
+        if noop_on_destroy is None and 'noopOnDestroy' in kwargs:
+            noop_on_destroy = kwargs['noopOnDestroy']
+        if runtime_api_version is None and 'runtimeApiVersion' in kwargs:
+            runtime_api_version = kwargs['runtimeApiVersion']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+        if vpc_access_connector is None and 'vpcAccessConnector' in kwargs:
+            vpc_access_connector = kwargs['vpcAccessConnector']
+
         _setter("deployment", deployment)
         _setter("entrypoint", entrypoint)
         _setter("runtime", runtime)
@@ -550,7 +586,35 @@ class _StandardAppVersionState:
              threadsafe: Optional[pulumi.Input[bool]] = None,
              version_id: Optional[pulumi.Input[str]] = None,
              vpc_access_connector: Optional[pulumi.Input['StandardAppVersionVpcAccessConnectorArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_engine_apis is None and 'appEngineApis' in kwargs:
+            app_engine_apis = kwargs['appEngineApis']
+        if automatic_scaling is None and 'automaticScaling' in kwargs:
+            automatic_scaling = kwargs['automaticScaling']
+        if basic_scaling is None and 'basicScaling' in kwargs:
+            basic_scaling = kwargs['basicScaling']
+        if delete_service_on_destroy is None and 'deleteServiceOnDestroy' in kwargs:
+            delete_service_on_destroy = kwargs['deleteServiceOnDestroy']
+        if env_variables is None and 'envVariables' in kwargs:
+            env_variables = kwargs['envVariables']
+        if inbound_services is None and 'inboundServices' in kwargs:
+            inbound_services = kwargs['inboundServices']
+        if instance_class is None and 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if manual_scaling is None and 'manualScaling' in kwargs:
+            manual_scaling = kwargs['manualScaling']
+        if noop_on_destroy is None and 'noopOnDestroy' in kwargs:
+            noop_on_destroy = kwargs['noopOnDestroy']
+        if runtime_api_version is None and 'runtimeApiVersion' in kwargs:
+            runtime_api_version = kwargs['runtimeApiVersion']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+        if vpc_access_connector is None and 'vpcAccessConnector' in kwargs:
+            vpc_access_connector = kwargs['vpcAccessConnector']
+
         if app_engine_apis is not None:
             _setter("app_engine_apis", app_engine_apis)
         if automatic_scaling is not None:

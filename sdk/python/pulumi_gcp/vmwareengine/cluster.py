@@ -41,10 +41,16 @@ class ClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parent: pulumi.Input[str],
+             parent: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if node_type_configs is None and 'nodeTypeConfigs' in kwargs:
+            node_type_configs = kwargs['nodeTypeConfigs']
+
         _setter("parent", parent)
         if name is not None:
             _setter("name", name)
@@ -139,7 +145,11 @@ class _ClusterState:
              parent: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_type_configs is None and 'nodeTypeConfigs' in kwargs:
+            node_type_configs = kwargs['nodeTypeConfigs']
+
         if management is not None:
             _setter("management", management)
         if name is not None:

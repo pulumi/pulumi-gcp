@@ -67,14 +67,20 @@ class ServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              autogenerate_revision_name: Optional[pulumi.Input[bool]] = None,
              metadata: Optional[pulumi.Input['ServiceMetadataArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              template: Optional[pulumi.Input['ServiceTemplateArgs']] = None,
              traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if autogenerate_revision_name is None and 'autogenerateRevisionName' in kwargs:
+            autogenerate_revision_name = kwargs['autogenerateRevisionName']
+
         _setter("location", location)
         if autogenerate_revision_name is not None:
             _setter("autogenerate_revision_name", autogenerate_revision_name)
@@ -261,7 +267,11 @@ class _ServiceState:
              statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceStatusArgs']]]] = None,
              template: Optional[pulumi.Input['ServiceTemplateArgs']] = None,
              traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if autogenerate_revision_name is None and 'autogenerateRevisionName' in kwargs:
+            autogenerate_revision_name = kwargs['autogenerateRevisionName']
+
         if autogenerate_revision_name is not None:
             _setter("autogenerate_revision_name", autogenerate_revision_name)
         if location is not None:

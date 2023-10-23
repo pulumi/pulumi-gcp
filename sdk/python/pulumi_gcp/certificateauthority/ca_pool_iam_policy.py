@@ -51,11 +51,21 @@ class CaPoolIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ca_pool: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             ca_pool: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ca_pool is None and 'caPool' in kwargs:
+            ca_pool = kwargs['caPool']
+        if ca_pool is None:
+            raise TypeError("Missing 'ca_pool' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("ca_pool", ca_pool)
         _setter("policy_data", policy_data)
         if location is not None:
@@ -176,7 +186,13 @@ class _CaPoolIamPolicyState:
              location: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ca_pool is None and 'caPool' in kwargs:
+            ca_pool = kwargs['caPool']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if ca_pool is not None:
             _setter("ca_pool", ca_pool)
         if etag is not None:

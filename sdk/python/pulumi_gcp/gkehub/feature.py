@@ -45,12 +45,16 @@ class FeatureArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              spec: Optional[pulumi.Input['FeatureSpecArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+
         _setter("location", location)
         if labels is not None:
             _setter("labels", labels)
@@ -188,7 +192,17 @@ class _FeatureState:
              spec: Optional[pulumi.Input['FeatureSpecArgs']] = None,
              states: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateArgs']]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if delete_time is None and 'deleteTime' in kwargs:
+            delete_time = kwargs['deleteTime']
+        if resource_states is None and 'resourceStates' in kwargs:
+            resource_states = kwargs['resourceStates']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if delete_time is not None:

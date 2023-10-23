@@ -56,13 +56,23 @@ class FunctionIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cloud_function: pulumi.Input[str],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
+             cloud_function: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['FunctionIamMemberConditionArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cloud_function is None and 'cloudFunction' in kwargs:
+            cloud_function = kwargs['cloudFunction']
+        if cloud_function is None:
+            raise TypeError("Missing 'cloud_function' argument")
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("cloud_function", cloud_function)
         _setter("member", member)
         _setter("role", role)
@@ -208,7 +218,11 @@ class _FunctionIamMemberState:
              member: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cloud_function is None and 'cloudFunction' in kwargs:
+            cloud_function = kwargs['cloudFunction']
+
         if cloud_function is not None:
             _setter("cloud_function", cloud_function)
         if condition is not None:

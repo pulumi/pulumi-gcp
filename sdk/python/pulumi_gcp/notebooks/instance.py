@@ -163,8 +163,8 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             machine_type: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
+             machine_type: Optional[pulumi.Input[str]] = None,
              accelerator_config: Optional[pulumi.Input['InstanceAcceleratorConfigArgs']] = None,
              boot_disk_size_gb: Optional[pulumi.Input[int]] = None,
              boot_disk_type: Optional[pulumi.Input[str]] = None,
@@ -195,7 +195,61 @@ class InstanceArgs:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              vm_image: Optional[pulumi.Input['InstanceVmImageArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if machine_type is None:
+            raise TypeError("Missing 'machine_type' argument")
+        if accelerator_config is None and 'acceleratorConfig' in kwargs:
+            accelerator_config = kwargs['acceleratorConfig']
+        if boot_disk_size_gb is None and 'bootDiskSizeGb' in kwargs:
+            boot_disk_size_gb = kwargs['bootDiskSizeGb']
+        if boot_disk_type is None and 'bootDiskType' in kwargs:
+            boot_disk_type = kwargs['bootDiskType']
+        if container_image is None and 'containerImage' in kwargs:
+            container_image = kwargs['containerImage']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if custom_gpu_driver_path is None and 'customGpuDriverPath' in kwargs:
+            custom_gpu_driver_path = kwargs['customGpuDriverPath']
+        if data_disk_size_gb is None and 'dataDiskSizeGb' in kwargs:
+            data_disk_size_gb = kwargs['dataDiskSizeGb']
+        if data_disk_type is None and 'dataDiskType' in kwargs:
+            data_disk_type = kwargs['dataDiskType']
+        if disk_encryption is None and 'diskEncryption' in kwargs:
+            disk_encryption = kwargs['diskEncryption']
+        if install_gpu_driver is None and 'installGpuDriver' in kwargs:
+            install_gpu_driver = kwargs['installGpuDriver']
+        if instance_owners is None and 'instanceOwners' in kwargs:
+            instance_owners = kwargs['instanceOwners']
+        if kms_key is None and 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+        if nic_type is None and 'nicType' in kwargs:
+            nic_type = kwargs['nicType']
+        if no_proxy_access is None and 'noProxyAccess' in kwargs:
+            no_proxy_access = kwargs['noProxyAccess']
+        if no_public_ip is None and 'noPublicIp' in kwargs:
+            no_public_ip = kwargs['noPublicIp']
+        if no_remove_data_disk is None and 'noRemoveDataDisk' in kwargs:
+            no_remove_data_disk = kwargs['noRemoveDataDisk']
+        if post_startup_script is None and 'postStartupScript' in kwargs:
+            post_startup_script = kwargs['postStartupScript']
+        if reservation_affinity is None and 'reservationAffinity' in kwargs:
+            reservation_affinity = kwargs['reservationAffinity']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if service_account_scopes is None and 'serviceAccountScopes' in kwargs:
+            service_account_scopes = kwargs['serviceAccountScopes']
+        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
+            shielded_instance_config = kwargs['shieldedInstanceConfig']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if vm_image is None and 'vmImage' in kwargs:
+            vm_image = kwargs['vmImage']
+
         _setter("location", location)
         _setter("machine_type", machine_type)
         if accelerator_config is not None:
@@ -879,7 +933,59 @@ class _InstanceState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              vm_image: Optional[pulumi.Input['InstanceVmImageArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerator_config is None and 'acceleratorConfig' in kwargs:
+            accelerator_config = kwargs['acceleratorConfig']
+        if boot_disk_size_gb is None and 'bootDiskSizeGb' in kwargs:
+            boot_disk_size_gb = kwargs['bootDiskSizeGb']
+        if boot_disk_type is None and 'bootDiskType' in kwargs:
+            boot_disk_type = kwargs['bootDiskType']
+        if container_image is None and 'containerImage' in kwargs:
+            container_image = kwargs['containerImage']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if custom_gpu_driver_path is None and 'customGpuDriverPath' in kwargs:
+            custom_gpu_driver_path = kwargs['customGpuDriverPath']
+        if data_disk_size_gb is None and 'dataDiskSizeGb' in kwargs:
+            data_disk_size_gb = kwargs['dataDiskSizeGb']
+        if data_disk_type is None and 'dataDiskType' in kwargs:
+            data_disk_type = kwargs['dataDiskType']
+        if disk_encryption is None and 'diskEncryption' in kwargs:
+            disk_encryption = kwargs['diskEncryption']
+        if install_gpu_driver is None and 'installGpuDriver' in kwargs:
+            install_gpu_driver = kwargs['installGpuDriver']
+        if instance_owners is None and 'instanceOwners' in kwargs:
+            instance_owners = kwargs['instanceOwners']
+        if kms_key is None and 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if nic_type is None and 'nicType' in kwargs:
+            nic_type = kwargs['nicType']
+        if no_proxy_access is None and 'noProxyAccess' in kwargs:
+            no_proxy_access = kwargs['noProxyAccess']
+        if no_public_ip is None and 'noPublicIp' in kwargs:
+            no_public_ip = kwargs['noPublicIp']
+        if no_remove_data_disk is None and 'noRemoveDataDisk' in kwargs:
+            no_remove_data_disk = kwargs['noRemoveDataDisk']
+        if post_startup_script is None and 'postStartupScript' in kwargs:
+            post_startup_script = kwargs['postStartupScript']
+        if proxy_uri is None and 'proxyUri' in kwargs:
+            proxy_uri = kwargs['proxyUri']
+        if reservation_affinity is None and 'reservationAffinity' in kwargs:
+            reservation_affinity = kwargs['reservationAffinity']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if service_account_scopes is None and 'serviceAccountScopes' in kwargs:
+            service_account_scopes = kwargs['serviceAccountScopes']
+        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
+            shielded_instance_config = kwargs['shieldedInstanceConfig']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if vm_image is None and 'vmImage' in kwargs:
+            vm_image = kwargs['vmImage']
+
         if accelerator_config is not None:
             _setter("accelerator_config", accelerator_config)
         if boot_disk_size_gb is not None:

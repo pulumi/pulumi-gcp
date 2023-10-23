@@ -50,11 +50,21 @@ class MetastoreServiceIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_data: pulumi.Input[str],
-             service_id: pulumi.Input[str],
+             policy_data: Optional[pulumi.Input[str]] = None,
+             service_id: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if service_id is None:
+            raise TypeError("Missing 'service_id' argument")
+
         _setter("policy_data", policy_data)
         _setter("service_id", service_id)
         if location is not None:
@@ -171,7 +181,13 @@ class _MetastoreServiceIamPolicyState:
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              service_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+
         if etag is not None:
             _setter("etag", etag)
         if location is not None:

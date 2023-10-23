@@ -57,14 +57,26 @@ class ZoneIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataplex_zone: pulumi.Input[str],
-             lake: pulumi.Input[str],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
+             dataplex_zone: Optional[pulumi.Input[str]] = None,
+             lake: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['ZoneIamMemberConditionArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataplex_zone is None and 'dataplexZone' in kwargs:
+            dataplex_zone = kwargs['dataplexZone']
+        if dataplex_zone is None:
+            raise TypeError("Missing 'dataplex_zone' argument")
+        if lake is None:
+            raise TypeError("Missing 'lake' argument")
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("dataplex_zone", dataplex_zone)
         _setter("lake", lake)
         _setter("member", member)
@@ -219,7 +231,11 @@ class _ZoneIamMemberState:
              member: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataplex_zone is None and 'dataplexZone' in kwargs:
+            dataplex_zone = kwargs['dataplexZone']
+
         if condition is not None:
             _setter("condition", condition)
         if dataplex_zone is not None:

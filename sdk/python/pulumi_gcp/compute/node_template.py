@@ -73,7 +73,19 @@ class NodeTemplateArgs:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              server_binding: Optional[pulumi.Input['NodeTemplateServerBindingArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cpu_overcommit_type is None and 'cpuOvercommitType' in kwargs:
+            cpu_overcommit_type = kwargs['cpuOvercommitType']
+        if node_affinity_labels is None and 'nodeAffinityLabels' in kwargs:
+            node_affinity_labels = kwargs['nodeAffinityLabels']
+        if node_type is None and 'nodeType' in kwargs:
+            node_type = kwargs['nodeType']
+        if node_type_flexibility is None and 'nodeTypeFlexibility' in kwargs:
+            node_type_flexibility = kwargs['nodeTypeFlexibility']
+        if server_binding is None and 'serverBinding' in kwargs:
+            server_binding = kwargs['serverBinding']
+
         if cpu_overcommit_type is not None:
             _setter("cpu_overcommit_type", cpu_overcommit_type)
         if description is not None:
@@ -282,7 +294,23 @@ class _NodeTemplateState:
              region: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              server_binding: Optional[pulumi.Input['NodeTemplateServerBindingArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cpu_overcommit_type is None and 'cpuOvercommitType' in kwargs:
+            cpu_overcommit_type = kwargs['cpuOvercommitType']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if node_affinity_labels is None and 'nodeAffinityLabels' in kwargs:
+            node_affinity_labels = kwargs['nodeAffinityLabels']
+        if node_type is None and 'nodeType' in kwargs:
+            node_type = kwargs['nodeType']
+        if node_type_flexibility is None and 'nodeTypeFlexibility' in kwargs:
+            node_type_flexibility = kwargs['nodeTypeFlexibility']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if server_binding is None and 'serverBinding' in kwargs:
+            server_binding = kwargs['serverBinding']
+
         if cpu_overcommit_type is not None:
             _setter("cpu_overcommit_type", cpu_overcommit_type)
         if creation_timestamp is not None:

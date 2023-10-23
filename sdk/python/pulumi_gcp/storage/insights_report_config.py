@@ -48,13 +48,27 @@ class InsightsReportConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             csv_options: pulumi.Input['InsightsReportConfigCsvOptionsArgs'],
-             location: pulumi.Input[str],
+             csv_options: Optional[pulumi.Input['InsightsReportConfigCsvOptionsArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              frequency_options: Optional[pulumi.Input['InsightsReportConfigFrequencyOptionsArgs']] = None,
              object_metadata_report_options: Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if csv_options is None and 'csvOptions' in kwargs:
+            csv_options = kwargs['csvOptions']
+        if csv_options is None:
+            raise TypeError("Missing 'csv_options' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if frequency_options is None and 'frequencyOptions' in kwargs:
+            frequency_options = kwargs['frequencyOptions']
+        if object_metadata_report_options is None and 'objectMetadataReportOptions' in kwargs:
+            object_metadata_report_options = kwargs['objectMetadataReportOptions']
+
         _setter("csv_options", csv_options)
         _setter("location", location)
         if display_name is not None:
@@ -189,7 +203,17 @@ class _InsightsReportConfigState:
              name: Optional[pulumi.Input[str]] = None,
              object_metadata_report_options: Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if csv_options is None and 'csvOptions' in kwargs:
+            csv_options = kwargs['csvOptions']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if frequency_options is None and 'frequencyOptions' in kwargs:
+            frequency_options = kwargs['frequencyOptions']
+        if object_metadata_report_options is None and 'objectMetadataReportOptions' in kwargs:
+            object_metadata_report_options = kwargs['objectMetadataReportOptions']
+
         if csv_options is not None:
             _setter("csv_options", csv_options)
         if display_name is not None:

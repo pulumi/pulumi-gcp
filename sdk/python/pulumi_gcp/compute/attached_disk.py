@@ -63,13 +63,21 @@ class AttachedDiskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disk: pulumi.Input[str],
-             instance: pulumi.Input[str],
+             disk: Optional[pulumi.Input[str]] = None,
+             instance: Optional[pulumi.Input[str]] = None,
              device_name: Optional[pulumi.Input[str]] = None,
              mode: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disk is None:
+            raise TypeError("Missing 'disk' argument")
+        if instance is None:
+            raise TypeError("Missing 'instance' argument")
+        if device_name is None and 'deviceName' in kwargs:
+            device_name = kwargs['deviceName']
+
         _setter("disk", disk)
         _setter("instance", instance)
         if device_name is not None:
@@ -234,7 +242,11 @@ class _AttachedDiskState:
              mode: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if device_name is None and 'deviceName' in kwargs:
+            device_name = kwargs['deviceName']
+
         if device_name is not None:
             _setter("device_name", device_name)
         if disk is not None:

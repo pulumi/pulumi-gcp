@@ -55,12 +55,22 @@ class WebBackendServiceIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
-             web_backend_service: pulumi.Input[str],
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             web_backend_service: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['WebBackendServiceIamMemberConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if web_backend_service is None and 'webBackendService' in kwargs:
+            web_backend_service = kwargs['webBackendService']
+        if web_backend_service is None:
+            raise TypeError("Missing 'web_backend_service' argument")
+
         _setter("member", member)
         _setter("role", role)
         _setter("web_backend_service", web_backend_service)
@@ -194,7 +204,11 @@ class _WebBackendServiceIamMemberState:
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              web_backend_service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if web_backend_service is None and 'webBackendService' in kwargs:
+            web_backend_service = kwargs['webBackendService']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

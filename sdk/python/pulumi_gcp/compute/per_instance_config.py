@@ -66,7 +66,7 @@ class PerInstanceConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_group_manager: pulumi.Input[str],
+             instance_group_manager: Optional[pulumi.Input[str]] = None,
              minimal_action: Optional[pulumi.Input[str]] = None,
              most_disruptive_allowed_action: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -74,7 +74,21 @@ class PerInstanceConfigArgs:
              project: Optional[pulumi.Input[str]] = None,
              remove_instance_state_on_destroy: Optional[pulumi.Input[bool]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_group_manager is None and 'instanceGroupManager' in kwargs:
+            instance_group_manager = kwargs['instanceGroupManager']
+        if instance_group_manager is None:
+            raise TypeError("Missing 'instance_group_manager' argument")
+        if minimal_action is None and 'minimalAction' in kwargs:
+            minimal_action = kwargs['minimalAction']
+        if most_disruptive_allowed_action is None and 'mostDisruptiveAllowedAction' in kwargs:
+            most_disruptive_allowed_action = kwargs['mostDisruptiveAllowedAction']
+        if preserved_state is None and 'preservedState' in kwargs:
+            preserved_state = kwargs['preservedState']
+        if remove_instance_state_on_destroy is None and 'removeInstanceStateOnDestroy' in kwargs:
+            remove_instance_state_on_destroy = kwargs['removeInstanceStateOnDestroy']
+
         _setter("instance_group_manager", instance_group_manager)
         if minimal_action is not None:
             _setter("minimal_action", minimal_action)
@@ -266,7 +280,19 @@ class _PerInstanceConfigState:
              project: Optional[pulumi.Input[str]] = None,
              remove_instance_state_on_destroy: Optional[pulumi.Input[bool]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_group_manager is None and 'instanceGroupManager' in kwargs:
+            instance_group_manager = kwargs['instanceGroupManager']
+        if minimal_action is None and 'minimalAction' in kwargs:
+            minimal_action = kwargs['minimalAction']
+        if most_disruptive_allowed_action is None and 'mostDisruptiveAllowedAction' in kwargs:
+            most_disruptive_allowed_action = kwargs['mostDisruptiveAllowedAction']
+        if preserved_state is None and 'preservedState' in kwargs:
+            preserved_state = kwargs['preservedState']
+        if remove_instance_state_on_destroy is None and 'removeInstanceStateOnDestroy' in kwargs:
+            remove_instance_state_on_destroy = kwargs['removeInstanceStateOnDestroy']
+
         if instance_group_manager is not None:
             _setter("instance_group_manager", instance_group_manager)
         if minimal_action is not None:

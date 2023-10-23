@@ -81,7 +81,7 @@ class BucketObjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: pulumi.Input[str],
+             bucket: Optional[pulumi.Input[str]] = None,
              cache_control: Optional[pulumi.Input[str]] = None,
              content: Optional[pulumi.Input[str]] = None,
              content_disposition: Optional[pulumi.Input[str]] = None,
@@ -97,7 +97,33 @@ class BucketObjectArgs:
              source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
              storage_class: Optional[pulumi.Input[str]] = None,
              temporary_hold: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if cache_control is None and 'cacheControl' in kwargs:
+            cache_control = kwargs['cacheControl']
+        if content_disposition is None and 'contentDisposition' in kwargs:
+            content_disposition = kwargs['contentDisposition']
+        if content_encoding is None and 'contentEncoding' in kwargs:
+            content_encoding = kwargs['contentEncoding']
+        if content_language is None and 'contentLanguage' in kwargs:
+            content_language = kwargs['contentLanguage']
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if customer_encryption is None and 'customerEncryption' in kwargs:
+            customer_encryption = kwargs['customerEncryption']
+        if detect_md5hash is None and 'detectMd5hash' in kwargs:
+            detect_md5hash = kwargs['detectMd5hash']
+        if event_based_hold is None and 'eventBasedHold' in kwargs:
+            event_based_hold = kwargs['eventBasedHold']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if storage_class is None and 'storageClass' in kwargs:
+            storage_class = kwargs['storageClass']
+        if temporary_hold is None and 'temporaryHold' in kwargs:
+            temporary_hold = kwargs['temporaryHold']
+
         _setter("bucket", bucket)
         if cache_control is not None:
             _setter("cache_control", cache_control)
@@ -434,7 +460,37 @@ class _BucketObjectState:
              source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
              storage_class: Optional[pulumi.Input[str]] = None,
              temporary_hold: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cache_control is None and 'cacheControl' in kwargs:
+            cache_control = kwargs['cacheControl']
+        if content_disposition is None and 'contentDisposition' in kwargs:
+            content_disposition = kwargs['contentDisposition']
+        if content_encoding is None and 'contentEncoding' in kwargs:
+            content_encoding = kwargs['contentEncoding']
+        if content_language is None and 'contentLanguage' in kwargs:
+            content_language = kwargs['contentLanguage']
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if customer_encryption is None and 'customerEncryption' in kwargs:
+            customer_encryption = kwargs['customerEncryption']
+        if detect_md5hash is None and 'detectMd5hash' in kwargs:
+            detect_md5hash = kwargs['detectMd5hash']
+        if event_based_hold is None and 'eventBasedHold' in kwargs:
+            event_based_hold = kwargs['eventBasedHold']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if media_link is None and 'mediaLink' in kwargs:
+            media_link = kwargs['mediaLink']
+        if output_name is None and 'outputName' in kwargs:
+            output_name = kwargs['outputName']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if storage_class is None and 'storageClass' in kwargs:
+            storage_class = kwargs['storageClass']
+        if temporary_hold is None and 'temporaryHold' in kwargs:
+            temporary_hold = kwargs['temporaryHold']
+
         if bucket is not None:
             _setter("bucket", bucket)
         if cache_control is not None:

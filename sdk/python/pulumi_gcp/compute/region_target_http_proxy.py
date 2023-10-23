@@ -50,12 +50,18 @@ class RegionTargetHttpProxyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             url_map: pulumi.Input[str],
+             url_map: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if url_map is None and 'urlMap' in kwargs:
+            url_map = kwargs['urlMap']
+        if url_map is None:
+            raise TypeError("Missing 'url_map' argument")
+
         _setter("url_map", url_map)
         if description is not None:
             _setter("description", description)
@@ -195,7 +201,17 @@ class _RegionTargetHttpProxyState:
              region: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              url_map: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if proxy_id is None and 'proxyId' in kwargs:
+            proxy_id = kwargs['proxyId']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if url_map is None and 'urlMap' in kwargs:
+            url_map = kwargs['urlMap']
+
         if creation_timestamp is not None:
             _setter("creation_timestamp", creation_timestamp)
         if description is not None:

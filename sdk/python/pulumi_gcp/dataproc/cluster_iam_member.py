@@ -58,13 +58,21 @@ class ClusterIAMMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster: pulumi.Input[str],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
+             cluster: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['ClusterIAMMemberConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster is None:
+            raise TypeError("Missing 'cluster' argument")
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("cluster", cluster)
         _setter("member", member)
         _setter("role", role)
@@ -214,7 +222,9 @@ class _ClusterIAMMemberState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if cluster is not None:
             _setter("cluster", cluster)
         if condition is not None:

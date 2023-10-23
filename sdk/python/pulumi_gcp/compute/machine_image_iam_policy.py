@@ -46,10 +46,20 @@ class MachineImageIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             machine_image: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             machine_image: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if machine_image is None and 'machineImage' in kwargs:
+            machine_image = kwargs['machineImage']
+        if machine_image is None:
+            raise TypeError("Missing 'machine_image' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("machine_image", machine_image)
         _setter("policy_data", policy_data)
         if project is not None:
@@ -148,7 +158,13 @@ class _MachineImageIamPolicyState:
              machine_image: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if machine_image is None and 'machineImage' in kwargs:
+            machine_image = kwargs['machineImage']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if etag is not None:
             _setter("etag", etag)
         if machine_image is not None:

@@ -67,7 +67,7 @@ class ProjectSinkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             destination: pulumi.Input[str],
+             destination: Optional[pulumi.Input[str]] = None,
              bigquery_options: Optional[pulumi.Input['ProjectSinkBigqueryOptionsArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
@@ -76,7 +76,15 @@ class ProjectSinkArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              unique_writer_identity: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if destination is None:
+            raise TypeError("Missing 'destination' argument")
+        if bigquery_options is None and 'bigqueryOptions' in kwargs:
+            bigquery_options = kwargs['bigqueryOptions']
+        if unique_writer_identity is None and 'uniqueWriterIdentity' in kwargs:
+            unique_writer_identity = kwargs['uniqueWriterIdentity']
+
         _setter("destination", destination)
         if bigquery_options is not None:
             _setter("bigquery_options", bigquery_options)
@@ -287,7 +295,15 @@ class _ProjectSinkState:
              project: Optional[pulumi.Input[str]] = None,
              unique_writer_identity: Optional[pulumi.Input[bool]] = None,
              writer_identity: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bigquery_options is None and 'bigqueryOptions' in kwargs:
+            bigquery_options = kwargs['bigqueryOptions']
+        if unique_writer_identity is None and 'uniqueWriterIdentity' in kwargs:
+            unique_writer_identity = kwargs['uniqueWriterIdentity']
+        if writer_identity is None and 'writerIdentity' in kwargs:
+            writer_identity = kwargs['writerIdentity']
+
         if bigquery_options is not None:
             _setter("bigquery_options", bigquery_options)
         if description is not None:

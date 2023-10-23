@@ -114,7 +114,7 @@ class FlexTemplateJobArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             container_spec_gcs_path: pulumi.Input[str],
+             container_spec_gcs_path: Optional[pulumi.Input[str]] = None,
              additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              autoscaling_algorithm: Optional[pulumi.Input[str]] = None,
              enable_streaming_engine: Optional[pulumi.Input[bool]] = None,
@@ -138,7 +138,45 @@ class FlexTemplateJobArgs:
              subnetwork: Optional[pulumi.Input[str]] = None,
              temp_location: Optional[pulumi.Input[str]] = None,
              transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if container_spec_gcs_path is None and 'containerSpecGcsPath' in kwargs:
+            container_spec_gcs_path = kwargs['containerSpecGcsPath']
+        if container_spec_gcs_path is None:
+            raise TypeError("Missing 'container_spec_gcs_path' argument")
+        if additional_experiments is None and 'additionalExperiments' in kwargs:
+            additional_experiments = kwargs['additionalExperiments']
+        if autoscaling_algorithm is None and 'autoscalingAlgorithm' in kwargs:
+            autoscaling_algorithm = kwargs['autoscalingAlgorithm']
+        if enable_streaming_engine is None and 'enableStreamingEngine' in kwargs:
+            enable_streaming_engine = kwargs['enableStreamingEngine']
+        if ip_configuration is None and 'ipConfiguration' in kwargs:
+            ip_configuration = kwargs['ipConfiguration']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if launcher_machine_type is None and 'launcherMachineType' in kwargs:
+            launcher_machine_type = kwargs['launcherMachineType']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if max_workers is None and 'maxWorkers' in kwargs:
+            max_workers = kwargs['maxWorkers']
+        if num_workers is None and 'numWorkers' in kwargs:
+            num_workers = kwargs['numWorkers']
+        if on_delete is None and 'onDelete' in kwargs:
+            on_delete = kwargs['onDelete']
+        if sdk_container_image is None and 'sdkContainerImage' in kwargs:
+            sdk_container_image = kwargs['sdkContainerImage']
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if skip_wait_on_job_termination is None and 'skipWaitOnJobTermination' in kwargs:
+            skip_wait_on_job_termination = kwargs['skipWaitOnJobTermination']
+        if staging_location is None and 'stagingLocation' in kwargs:
+            staging_location = kwargs['stagingLocation']
+        if temp_location is None and 'tempLocation' in kwargs:
+            temp_location = kwargs['tempLocation']
+        if transform_name_mapping is None and 'transformNameMapping' in kwargs:
+            transform_name_mapping = kwargs['transformNameMapping']
+
         _setter("container_spec_gcs_path", container_spec_gcs_path)
         if additional_experiments is not None:
             _setter("additional_experiments", additional_experiments)
@@ -634,7 +672,45 @@ class _FlexTemplateJobState:
              temp_location: Optional[pulumi.Input[str]] = None,
              transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if additional_experiments is None and 'additionalExperiments' in kwargs:
+            additional_experiments = kwargs['additionalExperiments']
+        if autoscaling_algorithm is None and 'autoscalingAlgorithm' in kwargs:
+            autoscaling_algorithm = kwargs['autoscalingAlgorithm']
+        if container_spec_gcs_path is None and 'containerSpecGcsPath' in kwargs:
+            container_spec_gcs_path = kwargs['containerSpecGcsPath']
+        if enable_streaming_engine is None and 'enableStreamingEngine' in kwargs:
+            enable_streaming_engine = kwargs['enableStreamingEngine']
+        if ip_configuration is None and 'ipConfiguration' in kwargs:
+            ip_configuration = kwargs['ipConfiguration']
+        if job_id is None and 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if launcher_machine_type is None and 'launcherMachineType' in kwargs:
+            launcher_machine_type = kwargs['launcherMachineType']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if max_workers is None and 'maxWorkers' in kwargs:
+            max_workers = kwargs['maxWorkers']
+        if num_workers is None and 'numWorkers' in kwargs:
+            num_workers = kwargs['numWorkers']
+        if on_delete is None and 'onDelete' in kwargs:
+            on_delete = kwargs['onDelete']
+        if sdk_container_image is None and 'sdkContainerImage' in kwargs:
+            sdk_container_image = kwargs['sdkContainerImage']
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if skip_wait_on_job_termination is None and 'skipWaitOnJobTermination' in kwargs:
+            skip_wait_on_job_termination = kwargs['skipWaitOnJobTermination']
+        if staging_location is None and 'stagingLocation' in kwargs:
+            staging_location = kwargs['stagingLocation']
+        if temp_location is None and 'tempLocation' in kwargs:
+            temp_location = kwargs['tempLocation']
+        if transform_name_mapping is None and 'transformNameMapping' in kwargs:
+            transform_name_mapping = kwargs['transformNameMapping']
+
         if additional_experiments is not None:
             _setter("additional_experiments", additional_experiments)
         if autoscaling_algorithm is not None:

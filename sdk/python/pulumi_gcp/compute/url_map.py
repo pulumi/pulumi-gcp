@@ -91,7 +91,21 @@ class URLMapArgs:
              path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              tests: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapTestArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_route_action is None and 'defaultRouteAction' in kwargs:
+            default_route_action = kwargs['defaultRouteAction']
+        if default_service is None and 'defaultService' in kwargs:
+            default_service = kwargs['defaultService']
+        if default_url_redirect is None and 'defaultUrlRedirect' in kwargs:
+            default_url_redirect = kwargs['defaultUrlRedirect']
+        if header_action is None and 'headerAction' in kwargs:
+            header_action = kwargs['headerAction']
+        if host_rules is None and 'hostRules' in kwargs:
+            host_rules = kwargs['hostRules']
+        if path_matchers is None and 'pathMatchers' in kwargs:
+            path_matchers = kwargs['pathMatchers']
+
         if default_route_action is not None:
             _setter("default_route_action", default_route_action)
         if default_service is not None:
@@ -355,7 +369,27 @@ class _URLMapState:
              project: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              tests: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapTestArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if default_route_action is None and 'defaultRouteAction' in kwargs:
+            default_route_action = kwargs['defaultRouteAction']
+        if default_service is None and 'defaultService' in kwargs:
+            default_service = kwargs['defaultService']
+        if default_url_redirect is None and 'defaultUrlRedirect' in kwargs:
+            default_url_redirect = kwargs['defaultUrlRedirect']
+        if header_action is None and 'headerAction' in kwargs:
+            header_action = kwargs['headerAction']
+        if host_rules is None and 'hostRules' in kwargs:
+            host_rules = kwargs['hostRules']
+        if map_id is None and 'mapId' in kwargs:
+            map_id = kwargs['mapId']
+        if path_matchers is None and 'pathMatchers' in kwargs:
+            path_matchers = kwargs['pathMatchers']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if creation_timestamp is not None:
             _setter("creation_timestamp", creation_timestamp)
         if default_route_action is not None:

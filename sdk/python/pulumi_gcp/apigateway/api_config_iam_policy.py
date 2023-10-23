@@ -49,11 +49,23 @@ class ApiConfigIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api: pulumi.Input[str],
-             api_config: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             api: Optional[pulumi.Input[str]] = None,
+             api_config: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api is None:
+            raise TypeError("Missing 'api' argument")
+        if api_config is None and 'apiConfig' in kwargs:
+            api_config = kwargs['apiConfig']
+        if api_config is None:
+            raise TypeError("Missing 'api_config' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("api", api)
         _setter("api_config", api_config)
         _setter("policy_data", policy_data)
@@ -167,7 +179,13 @@ class _ApiConfigIamPolicyState:
              etag: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_config is None and 'apiConfig' in kwargs:
+            api_config = kwargs['apiConfig']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if api is not None:
             _setter("api", api)
         if api_config is not None:

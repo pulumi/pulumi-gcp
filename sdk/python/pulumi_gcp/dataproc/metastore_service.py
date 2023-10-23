@@ -95,7 +95,7 @@ class MetastoreServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_id: pulumi.Input[str],
+             service_id: Optional[pulumi.Input[str]] = None,
              database_type: Optional[pulumi.Input[str]] = None,
              encryption_config: Optional[pulumi.Input['MetastoreServiceEncryptionConfigArgs']] = None,
              hive_metastore_config: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs']] = None,
@@ -111,7 +111,31 @@ class MetastoreServiceArgs:
              scaling_config: Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']] = None,
              telemetry_config: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']] = None,
              tier: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if service_id is None:
+            raise TypeError("Missing 'service_id' argument")
+        if database_type is None and 'databaseType' in kwargs:
+            database_type = kwargs['databaseType']
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if hive_metastore_config is None and 'hiveMetastoreConfig' in kwargs:
+            hive_metastore_config = kwargs['hiveMetastoreConfig']
+        if maintenance_window is None and 'maintenanceWindow' in kwargs:
+            maintenance_window = kwargs['maintenanceWindow']
+        if metadata_integration is None and 'metadataIntegration' in kwargs:
+            metadata_integration = kwargs['metadataIntegration']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if release_channel is None and 'releaseChannel' in kwargs:
+            release_channel = kwargs['releaseChannel']
+        if scaling_config is None and 'scalingConfig' in kwargs:
+            scaling_config = kwargs['scalingConfig']
+        if telemetry_config is None and 'telemetryConfig' in kwargs:
+            telemetry_config = kwargs['telemetryConfig']
+
         _setter("service_id", service_id)
         if database_type is not None:
             _setter("database_type", database_type)
@@ -482,7 +506,35 @@ class _MetastoreServiceState:
              telemetry_config: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']] = None,
              tier: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if artifact_gcs_uri is None and 'artifactGcsUri' in kwargs:
+            artifact_gcs_uri = kwargs['artifactGcsUri']
+        if database_type is None and 'databaseType' in kwargs:
+            database_type = kwargs['databaseType']
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if endpoint_uri is None and 'endpointUri' in kwargs:
+            endpoint_uri = kwargs['endpointUri']
+        if hive_metastore_config is None and 'hiveMetastoreConfig' in kwargs:
+            hive_metastore_config = kwargs['hiveMetastoreConfig']
+        if maintenance_window is None and 'maintenanceWindow' in kwargs:
+            maintenance_window = kwargs['maintenanceWindow']
+        if metadata_integration is None and 'metadataIntegration' in kwargs:
+            metadata_integration = kwargs['metadataIntegration']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if release_channel is None and 'releaseChannel' in kwargs:
+            release_channel = kwargs['releaseChannel']
+        if scaling_config is None and 'scalingConfig' in kwargs:
+            scaling_config = kwargs['scalingConfig']
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if state_message is None and 'stateMessage' in kwargs:
+            state_message = kwargs['stateMessage']
+        if telemetry_config is None and 'telemetryConfig' in kwargs:
+            telemetry_config = kwargs['telemetryConfig']
+
         if artifact_gcs_uri is not None:
             _setter("artifact_gcs_uri", artifact_gcs_uri)
         if database_type is not None:

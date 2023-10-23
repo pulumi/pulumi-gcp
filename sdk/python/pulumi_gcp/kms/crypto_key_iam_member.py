@@ -50,11 +50,21 @@ class CryptoKeyIAMMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             crypto_key_id: pulumi.Input[str],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
+             crypto_key_id: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['CryptoKeyIAMMemberConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key_id is None and 'cryptoKeyId' in kwargs:
+            crypto_key_id = kwargs['cryptoKeyId']
+        if crypto_key_id is None:
+            raise TypeError("Missing 'crypto_key_id' argument")
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("crypto_key_id", crypto_key_id)
         _setter("member", member)
         _setter("role", role)
@@ -166,7 +176,11 @@ class _CryptoKeyIAMMemberState:
              etag: Optional[pulumi.Input[str]] = None,
              member: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key_id is None and 'cryptoKeyId' in kwargs:
+            crypto_key_id = kwargs['cryptoKeyId']
+
         if condition is not None:
             _setter("condition", condition)
         if crypto_key_id is not None:

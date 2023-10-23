@@ -51,13 +51,27 @@ class NamespaceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             scope: pulumi.Input[str],
-             scope_id: pulumi.Input[str],
-             scope_namespace_id: pulumi.Input[str],
+             scope: Optional[pulumi.Input[str]] = None,
+             scope_id: Optional[pulumi.Input[str]] = None,
+             scope_namespace_id: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              namespace_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if scope is None:
+            raise TypeError("Missing 'scope' argument")
+        if scope_id is None and 'scopeId' in kwargs:
+            scope_id = kwargs['scopeId']
+        if scope_id is None:
+            raise TypeError("Missing 'scope_id' argument")
+        if scope_namespace_id is None and 'scopeNamespaceId' in kwargs:
+            scope_namespace_id = kwargs['scopeNamespaceId']
+        if scope_namespace_id is None:
+            raise TypeError("Missing 'scope_namespace_id' argument")
+        if namespace_labels is None and 'namespaceLabels' in kwargs:
+            namespace_labels = kwargs['namespaceLabels']
+
         _setter("scope", scope)
         _setter("scope_id", scope_id)
         _setter("scope_namespace_id", scope_namespace_id)
@@ -218,7 +232,21 @@ class _NamespaceState:
              states: Optional[pulumi.Input[Sequence[pulumi.Input['NamespaceStateArgs']]]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if delete_time is None and 'deleteTime' in kwargs:
+            delete_time = kwargs['deleteTime']
+        if namespace_labels is None and 'namespaceLabels' in kwargs:
+            namespace_labels = kwargs['namespaceLabels']
+        if scope_id is None and 'scopeId' in kwargs:
+            scope_id = kwargs['scopeId']
+        if scope_namespace_id is None and 'scopeNamespaceId' in kwargs:
+            scope_namespace_id = kwargs['scopeNamespaceId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if delete_time is not None:

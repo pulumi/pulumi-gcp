@@ -65,7 +65,7 @@ class BackendBucketArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket_name: pulumi.Input[str],
+             bucket_name: Optional[pulumi.Input[str]] = None,
              cdn_policy: Optional[pulumi.Input['BackendBucketCdnPolicyArgs']] = None,
              compression_mode: Optional[pulumi.Input[str]] = None,
              custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -74,7 +74,23 @@ class BackendBucketArgs:
              enable_cdn: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if bucket_name is None:
+            raise TypeError("Missing 'bucket_name' argument")
+        if cdn_policy is None and 'cdnPolicy' in kwargs:
+            cdn_policy = kwargs['cdnPolicy']
+        if compression_mode is None and 'compressionMode' in kwargs:
+            compression_mode = kwargs['compressionMode']
+        if custom_response_headers is None and 'customResponseHeaders' in kwargs:
+            custom_response_headers = kwargs['customResponseHeaders']
+        if edge_security_policy is None and 'edgeSecurityPolicy' in kwargs:
+            edge_security_policy = kwargs['edgeSecurityPolicy']
+        if enable_cdn is None and 'enableCdn' in kwargs:
+            enable_cdn = kwargs['enableCdn']
+
         _setter("bucket_name", bucket_name)
         if cdn_policy is not None:
             _setter("cdn_policy", cdn_policy)
@@ -284,7 +300,25 @@ class _BackendBucketState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if cdn_policy is None and 'cdnPolicy' in kwargs:
+            cdn_policy = kwargs['cdnPolicy']
+        if compression_mode is None and 'compressionMode' in kwargs:
+            compression_mode = kwargs['compressionMode']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if custom_response_headers is None and 'customResponseHeaders' in kwargs:
+            custom_response_headers = kwargs['customResponseHeaders']
+        if edge_security_policy is None and 'edgeSecurityPolicy' in kwargs:
+            edge_security_policy = kwargs['edgeSecurityPolicy']
+        if enable_cdn is None and 'enableCdn' in kwargs:
+            enable_cdn = kwargs['enableCdn']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if bucket_name is not None:
             _setter("bucket_name", bucket_name)
         if cdn_policy is not None:

@@ -60,7 +60,7 @@ class ConnectionProfileArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_profile_id: pulumi.Input[str],
+             connection_profile_id: Optional[pulumi.Input[str]] = None,
              alloydb: Optional[pulumi.Input['ConnectionProfileAlloydbArgs']] = None,
              cloudsql: Optional[pulumi.Input['ConnectionProfileCloudsqlArgs']] = None,
              display_name: Optional[pulumi.Input[str]] = None,
@@ -69,7 +69,15 @@ class ConnectionProfileArgs:
              mysql: Optional[pulumi.Input['ConnectionProfileMysqlArgs']] = None,
              postgresql: Optional[pulumi.Input['ConnectionProfilePostgresqlArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connection_profile_id is None and 'connectionProfileId' in kwargs:
+            connection_profile_id = kwargs['connectionProfileId']
+        if connection_profile_id is None:
+            raise TypeError("Missing 'connection_profile_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("connection_profile_id", connection_profile_id)
         if alloydb is not None:
             _setter("alloydb", alloydb)
@@ -282,7 +290,15 @@ class _ConnectionProfileState:
              postgresql: Optional[pulumi.Input['ConnectionProfilePostgresqlArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connection_profile_id is None and 'connectionProfileId' in kwargs:
+            connection_profile_id = kwargs['connectionProfileId']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if alloydb is not None:
             _setter("alloydb", alloydb)
         if cloudsql is not None:

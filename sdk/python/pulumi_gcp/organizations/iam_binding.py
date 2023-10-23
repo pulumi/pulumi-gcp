@@ -38,11 +38,21 @@ class IAMBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             org_id: pulumi.Input[str],
-             role: pulumi.Input[str],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['IAMBindingConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("members", members)
         _setter("org_id", org_id)
         _setter("role", role)
@@ -130,7 +140,11 @@ class _IAMBindingState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              org_id: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

@@ -57,14 +57,26 @@ class ReservationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             specific_reservation: pulumi.Input['ReservationSpecificReservationArgs'],
-             zone: pulumi.Input[str],
+             specific_reservation: Optional[pulumi.Input['ReservationSpecificReservationArgs']] = None,
+             zone: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              share_settings: Optional[pulumi.Input['ReservationShareSettingsArgs']] = None,
              specific_reservation_required: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if specific_reservation is None and 'specificReservation' in kwargs:
+            specific_reservation = kwargs['specificReservation']
+        if specific_reservation is None:
+            raise TypeError("Missing 'specific_reservation' argument")
+        if zone is None:
+            raise TypeError("Missing 'zone' argument")
+        if share_settings is None and 'shareSettings' in kwargs:
+            share_settings = kwargs['shareSettings']
+        if specific_reservation_required is None and 'specificReservationRequired' in kwargs:
+            specific_reservation_required = kwargs['specificReservationRequired']
+
         _setter("specific_reservation", specific_reservation)
         _setter("zone", zone)
         if description is not None:
@@ -242,7 +254,19 @@ class _ReservationState:
              specific_reservation_required: Optional[pulumi.Input[bool]] = None,
              status: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if share_settings is None and 'shareSettings' in kwargs:
+            share_settings = kwargs['shareSettings']
+        if specific_reservation is None and 'specificReservation' in kwargs:
+            specific_reservation = kwargs['specificReservation']
+        if specific_reservation_required is None and 'specificReservationRequired' in kwargs:
+            specific_reservation_required = kwargs['specificReservationRequired']
+
         if commitment is not None:
             _setter("commitment", commitment)
         if creation_timestamp is not None:

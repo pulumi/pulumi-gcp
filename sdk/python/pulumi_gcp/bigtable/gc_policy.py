@@ -57,16 +57,36 @@ class GCPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             column_family: pulumi.Input[str],
-             instance_name: pulumi.Input[str],
-             table: pulumi.Input[str],
+             column_family: Optional[pulumi.Input[str]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             table: Optional[pulumi.Input[str]] = None,
              deletion_policy: Optional[pulumi.Input[str]] = None,
              gc_rules: Optional[pulumi.Input[str]] = None,
              max_age: Optional[pulumi.Input['GCPolicyMaxAgeArgs']] = None,
              max_versions: Optional[pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]]] = None,
              mode: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if column_family is None and 'columnFamily' in kwargs:
+            column_family = kwargs['columnFamily']
+        if column_family is None:
+            raise TypeError("Missing 'column_family' argument")
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if table is None:
+            raise TypeError("Missing 'table' argument")
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+        if gc_rules is None and 'gcRules' in kwargs:
+            gc_rules = kwargs['gcRules']
+        if max_age is None and 'maxAge' in kwargs:
+            max_age = kwargs['maxAge']
+        if max_versions is None and 'maxVersions' in kwargs:
+            max_versions = kwargs['maxVersions']
+
         _setter("column_family", column_family)
         _setter("instance_name", instance_name)
         _setter("table", table)
@@ -250,7 +270,21 @@ class _GCPolicyState:
              mode: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              table: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if column_family is None and 'columnFamily' in kwargs:
+            column_family = kwargs['columnFamily']
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+        if gc_rules is None and 'gcRules' in kwargs:
+            gc_rules = kwargs['gcRules']
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if max_age is None and 'maxAge' in kwargs:
+            max_age = kwargs['maxAge']
+        if max_versions is None and 'maxVersions' in kwargs:
+            max_versions = kwargs['maxVersions']
+
         if column_family is not None:
             _setter("column_family", column_family)
         if deletion_policy is not None:

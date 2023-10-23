@@ -66,7 +66,15 @@ class InstanceArgs:
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+
         if clusters is not None:
             _setter("clusters", clusters)
         if deletion_protection is not None:
@@ -239,7 +247,15 @@ class _InstanceState:
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+
         if clusters is not None:
             _setter("clusters", clusters)
         if deletion_protection is not None:

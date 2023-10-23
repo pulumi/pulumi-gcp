@@ -45,11 +45,17 @@ class TagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             fields: pulumi.Input[Sequence[pulumi.Input['TagFieldArgs']]],
-             template: pulumi.Input[str],
+             fields: Optional[pulumi.Input[Sequence[pulumi.Input['TagFieldArgs']]]] = None,
+             template: Optional[pulumi.Input[str]] = None,
              column: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if fields is None:
+            raise TypeError("Missing 'fields' argument")
+        if template is None:
+            raise TypeError("Missing 'template' argument")
+
         _setter("fields", fields)
         _setter("template", template)
         if column is not None:
@@ -161,7 +167,11 @@ class _TagState:
              parent: Optional[pulumi.Input[str]] = None,
              template: Optional[pulumi.Input[str]] = None,
              template_displayname: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if template_displayname is None and 'templateDisplayname' in kwargs:
+            template_displayname = kwargs['templateDisplayname']
+
         if column is not None:
             _setter("column", column)
         if fields is not None:

@@ -90,8 +90,8 @@ class GatewayArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ports: pulumi.Input[Sequence[pulumi.Input[int]]],
-             type: pulumi.Input[str],
+             ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              delete_swg_autogen_router_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -105,7 +105,21 @@ class GatewayArgs:
              scope: Optional[pulumi.Input[str]] = None,
              server_tls_policy: Optional[pulumi.Input[str]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ports is None:
+            raise TypeError("Missing 'ports' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if certificate_urls is None and 'certificateUrls' in kwargs:
+            certificate_urls = kwargs['certificateUrls']
+        if delete_swg_autogen_router_on_destroy is None and 'deleteSwgAutogenRouterOnDestroy' in kwargs:
+            delete_swg_autogen_router_on_destroy = kwargs['deleteSwgAutogenRouterOnDestroy']
+        if gateway_security_policy is None and 'gatewaySecurityPolicy' in kwargs:
+            gateway_security_policy = kwargs['gatewaySecurityPolicy']
+        if server_tls_policy is None and 'serverTlsPolicy' in kwargs:
+            server_tls_policy = kwargs['serverTlsPolicy']
+
         _setter("ports", ports)
         _setter("type", type)
         if addresses is not None:
@@ -444,7 +458,23 @@ class _GatewayState:
              subnetwork: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if certificate_urls is None and 'certificateUrls' in kwargs:
+            certificate_urls = kwargs['certificateUrls']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if delete_swg_autogen_router_on_destroy is None and 'deleteSwgAutogenRouterOnDestroy' in kwargs:
+            delete_swg_autogen_router_on_destroy = kwargs['deleteSwgAutogenRouterOnDestroy']
+        if gateway_security_policy is None and 'gatewaySecurityPolicy' in kwargs:
+            gateway_security_policy = kwargs['gatewaySecurityPolicy']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if server_tls_policy is None and 'serverTlsPolicy' in kwargs:
+            server_tls_policy = kwargs['serverTlsPolicy']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if addresses is not None:
             _setter("addresses", addresses)
         if certificate_urls is not None:

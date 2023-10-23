@@ -51,11 +51,21 @@ class FunctionIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cloud_function: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             cloud_function: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cloud_function is None and 'cloudFunction' in kwargs:
+            cloud_function = kwargs['cloudFunction']
+        if cloud_function is None:
+            raise TypeError("Missing 'cloud_function' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("cloud_function", cloud_function)
         _setter("policy_data", policy_data)
         if project is not None:
@@ -176,7 +186,13 @@ class _FunctionIamPolicyState:
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cloud_function is None and 'cloudFunction' in kwargs:
+            cloud_function = kwargs['cloudFunction']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if cloud_function is not None:
             _setter("cloud_function", cloud_function)
         if etag is not None:

@@ -54,11 +54,21 @@ class AutoscalingPolicyIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_data: pulumi.Input[str],
-             policy_id: pulumi.Input[str],
+             policy_data: Optional[pulumi.Input[str]] = None,
+             policy_id: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if policy_id is None:
+            raise TypeError("Missing 'policy_id' argument")
+
         _setter("policy_data", policy_data)
         _setter("policy_id", policy_id)
         if location is not None:
@@ -185,7 +195,13 @@ class _AutoscalingPolicyIamPolicyState:
              policy_data: Optional[pulumi.Input[str]] = None,
              policy_id: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+
         if etag is not None:
             _setter("etag", etag)
         if location is not None:

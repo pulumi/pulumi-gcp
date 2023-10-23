@@ -49,11 +49,21 @@ class ObjectAccessControlArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: pulumi.Input[str],
-             entity: pulumi.Input[str],
-             object: pulumi.Input[str],
-             role: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bucket: Optional[pulumi.Input[str]] = None,
+             entity: Optional[pulumi.Input[str]] = None,
+             object: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if entity is None:
+            raise TypeError("Missing 'entity' argument")
+        if object is None:
+            raise TypeError("Missing 'object' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("bucket", bucket)
         _setter("entity", entity)
         _setter("object", object)
@@ -181,7 +191,13 @@ class _ObjectAccessControlState:
              object: Optional[pulumi.Input[str]] = None,
              project_teams: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectAccessControlProjectTeamArgs']]]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if entity_id is None and 'entityId' in kwargs:
+            entity_id = kwargs['entityId']
+        if project_teams is None and 'projectTeams' in kwargs:
+            project_teams = kwargs['projectTeams']
+
         if bucket is not None:
             _setter("bucket", bucket)
         if domain is not None:

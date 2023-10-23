@@ -41,12 +41,30 @@ class DocumentAiWarehouseDocumentSchemaArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             location: pulumi.Input[str],
-             project_number: pulumi.Input[str],
-             property_definitions: pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]],
+             display_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             project_number: Optional[pulumi.Input[str]] = None,
+             property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]] = None,
              document_is_folder: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if project_number is None and 'projectNumber' in kwargs:
+            project_number = kwargs['projectNumber']
+        if project_number is None:
+            raise TypeError("Missing 'project_number' argument")
+        if property_definitions is None and 'propertyDefinitions' in kwargs:
+            property_definitions = kwargs['propertyDefinitions']
+        if property_definitions is None:
+            raise TypeError("Missing 'property_definitions' argument")
+        if document_is_folder is None and 'documentIsFolder' in kwargs:
+            document_is_folder = kwargs['documentIsFolder']
+
         _setter("display_name", display_name)
         _setter("location", location)
         _setter("project_number", project_number)
@@ -153,7 +171,17 @@ class _DocumentAiWarehouseDocumentSchemaState:
              name: Optional[pulumi.Input[str]] = None,
              project_number: Optional[pulumi.Input[str]] = None,
              property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if document_is_folder is None and 'documentIsFolder' in kwargs:
+            document_is_folder = kwargs['documentIsFolder']
+        if project_number is None and 'projectNumber' in kwargs:
+            project_number = kwargs['projectNumber']
+        if property_definitions is None and 'propertyDefinitions' in kwargs:
+            property_definitions = kwargs['propertyDefinitions']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if document_is_folder is not None:

@@ -107,13 +107,13 @@ class BareMetalClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             admin_cluster_membership: pulumi.Input[str],
-             bare_metal_version: pulumi.Input[str],
-             control_plane: pulumi.Input['BareMetalClusterControlPlaneArgs'],
-             load_balancer: pulumi.Input['BareMetalClusterLoadBalancerArgs'],
-             location: pulumi.Input[str],
-             network_config: pulumi.Input['BareMetalClusterNetworkConfigArgs'],
-             storage: pulumi.Input['BareMetalClusterStorageArgs'],
+             admin_cluster_membership: Optional[pulumi.Input[str]] = None,
+             bare_metal_version: Optional[pulumi.Input[str]] = None,
+             control_plane: Optional[pulumi.Input['BareMetalClusterControlPlaneArgs']] = None,
+             load_balancer: Optional[pulumi.Input['BareMetalClusterLoadBalancerArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             network_config: Optional[pulumi.Input['BareMetalClusterNetworkConfigArgs']] = None,
+             storage: Optional[pulumi.Input['BareMetalClusterStorageArgs']] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              binary_authorization: Optional[pulumi.Input['BareMetalClusterBinaryAuthorizationArgs']] = None,
              cluster_operations: Optional[pulumi.Input['BareMetalClusterClusterOperationsArgs']] = None,
@@ -127,7 +127,49 @@ class BareMetalClusterArgs:
              proxy: Optional[pulumi.Input['BareMetalClusterProxyArgs']] = None,
              security_config: Optional[pulumi.Input['BareMetalClusterSecurityConfigArgs']] = None,
              upgrade_policy: Optional[pulumi.Input['BareMetalClusterUpgradePolicyArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if admin_cluster_membership is None and 'adminClusterMembership' in kwargs:
+            admin_cluster_membership = kwargs['adminClusterMembership']
+        if admin_cluster_membership is None:
+            raise TypeError("Missing 'admin_cluster_membership' argument")
+        if bare_metal_version is None and 'bareMetalVersion' in kwargs:
+            bare_metal_version = kwargs['bareMetalVersion']
+        if bare_metal_version is None:
+            raise TypeError("Missing 'bare_metal_version' argument")
+        if control_plane is None and 'controlPlane' in kwargs:
+            control_plane = kwargs['controlPlane']
+        if control_plane is None:
+            raise TypeError("Missing 'control_plane' argument")
+        if load_balancer is None and 'loadBalancer' in kwargs:
+            load_balancer = kwargs['loadBalancer']
+        if load_balancer is None:
+            raise TypeError("Missing 'load_balancer' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if network_config is None:
+            raise TypeError("Missing 'network_config' argument")
+        if storage is None:
+            raise TypeError("Missing 'storage' argument")
+        if binary_authorization is None and 'binaryAuthorization' in kwargs:
+            binary_authorization = kwargs['binaryAuthorization']
+        if cluster_operations is None and 'clusterOperations' in kwargs:
+            cluster_operations = kwargs['clusterOperations']
+        if maintenance_config is None and 'maintenanceConfig' in kwargs:
+            maintenance_config = kwargs['maintenanceConfig']
+        if node_access_config is None and 'nodeAccessConfig' in kwargs:
+            node_access_config = kwargs['nodeAccessConfig']
+        if node_config is None and 'nodeConfig' in kwargs:
+            node_config = kwargs['nodeConfig']
+        if os_environment_config is None and 'osEnvironmentConfig' in kwargs:
+            os_environment_config = kwargs['osEnvironmentConfig']
+        if security_config is None and 'securityConfig' in kwargs:
+            security_config = kwargs['securityConfig']
+        if upgrade_policy is None and 'upgradePolicy' in kwargs:
+            upgrade_policy = kwargs['upgradePolicy']
+
         _setter("admin_cluster_membership", admin_cluster_membership)
         _setter("bare_metal_version", bare_metal_version)
         _setter("control_plane", control_plane)
@@ -610,7 +652,45 @@ class _BareMetalClusterState:
              update_time: Optional[pulumi.Input[str]] = None,
              upgrade_policy: Optional[pulumi.Input['BareMetalClusterUpgradePolicyArgs']] = None,
              validation_checks: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if admin_cluster_membership is None and 'adminClusterMembership' in kwargs:
+            admin_cluster_membership = kwargs['adminClusterMembership']
+        if bare_metal_version is None and 'bareMetalVersion' in kwargs:
+            bare_metal_version = kwargs['bareMetalVersion']
+        if binary_authorization is None and 'binaryAuthorization' in kwargs:
+            binary_authorization = kwargs['binaryAuthorization']
+        if cluster_operations is None and 'clusterOperations' in kwargs:
+            cluster_operations = kwargs['clusterOperations']
+        if control_plane is None and 'controlPlane' in kwargs:
+            control_plane = kwargs['controlPlane']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if delete_time is None and 'deleteTime' in kwargs:
+            delete_time = kwargs['deleteTime']
+        if load_balancer is None and 'loadBalancer' in kwargs:
+            load_balancer = kwargs['loadBalancer']
+        if local_name is None and 'localName' in kwargs:
+            local_name = kwargs['localName']
+        if maintenance_config is None and 'maintenanceConfig' in kwargs:
+            maintenance_config = kwargs['maintenanceConfig']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if node_access_config is None and 'nodeAccessConfig' in kwargs:
+            node_access_config = kwargs['nodeAccessConfig']
+        if node_config is None and 'nodeConfig' in kwargs:
+            node_config = kwargs['nodeConfig']
+        if os_environment_config is None and 'osEnvironmentConfig' in kwargs:
+            os_environment_config = kwargs['osEnvironmentConfig']
+        if security_config is None and 'securityConfig' in kwargs:
+            security_config = kwargs['securityConfig']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if upgrade_policy is None and 'upgradePolicy' in kwargs:
+            upgrade_policy = kwargs['upgradePolicy']
+        if validation_checks is None and 'validationChecks' in kwargs:
+            validation_checks = kwargs['validationChecks']
+
         if admin_cluster_membership is not None:
             _setter("admin_cluster_membership", admin_cluster_membership)
         if annotations is not None:

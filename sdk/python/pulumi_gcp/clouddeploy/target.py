@@ -68,7 +68,7 @@ class TargetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              anthos_cluster: Optional[pulumi.Input['TargetAnthosClusterArgs']] = None,
              deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -81,7 +81,21 @@ class TargetArgs:
              project: Optional[pulumi.Input[str]] = None,
              require_approval: Optional[pulumi.Input[bool]] = None,
              run: Optional[pulumi.Input['TargetRunArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if anthos_cluster is None and 'anthosCluster' in kwargs:
+            anthos_cluster = kwargs['anthosCluster']
+        if deploy_parameters is None and 'deployParameters' in kwargs:
+            deploy_parameters = kwargs['deployParameters']
+        if execution_configs is None and 'executionConfigs' in kwargs:
+            execution_configs = kwargs['executionConfigs']
+        if multi_target is None and 'multiTarget' in kwargs:
+            multi_target = kwargs['multiTarget']
+        if require_approval is None and 'requireApproval' in kwargs:
+            require_approval = kwargs['requireApproval']
+
         _setter("location", location)
         if annotations is not None:
             _setter("annotations", annotations)
@@ -357,7 +371,25 @@ class _TargetState:
              target_id: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if anthos_cluster is None and 'anthosCluster' in kwargs:
+            anthos_cluster = kwargs['anthosCluster']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if deploy_parameters is None and 'deployParameters' in kwargs:
+            deploy_parameters = kwargs['deployParameters']
+        if execution_configs is None and 'executionConfigs' in kwargs:
+            execution_configs = kwargs['executionConfigs']
+        if multi_target is None and 'multiTarget' in kwargs:
+            multi_target = kwargs['multiTarget']
+        if require_approval is None and 'requireApproval' in kwargs:
+            require_approval = kwargs['requireApproval']
+        if target_id is None and 'targetId' in kwargs:
+            target_id = kwargs['targetId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if anthos_cluster is not None:

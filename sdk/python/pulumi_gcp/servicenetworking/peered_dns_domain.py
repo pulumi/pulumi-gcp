@@ -38,12 +38,20 @@ class PeeredDnsDomainArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dns_suffix: pulumi.Input[str],
-             network: pulumi.Input[str],
+             dns_suffix: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dns_suffix is None and 'dnsSuffix' in kwargs:
+            dns_suffix = kwargs['dnsSuffix']
+        if dns_suffix is None:
+            raise TypeError("Missing 'dns_suffix' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+
         _setter("dns_suffix", dns_suffix)
         _setter("network", network)
         if name is not None:
@@ -150,7 +158,11 @@ class _PeeredDnsDomainState:
              parent: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dns_suffix is None and 'dnsSuffix' in kwargs:
+            dns_suffix = kwargs['dnsSuffix']
+
         if dns_suffix is not None:
             _setter("dns_suffix", dns_suffix)
         if name is not None:

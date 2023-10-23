@@ -51,11 +51,19 @@ class BucketIAMBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             bucket: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['BucketIAMBindingConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("bucket", bucket)
         _setter("members", members)
         _setter("role", role)
@@ -169,7 +177,9 @@ class _BucketIAMBindingState:
              etag: Optional[pulumi.Input[str]] = None,
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if bucket is not None:
             _setter("bucket", bucket)
         if condition is not None:

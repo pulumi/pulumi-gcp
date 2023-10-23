@@ -49,11 +49,21 @@ class RuntimeIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_data: pulumi.Input[str],
-             runtime_name: pulumi.Input[str],
+             policy_data: Optional[pulumi.Input[str]] = None,
+             runtime_name: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+        if runtime_name is None and 'runtimeName' in kwargs:
+            runtime_name = kwargs['runtimeName']
+        if runtime_name is None:
+            raise TypeError("Missing 'runtime_name' argument")
+
         _setter("policy_data", policy_data)
         _setter("runtime_name", runtime_name)
         if location is not None:
@@ -170,7 +180,13 @@ class _RuntimeIamPolicyState:
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              runtime_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if runtime_name is None and 'runtimeName' in kwargs:
+            runtime_name = kwargs['runtimeName']
+
         if etag is not None:
             _setter("etag", etag)
         if location is not None:

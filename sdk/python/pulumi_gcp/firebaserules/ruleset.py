@@ -31,9 +31,13 @@ class RulesetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source: pulumi.Input['RulesetSourceArgs'],
+             source: Optional[pulumi.Input['RulesetSourceArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+
         _setter("source", source)
         if project is not None:
             _setter("project", project)
@@ -97,7 +101,11 @@ class _RulesetState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input['RulesetSourceArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if metadatas is not None:

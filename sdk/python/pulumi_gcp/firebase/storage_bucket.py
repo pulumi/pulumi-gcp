@@ -32,7 +32,11 @@ class StorageBucketArgs:
              _setter: Callable[[Any, Any], None],
              bucket_id: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket_id is None and 'bucketId' in kwargs:
+            bucket_id = kwargs['bucketId']
+
         if bucket_id is not None:
             _setter("bucket_id", bucket_id)
         if project is not None:
@@ -89,7 +93,11 @@ class _StorageBucketState:
              bucket_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket_id is None and 'bucketId' in kwargs:
+            bucket_id = kwargs['bucketId']
+
         if bucket_id is not None:
             _setter("bucket_id", bucket_id)
         if name is not None:

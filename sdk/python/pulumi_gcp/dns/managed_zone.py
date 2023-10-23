@@ -86,7 +86,7 @@ class ManagedZoneArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dns_name: pulumi.Input[str],
+             dns_name: Optional[pulumi.Input[str]] = None,
              cloud_logging_config: Optional[pulumi.Input['ManagedZoneCloudLoggingConfigArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              dnssec_config: Optional[pulumi.Input['ManagedZoneDnssecConfigArgs']] = None,
@@ -100,7 +100,29 @@ class ManagedZoneArgs:
              reverse_lookup: Optional[pulumi.Input[bool]] = None,
              service_directory_config: Optional[pulumi.Input['ManagedZoneServiceDirectoryConfigArgs']] = None,
              visibility: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dns_name is None and 'dnsName' in kwargs:
+            dns_name = kwargs['dnsName']
+        if dns_name is None:
+            raise TypeError("Missing 'dns_name' argument")
+        if cloud_logging_config is None and 'cloudLoggingConfig' in kwargs:
+            cloud_logging_config = kwargs['cloudLoggingConfig']
+        if dnssec_config is None and 'dnssecConfig' in kwargs:
+            dnssec_config = kwargs['dnssecConfig']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if forwarding_config is None and 'forwardingConfig' in kwargs:
+            forwarding_config = kwargs['forwardingConfig']
+        if peering_config is None and 'peeringConfig' in kwargs:
+            peering_config = kwargs['peeringConfig']
+        if private_visibility_config is None and 'privateVisibilityConfig' in kwargs:
+            private_visibility_config = kwargs['privateVisibilityConfig']
+        if reverse_lookup is None and 'reverseLookup' in kwargs:
+            reverse_lookup = kwargs['reverseLookup']
+        if service_directory_config is None and 'serviceDirectoryConfig' in kwargs:
+            service_directory_config = kwargs['serviceDirectoryConfig']
+
         _setter("dns_name", dns_name)
         if cloud_logging_config is not None:
             _setter("cloud_logging_config", cloud_logging_config)
@@ -420,7 +442,33 @@ class _ManagedZoneState:
              reverse_lookup: Optional[pulumi.Input[bool]] = None,
              service_directory_config: Optional[pulumi.Input['ManagedZoneServiceDirectoryConfigArgs']] = None,
              visibility: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cloud_logging_config is None and 'cloudLoggingConfig' in kwargs:
+            cloud_logging_config = kwargs['cloudLoggingConfig']
+        if creation_time is None and 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if dns_name is None and 'dnsName' in kwargs:
+            dns_name = kwargs['dnsName']
+        if dnssec_config is None and 'dnssecConfig' in kwargs:
+            dnssec_config = kwargs['dnssecConfig']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if forwarding_config is None and 'forwardingConfig' in kwargs:
+            forwarding_config = kwargs['forwardingConfig']
+        if managed_zone_id is None and 'managedZoneId' in kwargs:
+            managed_zone_id = kwargs['managedZoneId']
+        if name_servers is None and 'nameServers' in kwargs:
+            name_servers = kwargs['nameServers']
+        if peering_config is None and 'peeringConfig' in kwargs:
+            peering_config = kwargs['peeringConfig']
+        if private_visibility_config is None and 'privateVisibilityConfig' in kwargs:
+            private_visibility_config = kwargs['privateVisibilityConfig']
+        if reverse_lookup is None and 'reverseLookup' in kwargs:
+            reverse_lookup = kwargs['reverseLookup']
+        if service_directory_config is None and 'serviceDirectoryConfig' in kwargs:
+            service_directory_config = kwargs['serviceDirectoryConfig']
+
         if cloud_logging_config is not None:
             _setter("cloud_logging_config", cloud_logging_config)
         if creation_time is not None:

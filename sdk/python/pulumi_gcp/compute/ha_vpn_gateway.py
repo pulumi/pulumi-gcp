@@ -60,14 +60,22 @@ class HaVpnGatewayArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input[str],
+             network: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              stack_type: Optional[pulumi.Input[str]] = None,
              vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if stack_type is None and 'stackType' in kwargs:
+            stack_type = kwargs['stackType']
+        if vpn_interfaces is None and 'vpnInterfaces' in kwargs:
+            vpn_interfaces = kwargs['vpnInterfaces']
+
         _setter("network", network)
         if description is not None:
             _setter("description", description)
@@ -239,7 +247,15 @@ class _HaVpnGatewayState:
              self_link: Optional[pulumi.Input[str]] = None,
              stack_type: Optional[pulumi.Input[str]] = None,
              vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if stack_type is None and 'stackType' in kwargs:
+            stack_type = kwargs['stackType']
+        if vpn_interfaces is None and 'vpnInterfaces' in kwargs:
+            vpn_interfaces = kwargs['vpnInterfaces']
+
         if description is not None:
             _setter("description", description)
         if name is not None:

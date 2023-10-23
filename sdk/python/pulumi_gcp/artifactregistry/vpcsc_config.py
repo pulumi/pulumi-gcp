@@ -37,7 +37,11 @@ class VpcscConfigArgs:
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              vpcsc_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if vpcsc_policy is None and 'vpcscPolicy' in kwargs:
+            vpcsc_policy = kwargs['vpcscPolicy']
+
         if location is not None:
             _setter("location", location)
         if project is not None:
@@ -115,7 +119,11 @@ class _VpcscConfigState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              vpcsc_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if vpcsc_policy is None and 'vpcscPolicy' in kwargs:
+            vpcsc_policy = kwargs['vpcscPolicy']
+
         if location is not None:
             _setter("location", location)
         if name is not None:

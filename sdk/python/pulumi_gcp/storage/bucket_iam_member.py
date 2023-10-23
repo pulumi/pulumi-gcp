@@ -51,11 +51,19 @@ class BucketIAMMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: pulumi.Input[str],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
+             bucket: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['BucketIAMMemberConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("bucket", bucket)
         _setter("member", member)
         _setter("role", role)
@@ -169,7 +177,9 @@ class _BucketIAMMemberState:
              etag: Optional[pulumi.Input[str]] = None,
              member: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if bucket is not None:
             _setter("bucket", bucket)
         if condition is not None:

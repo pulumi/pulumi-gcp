@@ -63,13 +63,23 @@ class Hl7StoreArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset: pulumi.Input[str],
+             dataset: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              notification_config: Optional[pulumi.Input['Hl7StoreNotificationConfigArgs']] = None,
              notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]] = None,
              parser_config: Optional[pulumi.Input['Hl7StoreParserConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataset is None:
+            raise TypeError("Missing 'dataset' argument")
+        if notification_config is None and 'notificationConfig' in kwargs:
+            notification_config = kwargs['notificationConfig']
+        if notification_configs is None and 'notificationConfigs' in kwargs:
+            notification_configs = kwargs['notificationConfigs']
+        if parser_config is None and 'parserConfig' in kwargs:
+            parser_config = kwargs['parserConfig']
+
         _setter("dataset", dataset)
         if labels is not None:
             _setter("labels", labels)
@@ -241,7 +251,17 @@ class _Hl7StoreState:
              notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]] = None,
              parser_config: Optional[pulumi.Input['Hl7StoreParserConfigArgs']] = None,
              self_link: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if notification_config is None and 'notificationConfig' in kwargs:
+            notification_config = kwargs['notificationConfig']
+        if notification_configs is None and 'notificationConfigs' in kwargs:
+            notification_configs = kwargs['notificationConfigs']
+        if parser_config is None and 'parserConfig' in kwargs:
+            parser_config = kwargs['parserConfig']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if dataset is not None:
             _setter("dataset", dataset)
         if labels is not None:

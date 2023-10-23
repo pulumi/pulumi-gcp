@@ -38,11 +38,21 @@ class JobIAMPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             job_id: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             job_id: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if job_id is None and 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+        if job_id is None:
+            raise TypeError("Missing 'job_id' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("job_id", job_id)
         _setter("policy_data", policy_data)
         if project is not None:
@@ -135,7 +145,13 @@ class _JobIAMPolicyState:
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if job_id is None and 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if etag is not None:
             _setter("etag", etag)
         if job_id is not None:

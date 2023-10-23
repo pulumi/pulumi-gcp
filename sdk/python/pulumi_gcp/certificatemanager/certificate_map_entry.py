@@ -59,15 +59,21 @@ class CertificateMapEntryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             certificates: pulumi.Input[Sequence[pulumi.Input[str]]],
-             map: pulumi.Input[str],
+             certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             map: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              hostname: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              matcher: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if certificates is None:
+            raise TypeError("Missing 'certificates' argument")
+        if map is None:
+            raise TypeError("Missing 'map' argument")
+
         _setter("certificates", certificates)
         _setter("map", map)
         if description is not None:
@@ -264,7 +270,13 @@ class _CertificateMapEntryState:
              project: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if certificates is not None:
             _setter("certificates", certificates)
         if create_time is not None:

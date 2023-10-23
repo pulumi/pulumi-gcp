@@ -60,7 +60,15 @@ class LiteTopicArgs:
              reservation_config: Optional[pulumi.Input['LiteTopicReservationConfigArgs']] = None,
              retention_config: Optional[pulumi.Input['LiteTopicRetentionConfigArgs']] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if partition_config is None and 'partitionConfig' in kwargs:
+            partition_config = kwargs['partitionConfig']
+        if reservation_config is None and 'reservationConfig' in kwargs:
+            reservation_config = kwargs['reservationConfig']
+        if retention_config is None and 'retentionConfig' in kwargs:
+            retention_config = kwargs['retentionConfig']
+
         if name is not None:
             _setter("name", name)
         if partition_config is not None:
@@ -215,7 +223,15 @@ class _LiteTopicState:
              reservation_config: Optional[pulumi.Input['LiteTopicReservationConfigArgs']] = None,
              retention_config: Optional[pulumi.Input['LiteTopicRetentionConfigArgs']] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if partition_config is None and 'partitionConfig' in kwargs:
+            partition_config = kwargs['partitionConfig']
+        if reservation_config is None and 'reservationConfig' in kwargs:
+            reservation_config = kwargs['reservationConfig']
+        if retention_config is None and 'retentionConfig' in kwargs:
+            retention_config = kwargs['retentionConfig']
+
         if name is not None:
             _setter("name", name)
         if partition_config is not None:

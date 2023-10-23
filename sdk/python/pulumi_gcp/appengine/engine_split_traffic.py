@@ -39,11 +39,19 @@ class EngineSplitTrafficArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service: pulumi.Input[str],
-             split: pulumi.Input['EngineSplitTrafficSplitArgs'],
+             service: Optional[pulumi.Input[str]] = None,
+             split: Optional[pulumi.Input['EngineSplitTrafficSplitArgs']] = None,
              migrate_traffic: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+        if split is None:
+            raise TypeError("Missing 'split' argument")
+        if migrate_traffic is None and 'migrateTraffic' in kwargs:
+            migrate_traffic = kwargs['migrateTraffic']
+
         _setter("service", service)
         _setter("split", split)
         if migrate_traffic is not None:
@@ -132,7 +140,11 @@ class _EngineSplitTrafficState:
              project: Optional[pulumi.Input[str]] = None,
              service: Optional[pulumi.Input[str]] = None,
              split: Optional[pulumi.Input['EngineSplitTrafficSplitArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if migrate_traffic is None and 'migrateTraffic' in kwargs:
+            migrate_traffic = kwargs['migrateTraffic']
+
         if migrate_traffic is not None:
             _setter("migrate_traffic", migrate_traffic)
         if project is not None:

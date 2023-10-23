@@ -48,14 +48,24 @@ class NetworkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             network_id: pulumi.Input[str],
-             zone: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
+             network_id: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              mtu: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if network_id is None and 'networkId' in kwargs:
+            network_id = kwargs['networkId']
+        if network_id is None:
+            raise TypeError("Missing 'network_id' argument")
+        if zone is None:
+            raise TypeError("Missing 'zone' argument")
+
         _setter("location", location)
         _setter("network_id", network_id)
         _setter("zone", zone)
@@ -218,7 +228,15 @@ class _NetworkState:
              project: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if network_id is None and 'networkId' in kwargs:
+            network_id = kwargs['networkId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:

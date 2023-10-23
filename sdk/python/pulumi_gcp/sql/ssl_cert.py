@@ -35,10 +35,18 @@ class SslCertArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             common_name: pulumi.Input[str],
-             instance: pulumi.Input[str],
+             common_name: Optional[pulumi.Input[str]] = None,
+             instance: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if common_name is None and 'commonName' in kwargs:
+            common_name = kwargs['commonName']
+        if common_name is None:
+            raise TypeError("Missing 'common_name' argument")
+        if instance is None:
+            raise TypeError("Missing 'instance' argument")
+
         _setter("common_name", common_name)
         _setter("instance", instance)
         if project is not None:
@@ -141,7 +149,23 @@ class _SslCertState:
              project: Optional[pulumi.Input[str]] = None,
              server_ca_cert: Optional[pulumi.Input[str]] = None,
              sha1_fingerprint: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cert_serial_number is None and 'certSerialNumber' in kwargs:
+            cert_serial_number = kwargs['certSerialNumber']
+        if common_name is None and 'commonName' in kwargs:
+            common_name = kwargs['commonName']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if server_ca_cert is None and 'serverCaCert' in kwargs:
+            server_ca_cert = kwargs['serverCaCert']
+        if sha1_fingerprint is None and 'sha1Fingerprint' in kwargs:
+            sha1_fingerprint = kwargs['sha1Fingerprint']
+
         if cert is not None:
             _setter("cert", cert)
         if cert_serial_number is not None:

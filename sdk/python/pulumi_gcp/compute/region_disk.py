@@ -126,7 +126,7 @@ class RegionDiskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             replica_zones: pulumi.Input[Sequence[pulumi.Input[str]]],
+             replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              async_primary_disk: Optional[pulumi.Input['RegionDiskAsyncPrimaryDiskArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              disk_encryption_key: Optional[pulumi.Input['RegionDiskDiskEncryptionKeyArgs']] = None,
@@ -143,7 +143,25 @@ class RegionDiskArgs:
              source_disk: Optional[pulumi.Input[str]] = None,
              source_snapshot_encryption_key: Optional[pulumi.Input['RegionDiskSourceSnapshotEncryptionKeyArgs']] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if replica_zones is None and 'replicaZones' in kwargs:
+            replica_zones = kwargs['replicaZones']
+        if replica_zones is None:
+            raise TypeError("Missing 'replica_zones' argument")
+        if async_primary_disk is None and 'asyncPrimaryDisk' in kwargs:
+            async_primary_disk = kwargs['asyncPrimaryDisk']
+        if disk_encryption_key is None and 'diskEncryptionKey' in kwargs:
+            disk_encryption_key = kwargs['diskEncryptionKey']
+        if guest_os_features is None and 'guestOsFeatures' in kwargs:
+            guest_os_features = kwargs['guestOsFeatures']
+        if physical_block_size_bytes is None and 'physicalBlockSizeBytes' in kwargs:
+            physical_block_size_bytes = kwargs['physicalBlockSizeBytes']
+        if source_disk is None and 'sourceDisk' in kwargs:
+            source_disk = kwargs['sourceDisk']
+        if source_snapshot_encryption_key is None and 'sourceSnapshotEncryptionKey' in kwargs:
+            source_snapshot_encryption_key = kwargs['sourceSnapshotEncryptionKey']
+
         _setter("replica_zones", replica_zones)
         if async_primary_disk is not None:
             _setter("async_primary_disk", async_primary_disk)
@@ -610,7 +628,37 @@ class _RegionDiskState:
              source_snapshot_id: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if async_primary_disk is None and 'asyncPrimaryDisk' in kwargs:
+            async_primary_disk = kwargs['asyncPrimaryDisk']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if disk_encryption_key is None and 'diskEncryptionKey' in kwargs:
+            disk_encryption_key = kwargs['diskEncryptionKey']
+        if guest_os_features is None and 'guestOsFeatures' in kwargs:
+            guest_os_features = kwargs['guestOsFeatures']
+        if label_fingerprint is None and 'labelFingerprint' in kwargs:
+            label_fingerprint = kwargs['labelFingerprint']
+        if last_attach_timestamp is None and 'lastAttachTimestamp' in kwargs:
+            last_attach_timestamp = kwargs['lastAttachTimestamp']
+        if last_detach_timestamp is None and 'lastDetachTimestamp' in kwargs:
+            last_detach_timestamp = kwargs['lastDetachTimestamp']
+        if physical_block_size_bytes is None and 'physicalBlockSizeBytes' in kwargs:
+            physical_block_size_bytes = kwargs['physicalBlockSizeBytes']
+        if replica_zones is None and 'replicaZones' in kwargs:
+            replica_zones = kwargs['replicaZones']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if source_disk is None and 'sourceDisk' in kwargs:
+            source_disk = kwargs['sourceDisk']
+        if source_disk_id is None and 'sourceDiskId' in kwargs:
+            source_disk_id = kwargs['sourceDiskId']
+        if source_snapshot_encryption_key is None and 'sourceSnapshotEncryptionKey' in kwargs:
+            source_snapshot_encryption_key = kwargs['sourceSnapshotEncryptionKey']
+        if source_snapshot_id is None and 'sourceSnapshotId' in kwargs:
+            source_snapshot_id = kwargs['sourceSnapshotId']
+
         if async_primary_disk is not None:
             _setter("async_primary_disk", async_primary_disk)
         if creation_timestamp is not None:

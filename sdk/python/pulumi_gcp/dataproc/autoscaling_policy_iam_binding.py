@@ -61,13 +61,23 @@ class AutoscalingPolicyIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             policy_id: pulumi.Input[str],
-             role: pulumi.Input[str],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             policy_id: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['AutoscalingPolicyIamBindingConditionArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if policy_id is None:
+            raise TypeError("Missing 'policy_id' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("members", members)
         _setter("policy_id", policy_id)
         _setter("role", role)
@@ -223,7 +233,11 @@ class _AutoscalingPolicyIamBindingState:
              policy_id: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

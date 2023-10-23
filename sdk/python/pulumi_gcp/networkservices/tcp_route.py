@@ -52,14 +52,18 @@ class TcpRouteArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             rules: pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleArgs']]],
+             rules: Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              gateways: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if rules is None:
+            raise TypeError("Missing 'rules' argument")
+
         _setter("rules", rules)
         if description is not None:
             _setter("description", description)
@@ -223,7 +227,15 @@ class _TcpRouteState:
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleArgs']]]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:

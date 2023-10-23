@@ -52,16 +52,26 @@ class WorkflowTemplateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             jobs: pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]],
-             location: pulumi.Input[str],
-             placement: pulumi.Input['WorkflowTemplatePlacementArgs'],
+             jobs: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             placement: Optional[pulumi.Input['WorkflowTemplatePlacementArgs']] = None,
              dag_timeout: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              parameters: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if jobs is None:
+            raise TypeError("Missing 'jobs' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if placement is None:
+            raise TypeError("Missing 'placement' argument")
+        if dag_timeout is None and 'dagTimeout' in kwargs:
+            dag_timeout = kwargs['dagTimeout']
+
         _setter("jobs", jobs)
         _setter("location", location)
         _setter("placement", placement)
@@ -249,7 +259,15 @@ class _WorkflowTemplateState:
              project: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if dag_timeout is None and 'dagTimeout' in kwargs:
+            dag_timeout = kwargs['dagTimeout']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if dag_timeout is not None:

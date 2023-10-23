@@ -35,7 +35,9 @@ class DeploymentLabelArgs:
              _setter: Callable[[Any, Any], None],
              key: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if value is not None:
@@ -87,9 +89,13 @@ class DeploymentTargetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config: pulumi.Input['DeploymentTargetConfigArgs'],
+             config: Optional[pulumi.Input['DeploymentTargetConfigArgs']] = None,
              imports: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentTargetImportArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+
         _setter("config", config)
         if imports is not None:
             _setter("imports", imports)
@@ -137,8 +143,12 @@ class DeploymentTargetConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             content: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             content: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+
         _setter("content", content)
 
     @property
@@ -176,7 +186,9 @@ class DeploymentTargetImportArgs:
              _setter: Callable[[Any, Any], None],
              content: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if content is not None:
             _setter("content", content)
         if name is not None:

@@ -43,12 +43,20 @@ class EntryGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entry_group_id: pulumi.Input[str],
+             entry_group_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if entry_group_id is None and 'entryGroupId' in kwargs:
+            entry_group_id = kwargs['entryGroupId']
+        if entry_group_id is None:
+            raise TypeError("Missing 'entry_group_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("entry_group_id", entry_group_id)
         if description is not None:
             _setter("description", description)
@@ -166,7 +174,13 @@ class _EntryGroupState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if entry_group_id is None and 'entryGroupId' in kwargs:
+            entry_group_id = kwargs['entryGroupId']
+
         if description is not None:
             _setter("description", description)
         if display_name is not None:

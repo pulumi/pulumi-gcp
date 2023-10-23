@@ -55,15 +55,27 @@ class ServiceConnectionPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             network: pulumi.Input[str],
-             service_class: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             service_class: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              psc_config: Optional[pulumi.Input['ServiceConnectionPolicyPscConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if service_class is None and 'serviceClass' in kwargs:
+            service_class = kwargs['serviceClass']
+        if service_class is None:
+            raise TypeError("Missing 'service_class' argument")
+        if psc_config is None and 'pscConfig' in kwargs:
+            psc_config = kwargs['pscConfig']
+
         _setter("location", location)
         _setter("network", network)
         _setter("service_class", service_class)
@@ -252,7 +264,19 @@ class _ServiceConnectionPolicyState:
              psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceConnectionPolicyPscConnectionArgs']]]] = None,
              service_class: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if psc_config is None and 'pscConfig' in kwargs:
+            psc_config = kwargs['pscConfig']
+        if psc_connections is None and 'pscConnections' in kwargs:
+            psc_connections = kwargs['pscConnections']
+        if service_class is None and 'serviceClass' in kwargs:
+            service_class = kwargs['serviceClass']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:

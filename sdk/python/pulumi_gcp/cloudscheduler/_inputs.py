@@ -55,12 +55,22 @@ class JobAppEngineHttpTargetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             relative_uri: pulumi.Input[str],
+             relative_uri: Optional[pulumi.Input[str]] = None,
              app_engine_routing: Optional[pulumi.Input['JobAppEngineHttpTargetAppEngineRoutingArgs']] = None,
              body: Optional[pulumi.Input[str]] = None,
              headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              http_method: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if relative_uri is None and 'relativeUri' in kwargs:
+            relative_uri = kwargs['relativeUri']
+        if relative_uri is None:
+            raise TypeError("Missing 'relative_uri' argument")
+        if app_engine_routing is None and 'appEngineRouting' in kwargs:
+            app_engine_routing = kwargs['appEngineRouting']
+        if http_method is None and 'httpMethod' in kwargs:
+            http_method = kwargs['httpMethod']
+
         _setter("relative_uri", relative_uri)
         if app_engine_routing is not None:
             _setter("app_engine_routing", app_engine_routing)
@@ -168,7 +178,9 @@ class JobAppEngineHttpTargetAppEngineRoutingArgs:
              instance: Optional[pulumi.Input[str]] = None,
              service: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if instance is not None:
             _setter("instance", instance)
         if service is not None:
@@ -253,13 +265,23 @@ class JobHttpTargetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             uri: pulumi.Input[str],
+             uri: Optional[pulumi.Input[str]] = None,
              body: Optional[pulumi.Input[str]] = None,
              headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              http_method: Optional[pulumi.Input[str]] = None,
              oauth_token: Optional[pulumi.Input['JobHttpTargetOauthTokenArgs']] = None,
              oidc_token: Optional[pulumi.Input['JobHttpTargetOidcTokenArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if uri is None:
+            raise TypeError("Missing 'uri' argument")
+        if http_method is None and 'httpMethod' in kwargs:
+            http_method = kwargs['httpMethod']
+        if oauth_token is None and 'oauthToken' in kwargs:
+            oauth_token = kwargs['oauthToken']
+        if oidc_token is None and 'oidcToken' in kwargs:
+            oidc_token = kwargs['oidcToken']
+
         _setter("uri", uri)
         if body is not None:
             _setter("body", body)
@@ -372,9 +394,15 @@ class JobHttpTargetOauthTokenArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_account_email: pulumi.Input[str],
+             service_account_email: Optional[pulumi.Input[str]] = None,
              scope: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if service_account_email is None:
+            raise TypeError("Missing 'service_account_email' argument")
+
         _setter("service_account_email", service_account_email)
         if scope is not None:
             _setter("scope", scope)
@@ -425,9 +453,15 @@ class JobHttpTargetOidcTokenArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_account_email: pulumi.Input[str],
+             service_account_email: Optional[pulumi.Input[str]] = None,
              audience: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if service_account_email is None:
+            raise TypeError("Missing 'service_account_email' argument")
+
         _setter("service_account_email", service_account_email)
         if audience is not None:
             _setter("audience", audience)
@@ -485,10 +519,16 @@ class JobPubsubTargetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             topic_name: pulumi.Input[str],
+             topic_name: Optional[pulumi.Input[str]] = None,
              attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if topic_name is None and 'topicName' in kwargs:
+            topic_name = kwargs['topicName']
+        if topic_name is None:
+            raise TypeError("Missing 'topic_name' argument")
+
         _setter("topic_name", topic_name)
         if attributes is not None:
             _setter("attributes", attributes)
@@ -578,7 +618,19 @@ class JobRetryConfigArgs:
              max_retry_duration: Optional[pulumi.Input[str]] = None,
              min_backoff_duration: Optional[pulumi.Input[str]] = None,
              retry_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_backoff_duration is None and 'maxBackoffDuration' in kwargs:
+            max_backoff_duration = kwargs['maxBackoffDuration']
+        if max_doublings is None and 'maxDoublings' in kwargs:
+            max_doublings = kwargs['maxDoublings']
+        if max_retry_duration is None and 'maxRetryDuration' in kwargs:
+            max_retry_duration = kwargs['maxRetryDuration']
+        if min_backoff_duration is None and 'minBackoffDuration' in kwargs:
+            min_backoff_duration = kwargs['minBackoffDuration']
+        if retry_count is None and 'retryCount' in kwargs:
+            retry_count = kwargs['retryCount']
+
         if max_backoff_duration is not None:
             _setter("max_backoff_duration", max_backoff_duration)
         if max_doublings is not None:

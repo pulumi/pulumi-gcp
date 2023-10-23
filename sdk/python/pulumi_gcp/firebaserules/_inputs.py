@@ -27,7 +27,9 @@ class RulesetMetadataArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if services is not None:
             _setter("services", services)
 
@@ -58,9 +60,13 @@ class RulesetSourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             files: pulumi.Input[Sequence[pulumi.Input['RulesetSourceFileArgs']]],
+             files: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetSourceFileArgs']]]] = None,
              language: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if files is None:
+            raise TypeError("Missing 'files' argument")
+
         _setter("files", files)
         if language is not None:
             _setter("language", language)
@@ -112,10 +118,16 @@ class RulesetSourceFileArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             content: pulumi.Input[str],
-             name: pulumi.Input[str],
+             content: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
              fingerprint: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("content", content)
         _setter("name", name)
         if fingerprint is not None:

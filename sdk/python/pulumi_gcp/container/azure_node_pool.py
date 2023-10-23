@@ -61,19 +61,41 @@ class AzureNodePoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             autoscaling: pulumi.Input['AzureNodePoolAutoscalingArgs'],
-             cluster: pulumi.Input[str],
-             config: pulumi.Input['AzureNodePoolConfigArgs'],
-             location: pulumi.Input[str],
-             max_pods_constraint: pulumi.Input['AzureNodePoolMaxPodsConstraintArgs'],
-             subnet_id: pulumi.Input[str],
-             version: pulumi.Input[str],
+             autoscaling: Optional[pulumi.Input['AzureNodePoolAutoscalingArgs']] = None,
+             cluster: Optional[pulumi.Input[str]] = None,
+             config: Optional[pulumi.Input['AzureNodePoolConfigArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             max_pods_constraint: Optional[pulumi.Input['AzureNodePoolMaxPodsConstraintArgs']] = None,
+             subnet_id: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              azure_availability_zone: Optional[pulumi.Input[str]] = None,
              management: Optional[pulumi.Input['AzureNodePoolManagementArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if autoscaling is None:
+            raise TypeError("Missing 'autoscaling' argument")
+        if cluster is None:
+            raise TypeError("Missing 'cluster' argument")
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if max_pods_constraint is None and 'maxPodsConstraint' in kwargs:
+            max_pods_constraint = kwargs['maxPodsConstraint']
+        if max_pods_constraint is None:
+            raise TypeError("Missing 'max_pods_constraint' argument")
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if subnet_id is None:
+            raise TypeError("Missing 'subnet_id' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+        if azure_availability_zone is None and 'azureAvailabilityZone' in kwargs:
+            azure_availability_zone = kwargs['azureAvailabilityZone']
+
         _setter("autoscaling", autoscaling)
         _setter("cluster", cluster)
         _setter("config", config)
@@ -321,7 +343,19 @@ class _AzureNodePoolState:
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if azure_availability_zone is None and 'azureAvailabilityZone' in kwargs:
+            azure_availability_zone = kwargs['azureAvailabilityZone']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if max_pods_constraint is None and 'maxPodsConstraint' in kwargs:
+            max_pods_constraint = kwargs['maxPodsConstraint']
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if autoscaling is not None:

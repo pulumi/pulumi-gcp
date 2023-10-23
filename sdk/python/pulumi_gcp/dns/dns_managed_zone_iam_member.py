@@ -53,12 +53,22 @@ class DnsManagedZoneIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             managed_zone: pulumi.Input[str],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
+             managed_zone: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['DnsManagedZoneIamMemberConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if managed_zone is None and 'managedZone' in kwargs:
+            managed_zone = kwargs['managedZone']
+        if managed_zone is None:
+            raise TypeError("Missing 'managed_zone' argument")
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("managed_zone", managed_zone)
         _setter("member", member)
         _setter("role", role)
@@ -186,7 +196,11 @@ class _DnsManagedZoneIamMemberState:
              member: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if managed_zone is None and 'managedZone' in kwargs:
+            managed_zone = kwargs['managedZone']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

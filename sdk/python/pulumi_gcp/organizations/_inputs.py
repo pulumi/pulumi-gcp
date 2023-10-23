@@ -56,9 +56,17 @@ class AccessApprovalSettingsEnrolledServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cloud_product: pulumi.Input[str],
+             cloud_product: Optional[pulumi.Input[str]] = None,
              enrollment_level: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cloud_product is None and 'cloudProduct' in kwargs:
+            cloud_product = kwargs['cloudProduct']
+        if cloud_product is None:
+            raise TypeError("Missing 'cloud_product' argument")
+        if enrollment_level is None and 'enrollmentLevel' in kwargs:
+            enrollment_level = kwargs['enrollmentLevel']
+
         _setter("cloud_product", cloud_product)
         if enrollment_level is not None:
             _setter("enrollment_level", enrollment_level)
@@ -117,10 +125,16 @@ class IAMBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -178,10 +192,16 @@ class IAMMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -250,9 +270,17 @@ class IamAuditConfigAuditLogConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             log_type: pulumi.Input[str],
+             log_type: Optional[pulumi.Input[str]] = None,
              exempted_members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if log_type is None and 'logType' in kwargs:
+            log_type = kwargs['logType']
+        if log_type is None:
+            raise TypeError("Missing 'log_type' argument")
+        if exempted_members is None and 'exemptedMembers' in kwargs:
+            exempted_members = kwargs['exemptedMembers']
+
         _setter("log_type", log_type)
         if exempted_members is not None:
             _setter("exempted_members", exempted_members)
@@ -301,8 +329,12 @@ class PolicyBooleanPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enforced: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enforced: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enforced is None:
+            raise TypeError("Missing 'enforced' argument")
+
         _setter("enforced", enforced)
 
     @property
@@ -347,7 +379,13 @@ class PolicyListPolicyArgs:
              deny: Optional[pulumi.Input['PolicyListPolicyDenyArgs']] = None,
              inherit_from_parent: Optional[pulumi.Input[bool]] = None,
              suggested_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if inherit_from_parent is None and 'inheritFromParent' in kwargs:
+            inherit_from_parent = kwargs['inheritFromParent']
+        if suggested_value is None and 'suggestedValue' in kwargs:
+            suggested_value = kwargs['suggestedValue']
+
         if allow is not None:
             _setter("allow", allow)
         if deny is not None:
@@ -425,7 +463,9 @@ class PolicyListPolicyAllowArgs:
              _setter: Callable[[Any, Any], None],
              all: Optional[pulumi.Input[bool]] = None,
              values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if all is not None:
             _setter("all", all)
         if values is not None:
@@ -475,7 +515,9 @@ class PolicyListPolicyDenyArgs:
              _setter: Callable[[Any, Any], None],
              all: Optional[pulumi.Input[bool]] = None,
              values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if all is not None:
             _setter("all", all)
         if values is not None:
@@ -520,8 +562,12 @@ class PolicyRestorePolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             default: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             default: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default is None:
+            raise TypeError("Missing 'default' argument")
+
         _setter("default", default)
 
     @property
@@ -554,9 +600,17 @@ class GetIAMPolicyAuditConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             audit_log_configs: Sequence['GetIAMPolicyAuditConfigAuditLogConfigArgs'],
-             service: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             audit_log_configs: Optional[Sequence['GetIAMPolicyAuditConfigAuditLogConfigArgs']] = None,
+             service: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if audit_log_configs is None and 'auditLogConfigs' in kwargs:
+            audit_log_configs = kwargs['auditLogConfigs']
+        if audit_log_configs is None:
+            raise TypeError("Missing 'audit_log_configs' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("audit_log_configs", audit_log_configs)
         _setter("service", service)
 
@@ -602,9 +656,17 @@ class GetIAMPolicyAuditConfigAuditLogConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             log_type: str,
+             log_type: Optional[str] = None,
              exempted_members: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if log_type is None and 'logType' in kwargs:
+            log_type = kwargs['logType']
+        if log_type is None:
+            raise TypeError("Missing 'log_type' argument")
+        if exempted_members is None and 'exemptedMembers' in kwargs:
+            exempted_members = kwargs['exemptedMembers']
+
         _setter("log_type", log_type)
         if exempted_members is not None:
             _setter("exempted_members", exempted_members)
@@ -663,10 +725,16 @@ class GetIAMPolicyBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             members: Sequence[str],
-             role: str,
+             members: Optional[Sequence[str]] = None,
+             role: Optional[str] = None,
              condition: Optional['GetIAMPolicyBindingConditionArgs'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("members", members)
         _setter("role", role)
         if condition is not None:
@@ -738,10 +806,16 @@ class GetIAMPolicyBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:

@@ -33,9 +33,15 @@ class DocumentAiProcessorDefaultVersionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             processor: pulumi.Input[str],
-             version: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             processor: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if processor is None:
+            raise TypeError("Missing 'processor' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+
         _setter("processor", processor)
         _setter("version", version)
 
@@ -92,7 +98,9 @@ class _DocumentAiProcessorDefaultVersionState:
              _setter: Callable[[Any, Any], None],
              processor: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if processor is not None:
             _setter("processor", processor)
         if version is not None:

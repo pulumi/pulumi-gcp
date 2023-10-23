@@ -41,12 +41,20 @@ class OrganizationExclusionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter: pulumi.Input[str],
-             org_id: pulumi.Input[str],
+             filter: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if filter is None:
+            raise TypeError("Missing 'filter' argument")
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+
         _setter("filter", filter)
         _setter("org_id", org_id)
         if description is not None:
@@ -155,7 +163,11 @@ class _OrganizationExclusionState:
              filter: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              org_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+
         if description is not None:
             _setter("description", description)
         if disabled is not None:

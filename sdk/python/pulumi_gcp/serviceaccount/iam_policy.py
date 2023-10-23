@@ -39,9 +39,19 @@ class IAMPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_data: pulumi.Input[str],
-             service_account_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             policy_data: Optional[pulumi.Input[str]] = None,
+             service_account_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+        if service_account_id is None and 'serviceAccountId' in kwargs:
+            service_account_id = kwargs['serviceAccountId']
+        if service_account_id is None:
+            raise TypeError("Missing 'service_account_id' argument")
+
         _setter("policy_data", policy_data)
         _setter("service_account_id", service_account_id)
 
@@ -114,7 +124,13 @@ class _IAMPolicyState:
              etag: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              service_account_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if service_account_id is None and 'serviceAccountId' in kwargs:
+            service_account_id = kwargs['serviceAccountId']
+
         if etag is not None:
             _setter("etag", etag)
         if policy_data is not None:

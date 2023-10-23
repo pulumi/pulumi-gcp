@@ -36,10 +36,16 @@ class ReleaseArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ruleset_name: pulumi.Input[str],
+             ruleset_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ruleset_name is None and 'rulesetName' in kwargs:
+            ruleset_name = kwargs['rulesetName']
+        if ruleset_name is None:
+            raise TypeError("Missing 'ruleset_name' argument")
+
         _setter("ruleset_name", ruleset_name)
         if name is not None:
             _setter("name", name)
@@ -127,7 +133,15 @@ class _ReleaseState:
              project: Optional[pulumi.Input[str]] = None,
              ruleset_name: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if ruleset_name is None and 'rulesetName' in kwargs:
+            ruleset_name = kwargs['rulesetName']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if disabled is not None:

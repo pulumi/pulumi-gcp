@@ -48,13 +48,21 @@ class AiTensorboardArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              encryption_spec: Optional[pulumi.Input['AiTensorboardEncryptionSpecArgs']] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if encryption_spec is None and 'encryptionSpec' in kwargs:
+            encryption_spec = kwargs['encryptionSpec']
+
         _setter("display_name", display_name)
         if description is not None:
             _setter("description", description)
@@ -206,7 +214,21 @@ class _AiTensorboardState:
              region: Optional[pulumi.Input[str]] = None,
              run_count: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if blob_storage_path_prefix is None and 'blobStoragePathPrefix' in kwargs:
+            blob_storage_path_prefix = kwargs['blobStoragePathPrefix']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if encryption_spec is None and 'encryptionSpec' in kwargs:
+            encryption_spec = kwargs['encryptionSpec']
+        if run_count is None and 'runCount' in kwargs:
+            run_count = kwargs['runCount']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if blob_storage_path_prefix is not None:
             _setter("blob_storage_path_prefix", blob_storage_path_prefix)
         if create_time is not None:

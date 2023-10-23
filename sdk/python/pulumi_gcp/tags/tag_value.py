@@ -36,10 +36,18 @@ class TagValueArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parent: pulumi.Input[str],
-             short_name: pulumi.Input[str],
+             parent: Optional[pulumi.Input[str]] = None,
+             short_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if short_name is None and 'shortName' in kwargs:
+            short_name = kwargs['shortName']
+        if short_name is None:
+            raise TypeError("Missing 'short_name' argument")
+
         _setter("parent", parent)
         _setter("short_name", short_name)
         if description is not None:
@@ -132,7 +140,17 @@ class _TagValueState:
              parent: Optional[pulumi.Input[str]] = None,
              short_name: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if namespaced_name is None and 'namespacedName' in kwargs:
+            namespaced_name = kwargs['namespacedName']
+        if short_name is None and 'shortName' in kwargs:
+            short_name = kwargs['shortName']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:

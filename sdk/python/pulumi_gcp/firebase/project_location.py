@@ -34,9 +34,15 @@ class ProjectLocationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location_id: pulumi.Input[str],
+             location_id: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location_id is None and 'locationId' in kwargs:
+            location_id = kwargs['locationId']
+        if location_id is None:
+            raise TypeError("Missing 'location_id' argument")
+
         _setter("location_id", location_id)
         if project is not None:
             _setter("project", project)
@@ -96,7 +102,11 @@ class _ProjectLocationState:
              _setter: Callable[[Any, Any], None],
              location_id: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location_id is None and 'locationId' in kwargs:
+            location_id = kwargs['locationId']
+
         if location_id is not None:
             _setter("location_id", location_id)
         if project is not None:

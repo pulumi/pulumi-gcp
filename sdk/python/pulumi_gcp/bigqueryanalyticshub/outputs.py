@@ -34,10 +34,16 @@ class DataExchangeIamBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -74,10 +80,16 @@ class DataExchangeIamMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -115,8 +127,12 @@ class ListingBigqueryDataset(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             dataset: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataset is None:
+            raise TypeError("Missing 'dataset' argument")
+
         _setter("dataset", dataset)
 
     @property
@@ -164,9 +180,15 @@ class ListingDataProvider(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              primary_contact: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if primary_contact is None and 'primaryContact' in kwargs:
+            primary_contact = kwargs['primaryContact']
+
         _setter("name", name)
         if primary_contact is not None:
             _setter("primary_contact", primary_contact)
@@ -203,10 +225,16 @@ class ListingIamBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -243,10 +271,16 @@ class ListingIamMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -302,9 +336,15 @@ class ListingPublisher(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              primary_contact: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if primary_contact is None and 'primaryContact' in kwargs:
+            primary_contact = kwargs['primaryContact']
+
         _setter("name", name)
         if primary_contact is not None:
             _setter("primary_contact", primary_contact)

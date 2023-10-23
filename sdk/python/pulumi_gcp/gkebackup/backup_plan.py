@@ -67,8 +67,8 @@ class BackupPlanArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster: pulumi.Input[str],
-             location: pulumi.Input[str],
+             cluster: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
              backup_config: Optional[pulumi.Input['BackupPlanBackupConfigArgs']] = None,
              backup_schedule: Optional[pulumi.Input['BackupPlanBackupScheduleArgs']] = None,
              deactivated: Optional[pulumi.Input[bool]] = None,
@@ -77,7 +77,19 @@ class BackupPlanArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              retention_policy: Optional[pulumi.Input['BackupPlanRetentionPolicyArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster is None:
+            raise TypeError("Missing 'cluster' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if backup_config is None and 'backupConfig' in kwargs:
+            backup_config = kwargs['backupConfig']
+        if backup_schedule is None and 'backupSchedule' in kwargs:
+            backup_schedule = kwargs['backupSchedule']
+        if retention_policy is None and 'retentionPolicy' in kwargs:
+            retention_policy = kwargs['retentionPolicy']
+
         _setter("cluster", cluster)
         _setter("location", location)
         if backup_config is not None:
@@ -319,7 +331,19 @@ class _BackupPlanState:
              state: Optional[pulumi.Input[str]] = None,
              state_reason: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_config is None and 'backupConfig' in kwargs:
+            backup_config = kwargs['backupConfig']
+        if backup_schedule is None and 'backupSchedule' in kwargs:
+            backup_schedule = kwargs['backupSchedule']
+        if protected_pod_count is None and 'protectedPodCount' in kwargs:
+            protected_pod_count = kwargs['protectedPodCount']
+        if retention_policy is None and 'retentionPolicy' in kwargs:
+            retention_policy = kwargs['retentionPolicy']
+        if state_reason is None and 'stateReason' in kwargs:
+            state_reason = kwargs['stateReason']
+
         if backup_config is not None:
             _setter("backup_config", backup_config)
         if backup_schedule is not None:

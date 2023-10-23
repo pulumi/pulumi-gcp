@@ -49,15 +49,31 @@ class ProjectBucketConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket_id: pulumi.Input[str],
-             location: pulumi.Input[str],
-             project: pulumi.Input[str],
+             bucket_id: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
              cmek_settings: Optional[pulumi.Input['ProjectBucketConfigCmekSettingsArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              enable_analytics: Optional[pulumi.Input[bool]] = None,
              locked: Optional[pulumi.Input[bool]] = None,
              retention_days: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket_id is None and 'bucketId' in kwargs:
+            bucket_id = kwargs['bucketId']
+        if bucket_id is None:
+            raise TypeError("Missing 'bucket_id' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if cmek_settings is None and 'cmekSettings' in kwargs:
+            cmek_settings = kwargs['cmekSettings']
+        if enable_analytics is None and 'enableAnalytics' in kwargs:
+            enable_analytics = kwargs['enableAnalytics']
+        if retention_days is None and 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+
         _setter("bucket_id", bucket_id)
         _setter("location", location)
         _setter("project", project)
@@ -221,7 +237,19 @@ class _ProjectBucketConfigState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              retention_days: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket_id is None and 'bucketId' in kwargs:
+            bucket_id = kwargs['bucketId']
+        if cmek_settings is None and 'cmekSettings' in kwargs:
+            cmek_settings = kwargs['cmekSettings']
+        if enable_analytics is None and 'enableAnalytics' in kwargs:
+            enable_analytics = kwargs['enableAnalytics']
+        if lifecycle_state is None and 'lifecycleState' in kwargs:
+            lifecycle_state = kwargs['lifecycleState']
+        if retention_days is None and 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+
         if bucket_id is not None:
             _setter("bucket_id", bucket_id)
         if cmek_settings is not None:

@@ -67,7 +67,13 @@ class PolicySpec(dict):
              reset: Optional[bool] = None,
              rules: Optional[Sequence['outputs.PolicySpecRule']] = None,
              update_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if inherit_from_parent is None and 'inheritFromParent' in kwargs:
+            inherit_from_parent = kwargs['inheritFromParent']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if etag is not None:
             _setter("etag", etag)
         if inherit_from_parent is not None:
@@ -170,7 +176,13 @@ class PolicySpecRule(dict):
              deny_all: Optional[str] = None,
              enforce: Optional[str] = None,
              values: Optional['outputs.PolicySpecRuleValues'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_all is None and 'allowAll' in kwargs:
+            allow_all = kwargs['allowAll']
+        if deny_all is None and 'denyAll' in kwargs:
+            deny_all = kwargs['denyAll']
+
         if allow_all is not None:
             _setter("allow_all", allow_all)
         if condition is not None:
@@ -250,7 +262,9 @@ class PolicySpecRuleCondition(dict):
              expression: Optional[str] = None,
              location: Optional[str] = None,
              title: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if description is not None:
             _setter("description", description)
         if expression is not None:
@@ -331,7 +345,13 @@ class PolicySpecRuleValues(dict):
              _setter: Callable[[Any, Any], None],
              allowed_values: Optional[Sequence[str]] = None,
              denied_values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allowed_values is None and 'allowedValues' in kwargs:
+            allowed_values = kwargs['allowedValues']
+        if denied_values is None and 'deniedValues' in kwargs:
+            denied_values = kwargs['deniedValues']
+
         if allowed_values is not None:
             _setter("allowed_values", allowed_values)
         if denied_values is not None:

@@ -49,7 +49,7 @@ class ConnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              github_config: Optional[pulumi.Input['ConnectionGithubConfigArgs']] = None,
@@ -57,7 +57,17 @@ class ConnectionArgs:
              gitlab_config: Optional[pulumi.Input['ConnectionGitlabConfigArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if github_config is None and 'githubConfig' in kwargs:
+            github_config = kwargs['githubConfig']
+        if github_enterprise_config is None and 'githubEnterpriseConfig' in kwargs:
+            github_enterprise_config = kwargs['githubEnterpriseConfig']
+        if gitlab_config is None and 'gitlabConfig' in kwargs:
+            gitlab_config = kwargs['gitlabConfig']
+
         _setter("location", location)
         if annotations is not None:
             _setter("annotations", annotations)
@@ -235,7 +245,21 @@ class _ConnectionState:
              project: Optional[pulumi.Input[str]] = None,
              reconciling: Optional[pulumi.Input[bool]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if github_config is None and 'githubConfig' in kwargs:
+            github_config = kwargs['githubConfig']
+        if github_enterprise_config is None and 'githubEnterpriseConfig' in kwargs:
+            github_enterprise_config = kwargs['githubEnterpriseConfig']
+        if gitlab_config is None and 'gitlabConfig' in kwargs:
+            gitlab_config = kwargs['gitlabConfig']
+        if installation_states is None and 'installationStates' in kwargs:
+            installation_states = kwargs['installationStates']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if create_time is not None:

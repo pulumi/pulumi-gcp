@@ -45,12 +45,16 @@ class VariableArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parent: pulumi.Input[str],
+             parent: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              text: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+
         _setter("parent", parent)
         if name is not None:
             _setter("name", name)
@@ -172,7 +176,11 @@ class _VariableState:
              text: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if name is not None:
             _setter("name", name)
         if parent is not None:

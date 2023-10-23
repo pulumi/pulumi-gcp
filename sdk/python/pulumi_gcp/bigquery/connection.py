@@ -77,7 +77,19 @@ class ConnectionArgs:
              friendly_name: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cloud_resource is None and 'cloudResource' in kwargs:
+            cloud_resource = kwargs['cloudResource']
+        if cloud_spanner is None and 'cloudSpanner' in kwargs:
+            cloud_spanner = kwargs['cloudSpanner']
+        if cloud_sql is None and 'cloudSql' in kwargs:
+            cloud_sql = kwargs['cloudSql']
+        if connection_id is None and 'connectionId' in kwargs:
+            connection_id = kwargs['connectionId']
+        if friendly_name is None and 'friendlyName' in kwargs:
+            friendly_name = kwargs['friendlyName']
+
         if aws is not None:
             _setter("aws", aws)
         if azure is not None:
@@ -305,7 +317,21 @@ class _ConnectionState:
              location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cloud_resource is None and 'cloudResource' in kwargs:
+            cloud_resource = kwargs['cloudResource']
+        if cloud_spanner is None and 'cloudSpanner' in kwargs:
+            cloud_spanner = kwargs['cloudSpanner']
+        if cloud_sql is None and 'cloudSql' in kwargs:
+            cloud_sql = kwargs['cloudSql']
+        if connection_id is None and 'connectionId' in kwargs:
+            connection_id = kwargs['connectionId']
+        if friendly_name is None and 'friendlyName' in kwargs:
+            friendly_name = kwargs['friendlyName']
+        if has_credential is None and 'hasCredential' in kwargs:
+            has_credential = kwargs['hasCredential']
+
         if aws is not None:
             _setter("aws", aws)
         if azure is not None:

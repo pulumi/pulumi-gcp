@@ -42,12 +42,22 @@ class ReservationAssignmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             assignee: pulumi.Input[str],
-             job_type: pulumi.Input[str],
-             reservation: pulumi.Input[str],
+             assignee: Optional[pulumi.Input[str]] = None,
+             job_type: Optional[pulumi.Input[str]] = None,
+             reservation: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if assignee is None:
+            raise TypeError("Missing 'assignee' argument")
+        if job_type is None and 'jobType' in kwargs:
+            job_type = kwargs['jobType']
+        if job_type is None:
+            raise TypeError("Missing 'job_type' argument")
+        if reservation is None:
+            raise TypeError("Missing 'reservation' argument")
+
         _setter("assignee", assignee)
         _setter("job_type", job_type)
         _setter("reservation", reservation)
@@ -165,7 +175,11 @@ class _ReservationAssignmentState:
              project: Optional[pulumi.Input[str]] = None,
              reservation: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if job_type is None and 'jobType' in kwargs:
+            job_type = kwargs['jobType']
+
         if assignee is not None:
             _setter("assignee", assignee)
         if job_type is not None:

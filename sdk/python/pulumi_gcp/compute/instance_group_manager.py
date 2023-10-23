@@ -117,8 +117,8 @@ class InstanceGroupManagerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             base_instance_name: pulumi.Input[str],
-             versions: pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]],
+             base_instance_name: Optional[pulumi.Input[str]] = None,
+             versions: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]]] = None,
              all_instances_config: Optional[pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs']] = None,
              auto_healing_policies: Optional[pulumi.Input['InstanceGroupManagerAutoHealingPoliciesArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -136,7 +136,41 @@ class InstanceGroupManagerArgs:
              wait_for_instances: Optional[pulumi.Input[bool]] = None,
              wait_for_instances_status: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if base_instance_name is None and 'baseInstanceName' in kwargs:
+            base_instance_name = kwargs['baseInstanceName']
+        if base_instance_name is None:
+            raise TypeError("Missing 'base_instance_name' argument")
+        if versions is None:
+            raise TypeError("Missing 'versions' argument")
+        if all_instances_config is None and 'allInstancesConfig' in kwargs:
+            all_instances_config = kwargs['allInstancesConfig']
+        if auto_healing_policies is None and 'autoHealingPolicies' in kwargs:
+            auto_healing_policies = kwargs['autoHealingPolicies']
+        if instance_lifecycle_policy is None and 'instanceLifecyclePolicy' in kwargs:
+            instance_lifecycle_policy = kwargs['instanceLifecyclePolicy']
+        if list_managed_instances_results is None and 'listManagedInstancesResults' in kwargs:
+            list_managed_instances_results = kwargs['listManagedInstancesResults']
+        if named_ports is None and 'namedPorts' in kwargs:
+            named_ports = kwargs['namedPorts']
+        if stateful_disks is None and 'statefulDisks' in kwargs:
+            stateful_disks = kwargs['statefulDisks']
+        if stateful_external_ips is None and 'statefulExternalIps' in kwargs:
+            stateful_external_ips = kwargs['statefulExternalIps']
+        if stateful_internal_ips is None and 'statefulInternalIps' in kwargs:
+            stateful_internal_ips = kwargs['statefulInternalIps']
+        if target_pools is None and 'targetPools' in kwargs:
+            target_pools = kwargs['targetPools']
+        if target_size is None and 'targetSize' in kwargs:
+            target_size = kwargs['targetSize']
+        if update_policy is None and 'updatePolicy' in kwargs:
+            update_policy = kwargs['updatePolicy']
+        if wait_for_instances is None and 'waitForInstances' in kwargs:
+            wait_for_instances = kwargs['waitForInstances']
+        if wait_for_instances_status is None and 'waitForInstancesStatus' in kwargs:
+            wait_for_instances_status = kwargs['waitForInstancesStatus']
+
         _setter("base_instance_name", base_instance_name)
         _setter("versions", versions)
         if all_instances_config is not None:
@@ -580,7 +614,41 @@ class _InstanceGroupManagerState:
              wait_for_instances: Optional[pulumi.Input[bool]] = None,
              wait_for_instances_status: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if all_instances_config is None and 'allInstancesConfig' in kwargs:
+            all_instances_config = kwargs['allInstancesConfig']
+        if auto_healing_policies is None and 'autoHealingPolicies' in kwargs:
+            auto_healing_policies = kwargs['autoHealingPolicies']
+        if base_instance_name is None and 'baseInstanceName' in kwargs:
+            base_instance_name = kwargs['baseInstanceName']
+        if instance_group is None and 'instanceGroup' in kwargs:
+            instance_group = kwargs['instanceGroup']
+        if instance_lifecycle_policy is None and 'instanceLifecyclePolicy' in kwargs:
+            instance_lifecycle_policy = kwargs['instanceLifecyclePolicy']
+        if list_managed_instances_results is None and 'listManagedInstancesResults' in kwargs:
+            list_managed_instances_results = kwargs['listManagedInstancesResults']
+        if named_ports is None and 'namedPorts' in kwargs:
+            named_ports = kwargs['namedPorts']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if stateful_disks is None and 'statefulDisks' in kwargs:
+            stateful_disks = kwargs['statefulDisks']
+        if stateful_external_ips is None and 'statefulExternalIps' in kwargs:
+            stateful_external_ips = kwargs['statefulExternalIps']
+        if stateful_internal_ips is None and 'statefulInternalIps' in kwargs:
+            stateful_internal_ips = kwargs['statefulInternalIps']
+        if target_pools is None and 'targetPools' in kwargs:
+            target_pools = kwargs['targetPools']
+        if target_size is None and 'targetSize' in kwargs:
+            target_size = kwargs['targetSize']
+        if update_policy is None and 'updatePolicy' in kwargs:
+            update_policy = kwargs['updatePolicy']
+        if wait_for_instances is None and 'waitForInstances' in kwargs:
+            wait_for_instances = kwargs['waitForInstances']
+        if wait_for_instances_status is None and 'waitForInstancesStatus' in kwargs:
+            wait_for_instances_status = kwargs['waitForInstancesStatus']
+
         if all_instances_config is not None:
             _setter("all_instances_config", all_instances_config)
         if auto_healing_policies is not None:

@@ -76,7 +76,13 @@ class ConnectivityTestDestination(dict):
              network: Optional[str] = None,
              port: Optional[int] = None,
              project_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+
         if instance is not None:
             _setter("instance", instance)
         if ip_address is not None:
@@ -209,7 +215,15 @@ class ConnectivityTestSource(dict):
              network_type: Optional[str] = None,
              port: Optional[int] = None,
              project_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if network_type is None and 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+
         if instance is not None:
             _setter("instance", instance)
         if ip_address is not None:

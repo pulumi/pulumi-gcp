@@ -58,17 +58,35 @@ class SubnetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             network: pulumi.Input[str],
-             subnet_id: pulumi.Input[str],
-             zone: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             subnet_id: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              ipv4_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ipv6_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              vlan_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if subnet_id is None:
+            raise TypeError("Missing 'subnet_id' argument")
+        if zone is None:
+            raise TypeError("Missing 'zone' argument")
+        if ipv4_cidrs is None and 'ipv4Cidrs' in kwargs:
+            ipv4_cidrs = kwargs['ipv4Cidrs']
+        if ipv6_cidrs is None and 'ipv6Cidrs' in kwargs:
+            ipv6_cidrs = kwargs['ipv6Cidrs']
+        if vlan_id is None and 'vlanId' in kwargs:
+            vlan_id = kwargs['vlanId']
+
         _setter("location", location)
         _setter("network", network)
         _setter("subnet_id", subnet_id)
@@ -290,7 +308,21 @@ class _SubnetState:
              update_time: Optional[pulumi.Input[str]] = None,
              vlan_id: Optional[pulumi.Input[int]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if ipv4_cidrs is None and 'ipv4Cidrs' in kwargs:
+            ipv4_cidrs = kwargs['ipv4Cidrs']
+        if ipv6_cidrs is None and 'ipv6Cidrs' in kwargs:
+            ipv6_cidrs = kwargs['ipv6Cidrs']
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if vlan_id is None and 'vlanId' in kwargs:
+            vlan_id = kwargs['vlanId']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:

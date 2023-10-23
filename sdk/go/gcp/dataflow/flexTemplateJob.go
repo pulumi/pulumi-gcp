@@ -29,7 +29,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataflow.NewFlexTemplateJob(ctx, "bigDataJob", &dataflow.FlexTemplateJobArgs{
 //				ContainerSpecGcsPath: pulumi.String("gs://my-bucket/templates/template.json"),
-//				Parameters: pulumi.AnyMap{
+//				Parameters: pulumi.Map{
 //					"inputSubscription": pulumi.Any("messages"),
 //				},
 //			}, pulumi.Provider(google_beta))
@@ -91,7 +91,7 @@ import (
 //			}
 //			_, err := random.NewRandomId(ctx, "bigDataJobNameSuffix", &random.RandomIdArgs{
 //				ByteLength: pulumi.Int(4),
-//				Keepers: pulumi.AnyMap{
+//				Keepers: pulumi.Map{
 //					"region":          pulumi.Any(_var.Region),
 //					"subscription_id": pulumi.String(bigDataJobSubscriptionId),
 //				},
@@ -103,7 +103,7 @@ import (
 //				Region:                   pulumi.Any(_var.Region),
 //				ContainerSpecGcsPath:     pulumi.String("gs://my-bucket/templates/template.json"),
 //				SkipWaitOnJobTermination: pulumi.Bool(true),
-//				Parameters: pulumi.AnyMap{
+//				Parameters: pulumi.Map{
 //					"inputSubscription": pulumi.String(bigDataJobSubscriptionId),
 //				},
 //			}, pulumi.Provider(google_beta))

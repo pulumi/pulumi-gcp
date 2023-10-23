@@ -61,7 +61,13 @@ class AppGatewayArgs:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if host_type is None and 'hostType' in kwargs:
+            host_type = kwargs['hostType']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if host_type is not None:
@@ -231,7 +237,15 @@ class _AppGatewayState:
              state: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              uri: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allocated_connections is None and 'allocatedConnections' in kwargs:
+            allocated_connections = kwargs['allocatedConnections']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if host_type is None and 'hostType' in kwargs:
+            host_type = kwargs['hostType']
+
         if allocated_connections is not None:
             _setter("allocated_connections", allocated_connections)
         if display_name is not None:

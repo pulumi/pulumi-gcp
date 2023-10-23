@@ -60,14 +60,28 @@ class EnvironmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             org_id: pulumi.Input[str],
+             org_id: Optional[pulumi.Input[str]] = None,
              api_proxy_type: Optional[pulumi.Input[str]] = None,
              deployment_type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              node_config: Optional[pulumi.Input['EnvironmentNodeConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if api_proxy_type is None and 'apiProxyType' in kwargs:
+            api_proxy_type = kwargs['apiProxyType']
+        if deployment_type is None and 'deploymentType' in kwargs:
+            deployment_type = kwargs['deploymentType']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if node_config is None and 'nodeConfig' in kwargs:
+            node_config = kwargs['nodeConfig']
+
         _setter("org_id", org_id)
         if api_proxy_type is not None:
             _setter("api_proxy_type", api_proxy_type)
@@ -235,7 +249,19 @@ class _EnvironmentState:
              name: Optional[pulumi.Input[str]] = None,
              node_config: Optional[pulumi.Input['EnvironmentNodeConfigArgs']] = None,
              org_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_proxy_type is None and 'apiProxyType' in kwargs:
+            api_proxy_type = kwargs['apiProxyType']
+        if deployment_type is None and 'deploymentType' in kwargs:
+            deployment_type = kwargs['deploymentType']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if node_config is None and 'nodeConfig' in kwargs:
+            node_config = kwargs['nodeConfig']
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+
         if api_proxy_type is not None:
             _setter("api_proxy_type", api_proxy_type)
         if deployment_type is not None:

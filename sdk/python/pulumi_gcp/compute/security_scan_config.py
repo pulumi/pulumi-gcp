@@ -69,8 +69,8 @@ class SecurityScanConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             starting_urls: pulumi.Input[Sequence[pulumi.Input[str]]],
+             display_name: Optional[pulumi.Input[str]] = None,
+             starting_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              authentication: Optional[pulumi.Input['SecurityScanConfigAuthenticationArgs']] = None,
              blacklist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              export_to_security_command_center: Optional[pulumi.Input[str]] = None,
@@ -79,7 +79,27 @@ class SecurityScanConfigArgs:
              schedule: Optional[pulumi.Input['SecurityScanConfigScheduleArgs']] = None,
              target_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              user_agent: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if starting_urls is None and 'startingUrls' in kwargs:
+            starting_urls = kwargs['startingUrls']
+        if starting_urls is None:
+            raise TypeError("Missing 'starting_urls' argument")
+        if blacklist_patterns is None and 'blacklistPatterns' in kwargs:
+            blacklist_patterns = kwargs['blacklistPatterns']
+        if export_to_security_command_center is None and 'exportToSecurityCommandCenter' in kwargs:
+            export_to_security_command_center = kwargs['exportToSecurityCommandCenter']
+        if max_qps is None and 'maxQps' in kwargs:
+            max_qps = kwargs['maxQps']
+        if target_platforms is None and 'targetPlatforms' in kwargs:
+            target_platforms = kwargs['targetPlatforms']
+        if user_agent is None and 'userAgent' in kwargs:
+            user_agent = kwargs['userAgent']
+
         _setter("display_name", display_name)
         _setter("starting_urls", starting_urls)
         if authentication is not None:
@@ -305,7 +325,23 @@ class _SecurityScanConfigState:
              starting_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              target_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              user_agent: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if blacklist_patterns is None and 'blacklistPatterns' in kwargs:
+            blacklist_patterns = kwargs['blacklistPatterns']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if export_to_security_command_center is None and 'exportToSecurityCommandCenter' in kwargs:
+            export_to_security_command_center = kwargs['exportToSecurityCommandCenter']
+        if max_qps is None and 'maxQps' in kwargs:
+            max_qps = kwargs['maxQps']
+        if starting_urls is None and 'startingUrls' in kwargs:
+            starting_urls = kwargs['startingUrls']
+        if target_platforms is None and 'targetPlatforms' in kwargs:
+            target_platforms = kwargs['targetPlatforms']
+        if user_agent is None and 'userAgent' in kwargs:
+            user_agent = kwargs['userAgent']
+
         if authentication is not None:
             _setter("authentication", authentication)
         if blacklist_patterns is not None:

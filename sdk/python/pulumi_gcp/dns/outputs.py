@@ -66,10 +66,16 @@ class DnsManagedZoneIamBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -106,10 +112,16 @@ class DnsManagedZoneIamMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -162,8 +174,14 @@ class ManagedZoneCloudLoggingConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enable_logging: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enable_logging: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if enable_logging is None:
+            raise TypeError("Missing 'enable_logging' argument")
+
         _setter("enable_logging", enable_logging)
 
     @property
@@ -228,7 +246,13 @@ class ManagedZoneDnssecConfig(dict):
              kind: Optional[str] = None,
              non_existence: Optional[str] = None,
              state: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_key_specs is None and 'defaultKeySpecs' in kwargs:
+            default_key_specs = kwargs['defaultKeySpecs']
+        if non_existence is None and 'nonExistence' in kwargs:
+            non_existence = kwargs['nonExistence']
+
         if default_key_specs is not None:
             _setter("default_key_specs", default_key_specs)
         if kind is not None:
@@ -331,7 +355,13 @@ class ManagedZoneDnssecConfigDefaultKeySpec(dict):
              key_length: Optional[int] = None,
              key_type: Optional[str] = None,
              kind: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key_length is None and 'keyLength' in kwargs:
+            key_length = kwargs['keyLength']
+        if key_type is None and 'keyType' in kwargs:
+            key_type = kwargs['keyType']
+
         if algorithm is not None:
             _setter("algorithm", algorithm)
         if key_length is not None:
@@ -415,8 +445,14 @@ class ManagedZoneForwardingConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             target_name_servers: Sequence['outputs.ManagedZoneForwardingConfigTargetNameServer'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             target_name_servers: Optional[Sequence['outputs.ManagedZoneForwardingConfigTargetNameServer']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if target_name_servers is None and 'targetNameServers' in kwargs:
+            target_name_servers = kwargs['targetNameServers']
+        if target_name_servers is None:
+            raise TypeError("Missing 'target_name_servers' argument")
+
         _setter("target_name_servers", target_name_servers)
 
     @property
@@ -470,9 +506,17 @@ class ManagedZoneForwardingConfigTargetNameServer(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ipv4_address: str,
+             ipv4_address: Optional[str] = None,
              forwarding_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ipv4_address is None and 'ipv4Address' in kwargs:
+            ipv4_address = kwargs['ipv4Address']
+        if ipv4_address is None:
+            raise TypeError("Missing 'ipv4_address' argument")
+        if forwarding_path is None and 'forwardingPath' in kwargs:
+            forwarding_path = kwargs['forwardingPath']
+
         _setter("ipv4_address", ipv4_address)
         if forwarding_path is not None:
             _setter("forwarding_path", forwarding_path)
@@ -529,8 +573,14 @@ class ManagedZonePeeringConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             target_network: 'outputs.ManagedZonePeeringConfigTargetNetwork',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             target_network: Optional['outputs.ManagedZonePeeringConfigTargetNetwork'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if target_network is None and 'targetNetwork' in kwargs:
+            target_network = kwargs['targetNetwork']
+        if target_network is None:
+            raise TypeError("Missing 'target_network' argument")
+
         _setter("target_network", target_network)
 
     @property
@@ -576,8 +626,14 @@ class ManagedZonePeeringConfigTargetNetwork(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network_url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             network_url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network_url is None and 'networkUrl' in kwargs:
+            network_url = kwargs['networkUrl']
+        if network_url is None:
+            raise TypeError("Missing 'network_url' argument")
+
         _setter("network_url", network_url)
 
     @property
@@ -627,7 +683,11 @@ class ManagedZonePrivateVisibilityConfig(dict):
              _setter: Callable[[Any, Any], None],
              gke_clusters: Optional[Sequence['outputs.ManagedZonePrivateVisibilityConfigGkeCluster']] = None,
              networks: Optional[Sequence['outputs.ManagedZonePrivateVisibilityConfigNetwork']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gke_clusters is None and 'gkeClusters' in kwargs:
+            gke_clusters = kwargs['gkeClusters']
+
         if gke_clusters is not None:
             _setter("gke_clusters", gke_clusters)
         if networks is not None:
@@ -681,8 +741,14 @@ class ManagedZonePrivateVisibilityConfigGkeCluster(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             gke_cluster_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             gke_cluster_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gke_cluster_name is None and 'gkeClusterName' in kwargs:
+            gke_cluster_name = kwargs['gkeClusterName']
+        if gke_cluster_name is None:
+            raise TypeError("Missing 'gke_cluster_name' argument")
+
         _setter("gke_cluster_name", gke_cluster_name)
 
     @property
@@ -729,8 +795,14 @@ class ManagedZonePrivateVisibilityConfigNetwork(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network_url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             network_url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network_url is None and 'networkUrl' in kwargs:
+            network_url = kwargs['networkUrl']
+        if network_url is None:
+            raise TypeError("Missing 'network_url' argument")
+
         _setter("network_url", network_url)
 
     @property
@@ -759,8 +831,12 @@ class ManagedZoneServiceDirectoryConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             namespace: 'outputs.ManagedZoneServiceDirectoryConfigNamespace',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             namespace: Optional['outputs.ManagedZoneServiceDirectoryConfigNamespace'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+
         _setter("namespace", namespace)
 
     @property
@@ -808,8 +884,14 @@ class ManagedZoneServiceDirectoryConfigNamespace(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             namespace_url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             namespace_url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if namespace_url is None and 'namespaceUrl' in kwargs:
+            namespace_url = kwargs['namespaceUrl']
+        if namespace_url is None:
+            raise TypeError("Missing 'namespace_url' argument")
+
         _setter("namespace_url", namespace_url)
 
     @property
@@ -859,8 +941,14 @@ class PolicyAlternativeNameServerConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             target_name_servers: Sequence['outputs.PolicyAlternativeNameServerConfigTargetNameServer'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             target_name_servers: Optional[Sequence['outputs.PolicyAlternativeNameServerConfigTargetNameServer']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if target_name_servers is None and 'targetNameServers' in kwargs:
+            target_name_servers = kwargs['targetNameServers']
+        if target_name_servers is None:
+            raise TypeError("Missing 'target_name_servers' argument")
+
         _setter("target_name_servers", target_name_servers)
 
     @property
@@ -914,9 +1002,17 @@ class PolicyAlternativeNameServerConfigTargetNameServer(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ipv4_address: str,
+             ipv4_address: Optional[str] = None,
              forwarding_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ipv4_address is None and 'ipv4Address' in kwargs:
+            ipv4_address = kwargs['ipv4Address']
+        if ipv4_address is None:
+            raise TypeError("Missing 'ipv4_address' argument")
+        if forwarding_path is None and 'forwardingPath' in kwargs:
+            forwarding_path = kwargs['forwardingPath']
+
         _setter("ipv4_address", ipv4_address)
         if forwarding_path is not None:
             _setter("forwarding_path", forwarding_path)
@@ -974,8 +1070,14 @@ class PolicyNetwork(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network_url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             network_url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network_url is None and 'networkUrl' in kwargs:
+            network_url = kwargs['networkUrl']
+        if network_url is None:
+            raise TypeError("Missing 'network_url' argument")
+
         _setter("network_url", network_url)
 
     @property
@@ -1038,7 +1140,13 @@ class RecordSetRoutingPolicy(dict):
              geos: Optional[Sequence['outputs.RecordSetRoutingPolicyGeo']] = None,
              primary_backup: Optional['outputs.RecordSetRoutingPolicyPrimaryBackup'] = None,
              wrrs: Optional[Sequence['outputs.RecordSetRoutingPolicyWrr']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_geo_fencing is None and 'enableGeoFencing' in kwargs:
+            enable_geo_fencing = kwargs['enableGeoFencing']
+        if primary_backup is None and 'primaryBackup' in kwargs:
+            primary_backup = kwargs['primaryBackup']
+
         if enable_geo_fencing is not None:
             _setter("enable_geo_fencing", enable_geo_fencing)
         if geos is not None:
@@ -1122,10 +1230,16 @@ class RecordSetRoutingPolicyGeo(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: str,
+             location: Optional[str] = None,
              health_checked_targets: Optional['outputs.RecordSetRoutingPolicyGeoHealthCheckedTargets'] = None,
              rrdatas: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if health_checked_targets is None and 'healthCheckedTargets' in kwargs:
+            health_checked_targets = kwargs['healthCheckedTargets']
+
         _setter("location", location)
         if health_checked_targets is not None:
             _setter("health_checked_targets", health_checked_targets)
@@ -1190,8 +1304,14 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargets(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             internal_load_balancers: Sequence['outputs.RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             internal_load_balancers: Optional[Sequence['outputs.RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if internal_load_balancers is None and 'internalLoadBalancers' in kwargs:
+            internal_load_balancers = kwargs['internalLoadBalancers']
+        if internal_load_balancers is None:
+            raise TypeError("Missing 'internal_load_balancers' argument")
+
         _setter("internal_load_balancers", internal_load_balancers)
 
     @property
@@ -1259,14 +1379,36 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_address: str,
-             ip_protocol: str,
-             load_balancer_type: str,
-             network_url: str,
-             port: str,
-             project: str,
+             ip_address: Optional[str] = None,
+             ip_protocol: Optional[str] = None,
+             load_balancer_type: Optional[str] = None,
+             network_url: Optional[str] = None,
+             port: Optional[str] = None,
+             project: Optional[str] = None,
              region: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if ip_protocol is None and 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if ip_protocol is None:
+            raise TypeError("Missing 'ip_protocol' argument")
+        if load_balancer_type is None and 'loadBalancerType' in kwargs:
+            load_balancer_type = kwargs['loadBalancerType']
+        if load_balancer_type is None:
+            raise TypeError("Missing 'load_balancer_type' argument")
+        if network_url is None and 'networkUrl' in kwargs:
+            network_url = kwargs['networkUrl']
+        if network_url is None:
+            raise TypeError("Missing 'network_url' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
         _setter("ip_address", ip_address)
         _setter("ip_protocol", ip_protocol)
         _setter("load_balancer_type", load_balancer_type)
@@ -1379,11 +1521,23 @@ class RecordSetRoutingPolicyPrimaryBackup(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_geos: Sequence['outputs.RecordSetRoutingPolicyPrimaryBackupBackupGeo'],
-             primary: 'outputs.RecordSetRoutingPolicyPrimaryBackupPrimary',
+             backup_geos: Optional[Sequence['outputs.RecordSetRoutingPolicyPrimaryBackupBackupGeo']] = None,
+             primary: Optional['outputs.RecordSetRoutingPolicyPrimaryBackupPrimary'] = None,
              enable_geo_fencing_for_backups: Optional[bool] = None,
              trickle_ratio: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_geos is None and 'backupGeos' in kwargs:
+            backup_geos = kwargs['backupGeos']
+        if backup_geos is None:
+            raise TypeError("Missing 'backup_geos' argument")
+        if primary is None:
+            raise TypeError("Missing 'primary' argument")
+        if enable_geo_fencing_for_backups is None and 'enableGeoFencingForBackups' in kwargs:
+            enable_geo_fencing_for_backups = kwargs['enableGeoFencingForBackups']
+        if trickle_ratio is None and 'trickleRatio' in kwargs:
+            trickle_ratio = kwargs['trickleRatio']
+
         _setter("backup_geos", backup_geos)
         _setter("primary", primary)
         if enable_geo_fencing_for_backups is not None:
@@ -1463,10 +1617,16 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeo(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: str,
+             location: Optional[str] = None,
              health_checked_targets: Optional['outputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets'] = None,
              rrdatas: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if health_checked_targets is None and 'healthCheckedTargets' in kwargs:
+            health_checked_targets = kwargs['healthCheckedTargets']
+
         _setter("location", location)
         if health_checked_targets is not None:
             _setter("health_checked_targets", health_checked_targets)
@@ -1528,8 +1688,14 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             internal_load_balancers: Sequence['outputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             internal_load_balancers: Optional[Sequence['outputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if internal_load_balancers is None and 'internalLoadBalancers' in kwargs:
+            internal_load_balancers = kwargs['internalLoadBalancers']
+        if internal_load_balancers is None:
+            raise TypeError("Missing 'internal_load_balancers' argument")
+
         _setter("internal_load_balancers", internal_load_balancers)
 
     @property
@@ -1597,14 +1763,36 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_address: str,
-             ip_protocol: str,
-             load_balancer_type: str,
-             network_url: str,
-             port: str,
-             project: str,
+             ip_address: Optional[str] = None,
+             ip_protocol: Optional[str] = None,
+             load_balancer_type: Optional[str] = None,
+             network_url: Optional[str] = None,
+             port: Optional[str] = None,
+             project: Optional[str] = None,
              region: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if ip_protocol is None and 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if ip_protocol is None:
+            raise TypeError("Missing 'ip_protocol' argument")
+        if load_balancer_type is None and 'loadBalancerType' in kwargs:
+            load_balancer_type = kwargs['loadBalancerType']
+        if load_balancer_type is None:
+            raise TypeError("Missing 'load_balancer_type' argument")
+        if network_url is None and 'networkUrl' in kwargs:
+            network_url = kwargs['networkUrl']
+        if network_url is None:
+            raise TypeError("Missing 'network_url' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
         _setter("ip_address", ip_address)
         _setter("ip_protocol", ip_protocol)
         _setter("load_balancer_type", load_balancer_type)
@@ -1703,8 +1891,14 @@ class RecordSetRoutingPolicyPrimaryBackupPrimary(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             internal_load_balancers: Sequence['outputs.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             internal_load_balancers: Optional[Sequence['outputs.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if internal_load_balancers is None and 'internalLoadBalancers' in kwargs:
+            internal_load_balancers = kwargs['internalLoadBalancers']
+        if internal_load_balancers is None:
+            raise TypeError("Missing 'internal_load_balancers' argument")
+
         _setter("internal_load_balancers", internal_load_balancers)
 
     @property
@@ -1772,14 +1966,36 @@ class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_address: str,
-             ip_protocol: str,
-             load_balancer_type: str,
-             network_url: str,
-             port: str,
-             project: str,
+             ip_address: Optional[str] = None,
+             ip_protocol: Optional[str] = None,
+             load_balancer_type: Optional[str] = None,
+             network_url: Optional[str] = None,
+             port: Optional[str] = None,
+             project: Optional[str] = None,
              region: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if ip_protocol is None and 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if ip_protocol is None:
+            raise TypeError("Missing 'ip_protocol' argument")
+        if load_balancer_type is None and 'loadBalancerType' in kwargs:
+            load_balancer_type = kwargs['loadBalancerType']
+        if load_balancer_type is None:
+            raise TypeError("Missing 'load_balancer_type' argument")
+        if network_url is None and 'networkUrl' in kwargs:
+            network_url = kwargs['networkUrl']
+        if network_url is None:
+            raise TypeError("Missing 'network_url' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
         _setter("ip_address", ip_address)
         _setter("ip_protocol", ip_protocol)
         _setter("load_balancer_type", load_balancer_type)
@@ -1884,10 +2100,16 @@ class RecordSetRoutingPolicyWrr(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             weight: float,
+             weight: Optional[float] = None,
              health_checked_targets: Optional['outputs.RecordSetRoutingPolicyWrrHealthCheckedTargets'] = None,
              rrdatas: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
+        if health_checked_targets is None and 'healthCheckedTargets' in kwargs:
+            health_checked_targets = kwargs['healthCheckedTargets']
+
         _setter("weight", weight)
         if health_checked_targets is not None:
             _setter("health_checked_targets", health_checked_targets)
@@ -1952,8 +2174,14 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargets(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             internal_load_balancers: Sequence['outputs.RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             internal_load_balancers: Optional[Sequence['outputs.RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if internal_load_balancers is None and 'internalLoadBalancers' in kwargs:
+            internal_load_balancers = kwargs['internalLoadBalancers']
+        if internal_load_balancers is None:
+            raise TypeError("Missing 'internal_load_balancers' argument")
+
         _setter("internal_load_balancers", internal_load_balancers)
 
     @property
@@ -2021,14 +2249,36 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_address: str,
-             ip_protocol: str,
-             load_balancer_type: str,
-             network_url: str,
-             port: str,
-             project: str,
+             ip_address: Optional[str] = None,
+             ip_protocol: Optional[str] = None,
+             load_balancer_type: Optional[str] = None,
+             network_url: Optional[str] = None,
+             port: Optional[str] = None,
+             project: Optional[str] = None,
              region: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if ip_protocol is None and 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if ip_protocol is None:
+            raise TypeError("Missing 'ip_protocol' argument")
+        if load_balancer_type is None and 'loadBalancerType' in kwargs:
+            load_balancer_type = kwargs['loadBalancerType']
+        if load_balancer_type is None:
+            raise TypeError("Missing 'load_balancer_type' argument")
+        if network_url is None and 'networkUrl' in kwargs:
+            network_url = kwargs['networkUrl']
+        if network_url is None:
+            raise TypeError("Missing 'network_url' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
         _setter("ip_address", ip_address)
         _setter("ip_protocol", ip_protocol)
         _setter("load_balancer_type", load_balancer_type)
@@ -2128,8 +2378,14 @@ class ResponsePolicyGkeCluster(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             gke_cluster_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             gke_cluster_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gke_cluster_name is None and 'gkeClusterName' in kwargs:
+            gke_cluster_name = kwargs['gkeClusterName']
+        if gke_cluster_name is None:
+            raise TypeError("Missing 'gke_cluster_name' argument")
+
         _setter("gke_cluster_name", gke_cluster_name)
 
     @property
@@ -2176,8 +2432,14 @@ class ResponsePolicyNetwork(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network_url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             network_url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network_url is None and 'networkUrl' in kwargs:
+            network_url = kwargs['networkUrl']
+        if network_url is None:
+            raise TypeError("Missing 'network_url' argument")
+
         _setter("network_url", network_url)
 
     @property
@@ -2223,8 +2485,14 @@ class ResponsePolicyRuleLocalData(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             local_datas: Sequence['outputs.ResponsePolicyRuleLocalDataLocalData'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             local_datas: Optional[Sequence['outputs.ResponsePolicyRuleLocalDataLocalData']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if local_datas is None and 'localDatas' in kwargs:
+            local_datas = kwargs['localDatas']
+        if local_datas is None:
+            raise TypeError("Missing 'local_datas' argument")
+
         _setter("local_datas", local_datas)
 
     @property
@@ -2262,11 +2530,17 @@ class ResponsePolicyRuleLocalDataLocalData(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             type: str,
+             name: Optional[str] = None,
+             type: Optional[str] = None,
              rrdatas: Optional[Sequence[str]] = None,
              ttl: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("name", name)
         _setter("type", type)
         if rrdatas is not None:
@@ -2350,17 +2624,51 @@ class GetKeysKeySigningKeyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             algorithm: str,
-             creation_time: str,
-             description: str,
-             digests: Sequence['outputs.GetKeysKeySigningKeyDigestResult'],
-             ds_record: str,
-             id: str,
-             is_active: bool,
-             key_length: int,
-             key_tag: int,
-             public_key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             algorithm: Optional[str] = None,
+             creation_time: Optional[str] = None,
+             description: Optional[str] = None,
+             digests: Optional[Sequence['outputs.GetKeysKeySigningKeyDigestResult']] = None,
+             ds_record: Optional[str] = None,
+             id: Optional[str] = None,
+             is_active: Optional[bool] = None,
+             key_length: Optional[int] = None,
+             key_tag: Optional[int] = None,
+             public_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if algorithm is None:
+            raise TypeError("Missing 'algorithm' argument")
+        if creation_time is None and 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if digests is None:
+            raise TypeError("Missing 'digests' argument")
+        if ds_record is None and 'dsRecord' in kwargs:
+            ds_record = kwargs['dsRecord']
+        if ds_record is None:
+            raise TypeError("Missing 'ds_record' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if is_active is None and 'isActive' in kwargs:
+            is_active = kwargs['isActive']
+        if is_active is None:
+            raise TypeError("Missing 'is_active' argument")
+        if key_length is None and 'keyLength' in kwargs:
+            key_length = kwargs['keyLength']
+        if key_length is None:
+            raise TypeError("Missing 'key_length' argument")
+        if key_tag is None and 'keyTag' in kwargs:
+            key_tag = kwargs['keyTag']
+        if key_tag is None:
+            raise TypeError("Missing 'key_tag' argument")
+        if public_key is None and 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if public_key is None:
+            raise TypeError("Missing 'public_key' argument")
+
         _setter("algorithm", algorithm)
         _setter("creation_time", creation_time)
         _setter("description", description)
@@ -2470,9 +2778,15 @@ class GetKeysKeySigningKeyDigestResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             digest: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             digest: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if digest is None:
+            raise TypeError("Missing 'digest' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("digest", digest)
         _setter("type", type)
 
@@ -2531,16 +2845,46 @@ class GetKeysZoneSigningKeyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             algorithm: str,
-             creation_time: str,
-             description: str,
-             digests: Sequence['outputs.GetKeysZoneSigningKeyDigestResult'],
-             id: str,
-             is_active: bool,
-             key_length: int,
-             key_tag: int,
-             public_key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             algorithm: Optional[str] = None,
+             creation_time: Optional[str] = None,
+             description: Optional[str] = None,
+             digests: Optional[Sequence['outputs.GetKeysZoneSigningKeyDigestResult']] = None,
+             id: Optional[str] = None,
+             is_active: Optional[bool] = None,
+             key_length: Optional[int] = None,
+             key_tag: Optional[int] = None,
+             public_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if algorithm is None:
+            raise TypeError("Missing 'algorithm' argument")
+        if creation_time is None and 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if digests is None:
+            raise TypeError("Missing 'digests' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if is_active is None and 'isActive' in kwargs:
+            is_active = kwargs['isActive']
+        if is_active is None:
+            raise TypeError("Missing 'is_active' argument")
+        if key_length is None and 'keyLength' in kwargs:
+            key_length = kwargs['keyLength']
+        if key_length is None:
+            raise TypeError("Missing 'key_length' argument")
+        if key_tag is None and 'keyTag' in kwargs:
+            key_tag = kwargs['keyTag']
+        if key_tag is None:
+            raise TypeError("Missing 'key_tag' argument")
+        if public_key is None and 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if public_key is None:
+            raise TypeError("Missing 'public_key' argument")
+
         _setter("algorithm", algorithm)
         _setter("creation_time", creation_time)
         _setter("description", description)
@@ -2641,9 +2985,15 @@ class GetKeysZoneSigningKeyDigestResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             digest: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             digest: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if digest is None:
+            raise TypeError("Missing 'digest' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("digest", digest)
         _setter("type", type)
 

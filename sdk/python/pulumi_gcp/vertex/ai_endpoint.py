@@ -57,8 +57,8 @@ class AiEndpointArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             location: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              encryption_spec: Optional[pulumi.Input['AiEndpointEncryptionSpecArgs']] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -66,7 +66,17 @@ class AiEndpointArgs:
              network: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if encryption_spec is None and 'encryptionSpec' in kwargs:
+            encryption_spec = kwargs['encryptionSpec']
+
         _setter("display_name", display_name)
         _setter("location", location)
         if description is not None:
@@ -273,7 +283,21 @@ class _AiEndpointState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if deployed_models is None and 'deployedModels' in kwargs:
+            deployed_models = kwargs['deployedModels']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if encryption_spec is None and 'encryptionSpec' in kwargs:
+            encryption_spec = kwargs['encryptionSpec']
+        if model_deployment_monitoring_job is None and 'modelDeploymentMonitoringJob' in kwargs:
+            model_deployment_monitoring_job = kwargs['modelDeploymentMonitoringJob']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if deployed_models is not None:

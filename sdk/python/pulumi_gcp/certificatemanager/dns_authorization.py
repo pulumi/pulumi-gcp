@@ -48,12 +48,16 @@ class DnsAuthorizationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain: pulumi.Input[str],
+             domain: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+
         _setter("domain", domain)
         if description is not None:
             _setter("description", description)
@@ -180,7 +184,11 @@ class _DnsAuthorizationState:
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dns_resource_records is None and 'dnsResourceRecords' in kwargs:
+            dns_resource_records = kwargs['dnsResourceRecords']
+
         if description is not None:
             _setter("description", description)
         if dns_resource_records is not None:

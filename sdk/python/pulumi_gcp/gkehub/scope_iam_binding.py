@@ -52,12 +52,22 @@ class ScopeIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
-             scope_id: pulumi.Input[str],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             scope_id: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['ScopeIamBindingConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if scope_id is None and 'scopeId' in kwargs:
+            scope_id = kwargs['scopeId']
+        if scope_id is None:
+            raise TypeError("Missing 'scope_id' argument")
+
         _setter("members", members)
         _setter("role", role)
         _setter("scope_id", scope_id)
@@ -181,7 +191,11 @@ class _ScopeIamBindingState:
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              scope_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if scope_id is None and 'scopeId' in kwargs:
+            scope_id = kwargs['scopeId']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

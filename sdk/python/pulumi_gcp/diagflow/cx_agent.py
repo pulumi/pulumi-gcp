@@ -71,10 +71,10 @@ class CxAgentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             default_language_code: pulumi.Input[str],
-             display_name: pulumi.Input[str],
-             location: pulumi.Input[str],
-             time_zone: pulumi.Input[str],
+             default_language_code: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             time_zone: Optional[pulumi.Input[str]] = None,
              avatar_uri: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              enable_spell_correction: Optional[pulumi.Input[bool]] = None,
@@ -83,7 +83,35 @@ class CxAgentArgs:
              security_settings: Optional[pulumi.Input[str]] = None,
              speech_to_text_settings: Optional[pulumi.Input['CxAgentSpeechToTextSettingsArgs']] = None,
              supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_language_code is None and 'defaultLanguageCode' in kwargs:
+            default_language_code = kwargs['defaultLanguageCode']
+        if default_language_code is None:
+            raise TypeError("Missing 'default_language_code' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+        if time_zone is None:
+            raise TypeError("Missing 'time_zone' argument")
+        if avatar_uri is None and 'avatarUri' in kwargs:
+            avatar_uri = kwargs['avatarUri']
+        if enable_spell_correction is None and 'enableSpellCorrection' in kwargs:
+            enable_spell_correction = kwargs['enableSpellCorrection']
+        if enable_stackdriver_logging is None and 'enableStackdriverLogging' in kwargs:
+            enable_stackdriver_logging = kwargs['enableStackdriverLogging']
+        if security_settings is None and 'securitySettings' in kwargs:
+            security_settings = kwargs['securitySettings']
+        if speech_to_text_settings is None and 'speechToTextSettings' in kwargs:
+            speech_to_text_settings = kwargs['speechToTextSettings']
+        if supported_language_codes is None and 'supportedLanguageCodes' in kwargs:
+            supported_language_codes = kwargs['supportedLanguageCodes']
+
         _setter("default_language_code", default_language_code)
         _setter("display_name", display_name)
         _setter("location", location)
@@ -338,7 +366,29 @@ class _CxAgentState:
              start_flow: Optional[pulumi.Input[str]] = None,
              supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if avatar_uri is None and 'avatarUri' in kwargs:
+            avatar_uri = kwargs['avatarUri']
+        if default_language_code is None and 'defaultLanguageCode' in kwargs:
+            default_language_code = kwargs['defaultLanguageCode']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if enable_spell_correction is None and 'enableSpellCorrection' in kwargs:
+            enable_spell_correction = kwargs['enableSpellCorrection']
+        if enable_stackdriver_logging is None and 'enableStackdriverLogging' in kwargs:
+            enable_stackdriver_logging = kwargs['enableStackdriverLogging']
+        if security_settings is None and 'securitySettings' in kwargs:
+            security_settings = kwargs['securitySettings']
+        if speech_to_text_settings is None and 'speechToTextSettings' in kwargs:
+            speech_to_text_settings = kwargs['speechToTextSettings']
+        if start_flow is None and 'startFlow' in kwargs:
+            start_flow = kwargs['startFlow']
+        if supported_language_codes is None and 'supportedLanguageCodes' in kwargs:
+            supported_language_codes = kwargs['supportedLanguageCodes']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         if avatar_uri is not None:
             _setter("avatar_uri", avatar_uri)
         if default_language_code is not None:

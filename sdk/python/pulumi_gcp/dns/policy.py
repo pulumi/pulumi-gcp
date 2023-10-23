@@ -65,7 +65,15 @@ class PolicyArgs:
              name: Optional[pulumi.Input[str]] = None,
              networks: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if alternative_name_server_config is None and 'alternativeNameServerConfig' in kwargs:
+            alternative_name_server_config = kwargs['alternativeNameServerConfig']
+        if enable_inbound_forwarding is None and 'enableInboundForwarding' in kwargs:
+            enable_inbound_forwarding = kwargs['enableInboundForwarding']
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+
         if alternative_name_server_config is not None:
             _setter("alternative_name_server_config", alternative_name_server_config)
         if description is not None:
@@ -230,7 +238,15 @@ class _PolicyState:
              name: Optional[pulumi.Input[str]] = None,
              networks: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if alternative_name_server_config is None and 'alternativeNameServerConfig' in kwargs:
+            alternative_name_server_config = kwargs['alternativeNameServerConfig']
+        if enable_inbound_forwarding is None and 'enableInboundForwarding' in kwargs:
+            enable_inbound_forwarding = kwargs['enableInboundForwarding']
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+
         if alternative_name_server_config is not None:
             _setter("alternative_name_server_config", alternative_name_server_config)
         if description is not None:

@@ -45,10 +45,20 @@ class ScopeIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_data: pulumi.Input[str],
-             scope_id: pulumi.Input[str],
+             policy_data: Optional[pulumi.Input[str]] = None,
+             scope_id: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+        if scope_id is None and 'scopeId' in kwargs:
+            scope_id = kwargs['scopeId']
+        if scope_id is None:
+            raise TypeError("Missing 'scope_id' argument")
+
         _setter("policy_data", policy_data)
         _setter("scope_id", scope_id)
         if project is not None:
@@ -143,7 +153,13 @@ class _ScopeIamPolicyState:
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              scope_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if scope_id is None and 'scopeId' in kwargs:
+            scope_id = kwargs['scopeId']
+
         if etag is not None:
             _setter("etag", etag)
         if policy_data is not None:

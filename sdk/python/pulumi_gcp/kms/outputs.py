@@ -51,10 +51,16 @@ class CryptoKeyIAMBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -113,10 +119,16 @@ class CryptoKeyIAMMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -201,7 +213,13 @@ class CryptoKeyVersionAttestation(dict):
              content: Optional[str] = None,
              external_protection_level_options: Optional['outputs.CryptoKeyVersionAttestationExternalProtectionLevelOptions'] = None,
              format: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cert_chains is None and 'certChains' in kwargs:
+            cert_chains = kwargs['certChains']
+        if external_protection_level_options is None and 'externalProtectionLevelOptions' in kwargs:
+            external_protection_level_options = kwargs['externalProtectionLevelOptions']
+
         if cert_chains is not None:
             _setter("cert_chains", cert_chains)
         if content is not None:
@@ -292,7 +310,15 @@ class CryptoKeyVersionAttestationCertChains(dict):
              cavium_certs: Optional[str] = None,
              google_card_certs: Optional[str] = None,
              google_partition_certs: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cavium_certs is None and 'caviumCerts' in kwargs:
+            cavium_certs = kwargs['caviumCerts']
+        if google_card_certs is None and 'googleCardCerts' in kwargs:
+            google_card_certs = kwargs['googleCardCerts']
+        if google_partition_certs is None and 'googlePartitionCerts' in kwargs:
+            google_partition_certs = kwargs['googlePartitionCerts']
+
         if cavium_certs is not None:
             _setter("cavium_certs", cavium_certs)
         if google_card_certs is not None:
@@ -363,7 +389,13 @@ class CryptoKeyVersionAttestationExternalProtectionLevelOptions(dict):
              _setter: Callable[[Any, Any], None],
              ekm_connection_key_path: Optional[str] = None,
              external_key_uri: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ekm_connection_key_path is None and 'ekmConnectionKeyPath' in kwargs:
+            ekm_connection_key_path = kwargs['ekmConnectionKeyPath']
+        if external_key_uri is None and 'externalKeyUri' in kwargs:
+            external_key_uri = kwargs['externalKeyUri']
+
         if ekm_connection_key_path is not None:
             _setter("ekm_connection_key_path", ekm_connection_key_path)
         if external_key_uri is not None:
@@ -421,9 +453,15 @@ class CryptoKeyVersionTemplate(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             algorithm: str,
+             algorithm: Optional[str] = None,
              protection_level: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if algorithm is None:
+            raise TypeError("Missing 'algorithm' argument")
+        if protection_level is None and 'protectionLevel' in kwargs:
+            protection_level = kwargs['protectionLevel']
+
         _setter("algorithm", algorithm)
         if protection_level is not None:
             _setter("protection_level", protection_level)
@@ -470,10 +508,16 @@ class KeyRingIAMBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -532,10 +576,16 @@ class KeyRingIAMMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -592,7 +642,9 @@ class KeyRingImportJobAttestation(dict):
              _setter: Callable[[Any, Any], None],
              content: Optional[str] = None,
              format: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if content is not None:
             _setter("content", content)
         if format is not None:
@@ -635,7 +687,9 @@ class KeyRingImportJobPublicKey(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              pem: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if pem is not None:
             _setter("pem", pem)
 
@@ -681,8 +735,14 @@ class RegistryCredential(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             public_key_certificate: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             public_key_certificate: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if public_key_certificate is None and 'publicKeyCertificate' in kwargs:
+            public_key_certificate = kwargs['publicKeyCertificate']
+        if public_key_certificate is None:
+            raise TypeError("Missing 'public_key_certificate' argument")
+
         _setter("public_key_certificate", public_key_certificate)
 
     @property
@@ -734,9 +794,17 @@ class RegistryEventNotificationConfigItem(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pubsub_topic_name: str,
+             pubsub_topic_name: Optional[str] = None,
              subfolder_matches: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pubsub_topic_name is None and 'pubsubTopicName' in kwargs:
+            pubsub_topic_name = kwargs['pubsubTopicName']
+        if pubsub_topic_name is None:
+            raise TypeError("Missing 'pubsub_topic_name' argument")
+        if subfolder_matches is None and 'subfolderMatches' in kwargs:
+            subfolder_matches = kwargs['subfolderMatches']
+
         _setter("pubsub_topic_name", pubsub_topic_name)
         if subfolder_matches is not None:
             _setter("subfolder_matches", subfolder_matches)
@@ -779,9 +847,15 @@ class GetKMSCryptoKeyVersionPublicKeyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             algorithm: str,
-             pem: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             algorithm: Optional[str] = None,
+             pem: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if algorithm is None:
+            raise TypeError("Missing 'algorithm' argument")
+        if pem is None:
+            raise TypeError("Missing 'pem' argument")
+
         _setter("algorithm", algorithm)
         _setter("pem", pem)
 
@@ -815,9 +889,17 @@ class GetKMSCryptoKeyVersionTemplateResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             algorithm: str,
-             protection_level: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             algorithm: Optional[str] = None,
+             protection_level: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if algorithm is None:
+            raise TypeError("Missing 'algorithm' argument")
+        if protection_level is None and 'protectionLevel' in kwargs:
+            protection_level = kwargs['protectionLevel']
+        if protection_level is None:
+            raise TypeError("Missing 'protection_level' argument")
+
         _setter("algorithm", algorithm)
         _setter("protection_level", protection_level)
 

@@ -112,7 +112,7 @@ class NodePoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster: pulumi.Input[str],
+             cluster: Optional[pulumi.Input[str]] = None,
              autoscaling: Optional[pulumi.Input['NodePoolAutoscalingArgs']] = None,
              initial_node_count: Optional[pulumi.Input[int]] = None,
              location: Optional[pulumi.Input[str]] = None,
@@ -128,7 +128,29 @@ class NodePoolArgs:
              project: Optional[pulumi.Input[str]] = None,
              upgrade_settings: Optional[pulumi.Input['NodePoolUpgradeSettingsArgs']] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster is None:
+            raise TypeError("Missing 'cluster' argument")
+        if initial_node_count is None and 'initialNodeCount' in kwargs:
+            initial_node_count = kwargs['initialNodeCount']
+        if max_pods_per_node is None and 'maxPodsPerNode' in kwargs:
+            max_pods_per_node = kwargs['maxPodsPerNode']
+        if name_prefix is None and 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if node_config is None and 'nodeConfig' in kwargs:
+            node_config = kwargs['nodeConfig']
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+        if node_locations is None and 'nodeLocations' in kwargs:
+            node_locations = kwargs['nodeLocations']
+        if placement_policy is None and 'placementPolicy' in kwargs:
+            placement_policy = kwargs['placementPolicy']
+        if upgrade_settings is None and 'upgradeSettings' in kwargs:
+            upgrade_settings = kwargs['upgradeSettings']
+
         _setter("cluster", cluster)
         if autoscaling is not None:
             _setter("autoscaling", autoscaling)
@@ -519,7 +541,31 @@ class _NodePoolState:
              project: Optional[pulumi.Input[str]] = None,
              upgrade_settings: Optional[pulumi.Input['NodePoolUpgradeSettingsArgs']] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if initial_node_count is None and 'initialNodeCount' in kwargs:
+            initial_node_count = kwargs['initialNodeCount']
+        if instance_group_urls is None and 'instanceGroupUrls' in kwargs:
+            instance_group_urls = kwargs['instanceGroupUrls']
+        if managed_instance_group_urls is None and 'managedInstanceGroupUrls' in kwargs:
+            managed_instance_group_urls = kwargs['managedInstanceGroupUrls']
+        if max_pods_per_node is None and 'maxPodsPerNode' in kwargs:
+            max_pods_per_node = kwargs['maxPodsPerNode']
+        if name_prefix is None and 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if node_config is None and 'nodeConfig' in kwargs:
+            node_config = kwargs['nodeConfig']
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+        if node_locations is None and 'nodeLocations' in kwargs:
+            node_locations = kwargs['nodeLocations']
+        if placement_policy is None and 'placementPolicy' in kwargs:
+            placement_policy = kwargs['placementPolicy']
+        if upgrade_settings is None and 'upgradeSettings' in kwargs:
+            upgrade_settings = kwargs['upgradeSettings']
+
         if autoscaling is not None:
             _setter("autoscaling", autoscaling)
         if cluster is not None:

@@ -42,9 +42,19 @@ class Hl7StoreIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hl7_v2_store_id: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             hl7_v2_store_id: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if hl7_v2_store_id is None and 'hl7V2StoreId' in kwargs:
+            hl7_v2_store_id = kwargs['hl7V2StoreId']
+        if hl7_v2_store_id is None:
+            raise TypeError("Missing 'hl7_v2_store_id' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("hl7_v2_store_id", hl7_v2_store_id)
         _setter("policy_data", policy_data)
 
@@ -123,7 +133,13 @@ class _Hl7StoreIamPolicyState:
              etag: Optional[pulumi.Input[str]] = None,
              hl7_v2_store_id: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if hl7_v2_store_id is None and 'hl7V2StoreId' in kwargs:
+            hl7_v2_store_id = kwargs['hl7V2StoreId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if etag is not None:
             _setter("etag", etag)
         if hl7_v2_store_id is not None:

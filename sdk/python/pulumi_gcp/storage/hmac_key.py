@@ -38,10 +38,16 @@ class HmacKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_account_email: pulumi.Input[str],
+             service_account_email: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if service_account_email is None:
+            raise TypeError("Missing 'service_account_email' argument")
+
         _setter("service_account_email", service_account_email)
         if project is not None:
             _setter("project", project)
@@ -138,7 +144,15 @@ class _HmacKeyState:
              state: Optional[pulumi.Input[str]] = None,
              time_created: Optional[pulumi.Input[str]] = None,
              updated: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_id is None and 'accessId' in kwargs:
+            access_id = kwargs['accessId']
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if time_created is None and 'timeCreated' in kwargs:
+            time_created = kwargs['timeCreated']
+
         if access_id is not None:
             _setter("access_id", access_id)
         if project is not None:

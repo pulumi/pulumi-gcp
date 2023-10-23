@@ -57,13 +57,27 @@ class GroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group_key: pulumi.Input['GroupGroupKeyArgs'],
-             labels: pulumi.Input[Mapping[str, pulumi.Input[str]]],
-             parent: pulumi.Input[str],
+             group_key: Optional[pulumi.Input['GroupGroupKeyArgs']] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              initial_group_config: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if group_key is None and 'groupKey' in kwargs:
+            group_key = kwargs['groupKey']
+        if group_key is None:
+            raise TypeError("Missing 'group_key' argument")
+        if labels is None:
+            raise TypeError("Missing 'labels' argument")
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if initial_group_config is None and 'initialGroupConfig' in kwargs:
+            initial_group_config = kwargs['initialGroupConfig']
+
         _setter("group_key", group_key)
         _setter("labels", labels)
         _setter("parent", parent)
@@ -224,7 +238,19 @@ class _GroupState:
              name: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if group_key is None and 'groupKey' in kwargs:
+            group_key = kwargs['groupKey']
+        if initial_group_config is None and 'initialGroupConfig' in kwargs:
+            initial_group_config = kwargs['initialGroupConfig']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:

@@ -35,10 +35,24 @@ class GcpUserAccessBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_levels: pulumi.Input[str],
-             group_key: pulumi.Input[str],
-             organization_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             access_levels: Optional[pulumi.Input[str]] = None,
+             group_key: Optional[pulumi.Input[str]] = None,
+             organization_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_levels is None and 'accessLevels' in kwargs:
+            access_levels = kwargs['accessLevels']
+        if access_levels is None:
+            raise TypeError("Missing 'access_levels' argument")
+        if group_key is None and 'groupKey' in kwargs:
+            group_key = kwargs['groupKey']
+        if group_key is None:
+            raise TypeError("Missing 'group_key' argument")
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+        if organization_id is None:
+            raise TypeError("Missing 'organization_id' argument")
+
         _setter("access_levels", access_levels)
         _setter("group_key", group_key)
         _setter("organization_id", organization_id)
@@ -114,7 +128,15 @@ class _GcpUserAccessBindingState:
              group_key: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              organization_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_levels is None and 'accessLevels' in kwargs:
+            access_levels = kwargs['accessLevels']
+        if group_key is None and 'groupKey' in kwargs:
+            group_key = kwargs['groupKey']
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+
         if access_levels is not None:
             _setter("access_levels", access_levels)
         if group_key is not None:

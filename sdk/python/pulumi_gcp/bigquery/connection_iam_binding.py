@@ -63,13 +63,23 @@ class ConnectionIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_id: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             connection_id: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['ConnectionIamBindingConditionArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connection_id is None and 'connectionId' in kwargs:
+            connection_id = kwargs['connectionId']
+        if connection_id is None:
+            raise TypeError("Missing 'connection_id' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("connection_id", connection_id)
         _setter("members", members)
         _setter("role", role)
@@ -229,7 +239,11 @@ class _ConnectionIamBindingState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connection_id is None and 'connectionId' in kwargs:
+            connection_id = kwargs['connectionId']
+
         if condition is not None:
             _setter("condition", condition)
         if connection_id is not None:

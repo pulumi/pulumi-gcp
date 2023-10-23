@@ -42,9 +42,19 @@ class FhirStoreIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             fhir_store_id: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             fhir_store_id: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if fhir_store_id is None and 'fhirStoreId' in kwargs:
+            fhir_store_id = kwargs['fhirStoreId']
+        if fhir_store_id is None:
+            raise TypeError("Missing 'fhir_store_id' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("fhir_store_id", fhir_store_id)
         _setter("policy_data", policy_data)
 
@@ -123,7 +133,13 @@ class _FhirStoreIamPolicyState:
              etag: Optional[pulumi.Input[str]] = None,
              fhir_store_id: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if fhir_store_id is None and 'fhirStoreId' in kwargs:
+            fhir_store_id = kwargs['fhirStoreId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if etag is not None:
             _setter("etag", etag)
         if fhir_store_id is not None:

@@ -81,7 +81,7 @@ class IntentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              action: Optional[pulumi.Input[str]] = None,
              default_response_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -93,7 +93,27 @@ class IntentArgs:
              project: Optional[pulumi.Input[str]] = None,
              reset_contexts: Optional[pulumi.Input[bool]] = None,
              webhook_state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if default_response_platforms is None and 'defaultResponsePlatforms' in kwargs:
+            default_response_platforms = kwargs['defaultResponsePlatforms']
+        if input_context_names is None and 'inputContextNames' in kwargs:
+            input_context_names = kwargs['inputContextNames']
+        if is_fallback is None and 'isFallback' in kwargs:
+            is_fallback = kwargs['isFallback']
+        if ml_disabled is None and 'mlDisabled' in kwargs:
+            ml_disabled = kwargs['mlDisabled']
+        if parent_followup_intent_name is None and 'parentFollowupIntentName' in kwargs:
+            parent_followup_intent_name = kwargs['parentFollowupIntentName']
+        if reset_contexts is None and 'resetContexts' in kwargs:
+            reset_contexts = kwargs['resetContexts']
+        if webhook_state is None and 'webhookState' in kwargs:
+            webhook_state = kwargs['webhookState']
+
         _setter("display_name", display_name)
         if action is not None:
             _setter("action", action)
@@ -380,7 +400,29 @@ class _IntentState:
              reset_contexts: Optional[pulumi.Input[bool]] = None,
              root_followup_intent_name: Optional[pulumi.Input[str]] = None,
              webhook_state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_response_platforms is None and 'defaultResponsePlatforms' in kwargs:
+            default_response_platforms = kwargs['defaultResponsePlatforms']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if followup_intent_infos is None and 'followupIntentInfos' in kwargs:
+            followup_intent_infos = kwargs['followupIntentInfos']
+        if input_context_names is None and 'inputContextNames' in kwargs:
+            input_context_names = kwargs['inputContextNames']
+        if is_fallback is None and 'isFallback' in kwargs:
+            is_fallback = kwargs['isFallback']
+        if ml_disabled is None and 'mlDisabled' in kwargs:
+            ml_disabled = kwargs['mlDisabled']
+        if parent_followup_intent_name is None and 'parentFollowupIntentName' in kwargs:
+            parent_followup_intent_name = kwargs['parentFollowupIntentName']
+        if reset_contexts is None and 'resetContexts' in kwargs:
+            reset_contexts = kwargs['resetContexts']
+        if root_followup_intent_name is None and 'rootFollowupIntentName' in kwargs:
+            root_followup_intent_name = kwargs['rootFollowupIntentName']
+        if webhook_state is None and 'webhookState' in kwargs:
+            webhook_state = kwargs['webhookState']
+
         if action is not None:
             _setter("action", action)
         if default_response_platforms is not None:

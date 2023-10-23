@@ -39,7 +39,13 @@ class HostingSiteArgs:
              app_id: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              site_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if site_id is None and 'siteId' in kwargs:
+            site_id = kwargs['siteId']
+
         if app_id is not None:
             _setter("app_id", app_id)
         if project is not None:
@@ -130,7 +136,15 @@ class _HostingSiteState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              site_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if default_url is None and 'defaultUrl' in kwargs:
+            default_url = kwargs['defaultUrl']
+        if site_id is None and 'siteId' in kwargs:
+            site_id = kwargs['siteId']
+
         if app_id is not None:
             _setter("app_id", app_id)
         if default_url is not None:

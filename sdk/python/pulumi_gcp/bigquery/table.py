@@ -127,8 +127,8 @@ class TableArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset_id: pulumi.Input[str],
-             table_id: pulumi.Input[str],
+             dataset_id: Optional[pulumi.Input[str]] = None,
+             table_id: Optional[pulumi.Input[str]] = None,
              clusterings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              deletion_protection: Optional[pulumi.Input[bool]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -145,7 +145,37 @@ class TableArgs:
              table_constraints: Optional[pulumi.Input['TableTableConstraintsArgs']] = None,
              time_partitioning: Optional[pulumi.Input['TableTimePartitioningArgs']] = None,
              view: Optional[pulumi.Input['TableViewArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if dataset_id is None:
+            raise TypeError("Missing 'dataset_id' argument")
+        if table_id is None and 'tableId' in kwargs:
+            table_id = kwargs['tableId']
+        if table_id is None:
+            raise TypeError("Missing 'table_id' argument")
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if encryption_configuration is None and 'encryptionConfiguration' in kwargs:
+            encryption_configuration = kwargs['encryptionConfiguration']
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if external_data_configuration is None and 'externalDataConfiguration' in kwargs:
+            external_data_configuration = kwargs['externalDataConfiguration']
+        if friendly_name is None and 'friendlyName' in kwargs:
+            friendly_name = kwargs['friendlyName']
+        if materialized_view is None and 'materializedView' in kwargs:
+            materialized_view = kwargs['materializedView']
+        if max_staleness is None and 'maxStaleness' in kwargs:
+            max_staleness = kwargs['maxStaleness']
+        if range_partitioning is None and 'rangePartitioning' in kwargs:
+            range_partitioning = kwargs['rangePartitioning']
+        if table_constraints is None and 'tableConstraints' in kwargs:
+            table_constraints = kwargs['tableConstraints']
+        if time_partitioning is None and 'timePartitioning' in kwargs:
+            time_partitioning = kwargs['timePartitioning']
+
         _setter("dataset_id", dataset_id)
         _setter("table_id", table_id)
         if clusterings is not None:
@@ -615,7 +645,45 @@ class _TableState:
              time_partitioning: Optional[pulumi.Input['TableTimePartitioningArgs']] = None,
              type: Optional[pulumi.Input[str]] = None,
              view: Optional[pulumi.Input['TableViewArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if creation_time is None and 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if encryption_configuration is None and 'encryptionConfiguration' in kwargs:
+            encryption_configuration = kwargs['encryptionConfiguration']
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if external_data_configuration is None and 'externalDataConfiguration' in kwargs:
+            external_data_configuration = kwargs['externalDataConfiguration']
+        if friendly_name is None and 'friendlyName' in kwargs:
+            friendly_name = kwargs['friendlyName']
+        if last_modified_time is None and 'lastModifiedTime' in kwargs:
+            last_modified_time = kwargs['lastModifiedTime']
+        if materialized_view is None and 'materializedView' in kwargs:
+            materialized_view = kwargs['materializedView']
+        if max_staleness is None and 'maxStaleness' in kwargs:
+            max_staleness = kwargs['maxStaleness']
+        if num_bytes is None and 'numBytes' in kwargs:
+            num_bytes = kwargs['numBytes']
+        if num_long_term_bytes is None and 'numLongTermBytes' in kwargs:
+            num_long_term_bytes = kwargs['numLongTermBytes']
+        if num_rows is None and 'numRows' in kwargs:
+            num_rows = kwargs['numRows']
+        if range_partitioning is None and 'rangePartitioning' in kwargs:
+            range_partitioning = kwargs['rangePartitioning']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if table_constraints is None and 'tableConstraints' in kwargs:
+            table_constraints = kwargs['tableConstraints']
+        if table_id is None and 'tableId' in kwargs:
+            table_id = kwargs['tableId']
+        if time_partitioning is None and 'timePartitioning' in kwargs:
+            time_partitioning = kwargs['timePartitioning']
+
         if clusterings is not None:
             _setter("clusterings", clusterings)
         if creation_time is not None:

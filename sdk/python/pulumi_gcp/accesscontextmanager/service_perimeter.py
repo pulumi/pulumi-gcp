@@ -86,15 +86,25 @@ class ServicePerimeterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parent: pulumi.Input[str],
-             title: pulumi.Input[str],
+             parent: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              perimeter_type: Optional[pulumi.Input[str]] = None,
              spec: Optional[pulumi.Input['ServicePerimeterSpecArgs']] = None,
              status: Optional[pulumi.Input['ServicePerimeterStatusArgs']] = None,
              use_explicit_dry_run_spec: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+        if perimeter_type is None and 'perimeterType' in kwargs:
+            perimeter_type = kwargs['perimeterType']
+        if use_explicit_dry_run_spec is None and 'useExplicitDryRunSpec' in kwargs:
+            use_explicit_dry_run_spec = kwargs['useExplicitDryRunSpec']
+
         _setter("parent", parent)
         _setter("title", title)
         if description is not None:
@@ -333,7 +343,17 @@ class _ServicePerimeterState:
              title: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              use_explicit_dry_run_spec: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if perimeter_type is None and 'perimeterType' in kwargs:
+            perimeter_type = kwargs['perimeterType']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if use_explicit_dry_run_spec is None and 'useExplicitDryRunSpec' in kwargs:
+            use_explicit_dry_run_spec = kwargs['useExplicitDryRunSpec']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:

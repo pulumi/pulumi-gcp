@@ -111,9 +111,9 @@ class WorkforcePoolProviderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             provider_id: pulumi.Input[str],
-             workforce_pool_id: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
+             provider_id: Optional[pulumi.Input[str]] = None,
+             workforce_pool_id: Optional[pulumi.Input[str]] = None,
              attribute_condition: Optional[pulumi.Input[str]] = None,
              attribute_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -121,7 +121,25 @@ class WorkforcePoolProviderArgs:
              display_name: Optional[pulumi.Input[str]] = None,
              oidc: Optional[pulumi.Input['WorkforcePoolProviderOidcArgs']] = None,
              saml: Optional[pulumi.Input['WorkforcePoolProviderSamlArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if provider_id is None and 'providerId' in kwargs:
+            provider_id = kwargs['providerId']
+        if provider_id is None:
+            raise TypeError("Missing 'provider_id' argument")
+        if workforce_pool_id is None and 'workforcePoolId' in kwargs:
+            workforce_pool_id = kwargs['workforcePoolId']
+        if workforce_pool_id is None:
+            raise TypeError("Missing 'workforce_pool_id' argument")
+        if attribute_condition is None and 'attributeCondition' in kwargs:
+            attribute_condition = kwargs['attributeCondition']
+        if attribute_mapping is None and 'attributeMapping' in kwargs:
+            attribute_mapping = kwargs['attributeMapping']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("location", location)
         _setter("provider_id", provider_id)
         _setter("workforce_pool_id", workforce_pool_id)
@@ -439,7 +457,19 @@ class _WorkforcePoolProviderState:
              saml: Optional[pulumi.Input['WorkforcePoolProviderSamlArgs']] = None,
              state: Optional[pulumi.Input[str]] = None,
              workforce_pool_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if attribute_condition is None and 'attributeCondition' in kwargs:
+            attribute_condition = kwargs['attributeCondition']
+        if attribute_mapping is None and 'attributeMapping' in kwargs:
+            attribute_mapping = kwargs['attributeMapping']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if provider_id is None and 'providerId' in kwargs:
+            provider_id = kwargs['providerId']
+        if workforce_pool_id is None and 'workforcePoolId' in kwargs:
+            workforce_pool_id = kwargs['workforcePoolId']
+
         if attribute_condition is not None:
             _setter("attribute_condition", attribute_condition)
         if attribute_mapping is not None:

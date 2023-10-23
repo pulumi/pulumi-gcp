@@ -49,7 +49,7 @@ class DeliveryPipelineArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -57,7 +57,13 @@ class DeliveryPipelineArgs:
              project: Optional[pulumi.Input[str]] = None,
              serial_pipeline: Optional[pulumi.Input['DeliveryPipelineSerialPipelineArgs']] = None,
              suspended: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if serial_pipeline is None and 'serialPipeline' in kwargs:
+            serial_pipeline = kwargs['serialPipeline']
+
         _setter("location", location)
         if annotations is not None:
             _setter("annotations", annotations)
@@ -235,7 +241,15 @@ class _DeliveryPipelineState:
              suspended: Optional[pulumi.Input[bool]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if serial_pipeline is None and 'serialPipeline' in kwargs:
+            serial_pipeline = kwargs['serialPipeline']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if conditions is not None:

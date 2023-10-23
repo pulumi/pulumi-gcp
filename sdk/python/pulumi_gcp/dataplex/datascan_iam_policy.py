@@ -49,11 +49,21 @@ class DatascanIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_scan_id: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             data_scan_id: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if data_scan_id is None and 'dataScanId' in kwargs:
+            data_scan_id = kwargs['dataScanId']
+        if data_scan_id is None:
+            raise TypeError("Missing 'data_scan_id' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("data_scan_id", data_scan_id)
         _setter("policy_data", policy_data)
         if location is not None:
@@ -168,7 +178,13 @@ class _DatascanIamPolicyState:
              location: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if data_scan_id is None and 'dataScanId' in kwargs:
+            data_scan_id = kwargs['dataScanId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if data_scan_id is not None:
             _setter("data_scan_id", data_scan_id)
         if etag is not None:

@@ -44,10 +44,24 @@ class EnvironmentIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             env_id: pulumi.Input[str],
-             org_id: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             env_id: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if env_id is None and 'envId' in kwargs:
+            env_id = kwargs['envId']
+        if env_id is None:
+            raise TypeError("Missing 'env_id' argument")
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("env_id", env_id)
         _setter("org_id", org_id)
         _setter("policy_data", policy_data)
@@ -139,7 +153,15 @@ class _EnvironmentIamPolicyState:
              etag: Optional[pulumi.Input[str]] = None,
              org_id: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if env_id is None and 'envId' in kwargs:
+            env_id = kwargs['envId']
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if env_id is not None:
             _setter("env_id", env_id)
         if etag is not None:

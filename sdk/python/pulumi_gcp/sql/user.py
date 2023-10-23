@@ -64,7 +64,7 @@ class UserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance: pulumi.Input[str],
+             instance: Optional[pulumi.Input[str]] = None,
              deletion_policy: Optional[pulumi.Input[str]] = None,
              host: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -72,7 +72,15 @@ class UserArgs:
              password_policy: Optional[pulumi.Input['UserPasswordPolicyArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance is None:
+            raise TypeError("Missing 'instance' argument")
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+        if password_policy is None and 'passwordPolicy' in kwargs:
+            password_policy = kwargs['passwordPolicy']
+
         _setter("instance", instance)
         if deletion_policy is not None:
             _setter("deletion_policy", deletion_policy)
@@ -261,7 +269,15 @@ class _UserState:
              project: Optional[pulumi.Input[str]] = None,
              sql_server_user_details: Optional[pulumi.Input[Sequence[pulumi.Input['UserSqlServerUserDetailArgs']]]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+        if password_policy is None and 'passwordPolicy' in kwargs:
+            password_policy = kwargs['passwordPolicy']
+        if sql_server_user_details is None and 'sqlServerUserDetails' in kwargs:
+            sql_server_user_details = kwargs['sqlServerUserDetails']
+
         if deletion_policy is not None:
             _setter("deletion_policy", deletion_policy)
         if host is not None:

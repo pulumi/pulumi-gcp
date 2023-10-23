@@ -58,15 +58,31 @@ class OsPolicyAssignmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_filter: pulumi.Input['OsPolicyAssignmentInstanceFilterArgs'],
-             location: pulumi.Input[str],
-             os_policies: pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArgs']]],
-             rollout: pulumi.Input['OsPolicyAssignmentRolloutArgs'],
+             instance_filter: Optional[pulumi.Input['OsPolicyAssignmentInstanceFilterArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             os_policies: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArgs']]]] = None,
+             rollout: Optional[pulumi.Input['OsPolicyAssignmentRolloutArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              skip_await_rollout: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_filter is None and 'instanceFilter' in kwargs:
+            instance_filter = kwargs['instanceFilter']
+        if instance_filter is None:
+            raise TypeError("Missing 'instance_filter' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if os_policies is None and 'osPolicies' in kwargs:
+            os_policies = kwargs['osPolicies']
+        if os_policies is None:
+            raise TypeError("Missing 'os_policies' argument")
+        if rollout is None:
+            raise TypeError("Missing 'rollout' argument")
+        if skip_await_rollout is None and 'skipAwaitRollout' in kwargs:
+            skip_await_rollout = kwargs['skipAwaitRollout']
+
         _setter("instance_filter", instance_filter)
         _setter("location", location)
         _setter("os_policies", os_policies)
@@ -280,7 +296,21 @@ class _OsPolicyAssignmentState:
              rollout_state: Optional[pulumi.Input[str]] = None,
              skip_await_rollout: Optional[pulumi.Input[bool]] = None,
              uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_filter is None and 'instanceFilter' in kwargs:
+            instance_filter = kwargs['instanceFilter']
+        if os_policies is None and 'osPolicies' in kwargs:
+            os_policies = kwargs['osPolicies']
+        if revision_create_time is None and 'revisionCreateTime' in kwargs:
+            revision_create_time = kwargs['revisionCreateTime']
+        if revision_id is None and 'revisionId' in kwargs:
+            revision_id = kwargs['revisionId']
+        if rollout_state is None and 'rolloutState' in kwargs:
+            rollout_state = kwargs['rolloutState']
+        if skip_await_rollout is None and 'skipAwaitRollout' in kwargs:
+            skip_await_rollout = kwargs['skipAwaitRollout']
+
         if baseline is not None:
             _setter("baseline", baseline)
         if deleted is not None:

@@ -81,7 +81,7 @@ class MetricArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter: pulumi.Input[str],
+             filter: Optional[pulumi.Input[str]] = None,
              bucket_name: Optional[pulumi.Input[str]] = None,
              bucket_options: Optional[pulumi.Input['MetricBucketOptionsArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -91,7 +91,21 @@ class MetricArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              value_extractor: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if filter is None:
+            raise TypeError("Missing 'filter' argument")
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if bucket_options is None and 'bucketOptions' in kwargs:
+            bucket_options = kwargs['bucketOptions']
+        if label_extractors is None and 'labelExtractors' in kwargs:
+            label_extractors = kwargs['labelExtractors']
+        if metric_descriptor is None and 'metricDescriptor' in kwargs:
+            metric_descriptor = kwargs['metricDescriptor']
+        if value_extractor is None and 'valueExtractor' in kwargs:
+            value_extractor = kwargs['valueExtractor']
+
         _setter("filter", filter)
         if bucket_name is not None:
             _setter("bucket_name", bucket_name)
@@ -337,7 +351,19 @@ class _MetricState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              value_extractor: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if bucket_options is None and 'bucketOptions' in kwargs:
+            bucket_options = kwargs['bucketOptions']
+        if label_extractors is None and 'labelExtractors' in kwargs:
+            label_extractors = kwargs['labelExtractors']
+        if metric_descriptor is None and 'metricDescriptor' in kwargs:
+            metric_descriptor = kwargs['metricDescriptor']
+        if value_extractor is None and 'valueExtractor' in kwargs:
+            value_extractor = kwargs['valueExtractor']
+
         if bucket_name is not None:
             _setter("bucket_name", bucket_name)
         if bucket_options is not None:

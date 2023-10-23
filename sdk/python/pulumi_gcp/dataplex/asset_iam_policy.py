@@ -52,13 +52,27 @@ class AssetIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             asset: pulumi.Input[str],
-             dataplex_zone: pulumi.Input[str],
-             lake: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             asset: Optional[pulumi.Input[str]] = None,
+             dataplex_zone: Optional[pulumi.Input[str]] = None,
+             lake: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if asset is None:
+            raise TypeError("Missing 'asset' argument")
+        if dataplex_zone is None and 'dataplexZone' in kwargs:
+            dataplex_zone = kwargs['dataplexZone']
+        if dataplex_zone is None:
+            raise TypeError("Missing 'dataplex_zone' argument")
+        if lake is None:
+            raise TypeError("Missing 'lake' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("asset", asset)
         _setter("dataplex_zone", dataplex_zone)
         _setter("lake", lake)
@@ -197,7 +211,13 @@ class _AssetIamPolicyState:
              location: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataplex_zone is None and 'dataplexZone' in kwargs:
+            dataplex_zone = kwargs['dataplexZone']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if asset is not None:
             _setter("asset", asset)
         if dataplex_zone is not None:

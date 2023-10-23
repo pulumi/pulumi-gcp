@@ -80,8 +80,8 @@ class ClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
-             location: pulumi.Input[str],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
              automated_backup_policy: Optional[pulumi.Input['ClusterAutomatedBackupPolicyArgs']] = None,
              continuous_backup_config: Optional[pulumi.Input['ClusterContinuousBackupConfigArgs']] = None,
              display_name: Optional[pulumi.Input[str]] = None,
@@ -93,7 +93,31 @@ class ClusterArgs:
              project: Optional[pulumi.Input[str]] = None,
              restore_backup_source: Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']] = None,
              restore_continuous_backup_source: Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if automated_backup_policy is None and 'automatedBackupPolicy' in kwargs:
+            automated_backup_policy = kwargs['automatedBackupPolicy']
+        if continuous_backup_config is None and 'continuousBackupConfig' in kwargs:
+            continuous_backup_config = kwargs['continuousBackupConfig']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if initial_user is None and 'initialUser' in kwargs:
+            initial_user = kwargs['initialUser']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if restore_backup_source is None and 'restoreBackupSource' in kwargs:
+            restore_backup_source = kwargs['restoreBackupSource']
+        if restore_continuous_backup_source is None and 'restoreContinuousBackupSource' in kwargs:
+            restore_continuous_backup_source = kwargs['restoreContinuousBackupSource']
+
         _setter("cluster_id", cluster_id)
         _setter("location", location)
         if automated_backup_policy is not None:
@@ -411,7 +435,37 @@ class _ClusterState:
              restore_backup_source: Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']] = None,
              restore_continuous_backup_source: Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']] = None,
              uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if automated_backup_policy is None and 'automatedBackupPolicy' in kwargs:
+            automated_backup_policy = kwargs['automatedBackupPolicy']
+        if backup_sources is None and 'backupSources' in kwargs:
+            backup_sources = kwargs['backupSources']
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if continuous_backup_config is None and 'continuousBackupConfig' in kwargs:
+            continuous_backup_config = kwargs['continuousBackupConfig']
+        if continuous_backup_infos is None and 'continuousBackupInfos' in kwargs:
+            continuous_backup_infos = kwargs['continuousBackupInfos']
+        if database_version is None and 'databaseVersion' in kwargs:
+            database_version = kwargs['databaseVersion']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if encryption_infos is None and 'encryptionInfos' in kwargs:
+            encryption_infos = kwargs['encryptionInfos']
+        if initial_user is None and 'initialUser' in kwargs:
+            initial_user = kwargs['initialUser']
+        if migration_sources is None and 'migrationSources' in kwargs:
+            migration_sources = kwargs['migrationSources']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if restore_backup_source is None and 'restoreBackupSource' in kwargs:
+            restore_backup_source = kwargs['restoreBackupSource']
+        if restore_continuous_backup_source is None and 'restoreContinuousBackupSource' in kwargs:
+            restore_continuous_backup_source = kwargs['restoreContinuousBackupSource']
+
         if automated_backup_policy is not None:
             _setter("automated_backup_policy", automated_backup_policy)
         if backup_sources is not None:

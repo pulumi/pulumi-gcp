@@ -58,18 +58,38 @@ class AwsClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             authorization: pulumi.Input['AwsClusterAuthorizationArgs'],
-             aws_region: pulumi.Input[str],
-             control_plane: pulumi.Input['AwsClusterControlPlaneArgs'],
-             fleet: pulumi.Input['AwsClusterFleetArgs'],
-             location: pulumi.Input[str],
-             networking: pulumi.Input['AwsClusterNetworkingArgs'],
+             authorization: Optional[pulumi.Input['AwsClusterAuthorizationArgs']] = None,
+             aws_region: Optional[pulumi.Input[str]] = None,
+             control_plane: Optional[pulumi.Input['AwsClusterControlPlaneArgs']] = None,
+             fleet: Optional[pulumi.Input['AwsClusterFleetArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             networking: Optional[pulumi.Input['AwsClusterNetworkingArgs']] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              logging_config: Optional[pulumi.Input['AwsClusterLoggingConfigArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if authorization is None:
+            raise TypeError("Missing 'authorization' argument")
+        if aws_region is None and 'awsRegion' in kwargs:
+            aws_region = kwargs['awsRegion']
+        if aws_region is None:
+            raise TypeError("Missing 'aws_region' argument")
+        if control_plane is None and 'controlPlane' in kwargs:
+            control_plane = kwargs['controlPlane']
+        if control_plane is None:
+            raise TypeError("Missing 'control_plane' argument")
+        if fleet is None:
+            raise TypeError("Missing 'fleet' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if networking is None:
+            raise TypeError("Missing 'networking' argument")
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+
         _setter("authorization", authorization)
         _setter("aws_region", aws_region)
         _setter("control_plane", control_plane)
@@ -308,7 +328,21 @@ class _AwsClusterState:
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AwsClusterWorkloadIdentityConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if aws_region is None and 'awsRegion' in kwargs:
+            aws_region = kwargs['awsRegion']
+        if control_plane is None and 'controlPlane' in kwargs:
+            control_plane = kwargs['controlPlane']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if workload_identity_configs is None and 'workloadIdentityConfigs' in kwargs:
+            workload_identity_configs = kwargs['workloadIdentityConfigs']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if authorization is not None:

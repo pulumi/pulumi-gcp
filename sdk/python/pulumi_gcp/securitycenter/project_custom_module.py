@@ -44,11 +44,25 @@ class ProjectCustomModuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             custom_config: pulumi.Input['ProjectCustomModuleCustomConfigArgs'],
-             display_name: pulumi.Input[str],
-             enablement_state: pulumi.Input[str],
+             custom_config: Optional[pulumi.Input['ProjectCustomModuleCustomConfigArgs']] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             enablement_state: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if custom_config is None and 'customConfig' in kwargs:
+            custom_config = kwargs['customConfig']
+        if custom_config is None:
+            raise TypeError("Missing 'custom_config' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if enablement_state is None and 'enablementState' in kwargs:
+            enablement_state = kwargs['enablementState']
+        if enablement_state is None:
+            raise TypeError("Missing 'enablement_state' argument")
+
         _setter("custom_config", custom_config)
         _setter("display_name", display_name)
         _setter("enablement_state", enablement_state)
@@ -166,7 +180,21 @@ class _ProjectCustomModuleState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ancestor_module is None and 'ancestorModule' in kwargs:
+            ancestor_module = kwargs['ancestorModule']
+        if custom_config is None and 'customConfig' in kwargs:
+            custom_config = kwargs['customConfig']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if enablement_state is None and 'enablementState' in kwargs:
+            enablement_state = kwargs['enablementState']
+        if last_editor is None and 'lastEditor' in kwargs:
+            last_editor = kwargs['lastEditor']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if ancestor_module is not None:
             _setter("ancestor_module", ancestor_module)
         if custom_config is not None:

@@ -45,10 +45,20 @@ class MembershipIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             membership_id: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             membership_id: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if membership_id is None and 'membershipId' in kwargs:
+            membership_id = kwargs['membershipId']
+        if membership_id is None:
+            raise TypeError("Missing 'membership_id' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("membership_id", membership_id)
         _setter("policy_data", policy_data)
         if project is not None:
@@ -143,7 +153,13 @@ class _MembershipIamPolicyState:
              membership_id: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if membership_id is None and 'membershipId' in kwargs:
+            membership_id = kwargs['membershipId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if etag is not None:
             _setter("etag", etag)
         if membership_id is not None:

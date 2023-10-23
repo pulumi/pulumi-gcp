@@ -47,13 +47,23 @@ class RealmArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             realm_id: pulumi.Input[str],
-             time_zone: pulumi.Input[str],
+             realm_id: Optional[pulumi.Input[str]] = None,
+             time_zone: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if realm_id is None and 'realmId' in kwargs:
+            realm_id = kwargs['realmId']
+        if realm_id is None:
+            raise TypeError("Missing 'realm_id' argument")
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+        if time_zone is None:
+            raise TypeError("Missing 'time_zone' argument")
+
         _setter("realm_id", realm_id)
         _setter("time_zone", time_zone)
         if description is not None:
@@ -196,7 +206,13 @@ class _RealmState:
              project: Optional[pulumi.Input[str]] = None,
              realm_id: Optional[pulumi.Input[str]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if realm_id is None and 'realmId' in kwargs:
+            realm_id = kwargs['realmId']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         if description is not None:
             _setter("description", description)
         if etag is not None:

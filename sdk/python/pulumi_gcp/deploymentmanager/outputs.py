@@ -36,7 +36,9 @@ class DeploymentLabel(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if value is not None:
@@ -80,9 +82,13 @@ class DeploymentTarget(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config: 'outputs.DeploymentTargetConfig',
+             config: Optional['outputs.DeploymentTargetConfig'] = None,
              imports: Optional[Sequence['outputs.DeploymentTargetImport']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+
         _setter("config", config)
         if imports is not None:
             _setter("imports", imports)
@@ -122,8 +128,12 @@ class DeploymentTargetConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             content: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             content: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+
         _setter("content", content)
 
     @property
@@ -157,7 +167,9 @@ class DeploymentTargetImport(dict):
              _setter: Callable[[Any, Any], None],
              content: Optional[str] = None,
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if content is not None:
             _setter("content", content)
         if name is not None:

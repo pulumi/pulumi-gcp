@@ -64,7 +64,15 @@ class EngineModelArgs:
              online_prediction_logging: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
              regions: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_version is None and 'defaultVersion' in kwargs:
+            default_version = kwargs['defaultVersion']
+        if online_prediction_console_logging is None and 'onlinePredictionConsoleLogging' in kwargs:
+            online_prediction_console_logging = kwargs['onlinePredictionConsoleLogging']
+        if online_prediction_logging is None and 'onlinePredictionLogging' in kwargs:
+            online_prediction_logging = kwargs['onlinePredictionLogging']
+
         if default_version is not None:
             _setter("default_version", default_version)
         if description is not None:
@@ -237,7 +245,15 @@ class _EngineModelState:
              online_prediction_logging: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
              regions: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_version is None and 'defaultVersion' in kwargs:
+            default_version = kwargs['defaultVersion']
+        if online_prediction_console_logging is None and 'onlinePredictionConsoleLogging' in kwargs:
+            online_prediction_console_logging = kwargs['onlinePredictionConsoleLogging']
+        if online_prediction_logging is None and 'onlinePredictionLogging' in kwargs:
+            online_prediction_logging = kwargs['onlinePredictionLogging']
+
         if default_version is not None:
             _setter("default_version", default_version)
         if description is not None:

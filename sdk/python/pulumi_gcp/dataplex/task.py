@@ -63,8 +63,8 @@ class TaskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             execution_spec: pulumi.Input['TaskExecutionSpecArgs'],
-             trigger_spec: pulumi.Input['TaskTriggerSpecArgs'],
+             execution_spec: Optional[pulumi.Input['TaskExecutionSpecArgs']] = None,
+             trigger_spec: Optional[pulumi.Input['TaskTriggerSpecArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -74,7 +74,21 @@ class TaskArgs:
              project: Optional[pulumi.Input[str]] = None,
              spark: Optional[pulumi.Input['TaskSparkArgs']] = None,
              task_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if execution_spec is None and 'executionSpec' in kwargs:
+            execution_spec = kwargs['executionSpec']
+        if execution_spec is None:
+            raise TypeError("Missing 'execution_spec' argument")
+        if trigger_spec is None and 'triggerSpec' in kwargs:
+            trigger_spec = kwargs['triggerSpec']
+        if trigger_spec is None:
+            raise TypeError("Missing 'trigger_spec' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if task_id is None and 'taskId' in kwargs:
+            task_id = kwargs['taskId']
+
         _setter("execution_spec", execution_spec)
         _setter("trigger_spec", trigger_spec)
         if description is not None:
@@ -324,7 +338,23 @@ class _TaskState:
              trigger_spec: Optional[pulumi.Input['TaskTriggerSpecArgs']] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if execution_spec is None and 'executionSpec' in kwargs:
+            execution_spec = kwargs['executionSpec']
+        if execution_statuses is None and 'executionStatuses' in kwargs:
+            execution_statuses = kwargs['executionStatuses']
+        if task_id is None and 'taskId' in kwargs:
+            task_id = kwargs['taskId']
+        if trigger_spec is None and 'triggerSpec' in kwargs:
+            trigger_spec = kwargs['triggerSpec']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:

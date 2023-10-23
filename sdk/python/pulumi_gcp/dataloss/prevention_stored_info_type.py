@@ -58,14 +58,24 @@ class PreventionStoredInfoTypeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parent: pulumi.Input[str],
+             parent: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              dictionary: Optional[pulumi.Input['PreventionStoredInfoTypeDictionaryArgs']] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              large_custom_dictionary: Optional[pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryArgs']] = None,
              regex: Optional[pulumi.Input['PreventionStoredInfoTypeRegexArgs']] = None,
              stored_info_type_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if large_custom_dictionary is None and 'largeCustomDictionary' in kwargs:
+            large_custom_dictionary = kwargs['largeCustomDictionary']
+        if stored_info_type_id is None and 'storedInfoTypeId' in kwargs:
+            stored_info_type_id = kwargs['storedInfoTypeId']
+
         _setter("parent", parent)
         if description is not None:
             _setter("description", description)
@@ -233,7 +243,15 @@ class _PreventionStoredInfoTypeState:
              parent: Optional[pulumi.Input[str]] = None,
              regex: Optional[pulumi.Input['PreventionStoredInfoTypeRegexArgs']] = None,
              stored_info_type_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if large_custom_dictionary is None and 'largeCustomDictionary' in kwargs:
+            large_custom_dictionary = kwargs['largeCustomDictionary']
+        if stored_info_type_id is None and 'storedInfoTypeId' in kwargs:
+            stored_info_type_id = kwargs['storedInfoTypeId']
+
         if description is not None:
             _setter("description", description)
         if dictionary is not None:

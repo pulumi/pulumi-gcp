@@ -32,9 +32,17 @@ class TagBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parent: pulumi.Input[str],
-             tag_value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             parent: Optional[pulumi.Input[str]] = None,
+             tag_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if tag_value is None and 'tagValue' in kwargs:
+            tag_value = kwargs['tagValue']
+        if tag_value is None:
+            raise TypeError("Missing 'tag_value' argument")
+
         _setter("parent", parent)
         _setter("tag_value", tag_value)
 
@@ -93,7 +101,11 @@ class _TagBindingState:
              name: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
              tag_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if tag_value is None and 'tagValue' in kwargs:
+            tag_value = kwargs['tagValue']
+
         if name is not None:
             _setter("name", name)
         if parent is not None:

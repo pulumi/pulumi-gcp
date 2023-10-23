@@ -47,11 +47,23 @@ class GameServerDeploymentRolloutArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             default_game_server_config: pulumi.Input[str],
-             deployment_id: pulumi.Input[str],
+             default_game_server_config: Optional[pulumi.Input[str]] = None,
+             deployment_id: Optional[pulumi.Input[str]] = None,
              game_server_config_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['GameServerDeploymentRolloutGameServerConfigOverrideArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_game_server_config is None and 'defaultGameServerConfig' in kwargs:
+            default_game_server_config = kwargs['defaultGameServerConfig']
+        if default_game_server_config is None:
+            raise TypeError("Missing 'default_game_server_config' argument")
+        if deployment_id is None and 'deploymentId' in kwargs:
+            deployment_id = kwargs['deploymentId']
+        if deployment_id is None:
+            raise TypeError("Missing 'deployment_id' argument")
+        if game_server_config_overrides is None and 'gameServerConfigOverrides' in kwargs:
+            game_server_config_overrides = kwargs['gameServerConfigOverrides']
+
         _setter("default_game_server_config", default_game_server_config)
         _setter("deployment_id", deployment_id)
         if game_server_config_overrides is not None:
@@ -161,7 +173,15 @@ class _GameServerDeploymentRolloutState:
              game_server_config_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['GameServerDeploymentRolloutGameServerConfigOverrideArgs']]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_game_server_config is None and 'defaultGameServerConfig' in kwargs:
+            default_game_server_config = kwargs['defaultGameServerConfig']
+        if deployment_id is None and 'deploymentId' in kwargs:
+            deployment_id = kwargs['deploymentId']
+        if game_server_config_overrides is None and 'gameServerConfigOverrides' in kwargs:
+            game_server_config_overrides = kwargs['gameServerConfigOverrides']
+
         if default_game_server_config is not None:
             _setter("default_game_server_config", default_game_server_config)
         if deployment_id is not None:

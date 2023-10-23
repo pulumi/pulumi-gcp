@@ -48,11 +48,21 @@ class EntryGroupIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entry_group: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             entry_group: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if entry_group is None and 'entryGroup' in kwargs:
+            entry_group = kwargs['entryGroup']
+        if entry_group is None:
+            raise TypeError("Missing 'entry_group' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("entry_group", entry_group)
         _setter("policy_data", policy_data)
         if project is not None:
@@ -165,7 +175,13 @@ class _EntryGroupIamPolicyState:
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if entry_group is None and 'entryGroup' in kwargs:
+            entry_group = kwargs['entryGroup']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if entry_group is not None:
             _setter("entry_group", entry_group)
         if etag is not None:

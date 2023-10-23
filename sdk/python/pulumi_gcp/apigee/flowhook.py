@@ -41,13 +41,29 @@ class FlowhookArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             environment: pulumi.Input[str],
-             flow_hook_point: pulumi.Input[str],
-             org_id: pulumi.Input[str],
-             sharedflow: pulumi.Input[str],
+             environment: Optional[pulumi.Input[str]] = None,
+             flow_hook_point: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             sharedflow: Optional[pulumi.Input[str]] = None,
              continue_on_error: Optional[pulumi.Input[bool]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if environment is None:
+            raise TypeError("Missing 'environment' argument")
+        if flow_hook_point is None and 'flowHookPoint' in kwargs:
+            flow_hook_point = kwargs['flowHookPoint']
+        if flow_hook_point is None:
+            raise TypeError("Missing 'flow_hook_point' argument")
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if sharedflow is None:
+            raise TypeError("Missing 'sharedflow' argument")
+        if continue_on_error is None and 'continueOnError' in kwargs:
+            continue_on_error = kwargs['continueOnError']
+
         _setter("environment", environment)
         _setter("flow_hook_point", flow_hook_point)
         _setter("org_id", org_id)
@@ -166,7 +182,15 @@ class _FlowhookState:
              flow_hook_point: Optional[pulumi.Input[str]] = None,
              org_id: Optional[pulumi.Input[str]] = None,
              sharedflow: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if continue_on_error is None and 'continueOnError' in kwargs:
+            continue_on_error = kwargs['continueOnError']
+        if flow_hook_point is None and 'flowHookPoint' in kwargs:
+            flow_hook_point = kwargs['flowHookPoint']
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+
         if continue_on_error is not None:
             _setter("continue_on_error", continue_on_error)
         if description is not None:

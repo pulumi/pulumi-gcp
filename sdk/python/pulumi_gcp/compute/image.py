@@ -118,7 +118,25 @@ class ImageArgs:
              source_image: Optional[pulumi.Input[str]] = None,
              source_snapshot: Optional[pulumi.Input[str]] = None,
              storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disk_size_gb is None and 'diskSizeGb' in kwargs:
+            disk_size_gb = kwargs['diskSizeGb']
+        if guest_os_features is None and 'guestOsFeatures' in kwargs:
+            guest_os_features = kwargs['guestOsFeatures']
+        if image_encryption_key is None and 'imageEncryptionKey' in kwargs:
+            image_encryption_key = kwargs['imageEncryptionKey']
+        if raw_disk is None and 'rawDisk' in kwargs:
+            raw_disk = kwargs['rawDisk']
+        if source_disk is None and 'sourceDisk' in kwargs:
+            source_disk = kwargs['sourceDisk']
+        if source_image is None and 'sourceImage' in kwargs:
+            source_image = kwargs['sourceImage']
+        if source_snapshot is None and 'sourceSnapshot' in kwargs:
+            source_snapshot = kwargs['sourceSnapshot']
+        if storage_locations is None and 'storageLocations' in kwargs:
+            storage_locations = kwargs['storageLocations']
+
         if description is not None:
             _setter("description", description)
         if disk_size_gb is not None:
@@ -477,7 +495,33 @@ class _ImageState:
              source_image: Optional[pulumi.Input[str]] = None,
              source_snapshot: Optional[pulumi.Input[str]] = None,
              storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if archive_size_bytes is None and 'archiveSizeBytes' in kwargs:
+            archive_size_bytes = kwargs['archiveSizeBytes']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if disk_size_gb is None and 'diskSizeGb' in kwargs:
+            disk_size_gb = kwargs['diskSizeGb']
+        if guest_os_features is None and 'guestOsFeatures' in kwargs:
+            guest_os_features = kwargs['guestOsFeatures']
+        if image_encryption_key is None and 'imageEncryptionKey' in kwargs:
+            image_encryption_key = kwargs['imageEncryptionKey']
+        if label_fingerprint is None and 'labelFingerprint' in kwargs:
+            label_fingerprint = kwargs['labelFingerprint']
+        if raw_disk is None and 'rawDisk' in kwargs:
+            raw_disk = kwargs['rawDisk']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if source_disk is None and 'sourceDisk' in kwargs:
+            source_disk = kwargs['sourceDisk']
+        if source_image is None and 'sourceImage' in kwargs:
+            source_image = kwargs['sourceImage']
+        if source_snapshot is None and 'sourceSnapshot' in kwargs:
+            source_snapshot = kwargs['sourceSnapshot']
+        if storage_locations is None and 'storageLocations' in kwargs:
+            storage_locations = kwargs['storageLocations']
+
         if archive_size_bytes is not None:
             _setter("archive_size_bytes", archive_size_bytes)
         if creation_timestamp is not None:

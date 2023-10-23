@@ -39,11 +39,21 @@ class IAMMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             member: pulumi.Input[str],
-             org_id: pulumi.Input[str],
-             role: pulumi.Input[str],
+             member: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['IAMMemberConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("member", member)
         _setter("org_id", org_id)
         _setter("role", role)
@@ -133,7 +143,11 @@ class _IAMMemberState:
              member: Optional[pulumi.Input[str]] = None,
              org_id: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

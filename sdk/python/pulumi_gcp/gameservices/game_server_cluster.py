@@ -50,14 +50,28 @@ class GameServerClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
-             connection_info: pulumi.Input['GameServerClusterConnectionInfoArgs'],
-             realm_id: pulumi.Input[str],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             connection_info: Optional[pulumi.Input['GameServerClusterConnectionInfoArgs']] = None,
+             realm_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if connection_info is None and 'connectionInfo' in kwargs:
+            connection_info = kwargs['connectionInfo']
+        if connection_info is None:
+            raise TypeError("Missing 'connection_info' argument")
+        if realm_id is None and 'realmId' in kwargs:
+            realm_id = kwargs['realmId']
+        if realm_id is None:
+            raise TypeError("Missing 'realm_id' argument")
+
         _setter("cluster_id", cluster_id)
         _setter("connection_info", connection_info)
         _setter("realm_id", realm_id)
@@ -210,7 +224,15 @@ class _GameServerClusterState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              realm_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if connection_info is None and 'connectionInfo' in kwargs:
+            connection_info = kwargs['connectionInfo']
+        if realm_id is None and 'realmId' in kwargs:
+            realm_id = kwargs['realmId']
+
         if cluster_id is not None:
             _setter("cluster_id", cluster_id)
         if connection_info is not None:

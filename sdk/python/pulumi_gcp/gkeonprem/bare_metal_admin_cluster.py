@@ -94,7 +94,7 @@ class BareMetalAdminClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              bare_metal_version: Optional[pulumi.Input[str]] = None,
              cluster_operations: Optional[pulumi.Input['BareMetalAdminClusterClusterOperationsArgs']] = None,
@@ -110,7 +110,29 @@ class BareMetalAdminClusterArgs:
              proxy: Optional[pulumi.Input['BareMetalAdminClusterProxyArgs']] = None,
              security_config: Optional[pulumi.Input['BareMetalAdminClusterSecurityConfigArgs']] = None,
              storage: Optional[pulumi.Input['BareMetalAdminClusterStorageArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if bare_metal_version is None and 'bareMetalVersion' in kwargs:
+            bare_metal_version = kwargs['bareMetalVersion']
+        if cluster_operations is None and 'clusterOperations' in kwargs:
+            cluster_operations = kwargs['clusterOperations']
+        if control_plane is None and 'controlPlane' in kwargs:
+            control_plane = kwargs['controlPlane']
+        if load_balancer is None and 'loadBalancer' in kwargs:
+            load_balancer = kwargs['loadBalancer']
+        if maintenance_config is None and 'maintenanceConfig' in kwargs:
+            maintenance_config = kwargs['maintenanceConfig']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if node_access_config is None and 'nodeAccessConfig' in kwargs:
+            node_access_config = kwargs['nodeAccessConfig']
+        if node_config is None and 'nodeConfig' in kwargs:
+            node_config = kwargs['nodeConfig']
+        if security_config is None and 'securityConfig' in kwargs:
+            security_config = kwargs['securityConfig']
+
         _setter("location", location)
         if annotations is not None:
             _setter("annotations", annotations)
@@ -525,7 +547,37 @@ class _BareMetalAdminClusterState:
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              validation_checks: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bare_metal_version is None and 'bareMetalVersion' in kwargs:
+            bare_metal_version = kwargs['bareMetalVersion']
+        if cluster_operations is None and 'clusterOperations' in kwargs:
+            cluster_operations = kwargs['clusterOperations']
+        if control_plane is None and 'controlPlane' in kwargs:
+            control_plane = kwargs['controlPlane']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if delete_time is None and 'deleteTime' in kwargs:
+            delete_time = kwargs['deleteTime']
+        if load_balancer is None and 'loadBalancer' in kwargs:
+            load_balancer = kwargs['loadBalancer']
+        if local_name is None and 'localName' in kwargs:
+            local_name = kwargs['localName']
+        if maintenance_config is None and 'maintenanceConfig' in kwargs:
+            maintenance_config = kwargs['maintenanceConfig']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if node_access_config is None and 'nodeAccessConfig' in kwargs:
+            node_access_config = kwargs['nodeAccessConfig']
+        if node_config is None and 'nodeConfig' in kwargs:
+            node_config = kwargs['nodeConfig']
+        if security_config is None and 'securityConfig' in kwargs:
+            security_config = kwargs['securityConfig']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if validation_checks is None and 'validationChecks' in kwargs:
+            validation_checks = kwargs['validationChecks']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if bare_metal_version is not None:

@@ -51,7 +51,11 @@ class ConnectorSubnet(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              project_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+
         if name is not None:
             _setter("name", name)
         if project_id is not None:
@@ -93,9 +97,17 @@ class GetConnectorSubnetResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             project_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             project_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+
         _setter("name", name)
         _setter("project_id", project_id)
 

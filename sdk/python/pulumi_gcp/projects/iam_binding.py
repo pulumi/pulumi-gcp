@@ -40,11 +40,19 @@ class IAMBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             project: pulumi.Input[str],
-             role: pulumi.Input[str],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['IAMBindingConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("members", members)
         _setter("project", project)
         _setter("role", role)
@@ -136,7 +144,9 @@ class _IAMBindingState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

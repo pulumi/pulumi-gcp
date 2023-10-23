@@ -53,14 +53,22 @@ class AiIndexArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              index_update_method: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              metadata: Optional[pulumi.Input['AiIndexMetadataArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if index_update_method is None and 'indexUpdateMethod' in kwargs:
+            index_update_method = kwargs['indexUpdateMethod']
+
         _setter("display_name", display_name)
         if description is not None:
             _setter("description", description)
@@ -244,7 +252,23 @@ class _AiIndexState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if deployed_indexes is None and 'deployedIndexes' in kwargs:
+            deployed_indexes = kwargs['deployedIndexes']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if index_stats is None and 'indexStats' in kwargs:
+            index_stats = kwargs['indexStats']
+        if index_update_method is None and 'indexUpdateMethod' in kwargs:
+            index_update_method = kwargs['indexUpdateMethod']
+        if metadata_schema_uri is None and 'metadataSchemaUri' in kwargs:
+            metadata_schema_uri = kwargs['metadataSchemaUri']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if deployed_indexes is not None:

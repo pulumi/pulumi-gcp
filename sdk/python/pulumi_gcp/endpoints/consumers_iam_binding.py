@@ -38,12 +38,26 @@ class ConsumersIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             consumer_project: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
-             service_name: pulumi.Input[str],
+             consumer_project: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['ConsumersIamBindingConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if consumer_project is None and 'consumerProject' in kwargs:
+            consumer_project = kwargs['consumerProject']
+        if consumer_project is None:
+            raise TypeError("Missing 'consumer_project' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+
         _setter("consumer_project", consumer_project)
         _setter("members", members)
         _setter("role", role)
@@ -136,7 +150,13 @@ class _ConsumersIamBindingState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              role: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if consumer_project is None and 'consumerProject' in kwargs:
+            consumer_project = kwargs['consumerProject']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if condition is not None:
             _setter("condition", condition)
         if consumer_project is not None:

@@ -46,12 +46,20 @@ class WorkloadIdentityPoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             workload_identity_pool_id: pulumi.Input[str],
+             workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if workload_identity_pool_id is None and 'workloadIdentityPoolId' in kwargs:
+            workload_identity_pool_id = kwargs['workloadIdentityPoolId']
+        if workload_identity_pool_id is None:
+            raise TypeError("Missing 'workload_identity_pool_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("workload_identity_pool_id", workload_identity_pool_id)
         if description is not None:
             _setter("description", description)
@@ -188,7 +196,13 @@ class _WorkloadIdentityPoolState:
              project: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if workload_identity_pool_id is None and 'workloadIdentityPoolId' in kwargs:
+            workload_identity_pool_id = kwargs['workloadIdentityPoolId']
+
         if description is not None:
             _setter("description", description)
         if disabled is not None:

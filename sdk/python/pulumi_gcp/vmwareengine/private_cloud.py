@@ -46,13 +46,25 @@ class PrivateCloudArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             management_cluster: pulumi.Input['PrivateCloudManagementClusterArgs'],
-             network_config: pulumi.Input['PrivateCloudNetworkConfigArgs'],
+             location: Optional[pulumi.Input[str]] = None,
+             management_cluster: Optional[pulumi.Input['PrivateCloudManagementClusterArgs']] = None,
+             network_config: Optional[pulumi.Input['PrivateCloudNetworkConfigArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if management_cluster is None and 'managementCluster' in kwargs:
+            management_cluster = kwargs['managementCluster']
+        if management_cluster is None:
+            raise TypeError("Missing 'management_cluster' argument")
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if network_config is None:
+            raise TypeError("Missing 'network_config' argument")
+
         _setter("location", location)
         _setter("management_cluster", management_cluster)
         _setter("network_config", network_config)
@@ -202,7 +214,13 @@ class _PrivateCloudState:
              state: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              vcenters: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudVcenterArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if management_cluster is None and 'managementCluster' in kwargs:
+            management_cluster = kwargs['managementCluster']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+
         if description is not None:
             _setter("description", description)
         if hcxes is not None:

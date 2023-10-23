@@ -49,13 +49,21 @@ class EndpointArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint_id: pulumi.Input[str],
-             service: pulumi.Input[str],
+             endpoint_id: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
              address: Optional[pulumi.Input[str]] = None,
              metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              network: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if endpoint_id is None and 'endpointId' in kwargs:
+            endpoint_id = kwargs['endpointId']
+        if endpoint_id is None:
+            raise TypeError("Missing 'endpoint_id' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("endpoint_id", endpoint_id)
         _setter("service", service)
         if address is not None:
@@ -197,7 +205,11 @@ class _EndpointState:
              network: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
              service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if endpoint_id is None and 'endpointId' in kwargs:
+            endpoint_id = kwargs['endpointId']
+
         if address is not None:
             _setter("address", address)
         if endpoint_id is not None:

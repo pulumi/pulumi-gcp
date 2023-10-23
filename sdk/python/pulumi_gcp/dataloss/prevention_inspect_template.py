@@ -50,12 +50,22 @@ class PreventionInspectTemplateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parent: pulumi.Input[str],
+             parent: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              inspect_config: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigArgs']] = None,
              template_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if inspect_config is None and 'inspectConfig' in kwargs:
+            inspect_config = kwargs['inspectConfig']
+        if template_id is None and 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+
         _setter("parent", parent)
         if description is not None:
             _setter("description", description)
@@ -184,7 +194,15 @@ class _PreventionInspectTemplateState:
              name: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
              template_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if inspect_config is None and 'inspectConfig' in kwargs:
+            inspect_config = kwargs['inspectConfig']
+        if template_id is None and 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+
         if description is not None:
             _setter("description", description)
         if display_name is not None:

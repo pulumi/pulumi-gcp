@@ -63,7 +63,11 @@ class ManagedSslCertificateArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if certificate_id is None and 'certificateId' in kwargs:
+            certificate_id = kwargs['certificateId']
+
         if certificate_id is not None:
             _setter("certificate_id", certificate_id)
         if description is not None:
@@ -230,7 +234,19 @@ class _ManagedSslCertificateState:
              self_link: Optional[pulumi.Input[str]] = None,
              subject_alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if certificate_id is None and 'certificateId' in kwargs:
+            certificate_id = kwargs['certificateId']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if subject_alternative_names is None and 'subjectAlternativeNames' in kwargs:
+            subject_alternative_names = kwargs['subjectAlternativeNames']
+
         if certificate_id is not None:
             _setter("certificate_id", certificate_id)
         if creation_timestamp is not None:

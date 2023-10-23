@@ -58,7 +58,7 @@ class JobArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             job_id: pulumi.Input[str],
+             job_id: Optional[pulumi.Input[str]] = None,
              copy: Optional[pulumi.Input['JobCopyArgs']] = None,
              extract: Optional[pulumi.Input['JobExtractArgs']] = None,
              job_timeout_ms: Optional[pulumi.Input[str]] = None,
@@ -67,7 +67,15 @@ class JobArgs:
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              query: Optional[pulumi.Input['JobQueryArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if job_id is None and 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+        if job_id is None:
+            raise TypeError("Missing 'job_id' argument")
+        if job_timeout_ms is None and 'jobTimeoutMs' in kwargs:
+            job_timeout_ms = kwargs['jobTimeoutMs']
+
         _setter("job_id", job_id)
         if copy is not None:
             _setter("copy", copy)
@@ -269,7 +277,17 @@ class _JobState:
              query: Optional[pulumi.Input['JobQueryArgs']] = None,
              statuses: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]] = None,
              user_email: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if job_id is None and 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+        if job_timeout_ms is None and 'jobTimeoutMs' in kwargs:
+            job_timeout_ms = kwargs['jobTimeoutMs']
+        if job_type is None and 'jobType' in kwargs:
+            job_type = kwargs['jobType']
+        if user_email is None and 'userEmail' in kwargs:
+            user_email = kwargs['userEmail']
+
         if copy is not None:
             _setter("copy", copy)
         if extract is not None:

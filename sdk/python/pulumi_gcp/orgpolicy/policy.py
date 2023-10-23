@@ -38,10 +38,14 @@ class PolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parent: pulumi.Input[str],
+             parent: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              spec: Optional[pulumi.Input['PolicySpecArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+
         _setter("parent", parent)
         if name is not None:
             _setter("name", name)
@@ -117,7 +121,9 @@ class _PolicyState:
              name: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
              spec: Optional[pulumi.Input['PolicySpecArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if parent is not None:

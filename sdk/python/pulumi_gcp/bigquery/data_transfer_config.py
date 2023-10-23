@@ -98,9 +98,9 @@ class DataTransferConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_source_id: pulumi.Input[str],
-             display_name: pulumi.Input[str],
-             params: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+             data_source_id: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              data_refresh_window_days: Optional[pulumi.Input[int]] = None,
              destination_dataset_id: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
@@ -112,7 +112,33 @@ class DataTransferConfigArgs:
              schedule_options: Optional[pulumi.Input['DataTransferConfigScheduleOptionsArgs']] = None,
              sensitive_params: Optional[pulumi.Input['DataTransferConfigSensitiveParamsArgs']] = None,
              service_account_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if data_source_id is None and 'dataSourceId' in kwargs:
+            data_source_id = kwargs['dataSourceId']
+        if data_source_id is None:
+            raise TypeError("Missing 'data_source_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if params is None:
+            raise TypeError("Missing 'params' argument")
+        if data_refresh_window_days is None and 'dataRefreshWindowDays' in kwargs:
+            data_refresh_window_days = kwargs['dataRefreshWindowDays']
+        if destination_dataset_id is None and 'destinationDatasetId' in kwargs:
+            destination_dataset_id = kwargs['destinationDatasetId']
+        if email_preferences is None and 'emailPreferences' in kwargs:
+            email_preferences = kwargs['emailPreferences']
+        if notification_pubsub_topic is None and 'notificationPubsubTopic' in kwargs:
+            notification_pubsub_topic = kwargs['notificationPubsubTopic']
+        if schedule_options is None and 'scheduleOptions' in kwargs:
+            schedule_options = kwargs['scheduleOptions']
+        if sensitive_params is None and 'sensitiveParams' in kwargs:
+            sensitive_params = kwargs['sensitiveParams']
+        if service_account_name is None and 'serviceAccountName' in kwargs:
+            service_account_name = kwargs['serviceAccountName']
+
         _setter("data_source_id", data_source_id)
         _setter("display_name", display_name)
         _setter("params", params)
@@ -446,7 +472,27 @@ class _DataTransferConfigState:
              schedule_options: Optional[pulumi.Input['DataTransferConfigScheduleOptionsArgs']] = None,
              sensitive_params: Optional[pulumi.Input['DataTransferConfigSensitiveParamsArgs']] = None,
              service_account_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if data_refresh_window_days is None and 'dataRefreshWindowDays' in kwargs:
+            data_refresh_window_days = kwargs['dataRefreshWindowDays']
+        if data_source_id is None and 'dataSourceId' in kwargs:
+            data_source_id = kwargs['dataSourceId']
+        if destination_dataset_id is None and 'destinationDatasetId' in kwargs:
+            destination_dataset_id = kwargs['destinationDatasetId']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if email_preferences is None and 'emailPreferences' in kwargs:
+            email_preferences = kwargs['emailPreferences']
+        if notification_pubsub_topic is None and 'notificationPubsubTopic' in kwargs:
+            notification_pubsub_topic = kwargs['notificationPubsubTopic']
+        if schedule_options is None and 'scheduleOptions' in kwargs:
+            schedule_options = kwargs['scheduleOptions']
+        if sensitive_params is None and 'sensitiveParams' in kwargs:
+            sensitive_params = kwargs['sensitiveParams']
+        if service_account_name is None and 'serviceAccountName' in kwargs:
+            service_account_name = kwargs['serviceAccountName']
+
         if data_refresh_window_days is not None:
             _setter("data_refresh_window_days", data_refresh_window_days)
         if data_source_id is not None:

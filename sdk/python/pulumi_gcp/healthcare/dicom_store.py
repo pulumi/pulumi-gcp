@@ -55,12 +55,20 @@ class DicomStoreArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset: pulumi.Input[str],
+             dataset: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              notification_config: Optional[pulumi.Input['DicomStoreNotificationConfigArgs']] = None,
              stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataset is None:
+            raise TypeError("Missing 'dataset' argument")
+        if notification_config is None and 'notificationConfig' in kwargs:
+            notification_config = kwargs['notificationConfig']
+        if stream_configs is None and 'streamConfigs' in kwargs:
+            stream_configs = kwargs['streamConfigs']
+
         _setter("dataset", dataset)
         if labels is not None:
             _setter("labels", labels)
@@ -198,7 +206,15 @@ class _DicomStoreState:
              notification_config: Optional[pulumi.Input['DicomStoreNotificationConfigArgs']] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if notification_config is None and 'notificationConfig' in kwargs:
+            notification_config = kwargs['notificationConfig']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if stream_configs is None and 'streamConfigs' in kwargs:
+            stream_configs = kwargs['streamConfigs']
+
         if dataset is not None:
             _setter("dataset", dataset)
         if labels is not None:

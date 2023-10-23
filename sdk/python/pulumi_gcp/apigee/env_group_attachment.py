@@ -33,9 +33,17 @@ class EnvGroupAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             envgroup_id: pulumi.Input[str],
-             environment: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             envgroup_id: Optional[pulumi.Input[str]] = None,
+             environment: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if envgroup_id is None and 'envgroupId' in kwargs:
+            envgroup_id = kwargs['envgroupId']
+        if envgroup_id is None:
+            raise TypeError("Missing 'envgroup_id' argument")
+        if environment is None:
+            raise TypeError("Missing 'environment' argument")
+
         _setter("envgroup_id", envgroup_id)
         _setter("environment", environment)
 
@@ -96,7 +104,11 @@ class _EnvGroupAttachmentState:
              envgroup_id: Optional[pulumi.Input[str]] = None,
              environment: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if envgroup_id is None and 'envgroupId' in kwargs:
+            envgroup_id = kwargs['envgroupId']
+
         if envgroup_id is not None:
             _setter("envgroup_id", envgroup_id)
         if environment is not None:

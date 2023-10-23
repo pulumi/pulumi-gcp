@@ -53,12 +53,26 @@ class ListingIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_exchange_id: pulumi.Input[str],
-             listing_id: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             data_exchange_id: Optional[pulumi.Input[str]] = None,
+             listing_id: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if data_exchange_id is None and 'dataExchangeId' in kwargs:
+            data_exchange_id = kwargs['dataExchangeId']
+        if data_exchange_id is None:
+            raise TypeError("Missing 'data_exchange_id' argument")
+        if listing_id is None and 'listingId' in kwargs:
+            listing_id = kwargs['listingId']
+        if listing_id is None:
+            raise TypeError("Missing 'listing_id' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("data_exchange_id", data_exchange_id)
         _setter("listing_id", listing_id)
         _setter("policy_data", policy_data)
@@ -194,7 +208,15 @@ class _ListingIamPolicyState:
              location: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if data_exchange_id is None and 'dataExchangeId' in kwargs:
+            data_exchange_id = kwargs['dataExchangeId']
+        if listing_id is None and 'listingId' in kwargs:
+            listing_id = kwargs['listingId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if data_exchange_id is not None:
             _setter("data_exchange_id", data_exchange_id)
         if etag is not None:

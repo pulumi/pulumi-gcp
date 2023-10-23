@@ -42,12 +42,26 @@ class NetworkPeeringRoutesConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             export_custom_routes: pulumi.Input[bool],
-             import_custom_routes: pulumi.Input[bool],
-             network: pulumi.Input[str],
-             peering: pulumi.Input[str],
+             export_custom_routes: Optional[pulumi.Input[bool]] = None,
+             import_custom_routes: Optional[pulumi.Input[bool]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             peering: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if export_custom_routes is None and 'exportCustomRoutes' in kwargs:
+            export_custom_routes = kwargs['exportCustomRoutes']
+        if export_custom_routes is None:
+            raise TypeError("Missing 'export_custom_routes' argument")
+        if import_custom_routes is None and 'importCustomRoutes' in kwargs:
+            import_custom_routes = kwargs['importCustomRoutes']
+        if import_custom_routes is None:
+            raise TypeError("Missing 'import_custom_routes' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if peering is None:
+            raise TypeError("Missing 'peering' argument")
+
         _setter("export_custom_routes", export_custom_routes)
         _setter("import_custom_routes", import_custom_routes)
         _setter("network", network)
@@ -156,7 +170,13 @@ class _NetworkPeeringRoutesConfigState:
              network: Optional[pulumi.Input[str]] = None,
              peering: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if export_custom_routes is None and 'exportCustomRoutes' in kwargs:
+            export_custom_routes = kwargs['exportCustomRoutes']
+        if import_custom_routes is None and 'importCustomRoutes' in kwargs:
+            import_custom_routes = kwargs['importCustomRoutes']
+
         if export_custom_routes is not None:
             _setter("export_custom_routes", export_custom_routes)
         if import_custom_routes is not None:

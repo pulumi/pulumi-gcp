@@ -76,8 +76,8 @@ class NodeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_type: pulumi.Input[str],
-             tensorflow_version: pulumi.Input[str],
+             accelerator_type: Optional[pulumi.Input[str]] = None,
+             tensorflow_version: Optional[pulumi.Input[str]] = None,
              cidr_block: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -87,7 +87,23 @@ class NodeArgs:
              scheduling_config: Optional[pulumi.Input['NodeSchedulingConfigArgs']] = None,
              use_service_networking: Optional[pulumi.Input[bool]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerator_type is None and 'acceleratorType' in kwargs:
+            accelerator_type = kwargs['acceleratorType']
+        if accelerator_type is None:
+            raise TypeError("Missing 'accelerator_type' argument")
+        if tensorflow_version is None and 'tensorflowVersion' in kwargs:
+            tensorflow_version = kwargs['tensorflowVersion']
+        if tensorflow_version is None:
+            raise TypeError("Missing 'tensorflow_version' argument")
+        if cidr_block is None and 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if scheduling_config is None and 'schedulingConfig' in kwargs:
+            scheduling_config = kwargs['schedulingConfig']
+        if use_service_networking is None and 'useServiceNetworking' in kwargs:
+            use_service_networking = kwargs['useServiceNetworking']
+
         _setter("accelerator_type", accelerator_type)
         _setter("tensorflow_version", tensorflow_version)
         if cidr_block is not None:
@@ -348,7 +364,23 @@ class _NodeState:
              tensorflow_version: Optional[pulumi.Input[str]] = None,
              use_service_networking: Optional[pulumi.Input[bool]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerator_type is None and 'acceleratorType' in kwargs:
+            accelerator_type = kwargs['acceleratorType']
+        if cidr_block is None and 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if network_endpoints is None and 'networkEndpoints' in kwargs:
+            network_endpoints = kwargs['networkEndpoints']
+        if scheduling_config is None and 'schedulingConfig' in kwargs:
+            scheduling_config = kwargs['schedulingConfig']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if tensorflow_version is None and 'tensorflowVersion' in kwargs:
+            tensorflow_version = kwargs['tensorflowVersion']
+        if use_service_networking is None and 'useServiceNetworking' in kwargs:
+            use_service_networking = kwargs['useServiceNetworking']
+
         if accelerator_type is not None:
             _setter("accelerator_type", accelerator_type)
         if cidr_block is not None:

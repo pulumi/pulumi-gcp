@@ -56,13 +56,25 @@ class ApiConfigIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api: pulumi.Input[str],
-             api_config: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             api: Optional[pulumi.Input[str]] = None,
+             api_config: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['ApiConfigIamBindingConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api is None:
+            raise TypeError("Missing 'api' argument")
+        if api_config is None and 'apiConfig' in kwargs:
+            api_config = kwargs['apiConfig']
+        if api_config is None:
+            raise TypeError("Missing 'api_config' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("api", api)
         _setter("api_config", api_config)
         _setter("members", members)
@@ -205,7 +217,11 @@ class _ApiConfigIamBindingState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_config is None and 'apiConfig' in kwargs:
+            api_config = kwargs['apiConfig']
+
         if api is not None:
             _setter("api", api)
         if api_config is not None:

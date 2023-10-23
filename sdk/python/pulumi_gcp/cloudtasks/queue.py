@@ -61,14 +61,26 @@ class QueueArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              app_engine_routing_override: Optional[pulumi.Input['QueueAppEngineRoutingOverrideArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              rate_limits: Optional[pulumi.Input['QueueRateLimitsArgs']] = None,
              retry_config: Optional[pulumi.Input['QueueRetryConfigArgs']] = None,
              stackdriver_logging_config: Optional[pulumi.Input['QueueStackdriverLoggingConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if app_engine_routing_override is None and 'appEngineRoutingOverride' in kwargs:
+            app_engine_routing_override = kwargs['appEngineRoutingOverride']
+        if rate_limits is None and 'rateLimits' in kwargs:
+            rate_limits = kwargs['rateLimits']
+        if retry_config is None and 'retryConfig' in kwargs:
+            retry_config = kwargs['retryConfig']
+        if stackdriver_logging_config is None and 'stackdriverLoggingConfig' in kwargs:
+            stackdriver_logging_config = kwargs['stackdriverLoggingConfig']
+
         _setter("location", location)
         if app_engine_routing_override is not None:
             _setter("app_engine_routing_override", app_engine_routing_override)
@@ -238,7 +250,17 @@ class _QueueState:
              rate_limits: Optional[pulumi.Input['QueueRateLimitsArgs']] = None,
              retry_config: Optional[pulumi.Input['QueueRetryConfigArgs']] = None,
              stackdriver_logging_config: Optional[pulumi.Input['QueueStackdriverLoggingConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_engine_routing_override is None and 'appEngineRoutingOverride' in kwargs:
+            app_engine_routing_override = kwargs['appEngineRoutingOverride']
+        if rate_limits is None and 'rateLimits' in kwargs:
+            rate_limits = kwargs['rateLimits']
+        if retry_config is None and 'retryConfig' in kwargs:
+            retry_config = kwargs['retryConfig']
+        if stackdriver_logging_config is None and 'stackdriverLoggingConfig' in kwargs:
+            stackdriver_logging_config = kwargs['stackdriverLoggingConfig']
+
         if app_engine_routing_override is not None:
             _setter("app_engine_routing_override", app_engine_routing_override)
         if location is not None:

@@ -67,16 +67,34 @@ class CxEntityTypeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             entities: pulumi.Input[Sequence[pulumi.Input['CxEntityTypeEntityArgs']]],
-             kind: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
+             entities: Optional[pulumi.Input[Sequence[pulumi.Input['CxEntityTypeEntityArgs']]]] = None,
+             kind: Optional[pulumi.Input[str]] = None,
              auto_expansion_mode: Optional[pulumi.Input[str]] = None,
              enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
              excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input['CxEntityTypeExcludedPhraseArgs']]]] = None,
              language_code: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
              redact: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if entities is None:
+            raise TypeError("Missing 'entities' argument")
+        if kind is None:
+            raise TypeError("Missing 'kind' argument")
+        if auto_expansion_mode is None and 'autoExpansionMode' in kwargs:
+            auto_expansion_mode = kwargs['autoExpansionMode']
+        if enable_fuzzy_extraction is None and 'enableFuzzyExtraction' in kwargs:
+            enable_fuzzy_extraction = kwargs['enableFuzzyExtraction']
+        if excluded_phrases is None and 'excludedPhrases' in kwargs:
+            excluded_phrases = kwargs['excludedPhrases']
+        if language_code is None and 'languageCode' in kwargs:
+            language_code = kwargs['languageCode']
+
         _setter("display_name", display_name)
         _setter("entities", entities)
         _setter("kind", kind)
@@ -285,7 +303,19 @@ class _CxEntityTypeState:
              name: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
              redact: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_expansion_mode is None and 'autoExpansionMode' in kwargs:
+            auto_expansion_mode = kwargs['autoExpansionMode']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if enable_fuzzy_extraction is None and 'enableFuzzyExtraction' in kwargs:
+            enable_fuzzy_extraction = kwargs['enableFuzzyExtraction']
+        if excluded_phrases is None and 'excludedPhrases' in kwargs:
+            excluded_phrases = kwargs['excludedPhrases']
+        if language_code is None and 'languageCode' in kwargs:
+            language_code = kwargs['languageCode']
+
         if auto_expansion_mode is not None:
             _setter("auto_expansion_mode", auto_expansion_mode)
         if display_name is not None:

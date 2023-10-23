@@ -63,7 +63,15 @@ class ClusterArgs:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              virtual_cluster_config: Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_config is None and 'clusterConfig' in kwargs:
+            cluster_config = kwargs['clusterConfig']
+        if graceful_decommission_timeout is None and 'gracefulDecommissionTimeout' in kwargs:
+            graceful_decommission_timeout = kwargs['gracefulDecommissionTimeout']
+        if virtual_cluster_config is None and 'virtualClusterConfig' in kwargs:
+            virtual_cluster_config = kwargs['virtualClusterConfig']
+
         if cluster_config is not None:
             _setter("cluster_config", cluster_config)
         if graceful_decommission_timeout is not None:
@@ -224,7 +232,15 @@ class _ClusterState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              virtual_cluster_config: Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_config is None and 'clusterConfig' in kwargs:
+            cluster_config = kwargs['clusterConfig']
+        if graceful_decommission_timeout is None and 'gracefulDecommissionTimeout' in kwargs:
+            graceful_decommission_timeout = kwargs['gracefulDecommissionTimeout']
+        if virtual_cluster_config is None and 'virtualClusterConfig' in kwargs:
+            virtual_cluster_config = kwargs['virtualClusterConfig']
+
         if cluster_config is not None:
             _setter("cluster_config", cluster_config)
         if graceful_decommission_timeout is not None:

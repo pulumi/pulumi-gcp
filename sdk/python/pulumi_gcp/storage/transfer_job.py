@@ -46,13 +46,23 @@ class TransferJobArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: pulumi.Input[str],
-             transfer_spec: pulumi.Input['TransferJobTransferSpecArgs'],
+             description: Optional[pulumi.Input[str]] = None,
+             transfer_spec: Optional[pulumi.Input['TransferJobTransferSpecArgs']] = None,
              notification_config: Optional[pulumi.Input['TransferJobNotificationConfigArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
              schedule: Optional[pulumi.Input['TransferJobScheduleArgs']] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if transfer_spec is None and 'transferSpec' in kwargs:
+            transfer_spec = kwargs['transferSpec']
+        if transfer_spec is None:
+            raise TypeError("Missing 'transfer_spec' argument")
+        if notification_config is None and 'notificationConfig' in kwargs:
+            notification_config = kwargs['notificationConfig']
+
         _setter("description", description)
         _setter("transfer_spec", transfer_spec)
         if notification_config is not None:
@@ -195,7 +205,19 @@ class _TransferJobState:
              schedule: Optional[pulumi.Input['TransferJobScheduleArgs']] = None,
              status: Optional[pulumi.Input[str]] = None,
              transfer_spec: Optional[pulumi.Input['TransferJobTransferSpecArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if creation_time is None and 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if deletion_time is None and 'deletionTime' in kwargs:
+            deletion_time = kwargs['deletionTime']
+        if last_modification_time is None and 'lastModificationTime' in kwargs:
+            last_modification_time = kwargs['lastModificationTime']
+        if notification_config is None and 'notificationConfig' in kwargs:
+            notification_config = kwargs['notificationConfig']
+        if transfer_spec is None and 'transferSpec' in kwargs:
+            transfer_spec = kwargs['transferSpec']
+
         if creation_time is not None:
             _setter("creation_time", creation_time)
         if deletion_time is not None:

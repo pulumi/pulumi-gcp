@@ -51,11 +51,21 @@ class InstanceIAMPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_name: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             instance_name: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("instance_name", instance_name)
         _setter("policy_data", policy_data)
         if project is not None:
@@ -176,7 +186,13 @@ class _InstanceIAMPolicyState:
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if etag is not None:
             _setter("etag", etag)
         if instance_name is not None:

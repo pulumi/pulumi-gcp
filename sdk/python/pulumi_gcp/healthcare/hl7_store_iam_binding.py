@@ -49,11 +49,21 @@ class Hl7StoreIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hl7_v2_store_id: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             hl7_v2_store_id: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['Hl7StoreIamBindingConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if hl7_v2_store_id is None and 'hl7V2StoreId' in kwargs:
+            hl7_v2_store_id = kwargs['hl7V2StoreId']
+        if hl7_v2_store_id is None:
+            raise TypeError("Missing 'hl7_v2_store_id' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("hl7_v2_store_id", hl7_v2_store_id)
         _setter("members", members)
         _setter("role", role)
@@ -161,7 +171,11 @@ class _Hl7StoreIamBindingState:
              hl7_v2_store_id: Optional[pulumi.Input[str]] = None,
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if hl7_v2_store_id is None and 'hl7V2StoreId' in kwargs:
+            hl7_v2_store_id = kwargs['hl7V2StoreId']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

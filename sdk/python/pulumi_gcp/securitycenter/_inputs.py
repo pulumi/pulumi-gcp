@@ -41,10 +41,16 @@ class InstanceIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -99,10 +105,16 @@ class InstanceIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -173,8 +185,12 @@ class NotificationConfigStreamingConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             filter: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if filter is None:
+            raise TypeError("Missing 'filter' argument")
+
         _setter("filter", filter)
 
     @property
@@ -249,13 +265,27 @@ class ProjectCustomModuleCustomConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             predicate: pulumi.Input['ProjectCustomModuleCustomConfigPredicateArgs'],
-             recommendation: pulumi.Input[str],
-             resource_selector: pulumi.Input['ProjectCustomModuleCustomConfigResourceSelectorArgs'],
-             severity: pulumi.Input[str],
+             predicate: Optional[pulumi.Input['ProjectCustomModuleCustomConfigPredicateArgs']] = None,
+             recommendation: Optional[pulumi.Input[str]] = None,
+             resource_selector: Optional[pulumi.Input['ProjectCustomModuleCustomConfigResourceSelectorArgs']] = None,
+             severity: Optional[pulumi.Input[str]] = None,
              custom_output: Optional[pulumi.Input['ProjectCustomModuleCustomConfigCustomOutputArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if predicate is None:
+            raise TypeError("Missing 'predicate' argument")
+        if recommendation is None:
+            raise TypeError("Missing 'recommendation' argument")
+        if resource_selector is None and 'resourceSelector' in kwargs:
+            resource_selector = kwargs['resourceSelector']
+        if resource_selector is None:
+            raise TypeError("Missing 'resource_selector' argument")
+        if severity is None:
+            raise TypeError("Missing 'severity' argument")
+        if custom_output is None and 'customOutput' in kwargs:
+            custom_output = kwargs['customOutput']
+
         _setter("predicate", predicate)
         _setter("recommendation", recommendation)
         _setter("resource_selector", resource_selector)
@@ -364,7 +394,9 @@ class ProjectCustomModuleCustomConfigCustomOutputArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              properties: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectCustomModuleCustomConfigCustomOutputPropertyArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if properties is not None:
             _setter("properties", properties)
 
@@ -403,7 +435,11 @@ class ProjectCustomModuleCustomConfigCustomOutputPropertyArgs:
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
              value_expression: Optional[pulumi.Input['ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if value_expression is None and 'valueExpression' in kwargs:
+            value_expression = kwargs['valueExpression']
+
         if name is not None:
             _setter("name", name)
         if value_expression is not None:
@@ -462,11 +498,15 @@ class ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+
         _setter("expression", expression)
         if description is not None:
             _setter("description", description)
@@ -553,11 +593,15 @@ class ProjectCustomModuleCustomConfigPredicateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+
         _setter("expression", expression)
         if description is not None:
             _setter("description", description)
@@ -634,8 +678,14 @@ class ProjectCustomModuleCustomConfigResourceSelectorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_types: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if resource_types is None and 'resourceTypes' in kwargs:
+            resource_types = kwargs['resourceTypes']
+        if resource_types is None:
+            raise TypeError("Missing 'resource_types' argument")
+
         _setter("resource_types", resource_types)
 
     @property
@@ -671,10 +721,16 @@ class SourceIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -729,10 +785,16 @@ class SourceIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:

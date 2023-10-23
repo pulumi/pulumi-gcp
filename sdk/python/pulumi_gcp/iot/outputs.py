@@ -75,7 +75,15 @@ class DeviceConfig(dict):
              cloud_update_time: Optional[str] = None,
              device_ack_time: Optional[str] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if binary_data is None and 'binaryData' in kwargs:
+            binary_data = kwargs['binaryData']
+        if cloud_update_time is None and 'cloudUpdateTime' in kwargs:
+            cloud_update_time = kwargs['cloudUpdateTime']
+        if device_ack_time is None and 'deviceAckTime' in kwargs:
+            device_ack_time = kwargs['deviceAckTime']
+
         if binary_data is not None:
             _setter("binary_data", binary_data)
         if cloud_update_time is not None:
@@ -159,9 +167,17 @@ class DeviceCredential(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             public_key: 'outputs.DeviceCredentialPublicKey',
+             public_key: Optional['outputs.DeviceCredentialPublicKey'] = None,
              expiration_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if public_key is None and 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if public_key is None:
+            raise TypeError("Missing 'public_key' argument")
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+
         _setter("public_key", public_key)
         if expiration_time is not None:
             _setter("expiration_time", expiration_time)
@@ -202,9 +218,15 @@ class DeviceCredentialPublicKey(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             format: str,
-             key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             format: Optional[str] = None,
+             key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if format is None:
+            raise TypeError("Missing 'format' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("format", format)
         _setter("key", key)
 
@@ -281,7 +303,17 @@ class DeviceGatewayConfig(dict):
              gateway_type: Optional[str] = None,
              last_accessed_gateway_id: Optional[str] = None,
              last_accessed_gateway_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gateway_auth_method is None and 'gatewayAuthMethod' in kwargs:
+            gateway_auth_method = kwargs['gatewayAuthMethod']
+        if gateway_type is None and 'gatewayType' in kwargs:
+            gateway_type = kwargs['gatewayType']
+        if last_accessed_gateway_id is None and 'lastAccessedGatewayId' in kwargs:
+            last_accessed_gateway_id = kwargs['lastAccessedGatewayId']
+        if last_accessed_gateway_time is None and 'lastAccessedGatewayTime' in kwargs:
+            last_accessed_gateway_time = kwargs['lastAccessedGatewayTime']
+
         if gateway_auth_method is not None:
             _setter("gateway_auth_method", gateway_auth_method)
         if gateway_type is not None:
@@ -352,7 +384,9 @@ class DeviceLastErrorStatus(dict):
              details: Optional[Sequence[Mapping[str, Any]]] = None,
              message: Optional[str] = None,
              number: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if details is not None:
             _setter("details", details)
         if message is not None:
@@ -423,7 +457,13 @@ class DeviceState(dict):
              _setter: Callable[[Any, Any], None],
              binary_data: Optional[str] = None,
              update_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if binary_data is None and 'binaryData' in kwargs:
+            binary_data = kwargs['binaryData']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if binary_data is not None:
             _setter("binary_data", binary_data)
         if update_time is not None:
@@ -477,8 +517,14 @@ class RegistryCredential(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             public_key_certificate: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             public_key_certificate: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if public_key_certificate is None and 'publicKeyCertificate' in kwargs:
+            public_key_certificate = kwargs['publicKeyCertificate']
+        if public_key_certificate is None:
+            raise TypeError("Missing 'public_key_certificate' argument")
+
         _setter("public_key_certificate", public_key_certificate)
 
     @property
@@ -530,9 +576,17 @@ class RegistryEventNotificationConfigItem(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pubsub_topic_name: str,
+             pubsub_topic_name: Optional[str] = None,
              subfolder_matches: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pubsub_topic_name is None and 'pubsubTopicName' in kwargs:
+            pubsub_topic_name = kwargs['pubsubTopicName']
+        if pubsub_topic_name is None:
+            raise TypeError("Missing 'pubsub_topic_name' argument")
+        if subfolder_matches is None and 'subfolderMatches' in kwargs:
+            subfolder_matches = kwargs['subfolderMatches']
+
         _setter("pubsub_topic_name", pubsub_topic_name)
         if subfolder_matches is not None:
             _setter("subfolder_matches", subfolder_matches)
@@ -573,10 +627,16 @@ class RegistryIamBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -613,10 +673,16 @@ class RegistryIamMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:

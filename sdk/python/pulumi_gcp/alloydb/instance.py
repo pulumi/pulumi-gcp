@@ -71,9 +71,9 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
-             instance_type: pulumi.Input[str],
+             cluster: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              availability_type: Optional[pulumi.Input[str]] = None,
              database_flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -82,7 +82,31 @@ class InstanceArgs:
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              machine_config: Optional[pulumi.Input['InstanceMachineConfigArgs']] = None,
              read_pool_config: Optional[pulumi.Input['InstanceReadPoolConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster is None:
+            raise TypeError("Missing 'cluster' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if availability_type is None and 'availabilityType' in kwargs:
+            availability_type = kwargs['availabilityType']
+        if database_flags is None and 'databaseFlags' in kwargs:
+            database_flags = kwargs['databaseFlags']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if gce_zone is None and 'gceZone' in kwargs:
+            gce_zone = kwargs['gceZone']
+        if machine_config is None and 'machineConfig' in kwargs:
+            machine_config = kwargs['machineConfig']
+        if read_pool_config is None and 'readPoolConfig' in kwargs:
+            read_pool_config = kwargs['readPoolConfig']
+
         _setter("cluster", cluster)
         _setter("instance_id", instance_id)
         _setter("instance_type", instance_type)
@@ -346,7 +370,31 @@ class _InstanceState:
              state: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if availability_type is None and 'availabilityType' in kwargs:
+            availability_type = kwargs['availabilityType']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if database_flags is None and 'databaseFlags' in kwargs:
+            database_flags = kwargs['databaseFlags']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if gce_zone is None and 'gceZone' in kwargs:
+            gce_zone = kwargs['gceZone']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if machine_config is None and 'machineConfig' in kwargs:
+            machine_config = kwargs['machineConfig']
+        if read_pool_config is None and 'readPoolConfig' in kwargs:
+            read_pool_config = kwargs['readPoolConfig']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if availability_type is not None:

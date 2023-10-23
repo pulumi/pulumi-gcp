@@ -64,8 +64,8 @@ class FolderSinkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             destination: pulumi.Input[str],
-             folder: pulumi.Input[str],
+             destination: Optional[pulumi.Input[str]] = None,
+             folder: Optional[pulumi.Input[str]] = None,
              bigquery_options: Optional[pulumi.Input['FolderSinkBigqueryOptionsArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
@@ -73,7 +73,17 @@ class FolderSinkArgs:
              filter: Optional[pulumi.Input[str]] = None,
              include_children: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if destination is None:
+            raise TypeError("Missing 'destination' argument")
+        if folder is None:
+            raise TypeError("Missing 'folder' argument")
+        if bigquery_options is None and 'bigqueryOptions' in kwargs:
+            bigquery_options = kwargs['bigqueryOptions']
+        if include_children is None and 'includeChildren' in kwargs:
+            include_children = kwargs['includeChildren']
+
         _setter("destination", destination)
         _setter("folder", folder)
         if bigquery_options is not None:
@@ -277,7 +287,15 @@ class _FolderSinkState:
              include_children: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              writer_identity: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bigquery_options is None and 'bigqueryOptions' in kwargs:
+            bigquery_options = kwargs['bigqueryOptions']
+        if include_children is None and 'includeChildren' in kwargs:
+            include_children = kwargs['includeChildren']
+        if writer_identity is None and 'writerIdentity' in kwargs:
+            writer_identity = kwargs['writerIdentity']
+
         if bigquery_options is not None:
             _setter("bigquery_options", bigquery_options)
         if description is not None:

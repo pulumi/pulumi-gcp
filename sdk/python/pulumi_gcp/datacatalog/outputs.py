@@ -79,7 +79,13 @@ class EntryBigqueryDateShardedSpec(dict):
              dataset: Optional[str] = None,
              shard_count: Optional[int] = None,
              table_prefix: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if shard_count is None and 'shardCount' in kwargs:
+            shard_count = kwargs['shardCount']
+        if table_prefix is None and 'tablePrefix' in kwargs:
+            table_prefix = kwargs['tablePrefix']
+
         if dataset is not None:
             _setter("dataset", dataset)
         if shard_count is not None:
@@ -166,7 +172,15 @@ class EntryBigqueryTableSpec(dict):
              table_source_type: Optional[str] = None,
              table_specs: Optional[Sequence['outputs.EntryBigqueryTableSpecTableSpec']] = None,
              view_specs: Optional[Sequence['outputs.EntryBigqueryTableSpecViewSpec']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if table_source_type is None and 'tableSourceType' in kwargs:
+            table_source_type = kwargs['tableSourceType']
+        if table_specs is None and 'tableSpecs' in kwargs:
+            table_specs = kwargs['tableSpecs']
+        if view_specs is None and 'viewSpecs' in kwargs:
+            view_specs = kwargs['viewSpecs']
+
         if table_source_type is not None:
             _setter("table_source_type", table_source_type)
         if table_specs is not None:
@@ -240,7 +254,11 @@ class EntryBigqueryTableSpecTableSpec(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              grouped_entry: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if grouped_entry is None and 'groupedEntry' in kwargs:
+            grouped_entry = kwargs['groupedEntry']
+
         if grouped_entry is not None:
             _setter("grouped_entry", grouped_entry)
 
@@ -290,7 +308,11 @@ class EntryBigqueryTableSpecViewSpec(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              view_query: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if view_query is None and 'viewQuery' in kwargs:
+            view_query = kwargs['viewQuery']
+
         if view_query is not None:
             _setter("view_query", view_query)
 
@@ -355,9 +377,17 @@ class EntryGcsFilesetSpec(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             file_patterns: Sequence[str],
+             file_patterns: Optional[Sequence[str]] = None,
              sample_gcs_file_specs: Optional[Sequence['outputs.EntryGcsFilesetSpecSampleGcsFileSpec']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if file_patterns is None and 'filePatterns' in kwargs:
+            file_patterns = kwargs['filePatterns']
+        if file_patterns is None:
+            raise TypeError("Missing 'file_patterns' argument")
+        if sample_gcs_file_specs is None and 'sampleGcsFileSpecs' in kwargs:
+            sample_gcs_file_specs = kwargs['sampleGcsFileSpecs']
+
         _setter("file_patterns", file_patterns)
         if sample_gcs_file_specs is not None:
             _setter("sample_gcs_file_specs", sample_gcs_file_specs)
@@ -434,7 +464,13 @@ class EntryGcsFilesetSpecSampleGcsFileSpec(dict):
              _setter: Callable[[Any, Any], None],
              file_path: Optional[str] = None,
              size_bytes: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if file_path is None and 'filePath' in kwargs:
+            file_path = kwargs['filePath']
+        if size_bytes is None and 'sizeBytes' in kwargs:
+            size_bytes = kwargs['sizeBytes']
+
         if file_path is not None:
             _setter("file_path", file_path)
         if size_bytes is not None:
@@ -474,10 +510,16 @@ class EntryGroupIamBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -514,10 +556,16 @@ class EntryGroupIamMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -554,10 +602,16 @@ class PolicyTagIamBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -594,10 +648,16 @@ class PolicyTagIamMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -689,7 +749,7 @@ class TagField(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             field_name: str,
+             field_name: Optional[str] = None,
              bool_value: Optional[bool] = None,
              display_name: Optional[str] = None,
              double_value: Optional[float] = None,
@@ -697,7 +757,25 @@ class TagField(dict):
              order: Optional[int] = None,
              string_value: Optional[str] = None,
              timestamp_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if field_name is None and 'fieldName' in kwargs:
+            field_name = kwargs['fieldName']
+        if field_name is None:
+            raise TypeError("Missing 'field_name' argument")
+        if bool_value is None and 'boolValue' in kwargs:
+            bool_value = kwargs['boolValue']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if double_value is None and 'doubleValue' in kwargs:
+            double_value = kwargs['doubleValue']
+        if enum_value is None and 'enumValue' in kwargs:
+            enum_value = kwargs['enumValue']
+        if string_value is None and 'stringValue' in kwargs:
+            string_value = kwargs['stringValue']
+        if timestamp_value is None and 'timestampValue' in kwargs:
+            timestamp_value = kwargs['timestampValue']
+
         _setter("field_name", field_name)
         if bool_value is not None:
             _setter("bool_value", bool_value)
@@ -842,14 +920,26 @@ class TagTemplateField(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             field_id: str,
-             type: 'outputs.TagTemplateFieldType',
+             field_id: Optional[str] = None,
+             type: Optional['outputs.TagTemplateFieldType'] = None,
              description: Optional[str] = None,
              display_name: Optional[str] = None,
              is_required: Optional[bool] = None,
              name: Optional[str] = None,
              order: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if field_id is None and 'fieldId' in kwargs:
+            field_id = kwargs['fieldId']
+        if field_id is None:
+            raise TypeError("Missing 'field_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if is_required is None and 'isRequired' in kwargs:
+            is_required = kwargs['isRequired']
+
         _setter("field_id", field_id)
         _setter("type", type)
         if description is not None:
@@ -966,7 +1056,13 @@ class TagTemplateFieldType(dict):
              _setter: Callable[[Any, Any], None],
              enum_type: Optional['outputs.TagTemplateFieldTypeEnumType'] = None,
              primitive_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enum_type is None and 'enumType' in kwargs:
+            enum_type = kwargs['enumType']
+        if primitive_type is None and 'primitiveType' in kwargs:
+            primitive_type = kwargs['primitiveType']
+
         if enum_type is not None:
             _setter("enum_type", enum_type)
         if primitive_type is not None:
@@ -1029,8 +1125,14 @@ class TagTemplateFieldTypeEnumType(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allowed_values: Sequence['outputs.TagTemplateFieldTypeEnumTypeAllowedValue'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             allowed_values: Optional[Sequence['outputs.TagTemplateFieldTypeEnumTypeAllowedValue']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allowed_values is None and 'allowedValues' in kwargs:
+            allowed_values = kwargs['allowedValues']
+        if allowed_values is None:
+            raise TypeError("Missing 'allowed_values' argument")
+
         _setter("allowed_values", allowed_values)
 
     @property
@@ -1078,8 +1180,14 @@ class TagTemplateFieldTypeEnumTypeAllowedValue(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             display_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+
         _setter("display_name", display_name)
 
     @property
@@ -1106,10 +1214,16 @@ class TagTemplateIamBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -1146,10 +1260,16 @@ class TagTemplateIamMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -1186,10 +1306,16 @@ class TaxonomyIamBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -1226,10 +1352,16 @@ class TaxonomyIamMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:

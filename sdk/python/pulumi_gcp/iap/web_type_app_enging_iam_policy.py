@@ -46,10 +46,20 @@ class WebTypeAppEngingIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_id: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             app_id: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if app_id is None:
+            raise TypeError("Missing 'app_id' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("app_id", app_id)
         _setter("policy_data", policy_data)
         if project is not None:
@@ -148,7 +158,13 @@ class _WebTypeAppEngingIamPolicyState:
              etag: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if app_id is not None:
             _setter("app_id", app_id)
         if etag is not None:

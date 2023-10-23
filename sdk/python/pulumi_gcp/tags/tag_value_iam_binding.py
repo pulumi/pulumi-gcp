@@ -49,11 +49,21 @@ class TagValueIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
-             tag_value: pulumi.Input[str],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             tag_value: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['TagValueIamBindingConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if tag_value is None and 'tagValue' in kwargs:
+            tag_value = kwargs['tagValue']
+        if tag_value is None:
+            raise TypeError("Missing 'tag_value' argument")
+
         _setter("members", members)
         _setter("role", role)
         _setter("tag_value", tag_value)
@@ -161,7 +171,11 @@ class _TagValueIamBindingState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              role: Optional[pulumi.Input[str]] = None,
              tag_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if tag_value is None and 'tagValue' in kwargs:
+            tag_value = kwargs['tagValue']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

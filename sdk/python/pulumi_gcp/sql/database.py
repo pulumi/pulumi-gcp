@@ -58,13 +58,19 @@ class DatabaseArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance: pulumi.Input[str],
+             instance: Optional[pulumi.Input[str]] = None,
              charset: Optional[pulumi.Input[str]] = None,
              collation: Optional[pulumi.Input[str]] = None,
              deletion_policy: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance is None:
+            raise TypeError("Missing 'instance' argument")
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+
         _setter("instance", instance)
         if charset is not None:
             _setter("charset", charset)
@@ -224,7 +230,13 @@ class _DatabaseState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if charset is not None:
             _setter("charset", charset)
         if collation is not None:

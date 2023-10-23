@@ -39,11 +39,19 @@ class IAMMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             folder: pulumi.Input[str],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
+             folder: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['IAMMemberConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if folder is None:
+            raise TypeError("Missing 'folder' argument")
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("folder", folder)
         _setter("member", member)
         _setter("role", role)
@@ -133,7 +141,9 @@ class _IAMMemberState:
              folder: Optional[pulumi.Input[str]] = None,
              member: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

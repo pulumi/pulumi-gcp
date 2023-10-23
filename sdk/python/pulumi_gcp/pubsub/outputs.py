@@ -76,8 +76,14 @@ class LiteSubscriptionDeliveryConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             delivery_requirement: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             delivery_requirement: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if delivery_requirement is None and 'deliveryRequirement' in kwargs:
+            delivery_requirement = kwargs['deliveryRequirement']
+        if delivery_requirement is None:
+            raise TypeError("Missing 'delivery_requirement' argument")
+
         _setter("delivery_requirement", delivery_requirement)
 
     @property
@@ -108,9 +114,13 @@ class LiteTopicPartitionConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             count: int,
+             count: Optional[int] = None,
              capacity: Optional['outputs.LiteTopicPartitionConfigCapacity'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if count is None:
+            raise TypeError("Missing 'count' argument")
+
         _setter("count", count)
         if capacity is not None:
             _setter("capacity", capacity)
@@ -169,9 +179,19 @@ class LiteTopicPartitionConfigCapacity(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             publish_mib_per_sec: int,
-             subscribe_mib_per_sec: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             publish_mib_per_sec: Optional[int] = None,
+             subscribe_mib_per_sec: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if publish_mib_per_sec is None and 'publishMibPerSec' in kwargs:
+            publish_mib_per_sec = kwargs['publishMibPerSec']
+        if publish_mib_per_sec is None:
+            raise TypeError("Missing 'publish_mib_per_sec' argument")
+        if subscribe_mib_per_sec is None and 'subscribeMibPerSec' in kwargs:
+            subscribe_mib_per_sec = kwargs['subscribeMibPerSec']
+        if subscribe_mib_per_sec is None:
+            raise TypeError("Missing 'subscribe_mib_per_sec' argument")
+
         _setter("publish_mib_per_sec", publish_mib_per_sec)
         _setter("subscribe_mib_per_sec", subscribe_mib_per_sec)
 
@@ -224,7 +244,11 @@ class LiteTopicReservationConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              throughput_reservation: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if throughput_reservation is None and 'throughputReservation' in kwargs:
+            throughput_reservation = kwargs['throughputReservation']
+
         if throughput_reservation is not None:
             _setter("throughput_reservation", throughput_reservation)
 
@@ -276,9 +300,15 @@ class LiteTopicRetentionConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             per_partition_bytes: str,
+             per_partition_bytes: Optional[str] = None,
              period: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if per_partition_bytes is None and 'perPartitionBytes' in kwargs:
+            per_partition_bytes = kwargs['perPartitionBytes']
+        if per_partition_bytes is None:
+            raise TypeError("Missing 'per_partition_bytes' argument")
+
         _setter("per_partition_bytes", per_partition_bytes)
         if period is not None:
             _setter("period", period)
@@ -351,11 +381,21 @@ class SubscriptionBigqueryConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             table: str,
+             table: Optional[str] = None,
              drop_unknown_fields: Optional[bool] = None,
              use_topic_schema: Optional[bool] = None,
              write_metadata: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if table is None:
+            raise TypeError("Missing 'table' argument")
+        if drop_unknown_fields is None and 'dropUnknownFields' in kwargs:
+            drop_unknown_fields = kwargs['dropUnknownFields']
+        if use_topic_schema is None and 'useTopicSchema' in kwargs:
+            use_topic_schema = kwargs['useTopicSchema']
+        if write_metadata is None and 'writeMetadata' in kwargs:
+            write_metadata = kwargs['writeMetadata']
+
         _setter("table", table)
         if drop_unknown_fields is not None:
             _setter("drop_unknown_fields", drop_unknown_fields)
@@ -461,14 +501,28 @@ class SubscriptionCloudStorageConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: str,
+             bucket: Optional[str] = None,
              avro_config: Optional['outputs.SubscriptionCloudStorageConfigAvroConfig'] = None,
              filename_prefix: Optional[str] = None,
              filename_suffix: Optional[str] = None,
              max_bytes: Optional[int] = None,
              max_duration: Optional[str] = None,
              state: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if avro_config is None and 'avroConfig' in kwargs:
+            avro_config = kwargs['avroConfig']
+        if filename_prefix is None and 'filenamePrefix' in kwargs:
+            filename_prefix = kwargs['filenamePrefix']
+        if filename_suffix is None and 'filenameSuffix' in kwargs:
+            filename_suffix = kwargs['filenameSuffix']
+        if max_bytes is None and 'maxBytes' in kwargs:
+            max_bytes = kwargs['maxBytes']
+        if max_duration is None and 'maxDuration' in kwargs:
+            max_duration = kwargs['maxDuration']
+
         _setter("bucket", bucket)
         if avro_config is not None:
             _setter("avro_config", avro_config)
@@ -577,7 +631,11 @@ class SubscriptionCloudStorageConfigAvroConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              write_metadata: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if write_metadata is None and 'writeMetadata' in kwargs:
+            write_metadata = kwargs['writeMetadata']
+
         if write_metadata is not None:
             _setter("write_metadata", write_metadata)
 
@@ -643,7 +701,13 @@ class SubscriptionDeadLetterPolicy(dict):
              _setter: Callable[[Any, Any], None],
              dead_letter_topic: Optional[str] = None,
              max_delivery_attempts: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dead_letter_topic is None and 'deadLetterTopic' in kwargs:
+            dead_letter_topic = kwargs['deadLetterTopic']
+        if max_delivery_attempts is None and 'maxDeliveryAttempts' in kwargs:
+            max_delivery_attempts = kwargs['maxDeliveryAttempts']
+
         if dead_letter_topic is not None:
             _setter("dead_letter_topic", dead_letter_topic)
         if max_delivery_attempts is not None:
@@ -699,8 +763,12 @@ class SubscriptionExpirationPolicy(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ttl: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             ttl: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ttl is None:
+            raise TypeError("Missing 'ttl' argument")
+
         _setter("ttl", ttl)
 
     @property
@@ -731,10 +799,16 @@ class SubscriptionIAMBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -771,10 +845,16 @@ class SubscriptionIAMMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -863,11 +943,21 @@ class SubscriptionPushConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             push_endpoint: str,
+             push_endpoint: Optional[str] = None,
              attributes: Optional[Mapping[str, str]] = None,
              no_wrapper: Optional['outputs.SubscriptionPushConfigNoWrapper'] = None,
              oidc_token: Optional['outputs.SubscriptionPushConfigOidcToken'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if push_endpoint is None and 'pushEndpoint' in kwargs:
+            push_endpoint = kwargs['pushEndpoint']
+        if push_endpoint is None:
+            raise TypeError("Missing 'push_endpoint' argument")
+        if no_wrapper is None and 'noWrapper' in kwargs:
+            no_wrapper = kwargs['noWrapper']
+        if oidc_token is None and 'oidcToken' in kwargs:
+            oidc_token = kwargs['oidcToken']
+
         _setter("push_endpoint", push_endpoint)
         if attributes is not None:
             _setter("attributes", attributes)
@@ -965,8 +1055,14 @@ class SubscriptionPushConfigNoWrapper(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             write_metadata: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             write_metadata: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if write_metadata is None and 'writeMetadata' in kwargs:
+            write_metadata = kwargs['writeMetadata']
+        if write_metadata is None:
+            raise TypeError("Missing 'write_metadata' argument")
+
         _setter("write_metadata", write_metadata)
 
     @property
@@ -1022,9 +1118,15 @@ class SubscriptionPushConfigOidcToken(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_account_email: str,
+             service_account_email: Optional[str] = None,
              audience: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if service_account_email is None:
+            raise TypeError("Missing 'service_account_email' argument")
+
         _setter("service_account_email", service_account_email)
         if audience is not None:
             _setter("audience", audience)
@@ -1094,7 +1196,13 @@ class SubscriptionRetryPolicy(dict):
              _setter: Callable[[Any, Any], None],
              maximum_backoff: Optional[str] = None,
              minimum_backoff: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if maximum_backoff is None and 'maximumBackoff' in kwargs:
+            maximum_backoff = kwargs['maximumBackoff']
+        if minimum_backoff is None and 'minimumBackoff' in kwargs:
+            minimum_backoff = kwargs['minimumBackoff']
+
         if maximum_backoff is not None:
             _setter("maximum_backoff", maximum_backoff)
         if minimum_backoff is not None:
@@ -1134,10 +1242,16 @@ class TopicIAMBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -1174,10 +1288,16 @@ class TopicIAMMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -1235,8 +1355,14 @@ class TopicMessageStoragePolicy(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allowed_persistence_regions: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             allowed_persistence_regions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allowed_persistence_regions is None and 'allowedPersistenceRegions' in kwargs:
+            allowed_persistence_regions = kwargs['allowedPersistenceRegions']
+        if allowed_persistence_regions is None:
+            raise TypeError("Missing 'allowed_persistence_regions' argument")
+
         _setter("allowed_persistence_regions", allowed_persistence_regions)
 
     @property
@@ -1275,9 +1401,13 @@ class TopicSchemaSettings(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             schema: str,
+             schema: Optional[str] = None,
              encoding: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if schema is None:
+            raise TypeError("Missing 'schema' argument")
+
         _setter("schema", schema)
         if encoding is not None:
             _setter("encoding", encoding)
@@ -1321,11 +1451,27 @@ class GetSubscriptionBigqueryConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             drop_unknown_fields: bool,
-             table: str,
-             use_topic_schema: bool,
-             write_metadata: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             drop_unknown_fields: Optional[bool] = None,
+             table: Optional[str] = None,
+             use_topic_schema: Optional[bool] = None,
+             write_metadata: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if drop_unknown_fields is None and 'dropUnknownFields' in kwargs:
+            drop_unknown_fields = kwargs['dropUnknownFields']
+        if drop_unknown_fields is None:
+            raise TypeError("Missing 'drop_unknown_fields' argument")
+        if table is None:
+            raise TypeError("Missing 'table' argument")
+        if use_topic_schema is None and 'useTopicSchema' in kwargs:
+            use_topic_schema = kwargs['useTopicSchema']
+        if use_topic_schema is None:
+            raise TypeError("Missing 'use_topic_schema' argument")
+        if write_metadata is None and 'writeMetadata' in kwargs:
+            write_metadata = kwargs['writeMetadata']
+        if write_metadata is None:
+            raise TypeError("Missing 'write_metadata' argument")
+
         _setter("drop_unknown_fields", drop_unknown_fields)
         _setter("table", table)
         _setter("use_topic_schema", use_topic_schema)
@@ -1375,14 +1521,40 @@ class GetSubscriptionCloudStorageConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             avro_configs: Sequence['outputs.GetSubscriptionCloudStorageConfigAvroConfigResult'],
-             bucket: str,
-             filename_prefix: str,
-             filename_suffix: str,
-             max_bytes: int,
-             max_duration: str,
-             state: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             avro_configs: Optional[Sequence['outputs.GetSubscriptionCloudStorageConfigAvroConfigResult']] = None,
+             bucket: Optional[str] = None,
+             filename_prefix: Optional[str] = None,
+             filename_suffix: Optional[str] = None,
+             max_bytes: Optional[int] = None,
+             max_duration: Optional[str] = None,
+             state: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if avro_configs is None and 'avroConfigs' in kwargs:
+            avro_configs = kwargs['avroConfigs']
+        if avro_configs is None:
+            raise TypeError("Missing 'avro_configs' argument")
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if filename_prefix is None and 'filenamePrefix' in kwargs:
+            filename_prefix = kwargs['filenamePrefix']
+        if filename_prefix is None:
+            raise TypeError("Missing 'filename_prefix' argument")
+        if filename_suffix is None and 'filenameSuffix' in kwargs:
+            filename_suffix = kwargs['filenameSuffix']
+        if filename_suffix is None:
+            raise TypeError("Missing 'filename_suffix' argument")
+        if max_bytes is None and 'maxBytes' in kwargs:
+            max_bytes = kwargs['maxBytes']
+        if max_bytes is None:
+            raise TypeError("Missing 'max_bytes' argument")
+        if max_duration is None and 'maxDuration' in kwargs:
+            max_duration = kwargs['maxDuration']
+        if max_duration is None:
+            raise TypeError("Missing 'max_duration' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+
         _setter("avro_configs", avro_configs)
         _setter("bucket", bucket)
         _setter("filename_prefix", filename_prefix)
@@ -1438,8 +1610,14 @@ class GetSubscriptionCloudStorageConfigAvroConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             write_metadata: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             write_metadata: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if write_metadata is None and 'writeMetadata' in kwargs:
+            write_metadata = kwargs['writeMetadata']
+        if write_metadata is None:
+            raise TypeError("Missing 'write_metadata' argument")
+
         _setter("write_metadata", write_metadata)
 
     @property
@@ -1461,9 +1639,19 @@ class GetSubscriptionDeadLetterPolicyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dead_letter_topic: str,
-             max_delivery_attempts: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             dead_letter_topic: Optional[str] = None,
+             max_delivery_attempts: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dead_letter_topic is None and 'deadLetterTopic' in kwargs:
+            dead_letter_topic = kwargs['deadLetterTopic']
+        if dead_letter_topic is None:
+            raise TypeError("Missing 'dead_letter_topic' argument")
+        if max_delivery_attempts is None and 'maxDeliveryAttempts' in kwargs:
+            max_delivery_attempts = kwargs['maxDeliveryAttempts']
+        if max_delivery_attempts is None:
+            raise TypeError("Missing 'max_delivery_attempts' argument")
+
         _setter("dead_letter_topic", dead_letter_topic)
         _setter("max_delivery_attempts", max_delivery_attempts)
 
@@ -1489,8 +1677,12 @@ class GetSubscriptionExpirationPolicyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ttl: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             ttl: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ttl is None:
+            raise TypeError("Missing 'ttl' argument")
+
         _setter("ttl", ttl)
 
     @property
@@ -1516,11 +1708,27 @@ class GetSubscriptionPushConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attributes: Mapping[str, str],
-             no_wrappers: Sequence['outputs.GetSubscriptionPushConfigNoWrapperResult'],
-             oidc_tokens: Sequence['outputs.GetSubscriptionPushConfigOidcTokenResult'],
-             push_endpoint: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             attributes: Optional[Mapping[str, str]] = None,
+             no_wrappers: Optional[Sequence['outputs.GetSubscriptionPushConfigNoWrapperResult']] = None,
+             oidc_tokens: Optional[Sequence['outputs.GetSubscriptionPushConfigOidcTokenResult']] = None,
+             push_endpoint: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if attributes is None:
+            raise TypeError("Missing 'attributes' argument")
+        if no_wrappers is None and 'noWrappers' in kwargs:
+            no_wrappers = kwargs['noWrappers']
+        if no_wrappers is None:
+            raise TypeError("Missing 'no_wrappers' argument")
+        if oidc_tokens is None and 'oidcTokens' in kwargs:
+            oidc_tokens = kwargs['oidcTokens']
+        if oidc_tokens is None:
+            raise TypeError("Missing 'oidc_tokens' argument")
+        if push_endpoint is None and 'pushEndpoint' in kwargs:
+            push_endpoint = kwargs['pushEndpoint']
+        if push_endpoint is None:
+            raise TypeError("Missing 'push_endpoint' argument")
+
         _setter("attributes", attributes)
         _setter("no_wrappers", no_wrappers)
         _setter("oidc_tokens", oidc_tokens)
@@ -1558,8 +1766,14 @@ class GetSubscriptionPushConfigNoWrapperResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             write_metadata: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             write_metadata: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if write_metadata is None and 'writeMetadata' in kwargs:
+            write_metadata = kwargs['writeMetadata']
+        if write_metadata is None:
+            raise TypeError("Missing 'write_metadata' argument")
+
         _setter("write_metadata", write_metadata)
 
     @property
@@ -1581,9 +1795,17 @@ class GetSubscriptionPushConfigOidcTokenResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             audience: str,
-             service_account_email: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             audience: Optional[str] = None,
+             service_account_email: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if audience is None:
+            raise TypeError("Missing 'audience' argument")
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if service_account_email is None:
+            raise TypeError("Missing 'service_account_email' argument")
+
         _setter("audience", audience)
         _setter("service_account_email", service_account_email)
 
@@ -1611,9 +1833,19 @@ class GetSubscriptionRetryPolicyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             maximum_backoff: str,
-             minimum_backoff: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             maximum_backoff: Optional[str] = None,
+             minimum_backoff: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if maximum_backoff is None and 'maximumBackoff' in kwargs:
+            maximum_backoff = kwargs['maximumBackoff']
+        if maximum_backoff is None:
+            raise TypeError("Missing 'maximum_backoff' argument")
+        if minimum_backoff is None and 'minimumBackoff' in kwargs:
+            minimum_backoff = kwargs['minimumBackoff']
+        if minimum_backoff is None:
+            raise TypeError("Missing 'minimum_backoff' argument")
+
         _setter("maximum_backoff", maximum_backoff)
         _setter("minimum_backoff", minimum_backoff)
 
@@ -1639,8 +1871,14 @@ class GetTopicMessageStoragePolicyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allowed_persistence_regions: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             allowed_persistence_regions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allowed_persistence_regions is None and 'allowedPersistenceRegions' in kwargs:
+            allowed_persistence_regions = kwargs['allowedPersistenceRegions']
+        if allowed_persistence_regions is None:
+            raise TypeError("Missing 'allowed_persistence_regions' argument")
+
         _setter("allowed_persistence_regions", allowed_persistence_regions)
 
     @property
@@ -1662,9 +1900,15 @@ class GetTopicSchemaSettingResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             encoding: str,
-             schema: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             encoding: Optional[str] = None,
+             schema: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if encoding is None:
+            raise TypeError("Missing 'encoding' argument")
+        if schema is None:
+            raise TypeError("Missing 'schema' argument")
+
         _setter("encoding", encoding)
         _setter("schema", schema)
 

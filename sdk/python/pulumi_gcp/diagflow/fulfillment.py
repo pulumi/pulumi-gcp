@@ -46,12 +46,20 @@ class FulfillmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              features: Optional[pulumi.Input[Sequence[pulumi.Input['FulfillmentFeatureArgs']]]] = None,
              generic_web_service: Optional[pulumi.Input['FulfillmentGenericWebServiceArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if generic_web_service is None and 'genericWebService' in kwargs:
+            generic_web_service = kwargs['genericWebService']
+
         _setter("display_name", display_name)
         if enabled is not None:
             _setter("enabled", enabled)
@@ -172,7 +180,13 @@ class _FulfillmentState:
              generic_web_service: Optional[pulumi.Input['FulfillmentGenericWebServiceArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if generic_web_service is None and 'genericWebService' in kwargs:
+            generic_web_service = kwargs['genericWebService']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if enabled is not None:

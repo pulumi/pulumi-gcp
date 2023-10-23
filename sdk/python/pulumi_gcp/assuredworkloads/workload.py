@@ -56,16 +56,40 @@ class WorkloadArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             billing_account: pulumi.Input[str],
-             compliance_regime: pulumi.Input[str],
-             display_name: pulumi.Input[str],
-             location: pulumi.Input[str],
-             organization: pulumi.Input[str],
+             billing_account: Optional[pulumi.Input[str]] = None,
+             compliance_regime: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             organization: Optional[pulumi.Input[str]] = None,
              kms_settings: Optional[pulumi.Input['WorkloadKmsSettingsArgs']] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
              resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if billing_account is None and 'billingAccount' in kwargs:
+            billing_account = kwargs['billingAccount']
+        if billing_account is None:
+            raise TypeError("Missing 'billing_account' argument")
+        if compliance_regime is None and 'complianceRegime' in kwargs:
+            compliance_regime = kwargs['complianceRegime']
+        if compliance_regime is None:
+            raise TypeError("Missing 'compliance_regime' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if organization is None:
+            raise TypeError("Missing 'organization' argument")
+        if kms_settings is None and 'kmsSettings' in kwargs:
+            kms_settings = kwargs['kmsSettings']
+        if provisioned_resources_parent is None and 'provisionedResourcesParent' in kwargs:
+            provisioned_resources_parent = kwargs['provisionedResourcesParent']
+        if resource_settings is None and 'resourceSettings' in kwargs:
+            resource_settings = kwargs['resourceSettings']
+
         _setter("billing_account", billing_account)
         _setter("compliance_regime", compliance_regime)
         _setter("display_name", display_name)
@@ -257,7 +281,23 @@ class _WorkloadState:
              provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
              resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if billing_account is None and 'billingAccount' in kwargs:
+            billing_account = kwargs['billingAccount']
+        if compliance_regime is None and 'complianceRegime' in kwargs:
+            compliance_regime = kwargs['complianceRegime']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if kms_settings is None and 'kmsSettings' in kwargs:
+            kms_settings = kwargs['kmsSettings']
+        if provisioned_resources_parent is None and 'provisionedResourcesParent' in kwargs:
+            provisioned_resources_parent = kwargs['provisionedResourcesParent']
+        if resource_settings is None and 'resourceSettings' in kwargs:
+            resource_settings = kwargs['resourceSettings']
+
         if billing_account is not None:
             _setter("billing_account", billing_account)
         if compliance_regime is not None:

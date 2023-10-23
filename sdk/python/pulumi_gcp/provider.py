@@ -477,7 +477,299 @@ class ProviderArgs:
              workflows_custom_endpoint: Optional[pulumi.Input[str]] = None,
              workstations_custom_endpoint: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_approval_custom_endpoint is None and 'accessApprovalCustomEndpoint' in kwargs:
+            access_approval_custom_endpoint = kwargs['accessApprovalCustomEndpoint']
+        if access_context_manager_custom_endpoint is None and 'accessContextManagerCustomEndpoint' in kwargs:
+            access_context_manager_custom_endpoint = kwargs['accessContextManagerCustomEndpoint']
+        if access_token is None and 'accessToken' in kwargs:
+            access_token = kwargs['accessToken']
+        if active_directory_custom_endpoint is None and 'activeDirectoryCustomEndpoint' in kwargs:
+            active_directory_custom_endpoint = kwargs['activeDirectoryCustomEndpoint']
+        if alloydb_custom_endpoint is None and 'alloydbCustomEndpoint' in kwargs:
+            alloydb_custom_endpoint = kwargs['alloydbCustomEndpoint']
+        if api_gateway_custom_endpoint is None and 'apiGatewayCustomEndpoint' in kwargs:
+            api_gateway_custom_endpoint = kwargs['apiGatewayCustomEndpoint']
+        if apigee_custom_endpoint is None and 'apigeeCustomEndpoint' in kwargs:
+            apigee_custom_endpoint = kwargs['apigeeCustomEndpoint']
+        if apikeys_custom_endpoint is None and 'apikeysCustomEndpoint' in kwargs:
+            apikeys_custom_endpoint = kwargs['apikeysCustomEndpoint']
+        if app_engine_custom_endpoint is None and 'appEngineCustomEndpoint' in kwargs:
+            app_engine_custom_endpoint = kwargs['appEngineCustomEndpoint']
+        if artifact_registry_custom_endpoint is None and 'artifactRegistryCustomEndpoint' in kwargs:
+            artifact_registry_custom_endpoint = kwargs['artifactRegistryCustomEndpoint']
+        if assured_workloads_custom_endpoint is None and 'assuredWorkloadsCustomEndpoint' in kwargs:
+            assured_workloads_custom_endpoint = kwargs['assuredWorkloadsCustomEndpoint']
+        if backup_dr_custom_endpoint is None and 'backupDrCustomEndpoint' in kwargs:
+            backup_dr_custom_endpoint = kwargs['backupDrCustomEndpoint']
+        if beyondcorp_custom_endpoint is None and 'beyondcorpCustomEndpoint' in kwargs:
+            beyondcorp_custom_endpoint = kwargs['beyondcorpCustomEndpoint']
+        if big_query_custom_endpoint is None and 'bigQueryCustomEndpoint' in kwargs:
+            big_query_custom_endpoint = kwargs['bigQueryCustomEndpoint']
+        if biglake_custom_endpoint is None and 'biglakeCustomEndpoint' in kwargs:
+            biglake_custom_endpoint = kwargs['biglakeCustomEndpoint']
+        if bigquery_analytics_hub_custom_endpoint is None and 'bigqueryAnalyticsHubCustomEndpoint' in kwargs:
+            bigquery_analytics_hub_custom_endpoint = kwargs['bigqueryAnalyticsHubCustomEndpoint']
+        if bigquery_connection_custom_endpoint is None and 'bigqueryConnectionCustomEndpoint' in kwargs:
+            bigquery_connection_custom_endpoint = kwargs['bigqueryConnectionCustomEndpoint']
+        if bigquery_data_transfer_custom_endpoint is None and 'bigqueryDataTransferCustomEndpoint' in kwargs:
+            bigquery_data_transfer_custom_endpoint = kwargs['bigqueryDataTransferCustomEndpoint']
+        if bigquery_datapolicy_custom_endpoint is None and 'bigqueryDatapolicyCustomEndpoint' in kwargs:
+            bigquery_datapolicy_custom_endpoint = kwargs['bigqueryDatapolicyCustomEndpoint']
+        if bigquery_reservation_custom_endpoint is None and 'bigqueryReservationCustomEndpoint' in kwargs:
+            bigquery_reservation_custom_endpoint = kwargs['bigqueryReservationCustomEndpoint']
+        if bigtable_custom_endpoint is None and 'bigtableCustomEndpoint' in kwargs:
+            bigtable_custom_endpoint = kwargs['bigtableCustomEndpoint']
+        if billing_custom_endpoint is None and 'billingCustomEndpoint' in kwargs:
+            billing_custom_endpoint = kwargs['billingCustomEndpoint']
+        if billing_project is None and 'billingProject' in kwargs:
+            billing_project = kwargs['billingProject']
+        if binary_authorization_custom_endpoint is None and 'binaryAuthorizationCustomEndpoint' in kwargs:
+            binary_authorization_custom_endpoint = kwargs['binaryAuthorizationCustomEndpoint']
+        if certificate_manager_custom_endpoint is None and 'certificateManagerCustomEndpoint' in kwargs:
+            certificate_manager_custom_endpoint = kwargs['certificateManagerCustomEndpoint']
+        if cloud_asset_custom_endpoint is None and 'cloudAssetCustomEndpoint' in kwargs:
+            cloud_asset_custom_endpoint = kwargs['cloudAssetCustomEndpoint']
+        if cloud_billing_custom_endpoint is None and 'cloudBillingCustomEndpoint' in kwargs:
+            cloud_billing_custom_endpoint = kwargs['cloudBillingCustomEndpoint']
+        if cloud_build_custom_endpoint is None and 'cloudBuildCustomEndpoint' in kwargs:
+            cloud_build_custom_endpoint = kwargs['cloudBuildCustomEndpoint']
+        if cloud_build_worker_pool_custom_endpoint is None and 'cloudBuildWorkerPoolCustomEndpoint' in kwargs:
+            cloud_build_worker_pool_custom_endpoint = kwargs['cloudBuildWorkerPoolCustomEndpoint']
+        if cloud_functions_custom_endpoint is None and 'cloudFunctionsCustomEndpoint' in kwargs:
+            cloud_functions_custom_endpoint = kwargs['cloudFunctionsCustomEndpoint']
+        if cloud_identity_custom_endpoint is None and 'cloudIdentityCustomEndpoint' in kwargs:
+            cloud_identity_custom_endpoint = kwargs['cloudIdentityCustomEndpoint']
+        if cloud_ids_custom_endpoint is None and 'cloudIdsCustomEndpoint' in kwargs:
+            cloud_ids_custom_endpoint = kwargs['cloudIdsCustomEndpoint']
+        if cloud_iot_custom_endpoint is None and 'cloudIotCustomEndpoint' in kwargs:
+            cloud_iot_custom_endpoint = kwargs['cloudIotCustomEndpoint']
+        if cloud_resource_manager_custom_endpoint is None and 'cloudResourceManagerCustomEndpoint' in kwargs:
+            cloud_resource_manager_custom_endpoint = kwargs['cloudResourceManagerCustomEndpoint']
+        if cloud_run_custom_endpoint is None and 'cloudRunCustomEndpoint' in kwargs:
+            cloud_run_custom_endpoint = kwargs['cloudRunCustomEndpoint']
+        if cloud_run_v2_custom_endpoint is None and 'cloudRunV2CustomEndpoint' in kwargs:
+            cloud_run_v2_custom_endpoint = kwargs['cloudRunV2CustomEndpoint']
+        if cloud_scheduler_custom_endpoint is None and 'cloudSchedulerCustomEndpoint' in kwargs:
+            cloud_scheduler_custom_endpoint = kwargs['cloudSchedulerCustomEndpoint']
+        if cloud_tasks_custom_endpoint is None and 'cloudTasksCustomEndpoint' in kwargs:
+            cloud_tasks_custom_endpoint = kwargs['cloudTasksCustomEndpoint']
+        if cloudbuildv2_custom_endpoint is None and 'cloudbuildv2CustomEndpoint' in kwargs:
+            cloudbuildv2_custom_endpoint = kwargs['cloudbuildv2CustomEndpoint']
+        if clouddeploy_custom_endpoint is None and 'clouddeployCustomEndpoint' in kwargs:
+            clouddeploy_custom_endpoint = kwargs['clouddeployCustomEndpoint']
+        if cloudfunctions2_custom_endpoint is None and 'cloudfunctions2CustomEndpoint' in kwargs:
+            cloudfunctions2_custom_endpoint = kwargs['cloudfunctions2CustomEndpoint']
+        if composer_custom_endpoint is None and 'composerCustomEndpoint' in kwargs:
+            composer_custom_endpoint = kwargs['composerCustomEndpoint']
+        if compute_custom_endpoint is None and 'computeCustomEndpoint' in kwargs:
+            compute_custom_endpoint = kwargs['computeCustomEndpoint']
+        if container_analysis_custom_endpoint is None and 'containerAnalysisCustomEndpoint' in kwargs:
+            container_analysis_custom_endpoint = kwargs['containerAnalysisCustomEndpoint']
+        if container_attached_custom_endpoint is None and 'containerAttachedCustomEndpoint' in kwargs:
+            container_attached_custom_endpoint = kwargs['containerAttachedCustomEndpoint']
+        if container_aws_custom_endpoint is None and 'containerAwsCustomEndpoint' in kwargs:
+            container_aws_custom_endpoint = kwargs['containerAwsCustomEndpoint']
+        if container_azure_custom_endpoint is None and 'containerAzureCustomEndpoint' in kwargs:
+            container_azure_custom_endpoint = kwargs['containerAzureCustomEndpoint']
+        if container_custom_endpoint is None and 'containerCustomEndpoint' in kwargs:
+            container_custom_endpoint = kwargs['containerCustomEndpoint']
+        if core_billing_custom_endpoint is None and 'coreBillingCustomEndpoint' in kwargs:
+            core_billing_custom_endpoint = kwargs['coreBillingCustomEndpoint']
+        if data_catalog_custom_endpoint is None and 'dataCatalogCustomEndpoint' in kwargs:
+            data_catalog_custom_endpoint = kwargs['dataCatalogCustomEndpoint']
+        if data_fusion_custom_endpoint is None and 'dataFusionCustomEndpoint' in kwargs:
+            data_fusion_custom_endpoint = kwargs['dataFusionCustomEndpoint']
+        if data_loss_prevention_custom_endpoint is None and 'dataLossPreventionCustomEndpoint' in kwargs:
+            data_loss_prevention_custom_endpoint = kwargs['dataLossPreventionCustomEndpoint']
+        if data_pipeline_custom_endpoint is None and 'dataPipelineCustomEndpoint' in kwargs:
+            data_pipeline_custom_endpoint = kwargs['dataPipelineCustomEndpoint']
+        if database_migration_service_custom_endpoint is None and 'databaseMigrationServiceCustomEndpoint' in kwargs:
+            database_migration_service_custom_endpoint = kwargs['databaseMigrationServiceCustomEndpoint']
+        if dataflow_custom_endpoint is None and 'dataflowCustomEndpoint' in kwargs:
+            dataflow_custom_endpoint = kwargs['dataflowCustomEndpoint']
+        if dataform_custom_endpoint is None and 'dataformCustomEndpoint' in kwargs:
+            dataform_custom_endpoint = kwargs['dataformCustomEndpoint']
+        if dataplex_custom_endpoint is None and 'dataplexCustomEndpoint' in kwargs:
+            dataplex_custom_endpoint = kwargs['dataplexCustomEndpoint']
+        if dataproc_custom_endpoint is None and 'dataprocCustomEndpoint' in kwargs:
+            dataproc_custom_endpoint = kwargs['dataprocCustomEndpoint']
+        if dataproc_metastore_custom_endpoint is None and 'dataprocMetastoreCustomEndpoint' in kwargs:
+            dataproc_metastore_custom_endpoint = kwargs['dataprocMetastoreCustomEndpoint']
+        if datastore_custom_endpoint is None and 'datastoreCustomEndpoint' in kwargs:
+            datastore_custom_endpoint = kwargs['datastoreCustomEndpoint']
+        if datastream_custom_endpoint is None and 'datastreamCustomEndpoint' in kwargs:
+            datastream_custom_endpoint = kwargs['datastreamCustomEndpoint']
+        if deployment_manager_custom_endpoint is None and 'deploymentManagerCustomEndpoint' in kwargs:
+            deployment_manager_custom_endpoint = kwargs['deploymentManagerCustomEndpoint']
+        if dialogflow_custom_endpoint is None and 'dialogflowCustomEndpoint' in kwargs:
+            dialogflow_custom_endpoint = kwargs['dialogflowCustomEndpoint']
+        if dialogflow_cx_custom_endpoint is None and 'dialogflowCxCustomEndpoint' in kwargs:
+            dialogflow_cx_custom_endpoint = kwargs['dialogflowCxCustomEndpoint']
+        if disable_google_partner_name is None and 'disableGooglePartnerName' in kwargs:
+            disable_google_partner_name = kwargs['disableGooglePartnerName']
+        if dns_custom_endpoint is None and 'dnsCustomEndpoint' in kwargs:
+            dns_custom_endpoint = kwargs['dnsCustomEndpoint']
+        if document_ai_custom_endpoint is None and 'documentAiCustomEndpoint' in kwargs:
+            document_ai_custom_endpoint = kwargs['documentAiCustomEndpoint']
+        if document_ai_warehouse_custom_endpoint is None and 'documentAiWarehouseCustomEndpoint' in kwargs:
+            document_ai_warehouse_custom_endpoint = kwargs['documentAiWarehouseCustomEndpoint']
+        if edgenetwork_custom_endpoint is None and 'edgenetworkCustomEndpoint' in kwargs:
+            edgenetwork_custom_endpoint = kwargs['edgenetworkCustomEndpoint']
+        if essential_contacts_custom_endpoint is None and 'essentialContactsCustomEndpoint' in kwargs:
+            essential_contacts_custom_endpoint = kwargs['essentialContactsCustomEndpoint']
+        if eventarc_custom_endpoint is None and 'eventarcCustomEndpoint' in kwargs:
+            eventarc_custom_endpoint = kwargs['eventarcCustomEndpoint']
+        if filestore_custom_endpoint is None and 'filestoreCustomEndpoint' in kwargs:
+            filestore_custom_endpoint = kwargs['filestoreCustomEndpoint']
+        if firebase_custom_endpoint is None and 'firebaseCustomEndpoint' in kwargs:
+            firebase_custom_endpoint = kwargs['firebaseCustomEndpoint']
+        if firebase_database_custom_endpoint is None and 'firebaseDatabaseCustomEndpoint' in kwargs:
+            firebase_database_custom_endpoint = kwargs['firebaseDatabaseCustomEndpoint']
+        if firebase_extensions_custom_endpoint is None and 'firebaseExtensionsCustomEndpoint' in kwargs:
+            firebase_extensions_custom_endpoint = kwargs['firebaseExtensionsCustomEndpoint']
+        if firebase_hosting_custom_endpoint is None and 'firebaseHostingCustomEndpoint' in kwargs:
+            firebase_hosting_custom_endpoint = kwargs['firebaseHostingCustomEndpoint']
+        if firebase_storage_custom_endpoint is None and 'firebaseStorageCustomEndpoint' in kwargs:
+            firebase_storage_custom_endpoint = kwargs['firebaseStorageCustomEndpoint']
+        if firebaserules_custom_endpoint is None and 'firebaserulesCustomEndpoint' in kwargs:
+            firebaserules_custom_endpoint = kwargs['firebaserulesCustomEndpoint']
+        if firestore_custom_endpoint is None and 'firestoreCustomEndpoint' in kwargs:
+            firestore_custom_endpoint = kwargs['firestoreCustomEndpoint']
+        if game_services_custom_endpoint is None and 'gameServicesCustomEndpoint' in kwargs:
+            game_services_custom_endpoint = kwargs['gameServicesCustomEndpoint']
+        if gke_backup_custom_endpoint is None and 'gkeBackupCustomEndpoint' in kwargs:
+            gke_backup_custom_endpoint = kwargs['gkeBackupCustomEndpoint']
+        if gke_hub2_custom_endpoint is None and 'gkeHub2CustomEndpoint' in kwargs:
+            gke_hub2_custom_endpoint = kwargs['gkeHub2CustomEndpoint']
+        if gke_hub_custom_endpoint is None and 'gkeHubCustomEndpoint' in kwargs:
+            gke_hub_custom_endpoint = kwargs['gkeHubCustomEndpoint']
+        if gkehub_feature_custom_endpoint is None and 'gkehubFeatureCustomEndpoint' in kwargs:
+            gkehub_feature_custom_endpoint = kwargs['gkehubFeatureCustomEndpoint']
+        if gkeonprem_custom_endpoint is None and 'gkeonpremCustomEndpoint' in kwargs:
+            gkeonprem_custom_endpoint = kwargs['gkeonpremCustomEndpoint']
+        if google_partner_name is None and 'googlePartnerName' in kwargs:
+            google_partner_name = kwargs['googlePartnerName']
+        if healthcare_custom_endpoint is None and 'healthcareCustomEndpoint' in kwargs:
+            healthcare_custom_endpoint = kwargs['healthcareCustomEndpoint']
+        if iam2_custom_endpoint is None and 'iam2CustomEndpoint' in kwargs:
+            iam2_custom_endpoint = kwargs['iam2CustomEndpoint']
+        if iam_beta_custom_endpoint is None and 'iamBetaCustomEndpoint' in kwargs:
+            iam_beta_custom_endpoint = kwargs['iamBetaCustomEndpoint']
+        if iam_credentials_custom_endpoint is None and 'iamCredentialsCustomEndpoint' in kwargs:
+            iam_credentials_custom_endpoint = kwargs['iamCredentialsCustomEndpoint']
+        if iam_custom_endpoint is None and 'iamCustomEndpoint' in kwargs:
+            iam_custom_endpoint = kwargs['iamCustomEndpoint']
+        if iam_workforce_pool_custom_endpoint is None and 'iamWorkforcePoolCustomEndpoint' in kwargs:
+            iam_workforce_pool_custom_endpoint = kwargs['iamWorkforcePoolCustomEndpoint']
+        if iap_custom_endpoint is None and 'iapCustomEndpoint' in kwargs:
+            iap_custom_endpoint = kwargs['iapCustomEndpoint']
+        if identity_platform_custom_endpoint is None and 'identityPlatformCustomEndpoint' in kwargs:
+            identity_platform_custom_endpoint = kwargs['identityPlatformCustomEndpoint']
+        if impersonate_service_account is None and 'impersonateServiceAccount' in kwargs:
+            impersonate_service_account = kwargs['impersonateServiceAccount']
+        if impersonate_service_account_delegates is None and 'impersonateServiceAccountDelegates' in kwargs:
+            impersonate_service_account_delegates = kwargs['impersonateServiceAccountDelegates']
+        if kms_custom_endpoint is None and 'kmsCustomEndpoint' in kwargs:
+            kms_custom_endpoint = kwargs['kmsCustomEndpoint']
+        if logging_custom_endpoint is None and 'loggingCustomEndpoint' in kwargs:
+            logging_custom_endpoint = kwargs['loggingCustomEndpoint']
+        if looker_custom_endpoint is None and 'lookerCustomEndpoint' in kwargs:
+            looker_custom_endpoint = kwargs['lookerCustomEndpoint']
+        if memcache_custom_endpoint is None and 'memcacheCustomEndpoint' in kwargs:
+            memcache_custom_endpoint = kwargs['memcacheCustomEndpoint']
+        if ml_engine_custom_endpoint is None and 'mlEngineCustomEndpoint' in kwargs:
+            ml_engine_custom_endpoint = kwargs['mlEngineCustomEndpoint']
+        if monitoring_custom_endpoint is None and 'monitoringCustomEndpoint' in kwargs:
+            monitoring_custom_endpoint = kwargs['monitoringCustomEndpoint']
+        if network_connectivity_custom_endpoint is None and 'networkConnectivityCustomEndpoint' in kwargs:
+            network_connectivity_custom_endpoint = kwargs['networkConnectivityCustomEndpoint']
+        if network_management_custom_endpoint is None and 'networkManagementCustomEndpoint' in kwargs:
+            network_management_custom_endpoint = kwargs['networkManagementCustomEndpoint']
+        if network_security_custom_endpoint is None and 'networkSecurityCustomEndpoint' in kwargs:
+            network_security_custom_endpoint = kwargs['networkSecurityCustomEndpoint']
+        if network_services_custom_endpoint is None and 'networkServicesCustomEndpoint' in kwargs:
+            network_services_custom_endpoint = kwargs['networkServicesCustomEndpoint']
+        if notebooks_custom_endpoint is None and 'notebooksCustomEndpoint' in kwargs:
+            notebooks_custom_endpoint = kwargs['notebooksCustomEndpoint']
+        if org_policy_custom_endpoint is None and 'orgPolicyCustomEndpoint' in kwargs:
+            org_policy_custom_endpoint = kwargs['orgPolicyCustomEndpoint']
+        if os_config_custom_endpoint is None and 'osConfigCustomEndpoint' in kwargs:
+            os_config_custom_endpoint = kwargs['osConfigCustomEndpoint']
+        if os_login_custom_endpoint is None and 'osLoginCustomEndpoint' in kwargs:
+            os_login_custom_endpoint = kwargs['osLoginCustomEndpoint']
+        if privateca_custom_endpoint is None and 'privatecaCustomEndpoint' in kwargs:
+            privateca_custom_endpoint = kwargs['privatecaCustomEndpoint']
+        if public_ca_custom_endpoint is None and 'publicCaCustomEndpoint' in kwargs:
+            public_ca_custom_endpoint = kwargs['publicCaCustomEndpoint']
+        if pubsub_custom_endpoint is None and 'pubsubCustomEndpoint' in kwargs:
+            pubsub_custom_endpoint = kwargs['pubsubCustomEndpoint']
+        if pubsub_lite_custom_endpoint is None and 'pubsubLiteCustomEndpoint' in kwargs:
+            pubsub_lite_custom_endpoint = kwargs['pubsubLiteCustomEndpoint']
+        if recaptcha_enterprise_custom_endpoint is None and 'recaptchaEnterpriseCustomEndpoint' in kwargs:
+            recaptcha_enterprise_custom_endpoint = kwargs['recaptchaEnterpriseCustomEndpoint']
+        if redis_custom_endpoint is None and 'redisCustomEndpoint' in kwargs:
+            redis_custom_endpoint = kwargs['redisCustomEndpoint']
+        if request_reason is None and 'requestReason' in kwargs:
+            request_reason = kwargs['requestReason']
+        if request_timeout is None and 'requestTimeout' in kwargs:
+            request_timeout = kwargs['requestTimeout']
+        if resource_manager_custom_endpoint is None and 'resourceManagerCustomEndpoint' in kwargs:
+            resource_manager_custom_endpoint = kwargs['resourceManagerCustomEndpoint']
+        if resource_manager_v3_custom_endpoint is None and 'resourceManagerV3CustomEndpoint' in kwargs:
+            resource_manager_v3_custom_endpoint = kwargs['resourceManagerV3CustomEndpoint']
+        if runtime_config_custom_endpoint is None and 'runtimeConfigCustomEndpoint' in kwargs:
+            runtime_config_custom_endpoint = kwargs['runtimeConfigCustomEndpoint']
+        if runtimeconfig_custom_endpoint is None and 'runtimeconfigCustomEndpoint' in kwargs:
+            runtimeconfig_custom_endpoint = kwargs['runtimeconfigCustomEndpoint']
+        if secret_manager_custom_endpoint is None and 'secretManagerCustomEndpoint' in kwargs:
+            secret_manager_custom_endpoint = kwargs['secretManagerCustomEndpoint']
+        if security_center_custom_endpoint is None and 'securityCenterCustomEndpoint' in kwargs:
+            security_center_custom_endpoint = kwargs['securityCenterCustomEndpoint']
+        if security_scanner_custom_endpoint is None and 'securityScannerCustomEndpoint' in kwargs:
+            security_scanner_custom_endpoint = kwargs['securityScannerCustomEndpoint']
+        if service_directory_custom_endpoint is None and 'serviceDirectoryCustomEndpoint' in kwargs:
+            service_directory_custom_endpoint = kwargs['serviceDirectoryCustomEndpoint']
+        if service_management_custom_endpoint is None and 'serviceManagementCustomEndpoint' in kwargs:
+            service_management_custom_endpoint = kwargs['serviceManagementCustomEndpoint']
+        if service_networking_custom_endpoint is None and 'serviceNetworkingCustomEndpoint' in kwargs:
+            service_networking_custom_endpoint = kwargs['serviceNetworkingCustomEndpoint']
+        if service_usage_custom_endpoint is None and 'serviceUsageCustomEndpoint' in kwargs:
+            service_usage_custom_endpoint = kwargs['serviceUsageCustomEndpoint']
+        if source_repo_custom_endpoint is None and 'sourceRepoCustomEndpoint' in kwargs:
+            source_repo_custom_endpoint = kwargs['sourceRepoCustomEndpoint']
+        if spanner_custom_endpoint is None and 'spannerCustomEndpoint' in kwargs:
+            spanner_custom_endpoint = kwargs['spannerCustomEndpoint']
+        if sql_custom_endpoint is None and 'sqlCustomEndpoint' in kwargs:
+            sql_custom_endpoint = kwargs['sqlCustomEndpoint']
+        if storage_custom_endpoint is None and 'storageCustomEndpoint' in kwargs:
+            storage_custom_endpoint = kwargs['storageCustomEndpoint']
+        if storage_insights_custom_endpoint is None and 'storageInsightsCustomEndpoint' in kwargs:
+            storage_insights_custom_endpoint = kwargs['storageInsightsCustomEndpoint']
+        if storage_transfer_custom_endpoint is None and 'storageTransferCustomEndpoint' in kwargs:
+            storage_transfer_custom_endpoint = kwargs['storageTransferCustomEndpoint']
+        if tags_custom_endpoint is None and 'tagsCustomEndpoint' in kwargs:
+            tags_custom_endpoint = kwargs['tagsCustomEndpoint']
+        if tags_location_custom_endpoint is None and 'tagsLocationCustomEndpoint' in kwargs:
+            tags_location_custom_endpoint = kwargs['tagsLocationCustomEndpoint']
+        if tpu_custom_endpoint is None and 'tpuCustomEndpoint' in kwargs:
+            tpu_custom_endpoint = kwargs['tpuCustomEndpoint']
+        if tpu_v2_custom_endpoint is None and 'tpuV2CustomEndpoint' in kwargs:
+            tpu_v2_custom_endpoint = kwargs['tpuV2CustomEndpoint']
+        if user_project_override is None and 'userProjectOverride' in kwargs:
+            user_project_override = kwargs['userProjectOverride']
+        if vertex_ai_custom_endpoint is None and 'vertexAiCustomEndpoint' in kwargs:
+            vertex_ai_custom_endpoint = kwargs['vertexAiCustomEndpoint']
+        if vmwareengine_custom_endpoint is None and 'vmwareengineCustomEndpoint' in kwargs:
+            vmwareengine_custom_endpoint = kwargs['vmwareengineCustomEndpoint']
+        if vpc_access_custom_endpoint is None and 'vpcAccessCustomEndpoint' in kwargs:
+            vpc_access_custom_endpoint = kwargs['vpcAccessCustomEndpoint']
+        if workflows_custom_endpoint is None and 'workflowsCustomEndpoint' in kwargs:
+            workflows_custom_endpoint = kwargs['workflowsCustomEndpoint']
+        if workstations_custom_endpoint is None and 'workstationsCustomEndpoint' in kwargs:
+            workstations_custom_endpoint = kwargs['workstationsCustomEndpoint']
+
         if access_approval_custom_endpoint is not None:
             _setter("access_approval_custom_endpoint", access_approval_custom_endpoint)
         if access_context_manager_custom_endpoint is not None:

@@ -73,7 +73,7 @@ class CxFlowArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerArgs']]]] = None,
              language_code: Optional[pulumi.Input[str]] = None,
@@ -81,7 +81,23 @@ class CxFlowArgs:
              parent: Optional[pulumi.Input[str]] = None,
              transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if event_handlers is None and 'eventHandlers' in kwargs:
+            event_handlers = kwargs['eventHandlers']
+        if language_code is None and 'languageCode' in kwargs:
+            language_code = kwargs['languageCode']
+        if nlu_settings is None and 'nluSettings' in kwargs:
+            nlu_settings = kwargs['nluSettings']
+        if transition_route_groups is None and 'transitionRouteGroups' in kwargs:
+            transition_route_groups = kwargs['transitionRouteGroups']
+        if transition_routes is None and 'transitionRoutes' in kwargs:
+            transition_routes = kwargs['transitionRoutes']
+
         _setter("display_name", display_name)
         if description is not None:
             _setter("description", description)
@@ -292,7 +308,21 @@ class _CxFlowState:
              parent: Optional[pulumi.Input[str]] = None,
              transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if event_handlers is None and 'eventHandlers' in kwargs:
+            event_handlers = kwargs['eventHandlers']
+        if language_code is None and 'languageCode' in kwargs:
+            language_code = kwargs['languageCode']
+        if nlu_settings is None and 'nluSettings' in kwargs:
+            nlu_settings = kwargs['nluSettings']
+        if transition_route_groups is None and 'transitionRouteGroups' in kwargs:
+            transition_route_groups = kwargs['transitionRouteGroups']
+        if transition_routes is None and 'transitionRoutes' in kwargs:
+            transition_routes = kwargs['transitionRoutes']
+
         if description is not None:
             _setter("description", description)
         if display_name is not None:

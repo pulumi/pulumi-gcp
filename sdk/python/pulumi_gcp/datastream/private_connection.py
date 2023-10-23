@@ -46,13 +46,29 @@ class PrivateConnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             location: pulumi.Input[str],
-             private_connection_id: pulumi.Input[str],
-             vpc_peering_config: pulumi.Input['PrivateConnectionVpcPeeringConfigArgs'],
+             display_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             private_connection_id: Optional[pulumi.Input[str]] = None,
+             vpc_peering_config: Optional[pulumi.Input['PrivateConnectionVpcPeeringConfigArgs']] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if private_connection_id is None and 'privateConnectionId' in kwargs:
+            private_connection_id = kwargs['privateConnectionId']
+        if private_connection_id is None:
+            raise TypeError("Missing 'private_connection_id' argument")
+        if vpc_peering_config is None and 'vpcPeeringConfig' in kwargs:
+            vpc_peering_config = kwargs['vpcPeeringConfig']
+        if vpc_peering_config is None:
+            raise TypeError("Missing 'vpc_peering_config' argument")
+
         _setter("display_name", display_name)
         _setter("location", location)
         _setter("private_connection_id", private_connection_id)
@@ -190,7 +206,15 @@ class _PrivateConnectionState:
              project: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              vpc_peering_config: Optional[pulumi.Input['PrivateConnectionVpcPeeringConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if private_connection_id is None and 'privateConnectionId' in kwargs:
+            private_connection_id = kwargs['privateConnectionId']
+        if vpc_peering_config is None and 'vpcPeeringConfig' in kwargs:
+            vpc_peering_config = kwargs['vpcPeeringConfig']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if errors is not None:

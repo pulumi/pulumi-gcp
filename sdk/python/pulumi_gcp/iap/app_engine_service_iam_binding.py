@@ -58,13 +58,25 @@ class AppEngineServiceIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_id: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
-             service: pulumi.Input[str],
+             app_id: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['AppEngineServiceIamBindingConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if app_id is None:
+            raise TypeError("Missing 'app_id' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("app_id", app_id)
         _setter("members", members)
         _setter("role", role)
@@ -215,7 +227,11 @@ class _AppEngineServiceIamBindingState:
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+
         if app_id is not None:
             _setter("app_id", app_id)
         if condition is not None:

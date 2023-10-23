@@ -70,7 +70,15 @@ class SecurityPolicyArgs:
              recaptcha_options_config: Optional[pulumi.Input['SecurityPolicyRecaptchaOptionsConfigArgs']] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if adaptive_protection_config is None and 'adaptiveProtectionConfig' in kwargs:
+            adaptive_protection_config = kwargs['adaptiveProtectionConfig']
+        if advanced_options_config is None and 'advancedOptionsConfig' in kwargs:
+            advanced_options_config = kwargs['advancedOptionsConfig']
+        if recaptcha_options_config is None and 'recaptchaOptionsConfig' in kwargs:
+            recaptcha_options_config = kwargs['recaptchaOptionsConfig']
+
         if adaptive_protection_config is not None:
             _setter("adaptive_protection_config", adaptive_protection_config)
         if advanced_options_config is not None:
@@ -263,7 +271,17 @@ class _SecurityPolicyState:
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if adaptive_protection_config is None and 'adaptiveProtectionConfig' in kwargs:
+            adaptive_protection_config = kwargs['adaptiveProtectionConfig']
+        if advanced_options_config is None and 'advancedOptionsConfig' in kwargs:
+            advanced_options_config = kwargs['advancedOptionsConfig']
+        if recaptcha_options_config is None and 'recaptchaOptionsConfig' in kwargs:
+            recaptcha_options_config = kwargs['recaptchaOptionsConfig']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if adaptive_protection_config is not None:
             _setter("adaptive_protection_config", adaptive_protection_config)
         if advanced_options_config is not None:

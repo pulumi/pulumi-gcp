@@ -84,8 +84,8 @@ class CxSecuritySettingsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             location: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
              audio_export_settings: Optional[pulumi.Input['CxSecuritySettingsAudioExportSettingsArgs']] = None,
              deidentify_template: Optional[pulumi.Input[str]] = None,
              insights_export_settings: Optional[pulumi.Input['CxSecuritySettingsInsightsExportSettingsArgs']] = None,
@@ -96,7 +96,33 @@ class CxSecuritySettingsArgs:
              redaction_strategy: Optional[pulumi.Input[str]] = None,
              retention_strategy: Optional[pulumi.Input[str]] = None,
              retention_window_days: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if audio_export_settings is None and 'audioExportSettings' in kwargs:
+            audio_export_settings = kwargs['audioExportSettings']
+        if deidentify_template is None and 'deidentifyTemplate' in kwargs:
+            deidentify_template = kwargs['deidentifyTemplate']
+        if insights_export_settings is None and 'insightsExportSettings' in kwargs:
+            insights_export_settings = kwargs['insightsExportSettings']
+        if inspect_template is None and 'inspectTemplate' in kwargs:
+            inspect_template = kwargs['inspectTemplate']
+        if purge_data_types is None and 'purgeDataTypes' in kwargs:
+            purge_data_types = kwargs['purgeDataTypes']
+        if redaction_scope is None and 'redactionScope' in kwargs:
+            redaction_scope = kwargs['redactionScope']
+        if redaction_strategy is None and 'redactionStrategy' in kwargs:
+            redaction_strategy = kwargs['redactionStrategy']
+        if retention_strategy is None and 'retentionStrategy' in kwargs:
+            retention_strategy = kwargs['retentionStrategy']
+        if retention_window_days is None and 'retentionWindowDays' in kwargs:
+            retention_window_days = kwargs['retentionWindowDays']
+
         _setter("display_name", display_name)
         _setter("location", location)
         if audio_export_settings is not None:
@@ -376,7 +402,29 @@ class _CxSecuritySettingsState:
              redaction_strategy: Optional[pulumi.Input[str]] = None,
              retention_strategy: Optional[pulumi.Input[str]] = None,
              retention_window_days: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if audio_export_settings is None and 'audioExportSettings' in kwargs:
+            audio_export_settings = kwargs['audioExportSettings']
+        if deidentify_template is None and 'deidentifyTemplate' in kwargs:
+            deidentify_template = kwargs['deidentifyTemplate']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if insights_export_settings is None and 'insightsExportSettings' in kwargs:
+            insights_export_settings = kwargs['insightsExportSettings']
+        if inspect_template is None and 'inspectTemplate' in kwargs:
+            inspect_template = kwargs['inspectTemplate']
+        if purge_data_types is None and 'purgeDataTypes' in kwargs:
+            purge_data_types = kwargs['purgeDataTypes']
+        if redaction_scope is None and 'redactionScope' in kwargs:
+            redaction_scope = kwargs['redactionScope']
+        if redaction_strategy is None and 'redactionStrategy' in kwargs:
+            redaction_strategy = kwargs['redactionStrategy']
+        if retention_strategy is None and 'retentionStrategy' in kwargs:
+            retention_strategy = kwargs['retentionStrategy']
+        if retention_window_days is None and 'retentionWindowDays' in kwargs:
+            retention_window_days = kwargs['retentionWindowDays']
+
         if audio_export_settings is not None:
             _setter("audio_export_settings", audio_export_settings)
         if deidentify_template is not None:

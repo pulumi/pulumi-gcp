@@ -32,9 +32,13 @@ class ServiceIdentityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service: pulumi.Input[str],
+             service: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("service", service)
         if project is not None:
             _setter("project", project)
@@ -94,7 +98,9 @@ class _ServiceIdentityState:
              email: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if email is not None:
             _setter("email", email)
         if project is not None:

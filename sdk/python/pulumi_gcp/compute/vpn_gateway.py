@@ -48,12 +48,16 @@ class VPNGatewayArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input[str],
+             network: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+
         _setter("network", network)
         if description is not None:
             _setter("description", description)
@@ -189,7 +193,15 @@ class _VPNGatewayState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if gateway_id is None and 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if creation_timestamp is not None:
             _setter("creation_timestamp", creation_timestamp)
         if description is not None:

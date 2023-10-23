@@ -85,9 +85,17 @@ class AccessApprovalSettingsEnrolledService(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cloud_product: str,
+             cloud_product: Optional[str] = None,
              enrollment_level: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cloud_product is None and 'cloudProduct' in kwargs:
+            cloud_product = kwargs['cloudProduct']
+        if cloud_product is None:
+            raise TypeError("Missing 'cloud_product' argument")
+        if enrollment_level is None and 'enrollmentLevel' in kwargs:
+            enrollment_level = kwargs['enrollmentLevel']
+
         _setter("cloud_product", cloud_product)
         if enrollment_level is not None:
             _setter("enrollment_level", enrollment_level)
@@ -179,7 +187,19 @@ class ApiKeyRestrictions(dict):
              browser_key_restrictions: Optional['outputs.ApiKeyRestrictionsBrowserKeyRestrictions'] = None,
              ios_key_restrictions: Optional['outputs.ApiKeyRestrictionsIosKeyRestrictions'] = None,
              server_key_restrictions: Optional['outputs.ApiKeyRestrictionsServerKeyRestrictions'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if android_key_restrictions is None and 'androidKeyRestrictions' in kwargs:
+            android_key_restrictions = kwargs['androidKeyRestrictions']
+        if api_targets is None and 'apiTargets' in kwargs:
+            api_targets = kwargs['apiTargets']
+        if browser_key_restrictions is None and 'browserKeyRestrictions' in kwargs:
+            browser_key_restrictions = kwargs['browserKeyRestrictions']
+        if ios_key_restrictions is None and 'iosKeyRestrictions' in kwargs:
+            ios_key_restrictions = kwargs['iosKeyRestrictions']
+        if server_key_restrictions is None and 'serverKeyRestrictions' in kwargs:
+            server_key_restrictions = kwargs['serverKeyRestrictions']
+
         if android_key_restrictions is not None:
             _setter("android_key_restrictions", android_key_restrictions)
         if api_targets is not None:
@@ -263,8 +283,14 @@ class ApiKeyRestrictionsAndroidKeyRestrictions(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allowed_applications: Sequence['outputs.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             allowed_applications: Optional[Sequence['outputs.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allowed_applications is None and 'allowedApplications' in kwargs:
+            allowed_applications = kwargs['allowedApplications']
+        if allowed_applications is None:
+            raise TypeError("Missing 'allowed_applications' argument")
+
         _setter("allowed_applications", allowed_applications)
 
     @property
@@ -314,9 +340,19 @@ class ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             package_name: str,
-             sha1_fingerprint: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             package_name: Optional[str] = None,
+             sha1_fingerprint: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if package_name is None and 'packageName' in kwargs:
+            package_name = kwargs['packageName']
+        if package_name is None:
+            raise TypeError("Missing 'package_name' argument")
+        if sha1_fingerprint is None and 'sha1Fingerprint' in kwargs:
+            sha1_fingerprint = kwargs['sha1Fingerprint']
+        if sha1_fingerprint is None:
+            raise TypeError("Missing 'sha1_fingerprint' argument")
+
         _setter("package_name", package_name)
         _setter("sha1_fingerprint", sha1_fingerprint)
 
@@ -356,9 +392,13 @@ class ApiKeyRestrictionsApiTarget(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service: str,
+             service: Optional[str] = None,
              methods: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("service", service)
         if methods is not None:
             _setter("methods", methods)
@@ -411,8 +451,14 @@ class ApiKeyRestrictionsBrowserKeyRestrictions(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allowed_referrers: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             allowed_referrers: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allowed_referrers is None and 'allowedReferrers' in kwargs:
+            allowed_referrers = kwargs['allowedReferrers']
+        if allowed_referrers is None:
+            raise TypeError("Missing 'allowed_referrers' argument")
+
         _setter("allowed_referrers", allowed_referrers)
 
     @property
@@ -455,8 +501,14 @@ class ApiKeyRestrictionsIosKeyRestrictions(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allowed_bundle_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             allowed_bundle_ids: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allowed_bundle_ids is None and 'allowedBundleIds' in kwargs:
+            allowed_bundle_ids = kwargs['allowedBundleIds']
+        if allowed_bundle_ids is None:
+            raise TypeError("Missing 'allowed_bundle_ids' argument")
+
         _setter("allowed_bundle_ids", allowed_bundle_ids)
 
     @property
@@ -499,8 +551,14 @@ class ApiKeyRestrictionsServerKeyRestrictions(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allowed_ips: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             allowed_ips: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allowed_ips is None and 'allowedIps' in kwargs:
+            allowed_ips = kwargs['allowedIps']
+        if allowed_ips is None:
+            raise TypeError("Missing 'allowed_ips' argument")
+
         _setter("allowed_ips", allowed_ips)
 
     @property
@@ -548,9 +606,17 @@ class IAMAuditConfigAuditLogConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             log_type: str,
+             log_type: Optional[str] = None,
              exempted_members: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if log_type is None and 'logType' in kwargs:
+            log_type = kwargs['logType']
+        if log_type is None:
+            raise TypeError("Missing 'log_type' argument")
+        if exempted_members is None and 'exemptedMembers' in kwargs:
+            exempted_members = kwargs['exemptedMembers']
+
         _setter("log_type", log_type)
         if exempted_members is not None:
             _setter("exempted_members", exempted_members)
@@ -596,10 +662,16 @@ class IAMBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -658,10 +730,16 @@ class IAMMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -710,8 +788,12 @@ class OrganizationPolicyBooleanPolicy(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enforced: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enforced: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enforced is None:
+            raise TypeError("Missing 'enforced' argument")
+
         _setter("enforced", enforced)
 
     @property
@@ -771,7 +853,13 @@ class OrganizationPolicyListPolicy(dict):
              deny: Optional['outputs.OrganizationPolicyListPolicyDeny'] = None,
              inherit_from_parent: Optional[bool] = None,
              suggested_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if inherit_from_parent is None and 'inheritFromParent' in kwargs:
+            inherit_from_parent = kwargs['inheritFromParent']
+        if suggested_value is None and 'suggestedValue' in kwargs:
+            suggested_value = kwargs['suggestedValue']
+
         if allow is not None:
             _setter("allow", allow)
         if deny is not None:
@@ -833,7 +921,9 @@ class OrganizationPolicyListPolicyAllow(dict):
              _setter: Callable[[Any, Any], None],
              all: Optional[bool] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if all is not None:
             _setter("all", all)
         if values is not None:
@@ -875,7 +965,9 @@ class OrganizationPolicyListPolicyDeny(dict):
              _setter: Callable[[Any, Any], None],
              all: Optional[bool] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if all is not None:
             _setter("all", all)
         if values is not None:
@@ -912,8 +1004,12 @@ class OrganizationPolicyRestorePolicy(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             default: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             default: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default is None:
+            raise TypeError("Missing 'default' argument")
+
         _setter("default", default)
 
     @property
@@ -936,8 +1032,12 @@ class GetOrganizationPolicyBooleanPolicyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enforced: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enforced: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enforced is None:
+            raise TypeError("Missing 'enforced' argument")
+
         _setter("enforced", enforced)
 
     @property
@@ -963,11 +1063,25 @@ class GetOrganizationPolicyListPolicyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allows: Sequence['outputs.GetOrganizationPolicyListPolicyAllowResult'],
-             denies: Sequence['outputs.GetOrganizationPolicyListPolicyDenyResult'],
-             inherit_from_parent: bool,
-             suggested_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             allows: Optional[Sequence['outputs.GetOrganizationPolicyListPolicyAllowResult']] = None,
+             denies: Optional[Sequence['outputs.GetOrganizationPolicyListPolicyDenyResult']] = None,
+             inherit_from_parent: Optional[bool] = None,
+             suggested_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allows is None:
+            raise TypeError("Missing 'allows' argument")
+        if denies is None:
+            raise TypeError("Missing 'denies' argument")
+        if inherit_from_parent is None and 'inheritFromParent' in kwargs:
+            inherit_from_parent = kwargs['inheritFromParent']
+        if inherit_from_parent is None:
+            raise TypeError("Missing 'inherit_from_parent' argument")
+        if suggested_value is None and 'suggestedValue' in kwargs:
+            suggested_value = kwargs['suggestedValue']
+        if suggested_value is None:
+            raise TypeError("Missing 'suggested_value' argument")
+
         _setter("allows", allows)
         _setter("denies", denies)
         _setter("inherit_from_parent", inherit_from_parent)
@@ -1007,9 +1121,15 @@ class GetOrganizationPolicyListPolicyAllowResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             all: bool,
-             values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             all: Optional[bool] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if all is None:
+            raise TypeError("Missing 'all' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("all", all)
         _setter("values", values)
 
@@ -1037,9 +1157,15 @@ class GetOrganizationPolicyListPolicyDenyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             all: bool,
-             values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             all: Optional[bool] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if all is None:
+            raise TypeError("Missing 'all' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("all", all)
         _setter("values", values)
 
@@ -1065,8 +1191,12 @@ class GetOrganizationPolicyRestorePolicyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             default: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             default: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default is None:
+            raise TypeError("Missing 'default' argument")
+
         _setter("default", default)
 
     @property
@@ -1107,14 +1237,36 @@ class GetProjectProjectResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             labels: Mapping[str, str],
-             lifecycle_state: str,
-             name: str,
-             number: str,
-             parent: Mapping[str, str],
-             project_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             create_time: Optional[str] = None,
+             labels: Optional[Mapping[str, str]] = None,
+             lifecycle_state: Optional[str] = None,
+             name: Optional[str] = None,
+             number: Optional[str] = None,
+             parent: Optional[Mapping[str, str]] = None,
+             project_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if labels is None:
+            raise TypeError("Missing 'labels' argument")
+        if lifecycle_state is None and 'lifecycleState' in kwargs:
+            lifecycle_state = kwargs['lifecycleState']
+        if lifecycle_state is None:
+            raise TypeError("Missing 'lifecycle_state' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if number is None:
+            raise TypeError("Missing 'number' argument")
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+
         _setter("create_time", create_time)
         _setter("labels", labels)
         _setter("lifecycle_state", lifecycle_state)

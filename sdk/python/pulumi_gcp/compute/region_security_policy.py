@@ -68,7 +68,13 @@ class RegionSecurityPolicyArgs:
              region: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ddos_protection_config is None and 'ddosProtectionConfig' in kwargs:
+            ddos_protection_config = kwargs['ddosProtectionConfig']
+        if user_defined_fields is None and 'userDefinedFields' in kwargs:
+            user_defined_fields = kwargs['userDefinedFields']
+
         if ddos_protection_config is not None:
             _setter("ddos_protection_config", ddos_protection_config)
         if description is not None:
@@ -256,7 +262,19 @@ class _RegionSecurityPolicyState:
              self_link_with_policy_id: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ddos_protection_config is None and 'ddosProtectionConfig' in kwargs:
+            ddos_protection_config = kwargs['ddosProtectionConfig']
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if self_link_with_policy_id is None and 'selfLinkWithPolicyId' in kwargs:
+            self_link_with_policy_id = kwargs['selfLinkWithPolicyId']
+        if user_defined_fields is None and 'userDefinedFields' in kwargs:
+            user_defined_fields = kwargs['userDefinedFields']
+
         if ddos_protection_config is not None:
             _setter("ddos_protection_config", ddos_protection_config)
         if description is not None:

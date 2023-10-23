@@ -285,7 +285,39 @@ class ForwardingRuleArgs:
              source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
              target: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if all_ports is None and 'allPorts' in kwargs:
+            all_ports = kwargs['allPorts']
+        if allow_global_access is None and 'allowGlobalAccess' in kwargs:
+            allow_global_access = kwargs['allowGlobalAccess']
+        if allow_psc_global_access is None and 'allowPscGlobalAccess' in kwargs:
+            allow_psc_global_access = kwargs['allowPscGlobalAccess']
+        if backend_service is None and 'backendService' in kwargs:
+            backend_service = kwargs['backendService']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_protocol is None and 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if is_mirroring_collector is None and 'isMirroringCollector' in kwargs:
+            is_mirroring_collector = kwargs['isMirroringCollector']
+        if load_balancing_scheme is None and 'loadBalancingScheme' in kwargs:
+            load_balancing_scheme = kwargs['loadBalancingScheme']
+        if network_tier is None and 'networkTier' in kwargs:
+            network_tier = kwargs['networkTier']
+        if no_automate_dns_zone is None and 'noAutomateDnsZone' in kwargs:
+            no_automate_dns_zone = kwargs['noAutomateDnsZone']
+        if port_range is None and 'portRange' in kwargs:
+            port_range = kwargs['portRange']
+        if service_directory_registrations is None and 'serviceDirectoryRegistrations' in kwargs:
+            service_directory_registrations = kwargs['serviceDirectoryRegistrations']
+        if service_label is None and 'serviceLabel' in kwargs:
+            service_label = kwargs['serviceLabel']
+        if source_ip_ranges is None and 'sourceIpRanges' in kwargs:
+            source_ip_ranges = kwargs['sourceIpRanges']
+
         if all_ports is not None:
             _setter("all_ports", all_ports)
         if allow_global_access is not None:
@@ -1090,7 +1122,53 @@ class _ForwardingRuleState:
              source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
              target: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if all_ports is None and 'allPorts' in kwargs:
+            all_ports = kwargs['allPorts']
+        if allow_global_access is None and 'allowGlobalAccess' in kwargs:
+            allow_global_access = kwargs['allowGlobalAccess']
+        if allow_psc_global_access is None and 'allowPscGlobalAccess' in kwargs:
+            allow_psc_global_access = kwargs['allowPscGlobalAccess']
+        if backend_service is None and 'backendService' in kwargs:
+            backend_service = kwargs['backendService']
+        if base_forwarding_rule is None and 'baseForwardingRule' in kwargs:
+            base_forwarding_rule = kwargs['baseForwardingRule']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_protocol is None and 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if is_mirroring_collector is None and 'isMirroringCollector' in kwargs:
+            is_mirroring_collector = kwargs['isMirroringCollector']
+        if label_fingerprint is None and 'labelFingerprint' in kwargs:
+            label_fingerprint = kwargs['labelFingerprint']
+        if load_balancing_scheme is None and 'loadBalancingScheme' in kwargs:
+            load_balancing_scheme = kwargs['loadBalancingScheme']
+        if network_tier is None and 'networkTier' in kwargs:
+            network_tier = kwargs['networkTier']
+        if no_automate_dns_zone is None and 'noAutomateDnsZone' in kwargs:
+            no_automate_dns_zone = kwargs['noAutomateDnsZone']
+        if port_range is None and 'portRange' in kwargs:
+            port_range = kwargs['portRange']
+        if psc_connection_id is None and 'pscConnectionId' in kwargs:
+            psc_connection_id = kwargs['pscConnectionId']
+        if psc_connection_status is None and 'pscConnectionStatus' in kwargs:
+            psc_connection_status = kwargs['pscConnectionStatus']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if service_directory_registrations is None and 'serviceDirectoryRegistrations' in kwargs:
+            service_directory_registrations = kwargs['serviceDirectoryRegistrations']
+        if service_label is None and 'serviceLabel' in kwargs:
+            service_label = kwargs['serviceLabel']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if source_ip_ranges is None and 'sourceIpRanges' in kwargs:
+            source_ip_ranges = kwargs['sourceIpRanges']
+
         if all_ports is not None:
             _setter("all_ports", all_ports)
         if allow_global_access is not None:

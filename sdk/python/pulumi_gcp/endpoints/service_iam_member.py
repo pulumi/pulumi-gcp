@@ -36,11 +36,21 @@ class ServiceIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
-             service_name: pulumi.Input[str],
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['ServiceIamMemberConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+
         _setter("member", member)
         _setter("role", role)
         _setter("service_name", service_name)
@@ -120,7 +130,11 @@ class _ServiceIamMemberState:
              member: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

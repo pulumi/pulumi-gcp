@@ -71,8 +71,8 @@ class PipelineArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             state: pulumi.Input[str],
-             type: pulumi.Input[str],
+             state: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              pipeline_sources: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -81,7 +81,21 @@ class PipelineArgs:
              schedule_info: Optional[pulumi.Input['PipelineScheduleInfoArgs']] = None,
              scheduler_service_account_email: Optional[pulumi.Input[str]] = None,
              workload: Optional[pulumi.Input['PipelineWorkloadArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if pipeline_sources is None and 'pipelineSources' in kwargs:
+            pipeline_sources = kwargs['pipelineSources']
+        if schedule_info is None and 'scheduleInfo' in kwargs:
+            schedule_info = kwargs['scheduleInfo']
+        if scheduler_service_account_email is None and 'schedulerServiceAccountEmail' in kwargs:
+            scheduler_service_account_email = kwargs['schedulerServiceAccountEmail']
+
         _setter("state", state)
         _setter("type", type)
         if display_name is not None:
@@ -320,7 +334,23 @@ class _PipelineState:
              state: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              workload: Optional[pulumi.Input['PipelineWorkloadArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if job_count is None and 'jobCount' in kwargs:
+            job_count = kwargs['jobCount']
+        if last_update_time is None and 'lastUpdateTime' in kwargs:
+            last_update_time = kwargs['lastUpdateTime']
+        if pipeline_sources is None and 'pipelineSources' in kwargs:
+            pipeline_sources = kwargs['pipelineSources']
+        if schedule_info is None and 'scheduleInfo' in kwargs:
+            schedule_info = kwargs['scheduleInfo']
+        if scheduler_service_account_email is None and 'schedulerServiceAccountEmail' in kwargs:
+            scheduler_service_account_email = kwargs['schedulerServiceAccountEmail']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if display_name is not None:

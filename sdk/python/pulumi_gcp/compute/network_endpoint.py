@@ -51,13 +51,23 @@ class NetworkEndpointArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_address: pulumi.Input[str],
-             network_endpoint_group: pulumi.Input[str],
+             ip_address: Optional[pulumi.Input[str]] = None,
+             network_endpoint_group: Optional[pulumi.Input[str]] = None,
              instance: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if network_endpoint_group is None and 'networkEndpointGroup' in kwargs:
+            network_endpoint_group = kwargs['networkEndpointGroup']
+        if network_endpoint_group is None:
+            raise TypeError("Missing 'network_endpoint_group' argument")
+
         _setter("ip_address", ip_address)
         _setter("network_endpoint_group", network_endpoint_group)
         if instance is not None:
@@ -198,7 +208,13 @@ class _NetworkEndpointState:
              port: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if network_endpoint_group is None and 'networkEndpointGroup' in kwargs:
+            network_endpoint_group = kwargs['networkEndpointGroup']
+
         if instance is not None:
             _setter("instance", instance)
         if ip_address is not None:

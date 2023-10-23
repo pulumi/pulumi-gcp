@@ -52,13 +52,19 @@ class AccessLevelArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parent: pulumi.Input[str],
-             title: pulumi.Input[str],
+             parent: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              basic: Optional[pulumi.Input['AccessLevelBasicArgs']] = None,
              custom: Optional[pulumi.Input['AccessLevelCustomArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("parent", parent)
         _setter("title", title)
         if basic is not None:
@@ -197,7 +203,9 @@ class _AccessLevelState:
              name: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if basic is not None:
             _setter("basic", basic)
         if custom is not None:

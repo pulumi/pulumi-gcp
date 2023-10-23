@@ -53,15 +53,31 @@ class KeystoresAliasesKeyCertFileArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             alias: pulumi.Input[str],
-             cert: pulumi.Input[str],
-             environment: pulumi.Input[str],
-             keystore: pulumi.Input[str],
-             org_id: pulumi.Input[str],
+             alias: Optional[pulumi.Input[str]] = None,
+             cert: Optional[pulumi.Input[str]] = None,
+             environment: Optional[pulumi.Input[str]] = None,
+             keystore: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
              certs_info: Optional[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs']] = None,
              key: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if alias is None:
+            raise TypeError("Missing 'alias' argument")
+        if cert is None:
+            raise TypeError("Missing 'cert' argument")
+        if environment is None:
+            raise TypeError("Missing 'environment' argument")
+        if keystore is None:
+            raise TypeError("Missing 'keystore' argument")
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if certs_info is None and 'certsInfo' in kwargs:
+            certs_info = kwargs['certsInfo']
+
         _setter("alias", alias)
         _setter("cert", cert)
         _setter("environment", environment)
@@ -227,7 +243,13 @@ class _KeystoresAliasesKeyCertFileState:
              org_id: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if certs_info is None and 'certsInfo' in kwargs:
+            certs_info = kwargs['certsInfo']
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+
         if alias is not None:
             _setter("alias", alias)
         if cert is not None:

@@ -41,11 +41,17 @@ class DatasetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         _setter("location", location)
         if name is not None:
             _setter("name", name)
@@ -147,7 +153,13 @@ class _DatasetState:
              project: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         if location is not None:
             _setter("location", location)
         if name is not None:

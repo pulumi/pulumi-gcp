@@ -61,11 +61,11 @@ class NetworkFirewallPolicyRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input[str],
-             direction: pulumi.Input[str],
-             firewall_policy: pulumi.Input[str],
-             match: pulumi.Input['NetworkFirewallPolicyRuleMatchArgs'],
-             priority: pulumi.Input[int],
+             action: Optional[pulumi.Input[str]] = None,
+             direction: Optional[pulumi.Input[str]] = None,
+             firewall_policy: Optional[pulumi.Input[str]] = None,
+             match: Optional[pulumi.Input['NetworkFirewallPolicyRuleMatchArgs']] = None,
+             priority: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              enable_logging: Optional[pulumi.Input[bool]] = None,
@@ -73,7 +73,29 @@ class NetworkFirewallPolicyRuleArgs:
              rule_name: Optional[pulumi.Input[str]] = None,
              target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleTargetSecureTagArgs']]]] = None,
              target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if direction is None:
+            raise TypeError("Missing 'direction' argument")
+        if firewall_policy is None and 'firewallPolicy' in kwargs:
+            firewall_policy = kwargs['firewallPolicy']
+        if firewall_policy is None:
+            raise TypeError("Missing 'firewall_policy' argument")
+        if match is None:
+            raise TypeError("Missing 'match' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if rule_name is None and 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+        if target_secure_tags is None and 'targetSecureTags' in kwargs:
+            target_secure_tags = kwargs['targetSecureTags']
+        if target_service_accounts is None and 'targetServiceAccounts' in kwargs:
+            target_service_accounts = kwargs['targetServiceAccounts']
+
         _setter("action", action)
         _setter("direction", direction)
         _setter("firewall_policy", firewall_policy)
@@ -307,7 +329,21 @@ class _NetworkFirewallPolicyRuleState:
              rule_tuple_count: Optional[pulumi.Input[int]] = None,
              target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleTargetSecureTagArgs']]]] = None,
              target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if firewall_policy is None and 'firewallPolicy' in kwargs:
+            firewall_policy = kwargs['firewallPolicy']
+        if rule_name is None and 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+        if rule_tuple_count is None and 'ruleTupleCount' in kwargs:
+            rule_tuple_count = kwargs['ruleTupleCount']
+        if target_secure_tags is None and 'targetSecureTags' in kwargs:
+            target_secure_tags = kwargs['targetSecureTags']
+        if target_service_accounts is None and 'targetServiceAccounts' in kwargs:
+            target_service_accounts = kwargs['targetServiceAccounts']
+
         if action is not None:
             _setter("action", action)
         if description is not None:

@@ -36,9 +36,15 @@ class CryptoKeyVersionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             crypto_key: pulumi.Input[str],
+             crypto_key: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key is None and 'cryptoKey' in kwargs:
+            crypto_key = kwargs['cryptoKey']
+        if crypto_key is None:
+            raise TypeError("Missing 'crypto_key' argument")
+
         _setter("crypto_key", crypto_key)
         if state is not None:
             _setter("state", state)
@@ -120,7 +126,15 @@ class _CryptoKeyVersionState:
              name: Optional[pulumi.Input[str]] = None,
              protection_level: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key is None and 'cryptoKey' in kwargs:
+            crypto_key = kwargs['cryptoKey']
+        if generate_time is None and 'generateTime' in kwargs:
+            generate_time = kwargs['generateTime']
+        if protection_level is None and 'protectionLevel' in kwargs:
+            protection_level = kwargs['protectionLevel']
+
         if algorithm is not None:
             _setter("algorithm", algorithm)
         if attestations is not None:

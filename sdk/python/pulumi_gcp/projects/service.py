@@ -39,11 +39,19 @@ class ServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service: pulumi.Input[str],
+             service: Optional[pulumi.Input[str]] = None,
              disable_dependent_services: Optional[pulumi.Input[bool]] = None,
              disable_on_destroy: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+        if disable_dependent_services is None and 'disableDependentServices' in kwargs:
+            disable_dependent_services = kwargs['disableDependentServices']
+        if disable_on_destroy is None and 'disableOnDestroy' in kwargs:
+            disable_on_destroy = kwargs['disableOnDestroy']
+
         _setter("service", service)
         if disable_dependent_services is not None:
             _setter("disable_dependent_services", disable_dependent_services)
@@ -137,7 +145,13 @@ class _ServiceState:
              disable_on_destroy: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
              service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disable_dependent_services is None and 'disableDependentServices' in kwargs:
+            disable_dependent_services = kwargs['disableDependentServices']
+        if disable_on_destroy is None and 'disableOnDestroy' in kwargs:
+            disable_on_destroy = kwargs['disableOnDestroy']
+
         if disable_dependent_services is not None:
             _setter("disable_dependent_services", disable_dependent_services)
         if disable_on_destroy is not None:

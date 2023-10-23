@@ -54,15 +54,27 @@ class NetworkAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_preference: pulumi.Input[str],
-             subnetworks: pulumi.Input[Sequence[pulumi.Input[str]]],
+             connection_preference: Optional[pulumi.Input[str]] = None,
+             subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              producer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              producer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connection_preference is None and 'connectionPreference' in kwargs:
+            connection_preference = kwargs['connectionPreference']
+        if connection_preference is None:
+            raise TypeError("Missing 'connection_preference' argument")
+        if subnetworks is None:
+            raise TypeError("Missing 'subnetworks' argument")
+        if producer_accept_lists is None and 'producerAcceptLists' in kwargs:
+            producer_accept_lists = kwargs['producerAcceptLists']
+        if producer_reject_lists is None and 'producerRejectLists' in kwargs:
+            producer_reject_lists = kwargs['producerRejectLists']
+
         _setter("connection_preference", connection_preference)
         _setter("subnetworks", subnetworks)
         if description is not None:
@@ -260,7 +272,23 @@ class _NetworkAttachmentState:
              self_link: Optional[pulumi.Input[str]] = None,
              self_link_with_id: Optional[pulumi.Input[str]] = None,
              subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connection_endpoints is None and 'connectionEndpoints' in kwargs:
+            connection_endpoints = kwargs['connectionEndpoints']
+        if connection_preference is None and 'connectionPreference' in kwargs:
+            connection_preference = kwargs['connectionPreference']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if producer_accept_lists is None and 'producerAcceptLists' in kwargs:
+            producer_accept_lists = kwargs['producerAcceptLists']
+        if producer_reject_lists is None and 'producerRejectLists' in kwargs:
+            producer_reject_lists = kwargs['producerRejectLists']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if self_link_with_id is None and 'selfLinkWithId' in kwargs:
+            self_link_with_id = kwargs['selfLinkWithId']
+
         if connection_endpoints is not None:
             _setter("connection_endpoints", connection_endpoints)
         if connection_preference is not None:

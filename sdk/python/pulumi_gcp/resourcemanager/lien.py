@@ -48,11 +48,21 @@ class LienArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             origin: pulumi.Input[str],
-             parent: pulumi.Input[str],
-             reason: pulumi.Input[str],
-             restrictions: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             origin: Optional[pulumi.Input[str]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             reason: Optional[pulumi.Input[str]] = None,
+             restrictions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if origin is None:
+            raise TypeError("Missing 'origin' argument")
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if reason is None:
+            raise TypeError("Missing 'reason' argument")
+        if restrictions is None:
+            raise TypeError("Missing 'restrictions' argument")
+
         _setter("origin", origin)
         _setter("parent", parent)
         _setter("reason", reason)
@@ -169,7 +179,11 @@ class _LienState:
              parent: Optional[pulumi.Input[str]] = None,
              reason: Optional[pulumi.Input[str]] = None,
              restrictions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if name is not None:

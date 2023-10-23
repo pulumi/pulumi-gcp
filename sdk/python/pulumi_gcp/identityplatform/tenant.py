@@ -44,12 +44,24 @@ class TenantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              allow_password_signup: Optional[pulumi.Input[bool]] = None,
              disable_auth: Optional[pulumi.Input[bool]] = None,
              enable_email_link_signin: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if allow_password_signup is None and 'allowPasswordSignup' in kwargs:
+            allow_password_signup = kwargs['allowPasswordSignup']
+        if disable_auth is None and 'disableAuth' in kwargs:
+            disable_auth = kwargs['disableAuth']
+        if enable_email_link_signin is None and 'enableEmailLinkSignin' in kwargs:
+            enable_email_link_signin = kwargs['enableEmailLinkSignin']
+
         _setter("display_name", display_name)
         if allow_password_signup is not None:
             _setter("allow_password_signup", allow_password_signup)
@@ -169,7 +181,17 @@ class _TenantState:
              enable_email_link_signin: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_password_signup is None and 'allowPasswordSignup' in kwargs:
+            allow_password_signup = kwargs['allowPasswordSignup']
+        if disable_auth is None and 'disableAuth' in kwargs:
+            disable_auth = kwargs['disableAuth']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if enable_email_link_signin is None and 'enableEmailLinkSignin' in kwargs:
+            enable_email_link_signin = kwargs['enableEmailLinkSignin']
+
         if allow_password_signup is not None:
             _setter("allow_password_signup", allow_password_signup)
         if disable_auth is not None:

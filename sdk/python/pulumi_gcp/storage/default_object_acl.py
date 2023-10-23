@@ -31,9 +31,15 @@ class DefaultObjectACLArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: pulumi.Input[str],
+             bucket: Optional[pulumi.Input[str]] = None,
              role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if role_entities is None and 'roleEntities' in kwargs:
+            role_entities = kwargs['roleEntities']
+
         _setter("bucket", bucket)
         if role_entities is not None:
             _setter("role_entities", role_entities)
@@ -87,7 +93,11 @@ class _DefaultObjectACLState:
              _setter: Callable[[Any, Any], None],
              bucket: Optional[pulumi.Input[str]] = None,
              role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if role_entities is None and 'roleEntities' in kwargs:
+            role_entities = kwargs['roleEntities']
+
         if bucket is not None:
             _setter("bucket", bucket)
         if role_entities is not None:

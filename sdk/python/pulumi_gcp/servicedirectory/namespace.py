@@ -44,11 +44,19 @@ class NamespaceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             namespace_id: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
+             namespace_id: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if namespace_id is None and 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if namespace_id is None:
+            raise TypeError("Missing 'namespace_id' argument")
+
         _setter("location", location)
         _setter("namespace_id", namespace_id)
         if labels is not None:
@@ -156,7 +164,11 @@ class _NamespaceState:
              name: Optional[pulumi.Input[str]] = None,
              namespace_id: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if namespace_id is None and 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+
         if labels is not None:
             _setter("labels", labels)
         if location is not None:

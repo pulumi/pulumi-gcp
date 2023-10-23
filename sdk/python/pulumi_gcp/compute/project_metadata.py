@@ -32,9 +32,13 @@ class ProjectMetadataArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             metadata: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if metadata is None:
+            raise TypeError("Missing 'metadata' argument")
+
         _setter("metadata", metadata)
         if project is not None:
             _setter("project", project)
@@ -90,7 +94,9 @@ class _ProjectMetadataState:
              _setter: Callable[[Any, Any], None],
              metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if metadata is not None:
             _setter("metadata", metadata)
         if project is not None:

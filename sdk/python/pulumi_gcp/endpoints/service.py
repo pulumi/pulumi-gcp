@@ -44,12 +44,24 @@ class ServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_name: pulumi.Input[str],
+             service_name: Optional[pulumi.Input[str]] = None,
              grpc_config: Optional[pulumi.Input[str]] = None,
              openapi_config: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              protoc_output_base64: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if grpc_config is None and 'grpcConfig' in kwargs:
+            grpc_config = kwargs['grpcConfig']
+        if openapi_config is None and 'openapiConfig' in kwargs:
+            openapi_config = kwargs['openapiConfig']
+        if protoc_output_base64 is None and 'protocOutputBase64' in kwargs:
+            protoc_output_base64 = kwargs['protocOutputBase64']
+
         _setter("service_name", service_name)
         if grpc_config is not None:
             _setter("grpc_config", grpc_config)
@@ -177,7 +189,21 @@ class _ServiceState:
              project: Optional[pulumi.Input[str]] = None,
              protoc_output_base64: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if config_id is None and 'configId' in kwargs:
+            config_id = kwargs['configId']
+        if dns_address is None and 'dnsAddress' in kwargs:
+            dns_address = kwargs['dnsAddress']
+        if grpc_config is None and 'grpcConfig' in kwargs:
+            grpc_config = kwargs['grpcConfig']
+        if openapi_config is None and 'openapiConfig' in kwargs:
+            openapi_config = kwargs['openapiConfig']
+        if protoc_output_base64 is None and 'protocOutputBase64' in kwargs:
+            protoc_output_base64 = kwargs['protocOutputBase64']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if apis is not None:
             _setter("apis", apis)
         if config_id is not None:

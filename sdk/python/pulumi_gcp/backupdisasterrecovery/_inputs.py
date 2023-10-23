@@ -35,7 +35,11 @@ class ManagementServerManagementUriArgs:
              _setter: Callable[[Any, Any], None],
              api: Optional[pulumi.Input[str]] = None,
              web_ui: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if web_ui is None and 'webUi' in kwargs:
+            web_ui = kwargs['webUi']
+
         if api is not None:
             _setter("api", api)
         if web_ui is not None:
@@ -89,9 +93,15 @@ class ManagementServerNetworkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input[str],
+             network: Optional[pulumi.Input[str]] = None,
              peering_mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if peering_mode is None and 'peeringMode' in kwargs:
+            peering_mode = kwargs['peeringMode']
+
         _setter("network", network)
         if peering_mode is not None:
             _setter("peering_mode", peering_mode)

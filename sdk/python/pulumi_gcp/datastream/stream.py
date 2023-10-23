@@ -63,18 +63,46 @@ class StreamArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             destination_config: pulumi.Input['StreamDestinationConfigArgs'],
-             display_name: pulumi.Input[str],
-             location: pulumi.Input[str],
-             source_config: pulumi.Input['StreamSourceConfigArgs'],
-             stream_id: pulumi.Input[str],
+             destination_config: Optional[pulumi.Input['StreamDestinationConfigArgs']] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             source_config: Optional[pulumi.Input['StreamSourceConfigArgs']] = None,
+             stream_id: Optional[pulumi.Input[str]] = None,
              backfill_all: Optional[pulumi.Input['StreamBackfillAllArgs']] = None,
              backfill_none: Optional[pulumi.Input['StreamBackfillNoneArgs']] = None,
              customer_managed_encryption_key: Optional[pulumi.Input[str]] = None,
              desired_state: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if destination_config is None and 'destinationConfig' in kwargs:
+            destination_config = kwargs['destinationConfig']
+        if destination_config is None:
+            raise TypeError("Missing 'destination_config' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if source_config is None and 'sourceConfig' in kwargs:
+            source_config = kwargs['sourceConfig']
+        if source_config is None:
+            raise TypeError("Missing 'source_config' argument")
+        if stream_id is None and 'streamId' in kwargs:
+            stream_id = kwargs['streamId']
+        if stream_id is None:
+            raise TypeError("Missing 'stream_id' argument")
+        if backfill_all is None and 'backfillAll' in kwargs:
+            backfill_all = kwargs['backfillAll']
+        if backfill_none is None and 'backfillNone' in kwargs:
+            backfill_none = kwargs['backfillNone']
+        if customer_managed_encryption_key is None and 'customerManagedEncryptionKey' in kwargs:
+            customer_managed_encryption_key = kwargs['customerManagedEncryptionKey']
+        if desired_state is None and 'desiredState' in kwargs:
+            desired_state = kwargs['desiredState']
+
         _setter("destination_config", destination_config)
         _setter("display_name", display_name)
         _setter("location", location)
@@ -300,7 +328,25 @@ class _StreamState:
              source_config: Optional[pulumi.Input['StreamSourceConfigArgs']] = None,
              state: Optional[pulumi.Input[str]] = None,
              stream_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backfill_all is None and 'backfillAll' in kwargs:
+            backfill_all = kwargs['backfillAll']
+        if backfill_none is None and 'backfillNone' in kwargs:
+            backfill_none = kwargs['backfillNone']
+        if customer_managed_encryption_key is None and 'customerManagedEncryptionKey' in kwargs:
+            customer_managed_encryption_key = kwargs['customerManagedEncryptionKey']
+        if desired_state is None and 'desiredState' in kwargs:
+            desired_state = kwargs['desiredState']
+        if destination_config is None and 'destinationConfig' in kwargs:
+            destination_config = kwargs['destinationConfig']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if source_config is None and 'sourceConfig' in kwargs:
+            source_config = kwargs['sourceConfig']
+        if stream_id is None and 'streamId' in kwargs:
+            stream_id = kwargs['streamId']
+
         if backfill_all is not None:
             _setter("backfill_all", backfill_all)
         if backfill_none is not None:

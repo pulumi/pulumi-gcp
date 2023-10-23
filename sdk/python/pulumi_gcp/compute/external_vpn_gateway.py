@@ -61,7 +61,11 @@ class ExternalVpnGatewayArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              redundancy_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if redundancy_type is None and 'redundancyType' in kwargs:
+            redundancy_type = kwargs['redundancyType']
+
         if description is not None:
             _setter("description", description)
         if interfaces is not None:
@@ -217,7 +221,15 @@ class _ExternalVpnGatewayState:
              project: Optional[pulumi.Input[str]] = None,
              redundancy_type: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if label_fingerprint is None and 'labelFingerprint' in kwargs:
+            label_fingerprint = kwargs['labelFingerprint']
+        if redundancy_type is None and 'redundancyType' in kwargs:
+            redundancy_type = kwargs['redundancyType']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if description is not None:
             _setter("description", description)
         if interfaces is not None:

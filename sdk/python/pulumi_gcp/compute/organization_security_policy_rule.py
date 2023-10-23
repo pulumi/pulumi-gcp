@@ -66,17 +66,35 @@ class OrganizationSecurityPolicyRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input[str],
-             match: pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs'],
-             policy_id: pulumi.Input[str],
-             priority: pulumi.Input[int],
+             action: Optional[pulumi.Input[str]] = None,
+             match: Optional[pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs']] = None,
+             policy_id: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
              direction: Optional[pulumi.Input[str]] = None,
              enable_logging: Optional[pulumi.Input[bool]] = None,
              preview: Optional[pulumi.Input[bool]] = None,
              target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if match is None:
+            raise TypeError("Missing 'match' argument")
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if policy_id is None:
+            raise TypeError("Missing 'policy_id' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if target_resources is None and 'targetResources' in kwargs:
+            target_resources = kwargs['targetResources']
+        if target_service_accounts is None and 'targetServiceAccounts' in kwargs:
+            target_service_accounts = kwargs['targetServiceAccounts']
+
         _setter("action", action)
         _setter("match", match)
         _setter("policy_id", policy_id)
@@ -289,7 +307,17 @@ class _OrganizationSecurityPolicyRuleState:
              priority: Optional[pulumi.Input[int]] = None,
              target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if target_resources is None and 'targetResources' in kwargs:
+            target_resources = kwargs['targetResources']
+        if target_service_accounts is None and 'targetServiceAccounts' in kwargs:
+            target_service_accounts = kwargs['targetServiceAccounts']
+
         if action is not None:
             _setter("action", action)
         if description is not None:

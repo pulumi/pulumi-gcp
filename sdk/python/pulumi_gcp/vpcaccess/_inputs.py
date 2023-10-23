@@ -33,7 +33,11 @@ class ConnectorSubnetArgs:
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
              project_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+
         if name is not None:
             _setter("name", name)
         if project_id is not None:

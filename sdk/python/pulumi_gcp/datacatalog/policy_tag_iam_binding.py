@@ -49,11 +49,21 @@ class PolicyTagIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             policy_tag: pulumi.Input[str],
-             role: pulumi.Input[str],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             policy_tag: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['PolicyTagIamBindingConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if policy_tag is None and 'policyTag' in kwargs:
+            policy_tag = kwargs['policyTag']
+        if policy_tag is None:
+            raise TypeError("Missing 'policy_tag' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("members", members)
         _setter("policy_tag", policy_tag)
         _setter("role", role)
@@ -161,7 +171,11 @@ class _PolicyTagIamBindingState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              policy_tag: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_tag is None and 'policyTag' in kwargs:
+            policy_tag = kwargs['policyTag']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

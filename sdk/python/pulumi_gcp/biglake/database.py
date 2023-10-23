@@ -38,11 +38,21 @@ class DatabaseArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             catalog: pulumi.Input[str],
-             hive_options: pulumi.Input['DatabaseHiveOptionsArgs'],
-             type: pulumi.Input[str],
+             catalog: Optional[pulumi.Input[str]] = None,
+             hive_options: Optional[pulumi.Input['DatabaseHiveOptionsArgs']] = None,
+             type: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if catalog is None:
+            raise TypeError("Missing 'catalog' argument")
+        if hive_options is None and 'hiveOptions' in kwargs:
+            hive_options = kwargs['hiveOptions']
+        if hive_options is None:
+            raise TypeError("Missing 'hive_options' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("catalog", catalog)
         _setter("hive_options", hive_options)
         _setter("type", type)
@@ -156,7 +166,19 @@ class _DatabaseState:
              name: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if delete_time is None and 'deleteTime' in kwargs:
+            delete_time = kwargs['deleteTime']
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if hive_options is None and 'hiveOptions' in kwargs:
+            hive_options = kwargs['hiveOptions']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if catalog is not None:
             _setter("catalog", catalog)
         if create_time is not None:

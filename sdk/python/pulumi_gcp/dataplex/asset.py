@@ -55,17 +55,37 @@ class AssetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataplex_zone: pulumi.Input[str],
-             discovery_spec: pulumi.Input['AssetDiscoverySpecArgs'],
-             lake: pulumi.Input[str],
-             location: pulumi.Input[str],
-             resource_spec: pulumi.Input['AssetResourceSpecArgs'],
+             dataplex_zone: Optional[pulumi.Input[str]] = None,
+             discovery_spec: Optional[pulumi.Input['AssetDiscoverySpecArgs']] = None,
+             lake: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             resource_spec: Optional[pulumi.Input['AssetResourceSpecArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataplex_zone is None and 'dataplexZone' in kwargs:
+            dataplex_zone = kwargs['dataplexZone']
+        if dataplex_zone is None:
+            raise TypeError("Missing 'dataplex_zone' argument")
+        if discovery_spec is None and 'discoverySpec' in kwargs:
+            discovery_spec = kwargs['discoverySpec']
+        if discovery_spec is None:
+            raise TypeError("Missing 'discovery_spec' argument")
+        if lake is None:
+            raise TypeError("Missing 'lake' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if resource_spec is None and 'resourceSpec' in kwargs:
+            resource_spec = kwargs['resourceSpec']
+        if resource_spec is None:
+            raise TypeError("Missing 'resource_spec' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("dataplex_zone", dataplex_zone)
         _setter("discovery_spec", discovery_spec)
         _setter("lake", lake)
@@ -283,7 +303,27 @@ class _AssetState:
              state: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if dataplex_zone is None and 'dataplexZone' in kwargs:
+            dataplex_zone = kwargs['dataplexZone']
+        if discovery_spec is None and 'discoverySpec' in kwargs:
+            discovery_spec = kwargs['discoverySpec']
+        if discovery_statuses is None and 'discoveryStatuses' in kwargs:
+            discovery_statuses = kwargs['discoveryStatuses']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if resource_spec is None and 'resourceSpec' in kwargs:
+            resource_spec = kwargs['resourceSpec']
+        if resource_statuses is None and 'resourceStatuses' in kwargs:
+            resource_statuses = kwargs['resourceStatuses']
+        if security_statuses is None and 'securityStatuses' in kwargs:
+            security_statuses = kwargs['securityStatuses']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if dataplex_zone is not None:

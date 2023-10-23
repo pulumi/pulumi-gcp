@@ -78,7 +78,7 @@ class CxPageArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              entry_fulfillment: Optional[pulumi.Input['CxPageEntryFulfillmentArgs']] = None,
              event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArgs']]]] = None,
              form: Optional[pulumi.Input['CxPageFormArgs']] = None,
@@ -86,7 +86,23 @@ class CxPageArgs:
              parent: Optional[pulumi.Input[str]] = None,
              transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if entry_fulfillment is None and 'entryFulfillment' in kwargs:
+            entry_fulfillment = kwargs['entryFulfillment']
+        if event_handlers is None and 'eventHandlers' in kwargs:
+            event_handlers = kwargs['eventHandlers']
+        if language_code is None and 'languageCode' in kwargs:
+            language_code = kwargs['languageCode']
+        if transition_route_groups is None and 'transitionRouteGroups' in kwargs:
+            transition_route_groups = kwargs['transitionRouteGroups']
+        if transition_routes is None and 'transitionRoutes' in kwargs:
+            transition_routes = kwargs['transitionRoutes']
+
         _setter("display_name", display_name)
         if entry_fulfillment is not None:
             _setter("entry_fulfillment", entry_fulfillment)
@@ -307,7 +323,21 @@ class _CxPageState:
              parent: Optional[pulumi.Input[str]] = None,
              transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if entry_fulfillment is None and 'entryFulfillment' in kwargs:
+            entry_fulfillment = kwargs['entryFulfillment']
+        if event_handlers is None and 'eventHandlers' in kwargs:
+            event_handlers = kwargs['eventHandlers']
+        if language_code is None and 'languageCode' in kwargs:
+            language_code = kwargs['languageCode']
+        if transition_route_groups is None and 'transitionRouteGroups' in kwargs:
+            transition_route_groups = kwargs['transitionRouteGroups']
+        if transition_routes is None and 'transitionRoutes' in kwargs:
+            transition_routes = kwargs['transitionRoutes']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if entry_fulfillment is not None:

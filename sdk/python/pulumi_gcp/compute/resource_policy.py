@@ -71,7 +71,17 @@ class ResourcePolicyArgs:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              snapshot_schedule_policy: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disk_consistency_group_policy is None and 'diskConsistencyGroupPolicy' in kwargs:
+            disk_consistency_group_policy = kwargs['diskConsistencyGroupPolicy']
+        if group_placement_policy is None and 'groupPlacementPolicy' in kwargs:
+            group_placement_policy = kwargs['groupPlacementPolicy']
+        if instance_schedule_policy is None and 'instanceSchedulePolicy' in kwargs:
+            instance_schedule_policy = kwargs['instanceSchedulePolicy']
+        if snapshot_schedule_policy is None and 'snapshotSchedulePolicy' in kwargs:
+            snapshot_schedule_policy = kwargs['snapshotSchedulePolicy']
+
         if description is not None:
             _setter("description", description)
         if disk_consistency_group_policy is not None:
@@ -262,7 +272,19 @@ class _ResourcePolicyState:
              region: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              snapshot_schedule_policy: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disk_consistency_group_policy is None and 'diskConsistencyGroupPolicy' in kwargs:
+            disk_consistency_group_policy = kwargs['diskConsistencyGroupPolicy']
+        if group_placement_policy is None and 'groupPlacementPolicy' in kwargs:
+            group_placement_policy = kwargs['groupPlacementPolicy']
+        if instance_schedule_policy is None and 'instanceSchedulePolicy' in kwargs:
+            instance_schedule_policy = kwargs['instanceSchedulePolicy']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if snapshot_schedule_policy is None and 'snapshotSchedulePolicy' in kwargs:
+            snapshot_schedule_policy = kwargs['snapshotSchedulePolicy']
+
         if description is not None:
             _setter("description", description)
         if disk_consistency_group_policy is not None:

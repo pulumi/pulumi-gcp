@@ -61,16 +61,32 @@ class CertificateIssuanceConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             certificate_authority_config: pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArgs'],
-             key_algorithm: pulumi.Input[str],
-             lifetime: pulumi.Input[str],
-             rotation_window_percentage: pulumi.Input[int],
+             certificate_authority_config: Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArgs']] = None,
+             key_algorithm: Optional[pulumi.Input[str]] = None,
+             lifetime: Optional[pulumi.Input[str]] = None,
+             rotation_window_percentage: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if certificate_authority_config is None and 'certificateAuthorityConfig' in kwargs:
+            certificate_authority_config = kwargs['certificateAuthorityConfig']
+        if certificate_authority_config is None:
+            raise TypeError("Missing 'certificate_authority_config' argument")
+        if key_algorithm is None and 'keyAlgorithm' in kwargs:
+            key_algorithm = kwargs['keyAlgorithm']
+        if key_algorithm is None:
+            raise TypeError("Missing 'key_algorithm' argument")
+        if lifetime is None:
+            raise TypeError("Missing 'lifetime' argument")
+        if rotation_window_percentage is None and 'rotationWindowPercentage' in kwargs:
+            rotation_window_percentage = kwargs['rotationWindowPercentage']
+        if rotation_window_percentage is None:
+            raise TypeError("Missing 'rotation_window_percentage' argument")
+
         _setter("certificate_authority_config", certificate_authority_config)
         _setter("key_algorithm", key_algorithm)
         _setter("lifetime", lifetime)
@@ -273,7 +289,19 @@ class _CertificateIssuanceConfigState:
              project: Optional[pulumi.Input[str]] = None,
              rotation_window_percentage: Optional[pulumi.Input[int]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if certificate_authority_config is None and 'certificateAuthorityConfig' in kwargs:
+            certificate_authority_config = kwargs['certificateAuthorityConfig']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if key_algorithm is None and 'keyAlgorithm' in kwargs:
+            key_algorithm = kwargs['keyAlgorithm']
+        if rotation_window_percentage is None and 'rotationWindowPercentage' in kwargs:
+            rotation_window_percentage = kwargs['rotationWindowPercentage']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if certificate_authority_config is not None:
             _setter("certificate_authority_config", certificate_authority_config)
         if create_time is not None:

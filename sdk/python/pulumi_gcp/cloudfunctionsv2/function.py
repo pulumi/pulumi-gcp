@@ -72,7 +72,17 @@ class FunctionArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              service_config: Optional[pulumi.Input['FunctionServiceConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if build_config is None and 'buildConfig' in kwargs:
+            build_config = kwargs['buildConfig']
+        if event_trigger is None and 'eventTrigger' in kwargs:
+            event_trigger = kwargs['eventTrigger']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if service_config is None and 'serviceConfig' in kwargs:
+            service_config = kwargs['serviceConfig']
+
         if build_config is not None:
             _setter("build_config", build_config)
         if description is not None:
@@ -287,7 +297,19 @@ class _FunctionState:
              state: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if build_config is None and 'buildConfig' in kwargs:
+            build_config = kwargs['buildConfig']
+        if event_trigger is None and 'eventTrigger' in kwargs:
+            event_trigger = kwargs['eventTrigger']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if service_config is None and 'serviceConfig' in kwargs:
+            service_config = kwargs['serviceConfig']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if build_config is not None:
             _setter("build_config", build_config)
         if description is not None:

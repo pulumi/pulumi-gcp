@@ -51,13 +51,19 @@ class SnapshotArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance: pulumi.Input[str],
-             location: pulumi.Input[str],
+             instance: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance is None:
+            raise TypeError("Missing 'instance' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+
         _setter("instance", instance)
         _setter("location", location)
         if description is not None:
@@ -210,7 +216,13 @@ class _SnapshotState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if filesystem_used_bytes is None and 'filesystemUsedBytes' in kwargs:
+            filesystem_used_bytes = kwargs['filesystemUsedBytes']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:

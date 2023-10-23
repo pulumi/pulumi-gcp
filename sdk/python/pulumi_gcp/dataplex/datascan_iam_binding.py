@@ -56,13 +56,23 @@ class DatascanIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_scan_id: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             data_scan_id: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['DatascanIamBindingConditionArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if data_scan_id is None and 'dataScanId' in kwargs:
+            data_scan_id = kwargs['dataScanId']
+        if data_scan_id is None:
+            raise TypeError("Missing 'data_scan_id' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("data_scan_id", data_scan_id)
         _setter("members", members)
         _setter("role", role)
@@ -206,7 +216,11 @@ class _DatascanIamBindingState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if data_scan_id is None and 'dataScanId' in kwargs:
+            data_scan_id = kwargs['dataScanId']
+
         if condition is not None:
             _setter("condition", condition)
         if data_scan_id is not None:

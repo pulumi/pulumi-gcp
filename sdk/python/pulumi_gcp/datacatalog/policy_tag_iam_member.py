@@ -49,11 +49,21 @@ class PolicyTagIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             member: pulumi.Input[str],
-             policy_tag: pulumi.Input[str],
-             role: pulumi.Input[str],
+             member: Optional[pulumi.Input[str]] = None,
+             policy_tag: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['PolicyTagIamMemberConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if policy_tag is None and 'policyTag' in kwargs:
+            policy_tag = kwargs['policyTag']
+        if policy_tag is None:
+            raise TypeError("Missing 'policy_tag' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("member", member)
         _setter("policy_tag", policy_tag)
         _setter("role", role)
@@ -161,7 +171,11 @@ class _PolicyTagIamMemberState:
              member: Optional[pulumi.Input[str]] = None,
              policy_tag: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_tag is None and 'policyTag' in kwargs:
+            policy_tag = kwargs['policyTag']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

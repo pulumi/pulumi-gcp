@@ -52,13 +52,29 @@ class BudgetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             amount: pulumi.Input['BudgetAmountArgs'],
-             billing_account: pulumi.Input[str],
+             amount: Optional[pulumi.Input['BudgetAmountArgs']] = None,
+             billing_account: Optional[pulumi.Input[str]] = None,
              all_updates_rule: Optional[pulumi.Input['BudgetAllUpdatesRuleArgs']] = None,
              budget_filter: Optional[pulumi.Input['BudgetBudgetFilterArgs']] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if amount is None:
+            raise TypeError("Missing 'amount' argument")
+        if billing_account is None and 'billingAccount' in kwargs:
+            billing_account = kwargs['billingAccount']
+        if billing_account is None:
+            raise TypeError("Missing 'billing_account' argument")
+        if all_updates_rule is None and 'allUpdatesRule' in kwargs:
+            all_updates_rule = kwargs['allUpdatesRule']
+        if budget_filter is None and 'budgetFilter' in kwargs:
+            budget_filter = kwargs['budgetFilter']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if threshold_rules is None and 'thresholdRules' in kwargs:
+            threshold_rules = kwargs['thresholdRules']
+
         _setter("amount", amount)
         _setter("billing_account", billing_account)
         if all_updates_rule is not None:
@@ -203,7 +219,19 @@ class _BudgetState:
              display_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if all_updates_rule is None and 'allUpdatesRule' in kwargs:
+            all_updates_rule = kwargs['allUpdatesRule']
+        if billing_account is None and 'billingAccount' in kwargs:
+            billing_account = kwargs['billingAccount']
+        if budget_filter is None and 'budgetFilter' in kwargs:
+            budget_filter = kwargs['budgetFilter']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if threshold_rules is None and 'thresholdRules' in kwargs:
+            threshold_rules = kwargs['thresholdRules']
+
         if all_updates_rule is not None:
             _setter("all_updates_rule", all_updates_rule)
         if amount is not None:

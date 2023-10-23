@@ -53,12 +53,20 @@ class TopicIAMMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
-             topic: pulumi.Input[str],
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             topic: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['TopicIAMMemberConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if topic is None:
+            raise TypeError("Missing 'topic' argument")
+
         _setter("member", member)
         _setter("role", role)
         _setter("topic", topic)
@@ -186,7 +194,9 @@ class _TopicIAMMemberState:
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              topic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

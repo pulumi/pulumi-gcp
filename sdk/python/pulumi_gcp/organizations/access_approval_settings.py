@@ -44,11 +44,25 @@ class AccessApprovalSettingsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enrolled_services: pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]],
-             organization_id: pulumi.Input[str],
+             enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]]] = None,
+             organization_id: Optional[pulumi.Input[str]] = None,
              active_key_version: Optional[pulumi.Input[str]] = None,
              notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enrolled_services is None and 'enrolledServices' in kwargs:
+            enrolled_services = kwargs['enrolledServices']
+        if enrolled_services is None:
+            raise TypeError("Missing 'enrolled_services' argument")
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+        if organization_id is None:
+            raise TypeError("Missing 'organization_id' argument")
+        if active_key_version is None and 'activeKeyVersion' in kwargs:
+            active_key_version = kwargs['activeKeyVersion']
+        if notification_emails is None and 'notificationEmails' in kwargs:
+            notification_emails = kwargs['notificationEmails']
+
         _setter("enrolled_services", enrolled_services)
         _setter("organization_id", organization_id)
         if active_key_version is not None:
@@ -165,7 +179,23 @@ class _AccessApprovalSettingsState:
              name: Optional[pulumi.Input[str]] = None,
              notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              organization_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if active_key_version is None and 'activeKeyVersion' in kwargs:
+            active_key_version = kwargs['activeKeyVersion']
+        if ancestor_has_active_key_version is None and 'ancestorHasActiveKeyVersion' in kwargs:
+            ancestor_has_active_key_version = kwargs['ancestorHasActiveKeyVersion']
+        if enrolled_ancestor is None and 'enrolledAncestor' in kwargs:
+            enrolled_ancestor = kwargs['enrolledAncestor']
+        if enrolled_services is None and 'enrolledServices' in kwargs:
+            enrolled_services = kwargs['enrolledServices']
+        if invalid_key_version is None and 'invalidKeyVersion' in kwargs:
+            invalid_key_version = kwargs['invalidKeyVersion']
+        if notification_emails is None and 'notificationEmails' in kwargs:
+            notification_emails = kwargs['notificationEmails']
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+
         if active_key_version is not None:
             _setter("active_key_version", active_key_version)
         if ancestor_has_active_key_version is not None:

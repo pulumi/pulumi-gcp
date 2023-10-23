@@ -48,13 +48,27 @@ class MembershipBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             membership_binding_id: pulumi.Input[str],
-             membership_id: pulumi.Input[str],
-             scope: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
+             membership_binding_id: Optional[pulumi.Input[str]] = None,
+             membership_id: Optional[pulumi.Input[str]] = None,
+             scope: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if membership_binding_id is None and 'membershipBindingId' in kwargs:
+            membership_binding_id = kwargs['membershipBindingId']
+        if membership_binding_id is None:
+            raise TypeError("Missing 'membership_binding_id' argument")
+        if membership_id is None and 'membershipId' in kwargs:
+            membership_id = kwargs['membershipId']
+        if membership_id is None:
+            raise TypeError("Missing 'membership_id' argument")
+        if scope is None:
+            raise TypeError("Missing 'scope' argument")
+
         _setter("location", location)
         _setter("membership_binding_id", membership_binding_id)
         _setter("membership_id", membership_id)
@@ -208,7 +222,19 @@ class _MembershipBindingState:
              states: Optional[pulumi.Input[Sequence[pulumi.Input['MembershipBindingStateArgs']]]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if delete_time is None and 'deleteTime' in kwargs:
+            delete_time = kwargs['deleteTime']
+        if membership_binding_id is None and 'membershipBindingId' in kwargs:
+            membership_binding_id = kwargs['membershipBindingId']
+        if membership_id is None and 'membershipId' in kwargs:
+            membership_id = kwargs['membershipId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if delete_time is not None:

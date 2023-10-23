@@ -70,8 +70,8 @@ class CertificateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             pool: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
+             pool: Optional[pulumi.Input[str]] = None,
              certificate_authority: Optional[pulumi.Input[str]] = None,
              certificate_template: Optional[pulumi.Input[str]] = None,
              config: Optional[pulumi.Input['CertificateConfigArgs']] = None,
@@ -80,7 +80,19 @@ class CertificateArgs:
              name: Optional[pulumi.Input[str]] = None,
              pem_csr: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if pool is None:
+            raise TypeError("Missing 'pool' argument")
+        if certificate_authority is None and 'certificateAuthority' in kwargs:
+            certificate_authority = kwargs['certificateAuthority']
+        if certificate_template is None and 'certificateTemplate' in kwargs:
+            certificate_template = kwargs['certificateTemplate']
+        if pem_csr is None and 'pemCsr' in kwargs:
+            pem_csr = kwargs['pemCsr']
+
         _setter("location", location)
         _setter("pool", pool)
         if certificate_authority is not None:
@@ -341,7 +353,31 @@ class _CertificateState:
              project: Optional[pulumi.Input[str]] = None,
              revocation_details: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateRevocationDetailArgs']]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if certificate_authority is None and 'certificateAuthority' in kwargs:
+            certificate_authority = kwargs['certificateAuthority']
+        if certificate_descriptions is None and 'certificateDescriptions' in kwargs:
+            certificate_descriptions = kwargs['certificateDescriptions']
+        if certificate_template is None and 'certificateTemplate' in kwargs:
+            certificate_template = kwargs['certificateTemplate']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if issuer_certificate_authority is None and 'issuerCertificateAuthority' in kwargs:
+            issuer_certificate_authority = kwargs['issuerCertificateAuthority']
+        if pem_certificate is None and 'pemCertificate' in kwargs:
+            pem_certificate = kwargs['pemCertificate']
+        if pem_certificate_chains is None and 'pemCertificateChains' in kwargs:
+            pem_certificate_chains = kwargs['pemCertificateChains']
+        if pem_certificates is None and 'pemCertificates' in kwargs:
+            pem_certificates = kwargs['pemCertificates']
+        if pem_csr is None and 'pemCsr' in kwargs:
+            pem_csr = kwargs['pemCsr']
+        if revocation_details is None and 'revocationDetails' in kwargs:
+            revocation_details = kwargs['revocationDetails']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if certificate_authority is not None:
             _setter("certificate_authority", certificate_authority)
         if certificate_descriptions is not None:

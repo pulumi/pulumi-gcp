@@ -43,12 +43,20 @@ class DomainMappingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             metadata: pulumi.Input['DomainMappingMetadataArgs'],
-             spec: pulumi.Input['DomainMappingSpecArgs'],
+             location: Optional[pulumi.Input[str]] = None,
+             metadata: Optional[pulumi.Input['DomainMappingMetadataArgs']] = None,
+             spec: Optional[pulumi.Input['DomainMappingSpecArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if metadata is None:
+            raise TypeError("Missing 'metadata' argument")
+        if spec is None:
+            raise TypeError("Missing 'spec' argument")
+
         _setter("location", location)
         _setter("metadata", metadata)
         _setter("spec", spec)
@@ -161,7 +169,9 @@ class _DomainMappingState:
              project: Optional[pulumi.Input[str]] = None,
              spec: Optional[pulumi.Input['DomainMappingSpecArgs']] = None,
              statuses: Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if location is not None:
             _setter("location", location)
         if metadata is not None:

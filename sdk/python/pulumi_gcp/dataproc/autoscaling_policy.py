@@ -53,13 +53,25 @@ class AutoscalingPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_id: pulumi.Input[str],
+             policy_id: Optional[pulumi.Input[str]] = None,
              basic_algorithm: Optional[pulumi.Input['AutoscalingPolicyBasicAlgorithmArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              secondary_worker_config: Optional[pulumi.Input['AutoscalingPolicySecondaryWorkerConfigArgs']] = None,
              worker_config: Optional[pulumi.Input['AutoscalingPolicyWorkerConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if policy_id is None:
+            raise TypeError("Missing 'policy_id' argument")
+        if basic_algorithm is None and 'basicAlgorithm' in kwargs:
+            basic_algorithm = kwargs['basicAlgorithm']
+        if secondary_worker_config is None and 'secondaryWorkerConfig' in kwargs:
+            secondary_worker_config = kwargs['secondaryWorkerConfig']
+        if worker_config is None and 'workerConfig' in kwargs:
+            worker_config = kwargs['workerConfig']
+
         _setter("policy_id", policy_id)
         if basic_algorithm is not None:
             _setter("basic_algorithm", basic_algorithm)
@@ -205,7 +217,17 @@ class _AutoscalingPolicyState:
              project: Optional[pulumi.Input[str]] = None,
              secondary_worker_config: Optional[pulumi.Input['AutoscalingPolicySecondaryWorkerConfigArgs']] = None,
              worker_config: Optional[pulumi.Input['AutoscalingPolicyWorkerConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if basic_algorithm is None and 'basicAlgorithm' in kwargs:
+            basic_algorithm = kwargs['basicAlgorithm']
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if secondary_worker_config is None and 'secondaryWorkerConfig' in kwargs:
+            secondary_worker_config = kwargs['secondaryWorkerConfig']
+        if worker_config is None and 'workerConfig' in kwargs:
+            worker_config = kwargs['workerConfig']
+
         if basic_algorithm is not None:
             _setter("basic_algorithm", basic_algorithm)
         if location is not None:

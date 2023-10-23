@@ -49,14 +49,24 @@ class EndpointArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             network: pulumi.Input[str],
-             severity: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             severity: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              threat_exceptions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if severity is None:
+            raise TypeError("Missing 'severity' argument")
+        if threat_exceptions is None and 'threatExceptions' in kwargs:
+            threat_exceptions = kwargs['threatExceptions']
+
         _setter("location", location)
         _setter("network", network)
         _setter("severity", severity)
@@ -220,7 +230,19 @@ class _EndpointState:
              severity: Optional[pulumi.Input[str]] = None,
              threat_exceptions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if endpoint_forwarding_rule is None and 'endpointForwardingRule' in kwargs:
+            endpoint_forwarding_rule = kwargs['endpointForwardingRule']
+        if endpoint_ip is None and 'endpointIp' in kwargs:
+            endpoint_ip = kwargs['endpointIp']
+        if threat_exceptions is None and 'threatExceptions' in kwargs:
+            threat_exceptions = kwargs['threatExceptions']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:

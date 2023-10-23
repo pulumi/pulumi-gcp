@@ -45,13 +45,21 @@ class AppConnectorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             principal_info: pulumi.Input['AppConnectorPrincipalInfoArgs'],
+             principal_info: Optional[pulumi.Input['AppConnectorPrincipalInfoArgs']] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if principal_info is None and 'principalInfo' in kwargs:
+            principal_info = kwargs['principalInfo']
+        if principal_info is None:
+            raise TypeError("Missing 'principal_info' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("principal_info", principal_info)
         if display_name is not None:
             _setter("display_name", display_name)
@@ -181,7 +189,13 @@ class _AppConnectorState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if principal_info is None and 'principalInfo' in kwargs:
+            principal_info = kwargs['principalInfo']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if labels is not None:

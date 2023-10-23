@@ -55,9 +55,9 @@ class TriggerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             destination: pulumi.Input['TriggerDestinationArgs'],
-             location: pulumi.Input[str],
-             matching_criterias: pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]],
+             destination: Optional[pulumi.Input['TriggerDestinationArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             matching_criterias: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]]] = None,
              channel: Optional[pulumi.Input[str]] = None,
              event_data_content_type: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -65,7 +65,21 @@ class TriggerArgs:
              project: Optional[pulumi.Input[str]] = None,
              service_account: Optional[pulumi.Input[str]] = None,
              transports: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerTransportArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if destination is None:
+            raise TypeError("Missing 'destination' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if matching_criterias is None and 'matchingCriterias' in kwargs:
+            matching_criterias = kwargs['matchingCriterias']
+        if matching_criterias is None:
+            raise TypeError("Missing 'matching_criterias' argument")
+        if event_data_content_type is None and 'eventDataContentType' in kwargs:
+            event_data_content_type = kwargs['eventDataContentType']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+
         _setter("destination", destination)
         _setter("location", location)
         _setter("matching_criterias", matching_criterias)
@@ -277,7 +291,19 @@ class _TriggerState:
              transports: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerTransportArgs']]]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if event_data_content_type is None and 'eventDataContentType' in kwargs:
+            event_data_content_type = kwargs['eventDataContentType']
+        if matching_criterias is None and 'matchingCriterias' in kwargs:
+            matching_criterias = kwargs['matchingCriterias']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if channel is not None:
             _setter("channel", channel)
         if conditions is not None:

@@ -51,12 +51,26 @@ class EnvironmentIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             env_id: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             org_id: pulumi.Input[str],
-             role: pulumi.Input[str],
+             env_id: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['EnvironmentIamBindingConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if env_id is None and 'envId' in kwargs:
+            env_id = kwargs['envId']
+        if env_id is None:
+            raise TypeError("Missing 'env_id' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("env_id", env_id)
         _setter("members", members)
         _setter("org_id", org_id)
@@ -177,7 +191,13 @@ class _EnvironmentIamBindingState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              org_id: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if env_id is None and 'envId' in kwargs:
+            env_id = kwargs['envId']
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+
         if condition is not None:
             _setter("condition", condition)
         if env_id is not None:

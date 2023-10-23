@@ -150,7 +150,11 @@ class BareMetalAdminClusterClusterOperationsArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              enable_application_logs: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_application_logs is None and 'enableApplicationLogs' in kwargs:
+            enable_application_logs = kwargs['enableApplicationLogs']
+
         if enable_application_logs is not None:
             _setter("enable_application_logs", enable_application_logs)
 
@@ -189,9 +193,17 @@ class BareMetalAdminClusterControlPlaneArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             control_plane_node_pool_config: pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs'],
+             control_plane_node_pool_config: Optional[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs']] = None,
              api_server_args: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneApiServerArgArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if control_plane_node_pool_config is None and 'controlPlaneNodePoolConfig' in kwargs:
+            control_plane_node_pool_config = kwargs['controlPlaneNodePoolConfig']
+        if control_plane_node_pool_config is None:
+            raise TypeError("Missing 'control_plane_node_pool_config' argument")
+        if api_server_args is None and 'apiServerArgs' in kwargs:
+            api_server_args = kwargs['apiServerArgs']
+
         _setter("control_plane_node_pool_config", control_plane_node_pool_config)
         if api_server_args is not None:
             _setter("api_server_args", api_server_args)
@@ -243,9 +255,15 @@ class BareMetalAdminClusterControlPlaneApiServerArgArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             argument: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             argument: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if argument is None:
+            raise TypeError("Missing 'argument' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("argument", argument)
         _setter("value", value)
 
@@ -289,8 +307,14 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node_pool_config: pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             node_pool_config: Optional[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_pool_config is None and 'nodePoolConfig' in kwargs:
+            node_pool_config = kwargs['nodePoolConfig']
+        if node_pool_config is None:
+            raise TypeError("Missing 'node_pool_config' argument")
+
         _setter("node_pool_config", node_pool_config)
 
     @property
@@ -345,7 +369,13 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigA
              node_configs: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]]] = None,
              operating_system: Optional[pulumi.Input[str]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_configs is None and 'nodeConfigs' in kwargs:
+            node_configs = kwargs['nodeConfigs']
+        if operating_system is None and 'operatingSystem' in kwargs:
+            operating_system = kwargs['operatingSystem']
+
         if labels is not None:
             _setter("labels", labels)
         if node_configs is not None:
@@ -444,7 +474,11 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigN
              _setter: Callable[[Any, Any], None],
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              node_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_ip is None and 'nodeIp' in kwargs:
+            node_ip = kwargs['nodeIp']
+
         if labels is not None:
             _setter("labels", labels)
         if node_ip is not None:
@@ -509,7 +543,9 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigT
              effect: Optional[pulumi.Input[str]] = None,
              key: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if effect is not None:
             _setter("effect", effect)
         if key is not None:
@@ -573,7 +609,9 @@ class BareMetalAdminClusterFleetArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              membership: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if membership is not None:
             _setter("membership", membership)
 
@@ -616,10 +654,22 @@ class BareMetalAdminClusterLoadBalancerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             port_config: pulumi.Input['BareMetalAdminClusterLoadBalancerPortConfigArgs'],
-             vip_config: pulumi.Input['BareMetalAdminClusterLoadBalancerVipConfigArgs'],
+             port_config: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerPortConfigArgs']] = None,
+             vip_config: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerVipConfigArgs']] = None,
              manual_lb_config: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerManualLbConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if port_config is None and 'portConfig' in kwargs:
+            port_config = kwargs['portConfig']
+        if port_config is None:
+            raise TypeError("Missing 'port_config' argument")
+        if vip_config is None and 'vipConfig' in kwargs:
+            vip_config = kwargs['vipConfig']
+        if vip_config is None:
+            raise TypeError("Missing 'vip_config' argument")
+        if manual_lb_config is None and 'manualLbConfig' in kwargs:
+            manual_lb_config = kwargs['manualLbConfig']
+
         _setter("port_config", port_config)
         _setter("vip_config", vip_config)
         if manual_lb_config is not None:
@@ -679,8 +729,12 @@ class BareMetalAdminClusterLoadBalancerManualLbConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -710,8 +764,14 @@ class BareMetalAdminClusterLoadBalancerPortConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             control_plane_load_balancer_port: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             control_plane_load_balancer_port: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if control_plane_load_balancer_port is None and 'controlPlaneLoadBalancerPort' in kwargs:
+            control_plane_load_balancer_port = kwargs['controlPlaneLoadBalancerPort']
+        if control_plane_load_balancer_port is None:
+            raise TypeError("Missing 'control_plane_load_balancer_port' argument")
+
         _setter("control_plane_load_balancer_port", control_plane_load_balancer_port)
 
     @property
@@ -741,8 +801,14 @@ class BareMetalAdminClusterLoadBalancerVipConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             control_plane_vip: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             control_plane_vip: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if control_plane_vip is None and 'controlPlaneVip' in kwargs:
+            control_plane_vip = kwargs['controlPlaneVip']
+        if control_plane_vip is None:
+            raise TypeError("Missing 'control_plane_vip' argument")
+
         _setter("control_plane_vip", control_plane_vip)
 
     @property
@@ -775,8 +841,14 @@ class BareMetalAdminClusterMaintenanceConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             maintenance_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             maintenance_address_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if maintenance_address_cidr_blocks is None and 'maintenanceAddressCidrBlocks' in kwargs:
+            maintenance_address_cidr_blocks = kwargs['maintenanceAddressCidrBlocks']
+        if maintenance_address_cidr_blocks is None:
+            raise TypeError("Missing 'maintenance_address_cidr_blocks' argument")
+
         _setter("maintenance_address_cidr_blocks", maintenance_address_cidr_blocks)
 
     @property
@@ -811,7 +883,11 @@ class BareMetalAdminClusterNetworkConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              island_mode_cidr: Optional[pulumi.Input['BareMetalAdminClusterNetworkConfigIslandModeCidrArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if island_mode_cidr is None and 'islandModeCidr' in kwargs:
+            island_mode_cidr = kwargs['islandModeCidr']
+
         if island_mode_cidr is not None:
             _setter("island_mode_cidr", island_mode_cidr)
 
@@ -846,9 +922,19 @@ class BareMetalAdminClusterNetworkConfigIslandModeCidrArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pod_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
-             service_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             pod_address_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             service_address_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pod_address_cidr_blocks is None and 'podAddressCidrBlocks' in kwargs:
+            pod_address_cidr_blocks = kwargs['podAddressCidrBlocks']
+        if pod_address_cidr_blocks is None:
+            raise TypeError("Missing 'pod_address_cidr_blocks' argument")
+        if service_address_cidr_blocks is None and 'serviceAddressCidrBlocks' in kwargs:
+            service_address_cidr_blocks = kwargs['serviceAddressCidrBlocks']
+        if service_address_cidr_blocks is None:
+            raise TypeError("Missing 'service_address_cidr_blocks' argument")
+
         _setter("pod_address_cidr_blocks", pod_address_cidr_blocks)
         _setter("service_address_cidr_blocks", service_address_cidr_blocks)
 
@@ -893,7 +979,11 @@ class BareMetalAdminClusterNodeAccessConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              login_user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if login_user is None and 'loginUser' in kwargs:
+            login_user = kwargs['loginUser']
+
         if login_user is not None:
             _setter("login_user", login_user)
 
@@ -927,7 +1017,11 @@ class BareMetalAdminClusterNodeConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              max_pods_per_node: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_pods_per_node is None and 'maxPodsPerNode' in kwargs:
+            max_pods_per_node = kwargs['maxPodsPerNode']
+
         if max_pods_per_node is not None:
             _setter("max_pods_per_node", max_pods_per_node)
 
@@ -966,9 +1060,15 @@ class BareMetalAdminClusterProxyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             uri: pulumi.Input[str],
+             uri: Optional[pulumi.Input[str]] = None,
              no_proxies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if uri is None:
+            raise TypeError("Missing 'uri' argument")
+        if no_proxies is None and 'noProxies' in kwargs:
+            no_proxies = kwargs['noProxies']
+
         _setter("uri", uri)
         if no_proxies is not None:
             _setter("no_proxies", no_proxies)
@@ -1018,7 +1118,9 @@ class BareMetalAdminClusterSecurityConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              authorization: Optional[pulumi.Input['BareMetalAdminClusterSecurityConfigAuthorizationArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if authorization is not None:
             _setter("authorization", authorization)
 
@@ -1051,8 +1153,14 @@ class BareMetalAdminClusterSecurityConfigAuthorizationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             admin_users: pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             admin_users: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if admin_users is None and 'adminUsers' in kwargs:
+            admin_users = kwargs['adminUsers']
+        if admin_users is None:
+            raise TypeError("Missing 'admin_users' argument")
+
         _setter("admin_users", admin_users)
 
     @property
@@ -1083,8 +1191,12 @@ class BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             username: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+
         _setter("username", username)
 
     @property
@@ -1126,7 +1238,11 @@ class BareMetalAdminClusterStatusArgs:
              _setter: Callable[[Any, Any], None],
              conditions: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterStatusConditionArgs']]]] = None,
              error_message: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if error_message is None and 'errorMessage' in kwargs:
+            error_message = kwargs['errorMessage']
+
         if conditions is not None:
             _setter("conditions", conditions)
         if error_message is not None:
@@ -1199,7 +1315,11 @@ class BareMetalAdminClusterStatusConditionArgs:
              reason: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if last_transition_time is None and 'lastTransitionTime' in kwargs:
+            last_transition_time = kwargs['lastTransitionTime']
+
         if last_transition_time is not None:
             _setter("last_transition_time", last_transition_time)
         if message is not None:
@@ -1299,9 +1419,19 @@ class BareMetalAdminClusterStorageArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             lvp_node_mounts_config: pulumi.Input['BareMetalAdminClusterStorageLvpNodeMountsConfigArgs'],
-             lvp_share_config: pulumi.Input['BareMetalAdminClusterStorageLvpShareConfigArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             lvp_node_mounts_config: Optional[pulumi.Input['BareMetalAdminClusterStorageLvpNodeMountsConfigArgs']] = None,
+             lvp_share_config: Optional[pulumi.Input['BareMetalAdminClusterStorageLvpShareConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if lvp_node_mounts_config is None and 'lvpNodeMountsConfig' in kwargs:
+            lvp_node_mounts_config = kwargs['lvpNodeMountsConfig']
+        if lvp_node_mounts_config is None:
+            raise TypeError("Missing 'lvp_node_mounts_config' argument")
+        if lvp_share_config is None and 'lvpShareConfig' in kwargs:
+            lvp_share_config = kwargs['lvpShareConfig']
+        if lvp_share_config is None:
+            raise TypeError("Missing 'lvp_share_config' argument")
+
         _setter("lvp_node_mounts_config", lvp_node_mounts_config)
         _setter("lvp_share_config", lvp_share_config)
 
@@ -1353,9 +1483,17 @@ class BareMetalAdminClusterStorageLvpNodeMountsConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: pulumi.Input[str],
-             storage_class: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             path: Optional[pulumi.Input[str]] = None,
+             storage_class: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if storage_class is None and 'storageClass' in kwargs:
+            storage_class = kwargs['storageClass']
+        if storage_class is None:
+            raise TypeError("Missing 'storage_class' argument")
+
         _setter("path", path)
         _setter("storage_class", storage_class)
 
@@ -1402,9 +1540,17 @@ class BareMetalAdminClusterStorageLvpShareConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             lvp_config: pulumi.Input['BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs'],
+             lvp_config: Optional[pulumi.Input['BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs']] = None,
              shared_path_pv_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if lvp_config is None and 'lvpConfig' in kwargs:
+            lvp_config = kwargs['lvpConfig']
+        if lvp_config is None:
+            raise TypeError("Missing 'lvp_config' argument")
+        if shared_path_pv_count is None and 'sharedPathPvCount' in kwargs:
+            shared_path_pv_count = kwargs['sharedPathPvCount']
+
         _setter("lvp_config", lvp_config)
         if shared_path_pv_count is not None:
             _setter("shared_path_pv_count", shared_path_pv_count)
@@ -1452,9 +1598,17 @@ class BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: pulumi.Input[str],
-             storage_class: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             path: Optional[pulumi.Input[str]] = None,
+             storage_class: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if storage_class is None and 'storageClass' in kwargs:
+            storage_class = kwargs['storageClass']
+        if storage_class is None:
+            raise TypeError("Missing 'storage_class' argument")
+
         _setter("path", path)
         _setter("storage_class", storage_class)
 
@@ -1510,7 +1664,9 @@ class BareMetalAdminClusterValidationCheckArgs:
              options: Optional[pulumi.Input[str]] = None,
              scenario: Optional[pulumi.Input[str]] = None,
              statuses: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if options is not None:
             _setter("options", options)
         if scenario is not None:
@@ -1576,7 +1732,9 @@ class BareMetalAdminClusterValidationCheckStatusArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              results: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusResultArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if results is not None:
             _setter("results", results)
 
@@ -1630,7 +1788,9 @@ class BareMetalAdminClusterValidationCheckStatusResultArgs:
              details: Optional[pulumi.Input[str]] = None,
              options: Optional[pulumi.Input[str]] = None,
              reason: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if category is not None:
             _setter("category", category)
         if description is not None:
@@ -1724,7 +1884,11 @@ class BareMetalClusterBinaryAuthorizationArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              evaluation_mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if evaluation_mode is None and 'evaluationMode' in kwargs:
+            evaluation_mode = kwargs['evaluationMode']
+
         if evaluation_mode is not None:
             _setter("evaluation_mode", evaluation_mode)
 
@@ -1758,7 +1922,11 @@ class BareMetalClusterClusterOperationsArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              enable_application_logs: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_application_logs is None and 'enableApplicationLogs' in kwargs:
+            enable_application_logs = kwargs['enableApplicationLogs']
+
         if enable_application_logs is not None:
             _setter("enable_application_logs", enable_application_logs)
 
@@ -1797,9 +1965,17 @@ class BareMetalClusterControlPlaneArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             control_plane_node_pool_config: pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs'],
+             control_plane_node_pool_config: Optional[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs']] = None,
              api_server_args: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneApiServerArgArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if control_plane_node_pool_config is None and 'controlPlaneNodePoolConfig' in kwargs:
+            control_plane_node_pool_config = kwargs['controlPlaneNodePoolConfig']
+        if control_plane_node_pool_config is None:
+            raise TypeError("Missing 'control_plane_node_pool_config' argument")
+        if api_server_args is None and 'apiServerArgs' in kwargs:
+            api_server_args = kwargs['apiServerArgs']
+
         _setter("control_plane_node_pool_config", control_plane_node_pool_config)
         if api_server_args is not None:
             _setter("api_server_args", api_server_args)
@@ -1851,9 +2027,15 @@ class BareMetalClusterControlPlaneApiServerArgArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             argument: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             argument: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if argument is None:
+            raise TypeError("Missing 'argument' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("argument", argument)
         _setter("value", value)
 
@@ -1897,8 +2079,14 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node_pool_config: pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             node_pool_config: Optional[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_pool_config is None and 'nodePoolConfig' in kwargs:
+            node_pool_config = kwargs['nodePoolConfig']
+        if node_pool_config is None:
+            raise TypeError("Missing 'node_pool_config' argument")
+
         _setter("node_pool_config", node_pool_config)
 
     @property
@@ -1953,7 +2141,13 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs:
              node_configs: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]]] = None,
              operating_system: Optional[pulumi.Input[str]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_configs is None and 'nodeConfigs' in kwargs:
+            node_configs = kwargs['nodeConfigs']
+        if operating_system is None and 'operatingSystem' in kwargs:
+            operating_system = kwargs['operatingSystem']
+
         if labels is not None:
             _setter("labels", labels)
         if node_configs is not None:
@@ -2052,7 +2246,11 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeCo
              _setter: Callable[[Any, Any], None],
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              node_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_ip is None and 'nodeIp' in kwargs:
+            node_ip = kwargs['nodeIp']
+
         if labels is not None:
             _setter("labels", labels)
         if node_ip is not None:
@@ -2117,7 +2315,9 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintA
              effect: Optional[pulumi.Input[str]] = None,
              key: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if effect is not None:
             _setter("effect", effect)
         if key is not None:
@@ -2181,7 +2381,9 @@ class BareMetalClusterFleetArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              membership: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if membership is not None:
             _setter("membership", membership)
 
@@ -2232,12 +2434,28 @@ class BareMetalClusterLoadBalancerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             port_config: pulumi.Input['BareMetalClusterLoadBalancerPortConfigArgs'],
-             vip_config: pulumi.Input['BareMetalClusterLoadBalancerVipConfigArgs'],
+             port_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerPortConfigArgs']] = None,
+             vip_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerVipConfigArgs']] = None,
              bgp_lb_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigArgs']] = None,
              manual_lb_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerManualLbConfigArgs']] = None,
              metal_lb_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if port_config is None and 'portConfig' in kwargs:
+            port_config = kwargs['portConfig']
+        if port_config is None:
+            raise TypeError("Missing 'port_config' argument")
+        if vip_config is None and 'vipConfig' in kwargs:
+            vip_config = kwargs['vipConfig']
+        if vip_config is None:
+            raise TypeError("Missing 'vip_config' argument")
+        if bgp_lb_config is None and 'bgpLbConfig' in kwargs:
+            bgp_lb_config = kwargs['bgpLbConfig']
+        if manual_lb_config is None and 'manualLbConfig' in kwargs:
+            manual_lb_config = kwargs['manualLbConfig']
+        if metal_lb_config is None and 'metalLbConfig' in kwargs:
+            metal_lb_config = kwargs['metalLbConfig']
+
         _setter("port_config", port_config)
         _setter("vip_config", vip_config)
         if bgp_lb_config is not None:
@@ -2348,11 +2566,25 @@ class BareMetalClusterLoadBalancerBgpLbConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address_pools: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs']]],
-             asn: pulumi.Input[int],
-             bgp_peer_configs: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs']]],
+             address_pools: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs']]]] = None,
+             asn: Optional[pulumi.Input[int]] = None,
+             bgp_peer_configs: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs']]]] = None,
              load_balancer_node_pool_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if address_pools is None and 'addressPools' in kwargs:
+            address_pools = kwargs['addressPools']
+        if address_pools is None:
+            raise TypeError("Missing 'address_pools' argument")
+        if asn is None:
+            raise TypeError("Missing 'asn' argument")
+        if bgp_peer_configs is None and 'bgpPeerConfigs' in kwargs:
+            bgp_peer_configs = kwargs['bgpPeerConfigs']
+        if bgp_peer_configs is None:
+            raise TypeError("Missing 'bgp_peer_configs' argument")
+        if load_balancer_node_pool_config is None and 'loadBalancerNodePoolConfig' in kwargs:
+            load_balancer_node_pool_config = kwargs['loadBalancerNodePoolConfig']
+
         _setter("address_pools", address_pools)
         _setter("asn", asn)
         _setter("bgp_peer_configs", bgp_peer_configs)
@@ -2444,11 +2676,21 @@ class BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             addresses: pulumi.Input[Sequence[pulumi.Input[str]]],
-             pool: pulumi.Input[str],
+             addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             pool: Optional[pulumi.Input[str]] = None,
              avoid_buggy_ips: Optional[pulumi.Input[bool]] = None,
              manual_assign: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if addresses is None:
+            raise TypeError("Missing 'addresses' argument")
+        if pool is None:
+            raise TypeError("Missing 'pool' argument")
+        if avoid_buggy_ips is None and 'avoidBuggyIps' in kwargs:
+            avoid_buggy_ips = kwargs['avoidBuggyIps']
+        if manual_assign is None and 'manualAssign' in kwargs:
+            manual_assign = kwargs['manualAssign']
+
         _setter("addresses", addresses)
         _setter("pool", pool)
         if avoid_buggy_ips is not None:
@@ -2531,10 +2773,20 @@ class BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             asn: pulumi.Input[int],
-             ip_address: pulumi.Input[str],
+             asn: Optional[pulumi.Input[int]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
              control_plane_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if asn is None:
+            raise TypeError("Missing 'asn' argument")
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if control_plane_nodes is None and 'controlPlaneNodes' in kwargs:
+            control_plane_nodes = kwargs['controlPlaneNodes']
+
         _setter("asn", asn)
         _setter("ip_address", ip_address)
         if control_plane_nodes is not None:
@@ -2598,7 +2850,11 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              node_pool_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_pool_config is None and 'nodePoolConfig' in kwargs:
+            node_pool_config = kwargs['nodePoolConfig']
+
         if node_pool_config is not None:
             _setter("node_pool_config", node_pool_config)
 
@@ -2659,7 +2915,15 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
              node_configs: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]] = None,
              operating_system: Optional[pulumi.Input[str]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kubelet_config is None and 'kubeletConfig' in kwargs:
+            kubelet_config = kwargs['kubeletConfig']
+        if node_configs is None and 'nodeConfigs' in kwargs:
+            node_configs = kwargs['nodeConfigs']
+        if operating_system is None and 'operatingSystem' in kwargs:
+            operating_system = kwargs['operatingSystem']
+
         if kubelet_config is not None:
             _setter("kubelet_config", kubelet_config)
         if labels is not None:
@@ -2780,7 +3044,15 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
              registry_burst: Optional[pulumi.Input[int]] = None,
              registry_pull_qps: Optional[pulumi.Input[int]] = None,
              serialize_image_pulls_disabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if registry_burst is None and 'registryBurst' in kwargs:
+            registry_burst = kwargs['registryBurst']
+        if registry_pull_qps is None and 'registryPullQps' in kwargs:
+            registry_pull_qps = kwargs['registryPullQps']
+        if serialize_image_pulls_disabled is None and 'serializeImagePullsDisabled' in kwargs:
+            serialize_image_pulls_disabled = kwargs['serializeImagePullsDisabled']
+
         if registry_burst is not None:
             _setter("registry_burst", registry_burst)
         if registry_pull_qps is not None:
@@ -2867,7 +3139,11 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
              _setter: Callable[[Any, Any], None],
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              node_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_ip is None and 'nodeIp' in kwargs:
+            node_ip = kwargs['nodeIp']
+
         if labels is not None:
             _setter("labels", labels)
         if node_ip is not None:
@@ -2932,7 +3208,9 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
              effect: Optional[pulumi.Input[str]] = None,
              key: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if effect is not None:
             _setter("effect", effect)
         if key is not None:
@@ -2992,8 +3270,12 @@ class BareMetalClusterLoadBalancerManualLbConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -3030,9 +3312,17 @@ class BareMetalClusterLoadBalancerMetalLbConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address_pools: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs']]],
+             address_pools: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs']]]] = None,
              load_balancer_node_pool_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if address_pools is None and 'addressPools' in kwargs:
+            address_pools = kwargs['addressPools']
+        if address_pools is None:
+            raise TypeError("Missing 'address_pools' argument")
+        if load_balancer_node_pool_config is None and 'loadBalancerNodePoolConfig' in kwargs:
+            load_balancer_node_pool_config = kwargs['loadBalancerNodePoolConfig']
+
         _setter("address_pools", address_pools)
         if load_balancer_node_pool_config is not None:
             _setter("load_balancer_node_pool_config", load_balancer_node_pool_config)
@@ -3090,11 +3380,21 @@ class BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             addresses: pulumi.Input[Sequence[pulumi.Input[str]]],
-             pool: pulumi.Input[str],
+             addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             pool: Optional[pulumi.Input[str]] = None,
              avoid_buggy_ips: Optional[pulumi.Input[bool]] = None,
              manual_assign: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if addresses is None:
+            raise TypeError("Missing 'addresses' argument")
+        if pool is None:
+            raise TypeError("Missing 'pool' argument")
+        if avoid_buggy_ips is None and 'avoidBuggyIps' in kwargs:
+            avoid_buggy_ips = kwargs['avoidBuggyIps']
+        if manual_assign is None and 'manualAssign' in kwargs:
+            manual_assign = kwargs['manualAssign']
+
         _setter("addresses", addresses)
         _setter("pool", pool)
         if avoid_buggy_ips is not None:
@@ -3168,7 +3468,11 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              node_pool_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_pool_config is None and 'nodePoolConfig' in kwargs:
+            node_pool_config = kwargs['nodePoolConfig']
+
         if node_pool_config is not None:
             _setter("node_pool_config", node_pool_config)
 
@@ -3224,7 +3528,13 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
              node_configs: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]] = None,
              operating_system: Optional[pulumi.Input[str]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_configs is None and 'nodeConfigs' in kwargs:
+            node_configs = kwargs['nodeConfigs']
+        if operating_system is None and 'operatingSystem' in kwargs:
+            operating_system = kwargs['operatingSystem']
+
         if labels is not None:
             _setter("labels", labels)
         if node_configs is not None:
@@ -3323,7 +3633,11 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
              _setter: Callable[[Any, Any], None],
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              node_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_ip is None and 'nodeIp' in kwargs:
+            node_ip = kwargs['nodeIp']
+
         if labels is not None:
             _setter("labels", labels)
         if node_ip is not None:
@@ -3388,7 +3702,9 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
              effect: Optional[pulumi.Input[str]] = None,
              key: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if effect is not None:
             _setter("effect", effect)
         if key is not None:
@@ -3448,8 +3764,14 @@ class BareMetalClusterLoadBalancerPortConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             control_plane_load_balancer_port: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             control_plane_load_balancer_port: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if control_plane_load_balancer_port is None and 'controlPlaneLoadBalancerPort' in kwargs:
+            control_plane_load_balancer_port = kwargs['controlPlaneLoadBalancerPort']
+        if control_plane_load_balancer_port is None:
+            raise TypeError("Missing 'control_plane_load_balancer_port' argument")
+
         _setter("control_plane_load_balancer_port", control_plane_load_balancer_port)
 
     @property
@@ -3482,9 +3804,19 @@ class BareMetalClusterLoadBalancerVipConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             control_plane_vip: pulumi.Input[str],
-             ingress_vip: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             control_plane_vip: Optional[pulumi.Input[str]] = None,
+             ingress_vip: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if control_plane_vip is None and 'controlPlaneVip' in kwargs:
+            control_plane_vip = kwargs['controlPlaneVip']
+        if control_plane_vip is None:
+            raise TypeError("Missing 'control_plane_vip' argument")
+        if ingress_vip is None and 'ingressVip' in kwargs:
+            ingress_vip = kwargs['ingressVip']
+        if ingress_vip is None:
+            raise TypeError("Missing 'ingress_vip' argument")
+
         _setter("control_plane_vip", control_plane_vip)
         _setter("ingress_vip", ingress_vip)
 
@@ -3530,8 +3862,14 @@ class BareMetalClusterMaintenanceConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             maintenance_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             maintenance_address_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if maintenance_address_cidr_blocks is None and 'maintenanceAddressCidrBlocks' in kwargs:
+            maintenance_address_cidr_blocks = kwargs['maintenanceAddressCidrBlocks']
+        if maintenance_address_cidr_blocks is None:
+            raise TypeError("Missing 'maintenance_address_cidr_blocks' argument")
+
         _setter("maintenance_address_cidr_blocks", maintenance_address_cidr_blocks)
 
     @property
@@ -3583,7 +3921,17 @@ class BareMetalClusterNetworkConfigArgs:
              island_mode_cidr: Optional[pulumi.Input['BareMetalClusterNetworkConfigIslandModeCidrArgs']] = None,
              multiple_network_interfaces_config: Optional[pulumi.Input['BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs']] = None,
              sr_iov_config: Optional[pulumi.Input['BareMetalClusterNetworkConfigSrIovConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if advanced_networking is None and 'advancedNetworking' in kwargs:
+            advanced_networking = kwargs['advancedNetworking']
+        if island_mode_cidr is None and 'islandModeCidr' in kwargs:
+            island_mode_cidr = kwargs['islandModeCidr']
+        if multiple_network_interfaces_config is None and 'multipleNetworkInterfacesConfig' in kwargs:
+            multiple_network_interfaces_config = kwargs['multipleNetworkInterfacesConfig']
+        if sr_iov_config is None and 'srIovConfig' in kwargs:
+            sr_iov_config = kwargs['srIovConfig']
+
         if advanced_networking is not None:
             _setter("advanced_networking", advanced_networking)
         if island_mode_cidr is not None:
@@ -3665,9 +4013,19 @@ class BareMetalClusterNetworkConfigIslandModeCidrArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pod_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
-             service_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             pod_address_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             service_address_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pod_address_cidr_blocks is None and 'podAddressCidrBlocks' in kwargs:
+            pod_address_cidr_blocks = kwargs['podAddressCidrBlocks']
+        if pod_address_cidr_blocks is None:
+            raise TypeError("Missing 'pod_address_cidr_blocks' argument")
+        if service_address_cidr_blocks is None and 'serviceAddressCidrBlocks' in kwargs:
+            service_address_cidr_blocks = kwargs['serviceAddressCidrBlocks']
+        if service_address_cidr_blocks is None:
+            raise TypeError("Missing 'service_address_cidr_blocks' argument")
+
         _setter("pod_address_cidr_blocks", pod_address_cidr_blocks)
         _setter("service_address_cidr_blocks", service_address_cidr_blocks)
 
@@ -3713,7 +4071,9 @@ class BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if enabled is not None:
             _setter("enabled", enabled)
 
@@ -3747,7 +4107,9 @@ class BareMetalClusterNetworkConfigSrIovConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if enabled is not None:
             _setter("enabled", enabled)
 
@@ -3780,7 +4142,11 @@ class BareMetalClusterNodeAccessConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              login_user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if login_user is None and 'loginUser' in kwargs:
+            login_user = kwargs['loginUser']
+
         if login_user is not None:
             _setter("login_user", login_user)
 
@@ -3819,7 +4185,13 @@ class BareMetalClusterNodeConfigArgs:
              _setter: Callable[[Any, Any], None],
              container_runtime: Optional[pulumi.Input[str]] = None,
              max_pods_per_node: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if container_runtime is None and 'containerRuntime' in kwargs:
+            container_runtime = kwargs['containerRuntime']
+        if max_pods_per_node is None and 'maxPodsPerNode' in kwargs:
+            max_pods_per_node = kwargs['maxPodsPerNode']
+
         if container_runtime is not None:
             _setter("container_runtime", container_runtime)
         if max_pods_per_node is not None:
@@ -3867,8 +4239,14 @@ class BareMetalClusterOsEnvironmentConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             package_repo_excluded: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             package_repo_excluded: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if package_repo_excluded is None and 'packageRepoExcluded' in kwargs:
+            package_repo_excluded = kwargs['packageRepoExcluded']
+        if package_repo_excluded is None:
+            raise TypeError("Missing 'package_repo_excluded' argument")
+
         _setter("package_repo_excluded", package_repo_excluded)
 
     @property
@@ -3906,9 +4284,15 @@ class BareMetalClusterProxyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             uri: pulumi.Input[str],
+             uri: Optional[pulumi.Input[str]] = None,
              no_proxies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if uri is None:
+            raise TypeError("Missing 'uri' argument")
+        if no_proxies is None and 'noProxies' in kwargs:
+            no_proxies = kwargs['noProxies']
+
         _setter("uri", uri)
         if no_proxies is not None:
             _setter("no_proxies", no_proxies)
@@ -3958,7 +4342,9 @@ class BareMetalClusterSecurityConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              authorization: Optional[pulumi.Input['BareMetalClusterSecurityConfigAuthorizationArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if authorization is not None:
             _setter("authorization", authorization)
 
@@ -3991,8 +4377,14 @@ class BareMetalClusterSecurityConfigAuthorizationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             admin_users: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterSecurityConfigAuthorizationAdminUserArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             admin_users: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterSecurityConfigAuthorizationAdminUserArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if admin_users is None and 'adminUsers' in kwargs:
+            admin_users = kwargs['adminUsers']
+        if admin_users is None:
+            raise TypeError("Missing 'admin_users' argument")
+
         _setter("admin_users", admin_users)
 
     @property
@@ -4023,8 +4415,12 @@ class BareMetalClusterSecurityConfigAuthorizationAdminUserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             username: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+
         _setter("username", username)
 
     @property
@@ -4066,7 +4462,11 @@ class BareMetalClusterStatusArgs:
              _setter: Callable[[Any, Any], None],
              conditions: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterStatusConditionArgs']]]] = None,
              error_message: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if error_message is None and 'errorMessage' in kwargs:
+            error_message = kwargs['errorMessage']
+
         if conditions is not None:
             _setter("conditions", conditions)
         if error_message is not None:
@@ -4139,7 +4539,11 @@ class BareMetalClusterStatusConditionArgs:
              reason: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if last_transition_time is None and 'lastTransitionTime' in kwargs:
+            last_transition_time = kwargs['lastTransitionTime']
+
         if last_transition_time is not None:
             _setter("last_transition_time", last_transition_time)
         if message is not None:
@@ -4239,9 +4643,19 @@ class BareMetalClusterStorageArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             lvp_node_mounts_config: pulumi.Input['BareMetalClusterStorageLvpNodeMountsConfigArgs'],
-             lvp_share_config: pulumi.Input['BareMetalClusterStorageLvpShareConfigArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             lvp_node_mounts_config: Optional[pulumi.Input['BareMetalClusterStorageLvpNodeMountsConfigArgs']] = None,
+             lvp_share_config: Optional[pulumi.Input['BareMetalClusterStorageLvpShareConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if lvp_node_mounts_config is None and 'lvpNodeMountsConfig' in kwargs:
+            lvp_node_mounts_config = kwargs['lvpNodeMountsConfig']
+        if lvp_node_mounts_config is None:
+            raise TypeError("Missing 'lvp_node_mounts_config' argument")
+        if lvp_share_config is None and 'lvpShareConfig' in kwargs:
+            lvp_share_config = kwargs['lvpShareConfig']
+        if lvp_share_config is None:
+            raise TypeError("Missing 'lvp_share_config' argument")
+
         _setter("lvp_node_mounts_config", lvp_node_mounts_config)
         _setter("lvp_share_config", lvp_share_config)
 
@@ -4295,9 +4709,17 @@ class BareMetalClusterStorageLvpNodeMountsConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: pulumi.Input[str],
-             storage_class: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             path: Optional[pulumi.Input[str]] = None,
+             storage_class: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if storage_class is None and 'storageClass' in kwargs:
+            storage_class = kwargs['storageClass']
+        if storage_class is None:
+            raise TypeError("Missing 'storage_class' argument")
+
         _setter("path", path)
         _setter("storage_class", storage_class)
 
@@ -4346,9 +4768,17 @@ class BareMetalClusterStorageLvpShareConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             lvp_config: pulumi.Input['BareMetalClusterStorageLvpShareConfigLvpConfigArgs'],
+             lvp_config: Optional[pulumi.Input['BareMetalClusterStorageLvpShareConfigLvpConfigArgs']] = None,
              shared_path_pv_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if lvp_config is None and 'lvpConfig' in kwargs:
+            lvp_config = kwargs['lvpConfig']
+        if lvp_config is None:
+            raise TypeError("Missing 'lvp_config' argument")
+        if shared_path_pv_count is None and 'sharedPathPvCount' in kwargs:
+            shared_path_pv_count = kwargs['sharedPathPvCount']
+
         _setter("lvp_config", lvp_config)
         if shared_path_pv_count is not None:
             _setter("shared_path_pv_count", shared_path_pv_count)
@@ -4396,9 +4826,17 @@ class BareMetalClusterStorageLvpShareConfigLvpConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: pulumi.Input[str],
-             storage_class: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             path: Optional[pulumi.Input[str]] = None,
+             storage_class: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if storage_class is None and 'storageClass' in kwargs:
+            storage_class = kwargs['storageClass']
+        if storage_class is None:
+            raise TypeError("Missing 'storage_class' argument")
+
         _setter("path", path)
         _setter("storage_class", storage_class)
 
@@ -4443,7 +4881,9 @@ class BareMetalClusterUpgradePolicyArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if policy is not None:
             _setter("policy", policy)
 
@@ -4488,7 +4928,9 @@ class BareMetalClusterValidationCheckArgs:
              options: Optional[pulumi.Input[str]] = None,
              scenario: Optional[pulumi.Input[str]] = None,
              statuses: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if options is not None:
             _setter("options", options)
         if scenario is not None:
@@ -4554,7 +4996,9 @@ class BareMetalClusterValidationCheckStatusArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              results: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusResultArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if results is not None:
             _setter("results", results)
 
@@ -4608,7 +5052,9 @@ class BareMetalClusterValidationCheckStatusResultArgs:
              details: Optional[pulumi.Input[str]] = None,
              options: Optional[pulumi.Input[str]] = None,
              reason: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if category is not None:
             _setter("category", category)
         if description is not None:
@@ -4719,11 +5165,19 @@ class BareMetalNodePoolNodePoolConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node_configs: pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigNodeConfigArgs']]],
+             node_configs: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigNodeConfigArgs']]]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              operating_system: Optional[pulumi.Input[str]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigTaintArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_configs is None and 'nodeConfigs' in kwargs:
+            node_configs = kwargs['nodeConfigs']
+        if node_configs is None:
+            raise TypeError("Missing 'node_configs' argument")
+        if operating_system is None and 'operatingSystem' in kwargs:
+            operating_system = kwargs['operatingSystem']
+
         _setter("node_configs", node_configs)
         if labels is not None:
             _setter("labels", labels)
@@ -4821,7 +5275,11 @@ class BareMetalNodePoolNodePoolConfigNodeConfigArgs:
              _setter: Callable[[Any, Any], None],
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              node_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_ip is None and 'nodeIp' in kwargs:
+            node_ip = kwargs['nodeIp']
+
         if labels is not None:
             _setter("labels", labels)
         if node_ip is not None:
@@ -4888,7 +5346,9 @@ class BareMetalNodePoolNodePoolConfigTaintArgs:
              effect: Optional[pulumi.Input[str]] = None,
              key: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if effect is not None:
             _setter("effect", effect)
         if key is not None:
@@ -4962,7 +5422,11 @@ class BareMetalNodePoolStatusArgs:
              _setter: Callable[[Any, Any], None],
              conditions: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolStatusConditionArgs']]]] = None,
              error_message: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if error_message is None and 'errorMessage' in kwargs:
+            error_message = kwargs['errorMessage']
+
         if conditions is not None:
             _setter("conditions", conditions)
         if error_message is not None:
@@ -5034,7 +5498,11 @@ class BareMetalNodePoolStatusConditionArgs:
              reason: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if last_transition_time is None and 'lastTransitionTime' in kwargs:
+            last_transition_time = kwargs['lastTransitionTime']
+
         if last_transition_time is not None:
             _setter("last_transition_time", last_transition_time)
         if message is not None:
@@ -5126,8 +5594,14 @@ class VMwareClusterAntiAffinityGroupsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             aag_config_disabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             aag_config_disabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if aag_config_disabled is None and 'aagConfigDisabled' in kwargs:
+            aag_config_disabled = kwargs['aagConfigDisabled']
+        if aag_config_disabled is None:
+            raise TypeError("Missing 'aag_config_disabled' argument")
+
         _setter("aag_config_disabled", aag_config_disabled)
 
     @property
@@ -5162,7 +5636,11 @@ class VMwareClusterAuthorizationArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              admin_users: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterAuthorizationAdminUserArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if admin_users is None and 'adminUsers' in kwargs:
+            admin_users = kwargs['adminUsers']
+
         if admin_users is not None:
             _setter("admin_users", admin_users)
 
@@ -5195,8 +5673,12 @@ class VMwareClusterAuthorizationAdminUserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             username: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+
         _setter("username", username)
 
     @property
@@ -5226,8 +5708,12 @@ class VMwareClusterAutoRepairConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -5280,7 +5766,13 @@ class VMwareClusterControlPlaneNodeArgs:
              memory: Optional[pulumi.Input[int]] = None,
              replicas: Optional[pulumi.Input[int]] = None,
              vsphere_configs: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterControlPlaneNodeVsphereConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_resize_config is None and 'autoResizeConfig' in kwargs:
+            auto_resize_config = kwargs['autoResizeConfig']
+        if vsphere_configs is None and 'vsphereConfigs' in kwargs:
+            vsphere_configs = kwargs['vsphereConfigs']
+
         if auto_resize_config is not None:
             _setter("auto_resize_config", auto_resize_config)
         if cpus is not None:
@@ -5375,8 +5867,12 @@ class VMwareClusterControlPlaneNodeAutoResizeConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -5417,7 +5913,11 @@ class VMwareClusterControlPlaneNodeVsphereConfigArgs:
              _setter: Callable[[Any, Any], None],
              datastore: Optional[pulumi.Input[str]] = None,
              storage_policy_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if storage_policy_name is None and 'storagePolicyName' in kwargs:
+            storage_policy_name = kwargs['storagePolicyName']
+
         if datastore is not None:
             _setter("datastore", datastore)
         if storage_policy_name is not None:
@@ -5475,7 +5975,15 @@ class VMwareClusterDataplaneV2Args:
              advanced_networking: Optional[pulumi.Input[bool]] = None,
              dataplane_v2_enabled: Optional[pulumi.Input[bool]] = None,
              windows_dataplane_v2_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if advanced_networking is None and 'advancedNetworking' in kwargs:
+            advanced_networking = kwargs['advancedNetworking']
+        if dataplane_v2_enabled is None and 'dataplaneV2Enabled' in kwargs:
+            dataplane_v2_enabled = kwargs['dataplaneV2Enabled']
+        if windows_dataplane_v2_enabled is None and 'windowsDataplaneV2Enabled' in kwargs:
+            windows_dataplane_v2_enabled = kwargs['windowsDataplaneV2Enabled']
+
         if advanced_networking is not None:
             _setter("advanced_networking", advanced_networking)
         if dataplane_v2_enabled is not None:
@@ -5538,7 +6046,9 @@ class VMwareClusterFleetArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              membership: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if membership is not None:
             _setter("membership", membership)
 
@@ -5589,7 +6099,17 @@ class VMwareClusterLoadBalancerArgs:
              manual_lb_config: Optional[pulumi.Input['VMwareClusterLoadBalancerManualLbConfigArgs']] = None,
              metal_lb_config: Optional[pulumi.Input['VMwareClusterLoadBalancerMetalLbConfigArgs']] = None,
              vip_config: Optional[pulumi.Input['VMwareClusterLoadBalancerVipConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if f5_config is None and 'f5Config' in kwargs:
+            f5_config = kwargs['f5Config']
+        if manual_lb_config is None and 'manualLbConfig' in kwargs:
+            manual_lb_config = kwargs['manualLbConfig']
+        if metal_lb_config is None and 'metalLbConfig' in kwargs:
+            metal_lb_config = kwargs['metalLbConfig']
+        if vip_config is None and 'vipConfig' in kwargs:
+            vip_config = kwargs['vipConfig']
+
         if f5_config is not None:
             _setter("f5_config", f5_config)
         if manual_lb_config is not None:
@@ -5677,7 +6197,11 @@ class VMwareClusterLoadBalancerF5ConfigArgs:
              address: Optional[pulumi.Input[str]] = None,
              partition: Optional[pulumi.Input[str]] = None,
              snat_pool: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if snat_pool is None and 'snatPool' in kwargs:
+            snat_pool = kwargs['snatPool']
+
         if address is not None:
             _setter("address", address)
         if partition is not None:
@@ -5755,7 +6279,17 @@ class VMwareClusterLoadBalancerManualLbConfigArgs:
              ingress_http_node_port: Optional[pulumi.Input[int]] = None,
              ingress_https_node_port: Optional[pulumi.Input[int]] = None,
              konnectivity_server_node_port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if control_plane_node_port is None and 'controlPlaneNodePort' in kwargs:
+            control_plane_node_port = kwargs['controlPlaneNodePort']
+        if ingress_http_node_port is None and 'ingressHttpNodePort' in kwargs:
+            ingress_http_node_port = kwargs['ingressHttpNodePort']
+        if ingress_https_node_port is None and 'ingressHttpsNodePort' in kwargs:
+            ingress_https_node_port = kwargs['ingressHttpsNodePort']
+        if konnectivity_server_node_port is None and 'konnectivityServerNodePort' in kwargs:
+            konnectivity_server_node_port = kwargs['konnectivityServerNodePort']
+
         if control_plane_node_port is not None:
             _setter("control_plane_node_port", control_plane_node_port)
         if ingress_http_node_port is not None:
@@ -5835,8 +6369,14 @@ class VMwareClusterLoadBalancerMetalLbConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address_pools: pulumi.Input[Sequence[pulumi.Input['VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             address_pools: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if address_pools is None and 'addressPools' in kwargs:
+            address_pools = kwargs['addressPools']
+        if address_pools is None:
+            raise TypeError("Missing 'address_pools' argument")
+
         _setter("address_pools", address_pools)
 
     @property
@@ -5884,11 +6424,21 @@ class VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             addresses: pulumi.Input[Sequence[pulumi.Input[str]]],
-             pool: pulumi.Input[str],
+             addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             pool: Optional[pulumi.Input[str]] = None,
              avoid_buggy_ips: Optional[pulumi.Input[bool]] = None,
              manual_assign: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if addresses is None:
+            raise TypeError("Missing 'addresses' argument")
+        if pool is None:
+            raise TypeError("Missing 'pool' argument")
+        if avoid_buggy_ips is None and 'avoidBuggyIps' in kwargs:
+            avoid_buggy_ips = kwargs['avoidBuggyIps']
+        if manual_assign is None and 'manualAssign' in kwargs:
+            manual_assign = kwargs['manualAssign']
+
         _setter("addresses", addresses)
         _setter("pool", pool)
         if avoid_buggy_ips is not None:
@@ -5972,7 +6522,13 @@ class VMwareClusterLoadBalancerVipConfigArgs:
              _setter: Callable[[Any, Any], None],
              control_plane_vip: Optional[pulumi.Input[str]] = None,
              ingress_vip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if control_plane_vip is None and 'controlPlaneVip' in kwargs:
+            control_plane_vip = kwargs['controlPlaneVip']
+        if ingress_vip is None and 'ingressVip' in kwargs:
+            ingress_vip = kwargs['ingressVip']
+
         if control_plane_vip is not None:
             _setter("control_plane_vip", control_plane_vip)
         if ingress_vip is not None:
@@ -6045,14 +6601,34 @@ class VMwareClusterNetworkConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pod_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
-             service_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
+             pod_address_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             service_address_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              control_plane_v2_config: Optional[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigArgs']] = None,
              dhcp_ip_config: Optional[pulumi.Input['VMwareClusterNetworkConfigDhcpIpConfigArgs']] = None,
              host_config: Optional[pulumi.Input['VMwareClusterNetworkConfigHostConfigArgs']] = None,
              static_ip_config: Optional[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigArgs']] = None,
              vcenter_network: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pod_address_cidr_blocks is None and 'podAddressCidrBlocks' in kwargs:
+            pod_address_cidr_blocks = kwargs['podAddressCidrBlocks']
+        if pod_address_cidr_blocks is None:
+            raise TypeError("Missing 'pod_address_cidr_blocks' argument")
+        if service_address_cidr_blocks is None and 'serviceAddressCidrBlocks' in kwargs:
+            service_address_cidr_blocks = kwargs['serviceAddressCidrBlocks']
+        if service_address_cidr_blocks is None:
+            raise TypeError("Missing 'service_address_cidr_blocks' argument")
+        if control_plane_v2_config is None and 'controlPlaneV2Config' in kwargs:
+            control_plane_v2_config = kwargs['controlPlaneV2Config']
+        if dhcp_ip_config is None and 'dhcpIpConfig' in kwargs:
+            dhcp_ip_config = kwargs['dhcpIpConfig']
+        if host_config is None and 'hostConfig' in kwargs:
+            host_config = kwargs['hostConfig']
+        if static_ip_config is None and 'staticIpConfig' in kwargs:
+            static_ip_config = kwargs['staticIpConfig']
+        if vcenter_network is None and 'vcenterNetwork' in kwargs:
+            vcenter_network = kwargs['vcenterNetwork']
+
         _setter("pod_address_cidr_blocks", pod_address_cidr_blocks)
         _setter("service_address_cidr_blocks", service_address_cidr_blocks)
         if control_plane_v2_config is not None:
@@ -6175,7 +6751,11 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              control_plane_ip_block: Optional[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if control_plane_ip_block is None and 'controlPlaneIpBlock' in kwargs:
+            control_plane_ip_block = kwargs['controlPlaneIpBlock']
+
         if control_plane_ip_block is not None:
             _setter("control_plane_ip_block", control_plane_ip_block)
 
@@ -6217,7 +6797,9 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs:
              gateway: Optional[pulumi.Input[str]] = None,
              ips: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs']]]] = None,
              netmask: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if gateway is not None:
             _setter("gateway", gateway)
         if ips is not None:
@@ -6282,7 +6864,9 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs:
              _setter: Callable[[Any, Any], None],
              hostname: Optional[pulumi.Input[str]] = None,
              ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if hostname is not None:
             _setter("hostname", hostname)
         if ip is not None:
@@ -6328,8 +6912,12 @@ class VMwareClusterNetworkConfigDhcpIpConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -6371,7 +6959,15 @@ class VMwareClusterNetworkConfigHostConfigArgs:
              dns_search_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dns_search_domains is None and 'dnsSearchDomains' in kwargs:
+            dns_search_domains = kwargs['dnsSearchDomains']
+        if dns_servers is None and 'dnsServers' in kwargs:
+            dns_servers = kwargs['dnsServers']
+        if ntp_servers is None and 'ntpServers' in kwargs:
+            ntp_servers = kwargs['ntpServers']
+
         if dns_search_domains is not None:
             _setter("dns_search_domains", dns_search_domains)
         if dns_servers is not None:
@@ -6433,8 +7029,14 @@ class VMwareClusterNetworkConfigStaticIpConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_blocks: pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             ip_blocks: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_blocks is None and 'ipBlocks' in kwargs:
+            ip_blocks = kwargs['ipBlocks']
+        if ip_blocks is None:
+            raise TypeError("Missing 'ip_blocks' argument")
+
         _setter("ip_blocks", ip_blocks)
 
     @property
@@ -6472,10 +7074,18 @@ class VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             gateway: pulumi.Input[str],
-             ips: pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs']]],
-             netmask: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             gateway: Optional[pulumi.Input[str]] = None,
+             ips: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs']]]] = None,
+             netmask: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gateway is None:
+            raise TypeError("Missing 'gateway' argument")
+        if ips is None:
+            raise TypeError("Missing 'ips' argument")
+        if netmask is None:
+            raise TypeError("Missing 'netmask' argument")
+
         _setter("gateway", gateway)
         _setter("ips", ips)
         _setter("netmask", netmask)
@@ -6535,9 +7145,13 @@ class VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip: pulumi.Input[str],
+             ip: Optional[pulumi.Input[str]] = None,
              hostname: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip is None:
+            raise TypeError("Missing 'ip' argument")
+
         _setter("ip", ip)
         if hostname is not None:
             _setter("hostname", hostname)
@@ -6593,7 +7207,11 @@ class VMwareClusterStatusArgs:
              _setter: Callable[[Any, Any], None],
              conditions: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterStatusConditionArgs']]]] = None,
              error_message: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if error_message is None and 'errorMessage' in kwargs:
+            error_message = kwargs['errorMessage']
+
         if conditions is not None:
             _setter("conditions", conditions)
         if error_message is not None:
@@ -6668,7 +7286,11 @@ class VMwareClusterStatusConditionArgs:
              reason: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if last_transition_time is None and 'lastTransitionTime' in kwargs:
+            last_transition_time = kwargs['lastTransitionTime']
+
         if last_transition_time is not None:
             _setter("last_transition_time", last_transition_time)
         if message is not None:
@@ -6762,8 +7384,14 @@ class VMwareClusterStorageArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             vsphere_csi_disabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             vsphere_csi_disabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if vsphere_csi_disabled is None and 'vsphereCsiDisabled' in kwargs:
+            vsphere_csi_disabled = kwargs['vsphereCsiDisabled']
+        if vsphere_csi_disabled is None:
+            raise TypeError("Missing 'vsphere_csi_disabled' argument")
+
         _setter("vsphere_csi_disabled", vsphere_csi_disabled)
 
     @property
@@ -6795,7 +7423,11 @@ class VMwareClusterUpgradePolicyArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              control_plane_only: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if control_plane_only is None and 'controlPlaneOnly' in kwargs:
+            control_plane_only = kwargs['controlPlaneOnly']
+
         if control_plane_only is not None:
             _setter("control_plane_only", control_plane_only)
 
@@ -6839,7 +7471,9 @@ class VMwareClusterValidationCheckArgs:
              options: Optional[pulumi.Input[str]] = None,
              scenario: Optional[pulumi.Input[str]] = None,
              statuses: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if options is not None:
             _setter("options", options)
         if scenario is not None:
@@ -6905,7 +7539,9 @@ class VMwareClusterValidationCheckStatusArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              results: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusResultArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if results is not None:
             _setter("results", results)
 
@@ -6959,7 +7595,9 @@ class VMwareClusterValidationCheckStatusResultArgs:
              details: Optional[pulumi.Input[str]] = None,
              options: Optional[pulumi.Input[str]] = None,
              reason: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if category is not None:
             _setter("category", category)
         if description is not None:
@@ -7088,7 +7726,15 @@ class VMwareClusterVcenterArgs:
              folder: Optional[pulumi.Input[str]] = None,
              resource_pool: Optional[pulumi.Input[str]] = None,
              storage_policy_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ca_cert_data is None and 'caCertData' in kwargs:
+            ca_cert_data = kwargs['caCertData']
+        if resource_pool is None and 'resourcePool' in kwargs:
+            resource_pool = kwargs['resourcePool']
+        if storage_policy_name is None and 'storagePolicyName' in kwargs:
+            storage_policy_name = kwargs['storagePolicyName']
+
         if address is not None:
             _setter("address", address)
         if ca_cert_data is not None:
@@ -7263,7 +7909,7 @@ class VMwareNodePoolConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             image_type: pulumi.Input[str],
+             image_type: Optional[pulumi.Input[str]] = None,
              boot_disk_size_gb: Optional[pulumi.Input[int]] = None,
              cpus: Optional[pulumi.Input[int]] = None,
              enable_load_balancer: Optional[pulumi.Input[bool]] = None,
@@ -7273,7 +7919,21 @@ class VMwareNodePoolConfigArgs:
              replicas: Optional[pulumi.Input[int]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigTaintArgs']]]] = None,
              vsphere_configs: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if image_type is None and 'imageType' in kwargs:
+            image_type = kwargs['imageType']
+        if image_type is None:
+            raise TypeError("Missing 'image_type' argument")
+        if boot_disk_size_gb is None and 'bootDiskSizeGb' in kwargs:
+            boot_disk_size_gb = kwargs['bootDiskSizeGb']
+        if enable_load_balancer is None and 'enableLoadBalancer' in kwargs:
+            enable_load_balancer = kwargs['enableLoadBalancer']
+        if memory_mb is None and 'memoryMb' in kwargs:
+            memory_mb = kwargs['memoryMb']
+        if vsphere_configs is None and 'vsphereConfigs' in kwargs:
+            vsphere_configs = kwargs['vsphereConfigs']
+
         _setter("image_type", image_type)
         if boot_disk_size_gb is not None:
             _setter("boot_disk_size_gb", boot_disk_size_gb)
@@ -7448,10 +8108,16 @@ class VMwareNodePoolConfigTaintArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
              effect: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("key", key)
         _setter("value", value)
         if effect is not None:
@@ -7522,7 +8188,9 @@ class VMwareNodePoolConfigVsphereConfigArgs:
              _setter: Callable[[Any, Any], None],
              datastore: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigTagArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if datastore is not None:
             _setter("datastore", datastore)
         if tags is not None:
@@ -7582,7 +8250,9 @@ class VMwareNodePoolConfigVsphereConfigTagArgs:
              _setter: Callable[[Any, Any], None],
              category: Optional[pulumi.Input[str]] = None,
              tag: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if category is not None:
             _setter("category", category)
         if tag is not None:
@@ -7634,9 +8304,19 @@ class VMwareNodePoolNodePoolAutoscalingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max_replicas: pulumi.Input[int],
-             min_replicas: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             max_replicas: Optional[pulumi.Input[int]] = None,
+             min_replicas: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_replicas is None and 'maxReplicas' in kwargs:
+            max_replicas = kwargs['maxReplicas']
+        if max_replicas is None:
+            raise TypeError("Missing 'max_replicas' argument")
+        if min_replicas is None and 'minReplicas' in kwargs:
+            min_replicas = kwargs['minReplicas']
+        if min_replicas is None:
+            raise TypeError("Missing 'min_replicas' argument")
+
         _setter("max_replicas", max_replicas)
         _setter("min_replicas", min_replicas)
 
@@ -7691,7 +8371,11 @@ class VMwareNodePoolStatusArgs:
              _setter: Callable[[Any, Any], None],
              conditions: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusConditionArgs']]]] = None,
              error_message: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if error_message is None and 'errorMessage' in kwargs:
+            error_message = kwargs['errorMessage']
+
         if conditions is not None:
             _setter("conditions", conditions)
         if error_message is not None:
@@ -7766,7 +8450,11 @@ class VMwareNodePoolStatusConditionArgs:
              reason: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if last_transition_time is None and 'lastTransitionTime' in kwargs:
+            last_transition_time = kwargs['lastTransitionTime']
+
         if last_transition_time is not None:
             _setter("last_transition_time", last_transition_time)
         if message is not None:

@@ -67,7 +67,15 @@ class ServerTlsPolicyArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              server_certificate: Optional[pulumi.Input['ServerTlsPolicyServerCertificateArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_open is None and 'allowOpen' in kwargs:
+            allow_open = kwargs['allowOpen']
+        if mtls_policy is None and 'mtlsPolicy' in kwargs:
+            mtls_policy = kwargs['mtlsPolicy']
+        if server_certificate is None and 'serverCertificate' in kwargs:
+            server_certificate = kwargs['serverCertificate']
+
         if allow_open is not None:
             _setter("allow_open", allow_open)
         if description is not None:
@@ -254,7 +262,19 @@ class _ServerTlsPolicyState:
              project: Optional[pulumi.Input[str]] = None,
              server_certificate: Optional[pulumi.Input['ServerTlsPolicyServerCertificateArgs']] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_open is None and 'allowOpen' in kwargs:
+            allow_open = kwargs['allowOpen']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if mtls_policy is None and 'mtlsPolicy' in kwargs:
+            mtls_policy = kwargs['mtlsPolicy']
+        if server_certificate is None and 'serverCertificate' in kwargs:
+            server_certificate = kwargs['serverCertificate']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if allow_open is not None:
             _setter("allow_open", allow_open)
         if create_time is not None:

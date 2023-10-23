@@ -44,12 +44,18 @@ class ManagementServerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             networks: pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArgs']]],
+             location: Optional[pulumi.Input[str]] = None,
+             networks: Optional[pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArgs']]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if networks is None:
+            raise TypeError("Missing 'networks' argument")
+
         _setter("location", location)
         _setter("networks", networks)
         if name is not None:
@@ -169,7 +175,13 @@ class _ManagementServerState:
              oauth2_client_id: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if management_uris is None and 'managementUris' in kwargs:
+            management_uris = kwargs['managementUris']
+        if oauth2_client_id is None and 'oauth2ClientId' in kwargs:
+            oauth2_client_id = kwargs['oauth2ClientId']
+
         if location is not None:
             _setter("location", location)
         if management_uris is not None:

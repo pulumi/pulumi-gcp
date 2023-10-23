@@ -99,7 +99,7 @@ class DatabaseInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             database_version: pulumi.Input[str],
+             database_version: Optional[pulumi.Input[str]] = None,
              clone: Optional[pulumi.Input['DatabaseInstanceCloneArgs']] = None,
              deletion_protection: Optional[pulumi.Input[bool]] = None,
              encryption_key_name: Optional[pulumi.Input[str]] = None,
@@ -113,7 +113,29 @@ class DatabaseInstanceArgs:
              restore_backup_context: Optional[pulumi.Input['DatabaseInstanceRestoreBackupContextArgs']] = None,
              root_password: Optional[pulumi.Input[str]] = None,
              settings: Optional[pulumi.Input['DatabaseInstanceSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if database_version is None and 'databaseVersion' in kwargs:
+            database_version = kwargs['databaseVersion']
+        if database_version is None:
+            raise TypeError("Missing 'database_version' argument")
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if encryption_key_name is None and 'encryptionKeyName' in kwargs:
+            encryption_key_name = kwargs['encryptionKeyName']
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if maintenance_version is None and 'maintenanceVersion' in kwargs:
+            maintenance_version = kwargs['maintenanceVersion']
+        if master_instance_name is None and 'masterInstanceName' in kwargs:
+            master_instance_name = kwargs['masterInstanceName']
+        if replica_configuration is None and 'replicaConfiguration' in kwargs:
+            replica_configuration = kwargs['replicaConfiguration']
+        if restore_backup_context is None and 'restoreBackupContext' in kwargs:
+            restore_backup_context = kwargs['restoreBackupContext']
+        if root_password is None and 'rootPassword' in kwargs:
+            root_password = kwargs['rootPassword']
+
         _setter("database_version", database_version)
         if clone is not None:
             _setter("clone", clone)
@@ -487,7 +509,49 @@ class _DatabaseInstanceState:
              server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceServerCaCertArgs']]]] = None,
              service_account_email_address: Optional[pulumi.Input[str]] = None,
              settings: Optional[pulumi.Input['DatabaseInstanceSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if available_maintenance_versions is None and 'availableMaintenanceVersions' in kwargs:
+            available_maintenance_versions = kwargs['availableMaintenanceVersions']
+        if connection_name is None and 'connectionName' in kwargs:
+            connection_name = kwargs['connectionName']
+        if database_version is None and 'databaseVersion' in kwargs:
+            database_version = kwargs['databaseVersion']
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if dns_name is None and 'dnsName' in kwargs:
+            dns_name = kwargs['dnsName']
+        if encryption_key_name is None and 'encryptionKeyName' in kwargs:
+            encryption_key_name = kwargs['encryptionKeyName']
+        if first_ip_address is None and 'firstIpAddress' in kwargs:
+            first_ip_address = kwargs['firstIpAddress']
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if ip_addresses is None and 'ipAddresses' in kwargs:
+            ip_addresses = kwargs['ipAddresses']
+        if maintenance_version is None and 'maintenanceVersion' in kwargs:
+            maintenance_version = kwargs['maintenanceVersion']
+        if master_instance_name is None and 'masterInstanceName' in kwargs:
+            master_instance_name = kwargs['masterInstanceName']
+        if private_ip_address is None and 'privateIpAddress' in kwargs:
+            private_ip_address = kwargs['privateIpAddress']
+        if psc_service_attachment_link is None and 'pscServiceAttachmentLink' in kwargs:
+            psc_service_attachment_link = kwargs['pscServiceAttachmentLink']
+        if public_ip_address is None and 'publicIpAddress' in kwargs:
+            public_ip_address = kwargs['publicIpAddress']
+        if replica_configuration is None and 'replicaConfiguration' in kwargs:
+            replica_configuration = kwargs['replicaConfiguration']
+        if restore_backup_context is None and 'restoreBackupContext' in kwargs:
+            restore_backup_context = kwargs['restoreBackupContext']
+        if root_password is None and 'rootPassword' in kwargs:
+            root_password = kwargs['rootPassword']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if server_ca_certs is None and 'serverCaCerts' in kwargs:
+            server_ca_certs = kwargs['serverCaCerts']
+        if service_account_email_address is None and 'serviceAccountEmailAddress' in kwargs:
+            service_account_email_address = kwargs['serviceAccountEmailAddress']
+
         if available_maintenance_versions is not None:
             _setter("available_maintenance_versions", available_maintenance_versions)
         if clone is not None:

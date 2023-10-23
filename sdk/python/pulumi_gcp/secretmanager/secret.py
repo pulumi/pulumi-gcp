@@ -84,8 +84,8 @@ class SecretArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             replication: pulumi.Input['SecretReplicationArgs'],
-             secret_id: pulumi.Input[str],
+             replication: Optional[pulumi.Input['SecretReplicationArgs']] = None,
+             secret_id: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              expire_time: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -94,7 +94,19 @@ class SecretArgs:
              topics: Optional[pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]]] = None,
              ttl: Optional[pulumi.Input[str]] = None,
              version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if replication is None:
+            raise TypeError("Missing 'replication' argument")
+        if secret_id is None and 'secretId' in kwargs:
+            secret_id = kwargs['secretId']
+        if secret_id is None:
+            raise TypeError("Missing 'secret_id' argument")
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if version_aliases is None and 'versionAliases' in kwargs:
+            version_aliases = kwargs['versionAliases']
+
         _setter("replication", replication)
         _setter("secret_id", secret_id)
         if annotations is not None:
@@ -354,7 +366,17 @@ class _SecretState:
              topics: Optional[pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]]] = None,
              ttl: Optional[pulumi.Input[str]] = None,
              version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if secret_id is None and 'secretId' in kwargs:
+            secret_id = kwargs['secretId']
+        if version_aliases is None and 'versionAliases' in kwargs:
+            version_aliases = kwargs['versionAliases']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if create_time is not None:

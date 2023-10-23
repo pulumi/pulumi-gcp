@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.CloudDeploy
     ///                 },
     ///                 new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineStageArgs
     ///                 {
-    ///                     Profiles = new[] {},
+    ///                     Profiles = new() { },
     ///                     TargetId = "example-target-two",
     ///                 },
     ///             },
@@ -127,7 +127,7 @@ namespace Pulumi.Gcp.CloudDeploy
     ///                 },
     ///                 new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineStageArgs
     ///                 {
-    ///                     Profiles = new[] {},
+    ///                     Profiles = new() { },
     ///                     TargetId = "example-target-two",
     ///                 },
     ///             },
@@ -190,7 +190,7 @@ namespace Pulumi.Gcp.CloudDeploy
     ///                 },
     ///                 new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineStageArgs
     ///                 {
-    ///                     Profiles = new[] {},
+    ///                     Profiles = new() { },
     ///                     TargetId = "example-target-two",
     ///                 },
     ///             },
@@ -253,7 +253,7 @@ namespace Pulumi.Gcp.CloudDeploy
     ///                 },
     ///                 new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineStageArgs
     ///                 {
-    ///                     Profiles = new[] {},
+    ///                     Profiles = new() { },
     ///                     TargetId = "example-target-two",
     ///                 },
     ///             },
@@ -313,7 +313,7 @@ namespace Pulumi.Gcp.CloudDeploy
     ///                 },
     ///                 new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineStageArgs
     ///                 {
-    ///                     Profiles = new[] {},
+    ///                     Profiles = new() { },
     ///                     TargetId = "example-target-two",
     ///                 },
     ///             },

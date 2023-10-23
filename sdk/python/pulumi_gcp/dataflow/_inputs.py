@@ -45,7 +45,13 @@ class PipelineScheduleInfoArgs:
              next_job_time: Optional[pulumi.Input[str]] = None,
              schedule: Optional[pulumi.Input[str]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if next_job_time is None and 'nextJobTime' in kwargs:
+            next_job_time = kwargs['nextJobTime']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         if next_job_time is not None:
             _setter("next_job_time", next_job_time)
         if schedule is not None:
@@ -115,7 +121,13 @@ class PipelineWorkloadArgs:
              _setter: Callable[[Any, Any], None],
              dataflow_flex_template_request: Optional[pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestArgs']] = None,
              dataflow_launch_template_request: Optional[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataflow_flex_template_request is None and 'dataflowFlexTemplateRequest' in kwargs:
+            dataflow_flex_template_request = kwargs['dataflowFlexTemplateRequest']
+        if dataflow_launch_template_request is None and 'dataflowLaunchTemplateRequest' in kwargs:
+            dataflow_launch_template_request = kwargs['dataflowLaunchTemplateRequest']
+
         if dataflow_flex_template_request is not None:
             _setter("dataflow_flex_template_request", dataflow_flex_template_request)
         if dataflow_launch_template_request is not None:
@@ -175,11 +187,25 @@ class PipelineWorkloadDataflowFlexTemplateRequestArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             launch_parameter: pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgs'],
-             location: pulumi.Input[str],
-             project_id: pulumi.Input[str],
+             launch_parameter: Optional[pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
              validate_only: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if launch_parameter is None and 'launchParameter' in kwargs:
+            launch_parameter = kwargs['launchParameter']
+        if launch_parameter is None:
+            raise TypeError("Missing 'launch_parameter' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if validate_only is None and 'validateOnly' in kwargs:
+            validate_only = kwargs['validateOnly']
+
         _setter("launch_parameter", launch_parameter)
         _setter("location", location)
         _setter("project_id", project_id)
@@ -274,14 +300,26 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             job_name: pulumi.Input[str],
+             job_name: Optional[pulumi.Input[str]] = None,
              container_spec_gcs_path: Optional[pulumi.Input[str]] = None,
              environment: Optional[pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgs']] = None,
              launch_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              transform_name_mappings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              update: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if job_name is None and 'jobName' in kwargs:
+            job_name = kwargs['jobName']
+        if job_name is None:
+            raise TypeError("Missing 'job_name' argument")
+        if container_spec_gcs_path is None and 'containerSpecGcsPath' in kwargs:
+            container_spec_gcs_path = kwargs['containerSpecGcsPath']
+        if launch_options is None and 'launchOptions' in kwargs:
+            launch_options = kwargs['launchOptions']
+        if transform_name_mappings is None and 'transformNameMappings' in kwargs:
+            transform_name_mappings = kwargs['transformNameMappings']
+
         _setter("job_name", job_name)
         if container_spec_gcs_path is not None:
             _setter("container_spec_gcs_path", container_spec_gcs_path)
@@ -467,7 +505,35 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgs:
              worker_region: Optional[pulumi.Input[str]] = None,
              worker_zone: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if additional_experiments is None and 'additionalExperiments' in kwargs:
+            additional_experiments = kwargs['additionalExperiments']
+        if additional_user_labels is None and 'additionalUserLabels' in kwargs:
+            additional_user_labels = kwargs['additionalUserLabels']
+        if enable_streaming_engine is None and 'enableStreamingEngine' in kwargs:
+            enable_streaming_engine = kwargs['enableStreamingEngine']
+        if flexrs_goal is None and 'flexrsGoal' in kwargs:
+            flexrs_goal = kwargs['flexrsGoal']
+        if ip_configuration is None and 'ipConfiguration' in kwargs:
+            ip_configuration = kwargs['ipConfiguration']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if max_workers is None and 'maxWorkers' in kwargs:
+            max_workers = kwargs['maxWorkers']
+        if num_workers is None and 'numWorkers' in kwargs:
+            num_workers = kwargs['numWorkers']
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if temp_location is None and 'tempLocation' in kwargs:
+            temp_location = kwargs['tempLocation']
+        if worker_region is None and 'workerRegion' in kwargs:
+            worker_region = kwargs['workerRegion']
+        if worker_zone is None and 'workerZone' in kwargs:
+            worker_zone = kwargs['workerZone']
+
         if additional_experiments is not None:
             _setter("additional_experiments", additional_experiments)
         if additional_user_labels is not None:
@@ -728,12 +794,24 @@ class PipelineWorkloadDataflowLaunchTemplateRequestArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project_id: pulumi.Input[str],
+             project_id: Optional[pulumi.Input[str]] = None,
              gcs_path: Optional[pulumi.Input[str]] = None,
              launch_parameters: Optional[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              validate_only: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if gcs_path is None and 'gcsPath' in kwargs:
+            gcs_path = kwargs['gcsPath']
+        if launch_parameters is None and 'launchParameters' in kwargs:
+            launch_parameters = kwargs['launchParameters']
+        if validate_only is None and 'validateOnly' in kwargs:
+            validate_only = kwargs['validateOnly']
+
         _setter("project_id", project_id)
         if gcs_path is not None:
             _setter("gcs_path", gcs_path)
@@ -837,12 +915,20 @@ class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             job_name: pulumi.Input[str],
+             job_name: Optional[pulumi.Input[str]] = None,
              environment: Optional[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs']] = None,
              parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              update: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if job_name is None and 'jobName' in kwargs:
+            job_name = kwargs['jobName']
+        if job_name is None:
+            raise TypeError("Missing 'job_name' argument")
+        if transform_name_mapping is None and 'transformNameMapping' in kwargs:
+            transform_name_mapping = kwargs['transformNameMapping']
+
         _setter("job_name", job_name)
         if environment is not None:
             _setter("environment", environment)
@@ -997,7 +1083,35 @@ class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentAr
              worker_region: Optional[pulumi.Input[str]] = None,
              worker_zone: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if additional_experiments is None and 'additionalExperiments' in kwargs:
+            additional_experiments = kwargs['additionalExperiments']
+        if additional_user_labels is None and 'additionalUserLabels' in kwargs:
+            additional_user_labels = kwargs['additionalUserLabels']
+        if bypass_temp_dir_validation is None and 'bypassTempDirValidation' in kwargs:
+            bypass_temp_dir_validation = kwargs['bypassTempDirValidation']
+        if enable_streaming_engine is None and 'enableStreamingEngine' in kwargs:
+            enable_streaming_engine = kwargs['enableStreamingEngine']
+        if ip_configuration is None and 'ipConfiguration' in kwargs:
+            ip_configuration = kwargs['ipConfiguration']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if max_workers is None and 'maxWorkers' in kwargs:
+            max_workers = kwargs['maxWorkers']
+        if num_workers is None and 'numWorkers' in kwargs:
+            num_workers = kwargs['numWorkers']
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if temp_location is None and 'tempLocation' in kwargs:
+            temp_location = kwargs['tempLocation']
+        if worker_region is None and 'workerRegion' in kwargs:
+            worker_region = kwargs['workerRegion']
+        if worker_zone is None and 'workerZone' in kwargs:
+            worker_zone = kwargs['workerZone']
+
         if additional_experiments is not None:
             _setter("additional_experiments", additional_experiments)
         if additional_user_labels is not None:

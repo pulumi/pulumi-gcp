@@ -48,11 +48,21 @@ class TagTemplateIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_data: pulumi.Input[str],
-             tag_template: pulumi.Input[str],
+             policy_data: Optional[pulumi.Input[str]] = None,
+             tag_template: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+        if tag_template is None and 'tagTemplate' in kwargs:
+            tag_template = kwargs['tagTemplate']
+        if tag_template is None:
+            raise TypeError("Missing 'tag_template' argument")
+
         _setter("policy_data", policy_data)
         _setter("tag_template", tag_template)
         if project is not None:
@@ -165,7 +175,13 @@ class _TagTemplateIamPolicyState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              tag_template: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if tag_template is None and 'tagTemplate' in kwargs:
+            tag_template = kwargs['tagTemplate']
+
         if etag is not None:
             _setter("etag", etag)
         if policy_data is not None:

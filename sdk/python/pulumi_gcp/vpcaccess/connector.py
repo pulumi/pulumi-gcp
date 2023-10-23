@@ -74,7 +74,21 @@ class ConnectorArgs:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              subnet: Optional[pulumi.Input['ConnectorSubnetArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_cidr_range is None and 'ipCidrRange' in kwargs:
+            ip_cidr_range = kwargs['ipCidrRange']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if max_instances is None and 'maxInstances' in kwargs:
+            max_instances = kwargs['maxInstances']
+        if max_throughput is None and 'maxThroughput' in kwargs:
+            max_throughput = kwargs['maxThroughput']
+        if min_instances is None and 'minInstances' in kwargs:
+            min_instances = kwargs['minInstances']
+        if min_throughput is None and 'minThroughput' in kwargs:
+            min_throughput = kwargs['minThroughput']
+
         if ip_cidr_range is not None:
             _setter("ip_cidr_range", ip_cidr_range)
         if machine_type is not None:
@@ -309,7 +323,25 @@ class _ConnectorState:
              self_link: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              subnet: Optional[pulumi.Input['ConnectorSubnetArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connected_projects is None and 'connectedProjects' in kwargs:
+            connected_projects = kwargs['connectedProjects']
+        if ip_cidr_range is None and 'ipCidrRange' in kwargs:
+            ip_cidr_range = kwargs['ipCidrRange']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if max_instances is None and 'maxInstances' in kwargs:
+            max_instances = kwargs['maxInstances']
+        if max_throughput is None and 'maxThroughput' in kwargs:
+            max_throughput = kwargs['maxThroughput']
+        if min_instances is None and 'minInstances' in kwargs:
+            min_instances = kwargs['minInstances']
+        if min_throughput is None and 'minThroughput' in kwargs:
+            min_throughput = kwargs['minThroughput']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if connected_projects is not None:
             _setter("connected_projects", connected_projects)
         if ip_cidr_range is not None:

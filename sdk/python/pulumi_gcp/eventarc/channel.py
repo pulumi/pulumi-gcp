@@ -42,12 +42,20 @@ class ChannelArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              crypto_key_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              third_party_provider: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if crypto_key_name is None and 'cryptoKeyName' in kwargs:
+            crypto_key_name = kwargs['cryptoKeyName']
+        if third_party_provider is None and 'thirdPartyProvider' in kwargs:
+            third_party_provider = kwargs['thirdPartyProvider']
+
         _setter("location", location)
         if crypto_key_name is not None:
             _setter("crypto_key_name", crypto_key_name)
@@ -183,7 +191,21 @@ class _ChannelState:
              third_party_provider: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if activation_token is None and 'activationToken' in kwargs:
+            activation_token = kwargs['activationToken']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if crypto_key_name is None and 'cryptoKeyName' in kwargs:
+            crypto_key_name = kwargs['cryptoKeyName']
+        if pubsub_topic is None and 'pubsubTopic' in kwargs:
+            pubsub_topic = kwargs['pubsubTopic']
+        if third_party_provider is None and 'thirdPartyProvider' in kwargs:
+            third_party_provider = kwargs['thirdPartyProvider']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if activation_token is not None:
             _setter("activation_token", activation_token)
         if create_time is not None:

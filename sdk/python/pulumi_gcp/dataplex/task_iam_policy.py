@@ -53,12 +53,24 @@ class TaskIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             lake: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
-             task_id: pulumi.Input[str],
+             lake: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             task_id: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if lake is None:
+            raise TypeError("Missing 'lake' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+        if task_id is None and 'taskId' in kwargs:
+            task_id = kwargs['taskId']
+        if task_id is None:
+            raise TypeError("Missing 'task_id' argument")
+
         _setter("lake", lake)
         _setter("policy_data", policy_data)
         _setter("task_id", task_id)
@@ -192,7 +204,13 @@ class _TaskIamPolicyState:
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              task_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if task_id is None and 'taskId' in kwargs:
+            task_id = kwargs['taskId']
+
         if etag is not None:
             _setter("etag", etag)
         if lake is not None:

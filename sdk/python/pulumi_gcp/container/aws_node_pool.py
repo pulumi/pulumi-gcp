@@ -58,18 +58,38 @@ class AwsNodePoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             autoscaling: pulumi.Input['AwsNodePoolAutoscalingArgs'],
-             cluster: pulumi.Input[str],
-             config: pulumi.Input['AwsNodePoolConfigArgs'],
-             location: pulumi.Input[str],
-             max_pods_constraint: pulumi.Input['AwsNodePoolMaxPodsConstraintArgs'],
-             subnet_id: pulumi.Input[str],
-             version: pulumi.Input[str],
+             autoscaling: Optional[pulumi.Input['AwsNodePoolAutoscalingArgs']] = None,
+             cluster: Optional[pulumi.Input[str]] = None,
+             config: Optional[pulumi.Input['AwsNodePoolConfigArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             max_pods_constraint: Optional[pulumi.Input['AwsNodePoolMaxPodsConstraintArgs']] = None,
+             subnet_id: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              management: Optional[pulumi.Input['AwsNodePoolManagementArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if autoscaling is None:
+            raise TypeError("Missing 'autoscaling' argument")
+        if cluster is None:
+            raise TypeError("Missing 'cluster' argument")
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if max_pods_constraint is None and 'maxPodsConstraint' in kwargs:
+            max_pods_constraint = kwargs['maxPodsConstraint']
+        if max_pods_constraint is None:
+            raise TypeError("Missing 'max_pods_constraint' argument")
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if subnet_id is None:
+            raise TypeError("Missing 'subnet_id' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+
         _setter("autoscaling", autoscaling)
         _setter("cluster", cluster)
         _setter("config", config)
@@ -299,7 +319,17 @@ class _AwsNodePoolState:
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if max_pods_constraint is None and 'maxPodsConstraint' in kwargs:
+            max_pods_constraint = kwargs['maxPodsConstraint']
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if autoscaling is not None:

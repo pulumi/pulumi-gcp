@@ -42,9 +42,19 @@ class PolicyTagIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_data: pulumi.Input[str],
-             policy_tag: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             policy_data: Optional[pulumi.Input[str]] = None,
+             policy_tag: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+        if policy_tag is None and 'policyTag' in kwargs:
+            policy_tag = kwargs['policyTag']
+        if policy_tag is None:
+            raise TypeError("Missing 'policy_tag' argument")
+
         _setter("policy_data", policy_data)
         _setter("policy_tag", policy_tag)
 
@@ -123,7 +133,13 @@ class _PolicyTagIamPolicyState:
              etag: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              policy_tag: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_tag is None and 'policyTag' in kwargs:
+            policy_tag = kwargs['policyTag']
+
         if etag is not None:
             _setter("etag", etag)
         if policy_data is not None:

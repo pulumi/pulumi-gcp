@@ -39,11 +39,21 @@ class CxEnvironmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             version_configs: pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArgs']]],
+             display_name: Optional[pulumi.Input[str]] = None,
+             version_configs: Optional[pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if version_configs is None and 'versionConfigs' in kwargs:
+            version_configs = kwargs['versionConfigs']
+        if version_configs is None:
+            raise TypeError("Missing 'version_configs' argument")
+
         _setter("display_name", display_name)
         _setter("version_configs", version_configs)
         if description is not None:
@@ -140,7 +150,15 @@ class _CxEnvironmentState:
              parent: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              version_configs: Optional[pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if version_configs is None and 'versionConfigs' in kwargs:
+            version_configs = kwargs['versionConfigs']
+
         if description is not None:
             _setter("description", description)
         if display_name is not None:

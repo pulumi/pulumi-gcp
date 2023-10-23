@@ -56,11 +56,21 @@ class ConnectionIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_id: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             connection_id: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connection_id is None and 'connectionId' in kwargs:
+            connection_id = kwargs['connectionId']
+        if connection_id is None:
+            raise TypeError("Missing 'connection_id' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("connection_id", connection_id)
         _setter("policy_data", policy_data)
         if location is not None:
@@ -191,7 +201,13 @@ class _ConnectionIamPolicyState:
              location: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connection_id is None and 'connectionId' in kwargs:
+            connection_id = kwargs['connectionId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if connection_id is not None:
             _setter("connection_id", connection_id)
         if etag is not None:

@@ -46,11 +46,21 @@ class DatabaseIAMPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             database: pulumi.Input[str],
-             instance: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             database: Optional[pulumi.Input[str]] = None,
+             instance: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if database is None:
+            raise TypeError("Missing 'database' argument")
+        if instance is None:
+            raise TypeError("Missing 'instance' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("database", database)
         _setter("instance", instance)
         _setter("policy_data", policy_data)
@@ -160,7 +170,11 @@ class _DatabaseIAMPolicyState:
              instance: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if database is not None:
             _setter("database", database)
         if etag is not None:

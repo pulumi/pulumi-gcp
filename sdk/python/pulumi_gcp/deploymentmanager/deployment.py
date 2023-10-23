@@ -73,7 +73,7 @@ class DeploymentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             target: pulumi.Input['DeploymentTargetArgs'],
+             target: Optional[pulumi.Input['DeploymentTargetArgs']] = None,
              create_policy: Optional[pulumi.Input[str]] = None,
              delete_policy: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -81,7 +81,15 @@ class DeploymentArgs:
              name: Optional[pulumi.Input[str]] = None,
              preview: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+        if create_policy is None and 'createPolicy' in kwargs:
+            create_policy = kwargs['createPolicy']
+        if delete_policy is None and 'deletePolicy' in kwargs:
+            delete_policy = kwargs['deletePolicy']
+
         _setter("target", target)
         if create_policy is not None:
             _setter("create_policy", create_policy)
@@ -300,7 +308,17 @@ class _DeploymentState:
              project: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              target: Optional[pulumi.Input['DeploymentTargetArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_policy is None and 'createPolicy' in kwargs:
+            create_policy = kwargs['createPolicy']
+        if delete_policy is None and 'deletePolicy' in kwargs:
+            delete_policy = kwargs['deletePolicy']
+        if deployment_id is None and 'deploymentId' in kwargs:
+            deployment_id = kwargs['deploymentId']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if create_policy is not None:
             _setter("create_policy", create_policy)
         if delete_policy is not None:

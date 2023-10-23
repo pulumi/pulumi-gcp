@@ -57,13 +57,23 @@ class WebRegionBackendServiceIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
-             web_region_backend_service: pulumi.Input[str],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             web_region_backend_service: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['WebRegionBackendServiceIamBindingConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if web_region_backend_service is None and 'webRegionBackendService' in kwargs:
+            web_region_backend_service = kwargs['webRegionBackendService']
+        if web_region_backend_service is None:
+            raise TypeError("Missing 'web_region_backend_service' argument")
+
         _setter("members", members)
         _setter("role", role)
         _setter("web_region_backend_service", web_region_backend_service)
@@ -211,7 +221,11 @@ class _WebRegionBackendServiceIamBindingState:
              region: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              web_region_backend_service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if web_region_backend_service is None and 'webRegionBackendService' in kwargs:
+            web_region_backend_service = kwargs['webRegionBackendService']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

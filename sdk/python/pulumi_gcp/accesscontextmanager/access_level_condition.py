@@ -75,14 +75,26 @@ class AccessLevelConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_level: pulumi.Input[str],
+             access_level: Optional[pulumi.Input[str]] = None,
              device_policy: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArgs']] = None,
              ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              negate: Optional[pulumi.Input[bool]] = None,
              regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if access_level is None:
+            raise TypeError("Missing 'access_level' argument")
+        if device_policy is None and 'devicePolicy' in kwargs:
+            device_policy = kwargs['devicePolicy']
+        if ip_subnetworks is None and 'ipSubnetworks' in kwargs:
+            ip_subnetworks = kwargs['ipSubnetworks']
+        if required_access_levels is None and 'requiredAccessLevels' in kwargs:
+            required_access_levels = kwargs['requiredAccessLevels']
+
         _setter("access_level", access_level)
         if device_policy is not None:
             _setter("device_policy", device_policy)
@@ -280,7 +292,17 @@ class _AccessLevelConditionState:
              negate: Optional[pulumi.Input[bool]] = None,
              regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if device_policy is None and 'devicePolicy' in kwargs:
+            device_policy = kwargs['devicePolicy']
+        if ip_subnetworks is None and 'ipSubnetworks' in kwargs:
+            ip_subnetworks = kwargs['ipSubnetworks']
+        if required_access_levels is None and 'requiredAccessLevels' in kwargs:
+            required_access_levels = kwargs['requiredAccessLevels']
+
         if access_level is not None:
             _setter("access_level", access_level)
         if device_policy is not None:

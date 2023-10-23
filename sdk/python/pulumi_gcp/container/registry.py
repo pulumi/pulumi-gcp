@@ -31,7 +31,9 @@ class RegistryArgs:
              _setter: Callable[[Any, Any], None],
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if location is not None:
             _setter("location", location)
         if project is not None:
@@ -86,7 +88,11 @@ class _RegistryState:
              bucket_self_link: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket_self_link is None and 'bucketSelfLink' in kwargs:
+            bucket_self_link = kwargs['bucketSelfLink']
+
         if bucket_self_link is not None:
             _setter("bucket_self_link", bucket_self_link)
         if location is not None:

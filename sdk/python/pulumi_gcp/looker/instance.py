@@ -113,7 +113,31 @@ class InstanceArgs:
              region: Optional[pulumi.Input[str]] = None,
              reserved_range: Optional[pulumi.Input[str]] = None,
              user_metadata: Optional[pulumi.Input['InstanceUserMetadataArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if admin_settings is None and 'adminSettings' in kwargs:
+            admin_settings = kwargs['adminSettings']
+        if consumer_network is None and 'consumerNetwork' in kwargs:
+            consumer_network = kwargs['consumerNetwork']
+        if deny_maintenance_period is None and 'denyMaintenancePeriod' in kwargs:
+            deny_maintenance_period = kwargs['denyMaintenancePeriod']
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if maintenance_window is None and 'maintenanceWindow' in kwargs:
+            maintenance_window = kwargs['maintenanceWindow']
+        if oauth_config is None and 'oauthConfig' in kwargs:
+            oauth_config = kwargs['oauthConfig']
+        if platform_edition is None and 'platformEdition' in kwargs:
+            platform_edition = kwargs['platformEdition']
+        if private_ip_enabled is None and 'privateIpEnabled' in kwargs:
+            private_ip_enabled = kwargs['privateIpEnabled']
+        if public_ip_enabled is None and 'publicIpEnabled' in kwargs:
+            public_ip_enabled = kwargs['publicIpEnabled']
+        if reserved_range is None and 'reservedRange' in kwargs:
+            reserved_range = kwargs['reservedRange']
+        if user_metadata is None and 'userMetadata' in kwargs:
+            user_metadata = kwargs['userMetadata']
+
         if admin_settings is not None:
             _setter("admin_settings", admin_settings)
         if consumer_network is not None:
@@ -474,7 +498,45 @@ class _InstanceState:
              reserved_range: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              user_metadata: Optional[pulumi.Input['InstanceUserMetadataArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if admin_settings is None and 'adminSettings' in kwargs:
+            admin_settings = kwargs['adminSettings']
+        if consumer_network is None and 'consumerNetwork' in kwargs:
+            consumer_network = kwargs['consumerNetwork']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if deny_maintenance_period is None and 'denyMaintenancePeriod' in kwargs:
+            deny_maintenance_period = kwargs['denyMaintenancePeriod']
+        if egress_public_ip is None and 'egressPublicIp' in kwargs:
+            egress_public_ip = kwargs['egressPublicIp']
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if ingress_private_ip is None and 'ingressPrivateIp' in kwargs:
+            ingress_private_ip = kwargs['ingressPrivateIp']
+        if ingress_public_ip is None and 'ingressPublicIp' in kwargs:
+            ingress_public_ip = kwargs['ingressPublicIp']
+        if looker_uri is None and 'lookerUri' in kwargs:
+            looker_uri = kwargs['lookerUri']
+        if looker_version is None and 'lookerVersion' in kwargs:
+            looker_version = kwargs['lookerVersion']
+        if maintenance_window is None and 'maintenanceWindow' in kwargs:
+            maintenance_window = kwargs['maintenanceWindow']
+        if oauth_config is None and 'oauthConfig' in kwargs:
+            oauth_config = kwargs['oauthConfig']
+        if platform_edition is None and 'platformEdition' in kwargs:
+            platform_edition = kwargs['platformEdition']
+        if private_ip_enabled is None and 'privateIpEnabled' in kwargs:
+            private_ip_enabled = kwargs['privateIpEnabled']
+        if public_ip_enabled is None and 'publicIpEnabled' in kwargs:
+            public_ip_enabled = kwargs['publicIpEnabled']
+        if reserved_range is None and 'reservedRange' in kwargs:
+            reserved_range = kwargs['reservedRange']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if user_metadata is None and 'userMetadata' in kwargs:
+            user_metadata = kwargs['userMetadata']
+
         if admin_settings is not None:
             _setter("admin_settings", admin_settings)
         if consumer_network is not None:

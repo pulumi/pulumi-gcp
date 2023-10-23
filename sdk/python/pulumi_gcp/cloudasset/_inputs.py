@@ -47,11 +47,15 @@ class FolderFeedConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+
         _setter("expression", expression)
         if description is not None:
             _setter("description", description)
@@ -127,8 +131,14 @@ class FolderFeedFeedOutputConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pubsub_destination: pulumi.Input['FolderFeedFeedOutputConfigPubsubDestinationArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             pubsub_destination: Optional[pulumi.Input['FolderFeedFeedOutputConfigPubsubDestinationArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pubsub_destination is None and 'pubsubDestination' in kwargs:
+            pubsub_destination = kwargs['pubsubDestination']
+        if pubsub_destination is None:
+            raise TypeError("Missing 'pubsub_destination' argument")
+
         _setter("pubsub_destination", pubsub_destination)
 
     @property
@@ -161,8 +171,12 @@ class FolderFeedFeedOutputConfigPubsubDestinationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             topic: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             topic: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if topic is None:
+            raise TypeError("Missing 'topic' argument")
+
         _setter("topic", topic)
 
     @property
@@ -206,11 +220,15 @@ class OrganizationFeedConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+
         _setter("expression", expression)
         if description is not None:
             _setter("description", description)
@@ -286,8 +304,14 @@ class OrganizationFeedFeedOutputConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pubsub_destination: pulumi.Input['OrganizationFeedFeedOutputConfigPubsubDestinationArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             pubsub_destination: Optional[pulumi.Input['OrganizationFeedFeedOutputConfigPubsubDestinationArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pubsub_destination is None and 'pubsubDestination' in kwargs:
+            pubsub_destination = kwargs['pubsubDestination']
+        if pubsub_destination is None:
+            raise TypeError("Missing 'pubsub_destination' argument")
+
         _setter("pubsub_destination", pubsub_destination)
 
     @property
@@ -320,8 +344,12 @@ class OrganizationFeedFeedOutputConfigPubsubDestinationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             topic: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             topic: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if topic is None:
+            raise TypeError("Missing 'topic' argument")
+
         _setter("topic", topic)
 
     @property
@@ -365,11 +393,15 @@ class ProjectFeedConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+
         _setter("expression", expression)
         if description is not None:
             _setter("description", description)
@@ -445,8 +477,14 @@ class ProjectFeedFeedOutputConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pubsub_destination: pulumi.Input['ProjectFeedFeedOutputConfigPubsubDestinationArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             pubsub_destination: Optional[pulumi.Input['ProjectFeedFeedOutputConfigPubsubDestinationArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pubsub_destination is None and 'pubsubDestination' in kwargs:
+            pubsub_destination = kwargs['pubsubDestination']
+        if pubsub_destination is None:
+            raise TypeError("Missing 'pubsub_destination' argument")
+
         _setter("pubsub_destination", pubsub_destination)
 
     @property
@@ -479,8 +517,12 @@ class ProjectFeedFeedOutputConfigPubsubDestinationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             topic: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             topic: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if topic is None:
+            raise TypeError("Missing 'topic' argument")
+
         _setter("topic", topic)
 
     @property

@@ -33,9 +33,17 @@ class InstanceAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             environment: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             environment: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if environment is None:
+            raise TypeError("Missing 'environment' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+
         _setter("environment", environment)
         _setter("instance_id", instance_id)
 
@@ -96,7 +104,11 @@ class _InstanceAttachmentState:
              environment: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if environment is not None:
             _setter("environment", environment)
         if instance_id is not None:

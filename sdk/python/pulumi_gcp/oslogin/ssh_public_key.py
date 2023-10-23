@@ -38,11 +38,19 @@ class SshPublicKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             user: pulumi.Input[str],
+             key: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
              expiration_time_usec: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
+        if expiration_time_usec is None and 'expirationTimeUsec' in kwargs:
+            expiration_time_usec = kwargs['expirationTimeUsec']
+
         _setter("key", key)
         _setter("user", user)
         if expiration_time_usec is not None:
@@ -137,7 +145,11 @@ class _SshPublicKeyState:
              key: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expiration_time_usec is None and 'expirationTimeUsec' in kwargs:
+            expiration_time_usec = kwargs['expirationTimeUsec']
+
         if expiration_time_usec is not None:
             _setter("expiration_time_usec", expiration_time_usec)
         if fingerprint is not None:

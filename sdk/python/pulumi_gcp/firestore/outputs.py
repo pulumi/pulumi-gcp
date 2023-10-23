@@ -33,7 +33,9 @@ class FieldIndexConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              indexes: Optional[Sequence['outputs.FieldIndexConfigIndex']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if indexes is not None:
             _setter("indexes", indexes)
 
@@ -97,7 +99,13 @@ class FieldIndexConfigIndex(dict):
              array_config: Optional[str] = None,
              order: Optional[str] = None,
              query_scope: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if array_config is None and 'arrayConfig' in kwargs:
+            array_config = kwargs['arrayConfig']
+        if query_scope is None and 'queryScope' in kwargs:
+            query_scope = kwargs['queryScope']
+
         if array_config is not None:
             _setter("array_config", array_config)
         if order is not None:
@@ -154,7 +162,9 @@ class FieldTtlConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              state: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if state is not None:
             _setter("state", state)
 
@@ -216,7 +226,13 @@ class IndexField(dict):
              array_config: Optional[str] = None,
              field_path: Optional[str] = None,
              order: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if array_config is None and 'arrayConfig' in kwargs:
+            array_config = kwargs['arrayConfig']
+        if field_path is None and 'fieldPath' in kwargs:
+            field_path = kwargs['fieldPath']
+
         if array_config is not None:
             _setter("array_config", array_config)
         if field_path is not None:

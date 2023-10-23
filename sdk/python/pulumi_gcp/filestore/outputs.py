@@ -65,11 +65,23 @@ class InstanceFileShares(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             capacity_gb: int,
-             name: str,
+             capacity_gb: Optional[int] = None,
+             name: Optional[str] = None,
              nfs_export_options: Optional[Sequence['outputs.InstanceFileSharesNfsExportOption']] = None,
              source_backup: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if capacity_gb is None and 'capacityGb' in kwargs:
+            capacity_gb = kwargs['capacityGb']
+        if capacity_gb is None:
+            raise TypeError("Missing 'capacity_gb' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if nfs_export_options is None and 'nfsExportOptions' in kwargs:
+            nfs_export_options = kwargs['nfsExportOptions']
+        if source_backup is None and 'sourceBackup' in kwargs:
+            source_backup = kwargs['sourceBackup']
+
         _setter("capacity_gb", capacity_gb)
         _setter("name", name)
         if nfs_export_options is not None:
@@ -183,7 +195,19 @@ class InstanceFileSharesNfsExportOption(dict):
              anon_uid: Optional[int] = None,
              ip_ranges: Optional[Sequence[str]] = None,
              squash_mode: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_mode is None and 'accessMode' in kwargs:
+            access_mode = kwargs['accessMode']
+        if anon_gid is None and 'anonGid' in kwargs:
+            anon_gid = kwargs['anonGid']
+        if anon_uid is None and 'anonUid' in kwargs:
+            anon_uid = kwargs['anonUid']
+        if ip_ranges is None and 'ipRanges' in kwargs:
+            ip_ranges = kwargs['ipRanges']
+        if squash_mode is None and 'squashMode' in kwargs:
+            squash_mode = kwargs['squashMode']
+
         if access_mode is not None:
             _setter("access_mode", access_mode)
         if anon_gid is not None:
@@ -306,12 +330,24 @@ class InstanceNetwork(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             modes: Sequence[str],
-             network: str,
+             modes: Optional[Sequence[str]] = None,
+             network: Optional[str] = None,
              connect_mode: Optional[str] = None,
              ip_addresses: Optional[Sequence[str]] = None,
              reserved_ip_range: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if modes is None:
+            raise TypeError("Missing 'modes' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if connect_mode is None and 'connectMode' in kwargs:
+            connect_mode = kwargs['connectMode']
+        if ip_addresses is None and 'ipAddresses' in kwargs:
+            ip_addresses = kwargs['ipAddresses']
+        if reserved_ip_range is None and 'reservedIpRange' in kwargs:
+            reserved_ip_range = kwargs['reservedIpRange']
+
         _setter("modes", modes)
         _setter("network", network)
         if connect_mode is not None:

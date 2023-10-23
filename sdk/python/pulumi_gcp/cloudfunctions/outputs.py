@@ -69,10 +69,20 @@ class FunctionEventTrigger(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             event_type: str,
-             resource: str,
+             event_type: Optional[str] = None,
+             resource: Optional[str] = None,
              failure_policy: Optional['outputs.FunctionEventTriggerFailurePolicy'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if event_type is None and 'eventType' in kwargs:
+            event_type = kwargs['eventType']
+        if event_type is None:
+            raise TypeError("Missing 'event_type' argument")
+        if resource is None:
+            raise TypeError("Missing 'resource' argument")
+        if failure_policy is None and 'failurePolicy' in kwargs:
+            failure_policy = kwargs['failurePolicy']
+
         _setter("event_type", event_type)
         _setter("resource", resource)
         if failure_policy is not None:
@@ -120,8 +130,12 @@ class FunctionEventTriggerFailurePolicy(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             retry: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             retry: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if retry is None:
+            raise TypeError("Missing 'retry' argument")
+
         _setter("retry", retry)
 
     @property
@@ -148,10 +162,16 @@ class FunctionIamBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -188,10 +208,16 @@ class FunctionIamMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -253,11 +279,21 @@ class FunctionSecretEnvironmentVariable(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             secret: str,
-             version: str,
+             key: Optional[str] = None,
+             secret: Optional[str] = None,
+             version: Optional[str] = None,
              project_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if secret is None:
+            raise TypeError("Missing 'secret' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+
         _setter("key", key)
         _setter("secret", secret)
         _setter("version", version)
@@ -339,11 +375,21 @@ class FunctionSecretVolume(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             mount_path: str,
-             secret: str,
+             mount_path: Optional[str] = None,
+             secret: Optional[str] = None,
              project_id: Optional[str] = None,
              versions: Optional[Sequence['outputs.FunctionSecretVolumeVersion']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if mount_path is None and 'mountPath' in kwargs:
+            mount_path = kwargs['mountPath']
+        if mount_path is None:
+            raise TypeError("Missing 'mount_path' argument")
+        if secret is None:
+            raise TypeError("Missing 'secret' argument")
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+
         _setter("mount_path", mount_path)
         _setter("secret", secret)
         if project_id is not None:
@@ -401,9 +447,15 @@ class FunctionSecretVolumeVersion(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: str,
-             version: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             path: Optional[str] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+
         _setter("path", path)
         _setter("version", version)
 
@@ -461,9 +513,15 @@ class FunctionSourceRepository(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             url: str,
+             url: Optional[str] = None,
              deployed_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if deployed_url is None and 'deployedUrl' in kwargs:
+            deployed_url = kwargs['deployedUrl']
+
         _setter("url", url)
         if deployed_url is not None:
             _setter("deployed_url", deployed_url)
@@ -508,10 +566,22 @@ class GetFunctionEventTriggerResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             event_type: str,
-             failure_policies: Sequence['outputs.GetFunctionEventTriggerFailurePolicyResult'],
-             resource: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             event_type: Optional[str] = None,
+             failure_policies: Optional[Sequence['outputs.GetFunctionEventTriggerFailurePolicyResult']] = None,
+             resource: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if event_type is None and 'eventType' in kwargs:
+            event_type = kwargs['eventType']
+        if event_type is None:
+            raise TypeError("Missing 'event_type' argument")
+        if failure_policies is None and 'failurePolicies' in kwargs:
+            failure_policies = kwargs['failurePolicies']
+        if failure_policies is None:
+            raise TypeError("Missing 'failure_policies' argument")
+        if resource is None:
+            raise TypeError("Missing 'resource' argument")
+
         _setter("event_type", event_type)
         _setter("failure_policies", failure_policies)
         _setter("resource", resource)
@@ -557,8 +627,12 @@ class GetFunctionEventTriggerFailurePolicyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             retry: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             retry: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if retry is None:
+            raise TypeError("Missing 'retry' argument")
+
         _setter("retry", retry)
 
     @property
@@ -587,11 +661,23 @@ class GetFunctionSecretEnvironmentVariableResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             project_id: str,
-             secret: str,
-             version: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[str] = None,
+             project_id: Optional[str] = None,
+             secret: Optional[str] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if secret is None:
+            raise TypeError("Missing 'secret' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+
         _setter("key", key)
         _setter("project_id", project_id)
         _setter("secret", secret)
@@ -635,11 +721,25 @@ class GetFunctionSecretVolumeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             mount_path: str,
-             project_id: str,
-             secret: str,
-             versions: Sequence['outputs.GetFunctionSecretVolumeVersionResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             mount_path: Optional[str] = None,
+             project_id: Optional[str] = None,
+             secret: Optional[str] = None,
+             versions: Optional[Sequence['outputs.GetFunctionSecretVolumeVersionResult']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if mount_path is None and 'mountPath' in kwargs:
+            mount_path = kwargs['mountPath']
+        if mount_path is None:
+            raise TypeError("Missing 'mount_path' argument")
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if secret is None:
+            raise TypeError("Missing 'secret' argument")
+        if versions is None:
+            raise TypeError("Missing 'versions' argument")
+
         _setter("mount_path", mount_path)
         _setter("project_id", project_id)
         _setter("secret", secret)
@@ -679,9 +779,15 @@ class GetFunctionSecretVolumeVersionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: str,
-             version: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             path: Optional[str] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+
         _setter("path", path)
         _setter("version", version)
 
@@ -712,9 +818,17 @@ class GetFunctionSourceRepositoryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             deployed_url: str,
-             url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             deployed_url: Optional[str] = None,
+             url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if deployed_url is None and 'deployedUrl' in kwargs:
+            deployed_url = kwargs['deployedUrl']
+        if deployed_url is None:
+            raise TypeError("Missing 'deployed_url' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+
         _setter("deployed_url", deployed_url)
         _setter("url", url)
 

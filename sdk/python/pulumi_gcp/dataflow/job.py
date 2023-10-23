@@ -88,8 +88,8 @@ class JobArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             temp_gcs_location: pulumi.Input[str],
-             template_gcs_path: pulumi.Input[str],
+             temp_gcs_location: Optional[pulumi.Input[str]] = None,
+             template_gcs_path: Optional[pulumi.Input[str]] = None,
              additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              enable_streaming_engine: Optional[pulumi.Input[bool]] = None,
              ip_configuration: Optional[pulumi.Input[str]] = None,
@@ -108,7 +108,37 @@ class JobArgs:
              subnetwork: Optional[pulumi.Input[str]] = None,
              transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if temp_gcs_location is None and 'tempGcsLocation' in kwargs:
+            temp_gcs_location = kwargs['tempGcsLocation']
+        if temp_gcs_location is None:
+            raise TypeError("Missing 'temp_gcs_location' argument")
+        if template_gcs_path is None and 'templateGcsPath' in kwargs:
+            template_gcs_path = kwargs['templateGcsPath']
+        if template_gcs_path is None:
+            raise TypeError("Missing 'template_gcs_path' argument")
+        if additional_experiments is None and 'additionalExperiments' in kwargs:
+            additional_experiments = kwargs['additionalExperiments']
+        if enable_streaming_engine is None and 'enableStreamingEngine' in kwargs:
+            enable_streaming_engine = kwargs['enableStreamingEngine']
+        if ip_configuration is None and 'ipConfiguration' in kwargs:
+            ip_configuration = kwargs['ipConfiguration']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if max_workers is None and 'maxWorkers' in kwargs:
+            max_workers = kwargs['maxWorkers']
+        if on_delete is None and 'onDelete' in kwargs:
+            on_delete = kwargs['onDelete']
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if skip_wait_on_job_termination is None and 'skipWaitOnJobTermination' in kwargs:
+            skip_wait_on_job_termination = kwargs['skipWaitOnJobTermination']
+        if transform_name_mapping is None and 'transformNameMapping' in kwargs:
+            transform_name_mapping = kwargs['transformNameMapping']
+
         _setter("temp_gcs_location", temp_gcs_location)
         _setter("template_gcs_path", template_gcs_path)
         if additional_experiments is not None:
@@ -503,7 +533,35 @@ class _JobState:
              transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if additional_experiments is None and 'additionalExperiments' in kwargs:
+            additional_experiments = kwargs['additionalExperiments']
+        if enable_streaming_engine is None and 'enableStreamingEngine' in kwargs:
+            enable_streaming_engine = kwargs['enableStreamingEngine']
+        if ip_configuration is None and 'ipConfiguration' in kwargs:
+            ip_configuration = kwargs['ipConfiguration']
+        if job_id is None and 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if max_workers is None and 'maxWorkers' in kwargs:
+            max_workers = kwargs['maxWorkers']
+        if on_delete is None and 'onDelete' in kwargs:
+            on_delete = kwargs['onDelete']
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if skip_wait_on_job_termination is None and 'skipWaitOnJobTermination' in kwargs:
+            skip_wait_on_job_termination = kwargs['skipWaitOnJobTermination']
+        if temp_gcs_location is None and 'tempGcsLocation' in kwargs:
+            temp_gcs_location = kwargs['tempGcsLocation']
+        if template_gcs_path is None and 'templateGcsPath' in kwargs:
+            template_gcs_path = kwargs['templateGcsPath']
+        if transform_name_mapping is None and 'transformNameMapping' in kwargs:
+            transform_name_mapping = kwargs['transformNameMapping']
+
         if additional_experiments is not None:
             _setter("additional_experiments", additional_experiments)
         if enable_streaming_engine is not None:

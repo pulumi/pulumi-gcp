@@ -67,7 +67,7 @@ class JobArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             template: pulumi.Input['JobTemplateArgs'],
+             template: Optional[pulumi.Input['JobTemplateArgs']] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              binary_authorization: Optional[pulumi.Input['JobBinaryAuthorizationArgs']] = None,
              client: Optional[pulumi.Input[str]] = None,
@@ -77,7 +77,17 @@ class JobArgs:
              location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if template is None:
+            raise TypeError("Missing 'template' argument")
+        if binary_authorization is None and 'binaryAuthorization' in kwargs:
+            binary_authorization = kwargs['binaryAuthorization']
+        if client_version is None and 'clientVersion' in kwargs:
+            client_version = kwargs['clientVersion']
+        if launch_stage is None and 'launchStage' in kwargs:
+            launch_stage = kwargs['launchStage']
+
         _setter("template", template)
         if annotations is not None:
             _setter("annotations", annotations)
@@ -363,7 +373,33 @@ class _JobState:
              terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['JobTerminalConditionArgs']]]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if binary_authorization is None and 'binaryAuthorization' in kwargs:
+            binary_authorization = kwargs['binaryAuthorization']
+        if client_version is None and 'clientVersion' in kwargs:
+            client_version = kwargs['clientVersion']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if delete_time is None and 'deleteTime' in kwargs:
+            delete_time = kwargs['deleteTime']
+        if execution_count is None and 'executionCount' in kwargs:
+            execution_count = kwargs['executionCount']
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if last_modifier is None and 'lastModifier' in kwargs:
+            last_modifier = kwargs['lastModifier']
+        if latest_created_executions is None and 'latestCreatedExecutions' in kwargs:
+            latest_created_executions = kwargs['latestCreatedExecutions']
+        if launch_stage is None and 'launchStage' in kwargs:
+            launch_stage = kwargs['launchStage']
+        if observed_generation is None and 'observedGeneration' in kwargs:
+            observed_generation = kwargs['observedGeneration']
+        if terminal_conditions is None and 'terminalConditions' in kwargs:
+            terminal_conditions = kwargs['terminalConditions']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if binary_authorization is not None:

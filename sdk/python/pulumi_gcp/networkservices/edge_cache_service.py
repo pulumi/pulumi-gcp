@@ -72,7 +72,7 @@ class EdgeCacheServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             routing: pulumi.Input['EdgeCacheServiceRoutingArgs'],
+             routing: Optional[pulumi.Input['EdgeCacheServiceRoutingArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              disable_http2: Optional[pulumi.Input[bool]] = None,
              disable_quic: Optional[pulumi.Input[bool]] = None,
@@ -84,7 +84,25 @@ class EdgeCacheServiceArgs:
              project: Optional[pulumi.Input[str]] = None,
              require_tls: Optional[pulumi.Input[bool]] = None,
              ssl_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if routing is None:
+            raise TypeError("Missing 'routing' argument")
+        if disable_http2 is None and 'disableHttp2' in kwargs:
+            disable_http2 = kwargs['disableHttp2']
+        if disable_quic is None and 'disableQuic' in kwargs:
+            disable_quic = kwargs['disableQuic']
+        if edge_security_policy is None and 'edgeSecurityPolicy' in kwargs:
+            edge_security_policy = kwargs['edgeSecurityPolicy']
+        if edge_ssl_certificates is None and 'edgeSslCertificates' in kwargs:
+            edge_ssl_certificates = kwargs['edgeSslCertificates']
+        if log_config is None and 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if require_tls is None and 'requireTls' in kwargs:
+            require_tls = kwargs['requireTls']
+        if ssl_policy is None and 'sslPolicy' in kwargs:
+            ssl_policy = kwargs['sslPolicy']
+
         _setter("routing", routing)
         if description is not None:
             _setter("description", description)
@@ -344,7 +362,27 @@ class _EdgeCacheServiceState:
              require_tls: Optional[pulumi.Input[bool]] = None,
              routing: Optional[pulumi.Input['EdgeCacheServiceRoutingArgs']] = None,
              ssl_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disable_http2 is None and 'disableHttp2' in kwargs:
+            disable_http2 = kwargs['disableHttp2']
+        if disable_quic is None and 'disableQuic' in kwargs:
+            disable_quic = kwargs['disableQuic']
+        if edge_security_policy is None and 'edgeSecurityPolicy' in kwargs:
+            edge_security_policy = kwargs['edgeSecurityPolicy']
+        if edge_ssl_certificates is None and 'edgeSslCertificates' in kwargs:
+            edge_ssl_certificates = kwargs['edgeSslCertificates']
+        if ipv4_addresses is None and 'ipv4Addresses' in kwargs:
+            ipv4_addresses = kwargs['ipv4Addresses']
+        if ipv6_addresses is None and 'ipv6Addresses' in kwargs:
+            ipv6_addresses = kwargs['ipv6Addresses']
+        if log_config is None and 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if require_tls is None and 'requireTls' in kwargs:
+            require_tls = kwargs['requireTls']
+        if ssl_policy is None and 'sslPolicy' in kwargs:
+            ssl_policy = kwargs['sslPolicy']
+
         if description is not None:
             _setter("description", description)
         if disable_http2 is not None:

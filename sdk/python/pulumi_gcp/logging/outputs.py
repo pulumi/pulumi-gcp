@@ -75,11 +75,21 @@ class BillingAccountBucketConfigCmekSettings(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kms_key_name: str,
+             kms_key_name: Optional[str] = None,
              kms_key_version_name: Optional[str] = None,
              name: Optional[str] = None,
              service_account_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if kms_key_name is None:
+            raise TypeError("Missing 'kms_key_name' argument")
+        if kms_key_version_name is None and 'kmsKeyVersionName' in kwargs:
+            kms_key_version_name = kwargs['kmsKeyVersionName']
+        if service_account_id is None and 'serviceAccountId' in kwargs:
+            service_account_id = kwargs['serviceAccountId']
+
         _setter("kms_key_name", kms_key_name)
         if kms_key_version_name is not None:
             _setter("kms_key_version_name", kms_key_version_name)
@@ -146,8 +156,14 @@ class BillingAccountSinkBigqueryOptions(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             use_partitioned_tables: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             use_partitioned_tables: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if use_partitioned_tables is None and 'usePartitionedTables' in kwargs:
+            use_partitioned_tables = kwargs['usePartitionedTables']
+        if use_partitioned_tables is None:
+            raise TypeError("Missing 'use_partitioned_tables' argument")
+
         _setter("use_partitioned_tables", use_partitioned_tables)
 
     @property
@@ -186,11 +202,17 @@ class BillingAccountSinkExclusion(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter: str,
-             name: str,
+             filter: Optional[str] = None,
+             name: Optional[str] = None,
              description: Optional[str] = None,
              disabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if filter is None:
+            raise TypeError("Missing 'filter' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("filter", filter)
         _setter("name", name)
         if description is not None:
@@ -273,11 +295,21 @@ class FolderBucketConfigCmekSettings(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kms_key_name: str,
+             kms_key_name: Optional[str] = None,
              kms_key_version_name: Optional[str] = None,
              name: Optional[str] = None,
              service_account_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if kms_key_name is None:
+            raise TypeError("Missing 'kms_key_name' argument")
+        if kms_key_version_name is None and 'kmsKeyVersionName' in kwargs:
+            kms_key_version_name = kwargs['kmsKeyVersionName']
+        if service_account_id is None and 'serviceAccountId' in kwargs:
+            service_account_id = kwargs['serviceAccountId']
+
         _setter("kms_key_name", kms_key_name)
         if kms_key_version_name is not None:
             _setter("kms_key_version_name", kms_key_version_name)
@@ -344,8 +376,14 @@ class FolderSinkBigqueryOptions(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             use_partitioned_tables: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             use_partitioned_tables: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if use_partitioned_tables is None and 'usePartitionedTables' in kwargs:
+            use_partitioned_tables = kwargs['usePartitionedTables']
+        if use_partitioned_tables is None:
+            raise TypeError("Missing 'use_partitioned_tables' argument")
+
         _setter("use_partitioned_tables", use_partitioned_tables)
 
     @property
@@ -384,11 +422,17 @@ class FolderSinkExclusion(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter: str,
-             name: str,
+             filter: Optional[str] = None,
+             name: Optional[str] = None,
              description: Optional[str] = None,
              disabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if filter is None:
+            raise TypeError("Missing 'filter' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("filter", filter)
         _setter("name", name)
         if description is not None:
@@ -466,7 +510,11 @@ class LinkedDatasetBigqueryDataset(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              dataset_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+
         if dataset_id is not None:
             _setter("dataset_id", dataset_id)
 
@@ -532,7 +580,15 @@ class MetricBucketOptions(dict):
              explicit_buckets: Optional['outputs.MetricBucketOptionsExplicitBuckets'] = None,
              exponential_buckets: Optional['outputs.MetricBucketOptionsExponentialBuckets'] = None,
              linear_buckets: Optional['outputs.MetricBucketOptionsLinearBuckets'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if explicit_buckets is None and 'explicitBuckets' in kwargs:
+            explicit_buckets = kwargs['explicitBuckets']
+        if exponential_buckets is None and 'exponentialBuckets' in kwargs:
+            exponential_buckets = kwargs['exponentialBuckets']
+        if linear_buckets is None and 'linearBuckets' in kwargs:
+            linear_buckets = kwargs['linearBuckets']
+
         if explicit_buckets is not None:
             _setter("explicit_buckets", explicit_buckets)
         if exponential_buckets is not None:
@@ -584,8 +640,12 @@ class MetricBucketOptionsExplicitBuckets(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bounds: Sequence[float],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bounds: Optional[Sequence[float]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bounds is None:
+            raise TypeError("Missing 'bounds' argument")
+
         _setter("bounds", bounds)
 
     @property
@@ -639,7 +699,13 @@ class MetricBucketOptionsExponentialBuckets(dict):
              growth_factor: Optional[float] = None,
              num_finite_buckets: Optional[int] = None,
              scale: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if growth_factor is None and 'growthFactor' in kwargs:
+            growth_factor = kwargs['growthFactor']
+        if num_finite_buckets is None and 'numFiniteBuckets' in kwargs:
+            num_finite_buckets = kwargs['numFiniteBuckets']
+
         if growth_factor is not None:
             _setter("growth_factor", growth_factor)
         if num_finite_buckets is not None:
@@ -712,7 +778,11 @@ class MetricBucketOptionsLinearBuckets(dict):
              num_finite_buckets: Optional[int] = None,
              offset: Optional[float] = None,
              width: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if num_finite_buckets is None and 'numFiniteBuckets' in kwargs:
+            num_finite_buckets = kwargs['numFiniteBuckets']
+
         if num_finite_buckets is not None:
             _setter("num_finite_buckets", num_finite_buckets)
         if offset is not None:
@@ -806,12 +876,24 @@ class MetricMetricDescriptor(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             metric_kind: str,
-             value_type: str,
+             metric_kind: Optional[str] = None,
+             value_type: Optional[str] = None,
              display_name: Optional[str] = None,
              labels: Optional[Sequence['outputs.MetricMetricDescriptorLabel']] = None,
              unit: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if metric_kind is None and 'metricKind' in kwargs:
+            metric_kind = kwargs['metricKind']
+        if metric_kind is None:
+            raise TypeError("Missing 'metric_kind' argument")
+        if value_type is None and 'valueType' in kwargs:
+            value_type = kwargs['valueType']
+        if value_type is None:
+            raise TypeError("Missing 'value_type' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("metric_kind", metric_kind)
         _setter("value_type", value_type)
         if display_name is not None:
@@ -915,10 +997,16 @@ class MetricMetricDescriptorLabel(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
+             key: Optional[str] = None,
              description: Optional[str] = None,
              value_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value_type is None and 'valueType' in kwargs:
+            value_type = kwargs['valueType']
+
         _setter("key", key)
         if description is not None:
             _setter("description", description)
@@ -993,11 +1081,21 @@ class OrganizationBucketConfigCmekSettings(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kms_key_name: str,
+             kms_key_name: Optional[str] = None,
              kms_key_version_name: Optional[str] = None,
              name: Optional[str] = None,
              service_account_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if kms_key_name is None:
+            raise TypeError("Missing 'kms_key_name' argument")
+        if kms_key_version_name is None and 'kmsKeyVersionName' in kwargs:
+            kms_key_version_name = kwargs['kmsKeyVersionName']
+        if service_account_id is None and 'serviceAccountId' in kwargs:
+            service_account_id = kwargs['serviceAccountId']
+
         _setter("kms_key_name", kms_key_name)
         if kms_key_version_name is not None:
             _setter("kms_key_version_name", kms_key_version_name)
@@ -1064,8 +1162,14 @@ class OrganizationSinkBigqueryOptions(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             use_partitioned_tables: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             use_partitioned_tables: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if use_partitioned_tables is None and 'usePartitionedTables' in kwargs:
+            use_partitioned_tables = kwargs['usePartitionedTables']
+        if use_partitioned_tables is None:
+            raise TypeError("Missing 'use_partitioned_tables' argument")
+
         _setter("use_partitioned_tables", use_partitioned_tables)
 
     @property
@@ -1104,11 +1208,17 @@ class OrganizationSinkExclusion(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter: str,
-             name: str,
+             filter: Optional[str] = None,
+             name: Optional[str] = None,
              description: Optional[str] = None,
              disabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if filter is None:
+            raise TypeError("Missing 'filter' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("filter", filter)
         _setter("name", name)
         if description is not None:
@@ -1206,11 +1316,21 @@ class ProjectBucketConfigCmekSettings(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kms_key_name: str,
+             kms_key_name: Optional[str] = None,
              kms_key_version_name: Optional[str] = None,
              name: Optional[str] = None,
              service_account_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if kms_key_name is None:
+            raise TypeError("Missing 'kms_key_name' argument")
+        if kms_key_version_name is None and 'kmsKeyVersionName' in kwargs:
+            kms_key_version_name = kwargs['kmsKeyVersionName']
+        if service_account_id is None and 'serviceAccountId' in kwargs:
+            service_account_id = kwargs['serviceAccountId']
+
         _setter("kms_key_name", kms_key_name)
         if kms_key_version_name is not None:
             _setter("kms_key_version_name", kms_key_version_name)
@@ -1298,8 +1418,14 @@ class ProjectSinkBigqueryOptions(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             use_partitioned_tables: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             use_partitioned_tables: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if use_partitioned_tables is None and 'usePartitionedTables' in kwargs:
+            use_partitioned_tables = kwargs['usePartitionedTables']
+        if use_partitioned_tables is None:
+            raise TypeError("Missing 'use_partitioned_tables' argument")
+
         _setter("use_partitioned_tables", use_partitioned_tables)
 
     @property
@@ -1338,11 +1464,17 @@ class ProjectSinkExclusion(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter: str,
-             name: str,
+             filter: Optional[str] = None,
+             name: Optional[str] = None,
              description: Optional[str] = None,
              disabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if filter is None:
+            raise TypeError("Missing 'filter' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("filter", filter)
         _setter("name", name)
         if description is not None:
@@ -1398,8 +1530,14 @@ class GetSinkBigqueryOptionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             use_partitioned_tables: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             use_partitioned_tables: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if use_partitioned_tables is None and 'usePartitionedTables' in kwargs:
+            use_partitioned_tables = kwargs['usePartitionedTables']
+        if use_partitioned_tables is None:
+            raise TypeError("Missing 'use_partitioned_tables' argument")
+
         _setter("use_partitioned_tables", use_partitioned_tables)
 
     @property
@@ -1434,11 +1572,21 @@ class GetSinkExclusionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             disabled: bool,
-             filter: str,
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             description: Optional[str] = None,
+             disabled: Optional[bool] = None,
+             filter: Optional[str] = None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if disabled is None:
+            raise TypeError("Missing 'disabled' argument")
+        if filter is None:
+            raise TypeError("Missing 'filter' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("description", description)
         _setter("disabled", disabled)
         _setter("filter", filter)

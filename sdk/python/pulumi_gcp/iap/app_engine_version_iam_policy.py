@@ -52,12 +52,28 @@ class AppEngineVersionIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_id: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
-             service: pulumi.Input[str],
-             version_id: pulumi.Input[str],
+             app_id: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             version_id: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if app_id is None:
+            raise TypeError("Missing 'app_id' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+        if version_id is None:
+            raise TypeError("Missing 'version_id' argument")
+
         _setter("app_id", app_id)
         _setter("policy_data", policy_data)
         _setter("service", service)
@@ -190,7 +206,15 @@ class _AppEngineVersionIamPolicyState:
              project: Optional[pulumi.Input[str]] = None,
              service: Optional[pulumi.Input[str]] = None,
              version_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+
         if app_id is not None:
             _setter("app_id", app_id)
         if etag is not None:

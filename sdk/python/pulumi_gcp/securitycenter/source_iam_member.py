@@ -40,12 +40,22 @@ class SourceIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             member: pulumi.Input[str],
-             organization: pulumi.Input[str],
-             role: pulumi.Input[str],
-             source: pulumi.Input[str],
+             member: Optional[pulumi.Input[str]] = None,
+             organization: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['SourceIamMemberConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if organization is None:
+            raise TypeError("Missing 'organization' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+
         _setter("member", member)
         _setter("organization", organization)
         _setter("role", role)
@@ -141,7 +151,9 @@ class _SourceIamMemberState:
              organization: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

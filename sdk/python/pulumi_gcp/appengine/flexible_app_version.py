@@ -137,10 +137,10 @@ class FlexibleAppVersionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             liveness_check: pulumi.Input['FlexibleAppVersionLivenessCheckArgs'],
-             readiness_check: pulumi.Input['FlexibleAppVersionReadinessCheckArgs'],
-             runtime: pulumi.Input[str],
-             service: pulumi.Input[str],
+             liveness_check: Optional[pulumi.Input['FlexibleAppVersionLivenessCheckArgs']] = None,
+             readiness_check: Optional[pulumi.Input['FlexibleAppVersionReadinessCheckArgs']] = None,
+             runtime: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
              api_config: Optional[pulumi.Input['FlexibleAppVersionApiConfigArgs']] = None,
              automatic_scaling: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingArgs']] = None,
              beta_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -166,7 +166,59 @@ class FlexibleAppVersionArgs:
              serving_status: Optional[pulumi.Input[str]] = None,
              version_id: Optional[pulumi.Input[str]] = None,
              vpc_access_connector: Optional[pulumi.Input['FlexibleAppVersionVpcAccessConnectorArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if liveness_check is None and 'livenessCheck' in kwargs:
+            liveness_check = kwargs['livenessCheck']
+        if liveness_check is None:
+            raise TypeError("Missing 'liveness_check' argument")
+        if readiness_check is None and 'readinessCheck' in kwargs:
+            readiness_check = kwargs['readinessCheck']
+        if readiness_check is None:
+            raise TypeError("Missing 'readiness_check' argument")
+        if runtime is None:
+            raise TypeError("Missing 'runtime' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+        if api_config is None and 'apiConfig' in kwargs:
+            api_config = kwargs['apiConfig']
+        if automatic_scaling is None and 'automaticScaling' in kwargs:
+            automatic_scaling = kwargs['automaticScaling']
+        if beta_settings is None and 'betaSettings' in kwargs:
+            beta_settings = kwargs['betaSettings']
+        if default_expiration is None and 'defaultExpiration' in kwargs:
+            default_expiration = kwargs['defaultExpiration']
+        if delete_service_on_destroy is None and 'deleteServiceOnDestroy' in kwargs:
+            delete_service_on_destroy = kwargs['deleteServiceOnDestroy']
+        if endpoints_api_service is None and 'endpointsApiService' in kwargs:
+            endpoints_api_service = kwargs['endpointsApiService']
+        if env_variables is None and 'envVariables' in kwargs:
+            env_variables = kwargs['envVariables']
+        if inbound_services is None and 'inboundServices' in kwargs:
+            inbound_services = kwargs['inboundServices']
+        if instance_class is None and 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if manual_scaling is None and 'manualScaling' in kwargs:
+            manual_scaling = kwargs['manualScaling']
+        if nobuild_files_regex is None and 'nobuildFilesRegex' in kwargs:
+            nobuild_files_regex = kwargs['nobuildFilesRegex']
+        if noop_on_destroy is None and 'noopOnDestroy' in kwargs:
+            noop_on_destroy = kwargs['noopOnDestroy']
+        if runtime_api_version is None and 'runtimeApiVersion' in kwargs:
+            runtime_api_version = kwargs['runtimeApiVersion']
+        if runtime_channel is None and 'runtimeChannel' in kwargs:
+            runtime_channel = kwargs['runtimeChannel']
+        if runtime_main_executable_path is None and 'runtimeMainExecutablePath' in kwargs:
+            runtime_main_executable_path = kwargs['runtimeMainExecutablePath']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if serving_status is None and 'servingStatus' in kwargs:
+            serving_status = kwargs['servingStatus']
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+        if vpc_access_connector is None and 'vpcAccessConnector' in kwargs:
+            vpc_access_connector = kwargs['vpcAccessConnector']
+
         _setter("liveness_check", liveness_check)
         _setter("readiness_check", readiness_check)
         _setter("runtime", runtime)
@@ -754,7 +806,51 @@ class _FlexibleAppVersionState:
              serving_status: Optional[pulumi.Input[str]] = None,
              version_id: Optional[pulumi.Input[str]] = None,
              vpc_access_connector: Optional[pulumi.Input['FlexibleAppVersionVpcAccessConnectorArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_config is None and 'apiConfig' in kwargs:
+            api_config = kwargs['apiConfig']
+        if automatic_scaling is None and 'automaticScaling' in kwargs:
+            automatic_scaling = kwargs['automaticScaling']
+        if beta_settings is None and 'betaSettings' in kwargs:
+            beta_settings = kwargs['betaSettings']
+        if default_expiration is None and 'defaultExpiration' in kwargs:
+            default_expiration = kwargs['defaultExpiration']
+        if delete_service_on_destroy is None and 'deleteServiceOnDestroy' in kwargs:
+            delete_service_on_destroy = kwargs['deleteServiceOnDestroy']
+        if endpoints_api_service is None and 'endpointsApiService' in kwargs:
+            endpoints_api_service = kwargs['endpointsApiService']
+        if env_variables is None and 'envVariables' in kwargs:
+            env_variables = kwargs['envVariables']
+        if inbound_services is None and 'inboundServices' in kwargs:
+            inbound_services = kwargs['inboundServices']
+        if instance_class is None and 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if liveness_check is None and 'livenessCheck' in kwargs:
+            liveness_check = kwargs['livenessCheck']
+        if manual_scaling is None and 'manualScaling' in kwargs:
+            manual_scaling = kwargs['manualScaling']
+        if nobuild_files_regex is None and 'nobuildFilesRegex' in kwargs:
+            nobuild_files_regex = kwargs['nobuildFilesRegex']
+        if noop_on_destroy is None and 'noopOnDestroy' in kwargs:
+            noop_on_destroy = kwargs['noopOnDestroy']
+        if readiness_check is None and 'readinessCheck' in kwargs:
+            readiness_check = kwargs['readinessCheck']
+        if runtime_api_version is None and 'runtimeApiVersion' in kwargs:
+            runtime_api_version = kwargs['runtimeApiVersion']
+        if runtime_channel is None and 'runtimeChannel' in kwargs:
+            runtime_channel = kwargs['runtimeChannel']
+        if runtime_main_executable_path is None and 'runtimeMainExecutablePath' in kwargs:
+            runtime_main_executable_path = kwargs['runtimeMainExecutablePath']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if serving_status is None and 'servingStatus' in kwargs:
+            serving_status = kwargs['servingStatus']
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+        if vpc_access_connector is None and 'vpcAccessConnector' in kwargs:
+            vpc_access_connector = kwargs['vpcAccessConnector']
+
         if api_config is not None:
             _setter("api_config", api_config)
         if automatic_scaling is not None:

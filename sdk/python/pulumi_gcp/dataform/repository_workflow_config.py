@@ -54,7 +54,7 @@ class RepositoryWorkflowConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             release_config: pulumi.Input[str],
+             release_config: Optional[pulumi.Input[str]] = None,
              cron_schedule: Optional[pulumi.Input[str]] = None,
              invocation_config: Optional[pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -62,7 +62,19 @@ class RepositoryWorkflowConfigArgs:
              region: Optional[pulumi.Input[str]] = None,
              repository: Optional[pulumi.Input[str]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if release_config is None and 'releaseConfig' in kwargs:
+            release_config = kwargs['releaseConfig']
+        if release_config is None:
+            raise TypeError("Missing 'release_config' argument")
+        if cron_schedule is None and 'cronSchedule' in kwargs:
+            cron_schedule = kwargs['cronSchedule']
+        if invocation_config is None and 'invocationConfig' in kwargs:
+            invocation_config = kwargs['invocationConfig']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         _setter("release_config", release_config)
         if cron_schedule is not None:
             _setter("cron_schedule", cron_schedule)
@@ -235,7 +247,19 @@ class _RepositoryWorkflowConfigState:
              release_config: Optional[pulumi.Input[str]] = None,
              repository: Optional[pulumi.Input[str]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cron_schedule is None and 'cronSchedule' in kwargs:
+            cron_schedule = kwargs['cronSchedule']
+        if invocation_config is None and 'invocationConfig' in kwargs:
+            invocation_config = kwargs['invocationConfig']
+        if recent_scheduled_execution_records is None and 'recentScheduledExecutionRecords' in kwargs:
+            recent_scheduled_execution_records = kwargs['recentScheduledExecutionRecords']
+        if release_config is None and 'releaseConfig' in kwargs:
+            release_config = kwargs['releaseConfig']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         if cron_schedule is not None:
             _setter("cron_schedule", cron_schedule)
         if invocation_config is not None:

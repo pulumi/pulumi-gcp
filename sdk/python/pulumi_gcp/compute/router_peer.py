@@ -116,9 +116,9 @@ class RouterPeerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             interface: pulumi.Input[str],
-             peer_asn: pulumi.Input[int],
-             router: pulumi.Input[str],
+             interface: Optional[pulumi.Input[str]] = None,
+             peer_asn: Optional[pulumi.Input[int]] = None,
+             router: Optional[pulumi.Input[str]] = None,
              advertise_mode: Optional[pulumi.Input[str]] = None,
              advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]] = None,
@@ -134,7 +134,37 @@ class RouterPeerArgs:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              router_appliance_instance: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if interface is None:
+            raise TypeError("Missing 'interface' argument")
+        if peer_asn is None and 'peerAsn' in kwargs:
+            peer_asn = kwargs['peerAsn']
+        if peer_asn is None:
+            raise TypeError("Missing 'peer_asn' argument")
+        if router is None:
+            raise TypeError("Missing 'router' argument")
+        if advertise_mode is None and 'advertiseMode' in kwargs:
+            advertise_mode = kwargs['advertiseMode']
+        if advertised_groups is None and 'advertisedGroups' in kwargs:
+            advertised_groups = kwargs['advertisedGroups']
+        if advertised_ip_ranges is None and 'advertisedIpRanges' in kwargs:
+            advertised_ip_ranges = kwargs['advertisedIpRanges']
+        if advertised_route_priority is None and 'advertisedRoutePriority' in kwargs:
+            advertised_route_priority = kwargs['advertisedRoutePriority']
+        if enable_ipv6 is None and 'enableIpv6' in kwargs:
+            enable_ipv6 = kwargs['enableIpv6']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ipv6_nexthop_address is None and 'ipv6NexthopAddress' in kwargs:
+            ipv6_nexthop_address = kwargs['ipv6NexthopAddress']
+        if peer_ip_address is None and 'peerIpAddress' in kwargs:
+            peer_ip_address = kwargs['peerIpAddress']
+        if peer_ipv6_nexthop_address is None and 'peerIpv6NexthopAddress' in kwargs:
+            peer_ipv6_nexthop_address = kwargs['peerIpv6NexthopAddress']
+        if router_appliance_instance is None and 'routerApplianceInstance' in kwargs:
+            router_appliance_instance = kwargs['routerApplianceInstance']
+
         _setter("interface", interface)
         _setter("peer_asn", peer_asn)
         _setter("router", router)
@@ -548,7 +578,33 @@ class _RouterPeerState:
              region: Optional[pulumi.Input[str]] = None,
              router: Optional[pulumi.Input[str]] = None,
              router_appliance_instance: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if advertise_mode is None and 'advertiseMode' in kwargs:
+            advertise_mode = kwargs['advertiseMode']
+        if advertised_groups is None and 'advertisedGroups' in kwargs:
+            advertised_groups = kwargs['advertisedGroups']
+        if advertised_ip_ranges is None and 'advertisedIpRanges' in kwargs:
+            advertised_ip_ranges = kwargs['advertisedIpRanges']
+        if advertised_route_priority is None and 'advertisedRoutePriority' in kwargs:
+            advertised_route_priority = kwargs['advertisedRoutePriority']
+        if enable_ipv6 is None and 'enableIpv6' in kwargs:
+            enable_ipv6 = kwargs['enableIpv6']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ipv6_nexthop_address is None and 'ipv6NexthopAddress' in kwargs:
+            ipv6_nexthop_address = kwargs['ipv6NexthopAddress']
+        if management_type is None and 'managementType' in kwargs:
+            management_type = kwargs['managementType']
+        if peer_asn is None and 'peerAsn' in kwargs:
+            peer_asn = kwargs['peerAsn']
+        if peer_ip_address is None and 'peerIpAddress' in kwargs:
+            peer_ip_address = kwargs['peerIpAddress']
+        if peer_ipv6_nexthop_address is None and 'peerIpv6NexthopAddress' in kwargs:
+            peer_ipv6_nexthop_address = kwargs['peerIpv6NexthopAddress']
+        if router_appliance_instance is None and 'routerApplianceInstance' in kwargs:
+            router_appliance_instance = kwargs['routerApplianceInstance']
+
         if advertise_mode is not None:
             _setter("advertise_mode", advertise_mode)
         if advertised_groups is not None:

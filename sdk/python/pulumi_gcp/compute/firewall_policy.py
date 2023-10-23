@@ -36,10 +36,18 @@ class FirewallPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parent: pulumi.Input[str],
-             short_name: pulumi.Input[str],
+             parent: Optional[pulumi.Input[str]] = None,
+             short_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if short_name is None and 'shortName' in kwargs:
+            short_name = kwargs['shortName']
+        if short_name is None:
+            raise TypeError("Missing 'short_name' argument")
+
         _setter("parent", parent)
         _setter("short_name", short_name)
         if description is not None:
@@ -142,7 +150,21 @@ class _FirewallPolicyState:
              self_link: Optional[pulumi.Input[str]] = None,
              self_link_with_id: Optional[pulumi.Input[str]] = None,
              short_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if firewall_policy_id is None and 'firewallPolicyId' in kwargs:
+            firewall_policy_id = kwargs['firewallPolicyId']
+        if rule_tuple_count is None and 'ruleTupleCount' in kwargs:
+            rule_tuple_count = kwargs['ruleTupleCount']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if self_link_with_id is None and 'selfLinkWithId' in kwargs:
+            self_link_with_id = kwargs['selfLinkWithId']
+        if short_name is None and 'shortName' in kwargs:
+            short_name = kwargs['shortName']
+
         if creation_timestamp is not None:
             _setter("creation_timestamp", creation_timestamp)
         if description is not None:

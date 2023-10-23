@@ -85,15 +85,23 @@ class ConnectivityTestArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             destination: pulumi.Input['ConnectivityTestDestinationArgs'],
-             source: pulumi.Input['ConnectivityTestSourceArgs'],
+             destination: Optional[pulumi.Input['ConnectivityTestDestinationArgs']] = None,
+             source: Optional[pulumi.Input['ConnectivityTestSourceArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
              related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if destination is None:
+            raise TypeError("Missing 'destination' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if related_projects is None and 'relatedProjects' in kwargs:
+            related_projects = kwargs['relatedProjects']
+
         _setter("destination", destination)
         _setter("source", source)
         if description is not None:
@@ -322,7 +330,11 @@ class _ConnectivityTestState:
              protocol: Optional[pulumi.Input[str]] = None,
              related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              source: Optional[pulumi.Input['ConnectivityTestSourceArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if related_projects is None and 'relatedProjects' in kwargs:
+            related_projects = kwargs['relatedProjects']
+
         if description is not None:
             _setter("description", description)
         if destination is not None:

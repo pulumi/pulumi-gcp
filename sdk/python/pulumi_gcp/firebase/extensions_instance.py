@@ -37,10 +37,18 @@ class ExtensionsInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config: pulumi.Input['ExtensionsInstanceConfigArgs'],
-             instance_id: pulumi.Input[str],
+             config: Optional[pulumi.Input['ExtensionsInstanceConfigArgs']] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+
         _setter("config", config)
         _setter("instance_id", instance_id)
         if project is not None:
@@ -162,7 +170,25 @@ class _ExtensionsInstanceState:
              service_account_email: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if error_statuses is None and 'errorStatuses' in kwargs:
+            error_statuses = kwargs['errorStatuses']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if last_operation_name is None and 'lastOperationName' in kwargs:
+            last_operation_name = kwargs['lastOperationName']
+        if last_operation_type is None and 'lastOperationType' in kwargs:
+            last_operation_type = kwargs['lastOperationType']
+        if runtime_datas is None and 'runtimeDatas' in kwargs:
+            runtime_datas = kwargs['runtimeDatas']
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if config is not None:
             _setter("config", config)
         if create_time is not None:

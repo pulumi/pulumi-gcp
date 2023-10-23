@@ -71,11 +71,11 @@ class ListingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bigquery_dataset: pulumi.Input['ListingBigqueryDatasetArgs'],
-             data_exchange_id: pulumi.Input[str],
-             display_name: pulumi.Input[str],
-             listing_id: pulumi.Input[str],
-             location: pulumi.Input[str],
+             bigquery_dataset: Optional[pulumi.Input['ListingBigqueryDatasetArgs']] = None,
+             data_exchange_id: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             listing_id: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
              categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              data_provider: Optional[pulumi.Input['ListingDataProviderArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -85,7 +85,33 @@ class ListingArgs:
              project: Optional[pulumi.Input[str]] = None,
              publisher: Optional[pulumi.Input['ListingPublisherArgs']] = None,
              request_access: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bigquery_dataset is None and 'bigqueryDataset' in kwargs:
+            bigquery_dataset = kwargs['bigqueryDataset']
+        if bigquery_dataset is None:
+            raise TypeError("Missing 'bigquery_dataset' argument")
+        if data_exchange_id is None and 'dataExchangeId' in kwargs:
+            data_exchange_id = kwargs['dataExchangeId']
+        if data_exchange_id is None:
+            raise TypeError("Missing 'data_exchange_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if listing_id is None and 'listingId' in kwargs:
+            listing_id = kwargs['listingId']
+        if listing_id is None:
+            raise TypeError("Missing 'listing_id' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if data_provider is None and 'dataProvider' in kwargs:
+            data_provider = kwargs['dataProvider']
+        if primary_contact is None and 'primaryContact' in kwargs:
+            primary_contact = kwargs['primaryContact']
+        if request_access is None and 'requestAccess' in kwargs:
+            request_access = kwargs['requestAccess']
+
         _setter("bigquery_dataset", bigquery_dataset)
         _setter("data_exchange_id", data_exchange_id)
         _setter("display_name", display_name)
@@ -359,7 +385,23 @@ class _ListingState:
              project: Optional[pulumi.Input[str]] = None,
              publisher: Optional[pulumi.Input['ListingPublisherArgs']] = None,
              request_access: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bigquery_dataset is None and 'bigqueryDataset' in kwargs:
+            bigquery_dataset = kwargs['bigqueryDataset']
+        if data_exchange_id is None and 'dataExchangeId' in kwargs:
+            data_exchange_id = kwargs['dataExchangeId']
+        if data_provider is None and 'dataProvider' in kwargs:
+            data_provider = kwargs['dataProvider']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if listing_id is None and 'listingId' in kwargs:
+            listing_id = kwargs['listingId']
+        if primary_contact is None and 'primaryContact' in kwargs:
+            primary_contact = kwargs['primaryContact']
+        if request_access is None and 'requestAccess' in kwargs:
+            request_access = kwargs['requestAccess']
+
         if bigquery_dataset is not None:
             _setter("bigquery_dataset", bigquery_dataset)
         if categories is not None:

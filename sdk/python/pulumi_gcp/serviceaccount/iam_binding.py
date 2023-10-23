@@ -48,11 +48,21 @@ class IAMBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
-             service_account_id: pulumi.Input[str],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             service_account_id: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['IAMBindingConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if service_account_id is None and 'serviceAccountId' in kwargs:
+            service_account_id = kwargs['serviceAccountId']
+        if service_account_id is None:
+            raise TypeError("Missing 'service_account_id' argument")
+
         _setter("members", members)
         _setter("role", role)
         _setter("service_account_id", service_account_id)
@@ -160,7 +170,11 @@ class _IAMBindingState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              role: Optional[pulumi.Input[str]] = None,
              service_account_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_account_id is None and 'serviceAccountId' in kwargs:
+            service_account_id = kwargs['serviceAccountId']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

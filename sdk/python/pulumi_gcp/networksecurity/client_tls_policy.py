@@ -64,7 +64,13 @@ class ClientTlsPolicyArgs:
              project: Optional[pulumi.Input[str]] = None,
              server_validation_cas: Optional[pulumi.Input[Sequence[pulumi.Input['ClientTlsPolicyServerValidationCaArgs']]]] = None,
              sni: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if client_certificate is None and 'clientCertificate' in kwargs:
+            client_certificate = kwargs['clientCertificate']
+        if server_validation_cas is None and 'serverValidationCas' in kwargs:
+            server_validation_cas = kwargs['serverValidationCas']
+
         if client_certificate is not None:
             _setter("client_certificate", client_certificate)
         if description is not None:
@@ -245,7 +251,17 @@ class _ClientTlsPolicyState:
              server_validation_cas: Optional[pulumi.Input[Sequence[pulumi.Input['ClientTlsPolicyServerValidationCaArgs']]]] = None,
              sni: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if client_certificate is None and 'clientCertificate' in kwargs:
+            client_certificate = kwargs['clientCertificate']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if server_validation_cas is None and 'serverValidationCas' in kwargs:
+            server_validation_cas = kwargs['serverValidationCas']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if client_certificate is not None:
             _setter("client_certificate", client_certificate)
         if create_time is not None:

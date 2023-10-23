@@ -64,7 +64,7 @@ import (
 //						Network: pulumi.String("default"),
 //					},
 //				},
-//				Metadata: pulumi.AnyMap{
+//				Metadata: pulumi.Map{
 //					"foo": pulumi.Any("bar"),
 //				},
 //				ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
@@ -160,7 +160,7 @@ import (
 //						Network: pulumi.String("default"),
 //					},
 //				},
-//				Metadata: pulumi.AnyMap{
+//				Metadata: pulumi.Map{
 //					"foo": pulumi.Any("bar"),
 //				},
 //				ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{

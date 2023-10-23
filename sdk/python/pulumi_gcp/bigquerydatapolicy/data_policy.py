@@ -49,13 +49,31 @@ class DataPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_policy_id: pulumi.Input[str],
-             data_policy_type: pulumi.Input[str],
-             location: pulumi.Input[str],
-             policy_tag: pulumi.Input[str],
+             data_policy_id: Optional[pulumi.Input[str]] = None,
+             data_policy_type: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             policy_tag: Optional[pulumi.Input[str]] = None,
              data_masking_policy: Optional[pulumi.Input['DataPolicyDataMaskingPolicyArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if data_policy_id is None and 'dataPolicyId' in kwargs:
+            data_policy_id = kwargs['dataPolicyId']
+        if data_policy_id is None:
+            raise TypeError("Missing 'data_policy_id' argument")
+        if data_policy_type is None and 'dataPolicyType' in kwargs:
+            data_policy_type = kwargs['dataPolicyType']
+        if data_policy_type is None:
+            raise TypeError("Missing 'data_policy_type' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if policy_tag is None and 'policyTag' in kwargs:
+            policy_tag = kwargs['policyTag']
+        if policy_tag is None:
+            raise TypeError("Missing 'policy_tag' argument")
+        if data_masking_policy is None and 'dataMaskingPolicy' in kwargs:
+            data_masking_policy = kwargs['dataMaskingPolicy']
+
         _setter("data_policy_id", data_policy_id)
         _setter("data_policy_type", data_policy_type)
         _setter("location", location)
@@ -190,7 +208,17 @@ class _DataPolicyState:
              name: Optional[pulumi.Input[str]] = None,
              policy_tag: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if data_masking_policy is None and 'dataMaskingPolicy' in kwargs:
+            data_masking_policy = kwargs['dataMaskingPolicy']
+        if data_policy_id is None and 'dataPolicyId' in kwargs:
+            data_policy_id = kwargs['dataPolicyId']
+        if data_policy_type is None and 'dataPolicyType' in kwargs:
+            data_policy_type = kwargs['dataPolicyType']
+        if policy_tag is None and 'policyTag' in kwargs:
+            policy_tag = kwargs['policyTag']
+
         if data_masking_policy is not None:
             _setter("data_masking_policy", data_masking_policy)
         if data_policy_id is not None:

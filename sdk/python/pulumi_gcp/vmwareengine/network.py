@@ -45,12 +45,18 @@ class NetworkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             type: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("location", location)
         _setter("type", type)
         if description is not None:
@@ -177,7 +183,11 @@ class _NetworkState:
              type: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              vpc_networks: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkVpcNetworkArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if vpc_networks is None and 'vpcNetworks' in kwargs:
+            vpc_networks = kwargs['vpcNetworks']
+
         if description is not None:
             _setter("description", description)
         if location is not None:

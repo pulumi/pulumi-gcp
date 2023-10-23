@@ -51,15 +51,35 @@ class CustomConstraintArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action_type: pulumi.Input[str],
-             condition: pulumi.Input[str],
-             method_types: pulumi.Input[Sequence[pulumi.Input[str]]],
-             parent: pulumi.Input[str],
-             resource_types: pulumi.Input[Sequence[pulumi.Input[str]]],
+             action_type: Optional[pulumi.Input[str]] = None,
+             condition: Optional[pulumi.Input[str]] = None,
+             method_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if action_type is None and 'actionType' in kwargs:
+            action_type = kwargs['actionType']
+        if action_type is None:
+            raise TypeError("Missing 'action_type' argument")
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if method_types is None and 'methodTypes' in kwargs:
+            method_types = kwargs['methodTypes']
+        if method_types is None:
+            raise TypeError("Missing 'method_types' argument")
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if resource_types is None and 'resourceTypes' in kwargs:
+            resource_types = kwargs['resourceTypes']
+        if resource_types is None:
+            raise TypeError("Missing 'resource_types' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("action_type", action_type)
         _setter("condition", condition)
         _setter("method_types", method_types)
@@ -225,7 +245,19 @@ class _CustomConstraintState:
              parent: Optional[pulumi.Input[str]] = None,
              resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if action_type is None and 'actionType' in kwargs:
+            action_type = kwargs['actionType']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if method_types is None and 'methodTypes' in kwargs:
+            method_types = kwargs['methodTypes']
+        if resource_types is None and 'resourceTypes' in kwargs:
+            resource_types = kwargs['resourceTypes']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if action_type is not None:
             _setter("action_type", action_type)
         if condition is not None:

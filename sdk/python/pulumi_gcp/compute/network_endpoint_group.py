@@ -69,7 +69,7 @@ class NetworkEndpointGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input[str],
+             network: Optional[pulumi.Input[str]] = None,
              default_port: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -77,7 +77,15 @@ class NetworkEndpointGroupArgs:
              project: Optional[pulumi.Input[str]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if default_port is None and 'defaultPort' in kwargs:
+            default_port = kwargs['defaultPort']
+        if network_endpoint_type is None and 'networkEndpointType' in kwargs:
+            network_endpoint_type = kwargs['networkEndpointType']
+
         _setter("network", network)
         if default_port is not None:
             _setter("default_port", default_port)
@@ -287,7 +295,15 @@ class _NetworkEndpointGroupState:
              size: Optional[pulumi.Input[int]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_port is None and 'defaultPort' in kwargs:
+            default_port = kwargs['defaultPort']
+        if network_endpoint_type is None and 'networkEndpointType' in kwargs:
+            network_endpoint_type = kwargs['networkEndpointType']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if default_port is not None:
             _setter("default_port", default_port)
         if description is not None:

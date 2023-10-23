@@ -26,8 +26,12 @@ class SharedVPCHostProjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
         _setter("project", project)
 
     @property
@@ -59,7 +63,9 @@ class _SharedVPCHostProjectState:
     def _configure(
              _setter: Callable[[Any, Any], None],
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if project is not None:
             _setter("project", project)
 

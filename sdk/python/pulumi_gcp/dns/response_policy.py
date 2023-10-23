@@ -46,12 +46,20 @@ class ResponsePolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             response_policy_name: pulumi.Input[str],
+             response_policy_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]]] = None,
              networks: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if response_policy_name is None and 'responsePolicyName' in kwargs:
+            response_policy_name = kwargs['responsePolicyName']
+        if response_policy_name is None:
+            raise TypeError("Missing 'response_policy_name' argument")
+        if gke_clusters is None and 'gkeClusters' in kwargs:
+            gke_clusters = kwargs['gkeClusters']
+
         _setter("response_policy_name", response_policy_name)
         if description is not None:
             _setter("description", description)
@@ -167,7 +175,13 @@ class _ResponsePolicyState:
              networks: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              response_policy_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gke_clusters is None and 'gkeClusters' in kwargs:
+            gke_clusters = kwargs['gkeClusters']
+        if response_policy_name is None and 'responsePolicyName' in kwargs:
+            response_policy_name = kwargs['responsePolicyName']
+
         if description is not None:
             _setter("description", description)
         if gke_clusters is not None:

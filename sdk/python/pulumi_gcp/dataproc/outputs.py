@@ -187,9 +187,17 @@ class AutoscalingPolicyBasicAlgorithm(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             yarn_config: 'outputs.AutoscalingPolicyBasicAlgorithmYarnConfig',
+             yarn_config: Optional['outputs.AutoscalingPolicyBasicAlgorithmYarnConfig'] = None,
              cooldown_period: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if yarn_config is None and 'yarnConfig' in kwargs:
+            yarn_config = kwargs['yarnConfig']
+        if yarn_config is None:
+            raise TypeError("Missing 'yarn_config' argument")
+        if cooldown_period is None and 'cooldownPeriod' in kwargs:
+            cooldown_period = kwargs['cooldownPeriod']
+
         _setter("yarn_config", yarn_config)
         if cooldown_period is not None:
             _setter("cooldown_period", cooldown_period)
@@ -286,12 +294,30 @@ class AutoscalingPolicyBasicAlgorithmYarnConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             graceful_decommission_timeout: str,
-             scale_down_factor: float,
-             scale_up_factor: float,
+             graceful_decommission_timeout: Optional[str] = None,
+             scale_down_factor: Optional[float] = None,
+             scale_up_factor: Optional[float] = None,
              scale_down_min_worker_fraction: Optional[float] = None,
              scale_up_min_worker_fraction: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if graceful_decommission_timeout is None and 'gracefulDecommissionTimeout' in kwargs:
+            graceful_decommission_timeout = kwargs['gracefulDecommissionTimeout']
+        if graceful_decommission_timeout is None:
+            raise TypeError("Missing 'graceful_decommission_timeout' argument")
+        if scale_down_factor is None and 'scaleDownFactor' in kwargs:
+            scale_down_factor = kwargs['scaleDownFactor']
+        if scale_down_factor is None:
+            raise TypeError("Missing 'scale_down_factor' argument")
+        if scale_up_factor is None and 'scaleUpFactor' in kwargs:
+            scale_up_factor = kwargs['scaleUpFactor']
+        if scale_up_factor is None:
+            raise TypeError("Missing 'scale_up_factor' argument")
+        if scale_down_min_worker_fraction is None and 'scaleDownMinWorkerFraction' in kwargs:
+            scale_down_min_worker_fraction = kwargs['scaleDownMinWorkerFraction']
+        if scale_up_min_worker_fraction is None and 'scaleUpMinWorkerFraction' in kwargs:
+            scale_up_min_worker_fraction = kwargs['scaleUpMinWorkerFraction']
+
         _setter("graceful_decommission_timeout", graceful_decommission_timeout)
         _setter("scale_down_factor", scale_down_factor)
         _setter("scale_up_factor", scale_up_factor)
@@ -377,10 +403,16 @@ class AutoscalingPolicyIamBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -417,10 +449,16 @@ class AutoscalingPolicyIamMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -497,7 +535,13 @@ class AutoscalingPolicySecondaryWorkerConfig(dict):
              max_instances: Optional[int] = None,
              min_instances: Optional[int] = None,
              weight: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_instances is None and 'maxInstances' in kwargs:
+            max_instances = kwargs['maxInstances']
+        if min_instances is None and 'minInstances' in kwargs:
+            min_instances = kwargs['minInstances']
+
         if max_instances is not None:
             _setter("max_instances", max_instances)
         if min_instances is not None:
@@ -593,10 +637,18 @@ class AutoscalingPolicyWorkerConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max_instances: int,
+             max_instances: Optional[int] = None,
              min_instances: Optional[int] = None,
              weight: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_instances is None and 'maxInstances' in kwargs:
+            max_instances = kwargs['maxInstances']
+        if max_instances is None:
+            raise TypeError("Missing 'max_instances' argument")
+        if min_instances is None and 'minInstances' in kwargs:
+            min_instances = kwargs['minInstances']
+
         _setter("max_instances", max_instances)
         if min_instances is not None:
             _setter("min_instances", min_instances)
@@ -784,7 +836,39 @@ class ClusterClusterConfig(dict):
              staging_bucket: Optional[str] = None,
              temp_bucket: Optional[str] = None,
              worker_config: Optional['outputs.ClusterClusterConfigWorkerConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if autoscaling_config is None and 'autoscalingConfig' in kwargs:
+            autoscaling_config = kwargs['autoscalingConfig']
+        if dataproc_metric_config is None and 'dataprocMetricConfig' in kwargs:
+            dataproc_metric_config = kwargs['dataprocMetricConfig']
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if endpoint_config is None and 'endpointConfig' in kwargs:
+            endpoint_config = kwargs['endpointConfig']
+        if gce_cluster_config is None and 'gceClusterConfig' in kwargs:
+            gce_cluster_config = kwargs['gceClusterConfig']
+        if initialization_actions is None and 'initializationActions' in kwargs:
+            initialization_actions = kwargs['initializationActions']
+        if lifecycle_config is None and 'lifecycleConfig' in kwargs:
+            lifecycle_config = kwargs['lifecycleConfig']
+        if master_config is None and 'masterConfig' in kwargs:
+            master_config = kwargs['masterConfig']
+        if metastore_config is None and 'metastoreConfig' in kwargs:
+            metastore_config = kwargs['metastoreConfig']
+        if preemptible_worker_config is None and 'preemptibleWorkerConfig' in kwargs:
+            preemptible_worker_config = kwargs['preemptibleWorkerConfig']
+        if security_config is None and 'securityConfig' in kwargs:
+            security_config = kwargs['securityConfig']
+        if software_config is None and 'softwareConfig' in kwargs:
+            software_config = kwargs['softwareConfig']
+        if staging_bucket is None and 'stagingBucket' in kwargs:
+            staging_bucket = kwargs['stagingBucket']
+        if temp_bucket is None and 'tempBucket' in kwargs:
+            temp_bucket = kwargs['tempBucket']
+        if worker_config is None and 'workerConfig' in kwargs:
+            worker_config = kwargs['workerConfig']
+
         if autoscaling_config is not None:
             _setter("autoscaling_config", autoscaling_config)
         if bucket is not None:
@@ -1009,8 +1093,14 @@ class ClusterClusterConfigAutoscalingConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_uri: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             policy_uri: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_uri is None and 'policyUri' in kwargs:
+            policy_uri = kwargs['policyUri']
+        if policy_uri is None:
+            raise TypeError("Missing 'policy_uri' argument")
+
         _setter("policy_uri", policy_uri)
 
     @property
@@ -1044,8 +1134,12 @@ class ClusterClusterConfigDataprocMetricConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             metrics: Sequence['outputs.ClusterClusterConfigDataprocMetricConfigMetric'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             metrics: Optional[Sequence['outputs.ClusterClusterConfigDataprocMetricConfigMetric']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if metrics is None:
+            raise TypeError("Missing 'metrics' argument")
+
         _setter("metrics", metrics)
 
     @property
@@ -1095,9 +1189,17 @@ class ClusterClusterConfigDataprocMetricConfigMetric(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             metric_source: str,
+             metric_source: Optional[str] = None,
              metric_overrides: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if metric_source is None and 'metricSource' in kwargs:
+            metric_source = kwargs['metricSource']
+        if metric_source is None:
+            raise TypeError("Missing 'metric_source' argument")
+        if metric_overrides is None and 'metricOverrides' in kwargs:
+            metric_overrides = kwargs['metricOverrides']
+
         _setter("metric_source", metric_source)
         if metric_overrides is not None:
             _setter("metric_overrides", metric_overrides)
@@ -1155,8 +1257,14 @@ class ClusterClusterConfigEncryptionConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kms_key_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             kms_key_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if kms_key_name is None:
+            raise TypeError("Missing 'kms_key_name' argument")
+
         _setter("kms_key_name", kms_key_name)
 
     @property
@@ -1207,9 +1315,17 @@ class ClusterClusterConfigEndpointConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enable_http_port_access: bool,
+             enable_http_port_access: Optional[bool] = None,
              http_ports: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_http_port_access is None and 'enableHttpPortAccess' in kwargs:
+            enable_http_port_access = kwargs['enableHttpPortAccess']
+        if enable_http_port_access is None:
+            raise TypeError("Missing 'enable_http_port_access' argument")
+        if http_ports is None and 'httpPorts' in kwargs:
+            http_ports = kwargs['httpPorts']
+
         _setter("enable_http_port_access", enable_http_port_access)
         if http_ports is not None:
             _setter("http_ports", http_ports)
@@ -1333,7 +1449,21 @@ class ClusterClusterConfigGceClusterConfig(dict):
              subnetwork: Optional[str] = None,
              tags: Optional[Sequence[str]] = None,
              zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if internal_ip_only is None and 'internalIpOnly' in kwargs:
+            internal_ip_only = kwargs['internalIpOnly']
+        if node_group_affinity is None and 'nodeGroupAffinity' in kwargs:
+            node_group_affinity = kwargs['nodeGroupAffinity']
+        if reservation_affinity is None and 'reservationAffinity' in kwargs:
+            reservation_affinity = kwargs['reservationAffinity']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if service_account_scopes is None and 'serviceAccountScopes' in kwargs:
+            service_account_scopes = kwargs['serviceAccountScopes']
+        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
+            shielded_instance_config = kwargs['shieldedInstanceConfig']
+
         if internal_ip_only is not None:
             _setter("internal_ip_only", internal_ip_only)
         if metadata is not None:
@@ -1499,8 +1629,14 @@ class ClusterClusterConfigGceClusterConfigNodeGroupAffinity(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node_group_uri: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             node_group_uri: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_group_uri is None and 'nodeGroupUri' in kwargs:
+            node_group_uri = kwargs['nodeGroupUri']
+        if node_group_uri is None:
+            raise TypeError("Missing 'node_group_uri' argument")
+
         _setter("node_group_uri", node_group_uri)
 
     @property
@@ -1552,7 +1688,11 @@ class ClusterClusterConfigGceClusterConfigReservationAffinity(dict):
              consume_reservation_type: Optional[str] = None,
              key: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if consume_reservation_type is None and 'consumeReservationType' in kwargs:
+            consume_reservation_type = kwargs['consumeReservationType']
+
         if consume_reservation_type is not None:
             _setter("consume_reservation_type", consume_reservation_type)
         if key is not None:
@@ -1631,7 +1771,15 @@ class ClusterClusterConfigGceClusterConfigShieldedInstanceConfig(dict):
              enable_integrity_monitoring: Optional[bool] = None,
              enable_secure_boot: Optional[bool] = None,
              enable_vtpm: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_integrity_monitoring is None and 'enableIntegrityMonitoring' in kwargs:
+            enable_integrity_monitoring = kwargs['enableIntegrityMonitoring']
+        if enable_secure_boot is None and 'enableSecureBoot' in kwargs:
+            enable_secure_boot = kwargs['enableSecureBoot']
+        if enable_vtpm is None and 'enableVtpm' in kwargs:
+            enable_vtpm = kwargs['enableVtpm']
+
         if enable_integrity_monitoring is not None:
             _setter("enable_integrity_monitoring", enable_integrity_monitoring)
         if enable_secure_boot is not None:
@@ -1705,9 +1853,15 @@ class ClusterClusterConfigInitializationAction(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             script: str,
+             script: Optional[str] = None,
              timeout_sec: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if script is None:
+            raise TypeError("Missing 'script' argument")
+        if timeout_sec is None and 'timeoutSec' in kwargs:
+            timeout_sec = kwargs['timeoutSec']
+
         _setter("script", script)
         if timeout_sec is not None:
             _setter("timeout_sec", timeout_sec)
@@ -1782,7 +1936,15 @@ class ClusterClusterConfigLifecycleConfig(dict):
              auto_delete_time: Optional[str] = None,
              idle_delete_ttl: Optional[str] = None,
              idle_start_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_delete_time is None and 'autoDeleteTime' in kwargs:
+            auto_delete_time = kwargs['autoDeleteTime']
+        if idle_delete_ttl is None and 'idleDeleteTtl' in kwargs:
+            idle_delete_ttl = kwargs['idleDeleteTtl']
+        if idle_start_time is None and 'idleStartTime' in kwargs:
+            idle_start_time = kwargs['idleStartTime']
+
         if auto_delete_time is not None:
             _setter("auto_delete_time", auto_delete_time)
         if idle_delete_ttl is not None:
@@ -1889,7 +2051,21 @@ class ClusterClusterConfigMasterConfig(dict):
              machine_type: Optional[str] = None,
              min_cpu_platform: Optional[str] = None,
              num_instances: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disk_config is None and 'diskConfig' in kwargs:
+            disk_config = kwargs['diskConfig']
+        if image_uri is None and 'imageUri' in kwargs:
+            image_uri = kwargs['imageUri']
+        if instance_names is None and 'instanceNames' in kwargs:
+            instance_names = kwargs['instanceNames']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if min_cpu_platform is None and 'minCpuPlatform' in kwargs:
+            min_cpu_platform = kwargs['minCpuPlatform']
+        if num_instances is None and 'numInstances' in kwargs:
+            num_instances = kwargs['numInstances']
+
         if accelerators is not None:
             _setter("accelerators", accelerators)
         if disk_config is not None:
@@ -2008,9 +2184,19 @@ class ClusterClusterConfigMasterConfigAccelerator(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_count: int,
-             accelerator_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             accelerator_count: Optional[int] = None,
+             accelerator_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerator_count is None and 'acceleratorCount' in kwargs:
+            accelerator_count = kwargs['acceleratorCount']
+        if accelerator_count is None:
+            raise TypeError("Missing 'accelerator_count' argument")
+        if accelerator_type is None and 'acceleratorType' in kwargs:
+            accelerator_type = kwargs['acceleratorType']
+        if accelerator_type is None:
+            raise TypeError("Missing 'accelerator_type' argument")
+
         _setter("accelerator_count", accelerator_count)
         _setter("accelerator_type", accelerator_type)
 
@@ -2087,7 +2273,15 @@ class ClusterClusterConfigMasterConfigDiskConfig(dict):
              boot_disk_size_gb: Optional[int] = None,
              boot_disk_type: Optional[str] = None,
              num_local_ssds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if boot_disk_size_gb is None and 'bootDiskSizeGb' in kwargs:
+            boot_disk_size_gb = kwargs['bootDiskSizeGb']
+        if boot_disk_type is None and 'bootDiskType' in kwargs:
+            boot_disk_type = kwargs['bootDiskType']
+        if num_local_ssds is None and 'numLocalSsds' in kwargs:
+            num_local_ssds = kwargs['numLocalSsds']
+
         if boot_disk_size_gb is not None:
             _setter("boot_disk_size_gb", boot_disk_size_gb)
         if boot_disk_type is not None:
@@ -2161,8 +2355,14 @@ class ClusterClusterConfigMetastoreConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataproc_metastore_service: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             dataproc_metastore_service: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataproc_metastore_service is None and 'dataprocMetastoreService' in kwargs:
+            dataproc_metastore_service = kwargs['dataprocMetastoreService']
+        if dataproc_metastore_service is None:
+            raise TypeError("Missing 'dataproc_metastore_service' argument")
+
         _setter("dataproc_metastore_service", dataproc_metastore_service)
 
     @property
@@ -2230,7 +2430,15 @@ class ClusterClusterConfigPreemptibleWorkerConfig(dict):
              instance_names: Optional[Sequence[str]] = None,
              num_instances: Optional[int] = None,
              preemptibility: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disk_config is None and 'diskConfig' in kwargs:
+            disk_config = kwargs['diskConfig']
+        if instance_names is None and 'instanceNames' in kwargs:
+            instance_names = kwargs['instanceNames']
+        if num_instances is None and 'numInstances' in kwargs:
+            num_instances = kwargs['numInstances']
+
         if disk_config is not None:
             _setter("disk_config", disk_config)
         if instance_names is not None:
@@ -2325,7 +2533,15 @@ class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig(dict):
              boot_disk_size_gb: Optional[int] = None,
              boot_disk_type: Optional[str] = None,
              num_local_ssds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if boot_disk_size_gb is None and 'bootDiskSizeGb' in kwargs:
+            boot_disk_size_gb = kwargs['bootDiskSizeGb']
+        if boot_disk_type is None and 'bootDiskType' in kwargs:
+            boot_disk_type = kwargs['bootDiskType']
+        if num_local_ssds is None and 'numLocalSsds' in kwargs:
+            num_local_ssds = kwargs['numLocalSsds']
+
         if boot_disk_size_gb is not None:
             _setter("boot_disk_size_gb", boot_disk_size_gb)
         if boot_disk_type is not None:
@@ -2395,8 +2611,14 @@ class ClusterClusterConfigSecurityConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kerberos_config: 'outputs.ClusterClusterConfigSecurityConfigKerberosConfig',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             kerberos_config: Optional['outputs.ClusterClusterConfigSecurityConfigKerberosConfig'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kerberos_config is None and 'kerberosConfig' in kwargs:
+            kerberos_config = kwargs['kerberosConfig']
+        if kerberos_config is None:
+            raise TypeError("Missing 'kerberos_config' argument")
+
         _setter("kerberos_config", kerberos_config)
 
     @property
@@ -2525,8 +2747,8 @@ class ClusterClusterConfigSecurityConfigKerberosConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kms_key_uri: str,
-             root_principal_password_uri: str,
+             kms_key_uri: Optional[str] = None,
+             root_principal_password_uri: Optional[str] = None,
              cross_realm_trust_admin_server: Optional[str] = None,
              cross_realm_trust_kdc: Optional[str] = None,
              cross_realm_trust_realm: Optional[str] = None,
@@ -2540,7 +2762,41 @@ class ClusterClusterConfigSecurityConfigKerberosConfig(dict):
              tgt_lifetime_hours: Optional[int] = None,
              truststore_password_uri: Optional[str] = None,
              truststore_uri: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_uri is None and 'kmsKeyUri' in kwargs:
+            kms_key_uri = kwargs['kmsKeyUri']
+        if kms_key_uri is None:
+            raise TypeError("Missing 'kms_key_uri' argument")
+        if root_principal_password_uri is None and 'rootPrincipalPasswordUri' in kwargs:
+            root_principal_password_uri = kwargs['rootPrincipalPasswordUri']
+        if root_principal_password_uri is None:
+            raise TypeError("Missing 'root_principal_password_uri' argument")
+        if cross_realm_trust_admin_server is None and 'crossRealmTrustAdminServer' in kwargs:
+            cross_realm_trust_admin_server = kwargs['crossRealmTrustAdminServer']
+        if cross_realm_trust_kdc is None and 'crossRealmTrustKdc' in kwargs:
+            cross_realm_trust_kdc = kwargs['crossRealmTrustKdc']
+        if cross_realm_trust_realm is None and 'crossRealmTrustRealm' in kwargs:
+            cross_realm_trust_realm = kwargs['crossRealmTrustRealm']
+        if cross_realm_trust_shared_password_uri is None and 'crossRealmTrustSharedPasswordUri' in kwargs:
+            cross_realm_trust_shared_password_uri = kwargs['crossRealmTrustSharedPasswordUri']
+        if enable_kerberos is None and 'enableKerberos' in kwargs:
+            enable_kerberos = kwargs['enableKerberos']
+        if kdc_db_key_uri is None and 'kdcDbKeyUri' in kwargs:
+            kdc_db_key_uri = kwargs['kdcDbKeyUri']
+        if key_password_uri is None and 'keyPasswordUri' in kwargs:
+            key_password_uri = kwargs['keyPasswordUri']
+        if keystore_password_uri is None and 'keystorePasswordUri' in kwargs:
+            keystore_password_uri = kwargs['keystorePasswordUri']
+        if keystore_uri is None and 'keystoreUri' in kwargs:
+            keystore_uri = kwargs['keystoreUri']
+        if tgt_lifetime_hours is None and 'tgtLifetimeHours' in kwargs:
+            tgt_lifetime_hours = kwargs['tgtLifetimeHours']
+        if truststore_password_uri is None and 'truststorePasswordUri' in kwargs:
+            truststore_password_uri = kwargs['truststorePasswordUri']
+        if truststore_uri is None and 'truststoreUri' in kwargs:
+            truststore_uri = kwargs['truststoreUri']
+
         _setter("kms_key_uri", kms_key_uri)
         _setter("root_principal_password_uri", root_principal_password_uri)
         if cross_realm_trust_admin_server is not None:
@@ -2767,7 +3023,15 @@ class ClusterClusterConfigSoftwareConfig(dict):
              optional_components: Optional[Sequence[str]] = None,
              override_properties: Optional[Mapping[str, str]] = None,
              properties: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if image_version is None and 'imageVersion' in kwargs:
+            image_version = kwargs['imageVersion']
+        if optional_components is None and 'optionalComponents' in kwargs:
+            optional_components = kwargs['optionalComponents']
+        if override_properties is None and 'overrideProperties' in kwargs:
+            override_properties = kwargs['overrideProperties']
+
         if image_version is not None:
             _setter("image_version", image_version)
         if optional_components is not None:
@@ -2897,7 +3161,21 @@ class ClusterClusterConfigWorkerConfig(dict):
              machine_type: Optional[str] = None,
              min_cpu_platform: Optional[str] = None,
              num_instances: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disk_config is None and 'diskConfig' in kwargs:
+            disk_config = kwargs['diskConfig']
+        if image_uri is None and 'imageUri' in kwargs:
+            image_uri = kwargs['imageUri']
+        if instance_names is None and 'instanceNames' in kwargs:
+            instance_names = kwargs['instanceNames']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if min_cpu_platform is None and 'minCpuPlatform' in kwargs:
+            min_cpu_platform = kwargs['minCpuPlatform']
+        if num_instances is None and 'numInstances' in kwargs:
+            num_instances = kwargs['numInstances']
+
         if accelerators is not None:
             _setter("accelerators", accelerators)
         if disk_config is not None:
@@ -3021,9 +3299,19 @@ class ClusterClusterConfigWorkerConfigAccelerator(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_count: int,
-             accelerator_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             accelerator_count: Optional[int] = None,
+             accelerator_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerator_count is None and 'acceleratorCount' in kwargs:
+            accelerator_count = kwargs['acceleratorCount']
+        if accelerator_count is None:
+            raise TypeError("Missing 'accelerator_count' argument")
+        if accelerator_type is None and 'acceleratorType' in kwargs:
+            accelerator_type = kwargs['acceleratorType']
+        if accelerator_type is None:
+            raise TypeError("Missing 'accelerator_type' argument")
+
         _setter("accelerator_count", accelerator_count)
         _setter("accelerator_type", accelerator_type)
 
@@ -3100,7 +3388,15 @@ class ClusterClusterConfigWorkerConfigDiskConfig(dict):
              boot_disk_size_gb: Optional[int] = None,
              boot_disk_type: Optional[str] = None,
              num_local_ssds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if boot_disk_size_gb is None and 'bootDiskSizeGb' in kwargs:
+            boot_disk_size_gb = kwargs['bootDiskSizeGb']
+        if boot_disk_type is None and 'bootDiskType' in kwargs:
+            boot_disk_type = kwargs['bootDiskType']
+        if num_local_ssds is None and 'numLocalSsds' in kwargs:
+            num_local_ssds = kwargs['numLocalSsds']
+
         if boot_disk_size_gb is not None:
             _setter("boot_disk_size_gb", boot_disk_size_gb)
         if boot_disk_type is not None:
@@ -3154,10 +3450,16 @@ class ClusterIAMBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -3194,10 +3496,16 @@ class ClusterIAMMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -3272,7 +3580,15 @@ class ClusterVirtualClusterConfig(dict):
              auxiliary_services_config: Optional['outputs.ClusterVirtualClusterConfigAuxiliaryServicesConfig'] = None,
              kubernetes_cluster_config: Optional['outputs.ClusterVirtualClusterConfigKubernetesClusterConfig'] = None,
              staging_bucket: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auxiliary_services_config is None and 'auxiliaryServicesConfig' in kwargs:
+            auxiliary_services_config = kwargs['auxiliaryServicesConfig']
+        if kubernetes_cluster_config is None and 'kubernetesClusterConfig' in kwargs:
+            kubernetes_cluster_config = kwargs['kubernetesClusterConfig']
+        if staging_bucket is None and 'stagingBucket' in kwargs:
+            staging_bucket = kwargs['stagingBucket']
+
         if auxiliary_services_config is not None:
             _setter("auxiliary_services_config", auxiliary_services_config)
         if kubernetes_cluster_config is not None:
@@ -3352,7 +3668,13 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfig(dict):
              _setter: Callable[[Any, Any], None],
              metastore_config: Optional['outputs.ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig'] = None,
              spark_history_server_config: Optional['outputs.ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if metastore_config is None and 'metastoreConfig' in kwargs:
+            metastore_config = kwargs['metastoreConfig']
+        if spark_history_server_config is None and 'sparkHistoryServerConfig' in kwargs:
+            spark_history_server_config = kwargs['sparkHistoryServerConfig']
+
         if metastore_config is not None:
             _setter("metastore_config", metastore_config)
         if spark_history_server_config is not None:
@@ -3411,7 +3733,11 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              dataproc_metastore_service: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataproc_metastore_service is None and 'dataprocMetastoreService' in kwargs:
+            dataproc_metastore_service = kwargs['dataprocMetastoreService']
+
         if dataproc_metastore_service is not None:
             _setter("dataproc_metastore_service", dataproc_metastore_service)
 
@@ -3461,7 +3787,11 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig
     def _configure(
              _setter: Callable[[Any, Any], None],
              dataproc_cluster: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataproc_cluster is None and 'dataprocCluster' in kwargs:
+            dataproc_cluster = kwargs['dataprocCluster']
+
         if dataproc_cluster is not None:
             _setter("dataproc_cluster", dataproc_cluster)
 
@@ -3519,10 +3849,22 @@ class ClusterVirtualClusterConfigKubernetesClusterConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             gke_cluster_config: 'outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig',
-             kubernetes_software_config: 'outputs.ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig',
+             gke_cluster_config: Optional['outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig'] = None,
+             kubernetes_software_config: Optional['outputs.ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig'] = None,
              kubernetes_namespace: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gke_cluster_config is None and 'gkeClusterConfig' in kwargs:
+            gke_cluster_config = kwargs['gkeClusterConfig']
+        if gke_cluster_config is None:
+            raise TypeError("Missing 'gke_cluster_config' argument")
+        if kubernetes_software_config is None and 'kubernetesSoftwareConfig' in kwargs:
+            kubernetes_software_config = kwargs['kubernetesSoftwareConfig']
+        if kubernetes_software_config is None:
+            raise TypeError("Missing 'kubernetes_software_config' argument")
+        if kubernetes_namespace is None and 'kubernetesNamespace' in kwargs:
+            kubernetes_namespace = kwargs['kubernetesNamespace']
+
         _setter("gke_cluster_config", gke_cluster_config)
         _setter("kubernetes_software_config", kubernetes_software_config)
         if kubernetes_namespace is not None:
@@ -3597,7 +3939,13 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig(dict):
              _setter: Callable[[Any, Any], None],
              gke_cluster_target: Optional[str] = None,
              node_pool_targets: Optional[Sequence['outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gke_cluster_target is None and 'gkeClusterTarget' in kwargs:
+            gke_cluster_target = kwargs['gkeClusterTarget']
+        if node_pool_targets is None and 'nodePoolTargets' in kwargs:
+            node_pool_targets = kwargs['nodePoolTargets']
+
         if gke_cluster_target is not None:
             _setter("gke_cluster_target", gke_cluster_target)
         if node_pool_targets is not None:
@@ -3666,10 +4014,20 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node_pool: str,
-             roles: Sequence[str],
+             node_pool: Optional[str] = None,
+             roles: Optional[Sequence[str]] = None,
              node_pool_config: Optional['outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_pool is None and 'nodePool' in kwargs:
+            node_pool = kwargs['nodePool']
+        if node_pool is None:
+            raise TypeError("Missing 'node_pool' argument")
+        if roles is None:
+            raise TypeError("Missing 'roles' argument")
+        if node_pool_config is None and 'nodePoolConfig' in kwargs:
+            node_pool_config = kwargs['nodePoolConfig']
+
         _setter("node_pool", node_pool)
         _setter("roles", roles)
         if node_pool_config is not None:
@@ -3727,10 +4085,14 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             locations: Sequence[str],
+             locations: Optional[Sequence[str]] = None,
              autoscaling: Optional['outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling'] = None,
              config: Optional['outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if locations is None:
+            raise TypeError("Missing 'locations' argument")
+
         _setter("locations", locations)
         if autoscaling is not None:
             _setter("autoscaling", autoscaling)
@@ -3803,7 +4165,13 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
              _setter: Callable[[Any, Any], None],
              max_node_count: Optional[int] = None,
              min_node_count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_node_count is None and 'maxNodeCount' in kwargs:
+            max_node_count = kwargs['maxNodeCount']
+        if min_node_count is None and 'minNodeCount' in kwargs:
+            min_node_count = kwargs['minNodeCount']
+
         if max_node_count is not None:
             _setter("max_node_count", max_node_count)
         if min_node_count is not None:
@@ -3883,7 +4251,15 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
              min_cpu_platform: Optional[str] = None,
              preemptible: Optional[bool] = None,
              spot: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if local_ssd_count is None and 'localSsdCount' in kwargs:
+            local_ssd_count = kwargs['localSsdCount']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if min_cpu_platform is None and 'minCpuPlatform' in kwargs:
+            min_cpu_platform = kwargs['minCpuPlatform']
+
         if local_ssd_count is not None:
             _setter("local_ssd_count", local_ssd_count)
         if machine_type is not None:
@@ -3978,9 +4354,15 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             component_version: Mapping[str, str],
+             component_version: Optional[Mapping[str, str]] = None,
              properties: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if component_version is None and 'componentVersion' in kwargs:
+            component_version = kwargs['componentVersion']
+        if component_version is None:
+            raise TypeError("Missing 'component_version' argument")
+
         _setter("component_version", component_version)
         if properties is not None:
             _setter("properties", properties)
@@ -4076,7 +4458,21 @@ class JobHadoopConfig(dict):
              main_class: Optional[str] = None,
              main_jar_file_uri: Optional[str] = None,
              properties: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if archive_uris is None and 'archiveUris' in kwargs:
+            archive_uris = kwargs['archiveUris']
+        if file_uris is None and 'fileUris' in kwargs:
+            file_uris = kwargs['fileUris']
+        if jar_file_uris is None and 'jarFileUris' in kwargs:
+            jar_file_uris = kwargs['jarFileUris']
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+        if main_class is None and 'mainClass' in kwargs:
+            main_class = kwargs['mainClass']
+        if main_jar_file_uri is None and 'mainJarFileUri' in kwargs:
+            main_jar_file_uri = kwargs['mainJarFileUri']
+
         if archive_uris is not None:
             _setter("archive_uris", archive_uris)
         if args is not None:
@@ -4186,8 +4582,14 @@ class JobHadoopConfigLoggingConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             driver_log_levels: Mapping[str, str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             driver_log_levels: Optional[Mapping[str, str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if driver_log_levels is None and 'driverLogLevels' in kwargs:
+            driver_log_levels = kwargs['driverLogLevels']
+        if driver_log_levels is None:
+            raise TypeError("Missing 'driver_log_levels' argument")
+
         _setter("driver_log_levels", driver_log_levels)
 
     @property
@@ -4258,7 +4660,19 @@ class JobHiveConfig(dict):
              query_file_uri: Optional[str] = None,
              query_lists: Optional[Sequence[str]] = None,
              script_variables: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if continue_on_failure is None and 'continueOnFailure' in kwargs:
+            continue_on_failure = kwargs['continueOnFailure']
+        if jar_file_uris is None and 'jarFileUris' in kwargs:
+            jar_file_uris = kwargs['jarFileUris']
+        if query_file_uri is None and 'queryFileUri' in kwargs:
+            query_file_uri = kwargs['queryFileUri']
+        if query_lists is None and 'queryLists' in kwargs:
+            query_lists = kwargs['queryLists']
+        if script_variables is None and 'scriptVariables' in kwargs:
+            script_variables = kwargs['scriptVariables']
+
         if continue_on_failure is not None:
             _setter("continue_on_failure", continue_on_failure)
         if jar_file_uris is not None:
@@ -4338,10 +4752,16 @@ class JobIAMBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -4378,10 +4798,16 @@ class JobIAMMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -4472,7 +4898,21 @@ class JobPigConfig(dict):
              query_file_uri: Optional[str] = None,
              query_lists: Optional[Sequence[str]] = None,
              script_variables: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if continue_on_failure is None and 'continueOnFailure' in kwargs:
+            continue_on_failure = kwargs['continueOnFailure']
+        if jar_file_uris is None and 'jarFileUris' in kwargs:
+            jar_file_uris = kwargs['jarFileUris']
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+        if query_file_uri is None and 'queryFileUri' in kwargs:
+            query_file_uri = kwargs['queryFileUri']
+        if query_lists is None and 'queryLists' in kwargs:
+            query_lists = kwargs['queryLists']
+        if script_variables is None and 'scriptVariables' in kwargs:
+            script_variables = kwargs['scriptVariables']
+
         if continue_on_failure is not None:
             _setter("continue_on_failure", continue_on_failure)
         if jar_file_uris is not None:
@@ -4574,8 +5014,14 @@ class JobPigConfigLoggingConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             driver_log_levels: Mapping[str, str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             driver_log_levels: Optional[Mapping[str, str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if driver_log_levels is None and 'driverLogLevels' in kwargs:
+            driver_log_levels = kwargs['driverLogLevels']
+        if driver_log_levels is None:
+            raise TypeError("Missing 'driver_log_levels' argument")
+
         _setter("driver_log_levels", driver_log_levels)
 
     @property
@@ -4616,9 +5062,17 @@ class JobPlacement(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_name: str,
+             cluster_name: Optional[str] = None,
              cluster_uuid: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_name is None and 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if cluster_name is None:
+            raise TypeError("Missing 'cluster_name' argument")
+        if cluster_uuid is None and 'clusterUuid' in kwargs:
+            cluster_uuid = kwargs['clusterUuid']
+
         _setter("cluster_name", cluster_name)
         if cluster_uuid is not None:
             _setter("cluster_uuid", cluster_uuid)
@@ -4703,7 +5157,21 @@ class JobPrestoConfig(dict):
              properties: Optional[Mapping[str, str]] = None,
              query_file_uri: Optional[str] = None,
              query_lists: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if client_tags is None and 'clientTags' in kwargs:
+            client_tags = kwargs['clientTags']
+        if continue_on_failure is None and 'continueOnFailure' in kwargs:
+            continue_on_failure = kwargs['continueOnFailure']
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+        if output_format is None and 'outputFormat' in kwargs:
+            output_format = kwargs['outputFormat']
+        if query_file_uri is None and 'queryFileUri' in kwargs:
+            query_file_uri = kwargs['queryFileUri']
+        if query_lists is None and 'queryLists' in kwargs:
+            query_lists = kwargs['queryLists']
+
         if client_tags is not None:
             _setter("client_tags", client_tags)
         if continue_on_failure is not None:
@@ -4805,8 +5273,14 @@ class JobPrestoConfigLoggingConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             driver_log_levels: Mapping[str, str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             driver_log_levels: Optional[Mapping[str, str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if driver_log_levels is None and 'driverLogLevels' in kwargs:
+            driver_log_levels = kwargs['driverLogLevels']
+        if driver_log_levels is None:
+            raise TypeError("Missing 'driver_log_levels' argument")
+
         _setter("driver_log_levels", driver_log_levels)
 
     @property
@@ -4878,7 +5352,7 @@ class JobPysparkConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             main_python_file_uri: str,
+             main_python_file_uri: Optional[str] = None,
              archive_uris: Optional[Sequence[str]] = None,
              args: Optional[Sequence[str]] = None,
              file_uris: Optional[Sequence[str]] = None,
@@ -4886,7 +5360,23 @@ class JobPysparkConfig(dict):
              logging_config: Optional['outputs.JobPysparkConfigLoggingConfig'] = None,
              properties: Optional[Mapping[str, str]] = None,
              python_file_uris: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if main_python_file_uri is None and 'mainPythonFileUri' in kwargs:
+            main_python_file_uri = kwargs['mainPythonFileUri']
+        if main_python_file_uri is None:
+            raise TypeError("Missing 'main_python_file_uri' argument")
+        if archive_uris is None and 'archiveUris' in kwargs:
+            archive_uris = kwargs['archiveUris']
+        if file_uris is None and 'fileUris' in kwargs:
+            file_uris = kwargs['fileUris']
+        if jar_file_uris is None and 'jarFileUris' in kwargs:
+            jar_file_uris = kwargs['jarFileUris']
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+        if python_file_uris is None and 'pythonFileUris' in kwargs:
+            python_file_uris = kwargs['pythonFileUris']
+
         _setter("main_python_file_uri", main_python_file_uri)
         if archive_uris is not None:
             _setter("archive_uris", archive_uris)
@@ -4995,8 +5485,14 @@ class JobPysparkConfigLoggingConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             driver_log_levels: Mapping[str, str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             driver_log_levels: Optional[Mapping[str, str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if driver_log_levels is None and 'driverLogLevels' in kwargs:
+            driver_log_levels = kwargs['driverLogLevels']
+        if driver_log_levels is None:
+            raise TypeError("Missing 'driver_log_levels' argument")
+
         _setter("driver_log_levels", driver_log_levels)
 
     @property
@@ -5034,7 +5530,11 @@ class JobReference(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              job_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if job_id is None and 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+
         if job_id is not None:
             _setter("job_id", job_id)
 
@@ -5076,9 +5576,19 @@ class JobScheduling(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max_failures_per_hour: int,
-             max_failures_total: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             max_failures_per_hour: Optional[int] = None,
+             max_failures_total: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_failures_per_hour is None and 'maxFailuresPerHour' in kwargs:
+            max_failures_per_hour = kwargs['maxFailuresPerHour']
+        if max_failures_per_hour is None:
+            raise TypeError("Missing 'max_failures_per_hour' argument")
+        if max_failures_total is None and 'maxFailuresTotal' in kwargs:
+            max_failures_total = kwargs['maxFailuresTotal']
+        if max_failures_total is None:
+            raise TypeError("Missing 'max_failures_total' argument")
+
         _setter("max_failures_per_hour", max_failures_per_hour)
         _setter("max_failures_total", max_failures_total)
 
@@ -5166,7 +5676,21 @@ class JobSparkConfig(dict):
              main_class: Optional[str] = None,
              main_jar_file_uri: Optional[str] = None,
              properties: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if archive_uris is None and 'archiveUris' in kwargs:
+            archive_uris = kwargs['archiveUris']
+        if file_uris is None and 'fileUris' in kwargs:
+            file_uris = kwargs['fileUris']
+        if jar_file_uris is None and 'jarFileUris' in kwargs:
+            jar_file_uris = kwargs['jarFileUris']
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+        if main_class is None and 'mainClass' in kwargs:
+            main_class = kwargs['mainClass']
+        if main_jar_file_uri is None and 'mainJarFileUri' in kwargs:
+            main_jar_file_uri = kwargs['mainJarFileUri']
+
         if archive_uris is not None:
             _setter("archive_uris", archive_uris)
         if args is not None:
@@ -5278,8 +5802,14 @@ class JobSparkConfigLoggingConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             driver_log_levels: Mapping[str, str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             driver_log_levels: Optional[Mapping[str, str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if driver_log_levels is None and 'driverLogLevels' in kwargs:
+            driver_log_levels = kwargs['driverLogLevels']
+        if driver_log_levels is None:
+            raise TypeError("Missing 'driver_log_levels' argument")
+
         _setter("driver_log_levels", driver_log_levels)
 
     @property
@@ -5351,7 +5881,19 @@ class JobSparksqlConfig(dict):
              query_file_uri: Optional[str] = None,
              query_lists: Optional[Sequence[str]] = None,
              script_variables: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if jar_file_uris is None and 'jarFileUris' in kwargs:
+            jar_file_uris = kwargs['jarFileUris']
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+        if query_file_uri is None and 'queryFileUri' in kwargs:
+            query_file_uri = kwargs['queryFileUri']
+        if query_lists is None and 'queryLists' in kwargs:
+            query_lists = kwargs['queryLists']
+        if script_variables is None and 'scriptVariables' in kwargs:
+            script_variables = kwargs['scriptVariables']
+
         if jar_file_uris is not None:
             _setter("jar_file_uris", jar_file_uris)
         if logging_config is not None:
@@ -5443,8 +5985,14 @@ class JobSparksqlConfigLoggingConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             driver_log_levels: Mapping[str, str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             driver_log_levels: Optional[Mapping[str, str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if driver_log_levels is None and 'driverLogLevels' in kwargs:
+            driver_log_levels = kwargs['driverLogLevels']
+        if driver_log_levels is None:
+            raise TypeError("Missing 'driver_log_levels' argument")
+
         _setter("driver_log_levels", driver_log_levels)
 
     @property
@@ -5491,7 +6039,11 @@ class JobStatus(dict):
              state: Optional[str] = None,
              state_start_time: Optional[str] = None,
              substate: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if state_start_time is None and 'stateStartTime' in kwargs:
+            state_start_time = kwargs['stateStartTime']
+
         if details is not None:
             _setter("details", details)
         if state is not None:
@@ -5562,10 +6114,20 @@ class MetastoreFederationBackendMetastore(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             metastore_type: str,
-             name: str,
-             rank: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             metastore_type: Optional[str] = None,
+             name: Optional[str] = None,
+             rank: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if metastore_type is None and 'metastoreType' in kwargs:
+            metastore_type = kwargs['metastoreType']
+        if metastore_type is None:
+            raise TypeError("Missing 'metastore_type' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if rank is None:
+            raise TypeError("Missing 'rank' argument")
+
         _setter("metastore_type", metastore_type)
         _setter("name", name)
         _setter("rank", rank)
@@ -5613,10 +6175,16 @@ class MetastoreFederationIamBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -5653,10 +6221,16 @@ class MetastoreFederationIamMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -5710,8 +6284,14 @@ class MetastoreServiceEncryptionConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kms_key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             kms_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key is None and 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+        if kms_key is None:
+            raise TypeError("Missing 'kms_key' argument")
+
         _setter("kms_key", kms_key)
 
     @property
@@ -5773,12 +6353,24 @@ class MetastoreServiceHiveMetastoreConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             version: str,
+             version: Optional[str] = None,
              auxiliary_versions: Optional[Sequence['outputs.MetastoreServiceHiveMetastoreConfigAuxiliaryVersion']] = None,
              config_overrides: Optional[Mapping[str, str]] = None,
              endpoint_protocol: Optional[str] = None,
              kerberos_config: Optional['outputs.MetastoreServiceHiveMetastoreConfigKerberosConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+        if auxiliary_versions is None and 'auxiliaryVersions' in kwargs:
+            auxiliary_versions = kwargs['auxiliaryVersions']
+        if config_overrides is None and 'configOverrides' in kwargs:
+            config_overrides = kwargs['configOverrides']
+        if endpoint_protocol is None and 'endpointProtocol' in kwargs:
+            endpoint_protocol = kwargs['endpointProtocol']
+        if kerberos_config is None and 'kerberosConfig' in kwargs:
+            kerberos_config = kwargs['kerberosConfig']
+
         _setter("version", version)
         if auxiliary_versions is not None:
             _setter("auxiliary_versions", auxiliary_versions)
@@ -5864,10 +6456,18 @@ class MetastoreServiceHiveMetastoreConfigAuxiliaryVersion(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             version: str,
+             key: Optional[str] = None,
+             version: Optional[str] = None,
              config_overrides: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+        if config_overrides is None and 'configOverrides' in kwargs:
+            config_overrides = kwargs['configOverrides']
+
         _setter("key", key)
         _setter("version", version)
         if config_overrides is not None:
@@ -5937,10 +6537,20 @@ class MetastoreServiceHiveMetastoreConfigKerberosConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             keytab: 'outputs.MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab',
-             krb5_config_gcs_uri: str,
-             principal: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             keytab: Optional['outputs.MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab'] = None,
+             krb5_config_gcs_uri: Optional[str] = None,
+             principal: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if keytab is None:
+            raise TypeError("Missing 'keytab' argument")
+        if krb5_config_gcs_uri is None and 'krb5ConfigGcsUri' in kwargs:
+            krb5_config_gcs_uri = kwargs['krb5ConfigGcsUri']
+        if krb5_config_gcs_uri is None:
+            raise TypeError("Missing 'krb5_config_gcs_uri' argument")
+        if principal is None:
+            raise TypeError("Missing 'principal' argument")
+
         _setter("keytab", keytab)
         _setter("krb5_config_gcs_uri", krb5_config_gcs_uri)
         _setter("principal", principal)
@@ -6003,8 +6613,14 @@ class MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cloud_secret: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             cloud_secret: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cloud_secret is None and 'cloudSecret' in kwargs:
+            cloud_secret = kwargs['cloudSecret']
+        if cloud_secret is None:
+            raise TypeError("Missing 'cloud_secret' argument")
+
         _setter("cloud_secret", cloud_secret)
 
     @property
@@ -6032,10 +6648,16 @@ class MetastoreServiceIamBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -6072,10 +6694,16 @@ class MetastoreServiceIamMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -6134,9 +6762,19 @@ class MetastoreServiceMaintenanceWindow(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             day_of_week: str,
-             hour_of_day: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             day_of_week: Optional[str] = None,
+             hour_of_day: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if day_of_week is None and 'dayOfWeek' in kwargs:
+            day_of_week = kwargs['dayOfWeek']
+        if day_of_week is None:
+            raise TypeError("Missing 'day_of_week' argument")
+        if hour_of_day is None and 'hourOfDay' in kwargs:
+            hour_of_day = kwargs['hourOfDay']
+        if hour_of_day is None:
+            raise TypeError("Missing 'hour_of_day' argument")
+
         _setter("day_of_week", day_of_week)
         _setter("hour_of_day", hour_of_day)
 
@@ -6190,8 +6828,14 @@ class MetastoreServiceMetadataIntegration(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_catalog_config: 'outputs.MetastoreServiceMetadataIntegrationDataCatalogConfig',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             data_catalog_config: Optional['outputs.MetastoreServiceMetadataIntegrationDataCatalogConfig'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if data_catalog_config is None and 'dataCatalogConfig' in kwargs:
+            data_catalog_config = kwargs['dataCatalogConfig']
+        if data_catalog_config is None:
+            raise TypeError("Missing 'data_catalog_config' argument")
+
         _setter("data_catalog_config", data_catalog_config)
 
     @property
@@ -6218,8 +6862,12 @@ class MetastoreServiceMetadataIntegrationDataCatalogConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -6246,8 +6894,12 @@ class MetastoreServiceNetworkConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             consumers: Sequence['outputs.MetastoreServiceNetworkConfigConsumer'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             consumers: Optional[Sequence['outputs.MetastoreServiceNetworkConfigConsumer']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if consumers is None:
+            raise TypeError("Missing 'consumers' argument")
+
         _setter("consumers", consumers)
 
     @property
@@ -6298,9 +6950,15 @@ class MetastoreServiceNetworkConfigConsumer(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             subnetwork: str,
+             subnetwork: Optional[str] = None,
              endpoint_uri: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if subnetwork is None:
+            raise TypeError("Missing 'subnetwork' argument")
+        if endpoint_uri is None and 'endpointUri' in kwargs:
+            endpoint_uri = kwargs['endpointUri']
+
         _setter("subnetwork", subnetwork)
         if endpoint_uri is not None:
             _setter("endpoint_uri", endpoint_uri)
@@ -6365,7 +7023,13 @@ class MetastoreServiceScalingConfig(dict):
              _setter: Callable[[Any, Any], None],
              instance_size: Optional[str] = None,
              scaling_factor: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_size is None and 'instanceSize' in kwargs:
+            instance_size = kwargs['instanceSize']
+        if scaling_factor is None and 'scalingFactor' in kwargs:
+            scaling_factor = kwargs['scalingFactor']
+
         if instance_size is not None:
             _setter("instance_size", instance_size)
         if scaling_factor is not None:
@@ -6423,7 +7087,11 @@ class MetastoreServiceTelemetryConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              log_format: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if log_format is None and 'logFormat' in kwargs:
+            log_format = kwargs['logFormat']
+
         if log_format is not None:
             _setter("log_format", log_format)
 
@@ -6520,7 +7188,7 @@ class WorkflowTemplateJob(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             step_id: str,
+             step_id: Optional[str] = None,
              hadoop_job: Optional['outputs.WorkflowTemplateJobHadoopJob'] = None,
              hive_job: Optional['outputs.WorkflowTemplateJobHiveJob'] = None,
              labels: Optional[Mapping[str, str]] = None,
@@ -6532,7 +7200,31 @@ class WorkflowTemplateJob(dict):
              spark_job: Optional['outputs.WorkflowTemplateJobSparkJob'] = None,
              spark_r_job: Optional['outputs.WorkflowTemplateJobSparkRJob'] = None,
              spark_sql_job: Optional['outputs.WorkflowTemplateJobSparkSqlJob'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if step_id is None and 'stepId' in kwargs:
+            step_id = kwargs['stepId']
+        if step_id is None:
+            raise TypeError("Missing 'step_id' argument")
+        if hadoop_job is None and 'hadoopJob' in kwargs:
+            hadoop_job = kwargs['hadoopJob']
+        if hive_job is None and 'hiveJob' in kwargs:
+            hive_job = kwargs['hiveJob']
+        if pig_job is None and 'pigJob' in kwargs:
+            pig_job = kwargs['pigJob']
+        if prerequisite_step_ids is None and 'prerequisiteStepIds' in kwargs:
+            prerequisite_step_ids = kwargs['prerequisiteStepIds']
+        if presto_job is None and 'prestoJob' in kwargs:
+            presto_job = kwargs['prestoJob']
+        if pyspark_job is None and 'pysparkJob' in kwargs:
+            pyspark_job = kwargs['pysparkJob']
+        if spark_job is None and 'sparkJob' in kwargs:
+            spark_job = kwargs['sparkJob']
+        if spark_r_job is None and 'sparkRJob' in kwargs:
+            spark_r_job = kwargs['sparkRJob']
+        if spark_sql_job is None and 'sparkSqlJob' in kwargs:
+            spark_sql_job = kwargs['sparkSqlJob']
+
         _setter("step_id", step_id)
         if hadoop_job is not None:
             _setter("hadoop_job", hadoop_job)
@@ -6724,7 +7416,21 @@ class WorkflowTemplateJobHadoopJob(dict):
              main_class: Optional[str] = None,
              main_jar_file_uri: Optional[str] = None,
              properties: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if archive_uris is None and 'archiveUris' in kwargs:
+            archive_uris = kwargs['archiveUris']
+        if file_uris is None and 'fileUris' in kwargs:
+            file_uris = kwargs['fileUris']
+        if jar_file_uris is None and 'jarFileUris' in kwargs:
+            jar_file_uris = kwargs['jarFileUris']
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+        if main_class is None and 'mainClass' in kwargs:
+            main_class = kwargs['mainClass']
+        if main_jar_file_uri is None and 'mainJarFileUri' in kwargs:
+            main_jar_file_uri = kwargs['mainJarFileUri']
+
         if archive_uris is not None:
             _setter("archive_uris", archive_uris)
         if args is not None:
@@ -6839,7 +7545,11 @@ class WorkflowTemplateJobHadoopJobLoggingConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              driver_log_levels: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if driver_log_levels is None and 'driverLogLevels' in kwargs:
+            driver_log_levels = kwargs['driverLogLevels']
+
         if driver_log_levels is not None:
             _setter("driver_log_levels", driver_log_levels)
 
@@ -6912,7 +7622,19 @@ class WorkflowTemplateJobHiveJob(dict):
              query_file_uri: Optional[str] = None,
              query_list: Optional['outputs.WorkflowTemplateJobHiveJobQueryList'] = None,
              script_variables: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if continue_on_failure is None and 'continueOnFailure' in kwargs:
+            continue_on_failure = kwargs['continueOnFailure']
+        if jar_file_uris is None and 'jarFileUris' in kwargs:
+            jar_file_uris = kwargs['jarFileUris']
+        if query_file_uri is None and 'queryFileUri' in kwargs:
+            query_file_uri = kwargs['queryFileUri']
+        if query_list is None and 'queryList' in kwargs:
+            query_list = kwargs['queryList']
+        if script_variables is None and 'scriptVariables' in kwargs:
+            script_variables = kwargs['scriptVariables']
+
         if continue_on_failure is not None:
             _setter("continue_on_failure", continue_on_failure)
         if jar_file_uris is not None:
@@ -6989,8 +7711,12 @@ class WorkflowTemplateJobHiveJobQueryList(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             queries: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             queries: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if queries is None:
+            raise TypeError("Missing 'queries' argument")
+
         _setter("queries", queries)
 
     @property
@@ -7068,7 +7794,21 @@ class WorkflowTemplateJobPigJob(dict):
              query_file_uri: Optional[str] = None,
              query_list: Optional['outputs.WorkflowTemplateJobPigJobQueryList'] = None,
              script_variables: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if continue_on_failure is None and 'continueOnFailure' in kwargs:
+            continue_on_failure = kwargs['continueOnFailure']
+        if jar_file_uris is None and 'jarFileUris' in kwargs:
+            jar_file_uris = kwargs['jarFileUris']
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+        if query_file_uri is None and 'queryFileUri' in kwargs:
+            query_file_uri = kwargs['queryFileUri']
+        if query_list is None and 'queryList' in kwargs:
+            query_list = kwargs['queryList']
+        if script_variables is None and 'scriptVariables' in kwargs:
+            script_variables = kwargs['scriptVariables']
+
         if continue_on_failure is not None:
             _setter("continue_on_failure", continue_on_failure)
         if jar_file_uris is not None:
@@ -7173,7 +7913,11 @@ class WorkflowTemplateJobPigJobLoggingConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              driver_log_levels: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if driver_log_levels is None and 'driverLogLevels' in kwargs:
+            driver_log_levels = kwargs['driverLogLevels']
+
         if driver_log_levels is not None:
             _setter("driver_log_levels", driver_log_levels)
 
@@ -7200,8 +7944,12 @@ class WorkflowTemplateJobPigJobQueryList(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             queries: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             queries: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if queries is None:
+            raise TypeError("Missing 'queries' argument")
+
         _setter("queries", queries)
 
     @property
@@ -7279,7 +8027,21 @@ class WorkflowTemplateJobPrestoJob(dict):
              properties: Optional[Mapping[str, str]] = None,
              query_file_uri: Optional[str] = None,
              query_list: Optional['outputs.WorkflowTemplateJobPrestoJobQueryList'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if client_tags is None and 'clientTags' in kwargs:
+            client_tags = kwargs['clientTags']
+        if continue_on_failure is None and 'continueOnFailure' in kwargs:
+            continue_on_failure = kwargs['continueOnFailure']
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+        if output_format is None and 'outputFormat' in kwargs:
+            output_format = kwargs['outputFormat']
+        if query_file_uri is None and 'queryFileUri' in kwargs:
+            query_file_uri = kwargs['queryFileUri']
+        if query_list is None and 'queryList' in kwargs:
+            query_list = kwargs['queryList']
+
         if client_tags is not None:
             _setter("client_tags", client_tags)
         if continue_on_failure is not None:
@@ -7384,7 +8146,11 @@ class WorkflowTemplateJobPrestoJobLoggingConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              driver_log_levels: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if driver_log_levels is None and 'driverLogLevels' in kwargs:
+            driver_log_levels = kwargs['driverLogLevels']
+
         if driver_log_levels is not None:
             _setter("driver_log_levels", driver_log_levels)
 
@@ -7411,8 +8177,12 @@ class WorkflowTemplateJobPrestoJobQueryList(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             queries: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             queries: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if queries is None:
+            raise TypeError("Missing 'queries' argument")
+
         _setter("queries", queries)
 
     @property
@@ -7486,7 +8256,7 @@ class WorkflowTemplateJobPysparkJob(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             main_python_file_uri: str,
+             main_python_file_uri: Optional[str] = None,
              archive_uris: Optional[Sequence[str]] = None,
              args: Optional[Sequence[str]] = None,
              file_uris: Optional[Sequence[str]] = None,
@@ -7494,7 +8264,23 @@ class WorkflowTemplateJobPysparkJob(dict):
              logging_config: Optional['outputs.WorkflowTemplateJobPysparkJobLoggingConfig'] = None,
              properties: Optional[Mapping[str, str]] = None,
              python_file_uris: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if main_python_file_uri is None and 'mainPythonFileUri' in kwargs:
+            main_python_file_uri = kwargs['mainPythonFileUri']
+        if main_python_file_uri is None:
+            raise TypeError("Missing 'main_python_file_uri' argument")
+        if archive_uris is None and 'archiveUris' in kwargs:
+            archive_uris = kwargs['archiveUris']
+        if file_uris is None and 'fileUris' in kwargs:
+            file_uris = kwargs['fileUris']
+        if jar_file_uris is None and 'jarFileUris' in kwargs:
+            jar_file_uris = kwargs['jarFileUris']
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+        if python_file_uris is None and 'pythonFileUris' in kwargs:
+            python_file_uris = kwargs['pythonFileUris']
+
         _setter("main_python_file_uri", main_python_file_uri)
         if archive_uris is not None:
             _setter("archive_uris", archive_uris)
@@ -7608,7 +8394,11 @@ class WorkflowTemplateJobPysparkJobLoggingConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              driver_log_levels: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if driver_log_levels is None and 'driverLogLevels' in kwargs:
+            driver_log_levels = kwargs['driverLogLevels']
+
         if driver_log_levels is not None:
             _setter("driver_log_levels", driver_log_levels)
 
@@ -7659,7 +8449,13 @@ class WorkflowTemplateJobScheduling(dict):
              _setter: Callable[[Any, Any], None],
              max_failures_per_hour: Optional[int] = None,
              max_failures_total: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_failures_per_hour is None and 'maxFailuresPerHour' in kwargs:
+            max_failures_per_hour = kwargs['maxFailuresPerHour']
+        if max_failures_total is None and 'maxFailuresTotal' in kwargs:
+            max_failures_total = kwargs['maxFailuresTotal']
+
         if max_failures_per_hour is not None:
             _setter("max_failures_per_hour", max_failures_per_hour)
         if max_failures_total is not None:
@@ -7752,7 +8548,21 @@ class WorkflowTemplateJobSparkJob(dict):
              main_class: Optional[str] = None,
              main_jar_file_uri: Optional[str] = None,
              properties: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if archive_uris is None and 'archiveUris' in kwargs:
+            archive_uris = kwargs['archiveUris']
+        if file_uris is None and 'fileUris' in kwargs:
+            file_uris = kwargs['fileUris']
+        if jar_file_uris is None and 'jarFileUris' in kwargs:
+            jar_file_uris = kwargs['jarFileUris']
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+        if main_class is None and 'mainClass' in kwargs:
+            main_class = kwargs['mainClass']
+        if main_jar_file_uri is None and 'mainJarFileUri' in kwargs:
+            main_jar_file_uri = kwargs['mainJarFileUri']
+
         if archive_uris is not None:
             _setter("archive_uris", archive_uris)
         if args is not None:
@@ -7867,7 +8677,11 @@ class WorkflowTemplateJobSparkJobLoggingConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              driver_log_levels: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if driver_log_levels is None and 'driverLogLevels' in kwargs:
+            driver_log_levels = kwargs['driverLogLevels']
+
         if driver_log_levels is not None:
             _setter("driver_log_levels", driver_log_levels)
 
@@ -7932,13 +8746,25 @@ class WorkflowTemplateJobSparkRJob(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             main_r_file_uri: str,
+             main_r_file_uri: Optional[str] = None,
              archive_uris: Optional[Sequence[str]] = None,
              args: Optional[Sequence[str]] = None,
              file_uris: Optional[Sequence[str]] = None,
              logging_config: Optional['outputs.WorkflowTemplateJobSparkRJobLoggingConfig'] = None,
              properties: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if main_r_file_uri is None and 'mainRFileUri' in kwargs:
+            main_r_file_uri = kwargs['mainRFileUri']
+        if main_r_file_uri is None:
+            raise TypeError("Missing 'main_r_file_uri' argument")
+        if archive_uris is None and 'archiveUris' in kwargs:
+            archive_uris = kwargs['archiveUris']
+        if file_uris is None and 'fileUris' in kwargs:
+            file_uris = kwargs['fileUris']
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+
         _setter("main_r_file_uri", main_r_file_uri)
         if archive_uris is not None:
             _setter("archive_uris", archive_uris)
@@ -8032,7 +8858,11 @@ class WorkflowTemplateJobSparkRJobLoggingConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              driver_log_levels: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if driver_log_levels is None and 'driverLogLevels' in kwargs:
+            driver_log_levels = kwargs['driverLogLevels']
+
         if driver_log_levels is not None:
             _setter("driver_log_levels", driver_log_levels)
 
@@ -8105,7 +8935,19 @@ class WorkflowTemplateJobSparkSqlJob(dict):
              query_file_uri: Optional[str] = None,
              query_list: Optional['outputs.WorkflowTemplateJobSparkSqlJobQueryList'] = None,
              script_variables: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if jar_file_uris is None and 'jarFileUris' in kwargs:
+            jar_file_uris = kwargs['jarFileUris']
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+        if query_file_uri is None and 'queryFileUri' in kwargs:
+            query_file_uri = kwargs['queryFileUri']
+        if query_list is None and 'queryList' in kwargs:
+            query_list = kwargs['queryList']
+        if script_variables is None and 'scriptVariables' in kwargs:
+            script_variables = kwargs['scriptVariables']
+
         if jar_file_uris is not None:
             _setter("jar_file_uris", jar_file_uris)
         if logging_config is not None:
@@ -8200,7 +9042,11 @@ class WorkflowTemplateJobSparkSqlJobLoggingConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              driver_log_levels: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if driver_log_levels is None and 'driverLogLevels' in kwargs:
+            driver_log_levels = kwargs['driverLogLevels']
+
         if driver_log_levels is not None:
             _setter("driver_log_levels", driver_log_levels)
 
@@ -8227,8 +9073,12 @@ class WorkflowTemplateJobSparkSqlJobQueryList(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             queries: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             queries: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if queries is None:
+            raise TypeError("Missing 'queries' argument")
+
         _setter("queries", queries)
 
     @property
@@ -8263,11 +9113,17 @@ class WorkflowTemplateParameter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             fields: Sequence[str],
-             name: str,
+             fields: Optional[Sequence[str]] = None,
+             name: Optional[str] = None,
              description: Optional[str] = None,
              validation: Optional['outputs.WorkflowTemplateParameterValidation'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if fields is None:
+            raise TypeError("Missing 'fields' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("fields", fields)
         _setter("name", name)
         if description is not None:
@@ -8327,7 +9183,9 @@ class WorkflowTemplateParameterValidation(dict):
              _setter: Callable[[Any, Any], None],
              regex: Optional['outputs.WorkflowTemplateParameterValidationRegex'] = None,
              values: Optional['outputs.WorkflowTemplateParameterValidationValues'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if regex is not None:
             _setter("regex", regex)
         if values is not None:
@@ -8364,8 +9222,12 @@ class WorkflowTemplateParameterValidationRegex(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             regexes: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             regexes: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if regexes is None:
+            raise TypeError("Missing 'regexes' argument")
+
         _setter("regexes", regexes)
 
     @property
@@ -8391,8 +9253,12 @@ class WorkflowTemplateParameterValidationValues(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("values", values)
 
     @property
@@ -8442,7 +9308,13 @@ class WorkflowTemplatePlacement(dict):
              _setter: Callable[[Any, Any], None],
              cluster_selector: Optional['outputs.WorkflowTemplatePlacementClusterSelector'] = None,
              managed_cluster: Optional['outputs.WorkflowTemplatePlacementManagedCluster'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_selector is None and 'clusterSelector' in kwargs:
+            cluster_selector = kwargs['clusterSelector']
+        if managed_cluster is None and 'managedCluster' in kwargs:
+            managed_cluster = kwargs['managedCluster']
+
         if cluster_selector is not None:
             _setter("cluster_selector", cluster_selector)
         if managed_cluster is not None:
@@ -8499,9 +9371,15 @@ class WorkflowTemplatePlacementClusterSelector(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_labels: Mapping[str, str],
+             cluster_labels: Optional[Mapping[str, str]] = None,
              zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_labels is None and 'clusterLabels' in kwargs:
+            cluster_labels = kwargs['clusterLabels']
+        if cluster_labels is None:
+            raise TypeError("Missing 'cluster_labels' argument")
+
         _setter("cluster_labels", cluster_labels)
         if zone is not None:
             _setter("zone", zone)
@@ -8560,10 +9438,18 @@ class WorkflowTemplatePlacementManagedCluster(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_name: str,
-             config: 'outputs.WorkflowTemplatePlacementManagedClusterConfig',
+             cluster_name: Optional[str] = None,
+             config: Optional['outputs.WorkflowTemplatePlacementManagedClusterConfig'] = None,
              labels: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_name is None and 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if cluster_name is None:
+            raise TypeError("Missing 'cluster_name' argument")
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+
         _setter("cluster_name", cluster_name)
         _setter("config", config)
         if labels is not None:
@@ -8712,7 +9598,39 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
              staging_bucket: Optional[str] = None,
              temp_bucket: Optional[str] = None,
              worker_config: Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if autoscaling_config is None and 'autoscalingConfig' in kwargs:
+            autoscaling_config = kwargs['autoscalingConfig']
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if endpoint_config is None and 'endpointConfig' in kwargs:
+            endpoint_config = kwargs['endpointConfig']
+        if gce_cluster_config is None and 'gceClusterConfig' in kwargs:
+            gce_cluster_config = kwargs['gceClusterConfig']
+        if gke_cluster_config is None and 'gkeClusterConfig' in kwargs:
+            gke_cluster_config = kwargs['gkeClusterConfig']
+        if initialization_actions is None and 'initializationActions' in kwargs:
+            initialization_actions = kwargs['initializationActions']
+        if lifecycle_config is None and 'lifecycleConfig' in kwargs:
+            lifecycle_config = kwargs['lifecycleConfig']
+        if master_config is None and 'masterConfig' in kwargs:
+            master_config = kwargs['masterConfig']
+        if metastore_config is None and 'metastoreConfig' in kwargs:
+            metastore_config = kwargs['metastoreConfig']
+        if secondary_worker_config is None and 'secondaryWorkerConfig' in kwargs:
+            secondary_worker_config = kwargs['secondaryWorkerConfig']
+        if security_config is None and 'securityConfig' in kwargs:
+            security_config = kwargs['securityConfig']
+        if software_config is None and 'softwareConfig' in kwargs:
+            software_config = kwargs['softwareConfig']
+        if staging_bucket is None and 'stagingBucket' in kwargs:
+            staging_bucket = kwargs['stagingBucket']
+        if temp_bucket is None and 'tempBucket' in kwargs:
+            temp_bucket = kwargs['tempBucket']
+        if worker_config is None and 'workerConfig' in kwargs:
+            worker_config = kwargs['workerConfig']
+
         if autoscaling_config is not None:
             _setter("autoscaling_config", autoscaling_config)
         if encryption_config is not None:
@@ -8882,7 +9800,9 @@ class WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              policy: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if policy is not None:
             _setter("policy", policy)
 
@@ -8927,7 +9847,11 @@ class WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              gce_pd_kms_key_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gce_pd_kms_key_name is None and 'gcePdKmsKeyName' in kwargs:
+            gce_pd_kms_key_name = kwargs['gcePdKmsKeyName']
+
         if gce_pd_kms_key_name is not None:
             _setter("gce_pd_kms_key_name", gce_pd_kms_key_name)
 
@@ -8978,7 +9902,13 @@ class WorkflowTemplatePlacementManagedClusterConfigEndpointConfig(dict):
              _setter: Callable[[Any, Any], None],
              enable_http_port_access: Optional[bool] = None,
              http_ports: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_http_port_access is None and 'enableHttpPortAccess' in kwargs:
+            enable_http_port_access = kwargs['enableHttpPortAccess']
+        if http_ports is None and 'httpPorts' in kwargs:
+            http_ports = kwargs['httpPorts']
+
         if enable_http_port_access is not None:
             _setter("enable_http_port_access", enable_http_port_access)
         if http_ports is not None:
@@ -9089,7 +10019,23 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
              subnetwork: Optional[str] = None,
              tags: Optional[Sequence[str]] = None,
              zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if internal_ip_only is None and 'internalIpOnly' in kwargs:
+            internal_ip_only = kwargs['internalIpOnly']
+        if node_group_affinity is None and 'nodeGroupAffinity' in kwargs:
+            node_group_affinity = kwargs['nodeGroupAffinity']
+        if private_ipv6_google_access is None and 'privateIpv6GoogleAccess' in kwargs:
+            private_ipv6_google_access = kwargs['privateIpv6GoogleAccess']
+        if reservation_affinity is None and 'reservationAffinity' in kwargs:
+            reservation_affinity = kwargs['reservationAffinity']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if service_account_scopes is None and 'serviceAccountScopes' in kwargs:
+            service_account_scopes = kwargs['serviceAccountScopes']
+        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
+            shielded_instance_config = kwargs['shieldedInstanceConfig']
+
         if internal_ip_only is not None:
             _setter("internal_ip_only", internal_ip_only)
         if metadata is not None:
@@ -9243,8 +10189,14 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffi
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node_group: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             node_group: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_group is None and 'nodeGroup' in kwargs:
+            node_group = kwargs['nodeGroup']
+        if node_group is None:
+            raise TypeError("Missing 'node_group' argument")
+
         _setter("node_group", node_group)
 
     @property
@@ -9296,7 +10248,11 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAf
              consume_reservation_type: Optional[str] = None,
              key: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if consume_reservation_type is None and 'consumeReservationType' in kwargs:
+            consume_reservation_type = kwargs['consumeReservationType']
+
         if consume_reservation_type is not None:
             _setter("consume_reservation_type", consume_reservation_type)
         if key is not None:
@@ -9373,7 +10329,15 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInsta
              enable_integrity_monitoring: Optional[bool] = None,
              enable_secure_boot: Optional[bool] = None,
              enable_vtpm: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_integrity_monitoring is None and 'enableIntegrityMonitoring' in kwargs:
+            enable_integrity_monitoring = kwargs['enableIntegrityMonitoring']
+        if enable_secure_boot is None and 'enableSecureBoot' in kwargs:
+            enable_secure_boot = kwargs['enableSecureBoot']
+        if enable_vtpm is None and 'enableVtpm' in kwargs:
+            enable_vtpm = kwargs['enableVtpm']
+
         if enable_integrity_monitoring is not None:
             _setter("enable_integrity_monitoring", enable_integrity_monitoring)
         if enable_secure_boot is not None:
@@ -9438,7 +10402,11 @@ class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              namespaced_gke_deployment_target: Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if namespaced_gke_deployment_target is None and 'namespacedGkeDeploymentTarget' in kwargs:
+            namespaced_gke_deployment_target = kwargs['namespacedGkeDeploymentTarget']
+
         if namespaced_gke_deployment_target is not None:
             _setter("namespaced_gke_deployment_target", namespaced_gke_deployment_target)
 
@@ -9489,7 +10457,13 @@ class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGke
              _setter: Callable[[Any, Any], None],
              cluster_namespace: Optional[str] = None,
              target_gke_cluster: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_namespace is None and 'clusterNamespace' in kwargs:
+            cluster_namespace = kwargs['clusterNamespace']
+        if target_gke_cluster is None and 'targetGkeCluster' in kwargs:
+            target_gke_cluster = kwargs['targetGkeCluster']
+
         if cluster_namespace is not None:
             _setter("cluster_namespace", cluster_namespace)
         if target_gke_cluster is not None:
@@ -9550,7 +10524,13 @@ class WorkflowTemplatePlacementManagedClusterConfigInitializationAction(dict):
              _setter: Callable[[Any, Any], None],
              executable_file: Optional[str] = None,
              execution_timeout: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if executable_file is None and 'executableFile' in kwargs:
+            executable_file = kwargs['executableFile']
+        if execution_timeout is None and 'executionTimeout' in kwargs:
+            execution_timeout = kwargs['executionTimeout']
+
         if executable_file is not None:
             _setter("executable_file", executable_file)
         if execution_timeout is not None:
@@ -9623,7 +10603,17 @@ class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig(dict):
              auto_delete_ttl: Optional[str] = None,
              idle_delete_ttl: Optional[str] = None,
              idle_start_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_delete_time is None and 'autoDeleteTime' in kwargs:
+            auto_delete_time = kwargs['autoDeleteTime']
+        if auto_delete_ttl is None and 'autoDeleteTtl' in kwargs:
+            auto_delete_ttl = kwargs['autoDeleteTtl']
+        if idle_delete_ttl is None and 'idleDeleteTtl' in kwargs:
+            idle_delete_ttl = kwargs['idleDeleteTtl']
+        if idle_start_time is None and 'idleStartTime' in kwargs:
+            idle_start_time = kwargs['idleStartTime']
+
         if auto_delete_time is not None:
             _setter("auto_delete_time", auto_delete_time)
         if auto_delete_ttl is not None:
@@ -9746,7 +10736,23 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig(dict):
              min_cpu_platform: Optional[str] = None,
              num_instances: Optional[int] = None,
              preemptibility: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disk_config is None and 'diskConfig' in kwargs:
+            disk_config = kwargs['diskConfig']
+        if instance_names is None and 'instanceNames' in kwargs:
+            instance_names = kwargs['instanceNames']
+        if is_preemptible is None and 'isPreemptible' in kwargs:
+            is_preemptible = kwargs['isPreemptible']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if managed_group_configs is None and 'managedGroupConfigs' in kwargs:
+            managed_group_configs = kwargs['managedGroupConfigs']
+        if min_cpu_platform is None and 'minCpuPlatform' in kwargs:
+            min_cpu_platform = kwargs['minCpuPlatform']
+        if num_instances is None and 'numInstances' in kwargs:
+            num_instances = kwargs['numInstances']
+
         if accelerators is not None:
             _setter("accelerators", accelerators)
         if disk_config is not None:
@@ -9887,7 +10893,13 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator(dict)
              _setter: Callable[[Any, Any], None],
              accelerator_count: Optional[int] = None,
              accelerator_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerator_count is None and 'acceleratorCount' in kwargs:
+            accelerator_count = kwargs['acceleratorCount']
+        if accelerator_type is None and 'acceleratorType' in kwargs:
+            accelerator_type = kwargs['acceleratorType']
+
         if accelerator_count is not None:
             _setter("accelerator_count", accelerator_count)
         if accelerator_type is not None:
@@ -9954,7 +10966,15 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig(dict):
              boot_disk_size_gb: Optional[int] = None,
              boot_disk_type: Optional[str] = None,
              num_local_ssds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if boot_disk_size_gb is None and 'bootDiskSizeGb' in kwargs:
+            boot_disk_size_gb = kwargs['bootDiskSizeGb']
+        if boot_disk_type is None and 'bootDiskType' in kwargs:
+            boot_disk_type = kwargs['bootDiskType']
+        if num_local_ssds is None and 'numLocalSsds' in kwargs:
+            num_local_ssds = kwargs['numLocalSsds']
+
         if boot_disk_size_gb is not None:
             _setter("boot_disk_size_gb", boot_disk_size_gb)
         if boot_disk_type is not None:
@@ -10021,7 +11041,13 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfi
              _setter: Callable[[Any, Any], None],
              instance_group_manager_name: Optional[str] = None,
              instance_template_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_group_manager_name is None and 'instanceGroupManagerName' in kwargs:
+            instance_group_manager_name = kwargs['instanceGroupManagerName']
+        if instance_template_name is None and 'instanceTemplateName' in kwargs:
+            instance_template_name = kwargs['instanceTemplateName']
+
         if instance_group_manager_name is not None:
             _setter("instance_group_manager_name", instance_group_manager_name)
         if instance_template_name is not None:
@@ -10069,8 +11095,14 @@ class WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataproc_metastore_service: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             dataproc_metastore_service: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataproc_metastore_service is None and 'dataprocMetastoreService' in kwargs:
+            dataproc_metastore_service = kwargs['dataprocMetastoreService']
+        if dataproc_metastore_service is None:
+            raise TypeError("Missing 'dataproc_metastore_service' argument")
+
         _setter("dataproc_metastore_service", dataproc_metastore_service)
 
     @property
@@ -10162,7 +11194,23 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(dict):
              min_cpu_platform: Optional[str] = None,
              num_instances: Optional[int] = None,
              preemptibility: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disk_config is None and 'diskConfig' in kwargs:
+            disk_config = kwargs['diskConfig']
+        if instance_names is None and 'instanceNames' in kwargs:
+            instance_names = kwargs['instanceNames']
+        if is_preemptible is None and 'isPreemptible' in kwargs:
+            is_preemptible = kwargs['isPreemptible']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if managed_group_configs is None and 'managedGroupConfigs' in kwargs:
+            managed_group_configs = kwargs['managedGroupConfigs']
+        if min_cpu_platform is None and 'minCpuPlatform' in kwargs:
+            min_cpu_platform = kwargs['minCpuPlatform']
+        if num_instances is None and 'numInstances' in kwargs:
+            num_instances = kwargs['numInstances']
+
         if accelerators is not None:
             _setter("accelerators", accelerators)
         if disk_config is not None:
@@ -10303,7 +11351,13 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelera
              _setter: Callable[[Any, Any], None],
              accelerator_count: Optional[int] = None,
              accelerator_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerator_count is None and 'acceleratorCount' in kwargs:
+            accelerator_count = kwargs['acceleratorCount']
+        if accelerator_type is None and 'acceleratorType' in kwargs:
+            accelerator_type = kwargs['acceleratorType']
+
         if accelerator_count is not None:
             _setter("accelerator_count", accelerator_count)
         if accelerator_type is not None:
@@ -10370,7 +11424,15 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConf
              boot_disk_size_gb: Optional[int] = None,
              boot_disk_type: Optional[str] = None,
              num_local_ssds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if boot_disk_size_gb is None and 'bootDiskSizeGb' in kwargs:
+            boot_disk_size_gb = kwargs['bootDiskSizeGb']
+        if boot_disk_type is None and 'bootDiskType' in kwargs:
+            boot_disk_type = kwargs['bootDiskType']
+        if num_local_ssds is None and 'numLocalSsds' in kwargs:
+            num_local_ssds = kwargs['numLocalSsds']
+
         if boot_disk_size_gb is not None:
             _setter("boot_disk_size_gb", boot_disk_size_gb)
         if boot_disk_type is not None:
@@ -10437,7 +11499,13 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedG
              _setter: Callable[[Any, Any], None],
              instance_group_manager_name: Optional[str] = None,
              instance_template_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_group_manager_name is None and 'instanceGroupManagerName' in kwargs:
+            instance_group_manager_name = kwargs['instanceGroupManagerName']
+        if instance_template_name is None and 'instanceTemplateName' in kwargs:
+            instance_template_name = kwargs['instanceTemplateName']
+
         if instance_group_manager_name is not None:
             _setter("instance_group_manager_name", instance_group_manager_name)
         if instance_template_name is not None:
@@ -10486,7 +11554,11 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              kerberos_config: Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kerberos_config is None and 'kerberosConfig' in kwargs:
+            kerberos_config = kwargs['kerberosConfig']
+
         if kerberos_config is not None:
             _setter("kerberos_config", kerberos_config)
 
@@ -10609,7 +11681,33 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig(
              tgt_lifetime_hours: Optional[int] = None,
              truststore: Optional[str] = None,
              truststore_password: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cross_realm_trust_admin_server is None and 'crossRealmTrustAdminServer' in kwargs:
+            cross_realm_trust_admin_server = kwargs['crossRealmTrustAdminServer']
+        if cross_realm_trust_kdc is None and 'crossRealmTrustKdc' in kwargs:
+            cross_realm_trust_kdc = kwargs['crossRealmTrustKdc']
+        if cross_realm_trust_realm is None and 'crossRealmTrustRealm' in kwargs:
+            cross_realm_trust_realm = kwargs['crossRealmTrustRealm']
+        if cross_realm_trust_shared_password is None and 'crossRealmTrustSharedPassword' in kwargs:
+            cross_realm_trust_shared_password = kwargs['crossRealmTrustSharedPassword']
+        if enable_kerberos is None and 'enableKerberos' in kwargs:
+            enable_kerberos = kwargs['enableKerberos']
+        if kdc_db_key is None and 'kdcDbKey' in kwargs:
+            kdc_db_key = kwargs['kdcDbKey']
+        if key_password is None and 'keyPassword' in kwargs:
+            key_password = kwargs['keyPassword']
+        if keystore_password is None and 'keystorePassword' in kwargs:
+            keystore_password = kwargs['keystorePassword']
+        if kms_key is None and 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+        if root_principal_password is None and 'rootPrincipalPassword' in kwargs:
+            root_principal_password = kwargs['rootPrincipalPassword']
+        if tgt_lifetime_hours is None and 'tgtLifetimeHours' in kwargs:
+            tgt_lifetime_hours = kwargs['tgtLifetimeHours']
+        if truststore_password is None and 'truststorePassword' in kwargs:
+            truststore_password = kwargs['truststorePassword']
+
         if cross_realm_trust_admin_server is not None:
             _setter("cross_realm_trust_admin_server", cross_realm_trust_admin_server)
         if cross_realm_trust_kdc is not None:
@@ -10819,7 +11917,13 @@ class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig(dict):
              image_version: Optional[str] = None,
              optional_components: Optional[Sequence[str]] = None,
              properties: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if image_version is None and 'imageVersion' in kwargs:
+            image_version = kwargs['imageVersion']
+        if optional_components is None and 'optionalComponents' in kwargs:
+            optional_components = kwargs['optionalComponents']
+
         if image_version is not None:
             _setter("image_version", image_version)
         if optional_components is not None:
@@ -10947,7 +12051,23 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig(dict):
              min_cpu_platform: Optional[str] = None,
              num_instances: Optional[int] = None,
              preemptibility: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disk_config is None and 'diskConfig' in kwargs:
+            disk_config = kwargs['diskConfig']
+        if instance_names is None and 'instanceNames' in kwargs:
+            instance_names = kwargs['instanceNames']
+        if is_preemptible is None and 'isPreemptible' in kwargs:
+            is_preemptible = kwargs['isPreemptible']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if managed_group_configs is None and 'managedGroupConfigs' in kwargs:
+            managed_group_configs = kwargs['managedGroupConfigs']
+        if min_cpu_platform is None and 'minCpuPlatform' in kwargs:
+            min_cpu_platform = kwargs['minCpuPlatform']
+        if num_instances is None and 'numInstances' in kwargs:
+            num_instances = kwargs['numInstances']
+
         if accelerators is not None:
             _setter("accelerators", accelerators)
         if disk_config is not None:
@@ -11088,7 +12208,13 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator(dict)
              _setter: Callable[[Any, Any], None],
              accelerator_count: Optional[int] = None,
              accelerator_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerator_count is None and 'acceleratorCount' in kwargs:
+            accelerator_count = kwargs['acceleratorCount']
+        if accelerator_type is None and 'acceleratorType' in kwargs:
+            accelerator_type = kwargs['acceleratorType']
+
         if accelerator_count is not None:
             _setter("accelerator_count", accelerator_count)
         if accelerator_type is not None:
@@ -11155,7 +12281,15 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig(dict):
              boot_disk_size_gb: Optional[int] = None,
              boot_disk_type: Optional[str] = None,
              num_local_ssds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if boot_disk_size_gb is None and 'bootDiskSizeGb' in kwargs:
+            boot_disk_size_gb = kwargs['bootDiskSizeGb']
+        if boot_disk_type is None and 'bootDiskType' in kwargs:
+            boot_disk_type = kwargs['bootDiskType']
+        if num_local_ssds is None and 'numLocalSsds' in kwargs:
+            num_local_ssds = kwargs['numLocalSsds']
+
         if boot_disk_size_gb is not None:
             _setter("boot_disk_size_gb", boot_disk_size_gb)
         if boot_disk_type is not None:
@@ -11222,7 +12356,13 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfi
              _setter: Callable[[Any, Any], None],
              instance_group_manager_name: Optional[str] = None,
              instance_template_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_group_manager_name is None and 'instanceGroupManagerName' in kwargs:
+            instance_group_manager_name = kwargs['instanceGroupManagerName']
+        if instance_template_name is None and 'instanceTemplateName' in kwargs:
+            instance_template_name = kwargs['instanceTemplateName']
+
         if instance_group_manager_name is not None:
             _setter("instance_group_manager_name", instance_group_manager_name)
         if instance_template_name is not None:

@@ -50,13 +50,23 @@ class CxTestCaseArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              notes: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              test_case_conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnArgs']]]] = None,
              test_config: Optional[pulumi.Input['CxTestCaseTestConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if test_case_conversation_turns is None and 'testCaseConversationTurns' in kwargs:
+            test_case_conversation_turns = kwargs['testCaseConversationTurns']
+        if test_config is None and 'testConfig' in kwargs:
+            test_config = kwargs['testConfig']
+
         _setter("display_name", display_name)
         if notes is not None:
             _setter("notes", notes)
@@ -206,7 +216,19 @@ class _CxTestCaseState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              test_case_conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnArgs']]]] = None,
              test_config: Optional[pulumi.Input['CxTestCaseTestConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if creation_time is None and 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if last_test_results is None and 'lastTestResults' in kwargs:
+            last_test_results = kwargs['lastTestResults']
+        if test_case_conversation_turns is None and 'testCaseConversationTurns' in kwargs:
+            test_case_conversation_turns = kwargs['testCaseConversationTurns']
+        if test_config is None and 'testConfig' in kwargs:
+            test_config = kwargs['testConfig']
+
         if creation_time is not None:
             _setter("creation_time", creation_time)
         if display_name is not None:

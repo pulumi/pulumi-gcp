@@ -79,7 +79,7 @@ class RegionCommitmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             plan: pulumi.Input[str],
+             plan: Optional[pulumi.Input[str]] = None,
              auto_renew: Optional[pulumi.Input[bool]] = None,
              category: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -89,7 +89,15 @@ class RegionCommitmentArgs:
              region: Optional[pulumi.Input[str]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArgs']]]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if plan is None:
+            raise TypeError("Missing 'plan' argument")
+        if auto_renew is None and 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if license_resource is None and 'licenseResource' in kwargs:
+            license_resource = kwargs['licenseResource']
+
         _setter("plan", plan)
         if auto_renew is not None:
             _setter("auto_renew", auto_renew)
@@ -360,7 +368,25 @@ class _RegionCommitmentState:
              status: Optional[pulumi.Input[str]] = None,
              status_message: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_renew is None and 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if commitment_id is None and 'commitmentId' in kwargs:
+            commitment_id = kwargs['commitmentId']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if end_timestamp is None and 'endTimestamp' in kwargs:
+            end_timestamp = kwargs['endTimestamp']
+        if license_resource is None and 'licenseResource' in kwargs:
+            license_resource = kwargs['licenseResource']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if start_timestamp is None and 'startTimestamp' in kwargs:
+            start_timestamp = kwargs['startTimestamp']
+        if status_message is None and 'statusMessage' in kwargs:
+            status_message = kwargs['statusMessage']
+
         if auto_renew is not None:
             _setter("auto_renew", auto_renew)
         if category is not None:

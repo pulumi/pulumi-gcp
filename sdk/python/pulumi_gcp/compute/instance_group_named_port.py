@@ -43,12 +43,18 @@ class InstanceGroupNamedPortInitArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group: pulumi.Input[str],
-             port: pulumi.Input[int],
+             group: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+
         _setter("group", group)
         _setter("port", port)
         if name is not None:
@@ -161,7 +167,9 @@ class _InstanceGroupNamedPortState:
              port: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if group is not None:
             _setter("group", group)
         if name is not None:

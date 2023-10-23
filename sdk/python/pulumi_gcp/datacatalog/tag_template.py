@@ -45,13 +45,25 @@ class TagTemplateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             fields: pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldArgs']]],
-             tag_template_id: pulumi.Input[str],
+             fields: Optional[pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldArgs']]]] = None,
+             tag_template_id: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              force_delete: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if fields is None:
+            raise TypeError("Missing 'fields' argument")
+        if tag_template_id is None and 'tagTemplateId' in kwargs:
+            tag_template_id = kwargs['tagTemplateId']
+        if tag_template_id is None:
+            raise TypeError("Missing 'tag_template_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if force_delete is None and 'forceDelete' in kwargs:
+            force_delete = kwargs['forceDelete']
+
         _setter("fields", fields)
         _setter("tag_template_id", tag_template_id)
         if display_name is not None:
@@ -181,7 +193,15 @@ class _TagTemplateState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              tag_template_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if force_delete is None and 'forceDelete' in kwargs:
+            force_delete = kwargs['forceDelete']
+        if tag_template_id is None and 'tagTemplateId' in kwargs:
+            tag_template_id = kwargs['tagTemplateId']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if fields is not None:

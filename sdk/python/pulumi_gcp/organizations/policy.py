@@ -51,13 +51,27 @@ class PolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             constraint: pulumi.Input[str],
-             org_id: pulumi.Input[str],
+             constraint: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
              boolean_policy: Optional[pulumi.Input['PolicyBooleanPolicyArgs']] = None,
              list_policy: Optional[pulumi.Input['PolicyListPolicyArgs']] = None,
              restore_policy: Optional[pulumi.Input['PolicyRestorePolicyArgs']] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if constraint is None:
+            raise TypeError("Missing 'constraint' argument")
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if boolean_policy is None and 'booleanPolicy' in kwargs:
+            boolean_policy = kwargs['booleanPolicy']
+        if list_policy is None and 'listPolicy' in kwargs:
+            list_policy = kwargs['listPolicy']
+        if restore_policy is None and 'restorePolicy' in kwargs:
+            restore_policy = kwargs['restorePolicy']
+
         _setter("constraint", constraint)
         _setter("org_id", org_id)
         if boolean_policy is not None:
@@ -202,7 +216,19 @@ class _PolicyState:
              restore_policy: Optional[pulumi.Input['PolicyRestorePolicyArgs']] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if boolean_policy is None and 'booleanPolicy' in kwargs:
+            boolean_policy = kwargs['booleanPolicy']
+        if list_policy is None and 'listPolicy' in kwargs:
+            list_policy = kwargs['listPolicy']
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if restore_policy is None and 'restorePolicy' in kwargs:
+            restore_policy = kwargs['restorePolicy']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if boolean_policy is not None:
             _setter("boolean_policy", boolean_policy)
         if constraint is not None:

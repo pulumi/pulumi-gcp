@@ -52,14 +52,22 @@ class DeviceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             registry: pulumi.Input[str],
+             registry: Optional[pulumi.Input[str]] = None,
              blocked: Optional[pulumi.Input[bool]] = None,
              credentials: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceCredentialArgs']]]] = None,
              gateway_config: Optional[pulumi.Input['DeviceGatewayConfigArgs']] = None,
              log_level: Optional[pulumi.Input[str]] = None,
              metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if registry is None:
+            raise TypeError("Missing 'registry' argument")
+        if gateway_config is None and 'gatewayConfig' in kwargs:
+            gateway_config = kwargs['gatewayConfig']
+        if log_level is None and 'logLevel' in kwargs:
+            log_level = kwargs['logLevel']
+
         _setter("registry", registry)
         if blocked is not None:
             _setter("blocked", blocked)
@@ -255,7 +263,29 @@ class _DeviceState:
              num_id: Optional[pulumi.Input[str]] = None,
              registry: Optional[pulumi.Input[str]] = None,
              states: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceStateArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gateway_config is None and 'gatewayConfig' in kwargs:
+            gateway_config = kwargs['gatewayConfig']
+        if last_config_ack_time is None and 'lastConfigAckTime' in kwargs:
+            last_config_ack_time = kwargs['lastConfigAckTime']
+        if last_config_send_time is None and 'lastConfigSendTime' in kwargs:
+            last_config_send_time = kwargs['lastConfigSendTime']
+        if last_error_statuses is None and 'lastErrorStatuses' in kwargs:
+            last_error_statuses = kwargs['lastErrorStatuses']
+        if last_error_time is None and 'lastErrorTime' in kwargs:
+            last_error_time = kwargs['lastErrorTime']
+        if last_event_time is None and 'lastEventTime' in kwargs:
+            last_event_time = kwargs['lastEventTime']
+        if last_heartbeat_time is None and 'lastHeartbeatTime' in kwargs:
+            last_heartbeat_time = kwargs['lastHeartbeatTime']
+        if last_state_time is None and 'lastStateTime' in kwargs:
+            last_state_time = kwargs['lastStateTime']
+        if log_level is None and 'logLevel' in kwargs:
+            log_level = kwargs['logLevel']
+        if num_id is None and 'numId' in kwargs:
+            num_id = kwargs['numId']
+
         if blocked is not None:
             _setter("blocked", blocked)
         if configs is not None:

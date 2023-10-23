@@ -27,8 +27,12 @@ class EngineModelDefaultVersion(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property

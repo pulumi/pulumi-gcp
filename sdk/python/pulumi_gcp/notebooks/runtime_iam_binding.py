@@ -56,13 +56,23 @@ class RuntimeIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
-             runtime_name: pulumi.Input[str],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             runtime_name: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['RuntimeIamBindingConditionArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if runtime_name is None and 'runtimeName' in kwargs:
+            runtime_name = kwargs['runtimeName']
+        if runtime_name is None:
+            raise TypeError("Missing 'runtime_name' argument")
+
         _setter("members", members)
         _setter("role", role)
         _setter("runtime_name", runtime_name)
@@ -208,7 +218,11 @@ class _RuntimeIamBindingState:
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              runtime_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if runtime_name is None and 'runtimeName' in kwargs:
+            runtime_name = kwargs['runtimeName']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

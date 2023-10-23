@@ -66,7 +66,7 @@ class NodeGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node_template: pulumi.Input[str],
+             node_template: Optional[pulumi.Input[str]] = None,
              autoscaling_policy: Optional[pulumi.Input['NodeGroupAutoscalingPolicyArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              initial_size: Optional[pulumi.Input[int]] = None,
@@ -77,7 +77,23 @@ class NodeGroupArgs:
              share_settings: Optional[pulumi.Input['NodeGroupShareSettingsArgs']] = None,
              size: Optional[pulumi.Input[int]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_template is None and 'nodeTemplate' in kwargs:
+            node_template = kwargs['nodeTemplate']
+        if node_template is None:
+            raise TypeError("Missing 'node_template' argument")
+        if autoscaling_policy is None and 'autoscalingPolicy' in kwargs:
+            autoscaling_policy = kwargs['autoscalingPolicy']
+        if initial_size is None and 'initialSize' in kwargs:
+            initial_size = kwargs['initialSize']
+        if maintenance_policy is None and 'maintenancePolicy' in kwargs:
+            maintenance_policy = kwargs['maintenancePolicy']
+        if maintenance_window is None and 'maintenanceWindow' in kwargs:
+            maintenance_window = kwargs['maintenanceWindow']
+        if share_settings is None and 'shareSettings' in kwargs:
+            share_settings = kwargs['shareSettings']
+
         _setter("node_template", node_template)
         if autoscaling_policy is not None:
             _setter("autoscaling_policy", autoscaling_policy)
@@ -313,7 +329,25 @@ class _NodeGroupState:
              share_settings: Optional[pulumi.Input['NodeGroupShareSettingsArgs']] = None,
              size: Optional[pulumi.Input[int]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if autoscaling_policy is None and 'autoscalingPolicy' in kwargs:
+            autoscaling_policy = kwargs['autoscalingPolicy']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if initial_size is None and 'initialSize' in kwargs:
+            initial_size = kwargs['initialSize']
+        if maintenance_policy is None and 'maintenancePolicy' in kwargs:
+            maintenance_policy = kwargs['maintenancePolicy']
+        if maintenance_window is None and 'maintenanceWindow' in kwargs:
+            maintenance_window = kwargs['maintenanceWindow']
+        if node_template is None and 'nodeTemplate' in kwargs:
+            node_template = kwargs['nodeTemplate']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if share_settings is None and 'shareSettings' in kwargs:
+            share_settings = kwargs['shareSettings']
+
         if autoscaling_policy is not None:
             _setter("autoscaling_policy", autoscaling_policy)
         if creation_timestamp is not None:

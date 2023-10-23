@@ -35,7 +35,11 @@ class NodeNetworkEndpointArgs:
              _setter: Callable[[Any, Any], None],
              ip_address: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         if ip_address is not None:
             _setter("ip_address", ip_address)
         if port is not None:
@@ -82,8 +86,12 @@ class NodeSchedulingConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             preemptible: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             preemptible: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if preemptible is None:
+            raise TypeError("Missing 'preemptible' argument")
+
         _setter("preemptible", preemptible)
 
     @property

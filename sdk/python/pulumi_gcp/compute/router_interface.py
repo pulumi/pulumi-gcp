@@ -69,7 +69,7 @@ class RouterInterfaceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             router: pulumi.Input[str],
+             router: Optional[pulumi.Input[str]] = None,
              interconnect_attachment: Optional[pulumi.Input[str]] = None,
              ip_range: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -79,7 +79,21 @@ class RouterInterfaceArgs:
              region: Optional[pulumi.Input[str]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
              vpn_tunnel: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if router is None:
+            raise TypeError("Missing 'router' argument")
+        if interconnect_attachment is None and 'interconnectAttachment' in kwargs:
+            interconnect_attachment = kwargs['interconnectAttachment']
+        if ip_range is None and 'ipRange' in kwargs:
+            ip_range = kwargs['ipRange']
+        if private_ip_address is None and 'privateIpAddress' in kwargs:
+            private_ip_address = kwargs['privateIpAddress']
+        if redundant_interface is None and 'redundantInterface' in kwargs:
+            redundant_interface = kwargs['redundantInterface']
+        if vpn_tunnel is None and 'vpnTunnel' in kwargs:
+            vpn_tunnel = kwargs['vpnTunnel']
+
         _setter("router", router)
         if interconnect_attachment is not None:
             _setter("interconnect_attachment", interconnect_attachment)
@@ -305,7 +319,19 @@ class _RouterInterfaceState:
              router: Optional[pulumi.Input[str]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
              vpn_tunnel: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if interconnect_attachment is None and 'interconnectAttachment' in kwargs:
+            interconnect_attachment = kwargs['interconnectAttachment']
+        if ip_range is None and 'ipRange' in kwargs:
+            ip_range = kwargs['ipRange']
+        if private_ip_address is None and 'privateIpAddress' in kwargs:
+            private_ip_address = kwargs['privateIpAddress']
+        if redundant_interface is None and 'redundantInterface' in kwargs:
+            redundant_interface = kwargs['redundantInterface']
+        if vpn_tunnel is None and 'vpnTunnel' in kwargs:
+            vpn_tunnel = kwargs['vpnTunnel']
+
         if interconnect_attachment is not None:
             _setter("interconnect_attachment", interconnect_attachment)
         if ip_range is not None:

@@ -50,13 +50,23 @@ class RuntimeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              access_config: Optional[pulumi.Input['RuntimeAccessConfigArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              software_config: Optional[pulumi.Input['RuntimeSoftwareConfigArgs']] = None,
              virtual_machine: Optional[pulumi.Input['RuntimeVirtualMachineArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if access_config is None and 'accessConfig' in kwargs:
+            access_config = kwargs['accessConfig']
+        if software_config is None and 'softwareConfig' in kwargs:
+            software_config = kwargs['softwareConfig']
+        if virtual_machine is None and 'virtualMachine' in kwargs:
+            virtual_machine = kwargs['virtualMachine']
+
         _setter("location", location)
         if access_config is not None:
             _setter("access_config", access_config)
@@ -208,7 +218,17 @@ class _RuntimeState:
              software_config: Optional[pulumi.Input['RuntimeSoftwareConfigArgs']] = None,
              state: Optional[pulumi.Input[str]] = None,
              virtual_machine: Optional[pulumi.Input['RuntimeVirtualMachineArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_config is None and 'accessConfig' in kwargs:
+            access_config = kwargs['accessConfig']
+        if health_state is None and 'healthState' in kwargs:
+            health_state = kwargs['healthState']
+        if software_config is None and 'softwareConfig' in kwargs:
+            software_config = kwargs['softwareConfig']
+        if virtual_machine is None and 'virtualMachine' in kwargs:
+            virtual_machine = kwargs['virtualMachine']
+
         if access_config is not None:
             _setter("access_config", access_config)
         if health_state is not None:

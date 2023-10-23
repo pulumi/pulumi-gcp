@@ -68,7 +68,17 @@ class WorkflowArgs:
              region: Optional[pulumi.Input[str]] = None,
              service_account: Optional[pulumi.Input[str]] = None,
              source_contents: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key_name is None and 'cryptoKeyName' in kwargs:
+            crypto_key_name = kwargs['cryptoKeyName']
+        if name_prefix is None and 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if source_contents is None and 'sourceContents' in kwargs:
+            source_contents = kwargs['sourceContents']
+
         if crypto_key_name is not None:
             _setter("crypto_key_name", crypto_key_name)
         if description is not None:
@@ -279,7 +289,23 @@ class _WorkflowState:
              source_contents: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if crypto_key_name is None and 'cryptoKeyName' in kwargs:
+            crypto_key_name = kwargs['cryptoKeyName']
+        if name_prefix is None and 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if revision_id is None and 'revisionId' in kwargs:
+            revision_id = kwargs['revisionId']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if source_contents is None and 'sourceContents' in kwargs:
+            source_contents = kwargs['sourceContents']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if crypto_key_name is not None:

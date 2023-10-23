@@ -59,15 +59,29 @@ class VMwareNodePoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config: pulumi.Input['VMwareNodePoolConfigArgs'],
-             location: pulumi.Input[str],
-             vmware_cluster: pulumi.Input[str],
+             config: Optional[pulumi.Input['VMwareNodePoolConfigArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             vmware_cluster: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              node_pool_autoscaling: Optional[pulumi.Input['VMwareNodePoolNodePoolAutoscalingArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if vmware_cluster is None and 'vmwareCluster' in kwargs:
+            vmware_cluster = kwargs['vmwareCluster']
+        if vmware_cluster is None:
+            raise TypeError("Missing 'vmware_cluster' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if node_pool_autoscaling is None and 'nodePoolAutoscaling' in kwargs:
+            node_pool_autoscaling = kwargs['nodePoolAutoscaling']
+
         _setter("config", config)
         _setter("location", location)
         _setter("vmware_cluster", vmware_cluster)
@@ -285,7 +299,23 @@ class _VMwareNodePoolState:
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              vmware_cluster: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if delete_time is None and 'deleteTime' in kwargs:
+            delete_time = kwargs['deleteTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if node_pool_autoscaling is None and 'nodePoolAutoscaling' in kwargs:
+            node_pool_autoscaling = kwargs['nodePoolAutoscaling']
+        if on_prem_version is None and 'onPremVersion' in kwargs:
+            on_prem_version = kwargs['onPremVersion']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if vmware_cluster is None and 'vmwareCluster' in kwargs:
+            vmware_cluster = kwargs['vmwareCluster']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if config is not None:

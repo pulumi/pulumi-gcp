@@ -39,10 +39,18 @@ class ServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             namespace: pulumi.Input[str],
-             service_id: pulumi.Input[str],
+             namespace: Optional[pulumi.Input[str]] = None,
+             service_id: Optional[pulumi.Input[str]] = None,
              metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if service_id is None:
+            raise TypeError("Missing 'service_id' argument")
+
         _setter("namespace", namespace)
         _setter("service_id", service_id)
         if metadata is not None:
@@ -128,7 +136,11 @@ class _ServiceState:
              name: Optional[pulumi.Input[str]] = None,
              namespace: Optional[pulumi.Input[str]] = None,
              service_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+
         if metadata is not None:
             _setter("metadata", metadata)
         if name is not None:

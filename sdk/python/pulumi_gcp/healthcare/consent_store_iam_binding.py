@@ -54,12 +54,24 @@ class ConsentStoreIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             consent_store_id: pulumi.Input[str],
-             dataset: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             consent_store_id: Optional[pulumi.Input[str]] = None,
+             dataset: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['ConsentStoreIamBindingConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if consent_store_id is None and 'consentStoreId' in kwargs:
+            consent_store_id = kwargs['consentStoreId']
+        if consent_store_id is None:
+            raise TypeError("Missing 'consent_store_id' argument")
+        if dataset is None:
+            raise TypeError("Missing 'dataset' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("consent_store_id", consent_store_id)
         _setter("dataset", dataset)
         _setter("members", members)
@@ -188,7 +200,11 @@ class _ConsentStoreIamBindingState:
              etag: Optional[pulumi.Input[str]] = None,
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if consent_store_id is None and 'consentStoreId' in kwargs:
+            consent_store_id = kwargs['consentStoreId']
+
         if condition is not None:
             _setter("condition", condition)
         if consent_store_id is not None:

@@ -62,14 +62,24 @@ class RegionSslCertificateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             certificate: pulumi.Input[str],
-             private_key: pulumi.Input[str],
+             certificate: Optional[pulumi.Input[str]] = None,
+             private_key: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              name_prefix: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if certificate is None:
+            raise TypeError("Missing 'certificate' argument")
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if private_key is None:
+            raise TypeError("Missing 'private_key' argument")
+        if name_prefix is None and 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+
         _setter("certificate", certificate)
         _setter("private_key", private_key)
         if description is not None:
@@ -260,7 +270,21 @@ class _RegionSslCertificateState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if certificate_id is None and 'certificateId' in kwargs:
+            certificate_id = kwargs['certificateId']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if name_prefix is None and 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if certificate is not None:
             _setter("certificate", certificate)
         if certificate_id is not None:

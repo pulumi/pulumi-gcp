@@ -46,13 +46,23 @@ class JobIAMMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             job_id: pulumi.Input[str],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
+             job_id: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['JobIAMMemberConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if job_id is None and 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+        if job_id is None:
+            raise TypeError("Missing 'job_id' argument")
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("job_id", job_id)
         _setter("member", member)
         _setter("role", role)
@@ -176,7 +186,11 @@ class _JobIAMMemberState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if job_id is None and 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

@@ -38,11 +38,21 @@ class ObjectACLArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: pulumi.Input[str],
-             object: pulumi.Input[str],
+             bucket: Optional[pulumi.Input[str]] = None,
+             object: Optional[pulumi.Input[str]] = None,
              predefined_acl: Optional[pulumi.Input[str]] = None,
              role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if object is None:
+            raise TypeError("Missing 'object' argument")
+        if predefined_acl is None and 'predefinedAcl' in kwargs:
+            predefined_acl = kwargs['predefinedAcl']
+        if role_entities is None and 'roleEntities' in kwargs:
+            role_entities = kwargs['roleEntities']
+
         _setter("bucket", bucket)
         _setter("object", object)
         if predefined_acl is not None:
@@ -133,7 +143,13 @@ class _ObjectACLState:
              object: Optional[pulumi.Input[str]] = None,
              predefined_acl: Optional[pulumi.Input[str]] = None,
              role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if predefined_acl is None and 'predefinedAcl' in kwargs:
+            predefined_acl = kwargs['predefinedAcl']
+        if role_entities is None and 'roleEntities' in kwargs:
+            role_entities = kwargs['roleEntities']
+
         if bucket is not None:
             _setter("bucket", bucket)
         if object is not None:

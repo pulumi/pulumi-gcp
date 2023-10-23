@@ -55,15 +55,29 @@ class TargetServerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             env_id: pulumi.Input[str],
-             host: pulumi.Input[str],
-             port: pulumi.Input[int],
+             env_id: Optional[pulumi.Input[str]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
              is_enabled: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
              s_sl_info: Optional[pulumi.Input['TargetServerSSlInfoArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if env_id is None and 'envId' in kwargs:
+            env_id = kwargs['envId']
+        if env_id is None:
+            raise TypeError("Missing 'env_id' argument")
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if is_enabled is None and 'isEnabled' in kwargs:
+            is_enabled = kwargs['isEnabled']
+        if s_sl_info is None and 'sSlInfo' in kwargs:
+            s_sl_info = kwargs['sSlInfo']
+
         _setter("env_id", env_id)
         _setter("host", host)
         _setter("port", port)
@@ -231,7 +245,15 @@ class _TargetServerState:
              port: Optional[pulumi.Input[int]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
              s_sl_info: Optional[pulumi.Input['TargetServerSSlInfoArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if env_id is None and 'envId' in kwargs:
+            env_id = kwargs['envId']
+        if is_enabled is None and 'isEnabled' in kwargs:
+            is_enabled = kwargs['isEnabled']
+        if s_sl_info is None and 'sSlInfo' in kwargs:
+            s_sl_info = kwargs['sSlInfo']
+
         if description is not None:
             _setter("description", description)
         if env_id is not None:

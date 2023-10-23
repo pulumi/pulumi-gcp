@@ -57,13 +57,23 @@ class CertificateTemplateIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             certificate_template: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             certificate_template: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['CertificateTemplateIamBindingConditionArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if certificate_template is None and 'certificateTemplate' in kwargs:
+            certificate_template = kwargs['certificateTemplate']
+        if certificate_template is None:
+            raise TypeError("Missing 'certificate_template' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("certificate_template", certificate_template)
         _setter("members", members)
         _setter("role", role)
@@ -211,7 +221,11 @@ class _CertificateTemplateIamBindingState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if certificate_template is None and 'certificateTemplate' in kwargs:
+            certificate_template = kwargs['certificateTemplate']
+
         if certificate_template is not None:
             _setter("certificate_template", certificate_template)
         if condition is not None:

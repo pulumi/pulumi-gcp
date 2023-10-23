@@ -33,9 +33,19 @@ class DiskAsyncReplicationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             primary_disk: pulumi.Input[str],
-             secondary_disk: pulumi.Input['DiskAsyncReplicationSecondaryDiskArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             primary_disk: Optional[pulumi.Input[str]] = None,
+             secondary_disk: Optional[pulumi.Input['DiskAsyncReplicationSecondaryDiskArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if primary_disk is None and 'primaryDisk' in kwargs:
+            primary_disk = kwargs['primaryDisk']
+        if primary_disk is None:
+            raise TypeError("Missing 'primary_disk' argument")
+        if secondary_disk is None and 'secondaryDisk' in kwargs:
+            secondary_disk = kwargs['secondaryDisk']
+        if secondary_disk is None:
+            raise TypeError("Missing 'secondary_disk' argument")
+
         _setter("primary_disk", primary_disk)
         _setter("secondary_disk", secondary_disk)
 
@@ -88,7 +98,13 @@ class _DiskAsyncReplicationState:
              _setter: Callable[[Any, Any], None],
              primary_disk: Optional[pulumi.Input[str]] = None,
              secondary_disk: Optional[pulumi.Input['DiskAsyncReplicationSecondaryDiskArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if primary_disk is None and 'primaryDisk' in kwargs:
+            primary_disk = kwargs['primaryDisk']
+        if secondary_disk is None and 'secondaryDisk' in kwargs:
+            secondary_disk = kwargs['secondaryDisk']
+
         if primary_disk is not None:
             _setter("primary_disk", primary_disk)
         if secondary_disk is not None:

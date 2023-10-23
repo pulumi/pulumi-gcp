@@ -66,7 +66,7 @@ class ApiConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api: pulumi.Input[str],
+             api: Optional[pulumi.Input[str]] = None,
              api_config_id: Optional[pulumi.Input[str]] = None,
              api_config_id_prefix: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
@@ -76,7 +76,25 @@ class ApiConfigArgs:
              managed_service_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArgs']]]] = None,
              openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api is None:
+            raise TypeError("Missing 'api' argument")
+        if api_config_id is None and 'apiConfigId' in kwargs:
+            api_config_id = kwargs['apiConfigId']
+        if api_config_id_prefix is None and 'apiConfigIdPrefix' in kwargs:
+            api_config_id_prefix = kwargs['apiConfigIdPrefix']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if gateway_config is None and 'gatewayConfig' in kwargs:
+            gateway_config = kwargs['gatewayConfig']
+        if grpc_services is None and 'grpcServices' in kwargs:
+            grpc_services = kwargs['grpcServices']
+        if managed_service_configs is None and 'managedServiceConfigs' in kwargs:
+            managed_service_configs = kwargs['managedServiceConfigs']
+        if openapi_documents is None and 'openapiDocuments' in kwargs:
+            openapi_documents = kwargs['openapiDocuments']
+
         _setter("api", api)
         if api_config_id is not None:
             _setter("api_config_id", api_config_id)
@@ -300,7 +318,25 @@ class _ApiConfigState:
              openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              service_config_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_config_id is None and 'apiConfigId' in kwargs:
+            api_config_id = kwargs['apiConfigId']
+        if api_config_id_prefix is None and 'apiConfigIdPrefix' in kwargs:
+            api_config_id_prefix = kwargs['apiConfigIdPrefix']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if gateway_config is None and 'gatewayConfig' in kwargs:
+            gateway_config = kwargs['gatewayConfig']
+        if grpc_services is None and 'grpcServices' in kwargs:
+            grpc_services = kwargs['grpcServices']
+        if managed_service_configs is None and 'managedServiceConfigs' in kwargs:
+            managed_service_configs = kwargs['managedServiceConfigs']
+        if openapi_documents is None and 'openapiDocuments' in kwargs:
+            openapi_documents = kwargs['openapiDocuments']
+        if service_config_id is None and 'serviceConfigId' in kwargs:
+            service_config_id = kwargs['serviceConfigId']
+
         if api is not None:
             _setter("api", api)
         if api_config_id is not None:

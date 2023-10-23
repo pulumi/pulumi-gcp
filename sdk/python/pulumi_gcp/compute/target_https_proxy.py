@@ -91,7 +91,7 @@ class TargetHttpsProxyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             url_map: pulumi.Input[str],
+             url_map: Optional[pulumi.Input[str]] = None,
              certificate_map: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              http_keep_alive_timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -102,7 +102,27 @@ class TargetHttpsProxyArgs:
              server_tls_policy: Optional[pulumi.Input[str]] = None,
              ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ssl_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if url_map is None and 'urlMap' in kwargs:
+            url_map = kwargs['urlMap']
+        if url_map is None:
+            raise TypeError("Missing 'url_map' argument")
+        if certificate_map is None and 'certificateMap' in kwargs:
+            certificate_map = kwargs['certificateMap']
+        if http_keep_alive_timeout_sec is None and 'httpKeepAliveTimeoutSec' in kwargs:
+            http_keep_alive_timeout_sec = kwargs['httpKeepAliveTimeoutSec']
+        if proxy_bind is None and 'proxyBind' in kwargs:
+            proxy_bind = kwargs['proxyBind']
+        if quic_override is None and 'quicOverride' in kwargs:
+            quic_override = kwargs['quicOverride']
+        if server_tls_policy is None and 'serverTlsPolicy' in kwargs:
+            server_tls_policy = kwargs['serverTlsPolicy']
+        if ssl_certificates is None and 'sslCertificates' in kwargs:
+            ssl_certificates = kwargs['sslCertificates']
+        if ssl_policy is None and 'sslPolicy' in kwargs:
+            ssl_policy = kwargs['sslPolicy']
+
         _setter("url_map", url_map)
         if certificate_map is not None:
             _setter("certificate_map", certificate_map)
@@ -396,7 +416,31 @@ class _TargetHttpsProxyState:
              ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ssl_policy: Optional[pulumi.Input[str]] = None,
              url_map: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if certificate_map is None and 'certificateMap' in kwargs:
+            certificate_map = kwargs['certificateMap']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if http_keep_alive_timeout_sec is None and 'httpKeepAliveTimeoutSec' in kwargs:
+            http_keep_alive_timeout_sec = kwargs['httpKeepAliveTimeoutSec']
+        if proxy_bind is None and 'proxyBind' in kwargs:
+            proxy_bind = kwargs['proxyBind']
+        if proxy_id is None and 'proxyId' in kwargs:
+            proxy_id = kwargs['proxyId']
+        if quic_override is None and 'quicOverride' in kwargs:
+            quic_override = kwargs['quicOverride']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if server_tls_policy is None and 'serverTlsPolicy' in kwargs:
+            server_tls_policy = kwargs['serverTlsPolicy']
+        if ssl_certificates is None and 'sslCertificates' in kwargs:
+            ssl_certificates = kwargs['sslCertificates']
+        if ssl_policy is None and 'sslPolicy' in kwargs:
+            ssl_policy = kwargs['sslPolicy']
+        if url_map is None and 'urlMap' in kwargs:
+            url_map = kwargs['urlMap']
+
         if certificate_map is not None:
             _setter("certificate_map", certificate_map)
         if creation_timestamp is not None:

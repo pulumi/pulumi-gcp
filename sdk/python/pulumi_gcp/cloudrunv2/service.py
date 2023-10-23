@@ -83,7 +83,7 @@ class ServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             template: pulumi.Input['ServiceTemplateArgs'],
+             template: Optional[pulumi.Input['ServiceTemplateArgs']] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              binary_authorization: Optional[pulumi.Input['ServiceBinaryAuthorizationArgs']] = None,
              client: Optional[pulumi.Input[str]] = None,
@@ -97,7 +97,19 @@ class ServiceArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if template is None:
+            raise TypeError("Missing 'template' argument")
+        if binary_authorization is None and 'binaryAuthorization' in kwargs:
+            binary_authorization = kwargs['binaryAuthorization']
+        if client_version is None and 'clientVersion' in kwargs:
+            client_version = kwargs['clientVersion']
+        if custom_audiences is None and 'customAudiences' in kwargs:
+            custom_audiences = kwargs['customAudiences']
+        if launch_stage is None and 'launchStage' in kwargs:
+            launch_stage = kwargs['launchStage']
+
         _setter("template", template)
         if annotations is not None:
             _setter("annotations", annotations)
@@ -470,7 +482,37 @@ class _ServiceState:
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              uri: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if binary_authorization is None and 'binaryAuthorization' in kwargs:
+            binary_authorization = kwargs['binaryAuthorization']
+        if client_version is None and 'clientVersion' in kwargs:
+            client_version = kwargs['clientVersion']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if custom_audiences is None and 'customAudiences' in kwargs:
+            custom_audiences = kwargs['customAudiences']
+        if delete_time is None and 'deleteTime' in kwargs:
+            delete_time = kwargs['deleteTime']
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if last_modifier is None and 'lastModifier' in kwargs:
+            last_modifier = kwargs['lastModifier']
+        if latest_created_revision is None and 'latestCreatedRevision' in kwargs:
+            latest_created_revision = kwargs['latestCreatedRevision']
+        if latest_ready_revision is None and 'latestReadyRevision' in kwargs:
+            latest_ready_revision = kwargs['latestReadyRevision']
+        if launch_stage is None and 'launchStage' in kwargs:
+            launch_stage = kwargs['launchStage']
+        if observed_generation is None and 'observedGeneration' in kwargs:
+            observed_generation = kwargs['observedGeneration']
+        if terminal_conditions is None and 'terminalConditions' in kwargs:
+            terminal_conditions = kwargs['terminalConditions']
+        if traffic_statuses is None and 'trafficStatuses' in kwargs:
+            traffic_statuses = kwargs['trafficStatuses']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if binary_authorization is not None:

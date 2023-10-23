@@ -50,12 +50,22 @@ class EntityTypeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             kind: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
+             kind: Optional[pulumi.Input[str]] = None,
              enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
              entities: Optional[pulumi.Input[Sequence[pulumi.Input['EntityTypeEntityArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if kind is None:
+            raise TypeError("Missing 'kind' argument")
+        if enable_fuzzy_extraction is None and 'enableFuzzyExtraction' in kwargs:
+            enable_fuzzy_extraction = kwargs['enableFuzzyExtraction']
+
         _setter("display_name", display_name)
         _setter("kind", kind)
         if enable_fuzzy_extraction is not None:
@@ -183,7 +193,13 @@ class _EntityTypeState:
              kind: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if enable_fuzzy_extraction is None and 'enableFuzzyExtraction' in kwargs:
+            enable_fuzzy_extraction = kwargs['enableFuzzyExtraction']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if enable_fuzzy_extraction is not None:

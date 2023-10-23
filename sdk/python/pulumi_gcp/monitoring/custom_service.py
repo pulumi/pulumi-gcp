@@ -53,7 +53,15 @@ class CustomServiceArgs:
              service_id: Optional[pulumi.Input[str]] = None,
              telemetry: Optional[pulumi.Input['CustomServiceTelemetryArgs']] = None,
              user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if user_labels is None and 'userLabels' in kwargs:
+            user_labels = kwargs['userLabels']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if project is not None:
@@ -179,7 +187,15 @@ class _CustomServiceState:
              service_id: Optional[pulumi.Input[str]] = None,
              telemetry: Optional[pulumi.Input['CustomServiceTelemetryArgs']] = None,
              user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if user_labels is None and 'userLabels' in kwargs:
+            user_labels = kwargs['userLabels']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if name is not None:

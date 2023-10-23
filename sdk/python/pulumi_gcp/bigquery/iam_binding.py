@@ -56,13 +56,27 @@ class IamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset_id: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
-             table_id: pulumi.Input[str],
+             dataset_id: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             table_id: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['IamBindingConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if dataset_id is None:
+            raise TypeError("Missing 'dataset_id' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if table_id is None and 'tableId' in kwargs:
+            table_id = kwargs['tableId']
+        if table_id is None:
+            raise TypeError("Missing 'table_id' argument")
+
         _setter("dataset_id", dataset_id)
         _setter("members", members)
         _setter("role", role)
@@ -205,7 +219,13 @@ class _IamBindingState:
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              table_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if table_id is None and 'tableId' in kwargs:
+            table_id = kwargs['tableId']
+
         if condition is not None:
             _setter("condition", condition)
         if dataset_id is not None:

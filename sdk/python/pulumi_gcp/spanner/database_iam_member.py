@@ -53,13 +53,23 @@ class DatabaseIAMMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             database: pulumi.Input[str],
-             instance: pulumi.Input[str],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
+             database: Optional[pulumi.Input[str]] = None,
+             instance: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['DatabaseIAMMemberConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if database is None:
+            raise TypeError("Missing 'database' argument")
+        if instance is None:
+            raise TypeError("Missing 'instance' argument")
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("database", database)
         _setter("instance", instance)
         _setter("member", member)
@@ -198,7 +208,9 @@ class _DatabaseIAMMemberState:
              member: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
         if database is not None:

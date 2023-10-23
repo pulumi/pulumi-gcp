@@ -57,7 +57,7 @@ class AppConnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_endpoint: pulumi.Input['AppConnectionApplicationEndpointArgs'],
+             application_endpoint: Optional[pulumi.Input['AppConnectionApplicationEndpointArgs']] = None,
              connectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              gateway: Optional[pulumi.Input['AppConnectionGatewayArgs']] = None,
@@ -66,7 +66,15 @@ class AppConnectionArgs:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if application_endpoint is None and 'applicationEndpoint' in kwargs:
+            application_endpoint = kwargs['applicationEndpoint']
+        if application_endpoint is None:
+            raise TypeError("Missing 'application_endpoint' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("application_endpoint", application_endpoint)
         if connectors is not None:
             _setter("connectors", connectors)
@@ -252,7 +260,13 @@ class _AppConnectionState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if application_endpoint is None and 'applicationEndpoint' in kwargs:
+            application_endpoint = kwargs['applicationEndpoint']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if application_endpoint is not None:
             _setter("application_endpoint", application_endpoint)
         if connectors is not None:

@@ -250,7 +250,11 @@ class AttachedClusterAuthorizationArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              admin_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if admin_users is None and 'adminUsers' in kwargs:
+            admin_users = kwargs['adminUsers']
+
         if admin_users is not None:
             _setter("admin_users", admin_users)
 
@@ -287,7 +291,11 @@ class AttachedClusterBinaryAuthorizationArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              evaluation_mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if evaluation_mode is None and 'evaluationMode' in kwargs:
+            evaluation_mode = kwargs['evaluationMode']
+
         if evaluation_mode is not None:
             _setter("evaluation_mode", evaluation_mode)
 
@@ -320,7 +328,9 @@ class AttachedClusterErrorArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              message: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if message is not None:
             _setter("message", message)
 
@@ -358,9 +368,13 @@ class AttachedClusterFleetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
              membership: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
         _setter("project", project)
         if membership is not None:
             _setter("membership", membership)
@@ -410,7 +424,11 @@ class AttachedClusterLoggingConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              component_config: Optional[pulumi.Input['AttachedClusterLoggingConfigComponentConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if component_config is None and 'componentConfig' in kwargs:
+            component_config = kwargs['componentConfig']
+
         if component_config is not None:
             _setter("component_config", component_config)
 
@@ -444,7 +462,11 @@ class AttachedClusterLoggingConfigComponentConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              enable_components: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_components is None and 'enableComponents' in kwargs:
+            enable_components = kwargs['enableComponents']
+
         if enable_components is not None:
             _setter("enable_components", enable_components)
 
@@ -478,7 +500,11 @@ class AttachedClusterMonitoringConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              managed_prometheus_config: Optional[pulumi.Input['AttachedClusterMonitoringConfigManagedPrometheusConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if managed_prometheus_config is None and 'managedPrometheusConfig' in kwargs:
+            managed_prometheus_config = kwargs['managedPrometheusConfig']
+
         if managed_prometheus_config is not None:
             _setter("managed_prometheus_config", managed_prometheus_config)
 
@@ -511,7 +537,9 @@ class AttachedClusterMonitoringConfigManagedPrometheusConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if enabled is not None:
             _setter("enabled", enabled)
 
@@ -545,9 +573,15 @@ class AttachedClusterOidcConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             issuer_url: pulumi.Input[str],
+             issuer_url: Optional[pulumi.Input[str]] = None,
              jwks: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if issuer_url is None and 'issuerUrl' in kwargs:
+            issuer_url = kwargs['issuerUrl']
+        if issuer_url is None:
+            raise TypeError("Missing 'issuer_url' argument")
+
         _setter("issuer_url", issuer_url)
         if jwks is not None:
             _setter("jwks", jwks)
@@ -601,7 +635,15 @@ class AttachedClusterWorkloadIdentityConfigArgs:
              identity_provider: Optional[pulumi.Input[str]] = None,
              issuer_uri: Optional[pulumi.Input[str]] = None,
              workload_pool: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if identity_provider is None and 'identityProvider' in kwargs:
+            identity_provider = kwargs['identityProvider']
+        if issuer_uri is None and 'issuerUri' in kwargs:
+            issuer_uri = kwargs['issuerUri']
+        if workload_pool is None and 'workloadPool' in kwargs:
+            workload_pool = kwargs['workloadPool']
+
         if identity_provider is not None:
             _setter("identity_provider", identity_provider)
         if issuer_uri is not None:
@@ -661,8 +703,14 @@ class AwsClusterAuthorizationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             admin_users: pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             admin_users: Optional[pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if admin_users is None and 'adminUsers' in kwargs:
+            admin_users = kwargs['adminUsers']
+        if admin_users is None:
+            raise TypeError("Missing 'admin_users' argument")
+
         _setter("admin_users", admin_users)
 
     @property
@@ -692,8 +740,12 @@ class AwsClusterAuthorizationAdminUserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             username: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+
         _setter("username", username)
 
     @property
@@ -762,12 +814,12 @@ class AwsClusterControlPlaneArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             aws_services_authentication: pulumi.Input['AwsClusterControlPlaneAwsServicesAuthenticationArgs'],
-             config_encryption: pulumi.Input['AwsClusterControlPlaneConfigEncryptionArgs'],
-             database_encryption: pulumi.Input['AwsClusterControlPlaneDatabaseEncryptionArgs'],
-             iam_instance_profile: pulumi.Input[str],
-             subnet_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             version: pulumi.Input[str],
+             aws_services_authentication: Optional[pulumi.Input['AwsClusterControlPlaneAwsServicesAuthenticationArgs']] = None,
+             config_encryption: Optional[pulumi.Input['AwsClusterControlPlaneConfigEncryptionArgs']] = None,
+             database_encryption: Optional[pulumi.Input['AwsClusterControlPlaneDatabaseEncryptionArgs']] = None,
+             iam_instance_profile: Optional[pulumi.Input[str]] = None,
+             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             version: Optional[pulumi.Input[str]] = None,
              instance_placement: Optional[pulumi.Input['AwsClusterControlPlaneInstancePlacementArgs']] = None,
              instance_type: Optional[pulumi.Input[str]] = None,
              main_volume: Optional[pulumi.Input['AwsClusterControlPlaneMainVolumeArgs']] = None,
@@ -776,7 +828,45 @@ class AwsClusterControlPlaneArgs:
              security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ssh_config: Optional[pulumi.Input['AwsClusterControlPlaneSshConfigArgs']] = None,
              tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if aws_services_authentication is None and 'awsServicesAuthentication' in kwargs:
+            aws_services_authentication = kwargs['awsServicesAuthentication']
+        if aws_services_authentication is None:
+            raise TypeError("Missing 'aws_services_authentication' argument")
+        if config_encryption is None and 'configEncryption' in kwargs:
+            config_encryption = kwargs['configEncryption']
+        if config_encryption is None:
+            raise TypeError("Missing 'config_encryption' argument")
+        if database_encryption is None and 'databaseEncryption' in kwargs:
+            database_encryption = kwargs['databaseEncryption']
+        if database_encryption is None:
+            raise TypeError("Missing 'database_encryption' argument")
+        if iam_instance_profile is None and 'iamInstanceProfile' in kwargs:
+            iam_instance_profile = kwargs['iamInstanceProfile']
+        if iam_instance_profile is None:
+            raise TypeError("Missing 'iam_instance_profile' argument")
+        if subnet_ids is None and 'subnetIds' in kwargs:
+            subnet_ids = kwargs['subnetIds']
+        if subnet_ids is None:
+            raise TypeError("Missing 'subnet_ids' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+        if instance_placement is None and 'instancePlacement' in kwargs:
+            instance_placement = kwargs['instancePlacement']
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if main_volume is None and 'mainVolume' in kwargs:
+            main_volume = kwargs['mainVolume']
+        if proxy_config is None and 'proxyConfig' in kwargs:
+            proxy_config = kwargs['proxyConfig']
+        if root_volume is None and 'rootVolume' in kwargs:
+            root_volume = kwargs['rootVolume']
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if ssh_config is None and 'sshConfig' in kwargs:
+            ssh_config = kwargs['sshConfig']
+
         _setter("aws_services_authentication", aws_services_authentication)
         _setter("config_encryption", config_encryption)
         _setter("database_encryption", database_encryption)
@@ -986,9 +1076,17 @@ class AwsClusterControlPlaneAwsServicesAuthenticationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             role_arn: pulumi.Input[str],
+             role_arn: Optional[pulumi.Input[str]] = None,
              role_session_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if role_arn is None:
+            raise TypeError("Missing 'role_arn' argument")
+        if role_session_name is None and 'roleSessionName' in kwargs:
+            role_session_name = kwargs['roleSessionName']
+
         _setter("role_arn", role_arn)
         if role_session_name is not None:
             _setter("role_session_name", role_session_name)
@@ -1032,8 +1130,14 @@ class AwsClusterControlPlaneConfigEncryptionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kms_key_arn: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             kms_key_arn: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_arn is None and 'kmsKeyArn' in kwargs:
+            kms_key_arn = kwargs['kmsKeyArn']
+        if kms_key_arn is None:
+            raise TypeError("Missing 'kms_key_arn' argument")
+
         _setter("kms_key_arn", kms_key_arn)
 
     @property
@@ -1063,8 +1167,14 @@ class AwsClusterControlPlaneDatabaseEncryptionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kms_key_arn: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             kms_key_arn: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_arn is None and 'kmsKeyArn' in kwargs:
+            kms_key_arn = kwargs['kmsKeyArn']
+        if kms_key_arn is None:
+            raise TypeError("Missing 'kms_key_arn' argument")
+
         _setter("kms_key_arn", kms_key_arn)
 
     @property
@@ -1095,7 +1205,9 @@ class AwsClusterControlPlaneInstancePlacementArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              tenancy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if tenancy is not None:
             _setter("tenancy", tenancy)
 
@@ -1143,7 +1255,15 @@ class AwsClusterControlPlaneMainVolumeArgs:
              size_gib: Optional[pulumi.Input[int]] = None,
              throughput: Optional[pulumi.Input[int]] = None,
              volume_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_arn is None and 'kmsKeyArn' in kwargs:
+            kms_key_arn = kwargs['kmsKeyArn']
+        if size_gib is None and 'sizeGib' in kwargs:
+            size_gib = kwargs['sizeGib']
+        if volume_type is None and 'volumeType' in kwargs:
+            volume_type = kwargs['volumeType']
+
         if iops is not None:
             _setter("iops", iops)
         if kms_key_arn is not None:
@@ -1233,9 +1353,19 @@ class AwsClusterControlPlaneProxyConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             secret_arn: pulumi.Input[str],
-             secret_version: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             secret_arn: Optional[pulumi.Input[str]] = None,
+             secret_version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if secret_arn is None and 'secretArn' in kwargs:
+            secret_arn = kwargs['secretArn']
+        if secret_arn is None:
+            raise TypeError("Missing 'secret_arn' argument")
+        if secret_version is None and 'secretVersion' in kwargs:
+            secret_version = kwargs['secretVersion']
+        if secret_version is None:
+            raise TypeError("Missing 'secret_version' argument")
+
         _setter("secret_arn", secret_arn)
         _setter("secret_version", secret_version)
 
@@ -1295,7 +1425,15 @@ class AwsClusterControlPlaneRootVolumeArgs:
              size_gib: Optional[pulumi.Input[int]] = None,
              throughput: Optional[pulumi.Input[int]] = None,
              volume_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_arn is None and 'kmsKeyArn' in kwargs:
+            kms_key_arn = kwargs['kmsKeyArn']
+        if size_gib is None and 'sizeGib' in kwargs:
+            size_gib = kwargs['sizeGib']
+        if volume_type is None and 'volumeType' in kwargs:
+            volume_type = kwargs['volumeType']
+
         if iops is not None:
             _setter("iops", iops)
         if kms_key_arn is not None:
@@ -1382,8 +1520,14 @@ class AwsClusterControlPlaneSshConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ec2_key_pair: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             ec2_key_pair: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ec2_key_pair is None and 'ec2KeyPair' in kwargs:
+            ec2_key_pair = kwargs['ec2KeyPair']
+        if ec2_key_pair is None:
+            raise TypeError("Missing 'ec2_key_pair' argument")
+
         _setter("ec2_key_pair", ec2_key_pair)
 
     @property
@@ -1418,7 +1562,9 @@ class AwsClusterFleetArgs:
              _setter: Callable[[Any, Any], None],
              membership: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if membership is not None:
             _setter("membership", membership)
         if project is not None:
@@ -1464,7 +1610,11 @@ class AwsClusterLoggingConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              component_config: Optional[pulumi.Input['AwsClusterLoggingConfigComponentConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if component_config is None and 'componentConfig' in kwargs:
+            component_config = kwargs['componentConfig']
+
         if component_config is not None:
             _setter("component_config", component_config)
 
@@ -1496,7 +1646,11 @@ class AwsClusterLoggingConfigComponentConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              enable_components: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_components is None and 'enableComponents' in kwargs:
+            enable_components = kwargs['enableComponents']
+
         if enable_components is not None:
             _setter("enable_components", enable_components)
 
@@ -1538,11 +1692,27 @@ class AwsClusterNetworkingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pod_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
-             service_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
-             vpc_id: pulumi.Input[str],
+             pod_address_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             service_address_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
              per_node_pool_sg_rules_disabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pod_address_cidr_blocks is None and 'podAddressCidrBlocks' in kwargs:
+            pod_address_cidr_blocks = kwargs['podAddressCidrBlocks']
+        if pod_address_cidr_blocks is None:
+            raise TypeError("Missing 'pod_address_cidr_blocks' argument")
+        if service_address_cidr_blocks is None and 'serviceAddressCidrBlocks' in kwargs:
+            service_address_cidr_blocks = kwargs['serviceAddressCidrBlocks']
+        if service_address_cidr_blocks is None:
+            raise TypeError("Missing 'service_address_cidr_blocks' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if per_node_pool_sg_rules_disabled is None and 'perNodePoolSgRulesDisabled' in kwargs:
+            per_node_pool_sg_rules_disabled = kwargs['perNodePoolSgRulesDisabled']
+
         _setter("pod_address_cidr_blocks", pod_address_cidr_blocks)
         _setter("service_address_cidr_blocks", service_address_cidr_blocks)
         _setter("vpc_id", vpc_id)
@@ -1618,7 +1788,15 @@ class AwsClusterWorkloadIdentityConfigArgs:
              identity_provider: Optional[pulumi.Input[str]] = None,
              issuer_uri: Optional[pulumi.Input[str]] = None,
              workload_pool: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if identity_provider is None and 'identityProvider' in kwargs:
+            identity_provider = kwargs['identityProvider']
+        if issuer_uri is None and 'issuerUri' in kwargs:
+            issuer_uri = kwargs['issuerUri']
+        if workload_pool is None and 'workloadPool' in kwargs:
+            workload_pool = kwargs['workloadPool']
+
         if identity_provider is not None:
             _setter("identity_provider", identity_provider)
         if issuer_uri is not None:
@@ -1671,9 +1849,19 @@ class AwsNodePoolAutoscalingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max_node_count: pulumi.Input[int],
-             min_node_count: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             max_node_count: Optional[pulumi.Input[int]] = None,
+             min_node_count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_node_count is None and 'maxNodeCount' in kwargs:
+            max_node_count = kwargs['maxNodeCount']
+        if max_node_count is None:
+            raise TypeError("Missing 'max_node_count' argument")
+        if min_node_count is None and 'minNodeCount' in kwargs:
+            min_node_count = kwargs['minNodeCount']
+        if min_node_count is None:
+            raise TypeError("Missing 'min_node_count' argument")
+
         _setter("max_node_count", max_node_count)
         _setter("min_node_count", min_node_count)
 
@@ -1755,8 +1943,8 @@ class AwsNodePoolConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config_encryption: pulumi.Input['AwsNodePoolConfigConfigEncryptionArgs'],
-             iam_instance_profile: pulumi.Input[str],
+             config_encryption: Optional[pulumi.Input['AwsNodePoolConfigConfigEncryptionArgs']] = None,
+             iam_instance_profile: Optional[pulumi.Input[str]] = None,
              autoscaling_metrics_collection: Optional[pulumi.Input['AwsNodePoolConfigAutoscalingMetricsCollectionArgs']] = None,
              image_type: Optional[pulumi.Input[str]] = None,
              instance_placement: Optional[pulumi.Input['AwsNodePoolConfigInstancePlacementArgs']] = None,
@@ -1769,7 +1957,35 @@ class AwsNodePoolConfigArgs:
              ssh_config: Optional[pulumi.Input['AwsNodePoolConfigSshConfigArgs']] = None,
              tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['AwsNodePoolConfigTaintArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if config_encryption is None and 'configEncryption' in kwargs:
+            config_encryption = kwargs['configEncryption']
+        if config_encryption is None:
+            raise TypeError("Missing 'config_encryption' argument")
+        if iam_instance_profile is None and 'iamInstanceProfile' in kwargs:
+            iam_instance_profile = kwargs['iamInstanceProfile']
+        if iam_instance_profile is None:
+            raise TypeError("Missing 'iam_instance_profile' argument")
+        if autoscaling_metrics_collection is None and 'autoscalingMetricsCollection' in kwargs:
+            autoscaling_metrics_collection = kwargs['autoscalingMetricsCollection']
+        if image_type is None and 'imageType' in kwargs:
+            image_type = kwargs['imageType']
+        if instance_placement is None and 'instancePlacement' in kwargs:
+            instance_placement = kwargs['instancePlacement']
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if proxy_config is None and 'proxyConfig' in kwargs:
+            proxy_config = kwargs['proxyConfig']
+        if root_volume is None and 'rootVolume' in kwargs:
+            root_volume = kwargs['rootVolume']
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if spot_config is None and 'spotConfig' in kwargs:
+            spot_config = kwargs['spotConfig']
+        if ssh_config is None and 'sshConfig' in kwargs:
+            ssh_config = kwargs['sshConfig']
+
         _setter("config_encryption", config_encryption)
         _setter("iam_instance_profile", iam_instance_profile)
         if autoscaling_metrics_collection is not None:
@@ -1983,9 +2199,13 @@ class AwsNodePoolConfigAutoscalingMetricsCollectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             granularity: pulumi.Input[str],
+             granularity: Optional[pulumi.Input[str]] = None,
              metrics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if granularity is None:
+            raise TypeError("Missing 'granularity' argument")
+
         _setter("granularity", granularity)
         if metrics is not None:
             _setter("metrics", metrics)
@@ -2029,8 +2249,14 @@ class AwsNodePoolConfigConfigEncryptionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kms_key_arn: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             kms_key_arn: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_arn is None and 'kmsKeyArn' in kwargs:
+            kms_key_arn = kwargs['kmsKeyArn']
+        if kms_key_arn is None:
+            raise TypeError("Missing 'kms_key_arn' argument")
+
         _setter("kms_key_arn", kms_key_arn)
 
     @property
@@ -2061,7 +2287,9 @@ class AwsNodePoolConfigInstancePlacementArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              tenancy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if tenancy is not None:
             _setter("tenancy", tenancy)
 
@@ -2095,9 +2323,19 @@ class AwsNodePoolConfigProxyConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             secret_arn: pulumi.Input[str],
-             secret_version: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             secret_arn: Optional[pulumi.Input[str]] = None,
+             secret_version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if secret_arn is None and 'secretArn' in kwargs:
+            secret_arn = kwargs['secretArn']
+        if secret_arn is None:
+            raise TypeError("Missing 'secret_arn' argument")
+        if secret_version is None and 'secretVersion' in kwargs:
+            secret_version = kwargs['secretVersion']
+        if secret_version is None:
+            raise TypeError("Missing 'secret_version' argument")
+
         _setter("secret_arn", secret_arn)
         _setter("secret_version", secret_version)
 
@@ -2157,7 +2395,15 @@ class AwsNodePoolConfigRootVolumeArgs:
              size_gib: Optional[pulumi.Input[int]] = None,
              throughput: Optional[pulumi.Input[int]] = None,
              volume_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_arn is None and 'kmsKeyArn' in kwargs:
+            kms_key_arn = kwargs['kmsKeyArn']
+        if size_gib is None and 'sizeGib' in kwargs:
+            size_gib = kwargs['sizeGib']
+        if volume_type is None and 'volumeType' in kwargs:
+            volume_type = kwargs['volumeType']
+
         if iops is not None:
             _setter("iops", iops)
         if kms_key_arn is not None:
@@ -2244,8 +2490,14 @@ class AwsNodePoolConfigSpotConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_types: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_types is None and 'instanceTypes' in kwargs:
+            instance_types = kwargs['instanceTypes']
+        if instance_types is None:
+            raise TypeError("Missing 'instance_types' argument")
+
         _setter("instance_types", instance_types)
 
     @property
@@ -2275,8 +2527,14 @@ class AwsNodePoolConfigSshConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ec2_key_pair: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             ec2_key_pair: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ec2_key_pair is None and 'ec2KeyPair' in kwargs:
+            ec2_key_pair = kwargs['ec2KeyPair']
+        if ec2_key_pair is None:
+            raise TypeError("Missing 'ec2_key_pair' argument")
+
         _setter("ec2_key_pair", ec2_key_pair)
 
     @property
@@ -2312,10 +2570,18 @@ class AwsNodePoolConfigTaintArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             effect: pulumi.Input[str],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             effect: Optional[pulumi.Input[str]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if effect is None:
+            raise TypeError("Missing 'effect' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("effect", effect)
         _setter("key", key)
         _setter("value", value)
@@ -2372,7 +2638,11 @@ class AwsNodePoolManagementArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              auto_repair: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_repair is None and 'autoRepair' in kwargs:
+            auto_repair = kwargs['autoRepair']
+
         if auto_repair is not None:
             _setter("auto_repair", auto_repair)
 
@@ -2405,8 +2675,14 @@ class AwsNodePoolMaxPodsConstraintArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max_pods_per_node: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             max_pods_per_node: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_pods_per_node is None and 'maxPodsPerNode' in kwargs:
+            max_pods_per_node = kwargs['maxPodsPerNode']
+        if max_pods_per_node is None:
+            raise TypeError("Missing 'max_pods_per_node' argument")
+
         _setter("max_pods_per_node", max_pods_per_node)
 
     @property
@@ -2438,8 +2714,14 @@ class AzureClusterAuthorizationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             admin_users: pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             admin_users: Optional[pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if admin_users is None and 'adminUsers' in kwargs:
+            admin_users = kwargs['adminUsers']
+        if admin_users is None:
+            raise TypeError("Missing 'admin_users' argument")
+
         _setter("admin_users", admin_users)
 
     @property
@@ -2469,8 +2751,12 @@ class AzureClusterAuthorizationAdminUserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             username: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+
         _setter("username", username)
 
     @property
@@ -2503,9 +2789,19 @@ class AzureClusterAzureServicesAuthenticationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_id: pulumi.Input[str],
-             tenant_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             application_id: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if application_id is None and 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if application_id is None:
+            raise TypeError("Missing 'application_id' argument")
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if tenant_id is None:
+            raise TypeError("Missing 'tenant_id' argument")
+
         _setter("application_id", application_id)
         _setter("tenant_id", tenant_id)
 
@@ -2575,9 +2871,9 @@ class AzureClusterControlPlaneArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ssh_config: pulumi.Input['AzureClusterControlPlaneSshConfigArgs'],
-             subnet_id: pulumi.Input[str],
-             version: pulumi.Input[str],
+             ssh_config: Optional[pulumi.Input['AzureClusterControlPlaneSshConfigArgs']] = None,
+             subnet_id: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
              database_encryption: Optional[pulumi.Input['AzureClusterControlPlaneDatabaseEncryptionArgs']] = None,
              main_volume: Optional[pulumi.Input['AzureClusterControlPlaneMainVolumeArgs']] = None,
              proxy_config: Optional[pulumi.Input['AzureClusterControlPlaneProxyConfigArgs']] = None,
@@ -2585,7 +2881,31 @@ class AzureClusterControlPlaneArgs:
              root_volume: Optional[pulumi.Input['AzureClusterControlPlaneRootVolumeArgs']] = None,
              tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              vm_size: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ssh_config is None and 'sshConfig' in kwargs:
+            ssh_config = kwargs['sshConfig']
+        if ssh_config is None:
+            raise TypeError("Missing 'ssh_config' argument")
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if subnet_id is None:
+            raise TypeError("Missing 'subnet_id' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+        if database_encryption is None and 'databaseEncryption' in kwargs:
+            database_encryption = kwargs['databaseEncryption']
+        if main_volume is None and 'mainVolume' in kwargs:
+            main_volume = kwargs['mainVolume']
+        if proxy_config is None and 'proxyConfig' in kwargs:
+            proxy_config = kwargs['proxyConfig']
+        if replica_placements is None and 'replicaPlacements' in kwargs:
+            replica_placements = kwargs['replicaPlacements']
+        if root_volume is None and 'rootVolume' in kwargs:
+            root_volume = kwargs['rootVolume']
+        if vm_size is None and 'vmSize' in kwargs:
+            vm_size = kwargs['vmSize']
+
         _setter("ssh_config", ssh_config)
         _setter("subnet_id", subnet_id)
         _setter("version", version)
@@ -2739,8 +3059,14 @@ class AzureClusterControlPlaneDatabaseEncryptionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key_id is None and 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if key_id is None:
+            raise TypeError("Missing 'key_id' argument")
+
         _setter("key_id", key_id)
 
     @property
@@ -2771,7 +3097,11 @@ class AzureClusterControlPlaneMainVolumeArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              size_gib: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if size_gib is None and 'sizeGib' in kwargs:
+            size_gib = kwargs['sizeGib']
+
         if size_gib is not None:
             _setter("size_gib", size_gib)
 
@@ -2805,9 +3135,19 @@ class AzureClusterControlPlaneProxyConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_group_id: pulumi.Input[str],
-             secret_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             secret_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if secret_id is None and 'secretId' in kwargs:
+            secret_id = kwargs['secretId']
+        if secret_id is None:
+            raise TypeError("Missing 'secret_id' argument")
+
         _setter("resource_group_id", resource_group_id)
         _setter("secret_id", secret_id)
 
@@ -2853,9 +3193,19 @@ class AzureClusterControlPlaneReplicaPlacementArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             azure_availability_zone: pulumi.Input[str],
-             subnet_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             azure_availability_zone: Optional[pulumi.Input[str]] = None,
+             subnet_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if azure_availability_zone is None and 'azureAvailabilityZone' in kwargs:
+            azure_availability_zone = kwargs['azureAvailabilityZone']
+        if azure_availability_zone is None:
+            raise TypeError("Missing 'azure_availability_zone' argument")
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if subnet_id is None:
+            raise TypeError("Missing 'subnet_id' argument")
+
         _setter("azure_availability_zone", azure_availability_zone)
         _setter("subnet_id", subnet_id)
 
@@ -2899,7 +3249,11 @@ class AzureClusterControlPlaneRootVolumeArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              size_gib: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if size_gib is None and 'sizeGib' in kwargs:
+            size_gib = kwargs['sizeGib']
+
         if size_gib is not None:
             _setter("size_gib", size_gib)
 
@@ -2930,8 +3284,14 @@ class AzureClusterControlPlaneSshConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             authorized_key: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             authorized_key: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if authorized_key is None and 'authorizedKey' in kwargs:
+            authorized_key = kwargs['authorizedKey']
+        if authorized_key is None:
+            raise TypeError("Missing 'authorized_key' argument")
+
         _setter("authorized_key", authorized_key)
 
     @property
@@ -2966,7 +3326,9 @@ class AzureClusterFleetArgs:
              _setter: Callable[[Any, Any], None],
              membership: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if membership is not None:
             _setter("membership", membership)
         if project is not None:
@@ -3012,7 +3374,11 @@ class AzureClusterLoggingConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              component_config: Optional[pulumi.Input['AzureClusterLoggingConfigComponentConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if component_config is None and 'componentConfig' in kwargs:
+            component_config = kwargs['componentConfig']
+
         if component_config is not None:
             _setter("component_config", component_config)
 
@@ -3044,7 +3410,11 @@ class AzureClusterLoggingConfigComponentConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              enable_components: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_components is None and 'enableComponents' in kwargs:
+            enable_components = kwargs['enableComponents']
+
         if enable_components is not None:
             _setter("enable_components", enable_components)
 
@@ -3083,10 +3453,24 @@ class AzureClusterNetworkingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pod_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
-             service_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
-             virtual_network_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             pod_address_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             service_address_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             virtual_network_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pod_address_cidr_blocks is None and 'podAddressCidrBlocks' in kwargs:
+            pod_address_cidr_blocks = kwargs['podAddressCidrBlocks']
+        if pod_address_cidr_blocks is None:
+            raise TypeError("Missing 'pod_address_cidr_blocks' argument")
+        if service_address_cidr_blocks is None and 'serviceAddressCidrBlocks' in kwargs:
+            service_address_cidr_blocks = kwargs['serviceAddressCidrBlocks']
+        if service_address_cidr_blocks is None:
+            raise TypeError("Missing 'service_address_cidr_blocks' argument")
+        if virtual_network_id is None and 'virtualNetworkId' in kwargs:
+            virtual_network_id = kwargs['virtualNetworkId']
+        if virtual_network_id is None:
+            raise TypeError("Missing 'virtual_network_id' argument")
+
         _setter("pod_address_cidr_blocks", pod_address_cidr_blocks)
         _setter("service_address_cidr_blocks", service_address_cidr_blocks)
         _setter("virtual_network_id", virtual_network_id)
@@ -3148,7 +3532,15 @@ class AzureClusterWorkloadIdentityConfigArgs:
              identity_provider: Optional[pulumi.Input[str]] = None,
              issuer_uri: Optional[pulumi.Input[str]] = None,
              workload_pool: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if identity_provider is None and 'identityProvider' in kwargs:
+            identity_provider = kwargs['identityProvider']
+        if issuer_uri is None and 'issuerUri' in kwargs:
+            issuer_uri = kwargs['issuerUri']
+        if workload_pool is None and 'workloadPool' in kwargs:
+            workload_pool = kwargs['workloadPool']
+
         if identity_provider is not None:
             _setter("identity_provider", identity_provider)
         if issuer_uri is not None:
@@ -3201,9 +3593,19 @@ class AzureNodePoolAutoscalingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max_node_count: pulumi.Input[int],
-             min_node_count: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             max_node_count: Optional[pulumi.Input[int]] = None,
+             min_node_count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_node_count is None and 'maxNodeCount' in kwargs:
+            max_node_count = kwargs['maxNodeCount']
+        if max_node_count is None:
+            raise TypeError("Missing 'max_node_count' argument")
+        if min_node_count is None and 'minNodeCount' in kwargs:
+            min_node_count = kwargs['minNodeCount']
+        if min_node_count is None:
+            raise TypeError("Missing 'min_node_count' argument")
+
         _setter("max_node_count", max_node_count)
         _setter("min_node_count", min_node_count)
 
@@ -3261,13 +3663,27 @@ class AzureNodePoolConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ssh_config: pulumi.Input['AzureNodePoolConfigSshConfigArgs'],
+             ssh_config: Optional[pulumi.Input['AzureNodePoolConfigSshConfigArgs']] = None,
              image_type: Optional[pulumi.Input[str]] = None,
              proxy_config: Optional[pulumi.Input['AzureNodePoolConfigProxyConfigArgs']] = None,
              root_volume: Optional[pulumi.Input['AzureNodePoolConfigRootVolumeArgs']] = None,
              tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              vm_size: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ssh_config is None and 'sshConfig' in kwargs:
+            ssh_config = kwargs['sshConfig']
+        if ssh_config is None:
+            raise TypeError("Missing 'ssh_config' argument")
+        if image_type is None and 'imageType' in kwargs:
+            image_type = kwargs['imageType']
+        if proxy_config is None and 'proxyConfig' in kwargs:
+            proxy_config = kwargs['proxyConfig']
+        if root_volume is None and 'rootVolume' in kwargs:
+            root_volume = kwargs['rootVolume']
+        if vm_size is None and 'vmSize' in kwargs:
+            vm_size = kwargs['vmSize']
+
         _setter("ssh_config", ssh_config)
         if image_type is not None:
             _setter("image_type", image_type)
@@ -3370,9 +3786,19 @@ class AzureNodePoolConfigProxyConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_group_id: pulumi.Input[str],
-             secret_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             secret_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if secret_id is None and 'secretId' in kwargs:
+            secret_id = kwargs['secretId']
+        if secret_id is None:
+            raise TypeError("Missing 'secret_id' argument")
+
         _setter("resource_group_id", resource_group_id)
         _setter("secret_id", secret_id)
 
@@ -3416,7 +3842,11 @@ class AzureNodePoolConfigRootVolumeArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              size_gib: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if size_gib is None and 'sizeGib' in kwargs:
+            size_gib = kwargs['sizeGib']
+
         if size_gib is not None:
             _setter("size_gib", size_gib)
 
@@ -3447,8 +3877,14 @@ class AzureNodePoolConfigSshConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             authorized_key: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             authorized_key: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if authorized_key is None and 'authorizedKey' in kwargs:
+            authorized_key = kwargs['authorizedKey']
+        if authorized_key is None:
+            raise TypeError("Missing 'authorized_key' argument")
+
         _setter("authorized_key", authorized_key)
 
     @property
@@ -3479,7 +3915,11 @@ class AzureNodePoolManagementArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              auto_repair: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_repair is None and 'autoRepair' in kwargs:
+            auto_repair = kwargs['autoRepair']
+
         if auto_repair is not None:
             _setter("auto_repair", auto_repair)
 
@@ -3512,8 +3952,14 @@ class AzureNodePoolMaxPodsConstraintArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max_pods_per_node: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             max_pods_per_node: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_pods_per_node is None and 'maxPodsPerNode' in kwargs:
+            max_pods_per_node = kwargs['maxPodsPerNode']
+        if max_pods_per_node is None:
+            raise TypeError("Missing 'max_pods_per_node' argument")
+
         _setter("max_pods_per_node", max_pods_per_node)
 
     @property
@@ -3625,7 +4071,33 @@ class ClusterAddonsConfigArgs:
              istio_config: Optional[pulumi.Input['ClusterAddonsConfigIstioConfigArgs']] = None,
              kalm_config: Optional[pulumi.Input['ClusterAddonsConfigKalmConfigArgs']] = None,
              network_policy_config: Optional[pulumi.Input['ClusterAddonsConfigNetworkPolicyConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cloudrun_config is None and 'cloudrunConfig' in kwargs:
+            cloudrun_config = kwargs['cloudrunConfig']
+        if config_connector_config is None and 'configConnectorConfig' in kwargs:
+            config_connector_config = kwargs['configConnectorConfig']
+        if dns_cache_config is None and 'dnsCacheConfig' in kwargs:
+            dns_cache_config = kwargs['dnsCacheConfig']
+        if gce_persistent_disk_csi_driver_config is None and 'gcePersistentDiskCsiDriverConfig' in kwargs:
+            gce_persistent_disk_csi_driver_config = kwargs['gcePersistentDiskCsiDriverConfig']
+        if gcp_filestore_csi_driver_config is None and 'gcpFilestoreCsiDriverConfig' in kwargs:
+            gcp_filestore_csi_driver_config = kwargs['gcpFilestoreCsiDriverConfig']
+        if gcs_fuse_csi_driver_config is None and 'gcsFuseCsiDriverConfig' in kwargs:
+            gcs_fuse_csi_driver_config = kwargs['gcsFuseCsiDriverConfig']
+        if gke_backup_agent_config is None and 'gkeBackupAgentConfig' in kwargs:
+            gke_backup_agent_config = kwargs['gkeBackupAgentConfig']
+        if horizontal_pod_autoscaling is None and 'horizontalPodAutoscaling' in kwargs:
+            horizontal_pod_autoscaling = kwargs['horizontalPodAutoscaling']
+        if http_load_balancing is None and 'httpLoadBalancing' in kwargs:
+            http_load_balancing = kwargs['httpLoadBalancing']
+        if istio_config is None and 'istioConfig' in kwargs:
+            istio_config = kwargs['istioConfig']
+        if kalm_config is None and 'kalmConfig' in kwargs:
+            kalm_config = kwargs['kalmConfig']
+        if network_policy_config is None and 'networkPolicyConfig' in kwargs:
+            network_policy_config = kwargs['networkPolicyConfig']
+
         if cloudrun_config is not None:
             _setter("cloudrun_config", cloudrun_config)
         if config_connector_config is not None:
@@ -3849,9 +4321,15 @@ class ClusterAddonsConfigCloudrunConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disabled: pulumi.Input[bool],
+             disabled: Optional[pulumi.Input[bool]] = None,
              load_balancer_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disabled is None:
+            raise TypeError("Missing 'disabled' argument")
+        if load_balancer_type is None and 'loadBalancerType' in kwargs:
+            load_balancer_type = kwargs['loadBalancerType']
+
         _setter("disabled", disabled)
         if load_balancer_type is not None:
             _setter("load_balancer_type", load_balancer_type)
@@ -3896,8 +4374,12 @@ class ClusterAddonsConfigConfigConnectorConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -3927,8 +4409,12 @@ class ClusterAddonsConfigDnsCacheConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -3958,8 +4444,12 @@ class ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -3989,8 +4479,12 @@ class ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -4020,8 +4514,12 @@ class ClusterAddonsConfigGcsFuseCsiDriverConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -4051,8 +4549,12 @@ class ClusterAddonsConfigGkeBackupAgentConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -4084,8 +4586,12 @@ class ClusterAddonsConfigHorizontalPodAutoscalingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             disabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disabled is None:
+            raise TypeError("Missing 'disabled' argument")
+
         _setter("disabled", disabled)
 
     @property
@@ -4119,8 +4625,12 @@ class ClusterAddonsConfigHttpLoadBalancingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             disabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disabled is None:
+            raise TypeError("Missing 'disabled' argument")
+
         _setter("disabled", disabled)
 
     @property
@@ -4156,9 +4666,13 @@ class ClusterAddonsConfigIstioConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disabled: pulumi.Input[bool],
+             disabled: Optional[pulumi.Input[bool]] = None,
              auth: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disabled is None:
+            raise TypeError("Missing 'disabled' argument")
+
         _setter("disabled", disabled)
         if auth is not None:
             _setter("auth", auth)
@@ -4203,8 +4717,12 @@ class ClusterAddonsConfigKalmConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -4236,8 +4754,12 @@ class ClusterAddonsConfigNetworkPolicyConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             disabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disabled is None:
+            raise TypeError("Missing 'disabled' argument")
+
         _setter("disabled", disabled)
 
     @property
@@ -4269,8 +4791,14 @@ class ClusterAuthenticatorGroupsConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             security_group: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             security_group: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if security_group is None and 'securityGroup' in kwargs:
+            security_group = kwargs['securityGroup']
+        if security_group is None:
+            raise TypeError("Missing 'security_group' argument")
+
         _setter("security_group", security_group)
 
     @property
@@ -4307,7 +4835,11 @@ class ClusterBinaryAuthorizationArgs:
              _setter: Callable[[Any, Any], None],
              enabled: Optional[pulumi.Input[bool]] = None,
              evaluation_mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if evaluation_mode is None and 'evaluationMode' in kwargs:
+            evaluation_mode = kwargs['evaluationMode']
+
         if enabled is not None:
             warnings.warn("""Deprecated in favor of evaluation_mode.""", DeprecationWarning)
             pulumi.log.warn("""enabled is deprecated: Deprecated in favor of evaluation_mode.""")
@@ -4382,7 +4914,15 @@ class ClusterClusterAutoscalingArgs:
              autoscaling_profile: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAutoscalingResourceLimitArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_provisioning_defaults is None and 'autoProvisioningDefaults' in kwargs:
+            auto_provisioning_defaults = kwargs['autoProvisioningDefaults']
+        if autoscaling_profile is None and 'autoscalingProfile' in kwargs:
+            autoscaling_profile = kwargs['autoscalingProfile']
+        if resource_limits is None and 'resourceLimits' in kwargs:
+            resource_limits = kwargs['resourceLimits']
+
         if auto_provisioning_defaults is not None:
             _setter("auto_provisioning_defaults", auto_provisioning_defaults)
         if autoscaling_profile is not None:
@@ -4505,7 +5045,27 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs:
              service_account: Optional[pulumi.Input[str]] = None,
              shielded_instance_config: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgs']] = None,
              upgrade_settings: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if boot_disk_kms_key is None and 'bootDiskKmsKey' in kwargs:
+            boot_disk_kms_key = kwargs['bootDiskKmsKey']
+        if disk_size is None and 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if disk_type is None and 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if image_type is None and 'imageType' in kwargs:
+            image_type = kwargs['imageType']
+        if min_cpu_platform is None and 'minCpuPlatform' in kwargs:
+            min_cpu_platform = kwargs['minCpuPlatform']
+        if oauth_scopes is None and 'oauthScopes' in kwargs:
+            oauth_scopes = kwargs['oauthScopes']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
+            shielded_instance_config = kwargs['shieldedInstanceConfig']
+        if upgrade_settings is None and 'upgradeSettings' in kwargs:
+            upgrade_settings = kwargs['upgradeSettings']
+
         if boot_disk_kms_key is not None:
             _setter("boot_disk_kms_key", boot_disk_kms_key)
         if disk_size is not None:
@@ -4676,7 +5236,15 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs:
              auto_repair: Optional[pulumi.Input[bool]] = None,
              auto_upgrade: Optional[pulumi.Input[bool]] = None,
              upgrade_options: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_repair is None and 'autoRepair' in kwargs:
+            auto_repair = kwargs['autoRepair']
+        if auto_upgrade is None and 'autoUpgrade' in kwargs:
+            auto_upgrade = kwargs['autoUpgrade']
+        if upgrade_options is None and 'upgradeOptions' in kwargs:
+            upgrade_options = kwargs['upgradeOptions']
+
         if auto_repair is not None:
             _setter("auto_repair", auto_repair)
         if auto_upgrade is not None:
@@ -4738,7 +5306,11 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionAr
              _setter: Callable[[Any, Any], None],
              auto_upgrade_start_time: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_upgrade_start_time is None and 'autoUpgradeStartTime' in kwargs:
+            auto_upgrade_start_time = kwargs['autoUpgradeStartTime']
+
         if auto_upgrade_start_time is not None:
             _setter("auto_upgrade_start_time", auto_upgrade_start_time)
         if description is not None:
@@ -4789,7 +5361,13 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArg
              _setter: Callable[[Any, Any], None],
              enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
              enable_secure_boot: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_integrity_monitoring is None and 'enableIntegrityMonitoring' in kwargs:
+            enable_integrity_monitoring = kwargs['enableIntegrityMonitoring']
+        if enable_secure_boot is None and 'enableSecureBoot' in kwargs:
+            enable_secure_boot = kwargs['enableSecureBoot']
+
         if enable_integrity_monitoring is not None:
             _setter("enable_integrity_monitoring", enable_integrity_monitoring)
         if enable_secure_boot is not None:
@@ -4851,7 +5429,15 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs:
              max_surge: Optional[pulumi.Input[int]] = None,
              max_unavailable: Optional[pulumi.Input[int]] = None,
              strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if blue_green_settings is None and 'blueGreenSettings' in kwargs:
+            blue_green_settings = kwargs['blueGreenSettings']
+        if max_surge is None and 'maxSurge' in kwargs:
+            max_surge = kwargs['maxSurge']
+        if max_unavailable is None and 'maxUnavailable' in kwargs:
+            max_unavailable = kwargs['maxUnavailable']
+
         if blue_green_settings is not None:
             _setter("blue_green_settings", blue_green_settings)
         if max_surge is not None:
@@ -4929,7 +5515,13 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenS
              _setter: Callable[[Any, Any], None],
              node_pool_soak_duration: Optional[pulumi.Input[str]] = None,
              standard_rollout_policy: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_pool_soak_duration is None and 'nodePoolSoakDuration' in kwargs:
+            node_pool_soak_duration = kwargs['nodePoolSoakDuration']
+        if standard_rollout_policy is None and 'standardRolloutPolicy' in kwargs:
+            standard_rollout_policy = kwargs['standardRolloutPolicy']
+
         if node_pool_soak_duration is not None:
             _setter("node_pool_soak_duration", node_pool_soak_duration)
         if standard_rollout_policy is not None:
@@ -4983,7 +5575,15 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenS
              batch_node_count: Optional[pulumi.Input[int]] = None,
              batch_percentage: Optional[pulumi.Input[float]] = None,
              batch_soak_duration: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if batch_node_count is None and 'batchNodeCount' in kwargs:
+            batch_node_count = kwargs['batchNodeCount']
+        if batch_percentage is None and 'batchPercentage' in kwargs:
+            batch_percentage = kwargs['batchPercentage']
+        if batch_soak_duration is None and 'batchSoakDuration' in kwargs:
+            batch_soak_duration = kwargs['batchSoakDuration']
+
         if batch_node_count is not None:
             _setter("batch_node_count", batch_node_count)
         if batch_percentage is not None:
@@ -5050,10 +5650,16 @@ class ClusterClusterAutoscalingResourceLimitArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_type: pulumi.Input[str],
+             resource_type: Optional[pulumi.Input[str]] = None,
              maximum: Optional[pulumi.Input[int]] = None,
              minimum: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if resource_type is None and 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if resource_type is None:
+            raise TypeError("Missing 'resource_type' argument")
+
         _setter("resource_type", resource_type)
         if maximum is not None:
             _setter("maximum", maximum)
@@ -5114,8 +5720,12 @@ class ClusterClusterTelemetryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("type", type)
 
     @property
@@ -5147,8 +5757,12 @@ class ClusterConfidentialNodesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -5179,8 +5793,12 @@ class ClusterCostManagementConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -5215,9 +5833,15 @@ class ClusterDatabaseEncryptionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             state: pulumi.Input[str],
+             state: Optional[pulumi.Input[str]] = None,
              key_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+        if key_name is None and 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+
         _setter("state", state)
         if key_name is not None:
             _setter("key_name", key_name)
@@ -5265,8 +5889,12 @@ class ClusterDefaultSnatStatusArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             disabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disabled is None:
+            raise TypeError("Missing 'disabled' argument")
+
         _setter("disabled", disabled)
 
     @property
@@ -5307,7 +5935,15 @@ class ClusterDnsConfigArgs:
              cluster_dns: Optional[pulumi.Input[str]] = None,
              cluster_dns_domain: Optional[pulumi.Input[str]] = None,
              cluster_dns_scope: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_dns is None and 'clusterDns' in kwargs:
+            cluster_dns = kwargs['clusterDns']
+        if cluster_dns_domain is None and 'clusterDnsDomain' in kwargs:
+            cluster_dns_domain = kwargs['clusterDnsDomain']
+        if cluster_dns_scope is None and 'clusterDnsScope' in kwargs:
+            cluster_dns_scope = kwargs['clusterDnsScope']
+
         if cluster_dns is not None:
             _setter("cluster_dns", cluster_dns)
         if cluster_dns_domain is not None:
@@ -5366,8 +6002,14 @@ class ClusterEnableK8sBetaApisArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled_apis: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled_apis: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled_apis is None and 'enabledApis' in kwargs:
+            enabled_apis = kwargs['enabledApis']
+        if enabled_apis is None:
+            raise TypeError("Missing 'enabled_apis' argument")
+
         _setter("enabled_apis", enabled_apis)
 
     @property
@@ -5397,8 +6039,12 @@ class ClusterGatewayApiConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             channel: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             channel: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if channel is None:
+            raise TypeError("Missing 'channel' argument")
+
         _setter("channel", channel)
 
     @property
@@ -5429,7 +6075,9 @@ class ClusterIdentityServiceConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if enabled is not None:
             _setter("enabled", enabled)
 
@@ -5501,7 +6149,23 @@ class ClusterIpAllocationPolicyArgs:
              services_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
              services_secondary_range_name: Optional[pulumi.Input[str]] = None,
              stack_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if additional_pod_ranges_config is None and 'additionalPodRangesConfig' in kwargs:
+            additional_pod_ranges_config = kwargs['additionalPodRangesConfig']
+        if cluster_ipv4_cidr_block is None and 'clusterIpv4CidrBlock' in kwargs:
+            cluster_ipv4_cidr_block = kwargs['clusterIpv4CidrBlock']
+        if cluster_secondary_range_name is None and 'clusterSecondaryRangeName' in kwargs:
+            cluster_secondary_range_name = kwargs['clusterSecondaryRangeName']
+        if pod_cidr_overprovision_config is None and 'podCidrOverprovisionConfig' in kwargs:
+            pod_cidr_overprovision_config = kwargs['podCidrOverprovisionConfig']
+        if services_ipv4_cidr_block is None and 'servicesIpv4CidrBlock' in kwargs:
+            services_ipv4_cidr_block = kwargs['servicesIpv4CidrBlock']
+        if services_secondary_range_name is None and 'servicesSecondaryRangeName' in kwargs:
+            services_secondary_range_name = kwargs['servicesSecondaryRangeName']
+        if stack_type is None and 'stackType' in kwargs:
+            stack_type = kwargs['stackType']
+
         if additional_pod_ranges_config is not None:
             _setter("additional_pod_ranges_config", additional_pod_ranges_config)
         if cluster_ipv4_cidr_block is not None:
@@ -5630,8 +6294,14 @@ class ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pod_range_names: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             pod_range_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pod_range_names is None and 'podRangeNames' in kwargs:
+            pod_range_names = kwargs['podRangeNames']
+        if pod_range_names is None:
+            raise TypeError("Missing 'pod_range_names' argument")
+
         _setter("pod_range_names", pod_range_names)
 
     @property
@@ -5663,8 +6333,12 @@ class ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             disabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disabled is None:
+            raise TypeError("Missing 'disabled' argument")
+
         _setter("disabled", disabled)
 
     @property
@@ -5697,8 +6371,14 @@ class ClusterLoggingConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enable_components: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enable_components: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_components is None and 'enableComponents' in kwargs:
+            enable_components = kwargs['enableComponents']
+        if enable_components is None:
+            raise TypeError("Missing 'enable_components' argument")
+
         _setter("enable_components", enable_components)
 
     @property
@@ -5759,7 +6439,15 @@ class ClusterMaintenancePolicyArgs:
              daily_maintenance_window: Optional[pulumi.Input['ClusterMaintenancePolicyDailyMaintenanceWindowArgs']] = None,
              maintenance_exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgs']]]] = None,
              recurring_window: Optional[pulumi.Input['ClusterMaintenancePolicyRecurringWindowArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if daily_maintenance_window is None and 'dailyMaintenanceWindow' in kwargs:
+            daily_maintenance_window = kwargs['dailyMaintenanceWindow']
+        if maintenance_exclusions is None and 'maintenanceExclusions' in kwargs:
+            maintenance_exclusions = kwargs['maintenanceExclusions']
+        if recurring_window is None and 'recurringWindow' in kwargs:
+            recurring_window = kwargs['recurringWindow']
+
         if daily_maintenance_window is not None:
             _setter("daily_maintenance_window", daily_maintenance_window)
         if maintenance_exclusions is not None:
@@ -5838,9 +6526,15 @@ class ClusterMaintenancePolicyDailyMaintenanceWindowArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             start_time: pulumi.Input[str],
+             start_time: Optional[pulumi.Input[str]] = None,
              duration: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+
         _setter("start_time", start_time)
         if duration is not None:
             _setter("duration", duration)
@@ -5884,11 +6578,27 @@ class ClusterMaintenancePolicyMaintenanceExclusionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             end_time: pulumi.Input[str],
-             exclusion_name: pulumi.Input[str],
-             start_time: pulumi.Input[str],
+             end_time: Optional[pulumi.Input[str]] = None,
+             exclusion_name: Optional[pulumi.Input[str]] = None,
+             start_time: Optional[pulumi.Input[str]] = None,
              exclusion_options: Optional[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if end_time is None:
+            raise TypeError("Missing 'end_time' argument")
+        if exclusion_name is None and 'exclusionName' in kwargs:
+            exclusion_name = kwargs['exclusionName']
+        if exclusion_name is None:
+            raise TypeError("Missing 'exclusion_name' argument")
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+        if exclusion_options is None and 'exclusionOptions' in kwargs:
+            exclusion_options = kwargs['exclusionOptions']
+
         _setter("end_time", end_time)
         _setter("exclusion_name", exclusion_name)
         _setter("start_time", start_time)
@@ -5960,8 +6670,12 @@ class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             scope: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             scope: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if scope is None:
+            raise TypeError("Missing 'scope' argument")
+
         _setter("scope", scope)
 
     @property
@@ -6003,10 +6717,22 @@ class ClusterMaintenancePolicyRecurringWindowArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             end_time: pulumi.Input[str],
-             recurrence: pulumi.Input[str],
-             start_time: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             end_time: Optional[pulumi.Input[str]] = None,
+             recurrence: Optional[pulumi.Input[str]] = None,
+             start_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if end_time is None:
+            raise TypeError("Missing 'end_time' argument")
+        if recurrence is None:
+            raise TypeError("Missing 'recurrence' argument")
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+
         _setter("end_time", end_time)
         _setter("recurrence", recurrence)
         _setter("start_time", start_time)
@@ -6065,11 +6791,23 @@ class ClusterMasterAuthArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             client_certificate_config: pulumi.Input['ClusterMasterAuthClientCertificateConfigArgs'],
+             client_certificate_config: Optional[pulumi.Input['ClusterMasterAuthClientCertificateConfigArgs']] = None,
              client_certificate: Optional[pulumi.Input[str]] = None,
              client_key: Optional[pulumi.Input[str]] = None,
              cluster_ca_certificate: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if client_certificate_config is None and 'clientCertificateConfig' in kwargs:
+            client_certificate_config = kwargs['clientCertificateConfig']
+        if client_certificate_config is None:
+            raise TypeError("Missing 'client_certificate_config' argument")
+        if client_certificate is None and 'clientCertificate' in kwargs:
+            client_certificate = kwargs['clientCertificate']
+        if client_key is None and 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if cluster_ca_certificate is None and 'clusterCaCertificate' in kwargs:
+            cluster_ca_certificate = kwargs['clusterCaCertificate']
+
         _setter("client_certificate_config", client_certificate_config)
         if client_certificate is not None:
             _setter("client_certificate", client_certificate)
@@ -6135,8 +6873,14 @@ class ClusterMasterAuthClientCertificateConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             issue_client_certificate: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             issue_client_certificate: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if issue_client_certificate is None and 'issueClientCertificate' in kwargs:
+            issue_client_certificate = kwargs['issueClientCertificate']
+        if issue_client_certificate is None:
+            raise TypeError("Missing 'issue_client_certificate' argument")
+
         _setter("issue_client_certificate", issue_client_certificate)
 
     @property
@@ -6170,7 +6914,13 @@ class ClusterMasterAuthorizedNetworksConfigArgs:
              _setter: Callable[[Any, Any], None],
              cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMasterAuthorizedNetworksConfigCidrBlockArgs']]]] = None,
              gcp_public_cidrs_access_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cidr_blocks is None and 'cidrBlocks' in kwargs:
+            cidr_blocks = kwargs['cidrBlocks']
+        if gcp_public_cidrs_access_enabled is None and 'gcpPublicCidrsAccessEnabled' in kwargs:
+            gcp_public_cidrs_access_enabled = kwargs['gcpPublicCidrsAccessEnabled']
+
         if cidr_blocks is not None:
             _setter("cidr_blocks", cidr_blocks)
         if gcp_public_cidrs_access_enabled is not None:
@@ -6221,9 +6971,17 @@ class ClusterMasterAuthorizedNetworksConfigCidrBlockArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr_block: pulumi.Input[str],
+             cidr_block: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cidr_block is None and 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if cidr_block is None:
+            raise TypeError("Missing 'cidr_block' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("cidr_block", cidr_block)
         if display_name is not None:
             _setter("display_name", display_name)
@@ -6268,8 +7026,14 @@ class ClusterMeshCertificatesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enable_certificates: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enable_certificates: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_certificates is None and 'enableCertificates' in kwargs:
+            enable_certificates = kwargs['enableCertificates']
+        if enable_certificates is None:
+            raise TypeError("Missing 'enable_certificates' argument")
+
         _setter("enable_certificates", enable_certificates)
 
     @property
@@ -6308,7 +7072,15 @@ class ClusterMonitoringConfigArgs:
              advanced_datapath_observability_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs']]]] = None,
              enable_components: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              managed_prometheus: Optional[pulumi.Input['ClusterMonitoringConfigManagedPrometheusArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if advanced_datapath_observability_configs is None and 'advancedDatapathObservabilityConfigs' in kwargs:
+            advanced_datapath_observability_configs = kwargs['advancedDatapathObservabilityConfigs']
+        if enable_components is None and 'enableComponents' in kwargs:
+            enable_components = kwargs['enableComponents']
+        if managed_prometheus is None and 'managedPrometheus' in kwargs:
+            managed_prometheus = kwargs['managedPrometheus']
+
         if advanced_datapath_observability_configs is not None:
             _setter("advanced_datapath_observability_configs", advanced_datapath_observability_configs)
         if enable_components is not None:
@@ -6370,9 +7142,17 @@ class ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enable_metrics: pulumi.Input[bool],
+             enable_metrics: Optional[pulumi.Input[bool]] = None,
              relay_mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_metrics is None and 'enableMetrics' in kwargs:
+            enable_metrics = kwargs['enableMetrics']
+        if enable_metrics is None:
+            raise TypeError("Missing 'enable_metrics' argument")
+        if relay_mode is None and 'relayMode' in kwargs:
+            relay_mode = kwargs['relayMode']
+
         _setter("enable_metrics", enable_metrics)
         if relay_mode is not None:
             _setter("relay_mode", relay_mode)
@@ -6416,8 +7196,12 @@ class ClusterMonitoringConfigManagedPrometheusArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -6450,9 +7234,13 @@ class ClusterNetworkPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
+             enabled: Optional[pulumi.Input[bool]] = None,
              provider: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
         if provider is not None:
             _setter("provider", provider)
@@ -6711,7 +7499,65 @@ class ClusterNodeConfigArgs:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigTaintArgs']]]] = None,
              workload_metadata_config: Optional[pulumi.Input['ClusterNodeConfigWorkloadMetadataConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if advanced_machine_features is None and 'advancedMachineFeatures' in kwargs:
+            advanced_machine_features = kwargs['advancedMachineFeatures']
+        if boot_disk_kms_key is None and 'bootDiskKmsKey' in kwargs:
+            boot_disk_kms_key = kwargs['bootDiskKmsKey']
+        if confidential_nodes is None and 'confidentialNodes' in kwargs:
+            confidential_nodes = kwargs['confidentialNodes']
+        if disk_size_gb is None and 'diskSizeGb' in kwargs:
+            disk_size_gb = kwargs['diskSizeGb']
+        if disk_type is None and 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if ephemeral_storage_config is None and 'ephemeralStorageConfig' in kwargs:
+            ephemeral_storage_config = kwargs['ephemeralStorageConfig']
+        if ephemeral_storage_local_ssd_config is None and 'ephemeralStorageLocalSsdConfig' in kwargs:
+            ephemeral_storage_local_ssd_config = kwargs['ephemeralStorageLocalSsdConfig']
+        if fast_socket is None and 'fastSocket' in kwargs:
+            fast_socket = kwargs['fastSocket']
+        if gcfs_config is None and 'gcfsConfig' in kwargs:
+            gcfs_config = kwargs['gcfsConfig']
+        if guest_accelerators is None and 'guestAccelerators' in kwargs:
+            guest_accelerators = kwargs['guestAccelerators']
+        if host_maintenance_policy is None and 'hostMaintenancePolicy' in kwargs:
+            host_maintenance_policy = kwargs['hostMaintenancePolicy']
+        if image_type is None and 'imageType' in kwargs:
+            image_type = kwargs['imageType']
+        if kubelet_config is None and 'kubeletConfig' in kwargs:
+            kubelet_config = kwargs['kubeletConfig']
+        if linux_node_config is None and 'linuxNodeConfig' in kwargs:
+            linux_node_config = kwargs['linuxNodeConfig']
+        if local_nvme_ssd_block_config is None and 'localNvmeSsdBlockConfig' in kwargs:
+            local_nvme_ssd_block_config = kwargs['localNvmeSsdBlockConfig']
+        if local_ssd_count is None and 'localSsdCount' in kwargs:
+            local_ssd_count = kwargs['localSsdCount']
+        if logging_variant is None and 'loggingVariant' in kwargs:
+            logging_variant = kwargs['loggingVariant']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if min_cpu_platform is None and 'minCpuPlatform' in kwargs:
+            min_cpu_platform = kwargs['minCpuPlatform']
+        if node_group is None and 'nodeGroup' in kwargs:
+            node_group = kwargs['nodeGroup']
+        if oauth_scopes is None and 'oauthScopes' in kwargs:
+            oauth_scopes = kwargs['oauthScopes']
+        if reservation_affinity is None and 'reservationAffinity' in kwargs:
+            reservation_affinity = kwargs['reservationAffinity']
+        if resource_labels is None and 'resourceLabels' in kwargs:
+            resource_labels = kwargs['resourceLabels']
+        if sandbox_config is None and 'sandboxConfig' in kwargs:
+            sandbox_config = kwargs['sandboxConfig']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
+            shielded_instance_config = kwargs['shieldedInstanceConfig']
+        if sole_tenant_config is None and 'soleTenantConfig' in kwargs:
+            sole_tenant_config = kwargs['soleTenantConfig']
+        if workload_metadata_config is None and 'workloadMetadataConfig' in kwargs:
+            workload_metadata_config = kwargs['workloadMetadataConfig']
+
         if advanced_machine_features is not None:
             _setter("advanced_machine_features", advanced_machine_features)
         if boot_disk_kms_key is not None:
@@ -7292,8 +8138,14 @@ class ClusterNodeConfigAdvancedMachineFeaturesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             threads_per_core: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             threads_per_core: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if threads_per_core is None and 'threadsPerCore' in kwargs:
+            threads_per_core = kwargs['threadsPerCore']
+        if threads_per_core is None:
+            raise TypeError("Missing 'threads_per_core' argument")
+
         _setter("threads_per_core", threads_per_core)
 
     @property
@@ -7324,8 +8176,12 @@ class ClusterNodeConfigConfidentialNodesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -7356,8 +8212,14 @@ class ClusterNodeConfigEphemeralStorageConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             local_ssd_count: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             local_ssd_count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if local_ssd_count is None and 'localSsdCount' in kwargs:
+            local_ssd_count = kwargs['localSsdCount']
+        if local_ssd_count is None:
+            raise TypeError("Missing 'local_ssd_count' argument")
+
         _setter("local_ssd_count", local_ssd_count)
 
     @property
@@ -7387,8 +8249,14 @@ class ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             local_ssd_count: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             local_ssd_count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if local_ssd_count is None and 'localSsdCount' in kwargs:
+            local_ssd_count = kwargs['localSsdCount']
+        if local_ssd_count is None:
+            raise TypeError("Missing 'local_ssd_count' argument")
+
         _setter("local_ssd_count", local_ssd_count)
 
     @property
@@ -7418,8 +8286,12 @@ class ClusterNodeConfigFastSocketArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -7449,8 +8321,12 @@ class ClusterNodeConfigGcfsConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -7492,12 +8368,24 @@ class ClusterNodeConfigGuestAcceleratorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             count: pulumi.Input[int],
-             type: pulumi.Input[str],
+             count: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              gpu_driver_installation_config: Optional[pulumi.Input['ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs']] = None,
              gpu_partition_size: Optional[pulumi.Input[str]] = None,
              gpu_sharing_config: Optional[pulumi.Input['ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if count is None:
+            raise TypeError("Missing 'count' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if gpu_driver_installation_config is None and 'gpuDriverInstallationConfig' in kwargs:
+            gpu_driver_installation_config = kwargs['gpuDriverInstallationConfig']
+        if gpu_partition_size is None and 'gpuPartitionSize' in kwargs:
+            gpu_partition_size = kwargs['gpuPartitionSize']
+        if gpu_sharing_config is None and 'gpuSharingConfig' in kwargs:
+            gpu_sharing_config = kwargs['gpuSharingConfig']
+
         _setter("count", count)
         _setter("type", type)
         if gpu_driver_installation_config is not None:
@@ -7587,8 +8475,14 @@ class ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             gpu_driver_version: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             gpu_driver_version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gpu_driver_version is None and 'gpuDriverVersion' in kwargs:
+            gpu_driver_version = kwargs['gpuDriverVersion']
+        if gpu_driver_version is None:
+            raise TypeError("Missing 'gpu_driver_version' argument")
+
         _setter("gpu_driver_version", gpu_driver_version)
 
     @property
@@ -7628,9 +8522,19 @@ class ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             gpu_sharing_strategy: pulumi.Input[str],
-             max_shared_clients_per_gpu: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             gpu_sharing_strategy: Optional[pulumi.Input[str]] = None,
+             max_shared_clients_per_gpu: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gpu_sharing_strategy is None and 'gpuSharingStrategy' in kwargs:
+            gpu_sharing_strategy = kwargs['gpuSharingStrategy']
+        if gpu_sharing_strategy is None:
+            raise TypeError("Missing 'gpu_sharing_strategy' argument")
+        if max_shared_clients_per_gpu is None and 'maxSharedClientsPerGpu' in kwargs:
+            max_shared_clients_per_gpu = kwargs['maxSharedClientsPerGpu']
+        if max_shared_clients_per_gpu is None:
+            raise TypeError("Missing 'max_shared_clients_per_gpu' argument")
+
         _setter("gpu_sharing_strategy", gpu_sharing_strategy)
         _setter("max_shared_clients_per_gpu", max_shared_clients_per_gpu)
 
@@ -7675,8 +8579,12 @@ class ClusterNodeConfigGvnicArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -7703,8 +8611,14 @@ class ClusterNodeConfigHostMaintenancePolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             maintenance_interval: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             maintenance_interval: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if maintenance_interval is None and 'maintenanceInterval' in kwargs:
+            maintenance_interval = kwargs['maintenanceInterval']
+        if maintenance_interval is None:
+            raise TypeError("Missing 'maintenance_interval' argument")
+
         _setter("maintenance_interval", maintenance_interval)
 
     @property
@@ -7751,11 +8665,23 @@ class ClusterNodeConfigKubeletConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cpu_manager_policy: pulumi.Input[str],
+             cpu_manager_policy: Optional[pulumi.Input[str]] = None,
              cpu_cfs_quota: Optional[pulumi.Input[bool]] = None,
              cpu_cfs_quota_period: Optional[pulumi.Input[str]] = None,
              pod_pids_limit: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cpu_manager_policy is None and 'cpuManagerPolicy' in kwargs:
+            cpu_manager_policy = kwargs['cpuManagerPolicy']
+        if cpu_manager_policy is None:
+            raise TypeError("Missing 'cpu_manager_policy' argument")
+        if cpu_cfs_quota is None and 'cpuCfsQuota' in kwargs:
+            cpu_cfs_quota = kwargs['cpuCfsQuota']
+        if cpu_cfs_quota_period is None and 'cpuCfsQuotaPeriod' in kwargs:
+            cpu_cfs_quota_period = kwargs['cpuCfsQuotaPeriod']
+        if pod_pids_limit is None and 'podPidsLimit' in kwargs:
+            pod_pids_limit = kwargs['podPidsLimit']
+
         _setter("cpu_manager_policy", cpu_manager_policy)
         if cpu_cfs_quota is not None:
             _setter("cpu_cfs_quota", cpu_cfs_quota)
@@ -7840,8 +8766,12 @@ class ClusterNodeConfigLinuxNodeConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             sysctls: pulumi.Input[Mapping[str, pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             sysctls: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if sysctls is None:
+            raise TypeError("Missing 'sysctls' argument")
+
         _setter("sysctls", sysctls)
 
     @property
@@ -7874,8 +8804,14 @@ class ClusterNodeConfigLocalNvmeSsdBlockConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             local_ssd_count: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             local_ssd_count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if local_ssd_count is None and 'localSsdCount' in kwargs:
+            local_ssd_count = kwargs['localSsdCount']
+        if local_ssd_count is None:
+            raise TypeError("Missing 'local_ssd_count' argument")
+
         _setter("local_ssd_count", local_ssd_count)
 
     @property
@@ -7918,10 +8854,16 @@ class ClusterNodeConfigReservationAffinityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             consume_reservation_type: pulumi.Input[str],
+             consume_reservation_type: Optional[pulumi.Input[str]] = None,
              key: Optional[pulumi.Input[str]] = None,
              values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if consume_reservation_type is None and 'consumeReservationType' in kwargs:
+            consume_reservation_type = kwargs['consumeReservationType']
+        if consume_reservation_type is None:
+            raise TypeError("Missing 'consume_reservation_type' argument")
+
         _setter("consume_reservation_type", consume_reservation_type)
         if key is not None:
             _setter("key", key)
@@ -7988,8 +8930,14 @@ class ClusterNodeConfigSandboxConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             sandbox_type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             sandbox_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if sandbox_type is None and 'sandboxType' in kwargs:
+            sandbox_type = kwargs['sandboxType']
+        if sandbox_type is None:
+            raise TypeError("Missing 'sandbox_type' argument")
+
         _setter("sandbox_type", sandbox_type)
 
     @property
@@ -8031,7 +8979,13 @@ class ClusterNodeConfigShieldedInstanceConfigArgs:
              _setter: Callable[[Any, Any], None],
              enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
              enable_secure_boot: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_integrity_monitoring is None and 'enableIntegrityMonitoring' in kwargs:
+            enable_integrity_monitoring = kwargs['enableIntegrityMonitoring']
+        if enable_secure_boot is None and 'enableSecureBoot' in kwargs:
+            enable_secure_boot = kwargs['enableSecureBoot']
+
         if enable_integrity_monitoring is not None:
             _setter("enable_integrity_monitoring", enable_integrity_monitoring)
         if enable_secure_boot is not None:
@@ -8077,8 +9031,14 @@ class ClusterNodeConfigSoleTenantConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node_affinities: pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigSoleTenantConfigNodeAffinityArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigSoleTenantConfigNodeAffinityArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_affinities is None and 'nodeAffinities' in kwargs:
+            node_affinities = kwargs['nodeAffinities']
+        if node_affinities is None:
+            raise TypeError("Missing 'node_affinities' argument")
+
         _setter("node_affinities", node_affinities)
 
     @property
@@ -8111,10 +9071,18 @@ class ClusterNodeConfigSoleTenantConfigNodeAffinityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             operator: pulumi.Input[str],
-             values: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             operator: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("key", key)
         _setter("operator", operator)
         _setter("values", values)
@@ -8176,10 +9144,18 @@ class ClusterNodeConfigTaintArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             effect: pulumi.Input[str],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             effect: Optional[pulumi.Input[str]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if effect is None:
+            raise TypeError("Missing 'effect' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("effect", effect)
         _setter("key", key)
         _setter("value", value)
@@ -8239,8 +9215,12 @@ class ClusterNodeConfigWorkloadMetadataConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             mode: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             mode: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
+
         _setter("mode", mode)
 
     @property
@@ -8346,7 +9326,31 @@ class ClusterNodePoolArgs:
              placement_policy: Optional[pulumi.Input['ClusterNodePoolPlacementPolicyArgs']] = None,
              upgrade_settings: Optional[pulumi.Input['ClusterNodePoolUpgradeSettingsArgs']] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if initial_node_count is None and 'initialNodeCount' in kwargs:
+            initial_node_count = kwargs['initialNodeCount']
+        if instance_group_urls is None and 'instanceGroupUrls' in kwargs:
+            instance_group_urls = kwargs['instanceGroupUrls']
+        if managed_instance_group_urls is None and 'managedInstanceGroupUrls' in kwargs:
+            managed_instance_group_urls = kwargs['managedInstanceGroupUrls']
+        if max_pods_per_node is None and 'maxPodsPerNode' in kwargs:
+            max_pods_per_node = kwargs['maxPodsPerNode']
+        if name_prefix is None and 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if node_config is None and 'nodeConfig' in kwargs:
+            node_config = kwargs['nodeConfig']
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+        if node_locations is None and 'nodeLocations' in kwargs:
+            node_locations = kwargs['nodeLocations']
+        if placement_policy is None and 'placementPolicy' in kwargs:
+            placement_policy = kwargs['placementPolicy']
+        if upgrade_settings is None and 'upgradeSettings' in kwargs:
+            upgrade_settings = kwargs['upgradeSettings']
+
         if autoscaling is not None:
             _setter("autoscaling", autoscaling)
         if initial_node_count is not None:
@@ -8573,7 +9577,11 @@ class ClusterNodePoolAutoConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              network_tags: Optional[pulumi.Input['ClusterNodePoolAutoConfigNetworkTagsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network_tags is None and 'networkTags' in kwargs:
+            network_tags = kwargs['networkTags']
+
         if network_tags is not None:
             _setter("network_tags", network_tags)
 
@@ -8609,7 +9617,9 @@ class ClusterNodePoolAutoConfigNetworkTagsArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if tags is not None:
             _setter("tags", tags)
 
@@ -8654,7 +9664,19 @@ class ClusterNodePoolAutoscalingArgs:
              min_node_count: Optional[pulumi.Input[int]] = None,
              total_max_node_count: Optional[pulumi.Input[int]] = None,
              total_min_node_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location_policy is None and 'locationPolicy' in kwargs:
+            location_policy = kwargs['locationPolicy']
+        if max_node_count is None and 'maxNodeCount' in kwargs:
+            max_node_count = kwargs['maxNodeCount']
+        if min_node_count is None and 'minNodeCount' in kwargs:
+            min_node_count = kwargs['minNodeCount']
+        if total_max_node_count is None and 'totalMaxNodeCount' in kwargs:
+            total_max_node_count = kwargs['totalMaxNodeCount']
+        if total_min_node_count is None and 'totalMinNodeCount' in kwargs:
+            total_min_node_count = kwargs['totalMinNodeCount']
+
         if location_policy is not None:
             _setter("location_policy", location_policy)
         if max_node_count is not None:
@@ -8727,7 +9749,11 @@ class ClusterNodePoolDefaultsArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              node_config_defaults: Optional[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_config_defaults is None and 'nodeConfigDefaults' in kwargs:
+            node_config_defaults = kwargs['nodeConfigDefaults']
+
         if node_config_defaults is not None:
             _setter("node_config_defaults", node_config_defaults)
 
@@ -8763,7 +9789,13 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsArgs:
              _setter: Callable[[Any, Any], None],
              gcfs_config: Optional[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs']] = None,
              logging_variant: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gcfs_config is None and 'gcfsConfig' in kwargs:
+            gcfs_config = kwargs['gcfsConfig']
+        if logging_variant is None and 'loggingVariant' in kwargs:
+            logging_variant = kwargs['loggingVariant']
+
         if gcfs_config is not None:
             _setter("gcfs_config", gcfs_config)
         if logging_variant is not None:
@@ -8808,8 +9840,12 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -8846,7 +9882,13 @@ class ClusterNodePoolManagementArgs:
              _setter: Callable[[Any, Any], None],
              auto_repair: Optional[pulumi.Input[bool]] = None,
              auto_upgrade: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_repair is None and 'autoRepair' in kwargs:
+            auto_repair = kwargs['autoRepair']
+        if auto_upgrade is None and 'autoUpgrade' in kwargs:
+            auto_upgrade = kwargs['autoUpgrade']
+
         if auto_repair is not None:
             _setter("auto_repair", auto_repair)
         if auto_upgrade is not None:
@@ -8918,7 +9960,23 @@ class ClusterNodePoolNetworkConfigArgs:
              pod_cidr_overprovision_config: Optional[pulumi.Input['ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs']] = None,
              pod_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
              pod_range: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if additional_node_network_configs is None and 'additionalNodeNetworkConfigs' in kwargs:
+            additional_node_network_configs = kwargs['additionalNodeNetworkConfigs']
+        if additional_pod_network_configs is None and 'additionalPodNetworkConfigs' in kwargs:
+            additional_pod_network_configs = kwargs['additionalPodNetworkConfigs']
+        if create_pod_range is None and 'createPodRange' in kwargs:
+            create_pod_range = kwargs['createPodRange']
+        if enable_private_nodes is None and 'enablePrivateNodes' in kwargs:
+            enable_private_nodes = kwargs['enablePrivateNodes']
+        if pod_cidr_overprovision_config is None and 'podCidrOverprovisionConfig' in kwargs:
+            pod_cidr_overprovision_config = kwargs['podCidrOverprovisionConfig']
+        if pod_ipv4_cidr_block is None and 'podIpv4CidrBlock' in kwargs:
+            pod_ipv4_cidr_block = kwargs['podIpv4CidrBlock']
+        if pod_range is None and 'podRange' in kwargs:
+            pod_range = kwargs['podRange']
+
         if additional_node_network_configs is not None:
             _setter("additional_node_network_configs", additional_node_network_configs)
         if additional_pod_network_configs is not None:
@@ -9035,7 +10093,9 @@ class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs:
              _setter: Callable[[Any, Any], None],
              network: Optional[pulumi.Input[str]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if network is not None:
             _setter("network", network)
         if subnetwork is not None:
@@ -9091,7 +10151,13 @@ class ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs:
              max_pods_per_node: Optional[pulumi.Input[int]] = None,
              secondary_pod_range: Optional[pulumi.Input[str]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_pods_per_node is None and 'maxPodsPerNode' in kwargs:
+            max_pods_per_node = kwargs['maxPodsPerNode']
+        if secondary_pod_range is None and 'secondaryPodRange' in kwargs:
+            secondary_pod_range = kwargs['secondaryPodRange']
+
         if max_pods_per_node is not None:
             _setter("max_pods_per_node", max_pods_per_node)
         if secondary_pod_range is not None:
@@ -9147,8 +10213,12 @@ class ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             disabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disabled is None:
+            raise TypeError("Missing 'disabled' argument")
+
         _setter("disabled", disabled)
 
     @property
@@ -9395,7 +10465,65 @@ class ClusterNodePoolNodeConfigArgs:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigTaintArgs']]]] = None,
              workload_metadata_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if advanced_machine_features is None and 'advancedMachineFeatures' in kwargs:
+            advanced_machine_features = kwargs['advancedMachineFeatures']
+        if boot_disk_kms_key is None and 'bootDiskKmsKey' in kwargs:
+            boot_disk_kms_key = kwargs['bootDiskKmsKey']
+        if confidential_nodes is None and 'confidentialNodes' in kwargs:
+            confidential_nodes = kwargs['confidentialNodes']
+        if disk_size_gb is None and 'diskSizeGb' in kwargs:
+            disk_size_gb = kwargs['diskSizeGb']
+        if disk_type is None and 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if ephemeral_storage_config is None and 'ephemeralStorageConfig' in kwargs:
+            ephemeral_storage_config = kwargs['ephemeralStorageConfig']
+        if ephemeral_storage_local_ssd_config is None and 'ephemeralStorageLocalSsdConfig' in kwargs:
+            ephemeral_storage_local_ssd_config = kwargs['ephemeralStorageLocalSsdConfig']
+        if fast_socket is None and 'fastSocket' in kwargs:
+            fast_socket = kwargs['fastSocket']
+        if gcfs_config is None and 'gcfsConfig' in kwargs:
+            gcfs_config = kwargs['gcfsConfig']
+        if guest_accelerators is None and 'guestAccelerators' in kwargs:
+            guest_accelerators = kwargs['guestAccelerators']
+        if host_maintenance_policy is None and 'hostMaintenancePolicy' in kwargs:
+            host_maintenance_policy = kwargs['hostMaintenancePolicy']
+        if image_type is None and 'imageType' in kwargs:
+            image_type = kwargs['imageType']
+        if kubelet_config is None and 'kubeletConfig' in kwargs:
+            kubelet_config = kwargs['kubeletConfig']
+        if linux_node_config is None and 'linuxNodeConfig' in kwargs:
+            linux_node_config = kwargs['linuxNodeConfig']
+        if local_nvme_ssd_block_config is None and 'localNvmeSsdBlockConfig' in kwargs:
+            local_nvme_ssd_block_config = kwargs['localNvmeSsdBlockConfig']
+        if local_ssd_count is None and 'localSsdCount' in kwargs:
+            local_ssd_count = kwargs['localSsdCount']
+        if logging_variant is None and 'loggingVariant' in kwargs:
+            logging_variant = kwargs['loggingVariant']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if min_cpu_platform is None and 'minCpuPlatform' in kwargs:
+            min_cpu_platform = kwargs['minCpuPlatform']
+        if node_group is None and 'nodeGroup' in kwargs:
+            node_group = kwargs['nodeGroup']
+        if oauth_scopes is None and 'oauthScopes' in kwargs:
+            oauth_scopes = kwargs['oauthScopes']
+        if reservation_affinity is None and 'reservationAffinity' in kwargs:
+            reservation_affinity = kwargs['reservationAffinity']
+        if resource_labels is None and 'resourceLabels' in kwargs:
+            resource_labels = kwargs['resourceLabels']
+        if sandbox_config is None and 'sandboxConfig' in kwargs:
+            sandbox_config = kwargs['sandboxConfig']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
+            shielded_instance_config = kwargs['shieldedInstanceConfig']
+        if sole_tenant_config is None and 'soleTenantConfig' in kwargs:
+            sole_tenant_config = kwargs['soleTenantConfig']
+        if workload_metadata_config is None and 'workloadMetadataConfig' in kwargs:
+            workload_metadata_config = kwargs['workloadMetadataConfig']
+
         if advanced_machine_features is not None:
             _setter("advanced_machine_features", advanced_machine_features)
         if boot_disk_kms_key is not None:
@@ -9976,8 +11104,14 @@ class ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             threads_per_core: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             threads_per_core: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if threads_per_core is None and 'threadsPerCore' in kwargs:
+            threads_per_core = kwargs['threadsPerCore']
+        if threads_per_core is None:
+            raise TypeError("Missing 'threads_per_core' argument")
+
         _setter("threads_per_core", threads_per_core)
 
     @property
@@ -10008,8 +11142,12 @@ class ClusterNodePoolNodeConfigConfidentialNodesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -10040,8 +11178,14 @@ class ClusterNodePoolNodeConfigEphemeralStorageConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             local_ssd_count: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             local_ssd_count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if local_ssd_count is None and 'localSsdCount' in kwargs:
+            local_ssd_count = kwargs['localSsdCount']
+        if local_ssd_count is None:
+            raise TypeError("Missing 'local_ssd_count' argument")
+
         _setter("local_ssd_count", local_ssd_count)
 
     @property
@@ -10071,8 +11215,14 @@ class ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             local_ssd_count: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             local_ssd_count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if local_ssd_count is None and 'localSsdCount' in kwargs:
+            local_ssd_count = kwargs['localSsdCount']
+        if local_ssd_count is None:
+            raise TypeError("Missing 'local_ssd_count' argument")
+
         _setter("local_ssd_count", local_ssd_count)
 
     @property
@@ -10102,8 +11252,12 @@ class ClusterNodePoolNodeConfigFastSocketArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -10133,8 +11287,12 @@ class ClusterNodePoolNodeConfigGcfsConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -10176,12 +11334,24 @@ class ClusterNodePoolNodeConfigGuestAcceleratorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             count: pulumi.Input[int],
-             type: pulumi.Input[str],
+             count: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              gpu_driver_installation_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs']] = None,
              gpu_partition_size: Optional[pulumi.Input[str]] = None,
              gpu_sharing_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if count is None:
+            raise TypeError("Missing 'count' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if gpu_driver_installation_config is None and 'gpuDriverInstallationConfig' in kwargs:
+            gpu_driver_installation_config = kwargs['gpuDriverInstallationConfig']
+        if gpu_partition_size is None and 'gpuPartitionSize' in kwargs:
+            gpu_partition_size = kwargs['gpuPartitionSize']
+        if gpu_sharing_config is None and 'gpuSharingConfig' in kwargs:
+            gpu_sharing_config = kwargs['gpuSharingConfig']
+
         _setter("count", count)
         _setter("type", type)
         if gpu_driver_installation_config is not None:
@@ -10271,8 +11441,14 @@ class ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             gpu_driver_version: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             gpu_driver_version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gpu_driver_version is None and 'gpuDriverVersion' in kwargs:
+            gpu_driver_version = kwargs['gpuDriverVersion']
+        if gpu_driver_version is None:
+            raise TypeError("Missing 'gpu_driver_version' argument")
+
         _setter("gpu_driver_version", gpu_driver_version)
 
     @property
@@ -10312,9 +11488,19 @@ class ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             gpu_sharing_strategy: pulumi.Input[str],
-             max_shared_clients_per_gpu: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             gpu_sharing_strategy: Optional[pulumi.Input[str]] = None,
+             max_shared_clients_per_gpu: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gpu_sharing_strategy is None and 'gpuSharingStrategy' in kwargs:
+            gpu_sharing_strategy = kwargs['gpuSharingStrategy']
+        if gpu_sharing_strategy is None:
+            raise TypeError("Missing 'gpu_sharing_strategy' argument")
+        if max_shared_clients_per_gpu is None and 'maxSharedClientsPerGpu' in kwargs:
+            max_shared_clients_per_gpu = kwargs['maxSharedClientsPerGpu']
+        if max_shared_clients_per_gpu is None:
+            raise TypeError("Missing 'max_shared_clients_per_gpu' argument")
+
         _setter("gpu_sharing_strategy", gpu_sharing_strategy)
         _setter("max_shared_clients_per_gpu", max_shared_clients_per_gpu)
 
@@ -10359,8 +11545,12 @@ class ClusterNodePoolNodeConfigGvnicArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -10387,8 +11577,14 @@ class ClusterNodePoolNodeConfigHostMaintenancePolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             maintenance_interval: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             maintenance_interval: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if maintenance_interval is None and 'maintenanceInterval' in kwargs:
+            maintenance_interval = kwargs['maintenanceInterval']
+        if maintenance_interval is None:
+            raise TypeError("Missing 'maintenance_interval' argument")
+
         _setter("maintenance_interval", maintenance_interval)
 
     @property
@@ -10435,11 +11631,23 @@ class ClusterNodePoolNodeConfigKubeletConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cpu_manager_policy: pulumi.Input[str],
+             cpu_manager_policy: Optional[pulumi.Input[str]] = None,
              cpu_cfs_quota: Optional[pulumi.Input[bool]] = None,
              cpu_cfs_quota_period: Optional[pulumi.Input[str]] = None,
              pod_pids_limit: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cpu_manager_policy is None and 'cpuManagerPolicy' in kwargs:
+            cpu_manager_policy = kwargs['cpuManagerPolicy']
+        if cpu_manager_policy is None:
+            raise TypeError("Missing 'cpu_manager_policy' argument")
+        if cpu_cfs_quota is None and 'cpuCfsQuota' in kwargs:
+            cpu_cfs_quota = kwargs['cpuCfsQuota']
+        if cpu_cfs_quota_period is None and 'cpuCfsQuotaPeriod' in kwargs:
+            cpu_cfs_quota_period = kwargs['cpuCfsQuotaPeriod']
+        if pod_pids_limit is None and 'podPidsLimit' in kwargs:
+            pod_pids_limit = kwargs['podPidsLimit']
+
         _setter("cpu_manager_policy", cpu_manager_policy)
         if cpu_cfs_quota is not None:
             _setter("cpu_cfs_quota", cpu_cfs_quota)
@@ -10524,8 +11732,12 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             sysctls: pulumi.Input[Mapping[str, pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             sysctls: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if sysctls is None:
+            raise TypeError("Missing 'sysctls' argument")
+
         _setter("sysctls", sysctls)
 
     @property
@@ -10558,8 +11770,14 @@ class ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             local_ssd_count: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             local_ssd_count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if local_ssd_count is None and 'localSsdCount' in kwargs:
+            local_ssd_count = kwargs['localSsdCount']
+        if local_ssd_count is None:
+            raise TypeError("Missing 'local_ssd_count' argument")
+
         _setter("local_ssd_count", local_ssd_count)
 
     @property
@@ -10602,10 +11820,16 @@ class ClusterNodePoolNodeConfigReservationAffinityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             consume_reservation_type: pulumi.Input[str],
+             consume_reservation_type: Optional[pulumi.Input[str]] = None,
              key: Optional[pulumi.Input[str]] = None,
              values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if consume_reservation_type is None and 'consumeReservationType' in kwargs:
+            consume_reservation_type = kwargs['consumeReservationType']
+        if consume_reservation_type is None:
+            raise TypeError("Missing 'consume_reservation_type' argument")
+
         _setter("consume_reservation_type", consume_reservation_type)
         if key is not None:
             _setter("key", key)
@@ -10672,8 +11896,14 @@ class ClusterNodePoolNodeConfigSandboxConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             sandbox_type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             sandbox_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if sandbox_type is None and 'sandboxType' in kwargs:
+            sandbox_type = kwargs['sandboxType']
+        if sandbox_type is None:
+            raise TypeError("Missing 'sandbox_type' argument")
+
         _setter("sandbox_type", sandbox_type)
 
     @property
@@ -10715,7 +11945,13 @@ class ClusterNodePoolNodeConfigShieldedInstanceConfigArgs:
              _setter: Callable[[Any, Any], None],
              enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
              enable_secure_boot: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_integrity_monitoring is None and 'enableIntegrityMonitoring' in kwargs:
+            enable_integrity_monitoring = kwargs['enableIntegrityMonitoring']
+        if enable_secure_boot is None and 'enableSecureBoot' in kwargs:
+            enable_secure_boot = kwargs['enableSecureBoot']
+
         if enable_integrity_monitoring is not None:
             _setter("enable_integrity_monitoring", enable_integrity_monitoring)
         if enable_secure_boot is not None:
@@ -10761,8 +11997,14 @@ class ClusterNodePoolNodeConfigSoleTenantConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node_affinities: pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_affinities is None and 'nodeAffinities' in kwargs:
+            node_affinities = kwargs['nodeAffinities']
+        if node_affinities is None:
+            raise TypeError("Missing 'node_affinities' argument")
+
         _setter("node_affinities", node_affinities)
 
     @property
@@ -10795,10 +12037,18 @@ class ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             operator: pulumi.Input[str],
-             values: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             operator: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("key", key)
         _setter("operator", operator)
         _setter("values", values)
@@ -10860,10 +12110,18 @@ class ClusterNodePoolNodeConfigTaintArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             effect: pulumi.Input[str],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             effect: Optional[pulumi.Input[str]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if effect is None:
+            raise TypeError("Missing 'effect' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("effect", effect)
         _setter("key", key)
         _setter("value", value)
@@ -10923,8 +12181,12 @@ class ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             mode: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             mode: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
+
         _setter("mode", mode)
 
     @property
@@ -10963,10 +12225,18 @@ class ClusterNodePoolPlacementPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              policy_name: Optional[pulumi.Input[str]] = None,
              tpu_topology: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if policy_name is None and 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if tpu_topology is None and 'tpuTopology' in kwargs:
+            tpu_topology = kwargs['tpuTopology']
+
         _setter("type", type)
         if policy_name is not None:
             _setter("policy_name", policy_name)
@@ -11032,7 +12302,15 @@ class ClusterNodePoolUpgradeSettingsArgs:
              max_surge: Optional[pulumi.Input[int]] = None,
              max_unavailable: Optional[pulumi.Input[int]] = None,
              strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if blue_green_settings is None and 'blueGreenSettings' in kwargs:
+            blue_green_settings = kwargs['blueGreenSettings']
+        if max_surge is None and 'maxSurge' in kwargs:
+            max_surge = kwargs['maxSurge']
+        if max_unavailable is None and 'maxUnavailable' in kwargs:
+            max_unavailable = kwargs['maxUnavailable']
+
         if blue_green_settings is not None:
             _setter("blue_green_settings", blue_green_settings)
         if max_surge is not None:
@@ -11108,9 +12386,17 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             standard_rollout_policy: pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs'],
+             standard_rollout_policy: Optional[pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs']] = None,
              node_pool_soak_duration: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if standard_rollout_policy is None and 'standardRolloutPolicy' in kwargs:
+            standard_rollout_policy = kwargs['standardRolloutPolicy']
+        if standard_rollout_policy is None:
+            raise TypeError("Missing 'standard_rollout_policy' argument")
+        if node_pool_soak_duration is None and 'nodePoolSoakDuration' in kwargs:
+            node_pool_soak_duration = kwargs['nodePoolSoakDuration']
+
         _setter("standard_rollout_policy", standard_rollout_policy)
         if node_pool_soak_duration is not None:
             _setter("node_pool_soak_duration", node_pool_soak_duration)
@@ -11163,7 +12449,15 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs:
              batch_node_count: Optional[pulumi.Input[int]] = None,
              batch_percentage: Optional[pulumi.Input[float]] = None,
              batch_soak_duration: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if batch_node_count is None and 'batchNodeCount' in kwargs:
+            batch_node_count = kwargs['batchNodeCount']
+        if batch_percentage is None and 'batchPercentage' in kwargs:
+            batch_percentage = kwargs['batchPercentage']
+        if batch_soak_duration is None and 'batchSoakDuration' in kwargs:
+            batch_soak_duration = kwargs['batchSoakDuration']
+
         if batch_node_count is not None:
             _setter("batch_node_count", batch_node_count)
         if batch_percentage is not None:
@@ -11222,8 +12516,12 @@ class ClusterNotificationConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pubsub: pulumi.Input['ClusterNotificationConfigPubsubArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             pubsub: Optional[pulumi.Input['ClusterNotificationConfigPubsubArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pubsub is None:
+            raise TypeError("Missing 'pubsub' argument")
+
         _setter("pubsub", pubsub)
 
     @property
@@ -11263,10 +12561,14 @@ class ClusterNotificationConfigPubsubArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
+             enabled: Optional[pulumi.Input[bool]] = None,
              filter: Optional[pulumi.Input['ClusterNotificationConfigPubsubFilterArgs']] = None,
              topic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
         if filter is not None:
             _setter("filter", filter)
@@ -11328,8 +12630,14 @@ class ClusterNotificationConfigPubsubFilterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             event_types: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             event_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if event_types is None and 'eventTypes' in kwargs:
+            event_types = kwargs['eventTypes']
+        if event_types is None:
+            raise TypeError("Missing 'event_types' argument")
+
         _setter("event_types", event_types)
 
     @property
@@ -11360,8 +12668,12 @@ class ClusterPodSecurityPolicyConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -11439,7 +12751,25 @@ class ClusterPrivateClusterConfigArgs:
              private_endpoint: Optional[pulumi.Input[str]] = None,
              private_endpoint_subnetwork: Optional[pulumi.Input[str]] = None,
              public_endpoint: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_private_endpoint is None and 'enablePrivateEndpoint' in kwargs:
+            enable_private_endpoint = kwargs['enablePrivateEndpoint']
+        if enable_private_nodes is None and 'enablePrivateNodes' in kwargs:
+            enable_private_nodes = kwargs['enablePrivateNodes']
+        if master_global_access_config is None and 'masterGlobalAccessConfig' in kwargs:
+            master_global_access_config = kwargs['masterGlobalAccessConfig']
+        if master_ipv4_cidr_block is None and 'masterIpv4CidrBlock' in kwargs:
+            master_ipv4_cidr_block = kwargs['masterIpv4CidrBlock']
+        if peering_name is None and 'peeringName' in kwargs:
+            peering_name = kwargs['peeringName']
+        if private_endpoint is None and 'privateEndpoint' in kwargs:
+            private_endpoint = kwargs['privateEndpoint']
+        if private_endpoint_subnetwork is None and 'privateEndpointSubnetwork' in kwargs:
+            private_endpoint_subnetwork = kwargs['privateEndpointSubnetwork']
+        if public_endpoint is None and 'publicEndpoint' in kwargs:
+            public_endpoint = kwargs['publicEndpoint']
+
         if enable_private_endpoint is not None:
             _setter("enable_private_endpoint", enable_private_endpoint)
         if enable_private_nodes is not None:
@@ -11587,8 +12917,12 @@ class ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -11624,7 +12958,13 @@ class ClusterProtectConfigArgs:
              _setter: Callable[[Any, Any], None],
              workload_config: Optional[pulumi.Input['ClusterProtectConfigWorkloadConfigArgs']] = None,
              workload_vulnerability_mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if workload_config is None and 'workloadConfig' in kwargs:
+            workload_config = kwargs['workloadConfig']
+        if workload_vulnerability_mode is None and 'workloadVulnerabilityMode' in kwargs:
+            workload_vulnerability_mode = kwargs['workloadVulnerabilityMode']
+
         if workload_config is not None:
             _setter("workload_config", workload_config)
         if workload_vulnerability_mode is not None:
@@ -11669,8 +13009,14 @@ class ClusterProtectConfigWorkloadConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             audit_mode: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             audit_mode: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if audit_mode is None and 'auditMode' in kwargs:
+            audit_mode = kwargs['auditMode']
+        if audit_mode is None:
+            raise TypeError("Missing 'audit_mode' argument")
+
         _setter("audit_mode", audit_mode)
 
     @property
@@ -11705,8 +13051,12 @@ class ClusterReleaseChannelArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             channel: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             channel: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if channel is None:
+            raise TypeError("Missing 'channel' argument")
+
         _setter("channel", channel)
 
     @property
@@ -11758,10 +13108,20 @@ class ClusterResourceUsageExportConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bigquery_destination: pulumi.Input['ClusterResourceUsageExportConfigBigqueryDestinationArgs'],
+             bigquery_destination: Optional[pulumi.Input['ClusterResourceUsageExportConfigBigqueryDestinationArgs']] = None,
              enable_network_egress_metering: Optional[pulumi.Input[bool]] = None,
              enable_resource_consumption_metering: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bigquery_destination is None and 'bigqueryDestination' in kwargs:
+            bigquery_destination = kwargs['bigqueryDestination']
+        if bigquery_destination is None:
+            raise TypeError("Missing 'bigquery_destination' argument")
+        if enable_network_egress_metering is None and 'enableNetworkEgressMetering' in kwargs:
+            enable_network_egress_metering = kwargs['enableNetworkEgressMetering']
+        if enable_resource_consumption_metering is None and 'enableResourceConsumptionMetering' in kwargs:
+            enable_resource_consumption_metering = kwargs['enableResourceConsumptionMetering']
+
         _setter("bigquery_destination", bigquery_destination)
         if enable_network_egress_metering is not None:
             _setter("enable_network_egress_metering", enable_network_egress_metering)
@@ -11827,8 +13187,14 @@ class ClusterResourceUsageExportConfigBigqueryDestinationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             dataset_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if dataset_id is None:
+            raise TypeError("Missing 'dataset_id' argument")
+
         _setter("dataset_id", dataset_id)
 
     @property
@@ -11860,7 +13226,11 @@ class ClusterSecurityPostureConfigArgs:
              _setter: Callable[[Any, Any], None],
              mode: Optional[pulumi.Input[str]] = None,
              vulnerability_mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if vulnerability_mode is None and 'vulnerabilityMode' in kwargs:
+            vulnerability_mode = kwargs['vulnerabilityMode']
+
         if mode is not None:
             _setter("mode", mode)
         if vulnerability_mode is not None:
@@ -11905,8 +13275,12 @@ class ClusterServiceExternalIpsConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -11940,10 +13314,18 @@ class ClusterTpuConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
+             enabled: Optional[pulumi.Input[bool]] = None,
              ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
              use_service_networking: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if ipv4_cidr_block is None and 'ipv4CidrBlock' in kwargs:
+            ipv4_cidr_block = kwargs['ipv4CidrBlock']
+        if use_service_networking is None and 'useServiceNetworking' in kwargs:
+            use_service_networking = kwargs['useServiceNetworking']
+
         _setter("enabled", enabled)
         if ipv4_cidr_block is not None:
             _setter("ipv4_cidr_block", ipv4_cidr_block)
@@ -11995,8 +13377,12 @@ class ClusterVerticalPodAutoscalingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -12031,7 +13417,11 @@ class ClusterWorkloadIdentityConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              workload_pool: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if workload_pool is None and 'workloadPool' in kwargs:
+            workload_pool = kwargs['workloadPool']
+
         if workload_pool is not None:
             _setter("workload_pool", workload_pool)
 
@@ -12093,7 +13483,19 @@ class NodePoolAutoscalingArgs:
              min_node_count: Optional[pulumi.Input[int]] = None,
              total_max_node_count: Optional[pulumi.Input[int]] = None,
              total_min_node_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location_policy is None and 'locationPolicy' in kwargs:
+            location_policy = kwargs['locationPolicy']
+        if max_node_count is None and 'maxNodeCount' in kwargs:
+            max_node_count = kwargs['maxNodeCount']
+        if min_node_count is None and 'minNodeCount' in kwargs:
+            min_node_count = kwargs['minNodeCount']
+        if total_max_node_count is None and 'totalMaxNodeCount' in kwargs:
+            total_max_node_count = kwargs['totalMaxNodeCount']
+        if total_min_node_count is None and 'totalMinNodeCount' in kwargs:
+            total_min_node_count = kwargs['totalMinNodeCount']
+
         if location_policy is not None:
             _setter("location_policy", location_policy)
         if max_node_count is not None:
@@ -12195,7 +13597,13 @@ class NodePoolManagementArgs:
              _setter: Callable[[Any, Any], None],
              auto_repair: Optional[pulumi.Input[bool]] = None,
              auto_upgrade: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_repair is None and 'autoRepair' in kwargs:
+            auto_repair = kwargs['autoRepair']
+        if auto_upgrade is None and 'autoUpgrade' in kwargs:
+            auto_upgrade = kwargs['autoUpgrade']
+
         if auto_repair is not None:
             _setter("auto_repair", auto_repair)
         if auto_upgrade is not None:
@@ -12266,7 +13674,23 @@ class NodePoolNetworkConfigArgs:
              pod_cidr_overprovision_config: Optional[pulumi.Input['NodePoolNetworkConfigPodCidrOverprovisionConfigArgs']] = None,
              pod_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
              pod_range: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if additional_node_network_configs is None and 'additionalNodeNetworkConfigs' in kwargs:
+            additional_node_network_configs = kwargs['additionalNodeNetworkConfigs']
+        if additional_pod_network_configs is None and 'additionalPodNetworkConfigs' in kwargs:
+            additional_pod_network_configs = kwargs['additionalPodNetworkConfigs']
+        if create_pod_range is None and 'createPodRange' in kwargs:
+            create_pod_range = kwargs['createPodRange']
+        if enable_private_nodes is None and 'enablePrivateNodes' in kwargs:
+            enable_private_nodes = kwargs['enablePrivateNodes']
+        if pod_cidr_overprovision_config is None and 'podCidrOverprovisionConfig' in kwargs:
+            pod_cidr_overprovision_config = kwargs['podCidrOverprovisionConfig']
+        if pod_ipv4_cidr_block is None and 'podIpv4CidrBlock' in kwargs:
+            pod_ipv4_cidr_block = kwargs['podIpv4CidrBlock']
+        if pod_range is None and 'podRange' in kwargs:
+            pod_range = kwargs['podRange']
+
         if additional_node_network_configs is not None:
             _setter("additional_node_network_configs", additional_node_network_configs)
         if additional_pod_network_configs is not None:
@@ -12385,7 +13809,9 @@ class NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs:
              _setter: Callable[[Any, Any], None],
              network: Optional[pulumi.Input[str]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if network is not None:
             _setter("network", network)
         if subnetwork is not None:
@@ -12439,7 +13865,13 @@ class NodePoolNetworkConfigAdditionalPodNetworkConfigArgs:
              max_pods_per_node: Optional[pulumi.Input[int]] = None,
              secondary_pod_range: Optional[pulumi.Input[str]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_pods_per_node is None and 'maxPodsPerNode' in kwargs:
+            max_pods_per_node = kwargs['maxPodsPerNode']
+        if secondary_pod_range is None and 'secondaryPodRange' in kwargs:
+            secondary_pod_range = kwargs['secondaryPodRange']
+
         if max_pods_per_node is not None:
             _setter("max_pods_per_node", max_pods_per_node)
         if secondary_pod_range is not None:
@@ -12495,8 +13927,12 @@ class NodePoolNetworkConfigPodCidrOverprovisionConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             disabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disabled is None:
+            raise TypeError("Missing 'disabled' argument")
+
         _setter("disabled", disabled)
 
     @property
@@ -12626,7 +14062,65 @@ class NodePoolNodeConfigArgs:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigTaintArgs']]]] = None,
              workload_metadata_config: Optional[pulumi.Input['NodePoolNodeConfigWorkloadMetadataConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if advanced_machine_features is None and 'advancedMachineFeatures' in kwargs:
+            advanced_machine_features = kwargs['advancedMachineFeatures']
+        if boot_disk_kms_key is None and 'bootDiskKmsKey' in kwargs:
+            boot_disk_kms_key = kwargs['bootDiskKmsKey']
+        if confidential_nodes is None and 'confidentialNodes' in kwargs:
+            confidential_nodes = kwargs['confidentialNodes']
+        if disk_size_gb is None and 'diskSizeGb' in kwargs:
+            disk_size_gb = kwargs['diskSizeGb']
+        if disk_type is None and 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if ephemeral_storage_config is None and 'ephemeralStorageConfig' in kwargs:
+            ephemeral_storage_config = kwargs['ephemeralStorageConfig']
+        if ephemeral_storage_local_ssd_config is None and 'ephemeralStorageLocalSsdConfig' in kwargs:
+            ephemeral_storage_local_ssd_config = kwargs['ephemeralStorageLocalSsdConfig']
+        if fast_socket is None and 'fastSocket' in kwargs:
+            fast_socket = kwargs['fastSocket']
+        if gcfs_config is None and 'gcfsConfig' in kwargs:
+            gcfs_config = kwargs['gcfsConfig']
+        if guest_accelerators is None and 'guestAccelerators' in kwargs:
+            guest_accelerators = kwargs['guestAccelerators']
+        if host_maintenance_policy is None and 'hostMaintenancePolicy' in kwargs:
+            host_maintenance_policy = kwargs['hostMaintenancePolicy']
+        if image_type is None and 'imageType' in kwargs:
+            image_type = kwargs['imageType']
+        if kubelet_config is None and 'kubeletConfig' in kwargs:
+            kubelet_config = kwargs['kubeletConfig']
+        if linux_node_config is None and 'linuxNodeConfig' in kwargs:
+            linux_node_config = kwargs['linuxNodeConfig']
+        if local_nvme_ssd_block_config is None and 'localNvmeSsdBlockConfig' in kwargs:
+            local_nvme_ssd_block_config = kwargs['localNvmeSsdBlockConfig']
+        if local_ssd_count is None and 'localSsdCount' in kwargs:
+            local_ssd_count = kwargs['localSsdCount']
+        if logging_variant is None and 'loggingVariant' in kwargs:
+            logging_variant = kwargs['loggingVariant']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if min_cpu_platform is None and 'minCpuPlatform' in kwargs:
+            min_cpu_platform = kwargs['minCpuPlatform']
+        if node_group is None and 'nodeGroup' in kwargs:
+            node_group = kwargs['nodeGroup']
+        if oauth_scopes is None and 'oauthScopes' in kwargs:
+            oauth_scopes = kwargs['oauthScopes']
+        if reservation_affinity is None and 'reservationAffinity' in kwargs:
+            reservation_affinity = kwargs['reservationAffinity']
+        if resource_labels is None and 'resourceLabels' in kwargs:
+            resource_labels = kwargs['resourceLabels']
+        if sandbox_config is None and 'sandboxConfig' in kwargs:
+            sandbox_config = kwargs['sandboxConfig']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
+            shielded_instance_config = kwargs['shieldedInstanceConfig']
+        if sole_tenant_config is None and 'soleTenantConfig' in kwargs:
+            sole_tenant_config = kwargs['soleTenantConfig']
+        if workload_metadata_config is None and 'workloadMetadataConfig' in kwargs:
+            workload_metadata_config = kwargs['workloadMetadataConfig']
+
         if advanced_machine_features is not None:
             _setter("advanced_machine_features", advanced_machine_features)
         if boot_disk_kms_key is not None:
@@ -13028,8 +14522,14 @@ class NodePoolNodeConfigAdvancedMachineFeaturesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             threads_per_core: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             threads_per_core: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if threads_per_core is None and 'threadsPerCore' in kwargs:
+            threads_per_core = kwargs['threadsPerCore']
+        if threads_per_core is None:
+            raise TypeError("Missing 'threads_per_core' argument")
+
         _setter("threads_per_core", threads_per_core)
 
     @property
@@ -13057,8 +14557,12 @@ class NodePoolNodeConfigConfidentialNodesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -13086,8 +14590,14 @@ class NodePoolNodeConfigEphemeralStorageConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             local_ssd_count: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             local_ssd_count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if local_ssd_count is None and 'localSsdCount' in kwargs:
+            local_ssd_count = kwargs['localSsdCount']
+        if local_ssd_count is None:
+            raise TypeError("Missing 'local_ssd_count' argument")
+
         _setter("local_ssd_count", local_ssd_count)
 
     @property
@@ -13111,8 +14621,14 @@ class NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             local_ssd_count: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             local_ssd_count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if local_ssd_count is None and 'localSsdCount' in kwargs:
+            local_ssd_count = kwargs['localSsdCount']
+        if local_ssd_count is None:
+            raise TypeError("Missing 'local_ssd_count' argument")
+
         _setter("local_ssd_count", local_ssd_count)
 
     @property
@@ -13140,8 +14656,12 @@ class NodePoolNodeConfigFastSocketArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -13173,8 +14693,12 @@ class NodePoolNodeConfigGcfsConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -13215,12 +14739,24 @@ class NodePoolNodeConfigGuestAcceleratorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             count: pulumi.Input[int],
-             type: pulumi.Input[str],
+             count: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              gpu_driver_installation_config: Optional[pulumi.Input['NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs']] = None,
              gpu_partition_size: Optional[pulumi.Input[str]] = None,
              gpu_sharing_config: Optional[pulumi.Input['NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if count is None:
+            raise TypeError("Missing 'count' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if gpu_driver_installation_config is None and 'gpuDriverInstallationConfig' in kwargs:
+            gpu_driver_installation_config = kwargs['gpuDriverInstallationConfig']
+        if gpu_partition_size is None and 'gpuPartitionSize' in kwargs:
+            gpu_partition_size = kwargs['gpuPartitionSize']
+        if gpu_sharing_config is None and 'gpuSharingConfig' in kwargs:
+            gpu_sharing_config = kwargs['gpuSharingConfig']
+
         _setter("count", count)
         _setter("type", type)
         if gpu_driver_installation_config is not None:
@@ -13292,8 +14828,14 @@ class NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             gpu_driver_version: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             gpu_driver_version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gpu_driver_version is None and 'gpuDriverVersion' in kwargs:
+            gpu_driver_version = kwargs['gpuDriverVersion']
+        if gpu_driver_version is None:
+            raise TypeError("Missing 'gpu_driver_version' argument")
+
         _setter("gpu_driver_version", gpu_driver_version)
 
     @property
@@ -13319,9 +14861,19 @@ class NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             gpu_sharing_strategy: pulumi.Input[str],
-             max_shared_clients_per_gpu: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             gpu_sharing_strategy: Optional[pulumi.Input[str]] = None,
+             max_shared_clients_per_gpu: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gpu_sharing_strategy is None and 'gpuSharingStrategy' in kwargs:
+            gpu_sharing_strategy = kwargs['gpuSharingStrategy']
+        if gpu_sharing_strategy is None:
+            raise TypeError("Missing 'gpu_sharing_strategy' argument")
+        if max_shared_clients_per_gpu is None and 'maxSharedClientsPerGpu' in kwargs:
+            max_shared_clients_per_gpu = kwargs['maxSharedClientsPerGpu']
+        if max_shared_clients_per_gpu is None:
+            raise TypeError("Missing 'max_shared_clients_per_gpu' argument")
+
         _setter("gpu_sharing_strategy", gpu_sharing_strategy)
         _setter("max_shared_clients_per_gpu", max_shared_clients_per_gpu)
 
@@ -13359,8 +14911,12 @@ class NodePoolNodeConfigGvnicArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -13388,8 +14944,14 @@ class NodePoolNodeConfigHostMaintenancePolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             maintenance_interval: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             maintenance_interval: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if maintenance_interval is None and 'maintenanceInterval' in kwargs:
+            maintenance_interval = kwargs['maintenanceInterval']
+        if maintenance_interval is None:
+            raise TypeError("Missing 'maintenance_interval' argument")
+
         _setter("maintenance_interval", maintenance_interval)
 
     @property
@@ -13419,11 +14981,23 @@ class NodePoolNodeConfigKubeletConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cpu_manager_policy: pulumi.Input[str],
+             cpu_manager_policy: Optional[pulumi.Input[str]] = None,
              cpu_cfs_quota: Optional[pulumi.Input[bool]] = None,
              cpu_cfs_quota_period: Optional[pulumi.Input[str]] = None,
              pod_pids_limit: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cpu_manager_policy is None and 'cpuManagerPolicy' in kwargs:
+            cpu_manager_policy = kwargs['cpuManagerPolicy']
+        if cpu_manager_policy is None:
+            raise TypeError("Missing 'cpu_manager_policy' argument")
+        if cpu_cfs_quota is None and 'cpuCfsQuota' in kwargs:
+            cpu_cfs_quota = kwargs['cpuCfsQuota']
+        if cpu_cfs_quota_period is None and 'cpuCfsQuotaPeriod' in kwargs:
+            cpu_cfs_quota_period = kwargs['cpuCfsQuotaPeriod']
+        if pod_pids_limit is None and 'podPidsLimit' in kwargs:
+            pod_pids_limit = kwargs['podPidsLimit']
+
         _setter("cpu_manager_policy", cpu_manager_policy)
         if cpu_cfs_quota is not None:
             _setter("cpu_cfs_quota", cpu_cfs_quota)
@@ -13480,8 +15054,12 @@ class NodePoolNodeConfigLinuxNodeConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             sysctls: pulumi.Input[Mapping[str, pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             sysctls: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if sysctls is None:
+            raise TypeError("Missing 'sysctls' argument")
+
         _setter("sysctls", sysctls)
 
     @property
@@ -13505,8 +15083,14 @@ class NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             local_ssd_count: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             local_ssd_count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if local_ssd_count is None and 'localSsdCount' in kwargs:
+            local_ssd_count = kwargs['localSsdCount']
+        if local_ssd_count is None:
+            raise TypeError("Missing 'local_ssd_count' argument")
+
         _setter("local_ssd_count", local_ssd_count)
 
     @property
@@ -13534,10 +15118,16 @@ class NodePoolNodeConfigReservationAffinityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             consume_reservation_type: pulumi.Input[str],
+             consume_reservation_type: Optional[pulumi.Input[str]] = None,
              key: Optional[pulumi.Input[str]] = None,
              values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if consume_reservation_type is None and 'consumeReservationType' in kwargs:
+            consume_reservation_type = kwargs['consumeReservationType']
+        if consume_reservation_type is None:
+            raise TypeError("Missing 'consume_reservation_type' argument")
+
         _setter("consume_reservation_type", consume_reservation_type)
         if key is not None:
             _setter("key", key)
@@ -13583,8 +15173,14 @@ class NodePoolNodeConfigSandboxConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             sandbox_type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             sandbox_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if sandbox_type is None and 'sandboxType' in kwargs:
+            sandbox_type = kwargs['sandboxType']
+        if sandbox_type is None:
+            raise TypeError("Missing 'sandbox_type' argument")
+
         _setter("sandbox_type", sandbox_type)
 
     @property
@@ -13612,7 +15208,13 @@ class NodePoolNodeConfigShieldedInstanceConfigArgs:
              _setter: Callable[[Any, Any], None],
              enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
              enable_secure_boot: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_integrity_monitoring is None and 'enableIntegrityMonitoring' in kwargs:
+            enable_integrity_monitoring = kwargs['enableIntegrityMonitoring']
+        if enable_secure_boot is None and 'enableSecureBoot' in kwargs:
+            enable_secure_boot = kwargs['enableSecureBoot']
+
         if enable_integrity_monitoring is not None:
             _setter("enable_integrity_monitoring", enable_integrity_monitoring)
         if enable_secure_boot is not None:
@@ -13648,8 +15250,14 @@ class NodePoolNodeConfigSoleTenantConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node_affinities: pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_affinities is None and 'nodeAffinities' in kwargs:
+            node_affinities = kwargs['nodeAffinities']
+        if node_affinities is None:
+            raise TypeError("Missing 'node_affinities' argument")
+
         _setter("node_affinities", node_affinities)
 
     @property
@@ -13677,10 +15285,18 @@ class NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             operator: pulumi.Input[str],
-             values: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             operator: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("key", key)
         _setter("operator", operator)
         _setter("values", values)
@@ -13728,10 +15344,18 @@ class NodePoolNodeConfigTaintArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             effect: pulumi.Input[str],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             effect: Optional[pulumi.Input[str]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if effect is None:
+            raise TypeError("Missing 'effect' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("effect", effect)
         _setter("key", key)
         _setter("value", value)
@@ -13775,8 +15399,12 @@ class NodePoolNodeConfigWorkloadMetadataConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             mode: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             mode: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
+
         _setter("mode", mode)
 
     @property
@@ -13813,10 +15441,18 @@ class NodePoolPlacementPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              policy_name: Optional[pulumi.Input[str]] = None,
              tpu_topology: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if policy_name is None and 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if tpu_topology is None and 'tpuTopology' in kwargs:
+            tpu_topology = kwargs['tpuTopology']
+
         _setter("type", type)
         if policy_name is not None:
             _setter("policy_name", policy_name)
@@ -13898,7 +15534,15 @@ class NodePoolUpgradeSettingsArgs:
              max_surge: Optional[pulumi.Input[int]] = None,
              max_unavailable: Optional[pulumi.Input[int]] = None,
              strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if blue_green_settings is None and 'blueGreenSettings' in kwargs:
+            blue_green_settings = kwargs['blueGreenSettings']
+        if max_surge is None and 'maxSurge' in kwargs:
+            max_surge = kwargs['maxSurge']
+        if max_unavailable is None and 'maxUnavailable' in kwargs:
+            max_unavailable = kwargs['maxUnavailable']
+
         if blue_green_settings is not None:
             _setter("blue_green_settings", blue_green_settings)
         if max_surge is not None:
@@ -13982,9 +15626,17 @@ class NodePoolUpgradeSettingsBlueGreenSettingsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             standard_rollout_policy: pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs'],
+             standard_rollout_policy: Optional[pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs']] = None,
              node_pool_soak_duration: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if standard_rollout_policy is None and 'standardRolloutPolicy' in kwargs:
+            standard_rollout_policy = kwargs['standardRolloutPolicy']
+        if standard_rollout_policy is None:
+            raise TypeError("Missing 'standard_rollout_policy' argument")
+        if node_pool_soak_duration is None and 'nodePoolSoakDuration' in kwargs:
+            node_pool_soak_duration = kwargs['nodePoolSoakDuration']
+
         _setter("standard_rollout_policy", standard_rollout_policy)
         if node_pool_soak_duration is not None:
             _setter("node_pool_soak_duration", node_pool_soak_duration)
@@ -14038,7 +15690,15 @@ class NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs:
              batch_node_count: Optional[pulumi.Input[int]] = None,
              batch_percentage: Optional[pulumi.Input[float]] = None,
              batch_soak_duration: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if batch_node_count is None and 'batchNodeCount' in kwargs:
+            batch_node_count = kwargs['batchNodeCount']
+        if batch_percentage is None and 'batchPercentage' in kwargs:
+            batch_percentage = kwargs['batchPercentage']
+        if batch_soak_duration is None and 'batchSoakDuration' in kwargs:
+            batch_soak_duration = kwargs['batchSoakDuration']
+
         if batch_node_count is not None:
             _setter("batch_node_count", batch_node_count)
         if batch_percentage is not None:

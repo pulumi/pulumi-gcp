@@ -59,8 +59,8 @@ class EndpointPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint_matcher: pulumi.Input['EndpointPolicyEndpointMatcherArgs'],
-             type: pulumi.Input[str],
+             endpoint_matcher: Optional[pulumi.Input['EndpointPolicyEndpointMatcherArgs']] = None,
+             type: Optional[pulumi.Input[str]] = None,
              authorization_policy: Optional[pulumi.Input[str]] = None,
              client_tls_policy: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -69,7 +69,23 @@ class EndpointPolicyArgs:
              project: Optional[pulumi.Input[str]] = None,
              server_tls_policy: Optional[pulumi.Input[str]] = None,
              traffic_port_selector: Optional[pulumi.Input['EndpointPolicyTrafficPortSelectorArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if endpoint_matcher is None and 'endpointMatcher' in kwargs:
+            endpoint_matcher = kwargs['endpointMatcher']
+        if endpoint_matcher is None:
+            raise TypeError("Missing 'endpoint_matcher' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if authorization_policy is None and 'authorizationPolicy' in kwargs:
+            authorization_policy = kwargs['authorizationPolicy']
+        if client_tls_policy is None and 'clientTlsPolicy' in kwargs:
+            client_tls_policy = kwargs['clientTlsPolicy']
+        if server_tls_policy is None and 'serverTlsPolicy' in kwargs:
+            server_tls_policy = kwargs['serverTlsPolicy']
+        if traffic_port_selector is None and 'trafficPortSelector' in kwargs:
+            traffic_port_selector = kwargs['trafficPortSelector']
+
         _setter("endpoint_matcher", endpoint_matcher)
         _setter("type", type)
         if authorization_policy is not None:
@@ -278,7 +294,23 @@ class _EndpointPolicyState:
              traffic_port_selector: Optional[pulumi.Input['EndpointPolicyTrafficPortSelectorArgs']] = None,
              type: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if authorization_policy is None and 'authorizationPolicy' in kwargs:
+            authorization_policy = kwargs['authorizationPolicy']
+        if client_tls_policy is None and 'clientTlsPolicy' in kwargs:
+            client_tls_policy = kwargs['clientTlsPolicy']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if endpoint_matcher is None and 'endpointMatcher' in kwargs:
+            endpoint_matcher = kwargs['endpointMatcher']
+        if server_tls_policy is None and 'serverTlsPolicy' in kwargs:
+            server_tls_policy = kwargs['serverTlsPolicy']
+        if traffic_port_selector is None and 'trafficPortSelector' in kwargs:
+            traffic_port_selector = kwargs['trafficPortSelector']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if authorization_policy is not None:
             _setter("authorization_policy", authorization_policy)
         if client_tls_policy is not None:

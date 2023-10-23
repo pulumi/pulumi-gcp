@@ -45,11 +45,21 @@ class PolicyTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             taxonomy: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
+             taxonomy: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              parent_policy_tag: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if taxonomy is None:
+            raise TypeError("Missing 'taxonomy' argument")
+        if parent_policy_tag is None and 'parentPolicyTag' in kwargs:
+            parent_policy_tag = kwargs['parentPolicyTag']
+
         _setter("display_name", display_name)
         _setter("taxonomy", taxonomy)
         if description is not None:
@@ -163,7 +173,15 @@ class _PolicyTagState:
              name: Optional[pulumi.Input[str]] = None,
              parent_policy_tag: Optional[pulumi.Input[str]] = None,
              taxonomy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if child_policy_tags is None and 'childPolicyTags' in kwargs:
+            child_policy_tags = kwargs['childPolicyTags']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if parent_policy_tag is None and 'parentPolicyTag' in kwargs:
+            parent_policy_tag = kwargs['parentPolicyTag']
+
         if child_policy_tags is not None:
             _setter("child_policy_tags", child_policy_tags)
         if description is not None:

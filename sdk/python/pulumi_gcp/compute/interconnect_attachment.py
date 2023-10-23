@@ -131,7 +131,7 @@ class InterconnectAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             router: pulumi.Input[str],
+             router: Optional[pulumi.Input[str]] = None,
              admin_enabled: Optional[pulumi.Input[bool]] = None,
              bandwidth: Optional[pulumi.Input[str]] = None,
              candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -146,7 +146,21 @@ class InterconnectAttachmentArgs:
              region: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              vlan_tag8021q: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if router is None:
+            raise TypeError("Missing 'router' argument")
+        if admin_enabled is None and 'adminEnabled' in kwargs:
+            admin_enabled = kwargs['adminEnabled']
+        if candidate_subnets is None and 'candidateSubnets' in kwargs:
+            candidate_subnets = kwargs['candidateSubnets']
+        if edge_availability_domain is None and 'edgeAvailabilityDomain' in kwargs:
+            edge_availability_domain = kwargs['edgeAvailabilityDomain']
+        if ipsec_internal_addresses is None and 'ipsecInternalAddresses' in kwargs:
+            ipsec_internal_addresses = kwargs['ipsecInternalAddresses']
+        if vlan_tag8021q is None and 'vlanTag8021q' in kwargs:
+            vlan_tag8021q = kwargs['vlanTag8021q']
+
         _setter("router", router)
         if admin_enabled is not None:
             _setter("admin_enabled", admin_enabled)
@@ -597,7 +611,35 @@ class _InterconnectAttachmentState:
              state: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              vlan_tag8021q: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if admin_enabled is None and 'adminEnabled' in kwargs:
+            admin_enabled = kwargs['adminEnabled']
+        if candidate_subnets is None and 'candidateSubnets' in kwargs:
+            candidate_subnets = kwargs['candidateSubnets']
+        if cloud_router_ip_address is None and 'cloudRouterIpAddress' in kwargs:
+            cloud_router_ip_address = kwargs['cloudRouterIpAddress']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if customer_router_ip_address is None and 'customerRouterIpAddress' in kwargs:
+            customer_router_ip_address = kwargs['customerRouterIpAddress']
+        if edge_availability_domain is None and 'edgeAvailabilityDomain' in kwargs:
+            edge_availability_domain = kwargs['edgeAvailabilityDomain']
+        if google_reference_id is None and 'googleReferenceId' in kwargs:
+            google_reference_id = kwargs['googleReferenceId']
+        if ipsec_internal_addresses is None and 'ipsecInternalAddresses' in kwargs:
+            ipsec_internal_addresses = kwargs['ipsecInternalAddresses']
+        if pairing_key is None and 'pairingKey' in kwargs:
+            pairing_key = kwargs['pairingKey']
+        if partner_asn is None and 'partnerAsn' in kwargs:
+            partner_asn = kwargs['partnerAsn']
+        if private_interconnect_infos is None and 'privateInterconnectInfos' in kwargs:
+            private_interconnect_infos = kwargs['privateInterconnectInfos']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if vlan_tag8021q is None and 'vlanTag8021q' in kwargs:
+            vlan_tag8021q = kwargs['vlanTag8021q']
+
         if admin_enabled is not None:
             _setter("admin_enabled", admin_enabled)
         if bandwidth is not None:

@@ -55,14 +55,26 @@ class RecordSetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             managed_zone: pulumi.Input[str],
-             name: pulumi.Input[str],
-             type: pulumi.Input[str],
+             managed_zone: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              routing_policy: Optional[pulumi.Input['RecordSetRoutingPolicyArgs']] = None,
              rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if managed_zone is None and 'managedZone' in kwargs:
+            managed_zone = kwargs['managedZone']
+        if managed_zone is None:
+            raise TypeError("Missing 'managed_zone' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if routing_policy is None and 'routingPolicy' in kwargs:
+            routing_policy = kwargs['routingPolicy']
+
         _setter("managed_zone", managed_zone)
         _setter("name", name)
         _setter("type", type)
@@ -218,7 +230,13 @@ class _RecordSetState:
              rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if managed_zone is None and 'managedZone' in kwargs:
+            managed_zone = kwargs['managedZone']
+        if routing_policy is None and 'routingPolicy' in kwargs:
+            routing_policy = kwargs['routingPolicy']
+
         if managed_zone is not None:
             _setter("managed_zone", managed_zone)
         if name is not None:

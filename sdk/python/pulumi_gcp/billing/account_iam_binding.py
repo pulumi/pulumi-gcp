@@ -48,11 +48,21 @@ class AccountIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             billing_account_id: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             billing_account_id: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['AccountIamBindingConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if billing_account_id is None and 'billingAccountId' in kwargs:
+            billing_account_id = kwargs['billingAccountId']
+        if billing_account_id is None:
+            raise TypeError("Missing 'billing_account_id' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("billing_account_id", billing_account_id)
         _setter("members", members)
         _setter("role", role)
@@ -158,7 +168,11 @@ class _AccountIamBindingState:
              etag: Optional[pulumi.Input[str]] = None,
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if billing_account_id is None and 'billingAccountId' in kwargs:
+            billing_account_id = kwargs['billingAccountId']
+
         if billing_account_id is not None:
             _setter("billing_account_id", billing_account_id)
         if condition is not None:

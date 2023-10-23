@@ -68,13 +68,23 @@ class AuthorizedOrgsDescArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parent: pulumi.Input[str],
+             parent: Optional[pulumi.Input[str]] = None,
              asset_type: Optional[pulumi.Input[str]] = None,
              authorization_direction: Optional[pulumi.Input[str]] = None,
              authorization_type: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              orgs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if asset_type is None and 'assetType' in kwargs:
+            asset_type = kwargs['assetType']
+        if authorization_direction is None and 'authorizationDirection' in kwargs:
+            authorization_direction = kwargs['authorizationDirection']
+        if authorization_type is None and 'authorizationType' in kwargs:
+            authorization_type = kwargs['authorizationType']
+
         _setter("parent", parent)
         if asset_type is not None:
             _setter("asset_type", asset_type)
@@ -258,7 +268,19 @@ class _AuthorizedOrgsDescState:
              orgs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              parent: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if asset_type is None and 'assetType' in kwargs:
+            asset_type = kwargs['assetType']
+        if authorization_direction is None and 'authorizationDirection' in kwargs:
+            authorization_direction = kwargs['authorizationDirection']
+        if authorization_type is None and 'authorizationType' in kwargs:
+            authorization_type = kwargs['authorizationType']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if asset_type is not None:
             _setter("asset_type", asset_type)
         if authorization_direction is not None:

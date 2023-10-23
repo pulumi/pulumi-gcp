@@ -76,7 +76,13 @@ class SSLPolicyArgs:
              name: Optional[pulumi.Input[str]] = None,
              profile: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if custom_features is None and 'customFeatures' in kwargs:
+            custom_features = kwargs['customFeatures']
+        if min_tls_version is None and 'minTlsVersion' in kwargs:
+            min_tls_version = kwargs['minTlsVersion']
+
         if custom_features is not None:
             _setter("custom_features", custom_features)
         if description is not None:
@@ -274,7 +280,19 @@ class _SSLPolicyState:
              profile: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if custom_features is None and 'customFeatures' in kwargs:
+            custom_features = kwargs['customFeatures']
+        if enabled_features is None and 'enabledFeatures' in kwargs:
+            enabled_features = kwargs['enabledFeatures']
+        if min_tls_version is None and 'minTlsVersion' in kwargs:
+            min_tls_version = kwargs['minTlsVersion']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if creation_timestamp is not None:
             _setter("creation_timestamp", creation_timestamp)
         if custom_features is not None:

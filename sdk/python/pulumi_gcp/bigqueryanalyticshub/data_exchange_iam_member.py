@@ -57,13 +57,23 @@ class DataExchangeIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_exchange_id: pulumi.Input[str],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
+             data_exchange_id: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['DataExchangeIamMemberConditionArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if data_exchange_id is None and 'dataExchangeId' in kwargs:
+            data_exchange_id = kwargs['dataExchangeId']
+        if data_exchange_id is None:
+            raise TypeError("Missing 'data_exchange_id' argument")
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("data_exchange_id", data_exchange_id)
         _setter("member", member)
         _setter("role", role)
@@ -211,7 +221,11 @@ class _DataExchangeIamMemberState:
              member: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if data_exchange_id is None and 'dataExchangeId' in kwargs:
+            data_exchange_id = kwargs['dataExchangeId']
+
         if condition is not None:
             _setter("condition", condition)
         if data_exchange_id is not None:

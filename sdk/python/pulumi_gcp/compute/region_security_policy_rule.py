@@ -73,16 +73,30 @@ class RegionSecurityPolicyRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input[str],
-             priority: pulumi.Input[int],
-             region: pulumi.Input[str],
-             security_policy: pulumi.Input[str],
+             action: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             security_policy: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              match: Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArgs']] = None,
              network_match: Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArgs']] = None,
              preview: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
+        if security_policy is None:
+            raise TypeError("Missing 'security_policy' argument")
+        if network_match is None and 'networkMatch' in kwargs:
+            network_match = kwargs['networkMatch']
+
         _setter("action", action)
         _setter("priority", priority)
         _setter("region", region)
@@ -297,7 +311,13 @@ class _RegionSecurityPolicyRuleState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              security_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network_match is None and 'networkMatch' in kwargs:
+            network_match = kwargs['networkMatch']
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
+
         if action is not None:
             _setter("action", action)
         if description is not None:

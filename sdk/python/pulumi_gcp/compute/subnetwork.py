@@ -107,8 +107,8 @@ class SubnetworkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_cidr_range: pulumi.Input[str],
-             network: pulumi.Input[str],
+             ip_cidr_range: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              ipv6_access_type: Optional[pulumi.Input[str]] = None,
              log_config: Optional[pulumi.Input['SubnetworkLogConfigArgs']] = None,
@@ -121,7 +121,27 @@ class SubnetworkArgs:
              role: Optional[pulumi.Input[str]] = None,
              secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]] = None,
              stack_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_cidr_range is None and 'ipCidrRange' in kwargs:
+            ip_cidr_range = kwargs['ipCidrRange']
+        if ip_cidr_range is None:
+            raise TypeError("Missing 'ip_cidr_range' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if ipv6_access_type is None and 'ipv6AccessType' in kwargs:
+            ipv6_access_type = kwargs['ipv6AccessType']
+        if log_config is None and 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if private_ip_google_access is None and 'privateIpGoogleAccess' in kwargs:
+            private_ip_google_access = kwargs['privateIpGoogleAccess']
+        if private_ipv6_google_access is None and 'privateIpv6GoogleAccess' in kwargs:
+            private_ipv6_google_access = kwargs['privateIpv6GoogleAccess']
+        if secondary_ip_ranges is None and 'secondaryIpRanges' in kwargs:
+            secondary_ip_ranges = kwargs['secondaryIpRanges']
+        if stack_type is None and 'stackType' in kwargs:
+            stack_type = kwargs['stackType']
+
         _setter("ip_cidr_range", ip_cidr_range)
         _setter("network", network)
         if description is not None:
@@ -495,7 +515,35 @@ class _SubnetworkState:
              secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              stack_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if external_ipv6_prefix is None and 'externalIpv6Prefix' in kwargs:
+            external_ipv6_prefix = kwargs['externalIpv6Prefix']
+        if gateway_address is None and 'gatewayAddress' in kwargs:
+            gateway_address = kwargs['gatewayAddress']
+        if internal_ipv6_prefix is None and 'internalIpv6Prefix' in kwargs:
+            internal_ipv6_prefix = kwargs['internalIpv6Prefix']
+        if ip_cidr_range is None and 'ipCidrRange' in kwargs:
+            ip_cidr_range = kwargs['ipCidrRange']
+        if ipv6_access_type is None and 'ipv6AccessType' in kwargs:
+            ipv6_access_type = kwargs['ipv6AccessType']
+        if ipv6_cidr_range is None and 'ipv6CidrRange' in kwargs:
+            ipv6_cidr_range = kwargs['ipv6CidrRange']
+        if log_config is None and 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if private_ip_google_access is None and 'privateIpGoogleAccess' in kwargs:
+            private_ip_google_access = kwargs['privateIpGoogleAccess']
+        if private_ipv6_google_access is None and 'privateIpv6GoogleAccess' in kwargs:
+            private_ipv6_google_access = kwargs['privateIpv6GoogleAccess']
+        if secondary_ip_ranges is None and 'secondaryIpRanges' in kwargs:
+            secondary_ip_ranges = kwargs['secondaryIpRanges']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if stack_type is None and 'stackType' in kwargs:
+            stack_type = kwargs['stackType']
+
         if creation_timestamp is not None:
             _setter("creation_timestamp", creation_timestamp)
         if description is not None:

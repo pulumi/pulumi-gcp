@@ -45,13 +45,21 @@ class TlsInspectionPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ca_pool: pulumi.Input[str],
+             ca_pool: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              exclude_public_ca_set: Optional[pulumi.Input[bool]] = None,
              location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ca_pool is None and 'caPool' in kwargs:
+            ca_pool = kwargs['caPool']
+        if ca_pool is None:
+            raise TypeError("Missing 'ca_pool' argument")
+        if exclude_public_ca_set is None and 'excludePublicCaSet' in kwargs:
+            exclude_public_ca_set = kwargs['excludePublicCaSet']
+
         _setter("ca_pool", ca_pool)
         if description is not None:
             _setter("description", description)
@@ -189,7 +197,17 @@ class _TlsInspectionPolicyState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ca_pool is None and 'caPool' in kwargs:
+            ca_pool = kwargs['caPool']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if exclude_public_ca_set is None and 'excludePublicCaSet' in kwargs:
+            exclude_public_ca_set = kwargs['excludePublicCaSet']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if ca_pool is not None:
             _setter("ca_pool", ca_pool)
         if create_time is not None:

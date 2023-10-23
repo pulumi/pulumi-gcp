@@ -57,7 +57,7 @@ class EnvironmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              container_image: Optional[pulumi.Input['EnvironmentContainerImageArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
@@ -65,7 +65,19 @@ class EnvironmentArgs:
              post_startup_script: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              vm_image: Optional[pulumi.Input['EnvironmentVmImageArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if container_image is None and 'containerImage' in kwargs:
+            container_image = kwargs['containerImage']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if post_startup_script is None and 'postStartupScript' in kwargs:
+            post_startup_script = kwargs['postStartupScript']
+        if vm_image is None and 'vmImage' in kwargs:
+            vm_image = kwargs['vmImage']
+
         _setter("location", location)
         if container_image is not None:
             _setter("container_image", container_image)
@@ -243,7 +255,19 @@ class _EnvironmentState:
              post_startup_script: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              vm_image: Optional[pulumi.Input['EnvironmentVmImageArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if container_image is None and 'containerImage' in kwargs:
+            container_image = kwargs['containerImage']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if post_startup_script is None and 'postStartupScript' in kwargs:
+            post_startup_script = kwargs['postStartupScript']
+        if vm_image is None and 'vmImage' in kwargs:
+            vm_image = kwargs['vmImage']
+
         if container_image is not None:
             _setter("container_image", container_image)
         if create_time is not None:

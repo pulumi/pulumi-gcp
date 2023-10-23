@@ -40,11 +40,23 @@ class SharedflowArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config_bundle: pulumi.Input[str],
-             org_id: pulumi.Input[str],
+             config_bundle: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
              detect_md5hash: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if config_bundle is None and 'configBundle' in kwargs:
+            config_bundle = kwargs['configBundle']
+        if config_bundle is None:
+            raise TypeError("Missing 'config_bundle' argument")
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if detect_md5hash is None and 'detectMd5hash' in kwargs:
+            detect_md5hash = kwargs['detectMd5hash']
+
         _setter("config_bundle", config_bundle)
         _setter("org_id", org_id)
         if detect_md5hash is not None:
@@ -152,7 +164,19 @@ class _SharedflowState:
              name: Optional[pulumi.Input[str]] = None,
              org_id: Optional[pulumi.Input[str]] = None,
              revisions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if config_bundle is None and 'configBundle' in kwargs:
+            config_bundle = kwargs['configBundle']
+        if detect_md5hash is None and 'detectMd5hash' in kwargs:
+            detect_md5hash = kwargs['detectMd5hash']
+        if latest_revision_id is None and 'latestRevisionId' in kwargs:
+            latest_revision_id = kwargs['latestRevisionId']
+        if meta_datas is None and 'metaDatas' in kwargs:
+            meta_datas = kwargs['metaDatas']
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+
         if config_bundle is not None:
             _setter("config_bundle", config_bundle)
         if detect_md5hash is not None:

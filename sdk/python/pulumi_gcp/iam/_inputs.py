@@ -45,7 +45,11 @@ class AccessBoundaryPolicyRuleArgs:
              _setter: Callable[[Any, Any], None],
              access_boundary_rule: Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_boundary_rule is None and 'accessBoundaryRule' in kwargs:
+            access_boundary_rule = kwargs['accessBoundaryRule']
+
         if access_boundary_rule is not None:
             _setter("access_boundary_rule", access_boundary_rule)
         if description is not None:
@@ -101,7 +105,15 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleArgs:
              availability_condition: Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs']] = None,
              available_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              available_resource: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if availability_condition is None and 'availabilityCondition' in kwargs:
+            availability_condition = kwargs['availabilityCondition']
+        if available_permissions is None and 'availablePermissions' in kwargs:
+            available_permissions = kwargs['availablePermissions']
+        if available_resource is None and 'availableResource' in kwargs:
+            available_resource = kwargs['availableResource']
+
         if availability_condition is not None:
             _setter("availability_condition", availability_condition)
         if available_permissions is not None:
@@ -175,11 +187,15 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+
         _setter("expression", expression)
         if description is not None:
             _setter("description", description)
@@ -262,7 +278,11 @@ class DenyPolicyRuleArgs:
              _setter: Callable[[Any, Any], None],
              deny_rule: Optional[pulumi.Input['DenyPolicyRuleDenyRuleArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if deny_rule is None and 'denyRule' in kwargs:
+            deny_rule = kwargs['denyRule']
+
         if deny_rule is not None:
             _setter("deny_rule", deny_rule)
         if description is not None:
@@ -330,7 +350,19 @@ class DenyPolicyRuleDenyRuleArgs:
              denied_principals: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              exception_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              exception_principals: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if denial_condition is None and 'denialCondition' in kwargs:
+            denial_condition = kwargs['denialCondition']
+        if denied_permissions is None and 'deniedPermissions' in kwargs:
+            denied_permissions = kwargs['deniedPermissions']
+        if denied_principals is None and 'deniedPrincipals' in kwargs:
+            denied_principals = kwargs['deniedPrincipals']
+        if exception_permissions is None and 'exceptionPermissions' in kwargs:
+            exception_permissions = kwargs['exceptionPermissions']
+        if exception_principals is None and 'exceptionPrincipals' in kwargs:
+            exception_principals = kwargs['exceptionPrincipals']
+
         if denial_condition is not None:
             _setter("denial_condition", denial_condition)
         if denied_permissions is not None:
@@ -436,11 +468,15 @@ class DenyPolicyRuleDenyRuleDenialConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+
         _setter("expression", expression)
         if description is not None:
             _setter("description", description)
@@ -530,12 +566,28 @@ class WorkforcePoolProviderOidcArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             client_id: pulumi.Input[str],
-             issuer_uri: pulumi.Input[str],
+             client_id: Optional[pulumi.Input[str]] = None,
+             issuer_uri: Optional[pulumi.Input[str]] = None,
              client_secret: Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretArgs']] = None,
              jwks_json: Optional[pulumi.Input[str]] = None,
              web_sso_config: Optional[pulumi.Input['WorkforcePoolProviderOidcWebSsoConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_id is None:
+            raise TypeError("Missing 'client_id' argument")
+        if issuer_uri is None and 'issuerUri' in kwargs:
+            issuer_uri = kwargs['issuerUri']
+        if issuer_uri is None:
+            raise TypeError("Missing 'issuer_uri' argument")
+        if client_secret is None and 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if jwks_json is None and 'jwksJson' in kwargs:
+            jwks_json = kwargs['jwksJson']
+        if web_sso_config is None and 'webSsoConfig' in kwargs:
+            web_sso_config = kwargs['webSsoConfig']
+
         _setter("client_id", client_id)
         _setter("issuer_uri", issuer_uri)
         if client_secret is not None:
@@ -621,7 +673,9 @@ class WorkforcePoolProviderOidcClientSecretArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              value: Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretValueArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if value is not None:
             _setter("value", value)
 
@@ -658,9 +712,15 @@ class WorkforcePoolProviderOidcClientSecretValueArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             plain_text: pulumi.Input[str],
+             plain_text: Optional[pulumi.Input[str]] = None,
              thumbprint: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if plain_text is None and 'plainText' in kwargs:
+            plain_text = kwargs['plainText']
+        if plain_text is None:
+            raise TypeError("Missing 'plain_text' argument")
+
         _setter("plain_text", plain_text)
         if thumbprint is not None:
             _setter("thumbprint", thumbprint)
@@ -720,10 +780,22 @@ class WorkforcePoolProviderOidcWebSsoConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             assertion_claims_behavior: pulumi.Input[str],
-             response_type: pulumi.Input[str],
+             assertion_claims_behavior: Optional[pulumi.Input[str]] = None,
+             response_type: Optional[pulumi.Input[str]] = None,
              additional_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if assertion_claims_behavior is None and 'assertionClaimsBehavior' in kwargs:
+            assertion_claims_behavior = kwargs['assertionClaimsBehavior']
+        if assertion_claims_behavior is None:
+            raise TypeError("Missing 'assertion_claims_behavior' argument")
+        if response_type is None and 'responseType' in kwargs:
+            response_type = kwargs['responseType']
+        if response_type is None:
+            raise TypeError("Missing 'response_type' argument")
+        if additional_scopes is None and 'additionalScopes' in kwargs:
+            additional_scopes = kwargs['additionalScopes']
+
         _setter("assertion_claims_behavior", assertion_claims_behavior)
         _setter("response_type", response_type)
         if additional_scopes is not None:
@@ -800,8 +872,14 @@ class WorkforcePoolProviderSamlArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             idp_metadata_xml: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             idp_metadata_xml: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if idp_metadata_xml is None and 'idpMetadataXml' in kwargs:
+            idp_metadata_xml = kwargs['idpMetadataXml']
+        if idp_metadata_xml is None:
+            raise TypeError("Missing 'idp_metadata_xml' argument")
+
         _setter("idp_metadata_xml", idp_metadata_xml)
 
     @property
@@ -843,8 +921,14 @@ class WorkloadIdentityPoolProviderAwsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             account_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+
         _setter("account_id", account_id)
 
     @property
@@ -897,10 +981,20 @@ class WorkloadIdentityPoolProviderOidcArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             issuer_uri: pulumi.Input[str],
+             issuer_uri: Optional[pulumi.Input[str]] = None,
              allowed_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              jwks_json: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if issuer_uri is None and 'issuerUri' in kwargs:
+            issuer_uri = kwargs['issuerUri']
+        if issuer_uri is None:
+            raise TypeError("Missing 'issuer_uri' argument")
+        if allowed_audiences is None and 'allowedAudiences' in kwargs:
+            allowed_audiences = kwargs['allowedAudiences']
+        if jwks_json is None and 'jwksJson' in kwargs:
+            jwks_json = kwargs['jwksJson']
+
         _setter("issuer_uri", issuer_uri)
         if allowed_audiences is not None:
             _setter("allowed_audiences", allowed_audiences)

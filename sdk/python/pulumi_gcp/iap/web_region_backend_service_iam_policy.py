@@ -48,11 +48,21 @@ class WebRegionBackendServiceIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_data: pulumi.Input[str],
-             web_region_backend_service: pulumi.Input[str],
+             policy_data: Optional[pulumi.Input[str]] = None,
+             web_region_backend_service: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+        if web_region_backend_service is None and 'webRegionBackendService' in kwargs:
+            web_region_backend_service = kwargs['webRegionBackendService']
+        if web_region_backend_service is None:
+            raise TypeError("Missing 'web_region_backend_service' argument")
+
         _setter("policy_data", policy_data)
         _setter("web_region_backend_service", web_region_backend_service)
         if project is not None:
@@ -165,7 +175,13 @@ class _WebRegionBackendServiceIamPolicyState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              web_region_backend_service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if web_region_backend_service is None and 'webRegionBackendService' in kwargs:
+            web_region_backend_service = kwargs['webRegionBackendService']
+
         if etag is not None:
             _setter("etag", etag)
         if policy_data is not None:

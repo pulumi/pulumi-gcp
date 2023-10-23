@@ -59,14 +59,24 @@ class RegionTargetTcpProxyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backend_service: pulumi.Input[str],
+             backend_service: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              proxy_bind: Optional[pulumi.Input[bool]] = None,
              proxy_header: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backend_service is None and 'backendService' in kwargs:
+            backend_service = kwargs['backendService']
+        if backend_service is None:
+            raise TypeError("Missing 'backend_service' argument")
+        if proxy_bind is None and 'proxyBind' in kwargs:
+            proxy_bind = kwargs['proxyBind']
+        if proxy_header is None and 'proxyHeader' in kwargs:
+            proxy_header = kwargs['proxyHeader']
+
         _setter("backend_service", backend_service)
         if description is not None:
             _setter("description", description)
@@ -248,7 +258,21 @@ class _RegionTargetTcpProxyState:
              proxy_id: Optional[pulumi.Input[int]] = None,
              region: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backend_service is None and 'backendService' in kwargs:
+            backend_service = kwargs['backendService']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if proxy_bind is None and 'proxyBind' in kwargs:
+            proxy_bind = kwargs['proxyBind']
+        if proxy_header is None and 'proxyHeader' in kwargs:
+            proxy_header = kwargs['proxyHeader']
+        if proxy_id is None and 'proxyId' in kwargs:
+            proxy_id = kwargs['proxyId']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if backend_service is not None:
             _setter("backend_service", backend_service)
         if creation_timestamp is not None:

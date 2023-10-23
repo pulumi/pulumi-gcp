@@ -47,12 +47,24 @@ class PreventionDeidentifyTemplateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             deidentify_config: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArgs'],
-             parent: pulumi.Input[str],
+             deidentify_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArgs']] = None,
+             parent: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              template_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if deidentify_config is None and 'deidentifyConfig' in kwargs:
+            deidentify_config = kwargs['deidentifyConfig']
+        if deidentify_config is None:
+            raise TypeError("Missing 'deidentify_config' argument")
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if template_id is None and 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+
         _setter("deidentify_config", deidentify_config)
         _setter("parent", parent)
         if description is not None:
@@ -181,7 +193,19 @@ class _PreventionDeidentifyTemplateState:
              parent: Optional[pulumi.Input[str]] = None,
              template_id: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if deidentify_config is None and 'deidentifyConfig' in kwargs:
+            deidentify_config = kwargs['deidentifyConfig']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if template_id is None and 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if deidentify_config is not None:

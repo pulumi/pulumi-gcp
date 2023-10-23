@@ -53,14 +53,26 @@ class PreventionJobTriggerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parent: pulumi.Input[str],
-             triggers: pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerTriggerArgs']]],
+             parent: Optional[pulumi.Input[str]] = None,
+             triggers: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerTriggerArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              inspect_job: Optional[pulumi.Input['PreventionJobTriggerInspectJobArgs']] = None,
              status: Optional[pulumi.Input[str]] = None,
              trigger_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if triggers is None:
+            raise TypeError("Missing 'triggers' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if inspect_job is None and 'inspectJob' in kwargs:
+            inspect_job = kwargs['inspectJob']
+        if trigger_id is None and 'triggerId' in kwargs:
+            trigger_id = kwargs['triggerId']
+
         _setter("parent", parent)
         _setter("triggers", triggers)
         if description is not None:
@@ -230,7 +242,21 @@ class _PreventionJobTriggerState:
              trigger_id: Optional[pulumi.Input[str]] = None,
              triggers: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerTriggerArgs']]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if inspect_job is None and 'inspectJob' in kwargs:
+            inspect_job = kwargs['inspectJob']
+        if last_run_time is None and 'lastRunTime' in kwargs:
+            last_run_time = kwargs['lastRunTime']
+        if trigger_id is None and 'triggerId' in kwargs:
+            trigger_id = kwargs['triggerId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:

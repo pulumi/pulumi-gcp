@@ -67,8 +67,12 @@ class BucketAutoclassArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -111,7 +115,13 @@ class BucketCorArgs:
              methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_age_seconds is None and 'maxAgeSeconds' in kwargs:
+            max_age_seconds = kwargs['maxAgeSeconds']
+        if response_headers is None and 'responseHeaders' in kwargs:
+            response_headers = kwargs['responseHeaders']
+
         if max_age_seconds is not None:
             _setter("max_age_seconds", max_age_seconds)
         if methods is not None:
@@ -184,8 +194,14 @@ class BucketCustomPlacementConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_locations: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             data_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if data_locations is None and 'dataLocations' in kwargs:
+            data_locations = kwargs['dataLocations']
+        if data_locations is None:
+            raise TypeError("Missing 'data_locations' argument")
+
         _setter("data_locations", data_locations)
 
     @property
@@ -228,8 +244,14 @@ class BucketEncryptionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             default_kms_key_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             default_kms_key_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_kms_key_name is None and 'defaultKmsKeyName' in kwargs:
+            default_kms_key_name = kwargs['defaultKmsKeyName']
+        if default_kms_key_name is None:
+            raise TypeError("Missing 'default_kms_key_name' argument")
+
         _setter("default_kms_key_name", default_kms_key_name)
 
     @property
@@ -282,10 +304,16 @@ class BucketIAMBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -356,10 +384,16 @@ class BucketIAMMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -423,9 +457,15 @@ class BucketLifecycleRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input['BucketLifecycleRuleActionArgs'],
-             condition: pulumi.Input['BucketLifecycleRuleConditionArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             action: Optional[pulumi.Input['BucketLifecycleRuleActionArgs']] = None,
+             condition: Optional[pulumi.Input['BucketLifecycleRuleConditionArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+
         _setter("action", action)
         _setter("condition", condition)
 
@@ -471,9 +511,15 @@ class BucketLifecycleRuleActionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              storage_class: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if storage_class is None and 'storageClass' in kwargs:
+            storage_class = kwargs['storageClass']
+
         _setter("type", type)
         if storage_class is not None:
             _setter("storage_class", storage_class)
@@ -558,7 +604,29 @@ class BucketLifecycleRuleConditionArgs:
              noncurrent_time_before: Optional[pulumi.Input[str]] = None,
              num_newer_versions: Optional[pulumi.Input[int]] = None,
              with_state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if created_before is None and 'createdBefore' in kwargs:
+            created_before = kwargs['createdBefore']
+        if custom_time_before is None and 'customTimeBefore' in kwargs:
+            custom_time_before = kwargs['customTimeBefore']
+        if days_since_custom_time is None and 'daysSinceCustomTime' in kwargs:
+            days_since_custom_time = kwargs['daysSinceCustomTime']
+        if days_since_noncurrent_time is None and 'daysSinceNoncurrentTime' in kwargs:
+            days_since_noncurrent_time = kwargs['daysSinceNoncurrentTime']
+        if matches_prefixes is None and 'matchesPrefixes' in kwargs:
+            matches_prefixes = kwargs['matchesPrefixes']
+        if matches_storage_classes is None and 'matchesStorageClasses' in kwargs:
+            matches_storage_classes = kwargs['matchesStorageClasses']
+        if matches_suffixes is None and 'matchesSuffixes' in kwargs:
+            matches_suffixes = kwargs['matchesSuffixes']
+        if noncurrent_time_before is None and 'noncurrentTimeBefore' in kwargs:
+            noncurrent_time_before = kwargs['noncurrentTimeBefore']
+        if num_newer_versions is None and 'numNewerVersions' in kwargs:
+            num_newer_versions = kwargs['numNewerVersions']
+        if with_state is None and 'withState' in kwargs:
+            with_state = kwargs['withState']
+
         if age is not None:
             _setter("age", age)
         if created_before is not None:
@@ -733,9 +801,17 @@ class BucketLoggingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             log_bucket: pulumi.Input[str],
+             log_bucket: Optional[pulumi.Input[str]] = None,
              log_object_prefix: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if log_bucket is None and 'logBucket' in kwargs:
+            log_bucket = kwargs['logBucket']
+        if log_bucket is None:
+            raise TypeError("Missing 'log_bucket' argument")
+        if log_object_prefix is None and 'logObjectPrefix' in kwargs:
+            log_object_prefix = kwargs['logObjectPrefix']
+
         _setter("log_bucket", log_bucket)
         if log_object_prefix is not None:
             _setter("log_object_prefix", log_object_prefix)
@@ -783,9 +859,17 @@ class BucketObjectCustomerEncryptionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             encryption_key: pulumi.Input[str],
+             encryption_key: Optional[pulumi.Input[str]] = None,
              encryption_algorithm: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if encryption_key is None and 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if encryption_key is None:
+            raise TypeError("Missing 'encryption_key' argument")
+        if encryption_algorithm is None and 'encryptionAlgorithm' in kwargs:
+            encryption_algorithm = kwargs['encryptionAlgorithm']
+
         _setter("encryption_key", encryption_key)
         if encryption_algorithm is not None:
             _setter("encryption_algorithm", encryption_algorithm)
@@ -832,9 +916,17 @@ class BucketRetentionPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             retention_period: pulumi.Input[int],
+             retention_period: Optional[pulumi.Input[int]] = None,
              is_locked: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if retention_period is None and 'retentionPeriod' in kwargs:
+            retention_period = kwargs['retentionPeriod']
+        if retention_period is None:
+            raise TypeError("Missing 'retention_period' argument")
+        if is_locked is None and 'isLocked' in kwargs:
+            is_locked = kwargs['isLocked']
+
         _setter("retention_period", retention_period)
         if is_locked is not None:
             _setter("is_locked", is_locked)
@@ -878,8 +970,12 @@ class BucketVersioningArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -916,7 +1012,13 @@ class BucketWebsiteArgs:
              _setter: Callable[[Any, Any], None],
              main_page_suffix: Optional[pulumi.Input[str]] = None,
              not_found_page: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if main_page_suffix is None and 'mainPageSuffix' in kwargs:
+            main_page_suffix = kwargs['mainPageSuffix']
+        if not_found_page is None and 'notFoundPage' in kwargs:
+            not_found_page = kwargs['notFoundPage']
+
         if main_page_suffix is not None:
             _setter("main_page_suffix", main_page_suffix)
         if not_found_page is not None:
@@ -969,7 +1071,11 @@ class DefaultObjectAccessControlProjectTeamArgs:
              _setter: Callable[[Any, Any], None],
              project_number: Optional[pulumi.Input[str]] = None,
              team: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project_number is None and 'projectNumber' in kwargs:
+            project_number = kwargs['projectNumber']
+
         if project_number is not None:
             _setter("project_number", project_number)
         if team is not None:
@@ -1026,7 +1132,13 @@ class InsightsReportConfigCsvOptionsArgs:
              delimiter: Optional[pulumi.Input[str]] = None,
              header_required: Optional[pulumi.Input[bool]] = None,
              record_separator: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if header_required is None and 'headerRequired' in kwargs:
+            header_required = kwargs['headerRequired']
+        if record_separator is None and 'recordSeparator' in kwargs:
+            record_separator = kwargs['recordSeparator']
+
         if delimiter is not None:
             _setter("delimiter", delimiter)
         if header_required is not None:
@@ -1096,10 +1208,22 @@ class InsightsReportConfigFrequencyOptionsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             end_date: pulumi.Input['InsightsReportConfigFrequencyOptionsEndDateArgs'],
-             frequency: pulumi.Input[str],
-             start_date: pulumi.Input['InsightsReportConfigFrequencyOptionsStartDateArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             end_date: Optional[pulumi.Input['InsightsReportConfigFrequencyOptionsEndDateArgs']] = None,
+             frequency: Optional[pulumi.Input[str]] = None,
+             start_date: Optional[pulumi.Input['InsightsReportConfigFrequencyOptionsStartDateArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if end_date is None and 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+        if end_date is None:
+            raise TypeError("Missing 'end_date' argument")
+        if frequency is None:
+            raise TypeError("Missing 'frequency' argument")
+        if start_date is None and 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+        if start_date is None:
+            raise TypeError("Missing 'start_date' argument")
+
         _setter("end_date", end_date)
         _setter("frequency", frequency)
         _setter("start_date", start_date)
@@ -1164,10 +1288,18 @@ class InsightsReportConfigFrequencyOptionsEndDateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             day: pulumi.Input[int],
-             month: pulumi.Input[int],
-             year: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             day: Optional[pulumi.Input[int]] = None,
+             month: Optional[pulumi.Input[int]] = None,
+             year: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if day is None:
+            raise TypeError("Missing 'day' argument")
+        if month is None:
+            raise TypeError("Missing 'month' argument")
+        if year is None:
+            raise TypeError("Missing 'year' argument")
+
         _setter("day", day)
         _setter("month", month)
         _setter("year", year)
@@ -1229,10 +1361,18 @@ class InsightsReportConfigFrequencyOptionsStartDateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             day: pulumi.Input[int],
-             month: pulumi.Input[int],
-             year: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             day: Optional[pulumi.Input[int]] = None,
+             month: Optional[pulumi.Input[int]] = None,
+             year: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if day is None:
+            raise TypeError("Missing 'day' argument")
+        if month is None:
+            raise TypeError("Missing 'month' argument")
+        if year is None:
+            raise TypeError("Missing 'year' argument")
+
         _setter("day", day)
         _setter("month", month)
         _setter("year", year)
@@ -1296,10 +1436,22 @@ class InsightsReportConfigObjectMetadataReportOptionsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             metadata_fields: pulumi.Input[Sequence[pulumi.Input[str]]],
-             storage_destination_options: pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs'],
+             metadata_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             storage_destination_options: Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs']] = None,
              storage_filters: Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if metadata_fields is None and 'metadataFields' in kwargs:
+            metadata_fields = kwargs['metadataFields']
+        if metadata_fields is None:
+            raise TypeError("Missing 'metadata_fields' argument")
+        if storage_destination_options is None and 'storageDestinationOptions' in kwargs:
+            storage_destination_options = kwargs['storageDestinationOptions']
+        if storage_destination_options is None:
+            raise TypeError("Missing 'storage_destination_options' argument")
+        if storage_filters is None and 'storageFilters' in kwargs:
+            storage_filters = kwargs['storageFilters']
+
         _setter("metadata_fields", metadata_fields)
         _setter("storage_destination_options", storage_destination_options)
         if storage_filters is not None:
@@ -1361,9 +1513,15 @@ class InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsAr
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: pulumi.Input[str],
+             bucket: Optional[pulumi.Input[str]] = None,
              destination_path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if destination_path is None and 'destinationPath' in kwargs:
+            destination_path = kwargs['destinationPath']
+
         _setter("bucket", bucket)
         if destination_path is not None:
             _setter("destination_path", destination_path)
@@ -1408,7 +1566,9 @@ class InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              bucket: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if bucket is not None:
             _setter("bucket", bucket)
 
@@ -1445,7 +1605,11 @@ class ObjectAccessControlProjectTeamArgs:
              _setter: Callable[[Any, Any], None],
              project_number: Optional[pulumi.Input[str]] = None,
              team: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project_number is None and 'projectNumber' in kwargs:
+            project_number = kwargs['projectNumber']
+
         if project_number is not None:
             _setter("project_number", project_number)
         if team is not None:
@@ -1491,8 +1655,14 @@ class TransferAgentPoolBandwidthLimitArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             limit_mbps: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             limit_mbps: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if limit_mbps is None and 'limitMbps' in kwargs:
+            limit_mbps = kwargs['limitMbps']
+        if limit_mbps is None:
+            raise TypeError("Missing 'limit_mbps' argument")
+
         _setter("limit_mbps", limit_mbps)
 
     @property
@@ -1528,10 +1698,22 @@ class TransferJobNotificationConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             payload_format: pulumi.Input[str],
-             pubsub_topic: pulumi.Input[str],
+             payload_format: Optional[pulumi.Input[str]] = None,
+             pubsub_topic: Optional[pulumi.Input[str]] = None,
              event_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if payload_format is None and 'payloadFormat' in kwargs:
+            payload_format = kwargs['payloadFormat']
+        if payload_format is None:
+            raise TypeError("Missing 'payload_format' argument")
+        if pubsub_topic is None and 'pubsubTopic' in kwargs:
+            pubsub_topic = kwargs['pubsubTopic']
+        if pubsub_topic is None:
+            raise TypeError("Missing 'pubsub_topic' argument")
+        if event_types is None and 'eventTypes' in kwargs:
+            event_types = kwargs['eventTypes']
+
         _setter("payload_format", payload_format)
         _setter("pubsub_topic", pubsub_topic)
         if event_types is not None:
@@ -1597,11 +1779,23 @@ class TransferJobScheduleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             schedule_start_date: pulumi.Input['TransferJobScheduleScheduleStartDateArgs'],
+             schedule_start_date: Optional[pulumi.Input['TransferJobScheduleScheduleStartDateArgs']] = None,
              repeat_interval: Optional[pulumi.Input[str]] = None,
              schedule_end_date: Optional[pulumi.Input['TransferJobScheduleScheduleEndDateArgs']] = None,
              start_time_of_day: Optional[pulumi.Input['TransferJobScheduleStartTimeOfDayArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if schedule_start_date is None and 'scheduleStartDate' in kwargs:
+            schedule_start_date = kwargs['scheduleStartDate']
+        if schedule_start_date is None:
+            raise TypeError("Missing 'schedule_start_date' argument")
+        if repeat_interval is None and 'repeatInterval' in kwargs:
+            repeat_interval = kwargs['repeatInterval']
+        if schedule_end_date is None and 'scheduleEndDate' in kwargs:
+            schedule_end_date = kwargs['scheduleEndDate']
+        if start_time_of_day is None and 'startTimeOfDay' in kwargs:
+            start_time_of_day = kwargs['startTimeOfDay']
+
         _setter("schedule_start_date", schedule_start_date)
         if repeat_interval is not None:
             _setter("repeat_interval", repeat_interval)
@@ -1681,10 +1875,18 @@ class TransferJobScheduleScheduleEndDateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             day: pulumi.Input[int],
-             month: pulumi.Input[int],
-             year: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             day: Optional[pulumi.Input[int]] = None,
+             month: Optional[pulumi.Input[int]] = None,
+             year: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if day is None:
+            raise TypeError("Missing 'day' argument")
+        if month is None:
+            raise TypeError("Missing 'month' argument")
+        if year is None:
+            raise TypeError("Missing 'year' argument")
+
         _setter("day", day)
         _setter("month", month)
         _setter("year", year)
@@ -1750,10 +1952,18 @@ class TransferJobScheduleScheduleStartDateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             day: pulumi.Input[int],
-             month: pulumi.Input[int],
-             year: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             day: Optional[pulumi.Input[int]] = None,
+             month: Optional[pulumi.Input[int]] = None,
+             year: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if day is None:
+            raise TypeError("Missing 'day' argument")
+        if month is None:
+            raise TypeError("Missing 'month' argument")
+        if year is None:
+            raise TypeError("Missing 'year' argument")
+
         _setter("day", day)
         _setter("month", month)
         _setter("year", year)
@@ -1820,11 +2030,21 @@ class TransferJobScheduleStartTimeOfDayArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hours: pulumi.Input[int],
-             minutes: pulumi.Input[int],
-             nanos: pulumi.Input[int],
-             seconds: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             hours: Optional[pulumi.Input[int]] = None,
+             minutes: Optional[pulumi.Input[int]] = None,
+             nanos: Optional[pulumi.Input[int]] = None,
+             seconds: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if hours is None:
+            raise TypeError("Missing 'hours' argument")
+        if minutes is None:
+            raise TypeError("Missing 'minutes' argument")
+        if nanos is None:
+            raise TypeError("Missing 'nanos' argument")
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
+
         _setter("hours", hours)
         _setter("minutes", minutes)
         _setter("nanos", nanos)
@@ -1934,7 +2154,31 @@ class TransferJobTransferSpecArgs:
              sink_agent_pool_name: Optional[pulumi.Input[str]] = None,
              source_agent_pool_name: Optional[pulumi.Input[str]] = None,
              transfer_options: Optional[pulumi.Input['TransferJobTransferSpecTransferOptionsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if aws_s3_data_source is None and 'awsS3DataSource' in kwargs:
+            aws_s3_data_source = kwargs['awsS3DataSource']
+        if azure_blob_storage_data_source is None and 'azureBlobStorageDataSource' in kwargs:
+            azure_blob_storage_data_source = kwargs['azureBlobStorageDataSource']
+        if gcs_data_sink is None and 'gcsDataSink' in kwargs:
+            gcs_data_sink = kwargs['gcsDataSink']
+        if gcs_data_source is None and 'gcsDataSource' in kwargs:
+            gcs_data_source = kwargs['gcsDataSource']
+        if http_data_source is None and 'httpDataSource' in kwargs:
+            http_data_source = kwargs['httpDataSource']
+        if object_conditions is None and 'objectConditions' in kwargs:
+            object_conditions = kwargs['objectConditions']
+        if posix_data_sink is None and 'posixDataSink' in kwargs:
+            posix_data_sink = kwargs['posixDataSink']
+        if posix_data_source is None and 'posixDataSource' in kwargs:
+            posix_data_source = kwargs['posixDataSource']
+        if sink_agent_pool_name is None and 'sinkAgentPoolName' in kwargs:
+            sink_agent_pool_name = kwargs['sinkAgentPoolName']
+        if source_agent_pool_name is None and 'sourceAgentPoolName' in kwargs:
+            source_agent_pool_name = kwargs['sourceAgentPoolName']
+        if transfer_options is None and 'transferOptions' in kwargs:
+            transfer_options = kwargs['transferOptions']
+
         if aws_s3_data_source is not None:
             _setter("aws_s3_data_source", aws_s3_data_source)
         if azure_blob_storage_data_source is not None:
@@ -2114,11 +2358,21 @@ class TransferJobTransferSpecAwsS3DataSourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket_name: pulumi.Input[str],
+             bucket_name: Optional[pulumi.Input[str]] = None,
              aws_access_key: Optional[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs']] = None,
              path: Optional[pulumi.Input[str]] = None,
              role_arn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if bucket_name is None:
+            raise TypeError("Missing 'bucket_name' argument")
+        if aws_access_key is None and 'awsAccessKey' in kwargs:
+            aws_access_key = kwargs['awsAccessKey']
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+
         _setter("bucket_name", bucket_name)
         if aws_access_key is not None:
             _setter("aws_access_key", aws_access_key)
@@ -2193,9 +2447,19 @@ class TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_key_id: pulumi.Input[str],
-             secret_access_key: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             access_key_id: Optional[pulumi.Input[str]] = None,
+             secret_access_key: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_key_id is None and 'accessKeyId' in kwargs:
+            access_key_id = kwargs['accessKeyId']
+        if access_key_id is None:
+            raise TypeError("Missing 'access_key_id' argument")
+        if secret_access_key is None and 'secretAccessKey' in kwargs:
+            secret_access_key = kwargs['secretAccessKey']
+        if secret_access_key is None:
+            raise TypeError("Missing 'secret_access_key' argument")
+
         _setter("access_key_id", access_key_id)
         _setter("secret_access_key", secret_access_key)
 
@@ -2247,11 +2511,23 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             azure_credentials: pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs'],
-             container: pulumi.Input[str],
-             storage_account: pulumi.Input[str],
+             azure_credentials: Optional[pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs']] = None,
+             container: Optional[pulumi.Input[str]] = None,
+             storage_account: Optional[pulumi.Input[str]] = None,
              path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if azure_credentials is None and 'azureCredentials' in kwargs:
+            azure_credentials = kwargs['azureCredentials']
+        if azure_credentials is None:
+            raise TypeError("Missing 'azure_credentials' argument")
+        if container is None:
+            raise TypeError("Missing 'container' argument")
+        if storage_account is None and 'storageAccount' in kwargs:
+            storage_account = kwargs['storageAccount']
+        if storage_account is None:
+            raise TypeError("Missing 'storage_account' argument")
+
         _setter("azure_credentials", azure_credentials)
         _setter("container", container)
         _setter("storage_account", storage_account)
@@ -2323,8 +2599,14 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             sas_token: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             sas_token: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if sas_token is None and 'sasToken' in kwargs:
+            sas_token = kwargs['sasToken']
+        if sas_token is None:
+            raise TypeError("Missing 'sas_token' argument")
+
         _setter("sas_token", sas_token)
 
     @property
@@ -2359,9 +2641,15 @@ class TransferJobTransferSpecGcsDataSinkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket_name: pulumi.Input[str],
+             bucket_name: Optional[pulumi.Input[str]] = None,
              path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if bucket_name is None:
+            raise TypeError("Missing 'bucket_name' argument")
+
         _setter("bucket_name", bucket_name)
         if path is not None:
             _setter("path", path)
@@ -2408,9 +2696,15 @@ class TransferJobTransferSpecGcsDataSourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket_name: pulumi.Input[str],
+             bucket_name: Optional[pulumi.Input[str]] = None,
              path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if bucket_name is None:
+            raise TypeError("Missing 'bucket_name' argument")
+
         _setter("bucket_name", bucket_name)
         if path is not None:
             _setter("path", path)
@@ -2454,8 +2748,14 @@ class TransferJobTransferSpecHttpDataSourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             list_url: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             list_url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if list_url is None and 'listUrl' in kwargs:
+            list_url = kwargs['listUrl']
+        if list_url is None:
+            raise TypeError("Missing 'list_url' argument")
+
         _setter("list_url", list_url)
 
     @property
@@ -2506,7 +2806,21 @@ class TransferJobTransferSpecObjectConditionsArgs:
              last_modified_since: Optional[pulumi.Input[str]] = None,
              max_time_elapsed_since_last_modification: Optional[pulumi.Input[str]] = None,
              min_time_elapsed_since_last_modification: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if exclude_prefixes is None and 'excludePrefixes' in kwargs:
+            exclude_prefixes = kwargs['excludePrefixes']
+        if include_prefixes is None and 'includePrefixes' in kwargs:
+            include_prefixes = kwargs['includePrefixes']
+        if last_modified_before is None and 'lastModifiedBefore' in kwargs:
+            last_modified_before = kwargs['lastModifiedBefore']
+        if last_modified_since is None and 'lastModifiedSince' in kwargs:
+            last_modified_since = kwargs['lastModifiedSince']
+        if max_time_elapsed_since_last_modification is None and 'maxTimeElapsedSinceLastModification' in kwargs:
+            max_time_elapsed_since_last_modification = kwargs['maxTimeElapsedSinceLastModification']
+        if min_time_elapsed_since_last_modification is None and 'minTimeElapsedSinceLastModification' in kwargs:
+            min_time_elapsed_since_last_modification = kwargs['minTimeElapsedSinceLastModification']
+
         if exclude_prefixes is not None:
             _setter("exclude_prefixes", exclude_prefixes)
         if include_prefixes is not None:
@@ -2607,8 +2921,14 @@ class TransferJobTransferSpecPosixDataSinkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             root_directory: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             root_directory: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if root_directory is None and 'rootDirectory' in kwargs:
+            root_directory = kwargs['rootDirectory']
+        if root_directory is None:
+            raise TypeError("Missing 'root_directory' argument")
+
         _setter("root_directory", root_directory)
 
     @property
@@ -2640,8 +2960,14 @@ class TransferJobTransferSpecPosixDataSourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             root_directory: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             root_directory: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if root_directory is None and 'rootDirectory' in kwargs:
+            root_directory = kwargs['rootDirectory']
+        if root_directory is None:
+            raise TypeError("Missing 'root_directory' argument")
+
         _setter("root_directory", root_directory)
 
     @property
@@ -2687,7 +3013,17 @@ class TransferJobTransferSpecTransferOptionsArgs:
              delete_objects_unique_in_sink: Optional[pulumi.Input[bool]] = None,
              overwrite_objects_already_existing_in_sink: Optional[pulumi.Input[bool]] = None,
              overwrite_when: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if delete_objects_from_source_after_transfer is None and 'deleteObjectsFromSourceAfterTransfer' in kwargs:
+            delete_objects_from_source_after_transfer = kwargs['deleteObjectsFromSourceAfterTransfer']
+        if delete_objects_unique_in_sink is None and 'deleteObjectsUniqueInSink' in kwargs:
+            delete_objects_unique_in_sink = kwargs['deleteObjectsUniqueInSink']
+        if overwrite_objects_already_existing_in_sink is None and 'overwriteObjectsAlreadyExistingInSink' in kwargs:
+            overwrite_objects_already_existing_in_sink = kwargs['overwriteObjectsAlreadyExistingInSink']
+        if overwrite_when is None and 'overwriteWhen' in kwargs:
+            overwrite_when = kwargs['overwriteWhen']
+
         if delete_objects_from_source_after_transfer is not None:
             _setter("delete_objects_from_source_after_transfer", delete_objects_from_source_after_transfer)
         if delete_objects_unique_in_sink is not None:

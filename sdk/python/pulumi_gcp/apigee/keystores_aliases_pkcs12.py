@@ -48,14 +48,30 @@ class KeystoresAliasesPkcs12Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             alias: pulumi.Input[str],
-             environment: pulumi.Input[str],
-             file: pulumi.Input[str],
-             filehash: pulumi.Input[str],
-             keystore: pulumi.Input[str],
-             org_id: pulumi.Input[str],
+             alias: Optional[pulumi.Input[str]] = None,
+             environment: Optional[pulumi.Input[str]] = None,
+             file: Optional[pulumi.Input[str]] = None,
+             filehash: Optional[pulumi.Input[str]] = None,
+             keystore: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if alias is None:
+            raise TypeError("Missing 'alias' argument")
+        if environment is None:
+            raise TypeError("Missing 'environment' argument")
+        if file is None:
+            raise TypeError("Missing 'file' argument")
+        if filehash is None:
+            raise TypeError("Missing 'filehash' argument")
+        if keystore is None:
+            raise TypeError("Missing 'keystore' argument")
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+
         _setter("alias", alias)
         _setter("environment", environment)
         _setter("file", file)
@@ -203,7 +219,13 @@ class _KeystoresAliasesPkcs12State:
              org_id: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if certs_infos is None and 'certsInfos' in kwargs:
+            certs_infos = kwargs['certsInfos']
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+
         if alias is not None:
             _setter("alias", alias)
         if certs_infos is not None:

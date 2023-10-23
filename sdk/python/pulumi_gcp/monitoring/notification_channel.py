@@ -71,7 +71,7 @@ class NotificationChannelArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
@@ -80,7 +80,19 @@ class NotificationChannelArgs:
              project: Optional[pulumi.Input[str]] = None,
              sensitive_labels: Optional[pulumi.Input['NotificationChannelSensitiveLabelsArgs']] = None,
              user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if force_delete is None and 'forceDelete' in kwargs:
+            force_delete = kwargs['forceDelete']
+        if sensitive_labels is None and 'sensitiveLabels' in kwargs:
+            sensitive_labels = kwargs['sensitiveLabels']
+        if user_labels is None and 'userLabels' in kwargs:
+            user_labels = kwargs['userLabels']
+
         _setter("type", type)
         if description is not None:
             _setter("description", description)
@@ -304,7 +316,19 @@ class _NotificationChannelState:
              type: Optional[pulumi.Input[str]] = None,
              user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              verification_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if force_delete is None and 'forceDelete' in kwargs:
+            force_delete = kwargs['forceDelete']
+        if sensitive_labels is None and 'sensitiveLabels' in kwargs:
+            sensitive_labels = kwargs['sensitiveLabels']
+        if user_labels is None and 'userLabels' in kwargs:
+            user_labels = kwargs['userLabels']
+        if verification_status is None and 'verificationStatus' in kwargs:
+            verification_status = kwargs['verificationStatus']
+
         if description is not None:
             _setter("description", description)
         if display_name is not None:

@@ -82,7 +82,7 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 "11.100.0.1/32",
     ///             },
-    ///             DestFqdns = new[] {},
+    ///             DestFqdns = new() { },
     ///             DestRegionCodes = new[]
     ///             {
     ///                 "US",
@@ -91,7 +91,7 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 "iplist-known-malicious-ips",
     ///             },
-    ///             SrcAddressGroups = new[] {},
+    ///             SrcAddressGroups = new() { },
     ///             DestAddressGroups = new[]
     ///             {
     ///                 basicGlobalNetworksecurityAddressGroup.Id,

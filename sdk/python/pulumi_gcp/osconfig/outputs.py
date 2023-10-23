@@ -178,7 +178,15 @@ class GuestPoliciesAssignment(dict):
              instances: Optional[Sequence[str]] = None,
              os_types: Optional[Sequence['outputs.GuestPoliciesAssignmentOsType']] = None,
              zones: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if group_labels is None and 'groupLabels' in kwargs:
+            group_labels = kwargs['groupLabels']
+        if instance_name_prefixes is None and 'instanceNamePrefixes' in kwargs:
+            instance_name_prefixes = kwargs['instanceNamePrefixes']
+        if os_types is None and 'osTypes' in kwargs:
+            os_types = kwargs['osTypes']
+
         if group_labels is not None:
             _setter("group_labels", group_labels)
         if instance_name_prefixes is not None:
@@ -257,8 +265,12 @@ class GuestPoliciesAssignmentGroupLabel(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             labels: Mapping[str, str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             labels: Optional[Mapping[str, str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if labels is None:
+            raise TypeError("Missing 'labels' argument")
+
         _setter("labels", labels)
 
     @property
@@ -316,7 +328,15 @@ class GuestPoliciesAssignmentOsType(dict):
              os_architecture: Optional[str] = None,
              os_short_name: Optional[str] = None,
              os_version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if os_architecture is None and 'osArchitecture' in kwargs:
+            os_architecture = kwargs['osArchitecture']
+        if os_short_name is None and 'osShortName' in kwargs:
+            os_short_name = kwargs['osShortName']
+        if os_version is None and 'osVersion' in kwargs:
+            os_version = kwargs['osVersion']
+
         if os_architecture is not None:
             _setter("os_architecture", os_architecture)
         if os_short_name is not None:
@@ -396,10 +416,16 @@ class GuestPoliciesPackage(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              desired_state: Optional[str] = None,
              manager: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if desired_state is None and 'desiredState' in kwargs:
+            desired_state = kwargs['desiredState']
+
         _setter("name", name)
         if desired_state is not None:
             _setter("desired_state", desired_state)
@@ -470,7 +496,9 @@ class GuestPoliciesPackageRepository(dict):
              goo: Optional['outputs.GuestPoliciesPackageRepositoryGoo'] = None,
              yum: Optional['outputs.GuestPoliciesPackageRepositoryYum'] = None,
              zypper: Optional['outputs.GuestPoliciesPackageRepositoryZypper'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if apt is not None:
             _setter("apt", apt)
         if goo is not None:
@@ -565,12 +593,24 @@ class GuestPoliciesPackageRepositoryApt(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             components: Sequence[str],
-             distribution: str,
-             uri: str,
+             components: Optional[Sequence[str]] = None,
+             distribution: Optional[str] = None,
+             uri: Optional[str] = None,
              archive_type: Optional[str] = None,
              gpg_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if components is None:
+            raise TypeError("Missing 'components' argument")
+        if distribution is None:
+            raise TypeError("Missing 'distribution' argument")
+        if uri is None:
+            raise TypeError("Missing 'uri' argument")
+        if archive_type is None and 'archiveType' in kwargs:
+            archive_type = kwargs['archiveType']
+        if gpg_key is None and 'gpgKey' in kwargs:
+            gpg_key = kwargs['gpgKey']
+
         _setter("components", components)
         _setter("distribution", distribution)
         _setter("uri", uri)
@@ -640,9 +680,15 @@ class GuestPoliciesPackageRepositoryGoo(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+
         _setter("name", name)
         _setter("url", url)
 
@@ -708,11 +754,23 @@ class GuestPoliciesPackageRepositoryYum(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             base_url: str,
-             id: str,
+             base_url: Optional[str] = None,
+             id: Optional[str] = None,
              display_name: Optional[str] = None,
              gpg_keys: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if base_url is None and 'baseUrl' in kwargs:
+            base_url = kwargs['baseUrl']
+        if base_url is None:
+            raise TypeError("Missing 'base_url' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if gpg_keys is None and 'gpgKeys' in kwargs:
+            gpg_keys = kwargs['gpgKeys']
+
         _setter("base_url", base_url)
         _setter("id", id)
         if display_name is not None:
@@ -799,11 +857,23 @@ class GuestPoliciesPackageRepositoryZypper(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             base_url: str,
-             id: str,
+             base_url: Optional[str] = None,
+             id: Optional[str] = None,
              display_name: Optional[str] = None,
              gpg_keys: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if base_url is None and 'baseUrl' in kwargs:
+            base_url = kwargs['baseUrl']
+        if base_url is None:
+            raise TypeError("Missing 'base_url' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if gpg_keys is None and 'gpgKeys' in kwargs:
+            gpg_keys = kwargs['gpgKeys']
+
         _setter("base_url", base_url)
         _setter("id", id)
         if display_name is not None:
@@ -909,13 +979,23 @@ class GuestPoliciesRecipe(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              artifacts: Optional[Sequence['outputs.GuestPoliciesRecipeArtifact']] = None,
              desired_state: Optional[str] = None,
              install_steps: Optional[Sequence['outputs.GuestPoliciesRecipeInstallStep']] = None,
              update_steps: Optional[Sequence['outputs.GuestPoliciesRecipeUpdateStep']] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if desired_state is None and 'desiredState' in kwargs:
+            desired_state = kwargs['desiredState']
+        if install_steps is None and 'installSteps' in kwargs:
+            install_steps = kwargs['installSteps']
+        if update_steps is None and 'updateSteps' in kwargs:
+            update_steps = kwargs['updateSteps']
+
         _setter("name", name)
         if artifacts is not None:
             _setter("artifacts", artifacts)
@@ -1036,11 +1116,17 @@ class GuestPoliciesRecipeArtifact(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
+             id: Optional[str] = None,
              allow_insecure: Optional[bool] = None,
              gcs: Optional['outputs.GuestPoliciesRecipeArtifactGcs'] = None,
              remote: Optional['outputs.GuestPoliciesRecipeArtifactRemote'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if allow_insecure is None and 'allowInsecure' in kwargs:
+            allow_insecure = kwargs['allowInsecure']
+
         _setter("id", id)
         if allow_insecure is not None:
             _setter("allow_insecure", allow_insecure)
@@ -1113,7 +1199,9 @@ class GuestPoliciesRecipeArtifactGcs(dict):
              bucket: Optional[str] = None,
              generation: Optional[int] = None,
              object: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if bucket is not None:
             _setter("bucket", bucket)
         if generation is not None:
@@ -1187,7 +1275,11 @@ class GuestPoliciesRecipeArtifactRemote(dict):
              _setter: Callable[[Any, Any], None],
              check_sum: Optional[str] = None,
              uri: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if check_sum is None and 'checkSum' in kwargs:
+            check_sum = kwargs['checkSum']
+
         if check_sum is not None:
             _setter("check_sum", check_sum)
         if uri is not None:
@@ -1287,7 +1379,23 @@ class GuestPoliciesRecipeInstallStep(dict):
              msi_installation: Optional['outputs.GuestPoliciesRecipeInstallStepMsiInstallation'] = None,
              rpm_installation: Optional['outputs.GuestPoliciesRecipeInstallStepRpmInstallation'] = None,
              script_run: Optional['outputs.GuestPoliciesRecipeInstallStepScriptRun'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if archive_extraction is None and 'archiveExtraction' in kwargs:
+            archive_extraction = kwargs['archiveExtraction']
+        if dpkg_installation is None and 'dpkgInstallation' in kwargs:
+            dpkg_installation = kwargs['dpkgInstallation']
+        if file_copy is None and 'fileCopy' in kwargs:
+            file_copy = kwargs['fileCopy']
+        if file_exec is None and 'fileExec' in kwargs:
+            file_exec = kwargs['fileExec']
+        if msi_installation is None and 'msiInstallation' in kwargs:
+            msi_installation = kwargs['msiInstallation']
+        if rpm_installation is None and 'rpmInstallation' in kwargs:
+            rpm_installation = kwargs['rpmInstallation']
+        if script_run is None and 'scriptRun' in kwargs:
+            script_run = kwargs['scriptRun']
+
         if archive_extraction is not None:
             _setter("archive_extraction", archive_extraction)
         if dpkg_installation is not None:
@@ -1405,10 +1513,18 @@ class GuestPoliciesRecipeInstallStepArchiveExtraction(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             artifact_id: str,
-             type: str,
+             artifact_id: Optional[str] = None,
+             type: Optional[str] = None,
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if artifact_id is None and 'artifactId' in kwargs:
+            artifact_id = kwargs['artifactId']
+        if artifact_id is None:
+            raise TypeError("Missing 'artifact_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("artifact_id", artifact_id)
         _setter("type", type)
         if destination is not None:
@@ -1471,8 +1587,14 @@ class GuestPoliciesRecipeInstallStepDpkgInstallation(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             artifact_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             artifact_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if artifact_id is None and 'artifactId' in kwargs:
+            artifact_id = kwargs['artifactId']
+        if artifact_id is None:
+            raise TypeError("Missing 'artifact_id' argument")
+
         _setter("artifact_id", artifact_id)
 
     @property
@@ -1530,11 +1652,19 @@ class GuestPoliciesRecipeInstallStepFileCopy(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             artifact_id: str,
-             destination: str,
+             artifact_id: Optional[str] = None,
+             destination: Optional[str] = None,
              overwrite: Optional[bool] = None,
              permissions: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if artifact_id is None and 'artifactId' in kwargs:
+            artifact_id = kwargs['artifactId']
+        if artifact_id is None:
+            raise TypeError("Missing 'artifact_id' argument")
+        if destination is None:
+            raise TypeError("Missing 'destination' argument")
+
         _setter("artifact_id", artifact_id)
         _setter("destination", destination)
         if overwrite is not None:
@@ -1629,7 +1759,15 @@ class GuestPoliciesRecipeInstallStepFileExec(dict):
              args: Optional[Sequence[str]] = None,
              artifact_id: Optional[str] = None,
              local_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allowed_exit_codes is None and 'allowedExitCodes' in kwargs:
+            allowed_exit_codes = kwargs['allowedExitCodes']
+        if artifact_id is None and 'artifactId' in kwargs:
+            artifact_id = kwargs['artifactId']
+        if local_path is None and 'localPath' in kwargs:
+            local_path = kwargs['localPath']
+
         if allowed_exit_codes is not None:
             _setter("allowed_exit_codes", allowed_exit_codes)
         if args is not None:
@@ -1711,10 +1849,18 @@ class GuestPoliciesRecipeInstallStepMsiInstallation(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             artifact_id: str,
+             artifact_id: Optional[str] = None,
              allowed_exit_codes: Optional[Sequence[int]] = None,
              flags: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if artifact_id is None and 'artifactId' in kwargs:
+            artifact_id = kwargs['artifactId']
+        if artifact_id is None:
+            raise TypeError("Missing 'artifact_id' argument")
+        if allowed_exit_codes is None and 'allowedExitCodes' in kwargs:
+            allowed_exit_codes = kwargs['allowedExitCodes']
+
         _setter("artifact_id", artifact_id)
         if allowed_exit_codes is not None:
             _setter("allowed_exit_codes", allowed_exit_codes)
@@ -1777,8 +1923,14 @@ class GuestPoliciesRecipeInstallStepRpmInstallation(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             artifact_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             artifact_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if artifact_id is None and 'artifactId' in kwargs:
+            artifact_id = kwargs['artifactId']
+        if artifact_id is None:
+            raise TypeError("Missing 'artifact_id' argument")
+
         _setter("artifact_id", artifact_id)
 
     @property
@@ -1829,10 +1981,16 @@ class GuestPoliciesRecipeInstallStepScriptRun(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             script: str,
+             script: Optional[str] = None,
              allowed_exit_codes: Optional[Sequence[int]] = None,
              interpreter: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if script is None:
+            raise TypeError("Missing 'script' argument")
+        if allowed_exit_codes is None and 'allowedExitCodes' in kwargs:
+            allowed_exit_codes = kwargs['allowedExitCodes']
+
         _setter("script", script)
         if allowed_exit_codes is not None:
             _setter("allowed_exit_codes", allowed_exit_codes)
@@ -1941,7 +2099,23 @@ class GuestPoliciesRecipeUpdateStep(dict):
              msi_installation: Optional['outputs.GuestPoliciesRecipeUpdateStepMsiInstallation'] = None,
              rpm_installation: Optional['outputs.GuestPoliciesRecipeUpdateStepRpmInstallation'] = None,
              script_run: Optional['outputs.GuestPoliciesRecipeUpdateStepScriptRun'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if archive_extraction is None and 'archiveExtraction' in kwargs:
+            archive_extraction = kwargs['archiveExtraction']
+        if dpkg_installation is None and 'dpkgInstallation' in kwargs:
+            dpkg_installation = kwargs['dpkgInstallation']
+        if file_copy is None and 'fileCopy' in kwargs:
+            file_copy = kwargs['fileCopy']
+        if file_exec is None and 'fileExec' in kwargs:
+            file_exec = kwargs['fileExec']
+        if msi_installation is None and 'msiInstallation' in kwargs:
+            msi_installation = kwargs['msiInstallation']
+        if rpm_installation is None and 'rpmInstallation' in kwargs:
+            rpm_installation = kwargs['rpmInstallation']
+        if script_run is None and 'scriptRun' in kwargs:
+            script_run = kwargs['scriptRun']
+
         if archive_extraction is not None:
             _setter("archive_extraction", archive_extraction)
         if dpkg_installation is not None:
@@ -2059,10 +2233,18 @@ class GuestPoliciesRecipeUpdateStepArchiveExtraction(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             artifact_id: str,
-             type: str,
+             artifact_id: Optional[str] = None,
+             type: Optional[str] = None,
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if artifact_id is None and 'artifactId' in kwargs:
+            artifact_id = kwargs['artifactId']
+        if artifact_id is None:
+            raise TypeError("Missing 'artifact_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("artifact_id", artifact_id)
         _setter("type", type)
         if destination is not None:
@@ -2125,8 +2307,14 @@ class GuestPoliciesRecipeUpdateStepDpkgInstallation(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             artifact_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             artifact_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if artifact_id is None and 'artifactId' in kwargs:
+            artifact_id = kwargs['artifactId']
+        if artifact_id is None:
+            raise TypeError("Missing 'artifact_id' argument")
+
         _setter("artifact_id", artifact_id)
 
     @property
@@ -2184,11 +2372,19 @@ class GuestPoliciesRecipeUpdateStepFileCopy(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             artifact_id: str,
-             destination: str,
+             artifact_id: Optional[str] = None,
+             destination: Optional[str] = None,
              overwrite: Optional[bool] = None,
              permissions: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if artifact_id is None and 'artifactId' in kwargs:
+            artifact_id = kwargs['artifactId']
+        if artifact_id is None:
+            raise TypeError("Missing 'artifact_id' argument")
+        if destination is None:
+            raise TypeError("Missing 'destination' argument")
+
         _setter("artifact_id", artifact_id)
         _setter("destination", destination)
         if overwrite is not None:
@@ -2283,7 +2479,15 @@ class GuestPoliciesRecipeUpdateStepFileExec(dict):
              args: Optional[Sequence[str]] = None,
              artifact_id: Optional[str] = None,
              local_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allowed_exit_codes is None and 'allowedExitCodes' in kwargs:
+            allowed_exit_codes = kwargs['allowedExitCodes']
+        if artifact_id is None and 'artifactId' in kwargs:
+            artifact_id = kwargs['artifactId']
+        if local_path is None and 'localPath' in kwargs:
+            local_path = kwargs['localPath']
+
         if allowed_exit_codes is not None:
             _setter("allowed_exit_codes", allowed_exit_codes)
         if args is not None:
@@ -2365,10 +2569,18 @@ class GuestPoliciesRecipeUpdateStepMsiInstallation(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             artifact_id: str,
+             artifact_id: Optional[str] = None,
              allowed_exit_codes: Optional[Sequence[int]] = None,
              flags: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if artifact_id is None and 'artifactId' in kwargs:
+            artifact_id = kwargs['artifactId']
+        if artifact_id is None:
+            raise TypeError("Missing 'artifact_id' argument")
+        if allowed_exit_codes is None and 'allowedExitCodes' in kwargs:
+            allowed_exit_codes = kwargs['allowedExitCodes']
+
         _setter("artifact_id", artifact_id)
         if allowed_exit_codes is not None:
             _setter("allowed_exit_codes", allowed_exit_codes)
@@ -2431,8 +2643,14 @@ class GuestPoliciesRecipeUpdateStepRpmInstallation(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             artifact_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             artifact_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if artifact_id is None and 'artifactId' in kwargs:
+            artifact_id = kwargs['artifactId']
+        if artifact_id is None:
+            raise TypeError("Missing 'artifact_id' argument")
+
         _setter("artifact_id", artifact_id)
 
     @property
@@ -2483,10 +2701,16 @@ class GuestPoliciesRecipeUpdateStepScriptRun(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             script: str,
+             script: Optional[str] = None,
              allowed_exit_codes: Optional[Sequence[int]] = None,
              interpreter: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if script is None:
+            raise TypeError("Missing 'script' argument")
+        if allowed_exit_codes is None and 'allowedExitCodes' in kwargs:
+            allowed_exit_codes = kwargs['allowedExitCodes']
+
         _setter("script", script)
         if allowed_exit_codes is not None:
             _setter("allowed_exit_codes", allowed_exit_codes)
@@ -2575,7 +2799,13 @@ class OsPolicyAssignmentInstanceFilter(dict):
              exclusion_labels: Optional[Sequence['outputs.OsPolicyAssignmentInstanceFilterExclusionLabel']] = None,
              inclusion_labels: Optional[Sequence['outputs.OsPolicyAssignmentInstanceFilterInclusionLabel']] = None,
              inventories: Optional[Sequence['outputs.OsPolicyAssignmentInstanceFilterInventory']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if exclusion_labels is None and 'exclusionLabels' in kwargs:
+            exclusion_labels = kwargs['exclusionLabels']
+        if inclusion_labels is None and 'inclusionLabels' in kwargs:
+            inclusion_labels = kwargs['inclusionLabels']
+
         if all is not None:
             _setter("all", all)
         if exclusion_labels is not None:
@@ -2644,7 +2874,9 @@ class OsPolicyAssignmentInstanceFilterExclusionLabel(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              labels: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if labels is not None:
             _setter("labels", labels)
 
@@ -2676,7 +2908,9 @@ class OsPolicyAssignmentInstanceFilterInclusionLabel(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              labels: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if labels is not None:
             _setter("labels", labels)
 
@@ -2730,9 +2964,17 @@ class OsPolicyAssignmentInstanceFilterInventory(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             os_short_name: str,
+             os_short_name: Optional[str] = None,
              os_version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if os_short_name is None and 'osShortName' in kwargs:
+            os_short_name = kwargs['osShortName']
+        if os_short_name is None:
+            raise TypeError("Missing 'os_short_name' argument")
+        if os_version is None and 'osVersion' in kwargs:
+            os_version = kwargs['osVersion']
+
         _setter("os_short_name", os_short_name)
         if os_version is not None:
             _setter("os_version", os_version)
@@ -2819,12 +3061,24 @@ class OsPolicyAssignmentOsPolicy(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             mode: str,
-             resource_groups: Sequence['outputs.OsPolicyAssignmentOsPolicyResourceGroup'],
+             id: Optional[str] = None,
+             mode: Optional[str] = None,
+             resource_groups: Optional[Sequence['outputs.OsPolicyAssignmentOsPolicyResourceGroup']] = None,
              allow_no_resource_group_match: Optional[bool] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
+        if resource_groups is None and 'resourceGroups' in kwargs:
+            resource_groups = kwargs['resourceGroups']
+        if resource_groups is None:
+            raise TypeError("Missing 'resource_groups' argument")
+        if allow_no_resource_group_match is None and 'allowNoResourceGroupMatch' in kwargs:
+            allow_no_resource_group_match = kwargs['allowNoResourceGroupMatch']
+
         _setter("id", id)
         _setter("mode", mode)
         _setter("resource_groups", resource_groups)
@@ -2935,9 +3189,15 @@ class OsPolicyAssignmentOsPolicyResourceGroup(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resources: Sequence['outputs.OsPolicyAssignmentOsPolicyResourceGroupResource'],
+             resources: Optional[Sequence['outputs.OsPolicyAssignmentOsPolicyResourceGroupResource']] = None,
              inventory_filters: Optional[Sequence['outputs.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if resources is None:
+            raise TypeError("Missing 'resources' argument")
+        if inventory_filters is None and 'inventoryFilters' in kwargs:
+            inventory_filters = kwargs['inventoryFilters']
+
         _setter("resources", resources)
         if inventory_filters is not None:
             _setter("inventory_filters", inventory_filters)
@@ -3008,9 +3268,17 @@ class OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             os_short_name: str,
+             os_short_name: Optional[str] = None,
              os_version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if os_short_name is None and 'osShortName' in kwargs:
+            os_short_name = kwargs['osShortName']
+        if os_short_name is None:
+            raise TypeError("Missing 'os_short_name' argument")
+        if os_version is None and 'osVersion' in kwargs:
+            os_version = kwargs['osVersion']
+
         _setter("os_short_name", os_short_name)
         if os_version is not None:
             _setter("os_version", os_version)
@@ -3088,12 +3356,18 @@ class OsPolicyAssignmentOsPolicyResourceGroupResource(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
+             id: Optional[str] = None,
              exec_: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExec'] = None,
              file: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceFile'] = None,
              pkg: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkg'] = None,
              repository: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepository'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if exec_ is None and 'exec' in kwargs:
+            exec_ = kwargs['exec']
+
         _setter("id", id)
         if exec_ is not None:
             _setter("exec_", exec_)
@@ -3179,9 +3453,13 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExec(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             validate: 'outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate',
+             validate: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate'] = None,
              enforce: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if validate is None:
+            raise TypeError("Missing 'validate' argument")
+
         _setter("validate", validate)
         if enforce is not None:
             _setter("enforce", enforce)
@@ -3261,12 +3539,18 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             interpreter: str,
+             interpreter: Optional[str] = None,
              args: Optional[Sequence[str]] = None,
              file: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile'] = None,
              output_file_path: Optional[str] = None,
              script: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if interpreter is None:
+            raise TypeError("Missing 'interpreter' argument")
+        if output_file_path is None and 'outputFilePath' in kwargs:
+            output_file_path = kwargs['outputFilePath']
+
         _setter("interpreter", interpreter)
         if args is not None:
             _setter("args", args)
@@ -3376,7 +3660,13 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile(dict):
              gcs: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs'] = None,
              local_path: Optional[str] = None,
              remote: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_insecure is None and 'allowInsecure' in kwargs:
+            allow_insecure = kwargs['allowInsecure']
+        if local_path is None and 'localPath' in kwargs:
+            local_path = kwargs['localPath']
+
         if allow_insecure is not None:
             _setter("allow_insecure", allow_insecure)
         if gcs is not None:
@@ -3443,10 +3733,16 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: str,
-             object: str,
+             bucket: Optional[str] = None,
+             object: Optional[str] = None,
              generation: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if object is None:
+            raise TypeError("Missing 'object' argument")
+
         _setter("bucket", bucket)
         _setter("object", object)
         if generation is not None:
@@ -3512,9 +3808,15 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote(dict)
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             uri: str,
+             uri: Optional[str] = None,
              sha256_checksum: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if uri is None:
+            raise TypeError("Missing 'uri' argument")
+        if sha256_checksum is None and 'sha256Checksum' in kwargs:
+            sha256_checksum = kwargs['sha256Checksum']
+
         _setter("uri", uri)
         if sha256_checksum is not None:
             _setter("sha256_checksum", sha256_checksum)
@@ -3588,12 +3890,18 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             interpreter: str,
+             interpreter: Optional[str] = None,
              args: Optional[Sequence[str]] = None,
              file: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile'] = None,
              output_file_path: Optional[str] = None,
              script: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if interpreter is None:
+            raise TypeError("Missing 'interpreter' argument")
+        if output_file_path is None and 'outputFilePath' in kwargs:
+            output_file_path = kwargs['outputFilePath']
+
         _setter("interpreter", interpreter)
         if args is not None:
             _setter("args", args)
@@ -3703,7 +4011,13 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile(dict):
              gcs: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs'] = None,
              local_path: Optional[str] = None,
              remote: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_insecure is None and 'allowInsecure' in kwargs:
+            allow_insecure = kwargs['allowInsecure']
+        if local_path is None and 'localPath' in kwargs:
+            local_path = kwargs['localPath']
+
         if allow_insecure is not None:
             _setter("allow_insecure", allow_insecure)
         if gcs is not None:
@@ -3770,10 +4084,16 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: str,
-             object: str,
+             bucket: Optional[str] = None,
+             object: Optional[str] = None,
              generation: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if object is None:
+            raise TypeError("Missing 'object' argument")
+
         _setter("bucket", bucket)
         _setter("object", object)
         if generation is not None:
@@ -3839,9 +4159,15 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote(dict
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             uri: str,
+             uri: Optional[str] = None,
              sha256_checksum: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if uri is None:
+            raise TypeError("Missing 'uri' argument")
+        if sha256_checksum is None and 'sha256Checksum' in kwargs:
+            sha256_checksum = kwargs['sha256Checksum']
+
         _setter("uri", uri)
         if sha256_checksum is not None:
             _setter("sha256_checksum", sha256_checksum)
@@ -3900,12 +4226,18 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFile(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: str,
-             state: str,
+             path: Optional[str] = None,
+             state: Optional[str] = None,
              content: Optional[str] = None,
              file: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile'] = None,
              permissions: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+
         _setter("path", path)
         _setter("state", state)
         if content is not None:
@@ -4016,7 +4348,13 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile(dict):
              gcs: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs'] = None,
              local_path: Optional[str] = None,
              remote: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_insecure is None and 'allowInsecure' in kwargs:
+            allow_insecure = kwargs['allowInsecure']
+        if local_path is None and 'localPath' in kwargs:
+            local_path = kwargs['localPath']
+
         if allow_insecure is not None:
             _setter("allow_insecure", allow_insecure)
         if gcs is not None:
@@ -4083,10 +4421,16 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: str,
-             object: str,
+             bucket: Optional[str] = None,
+             object: Optional[str] = None,
              generation: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if object is None:
+            raise TypeError("Missing 'object' argument")
+
         _setter("bucket", bucket)
         _setter("object", object)
         if generation is not None:
@@ -4152,9 +4496,15 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             uri: str,
+             uri: Optional[str] = None,
              sha256_checksum: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if uri is None:
+            raise TypeError("Missing 'uri' argument")
+        if sha256_checksum is None and 'sha256Checksum' in kwargs:
+            sha256_checksum = kwargs['sha256Checksum']
+
         _setter("uri", uri)
         if sha256_checksum is not None:
             _setter("sha256_checksum", sha256_checksum)
@@ -4238,7 +4588,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkg(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             desired_state: str,
+             desired_state: Optional[str] = None,
              apt: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt'] = None,
              deb: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb'] = None,
              googet: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget'] = None,
@@ -4246,7 +4596,13 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkg(dict):
              rpm: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm'] = None,
              yum: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum'] = None,
              zypper: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if desired_state is None and 'desiredState' in kwargs:
+            desired_state = kwargs['desiredState']
+        if desired_state is None:
+            raise TypeError("Missing 'desired_state' argument")
+
         _setter("desired_state", desired_state)
         if apt is not None:
             _setter("apt", apt)
@@ -4351,8 +4707,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -4401,9 +4761,15 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source: 'outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource',
+             source: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource'] = None,
              pull_deps: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if pull_deps is None and 'pullDeps' in kwargs:
+            pull_deps = kwargs['pullDeps']
+
         _setter("source", source)
         if pull_deps is not None:
             _setter("pull_deps", pull_deps)
@@ -4478,7 +4844,13 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource(dict):
              gcs: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs'] = None,
              local_path: Optional[str] = None,
              remote: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_insecure is None and 'allowInsecure' in kwargs:
+            allow_insecure = kwargs['allowInsecure']
+        if local_path is None and 'localPath' in kwargs:
+            local_path = kwargs['localPath']
+
         if allow_insecure is not None:
             _setter("allow_insecure", allow_insecure)
         if gcs is not None:
@@ -4545,10 +4917,16 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: str,
-             object: str,
+             bucket: Optional[str] = None,
+             object: Optional[str] = None,
              generation: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if object is None:
+            raise TypeError("Missing 'object' argument")
+
         _setter("bucket", bucket)
         _setter("object", object)
         if generation is not None:
@@ -4614,9 +4992,15 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             uri: str,
+             uri: Optional[str] = None,
              sha256_checksum: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if uri is None:
+            raise TypeError("Missing 'uri' argument")
+        if sha256_checksum is None and 'sha256Checksum' in kwargs:
+            sha256_checksum = kwargs['sha256Checksum']
+
         _setter("uri", uri)
         if sha256_checksum is not None:
             _setter("sha256_checksum", sha256_checksum)
@@ -4653,8 +5037,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -4686,9 +5074,13 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source: 'outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource',
+             source: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource'] = None,
              properties: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+
         _setter("source", source)
         if properties is not None:
             _setter("properties", properties)
@@ -4763,7 +5155,13 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource(dict):
              gcs: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs'] = None,
              local_path: Optional[str] = None,
              remote: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_insecure is None and 'allowInsecure' in kwargs:
+            allow_insecure = kwargs['allowInsecure']
+        if local_path is None and 'localPath' in kwargs:
+            local_path = kwargs['localPath']
+
         if allow_insecure is not None:
             _setter("allow_insecure", allow_insecure)
         if gcs is not None:
@@ -4830,10 +5228,16 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: str,
-             object: str,
+             bucket: Optional[str] = None,
+             object: Optional[str] = None,
              generation: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if object is None:
+            raise TypeError("Missing 'object' argument")
+
         _setter("bucket", bucket)
         _setter("object", object)
         if generation is not None:
@@ -4899,9 +5303,15 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             uri: str,
+             uri: Optional[str] = None,
              sha256_checksum: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if uri is None:
+            raise TypeError("Missing 'uri' argument")
+        if sha256_checksum is None and 'sha256Checksum' in kwargs:
+            sha256_checksum = kwargs['sha256Checksum']
+
         _setter("uri", uri)
         if sha256_checksum is not None:
             _setter("sha256_checksum", sha256_checksum)
@@ -4961,9 +5371,15 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source: 'outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource',
+             source: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource'] = None,
              pull_deps: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if pull_deps is None and 'pullDeps' in kwargs:
+            pull_deps = kwargs['pullDeps']
+
         _setter("source", source)
         if pull_deps is not None:
             _setter("pull_deps", pull_deps)
@@ -5038,7 +5454,13 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource(dict):
              gcs: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs'] = None,
              local_path: Optional[str] = None,
              remote: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_insecure is None and 'allowInsecure' in kwargs:
+            allow_insecure = kwargs['allowInsecure']
+        if local_path is None and 'localPath' in kwargs:
+            local_path = kwargs['localPath']
+
         if allow_insecure is not None:
             _setter("allow_insecure", allow_insecure)
         if gcs is not None:
@@ -5105,10 +5527,16 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: str,
-             object: str,
+             bucket: Optional[str] = None,
+             object: Optional[str] = None,
              generation: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if object is None:
+            raise TypeError("Missing 'object' argument")
+
         _setter("bucket", bucket)
         _setter("object", object)
         if generation is not None:
@@ -5174,9 +5602,15 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             uri: str,
+             uri: Optional[str] = None,
              sha256_checksum: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if uri is None:
+            raise TypeError("Missing 'uri' argument")
+        if sha256_checksum is None and 'sha256Checksum' in kwargs:
+            sha256_checksum = kwargs['sha256Checksum']
+
         _setter("uri", uri)
         if sha256_checksum is not None:
             _setter("sha256_checksum", sha256_checksum)
@@ -5213,8 +5647,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -5240,8 +5678,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -5284,7 +5726,9 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepository(dict):
              goo: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo'] = None,
              yum: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum'] = None,
              zypper: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if apt is not None:
             _setter("apt", apt)
         if goo is not None:
@@ -5379,12 +5823,26 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             archive_type: str,
-             components: Sequence[str],
-             distribution: str,
-             uri: str,
+             archive_type: Optional[str] = None,
+             components: Optional[Sequence[str]] = None,
+             distribution: Optional[str] = None,
+             uri: Optional[str] = None,
              gpg_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if archive_type is None and 'archiveType' in kwargs:
+            archive_type = kwargs['archiveType']
+        if archive_type is None:
+            raise TypeError("Missing 'archive_type' argument")
+        if components is None:
+            raise TypeError("Missing 'components' argument")
+        if distribution is None:
+            raise TypeError("Missing 'distribution' argument")
+        if uri is None:
+            raise TypeError("Missing 'uri' argument")
+        if gpg_key is None and 'gpgKey' in kwargs:
+            gpg_key = kwargs['gpgKey']
+
         _setter("archive_type", archive_type)
         _setter("components", components)
         _setter("distribution", distribution)
@@ -5453,9 +5911,15 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+
         _setter("name", name)
         _setter("url", url)
 
@@ -5523,11 +5987,23 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             base_url: str,
-             id: str,
+             base_url: Optional[str] = None,
+             id: Optional[str] = None,
              display_name: Optional[str] = None,
              gpg_keys: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if base_url is None and 'baseUrl' in kwargs:
+            base_url = kwargs['baseUrl']
+        if base_url is None:
+            raise TypeError("Missing 'base_url' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if gpg_keys is None and 'gpgKeys' in kwargs:
+            gpg_keys = kwargs['gpgKeys']
+
         _setter("base_url", base_url)
         _setter("id", id)
         if display_name is not None:
@@ -5618,11 +6094,23 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             base_url: str,
-             id: str,
+             base_url: Optional[str] = None,
+             id: Optional[str] = None,
              display_name: Optional[str] = None,
              gpg_keys: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if base_url is None and 'baseUrl' in kwargs:
+            base_url = kwargs['baseUrl']
+        if base_url is None:
+            raise TypeError("Missing 'base_url' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if gpg_keys is None and 'gpgKeys' in kwargs:
+            gpg_keys = kwargs['gpgKeys']
+
         _setter("base_url", base_url)
         _setter("id", id)
         if display_name is not None:
@@ -5708,9 +6196,19 @@ class OsPolicyAssignmentRollout(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disruption_budget: 'outputs.OsPolicyAssignmentRolloutDisruptionBudget',
-             min_wait_duration: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             disruption_budget: Optional['outputs.OsPolicyAssignmentRolloutDisruptionBudget'] = None,
+             min_wait_duration: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disruption_budget is None and 'disruptionBudget' in kwargs:
+            disruption_budget = kwargs['disruptionBudget']
+        if disruption_budget is None:
+            raise TypeError("Missing 'disruption_budget' argument")
+        if min_wait_duration is None and 'minWaitDuration' in kwargs:
+            min_wait_duration = kwargs['minWaitDuration']
+        if min_wait_duration is None:
+            raise TypeError("Missing 'min_wait_duration' argument")
+
         _setter("disruption_budget", disruption_budget)
         _setter("min_wait_duration", min_wait_duration)
 
@@ -5759,7 +6257,9 @@ class OsPolicyAssignmentRolloutDisruptionBudget(dict):
              _setter: Callable[[Any, Any], None],
              fixed: Optional[int] = None,
              percent: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if fixed is not None:
             _setter("fixed", fixed)
         if percent is not None:
@@ -5839,7 +6339,13 @@ class PatchDeploymentInstanceFilter(dict):
              instance_name_prefixes: Optional[Sequence[str]] = None,
              instances: Optional[Sequence[str]] = None,
              zones: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if group_labels is None and 'groupLabels' in kwargs:
+            group_labels = kwargs['groupLabels']
+        if instance_name_prefixes is None and 'instanceNamePrefixes' in kwargs:
+            instance_name_prefixes = kwargs['instanceNamePrefixes']
+
         if all is not None:
             _setter("all", all)
         if group_labels is not None:
@@ -5912,8 +6418,12 @@ class PatchDeploymentInstanceFilterGroupLabel(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             labels: Mapping[str, str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             labels: Optional[Mapping[str, str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if labels is None:
+            raise TypeError("Missing 'labels' argument")
+
         _setter("labels", labels)
 
     @property
@@ -5959,8 +6469,14 @@ class PatchDeploymentOneTimeSchedule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             execute_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             execute_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if execute_time is None and 'executeTime' in kwargs:
+            execute_time = kwargs['executeTime']
+        if execute_time is None:
+            raise TypeError("Missing 'execute_time' argument")
+
         _setter("execute_time", execute_time)
 
     @property
@@ -6053,7 +6569,19 @@ class PatchDeploymentPatchConfig(dict):
              windows_update: Optional['outputs.PatchDeploymentPatchConfigWindowsUpdate'] = None,
              yum: Optional['outputs.PatchDeploymentPatchConfigYum'] = None,
              zypper: Optional['outputs.PatchDeploymentPatchConfigZypper'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if mig_instances_allowed is None and 'migInstancesAllowed' in kwargs:
+            mig_instances_allowed = kwargs['migInstancesAllowed']
+        if post_step is None and 'postStep' in kwargs:
+            post_step = kwargs['postStep']
+        if pre_step is None and 'preStep' in kwargs:
+            pre_step = kwargs['preStep']
+        if reboot_config is None and 'rebootConfig' in kwargs:
+            reboot_config = kwargs['rebootConfig']
+        if windows_update is None and 'windowsUpdate' in kwargs:
+            windows_update = kwargs['windowsUpdate']
+
         if apt is not None:
             _setter("apt", apt)
         if goo is not None:
@@ -6197,7 +6725,11 @@ class PatchDeploymentPatchConfigApt(dict):
              excludes: Optional[Sequence[str]] = None,
              exclusive_packages: Optional[Sequence[str]] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if exclusive_packages is None and 'exclusivePackages' in kwargs:
+            exclusive_packages = kwargs['exclusivePackages']
+
         if excludes is not None:
             _setter("excludes", excludes)
         if exclusive_packages is not None:
@@ -6247,8 +6779,12 @@ class PatchDeploymentPatchConfigGoo(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -6300,7 +6836,13 @@ class PatchDeploymentPatchConfigPostStep(dict):
              _setter: Callable[[Any, Any], None],
              linux_exec_step_config: Optional['outputs.PatchDeploymentPatchConfigPostStepLinuxExecStepConfig'] = None,
              windows_exec_step_config: Optional['outputs.PatchDeploymentPatchConfigPostStepWindowsExecStepConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if linux_exec_step_config is None and 'linuxExecStepConfig' in kwargs:
+            linux_exec_step_config = kwargs['linuxExecStepConfig']
+        if windows_exec_step_config is None and 'windowsExecStepConfig' in kwargs:
+            windows_exec_step_config = kwargs['windowsExecStepConfig']
+
         if linux_exec_step_config is not None:
             _setter("linux_exec_step_config", linux_exec_step_config)
         if windows_exec_step_config is not None:
@@ -6376,7 +6918,15 @@ class PatchDeploymentPatchConfigPostStepLinuxExecStepConfig(dict):
              gcs_object: Optional['outputs.PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject'] = None,
              interpreter: Optional[str] = None,
              local_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allowed_success_codes is None and 'allowedSuccessCodes' in kwargs:
+            allowed_success_codes = kwargs['allowedSuccessCodes']
+        if gcs_object is None and 'gcsObject' in kwargs:
+            gcs_object = kwargs['gcsObject']
+        if local_path is None and 'localPath' in kwargs:
+            local_path = kwargs['localPath']
+
         if allowed_success_codes is not None:
             _setter("allowed_success_codes", allowed_success_codes)
         if gcs_object is not None:
@@ -6459,10 +7009,20 @@ class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: str,
-             generation_number: str,
-             object: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bucket: Optional[str] = None,
+             generation_number: Optional[str] = None,
+             object: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if generation_number is None and 'generationNumber' in kwargs:
+            generation_number = kwargs['generationNumber']
+        if generation_number is None:
+            raise TypeError("Missing 'generation_number' argument")
+        if object is None:
+            raise TypeError("Missing 'object' argument")
+
         _setter("bucket", bucket)
         _setter("generation_number", generation_number)
         _setter("object", object)
@@ -6543,7 +7103,15 @@ class PatchDeploymentPatchConfigPostStepWindowsExecStepConfig(dict):
              gcs_object: Optional['outputs.PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject'] = None,
              interpreter: Optional[str] = None,
              local_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allowed_success_codes is None and 'allowedSuccessCodes' in kwargs:
+            allowed_success_codes = kwargs['allowedSuccessCodes']
+        if gcs_object is None and 'gcsObject' in kwargs:
+            gcs_object = kwargs['gcsObject']
+        if local_path is None and 'localPath' in kwargs:
+            local_path = kwargs['localPath']
+
         if allowed_success_codes is not None:
             _setter("allowed_success_codes", allowed_success_codes)
         if gcs_object is not None:
@@ -6626,10 +7194,20 @@ class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: str,
-             generation_number: str,
-             object: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bucket: Optional[str] = None,
+             generation_number: Optional[str] = None,
+             object: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if generation_number is None and 'generationNumber' in kwargs:
+            generation_number = kwargs['generationNumber']
+        if generation_number is None:
+            raise TypeError("Missing 'generation_number' argument")
+        if object is None:
+            raise TypeError("Missing 'object' argument")
+
         _setter("bucket", bucket)
         _setter("generation_number", generation_number)
         _setter("object", object)
@@ -6699,7 +7277,13 @@ class PatchDeploymentPatchConfigPreStep(dict):
              _setter: Callable[[Any, Any], None],
              linux_exec_step_config: Optional['outputs.PatchDeploymentPatchConfigPreStepLinuxExecStepConfig'] = None,
              windows_exec_step_config: Optional['outputs.PatchDeploymentPatchConfigPreStepWindowsExecStepConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if linux_exec_step_config is None and 'linuxExecStepConfig' in kwargs:
+            linux_exec_step_config = kwargs['linuxExecStepConfig']
+        if windows_exec_step_config is None and 'windowsExecStepConfig' in kwargs:
+            windows_exec_step_config = kwargs['windowsExecStepConfig']
+
         if linux_exec_step_config is not None:
             _setter("linux_exec_step_config", linux_exec_step_config)
         if windows_exec_step_config is not None:
@@ -6775,7 +7359,15 @@ class PatchDeploymentPatchConfigPreStepLinuxExecStepConfig(dict):
              gcs_object: Optional['outputs.PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject'] = None,
              interpreter: Optional[str] = None,
              local_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allowed_success_codes is None and 'allowedSuccessCodes' in kwargs:
+            allowed_success_codes = kwargs['allowedSuccessCodes']
+        if gcs_object is None and 'gcsObject' in kwargs:
+            gcs_object = kwargs['gcsObject']
+        if local_path is None and 'localPath' in kwargs:
+            local_path = kwargs['localPath']
+
         if allowed_success_codes is not None:
             _setter("allowed_success_codes", allowed_success_codes)
         if gcs_object is not None:
@@ -6858,10 +7450,20 @@ class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: str,
-             generation_number: str,
-             object: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bucket: Optional[str] = None,
+             generation_number: Optional[str] = None,
+             object: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if generation_number is None and 'generationNumber' in kwargs:
+            generation_number = kwargs['generationNumber']
+        if generation_number is None:
+            raise TypeError("Missing 'generation_number' argument")
+        if object is None:
+            raise TypeError("Missing 'object' argument")
+
         _setter("bucket", bucket)
         _setter("generation_number", generation_number)
         _setter("object", object)
@@ -6942,7 +7544,15 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfig(dict):
              gcs_object: Optional['outputs.PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject'] = None,
              interpreter: Optional[str] = None,
              local_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allowed_success_codes is None and 'allowedSuccessCodes' in kwargs:
+            allowed_success_codes = kwargs['allowedSuccessCodes']
+        if gcs_object is None and 'gcsObject' in kwargs:
+            gcs_object = kwargs['gcsObject']
+        if local_path is None and 'localPath' in kwargs:
+            local_path = kwargs['localPath']
+
         if allowed_success_codes is not None:
             _setter("allowed_success_codes", allowed_success_codes)
         if gcs_object is not None:
@@ -7025,10 +7635,20 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: str,
-             generation_number: str,
-             object: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bucket: Optional[str] = None,
+             generation_number: Optional[str] = None,
+             object: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if generation_number is None and 'generationNumber' in kwargs:
+            generation_number = kwargs['generationNumber']
+        if generation_number is None:
+            raise TypeError("Missing 'generation_number' argument")
+        if object is None:
+            raise TypeError("Missing 'object' argument")
+
         _setter("bucket", bucket)
         _setter("generation_number", generation_number)
         _setter("object", object)
@@ -7100,7 +7720,11 @@ class PatchDeploymentPatchConfigWindowsUpdate(dict):
              classifications: Optional[Sequence[str]] = None,
              excludes: Optional[Sequence[str]] = None,
              exclusive_patches: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if exclusive_patches is None and 'exclusivePatches' in kwargs:
+            exclusive_patches = kwargs['exclusivePatches']
+
         if classifications is not None:
             _setter("classifications", classifications)
         if excludes is not None:
@@ -7181,7 +7805,11 @@ class PatchDeploymentPatchConfigYum(dict):
              exclusive_packages: Optional[Sequence[str]] = None,
              minimal: Optional[bool] = None,
              security: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if exclusive_packages is None and 'exclusivePackages' in kwargs:
+            exclusive_packages = kwargs['exclusivePackages']
+
         if excludes is not None:
             _setter("excludes", excludes)
         if exclusive_packages is not None:
@@ -7283,7 +7911,15 @@ class PatchDeploymentPatchConfigZypper(dict):
              severities: Optional[Sequence[str]] = None,
              with_optional: Optional[bool] = None,
              with_update: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if exclusive_patches is None and 'exclusivePatches' in kwargs:
+            exclusive_patches = kwargs['exclusivePatches']
+        if with_optional is None and 'withOptional' in kwargs:
+            with_optional = kwargs['withOptional']
+        if with_update is None and 'withUpdate' in kwargs:
+            with_update = kwargs['withUpdate']
+
         if categories is not None:
             _setter("categories", categories)
         if excludes is not None:
@@ -7420,15 +8056,33 @@ class PatchDeploymentRecurringSchedule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             time_of_day: 'outputs.PatchDeploymentRecurringScheduleTimeOfDay',
-             time_zone: 'outputs.PatchDeploymentRecurringScheduleTimeZone',
+             time_of_day: Optional['outputs.PatchDeploymentRecurringScheduleTimeOfDay'] = None,
+             time_zone: Optional['outputs.PatchDeploymentRecurringScheduleTimeZone'] = None,
              end_time: Optional[str] = None,
              last_execute_time: Optional[str] = None,
              monthly: Optional['outputs.PatchDeploymentRecurringScheduleMonthly'] = None,
              next_execute_time: Optional[str] = None,
              start_time: Optional[str] = None,
              weekly: Optional['outputs.PatchDeploymentRecurringScheduleWeekly'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if time_of_day is None and 'timeOfDay' in kwargs:
+            time_of_day = kwargs['timeOfDay']
+        if time_of_day is None:
+            raise TypeError("Missing 'time_of_day' argument")
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+        if time_zone is None:
+            raise TypeError("Missing 'time_zone' argument")
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if last_execute_time is None and 'lastExecuteTime' in kwargs:
+            last_execute_time = kwargs['lastExecuteTime']
+        if next_execute_time is None and 'nextExecuteTime' in kwargs:
+            next_execute_time = kwargs['nextExecuteTime']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+
         _setter("time_of_day", time_of_day)
         _setter("time_zone", time_zone)
         if end_time is not None:
@@ -7561,7 +8215,13 @@ class PatchDeploymentRecurringScheduleMonthly(dict):
              _setter: Callable[[Any, Any], None],
              month_day: Optional[int] = None,
              week_day_of_month: Optional['outputs.PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if month_day is None and 'monthDay' in kwargs:
+            month_day = kwargs['monthDay']
+        if week_day_of_month is None and 'weekDayOfMonth' in kwargs:
+            week_day_of_month = kwargs['weekDayOfMonth']
+
         if month_day is not None:
             _setter("month_day", month_day)
         if week_day_of_month is not None:
@@ -7624,9 +8284,19 @@ class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             day_of_week: str,
-             week_ordinal: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             day_of_week: Optional[str] = None,
+             week_ordinal: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if day_of_week is None and 'dayOfWeek' in kwargs:
+            day_of_week = kwargs['dayOfWeek']
+        if day_of_week is None:
+            raise TypeError("Missing 'day_of_week' argument")
+        if week_ordinal is None and 'weekOrdinal' in kwargs:
+            week_ordinal = kwargs['weekOrdinal']
+        if week_ordinal is None:
+            raise TypeError("Missing 'week_ordinal' argument")
+
         _setter("day_of_week", day_of_week)
         _setter("week_ordinal", week_ordinal)
 
@@ -7676,7 +8346,9 @@ class PatchDeploymentRecurringScheduleTimeOfDay(dict):
              minutes: Optional[int] = None,
              nanos: Optional[int] = None,
              seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if hours is not None:
             _setter("hours", hours)
         if minutes is not None:
@@ -7737,9 +8409,13 @@ class PatchDeploymentRecurringScheduleTimeZone(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
+             id: Optional[str] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+
         _setter("id", id)
         if version is not None:
             _setter("version", version)
@@ -7793,8 +8469,14 @@ class PatchDeploymentRecurringScheduleWeekly(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             day_of_week: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             day_of_week: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if day_of_week is None and 'dayOfWeek' in kwargs:
+            day_of_week = kwargs['dayOfWeek']
+        if day_of_week is None:
+            raise TypeError("Missing 'day_of_week' argument")
+
         _setter("day_of_week", day_of_week)
 
     @property
@@ -7847,9 +8529,17 @@ class PatchDeploymentRollout(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disruption_budget: 'outputs.PatchDeploymentRolloutDisruptionBudget',
-             mode: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             disruption_budget: Optional['outputs.PatchDeploymentRolloutDisruptionBudget'] = None,
+             mode: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disruption_budget is None and 'disruptionBudget' in kwargs:
+            disruption_budget = kwargs['disruptionBudget']
+        if disruption_budget is None:
+            raise TypeError("Missing 'disruption_budget' argument")
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
+
         _setter("disruption_budget", disruption_budget)
         _setter("mode", mode)
 
@@ -7895,7 +8585,9 @@ class PatchDeploymentRolloutDisruptionBudget(dict):
              _setter: Callable[[Any, Any], None],
              fixed: Optional[int] = None,
              percentage: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if fixed is not None:
             _setter("fixed", fixed)
         if percentage is not None:

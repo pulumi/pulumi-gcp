@@ -62,7 +62,7 @@ class ReservationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             slot_capacity: pulumi.Input[int],
+             slot_capacity: Optional[pulumi.Input[int]] = None,
              autoscale: Optional[pulumi.Input['ReservationAutoscaleArgs']] = None,
              concurrency: Optional[pulumi.Input[int]] = None,
              edition: Optional[pulumi.Input[str]] = None,
@@ -71,7 +71,17 @@ class ReservationArgs:
              multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if slot_capacity is None and 'slotCapacity' in kwargs:
+            slot_capacity = kwargs['slotCapacity']
+        if slot_capacity is None:
+            raise TypeError("Missing 'slot_capacity' argument")
+        if ignore_idle_slots is None and 'ignoreIdleSlots' in kwargs:
+            ignore_idle_slots = kwargs['ignoreIdleSlots']
+        if multi_region_auxiliary is None and 'multiRegionAuxiliary' in kwargs:
+            multi_region_auxiliary = kwargs['multiRegionAuxiliary']
+
         _setter("slot_capacity", slot_capacity)
         if autoscale is not None:
             _setter("autoscale", autoscale)
@@ -267,7 +277,15 @@ class _ReservationState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              slot_capacity: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ignore_idle_slots is None and 'ignoreIdleSlots' in kwargs:
+            ignore_idle_slots = kwargs['ignoreIdleSlots']
+        if multi_region_auxiliary is None and 'multiRegionAuxiliary' in kwargs:
+            multi_region_auxiliary = kwargs['multiRegionAuxiliary']
+        if slot_capacity is None and 'slotCapacity' in kwargs:
+            slot_capacity = kwargs['slotCapacity']
+
         if autoscale is not None:
             _setter("autoscale", autoscale)
         if concurrency is not None:

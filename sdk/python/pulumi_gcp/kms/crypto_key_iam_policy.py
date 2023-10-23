@@ -42,9 +42,19 @@ class CryptoKeyIAMPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             crypto_key_id: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             crypto_key_id: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key_id is None and 'cryptoKeyId' in kwargs:
+            crypto_key_id = kwargs['cryptoKeyId']
+        if crypto_key_id is None:
+            raise TypeError("Missing 'crypto_key_id' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("crypto_key_id", crypto_key_id)
         _setter("policy_data", policy_data)
 
@@ -123,7 +133,13 @@ class _CryptoKeyIAMPolicyState:
              crypto_key_id: Optional[pulumi.Input[str]] = None,
              etag: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key_id is None and 'cryptoKeyId' in kwargs:
+            crypto_key_id = kwargs['cryptoKeyId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if crypto_key_id is not None:
             _setter("crypto_key_id", crypto_key_id)
         if etag is not None:

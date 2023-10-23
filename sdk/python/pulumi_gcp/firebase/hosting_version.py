@@ -35,9 +35,15 @@ class HostingVersionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             site_id: pulumi.Input[str],
+             site_id: Optional[pulumi.Input[str]] = None,
              config: Optional[pulumi.Input['HostingVersionConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if site_id is None and 'siteId' in kwargs:
+            site_id = kwargs['siteId']
+        if site_id is None:
+            raise TypeError("Missing 'site_id' argument")
+
         _setter("site_id", site_id)
         if config is not None:
             _setter("config", config)
@@ -104,7 +110,13 @@ class _HostingVersionState:
              name: Optional[pulumi.Input[str]] = None,
              site_id: Optional[pulumi.Input[str]] = None,
              version_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if site_id is None and 'siteId' in kwargs:
+            site_id = kwargs['siteId']
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+
         if config is not None:
             _setter("config", config)
         if name is not None:

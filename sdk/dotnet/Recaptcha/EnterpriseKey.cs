@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Recaptcha
     ///         AndroidSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyAndroidSettingsArgs
     ///         {
     ///             AllowAllPackageNames = true,
-    ///             AllowedPackageNames = new[] {},
+    ///             AllowedPackageNames = new() { },
     ///         },
     ///         DisplayName = "display-name-one",
     ///         Labels = 
@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.Recaptcha
     ///         IosSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyIosSettingsArgs
     ///         {
     ///             AllowAllBundleIds = true,
-    ///             AllowedBundleIds = new[] {},
+    ///             AllowedBundleIds = new() { },
     ///         },
     ///         Labels = 
     ///         {
@@ -125,7 +125,7 @@ namespace Pulumi.Gcp.Recaptcha
     ///         WebSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyWebSettingsArgs
     ///         {
     ///             AllowAllDomains = true,
-    ///             AllowedDomains = new[] {},
+    ///             AllowedDomains = new() { },
     ///             ChallengeSecurityPreference = "USABILITY",
     ///             IntegrationType = "CHECKBOX",
     ///         },
@@ -159,7 +159,7 @@ namespace Pulumi.Gcp.Recaptcha
     ///         {
     ///             AllowAllDomains = true,
     ///             AllowAmpTraffic = false,
-    ///             AllowedDomains = new[] {},
+    ///             AllowedDomains = new() { },
     ///             IntegrationType = "SCORE",
     ///         },
     ///     });

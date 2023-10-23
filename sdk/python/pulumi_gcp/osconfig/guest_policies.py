@@ -67,15 +67,25 @@ class GuestPoliciesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             assignment: pulumi.Input['GuestPoliciesAssignmentArgs'],
-             guest_policy_id: pulumi.Input[str],
+             assignment: Optional[pulumi.Input['GuestPoliciesAssignmentArgs']] = None,
+             guest_policy_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              etag: Optional[pulumi.Input[str]] = None,
              package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]]] = None,
              packages: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              recipes: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if assignment is None:
+            raise TypeError("Missing 'assignment' argument")
+        if guest_policy_id is None and 'guestPolicyId' in kwargs:
+            guest_policy_id = kwargs['guestPolicyId']
+        if guest_policy_id is None:
+            raise TypeError("Missing 'guest_policy_id' argument")
+        if package_repositories is None and 'packageRepositories' in kwargs:
+            package_repositories = kwargs['packageRepositories']
+
         _setter("assignment", assignment)
         _setter("guest_policy_id", guest_policy_id)
         if description is not None:
@@ -282,7 +292,17 @@ class _GuestPoliciesState:
              project: Optional[pulumi.Input[str]] = None,
              recipes: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if guest_policy_id is None and 'guestPolicyId' in kwargs:
+            guest_policy_id = kwargs['guestPolicyId']
+        if package_repositories is None and 'packageRepositories' in kwargs:
+            package_repositories = kwargs['packageRepositories']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if assignment is not None:
             _setter("assignment", assignment)
         if create_time is not None:

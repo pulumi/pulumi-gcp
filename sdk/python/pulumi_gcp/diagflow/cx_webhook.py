@@ -58,7 +58,7 @@ class CxWebhookArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              enable_spell_correction: Optional[pulumi.Input[bool]] = None,
              enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
@@ -67,7 +67,23 @@ class CxWebhookArgs:
              security_settings: Optional[pulumi.Input[str]] = None,
              service_directory: Optional[pulumi.Input['CxWebhookServiceDirectoryArgs']] = None,
              timeout: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if enable_spell_correction is None and 'enableSpellCorrection' in kwargs:
+            enable_spell_correction = kwargs['enableSpellCorrection']
+        if enable_stackdriver_logging is None and 'enableStackdriverLogging' in kwargs:
+            enable_stackdriver_logging = kwargs['enableStackdriverLogging']
+        if generic_web_service is None and 'genericWebService' in kwargs:
+            generic_web_service = kwargs['genericWebService']
+        if security_settings is None and 'securitySettings' in kwargs:
+            security_settings = kwargs['securitySettings']
+        if service_directory is None and 'serviceDirectory' in kwargs:
+            service_directory = kwargs['serviceDirectory']
+
         _setter("display_name", display_name)
         if disabled is not None:
             _setter("disabled", disabled)
@@ -264,7 +280,23 @@ class _CxWebhookState:
              service_directory: Optional[pulumi.Input['CxWebhookServiceDirectoryArgs']] = None,
              start_flow: Optional[pulumi.Input[str]] = None,
              timeout: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if enable_spell_correction is None and 'enableSpellCorrection' in kwargs:
+            enable_spell_correction = kwargs['enableSpellCorrection']
+        if enable_stackdriver_logging is None and 'enableStackdriverLogging' in kwargs:
+            enable_stackdriver_logging = kwargs['enableStackdriverLogging']
+        if generic_web_service is None and 'genericWebService' in kwargs:
+            generic_web_service = kwargs['genericWebService']
+        if security_settings is None and 'securitySettings' in kwargs:
+            security_settings = kwargs['securitySettings']
+        if service_directory is None and 'serviceDirectory' in kwargs:
+            service_directory = kwargs['serviceDirectory']
+        if start_flow is None and 'startFlow' in kwargs:
+            start_flow = kwargs['startFlow']
+
         if disabled is not None:
             _setter("disabled", disabled)
         if display_name is not None:

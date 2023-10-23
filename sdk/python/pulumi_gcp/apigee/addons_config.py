@@ -35,9 +35,15 @@ class AddonsConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             org: pulumi.Input[str],
+             org: Optional[pulumi.Input[str]] = None,
              addons_config: Optional[pulumi.Input['AddonsConfigAddonsConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if org is None:
+            raise TypeError("Missing 'org' argument")
+        if addons_config is None and 'addonsConfig' in kwargs:
+            addons_config = kwargs['addonsConfig']
+
         _setter("org", org)
         if addons_config is not None:
             _setter("addons_config", addons_config)
@@ -95,7 +101,11 @@ class _AddonsConfigState:
              _setter: Callable[[Any, Any], None],
              addons_config: Optional[pulumi.Input['AddonsConfigAddonsConfigArgs']] = None,
              org: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if addons_config is None and 'addonsConfig' in kwargs:
+            addons_config = kwargs['addonsConfig']
+
         if addons_config is not None:
             _setter("addons_config", addons_config)
         if org is not None:

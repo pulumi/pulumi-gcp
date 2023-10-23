@@ -50,13 +50,29 @@ class ResponsePolicyRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dns_name: pulumi.Input[str],
-             response_policy: pulumi.Input[str],
-             rule_name: pulumi.Input[str],
+             dns_name: Optional[pulumi.Input[str]] = None,
+             response_policy: Optional[pulumi.Input[str]] = None,
+             rule_name: Optional[pulumi.Input[str]] = None,
              behavior: Optional[pulumi.Input[str]] = None,
              local_data: Optional[pulumi.Input['ResponsePolicyRuleLocalDataArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dns_name is None and 'dnsName' in kwargs:
+            dns_name = kwargs['dnsName']
+        if dns_name is None:
+            raise TypeError("Missing 'dns_name' argument")
+        if response_policy is None and 'responsePolicy' in kwargs:
+            response_policy = kwargs['responsePolicy']
+        if response_policy is None:
+            raise TypeError("Missing 'response_policy' argument")
+        if rule_name is None and 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+        if rule_name is None:
+            raise TypeError("Missing 'rule_name' argument")
+        if local_data is None and 'localData' in kwargs:
+            local_data = kwargs['localData']
+
         _setter("dns_name", dns_name)
         _setter("response_policy", response_policy)
         _setter("rule_name", rule_name)
@@ -190,7 +206,17 @@ class _ResponsePolicyRuleState:
              project: Optional[pulumi.Input[str]] = None,
              response_policy: Optional[pulumi.Input[str]] = None,
              rule_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dns_name is None and 'dnsName' in kwargs:
+            dns_name = kwargs['dnsName']
+        if local_data is None and 'localData' in kwargs:
+            local_data = kwargs['localData']
+        if response_policy is None and 'responsePolicy' in kwargs:
+            response_policy = kwargs['responsePolicy']
+        if rule_name is None and 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+
         if behavior is not None:
             _setter("behavior", behavior)
         if dns_name is not None:

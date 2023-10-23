@@ -49,11 +49,21 @@ class MetastoreFederationIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             federation_id: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             federation_id: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if federation_id is None and 'federationId' in kwargs:
+            federation_id = kwargs['federationId']
+        if federation_id is None:
+            raise TypeError("Missing 'federation_id' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("federation_id", federation_id)
         _setter("policy_data", policy_data)
         if location is not None:
@@ -168,7 +178,13 @@ class _MetastoreFederationIamPolicyState:
              location: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if federation_id is None and 'federationId' in kwargs:
+            federation_id = kwargs['federationId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if etag is not None:
             _setter("etag", etag)
         if federation_id is not None:

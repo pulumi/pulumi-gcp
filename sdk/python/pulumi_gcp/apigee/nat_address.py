@@ -33,9 +33,15 @@ class NatAddressArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
+             instance_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+
         _setter("instance_id", instance_id)
         if name is not None:
             _setter("name", name)
@@ -101,7 +107,13 @@ class _NatAddressState:
              ip_address: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         if instance_id is not None:
             _setter("instance_id", instance_id)
         if ip_address is not None:

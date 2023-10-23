@@ -48,13 +48,25 @@ class AiDatasetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             metadata_schema_uri: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
+             metadata_schema_uri: Optional[pulumi.Input[str]] = None,
              encryption_spec: Optional[pulumi.Input['AiDatasetEncryptionSpecArgs']] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if metadata_schema_uri is None and 'metadataSchemaUri' in kwargs:
+            metadata_schema_uri = kwargs['metadataSchemaUri']
+        if metadata_schema_uri is None:
+            raise TypeError("Missing 'metadata_schema_uri' argument")
+        if encryption_spec is None and 'encryptionSpec' in kwargs:
+            encryption_spec = kwargs['encryptionSpec']
+
         _setter("display_name", display_name)
         _setter("metadata_schema_uri", metadata_schema_uri)
         if encryption_spec is not None:
@@ -197,7 +209,19 @@ class _AiDatasetState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if encryption_spec is None and 'encryptionSpec' in kwargs:
+            encryption_spec = kwargs['encryptionSpec']
+        if metadata_schema_uri is None and 'metadataSchemaUri' in kwargs:
+            metadata_schema_uri = kwargs['metadataSchemaUri']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if display_name is not None:

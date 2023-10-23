@@ -53,12 +53,24 @@ class GenericServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_id: pulumi.Input[str],
+             service_id: Optional[pulumi.Input[str]] = None,
              basic_service: Optional[pulumi.Input['GenericServiceBasicServiceArgs']] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if service_id is None:
+            raise TypeError("Missing 'service_id' argument")
+        if basic_service is None and 'basicService' in kwargs:
+            basic_service = kwargs['basicService']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if user_labels is None and 'userLabels' in kwargs:
+            user_labels = kwargs['userLabels']
+
         _setter("service_id", service_id)
         if basic_service is not None:
             _setter("basic_service", basic_service)
@@ -198,7 +210,17 @@ class _GenericServiceState:
              service_id: Optional[pulumi.Input[str]] = None,
              telemetries: Optional[pulumi.Input[Sequence[pulumi.Input['GenericServiceTelemetryArgs']]]] = None,
              user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if basic_service is None and 'basicService' in kwargs:
+            basic_service = kwargs['basicService']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if user_labels is None and 'userLabels' in kwargs:
+            user_labels = kwargs['userLabels']
+
         if basic_service is not None:
             _setter("basic_service", basic_service)
         if display_name is not None:

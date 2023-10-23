@@ -105,7 +105,7 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAcceleratorArgs']]]] = None,
              crypto_key_config: Optional[pulumi.Input['InstanceCryptoKeyConfigArgs']] = None,
              dataproc_service_account: Optional[pulumi.Input[str]] = None,
@@ -124,7 +124,29 @@ class InstanceArgs:
              region: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if crypto_key_config is None and 'cryptoKeyConfig' in kwargs:
+            crypto_key_config = kwargs['cryptoKeyConfig']
+        if dataproc_service_account is None and 'dataprocServiceAccount' in kwargs:
+            dataproc_service_account = kwargs['dataprocServiceAccount']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if enable_rbac is None and 'enableRbac' in kwargs:
+            enable_rbac = kwargs['enableRbac']
+        if enable_stackdriver_logging is None and 'enableStackdriverLogging' in kwargs:
+            enable_stackdriver_logging = kwargs['enableStackdriverLogging']
+        if enable_stackdriver_monitoring is None and 'enableStackdriverMonitoring' in kwargs:
+            enable_stackdriver_monitoring = kwargs['enableStackdriverMonitoring']
+        if event_publish_config is None and 'eventPublishConfig' in kwargs:
+            event_publish_config = kwargs['eventPublishConfig']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if private_instance is None and 'privateInstance' in kwargs:
+            private_instance = kwargs['privateInstance']
+
         _setter("type", type)
         if accelerators is not None:
             _setter("accelerators", accelerators)
@@ -567,7 +589,45 @@ class _InstanceState:
              update_time: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_endpoint is None and 'apiEndpoint' in kwargs:
+            api_endpoint = kwargs['apiEndpoint']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if crypto_key_config is None and 'cryptoKeyConfig' in kwargs:
+            crypto_key_config = kwargs['cryptoKeyConfig']
+        if dataproc_service_account is None and 'dataprocServiceAccount' in kwargs:
+            dataproc_service_account = kwargs['dataprocServiceAccount']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if enable_rbac is None and 'enableRbac' in kwargs:
+            enable_rbac = kwargs['enableRbac']
+        if enable_stackdriver_logging is None and 'enableStackdriverLogging' in kwargs:
+            enable_stackdriver_logging = kwargs['enableStackdriverLogging']
+        if enable_stackdriver_monitoring is None and 'enableStackdriverMonitoring' in kwargs:
+            enable_stackdriver_monitoring = kwargs['enableStackdriverMonitoring']
+        if event_publish_config is None and 'eventPublishConfig' in kwargs:
+            event_publish_config = kwargs['eventPublishConfig']
+        if gcs_bucket is None and 'gcsBucket' in kwargs:
+            gcs_bucket = kwargs['gcsBucket']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if p4_service_account is None and 'p4ServiceAccount' in kwargs:
+            p4_service_account = kwargs['p4ServiceAccount']
+        if private_instance is None and 'privateInstance' in kwargs:
+            private_instance = kwargs['privateInstance']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if service_endpoint is None and 'serviceEndpoint' in kwargs:
+            service_endpoint = kwargs['serviceEndpoint']
+        if state_message is None and 'stateMessage' in kwargs:
+            state_message = kwargs['stateMessage']
+        if tenant_project_id is None and 'tenantProjectId' in kwargs:
+            tenant_project_id = kwargs['tenantProjectId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if accelerators is not None:
             _setter("accelerators", accelerators)
         if api_endpoint is not None:

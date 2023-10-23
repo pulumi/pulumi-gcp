@@ -53,13 +53,21 @@ class AutoscalarArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             autoscaling_policy: pulumi.Input['AutoscalarAutoscalingPolicyArgs'],
-             target: pulumi.Input[str],
+             autoscaling_policy: Optional[pulumi.Input['AutoscalarAutoscalingPolicyArgs']] = None,
+             target: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if autoscaling_policy is None and 'autoscalingPolicy' in kwargs:
+            autoscaling_policy = kwargs['autoscalingPolicy']
+        if autoscaling_policy is None:
+            raise TypeError("Missing 'autoscaling_policy' argument")
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+
         _setter("autoscaling_policy", autoscaling_policy)
         _setter("target", target)
         if description is not None:
@@ -208,7 +216,15 @@ class _AutoscalarState:
              self_link: Optional[pulumi.Input[str]] = None,
              target: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if autoscaling_policy is None and 'autoscalingPolicy' in kwargs:
+            autoscaling_policy = kwargs['autoscalingPolicy']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if autoscaling_policy is not None:
             _setter("autoscaling_policy", autoscaling_policy)
         if creation_timestamp is not None:

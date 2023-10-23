@@ -41,12 +41,28 @@ class SharedflowDeploymentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             environment: pulumi.Input[str],
-             org_id: pulumi.Input[str],
-             revision: pulumi.Input[str],
-             sharedflow_id: pulumi.Input[str],
+             environment: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             revision: Optional[pulumi.Input[str]] = None,
+             sharedflow_id: Optional[pulumi.Input[str]] = None,
              service_account: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if environment is None:
+            raise TypeError("Missing 'environment' argument")
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if revision is None:
+            raise TypeError("Missing 'revision' argument")
+        if sharedflow_id is None and 'sharedflowId' in kwargs:
+            sharedflow_id = kwargs['sharedflowId']
+        if sharedflow_id is None:
+            raise TypeError("Missing 'sharedflow_id' argument")
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+
         _setter("environment", environment)
         _setter("org_id", org_id)
         _setter("revision", revision)
@@ -153,7 +169,15 @@ class _SharedflowDeploymentState:
              revision: Optional[pulumi.Input[str]] = None,
              service_account: Optional[pulumi.Input[str]] = None,
              sharedflow_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if sharedflow_id is None and 'sharedflowId' in kwargs:
+            sharedflow_id = kwargs['sharedflowId']
+
         if environment is not None:
             _setter("environment", environment)
         if org_id is not None:

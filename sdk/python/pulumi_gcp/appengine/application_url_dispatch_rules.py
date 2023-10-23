@@ -33,9 +33,15 @@ class ApplicationUrlDispatchRulesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dispatch_rules: pulumi.Input[Sequence[pulumi.Input['ApplicationUrlDispatchRulesDispatchRuleArgs']]],
+             dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationUrlDispatchRulesDispatchRuleArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dispatch_rules is None and 'dispatchRules' in kwargs:
+            dispatch_rules = kwargs['dispatchRules']
+        if dispatch_rules is None:
+            raise TypeError("Missing 'dispatch_rules' argument")
+
         _setter("dispatch_rules", dispatch_rules)
         if project is not None:
             _setter("project", project)
@@ -89,7 +95,11 @@ class _ApplicationUrlDispatchRulesState:
              _setter: Callable[[Any, Any], None],
              dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationUrlDispatchRulesDispatchRuleArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dispatch_rules is None and 'dispatchRules' in kwargs:
+            dispatch_rules = kwargs['dispatchRules']
+
         if dispatch_rules is not None:
             _setter("dispatch_rules", dispatch_rules)
         if project is not None:

@@ -44,11 +44,15 @@ class DataStoreIndexArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kind: pulumi.Input[str],
+             kind: Optional[pulumi.Input[str]] = None,
              ancestor: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              properties: Optional[pulumi.Input[Sequence[pulumi.Input['DataStoreIndexPropertyArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kind is None:
+            raise TypeError("Missing 'kind' argument")
+
         _setter("kind", kind)
         if ancestor is not None:
             _setter("ancestor", ancestor)
@@ -152,7 +156,11 @@ class _DataStoreIndexState:
              kind: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              properties: Optional[pulumi.Input[Sequence[pulumi.Input['DataStoreIndexPropertyArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if index_id is None and 'indexId' in kwargs:
+            index_id = kwargs['indexId']
+
         if ancestor is not None:
             _setter("ancestor", ancestor)
         if index_id is not None:

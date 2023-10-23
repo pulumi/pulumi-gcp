@@ -77,7 +77,7 @@ import (
 //			}
 //			_, err = serviceAccount.NewKey(ctx, "mykey", &serviceAccount.KeyArgs{
 //				ServiceAccountId: myaccount.Name,
-//				Keepers: pulumi.AnyMap{
+//				Keepers: pulumi.Map{
 //					"rotation_time": mykeyRotation.RotationRfc3339,
 //				},
 //			})

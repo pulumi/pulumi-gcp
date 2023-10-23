@@ -43,12 +43,22 @@ class ApiArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api_id: pulumi.Input[str],
+             api_id: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              managed_service: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_id is None and 'apiId' in kwargs:
+            api_id = kwargs['apiId']
+        if api_id is None:
+            raise TypeError("Missing 'api_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if managed_service is None and 'managedService' in kwargs:
+            managed_service = kwargs['managedService']
+
         _setter("api_id", api_id)
         if display_name is not None:
             _setter("display_name", display_name)
@@ -170,7 +180,17 @@ class _ApiState:
              managed_service: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_id is None and 'apiId' in kwargs:
+            api_id = kwargs['apiId']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if managed_service is None and 'managedService' in kwargs:
+            managed_service = kwargs['managedService']
+
         if api_id is not None:
             _setter("api_id", api_id)
         if create_time is not None:

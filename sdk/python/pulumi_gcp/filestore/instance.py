@@ -64,9 +64,9 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             file_shares: pulumi.Input['InstanceFileSharesArgs'],
-             networks: pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]],
-             tier: pulumi.Input[str],
+             file_shares: Optional[pulumi.Input['InstanceFileSharesArgs']] = None,
+             networks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
+             tier: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              kms_key_name: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -74,7 +74,19 @@ class InstanceArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if file_shares is None and 'fileShares' in kwargs:
+            file_shares = kwargs['fileShares']
+        if file_shares is None:
+            raise TypeError("Missing 'file_shares' argument")
+        if networks is None:
+            raise TypeError("Missing 'networks' argument")
+        if tier is None:
+            raise TypeError("Missing 'tier' argument")
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+
         _setter("file_shares", file_shares)
         _setter("networks", networks)
         _setter("tier", tier)
@@ -299,7 +311,15 @@ class _InstanceState:
              project: Optional[pulumi.Input[str]] = None,
              tier: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if file_shares is None and 'fileShares' in kwargs:
+            file_shares = kwargs['fileShares']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:

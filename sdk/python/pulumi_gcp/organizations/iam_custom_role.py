@@ -43,13 +43,27 @@ class IAMCustomRoleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             org_id: pulumi.Input[str],
-             permissions: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role_id: pulumi.Input[str],
-             title: pulumi.Input[str],
+             org_id: Optional[pulumi.Input[str]] = None,
+             permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role_id: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              stage: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+        if role_id is None and 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+        if role_id is None:
+            raise TypeError("Missing 'role_id' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("org_id", org_id)
         _setter("permissions", permissions)
         _setter("role_id", role_id)
@@ -180,7 +194,13 @@ class _IAMCustomRoleState:
              role_id: Optional[pulumi.Input[str]] = None,
              stage: Optional[pulumi.Input[str]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if role_id is None and 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+
         if deleted is not None:
             _setter("deleted", deleted)
         if description is not None:

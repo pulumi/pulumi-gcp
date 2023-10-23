@@ -75,7 +75,11 @@ class CertificateArgs:
              project: Optional[pulumi.Input[str]] = None,
              scope: Optional[pulumi.Input[str]] = None,
              self_managed: Optional[pulumi.Input['CertificateSelfManagedArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if self_managed is None and 'selfManaged' in kwargs:
+            self_managed = kwargs['selfManaged']
+
         if description is not None:
             _setter("description", description)
         if labels is not None:
@@ -270,7 +274,11 @@ class _CertificateState:
              project: Optional[pulumi.Input[str]] = None,
              scope: Optional[pulumi.Input[str]] = None,
              self_managed: Optional[pulumi.Input['CertificateSelfManagedArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if self_managed is None and 'selfManaged' in kwargs:
+            self_managed = kwargs['selfManaged']
+
         if description is not None:
             _setter("description", description)
         if labels is not None:

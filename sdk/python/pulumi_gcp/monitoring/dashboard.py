@@ -33,9 +33,15 @@ class DashboardArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dashboard_json: pulumi.Input[str],
+             dashboard_json: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dashboard_json is None and 'dashboardJson' in kwargs:
+            dashboard_json = kwargs['dashboardJson']
+        if dashboard_json is None:
+            raise TypeError("Missing 'dashboard_json' argument")
+
         _setter("dashboard_json", dashboard_json)
         if project is not None:
             _setter("project", project)
@@ -93,7 +99,11 @@ class _DashboardState:
              _setter: Callable[[Any, Any], None],
              dashboard_json: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dashboard_json is None and 'dashboardJson' in kwargs:
+            dashboard_json = kwargs['dashboardJson']
+
         if dashboard_json is not None:
             _setter("dashboard_json", dashboard_json)
         if project is not None:

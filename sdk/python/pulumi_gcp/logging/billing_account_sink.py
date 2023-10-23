@@ -59,15 +59,25 @@ class BillingAccountSinkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             billing_account: pulumi.Input[str],
-             destination: pulumi.Input[str],
+             billing_account: Optional[pulumi.Input[str]] = None,
+             destination: Optional[pulumi.Input[str]] = None,
              bigquery_options: Optional[pulumi.Input['BillingAccountSinkBigqueryOptionsArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['BillingAccountSinkExclusionArgs']]]] = None,
              filter: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if billing_account is None and 'billingAccount' in kwargs:
+            billing_account = kwargs['billingAccount']
+        if billing_account is None:
+            raise TypeError("Missing 'billing_account' argument")
+        if destination is None:
+            raise TypeError("Missing 'destination' argument")
+        if bigquery_options is None and 'bigqueryOptions' in kwargs:
+            bigquery_options = kwargs['bigqueryOptions']
+
         _setter("billing_account", billing_account)
         _setter("destination", destination)
         if bigquery_options is not None:
@@ -249,7 +259,15 @@ class _BillingAccountSinkState:
              filter: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              writer_identity: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bigquery_options is None and 'bigqueryOptions' in kwargs:
+            bigquery_options = kwargs['bigqueryOptions']
+        if billing_account is None and 'billingAccount' in kwargs:
+            billing_account = kwargs['billingAccount']
+        if writer_identity is None and 'writerIdentity' in kwargs:
+            writer_identity = kwargs['writerIdentity']
+
         if bigquery_options is not None:
             _setter("bigquery_options", bigquery_options)
         if billing_account is not None:

@@ -35,10 +35,20 @@ class OrganizationSecurityPolicyAssociationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attachment_id: pulumi.Input[str],
-             policy_id: pulumi.Input[str],
+             attachment_id: Optional[pulumi.Input[str]] = None,
+             policy_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if attachment_id is None and 'attachmentId' in kwargs:
+            attachment_id = kwargs['attachmentId']
+        if attachment_id is None:
+            raise TypeError("Missing 'attachment_id' argument")
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if policy_id is None:
+            raise TypeError("Missing 'policy_id' argument")
+
         _setter("attachment_id", attachment_id)
         _setter("policy_id", policy_id)
         if name is not None:
@@ -115,7 +125,15 @@ class _OrganizationSecurityPolicyAssociationState:
              display_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              policy_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if attachment_id is None and 'attachmentId' in kwargs:
+            attachment_id = kwargs['attachmentId']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+
         if attachment_id is not None:
             _setter("attachment_id", attachment_id)
         if display_name is not None:

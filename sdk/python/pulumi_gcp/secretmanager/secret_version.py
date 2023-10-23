@@ -47,12 +47,24 @@ class SecretVersionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             secret: pulumi.Input[str],
-             secret_data: pulumi.Input[str],
+             secret: Optional[pulumi.Input[str]] = None,
+             secret_data: Optional[pulumi.Input[str]] = None,
              deletion_policy: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              is_secret_data_base64: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if secret is None:
+            raise TypeError("Missing 'secret' argument")
+        if secret_data is None and 'secretData' in kwargs:
+            secret_data = kwargs['secretData']
+        if secret_data is None:
+            raise TypeError("Missing 'secret_data' argument")
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+        if is_secret_data_base64 is None and 'isSecretDataBase64' in kwargs:
+            is_secret_data_base64 = kwargs['isSecretDataBase64']
+
         _setter("secret", secret)
         _setter("secret_data", secret_data)
         if deletion_policy is not None:
@@ -190,7 +202,19 @@ class _SecretVersionState:
              secret: Optional[pulumi.Input[str]] = None,
              secret_data: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+        if destroy_time is None and 'destroyTime' in kwargs:
+            destroy_time = kwargs['destroyTime']
+        if is_secret_data_base64 is None and 'isSecretDataBase64' in kwargs:
+            is_secret_data_base64 = kwargs['isSecretDataBase64']
+        if secret_data is None and 'secretData' in kwargs:
+            secret_data = kwargs['secretData']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if deletion_policy is not None:

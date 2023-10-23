@@ -45,13 +45,23 @@ class RepositoryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parent_connection: pulumi.Input[str],
-             remote_uri: pulumi.Input[str],
+             parent_connection: Optional[pulumi.Input[str]] = None,
+             remote_uri: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if parent_connection is None and 'parentConnection' in kwargs:
+            parent_connection = kwargs['parentConnection']
+        if parent_connection is None:
+            raise TypeError("Missing 'parent_connection' argument")
+        if remote_uri is None and 'remoteUri' in kwargs:
+            remote_uri = kwargs['remoteUri']
+        if remote_uri is None:
+            raise TypeError("Missing 'remote_uri' argument")
+
         _setter("parent_connection", parent_connection)
         _setter("remote_uri", remote_uri)
         if annotations is not None:
@@ -192,7 +202,17 @@ class _RepositoryState:
              project: Optional[pulumi.Input[str]] = None,
              remote_uri: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if parent_connection is None and 'parentConnection' in kwargs:
+            parent_connection = kwargs['parentConnection']
+        if remote_uri is None and 'remoteUri' in kwargs:
+            remote_uri = kwargs['remoteUri']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if create_time is not None:

@@ -109,7 +109,31 @@ class RegionHealthCheckArgs:
              tcp_health_check: Optional[pulumi.Input['RegionHealthCheckTcpHealthCheckArgs']] = None,
              timeout_sec: Optional[pulumi.Input[int]] = None,
              unhealthy_threshold: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if check_interval_sec is None and 'checkIntervalSec' in kwargs:
+            check_interval_sec = kwargs['checkIntervalSec']
+        if grpc_health_check is None and 'grpcHealthCheck' in kwargs:
+            grpc_health_check = kwargs['grpcHealthCheck']
+        if healthy_threshold is None and 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if http2_health_check is None and 'http2HealthCheck' in kwargs:
+            http2_health_check = kwargs['http2HealthCheck']
+        if http_health_check is None and 'httpHealthCheck' in kwargs:
+            http_health_check = kwargs['httpHealthCheck']
+        if https_health_check is None and 'httpsHealthCheck' in kwargs:
+            https_health_check = kwargs['httpsHealthCheck']
+        if log_config is None and 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if ssl_health_check is None and 'sslHealthCheck' in kwargs:
+            ssl_health_check = kwargs['sslHealthCheck']
+        if tcp_health_check is None and 'tcpHealthCheck' in kwargs:
+            tcp_health_check = kwargs['tcpHealthCheck']
+        if timeout_sec is None and 'timeoutSec' in kwargs:
+            timeout_sec = kwargs['timeoutSec']
+        if unhealthy_threshold is None and 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+
         if check_interval_sec is not None:
             _setter("check_interval_sec", check_interval_sec)
         if description is not None:
@@ -454,7 +478,35 @@ class _RegionHealthCheckState:
              timeout_sec: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
              unhealthy_threshold: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if check_interval_sec is None and 'checkIntervalSec' in kwargs:
+            check_interval_sec = kwargs['checkIntervalSec']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if grpc_health_check is None and 'grpcHealthCheck' in kwargs:
+            grpc_health_check = kwargs['grpcHealthCheck']
+        if healthy_threshold is None and 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if http2_health_check is None and 'http2HealthCheck' in kwargs:
+            http2_health_check = kwargs['http2HealthCheck']
+        if http_health_check is None and 'httpHealthCheck' in kwargs:
+            http_health_check = kwargs['httpHealthCheck']
+        if https_health_check is None and 'httpsHealthCheck' in kwargs:
+            https_health_check = kwargs['httpsHealthCheck']
+        if log_config is None and 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if ssl_health_check is None and 'sslHealthCheck' in kwargs:
+            ssl_health_check = kwargs['sslHealthCheck']
+        if tcp_health_check is None and 'tcpHealthCheck' in kwargs:
+            tcp_health_check = kwargs['tcpHealthCheck']
+        if timeout_sec is None and 'timeoutSec' in kwargs:
+            timeout_sec = kwargs['timeoutSec']
+        if unhealthy_threshold is None and 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+
         if check_interval_sec is not None:
             _setter("check_interval_sec", check_interval_sec)
         if creation_timestamp is not None:

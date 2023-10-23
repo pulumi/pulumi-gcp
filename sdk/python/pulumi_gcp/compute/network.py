@@ -95,7 +95,21 @@ class NetworkArgs:
              network_firewall_policy_enforcement_order: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              routing_mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_create_subnetworks is None and 'autoCreateSubnetworks' in kwargs:
+            auto_create_subnetworks = kwargs['autoCreateSubnetworks']
+        if delete_default_routes_on_create is None and 'deleteDefaultRoutesOnCreate' in kwargs:
+            delete_default_routes_on_create = kwargs['deleteDefaultRoutesOnCreate']
+        if enable_ula_internal_ipv6 is None and 'enableUlaInternalIpv6' in kwargs:
+            enable_ula_internal_ipv6 = kwargs['enableUlaInternalIpv6']
+        if internal_ipv6_range is None and 'internalIpv6Range' in kwargs:
+            internal_ipv6_range = kwargs['internalIpv6Range']
+        if network_firewall_policy_enforcement_order is None and 'networkFirewallPolicyEnforcementOrder' in kwargs:
+            network_firewall_policy_enforcement_order = kwargs['networkFirewallPolicyEnforcementOrder']
+        if routing_mode is None and 'routingMode' in kwargs:
+            routing_mode = kwargs['routingMode']
+
         if auto_create_subnetworks is not None:
             _setter("auto_create_subnetworks", auto_create_subnetworks)
         if delete_default_routes_on_create is not None:
@@ -363,7 +377,25 @@ class _NetworkState:
              project: Optional[pulumi.Input[str]] = None,
              routing_mode: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_create_subnetworks is None and 'autoCreateSubnetworks' in kwargs:
+            auto_create_subnetworks = kwargs['autoCreateSubnetworks']
+        if delete_default_routes_on_create is None and 'deleteDefaultRoutesOnCreate' in kwargs:
+            delete_default_routes_on_create = kwargs['deleteDefaultRoutesOnCreate']
+        if enable_ula_internal_ipv6 is None and 'enableUlaInternalIpv6' in kwargs:
+            enable_ula_internal_ipv6 = kwargs['enableUlaInternalIpv6']
+        if gateway_ipv4 is None and 'gatewayIpv4' in kwargs:
+            gateway_ipv4 = kwargs['gatewayIpv4']
+        if internal_ipv6_range is None and 'internalIpv6Range' in kwargs:
+            internal_ipv6_range = kwargs['internalIpv6Range']
+        if network_firewall_policy_enforcement_order is None and 'networkFirewallPolicyEnforcementOrder' in kwargs:
+            network_firewall_policy_enforcement_order = kwargs['networkFirewallPolicyEnforcementOrder']
+        if routing_mode is None and 'routingMode' in kwargs:
+            routing_mode = kwargs['routingMode']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if auto_create_subnetworks is not None:
             _setter("auto_create_subnetworks", auto_create_subnetworks)
         if delete_default_routes_on_create is not None:

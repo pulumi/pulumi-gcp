@@ -35,10 +35,20 @@ class IAMAuditConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             audit_log_configs: pulumi.Input[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArgs']]],
-             project: pulumi.Input[str],
-             service: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArgs']]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if audit_log_configs is None and 'auditLogConfigs' in kwargs:
+            audit_log_configs = kwargs['auditLogConfigs']
+        if audit_log_configs is None:
+            raise TypeError("Missing 'audit_log_configs' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("audit_log_configs", audit_log_configs)
         _setter("project", project)
         _setter("service", service)
@@ -110,7 +120,11 @@ class _IAMAuditConfigState:
              etag: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if audit_log_configs is None and 'auditLogConfigs' in kwargs:
+            audit_log_configs = kwargs['auditLogConfigs']
+
         if audit_log_configs is not None:
             _setter("audit_log_configs", audit_log_configs)
         if etag is not None:

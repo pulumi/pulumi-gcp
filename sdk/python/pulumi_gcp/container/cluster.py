@@ -429,7 +429,129 @@ class ClusterArgs:
              tpu_config: Optional[pulumi.Input['ClusterTpuConfigArgs']] = None,
              vertical_pod_autoscaling: Optional[pulumi.Input['ClusterVerticalPodAutoscalingArgs']] = None,
              workload_identity_config: Optional[pulumi.Input['ClusterWorkloadIdentityConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if addons_config is None and 'addonsConfig' in kwargs:
+            addons_config = kwargs['addonsConfig']
+        if allow_net_admin is None and 'allowNetAdmin' in kwargs:
+            allow_net_admin = kwargs['allowNetAdmin']
+        if authenticator_groups_config is None and 'authenticatorGroupsConfig' in kwargs:
+            authenticator_groups_config = kwargs['authenticatorGroupsConfig']
+        if binary_authorization is None and 'binaryAuthorization' in kwargs:
+            binary_authorization = kwargs['binaryAuthorization']
+        if cluster_autoscaling is None and 'clusterAutoscaling' in kwargs:
+            cluster_autoscaling = kwargs['clusterAutoscaling']
+        if cluster_ipv4_cidr is None and 'clusterIpv4Cidr' in kwargs:
+            cluster_ipv4_cidr = kwargs['clusterIpv4Cidr']
+        if cluster_telemetry is None and 'clusterTelemetry' in kwargs:
+            cluster_telemetry = kwargs['clusterTelemetry']
+        if confidential_nodes is None and 'confidentialNodes' in kwargs:
+            confidential_nodes = kwargs['confidentialNodes']
+        if cost_management_config is None and 'costManagementConfig' in kwargs:
+            cost_management_config = kwargs['costManagementConfig']
+        if database_encryption is None and 'databaseEncryption' in kwargs:
+            database_encryption = kwargs['databaseEncryption']
+        if datapath_provider is None and 'datapathProvider' in kwargs:
+            datapath_provider = kwargs['datapathProvider']
+        if default_max_pods_per_node is None and 'defaultMaxPodsPerNode' in kwargs:
+            default_max_pods_per_node = kwargs['defaultMaxPodsPerNode']
+        if default_snat_status is None and 'defaultSnatStatus' in kwargs:
+            default_snat_status = kwargs['defaultSnatStatus']
+        if dns_config is None and 'dnsConfig' in kwargs:
+            dns_config = kwargs['dnsConfig']
+        if enable_autopilot is None and 'enableAutopilot' in kwargs:
+            enable_autopilot = kwargs['enableAutopilot']
+        if enable_binary_authorization is None and 'enableBinaryAuthorization' in kwargs:
+            enable_binary_authorization = kwargs['enableBinaryAuthorization']
+        if enable_fqdn_network_policy is None and 'enableFqdnNetworkPolicy' in kwargs:
+            enable_fqdn_network_policy = kwargs['enableFqdnNetworkPolicy']
+        if enable_intranode_visibility is None and 'enableIntranodeVisibility' in kwargs:
+            enable_intranode_visibility = kwargs['enableIntranodeVisibility']
+        if enable_k8s_beta_apis is None and 'enableK8sBetaApis' in kwargs:
+            enable_k8s_beta_apis = kwargs['enableK8sBetaApis']
+        if enable_kubernetes_alpha is None and 'enableKubernetesAlpha' in kwargs:
+            enable_kubernetes_alpha = kwargs['enableKubernetesAlpha']
+        if enable_l4_ilb_subsetting is None and 'enableL4IlbSubsetting' in kwargs:
+            enable_l4_ilb_subsetting = kwargs['enableL4IlbSubsetting']
+        if enable_legacy_abac is None and 'enableLegacyAbac' in kwargs:
+            enable_legacy_abac = kwargs['enableLegacyAbac']
+        if enable_multi_networking is None and 'enableMultiNetworking' in kwargs:
+            enable_multi_networking = kwargs['enableMultiNetworking']
+        if enable_shielded_nodes is None and 'enableShieldedNodes' in kwargs:
+            enable_shielded_nodes = kwargs['enableShieldedNodes']
+        if enable_tpu is None and 'enableTpu' in kwargs:
+            enable_tpu = kwargs['enableTpu']
+        if gateway_api_config is None and 'gatewayApiConfig' in kwargs:
+            gateway_api_config = kwargs['gatewayApiConfig']
+        if identity_service_config is None and 'identityServiceConfig' in kwargs:
+            identity_service_config = kwargs['identityServiceConfig']
+        if initial_node_count is None and 'initialNodeCount' in kwargs:
+            initial_node_count = kwargs['initialNodeCount']
+        if ip_allocation_policy is None and 'ipAllocationPolicy' in kwargs:
+            ip_allocation_policy = kwargs['ipAllocationPolicy']
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+        if logging_service is None and 'loggingService' in kwargs:
+            logging_service = kwargs['loggingService']
+        if maintenance_policy is None and 'maintenancePolicy' in kwargs:
+            maintenance_policy = kwargs['maintenancePolicy']
+        if master_auth is None and 'masterAuth' in kwargs:
+            master_auth = kwargs['masterAuth']
+        if master_authorized_networks_config is None and 'masterAuthorizedNetworksConfig' in kwargs:
+            master_authorized_networks_config = kwargs['masterAuthorizedNetworksConfig']
+        if mesh_certificates is None and 'meshCertificates' in kwargs:
+            mesh_certificates = kwargs['meshCertificates']
+        if min_master_version is None and 'minMasterVersion' in kwargs:
+            min_master_version = kwargs['minMasterVersion']
+        if monitoring_config is None and 'monitoringConfig' in kwargs:
+            monitoring_config = kwargs['monitoringConfig']
+        if monitoring_service is None and 'monitoringService' in kwargs:
+            monitoring_service = kwargs['monitoringService']
+        if network_policy is None and 'networkPolicy' in kwargs:
+            network_policy = kwargs['networkPolicy']
+        if networking_mode is None and 'networkingMode' in kwargs:
+            networking_mode = kwargs['networkingMode']
+        if node_config is None and 'nodeConfig' in kwargs:
+            node_config = kwargs['nodeConfig']
+        if node_locations is None and 'nodeLocations' in kwargs:
+            node_locations = kwargs['nodeLocations']
+        if node_pool_auto_config is None and 'nodePoolAutoConfig' in kwargs:
+            node_pool_auto_config = kwargs['nodePoolAutoConfig']
+        if node_pool_defaults is None and 'nodePoolDefaults' in kwargs:
+            node_pool_defaults = kwargs['nodePoolDefaults']
+        if node_pools is None and 'nodePools' in kwargs:
+            node_pools = kwargs['nodePools']
+        if node_version is None and 'nodeVersion' in kwargs:
+            node_version = kwargs['nodeVersion']
+        if notification_config is None and 'notificationConfig' in kwargs:
+            notification_config = kwargs['notificationConfig']
+        if pod_security_policy_config is None and 'podSecurityPolicyConfig' in kwargs:
+            pod_security_policy_config = kwargs['podSecurityPolicyConfig']
+        if private_cluster_config is None and 'privateClusterConfig' in kwargs:
+            private_cluster_config = kwargs['privateClusterConfig']
+        if private_ipv6_google_access is None and 'privateIpv6GoogleAccess' in kwargs:
+            private_ipv6_google_access = kwargs['privateIpv6GoogleAccess']
+        if protect_config is None and 'protectConfig' in kwargs:
+            protect_config = kwargs['protectConfig']
+        if release_channel is None and 'releaseChannel' in kwargs:
+            release_channel = kwargs['releaseChannel']
+        if remove_default_node_pool is None and 'removeDefaultNodePool' in kwargs:
+            remove_default_node_pool = kwargs['removeDefaultNodePool']
+        if resource_labels is None and 'resourceLabels' in kwargs:
+            resource_labels = kwargs['resourceLabels']
+        if resource_usage_export_config is None and 'resourceUsageExportConfig' in kwargs:
+            resource_usage_export_config = kwargs['resourceUsageExportConfig']
+        if security_posture_config is None and 'securityPostureConfig' in kwargs:
+            security_posture_config = kwargs['securityPostureConfig']
+        if service_external_ips_config is None and 'serviceExternalIpsConfig' in kwargs:
+            service_external_ips_config = kwargs['serviceExternalIpsConfig']
+        if tpu_config is None and 'tpuConfig' in kwargs:
+            tpu_config = kwargs['tpuConfig']
+        if vertical_pod_autoscaling is None and 'verticalPodAutoscaling' in kwargs:
+            vertical_pod_autoscaling = kwargs['verticalPodAutoscaling']
+        if workload_identity_config is None and 'workloadIdentityConfig' in kwargs:
+            workload_identity_config = kwargs['workloadIdentityConfig']
+
         if addons_config is not None:
             _setter("addons_config", addons_config)
         if allow_net_admin is not None:
@@ -1952,7 +2074,139 @@ class _ClusterState:
              tpu_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
              vertical_pod_autoscaling: Optional[pulumi.Input['ClusterVerticalPodAutoscalingArgs']] = None,
              workload_identity_config: Optional[pulumi.Input['ClusterWorkloadIdentityConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if addons_config is None and 'addonsConfig' in kwargs:
+            addons_config = kwargs['addonsConfig']
+        if allow_net_admin is None and 'allowNetAdmin' in kwargs:
+            allow_net_admin = kwargs['allowNetAdmin']
+        if authenticator_groups_config is None and 'authenticatorGroupsConfig' in kwargs:
+            authenticator_groups_config = kwargs['authenticatorGroupsConfig']
+        if binary_authorization is None and 'binaryAuthorization' in kwargs:
+            binary_authorization = kwargs['binaryAuthorization']
+        if cluster_autoscaling is None and 'clusterAutoscaling' in kwargs:
+            cluster_autoscaling = kwargs['clusterAutoscaling']
+        if cluster_ipv4_cidr is None and 'clusterIpv4Cidr' in kwargs:
+            cluster_ipv4_cidr = kwargs['clusterIpv4Cidr']
+        if cluster_telemetry is None and 'clusterTelemetry' in kwargs:
+            cluster_telemetry = kwargs['clusterTelemetry']
+        if confidential_nodes is None and 'confidentialNodes' in kwargs:
+            confidential_nodes = kwargs['confidentialNodes']
+        if cost_management_config is None and 'costManagementConfig' in kwargs:
+            cost_management_config = kwargs['costManagementConfig']
+        if database_encryption is None and 'databaseEncryption' in kwargs:
+            database_encryption = kwargs['databaseEncryption']
+        if datapath_provider is None and 'datapathProvider' in kwargs:
+            datapath_provider = kwargs['datapathProvider']
+        if default_max_pods_per_node is None and 'defaultMaxPodsPerNode' in kwargs:
+            default_max_pods_per_node = kwargs['defaultMaxPodsPerNode']
+        if default_snat_status is None and 'defaultSnatStatus' in kwargs:
+            default_snat_status = kwargs['defaultSnatStatus']
+        if dns_config is None and 'dnsConfig' in kwargs:
+            dns_config = kwargs['dnsConfig']
+        if enable_autopilot is None and 'enableAutopilot' in kwargs:
+            enable_autopilot = kwargs['enableAutopilot']
+        if enable_binary_authorization is None and 'enableBinaryAuthorization' in kwargs:
+            enable_binary_authorization = kwargs['enableBinaryAuthorization']
+        if enable_fqdn_network_policy is None and 'enableFqdnNetworkPolicy' in kwargs:
+            enable_fqdn_network_policy = kwargs['enableFqdnNetworkPolicy']
+        if enable_intranode_visibility is None and 'enableIntranodeVisibility' in kwargs:
+            enable_intranode_visibility = kwargs['enableIntranodeVisibility']
+        if enable_k8s_beta_apis is None and 'enableK8sBetaApis' in kwargs:
+            enable_k8s_beta_apis = kwargs['enableK8sBetaApis']
+        if enable_kubernetes_alpha is None and 'enableKubernetesAlpha' in kwargs:
+            enable_kubernetes_alpha = kwargs['enableKubernetesAlpha']
+        if enable_l4_ilb_subsetting is None and 'enableL4IlbSubsetting' in kwargs:
+            enable_l4_ilb_subsetting = kwargs['enableL4IlbSubsetting']
+        if enable_legacy_abac is None and 'enableLegacyAbac' in kwargs:
+            enable_legacy_abac = kwargs['enableLegacyAbac']
+        if enable_multi_networking is None and 'enableMultiNetworking' in kwargs:
+            enable_multi_networking = kwargs['enableMultiNetworking']
+        if enable_shielded_nodes is None and 'enableShieldedNodes' in kwargs:
+            enable_shielded_nodes = kwargs['enableShieldedNodes']
+        if enable_tpu is None and 'enableTpu' in kwargs:
+            enable_tpu = kwargs['enableTpu']
+        if gateway_api_config is None and 'gatewayApiConfig' in kwargs:
+            gateway_api_config = kwargs['gatewayApiConfig']
+        if identity_service_config is None and 'identityServiceConfig' in kwargs:
+            identity_service_config = kwargs['identityServiceConfig']
+        if initial_node_count is None and 'initialNodeCount' in kwargs:
+            initial_node_count = kwargs['initialNodeCount']
+        if ip_allocation_policy is None and 'ipAllocationPolicy' in kwargs:
+            ip_allocation_policy = kwargs['ipAllocationPolicy']
+        if label_fingerprint is None and 'labelFingerprint' in kwargs:
+            label_fingerprint = kwargs['labelFingerprint']
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+        if logging_service is None and 'loggingService' in kwargs:
+            logging_service = kwargs['loggingService']
+        if maintenance_policy is None and 'maintenancePolicy' in kwargs:
+            maintenance_policy = kwargs['maintenancePolicy']
+        if master_auth is None and 'masterAuth' in kwargs:
+            master_auth = kwargs['masterAuth']
+        if master_authorized_networks_config is None and 'masterAuthorizedNetworksConfig' in kwargs:
+            master_authorized_networks_config = kwargs['masterAuthorizedNetworksConfig']
+        if master_version is None and 'masterVersion' in kwargs:
+            master_version = kwargs['masterVersion']
+        if mesh_certificates is None and 'meshCertificates' in kwargs:
+            mesh_certificates = kwargs['meshCertificates']
+        if min_master_version is None and 'minMasterVersion' in kwargs:
+            min_master_version = kwargs['minMasterVersion']
+        if monitoring_config is None and 'monitoringConfig' in kwargs:
+            monitoring_config = kwargs['monitoringConfig']
+        if monitoring_service is None and 'monitoringService' in kwargs:
+            monitoring_service = kwargs['monitoringService']
+        if network_policy is None and 'networkPolicy' in kwargs:
+            network_policy = kwargs['networkPolicy']
+        if networking_mode is None and 'networkingMode' in kwargs:
+            networking_mode = kwargs['networkingMode']
+        if node_config is None and 'nodeConfig' in kwargs:
+            node_config = kwargs['nodeConfig']
+        if node_locations is None and 'nodeLocations' in kwargs:
+            node_locations = kwargs['nodeLocations']
+        if node_pool_auto_config is None and 'nodePoolAutoConfig' in kwargs:
+            node_pool_auto_config = kwargs['nodePoolAutoConfig']
+        if node_pool_defaults is None and 'nodePoolDefaults' in kwargs:
+            node_pool_defaults = kwargs['nodePoolDefaults']
+        if node_pools is None and 'nodePools' in kwargs:
+            node_pools = kwargs['nodePools']
+        if node_version is None and 'nodeVersion' in kwargs:
+            node_version = kwargs['nodeVersion']
+        if notification_config is None and 'notificationConfig' in kwargs:
+            notification_config = kwargs['notificationConfig']
+        if pod_security_policy_config is None and 'podSecurityPolicyConfig' in kwargs:
+            pod_security_policy_config = kwargs['podSecurityPolicyConfig']
+        if private_cluster_config is None and 'privateClusterConfig' in kwargs:
+            private_cluster_config = kwargs['privateClusterConfig']
+        if private_ipv6_google_access is None and 'privateIpv6GoogleAccess' in kwargs:
+            private_ipv6_google_access = kwargs['privateIpv6GoogleAccess']
+        if protect_config is None and 'protectConfig' in kwargs:
+            protect_config = kwargs['protectConfig']
+        if release_channel is None and 'releaseChannel' in kwargs:
+            release_channel = kwargs['releaseChannel']
+        if remove_default_node_pool is None and 'removeDefaultNodePool' in kwargs:
+            remove_default_node_pool = kwargs['removeDefaultNodePool']
+        if resource_labels is None and 'resourceLabels' in kwargs:
+            resource_labels = kwargs['resourceLabels']
+        if resource_usage_export_config is None and 'resourceUsageExportConfig' in kwargs:
+            resource_usage_export_config = kwargs['resourceUsageExportConfig']
+        if security_posture_config is None and 'securityPostureConfig' in kwargs:
+            security_posture_config = kwargs['securityPostureConfig']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if service_external_ips_config is None and 'serviceExternalIpsConfig' in kwargs:
+            service_external_ips_config = kwargs['serviceExternalIpsConfig']
+        if services_ipv4_cidr is None and 'servicesIpv4Cidr' in kwargs:
+            services_ipv4_cidr = kwargs['servicesIpv4Cidr']
+        if tpu_config is None and 'tpuConfig' in kwargs:
+            tpu_config = kwargs['tpuConfig']
+        if tpu_ipv4_cidr_block is None and 'tpuIpv4CidrBlock' in kwargs:
+            tpu_ipv4_cidr_block = kwargs['tpuIpv4CidrBlock']
+        if vertical_pod_autoscaling is None and 'verticalPodAutoscaling' in kwargs:
+            vertical_pod_autoscaling = kwargs['verticalPodAutoscaling']
+        if workload_identity_config is None and 'workloadIdentityConfig' in kwargs:
+            workload_identity_config = kwargs['workloadIdentityConfig']
+
         if addons_config is not None:
             _setter("addons_config", addons_config)
         if allow_net_admin is not None:

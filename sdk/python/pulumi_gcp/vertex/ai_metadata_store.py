@@ -47,7 +47,11 @@ class AiMetadataStoreArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if encryption_spec is None and 'encryptionSpec' in kwargs:
+            encryption_spec = kwargs['encryptionSpec']
+
         if description is not None:
             _setter("description", description)
         if encryption_spec is not None:
@@ -169,7 +173,15 @@ class _AiMetadataStoreState:
              region: Optional[pulumi.Input[str]] = None,
              states: Optional[pulumi.Input[Sequence[pulumi.Input['AiMetadataStoreStateArgs']]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if encryption_spec is None and 'encryptionSpec' in kwargs:
+            encryption_spec = kwargs['encryptionSpec']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:

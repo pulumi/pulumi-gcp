@@ -52,12 +52,22 @@ class SecretIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
-             secret_id: pulumi.Input[str],
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             secret_id: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['SecretIamMemberConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if secret_id is None and 'secretId' in kwargs:
+            secret_id = kwargs['secretId']
+        if secret_id is None:
+            raise TypeError("Missing 'secret_id' argument")
+
         _setter("member", member)
         _setter("role", role)
         _setter("secret_id", secret_id)
@@ -181,7 +191,11 @@ class _SecretIamMemberState:
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              secret_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if secret_id is None and 'secretId' in kwargs:
+            secret_id = kwargs['secretId']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

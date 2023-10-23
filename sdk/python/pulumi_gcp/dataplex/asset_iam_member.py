@@ -59,15 +59,29 @@ class AssetIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             asset: pulumi.Input[str],
-             dataplex_zone: pulumi.Input[str],
-             lake: pulumi.Input[str],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
+             asset: Optional[pulumi.Input[str]] = None,
+             dataplex_zone: Optional[pulumi.Input[str]] = None,
+             lake: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['AssetIamMemberConditionArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if asset is None:
+            raise TypeError("Missing 'asset' argument")
+        if dataplex_zone is None and 'dataplexZone' in kwargs:
+            dataplex_zone = kwargs['dataplexZone']
+        if dataplex_zone is None:
+            raise TypeError("Missing 'dataplex_zone' argument")
+        if lake is None:
+            raise TypeError("Missing 'lake' argument")
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("asset", asset)
         _setter("dataplex_zone", dataplex_zone)
         _setter("lake", lake)
@@ -235,7 +249,11 @@ class _AssetIamMemberState:
              member: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataplex_zone is None and 'dataplexZone' in kwargs:
+            dataplex_zone = kwargs['dataplexZone']
+
         if asset is not None:
             _setter("asset", asset)
         if condition is not None:

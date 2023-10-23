@@ -61,17 +61,37 @@ class DatascanArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data: pulumi.Input['DatascanDataArgs'],
-             data_scan_id: pulumi.Input[str],
-             execution_spec: pulumi.Input['DatascanExecutionSpecArgs'],
-             location: pulumi.Input[str],
+             data: Optional[pulumi.Input['DatascanDataArgs']] = None,
+             data_scan_id: Optional[pulumi.Input[str]] = None,
+             execution_spec: Optional[pulumi.Input['DatascanExecutionSpecArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
              data_profile_spec: Optional[pulumi.Input['DatascanDataProfileSpecArgs']] = None,
              data_quality_spec: Optional[pulumi.Input['DatascanDataQualitySpecArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if data is None:
+            raise TypeError("Missing 'data' argument")
+        if data_scan_id is None and 'dataScanId' in kwargs:
+            data_scan_id = kwargs['dataScanId']
+        if data_scan_id is None:
+            raise TypeError("Missing 'data_scan_id' argument")
+        if execution_spec is None and 'executionSpec' in kwargs:
+            execution_spec = kwargs['executionSpec']
+        if execution_spec is None:
+            raise TypeError("Missing 'execution_spec' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if data_profile_spec is None and 'dataProfileSpec' in kwargs:
+            data_profile_spec = kwargs['dataProfileSpec']
+        if data_quality_spec is None and 'dataQualitySpec' in kwargs:
+            data_quality_spec = kwargs['dataQualitySpec']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("data", data)
         _setter("data_scan_id", data_scan_id)
         _setter("execution_spec", execution_spec)
@@ -319,7 +339,29 @@ class _DatascanState:
              type: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if data_profile_results is None and 'dataProfileResults' in kwargs:
+            data_profile_results = kwargs['dataProfileResults']
+        if data_profile_spec is None and 'dataProfileSpec' in kwargs:
+            data_profile_spec = kwargs['dataProfileSpec']
+        if data_quality_results is None and 'dataQualityResults' in kwargs:
+            data_quality_results = kwargs['dataQualityResults']
+        if data_quality_spec is None and 'dataQualitySpec' in kwargs:
+            data_quality_spec = kwargs['dataQualitySpec']
+        if data_scan_id is None and 'dataScanId' in kwargs:
+            data_scan_id = kwargs['dataScanId']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if execution_spec is None and 'executionSpec' in kwargs:
+            execution_spec = kwargs['executionSpec']
+        if execution_statuses is None and 'executionStatuses' in kwargs:
+            execution_statuses = kwargs['executionStatuses']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if data is not None:

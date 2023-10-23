@@ -48,13 +48,19 @@ class LiteSubscriptionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             topic: pulumi.Input[str],
+             topic: Optional[pulumi.Input[str]] = None,
              delivery_config: Optional[pulumi.Input['LiteSubscriptionDeliveryConfigArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if topic is None:
+            raise TypeError("Missing 'topic' argument")
+        if delivery_config is None and 'deliveryConfig' in kwargs:
+            delivery_config = kwargs['deliveryConfig']
+
         _setter("topic", topic)
         if delivery_config is not None:
             _setter("delivery_config", delivery_config)
@@ -186,7 +192,11 @@ class _LiteSubscriptionState:
              region: Optional[pulumi.Input[str]] = None,
              topic: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if delivery_config is None and 'deliveryConfig' in kwargs:
+            delivery_config = kwargs['deliveryConfig']
+
         if delivery_config is not None:
             _setter("delivery_config", delivery_config)
         if name is not None:

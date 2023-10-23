@@ -87,7 +87,7 @@ class BucketArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              autoclass: Optional[pulumi.Input['BucketAutoclassArgs']] = None,
              cors: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]]] = None,
              custom_placement_config: Optional[pulumi.Input['BucketCustomPlacementConfigArgs']] = None,
@@ -106,7 +106,29 @@ class BucketArgs:
              uniform_bucket_level_access: Optional[pulumi.Input[bool]] = None,
              versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
              website: Optional[pulumi.Input['BucketWebsiteArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if custom_placement_config is None and 'customPlacementConfig' in kwargs:
+            custom_placement_config = kwargs['customPlacementConfig']
+        if default_event_based_hold is None and 'defaultEventBasedHold' in kwargs:
+            default_event_based_hold = kwargs['defaultEventBasedHold']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if lifecycle_rules is None and 'lifecycleRules' in kwargs:
+            lifecycle_rules = kwargs['lifecycleRules']
+        if public_access_prevention is None and 'publicAccessPrevention' in kwargs:
+            public_access_prevention = kwargs['publicAccessPrevention']
+        if requester_pays is None and 'requesterPays' in kwargs:
+            requester_pays = kwargs['requesterPays']
+        if retention_policy is None and 'retentionPolicy' in kwargs:
+            retention_policy = kwargs['retentionPolicy']
+        if storage_class is None and 'storageClass' in kwargs:
+            storage_class = kwargs['storageClass']
+        if uniform_bucket_level_access is None and 'uniformBucketLevelAccess' in kwargs:
+            uniform_bucket_level_access = kwargs['uniformBucketLevelAccess']
+
         _setter("location", location)
         if autoclass is not None:
             _setter("autoclass", autoclass)
@@ -480,7 +502,29 @@ class _BucketState:
              url: Optional[pulumi.Input[str]] = None,
              versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
              website: Optional[pulumi.Input['BucketWebsiteArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if custom_placement_config is None and 'customPlacementConfig' in kwargs:
+            custom_placement_config = kwargs['customPlacementConfig']
+        if default_event_based_hold is None and 'defaultEventBasedHold' in kwargs:
+            default_event_based_hold = kwargs['defaultEventBasedHold']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if lifecycle_rules is None and 'lifecycleRules' in kwargs:
+            lifecycle_rules = kwargs['lifecycleRules']
+        if public_access_prevention is None and 'publicAccessPrevention' in kwargs:
+            public_access_prevention = kwargs['publicAccessPrevention']
+        if requester_pays is None and 'requesterPays' in kwargs:
+            requester_pays = kwargs['requesterPays']
+        if retention_policy is None and 'retentionPolicy' in kwargs:
+            retention_policy = kwargs['retentionPolicy']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if storage_class is None and 'storageClass' in kwargs:
+            storage_class = kwargs['storageClass']
+        if uniform_bucket_level_access is None and 'uniformBucketLevelAccess' in kwargs:
+            uniform_bucket_level_access = kwargs['uniformBucketLevelAccess']
+
         if autoclass is not None:
             _setter("autoclass", autoclass)
         if cors is not None:

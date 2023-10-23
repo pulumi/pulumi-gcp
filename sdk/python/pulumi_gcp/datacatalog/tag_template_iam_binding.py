@@ -55,13 +55,23 @@ class TagTemplateIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
-             tag_template: pulumi.Input[str],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             tag_template: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['TagTemplateIamBindingConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if tag_template is None and 'tagTemplate' in kwargs:
+            tag_template = kwargs['tagTemplate']
+        if tag_template is None:
+            raise TypeError("Missing 'tag_template' argument")
+
         _setter("members", members)
         _setter("role", role)
         _setter("tag_template", tag_template)
@@ -203,7 +213,11 @@ class _TagTemplateIamBindingState:
              region: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              tag_template: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if tag_template is None and 'tagTemplate' in kwargs:
+            tag_template = kwargs['tagTemplate']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

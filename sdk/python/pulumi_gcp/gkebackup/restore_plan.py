@@ -54,15 +54,29 @@ class RestorePlanArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_plan: pulumi.Input[str],
-             cluster: pulumi.Input[str],
-             location: pulumi.Input[str],
-             restore_config: pulumi.Input['RestorePlanRestoreConfigArgs'],
+             backup_plan: Optional[pulumi.Input[str]] = None,
+             cluster: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             restore_config: Optional[pulumi.Input['RestorePlanRestoreConfigArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_plan is None and 'backupPlan' in kwargs:
+            backup_plan = kwargs['backupPlan']
+        if backup_plan is None:
+            raise TypeError("Missing 'backup_plan' argument")
+        if cluster is None:
+            raise TypeError("Missing 'cluster' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if restore_config is None and 'restoreConfig' in kwargs:
+            restore_config = kwargs['restoreConfig']
+        if restore_config is None:
+            raise TypeError("Missing 'restore_config' argument")
+
         _setter("backup_plan", backup_plan)
         _setter("cluster", cluster)
         _setter("location", location)
@@ -239,7 +253,15 @@ class _RestorePlanState:
              state: Optional[pulumi.Input[str]] = None,
              state_reason: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_plan is None and 'backupPlan' in kwargs:
+            backup_plan = kwargs['backupPlan']
+        if restore_config is None and 'restoreConfig' in kwargs:
+            restore_config = kwargs['restoreConfig']
+        if state_reason is None and 'stateReason' in kwargs:
+            state_reason = kwargs['stateReason']
+
         if backup_plan is not None:
             _setter("backup_plan", backup_plan)
         if cluster is not None:

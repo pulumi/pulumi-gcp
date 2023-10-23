@@ -89,11 +89,11 @@ class AttachedClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             distribution: pulumi.Input[str],
-             fleet: pulumi.Input['AttachedClusterFleetArgs'],
-             location: pulumi.Input[str],
-             oidc_config: pulumi.Input['AttachedClusterOidcConfigArgs'],
-             platform_version: pulumi.Input[str],
+             distribution: Optional[pulumi.Input[str]] = None,
+             fleet: Optional[pulumi.Input['AttachedClusterFleetArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             oidc_config: Optional[pulumi.Input['AttachedClusterOidcConfigArgs']] = None,
+             platform_version: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              authorization: Optional[pulumi.Input['AttachedClusterAuthorizationArgs']] = None,
              binary_authorization: Optional[pulumi.Input['AttachedClusterBinaryAuthorizationArgs']] = None,
@@ -103,7 +103,31 @@ class AttachedClusterArgs:
              monitoring_config: Optional[pulumi.Input['AttachedClusterMonitoringConfigArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if distribution is None:
+            raise TypeError("Missing 'distribution' argument")
+        if fleet is None:
+            raise TypeError("Missing 'fleet' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if oidc_config is None and 'oidcConfig' in kwargs:
+            oidc_config = kwargs['oidcConfig']
+        if oidc_config is None:
+            raise TypeError("Missing 'oidc_config' argument")
+        if platform_version is None and 'platformVersion' in kwargs:
+            platform_version = kwargs['platformVersion']
+        if platform_version is None:
+            raise TypeError("Missing 'platform_version' argument")
+        if binary_authorization is None and 'binaryAuthorization' in kwargs:
+            binary_authorization = kwargs['binaryAuthorization']
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+        if monitoring_config is None and 'monitoringConfig' in kwargs:
+            monitoring_config = kwargs['monitoringConfig']
+
         _setter("distribution", distribution)
         _setter("fleet", fleet)
         _setter("location", location)
@@ -451,7 +475,31 @@ class _AttachedClusterState:
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedClusterWorkloadIdentityConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if binary_authorization is None and 'binaryAuthorization' in kwargs:
+            binary_authorization = kwargs['binaryAuthorization']
+        if cluster_region is None and 'clusterRegion' in kwargs:
+            cluster_region = kwargs['clusterRegion']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+        if kubernetes_version is None and 'kubernetesVersion' in kwargs:
+            kubernetes_version = kwargs['kubernetesVersion']
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+        if monitoring_config is None and 'monitoringConfig' in kwargs:
+            monitoring_config = kwargs['monitoringConfig']
+        if oidc_config is None and 'oidcConfig' in kwargs:
+            oidc_config = kwargs['oidcConfig']
+        if platform_version is None and 'platformVersion' in kwargs:
+            platform_version = kwargs['platformVersion']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if workload_identity_configs is None and 'workloadIdentityConfigs' in kwargs:
+            workload_identity_configs = kwargs['workloadIdentityConfigs']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if authorization is not None:

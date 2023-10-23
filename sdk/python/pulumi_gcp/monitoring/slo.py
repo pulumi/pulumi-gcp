@@ -91,8 +91,8 @@ class SloArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             goal: pulumi.Input[float],
-             service: pulumi.Input[str],
+             goal: Optional[pulumi.Input[float]] = None,
+             service: Optional[pulumi.Input[str]] = None,
              basic_sli: Optional[pulumi.Input['SloBasicSliArgs']] = None,
              calendar_period: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
@@ -102,7 +102,29 @@ class SloArgs:
              slo_id: Optional[pulumi.Input[str]] = None,
              user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              windows_based_sli: Optional[pulumi.Input['SloWindowsBasedSliArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if goal is None:
+            raise TypeError("Missing 'goal' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+        if basic_sli is None and 'basicSli' in kwargs:
+            basic_sli = kwargs['basicSli']
+        if calendar_period is None and 'calendarPeriod' in kwargs:
+            calendar_period = kwargs['calendarPeriod']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if request_based_sli is None and 'requestBasedSli' in kwargs:
+            request_based_sli = kwargs['requestBasedSli']
+        if rolling_period_days is None and 'rollingPeriodDays' in kwargs:
+            rolling_period_days = kwargs['rollingPeriodDays']
+        if slo_id is None and 'sloId' in kwargs:
+            slo_id = kwargs['sloId']
+        if user_labels is None and 'userLabels' in kwargs:
+            user_labels = kwargs['userLabels']
+        if windows_based_sli is None and 'windowsBasedSli' in kwargs:
+            windows_based_sli = kwargs['windowsBasedSli']
+
         _setter("goal", goal)
         _setter("service", service)
         if basic_sli is not None:
@@ -384,7 +406,25 @@ class _SloState:
              slo_id: Optional[pulumi.Input[str]] = None,
              user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              windows_based_sli: Optional[pulumi.Input['SloWindowsBasedSliArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if basic_sli is None and 'basicSli' in kwargs:
+            basic_sli = kwargs['basicSli']
+        if calendar_period is None and 'calendarPeriod' in kwargs:
+            calendar_period = kwargs['calendarPeriod']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if request_based_sli is None and 'requestBasedSli' in kwargs:
+            request_based_sli = kwargs['requestBasedSli']
+        if rolling_period_days is None and 'rollingPeriodDays' in kwargs:
+            rolling_period_days = kwargs['rollingPeriodDays']
+        if slo_id is None and 'sloId' in kwargs:
+            slo_id = kwargs['sloId']
+        if user_labels is None and 'userLabels' in kwargs:
+            user_labels = kwargs['userLabels']
+        if windows_based_sli is None and 'windowsBasedSli' in kwargs:
+            windows_based_sli = kwargs['windowsBasedSli']
+
         if basic_sli is not None:
             _setter("basic_sli", basic_sli)
         if calendar_period is not None:

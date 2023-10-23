@@ -54,7 +54,7 @@ class RepositoryReleaseConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             git_commitish: pulumi.Input[str],
+             git_commitish: Optional[pulumi.Input[str]] = None,
              code_compilation_config: Optional[pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArgs']] = None,
              cron_schedule: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -62,7 +62,19 @@ class RepositoryReleaseConfigArgs:
              region: Optional[pulumi.Input[str]] = None,
              repository: Optional[pulumi.Input[str]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if git_commitish is None and 'gitCommitish' in kwargs:
+            git_commitish = kwargs['gitCommitish']
+        if git_commitish is None:
+            raise TypeError("Missing 'git_commitish' argument")
+        if code_compilation_config is None and 'codeCompilationConfig' in kwargs:
+            code_compilation_config = kwargs['codeCompilationConfig']
+        if cron_schedule is None and 'cronSchedule' in kwargs:
+            cron_schedule = kwargs['cronSchedule']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         _setter("git_commitish", git_commitish)
         if code_compilation_config is not None:
             _setter("code_compilation_config", code_compilation_config)
@@ -235,7 +247,19 @@ class _RepositoryReleaseConfigState:
              region: Optional[pulumi.Input[str]] = None,
              repository: Optional[pulumi.Input[str]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if code_compilation_config is None and 'codeCompilationConfig' in kwargs:
+            code_compilation_config = kwargs['codeCompilationConfig']
+        if cron_schedule is None and 'cronSchedule' in kwargs:
+            cron_schedule = kwargs['cronSchedule']
+        if git_commitish is None and 'gitCommitish' in kwargs:
+            git_commitish = kwargs['gitCommitish']
+        if recent_scheduled_release_records is None and 'recentScheduledReleaseRecords' in kwargs:
+            recent_scheduled_release_records = kwargs['recentScheduledReleaseRecords']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         if code_compilation_config is not None:
             _setter("code_compilation_config", code_compilation_config)
         if cron_schedule is not None:

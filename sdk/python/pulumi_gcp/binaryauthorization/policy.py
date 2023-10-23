@@ -61,13 +61,25 @@ class PolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             default_admission_rule: pulumi.Input['PolicyDefaultAdmissionRuleArgs'],
+             default_admission_rule: Optional[pulumi.Input['PolicyDefaultAdmissionRuleArgs']] = None,
              admission_whitelist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAdmissionWhitelistPatternArgs']]]] = None,
              cluster_admission_rules: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyClusterAdmissionRuleArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              global_policy_evaluation_mode: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_admission_rule is None and 'defaultAdmissionRule' in kwargs:
+            default_admission_rule = kwargs['defaultAdmissionRule']
+        if default_admission_rule is None:
+            raise TypeError("Missing 'default_admission_rule' argument")
+        if admission_whitelist_patterns is None and 'admissionWhitelistPatterns' in kwargs:
+            admission_whitelist_patterns = kwargs['admissionWhitelistPatterns']
+        if cluster_admission_rules is None and 'clusterAdmissionRules' in kwargs:
+            cluster_admission_rules = kwargs['clusterAdmissionRules']
+        if global_policy_evaluation_mode is None and 'globalPolicyEvaluationMode' in kwargs:
+            global_policy_evaluation_mode = kwargs['globalPolicyEvaluationMode']
+
         _setter("default_admission_rule", default_admission_rule)
         if admission_whitelist_patterns is not None:
             _setter("admission_whitelist_patterns", admission_whitelist_patterns)
@@ -225,7 +237,17 @@ class _PolicyState:
              description: Optional[pulumi.Input[str]] = None,
              global_policy_evaluation_mode: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if admission_whitelist_patterns is None and 'admissionWhitelistPatterns' in kwargs:
+            admission_whitelist_patterns = kwargs['admissionWhitelistPatterns']
+        if cluster_admission_rules is None and 'clusterAdmissionRules' in kwargs:
+            cluster_admission_rules = kwargs['clusterAdmissionRules']
+        if default_admission_rule is None and 'defaultAdmissionRule' in kwargs:
+            default_admission_rule = kwargs['defaultAdmissionRule']
+        if global_policy_evaluation_mode is None and 'globalPolicyEvaluationMode' in kwargs:
+            global_policy_evaluation_mode = kwargs['globalPolicyEvaluationMode']
+
         if admission_whitelist_patterns is not None:
             _setter("admission_whitelist_patterns", admission_whitelist_patterns)
         if cluster_admission_rules is not None:

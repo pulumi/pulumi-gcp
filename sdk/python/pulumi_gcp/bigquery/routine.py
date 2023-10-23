@@ -82,9 +82,9 @@ class RoutineArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset_id: pulumi.Input[str],
-             definition_body: pulumi.Input[str],
-             routine_id: pulumi.Input[str],
+             dataset_id: Optional[pulumi.Input[str]] = None,
+             definition_body: Optional[pulumi.Input[str]] = None,
+             routine_id: Optional[pulumi.Input[str]] = None,
              arguments: Optional[pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              determinism_level: Optional[pulumi.Input[str]] = None,
@@ -94,7 +94,31 @@ class RoutineArgs:
              return_table_type: Optional[pulumi.Input[str]] = None,
              return_type: Optional[pulumi.Input[str]] = None,
              routine_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if dataset_id is None:
+            raise TypeError("Missing 'dataset_id' argument")
+        if definition_body is None and 'definitionBody' in kwargs:
+            definition_body = kwargs['definitionBody']
+        if definition_body is None:
+            raise TypeError("Missing 'definition_body' argument")
+        if routine_id is None and 'routineId' in kwargs:
+            routine_id = kwargs['routineId']
+        if routine_id is None:
+            raise TypeError("Missing 'routine_id' argument")
+        if determinism_level is None and 'determinismLevel' in kwargs:
+            determinism_level = kwargs['determinismLevel']
+        if imported_libraries is None and 'importedLibraries' in kwargs:
+            imported_libraries = kwargs['importedLibraries']
+        if return_table_type is None and 'returnTableType' in kwargs:
+            return_table_type = kwargs['returnTableType']
+        if return_type is None and 'returnType' in kwargs:
+            return_type = kwargs['returnType']
+        if routine_type is None and 'routineType' in kwargs:
+            routine_type = kwargs['routineType']
+
         _setter("dataset_id", dataset_id)
         _setter("definition_body", definition_body)
         _setter("routine_id", routine_id)
@@ -374,7 +398,29 @@ class _RoutineState:
              return_type: Optional[pulumi.Input[str]] = None,
              routine_id: Optional[pulumi.Input[str]] = None,
              routine_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if creation_time is None and 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if definition_body is None and 'definitionBody' in kwargs:
+            definition_body = kwargs['definitionBody']
+        if determinism_level is None and 'determinismLevel' in kwargs:
+            determinism_level = kwargs['determinismLevel']
+        if imported_libraries is None and 'importedLibraries' in kwargs:
+            imported_libraries = kwargs['importedLibraries']
+        if last_modified_time is None and 'lastModifiedTime' in kwargs:
+            last_modified_time = kwargs['lastModifiedTime']
+        if return_table_type is None and 'returnTableType' in kwargs:
+            return_table_type = kwargs['returnTableType']
+        if return_type is None and 'returnType' in kwargs:
+            return_type = kwargs['returnType']
+        if routine_id is None and 'routineId' in kwargs:
+            routine_id = kwargs['routineId']
+        if routine_type is None and 'routineType' in kwargs:
+            routine_type = kwargs['routineType']
+
         if arguments is not None:
             _setter("arguments", arguments)
         if creation_time is not None:

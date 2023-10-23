@@ -50,12 +50,22 @@ class HostingReleaseArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             site_id: pulumi.Input[str],
+             site_id: Optional[pulumi.Input[str]] = None,
              channel_id: Optional[pulumi.Input[str]] = None,
              message: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              version_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if site_id is None and 'siteId' in kwargs:
+            site_id = kwargs['siteId']
+        if site_id is None:
+            raise TypeError("Missing 'site_id' argument")
+        if channel_id is None and 'channelId' in kwargs:
+            channel_id = kwargs['channelId']
+        if version_name is None and 'versionName' in kwargs:
+            version_name = kwargs['versionName']
+
         _setter("site_id", site_id)
         if channel_id is not None:
             _setter("channel_id", channel_id)
@@ -193,7 +203,17 @@ class _HostingReleaseState:
              site_id: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              version_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if channel_id is None and 'channelId' in kwargs:
+            channel_id = kwargs['channelId']
+        if release_id is None and 'releaseId' in kwargs:
+            release_id = kwargs['releaseId']
+        if site_id is None and 'siteId' in kwargs:
+            site_id = kwargs['siteId']
+        if version_name is None and 'versionName' in kwargs:
+            version_name = kwargs['versionName']
+
         if channel_id is not None:
             _setter("channel_id", channel_id)
         if message is not None:

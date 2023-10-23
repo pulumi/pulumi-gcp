@@ -63,7 +63,7 @@ class ProjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project_id: pulumi.Input[str],
+             project_id: Optional[pulumi.Input[str]] = None,
              auto_create_network: Optional[pulumi.Input[bool]] = None,
              billing_account: Optional[pulumi.Input[str]] = None,
              folder_id: Optional[pulumi.Input[str]] = None,
@@ -71,7 +71,23 @@ class ProjectArgs:
              name: Optional[pulumi.Input[str]] = None,
              org_id: Optional[pulumi.Input[str]] = None,
              skip_delete: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if auto_create_network is None and 'autoCreateNetwork' in kwargs:
+            auto_create_network = kwargs['autoCreateNetwork']
+        if billing_account is None and 'billingAccount' in kwargs:
+            billing_account = kwargs['billingAccount']
+        if folder_id is None and 'folderId' in kwargs:
+            folder_id = kwargs['folderId']
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if skip_delete is None and 'skipDelete' in kwargs:
+            skip_delete = kwargs['skipDelete']
+
         _setter("project_id", project_id)
         if auto_create_network is not None:
             _setter("auto_create_network", auto_create_network)
@@ -265,7 +281,21 @@ class _ProjectState:
              org_id: Optional[pulumi.Input[str]] = None,
              project_id: Optional[pulumi.Input[str]] = None,
              skip_delete: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_create_network is None and 'autoCreateNetwork' in kwargs:
+            auto_create_network = kwargs['autoCreateNetwork']
+        if billing_account is None and 'billingAccount' in kwargs:
+            billing_account = kwargs['billingAccount']
+        if folder_id is None and 'folderId' in kwargs:
+            folder_id = kwargs['folderId']
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if skip_delete is None and 'skipDelete' in kwargs:
+            skip_delete = kwargs['skipDelete']
+
         if auto_create_network is not None:
             _setter("auto_create_network", auto_create_network)
         if billing_account is not None:

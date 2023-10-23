@@ -98,7 +98,21 @@ class JobArgs:
              retry_config: Optional[pulumi.Input['JobRetryConfigArgs']] = None,
              schedule: Optional[pulumi.Input[str]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_engine_http_target is None and 'appEngineHttpTarget' in kwargs:
+            app_engine_http_target = kwargs['appEngineHttpTarget']
+        if attempt_deadline is None and 'attemptDeadline' in kwargs:
+            attempt_deadline = kwargs['attemptDeadline']
+        if http_target is None and 'httpTarget' in kwargs:
+            http_target = kwargs['httpTarget']
+        if pubsub_target is None and 'pubsubTarget' in kwargs:
+            pubsub_target = kwargs['pubsubTarget']
+        if retry_config is None and 'retryConfig' in kwargs:
+            retry_config = kwargs['retryConfig']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         if app_engine_http_target is not None:
             _setter("app_engine_http_target", app_engine_http_target)
         if attempt_deadline is not None:
@@ -383,7 +397,21 @@ class _JobState:
              schedule: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_engine_http_target is None and 'appEngineHttpTarget' in kwargs:
+            app_engine_http_target = kwargs['appEngineHttpTarget']
+        if attempt_deadline is None and 'attemptDeadline' in kwargs:
+            attempt_deadline = kwargs['attemptDeadline']
+        if http_target is None and 'httpTarget' in kwargs:
+            http_target = kwargs['httpTarget']
+        if pubsub_target is None and 'pubsubTarget' in kwargs:
+            pubsub_target = kwargs['pubsubTarget']
+        if retry_config is None and 'retryConfig' in kwargs:
+            retry_config = kwargs['retryConfig']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         if app_engine_http_target is not None:
             _setter("app_engine_http_target", app_engine_http_target)
         if attempt_deadline is not None:

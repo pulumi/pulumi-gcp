@@ -55,17 +55,35 @@ class ZoneArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             discovery_spec: pulumi.Input['ZoneDiscoverySpecArgs'],
-             lake: pulumi.Input[str],
-             location: pulumi.Input[str],
-             resource_spec: pulumi.Input['ZoneResourceSpecArgs'],
-             type: pulumi.Input[str],
+             discovery_spec: Optional[pulumi.Input['ZoneDiscoverySpecArgs']] = None,
+             lake: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             resource_spec: Optional[pulumi.Input['ZoneResourceSpecArgs']] = None,
+             type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if discovery_spec is None and 'discoverySpec' in kwargs:
+            discovery_spec = kwargs['discoverySpec']
+        if discovery_spec is None:
+            raise TypeError("Missing 'discovery_spec' argument")
+        if lake is None:
+            raise TypeError("Missing 'lake' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if resource_spec is None and 'resourceSpec' in kwargs:
+            resource_spec = kwargs['resourceSpec']
+        if resource_spec is None:
+            raise TypeError("Missing 'resource_spec' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("discovery_spec", discovery_spec)
         _setter("lake", lake)
         _setter("location", location)
@@ -275,7 +293,21 @@ class _ZoneState:
              type: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if asset_statuses is None and 'assetStatuses' in kwargs:
+            asset_statuses = kwargs['assetStatuses']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if discovery_spec is None and 'discoverySpec' in kwargs:
+            discovery_spec = kwargs['discoverySpec']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if resource_spec is None and 'resourceSpec' in kwargs:
+            resource_spec = kwargs['resourceSpec']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if asset_statuses is not None:
             _setter("asset_statuses", asset_statuses)
         if create_time is not None:

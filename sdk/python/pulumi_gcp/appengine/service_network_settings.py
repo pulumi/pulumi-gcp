@@ -36,10 +36,18 @@ class ServiceNetworkSettingsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network_settings: pulumi.Input['ServiceNetworkSettingsNetworkSettingsArgs'],
-             service: pulumi.Input[str],
+             network_settings: Optional[pulumi.Input['ServiceNetworkSettingsNetworkSettingsArgs']] = None,
+             service: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network_settings is None and 'networkSettings' in kwargs:
+            network_settings = kwargs['networkSettings']
+        if network_settings is None:
+            raise TypeError("Missing 'network_settings' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("network_settings", network_settings)
         _setter("service", service)
         if project is not None:
@@ -110,7 +118,11 @@ class _ServiceNetworkSettingsState:
              network_settings: Optional[pulumi.Input['ServiceNetworkSettingsNetworkSettingsArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
              service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network_settings is None and 'networkSettings' in kwargs:
+            network_settings = kwargs['networkSettings']
+
         if network_settings is not None:
             _setter("network_settings", network_settings)
         if project is not None:

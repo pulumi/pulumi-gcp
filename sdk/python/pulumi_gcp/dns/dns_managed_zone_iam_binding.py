@@ -53,12 +53,22 @@ class DnsManagedZoneIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             managed_zone: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             managed_zone: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['DnsManagedZoneIamBindingConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if managed_zone is None and 'managedZone' in kwargs:
+            managed_zone = kwargs['managedZone']
+        if managed_zone is None:
+            raise TypeError("Missing 'managed_zone' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("managed_zone", managed_zone)
         _setter("members", members)
         _setter("role", role)
@@ -186,7 +196,11 @@ class _DnsManagedZoneIamBindingState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if managed_zone is None and 'managedZone' in kwargs:
+            managed_zone = kwargs['managedZone']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:

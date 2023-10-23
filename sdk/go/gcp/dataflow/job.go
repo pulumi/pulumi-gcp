@@ -32,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataflow.NewJob(ctx, "bigDataJob", &dataflow.JobArgs{
-//				Parameters: pulumi.AnyMap{
+//				Parameters: pulumi.Map{
 //					"baz": pulumi.Any("qux"),
 //					"foo": pulumi.Any("bar"),
 //				},
@@ -87,13 +87,13 @@ import (
 //				TemplateGcsPath:       pulumi.String("gs://my-bucket/templates/template_file"),
 //				TempGcsLocation:       pulumi.String("gs://my-bucket/tmp_dir"),
 //				EnableStreamingEngine: pulumi.Bool(true),
-//				Parameters: pulumi.AnyMap{
+//				Parameters: pulumi.Map{
 //					"inputFilePattern": bucket1.Url.ApplyT(func(url string) (string, error) {
 //						return fmt.Sprintf("%v/*.json", url), nil
 //					}).(pulumi.StringOutput),
 //					"outputTopic": topic.ID(),
 //				},
-//				TransformNameMapping: pulumi.AnyMap{
+//				TransformNameMapping: pulumi.Map{
 //					"name": pulumi.Any("test_job"),
 //					"env":  pulumi.Any("test"),
 //				},
@@ -138,7 +138,7 @@ import (
 //			}
 //			_, err := random.NewRandomId(ctx, "bigDataJobNameSuffix", &random.RandomIdArgs{
 //				ByteLength: pulumi.Int(4),
-//				Keepers: pulumi.AnyMap{
+//				Keepers: pulumi.Map{
 //					"region":          pulumi.Any(_var.Region),
 //					"subscription_id": pulumi.String(bigDataJobSubscriptionId),
 //				},
@@ -150,7 +150,7 @@ import (
 //				Region:                   pulumi.Any(_var.Region),
 //				ContainerSpecGcsPath:     pulumi.String("gs://my-bucket/templates/template.json"),
 //				SkipWaitOnJobTermination: pulumi.Bool(true),
-//				Parameters: pulumi.AnyMap{
+//				Parameters: pulumi.Map{
 //					"inputSubscription": pulumi.String(bigDataJobSubscriptionId),
 //				},
 //			}, pulumi.Provider(google_beta))

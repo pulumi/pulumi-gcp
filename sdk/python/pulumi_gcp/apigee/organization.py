@@ -78,7 +78,7 @@ class OrganizationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project_id: pulumi.Input[str],
+             project_id: Optional[pulumi.Input[str]] = None,
              analytics_region: Optional[pulumi.Input[str]] = None,
              authorized_network: Optional[pulumi.Input[str]] = None,
              billing_type: Optional[pulumi.Input[str]] = None,
@@ -89,7 +89,27 @@ class OrganizationArgs:
              retention: Optional[pulumi.Input[str]] = None,
              runtime_database_encryption_key_name: Optional[pulumi.Input[str]] = None,
              runtime_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if analytics_region is None and 'analyticsRegion' in kwargs:
+            analytics_region = kwargs['analyticsRegion']
+        if authorized_network is None and 'authorizedNetwork' in kwargs:
+            authorized_network = kwargs['authorizedNetwork']
+        if billing_type is None and 'billingType' in kwargs:
+            billing_type = kwargs['billingType']
+        if disable_vpc_peering is None and 'disableVpcPeering' in kwargs:
+            disable_vpc_peering = kwargs['disableVpcPeering']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if runtime_database_encryption_key_name is None and 'runtimeDatabaseEncryptionKeyName' in kwargs:
+            runtime_database_encryption_key_name = kwargs['runtimeDatabaseEncryptionKeyName']
+        if runtime_type is None and 'runtimeType' in kwargs:
+            runtime_type = kwargs['runtimeType']
+
         _setter("project_id", project_id)
         if analytics_region is not None:
             _setter("analytics_region", analytics_region)
@@ -359,7 +379,31 @@ class _OrganizationState:
              runtime_database_encryption_key_name: Optional[pulumi.Input[str]] = None,
              runtime_type: Optional[pulumi.Input[str]] = None,
              subscription_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if analytics_region is None and 'analyticsRegion' in kwargs:
+            analytics_region = kwargs['analyticsRegion']
+        if apigee_project_id is None and 'apigeeProjectId' in kwargs:
+            apigee_project_id = kwargs['apigeeProjectId']
+        if authorized_network is None and 'authorizedNetwork' in kwargs:
+            authorized_network = kwargs['authorizedNetwork']
+        if billing_type is None and 'billingType' in kwargs:
+            billing_type = kwargs['billingType']
+        if ca_certificate is None and 'caCertificate' in kwargs:
+            ca_certificate = kwargs['caCertificate']
+        if disable_vpc_peering is None and 'disableVpcPeering' in kwargs:
+            disable_vpc_peering = kwargs['disableVpcPeering']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if runtime_database_encryption_key_name is None and 'runtimeDatabaseEncryptionKeyName' in kwargs:
+            runtime_database_encryption_key_name = kwargs['runtimeDatabaseEncryptionKeyName']
+        if runtime_type is None and 'runtimeType' in kwargs:
+            runtime_type = kwargs['runtimeType']
+        if subscription_type is None and 'subscriptionType' in kwargs:
+            subscription_type = kwargs['subscriptionType']
+
         if analytics_region is not None:
             _setter("analytics_region", analytics_region)
         if apigee_project_id is not None:

@@ -50,14 +50,24 @@ class WorkerPoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              network_config: Optional[pulumi.Input['WorkerPoolNetworkConfigArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
              worker_config: Optional[pulumi.Input['WorkerPoolWorkerConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if worker_config is None and 'workerConfig' in kwargs:
+            worker_config = kwargs['workerConfig']
+
         _setter("location", location)
         if annotations is not None:
             _setter("annotations", annotations)
@@ -225,7 +235,21 @@ class _WorkerPoolState:
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              worker_config: Optional[pulumi.Input['WorkerPoolWorkerConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if delete_time is None and 'deleteTime' in kwargs:
+            delete_time = kwargs['deleteTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if worker_config is None and 'workerConfig' in kwargs:
+            worker_config = kwargs['workerConfig']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if create_time is not None:

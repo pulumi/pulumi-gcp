@@ -129,19 +129,19 @@ import (
 //						SubfolderMatches: pulumi.String(""),
 //					},
 //				},
-//				StateNotificationConfig: pulumi.AnyMap{
+//				StateNotificationConfig: pulumi.Map{
 //					"pubsub_topic_name": default_devicestatus.ID(),
 //				},
-//				MqttConfig: pulumi.AnyMap{
+//				MqttConfig: pulumi.Map{
 //					"mqtt_enabled_state": pulumi.Any("MQTT_ENABLED"),
 //				},
-//				HttpConfig: pulumi.AnyMap{
+//				HttpConfig: pulumi.Map{
 //					"http_enabled_state": pulumi.Any("HTTP_ENABLED"),
 //				},
 //				LogLevel: pulumi.String("INFO"),
 //				Credentials: iot.RegistryCredentialArray{
 //					&iot.RegistryCredentialArgs{
-//						PublicKeyCertificate: pulumi.AnyMap{
+//						PublicKeyCertificate: pulumi.Map{
 //							"format":      pulumi.Any("X509_CERTIFICATE_PEM"),
 //							"certificate": readFileOrPanic("test-fixtures/rsa_cert.pem"),
 //						},

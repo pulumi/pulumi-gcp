@@ -41,7 +41,11 @@ class ApiKeyArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              restrictions: Optional[pulumi.Input['ApiKeyRestrictionsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if name is not None:
@@ -136,7 +140,13 @@ class _ApiKeyState:
              project: Optional[pulumi.Input[str]] = None,
              restrictions: Optional[pulumi.Input['ApiKeyRestrictionsArgs']] = None,
              uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if key_string is None and 'keyString' in kwargs:
+            key_string = kwargs['keyString']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if key_string is not None:

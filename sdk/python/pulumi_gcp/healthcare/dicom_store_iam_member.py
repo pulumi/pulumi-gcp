@@ -49,11 +49,21 @@ class DicomStoreIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dicom_store_id: pulumi.Input[str],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
+             dicom_store_id: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['DicomStoreIamMemberConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dicom_store_id is None and 'dicomStoreId' in kwargs:
+            dicom_store_id = kwargs['dicomStoreId']
+        if dicom_store_id is None:
+            raise TypeError("Missing 'dicom_store_id' argument")
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("dicom_store_id", dicom_store_id)
         _setter("member", member)
         _setter("role", role)
@@ -161,7 +171,11 @@ class _DicomStoreIamMemberState:
              etag: Optional[pulumi.Input[str]] = None,
              member: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dicom_store_id is None and 'dicomStoreId' in kwargs:
+            dicom_store_id = kwargs['dicomStoreId']
+
         if condition is not None:
             _setter("condition", condition)
         if dicom_store_id is not None:

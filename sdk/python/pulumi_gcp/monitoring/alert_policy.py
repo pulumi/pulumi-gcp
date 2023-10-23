@@ -78,16 +78,32 @@ class AlertPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             combiner: pulumi.Input[str],
-             conditions: pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionArgs']]],
-             display_name: pulumi.Input[str],
+             combiner: Optional[pulumi.Input[str]] = None,
+             conditions: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionArgs']]]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
              alert_strategy: Optional[pulumi.Input['AlertPolicyAlertStrategyArgs']] = None,
              documentation: Optional[pulumi.Input['AlertPolicyDocumentationArgs']] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if combiner is None:
+            raise TypeError("Missing 'combiner' argument")
+        if conditions is None:
+            raise TypeError("Missing 'conditions' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if alert_strategy is None and 'alertStrategy' in kwargs:
+            alert_strategy = kwargs['alertStrategy']
+        if notification_channels is None and 'notificationChannels' in kwargs:
+            notification_channels = kwargs['notificationChannels']
+        if user_labels is None and 'userLabels' in kwargs:
+            user_labels = kwargs['userLabels']
+
         _setter("combiner", combiner)
         _setter("conditions", conditions)
         _setter("display_name", display_name)
@@ -330,7 +346,19 @@ class _AlertPolicyState:
              notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if alert_strategy is None and 'alertStrategy' in kwargs:
+            alert_strategy = kwargs['alertStrategy']
+        if creation_records is None and 'creationRecords' in kwargs:
+            creation_records = kwargs['creationRecords']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if notification_channels is None and 'notificationChannels' in kwargs:
+            notification_channels = kwargs['notificationChannels']
+        if user_labels is None and 'userLabels' in kwargs:
+            user_labels = kwargs['userLabels']
+
         if alert_strategy is not None:
             _setter("alert_strategy", alert_strategy)
         if combiner is not None:

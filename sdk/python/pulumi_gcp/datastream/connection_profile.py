@@ -71,9 +71,9 @@ class ConnectionProfileArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_profile_id: pulumi.Input[str],
-             display_name: pulumi.Input[str],
-             location: pulumi.Input[str],
+             connection_profile_id: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
              bigquery_profile: Optional[pulumi.Input['ConnectionProfileBigqueryProfileArgs']] = None,
              forward_ssh_connectivity: Optional[pulumi.Input['ConnectionProfileForwardSshConnectivityArgs']] = None,
              gcs_profile: Optional[pulumi.Input['ConnectionProfileGcsProfileArgs']] = None,
@@ -83,7 +83,33 @@ class ConnectionProfileArgs:
              postgresql_profile: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileArgs']] = None,
              private_connectivity: Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connection_profile_id is None and 'connectionProfileId' in kwargs:
+            connection_profile_id = kwargs['connectionProfileId']
+        if connection_profile_id is None:
+            raise TypeError("Missing 'connection_profile_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if bigquery_profile is None and 'bigqueryProfile' in kwargs:
+            bigquery_profile = kwargs['bigqueryProfile']
+        if forward_ssh_connectivity is None and 'forwardSshConnectivity' in kwargs:
+            forward_ssh_connectivity = kwargs['forwardSshConnectivity']
+        if gcs_profile is None and 'gcsProfile' in kwargs:
+            gcs_profile = kwargs['gcsProfile']
+        if mysql_profile is None and 'mysqlProfile' in kwargs:
+            mysql_profile = kwargs['mysqlProfile']
+        if oracle_profile is None and 'oracleProfile' in kwargs:
+            oracle_profile = kwargs['oracleProfile']
+        if postgresql_profile is None and 'postgresqlProfile' in kwargs:
+            postgresql_profile = kwargs['postgresqlProfile']
+        if private_connectivity is None and 'privateConnectivity' in kwargs:
+            private_connectivity = kwargs['privateConnectivity']
+
         _setter("connection_profile_id", connection_profile_id)
         _setter("display_name", display_name)
         _setter("location", location)
@@ -335,7 +361,27 @@ class _ConnectionProfileState:
              postgresql_profile: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileArgs']] = None,
              private_connectivity: Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bigquery_profile is None and 'bigqueryProfile' in kwargs:
+            bigquery_profile = kwargs['bigqueryProfile']
+        if connection_profile_id is None and 'connectionProfileId' in kwargs:
+            connection_profile_id = kwargs['connectionProfileId']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if forward_ssh_connectivity is None and 'forwardSshConnectivity' in kwargs:
+            forward_ssh_connectivity = kwargs['forwardSshConnectivity']
+        if gcs_profile is None and 'gcsProfile' in kwargs:
+            gcs_profile = kwargs['gcsProfile']
+        if mysql_profile is None and 'mysqlProfile' in kwargs:
+            mysql_profile = kwargs['mysqlProfile']
+        if oracle_profile is None and 'oracleProfile' in kwargs:
+            oracle_profile = kwargs['oracleProfile']
+        if postgresql_profile is None and 'postgresqlProfile' in kwargs:
+            postgresql_profile = kwargs['postgresqlProfile']
+        if private_connectivity is None and 'privateConnectivity' in kwargs:
+            private_connectivity = kwargs['privateConnectivity']
+
         if bigquery_profile is not None:
             _setter("bigquery_profile", bigquery_profile)
         if connection_profile_id is not None:

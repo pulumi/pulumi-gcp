@@ -50,14 +50,28 @@ class EnterpriseKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              android_settings: Optional[pulumi.Input['EnterpriseKeyAndroidSettingsArgs']] = None,
              ios_settings: Optional[pulumi.Input['EnterpriseKeyIosSettingsArgs']] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              testing_options: Optional[pulumi.Input['EnterpriseKeyTestingOptionsArgs']] = None,
              web_settings: Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if android_settings is None and 'androidSettings' in kwargs:
+            android_settings = kwargs['androidSettings']
+        if ios_settings is None and 'iosSettings' in kwargs:
+            ios_settings = kwargs['iosSettings']
+        if testing_options is None and 'testingOptions' in kwargs:
+            testing_options = kwargs['testingOptions']
+        if web_settings is None and 'webSettings' in kwargs:
+            web_settings = kwargs['webSettings']
+
         _setter("display_name", display_name)
         if android_settings is not None:
             _setter("android_settings", android_settings)
@@ -213,7 +227,21 @@ class _EnterpriseKeyState:
              project: Optional[pulumi.Input[str]] = None,
              testing_options: Optional[pulumi.Input['EnterpriseKeyTestingOptionsArgs']] = None,
              web_settings: Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if android_settings is None and 'androidSettings' in kwargs:
+            android_settings = kwargs['androidSettings']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if ios_settings is None and 'iosSettings' in kwargs:
+            ios_settings = kwargs['iosSettings']
+        if testing_options is None and 'testingOptions' in kwargs:
+            testing_options = kwargs['testingOptions']
+        if web_settings is None and 'webSettings' in kwargs:
+            web_settings = kwargs['webSettings']
+
         if android_settings is not None:
             _setter("android_settings", android_settings)
         if create_time is not None:

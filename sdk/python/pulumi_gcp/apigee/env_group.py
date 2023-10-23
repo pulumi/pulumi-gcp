@@ -36,10 +36,16 @@ class EnvGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             org_id: pulumi.Input[str],
+             org_id: Optional[pulumi.Input[str]] = None,
              hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+
         _setter("org_id", org_id)
         if hostnames is not None:
             _setter("hostnames", hostnames)
@@ -115,7 +121,11 @@ class _EnvGroupState:
              hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              org_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+
         if hostnames is not None:
             _setter("hostnames", hostnames)
         if name is not None:

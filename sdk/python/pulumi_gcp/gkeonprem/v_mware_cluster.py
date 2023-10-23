@@ -100,10 +100,10 @@ class VMwareClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             admin_cluster_membership: pulumi.Input[str],
-             control_plane_node: pulumi.Input['VMwareClusterControlPlaneNodeArgs'],
-             location: pulumi.Input[str],
-             on_prem_version: pulumi.Input[str],
+             admin_cluster_membership: Optional[pulumi.Input[str]] = None,
+             control_plane_node: Optional[pulumi.Input['VMwareClusterControlPlaneNodeArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             on_prem_version: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              anti_affinity_groups: Optional[pulumi.Input['VMwareClusterAntiAffinityGroupsArgs']] = None,
              authorization: Optional[pulumi.Input['VMwareClusterAuthorizationArgs']] = None,
@@ -118,7 +118,39 @@ class VMwareClusterArgs:
              storage: Optional[pulumi.Input['VMwareClusterStorageArgs']] = None,
              upgrade_policy: Optional[pulumi.Input['VMwareClusterUpgradePolicyArgs']] = None,
              vm_tracking_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if admin_cluster_membership is None and 'adminClusterMembership' in kwargs:
+            admin_cluster_membership = kwargs['adminClusterMembership']
+        if admin_cluster_membership is None:
+            raise TypeError("Missing 'admin_cluster_membership' argument")
+        if control_plane_node is None and 'controlPlaneNode' in kwargs:
+            control_plane_node = kwargs['controlPlaneNode']
+        if control_plane_node is None:
+            raise TypeError("Missing 'control_plane_node' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if on_prem_version is None and 'onPremVersion' in kwargs:
+            on_prem_version = kwargs['onPremVersion']
+        if on_prem_version is None:
+            raise TypeError("Missing 'on_prem_version' argument")
+        if anti_affinity_groups is None and 'antiAffinityGroups' in kwargs:
+            anti_affinity_groups = kwargs['antiAffinityGroups']
+        if auto_repair_config is None and 'autoRepairConfig' in kwargs:
+            auto_repair_config = kwargs['autoRepairConfig']
+        if dataplane_v2 is None and 'dataplaneV2' in kwargs:
+            dataplane_v2 = kwargs['dataplaneV2']
+        if enable_control_plane_v2 is None and 'enableControlPlaneV2' in kwargs:
+            enable_control_plane_v2 = kwargs['enableControlPlaneV2']
+        if load_balancer is None and 'loadBalancer' in kwargs:
+            load_balancer = kwargs['loadBalancer']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if upgrade_policy is None and 'upgradePolicy' in kwargs:
+            upgrade_policy = kwargs['upgradePolicy']
+        if vm_tracking_enabled is None and 'vmTrackingEnabled' in kwargs:
+            vm_tracking_enabled = kwargs['vmTrackingEnabled']
+
         _setter("admin_cluster_membership", admin_cluster_membership)
         _setter("control_plane_node", control_plane_node)
         _setter("location", location)
@@ -567,7 +599,41 @@ class _VMwareClusterState:
              validation_checks: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckArgs']]]] = None,
              vcenters: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArgs']]]] = None,
              vm_tracking_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if admin_cluster_membership is None and 'adminClusterMembership' in kwargs:
+            admin_cluster_membership = kwargs['adminClusterMembership']
+        if anti_affinity_groups is None and 'antiAffinityGroups' in kwargs:
+            anti_affinity_groups = kwargs['antiAffinityGroups']
+        if auto_repair_config is None and 'autoRepairConfig' in kwargs:
+            auto_repair_config = kwargs['autoRepairConfig']
+        if control_plane_node is None and 'controlPlaneNode' in kwargs:
+            control_plane_node = kwargs['controlPlaneNode']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if dataplane_v2 is None and 'dataplaneV2' in kwargs:
+            dataplane_v2 = kwargs['dataplaneV2']
+        if delete_time is None and 'deleteTime' in kwargs:
+            delete_time = kwargs['deleteTime']
+        if enable_control_plane_v2 is None and 'enableControlPlaneV2' in kwargs:
+            enable_control_plane_v2 = kwargs['enableControlPlaneV2']
+        if load_balancer is None and 'loadBalancer' in kwargs:
+            load_balancer = kwargs['loadBalancer']
+        if local_name is None and 'localName' in kwargs:
+            local_name = kwargs['localName']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if on_prem_version is None and 'onPremVersion' in kwargs:
+            on_prem_version = kwargs['onPremVersion']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if upgrade_policy is None and 'upgradePolicy' in kwargs:
+            upgrade_policy = kwargs['upgradePolicy']
+        if validation_checks is None and 'validationChecks' in kwargs:
+            validation_checks = kwargs['validationChecks']
+        if vm_tracking_enabled is None and 'vmTrackingEnabled' in kwargs:
+            vm_tracking_enabled = kwargs['vmTrackingEnabled']
+
         if admin_cluster_membership is not None:
             _setter("admin_cluster_membership", admin_cluster_membership)
         if annotations is not None:

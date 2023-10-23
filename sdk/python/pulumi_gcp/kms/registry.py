@@ -78,7 +78,19 @@ class RegistryArgs:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              state_notification_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if event_notification_configs is None and 'eventNotificationConfigs' in kwargs:
+            event_notification_configs = kwargs['eventNotificationConfigs']
+        if http_config is None and 'httpConfig' in kwargs:
+            http_config = kwargs['httpConfig']
+        if log_level is None and 'logLevel' in kwargs:
+            log_level = kwargs['logLevel']
+        if mqtt_config is None and 'mqttConfig' in kwargs:
+            mqtt_config = kwargs['mqttConfig']
+        if state_notification_config is None and 'stateNotificationConfig' in kwargs:
+            state_notification_config = kwargs['stateNotificationConfig']
+
         if credentials is not None:
             _setter("credentials", credentials)
         if event_notification_configs is not None:
@@ -289,7 +301,19 @@ class _RegistryState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              state_notification_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if event_notification_configs is None and 'eventNotificationConfigs' in kwargs:
+            event_notification_configs = kwargs['eventNotificationConfigs']
+        if http_config is None and 'httpConfig' in kwargs:
+            http_config = kwargs['httpConfig']
+        if log_level is None and 'logLevel' in kwargs:
+            log_level = kwargs['logLevel']
+        if mqtt_config is None and 'mqttConfig' in kwargs:
+            mqtt_config = kwargs['mqttConfig']
+        if state_notification_config is None and 'stateNotificationConfig' in kwargs:
+            state_notification_config = kwargs['stateNotificationConfig']
+
         if credentials is not None:
             _setter("credentials", credentials)
         if event_notification_configs is not None:

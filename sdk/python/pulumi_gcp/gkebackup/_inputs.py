@@ -76,7 +76,21 @@ class BackupPlanBackupConfigArgs:
              include_volume_data: Optional[pulumi.Input[bool]] = None,
              selected_applications: Optional[pulumi.Input['BackupPlanBackupConfigSelectedApplicationsArgs']] = None,
              selected_namespaces: Optional[pulumi.Input['BackupPlanBackupConfigSelectedNamespacesArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if all_namespaces is None and 'allNamespaces' in kwargs:
+            all_namespaces = kwargs['allNamespaces']
+        if encryption_key is None and 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if include_secrets is None and 'includeSecrets' in kwargs:
+            include_secrets = kwargs['includeSecrets']
+        if include_volume_data is None and 'includeVolumeData' in kwargs:
+            include_volume_data = kwargs['includeVolumeData']
+        if selected_applications is None and 'selectedApplications' in kwargs:
+            selected_applications = kwargs['selectedApplications']
+        if selected_namespaces is None and 'selectedNamespaces' in kwargs:
+            selected_namespaces = kwargs['selectedNamespaces']
+
         if all_namespaces is not None:
             _setter("all_namespaces", all_namespaces)
         if encryption_key is not None:
@@ -183,8 +197,14 @@ class BackupPlanBackupConfigEncryptionKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             gcp_kms_encryption_key: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             gcp_kms_encryption_key: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gcp_kms_encryption_key is None and 'gcpKmsEncryptionKey' in kwargs:
+            gcp_kms_encryption_key = kwargs['gcpKmsEncryptionKey']
+        if gcp_kms_encryption_key is None:
+            raise TypeError("Missing 'gcp_kms_encryption_key' argument")
+
         _setter("gcp_kms_encryption_key", gcp_kms_encryption_key)
 
     @property
@@ -215,8 +235,14 @@ class BackupPlanBackupConfigSelectedApplicationsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             namespaced_names: pulumi.Input[Sequence[pulumi.Input['BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             namespaced_names: Optional[pulumi.Input[Sequence[pulumi.Input['BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if namespaced_names is None and 'namespacedNames' in kwargs:
+            namespaced_names = kwargs['namespacedNames']
+        if namespaced_names is None:
+            raise TypeError("Missing 'namespaced_names' argument")
+
         _setter("namespaced_names", namespaced_names)
 
     @property
@@ -250,9 +276,15 @@ class BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             namespace: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+
         _setter("name", name)
         _setter("namespace", namespace)
 
@@ -295,8 +327,12 @@ class BackupPlanBackupConfigSelectedNamespacesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             namespaces: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if namespaces is None:
+            raise TypeError("Missing 'namespaces' argument")
+
         _setter("namespaces", namespaces)
 
     @property
@@ -333,7 +369,11 @@ class BackupPlanBackupScheduleArgs:
              _setter: Callable[[Any, Any], None],
              cron_schedule: Optional[pulumi.Input[str]] = None,
              paused: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cron_schedule is None and 'cronSchedule' in kwargs:
+            cron_schedule = kwargs['cronSchedule']
+
         if cron_schedule is not None:
             _setter("cron_schedule", cron_schedule)
         if paused is not None:
@@ -381,10 +421,16 @@ class BackupPlanIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -433,10 +479,16 @@ class BackupPlanIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -509,7 +561,13 @@ class BackupPlanRetentionPolicyArgs:
              backup_delete_lock_days: Optional[pulumi.Input[int]] = None,
              backup_retain_days: Optional[pulumi.Input[int]] = None,
              locked: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_delete_lock_days is None and 'backupDeleteLockDays' in kwargs:
+            backup_delete_lock_days = kwargs['backupDeleteLockDays']
+        if backup_retain_days is None and 'backupRetainDays' in kwargs:
+            backup_retain_days = kwargs['backupRetainDays']
+
         if backup_delete_lock_days is not None:
             _setter("backup_delete_lock_days", backup_delete_lock_days)
         if backup_retain_days is not None:
@@ -588,10 +646,16 @@ class RestorePlanIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -646,10 +710,16 @@ class RestorePlanIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -770,7 +840,29 @@ class RestorePlanRestoreConfigArgs:
              selected_namespaces: Optional[pulumi.Input['RestorePlanRestoreConfigSelectedNamespacesArgs']] = None,
              transformation_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleArgs']]]] = None,
              volume_data_restore_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if all_namespaces is None and 'allNamespaces' in kwargs:
+            all_namespaces = kwargs['allNamespaces']
+        if cluster_resource_conflict_policy is None and 'clusterResourceConflictPolicy' in kwargs:
+            cluster_resource_conflict_policy = kwargs['clusterResourceConflictPolicy']
+        if cluster_resource_restore_scope is None and 'clusterResourceRestoreScope' in kwargs:
+            cluster_resource_restore_scope = kwargs['clusterResourceRestoreScope']
+        if excluded_namespaces is None and 'excludedNamespaces' in kwargs:
+            excluded_namespaces = kwargs['excludedNamespaces']
+        if namespaced_resource_restore_mode is None and 'namespacedResourceRestoreMode' in kwargs:
+            namespaced_resource_restore_mode = kwargs['namespacedResourceRestoreMode']
+        if no_namespaces is None and 'noNamespaces' in kwargs:
+            no_namespaces = kwargs['noNamespaces']
+        if selected_applications is None and 'selectedApplications' in kwargs:
+            selected_applications = kwargs['selectedApplications']
+        if selected_namespaces is None and 'selectedNamespaces' in kwargs:
+            selected_namespaces = kwargs['selectedNamespaces']
+        if transformation_rules is None and 'transformationRules' in kwargs:
+            transformation_rules = kwargs['transformationRules']
+        if volume_data_restore_policy is None and 'volumeDataRestorePolicy' in kwargs:
+            volume_data_restore_policy = kwargs['volumeDataRestorePolicy']
+
         if all_namespaces is not None:
             _setter("all_namespaces", all_namespaces)
         if cluster_resource_conflict_policy is not None:
@@ -982,7 +1074,17 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeArgs:
              excluded_group_kinds: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs']]]] = None,
              no_group_kinds: Optional[pulumi.Input[bool]] = None,
              selected_group_kinds: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if all_group_kinds is None and 'allGroupKinds' in kwargs:
+            all_group_kinds = kwargs['allGroupKinds']
+        if excluded_group_kinds is None and 'excludedGroupKinds' in kwargs:
+            excluded_group_kinds = kwargs['excludedGroupKinds']
+        if no_group_kinds is None and 'noGroupKinds' in kwargs:
+            no_group_kinds = kwargs['noGroupKinds']
+        if selected_group_kinds is None and 'selectedGroupKinds' in kwargs:
+            selected_group_kinds = kwargs['selectedGroupKinds']
+
         if all_group_kinds is not None:
             _setter("all_group_kinds", all_group_kinds)
         if excluded_group_kinds is not None:
@@ -1072,7 +1174,13 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs:
              _setter: Callable[[Any, Any], None],
              resource_group: Optional[pulumi.Input[str]] = None,
              resource_kind: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if resource_group is None and 'resourceGroup' in kwargs:
+            resource_group = kwargs['resourceGroup']
+        if resource_kind is None and 'resourceKind' in kwargs:
+            resource_kind = kwargs['resourceKind']
+
         if resource_group is not None:
             _setter("resource_group", resource_group)
         if resource_kind is not None:
@@ -1128,7 +1236,13 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs:
              _setter: Callable[[Any, Any], None],
              resource_group: Optional[pulumi.Input[str]] = None,
              resource_kind: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if resource_group is None and 'resourceGroup' in kwargs:
+            resource_group = kwargs['resourceGroup']
+        if resource_kind is None and 'resourceKind' in kwargs:
+            resource_kind = kwargs['resourceKind']
+
         if resource_group is not None:
             _setter("resource_group", resource_group)
         if resource_kind is not None:
@@ -1176,8 +1290,12 @@ class RestorePlanRestoreConfigExcludedNamespacesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             namespaces: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if namespaces is None:
+            raise TypeError("Missing 'namespaces' argument")
+
         _setter("namespaces", namespaces)
 
     @property
@@ -1208,8 +1326,14 @@ class RestorePlanRestoreConfigSelectedApplicationsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             namespaced_names: pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             namespaced_names: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if namespaced_names is None and 'namespacedNames' in kwargs:
+            namespaced_names = kwargs['namespacedNames']
+        if namespaced_names is None:
+            raise TypeError("Missing 'namespaced_names' argument")
+
         _setter("namespaced_names", namespaced_names)
 
     @property
@@ -1243,9 +1367,15 @@ class RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             namespace: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+
         _setter("name", name)
         _setter("namespace", namespace)
 
@@ -1288,8 +1418,12 @@ class RestorePlanRestoreConfigSelectedNamespacesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             namespaces: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if namespaces is None:
+            raise TypeError("Missing 'namespaces' argument")
+
         _setter("namespaces", namespaces)
 
     @property
@@ -1334,10 +1468,18 @@ class RestorePlanRestoreConfigTransformationRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             field_actions: pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleFieldActionArgs']]],
+             field_actions: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleFieldActionArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              resource_filter: Optional[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if field_actions is None and 'fieldActions' in kwargs:
+            field_actions = kwargs['fieldActions']
+        if field_actions is None:
+            raise TypeError("Missing 'field_actions' argument")
+        if resource_filter is None and 'resourceFilter' in kwargs:
+            resource_filter = kwargs['resourceFilter']
+
         _setter("field_actions", field_actions)
         if description is not None:
             _setter("description", description)
@@ -1419,11 +1561,17 @@ class RestorePlanRestoreConfigTransformationRuleFieldActionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             op: pulumi.Input[str],
+             op: Optional[pulumi.Input[str]] = None,
              from_path: Optional[pulumi.Input[str]] = None,
              path: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if op is None:
+            raise TypeError("Missing 'op' argument")
+        if from_path is None and 'fromPath' in kwargs:
+            from_path = kwargs['fromPath']
+
         _setter("op", op)
         if from_path is not None:
             _setter("from_path", from_path)
@@ -1524,7 +1672,13 @@ class RestorePlanRestoreConfigTransformationRuleResourceFilterArgs:
              group_kinds: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs']]]] = None,
              json_path: Optional[pulumi.Input[str]] = None,
              namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if group_kinds is None and 'groupKinds' in kwargs:
+            group_kinds = kwargs['groupKinds']
+        if json_path is None and 'jsonPath' in kwargs:
+            json_path = kwargs['jsonPath']
+
         if group_kinds is not None:
             _setter("group_kinds", group_kinds)
         if json_path is not None:
@@ -1605,7 +1759,13 @@ class RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs:
              _setter: Callable[[Any, Any], None],
              resource_group: Optional[pulumi.Input[str]] = None,
              resource_kind: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if resource_group is None and 'resourceGroup' in kwargs:
+            resource_group = kwargs['resourceGroup']
+        if resource_kind is None and 'resourceKind' in kwargs:
+            resource_kind = kwargs['resourceKind']
+
         if resource_group is not None:
             _setter("resource_group", resource_group)
         if resource_kind is not None:

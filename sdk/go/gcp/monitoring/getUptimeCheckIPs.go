@@ -4,8 +4,12 @@
 package monitoring
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the list of IP addresses that checkers run from. For more information see
@@ -51,4 +55,50 @@ type GetUptimeCheckIPsResult struct {
 	Id string `pulumi:"id"`
 	// A list of uptime check IPs used by Stackdriver Monitoring. Each `uptimeCheckIp` contains:
 	UptimeCheckIps []GetUptimeCheckIPsUptimeCheckIp `pulumi:"uptimeCheckIps"`
+}
+
+func GetUptimeCheckIPsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetUptimeCheckIPsResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetUptimeCheckIPsResult, error) {
+		r, err := GetUptimeCheckIPs(ctx, opts...)
+		var s GetUptimeCheckIPsResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetUptimeCheckIPsResultOutput)
+}
+
+// A collection of values returned by getUptimeCheckIPs.
+type GetUptimeCheckIPsResultOutput struct{ *pulumi.OutputState }
+
+func (GetUptimeCheckIPsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUptimeCheckIPsResult)(nil)).Elem()
+}
+
+func (o GetUptimeCheckIPsResultOutput) ToGetUptimeCheckIPsResultOutput() GetUptimeCheckIPsResultOutput {
+	return o
+}
+
+func (o GetUptimeCheckIPsResultOutput) ToGetUptimeCheckIPsResultOutputWithContext(ctx context.Context) GetUptimeCheckIPsResultOutput {
+	return o
+}
+
+func (o GetUptimeCheckIPsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetUptimeCheckIPsResult] {
+	return pulumix.Output[GetUptimeCheckIPsResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetUptimeCheckIPsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUptimeCheckIPsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of uptime check IPs used by Stackdriver Monitoring. Each `uptimeCheckIp` contains:
+func (o GetUptimeCheckIPsResultOutput) UptimeCheckIps() GetUptimeCheckIPsUptimeCheckIpArrayOutput {
+	return o.ApplyT(func(v GetUptimeCheckIPsResult) []GetUptimeCheckIPsUptimeCheckIp { return v.UptimeCheckIps }).(GetUptimeCheckIPsUptimeCheckIpArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetUptimeCheckIPsResultOutput{})
 }

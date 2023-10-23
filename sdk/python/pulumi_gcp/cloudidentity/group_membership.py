@@ -41,11 +41,21 @@ class GroupMembershipArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group: pulumi.Input[str],
-             roles: pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArgs']]],
+             group: Optional[pulumi.Input[str]] = None,
+             roles: Optional[pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArgs']]]] = None,
              member_key: Optional[pulumi.Input['GroupMembershipMemberKeyArgs']] = None,
              preferred_member_key: Optional[pulumi.Input['GroupMembershipPreferredMemberKeyArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if roles is None:
+            raise TypeError("Missing 'roles' argument")
+        if member_key is None and 'memberKey' in kwargs:
+            member_key = kwargs['memberKey']
+        if preferred_member_key is None and 'preferredMemberKey' in kwargs:
+            preferred_member_key = kwargs['preferredMemberKey']
+
         _setter("group", group)
         _setter("roles", roles)
         if member_key is not None:
@@ -157,7 +167,17 @@ class _GroupMembershipState:
              roles: Optional[pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArgs']]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if member_key is None and 'memberKey' in kwargs:
+            member_key = kwargs['memberKey']
+        if preferred_member_key is None and 'preferredMemberKey' in kwargs:
+            preferred_member_key = kwargs['preferredMemberKey']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if group is not None:

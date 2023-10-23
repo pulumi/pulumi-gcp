@@ -55,8 +55,8 @@ class SpokeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hub: pulumi.Input[str],
-             location: pulumi.Input[str],
+             hub: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              linked_interconnect_attachments: Optional[pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs']] = None,
@@ -65,7 +65,21 @@ class SpokeArgs:
              linked_vpn_tunnels: Optional[pulumi.Input['SpokeLinkedVpnTunnelsArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if hub is None:
+            raise TypeError("Missing 'hub' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if linked_interconnect_attachments is None and 'linkedInterconnectAttachments' in kwargs:
+            linked_interconnect_attachments = kwargs['linkedInterconnectAttachments']
+        if linked_router_appliance_instances is None and 'linkedRouterApplianceInstances' in kwargs:
+            linked_router_appliance_instances = kwargs['linkedRouterApplianceInstances']
+        if linked_vpc_network is None and 'linkedVpcNetwork' in kwargs:
+            linked_vpc_network = kwargs['linkedVpcNetwork']
+        if linked_vpn_tunnels is None and 'linkedVpnTunnels' in kwargs:
+            linked_vpn_tunnels = kwargs['linkedVpnTunnels']
+
         _setter("hub", hub)
         _setter("location", location)
         if description is not None:
@@ -274,7 +288,23 @@ class _SpokeState:
              state: Optional[pulumi.Input[str]] = None,
              unique_id: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if linked_interconnect_attachments is None and 'linkedInterconnectAttachments' in kwargs:
+            linked_interconnect_attachments = kwargs['linkedInterconnectAttachments']
+        if linked_router_appliance_instances is None and 'linkedRouterApplianceInstances' in kwargs:
+            linked_router_appliance_instances = kwargs['linkedRouterApplianceInstances']
+        if linked_vpc_network is None and 'linkedVpcNetwork' in kwargs:
+            linked_vpc_network = kwargs['linkedVpcNetwork']
+        if linked_vpn_tunnels is None and 'linkedVpnTunnels' in kwargs:
+            linked_vpn_tunnels = kwargs['linkedVpnTunnels']
+        if unique_id is None and 'uniqueId' in kwargs:
+            unique_id = kwargs['uniqueId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:

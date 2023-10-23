@@ -32,10 +32,22 @@ class SharedVPCServiceProjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             host_project: pulumi.Input[str],
-             service_project: pulumi.Input[str],
+             host_project: Optional[pulumi.Input[str]] = None,
+             service_project: Optional[pulumi.Input[str]] = None,
              deletion_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host_project is None and 'hostProject' in kwargs:
+            host_project = kwargs['hostProject']
+        if host_project is None:
+            raise TypeError("Missing 'host_project' argument")
+        if service_project is None and 'serviceProject' in kwargs:
+            service_project = kwargs['serviceProject']
+        if service_project is None:
+            raise TypeError("Missing 'service_project' argument")
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+
         _setter("host_project", host_project)
         _setter("service_project", service_project)
         if deletion_policy is not None:
@@ -102,7 +114,15 @@ class _SharedVPCServiceProjectState:
              deletion_policy: Optional[pulumi.Input[str]] = None,
              host_project: Optional[pulumi.Input[str]] = None,
              service_project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+        if host_project is None and 'hostProject' in kwargs:
+            host_project = kwargs['hostProject']
+        if service_project is None and 'serviceProject' in kwargs:
+            service_project = kwargs['serviceProject']
+
         if deletion_policy is not None:
             _setter("deletion_policy", deletion_policy)
         if host_project is not None:

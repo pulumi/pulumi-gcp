@@ -35,9 +35,17 @@ class InstanceAcceleratorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_type: pulumi.Input[str],
-             state: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             accelerator_type: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerator_type is None and 'acceleratorType' in kwargs:
+            accelerator_type = kwargs['acceleratorType']
+        if accelerator_type is None:
+            raise TypeError("Missing 'accelerator_type' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+
         _setter("accelerator_type", accelerator_type)
         _setter("state", state)
 
@@ -82,8 +90,14 @@ class InstanceCryptoKeyConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key_reference: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key_reference: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key_reference is None and 'keyReference' in kwargs:
+            key_reference = kwargs['keyReference']
+        if key_reference is None:
+            raise TypeError("Missing 'key_reference' argument")
+
         _setter("key_reference", key_reference)
 
     @property
@@ -116,9 +130,15 @@ class InstanceEventPublishConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             topic: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[pulumi.Input[bool]] = None,
+             topic: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if topic is None:
+            raise TypeError("Missing 'topic' argument")
+
         _setter("enabled", enabled)
         _setter("topic", topic)
 
@@ -167,9 +187,17 @@ class InstanceNetworkConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_allocation: pulumi.Input[str],
-             network: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             ip_allocation: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_allocation is None and 'ipAllocation' in kwargs:
+            ip_allocation = kwargs['ipAllocation']
+        if ip_allocation is None:
+            raise TypeError("Missing 'ip_allocation' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+
         _setter("ip_allocation", ip_allocation)
         _setter("network", network)
 

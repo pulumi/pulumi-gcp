@@ -52,12 +52,26 @@ class DefaultSupportedIdpConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             client_id: pulumi.Input[str],
-             client_secret: pulumi.Input[str],
-             idp_id: pulumi.Input[str],
+             client_id: Optional[pulumi.Input[str]] = None,
+             client_secret: Optional[pulumi.Input[str]] = None,
+             idp_id: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_id is None:
+            raise TypeError("Missing 'client_id' argument")
+        if client_secret is None and 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if client_secret is None:
+            raise TypeError("Missing 'client_secret' argument")
+        if idp_id is None and 'idpId' in kwargs:
+            idp_id = kwargs['idpId']
+        if idp_id is None:
+            raise TypeError("Missing 'idp_id' argument")
+
         _setter("client_id", client_id)
         _setter("client_secret", client_secret)
         _setter("idp_id", idp_id)
@@ -191,7 +205,15 @@ class _DefaultSupportedIdpConfigState:
              idp_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_secret is None and 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if idp_id is None and 'idpId' in kwargs:
+            idp_id = kwargs['idpId']
+
         if client_id is not None:
             _setter("client_id", client_id)
         if client_secret is not None:

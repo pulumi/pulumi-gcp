@@ -98,11 +98,11 @@ class AuthorityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             certificate_authority_id: pulumi.Input[str],
-             config: pulumi.Input['AuthorityConfigArgs'],
-             key_spec: pulumi.Input['AuthorityKeySpecArgs'],
-             location: pulumi.Input[str],
-             pool: pulumi.Input[str],
+             certificate_authority_id: Optional[pulumi.Input[str]] = None,
+             config: Optional[pulumi.Input['AuthorityConfigArgs']] = None,
+             key_spec: Optional[pulumi.Input['AuthorityKeySpecArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             pool: Optional[pulumi.Input[str]] = None,
              deletion_protection: Optional[pulumi.Input[bool]] = None,
              desired_state: Optional[pulumi.Input[str]] = None,
              gcs_bucket: Optional[pulumi.Input[str]] = None,
@@ -114,7 +114,37 @@ class AuthorityArgs:
              skip_grace_period: Optional[pulumi.Input[bool]] = None,
              subordinate_config: Optional[pulumi.Input['AuthoritySubordinateConfigArgs']] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if certificate_authority_id is None and 'certificateAuthorityId' in kwargs:
+            certificate_authority_id = kwargs['certificateAuthorityId']
+        if certificate_authority_id is None:
+            raise TypeError("Missing 'certificate_authority_id' argument")
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+        if key_spec is None and 'keySpec' in kwargs:
+            key_spec = kwargs['keySpec']
+        if key_spec is None:
+            raise TypeError("Missing 'key_spec' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if pool is None:
+            raise TypeError("Missing 'pool' argument")
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if desired_state is None and 'desiredState' in kwargs:
+            desired_state = kwargs['desiredState']
+        if gcs_bucket is None and 'gcsBucket' in kwargs:
+            gcs_bucket = kwargs['gcsBucket']
+        if ignore_active_certificates_on_deletion is None and 'ignoreActiveCertificatesOnDeletion' in kwargs:
+            ignore_active_certificates_on_deletion = kwargs['ignoreActiveCertificatesOnDeletion']
+        if pem_ca_certificate is None and 'pemCaCertificate' in kwargs:
+            pem_ca_certificate = kwargs['pemCaCertificate']
+        if skip_grace_period is None and 'skipGracePeriod' in kwargs:
+            skip_grace_period = kwargs['skipGracePeriod']
+        if subordinate_config is None and 'subordinateConfig' in kwargs:
+            subordinate_config = kwargs['subordinateConfig']
+
         _setter("certificate_authority_id", certificate_authority_id)
         _setter("config", config)
         _setter("key_spec", key_spec)
@@ -495,7 +525,35 @@ class _AuthorityState:
              subordinate_config: Optional[pulumi.Input['AuthoritySubordinateConfigArgs']] = None,
              type: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_urls is None and 'accessUrls' in kwargs:
+            access_urls = kwargs['accessUrls']
+        if certificate_authority_id is None and 'certificateAuthorityId' in kwargs:
+            certificate_authority_id = kwargs['certificateAuthorityId']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if desired_state is None and 'desiredState' in kwargs:
+            desired_state = kwargs['desiredState']
+        if gcs_bucket is None and 'gcsBucket' in kwargs:
+            gcs_bucket = kwargs['gcsBucket']
+        if ignore_active_certificates_on_deletion is None and 'ignoreActiveCertificatesOnDeletion' in kwargs:
+            ignore_active_certificates_on_deletion = kwargs['ignoreActiveCertificatesOnDeletion']
+        if key_spec is None and 'keySpec' in kwargs:
+            key_spec = kwargs['keySpec']
+        if pem_ca_certificate is None and 'pemCaCertificate' in kwargs:
+            pem_ca_certificate = kwargs['pemCaCertificate']
+        if pem_ca_certificates is None and 'pemCaCertificates' in kwargs:
+            pem_ca_certificates = kwargs['pemCaCertificates']
+        if skip_grace_period is None and 'skipGracePeriod' in kwargs:
+            skip_grace_period = kwargs['skipGracePeriod']
+        if subordinate_config is None and 'subordinateConfig' in kwargs:
+            subordinate_config = kwargs['subordinateConfig']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if access_urls is not None:
             _setter("access_urls", access_urls)
         if certificate_authority_id is not None:

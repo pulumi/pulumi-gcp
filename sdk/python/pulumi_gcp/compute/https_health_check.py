@@ -83,7 +83,19 @@ class HttpsHealthCheckArgs:
              request_path: Optional[pulumi.Input[str]] = None,
              timeout_sec: Optional[pulumi.Input[int]] = None,
              unhealthy_threshold: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if check_interval_sec is None and 'checkIntervalSec' in kwargs:
+            check_interval_sec = kwargs['checkIntervalSec']
+        if healthy_threshold is None and 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if request_path is None and 'requestPath' in kwargs:
+            request_path = kwargs['requestPath']
+        if timeout_sec is None and 'timeoutSec' in kwargs:
+            timeout_sec = kwargs['timeoutSec']
+        if unhealthy_threshold is None and 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+
         if check_interval_sec is not None:
             _setter("check_interval_sec", check_interval_sec)
         if description is not None:
@@ -326,7 +338,23 @@ class _HttpsHealthCheckState:
              self_link: Optional[pulumi.Input[str]] = None,
              timeout_sec: Optional[pulumi.Input[int]] = None,
              unhealthy_threshold: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if check_interval_sec is None and 'checkIntervalSec' in kwargs:
+            check_interval_sec = kwargs['checkIntervalSec']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if healthy_threshold is None and 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if request_path is None and 'requestPath' in kwargs:
+            request_path = kwargs['requestPath']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if timeout_sec is None and 'timeoutSec' in kwargs:
+            timeout_sec = kwargs['timeoutSec']
+        if unhealthy_threshold is None and 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+
         if check_interval_sec is not None:
             _setter("check_interval_sec", check_interval_sec)
         if creation_timestamp is not None:

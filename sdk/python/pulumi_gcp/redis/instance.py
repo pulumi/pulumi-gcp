@@ -138,7 +138,7 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             memory_size_gb: pulumi.Input[int],
+             memory_size_gb: Optional[pulumi.Input[int]] = None,
              alternative_location_id: Optional[pulumi.Input[str]] = None,
              auth_enabled: Optional[pulumi.Input[bool]] = None,
              authorized_network: Optional[pulumi.Input[str]] = None,
@@ -160,7 +160,45 @@ class InstanceArgs:
              secondary_ip_range: Optional[pulumi.Input[str]] = None,
              tier: Optional[pulumi.Input[str]] = None,
              transit_encryption_mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if memory_size_gb is None and 'memorySizeGb' in kwargs:
+            memory_size_gb = kwargs['memorySizeGb']
+        if memory_size_gb is None:
+            raise TypeError("Missing 'memory_size_gb' argument")
+        if alternative_location_id is None and 'alternativeLocationId' in kwargs:
+            alternative_location_id = kwargs['alternativeLocationId']
+        if auth_enabled is None and 'authEnabled' in kwargs:
+            auth_enabled = kwargs['authEnabled']
+        if authorized_network is None and 'authorizedNetwork' in kwargs:
+            authorized_network = kwargs['authorizedNetwork']
+        if connect_mode is None and 'connectMode' in kwargs:
+            connect_mode = kwargs['connectMode']
+        if customer_managed_key is None and 'customerManagedKey' in kwargs:
+            customer_managed_key = kwargs['customerManagedKey']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if location_id is None and 'locationId' in kwargs:
+            location_id = kwargs['locationId']
+        if maintenance_policy is None and 'maintenancePolicy' in kwargs:
+            maintenance_policy = kwargs['maintenancePolicy']
+        if persistence_config is None and 'persistenceConfig' in kwargs:
+            persistence_config = kwargs['persistenceConfig']
+        if read_replicas_mode is None and 'readReplicasMode' in kwargs:
+            read_replicas_mode = kwargs['readReplicasMode']
+        if redis_configs is None and 'redisConfigs' in kwargs:
+            redis_configs = kwargs['redisConfigs']
+        if redis_version is None and 'redisVersion' in kwargs:
+            redis_version = kwargs['redisVersion']
+        if replica_count is None and 'replicaCount' in kwargs:
+            replica_count = kwargs['replicaCount']
+        if reserved_ip_range is None and 'reservedIpRange' in kwargs:
+            reserved_ip_range = kwargs['reservedIpRange']
+        if secondary_ip_range is None and 'secondaryIpRange' in kwargs:
+            secondary_ip_range = kwargs['secondaryIpRange']
+        if transit_encryption_mode is None and 'transitEncryptionMode' in kwargs:
+            transit_encryption_mode = kwargs['transitEncryptionMode']
+
         _setter("memory_size_gb", memory_size_gb)
         if alternative_location_id is not None:
             _setter("alternative_location_id", alternative_location_id)
@@ -725,7 +763,59 @@ class _InstanceState:
              server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]]] = None,
              tier: Optional[pulumi.Input[str]] = None,
              transit_encryption_mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if alternative_location_id is None and 'alternativeLocationId' in kwargs:
+            alternative_location_id = kwargs['alternativeLocationId']
+        if auth_enabled is None and 'authEnabled' in kwargs:
+            auth_enabled = kwargs['authEnabled']
+        if auth_string is None and 'authString' in kwargs:
+            auth_string = kwargs['authString']
+        if authorized_network is None and 'authorizedNetwork' in kwargs:
+            authorized_network = kwargs['authorizedNetwork']
+        if connect_mode is None and 'connectMode' in kwargs:
+            connect_mode = kwargs['connectMode']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if current_location_id is None and 'currentLocationId' in kwargs:
+            current_location_id = kwargs['currentLocationId']
+        if customer_managed_key is None and 'customerManagedKey' in kwargs:
+            customer_managed_key = kwargs['customerManagedKey']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if location_id is None and 'locationId' in kwargs:
+            location_id = kwargs['locationId']
+        if maintenance_policy is None and 'maintenancePolicy' in kwargs:
+            maintenance_policy = kwargs['maintenancePolicy']
+        if maintenance_schedule is None and 'maintenanceSchedule' in kwargs:
+            maintenance_schedule = kwargs['maintenanceSchedule']
+        if memory_size_gb is None and 'memorySizeGb' in kwargs:
+            memory_size_gb = kwargs['memorySizeGb']
+        if persistence_config is None and 'persistenceConfig' in kwargs:
+            persistence_config = kwargs['persistenceConfig']
+        if persistence_iam_identity is None and 'persistenceIamIdentity' in kwargs:
+            persistence_iam_identity = kwargs['persistenceIamIdentity']
+        if read_endpoint is None and 'readEndpoint' in kwargs:
+            read_endpoint = kwargs['readEndpoint']
+        if read_endpoint_port is None and 'readEndpointPort' in kwargs:
+            read_endpoint_port = kwargs['readEndpointPort']
+        if read_replicas_mode is None and 'readReplicasMode' in kwargs:
+            read_replicas_mode = kwargs['readReplicasMode']
+        if redis_configs is None and 'redisConfigs' in kwargs:
+            redis_configs = kwargs['redisConfigs']
+        if redis_version is None and 'redisVersion' in kwargs:
+            redis_version = kwargs['redisVersion']
+        if replica_count is None and 'replicaCount' in kwargs:
+            replica_count = kwargs['replicaCount']
+        if reserved_ip_range is None and 'reservedIpRange' in kwargs:
+            reserved_ip_range = kwargs['reservedIpRange']
+        if secondary_ip_range is None and 'secondaryIpRange' in kwargs:
+            secondary_ip_range = kwargs['secondaryIpRange']
+        if server_ca_certs is None and 'serverCaCerts' in kwargs:
+            server_ca_certs = kwargs['serverCaCerts']
+        if transit_encryption_mode is None and 'transitEncryptionMode' in kwargs:
+            transit_encryption_mode = kwargs['transitEncryptionMode']
+
         if alternative_location_id is not None:
             _setter("alternative_location_id", alternative_location_id)
         if auth_enabled is not None:

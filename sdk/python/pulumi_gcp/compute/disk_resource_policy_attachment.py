@@ -40,11 +40,15 @@ class DiskResourcePolicyAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disk: pulumi.Input[str],
+             disk: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disk is None:
+            raise TypeError("Missing 'disk' argument")
+
         _setter("disk", disk)
         if name is not None:
             _setter("name", name)
@@ -140,7 +144,9 @@ class _DiskResourcePolicyAttachmentState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if disk is not None:
             _setter("disk", disk)
         if name is not None:

@@ -65,15 +65,29 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config: pulumi.Input[str],
-             display_name: pulumi.Input[str],
+             config: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
              force_destroy: Optional[pulumi.Input[bool]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              num_nodes: Optional[pulumi.Input[int]] = None,
              processing_units: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if num_nodes is None and 'numNodes' in kwargs:
+            num_nodes = kwargs['numNodes']
+        if processing_units is None and 'processingUnits' in kwargs:
+            processing_units = kwargs['processingUnits']
+
         _setter("config", config)
         _setter("display_name", display_name)
         if force_destroy is not None:
@@ -270,7 +284,17 @@ class _InstanceState:
              processing_units: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if num_nodes is None and 'numNodes' in kwargs:
+            num_nodes = kwargs['numNodes']
+        if processing_units is None and 'processingUnits' in kwargs:
+            processing_units = kwargs['processingUnits']
+
         if config is not None:
             _setter("config", config)
         if display_name is not None:

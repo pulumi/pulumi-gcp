@@ -65,7 +65,11 @@ class InstanceGroupArgs:
              network: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if named_ports is None and 'namedPorts' in kwargs:
+            named_ports = kwargs['namedPorts']
+
         if description is not None:
             _setter("description", description)
         if instances is not None:
@@ -238,7 +242,13 @@ class _InstanceGroupState:
              self_link: Optional[pulumi.Input[str]] = None,
              size: Optional[pulumi.Input[int]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if named_ports is None and 'namedPorts' in kwargs:
+            named_ports = kwargs['namedPorts']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if description is not None:
             _setter("description", description)
         if instances is not None:

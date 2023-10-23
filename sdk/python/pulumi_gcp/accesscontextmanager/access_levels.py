@@ -36,9 +36,15 @@ class AccessLevelsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parent: pulumi.Input[str],
+             parent: Optional[pulumi.Input[str]] = None,
              access_levels: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if access_levels is None and 'accessLevels' in kwargs:
+            access_levels = kwargs['accessLevels']
+
         _setter("parent", parent)
         if access_levels is not None:
             _setter("access_levels", access_levels)
@@ -98,7 +104,11 @@ class _AccessLevelsState:
              _setter: Callable[[Any, Any], None],
              access_levels: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelArgs']]]] = None,
              parent: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_levels is None and 'accessLevels' in kwargs:
+            access_levels = kwargs['accessLevels']
+
         if access_levels is not None:
             _setter("access_levels", access_levels)
         if parent is not None:

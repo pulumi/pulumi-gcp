@@ -72,8 +72,8 @@ class UptimeCheckConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             timeout: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
+             timeout: Optional[pulumi.Input[str]] = None,
              checker_type: Optional[pulumi.Input[str]] = None,
              content_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]]] = None,
              http_check: Optional[pulumi.Input['UptimeCheckConfigHttpCheckArgs']] = None,
@@ -84,7 +84,31 @@ class UptimeCheckConfigArgs:
              selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              synthetic_monitor: Optional[pulumi.Input['UptimeCheckConfigSyntheticMonitorArgs']] = None,
              tcp_check: Optional[pulumi.Input['UptimeCheckConfigTcpCheckArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if timeout is None:
+            raise TypeError("Missing 'timeout' argument")
+        if checker_type is None and 'checkerType' in kwargs:
+            checker_type = kwargs['checkerType']
+        if content_matchers is None and 'contentMatchers' in kwargs:
+            content_matchers = kwargs['contentMatchers']
+        if http_check is None and 'httpCheck' in kwargs:
+            http_check = kwargs['httpCheck']
+        if monitored_resource is None and 'monitoredResource' in kwargs:
+            monitored_resource = kwargs['monitoredResource']
+        if resource_group is None and 'resourceGroup' in kwargs:
+            resource_group = kwargs['resourceGroup']
+        if selected_regions is None and 'selectedRegions' in kwargs:
+            selected_regions = kwargs['selectedRegions']
+        if synthetic_monitor is None and 'syntheticMonitor' in kwargs:
+            synthetic_monitor = kwargs['syntheticMonitor']
+        if tcp_check is None and 'tcpCheck' in kwargs:
+            tcp_check = kwargs['tcpCheck']
+
         _setter("display_name", display_name)
         _setter("timeout", timeout)
         if checker_type is not None:
@@ -343,7 +367,29 @@ class _UptimeCheckConfigState:
              tcp_check: Optional[pulumi.Input['UptimeCheckConfigTcpCheckArgs']] = None,
              timeout: Optional[pulumi.Input[str]] = None,
              uptime_check_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if checker_type is None and 'checkerType' in kwargs:
+            checker_type = kwargs['checkerType']
+        if content_matchers is None and 'contentMatchers' in kwargs:
+            content_matchers = kwargs['contentMatchers']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if http_check is None and 'httpCheck' in kwargs:
+            http_check = kwargs['httpCheck']
+        if monitored_resource is None and 'monitoredResource' in kwargs:
+            monitored_resource = kwargs['monitoredResource']
+        if resource_group is None and 'resourceGroup' in kwargs:
+            resource_group = kwargs['resourceGroup']
+        if selected_regions is None and 'selectedRegions' in kwargs:
+            selected_regions = kwargs['selectedRegions']
+        if synthetic_monitor is None and 'syntheticMonitor' in kwargs:
+            synthetic_monitor = kwargs['syntheticMonitor']
+        if tcp_check is None and 'tcpCheck' in kwargs:
+            tcp_check = kwargs['tcpCheck']
+        if uptime_check_id is None and 'uptimeCheckId' in kwargs:
+            uptime_check_id = kwargs['uptimeCheckId']
+
         if checker_type is not None:
             _setter("checker_type", checker_type)
         if content_matchers is not None:

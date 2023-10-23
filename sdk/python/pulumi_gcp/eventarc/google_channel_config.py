@@ -39,11 +39,17 @@ class GoogleChannelConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              crypto_key_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if crypto_key_name is None and 'cryptoKeyName' in kwargs:
+            crypto_key_name = kwargs['cryptoKeyName']
+
         _setter("location", location)
         if crypto_key_name is not None:
             _setter("crypto_key_name", crypto_key_name)
@@ -141,7 +147,13 @@ class _GoogleChannelConfigState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key_name is None and 'cryptoKeyName' in kwargs:
+            crypto_key_name = kwargs['cryptoKeyName']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if crypto_key_name is not None:
             _setter("crypto_key_name", crypto_key_name)
         if location is not None:

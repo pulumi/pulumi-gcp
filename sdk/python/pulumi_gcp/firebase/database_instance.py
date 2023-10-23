@@ -49,12 +49,22 @@ class DatabaseInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
-             region: pulumi.Input[str],
+             instance_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
              desired_state: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if desired_state is None and 'desiredState' in kwargs:
+            desired_state = kwargs['desiredState']
+
         _setter("instance_id", instance_id)
         _setter("region", region)
         if desired_state is not None:
@@ -195,7 +205,15 @@ class _DatabaseInstanceState:
              region: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if database_url is None and 'databaseUrl' in kwargs:
+            database_url = kwargs['databaseUrl']
+        if desired_state is None and 'desiredState' in kwargs:
+            desired_state = kwargs['desiredState']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if database_url is not None:
             _setter("database_url", database_url)
         if desired_state is not None:

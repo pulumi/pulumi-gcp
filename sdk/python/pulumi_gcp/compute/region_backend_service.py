@@ -190,7 +190,43 @@ class RegionBackendServiceArgs:
              session_affinity: Optional[pulumi.Input[str]] = None,
              subsetting: Optional[pulumi.Input['RegionBackendServiceSubsettingArgs']] = None,
              timeout_sec: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if affinity_cookie_ttl_sec is None and 'affinityCookieTtlSec' in kwargs:
+            affinity_cookie_ttl_sec = kwargs['affinityCookieTtlSec']
+        if cdn_policy is None and 'cdnPolicy' in kwargs:
+            cdn_policy = kwargs['cdnPolicy']
+        if circuit_breakers is None and 'circuitBreakers' in kwargs:
+            circuit_breakers = kwargs['circuitBreakers']
+        if connection_draining_timeout_sec is None and 'connectionDrainingTimeoutSec' in kwargs:
+            connection_draining_timeout_sec = kwargs['connectionDrainingTimeoutSec']
+        if connection_tracking_policy is None and 'connectionTrackingPolicy' in kwargs:
+            connection_tracking_policy = kwargs['connectionTrackingPolicy']
+        if consistent_hash is None and 'consistentHash' in kwargs:
+            consistent_hash = kwargs['consistentHash']
+        if enable_cdn is None and 'enableCdn' in kwargs:
+            enable_cdn = kwargs['enableCdn']
+        if failover_policy is None and 'failoverPolicy' in kwargs:
+            failover_policy = kwargs['failoverPolicy']
+        if health_checks is None and 'healthChecks' in kwargs:
+            health_checks = kwargs['healthChecks']
+        if load_balancing_scheme is None and 'loadBalancingScheme' in kwargs:
+            load_balancing_scheme = kwargs['loadBalancingScheme']
+        if locality_lb_policy is None and 'localityLbPolicy' in kwargs:
+            locality_lb_policy = kwargs['localityLbPolicy']
+        if log_config is None and 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if outlier_detection is None and 'outlierDetection' in kwargs:
+            outlier_detection = kwargs['outlierDetection']
+        if port_name is None and 'portName' in kwargs:
+            port_name = kwargs['portName']
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
+        if session_affinity is None and 'sessionAffinity' in kwargs:
+            session_affinity = kwargs['sessionAffinity']
+        if timeout_sec is None and 'timeoutSec' in kwargs:
+            timeout_sec = kwargs['timeoutSec']
+
         if affinity_cookie_ttl_sec is not None:
             _setter("affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
         if backends is not None:
@@ -808,7 +844,47 @@ class _RegionBackendServiceState:
              session_affinity: Optional[pulumi.Input[str]] = None,
              subsetting: Optional[pulumi.Input['RegionBackendServiceSubsettingArgs']] = None,
              timeout_sec: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if affinity_cookie_ttl_sec is None and 'affinityCookieTtlSec' in kwargs:
+            affinity_cookie_ttl_sec = kwargs['affinityCookieTtlSec']
+        if cdn_policy is None and 'cdnPolicy' in kwargs:
+            cdn_policy = kwargs['cdnPolicy']
+        if circuit_breakers is None and 'circuitBreakers' in kwargs:
+            circuit_breakers = kwargs['circuitBreakers']
+        if connection_draining_timeout_sec is None and 'connectionDrainingTimeoutSec' in kwargs:
+            connection_draining_timeout_sec = kwargs['connectionDrainingTimeoutSec']
+        if connection_tracking_policy is None and 'connectionTrackingPolicy' in kwargs:
+            connection_tracking_policy = kwargs['connectionTrackingPolicy']
+        if consistent_hash is None and 'consistentHash' in kwargs:
+            consistent_hash = kwargs['consistentHash']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if enable_cdn is None and 'enableCdn' in kwargs:
+            enable_cdn = kwargs['enableCdn']
+        if failover_policy is None and 'failoverPolicy' in kwargs:
+            failover_policy = kwargs['failoverPolicy']
+        if health_checks is None and 'healthChecks' in kwargs:
+            health_checks = kwargs['healthChecks']
+        if load_balancing_scheme is None and 'loadBalancingScheme' in kwargs:
+            load_balancing_scheme = kwargs['loadBalancingScheme']
+        if locality_lb_policy is None and 'localityLbPolicy' in kwargs:
+            locality_lb_policy = kwargs['localityLbPolicy']
+        if log_config is None and 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if outlier_detection is None and 'outlierDetection' in kwargs:
+            outlier_detection = kwargs['outlierDetection']
+        if port_name is None and 'portName' in kwargs:
+            port_name = kwargs['portName']
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if session_affinity is None and 'sessionAffinity' in kwargs:
+            session_affinity = kwargs['sessionAffinity']
+        if timeout_sec is None and 'timeoutSec' in kwargs:
+            timeout_sec = kwargs['timeoutSec']
+
         if affinity_cookie_ttl_sec is not None:
             _setter("affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
         if backends is not None:

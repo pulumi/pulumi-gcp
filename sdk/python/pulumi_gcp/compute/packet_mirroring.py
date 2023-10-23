@@ -65,16 +65,28 @@ class PacketMirroringArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             collector_ilb: pulumi.Input['PacketMirroringCollectorIlbArgs'],
-             mirrored_resources: pulumi.Input['PacketMirroringMirroredResourcesArgs'],
-             network: pulumi.Input['PacketMirroringNetworkArgs'],
+             collector_ilb: Optional[pulumi.Input['PacketMirroringCollectorIlbArgs']] = None,
+             mirrored_resources: Optional[pulumi.Input['PacketMirroringMirroredResourcesArgs']] = None,
+             network: Optional[pulumi.Input['PacketMirroringNetworkArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              filter: Optional[pulumi.Input['PacketMirroringFilterArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if collector_ilb is None and 'collectorIlb' in kwargs:
+            collector_ilb = kwargs['collectorIlb']
+        if collector_ilb is None:
+            raise TypeError("Missing 'collector_ilb' argument")
+        if mirrored_resources is None and 'mirroredResources' in kwargs:
+            mirrored_resources = kwargs['mirroredResources']
+        if mirrored_resources is None:
+            raise TypeError("Missing 'mirrored_resources' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+
         _setter("collector_ilb", collector_ilb)
         _setter("mirrored_resources", mirrored_resources)
         _setter("network", network)
@@ -274,7 +286,13 @@ class _PacketMirroringState:
              priority: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if collector_ilb is None and 'collectorIlb' in kwargs:
+            collector_ilb = kwargs['collectorIlb']
+        if mirrored_resources is None and 'mirroredResources' in kwargs:
+            mirrored_resources = kwargs['mirroredResources']
+
         if collector_ilb is not None:
             _setter("collector_ilb", collector_ilb)
         if description is not None:
