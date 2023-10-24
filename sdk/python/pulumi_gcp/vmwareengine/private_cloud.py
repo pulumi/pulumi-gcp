@@ -46,13 +46,25 @@ class PrivateCloudArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             management_cluster: pulumi.Input['PrivateCloudManagementClusterArgs'],
-             network_config: pulumi.Input['PrivateCloudNetworkConfigArgs'],
+             location: Optional[pulumi.Input[str]] = None,
+             management_cluster: Optional[pulumi.Input['PrivateCloudManagementClusterArgs']] = None,
+             network_config: Optional[pulumi.Input['PrivateCloudNetworkConfigArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if management_cluster is None and 'managementCluster' in kwargs:
+            management_cluster = kwargs['managementCluster']
+        if management_cluster is None:
+            raise TypeError("Missing 'management_cluster' argument")
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if network_config is None:
+            raise TypeError("Missing 'network_config' argument")
+
         _setter("location", location)
         _setter("management_cluster", management_cluster)
         _setter("network_config", network_config)
@@ -202,7 +214,13 @@ class _PrivateCloudState:
              state: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              vcenters: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudVcenterArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if management_cluster is None and 'managementCluster' in kwargs:
+            management_cluster = kwargs['managementCluster']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+
         if description is not None:
             _setter("description", description)
         if hcxes is not None:
@@ -380,61 +398,6 @@ class PrivateCloud(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Vmware Engine Private Cloud Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        pc_nw = gcp.vmwareengine.Network("pc-nw",
-            location="us-west1",
-            type="LEGACY",
-            description="PC network description.",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        vmw_engine_pc = gcp.vmwareengine.PrivateCloud("vmw-engine-pc",
-            location="us-west1-a",
-            description="Sample test PC.",
-            network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
-                management_cidr="192.168.30.0/24",
-                vmware_engine_network=pc_nw.id,
-            ),
-            management_cluster=gcp.vmwareengine.PrivateCloudManagementClusterArgs(
-                cluster_id="sample-mgmt-cluster",
-                node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs(
-                    node_type_id="standard-72",
-                    node_count=3,
-                )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Vmware Engine Private Cloud Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        pc_nw = gcp.vmwareengine.Network("pc-nw",
-            location="us-west1",
-            type="LEGACY",
-            description="PC network description.",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        vmw_engine_pc = gcp.vmwareengine.PrivateCloud("vmw-engine-pc",
-            location="us-west1-a",
-            description="Sample test PC.",
-            network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
-                management_cidr="192.168.30.0/24",
-                vmware_engine_network=pc_nw.id,
-            ),
-            management_cluster=gcp.vmwareengine.PrivateCloudManagementClusterArgs(
-                cluster_id="sample-mgmt-cluster",
-                node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs(
-                    node_type_id="standard-72",
-                    node_count=3,
-                    custom_core_count=32,
-                )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -472,61 +435,6 @@ class PrivateCloud(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Vmware Engine Private Cloud Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        pc_nw = gcp.vmwareengine.Network("pc-nw",
-            location="us-west1",
-            type="LEGACY",
-            description="PC network description.",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        vmw_engine_pc = gcp.vmwareengine.PrivateCloud("vmw-engine-pc",
-            location="us-west1-a",
-            description="Sample test PC.",
-            network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
-                management_cidr="192.168.30.0/24",
-                vmware_engine_network=pc_nw.id,
-            ),
-            management_cluster=gcp.vmwareengine.PrivateCloudManagementClusterArgs(
-                cluster_id="sample-mgmt-cluster",
-                node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs(
-                    node_type_id="standard-72",
-                    node_count=3,
-                )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Vmware Engine Private Cloud Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        pc_nw = gcp.vmwareengine.Network("pc-nw",
-            location="us-west1",
-            type="LEGACY",
-            description="PC network description.",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        vmw_engine_pc = gcp.vmwareengine.PrivateCloud("vmw-engine-pc",
-            location="us-west1-a",
-            description="Sample test PC.",
-            network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
-                management_cidr="192.168.30.0/24",
-                vmware_engine_network=pc_nw.id,
-            ),
-            management_cluster=gcp.vmwareengine.PrivateCloudManagementClusterArgs(
-                cluster_id="sample-mgmt-cluster",
-                node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs(
-                    node_type_id="standard-72",
-                    node_count=3,
-                    custom_core_count=32,
-                )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -582,20 +490,12 @@ class PrivateCloud(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if management_cluster is not None and not isinstance(management_cluster, PrivateCloudManagementClusterArgs):
-                management_cluster = management_cluster or {}
-                def _setter(key, value):
-                    management_cluster[key] = value
-                PrivateCloudManagementClusterArgs._configure(_setter, **management_cluster)
+            management_cluster = _utilities.configure(management_cluster, PrivateCloudManagementClusterArgs, True)
             if management_cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'management_cluster'")
             __props__.__dict__["management_cluster"] = management_cluster
             __props__.__dict__["name"] = name
-            if network_config is not None and not isinstance(network_config, PrivateCloudNetworkConfigArgs):
-                network_config = network_config or {}
-                def _setter(key, value):
-                    network_config[key] = value
-                PrivateCloudNetworkConfigArgs._configure(_setter, **network_config)
+            network_config = _utilities.configure(network_config, PrivateCloudNetworkConfigArgs, True)
             if network_config is None and not opts.urn:
                 raise TypeError("Missing required property 'network_config'")
             __props__.__dict__["network_config"] = network_config

@@ -17,31 +17,6 @@ import (
 //
 // !> **WARNING:** Deleting this resource will not delete or close the billing subaccount.
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/billing"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := billing.NewSubAccount(ctx, "subaccount", &billing.SubAccountArgs{
-//				DisplayName:          pulumi.String("My Billing Account"),
-//				MasterBillingAccount: pulumi.String("012345-567890-ABCDEF"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Billing Subaccounts can be imported using any of these accepted formats:

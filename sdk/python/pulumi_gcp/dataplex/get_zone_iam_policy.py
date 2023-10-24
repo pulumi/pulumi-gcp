@@ -113,18 +113,6 @@ def get_zone_iam_policy(dataplex_zone: Optional[str] = None,
     """
     Retrieves the current IAM policy data for zone
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.dataplex.get_zone_iam_policy(project=google_dataplex_zone["example"]["project"],
-        location=google_dataplex_zone["example"]["location"],
-        lake=google_dataplex_zone["example"]["lake"],
-        dataplex_zone=google_dataplex_zone["example"]["name"])
-    ```
-
 
     :param str dataplex_zone: Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.
@@ -156,18 +144,6 @@ def get_zone_iam_policy_output(dataplex_zone: Optional[pulumi.Input[str]] = None
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZoneIamPolicyResult]:
     """
     Retrieves the current IAM policy data for zone
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.dataplex.get_zone_iam_policy(project=google_dataplex_zone["example"]["project"],
-        location=google_dataplex_zone["example"]["location"],
-        lake=google_dataplex_zone["example"]["lake"],
-        dataplex_zone=google_dataplex_zone["example"]["name"])
-    ```
 
 
     :param str dataplex_zone: Used to find the parent resource to bind the IAM policy to

@@ -45,13 +45,27 @@ class FolderBucketConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket_id: pulumi.Input[str],
-             folder: pulumi.Input[str],
-             location: pulumi.Input[str],
+             bucket_id: Optional[pulumi.Input[str]] = None,
+             folder: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
              cmek_settings: Optional[pulumi.Input['FolderBucketConfigCmekSettingsArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              retention_days: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket_id is None and 'bucketId' in kwargs:
+            bucket_id = kwargs['bucketId']
+        if bucket_id is None:
+            raise TypeError("Missing 'bucket_id' argument")
+        if folder is None:
+            raise TypeError("Missing 'folder' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if cmek_settings is None and 'cmekSettings' in kwargs:
+            cmek_settings = kwargs['cmekSettings']
+        if retention_days is None and 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+
         _setter("bucket_id", bucket_id)
         _setter("folder", folder)
         _setter("location", location)
@@ -183,7 +197,17 @@ class _FolderBucketConfigState:
              location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              retention_days: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket_id is None and 'bucketId' in kwargs:
+            bucket_id = kwargs['bucketId']
+        if cmek_settings is None and 'cmekSettings' in kwargs:
+            cmek_settings = kwargs['cmekSettings']
+        if lifecycle_state is None and 'lifecycleState' in kwargs:
+            lifecycle_state = kwargs['lifecycleState']
+        if retention_days is None and 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+
         if bucket_id is not None:
             _setter("bucket_id", bucket_id)
         if cmek_settings is not None:
@@ -319,22 +343,6 @@ class FolderBucketConfig(pulumi.CustomResource):
 
         > **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.organizations.Folder("default",
-            display_name="some-folder-name",
-            parent="organizations/123456789")
-        basic = gcp.logging.FolderBucketConfig("basic",
-            folder=default.name,
-            location="global",
-            retention_days=30,
-            bucket_id="_Default")
-        ```
-
         ## Import
 
         This resource can be imported using the following format:
@@ -366,22 +374,6 @@ class FolderBucketConfig(pulumi.CustomResource):
         [Storing Logs](https://cloud.google.com/logging/docs/storage).
 
         > **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.organizations.Folder("default",
-            display_name="some-folder-name",
-            parent="organizations/123456789")
-        basic = gcp.logging.FolderBucketConfig("basic",
-            folder=default.name,
-            location="global",
-            retention_days=30,
-            bucket_id="_Default")
-        ```
 
         ## Import
 
@@ -428,11 +420,7 @@ class FolderBucketConfig(pulumi.CustomResource):
             if bucket_id is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket_id'")
             __props__.__dict__["bucket_id"] = bucket_id
-            if cmek_settings is not None and not isinstance(cmek_settings, FolderBucketConfigCmekSettingsArgs):
-                cmek_settings = cmek_settings or {}
-                def _setter(key, value):
-                    cmek_settings[key] = value
-                FolderBucketConfigCmekSettingsArgs._configure(_setter, **cmek_settings)
+            cmek_settings = _utilities.configure(cmek_settings, FolderBucketConfigCmekSettingsArgs, True)
             __props__.__dict__["cmek_settings"] = cmek_settings
             __props__.__dict__["description"] = description
             if folder is None and not opts.urn:

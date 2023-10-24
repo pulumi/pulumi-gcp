@@ -4,8 +4,12 @@
 package organizations
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get OpenID userinfo about the credentials used with the Google provider,
@@ -21,30 +25,6 @@ import (
 // receive an error otherwise. The provider uses this scope by default.
 //
 // ## Example Usage
-// ### Exporting An Email
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			me, err := organizations.GetClientOpenIdUserInfo(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("my-email", me.Email)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetClientOpenIdUserInfo(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetClientOpenIdUserInfoResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClientOpenIdUserInfoResult
@@ -60,4 +40,49 @@ type GetClientOpenIdUserInfoResult struct {
 	// The email of the account used by the provider to authenticate with GCP.
 	Email string `pulumi:"email"`
 	Id    string `pulumi:"id"`
+}
+
+func GetClientOpenIdUserInfoOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetClientOpenIdUserInfoResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetClientOpenIdUserInfoResult, error) {
+		r, err := GetClientOpenIdUserInfo(ctx, opts...)
+		var s GetClientOpenIdUserInfoResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetClientOpenIdUserInfoResultOutput)
+}
+
+// A collection of values returned by getClientOpenIdUserInfo.
+type GetClientOpenIdUserInfoResultOutput struct{ *pulumi.OutputState }
+
+func (GetClientOpenIdUserInfoResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientOpenIdUserInfoResult)(nil)).Elem()
+}
+
+func (o GetClientOpenIdUserInfoResultOutput) ToGetClientOpenIdUserInfoResultOutput() GetClientOpenIdUserInfoResultOutput {
+	return o
+}
+
+func (o GetClientOpenIdUserInfoResultOutput) ToGetClientOpenIdUserInfoResultOutputWithContext(ctx context.Context) GetClientOpenIdUserInfoResultOutput {
+	return o
+}
+
+func (o GetClientOpenIdUserInfoResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientOpenIdUserInfoResult] {
+	return pulumix.Output[GetClientOpenIdUserInfoResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The email of the account used by the provider to authenticate with GCP.
+func (o GetClientOpenIdUserInfoResultOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientOpenIdUserInfoResult) string { return v.Email }).(pulumi.StringOutput)
+}
+
+func (o GetClientOpenIdUserInfoResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientOpenIdUserInfoResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetClientOpenIdUserInfoResultOutput{})
 }

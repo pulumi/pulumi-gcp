@@ -42,9 +42,15 @@ class AppConnectionApplicationEndpoint(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             host: str,
-             port: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             host: Optional[str] = None,
+             port: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+
         _setter("host", host)
         _setter("port", port)
 
@@ -113,11 +119,19 @@ class AppConnectionGateway(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_gateway: str,
+             app_gateway: Optional[str] = None,
              ingress_port: Optional[int] = None,
              type: Optional[str] = None,
              uri: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if app_gateway is None and 'appGateway' in kwargs:
+            app_gateway = kwargs['appGateway']
+        if app_gateway is None:
+            raise TypeError("Missing 'app_gateway' argument")
+        if ingress_port is None and 'ingressPort' in kwargs:
+            ingress_port = kwargs['ingressPort']
+
         _setter("app_gateway", app_gateway)
         if ingress_port is not None:
             _setter("ingress_port", ingress_port)
@@ -195,8 +209,14 @@ class AppConnectorPrincipalInfo(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_account: 'outputs.AppConnectorPrincipalInfoServiceAccount',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             service_account: Optional['outputs.AppConnectorPrincipalInfoServiceAccount'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if service_account is None:
+            raise TypeError("Missing 'service_account' argument")
+
         _setter("service_account", service_account)
 
     @property
@@ -225,8 +245,12 @@ class AppConnectorPrincipalInfoServiceAccount(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             email: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             email: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if email is None:
+            raise TypeError("Missing 'email' argument")
+
         _setter("email", email)
 
     @property
@@ -278,7 +302,13 @@ class AppGatewayAllocatedConnection(dict):
              _setter: Callable[[Any, Any], None],
              ingress_port: Optional[int] = None,
              psc_uri: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ingress_port is None and 'ingressPort' in kwargs:
+            ingress_port = kwargs['ingressPort']
+        if psc_uri is None and 'pscUri' in kwargs:
+            psc_uri = kwargs['pscUri']
+
         if ingress_port is not None:
             _setter("ingress_port", ingress_port)
         if psc_uri is not None:
@@ -314,9 +344,15 @@ class GetAppConnectionApplicationEndpointResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             host: str,
-             port: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             host: Optional[str] = None,
+             port: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+
         _setter("host", host)
         _setter("port", port)
 
@@ -348,11 +384,25 @@ class GetAppConnectionGatewayResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_gateway: str,
-             ingress_port: int,
-             type: str,
-             uri: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             app_gateway: Optional[str] = None,
+             ingress_port: Optional[int] = None,
+             type: Optional[str] = None,
+             uri: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if app_gateway is None and 'appGateway' in kwargs:
+            app_gateway = kwargs['appGateway']
+        if app_gateway is None:
+            raise TypeError("Missing 'app_gateway' argument")
+        if ingress_port is None and 'ingressPort' in kwargs:
+            ingress_port = kwargs['ingressPort']
+        if ingress_port is None:
+            raise TypeError("Missing 'ingress_port' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if uri is None:
+            raise TypeError("Missing 'uri' argument")
+
         _setter("app_gateway", app_gateway)
         _setter("ingress_port", ingress_port)
         _setter("type", type)
@@ -390,8 +440,14 @@ class GetAppConnectorPrincipalInfoResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_accounts: Sequence['outputs.GetAppConnectorPrincipalInfoServiceAccountResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             service_accounts: Optional[Sequence['outputs.GetAppConnectorPrincipalInfoServiceAccountResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service_accounts is None and 'serviceAccounts' in kwargs:
+            service_accounts = kwargs['serviceAccounts']
+        if service_accounts is None:
+            raise TypeError("Missing 'service_accounts' argument")
+
         _setter("service_accounts", service_accounts)
 
     @property
@@ -411,8 +467,12 @@ class GetAppConnectorPrincipalInfoServiceAccountResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             email: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             email: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if email is None:
+            raise TypeError("Missing 'email' argument")
+
         _setter("email", email)
 
     @property
@@ -434,9 +494,19 @@ class GetAppGatewayAllocatedConnectionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ingress_port: int,
-             psc_uri: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             ingress_port: Optional[int] = None,
+             psc_uri: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ingress_port is None and 'ingressPort' in kwargs:
+            ingress_port = kwargs['ingressPort']
+        if ingress_port is None:
+            raise TypeError("Missing 'ingress_port' argument")
+        if psc_uri is None and 'pscUri' in kwargs:
+            psc_uri = kwargs['pscUri']
+        if psc_uri is None:
+            raise TypeError("Missing 'psc_uri' argument")
+
         _setter("ingress_port", ingress_port)
         _setter("psc_uri", psc_uri)
 

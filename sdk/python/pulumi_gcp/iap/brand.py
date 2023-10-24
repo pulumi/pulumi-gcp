@@ -40,10 +40,20 @@ class BrandArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_title: pulumi.Input[str],
-             support_email: pulumi.Input[str],
+             application_title: Optional[pulumi.Input[str]] = None,
+             support_email: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if application_title is None and 'applicationTitle' in kwargs:
+            application_title = kwargs['applicationTitle']
+        if application_title is None:
+            raise TypeError("Missing 'application_title' argument")
+        if support_email is None and 'supportEmail' in kwargs:
+            support_email = kwargs['supportEmail']
+        if support_email is None:
+            raise TypeError("Missing 'support_email' argument")
+
         _setter("application_title", application_title)
         _setter("support_email", support_email)
         if project is not None:
@@ -137,7 +147,15 @@ class _BrandState:
              org_internal_only: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
              support_email: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if application_title is None and 'applicationTitle' in kwargs:
+            application_title = kwargs['applicationTitle']
+        if org_internal_only is None and 'orgInternalOnly' in kwargs:
+            org_internal_only = kwargs['orgInternalOnly']
+        if support_email is None and 'supportEmail' in kwargs:
+            support_email = kwargs['supportEmail']
+
         if application_title is not None:
             _setter("application_title", application_title)
         if name is not None:
@@ -232,23 +250,6 @@ class Brand(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Iap Brand
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.Project("project",
-            project_id="my-project",
-            org_id="123456789")
-        project_service = gcp.projects.Service("projectService",
-            project=project.project_id,
-            service="iap.googleapis.com")
-        project_brand = gcp.iap.Brand("projectBrand",
-            support_email="support@example.com",
-            application_title="Cloud IAP protected Application",
-            project=project_service.project)
-        ```
 
         ## Import
 
@@ -288,23 +289,6 @@ class Brand(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Iap Brand
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.Project("project",
-            project_id="my-project",
-            org_id="123456789")
-        project_service = gcp.projects.Service("projectService",
-            project=project.project_id,
-            service="iap.googleapis.com")
-        project_brand = gcp.iap.Brand("projectBrand",
-            support_email="support@example.com",
-            application_title="Cloud IAP protected Application",
-            project=project_service.project)
-        ```
 
         ## Import
 

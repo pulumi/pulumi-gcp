@@ -50,12 +50,22 @@ class HostingReleaseArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             site_id: pulumi.Input[str],
+             site_id: Optional[pulumi.Input[str]] = None,
              channel_id: Optional[pulumi.Input[str]] = None,
              message: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              version_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if site_id is None and 'siteId' in kwargs:
+            site_id = kwargs['siteId']
+        if site_id is None:
+            raise TypeError("Missing 'site_id' argument")
+        if channel_id is None and 'channelId' in kwargs:
+            channel_id = kwargs['channelId']
+        if version_name is None and 'versionName' in kwargs:
+            version_name = kwargs['versionName']
+
         _setter("site_id", site_id)
         if channel_id is not None:
             _setter("channel_id", channel_id)
@@ -193,7 +203,17 @@ class _HostingReleaseState:
              site_id: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              version_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if channel_id is None and 'channelId' in kwargs:
+            channel_id = kwargs['channelId']
+        if release_id is None and 'releaseId' in kwargs:
+            release_id = kwargs['releaseId']
+        if site_id is None and 'siteId' in kwargs:
+            site_id = kwargs['siteId']
+        if version_name is None and 'versionName' in kwargs:
+            version_name = kwargs['versionName']
+
         if channel_id is not None:
             _setter("channel_id", channel_id)
         if message is not None:
@@ -321,79 +341,6 @@ class HostingRelease(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Firebasehosting Release In Site
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_hosting_site = gcp.firebase.HostingSite("defaultHostingSite",
-            project="my-project-name",
-            site_id="site-id",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_version = gcp.firebase.HostingVersion("defaultHostingVersion",
-            site_id=default_hosting_site.site_id,
-            config=gcp.firebase.HostingVersionConfigArgs(
-                redirects=[gcp.firebase.HostingVersionConfigRedirectArgs(
-                    glob="/google/**",
-                    status_code=302,
-                    location="https://www.google.com",
-                )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_release = gcp.firebase.HostingRelease("defaultHostingRelease",
-            site_id=default_hosting_site.site_id,
-            version_name=default_hosting_version.name,
-            message="Test release",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Firebasehosting Release In Channel
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_hosting_site = gcp.firebase.HostingSite("defaultHostingSite",
-            project="my-project-name",
-            site_id="site-with-channel",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_version = gcp.firebase.HostingVersion("defaultHostingVersion",
-            site_id=default_hosting_site.site_id,
-            config=gcp.firebase.HostingVersionConfigArgs(
-                redirects=[gcp.firebase.HostingVersionConfigRedirectArgs(
-                    glob="/google/**",
-                    status_code=302,
-                    location="https://www.google.com",
-                )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_channel = gcp.firebase.HostingChannel("defaultHostingChannel",
-            site_id=default_hosting_site.site_id,
-            channel_id="channel-id",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_release = gcp.firebase.HostingRelease("defaultHostingRelease",
-            site_id=default_hosting_site.site_id,
-            channel_id=default_hosting_channel.channel_id,
-            version_name=default_hosting_version.name,
-            message="Test release in channel",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Firebasehosting Release Disable
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_hosting_site = gcp.firebase.HostingSite("defaultHostingSite",
-            project="my-project-name",
-            site_id="site-id",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_release = gcp.firebase.HostingRelease("defaultHostingRelease",
-            site_id=default_hosting_site.site_id,
-            type="SITE_DISABLE",
-            message="Take down site",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -443,79 +390,6 @@ class HostingRelease(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Firebasehosting Release In Site
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_hosting_site = gcp.firebase.HostingSite("defaultHostingSite",
-            project="my-project-name",
-            site_id="site-id",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_version = gcp.firebase.HostingVersion("defaultHostingVersion",
-            site_id=default_hosting_site.site_id,
-            config=gcp.firebase.HostingVersionConfigArgs(
-                redirects=[gcp.firebase.HostingVersionConfigRedirectArgs(
-                    glob="/google/**",
-                    status_code=302,
-                    location="https://www.google.com",
-                )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_release = gcp.firebase.HostingRelease("defaultHostingRelease",
-            site_id=default_hosting_site.site_id,
-            version_name=default_hosting_version.name,
-            message="Test release",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Firebasehosting Release In Channel
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_hosting_site = gcp.firebase.HostingSite("defaultHostingSite",
-            project="my-project-name",
-            site_id="site-with-channel",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_version = gcp.firebase.HostingVersion("defaultHostingVersion",
-            site_id=default_hosting_site.site_id,
-            config=gcp.firebase.HostingVersionConfigArgs(
-                redirects=[gcp.firebase.HostingVersionConfigRedirectArgs(
-                    glob="/google/**",
-                    status_code=302,
-                    location="https://www.google.com",
-                )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_channel = gcp.firebase.HostingChannel("defaultHostingChannel",
-            site_id=default_hosting_site.site_id,
-            channel_id="channel-id",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_release = gcp.firebase.HostingRelease("defaultHostingRelease",
-            site_id=default_hosting_site.site_id,
-            channel_id=default_hosting_channel.channel_id,
-            version_name=default_hosting_version.name,
-            message="Test release in channel",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Firebasehosting Release Disable
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_hosting_site = gcp.firebase.HostingSite("defaultHostingSite",
-            project="my-project-name",
-            site_id="site-id",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_release = gcp.firebase.HostingRelease("defaultHostingRelease",
-            site_id=default_hosting_site.site_id,
-            type="SITE_DISABLE",
-            message="Take down site",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 

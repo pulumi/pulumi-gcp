@@ -118,16 +118,6 @@ def get_default_service_account(project: Optional[str] = None,
     """
     Use this data source to retrieve the default App Engine service account for the specified project.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    default = gcp.appengine.get_default_service_account()
-    pulumi.export("defaultAccount", default.email)
-    ```
-
 
     :param str project: The project ID. If it is not provided, the provider project is used.
     """
@@ -151,16 +141,6 @@ def get_default_service_account_output(project: Optional[pulumi.Input[Optional[s
                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDefaultServiceAccountResult]:
     """
     Use this data source to retrieve the default App Engine service account for the specified project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    default = gcp.appengine.get_default_service_account()
-    pulumi.export("defaultAccount", default.email)
-    ```
 
 
     :param str project: The project ID. If it is not provided, the provider project is used.

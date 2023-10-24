@@ -13,50 +13,12 @@ namespace Pulumi.Gcp.Dataproc
     {
         /// <summary>
         /// Retrieves the current IAM policy data for a Dataproc job.
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.Dataproc.GetJobIamPolicy.Invoke(new()
-        ///     {
-        ///         JobId = google_dataproc_job.Pyspark.Reference[0].Job_id,
-        ///         Region = "us-central1",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetJobIamPolicyResult> InvokeAsync(GetJobIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetJobIamPolicyResult>("gcp:dataproc/getJobIamPolicy:getJobIamPolicy", args ?? new GetJobIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for a Dataproc job.
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.Dataproc.GetJobIamPolicy.Invoke(new()
-        ///     {
-        ///         JobId = google_dataproc_job.Pyspark.Reference[0].Job_id,
-        ///         Region = "us-central1",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetJobIamPolicyResult> Invoke(GetJobIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetJobIamPolicyResult>("gcp:dataproc/getJobIamPolicy:getJobIamPolicy", args ?? new GetJobIamPolicyInvokeArgs(), options.WithDefaults());

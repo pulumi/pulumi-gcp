@@ -32,9 +32,19 @@ class WorkloadKmsSettingsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             next_rotation_time: pulumi.Input[str],
-             rotation_period: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             next_rotation_time: Optional[pulumi.Input[str]] = None,
+             rotation_period: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if next_rotation_time is None and 'nextRotationTime' in kwargs:
+            next_rotation_time = kwargs['nextRotationTime']
+        if next_rotation_time is None:
+            raise TypeError("Missing 'next_rotation_time' argument")
+        if rotation_period is None and 'rotationPeriod' in kwargs:
+            rotation_period = kwargs['rotationPeriod']
+        if rotation_period is None:
+            raise TypeError("Missing 'rotation_period' argument")
+
         _setter("next_rotation_time", next_rotation_time)
         _setter("rotation_period", rotation_period)
 
@@ -82,7 +92,13 @@ class WorkloadResourceArgs:
              _setter: Callable[[Any, Any], None],
              resource_id: Optional[pulumi.Input[int]] = None,
              resource_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if resource_id is None and 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if resource_type is None and 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+
         if resource_id is not None:
             _setter("resource_id", resource_id)
         if resource_type is not None:
@@ -132,7 +148,13 @@ class WorkloadResourceSettingArgs:
              _setter: Callable[[Any, Any], None],
              resource_id: Optional[pulumi.Input[str]] = None,
              resource_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if resource_id is None and 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if resource_type is None and 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+
         if resource_id is not None:
             _setter("resource_id", resource_id)
         if resource_type is not None:

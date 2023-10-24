@@ -19,62 +19,6 @@ import (
 // > **Note:** This resource does not support regional disks (`compute.RegionDisk`). For regional disks, please refer to the `compute.RegionDiskResourcePolicyAttachment` resource.
 //
 // ## Example Usage
-// ### Disk Resource Policy Attachment Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-//				Family:  pulumi.StringRef("debian-11"),
-//				Project: pulumi.StringRef("debian-cloud"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ssd, err := compute.NewDisk(ctx, "ssd", &compute.DiskArgs{
-//				Image: *pulumi.String(myImage.SelfLink),
-//				Size:  pulumi.Int(50),
-//				Type:  pulumi.String("pd-ssd"),
-//				Zone:  pulumi.String("us-central1-a"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewDiskResourcePolicyAttachment(ctx, "attachment", &compute.DiskResourcePolicyAttachmentArgs{
-//				Disk: ssd.Name,
-//				Zone: pulumi.String("us-central1-a"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewResourcePolicy(ctx, "policy", &compute.ResourcePolicyArgs{
-//				Region: pulumi.String("us-central1"),
-//				SnapshotSchedulePolicy: &compute.ResourcePolicySnapshotSchedulePolicyArgs{
-//					Schedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs{
-//						DailySchedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs{
-//							DaysInCycle: pulumi.Int(1),
-//							StartTime:   pulumi.String("04:00"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

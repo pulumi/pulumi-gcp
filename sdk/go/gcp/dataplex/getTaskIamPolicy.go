@@ -13,35 +13,6 @@ import (
 )
 
 // Retrieves the current IAM policy data for task
-//
-// ## example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataplex"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataplex.LookupTaskIamPolicy(ctx, &dataplex.LookupTaskIamPolicyArgs{
-//				Project:  pulumi.StringRef(google_dataplex_task.Example.Project),
-//				Location: pulumi.StringRef(google_dataplex_task.Example.Location),
-//				Lake:     google_dataplex_task.Example.Lake,
-//				TaskId:   google_dataplex_task.Example.Task_id,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupTaskIamPolicy(ctx *pulumi.Context, args *LookupTaskIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupTaskIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTaskIamPolicyResult

@@ -70,7 +70,15 @@ class SecurityPolicyArgs:
              recaptcha_options_config: Optional[pulumi.Input['SecurityPolicyRecaptchaOptionsConfigArgs']] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if adaptive_protection_config is None and 'adaptiveProtectionConfig' in kwargs:
+            adaptive_protection_config = kwargs['adaptiveProtectionConfig']
+        if advanced_options_config is None and 'advancedOptionsConfig' in kwargs:
+            advanced_options_config = kwargs['advancedOptionsConfig']
+        if recaptcha_options_config is None and 'recaptchaOptionsConfig' in kwargs:
+            recaptcha_options_config = kwargs['recaptchaOptionsConfig']
+
         if adaptive_protection_config is not None:
             _setter("adaptive_protection_config", adaptive_protection_config)
         if advanced_options_config is not None:
@@ -263,7 +271,17 @@ class _SecurityPolicyState:
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if adaptive_protection_config is None and 'adaptiveProtectionConfig' in kwargs:
+            adaptive_protection_config = kwargs['adaptiveProtectionConfig']
+        if advanced_options_config is None and 'advancedOptionsConfig' in kwargs:
+            advanced_options_config = kwargs['advancedOptionsConfig']
+        if recaptcha_options_config is None and 'recaptchaOptionsConfig' in kwargs:
+            recaptcha_options_config = kwargs['recaptchaOptionsConfig']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if adaptive_protection_config is not None:
             _setter("adaptive_protection_config", adaptive_protection_config)
         if advanced_options_config is not None:
@@ -440,140 +458,6 @@ class SecurityPolicy(pulumi.CustomResource):
 
         Security Policy is used by google_compute_backend_service.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        policy = gcp.compute.SecurityPolicy("policy", rules=[
-            gcp.compute.SecurityPolicyRuleArgs(
-                action="deny(403)",
-                description="Deny access to IPs in 9.9.9.0/24",
-                match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                    config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                        src_ip_ranges=["9.9.9.0/24"],
-                    ),
-                    versioned_expr="SRC_IPS_V1",
-                ),
-                priority=1000,
-            ),
-            gcp.compute.SecurityPolicyRuleArgs(
-                action="allow",
-                description="default rule",
-                match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                    config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                        src_ip_ranges=["*"],
-                    ),
-                    versioned_expr="SRC_IPS_V1",
-                ),
-                priority=2147483647,
-            ),
-        ])
-        ```
-        ### With ReCAPTCHA Configuration Options
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.recaptcha.EnterpriseKey("primary",
-            display_name="display-name",
-            labels={
-                "label-one": "value-one",
-            },
-            project="my-project-name",
-            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
-                integration_type="INVISIBLE",
-                allow_all_domains=True,
-                allowed_domains=["localhost"],
-            ))
-        policy = gcp.compute.SecurityPolicy("policy",
-            description="basic security policy",
-            type="CLOUD_ARMOR",
-            recaptcha_options_config=gcp.compute.SecurityPolicyRecaptchaOptionsConfigArgs(
-                redirect_site_key=primary.name,
-            ))
-        ```
-        ### With Header Actions
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        policy = gcp.compute.SecurityPolicy("policy", rules=[
-            gcp.compute.SecurityPolicyRuleArgs(
-                action="allow",
-                description="default rule",
-                match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                    config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                        src_ip_ranges=["*"],
-                    ),
-                    versioned_expr="SRC_IPS_V1",
-                ),
-                priority=2147483647,
-            ),
-            gcp.compute.SecurityPolicyRuleArgs(
-                action="allow",
-                header_action=gcp.compute.SecurityPolicyRuleHeaderActionArgs(
-                    request_headers_to_adds=[
-                        gcp.compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs(
-                            header_name="reCAPTCHA-Warning",
-                            header_value="high",
-                        ),
-                        gcp.compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs(
-                            header_name="X-Resource",
-                            header_value="test",
-                        ),
-                    ],
-                ),
-                match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                    expr=gcp.compute.SecurityPolicyRuleMatchExprArgs(
-                        expression="request.path.matches(\\"/login.html\\") && token.recaptcha_session.score < 0.2",
-                    ),
-                ),
-                priority=1000,
-            ),
-        ])
-        ```
-        ### With EnforceOnKey Value As Empty String
-        A scenario example that won't cause any conflict between `enforce_on_key` and `enforce_on_key_configs`, because `enforce_on_key` was specified as an empty string:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        policy = gcp.compute.SecurityPolicy("policy",
-            description="throttle rule with enforce_on_key_configs",
-            rules=[gcp.compute.SecurityPolicyRuleArgs(
-                action="throttle",
-                description="default rule",
-                match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                    config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                        src_ip_ranges=["*"],
-                    ),
-                    versioned_expr="SRC_IPS_V1",
-                ),
-                priority=2147483647,
-                rate_limit_options=gcp.compute.SecurityPolicyRuleRateLimitOptionsArgs(
-                    conform_action="allow",
-                    enforce_on_key="",
-                    enforce_on_key_configs=[gcp.compute.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs(
-                        enforce_on_key_type="IP",
-                    )],
-                    exceed_action="redirect",
-                    exceed_redirect_options=gcp.compute.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs(
-                        target="<https://www.example.com>",
-                        type="EXTERNAL_302",
-                    ),
-                    rate_limit_threshold=gcp.compute.SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs(
-                        count=10,
-                        interval_sec=60,
-                    ),
-                ),
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']] adaptive_protection_config: Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
@@ -611,140 +495,6 @@ class SecurityPolicy(pulumi.CustomResource):
 
         Security Policy is used by google_compute_backend_service.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        policy = gcp.compute.SecurityPolicy("policy", rules=[
-            gcp.compute.SecurityPolicyRuleArgs(
-                action="deny(403)",
-                description="Deny access to IPs in 9.9.9.0/24",
-                match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                    config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                        src_ip_ranges=["9.9.9.0/24"],
-                    ),
-                    versioned_expr="SRC_IPS_V1",
-                ),
-                priority=1000,
-            ),
-            gcp.compute.SecurityPolicyRuleArgs(
-                action="allow",
-                description="default rule",
-                match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                    config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                        src_ip_ranges=["*"],
-                    ),
-                    versioned_expr="SRC_IPS_V1",
-                ),
-                priority=2147483647,
-            ),
-        ])
-        ```
-        ### With ReCAPTCHA Configuration Options
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.recaptcha.EnterpriseKey("primary",
-            display_name="display-name",
-            labels={
-                "label-one": "value-one",
-            },
-            project="my-project-name",
-            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
-                integration_type="INVISIBLE",
-                allow_all_domains=True,
-                allowed_domains=["localhost"],
-            ))
-        policy = gcp.compute.SecurityPolicy("policy",
-            description="basic security policy",
-            type="CLOUD_ARMOR",
-            recaptcha_options_config=gcp.compute.SecurityPolicyRecaptchaOptionsConfigArgs(
-                redirect_site_key=primary.name,
-            ))
-        ```
-        ### With Header Actions
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        policy = gcp.compute.SecurityPolicy("policy", rules=[
-            gcp.compute.SecurityPolicyRuleArgs(
-                action="allow",
-                description="default rule",
-                match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                    config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                        src_ip_ranges=["*"],
-                    ),
-                    versioned_expr="SRC_IPS_V1",
-                ),
-                priority=2147483647,
-            ),
-            gcp.compute.SecurityPolicyRuleArgs(
-                action="allow",
-                header_action=gcp.compute.SecurityPolicyRuleHeaderActionArgs(
-                    request_headers_to_adds=[
-                        gcp.compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs(
-                            header_name="reCAPTCHA-Warning",
-                            header_value="high",
-                        ),
-                        gcp.compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs(
-                            header_name="X-Resource",
-                            header_value="test",
-                        ),
-                    ],
-                ),
-                match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                    expr=gcp.compute.SecurityPolicyRuleMatchExprArgs(
-                        expression="request.path.matches(\\"/login.html\\") && token.recaptcha_session.score < 0.2",
-                    ),
-                ),
-                priority=1000,
-            ),
-        ])
-        ```
-        ### With EnforceOnKey Value As Empty String
-        A scenario example that won't cause any conflict between `enforce_on_key` and `enforce_on_key_configs`, because `enforce_on_key` was specified as an empty string:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        policy = gcp.compute.SecurityPolicy("policy",
-            description="throttle rule with enforce_on_key_configs",
-            rules=[gcp.compute.SecurityPolicyRuleArgs(
-                action="throttle",
-                description="default rule",
-                match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                    config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                        src_ip_ranges=["*"],
-                    ),
-                    versioned_expr="SRC_IPS_V1",
-                ),
-                priority=2147483647,
-                rate_limit_options=gcp.compute.SecurityPolicyRuleRateLimitOptionsArgs(
-                    conform_action="allow",
-                    enforce_on_key="",
-                    enforce_on_key_configs=[gcp.compute.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs(
-                        enforce_on_key_type="IP",
-                    )],
-                    exceed_action="redirect",
-                    exceed_redirect_options=gcp.compute.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs(
-                        target="<https://www.example.com>",
-                        type="EXTERNAL_302",
-                    ),
-                    rate_limit_threshold=gcp.compute.SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs(
-                        count=10,
-                        interval_sec=60,
-                    ),
-                ),
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param SecurityPolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -781,26 +531,14 @@ class SecurityPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SecurityPolicyArgs.__new__(SecurityPolicyArgs)
 
-            if adaptive_protection_config is not None and not isinstance(adaptive_protection_config, SecurityPolicyAdaptiveProtectionConfigArgs):
-                adaptive_protection_config = adaptive_protection_config or {}
-                def _setter(key, value):
-                    adaptive_protection_config[key] = value
-                SecurityPolicyAdaptiveProtectionConfigArgs._configure(_setter, **adaptive_protection_config)
+            adaptive_protection_config = _utilities.configure(adaptive_protection_config, SecurityPolicyAdaptiveProtectionConfigArgs, True)
             __props__.__dict__["adaptive_protection_config"] = adaptive_protection_config
-            if advanced_options_config is not None and not isinstance(advanced_options_config, SecurityPolicyAdvancedOptionsConfigArgs):
-                advanced_options_config = advanced_options_config or {}
-                def _setter(key, value):
-                    advanced_options_config[key] = value
-                SecurityPolicyAdvancedOptionsConfigArgs._configure(_setter, **advanced_options_config)
+            advanced_options_config = _utilities.configure(advanced_options_config, SecurityPolicyAdvancedOptionsConfigArgs, True)
             __props__.__dict__["advanced_options_config"] = advanced_options_config
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            if recaptcha_options_config is not None and not isinstance(recaptcha_options_config, SecurityPolicyRecaptchaOptionsConfigArgs):
-                recaptcha_options_config = recaptcha_options_config or {}
-                def _setter(key, value):
-                    recaptcha_options_config[key] = value
-                SecurityPolicyRecaptchaOptionsConfigArgs._configure(_setter, **recaptcha_options_config)
+            recaptcha_options_config = _utilities.configure(recaptcha_options_config, SecurityPolicyRecaptchaOptionsConfigArgs, True)
             __props__.__dict__["recaptcha_options_config"] = recaptcha_options_config
             __props__.__dict__["rules"] = rules
             __props__.__dict__["type"] = type

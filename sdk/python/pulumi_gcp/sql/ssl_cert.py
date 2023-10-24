@@ -35,10 +35,18 @@ class SslCertArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             common_name: pulumi.Input[str],
-             instance: pulumi.Input[str],
+             common_name: Optional[pulumi.Input[str]] = None,
+             instance: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if common_name is None and 'commonName' in kwargs:
+            common_name = kwargs['commonName']
+        if common_name is None:
+            raise TypeError("Missing 'common_name' argument")
+        if instance is None:
+            raise TypeError("Missing 'instance' argument")
+
         _setter("common_name", common_name)
         _setter("instance", instance)
         if project is not None:
@@ -141,7 +149,23 @@ class _SslCertState:
              project: Optional[pulumi.Input[str]] = None,
              server_ca_cert: Optional[pulumi.Input[str]] = None,
              sha1_fingerprint: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cert_serial_number is None and 'certSerialNumber' in kwargs:
+            cert_serial_number = kwargs['certSerialNumber']
+        if common_name is None and 'commonName' in kwargs:
+            common_name = kwargs['commonName']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if server_ca_cert is None and 'serverCaCert' in kwargs:
+            server_ca_cert = kwargs['serverCaCert']
+        if sha1_fingerprint is None and 'sha1Fingerprint' in kwargs:
+            sha1_fingerprint = kwargs['sha1Fingerprint']
+
         if cert is not None:
             _setter("cert", cert)
         if cert_serial_number is not None:
@@ -303,26 +327,6 @@ class SslCert(pulumi.CustomResource):
 
         > **Note:** All arguments including the private key will be stored in the raw state as plain-text
 
-        ## Example Usage
-
-        Example creating a SQL Client Certificate.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
-        main = gcp.sql.DatabaseInstance("main",
-            database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ))
-        client_cert = gcp.sql.SslCert("clientCert",
-            common_name="client-name",
-            instance=main.name)
-        ```
-
         ## Import
 
         Since the contents of the certificate cannot be accessed after its creation, this resource cannot be imported.
@@ -346,26 +350,6 @@ class SslCert(pulumi.CustomResource):
         Creates a new Google SQL SSL Cert on a Google SQL Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts).
 
         > **Note:** All arguments including the private key will be stored in the raw state as plain-text
-
-        ## Example Usage
-
-        Example creating a SQL Client Certificate.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
-        main = gcp.sql.DatabaseInstance("main",
-            database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ))
-        client_cert = gcp.sql.SslCert("clientCert",
-            common_name="client-name",
-            instance=main.name)
-        ```
 
         ## Import
 

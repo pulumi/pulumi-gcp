@@ -51,13 +51,27 @@ class PolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             constraint: pulumi.Input[str],
-             org_id: pulumi.Input[str],
+             constraint: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
              boolean_policy: Optional[pulumi.Input['PolicyBooleanPolicyArgs']] = None,
              list_policy: Optional[pulumi.Input['PolicyListPolicyArgs']] = None,
              restore_policy: Optional[pulumi.Input['PolicyRestorePolicyArgs']] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if constraint is None:
+            raise TypeError("Missing 'constraint' argument")
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if boolean_policy is None and 'booleanPolicy' in kwargs:
+            boolean_policy = kwargs['booleanPolicy']
+        if list_policy is None and 'listPolicy' in kwargs:
+            list_policy = kwargs['listPolicy']
+        if restore_policy is None and 'restorePolicy' in kwargs:
+            restore_policy = kwargs['restorePolicy']
+
         _setter("constraint", constraint)
         _setter("org_id", org_id)
         if boolean_policy is not None:
@@ -202,7 +216,19 @@ class _PolicyState:
              restore_policy: Optional[pulumi.Input['PolicyRestorePolicyArgs']] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if boolean_policy is None and 'booleanPolicy' in kwargs:
+            boolean_policy = kwargs['booleanPolicy']
+        if list_policy is None and 'listPolicy' in kwargs:
+            list_policy = kwargs['listPolicy']
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if restore_policy is None and 'restorePolicy' in kwargs:
+            restore_policy = kwargs['restorePolicy']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if boolean_policy is not None:
             _setter("boolean_policy", boolean_policy)
         if constraint is not None:
@@ -348,69 +374,6 @@ class Policy(pulumi.CustomResource):
         * How-to Guides
             * [Introduction to the Organization Policy Service](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
 
-        ## Example Usage
-
-        To set policy with a [boolean constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        serial_port_policy = gcp.organizations.Policy("serialPortPolicy",
-            boolean_policy=gcp.organizations.PolicyBooleanPolicyArgs(
-                enforced=True,
-            ),
-            constraint="compute.disableSerialPortAccess",
-            org_id="123456789")
-        ```
-
-        To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        services_policy = gcp.organizations.Policy("servicesPolicy",
-            constraint="serviceuser.services",
-            list_policy=gcp.organizations.PolicyListPolicyArgs(
-                allow=gcp.organizations.PolicyListPolicyAllowArgs(
-                    all=True,
-                ),
-            ),
-            org_id="123456789")
-        ```
-
-        Or to deny some services, use the following instead:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        services_policy = gcp.organizations.Policy("servicesPolicy",
-            constraint="serviceuser.services",
-            list_policy=gcp.organizations.PolicyListPolicyArgs(
-                deny=gcp.organizations.PolicyListPolicyDenyArgs(
-                    values=["cloudresourcemanager.googleapis.com"],
-                ),
-                suggested_value="compute.googleapis.com",
-            ),
-            org_id="123456789")
-        ```
-
-        To restore the default organization policy, use the following instead:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        services_policy = gcp.organizations.Policy("servicesPolicy",
-            constraint="serviceuser.services",
-            org_id="123456789",
-            restore_policy=gcp.organizations.PolicyRestorePolicyArgs(
-                default=True,
-            ))
-        ```
-
         ## Import
 
         Organization Policies can be imported using the `org_id` and the `constraint`, e.g.
@@ -453,69 +416,6 @@ class Policy(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/setOrgPolicy)
         * How-to Guides
             * [Introduction to the Organization Policy Service](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
-
-        ## Example Usage
-
-        To set policy with a [boolean constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        serial_port_policy = gcp.organizations.Policy("serialPortPolicy",
-            boolean_policy=gcp.organizations.PolicyBooleanPolicyArgs(
-                enforced=True,
-            ),
-            constraint="compute.disableSerialPortAccess",
-            org_id="123456789")
-        ```
-
-        To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        services_policy = gcp.organizations.Policy("servicesPolicy",
-            constraint="serviceuser.services",
-            list_policy=gcp.organizations.PolicyListPolicyArgs(
-                allow=gcp.organizations.PolicyListPolicyAllowArgs(
-                    all=True,
-                ),
-            ),
-            org_id="123456789")
-        ```
-
-        Or to deny some services, use the following instead:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        services_policy = gcp.organizations.Policy("servicesPolicy",
-            constraint="serviceuser.services",
-            list_policy=gcp.organizations.PolicyListPolicyArgs(
-                deny=gcp.organizations.PolicyListPolicyDenyArgs(
-                    values=["cloudresourcemanager.googleapis.com"],
-                ),
-                suggested_value="compute.googleapis.com",
-            ),
-            org_id="123456789")
-        ```
-
-        To restore the default organization policy, use the following instead:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        services_policy = gcp.organizations.Policy("servicesPolicy",
-            constraint="serviceuser.services",
-            org_id="123456789",
-            restore_policy=gcp.organizations.PolicyRestorePolicyArgs(
-                default=True,
-            ))
-        ```
 
         ## Import
 
@@ -560,29 +460,17 @@ class Policy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PolicyArgs.__new__(PolicyArgs)
 
-            if boolean_policy is not None and not isinstance(boolean_policy, PolicyBooleanPolicyArgs):
-                boolean_policy = boolean_policy or {}
-                def _setter(key, value):
-                    boolean_policy[key] = value
-                PolicyBooleanPolicyArgs._configure(_setter, **boolean_policy)
+            boolean_policy = _utilities.configure(boolean_policy, PolicyBooleanPolicyArgs, True)
             __props__.__dict__["boolean_policy"] = boolean_policy
             if constraint is None and not opts.urn:
                 raise TypeError("Missing required property 'constraint'")
             __props__.__dict__["constraint"] = constraint
-            if list_policy is not None and not isinstance(list_policy, PolicyListPolicyArgs):
-                list_policy = list_policy or {}
-                def _setter(key, value):
-                    list_policy[key] = value
-                PolicyListPolicyArgs._configure(_setter, **list_policy)
+            list_policy = _utilities.configure(list_policy, PolicyListPolicyArgs, True)
             __props__.__dict__["list_policy"] = list_policy
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
             __props__.__dict__["org_id"] = org_id
-            if restore_policy is not None and not isinstance(restore_policy, PolicyRestorePolicyArgs):
-                restore_policy = restore_policy or {}
-                def _setter(key, value):
-                    restore_policy[key] = value
-                PolicyRestorePolicyArgs._configure(_setter, **restore_policy)
+            restore_policy = _utilities.configure(restore_policy, PolicyRestorePolicyArgs, True)
             __props__.__dict__["restore_policy"] = restore_policy
             __props__.__dict__["version"] = version
             __props__.__dict__["etag"] = None

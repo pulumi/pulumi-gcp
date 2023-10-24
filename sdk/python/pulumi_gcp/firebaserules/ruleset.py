@@ -31,9 +31,13 @@ class RulesetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source: pulumi.Input['RulesetSourceArgs'],
+             source: Optional[pulumi.Input['RulesetSourceArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+
         _setter("source", source)
         if project is not None:
             _setter("project", project)
@@ -97,7 +101,11 @@ class _RulesetState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input['RulesetSourceArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if metadatas is not None:
@@ -184,38 +192,6 @@ class Ruleset(pulumi.CustomResource):
         For more information, see:
         * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
         ## Example Usage
-        ### Basic_ruleset
-        Creates a basic Firestore ruleset
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.firebaserules.Ruleset("primary",
-            project="my-project-name",
-            source=gcp.firebaserules.RulesetSourceArgs(
-                files=[gcp.firebaserules.RulesetSourceFileArgs(
-                    content="service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
-                    fingerprint="",
-                    name="firestore.rules",
-                )],
-                language="",
-            ))
-        ```
-        ### Minimal_ruleset
-        Creates a minimal Firestore ruleset
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.firebaserules.Ruleset("primary",
-            project="my-project-name",
-            source=gcp.firebaserules.RulesetSourceArgs(
-                files=[gcp.firebaserules.RulesetSourceFileArgs(
-                    content="service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
-                    name="firestore.rules",
-                )],
-            ))
-        ```
 
         ## Import
 
@@ -248,38 +224,6 @@ class Ruleset(pulumi.CustomResource):
         For more information, see:
         * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
         ## Example Usage
-        ### Basic_ruleset
-        Creates a basic Firestore ruleset
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.firebaserules.Ruleset("primary",
-            project="my-project-name",
-            source=gcp.firebaserules.RulesetSourceArgs(
-                files=[gcp.firebaserules.RulesetSourceFileArgs(
-                    content="service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
-                    fingerprint="",
-                    name="firestore.rules",
-                )],
-                language="",
-            ))
-        ```
-        ### Minimal_ruleset
-        Creates a minimal Firestore ruleset
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.firebaserules.Ruleset("primary",
-            project="my-project-name",
-            source=gcp.firebaserules.RulesetSourceArgs(
-                files=[gcp.firebaserules.RulesetSourceFileArgs(
-                    content="service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
-                    name="firestore.rules",
-                )],
-            ))
-        ```
 
         ## Import
 
@@ -328,11 +272,7 @@ class Ruleset(pulumi.CustomResource):
             __props__ = RulesetArgs.__new__(RulesetArgs)
 
             __props__.__dict__["project"] = project
-            if source is not None and not isinstance(source, RulesetSourceArgs):
-                source = source or {}
-                def _setter(key, value):
-                    source[key] = value
-                RulesetSourceArgs._configure(_setter, **source)
+            source = _utilities.configure(source, RulesetSourceArgs, True)
             if source is None and not opts.urn:
                 raise TypeError("Missing required property 'source'")
             __props__.__dict__["source"] = source

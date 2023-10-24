@@ -84,8 +84,8 @@ class CxSecuritySettingsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             location: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
              audio_export_settings: Optional[pulumi.Input['CxSecuritySettingsAudioExportSettingsArgs']] = None,
              deidentify_template: Optional[pulumi.Input[str]] = None,
              insights_export_settings: Optional[pulumi.Input['CxSecuritySettingsInsightsExportSettingsArgs']] = None,
@@ -96,7 +96,33 @@ class CxSecuritySettingsArgs:
              redaction_strategy: Optional[pulumi.Input[str]] = None,
              retention_strategy: Optional[pulumi.Input[str]] = None,
              retention_window_days: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if audio_export_settings is None and 'audioExportSettings' in kwargs:
+            audio_export_settings = kwargs['audioExportSettings']
+        if deidentify_template is None and 'deidentifyTemplate' in kwargs:
+            deidentify_template = kwargs['deidentifyTemplate']
+        if insights_export_settings is None and 'insightsExportSettings' in kwargs:
+            insights_export_settings = kwargs['insightsExportSettings']
+        if inspect_template is None and 'inspectTemplate' in kwargs:
+            inspect_template = kwargs['inspectTemplate']
+        if purge_data_types is None and 'purgeDataTypes' in kwargs:
+            purge_data_types = kwargs['purgeDataTypes']
+        if redaction_scope is None and 'redactionScope' in kwargs:
+            redaction_scope = kwargs['redactionScope']
+        if redaction_strategy is None and 'redactionStrategy' in kwargs:
+            redaction_strategy = kwargs['redactionStrategy']
+        if retention_strategy is None and 'retentionStrategy' in kwargs:
+            retention_strategy = kwargs['retentionStrategy']
+        if retention_window_days is None and 'retentionWindowDays' in kwargs:
+            retention_window_days = kwargs['retentionWindowDays']
+
         _setter("display_name", display_name)
         _setter("location", location)
         if audio_export_settings is not None:
@@ -376,7 +402,29 @@ class _CxSecuritySettingsState:
              redaction_strategy: Optional[pulumi.Input[str]] = None,
              retention_strategy: Optional[pulumi.Input[str]] = None,
              retention_window_days: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if audio_export_settings is None and 'audioExportSettings' in kwargs:
+            audio_export_settings = kwargs['audioExportSettings']
+        if deidentify_template is None and 'deidentifyTemplate' in kwargs:
+            deidentify_template = kwargs['deidentifyTemplate']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if insights_export_settings is None and 'insightsExportSettings' in kwargs:
+            insights_export_settings = kwargs['insightsExportSettings']
+        if inspect_template is None and 'inspectTemplate' in kwargs:
+            inspect_template = kwargs['inspectTemplate']
+        if purge_data_types is None and 'purgeDataTypes' in kwargs:
+            purge_data_types = kwargs['purgeDataTypes']
+        if redaction_scope is None and 'redactionScope' in kwargs:
+            redaction_scope = kwargs['redactionScope']
+        if redaction_strategy is None and 'redactionStrategy' in kwargs:
+            redaction_strategy = kwargs['redactionStrategy']
+        if retention_strategy is None and 'retentionStrategy' in kwargs:
+            retention_strategy = kwargs['retentionStrategy']
+        if retention_window_days is None and 'retentionWindowDays' in kwargs:
+            retention_window_days = kwargs['retentionWindowDays']
+
         if audio_export_settings is not None:
             _setter("audio_export_settings", audio_export_settings)
         if deidentify_template is not None:
@@ -614,70 +662,6 @@ class CxSecuritySettings(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 
         ## Example Usage
-        ### Dialogflowcx Security Settings Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic_security_settings = gcp.diagflow.CxSecuritySettings("basicSecuritySettings",
-            display_name="dialogflowcx-security-settings",
-            location="global",
-            purge_data_types=[],
-            retention_window_days=7)
-        ```
-        ### Dialogflowcx Security Settings Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        inspect = gcp.dataloss.PreventionInspectTemplate("inspect",
-            parent="projects/my-project-name/locations/global",
-            display_name="dialogflowcx-inspect-template",
-            inspect_config=gcp.dataloss.PreventionInspectTemplateInspectConfigArgs(
-                info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs(
-                    name="EMAIL_ADDRESS",
-                )],
-            ))
-        deidentify = gcp.dataloss.PreventionDeidentifyTemplate("deidentify",
-            parent="projects/my-project-name/locations/global",
-            display_name="dialogflowcx-deidentify-template",
-            deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs(
-                info_type_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs(
-                    transformations=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
-                        primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
-                            replace_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs(
-                                new_value=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs(
-                                    string_value="[REDACTED]",
-                                ),
-                            ),
-                        ),
-                    )],
-                ),
-            ))
-        bucket = gcp.storage.Bucket("bucket",
-            location="US",
-            uniform_bucket_level_access=True)
-        basic_security_settings = gcp.diagflow.CxSecuritySettings("basicSecuritySettings",
-            display_name="dialogflowcx-security-settings",
-            location="global",
-            redaction_strategy="REDACT_WITH_SERVICE",
-            redaction_scope="REDACT_DISK_STORAGE",
-            inspect_template=inspect.id,
-            deidentify_template=deidentify.id,
-            purge_data_types=["DIALOGFLOW_HISTORY"],
-            audio_export_settings=gcp.diagflow.CxSecuritySettingsAudioExportSettingsArgs(
-                gcs_bucket=bucket.id,
-                audio_export_pattern="export",
-                enable_audio_redaction=True,
-                audio_format="OGG",
-            ),
-            insights_export_settings=gcp.diagflow.CxSecuritySettingsInsightsExportSettingsArgs(
-                enable_insights_export=True,
-            ),
-            retention_strategy="REMOVE_AFTER_CONVERSATION")
-        ```
 
         ## Import
 
@@ -750,70 +734,6 @@ class CxSecuritySettings(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 
         ## Example Usage
-        ### Dialogflowcx Security Settings Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic_security_settings = gcp.diagflow.CxSecuritySettings("basicSecuritySettings",
-            display_name="dialogflowcx-security-settings",
-            location="global",
-            purge_data_types=[],
-            retention_window_days=7)
-        ```
-        ### Dialogflowcx Security Settings Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        inspect = gcp.dataloss.PreventionInspectTemplate("inspect",
-            parent="projects/my-project-name/locations/global",
-            display_name="dialogflowcx-inspect-template",
-            inspect_config=gcp.dataloss.PreventionInspectTemplateInspectConfigArgs(
-                info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs(
-                    name="EMAIL_ADDRESS",
-                )],
-            ))
-        deidentify = gcp.dataloss.PreventionDeidentifyTemplate("deidentify",
-            parent="projects/my-project-name/locations/global",
-            display_name="dialogflowcx-deidentify-template",
-            deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs(
-                info_type_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs(
-                    transformations=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
-                        primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
-                            replace_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs(
-                                new_value=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs(
-                                    string_value="[REDACTED]",
-                                ),
-                            ),
-                        ),
-                    )],
-                ),
-            ))
-        bucket = gcp.storage.Bucket("bucket",
-            location="US",
-            uniform_bucket_level_access=True)
-        basic_security_settings = gcp.diagflow.CxSecuritySettings("basicSecuritySettings",
-            display_name="dialogflowcx-security-settings",
-            location="global",
-            redaction_strategy="REDACT_WITH_SERVICE",
-            redaction_scope="REDACT_DISK_STORAGE",
-            inspect_template=inspect.id,
-            deidentify_template=deidentify.id,
-            purge_data_types=["DIALOGFLOW_HISTORY"],
-            audio_export_settings=gcp.diagflow.CxSecuritySettingsAudioExportSettingsArgs(
-                gcs_bucket=bucket.id,
-                audio_export_pattern="export",
-                enable_audio_redaction=True,
-                audio_format="OGG",
-            ),
-            insights_export_settings=gcp.diagflow.CxSecuritySettingsInsightsExportSettingsArgs(
-                enable_insights_export=True,
-            ),
-            retention_strategy="REMOVE_AFTER_CONVERSATION")
-        ```
 
         ## Import
 
@@ -871,21 +791,13 @@ class CxSecuritySettings(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CxSecuritySettingsArgs.__new__(CxSecuritySettingsArgs)
 
-            if audio_export_settings is not None and not isinstance(audio_export_settings, CxSecuritySettingsAudioExportSettingsArgs):
-                audio_export_settings = audio_export_settings or {}
-                def _setter(key, value):
-                    audio_export_settings[key] = value
-                CxSecuritySettingsAudioExportSettingsArgs._configure(_setter, **audio_export_settings)
+            audio_export_settings = _utilities.configure(audio_export_settings, CxSecuritySettingsAudioExportSettingsArgs, True)
             __props__.__dict__["audio_export_settings"] = audio_export_settings
             __props__.__dict__["deidentify_template"] = deidentify_template
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
-            if insights_export_settings is not None and not isinstance(insights_export_settings, CxSecuritySettingsInsightsExportSettingsArgs):
-                insights_export_settings = insights_export_settings or {}
-                def _setter(key, value):
-                    insights_export_settings[key] = value
-                CxSecuritySettingsInsightsExportSettingsArgs._configure(_setter, **insights_export_settings)
+            insights_export_settings = _utilities.configure(insights_export_settings, CxSecuritySettingsInsightsExportSettingsArgs, True)
             __props__.__dict__["insights_export_settings"] = insights_export_settings
             __props__.__dict__["inspect_template"] = inspect_template
             if location is None and not opts.urn:

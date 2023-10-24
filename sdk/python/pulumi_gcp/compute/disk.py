@@ -191,7 +191,33 @@ class DiskArgs:
              source_snapshot_encryption_key: Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs']] = None,
              type: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if async_primary_disk is None and 'asyncPrimaryDisk' in kwargs:
+            async_primary_disk = kwargs['asyncPrimaryDisk']
+        if disk_encryption_key is None and 'diskEncryptionKey' in kwargs:
+            disk_encryption_key = kwargs['diskEncryptionKey']
+        if enable_confidential_compute is None and 'enableConfidentialCompute' in kwargs:
+            enable_confidential_compute = kwargs['enableConfidentialCompute']
+        if guest_os_features is None and 'guestOsFeatures' in kwargs:
+            guest_os_features = kwargs['guestOsFeatures']
+        if multi_writer is None and 'multiWriter' in kwargs:
+            multi_writer = kwargs['multiWriter']
+        if physical_block_size_bytes is None and 'physicalBlockSizeBytes' in kwargs:
+            physical_block_size_bytes = kwargs['physicalBlockSizeBytes']
+        if provisioned_iops is None and 'provisionedIops' in kwargs:
+            provisioned_iops = kwargs['provisionedIops']
+        if provisioned_throughput is None and 'provisionedThroughput' in kwargs:
+            provisioned_throughput = kwargs['provisionedThroughput']
+        if resource_policies is None and 'resourcePolicies' in kwargs:
+            resource_policies = kwargs['resourcePolicies']
+        if source_disk is None and 'sourceDisk' in kwargs:
+            source_disk = kwargs['sourceDisk']
+        if source_image_encryption_key is None and 'sourceImageEncryptionKey' in kwargs:
+            source_image_encryption_key = kwargs['sourceImageEncryptionKey']
+        if source_snapshot_encryption_key is None and 'sourceSnapshotEncryptionKey' in kwargs:
+            source_snapshot_encryption_key = kwargs['sourceSnapshotEncryptionKey']
+
         if async_primary_disk is not None:
             _setter("async_primary_disk", async_primary_disk)
         if description is not None:
@@ -823,7 +849,49 @@ class _DiskState:
              type: Optional[pulumi.Input[str]] = None,
              users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if async_primary_disk is None and 'asyncPrimaryDisk' in kwargs:
+            async_primary_disk = kwargs['asyncPrimaryDisk']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if disk_encryption_key is None and 'diskEncryptionKey' in kwargs:
+            disk_encryption_key = kwargs['diskEncryptionKey']
+        if enable_confidential_compute is None and 'enableConfidentialCompute' in kwargs:
+            enable_confidential_compute = kwargs['enableConfidentialCompute']
+        if guest_os_features is None and 'guestOsFeatures' in kwargs:
+            guest_os_features = kwargs['guestOsFeatures']
+        if label_fingerprint is None and 'labelFingerprint' in kwargs:
+            label_fingerprint = kwargs['labelFingerprint']
+        if last_attach_timestamp is None and 'lastAttachTimestamp' in kwargs:
+            last_attach_timestamp = kwargs['lastAttachTimestamp']
+        if last_detach_timestamp is None and 'lastDetachTimestamp' in kwargs:
+            last_detach_timestamp = kwargs['lastDetachTimestamp']
+        if multi_writer is None and 'multiWriter' in kwargs:
+            multi_writer = kwargs['multiWriter']
+        if physical_block_size_bytes is None and 'physicalBlockSizeBytes' in kwargs:
+            physical_block_size_bytes = kwargs['physicalBlockSizeBytes']
+        if provisioned_iops is None and 'provisionedIops' in kwargs:
+            provisioned_iops = kwargs['provisionedIops']
+        if provisioned_throughput is None and 'provisionedThroughput' in kwargs:
+            provisioned_throughput = kwargs['provisionedThroughput']
+        if resource_policies is None and 'resourcePolicies' in kwargs:
+            resource_policies = kwargs['resourcePolicies']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if source_disk is None and 'sourceDisk' in kwargs:
+            source_disk = kwargs['sourceDisk']
+        if source_disk_id is None and 'sourceDiskId' in kwargs:
+            source_disk_id = kwargs['sourceDiskId']
+        if source_image_encryption_key is None and 'sourceImageEncryptionKey' in kwargs:
+            source_image_encryption_key = kwargs['sourceImageEncryptionKey']
+        if source_image_id is None and 'sourceImageId' in kwargs:
+            source_image_id = kwargs['sourceImageId']
+        if source_snapshot_encryption_key is None and 'sourceSnapshotEncryptionKey' in kwargs:
+            source_snapshot_encryption_key = kwargs['sourceSnapshotEncryptionKey']
+        if source_snapshot_id is None and 'sourceSnapshotId' in kwargs:
+            source_snapshot_id = kwargs['sourceSnapshotId']
+
         if async_primary_disk is not None:
             _setter("async_primary_disk", async_primary_disk)
         if creation_timestamp is not None:
@@ -1420,65 +1488,6 @@ class Disk(pulumi.CustomResource):
             * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
 
         ## Example Usage
-        ### Disk Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.Disk("default",
-            image="debian-11-bullseye-v20220719",
-            labels={
-                "environment": "dev",
-            },
-            physical_block_size_bytes=4096,
-            type="pd-ssd",
-            zone="us-central1-a")
-        ```
-        ### Disk Async
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.compute.Disk("primary",
-            type="pd-ssd",
-            zone="us-central1-a",
-            physical_block_size_bytes=4096)
-        secondary = gcp.compute.Disk("secondary",
-            type="pd-ssd",
-            zone="us-east1-c",
-            async_primary_disk=gcp.compute.DiskAsyncPrimaryDiskArgs(
-                disk=primary.id,
-            ),
-            physical_block_size_bytes=4096)
-        ```
-        ### Disk Features
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.Disk("default",
-            guest_os_features=[
-                gcp.compute.DiskGuestOsFeatureArgs(
-                    type="SECURE_BOOT",
-                ),
-                gcp.compute.DiskGuestOsFeatureArgs(
-                    type="MULTI_IP_SUBNET",
-                ),
-                gcp.compute.DiskGuestOsFeatureArgs(
-                    type="WINDOWS",
-                ),
-            ],
-            labels={
-                "environment": "dev",
-            },
-            licenses=["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
-            physical_block_size_bytes=4096,
-            type="pd-ssd",
-            zone="us-central1-a")
-        ```
 
         ## Import
 
@@ -1630,65 +1639,6 @@ class Disk(pulumi.CustomResource):
             * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
 
         ## Example Usage
-        ### Disk Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.Disk("default",
-            image="debian-11-bullseye-v20220719",
-            labels={
-                "environment": "dev",
-            },
-            physical_block_size_bytes=4096,
-            type="pd-ssd",
-            zone="us-central1-a")
-        ```
-        ### Disk Async
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.compute.Disk("primary",
-            type="pd-ssd",
-            zone="us-central1-a",
-            physical_block_size_bytes=4096)
-        secondary = gcp.compute.Disk("secondary",
-            type="pd-ssd",
-            zone="us-east1-c",
-            async_primary_disk=gcp.compute.DiskAsyncPrimaryDiskArgs(
-                disk=primary.id,
-            ),
-            physical_block_size_bytes=4096)
-        ```
-        ### Disk Features
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.Disk("default",
-            guest_os_features=[
-                gcp.compute.DiskGuestOsFeatureArgs(
-                    type="SECURE_BOOT",
-                ),
-                gcp.compute.DiskGuestOsFeatureArgs(
-                    type="MULTI_IP_SUBNET",
-                ),
-                gcp.compute.DiskGuestOsFeatureArgs(
-                    type="WINDOWS",
-                ),
-            ],
-            labels={
-                "environment": "dev",
-            },
-            licenses=["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
-            physical_block_size_bytes=4096,
-            type="pd-ssd",
-            zone="us-central1-a")
-        ```
 
         ## Import
 
@@ -1761,18 +1711,10 @@ class Disk(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DiskArgs.__new__(DiskArgs)
 
-            if async_primary_disk is not None and not isinstance(async_primary_disk, DiskAsyncPrimaryDiskArgs):
-                async_primary_disk = async_primary_disk or {}
-                def _setter(key, value):
-                    async_primary_disk[key] = value
-                DiskAsyncPrimaryDiskArgs._configure(_setter, **async_primary_disk)
+            async_primary_disk = _utilities.configure(async_primary_disk, DiskAsyncPrimaryDiskArgs, True)
             __props__.__dict__["async_primary_disk"] = async_primary_disk
             __props__.__dict__["description"] = description
-            if disk_encryption_key is not None and not isinstance(disk_encryption_key, DiskDiskEncryptionKeyArgs):
-                disk_encryption_key = disk_encryption_key or {}
-                def _setter(key, value):
-                    disk_encryption_key[key] = value
-                DiskDiskEncryptionKeyArgs._configure(_setter, **disk_encryption_key)
+            disk_encryption_key = _utilities.configure(disk_encryption_key, DiskDiskEncryptionKeyArgs, True)
             __props__.__dict__["disk_encryption_key"] = disk_encryption_key
             __props__.__dict__["enable_confidential_compute"] = enable_confidential_compute
             __props__.__dict__["guest_os_features"] = guest_os_features
@@ -1790,17 +1732,9 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["size"] = size
             __props__.__dict__["snapshot"] = snapshot
             __props__.__dict__["source_disk"] = source_disk
-            if source_image_encryption_key is not None and not isinstance(source_image_encryption_key, DiskSourceImageEncryptionKeyArgs):
-                source_image_encryption_key = source_image_encryption_key or {}
-                def _setter(key, value):
-                    source_image_encryption_key[key] = value
-                DiskSourceImageEncryptionKeyArgs._configure(_setter, **source_image_encryption_key)
+            source_image_encryption_key = _utilities.configure(source_image_encryption_key, DiskSourceImageEncryptionKeyArgs, True)
             __props__.__dict__["source_image_encryption_key"] = source_image_encryption_key
-            if source_snapshot_encryption_key is not None and not isinstance(source_snapshot_encryption_key, DiskSourceSnapshotEncryptionKeyArgs):
-                source_snapshot_encryption_key = source_snapshot_encryption_key or {}
-                def _setter(key, value):
-                    source_snapshot_encryption_key[key] = value
-                DiskSourceSnapshotEncryptionKeyArgs._configure(_setter, **source_snapshot_encryption_key)
+            source_snapshot_encryption_key = _utilities.configure(source_snapshot_encryption_key, DiskSourceSnapshotEncryptionKeyArgs, True)
             __props__.__dict__["source_snapshot_encryption_key"] = source_snapshot_encryption_key
             __props__.__dict__["type"] = type
             __props__.__dict__["zone"] = zone

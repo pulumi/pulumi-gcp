@@ -53,14 +53,30 @@ class AndroidAppArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              api_key_id: Optional[pulumi.Input[str]] = None,
              deletion_policy: Optional[pulumi.Input[str]] = None,
              package_name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              sha1_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              sha256_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if api_key_id is None and 'apiKeyId' in kwargs:
+            api_key_id = kwargs['apiKeyId']
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+        if package_name is None and 'packageName' in kwargs:
+            package_name = kwargs['packageName']
+        if sha1_hashes is None and 'sha1Hashes' in kwargs:
+            sha1_hashes = kwargs['sha1Hashes']
+        if sha256_hashes is None and 'sha256Hashes' in kwargs:
+            sha256_hashes = kwargs['sha256Hashes']
+
         _setter("display_name", display_name)
         if api_key_id is not None:
             _setter("api_key_id", api_key_id)
@@ -233,7 +249,23 @@ class _AndroidAppState:
              project: Optional[pulumi.Input[str]] = None,
              sha1_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              sha256_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_key_id is None and 'apiKeyId' in kwargs:
+            api_key_id = kwargs['apiKeyId']
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if package_name is None and 'packageName' in kwargs:
+            package_name = kwargs['packageName']
+        if sha1_hashes is None and 'sha1Hashes' in kwargs:
+            sha1_hashes = kwargs['sha1Hashes']
+        if sha256_hashes is None and 'sha256Hashes' in kwargs:
+            sha256_hashes = kwargs['sha256Hashes']
+
         if api_key_id is not None:
             _setter("api_key_id", api_key_id)
         if app_id is not None:
@@ -403,47 +435,6 @@ class AndroidApp(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Firebase Android App Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.firebase.AndroidApp("basic",
-            project="my-project-name",
-            display_name="Display Name Basic",
-            package_name="android.package.app",
-            sha1_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21c"],
-            sha256_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Firebase Android App Custom Api Key
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        android = gcp.projects.ApiKey("android",
-            display_name="Display Name",
-            project="my-project-name",
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                android_key_restrictions=gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsArgs(
-                    allowed_applications=[gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs(
-                        package_name="android.package.app",
-                        sha1_fingerprint="2145bdf698b8715039bd0e83f2069bed435ac21c",
-                    )],
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default = gcp.firebase.AndroidApp("default",
-            project="my-project-name",
-            display_name="Display Name",
-            package_name="android.package.app",
-            sha1_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21c"],
-            sha256_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"],
-            api_key_id=android.uid,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -496,47 +487,6 @@ class AndroidApp(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Firebase Android App Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.firebase.AndroidApp("basic",
-            project="my-project-name",
-            display_name="Display Name Basic",
-            package_name="android.package.app",
-            sha1_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21c"],
-            sha256_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Firebase Android App Custom Api Key
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        android = gcp.projects.ApiKey("android",
-            display_name="Display Name",
-            project="my-project-name",
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                android_key_restrictions=gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsArgs(
-                    allowed_applications=[gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs(
-                        package_name="android.package.app",
-                        sha1_fingerprint="2145bdf698b8715039bd0e83f2069bed435ac21c",
-                    )],
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default = gcp.firebase.AndroidApp("default",
-            project="my-project-name",
-            display_name="Display Name",
-            package_name="android.package.app",
-            sha1_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21c"],
-            sha256_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"],
-            api_key_id=android.uid,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 

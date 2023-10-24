@@ -138,7 +138,7 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             memory_size_gb: pulumi.Input[int],
+             memory_size_gb: Optional[pulumi.Input[int]] = None,
              alternative_location_id: Optional[pulumi.Input[str]] = None,
              auth_enabled: Optional[pulumi.Input[bool]] = None,
              authorized_network: Optional[pulumi.Input[str]] = None,
@@ -160,7 +160,45 @@ class InstanceArgs:
              secondary_ip_range: Optional[pulumi.Input[str]] = None,
              tier: Optional[pulumi.Input[str]] = None,
              transit_encryption_mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if memory_size_gb is None and 'memorySizeGb' in kwargs:
+            memory_size_gb = kwargs['memorySizeGb']
+        if memory_size_gb is None:
+            raise TypeError("Missing 'memory_size_gb' argument")
+        if alternative_location_id is None and 'alternativeLocationId' in kwargs:
+            alternative_location_id = kwargs['alternativeLocationId']
+        if auth_enabled is None and 'authEnabled' in kwargs:
+            auth_enabled = kwargs['authEnabled']
+        if authorized_network is None and 'authorizedNetwork' in kwargs:
+            authorized_network = kwargs['authorizedNetwork']
+        if connect_mode is None and 'connectMode' in kwargs:
+            connect_mode = kwargs['connectMode']
+        if customer_managed_key is None and 'customerManagedKey' in kwargs:
+            customer_managed_key = kwargs['customerManagedKey']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if location_id is None and 'locationId' in kwargs:
+            location_id = kwargs['locationId']
+        if maintenance_policy is None and 'maintenancePolicy' in kwargs:
+            maintenance_policy = kwargs['maintenancePolicy']
+        if persistence_config is None and 'persistenceConfig' in kwargs:
+            persistence_config = kwargs['persistenceConfig']
+        if read_replicas_mode is None and 'readReplicasMode' in kwargs:
+            read_replicas_mode = kwargs['readReplicasMode']
+        if redis_configs is None and 'redisConfigs' in kwargs:
+            redis_configs = kwargs['redisConfigs']
+        if redis_version is None and 'redisVersion' in kwargs:
+            redis_version = kwargs['redisVersion']
+        if replica_count is None and 'replicaCount' in kwargs:
+            replica_count = kwargs['replicaCount']
+        if reserved_ip_range is None and 'reservedIpRange' in kwargs:
+            reserved_ip_range = kwargs['reservedIpRange']
+        if secondary_ip_range is None and 'secondaryIpRange' in kwargs:
+            secondary_ip_range = kwargs['secondaryIpRange']
+        if transit_encryption_mode is None and 'transitEncryptionMode' in kwargs:
+            transit_encryption_mode = kwargs['transitEncryptionMode']
+
         _setter("memory_size_gb", memory_size_gb)
         if alternative_location_id is not None:
             _setter("alternative_location_id", alternative_location_id)
@@ -725,7 +763,59 @@ class _InstanceState:
              server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]]] = None,
              tier: Optional[pulumi.Input[str]] = None,
              transit_encryption_mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if alternative_location_id is None and 'alternativeLocationId' in kwargs:
+            alternative_location_id = kwargs['alternativeLocationId']
+        if auth_enabled is None and 'authEnabled' in kwargs:
+            auth_enabled = kwargs['authEnabled']
+        if auth_string is None and 'authString' in kwargs:
+            auth_string = kwargs['authString']
+        if authorized_network is None and 'authorizedNetwork' in kwargs:
+            authorized_network = kwargs['authorizedNetwork']
+        if connect_mode is None and 'connectMode' in kwargs:
+            connect_mode = kwargs['connectMode']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if current_location_id is None and 'currentLocationId' in kwargs:
+            current_location_id = kwargs['currentLocationId']
+        if customer_managed_key is None and 'customerManagedKey' in kwargs:
+            customer_managed_key = kwargs['customerManagedKey']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if location_id is None and 'locationId' in kwargs:
+            location_id = kwargs['locationId']
+        if maintenance_policy is None and 'maintenancePolicy' in kwargs:
+            maintenance_policy = kwargs['maintenancePolicy']
+        if maintenance_schedule is None and 'maintenanceSchedule' in kwargs:
+            maintenance_schedule = kwargs['maintenanceSchedule']
+        if memory_size_gb is None and 'memorySizeGb' in kwargs:
+            memory_size_gb = kwargs['memorySizeGb']
+        if persistence_config is None and 'persistenceConfig' in kwargs:
+            persistence_config = kwargs['persistenceConfig']
+        if persistence_iam_identity is None and 'persistenceIamIdentity' in kwargs:
+            persistence_iam_identity = kwargs['persistenceIamIdentity']
+        if read_endpoint is None and 'readEndpoint' in kwargs:
+            read_endpoint = kwargs['readEndpoint']
+        if read_endpoint_port is None and 'readEndpointPort' in kwargs:
+            read_endpoint_port = kwargs['readEndpointPort']
+        if read_replicas_mode is None and 'readReplicasMode' in kwargs:
+            read_replicas_mode = kwargs['readReplicasMode']
+        if redis_configs is None and 'redisConfigs' in kwargs:
+            redis_configs = kwargs['redisConfigs']
+        if redis_version is None and 'redisVersion' in kwargs:
+            redis_version = kwargs['redisVersion']
+        if replica_count is None and 'replicaCount' in kwargs:
+            replica_count = kwargs['replicaCount']
+        if reserved_ip_range is None and 'reservedIpRange' in kwargs:
+            reserved_ip_range = kwargs['reservedIpRange']
+        if secondary_ip_range is None and 'secondaryIpRange' in kwargs:
+            secondary_ip_range = kwargs['secondaryIpRange']
+        if server_ca_certs is None and 'serverCaCerts' in kwargs:
+            server_ca_certs = kwargs['serverCaCerts']
+        if transit_encryption_mode is None and 'transitEncryptionMode' in kwargs:
+            transit_encryption_mode = kwargs['transitEncryptionMode']
+
         if alternative_location_id is not None:
             _setter("alternative_location_id", alternative_location_id)
         if auth_enabled is not None:
@@ -1292,136 +1382,6 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
 
         ## Example Usage
-        ### Redis Instance Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        cache = gcp.redis.Instance("cache", memory_size_gb=1)
-        ```
-        ### Redis Instance Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        redis_network = gcp.compute.get_network(name="redis-test-network")
-        cache = gcp.redis.Instance("cache",
-            tier="STANDARD_HA",
-            memory_size_gb=1,
-            location_id="us-central1-a",
-            alternative_location_id="us-central1-f",
-            authorized_network=redis_network.id,
-            redis_version="REDIS_4_0",
-            display_name="Test Instance",
-            reserved_ip_range="192.168.0.0/29",
-            labels={
-                "my_key": "my_val",
-                "other_key": "other_val",
-            },
-            maintenance_policy=gcp.redis.InstanceMaintenancePolicyArgs(
-                weekly_maintenance_windows=[gcp.redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs(
-                    day="TUESDAY",
-                    start_time=gcp.redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs(
-                        hours=0,
-                        minutes=30,
-                        seconds=0,
-                        nanos=0,
-                    ),
-                )],
-            ))
-        ```
-        ### Redis Instance Full With Persistence Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        cache_persis = gcp.redis.Instance("cache-persis",
-            alternative_location_id="us-central1-f",
-            location_id="us-central1-a",
-            memory_size_gb=1,
-            persistence_config=gcp.redis.InstancePersistenceConfigArgs(
-                persistence_mode="RDB",
-                rdb_snapshot_period="TWELVE_HOURS",
-            ),
-            tier="STANDARD_HA")
-        ```
-        ### Redis Instance Private Service
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        redis_network = gcp.compute.get_network(name="redis-test-network")
-        service_range = gcp.compute.GlobalAddress("serviceRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=redis_network.id)
-        private_service_connection = gcp.servicenetworking.Connection("privateServiceConnection",
-            network=redis_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[service_range.name])
-        cache = gcp.redis.Instance("cache",
-            tier="STANDARD_HA",
-            memory_size_gb=1,
-            location_id="us-central1-a",
-            alternative_location_id="us-central1-f",
-            authorized_network=redis_network.id,
-            connect_mode="PRIVATE_SERVICE_ACCESS",
-            redis_version="REDIS_4_0",
-            display_name="Test Instance",
-            opts=pulumi.ResourceOptions(depends_on=[private_service_connection]))
-        ```
-        ### Redis Instance Mrr
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        redis_network = gcp.compute.get_network(name="redis-test-network")
-        cache = gcp.redis.Instance("cache",
-            tier="STANDARD_HA",
-            memory_size_gb=5,
-            location_id="us-central1-a",
-            alternative_location_id="us-central1-f",
-            authorized_network=redis_network.id,
-            redis_version="REDIS_6_X",
-            display_name="Terraform Test Instance",
-            reserved_ip_range="192.168.0.0/28",
-            replica_count=5,
-            read_replicas_mode="READ_REPLICAS_ENABLED",
-            labels={
-                "my_key": "my_val",
-                "other_key": "other_val",
-            })
-        ```
-        ### Redis Instance Cmek
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        redis_keyring = gcp.kms.KeyRing("redisKeyring", location="us-central1")
-        redis_key = gcp.kms.CryptoKey("redisKey", key_ring=redis_keyring.id)
-        redis_network = gcp.compute.get_network(name="redis-test-network")
-        cache = gcp.redis.Instance("cache",
-            tier="STANDARD_HA",
-            memory_size_gb=1,
-            location_id="us-central1-a",
-            alternative_location_id="us-central1-f",
-            authorized_network=redis_network.id,
-            redis_version="REDIS_6_X",
-            display_name="Terraform Test Instance",
-            reserved_ip_range="192.168.0.0/29",
-            labels={
-                "my_key": "my_val",
-                "other_key": "other_val",
-            },
-            customer_managed_key=redis_key.id)
-        ```
 
         ## Import
 
@@ -1531,136 +1491,6 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
 
         ## Example Usage
-        ### Redis Instance Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        cache = gcp.redis.Instance("cache", memory_size_gb=1)
-        ```
-        ### Redis Instance Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        redis_network = gcp.compute.get_network(name="redis-test-network")
-        cache = gcp.redis.Instance("cache",
-            tier="STANDARD_HA",
-            memory_size_gb=1,
-            location_id="us-central1-a",
-            alternative_location_id="us-central1-f",
-            authorized_network=redis_network.id,
-            redis_version="REDIS_4_0",
-            display_name="Test Instance",
-            reserved_ip_range="192.168.0.0/29",
-            labels={
-                "my_key": "my_val",
-                "other_key": "other_val",
-            },
-            maintenance_policy=gcp.redis.InstanceMaintenancePolicyArgs(
-                weekly_maintenance_windows=[gcp.redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs(
-                    day="TUESDAY",
-                    start_time=gcp.redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs(
-                        hours=0,
-                        minutes=30,
-                        seconds=0,
-                        nanos=0,
-                    ),
-                )],
-            ))
-        ```
-        ### Redis Instance Full With Persistence Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        cache_persis = gcp.redis.Instance("cache-persis",
-            alternative_location_id="us-central1-f",
-            location_id="us-central1-a",
-            memory_size_gb=1,
-            persistence_config=gcp.redis.InstancePersistenceConfigArgs(
-                persistence_mode="RDB",
-                rdb_snapshot_period="TWELVE_HOURS",
-            ),
-            tier="STANDARD_HA")
-        ```
-        ### Redis Instance Private Service
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        redis_network = gcp.compute.get_network(name="redis-test-network")
-        service_range = gcp.compute.GlobalAddress("serviceRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=redis_network.id)
-        private_service_connection = gcp.servicenetworking.Connection("privateServiceConnection",
-            network=redis_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[service_range.name])
-        cache = gcp.redis.Instance("cache",
-            tier="STANDARD_HA",
-            memory_size_gb=1,
-            location_id="us-central1-a",
-            alternative_location_id="us-central1-f",
-            authorized_network=redis_network.id,
-            connect_mode="PRIVATE_SERVICE_ACCESS",
-            redis_version="REDIS_4_0",
-            display_name="Test Instance",
-            opts=pulumi.ResourceOptions(depends_on=[private_service_connection]))
-        ```
-        ### Redis Instance Mrr
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        redis_network = gcp.compute.get_network(name="redis-test-network")
-        cache = gcp.redis.Instance("cache",
-            tier="STANDARD_HA",
-            memory_size_gb=5,
-            location_id="us-central1-a",
-            alternative_location_id="us-central1-f",
-            authorized_network=redis_network.id,
-            redis_version="REDIS_6_X",
-            display_name="Terraform Test Instance",
-            reserved_ip_range="192.168.0.0/28",
-            replica_count=5,
-            read_replicas_mode="READ_REPLICAS_ENABLED",
-            labels={
-                "my_key": "my_val",
-                "other_key": "other_val",
-            })
-        ```
-        ### Redis Instance Cmek
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        redis_keyring = gcp.kms.KeyRing("redisKeyring", location="us-central1")
-        redis_key = gcp.kms.CryptoKey("redisKey", key_ring=redis_keyring.id)
-        redis_network = gcp.compute.get_network(name="redis-test-network")
-        cache = gcp.redis.Instance("cache",
-            tier="STANDARD_HA",
-            memory_size_gb=1,
-            location_id="us-central1-a",
-            alternative_location_id="us-central1-f",
-            authorized_network=redis_network.id,
-            redis_version="REDIS_6_X",
-            display_name="Terraform Test Instance",
-            reserved_ip_range="192.168.0.0/29",
-            labels={
-                "my_key": "my_val",
-                "other_key": "other_val",
-            },
-            customer_managed_key=redis_key.id)
-        ```
 
         ## Import
 
@@ -1740,21 +1570,13 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location_id"] = location_id
-            if maintenance_policy is not None and not isinstance(maintenance_policy, InstanceMaintenancePolicyArgs):
-                maintenance_policy = maintenance_policy or {}
-                def _setter(key, value):
-                    maintenance_policy[key] = value
-                InstanceMaintenancePolicyArgs._configure(_setter, **maintenance_policy)
+            maintenance_policy = _utilities.configure(maintenance_policy, InstanceMaintenancePolicyArgs, True)
             __props__.__dict__["maintenance_policy"] = maintenance_policy
             if memory_size_gb is None and not opts.urn:
                 raise TypeError("Missing required property 'memory_size_gb'")
             __props__.__dict__["memory_size_gb"] = memory_size_gb
             __props__.__dict__["name"] = name
-            if persistence_config is not None and not isinstance(persistence_config, InstancePersistenceConfigArgs):
-                persistence_config = persistence_config or {}
-                def _setter(key, value):
-                    persistence_config[key] = value
-                InstancePersistenceConfigArgs._configure(_setter, **persistence_config)
+            persistence_config = _utilities.configure(persistence_config, InstancePersistenceConfigArgs, True)
             __props__.__dict__["persistence_config"] = persistence_config
             __props__.__dict__["project"] = project
             __props__.__dict__["read_replicas_mode"] = read_replicas_mode

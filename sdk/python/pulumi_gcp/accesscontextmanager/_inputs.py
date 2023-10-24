@@ -115,9 +115,15 @@ class AccessLevelBasicArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             conditions: pulumi.Input[Sequence[pulumi.Input['AccessLevelBasicConditionArgs']]],
+             conditions: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelBasicConditionArgs']]]] = None,
              combining_function: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if conditions is None:
+            raise TypeError("Missing 'conditions' argument")
+        if combining_function is None and 'combiningFunction' in kwargs:
+            combining_function = kwargs['combiningFunction']
+
         _setter("conditions", conditions)
         if combining_function is not None:
             _setter("combining_function", combining_function)
@@ -215,7 +221,15 @@ class AccessLevelBasicConditionArgs:
              negate: Optional[pulumi.Input[bool]] = None,
              regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if device_policy is None and 'devicePolicy' in kwargs:
+            device_policy = kwargs['devicePolicy']
+        if ip_subnetworks is None and 'ipSubnetworks' in kwargs:
+            ip_subnetworks = kwargs['ipSubnetworks']
+        if required_access_levels is None and 'requiredAccessLevels' in kwargs:
+            required_access_levels = kwargs['requiredAccessLevels']
+
         if device_policy is not None:
             _setter("device_policy", device_policy)
         if ip_subnetworks is not None:
@@ -370,7 +384,21 @@ class AccessLevelBasicConditionDevicePolicyArgs:
              require_admin_approval: Optional[pulumi.Input[bool]] = None,
              require_corp_owned: Optional[pulumi.Input[bool]] = None,
              require_screen_lock: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allowed_device_management_levels is None and 'allowedDeviceManagementLevels' in kwargs:
+            allowed_device_management_levels = kwargs['allowedDeviceManagementLevels']
+        if allowed_encryption_statuses is None and 'allowedEncryptionStatuses' in kwargs:
+            allowed_encryption_statuses = kwargs['allowedEncryptionStatuses']
+        if os_constraints is None and 'osConstraints' in kwargs:
+            os_constraints = kwargs['osConstraints']
+        if require_admin_approval is None and 'requireAdminApproval' in kwargs:
+            require_admin_approval = kwargs['requireAdminApproval']
+        if require_corp_owned is None and 'requireCorpOwned' in kwargs:
+            require_corp_owned = kwargs['requireCorpOwned']
+        if require_screen_lock is None and 'requireScreenLock' in kwargs:
+            require_screen_lock = kwargs['requireScreenLock']
+
         if allowed_device_management_levels is not None:
             _setter("allowed_device_management_levels", allowed_device_management_levels)
         if allowed_encryption_statuses is not None:
@@ -487,10 +515,20 @@ class AccessLevelBasicConditionDevicePolicyOsConstraintArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             os_type: pulumi.Input[str],
+             os_type: Optional[pulumi.Input[str]] = None,
              minimum_version: Optional[pulumi.Input[str]] = None,
              require_verified_chrome_os: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if os_type is None and 'osType' in kwargs:
+            os_type = kwargs['osType']
+        if os_type is None:
+            raise TypeError("Missing 'os_type' argument")
+        if minimum_version is None and 'minimumVersion' in kwargs:
+            minimum_version = kwargs['minimumVersion']
+        if require_verified_chrome_os is None and 'requireVerifiedChromeOs' in kwargs:
+            require_verified_chrome_os = kwargs['requireVerifiedChromeOs']
+
         _setter("os_type", os_type)
         if minimum_version is not None:
             _setter("minimum_version", minimum_version)
@@ -579,7 +617,21 @@ class AccessLevelConditionDevicePolicyArgs:
              require_admin_approval: Optional[pulumi.Input[bool]] = None,
              require_corp_owned: Optional[pulumi.Input[bool]] = None,
              require_screen_lock: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allowed_device_management_levels is None and 'allowedDeviceManagementLevels' in kwargs:
+            allowed_device_management_levels = kwargs['allowedDeviceManagementLevels']
+        if allowed_encryption_statuses is None and 'allowedEncryptionStatuses' in kwargs:
+            allowed_encryption_statuses = kwargs['allowedEncryptionStatuses']
+        if os_constraints is None and 'osConstraints' in kwargs:
+            os_constraints = kwargs['osConstraints']
+        if require_admin_approval is None and 'requireAdminApproval' in kwargs:
+            require_admin_approval = kwargs['requireAdminApproval']
+        if require_corp_owned is None and 'requireCorpOwned' in kwargs:
+            require_corp_owned = kwargs['requireCorpOwned']
+        if require_screen_lock is None and 'requireScreenLock' in kwargs:
+            require_screen_lock = kwargs['requireScreenLock']
+
         if allowed_device_management_levels is not None:
             _setter("allowed_device_management_levels", allowed_device_management_levels)
         if allowed_encryption_statuses is not None:
@@ -693,9 +745,17 @@ class AccessLevelConditionDevicePolicyOsConstraintArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             os_type: pulumi.Input[str],
+             os_type: Optional[pulumi.Input[str]] = None,
              minimum_version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if os_type is None and 'osType' in kwargs:
+            os_type = kwargs['osType']
+        if os_type is None:
+            raise TypeError("Missing 'os_type' argument")
+        if minimum_version is None and 'minimumVersion' in kwargs:
+            minimum_version = kwargs['minimumVersion']
+
         _setter("os_type", os_type)
         if minimum_version is not None:
             _setter("minimum_version", minimum_version)
@@ -745,8 +805,12 @@ class AccessLevelCustomArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expr: pulumi.Input['AccessLevelCustomExprArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             expr: Optional[pulumi.Input['AccessLevelCustomExprArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expr is None:
+            raise TypeError("Missing 'expr' argument")
+
         _setter("expr", expr)
 
     @property
@@ -788,11 +852,15 @@ class AccessLevelCustomExprArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+
         _setter("expression", expression)
         if description is not None:
             _setter("description", description)
@@ -881,12 +949,18 @@ class AccessLevelsAccessLevelArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             title: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              basic: Optional[pulumi.Input['AccessLevelsAccessLevelBasicArgs']] = None,
              custom: Optional[pulumi.Input['AccessLevelsAccessLevelCustomArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("name", name)
         _setter("title", title)
         if basic is not None:
@@ -986,9 +1060,15 @@ class AccessLevelsAccessLevelBasicArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             conditions: pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionArgs']]],
+             conditions: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionArgs']]]] = None,
              combining_function: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if conditions is None:
+            raise TypeError("Missing 'conditions' argument")
+        if combining_function is None and 'combiningFunction' in kwargs:
+            combining_function = kwargs['combiningFunction']
+
         _setter("conditions", conditions)
         if combining_function is not None:
             _setter("combining_function", combining_function)
@@ -1086,7 +1166,15 @@ class AccessLevelsAccessLevelBasicConditionArgs:
              negate: Optional[pulumi.Input[bool]] = None,
              regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if device_policy is None and 'devicePolicy' in kwargs:
+            device_policy = kwargs['devicePolicy']
+        if ip_subnetworks is None and 'ipSubnetworks' in kwargs:
+            ip_subnetworks = kwargs['ipSubnetworks']
+        if required_access_levels is None and 'requiredAccessLevels' in kwargs:
+            required_access_levels = kwargs['requiredAccessLevels']
+
         if device_policy is not None:
             _setter("device_policy", device_policy)
         if ip_subnetworks is not None:
@@ -1241,7 +1329,21 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicyArgs:
              require_admin_approval: Optional[pulumi.Input[bool]] = None,
              require_corp_owned: Optional[pulumi.Input[bool]] = None,
              require_screen_lock: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allowed_device_management_levels is None and 'allowedDeviceManagementLevels' in kwargs:
+            allowed_device_management_levels = kwargs['allowedDeviceManagementLevels']
+        if allowed_encryption_statuses is None and 'allowedEncryptionStatuses' in kwargs:
+            allowed_encryption_statuses = kwargs['allowedEncryptionStatuses']
+        if os_constraints is None and 'osConstraints' in kwargs:
+            os_constraints = kwargs['osConstraints']
+        if require_admin_approval is None and 'requireAdminApproval' in kwargs:
+            require_admin_approval = kwargs['requireAdminApproval']
+        if require_corp_owned is None and 'requireCorpOwned' in kwargs:
+            require_corp_owned = kwargs['requireCorpOwned']
+        if require_screen_lock is None and 'requireScreenLock' in kwargs:
+            require_screen_lock = kwargs['requireScreenLock']
+
         if allowed_device_management_levels is not None:
             _setter("allowed_device_management_levels", allowed_device_management_levels)
         if allowed_encryption_statuses is not None:
@@ -1355,9 +1457,17 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             os_type: pulumi.Input[str],
+             os_type: Optional[pulumi.Input[str]] = None,
              minimum_version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if os_type is None and 'osType' in kwargs:
+            os_type = kwargs['osType']
+        if os_type is None:
+            raise TypeError("Missing 'os_type' argument")
+        if minimum_version is None and 'minimumVersion' in kwargs:
+            minimum_version = kwargs['minimumVersion']
+
         _setter("os_type", os_type)
         if minimum_version is not None:
             _setter("minimum_version", minimum_version)
@@ -1407,8 +1517,12 @@ class AccessLevelsAccessLevelCustomArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expr: pulumi.Input['AccessLevelsAccessLevelCustomExprArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             expr: Optional[pulumi.Input['AccessLevelsAccessLevelCustomExprArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expr is None:
+            raise TypeError("Missing 'expr' argument")
+
         _setter("expr", expr)
 
     @property
@@ -1450,11 +1564,15 @@ class AccessLevelsAccessLevelCustomExprArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+
         _setter("expression", expression)
         if description is not None:
             _setter("description", description)
@@ -1527,10 +1645,16 @@ class AccessPolicyIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -1579,10 +1703,16 @@ class AccessPolicyIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -1640,7 +1770,11 @@ class ServicePerimeterEgressPolicyEgressFromArgs:
              _setter: Callable[[Any, Any], None],
              identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              identity_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if identity_type is None and 'identityType' in kwargs:
+            identity_type = kwargs['identityType']
+
         if identities is not None:
             _setter("identities", identities)
         if identity_type is not None:
@@ -1707,7 +1841,11 @@ class ServicePerimeterEgressPolicyEgressToArgs:
              external_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationArgs']]]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if external_resources is None and 'externalResources' in kwargs:
+            external_resources = kwargs['externalResources']
+
         if external_resources is not None:
             _setter("external_resources", external_resources)
         if operations is not None:
@@ -1785,7 +1923,13 @@ class ServicePerimeterEgressPolicyEgressToOperationArgs:
              _setter: Callable[[Any, Any], None],
              method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArgs']]]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if method_selectors is None and 'methodSelectors' in kwargs:
+            method_selectors = kwargs['methodSelectors']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if method_selectors is not None:
             _setter("method_selectors", method_selectors)
         if service_name is not None:
@@ -1844,7 +1988,9 @@ class ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArgs:
              _setter: Callable[[Any, Any], None],
              method: Optional[pulumi.Input[str]] = None,
              permission: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if method is not None:
             _setter("method", method)
         if permission is not None:
@@ -1907,7 +2053,11 @@ class ServicePerimeterIngressPolicyIngressFromArgs:
              identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              identity_type: Optional[pulumi.Input[str]] = None,
              sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressFromSourceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if identity_type is None and 'identityType' in kwargs:
+            identity_type = kwargs['identityType']
+
         if identities is not None:
             _setter("identities", identities)
         if identity_type is not None:
@@ -1989,7 +2139,11 @@ class ServicePerimeterIngressPolicyIngressFromSourceArgs:
              _setter: Callable[[Any, Any], None],
              access_level: Optional[pulumi.Input[str]] = None,
              resource: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+
         if access_level is not None:
             _setter("access_level", access_level)
         if resource is not None:
@@ -2060,7 +2214,9 @@ class ServicePerimeterIngressPolicyIngressToArgs:
              _setter: Callable[[Any, Any], None],
              operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationArgs']]]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if operations is not None:
             _setter("operations", operations)
         if resources is not None:
@@ -2125,7 +2281,13 @@ class ServicePerimeterIngressPolicyIngressToOperationArgs:
              _setter: Callable[[Any, Any], None],
              method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArgs']]]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if method_selectors is None and 'methodSelectors' in kwargs:
+            method_selectors = kwargs['methodSelectors']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if method_selectors is not None:
             _setter("method_selectors", method_selectors)
         if service_name is not None:
@@ -2184,7 +2346,9 @@ class ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArgs:
              _setter: Callable[[Any, Any], None],
              method: Optional[pulumi.Input[str]] = None,
              permission: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if method is not None:
             _setter("method", method)
         if permission is not None:
@@ -2277,7 +2441,19 @@ class ServicePerimeterSpecArgs:
              resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              restricted_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              vpc_accessible_services: Optional[pulumi.Input['ServicePerimeterSpecVpcAccessibleServicesArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_levels is None and 'accessLevels' in kwargs:
+            access_levels = kwargs['accessLevels']
+        if egress_policies is None and 'egressPolicies' in kwargs:
+            egress_policies = kwargs['egressPolicies']
+        if ingress_policies is None and 'ingressPolicies' in kwargs:
+            ingress_policies = kwargs['ingressPolicies']
+        if restricted_services is None and 'restrictedServices' in kwargs:
+            restricted_services = kwargs['restrictedServices']
+        if vpc_accessible_services is None and 'vpcAccessibleServices' in kwargs:
+            vpc_accessible_services = kwargs['vpcAccessibleServices']
+
         if access_levels is not None:
             _setter("access_levels", access_levels)
         if egress_policies is not None:
@@ -2410,7 +2586,13 @@ class ServicePerimeterSpecEgressPolicyArgs:
              _setter: Callable[[Any, Any], None],
              egress_from: Optional[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressFromArgs']] = None,
              egress_to: Optional[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if egress_from is None and 'egressFrom' in kwargs:
+            egress_from = kwargs['egressFrom']
+        if egress_to is None and 'egressTo' in kwargs:
+            egress_to = kwargs['egressTo']
+
         if egress_from is not None:
             _setter("egress_from", egress_from)
         if egress_to is not None:
@@ -2468,7 +2650,11 @@ class ServicePerimeterSpecEgressPolicyEgressFromArgs:
              _setter: Callable[[Any, Any], None],
              identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              identity_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if identity_type is None and 'identityType' in kwargs:
+            identity_type = kwargs['identityType']
+
         if identities is not None:
             _setter("identities", identities)
         if identity_type is not None:
@@ -2535,7 +2721,11 @@ class ServicePerimeterSpecEgressPolicyEgressToArgs:
              external_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToOperationArgs']]]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if external_resources is None and 'externalResources' in kwargs:
+            external_resources = kwargs['externalResources']
+
         if external_resources is not None:
             _setter("external_resources", external_resources)
         if operations is not None:
@@ -2613,7 +2803,13 @@ class ServicePerimeterSpecEgressPolicyEgressToOperationArgs:
              _setter: Callable[[Any, Any], None],
              method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs']]]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if method_selectors is None and 'methodSelectors' in kwargs:
+            method_selectors = kwargs['methodSelectors']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if method_selectors is not None:
             _setter("method_selectors", method_selectors)
         if service_name is not None:
@@ -2672,7 +2868,9 @@ class ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs:
              _setter: Callable[[Any, Any], None],
              method: Optional[pulumi.Input[str]] = None,
              permission: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if method is not None:
             _setter("method", method)
         if permission is not None:
@@ -2729,7 +2927,13 @@ class ServicePerimeterSpecIngressPolicyArgs:
              _setter: Callable[[Any, Any], None],
              ingress_from: Optional[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressFromArgs']] = None,
              ingress_to: Optional[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ingress_from is None and 'ingressFrom' in kwargs:
+            ingress_from = kwargs['ingressFrom']
+        if ingress_to is None and 'ingressTo' in kwargs:
+            ingress_to = kwargs['ingressTo']
+
         if ingress_from is not None:
             _setter("ingress_from", ingress_from)
         if ingress_to is not None:
@@ -2793,7 +2997,11 @@ class ServicePerimeterSpecIngressPolicyIngressFromArgs:
              identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              identity_type: Optional[pulumi.Input[str]] = None,
              sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressFromSourceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if identity_type is None and 'identityType' in kwargs:
+            identity_type = kwargs['identityType']
+
         if identities is not None:
             _setter("identities", identities)
         if identity_type is not None:
@@ -2875,7 +3083,11 @@ class ServicePerimeterSpecIngressPolicyIngressFromSourceArgs:
              _setter: Callable[[Any, Any], None],
              access_level: Optional[pulumi.Input[str]] = None,
              resource: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+
         if access_level is not None:
             _setter("access_level", access_level)
         if resource is not None:
@@ -2946,7 +3158,9 @@ class ServicePerimeterSpecIngressPolicyIngressToArgs:
              _setter: Callable[[Any, Any], None],
              operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToOperationArgs']]]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if operations is not None:
             _setter("operations", operations)
         if resources is not None:
@@ -3011,7 +3225,13 @@ class ServicePerimeterSpecIngressPolicyIngressToOperationArgs:
              _setter: Callable[[Any, Any], None],
              method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs']]]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if method_selectors is None and 'methodSelectors' in kwargs:
+            method_selectors = kwargs['methodSelectors']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if method_selectors is not None:
             _setter("method_selectors", method_selectors)
         if service_name is not None:
@@ -3070,7 +3290,9 @@ class ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs:
              _setter: Callable[[Any, Any], None],
              method: Optional[pulumi.Input[str]] = None,
              permission: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if method is not None:
             _setter("method", method)
         if permission is not None:
@@ -3125,7 +3347,13 @@ class ServicePerimeterSpecVpcAccessibleServicesArgs:
              _setter: Callable[[Any, Any], None],
              allowed_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              enable_restriction: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allowed_services is None and 'allowedServices' in kwargs:
+            allowed_services = kwargs['allowedServices']
+        if enable_restriction is None and 'enableRestriction' in kwargs:
+            enable_restriction = kwargs['enableRestriction']
+
         if allowed_services is not None:
             _setter("allowed_services", allowed_services)
         if enable_restriction is not None:
@@ -3217,7 +3445,19 @@ class ServicePerimeterStatusArgs:
              resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              restricted_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              vpc_accessible_services: Optional[pulumi.Input['ServicePerimeterStatusVpcAccessibleServicesArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_levels is None and 'accessLevels' in kwargs:
+            access_levels = kwargs['accessLevels']
+        if egress_policies is None and 'egressPolicies' in kwargs:
+            egress_policies = kwargs['egressPolicies']
+        if ingress_policies is None and 'ingressPolicies' in kwargs:
+            ingress_policies = kwargs['ingressPolicies']
+        if restricted_services is None and 'restrictedServices' in kwargs:
+            restricted_services = kwargs['restrictedServices']
+        if vpc_accessible_services is None and 'vpcAccessibleServices' in kwargs:
+            vpc_accessible_services = kwargs['vpcAccessibleServices']
+
         if access_levels is not None:
             _setter("access_levels", access_levels)
         if egress_policies is not None:
@@ -3350,7 +3590,13 @@ class ServicePerimeterStatusEgressPolicyArgs:
              _setter: Callable[[Any, Any], None],
              egress_from: Optional[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressFromArgs']] = None,
              egress_to: Optional[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if egress_from is None and 'egressFrom' in kwargs:
+            egress_from = kwargs['egressFrom']
+        if egress_to is None and 'egressTo' in kwargs:
+            egress_to = kwargs['egressTo']
+
         if egress_from is not None:
             _setter("egress_from", egress_from)
         if egress_to is not None:
@@ -3408,7 +3654,11 @@ class ServicePerimeterStatusEgressPolicyEgressFromArgs:
              _setter: Callable[[Any, Any], None],
              identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              identity_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if identity_type is None and 'identityType' in kwargs:
+            identity_type = kwargs['identityType']
+
         if identities is not None:
             _setter("identities", identities)
         if identity_type is not None:
@@ -3475,7 +3725,11 @@ class ServicePerimeterStatusEgressPolicyEgressToArgs:
              external_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToOperationArgs']]]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if external_resources is None and 'externalResources' in kwargs:
+            external_resources = kwargs['externalResources']
+
         if external_resources is not None:
             _setter("external_resources", external_resources)
         if operations is not None:
@@ -3553,7 +3807,13 @@ class ServicePerimeterStatusEgressPolicyEgressToOperationArgs:
              _setter: Callable[[Any, Any], None],
              method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs']]]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if method_selectors is None and 'methodSelectors' in kwargs:
+            method_selectors = kwargs['methodSelectors']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if method_selectors is not None:
             _setter("method_selectors", method_selectors)
         if service_name is not None:
@@ -3612,7 +3872,9 @@ class ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs:
              _setter: Callable[[Any, Any], None],
              method: Optional[pulumi.Input[str]] = None,
              permission: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if method is not None:
             _setter("method", method)
         if permission is not None:
@@ -3669,7 +3931,13 @@ class ServicePerimeterStatusIngressPolicyArgs:
              _setter: Callable[[Any, Any], None],
              ingress_from: Optional[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressFromArgs']] = None,
              ingress_to: Optional[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ingress_from is None and 'ingressFrom' in kwargs:
+            ingress_from = kwargs['ingressFrom']
+        if ingress_to is None and 'ingressTo' in kwargs:
+            ingress_to = kwargs['ingressTo']
+
         if ingress_from is not None:
             _setter("ingress_from", ingress_from)
         if ingress_to is not None:
@@ -3733,7 +4001,11 @@ class ServicePerimeterStatusIngressPolicyIngressFromArgs:
              identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              identity_type: Optional[pulumi.Input[str]] = None,
              sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressFromSourceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if identity_type is None and 'identityType' in kwargs:
+            identity_type = kwargs['identityType']
+
         if identities is not None:
             _setter("identities", identities)
         if identity_type is not None:
@@ -3815,7 +4087,11 @@ class ServicePerimeterStatusIngressPolicyIngressFromSourceArgs:
              _setter: Callable[[Any, Any], None],
              access_level: Optional[pulumi.Input[str]] = None,
              resource: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+
         if access_level is not None:
             _setter("access_level", access_level)
         if resource is not None:
@@ -3886,7 +4162,9 @@ class ServicePerimeterStatusIngressPolicyIngressToArgs:
              _setter: Callable[[Any, Any], None],
              operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToOperationArgs']]]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if operations is not None:
             _setter("operations", operations)
         if resources is not None:
@@ -3951,7 +4229,13 @@ class ServicePerimeterStatusIngressPolicyIngressToOperationArgs:
              _setter: Callable[[Any, Any], None],
              method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs']]]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if method_selectors is None and 'methodSelectors' in kwargs:
+            method_selectors = kwargs['methodSelectors']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if method_selectors is not None:
             _setter("method_selectors", method_selectors)
         if service_name is not None:
@@ -4010,7 +4294,9 @@ class ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs:
              _setter: Callable[[Any, Any], None],
              method: Optional[pulumi.Input[str]] = None,
              permission: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if method is not None:
             _setter("method", method)
         if permission is not None:
@@ -4065,7 +4351,13 @@ class ServicePerimeterStatusVpcAccessibleServicesArgs:
              _setter: Callable[[Any, Any], None],
              allowed_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              enable_restriction: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allowed_services is None and 'allowedServices' in kwargs:
+            allowed_services = kwargs['allowedServices']
+        if enable_restriction is None and 'enableRestriction' in kwargs:
+            enable_restriction = kwargs['enableRestriction']
+
         if allowed_services is not None:
             _setter("allowed_services", allowed_services)
         if enable_restriction is not None:
@@ -4171,8 +4463,8 @@ class ServicePerimetersServicePerimeterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             title: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              create_time: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              perimeter_type: Optional[pulumi.Input[str]] = None,
@@ -4180,7 +4472,21 @@ class ServicePerimetersServicePerimeterArgs:
              status: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusArgs']] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              use_explicit_dry_run_spec: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if perimeter_type is None and 'perimeterType' in kwargs:
+            perimeter_type = kwargs['perimeterType']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if use_explicit_dry_run_spec is None and 'useExplicitDryRunSpec' in kwargs:
+            use_explicit_dry_run_spec = kwargs['useExplicitDryRunSpec']
+
         _setter("name", name)
         _setter("title", title)
         if create_time is not None:
@@ -4401,7 +4707,19 @@ class ServicePerimetersServicePerimeterSpecArgs:
              resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              restricted_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              vpc_accessible_services: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_levels is None and 'accessLevels' in kwargs:
+            access_levels = kwargs['accessLevels']
+        if egress_policies is None and 'egressPolicies' in kwargs:
+            egress_policies = kwargs['egressPolicies']
+        if ingress_policies is None and 'ingressPolicies' in kwargs:
+            ingress_policies = kwargs['ingressPolicies']
+        if restricted_services is None and 'restrictedServices' in kwargs:
+            restricted_services = kwargs['restrictedServices']
+        if vpc_accessible_services is None and 'vpcAccessibleServices' in kwargs:
+            vpc_accessible_services = kwargs['vpcAccessibleServices']
+
         if access_levels is not None:
             _setter("access_levels", access_levels)
         if egress_policies is not None:
@@ -4534,7 +4852,13 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyArgs:
              _setter: Callable[[Any, Any], None],
              egress_from: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs']] = None,
              egress_to: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if egress_from is None and 'egressFrom' in kwargs:
+            egress_from = kwargs['egressFrom']
+        if egress_to is None and 'egressTo' in kwargs:
+            egress_to = kwargs['egressTo']
+
         if egress_from is not None:
             _setter("egress_from", egress_from)
         if egress_to is not None:
@@ -4592,7 +4916,11 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs:
              _setter: Callable[[Any, Any], None],
              identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              identity_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if identity_type is None and 'identityType' in kwargs:
+            identity_type = kwargs['identityType']
+
         if identities is not None:
             _setter("identities", identities)
         if identity_type is not None:
@@ -4659,7 +4987,11 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs:
              external_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs']]]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if external_resources is None and 'externalResources' in kwargs:
+            external_resources = kwargs['externalResources']
+
         if external_resources is not None:
             _setter("external_resources", external_resources)
         if operations is not None:
@@ -4737,7 +5069,13 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs:
              _setter: Callable[[Any, Any], None],
              method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs']]]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if method_selectors is None and 'methodSelectors' in kwargs:
+            method_selectors = kwargs['methodSelectors']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if method_selectors is not None:
             _setter("method_selectors", method_selectors)
         if service_name is not None:
@@ -4796,7 +5134,9 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSe
              _setter: Callable[[Any, Any], None],
              method: Optional[pulumi.Input[str]] = None,
              permission: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if method is not None:
             _setter("method", method)
         if permission is not None:
@@ -4853,7 +5193,13 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyArgs:
              _setter: Callable[[Any, Any], None],
              ingress_from: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs']] = None,
              ingress_to: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ingress_from is None and 'ingressFrom' in kwargs:
+            ingress_from = kwargs['ingressFrom']
+        if ingress_to is None and 'ingressTo' in kwargs:
+            ingress_to = kwargs['ingressTo']
+
         if ingress_from is not None:
             _setter("ingress_from", ingress_from)
         if ingress_to is not None:
@@ -4917,7 +5263,11 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs:
              identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              identity_type: Optional[pulumi.Input[str]] = None,
              sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if identity_type is None and 'identityType' in kwargs:
+            identity_type = kwargs['identityType']
+
         if identities is not None:
             _setter("identities", identities)
         if identity_type is not None:
@@ -4999,7 +5349,11 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs:
              _setter: Callable[[Any, Any], None],
              access_level: Optional[pulumi.Input[str]] = None,
              resource: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+
         if access_level is not None:
             _setter("access_level", access_level)
         if resource is not None:
@@ -5070,7 +5424,9 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs:
              _setter: Callable[[Any, Any], None],
              operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs']]]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if operations is not None:
             _setter("operations", operations)
         if resources is not None:
@@ -5135,7 +5491,13 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs:
              _setter: Callable[[Any, Any], None],
              method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs']]]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if method_selectors is None and 'methodSelectors' in kwargs:
+            method_selectors = kwargs['methodSelectors']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if method_selectors is not None:
             _setter("method_selectors", method_selectors)
         if service_name is not None:
@@ -5194,7 +5556,9 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethod
              _setter: Callable[[Any, Any], None],
              method: Optional[pulumi.Input[str]] = None,
              permission: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if method is not None:
             _setter("method", method)
         if permission is not None:
@@ -5249,7 +5613,13 @@ class ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs:
              _setter: Callable[[Any, Any], None],
              allowed_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              enable_restriction: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allowed_services is None and 'allowedServices' in kwargs:
+            allowed_services = kwargs['allowedServices']
+        if enable_restriction is None and 'enableRestriction' in kwargs:
+            enable_restriction = kwargs['enableRestriction']
+
         if allowed_services is not None:
             _setter("allowed_services", allowed_services)
         if enable_restriction is not None:
@@ -5341,7 +5711,19 @@ class ServicePerimetersServicePerimeterStatusArgs:
              resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              restricted_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              vpc_accessible_services: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_levels is None and 'accessLevels' in kwargs:
+            access_levels = kwargs['accessLevels']
+        if egress_policies is None and 'egressPolicies' in kwargs:
+            egress_policies = kwargs['egressPolicies']
+        if ingress_policies is None and 'ingressPolicies' in kwargs:
+            ingress_policies = kwargs['ingressPolicies']
+        if restricted_services is None and 'restrictedServices' in kwargs:
+            restricted_services = kwargs['restrictedServices']
+        if vpc_accessible_services is None and 'vpcAccessibleServices' in kwargs:
+            vpc_accessible_services = kwargs['vpcAccessibleServices']
+
         if access_levels is not None:
             _setter("access_levels", access_levels)
         if egress_policies is not None:
@@ -5474,7 +5856,13 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyArgs:
              _setter: Callable[[Any, Any], None],
              egress_from: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs']] = None,
              egress_to: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if egress_from is None and 'egressFrom' in kwargs:
+            egress_from = kwargs['egressFrom']
+        if egress_to is None and 'egressTo' in kwargs:
+            egress_to = kwargs['egressTo']
+
         if egress_from is not None:
             _setter("egress_from", egress_from)
         if egress_to is not None:
@@ -5532,7 +5920,11 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs:
              _setter: Callable[[Any, Any], None],
              identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              identity_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if identity_type is None and 'identityType' in kwargs:
+            identity_type = kwargs['identityType']
+
         if identities is not None:
             _setter("identities", identities)
         if identity_type is not None:
@@ -5599,7 +5991,11 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs:
              external_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs']]]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if external_resources is None and 'externalResources' in kwargs:
+            external_resources = kwargs['externalResources']
+
         if external_resources is not None:
             _setter("external_resources", external_resources)
         if operations is not None:
@@ -5677,7 +6073,13 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs:
              _setter: Callable[[Any, Any], None],
              method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs']]]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if method_selectors is None and 'methodSelectors' in kwargs:
+            method_selectors = kwargs['methodSelectors']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if method_selectors is not None:
             _setter("method_selectors", method_selectors)
         if service_name is not None:
@@ -5736,7 +6138,9 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethod
              _setter: Callable[[Any, Any], None],
              method: Optional[pulumi.Input[str]] = None,
              permission: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if method is not None:
             _setter("method", method)
         if permission is not None:
@@ -5793,7 +6197,13 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyArgs:
              _setter: Callable[[Any, Any], None],
              ingress_from: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs']] = None,
              ingress_to: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ingress_from is None and 'ingressFrom' in kwargs:
+            ingress_from = kwargs['ingressFrom']
+        if ingress_to is None and 'ingressTo' in kwargs:
+            ingress_to = kwargs['ingressTo']
+
         if ingress_from is not None:
             _setter("ingress_from", ingress_from)
         if ingress_to is not None:
@@ -5857,7 +6267,11 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs:
              identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              identity_type: Optional[pulumi.Input[str]] = None,
              sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if identity_type is None and 'identityType' in kwargs:
+            identity_type = kwargs['identityType']
+
         if identities is not None:
             _setter("identities", identities)
         if identity_type is not None:
@@ -5939,7 +6353,11 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs:
              _setter: Callable[[Any, Any], None],
              access_level: Optional[pulumi.Input[str]] = None,
              resource: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+
         if access_level is not None:
             _setter("access_level", access_level)
         if resource is not None:
@@ -6010,7 +6428,9 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs:
              _setter: Callable[[Any, Any], None],
              operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs']]]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if operations is not None:
             _setter("operations", operations)
         if resources is not None:
@@ -6075,7 +6495,13 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs
              _setter: Callable[[Any, Any], None],
              method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs']]]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if method_selectors is None and 'methodSelectors' in kwargs:
+            method_selectors = kwargs['methodSelectors']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if method_selectors is not None:
             _setter("method_selectors", method_selectors)
         if service_name is not None:
@@ -6134,7 +6560,9 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMeth
              _setter: Callable[[Any, Any], None],
              method: Optional[pulumi.Input[str]] = None,
              permission: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if method is not None:
             _setter("method", method)
         if permission is not None:
@@ -6189,7 +6617,13 @@ class ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs:
              _setter: Callable[[Any, Any], None],
              allowed_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              enable_restriction: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allowed_services is None and 'allowedServices' in kwargs:
+            allowed_services = kwargs['allowedServices']
+        if enable_restriction is None and 'enableRestriction' in kwargs:
+            enable_restriction = kwargs['enableRestriction']
+
         if allowed_services is not None:
             _setter("allowed_services", allowed_services)
         if enable_restriction is not None:

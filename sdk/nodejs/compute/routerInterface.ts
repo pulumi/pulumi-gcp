@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * and
  * [API](https://cloud.google.com/compute/docs/reference/latest/routers).
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const foobar = new gcp.compute.RouterInterface("foobar", {
- *     ipRange: "169.254.1.1/30",
- *     region: "us-central1",
- *     router: "router-1",
- *     vpnTunnel: "tunnel-1",
- * });
- * ```
- *
  * ## Import
  *
  * Router interfaces can be imported using the `project` (optional), `region`, `router`, and `name`, e.g.

@@ -137,34 +137,6 @@ def get_app_engine_service(module_id: Optional[str] = None,
         * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
     ## Example Usage
-    ### Monitoring App Engine Service
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    bucket = gcp.storage.Bucket("bucket", location="US")
-    object = gcp.storage.BucketObject("object",
-        bucket=bucket.name,
-        source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
-    myapp = gcp.appengine.StandardAppVersion("myapp",
-        version_id="v1",
-        service="myapp",
-        runtime="nodejs10",
-        entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
-            shell="node ./app.js",
-        ),
-        deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
-            zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
-                source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
-            ),
-        ),
-        env_variables={
-            "port": "8080",
-        },
-        delete_service_on_destroy=False)
-    srv = gcp.monitoring.get_app_engine_service_output(module_id=myapp.service)
-    ```
 
 
     :param str module_id: The ID of the App Engine module underlying this
@@ -213,34 +185,6 @@ def get_app_engine_service_output(module_id: Optional[pulumi.Input[str]] = None,
         * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
     ## Example Usage
-    ### Monitoring App Engine Service
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    bucket = gcp.storage.Bucket("bucket", location="US")
-    object = gcp.storage.BucketObject("object",
-        bucket=bucket.name,
-        source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
-    myapp = gcp.appengine.StandardAppVersion("myapp",
-        version_id="v1",
-        service="myapp",
-        runtime="nodejs10",
-        entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
-            shell="node ./app.js",
-        ),
-        deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
-            zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
-                source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
-            ),
-        ),
-        env_variables={
-            "port": "8080",
-        },
-        delete_service_on_destroy=False)
-    srv = gcp.monitoring.get_app_engine_service_output(module_id=myapp.service)
-    ```
 
 
     :param str module_id: The ID of the App Engine module underlying this

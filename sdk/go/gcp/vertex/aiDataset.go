@@ -22,33 +22,6 @@ import (
 //   - [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 //
 // ## Example Usage
-// ### Vertex Ai Dataset
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vertex"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vertex.NewAiDataset(ctx, "dataset", &vertex.AiDatasetArgs{
-//				DisplayName:       pulumi.String("terraform"),
-//				MetadataSchemaUri: pulumi.String("gs://google-cloud-aiplatform/schema/dataset/metadata/image_1.0.0.yaml"),
-//				Region:            pulumi.String("us-central1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

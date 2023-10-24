@@ -15,35 +15,6 @@ import * as utilities from "../utilities";
  * key/value pairs within the project metadata rather than the entire set, then use
  * google_compute_project_metadata_item.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.compute.ProjectMetadata("default", {metadata: {
- *     "13": "42",
- *     fizz: "buzz",
- *     foo: "bar",
- * }});
- * ```
- * ### Adding An SSH Key
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * //A key set in project metadata is propagated to every instance in the project.
- * //This resource configuration is prone to causing frequent diffs as Google adds SSH Keys when the SSH Button is pressed in the console.
- * //It is better to use OS Login instead.
- * const mySshKey = new gcp.compute.ProjectMetadata("mySshKey", {metadata: {
- *     "ssh-keys": `      dev:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT dev
- *       foo:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT bar
- *     
- * `,
- * }});
- * ```
- *
  * ## Import
  *
  * This resource can be imported using the project ID

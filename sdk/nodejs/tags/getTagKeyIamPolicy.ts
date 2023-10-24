@@ -6,17 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for tagkey
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.tags.getTagKeyIamPolicy({
- *     tagKey: google_tags_tag_key.key.name,
- * });
- * ```
  */
 export function getTagKeyIamPolicy(args: GetTagKeyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTagKeyIamPolicyResult> {
 
@@ -57,17 +46,6 @@ export interface GetTagKeyIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for tagkey
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.tags.getTagKeyIamPolicy({
- *     tagKey: google_tags_tag_key.key.name,
- * });
- * ```
  */
 export function getTagKeyIamPolicyOutput(args: GetTagKeyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagKeyIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getTagKeyIamPolicy(a, opts))

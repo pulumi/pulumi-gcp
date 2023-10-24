@@ -45,11 +45,25 @@ class RepositoryGitRemoteSettingsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             authentication_token_secret_version: pulumi.Input[str],
-             default_branch: pulumi.Input[str],
-             url: pulumi.Input[str],
+             authentication_token_secret_version: Optional[pulumi.Input[str]] = None,
+             default_branch: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
              token_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if authentication_token_secret_version is None and 'authenticationTokenSecretVersion' in kwargs:
+            authentication_token_secret_version = kwargs['authenticationTokenSecretVersion']
+        if authentication_token_secret_version is None:
+            raise TypeError("Missing 'authentication_token_secret_version' argument")
+        if default_branch is None and 'defaultBranch' in kwargs:
+            default_branch = kwargs['defaultBranch']
+        if default_branch is None:
+            raise TypeError("Missing 'default_branch' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if token_status is None and 'tokenStatus' in kwargs:
+            token_status = kwargs['tokenStatus']
+
         _setter("authentication_token_secret_version", authentication_token_secret_version)
         _setter("default_branch", default_branch)
         _setter("url", url)
@@ -152,7 +166,23 @@ class RepositoryReleaseConfigCodeCompilationConfigArgs:
              schema_suffix: Optional[pulumi.Input[str]] = None,
              table_prefix: Optional[pulumi.Input[str]] = None,
              vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if assertion_schema is None and 'assertionSchema' in kwargs:
+            assertion_schema = kwargs['assertionSchema']
+        if database_suffix is None and 'databaseSuffix' in kwargs:
+            database_suffix = kwargs['databaseSuffix']
+        if default_database is None and 'defaultDatabase' in kwargs:
+            default_database = kwargs['defaultDatabase']
+        if default_location is None and 'defaultLocation' in kwargs:
+            default_location = kwargs['defaultLocation']
+        if default_schema is None and 'defaultSchema' in kwargs:
+            default_schema = kwargs['defaultSchema']
+        if schema_suffix is None and 'schemaSuffix' in kwargs:
+            schema_suffix = kwargs['schemaSuffix']
+        if table_prefix is None and 'tablePrefix' in kwargs:
+            table_prefix = kwargs['tablePrefix']
+
         if assertion_schema is not None:
             _setter("assertion_schema", assertion_schema)
         if database_suffix is not None:
@@ -297,7 +327,15 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecordArgs:
              compilation_result: Optional[pulumi.Input[str]] = None,
              error_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs']]]] = None,
              release_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if compilation_result is None and 'compilationResult' in kwargs:
+            compilation_result = kwargs['compilationResult']
+        if error_statuses is None and 'errorStatuses' in kwargs:
+            error_statuses = kwargs['errorStatuses']
+        if release_time is None and 'releaseTime' in kwargs:
+            release_time = kwargs['releaseTime']
+
         if compilation_result is not None:
             _setter("compilation_result", compilation_result)
         if error_statuses is not None:
@@ -367,7 +405,9 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs:
              _setter: Callable[[Any, Any], None],
              code: Optional[pulumi.Input[int]] = None,
              message: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if code is not None:
             _setter("code", code)
         if message is not None:
@@ -436,7 +476,21 @@ class RepositoryWorkflowConfigInvocationConfigArgs:
              service_account: Optional[pulumi.Input[str]] = None,
              transitive_dependencies_included: Optional[pulumi.Input[bool]] = None,
              transitive_dependents_included: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if fully_refresh_incremental_tables_enabled is None and 'fullyRefreshIncrementalTablesEnabled' in kwargs:
+            fully_refresh_incremental_tables_enabled = kwargs['fullyRefreshIncrementalTablesEnabled']
+        if included_tags is None and 'includedTags' in kwargs:
+            included_tags = kwargs['includedTags']
+        if included_targets is None and 'includedTargets' in kwargs:
+            included_targets = kwargs['includedTargets']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if transitive_dependencies_included is None and 'transitiveDependenciesIncluded' in kwargs:
+            transitive_dependencies_included = kwargs['transitiveDependenciesIncluded']
+        if transitive_dependents_included is None and 'transitiveDependentsIncluded' in kwargs:
+            transitive_dependents_included = kwargs['transitiveDependentsIncluded']
+
         if fully_refresh_incremental_tables_enabled is not None:
             _setter("fully_refresh_incremental_tables_enabled", fully_refresh_incremental_tables_enabled)
         if included_tags is not None:
@@ -547,7 +601,9 @@ class RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs:
              database: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              schema: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if database is not None:
             _setter("database", database)
         if name is not None:
@@ -619,7 +675,15 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs:
              error_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs']]]] = None,
              execution_time: Optional[pulumi.Input[str]] = None,
              workflow_invocation: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if error_statuses is None and 'errorStatuses' in kwargs:
+            error_statuses = kwargs['errorStatuses']
+        if execution_time is None and 'executionTime' in kwargs:
+            execution_time = kwargs['executionTime']
+        if workflow_invocation is None and 'workflowInvocation' in kwargs:
+            workflow_invocation = kwargs['workflowInvocation']
+
         if error_statuses is not None:
             _setter("error_statuses", error_statuses)
         if execution_time is not None:
@@ -689,7 +753,9 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs:
              _setter: Callable[[Any, Any], None],
              code: Optional[pulumi.Input[int]] = None,
              message: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if code is not None:
             _setter("code", code)
         if message is not None:
@@ -745,7 +811,15 @@ class RepositoryWorkspaceCompilationOverridesArgs:
              default_database: Optional[pulumi.Input[str]] = None,
              schema_suffix: Optional[pulumi.Input[str]] = None,
              table_prefix: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if default_database is None and 'defaultDatabase' in kwargs:
+            default_database = kwargs['defaultDatabase']
+        if schema_suffix is None and 'schemaSuffix' in kwargs:
+            schema_suffix = kwargs['schemaSuffix']
+        if table_prefix is None and 'tablePrefix' in kwargs:
+            table_prefix = kwargs['tablePrefix']
+
         if default_database is not None:
             _setter("default_database", default_database)
         if schema_suffix is not None:

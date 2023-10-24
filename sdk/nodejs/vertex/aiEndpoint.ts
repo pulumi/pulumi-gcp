@@ -16,48 +16,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
  *
  * ## Example Usage
- * ### Vertex Ai Endpoint Network
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const vertexNetwork = gcp.compute.getNetwork({
- *     name: "network-name",
- * });
- * const vertexRange = new gcp.compute.GlobalAddress("vertexRange", {
- *     purpose: "VPC_PEERING",
- *     addressType: "INTERNAL",
- *     prefixLength: 24,
- *     network: vertexNetwork.then(vertexNetwork => vertexNetwork.id),
- * });
- * const vertexVpcConnection = new gcp.servicenetworking.Connection("vertexVpcConnection", {
- *     network: vertexNetwork.then(vertexNetwork => vertexNetwork.id),
- *     service: "servicenetworking.googleapis.com",
- *     reservedPeeringRanges: [vertexRange.name],
- * });
- * const project = gcp.organizations.getProject({});
- * const endpoint = new gcp.vertex.AiEndpoint("endpoint", {
- *     displayName: "sample-endpoint",
- *     description: "A sample vertex endpoint",
- *     location: "us-central1",
- *     region: "us-central1",
- *     labels: {
- *         "label-one": "value-one",
- *     },
- *     network: Promise.all([project, vertexNetwork]).then(([project, vertexNetwork]) => `projects/${project.number}/global/networks/${vertexNetwork.name}`),
- *     encryptionSpec: {
- *         kmsKeyName: "kms-name",
- *     },
- * }, {
- *     dependsOn: [vertexVpcConnection],
- * });
- * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("cryptoKey", {
- *     cryptoKeyId: "kms-name",
- *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
- *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com`),
- * });
- * ```
  *
  * ## Import
  *

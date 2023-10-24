@@ -126,7 +126,7 @@ class RegionDiskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             replica_zones: pulumi.Input[Sequence[pulumi.Input[str]]],
+             replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              async_primary_disk: Optional[pulumi.Input['RegionDiskAsyncPrimaryDiskArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              disk_encryption_key: Optional[pulumi.Input['RegionDiskDiskEncryptionKeyArgs']] = None,
@@ -143,7 +143,25 @@ class RegionDiskArgs:
              source_disk: Optional[pulumi.Input[str]] = None,
              source_snapshot_encryption_key: Optional[pulumi.Input['RegionDiskSourceSnapshotEncryptionKeyArgs']] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if replica_zones is None and 'replicaZones' in kwargs:
+            replica_zones = kwargs['replicaZones']
+        if replica_zones is None:
+            raise TypeError("Missing 'replica_zones' argument")
+        if async_primary_disk is None and 'asyncPrimaryDisk' in kwargs:
+            async_primary_disk = kwargs['asyncPrimaryDisk']
+        if disk_encryption_key is None and 'diskEncryptionKey' in kwargs:
+            disk_encryption_key = kwargs['diskEncryptionKey']
+        if guest_os_features is None and 'guestOsFeatures' in kwargs:
+            guest_os_features = kwargs['guestOsFeatures']
+        if physical_block_size_bytes is None and 'physicalBlockSizeBytes' in kwargs:
+            physical_block_size_bytes = kwargs['physicalBlockSizeBytes']
+        if source_disk is None and 'sourceDisk' in kwargs:
+            source_disk = kwargs['sourceDisk']
+        if source_snapshot_encryption_key is None and 'sourceSnapshotEncryptionKey' in kwargs:
+            source_snapshot_encryption_key = kwargs['sourceSnapshotEncryptionKey']
+
         _setter("replica_zones", replica_zones)
         if async_primary_disk is not None:
             _setter("async_primary_disk", async_primary_disk)
@@ -610,7 +628,37 @@ class _RegionDiskState:
              source_snapshot_id: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if async_primary_disk is None and 'asyncPrimaryDisk' in kwargs:
+            async_primary_disk = kwargs['asyncPrimaryDisk']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if disk_encryption_key is None and 'diskEncryptionKey' in kwargs:
+            disk_encryption_key = kwargs['diskEncryptionKey']
+        if guest_os_features is None and 'guestOsFeatures' in kwargs:
+            guest_os_features = kwargs['guestOsFeatures']
+        if label_fingerprint is None and 'labelFingerprint' in kwargs:
+            label_fingerprint = kwargs['labelFingerprint']
+        if last_attach_timestamp is None and 'lastAttachTimestamp' in kwargs:
+            last_attach_timestamp = kwargs['lastAttachTimestamp']
+        if last_detach_timestamp is None and 'lastDetachTimestamp' in kwargs:
+            last_detach_timestamp = kwargs['lastDetachTimestamp']
+        if physical_block_size_bytes is None and 'physicalBlockSizeBytes' in kwargs:
+            physical_block_size_bytes = kwargs['physicalBlockSizeBytes']
+        if replica_zones is None and 'replicaZones' in kwargs:
+            replica_zones = kwargs['replicaZones']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if source_disk is None and 'sourceDisk' in kwargs:
+            source_disk = kwargs['sourceDisk']
+        if source_disk_id is None and 'sourceDiskId' in kwargs:
+            source_disk_id = kwargs['sourceDiskId']
+        if source_snapshot_encryption_key is None and 'sourceSnapshotEncryptionKey' in kwargs:
+            source_snapshot_encryption_key = kwargs['sourceSnapshotEncryptionKey']
+        if source_snapshot_id is None and 'sourceSnapshotId' in kwargs:
+            source_snapshot_id = kwargs['sourceSnapshotId']
+
         if async_primary_disk is not None:
             _setter("async_primary_disk", async_primary_disk)
         if creation_timestamp is not None:
@@ -1078,83 +1126,6 @@ class RegionDisk(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
-        ### Region Disk Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        disk = gcp.compute.Disk("disk",
-            image="debian-cloud/debian-11",
-            size=50,
-            type="pd-ssd",
-            zone="us-central1-a")
-        snapdisk = gcp.compute.Snapshot("snapdisk",
-            source_disk=disk.name,
-            zone="us-central1-a")
-        regiondisk = gcp.compute.RegionDisk("regiondisk",
-            snapshot=snapdisk.id,
-            type="pd-ssd",
-            region="us-central1",
-            physical_block_size_bytes=4096,
-            replica_zones=[
-                "us-central1-a",
-                "us-central1-f",
-            ])
-        ```
-        ### Region Disk Async
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.compute.RegionDisk("primary",
-            type="pd-ssd",
-            region="us-central1",
-            physical_block_size_bytes=4096,
-            replica_zones=[
-                "us-central1-a",
-                "us-central1-f",
-            ])
-        secondary = gcp.compute.RegionDisk("secondary",
-            type="pd-ssd",
-            region="us-east1",
-            physical_block_size_bytes=4096,
-            async_primary_disk=gcp.compute.RegionDiskAsyncPrimaryDiskArgs(
-                disk=primary.id,
-            ),
-            replica_zones=[
-                "us-east1-b",
-                "us-east1-c",
-            ])
-        ```
-        ### Region Disk Features
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        regiondisk = gcp.compute.RegionDisk("regiondisk",
-            guest_os_features=[
-                gcp.compute.RegionDiskGuestOsFeatureArgs(
-                    type="SECURE_BOOT",
-                ),
-                gcp.compute.RegionDiskGuestOsFeatureArgs(
-                    type="MULTI_IP_SUBNET",
-                ),
-                gcp.compute.RegionDiskGuestOsFeatureArgs(
-                    type="WINDOWS",
-                ),
-            ],
-            licenses=["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
-            physical_block_size_bytes=4096,
-            region="us-central1",
-            replica_zones=[
-                "us-central1-a",
-                "us-central1-f",
-            ],
-            type="pd-ssd")
-        ```
 
         ## Import
 
@@ -1279,83 +1250,6 @@ class RegionDisk(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
-        ### Region Disk Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        disk = gcp.compute.Disk("disk",
-            image="debian-cloud/debian-11",
-            size=50,
-            type="pd-ssd",
-            zone="us-central1-a")
-        snapdisk = gcp.compute.Snapshot("snapdisk",
-            source_disk=disk.name,
-            zone="us-central1-a")
-        regiondisk = gcp.compute.RegionDisk("regiondisk",
-            snapshot=snapdisk.id,
-            type="pd-ssd",
-            region="us-central1",
-            physical_block_size_bytes=4096,
-            replica_zones=[
-                "us-central1-a",
-                "us-central1-f",
-            ])
-        ```
-        ### Region Disk Async
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.compute.RegionDisk("primary",
-            type="pd-ssd",
-            region="us-central1",
-            physical_block_size_bytes=4096,
-            replica_zones=[
-                "us-central1-a",
-                "us-central1-f",
-            ])
-        secondary = gcp.compute.RegionDisk("secondary",
-            type="pd-ssd",
-            region="us-east1",
-            physical_block_size_bytes=4096,
-            async_primary_disk=gcp.compute.RegionDiskAsyncPrimaryDiskArgs(
-                disk=primary.id,
-            ),
-            replica_zones=[
-                "us-east1-b",
-                "us-east1-c",
-            ])
-        ```
-        ### Region Disk Features
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        regiondisk = gcp.compute.RegionDisk("regiondisk",
-            guest_os_features=[
-                gcp.compute.RegionDiskGuestOsFeatureArgs(
-                    type="SECURE_BOOT",
-                ),
-                gcp.compute.RegionDiskGuestOsFeatureArgs(
-                    type="MULTI_IP_SUBNET",
-                ),
-                gcp.compute.RegionDiskGuestOsFeatureArgs(
-                    type="WINDOWS",
-                ),
-            ],
-            licenses=["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
-            physical_block_size_bytes=4096,
-            region="us-central1",
-            replica_zones=[
-                "us-central1-a",
-                "us-central1-f",
-            ],
-            type="pd-ssd")
-        ```
 
         ## Import
 
@@ -1422,18 +1316,10 @@ class RegionDisk(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RegionDiskArgs.__new__(RegionDiskArgs)
 
-            if async_primary_disk is not None and not isinstance(async_primary_disk, RegionDiskAsyncPrimaryDiskArgs):
-                async_primary_disk = async_primary_disk or {}
-                def _setter(key, value):
-                    async_primary_disk[key] = value
-                RegionDiskAsyncPrimaryDiskArgs._configure(_setter, **async_primary_disk)
+            async_primary_disk = _utilities.configure(async_primary_disk, RegionDiskAsyncPrimaryDiskArgs, True)
             __props__.__dict__["async_primary_disk"] = async_primary_disk
             __props__.__dict__["description"] = description
-            if disk_encryption_key is not None and not isinstance(disk_encryption_key, RegionDiskDiskEncryptionKeyArgs):
-                disk_encryption_key = disk_encryption_key or {}
-                def _setter(key, value):
-                    disk_encryption_key[key] = value
-                RegionDiskDiskEncryptionKeyArgs._configure(_setter, **disk_encryption_key)
+            disk_encryption_key = _utilities.configure(disk_encryption_key, RegionDiskDiskEncryptionKeyArgs, True)
             __props__.__dict__["disk_encryption_key"] = disk_encryption_key
             __props__.__dict__["guest_os_features"] = guest_os_features
             __props__.__dict__["interface"] = interface
@@ -1449,11 +1335,7 @@ class RegionDisk(pulumi.CustomResource):
             __props__.__dict__["size"] = size
             __props__.__dict__["snapshot"] = snapshot
             __props__.__dict__["source_disk"] = source_disk
-            if source_snapshot_encryption_key is not None and not isinstance(source_snapshot_encryption_key, RegionDiskSourceSnapshotEncryptionKeyArgs):
-                source_snapshot_encryption_key = source_snapshot_encryption_key or {}
-                def _setter(key, value):
-                    source_snapshot_encryption_key[key] = value
-                RegionDiskSourceSnapshotEncryptionKeyArgs._configure(_setter, **source_snapshot_encryption_key)
+            source_snapshot_encryption_key = _utilities.configure(source_snapshot_encryption_key, RegionDiskSourceSnapshotEncryptionKeyArgs, True)
             __props__.__dict__["source_snapshot_encryption_key"] = source_snapshot_encryption_key
             __props__.__dict__["type"] = type
             __props__.__dict__["creation_timestamp"] = None

@@ -40,7 +40,11 @@ class CertificateIssuanceConfigCertificateAuthorityConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              certificate_authority_service_config: Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if certificate_authority_service_config is None and 'certificateAuthorityServiceConfig' in kwargs:
+            certificate_authority_service_config = kwargs['certificateAuthorityServiceConfig']
+
         if certificate_authority_service_config is not None:
             _setter("certificate_authority_service_config", certificate_authority_service_config)
 
@@ -76,8 +80,14 @@ class CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthoritySer
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ca_pool: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             ca_pool: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ca_pool is None and 'caPool' in kwargs:
+            ca_pool = kwargs['caPool']
+        if ca_pool is None:
+            raise TypeError("Missing 'ca_pool' argument")
+
         _setter("ca_pool", ca_pool)
 
     @property
@@ -144,7 +154,17 @@ class CertificateManagedArgs:
              issuance_config: Optional[pulumi.Input[str]] = None,
              provisioning_issues: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArgs']]]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if authorization_attempt_infos is None and 'authorizationAttemptInfos' in kwargs:
+            authorization_attempt_infos = kwargs['authorizationAttemptInfos']
+        if dns_authorizations is None and 'dnsAuthorizations' in kwargs:
+            dns_authorizations = kwargs['dnsAuthorizations']
+        if issuance_config is None and 'issuanceConfig' in kwargs:
+            issuance_config = kwargs['issuanceConfig']
+        if provisioning_issues is None and 'provisioningIssues' in kwargs:
+            provisioning_issues = kwargs['provisioningIssues']
+
         if authorization_attempt_infos is not None:
             _setter("authorization_attempt_infos", authorization_attempt_infos)
         if dns_authorizations is not None:
@@ -276,7 +296,11 @@ class CertificateManagedAuthorizationAttemptInfoArgs:
              domain: Optional[pulumi.Input[str]] = None,
              failure_reason: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if failure_reason is None and 'failureReason' in kwargs:
+            failure_reason = kwargs['failureReason']
+
         if details is not None:
             _setter("details", details)
         if domain is not None:
@@ -364,7 +388,9 @@ class CertificateManagedProvisioningIssueArgs:
              _setter: Callable[[Any, Any], None],
              details: Optional[pulumi.Input[str]] = None,
              reason: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if details is not None:
             _setter("details", details)
         if reason is not None:
@@ -427,7 +453,15 @@ class CertificateMapGclbTargetArgs:
              ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetIpConfigArgs']]]] = None,
              target_https_proxy: Optional[pulumi.Input[str]] = None,
              target_ssl_proxy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ip_configs is None and 'ipConfigs' in kwargs:
+            ip_configs = kwargs['ipConfigs']
+        if target_https_proxy is None and 'targetHttpsProxy' in kwargs:
+            target_https_proxy = kwargs['targetHttpsProxy']
+        if target_ssl_proxy is None and 'targetSslProxy' in kwargs:
+            target_ssl_proxy = kwargs['targetSslProxy']
+
         if ip_configs is not None:
             _setter("ip_configs", ip_configs)
         if target_https_proxy is not None:
@@ -496,7 +530,11 @@ class CertificateMapGclbTargetIpConfigArgs:
              _setter: Callable[[Any, Any], None],
              ip_address: Optional[pulumi.Input[str]] = None,
              ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         if ip_address is not None:
             _setter("ip_address", ip_address)
         if ports is not None:
@@ -566,7 +604,17 @@ class CertificateSelfManagedArgs:
              pem_certificate: Optional[pulumi.Input[str]] = None,
              pem_private_key: Optional[pulumi.Input[str]] = None,
              private_key_pem: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if certificate_pem is None and 'certificatePem' in kwargs:
+            certificate_pem = kwargs['certificatePem']
+        if pem_certificate is None and 'pemCertificate' in kwargs:
+            pem_certificate = kwargs['pemCertificate']
+        if pem_private_key is None and 'pemPrivateKey' in kwargs:
+            pem_private_key = kwargs['pemPrivateKey']
+        if private_key_pem is None and 'privateKeyPem' in kwargs:
+            private_key_pem = kwargs['privateKeyPem']
+
         if certificate_pem is not None:
             warnings.warn("""`certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.""", DeprecationWarning)
             pulumi.log.warn("""certificate_pem is deprecated: `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.""")
@@ -679,7 +727,9 @@ class DnsAuthorizationDnsResourceRecordArgs:
              data: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if data is not None:
             _setter("data", data)
         if name is not None:
@@ -753,7 +803,13 @@ class TrustConfigTrustStoreArgs:
              _setter: Callable[[Any, Any], None],
              intermediate_cas: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreIntermediateCaArgs']]]] = None,
              trust_anchors: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreTrustAnchorArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if intermediate_cas is None and 'intermediateCas' in kwargs:
+            intermediate_cas = kwargs['intermediateCas']
+        if trust_anchors is None and 'trustAnchors' in kwargs:
+            trust_anchors = kwargs['trustAnchors']
+
         if intermediate_cas is not None:
             _setter("intermediate_cas", intermediate_cas)
         if trust_anchors is not None:
@@ -804,7 +860,11 @@ class TrustConfigTrustStoreIntermediateCaArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              pem_certificate: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if pem_certificate is None and 'pemCertificate' in kwargs:
+            pem_certificate = kwargs['pemCertificate']
+
         if pem_certificate is not None:
             _setter("pem_certificate", pem_certificate)
 
@@ -840,7 +900,11 @@ class TrustConfigTrustStoreTrustAnchorArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              pem_certificate: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if pem_certificate is None and 'pemCertificate' in kwargs:
+            pem_certificate = kwargs['pemCertificate']
+
         if pem_certificate is not None:
             _setter("pem_certificate", pem_certificate)
 

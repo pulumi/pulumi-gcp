@@ -8,42 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- * ### Backup Dr Management Server
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {}, {
- *     provider: google_beta,
- * });
- * const privateIpAddress = new gcp.compute.GlobalAddress("privateIpAddress", {
- *     addressType: "INTERNAL",
- *     purpose: "VPC_PEERING",
- *     prefixLength: 20,
- *     network: defaultNetwork.id,
- * }, {
- *     provider: google_beta,
- * });
- * const defaultConnection = new gcp.servicenetworking.Connection("defaultConnection", {
- *     network: defaultNetwork.id,
- *     service: "servicenetworking.googleapis.com",
- *     reservedPeeringRanges: [privateIpAddress.name],
- * }, {
- *     provider: google_beta,
- * });
- * const ms_console = new gcp.backupdisasterrecovery.ManagementServer("ms-console", {
- *     location: "us-central1",
- *     type: "BACKUP_RESTORE",
- *     networks: [{
- *         network: defaultNetwork.id,
- *         peeringMode: "PRIVATE_SERVICE_ACCESS",
- *     }],
- * }, {
- *     provider: google_beta,
- *     dependsOn: [defaultConnection],
- * });
- * ```
  *
  * ## Import
  *

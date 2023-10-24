@@ -76,8 +76,8 @@ class EntryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entry_group: pulumi.Input[str],
-             entry_id: pulumi.Input[str],
+             entry_group: Optional[pulumi.Input[str]] = None,
+             entry_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              gcs_fileset_spec: Optional[pulumi.Input['EntryGcsFilesetSpecArgs']] = None,
@@ -86,7 +86,27 @@ class EntryArgs:
              type: Optional[pulumi.Input[str]] = None,
              user_specified_system: Optional[pulumi.Input[str]] = None,
              user_specified_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entry_group is None and 'entryGroup' in kwargs:
+            entry_group = kwargs['entryGroup']
+        if entry_group is None:
+            raise TypeError("Missing 'entry_group' argument")
+        if entry_id is None and 'entryId' in kwargs:
+            entry_id = kwargs['entryId']
+        if entry_id is None:
+            raise TypeError("Missing 'entry_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if gcs_fileset_spec is None and 'gcsFilesetSpec' in kwargs:
+            gcs_fileset_spec = kwargs['gcsFilesetSpec']
+        if linked_resource is None and 'linkedResource' in kwargs:
+            linked_resource = kwargs['linkedResource']
+        if user_specified_system is None and 'userSpecifiedSystem' in kwargs:
+            user_specified_system = kwargs['userSpecifiedSystem']
+        if user_specified_type is None and 'userSpecifiedType' in kwargs:
+            user_specified_type = kwargs['userSpecifiedType']
+
         _setter("entry_group", entry_group)
         _setter("entry_id", entry_id)
         if description is not None:
@@ -342,7 +362,29 @@ class _EntryState:
              type: Optional[pulumi.Input[str]] = None,
              user_specified_system: Optional[pulumi.Input[str]] = None,
              user_specified_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bigquery_date_sharded_specs is None and 'bigqueryDateShardedSpecs' in kwargs:
+            bigquery_date_sharded_specs = kwargs['bigqueryDateShardedSpecs']
+        if bigquery_table_specs is None and 'bigqueryTableSpecs' in kwargs:
+            bigquery_table_specs = kwargs['bigqueryTableSpecs']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if entry_group is None and 'entryGroup' in kwargs:
+            entry_group = kwargs['entryGroup']
+        if entry_id is None and 'entryId' in kwargs:
+            entry_id = kwargs['entryId']
+        if gcs_fileset_spec is None and 'gcsFilesetSpec' in kwargs:
+            gcs_fileset_spec = kwargs['gcsFilesetSpec']
+        if integrated_system is None and 'integratedSystem' in kwargs:
+            integrated_system = kwargs['integratedSystem']
+        if linked_resource is None and 'linkedResource' in kwargs:
+            linked_resource = kwargs['linkedResource']
+        if user_specified_system is None and 'userSpecifiedSystem' in kwargs:
+            user_specified_system = kwargs['userSpecifiedSystem']
+        if user_specified_type is None and 'userSpecifiedType' in kwargs:
+            user_specified_type = kwargs['userSpecifiedType']
+
         if bigquery_date_sharded_specs is not None:
             _setter("bigquery_date_sharded_specs", bigquery_date_sharded_specs)
         if bigquery_table_specs is not None:
@@ -598,87 +640,6 @@ class Entry(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
         ## Example Usage
-        ### Data Catalog Entry Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        entry_group = gcp.datacatalog.EntryGroup("entryGroup", entry_group_id="my_group")
-        basic_entry = gcp.datacatalog.Entry("basicEntry",
-            entry_group=entry_group.id,
-            entry_id="my_entry",
-            user_specified_type="my_custom_type",
-            user_specified_system="SomethingExternal")
-        ```
-        ### Data Catalog Entry Fileset
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        entry_group = gcp.datacatalog.EntryGroup("entryGroup", entry_group_id="my_group")
-        basic_entry = gcp.datacatalog.Entry("basicEntry",
-            entry_group=entry_group.id,
-            entry_id="my_entry",
-            type="FILESET",
-            gcs_fileset_spec=gcp.datacatalog.EntryGcsFilesetSpecArgs(
-                file_patterns=["gs://fake_bucket/dir/*"],
-            ))
-        ```
-        ### Data Catalog Entry Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        entry_group = gcp.datacatalog.EntryGroup("entryGroup", entry_group_id="my_group")
-        basic_entry = gcp.datacatalog.Entry("basicEntry",
-            entry_group=entry_group.id,
-            entry_id="my_entry",
-            user_specified_type="my_user_specified_type",
-            user_specified_system="Something_custom",
-            linked_resource="my/linked/resource",
-            display_name="my custom type entry",
-            description="a custom type entry for a user specified system",
-            schema=\"\"\"{
-          "columns": [
-            {
-              "column": "first_name",
-              "description": "First name",
-              "mode": "REQUIRED",
-              "type": "STRING"
-            },
-            {
-              "column": "last_name",
-              "description": "Last name",
-              "mode": "REQUIRED",
-              "type": "STRING"
-            },
-            {
-              "column": "address",
-              "description": "Address",
-              "mode": "REPEATED",
-              "subcolumns": [
-                {
-                  "column": "city",
-                  "description": "City",
-                  "mode": "NULLABLE",
-                  "type": "STRING"
-                },
-                {
-                  "column": "state",
-                  "description": "State",
-                  "mode": "NULLABLE",
-                  "type": "STRING"
-                }
-              ],
-              "type": "RECORD"
-            }
-          ]
-        }
-        \"\"\")
-        ```
 
         ## Import
 
@@ -743,87 +704,6 @@ class Entry(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
         ## Example Usage
-        ### Data Catalog Entry Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        entry_group = gcp.datacatalog.EntryGroup("entryGroup", entry_group_id="my_group")
-        basic_entry = gcp.datacatalog.Entry("basicEntry",
-            entry_group=entry_group.id,
-            entry_id="my_entry",
-            user_specified_type="my_custom_type",
-            user_specified_system="SomethingExternal")
-        ```
-        ### Data Catalog Entry Fileset
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        entry_group = gcp.datacatalog.EntryGroup("entryGroup", entry_group_id="my_group")
-        basic_entry = gcp.datacatalog.Entry("basicEntry",
-            entry_group=entry_group.id,
-            entry_id="my_entry",
-            type="FILESET",
-            gcs_fileset_spec=gcp.datacatalog.EntryGcsFilesetSpecArgs(
-                file_patterns=["gs://fake_bucket/dir/*"],
-            ))
-        ```
-        ### Data Catalog Entry Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        entry_group = gcp.datacatalog.EntryGroup("entryGroup", entry_group_id="my_group")
-        basic_entry = gcp.datacatalog.Entry("basicEntry",
-            entry_group=entry_group.id,
-            entry_id="my_entry",
-            user_specified_type="my_user_specified_type",
-            user_specified_system="Something_custom",
-            linked_resource="my/linked/resource",
-            display_name="my custom type entry",
-            description="a custom type entry for a user specified system",
-            schema=\"\"\"{
-          "columns": [
-            {
-              "column": "first_name",
-              "description": "First name",
-              "mode": "REQUIRED",
-              "type": "STRING"
-            },
-            {
-              "column": "last_name",
-              "description": "Last name",
-              "mode": "REQUIRED",
-              "type": "STRING"
-            },
-            {
-              "column": "address",
-              "description": "Address",
-              "mode": "REPEATED",
-              "subcolumns": [
-                {
-                  "column": "city",
-                  "description": "City",
-                  "mode": "NULLABLE",
-                  "type": "STRING"
-                },
-                {
-                  "column": "state",
-                  "description": "State",
-                  "mode": "NULLABLE",
-                  "type": "STRING"
-                }
-              ],
-              "type": "RECORD"
-            }
-          ]
-        }
-        \"\"\")
-        ```
 
         ## Import
 
@@ -879,11 +759,7 @@ class Entry(pulumi.CustomResource):
             if entry_id is None and not opts.urn:
                 raise TypeError("Missing required property 'entry_id'")
             __props__.__dict__["entry_id"] = entry_id
-            if gcs_fileset_spec is not None and not isinstance(gcs_fileset_spec, EntryGcsFilesetSpecArgs):
-                gcs_fileset_spec = gcs_fileset_spec or {}
-                def _setter(key, value):
-                    gcs_fileset_spec[key] = value
-                EntryGcsFilesetSpecArgs._configure(_setter, **gcs_fileset_spec)
+            gcs_fileset_spec = _utilities.configure(gcs_fileset_spec, EntryGcsFilesetSpecArgs, True)
             __props__.__dict__["gcs_fileset_spec"] = gcs_fileset_spec
             __props__.__dict__["linked_resource"] = linked_resource
             __props__.__dict__["schema"] = schema

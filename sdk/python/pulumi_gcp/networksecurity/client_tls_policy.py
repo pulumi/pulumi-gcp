@@ -64,7 +64,13 @@ class ClientTlsPolicyArgs:
              project: Optional[pulumi.Input[str]] = None,
              server_validation_cas: Optional[pulumi.Input[Sequence[pulumi.Input['ClientTlsPolicyServerValidationCaArgs']]]] = None,
              sni: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if client_certificate is None and 'clientCertificate' in kwargs:
+            client_certificate = kwargs['clientCertificate']
+        if server_validation_cas is None and 'serverValidationCas' in kwargs:
+            server_validation_cas = kwargs['serverValidationCas']
+
         if client_certificate is not None:
             _setter("client_certificate", client_certificate)
         if description is not None:
@@ -245,7 +251,17 @@ class _ClientTlsPolicyState:
              server_validation_cas: Optional[pulumi.Input[Sequence[pulumi.Input['ClientTlsPolicyServerValidationCaArgs']]]] = None,
              sni: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if client_certificate is None and 'clientCertificate' in kwargs:
+            client_certificate = kwargs['clientCertificate']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if server_validation_cas is None and 'serverValidationCas' in kwargs:
+            server_validation_cas = kwargs['serverValidationCas']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if client_certificate is not None:
             _setter("client_certificate", client_certificate)
         if create_time is not None:
@@ -411,50 +427,6 @@ class ClientTlsPolicy(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Network Security Client Tls Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.ClientTlsPolicy("default",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            sni="secure.example.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Network Security Client Tls Policy Advanced
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.ClientTlsPolicy("default",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            client_certificate=gcp.networksecurity.ClientTlsPolicyClientCertificateArgs(
-                certificate_provider_instance=gcp.networksecurity.ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs(
-                    plugin_instance="google_cloud_private_spiffe",
-                ),
-            ),
-            server_validation_cas=[
-                gcp.networksecurity.ClientTlsPolicyServerValidationCaArgs(
-                    grpc_endpoint=gcp.networksecurity.ClientTlsPolicyServerValidationCaGrpcEndpointArgs(
-                        target_uri="unix:mypath",
-                    ),
-                ),
-                gcp.networksecurity.ClientTlsPolicyServerValidationCaArgs(
-                    grpc_endpoint=gcp.networksecurity.ClientTlsPolicyServerValidationCaGrpcEndpointArgs(
-                        target_uri="unix:mypath1",
-                    ),
-                ),
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -498,50 +470,6 @@ class ClientTlsPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Network Security Client Tls Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.ClientTlsPolicy("default",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            sni="secure.example.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Network Security Client Tls Policy Advanced
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.ClientTlsPolicy("default",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            client_certificate=gcp.networksecurity.ClientTlsPolicyClientCertificateArgs(
-                certificate_provider_instance=gcp.networksecurity.ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs(
-                    plugin_instance="google_cloud_private_spiffe",
-                ),
-            ),
-            server_validation_cas=[
-                gcp.networksecurity.ClientTlsPolicyServerValidationCaArgs(
-                    grpc_endpoint=gcp.networksecurity.ClientTlsPolicyServerValidationCaGrpcEndpointArgs(
-                        target_uri="unix:mypath",
-                    ),
-                ),
-                gcp.networksecurity.ClientTlsPolicyServerValidationCaArgs(
-                    grpc_endpoint=gcp.networksecurity.ClientTlsPolicyServerValidationCaGrpcEndpointArgs(
-                        target_uri="unix:mypath1",
-                    ),
-                ),
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -595,11 +523,7 @@ class ClientTlsPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ClientTlsPolicyArgs.__new__(ClientTlsPolicyArgs)
 
-            if client_certificate is not None and not isinstance(client_certificate, ClientTlsPolicyClientCertificateArgs):
-                client_certificate = client_certificate or {}
-                def _setter(key, value):
-                    client_certificate[key] = value
-                ClientTlsPolicyClientCertificateArgs._configure(_setter, **client_certificate)
+            client_certificate = _utilities.configure(client_certificate, ClientTlsPolicyClientCertificateArgs, True)
             __props__.__dict__["client_certificate"] = client_certificate
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels

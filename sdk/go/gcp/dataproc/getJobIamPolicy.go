@@ -13,33 +13,6 @@ import (
 )
 
 // Retrieves the current IAM policy data for a Dataproc job.
-//
-// ## example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataproc.GetJobIamPolicy(ctx, &dataproc.GetJobIamPolicyArgs{
-//				JobId:  google_dataproc_job.Pyspark.Reference[0].Job_id,
-//				Region: pulumi.StringRef("us-central1"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetJobIamPolicy(ctx *pulumi.Context, args *GetJobIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetJobIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetJobIamPolicyResult

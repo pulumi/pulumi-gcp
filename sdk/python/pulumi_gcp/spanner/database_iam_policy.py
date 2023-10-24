@@ -46,11 +46,21 @@ class DatabaseIAMPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             database: pulumi.Input[str],
-             instance: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             database: Optional[pulumi.Input[str]] = None,
+             instance: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if database is None:
+            raise TypeError("Missing 'database' argument")
+        if instance is None:
+            raise TypeError("Missing 'instance' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("database", database)
         _setter("instance", instance)
         _setter("policy_data", policy_data)
@@ -160,7 +170,11 @@ class _DatabaseIAMPolicyState:
              instance: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if database is not None:
             _setter("database", database)
         if etag is not None:
@@ -268,48 +282,6 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
 
         > **Note:** `spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_spanner\\_database\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
-        database = gcp.spanner.DatabaseIAMPolicy("database",
-            instance="your-instance-name",
-            database="your-database-name",
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_spanner\\_database\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        database = gcp.spanner.DatabaseIAMBinding("database",
-            database="your-database-name",
-            instance="your-instance-name",
-            members=["user:jane@example.com"],
-            role="roles/compute.networkUser")
-        ```
-
-        ## google\\_spanner\\_database\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        database = gcp.spanner.DatabaseIAMMember("database",
-            database="your-database-name",
-            instance="your-instance-name",
-            member="user:jane@example.com",
-            role="roles/compute.networkUser")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* {{project}}/{{instance}}/{{database}} * {{instance}}/{{database}} (project is taken from provider project) IAM member imports use space-delimited identifiers; the resource in question, the role, and the member identity, e.g.
@@ -371,48 +343,6 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
         > **Note:** `spanner.DatabaseIAMPolicy` **cannot** be used in conjunction with `spanner.DatabaseIAMBinding` and `spanner.DatabaseIAMMember` or they will fight over what your policy should be.
 
         > **Note:** `spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\\_spanner\\_database\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
-        database = gcp.spanner.DatabaseIAMPolicy("database",
-            instance="your-instance-name",
-            database="your-database-name",
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_spanner\\_database\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        database = gcp.spanner.DatabaseIAMBinding("database",
-            database="your-database-name",
-            instance="your-instance-name",
-            members=["user:jane@example.com"],
-            role="roles/compute.networkUser")
-        ```
-
-        ## google\\_spanner\\_database\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        database = gcp.spanner.DatabaseIAMMember("database",
-            database="your-database-name",
-            instance="your-instance-name",
-            member="user:jane@example.com",
-            role="roles/compute.networkUser")
-        ```
 
         ## Import
 

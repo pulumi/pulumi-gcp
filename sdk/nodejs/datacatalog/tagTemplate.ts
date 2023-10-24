@@ -17,55 +17,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
  *
  * ## Example Usage
- * ### Data Catalog Tag Template Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const basicTagTemplate = new gcp.datacatalog.TagTemplate("basicTagTemplate", {
- *     displayName: "Demo Tag Template",
- *     fields: [
- *         {
- *             displayName: "Source of data asset",
- *             fieldId: "source",
- *             isRequired: true,
- *             type: {
- *                 primitiveType: "STRING",
- *             },
- *         },
- *         {
- *             displayName: "Number of rows in the data asset",
- *             fieldId: "num_rows",
- *             type: {
- *                 primitiveType: "DOUBLE",
- *             },
- *         },
- *         {
- *             displayName: "PII type",
- *             fieldId: "pii_type",
- *             type: {
- *                 enumType: {
- *                     allowedValues: [
- *                         {
- *                             displayName: "EMAIL",
- *                         },
- *                         {
- *                             displayName: "SOCIAL SECURITY NUMBER",
- *                         },
- *                         {
- *                             displayName: "NONE",
- *                         },
- *                     ],
- *                 },
- *             },
- *         },
- *     ],
- *     forceDelete: false,
- *     region: "us-central1",
- *     tagTemplateId: "my_template",
- * });
- * ```
  *
  * ## Import
  *

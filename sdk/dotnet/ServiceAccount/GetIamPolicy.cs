@@ -13,48 +13,12 @@ namespace Pulumi.Gcp.ServiceAccount
     {
         /// <summary>
         /// Retrieves the current IAM policy data for a service account.
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = Gcp.ServiceAccount.GetIamPolicy.Invoke(new()
-        ///     {
-        ///         ServiceAccountId = google_service_account.Test_account.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetIamPolicyResult> InvokeAsync(GetIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIamPolicyResult>("gcp:serviceAccount/getIamPolicy:getIamPolicy", args ?? new GetIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for a service account.
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = Gcp.ServiceAccount.GetIamPolicy.Invoke(new()
-        ///     {
-        ///         ServiceAccountId = google_service_account.Test_account.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetIamPolicyResult> Invoke(GetIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIamPolicyResult>("gcp:serviceAccount/getIamPolicy:getIamPolicy", args ?? new GetIamPolicyInvokeArgs(), options.WithDefaults());

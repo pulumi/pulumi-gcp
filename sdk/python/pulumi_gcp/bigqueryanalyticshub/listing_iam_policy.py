@@ -53,12 +53,26 @@ class ListingIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_exchange_id: pulumi.Input[str],
-             listing_id: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             data_exchange_id: Optional[pulumi.Input[str]] = None,
+             listing_id: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if data_exchange_id is None and 'dataExchangeId' in kwargs:
+            data_exchange_id = kwargs['dataExchangeId']
+        if data_exchange_id is None:
+            raise TypeError("Missing 'data_exchange_id' argument")
+        if listing_id is None and 'listingId' in kwargs:
+            listing_id = kwargs['listingId']
+        if listing_id is None:
+            raise TypeError("Missing 'listing_id' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("data_exchange_id", data_exchange_id)
         _setter("listing_id", listing_id)
         _setter("policy_data", policy_data)
@@ -194,7 +208,15 @@ class _ListingIamPolicyState:
              location: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if data_exchange_id is None and 'dataExchangeId' in kwargs:
+            data_exchange_id = kwargs['dataExchangeId']
+        if listing_id is None and 'listingId' in kwargs:
+            listing_id = kwargs['listingId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if data_exchange_id is not None:
             _setter("data_exchange_id", data_exchange_id)
         if etag is not None:
@@ -322,54 +344,6 @@ class ListingIamPolicy(pulumi.CustomResource):
 
         > **Note:** `bigqueryanalyticshub.ListingIamBinding` resources **can be** used in conjunction with `bigqueryanalyticshub.ListingIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_bigquery\\_analytics\\_hub\\_listing\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.bigqueryanalyticshub.ListingIamPolicy("policy",
-            project=google_bigquery_analytics_hub_listing["listing"]["project"],
-            location=google_bigquery_analytics_hub_listing["listing"]["location"],
-            data_exchange_id=google_bigquery_analytics_hub_listing["listing"]["data_exchange_id"],
-            listing_id=google_bigquery_analytics_hub_listing["listing"]["listing_id"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_bigquery\\_analytics\\_hub\\_listing\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.bigqueryanalyticshub.ListingIamBinding("binding",
-            project=google_bigquery_analytics_hub_listing["listing"]["project"],
-            location=google_bigquery_analytics_hub_listing["listing"]["location"],
-            data_exchange_id=google_bigquery_analytics_hub_listing["listing"]["data_exchange_id"],
-            listing_id=google_bigquery_analytics_hub_listing["listing"]["listing_id"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_bigquery\\_analytics\\_hub\\_listing\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.bigqueryanalyticshub.ListingIamMember("member",
-            project=google_bigquery_analytics_hub_listing["listing"]["project"],
-            location=google_bigquery_analytics_hub_listing["listing"]["location"],
-            data_exchange_id=google_bigquery_analytics_hub_listing["listing"]["data_exchange_id"],
-            listing_id=google_bigquery_analytics_hub_listing["listing"]["listing_id"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}} * {{project}}/{{location}}/{{data_exchange_id}}/{{listing_id}} * {{location}}/{{data_exchange_id}}/{{listing_id}} * {{listing_id}} Any variables not passed in the import command will be taken from the provider configuration. Bigquery Analytics Hub listing IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -437,54 +411,6 @@ class ListingIamPolicy(pulumi.CustomResource):
         > **Note:** `bigqueryanalyticshub.ListingIamPolicy` **cannot** be used in conjunction with `bigqueryanalyticshub.ListingIamBinding` and `bigqueryanalyticshub.ListingIamMember` or they will fight over what your policy should be.
 
         > **Note:** `bigqueryanalyticshub.ListingIamBinding` resources **can be** used in conjunction with `bigqueryanalyticshub.ListingIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\\_bigquery\\_analytics\\_hub\\_listing\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.bigqueryanalyticshub.ListingIamPolicy("policy",
-            project=google_bigquery_analytics_hub_listing["listing"]["project"],
-            location=google_bigquery_analytics_hub_listing["listing"]["location"],
-            data_exchange_id=google_bigquery_analytics_hub_listing["listing"]["data_exchange_id"],
-            listing_id=google_bigquery_analytics_hub_listing["listing"]["listing_id"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_bigquery\\_analytics\\_hub\\_listing\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.bigqueryanalyticshub.ListingIamBinding("binding",
-            project=google_bigquery_analytics_hub_listing["listing"]["project"],
-            location=google_bigquery_analytics_hub_listing["listing"]["location"],
-            data_exchange_id=google_bigquery_analytics_hub_listing["listing"]["data_exchange_id"],
-            listing_id=google_bigquery_analytics_hub_listing["listing"]["listing_id"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_bigquery\\_analytics\\_hub\\_listing\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.bigqueryanalyticshub.ListingIamMember("member",
-            project=google_bigquery_analytics_hub_listing["listing"]["project"],
-            location=google_bigquery_analytics_hub_listing["listing"]["location"],
-            data_exchange_id=google_bigquery_analytics_hub_listing["listing"]["data_exchange_id"],
-            listing_id=google_bigquery_analytics_hub_listing["listing"]["listing_id"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
 
         ## Import
 

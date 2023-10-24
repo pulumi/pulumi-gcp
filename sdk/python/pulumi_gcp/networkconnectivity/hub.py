@@ -45,7 +45,9 @@ class HubArgs:
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if description is not None:
             _setter("description", description)
         if labels is not None:
@@ -160,7 +162,17 @@ class _HubState:
              state: Optional[pulumi.Input[str]] = None,
              unique_id: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if routing_vpcs is None and 'routingVpcs' in kwargs:
+            routing_vpcs = kwargs['routingVpcs']
+        if unique_id is None and 'uniqueId' in kwargs:
+            unique_id = kwargs['uniqueId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:
@@ -307,19 +319,6 @@ class Hub(pulumi.CustomResource):
         The NetworkConnectivity Hub resource
 
         ## Example Usage
-        ### Basic_hub
-        A basic test of a networkconnectivity hub
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.networkconnectivity.Hub("primary",
-            description="A sample hub",
-            labels={
-                "label-one": "value-one",
-            },
-            project="my-project-name")
-        ```
 
         ## Import
 
@@ -358,19 +357,6 @@ class Hub(pulumi.CustomResource):
         The NetworkConnectivity Hub resource
 
         ## Example Usage
-        ### Basic_hub
-        A basic test of a networkconnectivity hub
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.networkconnectivity.Hub("primary",
-            description="A sample hub",
-            labels={
-                "label-one": "value-one",
-            },
-            project="my-project-name")
-        ```
 
         ## Import
 

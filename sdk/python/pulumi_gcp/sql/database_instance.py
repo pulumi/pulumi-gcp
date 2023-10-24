@@ -99,7 +99,7 @@ class DatabaseInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             database_version: pulumi.Input[str],
+             database_version: Optional[pulumi.Input[str]] = None,
              clone: Optional[pulumi.Input['DatabaseInstanceCloneArgs']] = None,
              deletion_protection: Optional[pulumi.Input[bool]] = None,
              encryption_key_name: Optional[pulumi.Input[str]] = None,
@@ -113,7 +113,29 @@ class DatabaseInstanceArgs:
              restore_backup_context: Optional[pulumi.Input['DatabaseInstanceRestoreBackupContextArgs']] = None,
              root_password: Optional[pulumi.Input[str]] = None,
              settings: Optional[pulumi.Input['DatabaseInstanceSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if database_version is None and 'databaseVersion' in kwargs:
+            database_version = kwargs['databaseVersion']
+        if database_version is None:
+            raise TypeError("Missing 'database_version' argument")
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if encryption_key_name is None and 'encryptionKeyName' in kwargs:
+            encryption_key_name = kwargs['encryptionKeyName']
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if maintenance_version is None and 'maintenanceVersion' in kwargs:
+            maintenance_version = kwargs['maintenanceVersion']
+        if master_instance_name is None and 'masterInstanceName' in kwargs:
+            master_instance_name = kwargs['masterInstanceName']
+        if replica_configuration is None and 'replicaConfiguration' in kwargs:
+            replica_configuration = kwargs['replicaConfiguration']
+        if restore_backup_context is None and 'restoreBackupContext' in kwargs:
+            restore_backup_context = kwargs['restoreBackupContext']
+        if root_password is None and 'rootPassword' in kwargs:
+            root_password = kwargs['rootPassword']
+
         _setter("database_version", database_version)
         if clone is not None:
             _setter("clone", clone)
@@ -487,7 +509,49 @@ class _DatabaseInstanceState:
              server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceServerCaCertArgs']]]] = None,
              service_account_email_address: Optional[pulumi.Input[str]] = None,
              settings: Optional[pulumi.Input['DatabaseInstanceSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if available_maintenance_versions is None and 'availableMaintenanceVersions' in kwargs:
+            available_maintenance_versions = kwargs['availableMaintenanceVersions']
+        if connection_name is None and 'connectionName' in kwargs:
+            connection_name = kwargs['connectionName']
+        if database_version is None and 'databaseVersion' in kwargs:
+            database_version = kwargs['databaseVersion']
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if dns_name is None and 'dnsName' in kwargs:
+            dns_name = kwargs['dnsName']
+        if encryption_key_name is None and 'encryptionKeyName' in kwargs:
+            encryption_key_name = kwargs['encryptionKeyName']
+        if first_ip_address is None and 'firstIpAddress' in kwargs:
+            first_ip_address = kwargs['firstIpAddress']
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if ip_addresses is None and 'ipAddresses' in kwargs:
+            ip_addresses = kwargs['ipAddresses']
+        if maintenance_version is None and 'maintenanceVersion' in kwargs:
+            maintenance_version = kwargs['maintenanceVersion']
+        if master_instance_name is None and 'masterInstanceName' in kwargs:
+            master_instance_name = kwargs['masterInstanceName']
+        if private_ip_address is None and 'privateIpAddress' in kwargs:
+            private_ip_address = kwargs['privateIpAddress']
+        if psc_service_attachment_link is None and 'pscServiceAttachmentLink' in kwargs:
+            psc_service_attachment_link = kwargs['pscServiceAttachmentLink']
+        if public_ip_address is None and 'publicIpAddress' in kwargs:
+            public_ip_address = kwargs['publicIpAddress']
+        if replica_configuration is None and 'replicaConfiguration' in kwargs:
+            replica_configuration = kwargs['replicaConfiguration']
+        if restore_backup_context is None and 'restoreBackupContext' in kwargs:
+            restore_backup_context = kwargs['restoreBackupContext']
+        if root_password is None and 'rootPassword' in kwargs:
+            root_password = kwargs['rootPassword']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if server_ca_certs is None and 'serverCaCerts' in kwargs:
+            server_ca_certs = kwargs['serverCaCerts']
+        if service_account_email_address is None and 'serviceAccountEmailAddress' in kwargs:
+            service_account_email_address = kwargs['serviceAccountEmailAddress']
+
         if available_maintenance_versions is not None:
             _setter("available_maintenance_versions", available_maintenance_versions)
         if clone is not None:
@@ -902,70 +966,6 @@ class DatabaseInstance(pulumi.CustomResource):
         It is recommended to not set this field (or set it to true) until you're ready to destroy the instance and its databases.
 
         ## Example Usage
-        ### SQL Second Generation Instance
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        main = gcp.sql.DatabaseInstance("main",
-            database_version="POSTGRES_15",
-            region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ))
-        ```
-        ### Private IP Instance
-        > **NOTE:** For private IP instance setup, note that the `sql.DatabaseInstance` does not actually interpolate values from `servicenetworking.Connection`. You must explicitly add a `depends_on`reference as shown below.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        private_network = gcp.compute.Network("privateNetwork", opts=pulumi.ResourceOptions(provider=google_beta))
-        private_ip_address = gcp.compute.GlobalAddress("privateIpAddress",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=private_network.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        private_vpc_connection = gcp.servicenetworking.Connection("privateVpcConnection",
-            network=private_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_address.name],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
-        instance = gcp.sql.DatabaseInstance("instance",
-            region="us-central1",
-            database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
-                    ipv4_enabled=False,
-                    private_network=private_network.id,
-                    enable_private_path_for_google_cloud_services=True,
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[private_vpc_connection]))
-        ```
-        ### ENTERPRISE_PLUS Instance with data_cache_config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        main = gcp.sql.DatabaseInstance("main",
-            database_version="MYSQL_8_0_31",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                data_cache_config=gcp.sql.DatabaseInstanceSettingsDataCacheConfigArgs(
-                    data_cache_enabled=True,
-                ),
-                edition="ENTERPRISE_PLUS",
-                tier="db-perf-optimized-N-2",
-            ))
-        ```
 
         ## Import
 
@@ -1054,70 +1054,6 @@ class DatabaseInstance(pulumi.CustomResource):
         It is recommended to not set this field (or set it to true) until you're ready to destroy the instance and its databases.
 
         ## Example Usage
-        ### SQL Second Generation Instance
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        main = gcp.sql.DatabaseInstance("main",
-            database_version="POSTGRES_15",
-            region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ))
-        ```
-        ### Private IP Instance
-        > **NOTE:** For private IP instance setup, note that the `sql.DatabaseInstance` does not actually interpolate values from `servicenetworking.Connection`. You must explicitly add a `depends_on`reference as shown below.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        private_network = gcp.compute.Network("privateNetwork", opts=pulumi.ResourceOptions(provider=google_beta))
-        private_ip_address = gcp.compute.GlobalAddress("privateIpAddress",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=private_network.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        private_vpc_connection = gcp.servicenetworking.Connection("privateVpcConnection",
-            network=private_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_address.name],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
-        instance = gcp.sql.DatabaseInstance("instance",
-            region="us-central1",
-            database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
-                    ipv4_enabled=False,
-                    private_network=private_network.id,
-                    enable_private_path_for_google_cloud_services=True,
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[private_vpc_connection]))
-        ```
-        ### ENTERPRISE_PLUS Instance with data_cache_config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        main = gcp.sql.DatabaseInstance("main",
-            database_version="MYSQL_8_0_31",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                data_cache_config=gcp.sql.DatabaseInstanceSettingsDataCacheConfigArgs(
-                    data_cache_enabled=True,
-                ),
-                edition="ENTERPRISE_PLUS",
-                tier="db-perf-optimized-N-2",
-            ))
-        ```
 
         ## Import
 
@@ -1179,11 +1115,7 @@ class DatabaseInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatabaseInstanceArgs.__new__(DatabaseInstanceArgs)
 
-            if clone is not None and not isinstance(clone, DatabaseInstanceCloneArgs):
-                clone = clone or {}
-                def _setter(key, value):
-                    clone[key] = value
-                DatabaseInstanceCloneArgs._configure(_setter, **clone)
+            clone = _utilities.configure(clone, DatabaseInstanceCloneArgs, True)
             __props__.__dict__["clone"] = clone
             if database_version is None and not opts.urn:
                 raise TypeError("Missing required property 'database_version'")
@@ -1196,24 +1128,12 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
-            if replica_configuration is not None and not isinstance(replica_configuration, DatabaseInstanceReplicaConfigurationArgs):
-                replica_configuration = replica_configuration or {}
-                def _setter(key, value):
-                    replica_configuration[key] = value
-                DatabaseInstanceReplicaConfigurationArgs._configure(_setter, **replica_configuration)
+            replica_configuration = _utilities.configure(replica_configuration, DatabaseInstanceReplicaConfigurationArgs, True)
             __props__.__dict__["replica_configuration"] = replica_configuration
-            if restore_backup_context is not None and not isinstance(restore_backup_context, DatabaseInstanceRestoreBackupContextArgs):
-                restore_backup_context = restore_backup_context or {}
-                def _setter(key, value):
-                    restore_backup_context[key] = value
-                DatabaseInstanceRestoreBackupContextArgs._configure(_setter, **restore_backup_context)
+            restore_backup_context = _utilities.configure(restore_backup_context, DatabaseInstanceRestoreBackupContextArgs, True)
             __props__.__dict__["restore_backup_context"] = restore_backup_context
             __props__.__dict__["root_password"] = None if root_password is None else pulumi.Output.secret(root_password)
-            if settings is not None and not isinstance(settings, DatabaseInstanceSettingsArgs):
-                settings = settings or {}
-                def _setter(key, value):
-                    settings[key] = value
-                DatabaseInstanceSettingsArgs._configure(_setter, **settings)
+            settings = _utilities.configure(settings, DatabaseInstanceSettingsArgs, True)
             __props__.__dict__["settings"] = settings
             __props__.__dict__["available_maintenance_versions"] = None
             __props__.__dict__["connection_name"] = None

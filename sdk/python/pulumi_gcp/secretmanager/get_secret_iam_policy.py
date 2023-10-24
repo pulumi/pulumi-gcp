@@ -93,16 +93,6 @@ def get_secret_iam_policy(project: Optional[str] = None,
     """
     Retrieves the current IAM policy data for secret
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.secretmanager.get_secret_iam_policy(project=google_secret_manager_secret["secret-basic"]["project"],
-        secret_id=google_secret_manager_secret["secret-basic"]["secret_id"])
-    ```
-
 
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -127,16 +117,6 @@ def get_secret_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] 
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretIamPolicyResult]:
     """
     Retrieves the current IAM policy data for secret
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.secretmanager.get_secret_iam_policy(project=google_secret_manager_secret["secret-basic"]["project"],
-        secret_id=google_secret_manager_secret["secret-basic"]["secret_id"])
-    ```
 
 
     :param str project: The ID of the project in which the resource belongs.

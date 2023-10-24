@@ -11,67 +11,6 @@ namespace Pulumi.Gcp.Firebase
 {
     /// <summary>
     /// ## Example Usage
-    /// ### Firebase Extentions Instance Resize Image
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var images = new Gcp.Storage.Bucket("images", new()
-    ///     {
-    ///         Project = "my-project-name",
-    ///         Location = "US",
-    ///         UniformBucketLevelAccess = true,
-    ///         ForceDestroy = true,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
-    /// 
-    ///     var resizeImage = new Gcp.Firebase.ExtensionsInstance("resizeImage", new()
-    ///     {
-    ///         Project = "my-project-name",
-    ///         InstanceId = "storage-resize-images",
-    ///         Config = new Gcp.Firebase.Inputs.ExtensionsInstanceConfigArgs
-    ///         {
-    ///             ExtensionRef = "firebase/storage-resize-images",
-    ///             ExtensionVersion = "0.1.37",
-    ///             Params = 
-    ///             {
-    ///                 { "DELETE_ORIGINAL_FILE", "false" },
-    ///                 { "MAKE_PUBLIC", "false" },
-    ///                 { "IMAGE_TYPE", "false" },
-    ///                 { "IS_ANIMATED", "true" },
-    ///                 { "FUNCTION_MEMORY", "1024" },
-    ///                 { "DO_BACKFILL", "false" },
-    ///                 { "IMG_SIZES", "200x200" },
-    ///                 { "IMG_BUCKET", images.Name },
-    ///                 { "LOCATION", "" },
-    ///             },
-    ///             SystemParams = 
-    ///             {
-    ///                 { "firebaseextensions.v1beta.function/maxInstances", "3000" },
-    ///                 { "firebaseextensions.v1beta.function/memory", "256" },
-    ///                 { "firebaseextensions.v1beta.function/minInstances", "0" },
-    ///                 { "firebaseextensions.v1beta.function/vpcConnectorEgressSettings", "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED" },
-    ///             },
-    ///             AllowedEventTypes = new[]
-    ///             {
-    ///                 "firebase.extensions.storage-resize-images.v1.complete",
-    ///             },
-    ///             EventarcChannel = "projects/my-project-name/locations//channels/firebase",
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

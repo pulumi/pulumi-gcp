@@ -93,16 +93,6 @@ def get_snapshot_iam_policy(name: Optional[str] = None,
     """
     Retrieves the current IAM policy data for snapshot
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.compute.get_snapshot_iam_policy(project=google_compute_snapshot["snapshot"]["project"],
-        name=google_compute_snapshot["snapshot"]["name"])
-    ```
-
 
     :param str name: Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.
@@ -128,16 +118,6 @@ def get_snapshot_iam_policy_output(name: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotIamPolicyResult]:
     """
     Retrieves the current IAM policy data for snapshot
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.compute.get_snapshot_iam_policy(project=google_compute_snapshot["snapshot"]["project"],
-        name=google_compute_snapshot["snapshot"]["name"])
-    ```
 
 
     :param str name: Used to find the parent resource to bind the IAM policy to

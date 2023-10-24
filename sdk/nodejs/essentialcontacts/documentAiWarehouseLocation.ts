@@ -14,22 +14,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/document-warehouse/docs/overview)
  *
  * ## Example Usage
- * ### Document Ai Warehouse Location
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const project = gcp.organizations.getProject({});
- * const example = new gcp.essentialcontacts.DocumentAiWarehouseLocation("example", {
- *     location: "us",
- *     projectNumber: project.then(project => project.number),
- *     accessControlMode: "ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI",
- *     databaseType: "DB_INFRA_SPANNER",
- *     kmsKey: "dummy_key",
- *     documentCreatorDefaultRole: "DOCUMENT_ADMIN",
- * });
- * ```
  *
  * ## Import
  *

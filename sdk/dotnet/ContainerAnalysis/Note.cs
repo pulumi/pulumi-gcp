@@ -21,67 +21,6 @@ namespace Pulumi.Gcp.ContainerAnalysis
     ///     * [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
     /// 
     /// ## Example Usage
-    /// ### Container Analysis Note Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var note = new Gcp.ContainerAnalysis.Note("note", new()
-    ///     {
-    ///         AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs
-    ///         {
-    ///             Hint = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityHintArgs
-    ///             {
-    ///                 HumanReadableName = "Attestor Note",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Container Analysis Note Attestation Full
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var note = new Gcp.ContainerAnalysis.Note("note", new()
-    ///     {
-    ///         AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs
-    ///         {
-    ///             Hint = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityHintArgs
-    ///             {
-    ///                 HumanReadableName = "Attestor Note",
-    ///             },
-    ///         },
-    ///         ExpirationTime = "2120-10-02T15:01:23.045123456Z",
-    ///         LongDescription = "a longer description of test note",
-    ///         RelatedUrls = new[]
-    ///         {
-    ///             new Gcp.ContainerAnalysis.Inputs.NoteRelatedUrlArgs
-    ///             {
-    ///                 Label = "foo",
-    ///                 Url = "some.url",
-    ///             },
-    ///             new Gcp.ContainerAnalysis.Inputs.NoteRelatedUrlArgs
-    ///             {
-    ///                 Url = "google.com",
-    ///             },
-    ///         },
-    ///         ShortDescription = "test note",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

@@ -2425,19 +2425,6 @@ type WorkloadIdentityPoolProviderOidc struct {
 	// If this list is empty, the OIDC token audience must be equal to the full canonical
 	// resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
 	// For example:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	AllowedAudiences []string `pulumi:"allowedAudiences"`
 	// The OIDC issuer URL.
 	IssuerUri string `pulumi:"issuerUri"`
@@ -2447,19 +2434,6 @@ type WorkloadIdentityPoolProviderOidc struct {
 	// .well-known path for the `issuerUri`. Currently, RSA and EC asymmetric
 	// keys are supported. The JWK must use following format and include only
 	// the following fields:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	JwksJson *string `pulumi:"jwksJson"`
 }
 
@@ -2482,19 +2456,6 @@ type WorkloadIdentityPoolProviderOidcArgs struct {
 	// If this list is empty, the OIDC token audience must be equal to the full canonical
 	// resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
 	// For example:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	AllowedAudiences pulumi.StringArrayInput `pulumi:"allowedAudiences"`
 	// The OIDC issuer URL.
 	IssuerUri pulumi.StringInput `pulumi:"issuerUri"`
@@ -2504,19 +2465,6 @@ type WorkloadIdentityPoolProviderOidcArgs struct {
 	// .well-known path for the `issuerUri`. Currently, RSA and EC asymmetric
 	// keys are supported. The JWK must use following format and include only
 	// the following fields:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	JwksJson pulumi.StringPtrInput `pulumi:"jwksJson"`
 }
 
@@ -2622,22 +2570,6 @@ func (o WorkloadIdentityPoolProviderOidcOutput) ToOutput(ctx context.Context) pu
 // If this list is empty, the OIDC token audience must be equal to the full canonical
 // resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
 // For example:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o WorkloadIdentityPoolProviderOidcOutput) AllowedAudiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkloadIdentityPoolProviderOidc) []string { return v.AllowedAudiences }).(pulumi.StringArrayOutput)
 }
@@ -2653,22 +2585,6 @@ func (o WorkloadIdentityPoolProviderOidcOutput) IssuerUri() pulumi.StringOutput 
 // .well-known path for the `issuerUri`. Currently, RSA and EC asymmetric
 // keys are supported. The JWK must use following format and include only
 // the following fields:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o WorkloadIdentityPoolProviderOidcOutput) JwksJson() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkloadIdentityPoolProviderOidc) *string { return v.JwksJson }).(pulumi.StringPtrOutput)
 }
@@ -2710,22 +2626,6 @@ func (o WorkloadIdentityPoolProviderOidcPtrOutput) Elem() WorkloadIdentityPoolPr
 // If this list is empty, the OIDC token audience must be equal to the full canonical
 // resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
 // For example:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o WorkloadIdentityPoolProviderOidcPtrOutput) AllowedAudiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPoolProviderOidc) []string {
 		if v == nil {
@@ -2751,22 +2651,6 @@ func (o WorkloadIdentityPoolProviderOidcPtrOutput) IssuerUri() pulumi.StringPtrO
 // .well-known path for the `issuerUri`. Currently, RSA and EC asymmetric
 // keys are supported. The JWK must use following format and include only
 // the following fields:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o WorkloadIdentityPoolProviderOidcPtrOutput) JwksJson() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPoolProviderOidc) *string {
 		if v == nil {

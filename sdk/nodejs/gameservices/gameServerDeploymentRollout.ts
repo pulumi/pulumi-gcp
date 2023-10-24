@@ -17,54 +17,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/game-servers/docs)
  *
  * ## Example Usage
- * ### Game Service Deployment Rollout Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultGameServerDeployment = new gcp.gameservices.GameServerDeployment("defaultGameServerDeployment", {
- *     deploymentId: "tf-test-deployment",
- *     description: "a deployment description",
- * });
- * const defaultGameServerConfig = new gcp.gameservices.GameServerConfig("defaultGameServerConfig", {
- *     configId: "tf-test-config",
- *     deploymentId: defaultGameServerDeployment.deploymentId,
- *     description: "a config description",
- *     fleetConfigs: [{
- *         name: "some-non-guid",
- *         fleetSpec: JSON.stringify({
- *             replicas: 1,
- *             scheduling: "Packed",
- *             template: {
- *                 metadata: {
- *                     name: "tf-test-game-server-template",
- *                 },
- *                 spec: {
- *                     ports: [{
- *                         name: "default",
- *                         portPolicy: "Dynamic",
- *                         containerPort: 7654,
- *                         protocol: "UDP",
- *                     }],
- *                     template: {
- *                         spec: {
- *                             containers: [{
- *                                 name: "simple-udp-server",
- *                                 image: "gcr.io/agones-images/udp-server:0.14",
- *                             }],
- *                         },
- *                     },
- *                 },
- *             },
- *         }),
- *     }],
- * });
- * const defaultGameServerDeploymentRollout = new gcp.gameservices.GameServerDeploymentRollout("defaultGameServerDeploymentRollout", {
- *     deploymentId: defaultGameServerDeployment.deploymentId,
- *     defaultGameServerConfig: defaultGameServerConfig.name,
- * });
- * ```
  *
  * ## Import
  *

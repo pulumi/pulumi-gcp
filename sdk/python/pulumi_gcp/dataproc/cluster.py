@@ -63,7 +63,15 @@ class ClusterArgs:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              virtual_cluster_config: Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cluster_config is None and 'clusterConfig' in kwargs:
+            cluster_config = kwargs['clusterConfig']
+        if graceful_decommission_timeout is None and 'gracefulDecommissionTimeout' in kwargs:
+            graceful_decommission_timeout = kwargs['gracefulDecommissionTimeout']
+        if virtual_cluster_config is None and 'virtualClusterConfig' in kwargs:
+            virtual_cluster_config = kwargs['virtualClusterConfig']
+
         if cluster_config is not None:
             _setter("cluster_config", cluster_config)
         if graceful_decommission_timeout is not None:
@@ -224,7 +232,15 @@ class _ClusterState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              virtual_cluster_config: Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cluster_config is None and 'clusterConfig' in kwargs:
+            cluster_config = kwargs['clusterConfig']
+        if graceful_decommission_timeout is None and 'gracefulDecommissionTimeout' in kwargs:
+            graceful_decommission_timeout = kwargs['gracefulDecommissionTimeout']
+        if virtual_cluster_config is None and 'virtualClusterConfig' in kwargs:
+            virtual_cluster_config = kwargs['virtualClusterConfig']
+
         if cluster_config is not None:
             _setter("cluster_config", cluster_config)
         if graceful_decommission_timeout is not None:
@@ -360,91 +376,6 @@ class Cluster(pulumi.CustomResource):
         whole cluster!
 
         ## Example Usage
-        ### Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        simplecluster = gcp.dataproc.Cluster("simplecluster", region="us-central1")
-        ```
-        ### Advanced
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.service_account.Account("default",
-            account_id="service-account-id",
-            display_name="Service Account")
-        mycluster = gcp.dataproc.Cluster("mycluster",
-            region="us-central1",
-            graceful_decommission_timeout="120s",
-            labels={
-                "foo": "bar",
-            },
-            cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
-                staging_bucket="dataproc-staging-bucket",
-                master_config=gcp.dataproc.ClusterClusterConfigMasterConfigArgs(
-                    num_instances=1,
-                    machine_type="e2-medium",
-                    disk_config=gcp.dataproc.ClusterClusterConfigMasterConfigDiskConfigArgs(
-                        boot_disk_type="pd-ssd",
-                        boot_disk_size_gb=30,
-                    ),
-                ),
-                worker_config=gcp.dataproc.ClusterClusterConfigWorkerConfigArgs(
-                    num_instances=2,
-                    machine_type="e2-medium",
-                    min_cpu_platform="Intel Skylake",
-                    disk_config=gcp.dataproc.ClusterClusterConfigWorkerConfigDiskConfigArgs(
-                        boot_disk_size_gb=30,
-                        num_local_ssds=1,
-                    ),
-                ),
-                preemptible_worker_config=gcp.dataproc.ClusterClusterConfigPreemptibleWorkerConfigArgs(
-                    num_instances=0,
-                ),
-                software_config=gcp.dataproc.ClusterClusterConfigSoftwareConfigArgs(
-                    image_version="2.0.35-debian10",
-                    override_properties={
-                        "dataproc:dataproc.allow.zero.workers": "true",
-                    },
-                ),
-                gce_cluster_config=gcp.dataproc.ClusterClusterConfigGceClusterConfigArgs(
-                    tags=[
-                        "foo",
-                        "bar",
-                    ],
-                    service_account=default.email,
-                    service_account_scopes=["cloud-platform"],
-                ),
-                initialization_actions=[gcp.dataproc.ClusterClusterConfigInitializationActionArgs(
-                    script="gs://dataproc-initialization-actions/stackdriver/stackdriver.sh",
-                    timeout_sec=500,
-                )],
-            ))
-        ```
-        ### Using A GPU Accelerator
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        accelerated_cluster = gcp.dataproc.Cluster("acceleratedCluster",
-            cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
-                gce_cluster_config=gcp.dataproc.ClusterClusterConfigGceClusterConfigArgs(
-                    zone="us-central1-a",
-                ),
-                master_config=gcp.dataproc.ClusterClusterConfigMasterConfigArgs(
-                    accelerators=[gcp.dataproc.ClusterClusterConfigMasterConfigAcceleratorArgs(
-                        accelerator_count=1,
-                        accelerator_type="nvidia-tesla-k80",
-                    )],
-                ),
-            ),
-            region="us-central1")
-        ```
 
         ## Import
 
@@ -488,91 +419,6 @@ class Cluster(pulumi.CustomResource):
         whole cluster!
 
         ## Example Usage
-        ### Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        simplecluster = gcp.dataproc.Cluster("simplecluster", region="us-central1")
-        ```
-        ### Advanced
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.service_account.Account("default",
-            account_id="service-account-id",
-            display_name="Service Account")
-        mycluster = gcp.dataproc.Cluster("mycluster",
-            region="us-central1",
-            graceful_decommission_timeout="120s",
-            labels={
-                "foo": "bar",
-            },
-            cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
-                staging_bucket="dataproc-staging-bucket",
-                master_config=gcp.dataproc.ClusterClusterConfigMasterConfigArgs(
-                    num_instances=1,
-                    machine_type="e2-medium",
-                    disk_config=gcp.dataproc.ClusterClusterConfigMasterConfigDiskConfigArgs(
-                        boot_disk_type="pd-ssd",
-                        boot_disk_size_gb=30,
-                    ),
-                ),
-                worker_config=gcp.dataproc.ClusterClusterConfigWorkerConfigArgs(
-                    num_instances=2,
-                    machine_type="e2-medium",
-                    min_cpu_platform="Intel Skylake",
-                    disk_config=gcp.dataproc.ClusterClusterConfigWorkerConfigDiskConfigArgs(
-                        boot_disk_size_gb=30,
-                        num_local_ssds=1,
-                    ),
-                ),
-                preemptible_worker_config=gcp.dataproc.ClusterClusterConfigPreemptibleWorkerConfigArgs(
-                    num_instances=0,
-                ),
-                software_config=gcp.dataproc.ClusterClusterConfigSoftwareConfigArgs(
-                    image_version="2.0.35-debian10",
-                    override_properties={
-                        "dataproc:dataproc.allow.zero.workers": "true",
-                    },
-                ),
-                gce_cluster_config=gcp.dataproc.ClusterClusterConfigGceClusterConfigArgs(
-                    tags=[
-                        "foo",
-                        "bar",
-                    ],
-                    service_account=default.email,
-                    service_account_scopes=["cloud-platform"],
-                ),
-                initialization_actions=[gcp.dataproc.ClusterClusterConfigInitializationActionArgs(
-                    script="gs://dataproc-initialization-actions/stackdriver/stackdriver.sh",
-                    timeout_sec=500,
-                )],
-            ))
-        ```
-        ### Using A GPU Accelerator
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        accelerated_cluster = gcp.dataproc.Cluster("acceleratedCluster",
-            cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
-                gce_cluster_config=gcp.dataproc.ClusterClusterConfigGceClusterConfigArgs(
-                    zone="us-central1-a",
-                ),
-                master_config=gcp.dataproc.ClusterClusterConfigMasterConfigArgs(
-                    accelerators=[gcp.dataproc.ClusterClusterConfigMasterConfigAcceleratorArgs(
-                        accelerator_count=1,
-                        accelerator_type="nvidia-tesla-k80",
-                    )],
-                ),
-            ),
-            region="us-central1")
-        ```
 
         ## Import
 
@@ -613,22 +459,14 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ClusterArgs.__new__(ClusterArgs)
 
-            if cluster_config is not None and not isinstance(cluster_config, ClusterClusterConfigArgs):
-                cluster_config = cluster_config or {}
-                def _setter(key, value):
-                    cluster_config[key] = value
-                ClusterClusterConfigArgs._configure(_setter, **cluster_config)
+            cluster_config = _utilities.configure(cluster_config, ClusterClusterConfigArgs, True)
             __props__.__dict__["cluster_config"] = cluster_config
             __props__.__dict__["graceful_decommission_timeout"] = graceful_decommission_timeout
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
-            if virtual_cluster_config is not None and not isinstance(virtual_cluster_config, ClusterVirtualClusterConfigArgs):
-                virtual_cluster_config = virtual_cluster_config or {}
-                def _setter(key, value):
-                    virtual_cluster_config[key] = value
-                ClusterVirtualClusterConfigArgs._configure(_setter, **virtual_cluster_config)
+            virtual_cluster_config = _utilities.configure(virtual_cluster_config, ClusterVirtualClusterConfigArgs, True)
             __props__.__dict__["virtual_cluster_config"] = virtual_cluster_config
         super(Cluster, __self__).__init__(
             'gcp:dataproc/cluster:Cluster',

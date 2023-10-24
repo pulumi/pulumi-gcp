@@ -57,7 +57,7 @@ class AppConnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_endpoint: pulumi.Input['AppConnectionApplicationEndpointArgs'],
+             application_endpoint: Optional[pulumi.Input['AppConnectionApplicationEndpointArgs']] = None,
              connectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              gateway: Optional[pulumi.Input['AppConnectionGatewayArgs']] = None,
@@ -66,7 +66,15 @@ class AppConnectionArgs:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if application_endpoint is None and 'applicationEndpoint' in kwargs:
+            application_endpoint = kwargs['applicationEndpoint']
+        if application_endpoint is None:
+            raise TypeError("Missing 'application_endpoint' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("application_endpoint", application_endpoint)
         if connectors is not None:
             _setter("connectors", connectors)
@@ -252,7 +260,13 @@ class _AppConnectionState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if application_endpoint is None and 'applicationEndpoint' in kwargs:
+            application_endpoint = kwargs['applicationEndpoint']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if application_endpoint is not None:
             _setter("application_endpoint", application_endpoint)
         if connectors is not None:
@@ -413,61 +427,6 @@ class AppConnection(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
 
         ## Example Usage
-        ### Beyondcorp App Connection Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        service_account = gcp.service_account.Account("serviceAccount",
-            account_id="my-account",
-            display_name="Test Service Account")
-        app_connector = gcp.beyondcorp.AppConnector("appConnector", principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-            service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
-                email=service_account.email,
-            ),
-        ))
-        app_connection = gcp.beyondcorp.AppConnection("appConnection",
-            type="TCP_PROXY",
-            application_endpoint=gcp.beyondcorp.AppConnectionApplicationEndpointArgs(
-                host="foo-host",
-                port=8080,
-            ),
-            connectors=[app_connector.id])
-        ```
-        ### Beyondcorp App Connection Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        service_account = gcp.service_account.Account("serviceAccount",
-            account_id="my-account",
-            display_name="Test Service Account")
-        app_gateway = gcp.beyondcorp.AppGateway("appGateway",
-            type="TCP_PROXY",
-            host_type="GCP_REGIONAL_MIG")
-        app_connector = gcp.beyondcorp.AppConnector("appConnector", principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-            service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
-                email=service_account.email,
-            ),
-        ))
-        app_connection = gcp.beyondcorp.AppConnection("appConnection",
-            type="TCP_PROXY",
-            display_name="some display name",
-            application_endpoint=gcp.beyondcorp.AppConnectionApplicationEndpointArgs(
-                host="foo-host",
-                port=8080,
-            ),
-            connectors=[app_connector.id],
-            gateway=gcp.beyondcorp.AppConnectionGatewayArgs(
-                app_gateway=app_gateway.id,
-            ),
-            labels={
-                "foo": "bar",
-                "bar": "baz",
-            })
-        ```
 
         ## Import
 
@@ -524,61 +483,6 @@ class AppConnection(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
 
         ## Example Usage
-        ### Beyondcorp App Connection Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        service_account = gcp.service_account.Account("serviceAccount",
-            account_id="my-account",
-            display_name="Test Service Account")
-        app_connector = gcp.beyondcorp.AppConnector("appConnector", principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-            service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
-                email=service_account.email,
-            ),
-        ))
-        app_connection = gcp.beyondcorp.AppConnection("appConnection",
-            type="TCP_PROXY",
-            application_endpoint=gcp.beyondcorp.AppConnectionApplicationEndpointArgs(
-                host="foo-host",
-                port=8080,
-            ),
-            connectors=[app_connector.id])
-        ```
-        ### Beyondcorp App Connection Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        service_account = gcp.service_account.Account("serviceAccount",
-            account_id="my-account",
-            display_name="Test Service Account")
-        app_gateway = gcp.beyondcorp.AppGateway("appGateway",
-            type="TCP_PROXY",
-            host_type="GCP_REGIONAL_MIG")
-        app_connector = gcp.beyondcorp.AppConnector("appConnector", principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-            service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
-                email=service_account.email,
-            ),
-        ))
-        app_connection = gcp.beyondcorp.AppConnection("appConnection",
-            type="TCP_PROXY",
-            display_name="some display name",
-            application_endpoint=gcp.beyondcorp.AppConnectionApplicationEndpointArgs(
-                host="foo-host",
-                port=8080,
-            ),
-            connectors=[app_connector.id],
-            gateway=gcp.beyondcorp.AppConnectionGatewayArgs(
-                app_gateway=app_gateway.id,
-            ),
-            labels={
-                "foo": "bar",
-                "bar": "baz",
-            })
-        ```
 
         ## Import
 
@@ -637,21 +541,13 @@ class AppConnection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AppConnectionArgs.__new__(AppConnectionArgs)
 
-            if application_endpoint is not None and not isinstance(application_endpoint, AppConnectionApplicationEndpointArgs):
-                application_endpoint = application_endpoint or {}
-                def _setter(key, value):
-                    application_endpoint[key] = value
-                AppConnectionApplicationEndpointArgs._configure(_setter, **application_endpoint)
+            application_endpoint = _utilities.configure(application_endpoint, AppConnectionApplicationEndpointArgs, True)
             if application_endpoint is None and not opts.urn:
                 raise TypeError("Missing required property 'application_endpoint'")
             __props__.__dict__["application_endpoint"] = application_endpoint
             __props__.__dict__["connectors"] = connectors
             __props__.__dict__["display_name"] = display_name
-            if gateway is not None and not isinstance(gateway, AppConnectionGatewayArgs):
-                gateway = gateway or {}
-                def _setter(key, value):
-                    gateway[key] = value
-                AppConnectionGatewayArgs._configure(_setter, **gateway)
+            gateway = _utilities.configure(gateway, AppConnectionGatewayArgs, True)
             __props__.__dict__["gateway"] = gateway
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name

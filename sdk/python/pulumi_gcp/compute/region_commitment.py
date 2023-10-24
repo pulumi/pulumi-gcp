@@ -79,7 +79,7 @@ class RegionCommitmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             plan: pulumi.Input[str],
+             plan: Optional[pulumi.Input[str]] = None,
              auto_renew: Optional[pulumi.Input[bool]] = None,
              category: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -89,7 +89,15 @@ class RegionCommitmentArgs:
              region: Optional[pulumi.Input[str]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArgs']]]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if plan is None:
+            raise TypeError("Missing 'plan' argument")
+        if auto_renew is None and 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if license_resource is None and 'licenseResource' in kwargs:
+            license_resource = kwargs['licenseResource']
+
         _setter("plan", plan)
         if auto_renew is not None:
             _setter("auto_renew", auto_renew)
@@ -360,7 +368,25 @@ class _RegionCommitmentState:
              status: Optional[pulumi.Input[str]] = None,
              status_message: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if auto_renew is None and 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if commitment_id is None and 'commitmentId' in kwargs:
+            commitment_id = kwargs['commitmentId']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if end_timestamp is None and 'endTimestamp' in kwargs:
+            end_timestamp = kwargs['endTimestamp']
+        if license_resource is None and 'licenseResource' in kwargs:
+            license_resource = kwargs['licenseResource']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if start_timestamp is None and 'startTimestamp' in kwargs:
+            start_timestamp = kwargs['startTimestamp']
+        if status_message is None and 'statusMessage' in kwargs:
+            status_message = kwargs['statusMessage']
+
         if auto_renew is not None:
             _setter("auto_renew", auto_renew)
         if category is not None:
@@ -656,48 +682,6 @@ class RegionCommitment(pulumi.CustomResource):
             * [Committed use discounts for Compute Engine](https://cloud.google.com/compute/docs/instances/committed-use-discounts-overview)
 
         ## Example Usage
-        ### Compute Region Commitment Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        foobar = gcp.compute.RegionCommitment("foobar",
-            plan="THIRTY_SIX_MONTH",
-            resources=[
-                gcp.compute.RegionCommitmentResourceArgs(
-                    amount="4",
-                    type="VCPU",
-                ),
-                gcp.compute.RegionCommitmentResourceArgs(
-                    amount="9",
-                    type="MEMORY",
-                ),
-            ])
-        ```
-        ### Compute Region Commitment Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        foobar = gcp.compute.RegionCommitment("foobar",
-            auto_renew=True,
-            category="MACHINE",
-            description="some description",
-            plan="THIRTY_SIX_MONTH",
-            resources=[
-                gcp.compute.RegionCommitmentResourceArgs(
-                    amount="4",
-                    type="VCPU",
-                ),
-                gcp.compute.RegionCommitmentResourceArgs(
-                    amount="9",
-                    type="MEMORY",
-                ),
-            ],
-            type="MEMORY_OPTIMIZED")
-        ```
 
         ## Import
 
@@ -776,48 +760,6 @@ class RegionCommitment(pulumi.CustomResource):
             * [Committed use discounts for Compute Engine](https://cloud.google.com/compute/docs/instances/committed-use-discounts-overview)
 
         ## Example Usage
-        ### Compute Region Commitment Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        foobar = gcp.compute.RegionCommitment("foobar",
-            plan="THIRTY_SIX_MONTH",
-            resources=[
-                gcp.compute.RegionCommitmentResourceArgs(
-                    amount="4",
-                    type="VCPU",
-                ),
-                gcp.compute.RegionCommitmentResourceArgs(
-                    amount="9",
-                    type="MEMORY",
-                ),
-            ])
-        ```
-        ### Compute Region Commitment Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        foobar = gcp.compute.RegionCommitment("foobar",
-            auto_renew=True,
-            category="MACHINE",
-            description="some description",
-            plan="THIRTY_SIX_MONTH",
-            resources=[
-                gcp.compute.RegionCommitmentResourceArgs(
-                    amount="4",
-                    type="VCPU",
-                ),
-                gcp.compute.RegionCommitmentResourceArgs(
-                    amount="9",
-                    type="MEMORY",
-                ),
-            ],
-            type="MEMORY_OPTIMIZED")
-        ```
 
         ## Import
 
@@ -880,11 +822,7 @@ class RegionCommitment(pulumi.CustomResource):
             __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["category"] = category
             __props__.__dict__["description"] = description
-            if license_resource is not None and not isinstance(license_resource, RegionCommitmentLicenseResourceArgs):
-                license_resource = license_resource or {}
-                def _setter(key, value):
-                    license_resource[key] = value
-                RegionCommitmentLicenseResourceArgs._configure(_setter, **license_resource)
+            license_resource = _utilities.configure(license_resource, RegionCommitmentLicenseResourceArgs, True)
             __props__.__dict__["license_resource"] = license_resource
             __props__.__dict__["name"] = name
             if plan is None and not opts.urn:

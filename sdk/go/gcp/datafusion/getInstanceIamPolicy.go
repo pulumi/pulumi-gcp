@@ -13,34 +13,6 @@ import (
 )
 
 // Retrieves the current IAM policy data for instance
-//
-// ## example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datafusion"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := datafusion.GetInstanceIamPolicy(ctx, &datafusion.GetInstanceIamPolicyArgs{
-//				Project: pulumi.StringRef(google_data_fusion_instance.Basic_instance.Project),
-//				Region:  pulumi.StringRef(google_data_fusion_instance.Basic_instance.Region),
-//				Name:    google_data_fusion_instance.Basic_instance.Name,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetInstanceIamPolicy(ctx *pulumi.Context, args *GetInstanceIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetInstanceIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceIamPolicyResult

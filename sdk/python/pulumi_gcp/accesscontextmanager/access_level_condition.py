@@ -75,14 +75,26 @@ class AccessLevelConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_level: pulumi.Input[str],
+             access_level: Optional[pulumi.Input[str]] = None,
              device_policy: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArgs']] = None,
              ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              negate: Optional[pulumi.Input[bool]] = None,
              regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if access_level is None:
+            raise TypeError("Missing 'access_level' argument")
+        if device_policy is None and 'devicePolicy' in kwargs:
+            device_policy = kwargs['devicePolicy']
+        if ip_subnetworks is None and 'ipSubnetworks' in kwargs:
+            ip_subnetworks = kwargs['ipSubnetworks']
+        if required_access_levels is None and 'requiredAccessLevels' in kwargs:
+            required_access_levels = kwargs['requiredAccessLevels']
+
         _setter("access_level", access_level)
         if device_policy is not None:
             _setter("device_policy", device_policy)
@@ -280,7 +292,17 @@ class _AccessLevelConditionState:
              negate: Optional[pulumi.Input[bool]] = None,
              regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if device_policy is None and 'devicePolicy' in kwargs:
+            device_policy = kwargs['devicePolicy']
+        if ip_subnetworks is None and 'ipSubnetworks' in kwargs:
+            ip_subnetworks = kwargs['ipSubnetworks']
+        if required_access_levels is None and 'requiredAccessLevels' in kwargs:
+            required_access_levels = kwargs['requiredAccessLevels']
+
         if access_level is not None:
             _setter("access_level", access_level)
         if device_policy is not None:
@@ -446,56 +468,6 @@ class AccessLevelCondition(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
-        ### Access Context Manager Access Level Condition Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
-            parent="organizations/123456789",
-            title="my policy")
-        access_level_service_account = gcp.accesscontextmanager.AccessLevel("access-level-service-account",
-            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
-            title="chromeos_no_lock",
-            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
-                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
-                        require_screen_lock=True,
-                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
-                            os_type="DESKTOP_CHROME_OS",
-                        )],
-                    ),
-                    regions=[
-                        "CH",
-                        "IT",
-                        "US",
-                    ],
-                )],
-            ))
-        created_later = gcp.service_account.Account("created-later", account_id="my-account-id")
-        access_level_conditions = gcp.accesscontextmanager.AccessLevelCondition("access-level-conditions",
-            access_level=access_level_service_account.name,
-            ip_subnetworks=["192.0.4.0/24"],
-            members=[
-                "user:test@google.com",
-                "user:test2@google.com",
-                created_later.email.apply(lambda email: f"serviceAccount:{email}"),
-            ],
-            negate=False,
-            device_policy=gcp.accesscontextmanager.AccessLevelConditionDevicePolicyArgs(
-                require_screen_lock=False,
-                require_admin_approval=False,
-                require_corp_owned=True,
-                os_constraints=[gcp.accesscontextmanager.AccessLevelConditionDevicePolicyOsConstraintArgs(
-                    os_type="DESKTOP_CHROME_OS",
-                )],
-            ),
-            regions=[
-                "IT",
-                "US",
-            ])
-        ```
 
         ## Import
 
@@ -569,56 +541,6 @@ class AccessLevelCondition(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
-        ### Access Context Manager Access Level Condition Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
-            parent="organizations/123456789",
-            title="my policy")
-        access_level_service_account = gcp.accesscontextmanager.AccessLevel("access-level-service-account",
-            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
-            title="chromeos_no_lock",
-            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
-                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
-                        require_screen_lock=True,
-                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
-                            os_type="DESKTOP_CHROME_OS",
-                        )],
-                    ),
-                    regions=[
-                        "CH",
-                        "IT",
-                        "US",
-                    ],
-                )],
-            ))
-        created_later = gcp.service_account.Account("created-later", account_id="my-account-id")
-        access_level_conditions = gcp.accesscontextmanager.AccessLevelCondition("access-level-conditions",
-            access_level=access_level_service_account.name,
-            ip_subnetworks=["192.0.4.0/24"],
-            members=[
-                "user:test@google.com",
-                "user:test2@google.com",
-                created_later.email.apply(lambda email: f"serviceAccount:{email}"),
-            ],
-            negate=False,
-            device_policy=gcp.accesscontextmanager.AccessLevelConditionDevicePolicyArgs(
-                require_screen_lock=False,
-                require_admin_approval=False,
-                require_corp_owned=True,
-                os_constraints=[gcp.accesscontextmanager.AccessLevelConditionDevicePolicyOsConstraintArgs(
-                    os_type="DESKTOP_CHROME_OS",
-                )],
-            ),
-            regions=[
-                "IT",
-                "US",
-            ])
-        ```
 
         ## Import
 
@@ -662,11 +584,7 @@ class AccessLevelCondition(pulumi.CustomResource):
             if access_level is None and not opts.urn:
                 raise TypeError("Missing required property 'access_level'")
             __props__.__dict__["access_level"] = access_level
-            if device_policy is not None and not isinstance(device_policy, AccessLevelConditionDevicePolicyArgs):
-                device_policy = device_policy or {}
-                def _setter(key, value):
-                    device_policy[key] = value
-                AccessLevelConditionDevicePolicyArgs._configure(_setter, **device_policy)
+            device_policy = _utilities.configure(device_policy, AccessLevelConditionDevicePolicyArgs, True)
             __props__.__dict__["device_policy"] = device_policy
             __props__.__dict__["ip_subnetworks"] = ip_subnetworks
             __props__.__dict__["members"] = members

@@ -56,13 +56,23 @@ class RuntimeIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
-             runtime_name: pulumi.Input[str],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             runtime_name: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['RuntimeIamBindingConditionArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if runtime_name is None and 'runtimeName' in kwargs:
+            runtime_name = kwargs['runtimeName']
+        if runtime_name is None:
+            raise TypeError("Missing 'runtime_name' argument")
+
         _setter("members", members)
         _setter("role", role)
         _setter("runtime_name", runtime_name)
@@ -208,7 +218,11 @@ class _RuntimeIamBindingState:
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              runtime_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if runtime_name is None and 'runtimeName' in kwargs:
+            runtime_name = kwargs['runtimeName']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -345,51 +359,6 @@ class RuntimeIamBinding(pulumi.CustomResource):
 
         > **Note:** `notebooks.RuntimeIamBinding` resources **can be** used in conjunction with `notebooks.RuntimeIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_notebooks\\_runtime\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.notebooks.RuntimeIamPolicy("policy",
-            project=google_notebooks_runtime["runtime"]["project"],
-            location=google_notebooks_runtime["runtime"]["location"],
-            runtime_name=google_notebooks_runtime["runtime"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_notebooks\\_runtime\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.notebooks.RuntimeIamBinding("binding",
-            project=google_notebooks_runtime["runtime"]["project"],
-            location=google_notebooks_runtime["runtime"]["location"],
-            runtime_name=google_notebooks_runtime["runtime"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_notebooks\\_runtime\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.notebooks.RuntimeIamMember("member",
-            project=google_notebooks_runtime["runtime"]["project"],
-            location=google_notebooks_runtime["runtime"]["location"],
-            runtime_name=google_notebooks_runtime["runtime"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/runtimes/{{runtime_name}} * {{project}}/{{location}}/{{runtime_name}} * {{location}}/{{runtime_name}} * {{runtime_name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud AI Notebooks runtime IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -457,51 +426,6 @@ class RuntimeIamBinding(pulumi.CustomResource):
 
         > **Note:** `notebooks.RuntimeIamBinding` resources **can be** used in conjunction with `notebooks.RuntimeIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_notebooks\\_runtime\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.notebooks.RuntimeIamPolicy("policy",
-            project=google_notebooks_runtime["runtime"]["project"],
-            location=google_notebooks_runtime["runtime"]["location"],
-            runtime_name=google_notebooks_runtime["runtime"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_notebooks\\_runtime\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.notebooks.RuntimeIamBinding("binding",
-            project=google_notebooks_runtime["runtime"]["project"],
-            location=google_notebooks_runtime["runtime"]["location"],
-            runtime_name=google_notebooks_runtime["runtime"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_notebooks\\_runtime\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.notebooks.RuntimeIamMember("member",
-            project=google_notebooks_runtime["runtime"]["project"],
-            location=google_notebooks_runtime["runtime"]["location"],
-            runtime_name=google_notebooks_runtime["runtime"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/runtimes/{{runtime_name}} * {{project}}/{{location}}/{{runtime_name}} * {{location}}/{{runtime_name}} * {{runtime_name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud AI Notebooks runtime IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -560,11 +484,7 @@ class RuntimeIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RuntimeIamBindingArgs.__new__(RuntimeIamBindingArgs)
 
-            if condition is not None and not isinstance(condition, RuntimeIamBindingConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                RuntimeIamBindingConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, RuntimeIamBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             __props__.__dict__["location"] = location
             if members is None and not opts.urn:

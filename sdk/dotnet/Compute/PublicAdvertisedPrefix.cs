@@ -19,25 +19,6 @@ namespace Pulumi.Gcp.Compute
     ///     * [Using bring your own IP](https://cloud.google.com/vpc/docs/using-bring-your-own-ip)
     /// 
     /// ## Example Usage
-    /// ### Public Advertised Prefixes Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var prefixes = new Gcp.Compute.PublicAdvertisedPrefix("prefixes", new()
-    ///     {
-    ///         Description = "description",
-    ///         DnsVerificationIp = "127.127.0.0",
-    ///         IpCidrRange = "127.127.0.0/16",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

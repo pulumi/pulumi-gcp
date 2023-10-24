@@ -34,9 +34,17 @@ class ClientArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             brand: pulumi.Input[str],
-             display_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             brand: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if brand is None:
+            raise TypeError("Missing 'brand' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+
         _setter("brand", brand)
         _setter("display_name", display_name)
 
@@ -104,7 +112,13 @@ class _ClientState:
              client_id: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              secret: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if brand is not None:
             _setter("brand", brand)
         if client_id is not None:
@@ -194,26 +208,6 @@ class Client(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
-        ### Iap Client
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.Project("project",
-            project_id="my-project",
-            org_id="123456789")
-        project_service = gcp.projects.Service("projectService",
-            project=project.project_id,
-            service="iap.googleapis.com")
-        project_brand = gcp.iap.Brand("projectBrand",
-            support_email="support@example.com",
-            application_title="Cloud IAP protected Application",
-            project=project_service.project)
-        project_client = gcp.iap.Client("projectClient",
-            display_name="Test Client",
-            brand=project_brand.name)
-        ```
 
         ## Import
 
@@ -260,26 +254,6 @@ class Client(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
-        ### Iap Client
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.Project("project",
-            project_id="my-project",
-            org_id="123456789")
-        project_service = gcp.projects.Service("projectService",
-            project=project.project_id,
-            service="iap.googleapis.com")
-        project_brand = gcp.iap.Brand("projectBrand",
-            support_email="support@example.com",
-            application_title="Cloud IAP protected Application",
-            project=project_service.project)
-        project_client = gcp.iap.Client("projectClient",
-            display_name="Test Client",
-            brand=project_brand.name)
-        ```
 
         ## Import
 

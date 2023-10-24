@@ -11,57 +11,9 @@ namespace Pulumi.Gcp.VMwareEngine
 {
     public static class GetCluster
     {
-        /// <summary>
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myCluster = Gcp.VMwareEngine.GetCluster.Invoke(new()
-        ///     {
-        ///         Name = "my-cluster",
-        ///         Parent = "project/locations/us-west1-a/privateClouds/my-cloud",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetClusterResult> InvokeAsync(GetClusterArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("gcp:vmwareengine/getCluster:getCluster", args ?? new GetClusterArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myCluster = Gcp.VMwareEngine.GetCluster.Invoke(new()
-        ///     {
-        ///         Name = "my-cluster",
-        ///         Parent = "project/locations/us-west1-a/privateClouds/my-cloud",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Output<GetClusterResult> Invoke(GetClusterInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterResult>("gcp:vmwareengine/getCluster:getCluster", args ?? new GetClusterInvokeArgs(), options.WithDefaults());
     }

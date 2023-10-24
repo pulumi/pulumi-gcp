@@ -13,46 +13,6 @@ namespace Pulumi.Gcp.Compute
     /// Starts and stops asynchronous persistent disk replication. For more information
     /// see [the official documentation](https://cloud.google.com/compute/docs/disks/async-pd/about)
     /// and the [API](https://cloud.google.com/compute/docs/reference/rest/v1/disks).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var primary_disk = new Gcp.Compute.Disk("primary-disk", new()
-    ///     {
-    ///         Type = "pd-ssd",
-    ///         Zone = "europe-west4-a",
-    ///         PhysicalBlockSizeBytes = 4096,
-    ///     });
-    /// 
-    ///     var secondary_disk = new Gcp.Compute.Disk("secondary-disk", new()
-    ///     {
-    ///         Type = "pd-ssd",
-    ///         Zone = "europe-west3-a",
-    ///         AsyncPrimaryDisk = new Gcp.Compute.Inputs.DiskAsyncPrimaryDiskArgs
-    ///         {
-    ///             Disk = primary_disk.Id,
-    ///         },
-    ///         PhysicalBlockSizeBytes = 4096,
-    ///     });
-    /// 
-    ///     var replication = new Gcp.Compute.DiskAsyncReplication("replication", new()
-    ///     {
-    ///         PrimaryDisk = primary_disk.Id,
-    ///         SecondaryDisk = new Gcp.Compute.Inputs.DiskAsyncReplicationSecondaryDiskArgs
-    ///         {
-    ///             Disk = secondary_disk.Id,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/diskAsyncReplication:DiskAsyncReplication")]
     public partial class DiskAsyncReplication : global::Pulumi.CustomResource

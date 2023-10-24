@@ -13,60 +13,6 @@ import (
 )
 
 // Get runtime versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.runtimeVersions).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/tpu"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := tpu.GetV2RuntimeVersions(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Configure Basic TPU VM With Available Version
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/tpu"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			available, err := tpu.GetV2RuntimeVersions(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = tpu.NewV2Vm(ctx, "tpu", &tpu.V2VmArgs{
-//				Zone:           pulumi.String("us-central1-b"),
-//				RuntimeVersion: *pulumi.String(available.Versions[0]),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetV2RuntimeVersions(ctx *pulumi.Context, args *GetV2RuntimeVersionsArgs, opts ...pulumi.InvokeOption) (*GetV2RuntimeVersionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetV2RuntimeVersionsResult

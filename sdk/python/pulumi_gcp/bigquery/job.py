@@ -58,7 +58,7 @@ class JobArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             job_id: pulumi.Input[str],
+             job_id: Optional[pulumi.Input[str]] = None,
              copy: Optional[pulumi.Input['JobCopyArgs']] = None,
              extract: Optional[pulumi.Input['JobExtractArgs']] = None,
              job_timeout_ms: Optional[pulumi.Input[str]] = None,
@@ -67,7 +67,15 @@ class JobArgs:
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              query: Optional[pulumi.Input['JobQueryArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if job_id is None and 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+        if job_id is None:
+            raise TypeError("Missing 'job_id' argument")
+        if job_timeout_ms is None and 'jobTimeoutMs' in kwargs:
+            job_timeout_ms = kwargs['jobTimeoutMs']
+
         _setter("job_id", job_id)
         if copy is not None:
             _setter("copy", copy)
@@ -269,7 +277,17 @@ class _JobState:
              query: Optional[pulumi.Input['JobQueryArgs']] = None,
              statuses: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]] = None,
              user_email: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if job_id is None and 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+        if job_timeout_ms is None and 'jobTimeoutMs' in kwargs:
+            job_timeout_ms = kwargs['jobTimeoutMs']
+        if job_type is None and 'jobType' in kwargs:
+            job_type = kwargs['jobType']
+        if user_email is None and 'userEmail' in kwargs:
+            user_email = kwargs['userEmail']
+
         if copy is not None:
             _setter("copy", copy)
         if extract is not None:
@@ -474,206 +492,6 @@ class Job(pulumi.CustomResource):
             * [BigQuery Jobs Intro](https://cloud.google.com/bigquery/docs/jobs-overview)
 
         ## Example Usage
-        ### Bigquery Job Query
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bar = gcp.bigquery.Dataset("bar",
-            dataset_id="job_query_dataset",
-            friendly_name="test",
-            description="This is a test description",
-            location="US")
-        foo = gcp.bigquery.Table("foo",
-            deletion_protection=False,
-            dataset_id=bar.dataset_id,
-            table_id="job_query_table")
-        job = gcp.bigquery.Job("job",
-            job_id="job_query",
-            labels={
-                "example-label": "example-value",
-            },
-            query=gcp.bigquery.JobQueryArgs(
-                query="SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
-                destination_table=gcp.bigquery.JobQueryDestinationTableArgs(
-                    project_id=foo.project,
-                    dataset_id=foo.dataset_id,
-                    table_id=foo.table_id,
-                ),
-                allow_large_results=True,
-                flatten_results=True,
-                script_options=gcp.bigquery.JobQueryScriptOptionsArgs(
-                    key_result_statement="LAST",
-                ),
-            ))
-        ```
-        ### Bigquery Job Query Table Reference
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bar = gcp.bigquery.Dataset("bar",
-            dataset_id="job_query_dataset",
-            friendly_name="test",
-            description="This is a test description",
-            location="US")
-        foo = gcp.bigquery.Table("foo",
-            deletion_protection=False,
-            dataset_id=bar.dataset_id,
-            table_id="job_query_table")
-        job = gcp.bigquery.Job("job",
-            job_id="job_query",
-            labels={
-                "example-label": "example-value",
-            },
-            query=gcp.bigquery.JobQueryArgs(
-                query="SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
-                destination_table=gcp.bigquery.JobQueryDestinationTableArgs(
-                    table_id=foo.id,
-                ),
-                default_dataset=gcp.bigquery.JobQueryDefaultDatasetArgs(
-                    dataset_id=bar.id,
-                ),
-                allow_large_results=True,
-                flatten_results=True,
-                script_options=gcp.bigquery.JobQueryScriptOptionsArgs(
-                    key_result_statement="LAST",
-                ),
-            ))
-        ```
-        ### Bigquery Job Load
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bar = gcp.bigquery.Dataset("bar",
-            dataset_id="job_load_dataset",
-            friendly_name="test",
-            description="This is a test description",
-            location="US")
-        foo = gcp.bigquery.Table("foo",
-            deletion_protection=False,
-            dataset_id=bar.dataset_id,
-            table_id="job_load_table")
-        job = gcp.bigquery.Job("job",
-            job_id="job_load",
-            labels={
-                "my_job": "load",
-            },
-            load=gcp.bigquery.JobLoadArgs(
-                source_uris=["gs://cloud-samples-data/bigquery/us-states/us-states-by-date.csv"],
-                destination_table=gcp.bigquery.JobLoadDestinationTableArgs(
-                    project_id=foo.project,
-                    dataset_id=foo.dataset_id,
-                    table_id=foo.table_id,
-                ),
-                skip_leading_rows=1,
-                schema_update_options=[
-                    "ALLOW_FIELD_RELAXATION",
-                    "ALLOW_FIELD_ADDITION",
-                ],
-                write_disposition="WRITE_APPEND",
-                autodetect=True,
-            ))
-        ```
-        ### Bigquery Job Load Parquet
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        test_bucket = gcp.storage.Bucket("testBucket",
-            location="US",
-            uniform_bucket_level_access=True)
-        test_bucket_object = gcp.storage.BucketObject("testBucketObject",
-            source=pulumi.FileAsset("./test-fixtures/test.parquet.gzip"),
-            bucket=test_bucket.name)
-        test_dataset = gcp.bigquery.Dataset("testDataset",
-            dataset_id="job_load_dataset",
-            friendly_name="test",
-            description="This is a test description",
-            location="US")
-        test_table = gcp.bigquery.Table("testTable",
-            deletion_protection=False,
-            table_id="job_load_table",
-            dataset_id=test_dataset.dataset_id)
-        job = gcp.bigquery.Job("job",
-            job_id="job_load",
-            labels={
-                "my_job": "load",
-            },
-            load=gcp.bigquery.JobLoadArgs(
-                source_uris=[pulumi.Output.all(test_bucket_object.bucket, test_bucket_object.name).apply(lambda bucket, name: f"gs://{bucket}/{name}")],
-                destination_table=gcp.bigquery.JobLoadDestinationTableArgs(
-                    project_id=test_table.project,
-                    dataset_id=test_table.dataset_id,
-                    table_id=test_table.table_id,
-                ),
-                schema_update_options=[
-                    "ALLOW_FIELD_RELAXATION",
-                    "ALLOW_FIELD_ADDITION",
-                ],
-                write_disposition="WRITE_APPEND",
-                source_format="PARQUET",
-                autodetect=True,
-                parquet_options=gcp.bigquery.JobLoadParquetOptionsArgs(
-                    enum_as_string=True,
-                    enable_list_inference=True,
-                ),
-            ))
-        ```
-        ### Bigquery Job Extract
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        source_one_dataset = gcp.bigquery.Dataset("source-oneDataset",
-            dataset_id="job_extract_dataset",
-            friendly_name="test",
-            description="This is a test description",
-            location="US")
-        source_one_table = gcp.bigquery.Table("source-oneTable",
-            deletion_protection=False,
-            dataset_id=source_one_dataset.dataset_id,
-            table_id="job_extract_table",
-            schema=\"\"\"[
-          {
-            "name": "name",
-            "type": "STRING",
-            "mode": "NULLABLE"
-          },
-          {
-            "name": "post_abbr",
-            "type": "STRING",
-            "mode": "NULLABLE"
-          },
-          {
-            "name": "date",
-            "type": "DATE",
-            "mode": "NULLABLE"
-          }
-        ]
-        \"\"\")
-        dest = gcp.storage.Bucket("dest",
-            location="US",
-            force_destroy=True)
-        job = gcp.bigquery.Job("job",
-            job_id="job_extract",
-            extract=gcp.bigquery.JobExtractArgs(
-                destination_uris=[dest.url.apply(lambda url: f"{url}/extract")],
-                source_table=gcp.bigquery.JobExtractSourceTableArgs(
-                    project_id=source_one_table.project,
-                    dataset_id=source_one_table.dataset_id,
-                    table_id=source_one_table.table_id,
-                ),
-                destination_format="NEWLINE_DELIMITED_JSON",
-                compression="GZIP",
-            ))
-        ```
 
         ## Import
 
@@ -738,206 +556,6 @@ class Job(pulumi.CustomResource):
             * [BigQuery Jobs Intro](https://cloud.google.com/bigquery/docs/jobs-overview)
 
         ## Example Usage
-        ### Bigquery Job Query
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bar = gcp.bigquery.Dataset("bar",
-            dataset_id="job_query_dataset",
-            friendly_name="test",
-            description="This is a test description",
-            location="US")
-        foo = gcp.bigquery.Table("foo",
-            deletion_protection=False,
-            dataset_id=bar.dataset_id,
-            table_id="job_query_table")
-        job = gcp.bigquery.Job("job",
-            job_id="job_query",
-            labels={
-                "example-label": "example-value",
-            },
-            query=gcp.bigquery.JobQueryArgs(
-                query="SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
-                destination_table=gcp.bigquery.JobQueryDestinationTableArgs(
-                    project_id=foo.project,
-                    dataset_id=foo.dataset_id,
-                    table_id=foo.table_id,
-                ),
-                allow_large_results=True,
-                flatten_results=True,
-                script_options=gcp.bigquery.JobQueryScriptOptionsArgs(
-                    key_result_statement="LAST",
-                ),
-            ))
-        ```
-        ### Bigquery Job Query Table Reference
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bar = gcp.bigquery.Dataset("bar",
-            dataset_id="job_query_dataset",
-            friendly_name="test",
-            description="This is a test description",
-            location="US")
-        foo = gcp.bigquery.Table("foo",
-            deletion_protection=False,
-            dataset_id=bar.dataset_id,
-            table_id="job_query_table")
-        job = gcp.bigquery.Job("job",
-            job_id="job_query",
-            labels={
-                "example-label": "example-value",
-            },
-            query=gcp.bigquery.JobQueryArgs(
-                query="SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
-                destination_table=gcp.bigquery.JobQueryDestinationTableArgs(
-                    table_id=foo.id,
-                ),
-                default_dataset=gcp.bigquery.JobQueryDefaultDatasetArgs(
-                    dataset_id=bar.id,
-                ),
-                allow_large_results=True,
-                flatten_results=True,
-                script_options=gcp.bigquery.JobQueryScriptOptionsArgs(
-                    key_result_statement="LAST",
-                ),
-            ))
-        ```
-        ### Bigquery Job Load
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bar = gcp.bigquery.Dataset("bar",
-            dataset_id="job_load_dataset",
-            friendly_name="test",
-            description="This is a test description",
-            location="US")
-        foo = gcp.bigquery.Table("foo",
-            deletion_protection=False,
-            dataset_id=bar.dataset_id,
-            table_id="job_load_table")
-        job = gcp.bigquery.Job("job",
-            job_id="job_load",
-            labels={
-                "my_job": "load",
-            },
-            load=gcp.bigquery.JobLoadArgs(
-                source_uris=["gs://cloud-samples-data/bigquery/us-states/us-states-by-date.csv"],
-                destination_table=gcp.bigquery.JobLoadDestinationTableArgs(
-                    project_id=foo.project,
-                    dataset_id=foo.dataset_id,
-                    table_id=foo.table_id,
-                ),
-                skip_leading_rows=1,
-                schema_update_options=[
-                    "ALLOW_FIELD_RELAXATION",
-                    "ALLOW_FIELD_ADDITION",
-                ],
-                write_disposition="WRITE_APPEND",
-                autodetect=True,
-            ))
-        ```
-        ### Bigquery Job Load Parquet
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        test_bucket = gcp.storage.Bucket("testBucket",
-            location="US",
-            uniform_bucket_level_access=True)
-        test_bucket_object = gcp.storage.BucketObject("testBucketObject",
-            source=pulumi.FileAsset("./test-fixtures/test.parquet.gzip"),
-            bucket=test_bucket.name)
-        test_dataset = gcp.bigquery.Dataset("testDataset",
-            dataset_id="job_load_dataset",
-            friendly_name="test",
-            description="This is a test description",
-            location="US")
-        test_table = gcp.bigquery.Table("testTable",
-            deletion_protection=False,
-            table_id="job_load_table",
-            dataset_id=test_dataset.dataset_id)
-        job = gcp.bigquery.Job("job",
-            job_id="job_load",
-            labels={
-                "my_job": "load",
-            },
-            load=gcp.bigquery.JobLoadArgs(
-                source_uris=[pulumi.Output.all(test_bucket_object.bucket, test_bucket_object.name).apply(lambda bucket, name: f"gs://{bucket}/{name}")],
-                destination_table=gcp.bigquery.JobLoadDestinationTableArgs(
-                    project_id=test_table.project,
-                    dataset_id=test_table.dataset_id,
-                    table_id=test_table.table_id,
-                ),
-                schema_update_options=[
-                    "ALLOW_FIELD_RELAXATION",
-                    "ALLOW_FIELD_ADDITION",
-                ],
-                write_disposition="WRITE_APPEND",
-                source_format="PARQUET",
-                autodetect=True,
-                parquet_options=gcp.bigquery.JobLoadParquetOptionsArgs(
-                    enum_as_string=True,
-                    enable_list_inference=True,
-                ),
-            ))
-        ```
-        ### Bigquery Job Extract
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        source_one_dataset = gcp.bigquery.Dataset("source-oneDataset",
-            dataset_id="job_extract_dataset",
-            friendly_name="test",
-            description="This is a test description",
-            location="US")
-        source_one_table = gcp.bigquery.Table("source-oneTable",
-            deletion_protection=False,
-            dataset_id=source_one_dataset.dataset_id,
-            table_id="job_extract_table",
-            schema=\"\"\"[
-          {
-            "name": "name",
-            "type": "STRING",
-            "mode": "NULLABLE"
-          },
-          {
-            "name": "post_abbr",
-            "type": "STRING",
-            "mode": "NULLABLE"
-          },
-          {
-            "name": "date",
-            "type": "DATE",
-            "mode": "NULLABLE"
-          }
-        ]
-        \"\"\")
-        dest = gcp.storage.Bucket("dest",
-            location="US",
-            force_destroy=True)
-        job = gcp.bigquery.Job("job",
-            job_id="job_extract",
-            extract=gcp.bigquery.JobExtractArgs(
-                destination_uris=[dest.url.apply(lambda url: f"{url}/extract")],
-                source_table=gcp.bigquery.JobExtractSourceTableArgs(
-                    project_id=source_one_table.project,
-                    dataset_id=source_one_table.dataset_id,
-                    table_id=source_one_table.table_id,
-                ),
-                destination_format="NEWLINE_DELIMITED_JSON",
-                compression="GZIP",
-            ))
-        ```
 
         ## Import
 
@@ -1004,36 +622,20 @@ class Job(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = JobArgs.__new__(JobArgs)
 
-            if copy is not None and not isinstance(copy, JobCopyArgs):
-                copy = copy or {}
-                def _setter(key, value):
-                    copy[key] = value
-                JobCopyArgs._configure(_setter, **copy)
+            copy = _utilities.configure(copy, JobCopyArgs, True)
             __props__.__dict__["copy"] = copy
-            if extract is not None and not isinstance(extract, JobExtractArgs):
-                extract = extract or {}
-                def _setter(key, value):
-                    extract[key] = value
-                JobExtractArgs._configure(_setter, **extract)
+            extract = _utilities.configure(extract, JobExtractArgs, True)
             __props__.__dict__["extract"] = extract
             if job_id is None and not opts.urn:
                 raise TypeError("Missing required property 'job_id'")
             __props__.__dict__["job_id"] = job_id
             __props__.__dict__["job_timeout_ms"] = job_timeout_ms
             __props__.__dict__["labels"] = labels
-            if load is not None and not isinstance(load, JobLoadArgs):
-                load = load or {}
-                def _setter(key, value):
-                    load[key] = value
-                JobLoadArgs._configure(_setter, **load)
+            load = _utilities.configure(load, JobLoadArgs, True)
             __props__.__dict__["load"] = load
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
-            if query is not None and not isinstance(query, JobQueryArgs):
-                query = query or {}
-                def _setter(key, value):
-                    query[key] = value
-                JobQueryArgs._configure(_setter, **query)
+            query = _utilities.configure(query, JobQueryArgs, True)
             __props__.__dict__["query"] = query
             __props__.__dict__["job_type"] = None
             __props__.__dict__["statuses"] = None

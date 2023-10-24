@@ -86,7 +86,7 @@ class ManagedZoneArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dns_name: pulumi.Input[str],
+             dns_name: Optional[pulumi.Input[str]] = None,
              cloud_logging_config: Optional[pulumi.Input['ManagedZoneCloudLoggingConfigArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              dnssec_config: Optional[pulumi.Input['ManagedZoneDnssecConfigArgs']] = None,
@@ -100,7 +100,29 @@ class ManagedZoneArgs:
              reverse_lookup: Optional[pulumi.Input[bool]] = None,
              service_directory_config: Optional[pulumi.Input['ManagedZoneServiceDirectoryConfigArgs']] = None,
              visibility: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dns_name is None and 'dnsName' in kwargs:
+            dns_name = kwargs['dnsName']
+        if dns_name is None:
+            raise TypeError("Missing 'dns_name' argument")
+        if cloud_logging_config is None and 'cloudLoggingConfig' in kwargs:
+            cloud_logging_config = kwargs['cloudLoggingConfig']
+        if dnssec_config is None and 'dnssecConfig' in kwargs:
+            dnssec_config = kwargs['dnssecConfig']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if forwarding_config is None and 'forwardingConfig' in kwargs:
+            forwarding_config = kwargs['forwardingConfig']
+        if peering_config is None and 'peeringConfig' in kwargs:
+            peering_config = kwargs['peeringConfig']
+        if private_visibility_config is None and 'privateVisibilityConfig' in kwargs:
+            private_visibility_config = kwargs['privateVisibilityConfig']
+        if reverse_lookup is None and 'reverseLookup' in kwargs:
+            reverse_lookup = kwargs['reverseLookup']
+        if service_directory_config is None and 'serviceDirectoryConfig' in kwargs:
+            service_directory_config = kwargs['serviceDirectoryConfig']
+
         _setter("dns_name", dns_name)
         if cloud_logging_config is not None:
             _setter("cloud_logging_config", cloud_logging_config)
@@ -420,7 +442,33 @@ class _ManagedZoneState:
              reverse_lookup: Optional[pulumi.Input[bool]] = None,
              service_directory_config: Optional[pulumi.Input['ManagedZoneServiceDirectoryConfigArgs']] = None,
              visibility: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cloud_logging_config is None and 'cloudLoggingConfig' in kwargs:
+            cloud_logging_config = kwargs['cloudLoggingConfig']
+        if creation_time is None and 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if dns_name is None and 'dnsName' in kwargs:
+            dns_name = kwargs['dnsName']
+        if dnssec_config is None and 'dnssecConfig' in kwargs:
+            dnssec_config = kwargs['dnssecConfig']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if forwarding_config is None and 'forwardingConfig' in kwargs:
+            forwarding_config = kwargs['forwardingConfig']
+        if managed_zone_id is None and 'managedZoneId' in kwargs:
+            managed_zone_id = kwargs['managedZoneId']
+        if name_servers is None and 'nameServers' in kwargs:
+            name_servers = kwargs['nameServers']
+        if peering_config is None and 'peeringConfig' in kwargs:
+            peering_config = kwargs['peeringConfig']
+        if private_visibility_config is None and 'privateVisibilityConfig' in kwargs:
+            private_visibility_config = kwargs['privateVisibilityConfig']
+        if reverse_lookup is None and 'reverseLookup' in kwargs:
+            reverse_lookup = kwargs['reverseLookup']
+        if service_directory_config is None and 'serviceDirectoryConfig' in kwargs:
+            service_directory_config = kwargs['serviceDirectoryConfig']
+
         if cloud_logging_config is not None:
             _setter("cloud_logging_config", cloud_logging_config)
         if creation_time is not None:
@@ -716,200 +764,6 @@ class ManagedZone(pulumi.CustomResource):
             * [Managing Zones](https://cloud.google.com/dns/zones/)
 
         ## Example Usage
-        ### Dns Managed Zone Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example_zone = gcp.dns.ManagedZone("example-zone",
-            description="Example DNS zone",
-            dns_name="my-domain.com.",
-            labels={
-                "foo": "bar",
-            })
-        ```
-        ### Dns Managed Zone Private
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
-        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False)
-        private_zone = gcp.dns.ManagedZone("private-zone",
-            dns_name="private.example.com.",
-            description="Example private DNS zone",
-            labels={
-                "foo": "bar",
-            },
-            visibility="private",
-            private_visibility_config=gcp.dns.ManagedZonePrivateVisibilityConfigArgs(
-                networks=[
-                    gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
-                        network_url=network_1.id,
-                    ),
-                    gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
-                        network_url=network_2.id,
-                    ),
-                ],
-            ))
-        ```
-        ### Dns Managed Zone Private Forwarding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
-        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False)
-        private_zone = gcp.dns.ManagedZone("private-zone",
-            dns_name="private.example.com.",
-            description="Example private DNS zone",
-            labels={
-                "foo": "bar",
-            },
-            visibility="private",
-            private_visibility_config=gcp.dns.ManagedZonePrivateVisibilityConfigArgs(
-                networks=[
-                    gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
-                        network_url=network_1.id,
-                    ),
-                    gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
-                        network_url=network_2.id,
-                    ),
-                ],
-            ),
-            forwarding_config=gcp.dns.ManagedZoneForwardingConfigArgs(
-                target_name_servers=[
-                    gcp.dns.ManagedZoneForwardingConfigTargetNameServerArgs(
-                        ipv4_address="172.16.1.10",
-                    ),
-                    gcp.dns.ManagedZoneForwardingConfigTargetNameServerArgs(
-                        ipv4_address="172.16.1.20",
-                    ),
-                ],
-            ))
-        ```
-        ### Dns Managed Zone Private Gke
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
-        subnetwork_1 = gcp.compute.Subnetwork("subnetwork-1",
-            network=network_1.name,
-            ip_cidr_range="10.0.36.0/24",
-            region="us-central1",
-            private_ip_google_access=True,
-            secondary_ip_ranges=[
-                gcp.compute.SubnetworkSecondaryIpRangeArgs(
-                    range_name="pod",
-                    ip_cidr_range="10.0.0.0/19",
-                ),
-                gcp.compute.SubnetworkSecondaryIpRangeArgs(
-                    range_name="svc",
-                    ip_cidr_range="10.0.32.0/22",
-                ),
-            ])
-        cluster_1 = gcp.container.Cluster("cluster-1",
-            location="us-central1-c",
-            initial_node_count=1,
-            networking_mode="VPC_NATIVE",
-            default_snat_status=gcp.container.ClusterDefaultSnatStatusArgs(
-                disabled=True,
-            ),
-            network=network_1.name,
-            subnetwork=subnetwork_1.name,
-            private_cluster_config=gcp.container.ClusterPrivateClusterConfigArgs(
-                enable_private_endpoint=True,
-                enable_private_nodes=True,
-                master_ipv4_cidr_block="10.42.0.0/28",
-                master_global_access_config=gcp.container.ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs(
-                    enabled=True,
-                ),
-            ),
-            master_authorized_networks_config=gcp.container.ClusterMasterAuthorizedNetworksConfigArgs(),
-            ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(
-                cluster_secondary_range_name=subnetwork_1.secondary_ip_ranges[0].range_name,
-                services_secondary_range_name=subnetwork_1.secondary_ip_ranges[1].range_name,
-            ))
-        private_zone_gke = gcp.dns.ManagedZone("private-zone-gke",
-            dns_name="private.example.com.",
-            description="Example private DNS zone",
-            labels={
-                "foo": "bar",
-            },
-            visibility="private",
-            private_visibility_config=gcp.dns.ManagedZonePrivateVisibilityConfigArgs(
-                gke_clusters=[gcp.dns.ManagedZonePrivateVisibilityConfigGkeClusterArgs(
-                    gke_cluster_name=cluster_1.id,
-                )],
-            ))
-        ```
-        ### Dns Managed Zone Private Peering
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network_source = gcp.compute.Network("network-source", auto_create_subnetworks=False)
-        network_target = gcp.compute.Network("network-target", auto_create_subnetworks=False)
-        peering_zone = gcp.dns.ManagedZone("peering-zone",
-            dns_name="peering.example.com.",
-            description="Example private DNS peering zone",
-            visibility="private",
-            private_visibility_config=gcp.dns.ManagedZonePrivateVisibilityConfigArgs(
-                networks=[gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
-                    network_url=network_source.id,
-                )],
-            ),
-            peering_config=gcp.dns.ManagedZonePeeringConfigArgs(
-                target_network=gcp.dns.ManagedZonePeeringConfigTargetNetworkArgs(
-                    network_url=network_target.id,
-                ),
-            ))
-        ```
-        ### Dns Managed Zone Service Directory
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example = gcp.servicedirectory.Namespace("example",
-            namespace_id="example",
-            location="us-central1",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        sd_zone = gcp.dns.ManagedZone("sd-zone",
-            dns_name="services.example.com.",
-            description="Example private DNS Service Directory zone",
-            visibility="private",
-            service_directory_config=gcp.dns.ManagedZoneServiceDirectoryConfigArgs(
-                namespace=gcp.dns.ManagedZoneServiceDirectoryConfigNamespaceArgs(
-                    namespace_url=example.id,
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        network = gcp.compute.Network("network", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Dns Managed Zone Cloud Logging
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        cloud_logging_enabled_zone = gcp.dns.ManagedZone("cloud-logging-enabled-zone",
-            cloud_logging_config=gcp.dns.ManagedZoneCloudLoggingConfigArgs(
-                enable_logging=True,
-            ),
-            description="Example cloud logging enabled DNS zone",
-            dns_name="services.example.com.",
-            labels={
-                "foo": "bar",
-            })
-        ```
 
         ## Import
 
@@ -981,200 +835,6 @@ class ManagedZone(pulumi.CustomResource):
             * [Managing Zones](https://cloud.google.com/dns/zones/)
 
         ## Example Usage
-        ### Dns Managed Zone Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example_zone = gcp.dns.ManagedZone("example-zone",
-            description="Example DNS zone",
-            dns_name="my-domain.com.",
-            labels={
-                "foo": "bar",
-            })
-        ```
-        ### Dns Managed Zone Private
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
-        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False)
-        private_zone = gcp.dns.ManagedZone("private-zone",
-            dns_name="private.example.com.",
-            description="Example private DNS zone",
-            labels={
-                "foo": "bar",
-            },
-            visibility="private",
-            private_visibility_config=gcp.dns.ManagedZonePrivateVisibilityConfigArgs(
-                networks=[
-                    gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
-                        network_url=network_1.id,
-                    ),
-                    gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
-                        network_url=network_2.id,
-                    ),
-                ],
-            ))
-        ```
-        ### Dns Managed Zone Private Forwarding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
-        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False)
-        private_zone = gcp.dns.ManagedZone("private-zone",
-            dns_name="private.example.com.",
-            description="Example private DNS zone",
-            labels={
-                "foo": "bar",
-            },
-            visibility="private",
-            private_visibility_config=gcp.dns.ManagedZonePrivateVisibilityConfigArgs(
-                networks=[
-                    gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
-                        network_url=network_1.id,
-                    ),
-                    gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
-                        network_url=network_2.id,
-                    ),
-                ],
-            ),
-            forwarding_config=gcp.dns.ManagedZoneForwardingConfigArgs(
-                target_name_servers=[
-                    gcp.dns.ManagedZoneForwardingConfigTargetNameServerArgs(
-                        ipv4_address="172.16.1.10",
-                    ),
-                    gcp.dns.ManagedZoneForwardingConfigTargetNameServerArgs(
-                        ipv4_address="172.16.1.20",
-                    ),
-                ],
-            ))
-        ```
-        ### Dns Managed Zone Private Gke
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
-        subnetwork_1 = gcp.compute.Subnetwork("subnetwork-1",
-            network=network_1.name,
-            ip_cidr_range="10.0.36.0/24",
-            region="us-central1",
-            private_ip_google_access=True,
-            secondary_ip_ranges=[
-                gcp.compute.SubnetworkSecondaryIpRangeArgs(
-                    range_name="pod",
-                    ip_cidr_range="10.0.0.0/19",
-                ),
-                gcp.compute.SubnetworkSecondaryIpRangeArgs(
-                    range_name="svc",
-                    ip_cidr_range="10.0.32.0/22",
-                ),
-            ])
-        cluster_1 = gcp.container.Cluster("cluster-1",
-            location="us-central1-c",
-            initial_node_count=1,
-            networking_mode="VPC_NATIVE",
-            default_snat_status=gcp.container.ClusterDefaultSnatStatusArgs(
-                disabled=True,
-            ),
-            network=network_1.name,
-            subnetwork=subnetwork_1.name,
-            private_cluster_config=gcp.container.ClusterPrivateClusterConfigArgs(
-                enable_private_endpoint=True,
-                enable_private_nodes=True,
-                master_ipv4_cidr_block="10.42.0.0/28",
-                master_global_access_config=gcp.container.ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs(
-                    enabled=True,
-                ),
-            ),
-            master_authorized_networks_config=gcp.container.ClusterMasterAuthorizedNetworksConfigArgs(),
-            ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(
-                cluster_secondary_range_name=subnetwork_1.secondary_ip_ranges[0].range_name,
-                services_secondary_range_name=subnetwork_1.secondary_ip_ranges[1].range_name,
-            ))
-        private_zone_gke = gcp.dns.ManagedZone("private-zone-gke",
-            dns_name="private.example.com.",
-            description="Example private DNS zone",
-            labels={
-                "foo": "bar",
-            },
-            visibility="private",
-            private_visibility_config=gcp.dns.ManagedZonePrivateVisibilityConfigArgs(
-                gke_clusters=[gcp.dns.ManagedZonePrivateVisibilityConfigGkeClusterArgs(
-                    gke_cluster_name=cluster_1.id,
-                )],
-            ))
-        ```
-        ### Dns Managed Zone Private Peering
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network_source = gcp.compute.Network("network-source", auto_create_subnetworks=False)
-        network_target = gcp.compute.Network("network-target", auto_create_subnetworks=False)
-        peering_zone = gcp.dns.ManagedZone("peering-zone",
-            dns_name="peering.example.com.",
-            description="Example private DNS peering zone",
-            visibility="private",
-            private_visibility_config=gcp.dns.ManagedZonePrivateVisibilityConfigArgs(
-                networks=[gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
-                    network_url=network_source.id,
-                )],
-            ),
-            peering_config=gcp.dns.ManagedZonePeeringConfigArgs(
-                target_network=gcp.dns.ManagedZonePeeringConfigTargetNetworkArgs(
-                    network_url=network_target.id,
-                ),
-            ))
-        ```
-        ### Dns Managed Zone Service Directory
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example = gcp.servicedirectory.Namespace("example",
-            namespace_id="example",
-            location="us-central1",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        sd_zone = gcp.dns.ManagedZone("sd-zone",
-            dns_name="services.example.com.",
-            description="Example private DNS Service Directory zone",
-            visibility="private",
-            service_directory_config=gcp.dns.ManagedZoneServiceDirectoryConfigArgs(
-                namespace=gcp.dns.ManagedZoneServiceDirectoryConfigNamespaceArgs(
-                    namespace_url=example.id,
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        network = gcp.compute.Network("network", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Dns Managed Zone Cloud Logging
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        cloud_logging_enabled_zone = gcp.dns.ManagedZone("cloud-logging-enabled-zone",
-            cloud_logging_config=gcp.dns.ManagedZoneCloudLoggingConfigArgs(
-                enable_logging=True,
-            ),
-            description="Example cloud logging enabled DNS zone",
-            dns_name="services.example.com.",
-            labels={
-                "foo": "bar",
-            })
-        ```
 
         ## Import
 
@@ -1234,11 +894,7 @@ class ManagedZone(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ManagedZoneArgs.__new__(ManagedZoneArgs)
 
-            if cloud_logging_config is not None and not isinstance(cloud_logging_config, ManagedZoneCloudLoggingConfigArgs):
-                cloud_logging_config = cloud_logging_config or {}
-                def _setter(key, value):
-                    cloud_logging_config[key] = value
-                ManagedZoneCloudLoggingConfigArgs._configure(_setter, **cloud_logging_config)
+            cloud_logging_config = _utilities.configure(cloud_logging_config, ManagedZoneCloudLoggingConfigArgs, True)
             __props__.__dict__["cloud_logging_config"] = cloud_logging_config
             if description is None:
                 description = 'Managed by Pulumi'
@@ -1246,40 +902,20 @@ class ManagedZone(pulumi.CustomResource):
             if dns_name is None and not opts.urn:
                 raise TypeError("Missing required property 'dns_name'")
             __props__.__dict__["dns_name"] = dns_name
-            if dnssec_config is not None and not isinstance(dnssec_config, ManagedZoneDnssecConfigArgs):
-                dnssec_config = dnssec_config or {}
-                def _setter(key, value):
-                    dnssec_config[key] = value
-                ManagedZoneDnssecConfigArgs._configure(_setter, **dnssec_config)
+            dnssec_config = _utilities.configure(dnssec_config, ManagedZoneDnssecConfigArgs, True)
             __props__.__dict__["dnssec_config"] = dnssec_config
             __props__.__dict__["force_destroy"] = force_destroy
-            if forwarding_config is not None and not isinstance(forwarding_config, ManagedZoneForwardingConfigArgs):
-                forwarding_config = forwarding_config or {}
-                def _setter(key, value):
-                    forwarding_config[key] = value
-                ManagedZoneForwardingConfigArgs._configure(_setter, **forwarding_config)
+            forwarding_config = _utilities.configure(forwarding_config, ManagedZoneForwardingConfigArgs, True)
             __props__.__dict__["forwarding_config"] = forwarding_config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
-            if peering_config is not None and not isinstance(peering_config, ManagedZonePeeringConfigArgs):
-                peering_config = peering_config or {}
-                def _setter(key, value):
-                    peering_config[key] = value
-                ManagedZonePeeringConfigArgs._configure(_setter, **peering_config)
+            peering_config = _utilities.configure(peering_config, ManagedZonePeeringConfigArgs, True)
             __props__.__dict__["peering_config"] = peering_config
-            if private_visibility_config is not None and not isinstance(private_visibility_config, ManagedZonePrivateVisibilityConfigArgs):
-                private_visibility_config = private_visibility_config or {}
-                def _setter(key, value):
-                    private_visibility_config[key] = value
-                ManagedZonePrivateVisibilityConfigArgs._configure(_setter, **private_visibility_config)
+            private_visibility_config = _utilities.configure(private_visibility_config, ManagedZonePrivateVisibilityConfigArgs, True)
             __props__.__dict__["private_visibility_config"] = private_visibility_config
             __props__.__dict__["project"] = project
             __props__.__dict__["reverse_lookup"] = reverse_lookup
-            if service_directory_config is not None and not isinstance(service_directory_config, ManagedZoneServiceDirectoryConfigArgs):
-                service_directory_config = service_directory_config or {}
-                def _setter(key, value):
-                    service_directory_config[key] = value
-                ManagedZoneServiceDirectoryConfigArgs._configure(_setter, **service_directory_config)
+            service_directory_config = _utilities.configure(service_directory_config, ManagedZoneServiceDirectoryConfigArgs, True)
             __props__.__dict__["service_directory_config"] = service_directory_config
             __props__.__dict__["visibility"] = visibility
             __props__.__dict__["creation_time"] = None

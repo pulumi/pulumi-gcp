@@ -59,16 +59,30 @@ class WorkstationClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input[str],
-             subnetwork: pulumi.Input[str],
-             workstation_cluster_id: pulumi.Input[str],
+             network: Optional[pulumi.Input[str]] = None,
+             subnetwork: Optional[pulumi.Input[str]] = None,
+             workstation_cluster_id: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              location: Optional[pulumi.Input[str]] = None,
              private_cluster_config: Optional[pulumi.Input['WorkstationClusterPrivateClusterConfigArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if subnetwork is None:
+            raise TypeError("Missing 'subnetwork' argument")
+        if workstation_cluster_id is None and 'workstationClusterId' in kwargs:
+            workstation_cluster_id = kwargs['workstationClusterId']
+        if workstation_cluster_id is None:
+            raise TypeError("Missing 'workstation_cluster_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if private_cluster_config is None and 'privateClusterConfig' in kwargs:
+            private_cluster_config = kwargs['privateClusterConfig']
+
         _setter("network", network)
         _setter("subnetwork", subnetwork)
         _setter("workstation_cluster_id", workstation_cluster_id)
@@ -283,7 +297,17 @@ class _WorkstationClusterState:
              subnetwork: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              workstation_cluster_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if private_cluster_config is None and 'privateClusterConfig' in kwargs:
+            private_cluster_config = kwargs['privateClusterConfig']
+        if workstation_cluster_id is None and 'workstationClusterId' in kwargs:
+            workstation_cluster_id = kwargs['workstationClusterId']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if conditions is not None:
@@ -523,63 +547,6 @@ class WorkstationCluster(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Workstation Cluster Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
-            workstation_cluster_id="workstation-cluster",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        project = gcp.organizations.get_project()
-        ```
-        ### Workstation Cluster Private
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
-            workstation_cluster_id="workstation-cluster-private",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            private_cluster_config=gcp.workstations.WorkstationClusterPrivateClusterConfigArgs(
-                enable_private_endpoint=True,
-            ),
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        project = gcp.organizations.get_project()
-        ```
 
         ## Import
 
@@ -624,63 +591,6 @@ class WorkstationCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Workstation Cluster Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
-            workstation_cluster_id="workstation-cluster",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        project = gcp.organizations.get_project()
-        ```
-        ### Workstation Cluster Private
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
-            workstation_cluster_id="workstation-cluster-private",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            private_cluster_config=gcp.workstations.WorkstationClusterPrivateClusterConfigArgs(
-                enable_private_endpoint=True,
-            ),
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        project = gcp.organizations.get_project()
-        ```
 
         ## Import
 
@@ -742,11 +652,7 @@ class WorkstationCluster(pulumi.CustomResource):
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network
-            if private_cluster_config is not None and not isinstance(private_cluster_config, WorkstationClusterPrivateClusterConfigArgs):
-                private_cluster_config = private_cluster_config or {}
-                def _setter(key, value):
-                    private_cluster_config[key] = value
-                WorkstationClusterPrivateClusterConfigArgs._configure(_setter, **private_cluster_config)
+            private_cluster_config = _utilities.configure(private_cluster_config, WorkstationClusterPrivateClusterConfigArgs, True)
             __props__.__dict__["private_cluster_config"] = private_cluster_config
             __props__.__dict__["project"] = project
             if subnetwork is None and not opts.urn:

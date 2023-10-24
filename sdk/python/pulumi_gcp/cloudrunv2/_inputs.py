@@ -94,7 +94,13 @@ class JobBinaryAuthorizationArgs:
              _setter: Callable[[Any, Any], None],
              breakglass_justification: Optional[pulumi.Input[str]] = None,
              use_default: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if breakglass_justification is None and 'breakglassJustification' in kwargs:
+            breakglass_justification = kwargs['breakglassJustification']
+        if use_default is None and 'useDefault' in kwargs:
+            use_default = kwargs['useDefault']
+
         if breakglass_justification is not None:
             _setter("breakglass_justification", breakglass_justification)
         if use_default is not None:
@@ -177,7 +183,15 @@ class JobConditionArgs:
              severity: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if execution_reason is None and 'executionReason' in kwargs:
+            execution_reason = kwargs['executionReason']
+        if last_transition_time is None and 'lastTransitionTime' in kwargs:
+            last_transition_time = kwargs['lastTransitionTime']
+        if revision_reason is None and 'revisionReason' in kwargs:
+            revision_reason = kwargs['revisionReason']
+
         if execution_reason is not None:
             _setter("execution_reason", execution_reason)
         if last_transition_time is not None:
@@ -316,10 +330,16 @@ class JobIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -368,10 +388,16 @@ class JobIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -432,7 +458,13 @@ class JobLatestCreatedExecutionArgs:
              completion_time: Optional[pulumi.Input[str]] = None,
              create_time: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if completion_time is None and 'completionTime' in kwargs:
+            completion_time = kwargs['completionTime']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+
         if completion_time is not None:
             _setter("completion_time", completion_time)
         if create_time is not None:
@@ -515,12 +547,18 @@ class JobTemplateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             template: pulumi.Input['JobTemplateTemplateArgs'],
+             template: Optional[pulumi.Input['JobTemplateTemplateArgs']] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              parallelism: Optional[pulumi.Input[int]] = None,
              task_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if template is None:
+            raise TypeError("Missing 'template' argument")
+        if task_count is None and 'taskCount' in kwargs:
+            task_count = kwargs['taskCount']
+
         _setter("template", template)
         if annotations is not None:
             _setter("annotations", annotations)
@@ -648,7 +686,19 @@ class JobTemplateTemplateArgs:
              timeout: Optional[pulumi.Input[str]] = None,
              volumes: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateVolumeArgs']]]] = None,
              vpc_access: Optional[pulumi.Input['JobTemplateTemplateVpcAccessArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if encryption_key is None and 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if execution_environment is None and 'executionEnvironment' in kwargs:
+            execution_environment = kwargs['executionEnvironment']
+        if max_retries is None and 'maxRetries' in kwargs:
+            max_retries = kwargs['maxRetries']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if vpc_access is None and 'vpcAccess' in kwargs:
+            vpc_access = kwargs['vpcAccess']
+
         if containers is not None:
             _setter("containers", containers)
         if encryption_key is not None:
@@ -827,7 +877,7 @@ class JobTemplateTemplateContainerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             image: pulumi.Input[str],
+             image: Optional[pulumi.Input[str]] = None,
              args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              envs: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerEnvArgs']]]] = None,
@@ -838,7 +888,19 @@ class JobTemplateTemplateContainerArgs:
              startup_probe: Optional[pulumi.Input['JobTemplateTemplateContainerStartupProbeArgs']] = None,
              volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerVolumeMountArgs']]]] = None,
              working_dir: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+        if liveness_probe is None and 'livenessProbe' in kwargs:
+            liveness_probe = kwargs['livenessProbe']
+        if startup_probe is None and 'startupProbe' in kwargs:
+            startup_probe = kwargs['startupProbe']
+        if volume_mounts is None and 'volumeMounts' in kwargs:
+            volume_mounts = kwargs['volumeMounts']
+        if working_dir is None and 'workingDir' in kwargs:
+            working_dir = kwargs['workingDir']
+
         _setter("image", image)
         if args is not None:
             _setter("args", args)
@@ -1042,10 +1104,16 @@ class JobTemplateTemplateContainerEnvArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
              value_source: Optional[pulumi.Input['JobTemplateTemplateContainerEnvValueSourceArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value_source is None and 'valueSource' in kwargs:
+            value_source = kwargs['valueSource']
+
         _setter("name", name)
         if value is not None:
             _setter("value", value)
@@ -1106,7 +1174,11 @@ class JobTemplateTemplateContainerEnvValueSourceArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              secret_key_ref: Optional[pulumi.Input['JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if secret_key_ref is None and 'secretKeyRef' in kwargs:
+            secret_key_ref = kwargs['secretKeyRef']
+
         if secret_key_ref is not None:
             _setter("secret_key_ref", secret_key_ref)
 
@@ -1141,9 +1213,15 @@ class JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             secret: pulumi.Input[str],
-             version: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             secret: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if secret is None:
+            raise TypeError("Missing 'secret' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+
         _setter("secret", secret)
         _setter("version", version)
 
@@ -1209,7 +1287,21 @@ class JobTemplateTemplateContainerLivenessProbeArgs:
              period_seconds: Optional[pulumi.Input[int]] = None,
              tcp_socket: Optional[pulumi.Input['JobTemplateTemplateContainerLivenessProbeTcpSocketArgs']] = None,
              timeout_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if failure_threshold is None and 'failureThreshold' in kwargs:
+            failure_threshold = kwargs['failureThreshold']
+        if http_get is None and 'httpGet' in kwargs:
+            http_get = kwargs['httpGet']
+        if initial_delay_seconds is None and 'initialDelaySeconds' in kwargs:
+            initial_delay_seconds = kwargs['initialDelaySeconds']
+        if period_seconds is None and 'periodSeconds' in kwargs:
+            period_seconds = kwargs['periodSeconds']
+        if tcp_socket is None and 'tcpSocket' in kwargs:
+            tcp_socket = kwargs['tcpSocket']
+        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
+            timeout_seconds = kwargs['timeoutSeconds']
+
         if failure_threshold is not None:
             _setter("failure_threshold", failure_threshold)
         if http_get is not None:
@@ -1318,7 +1410,11 @@ class JobTemplateTemplateContainerLivenessProbeHttpGetArgs:
              _setter: Callable[[Any, Any], None],
              http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderArgs']]]] = None,
              path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if http_headers is None and 'httpHeaders' in kwargs:
+            http_headers = kwargs['httpHeaders']
+
         if http_headers is not None:
             _setter("http_headers", http_headers)
         if path is not None:
@@ -1367,9 +1463,13 @@ class JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
         if value is not None:
             _setter("value", value)
@@ -1414,7 +1514,9 @@ class JobTemplateTemplateContainerLivenessProbeTcpSocketArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if port is not None:
             _setter("port", port)
 
@@ -1450,7 +1552,11 @@ class JobTemplateTemplateContainerPortArgs:
              _setter: Callable[[Any, Any], None],
              container_port: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if container_port is None and 'containerPort' in kwargs:
+            container_port = kwargs['containerPort']
+
         if container_port is not None:
             _setter("container_port", container_port)
         if name is not None:
@@ -1496,7 +1602,9 @@ class JobTemplateTemplateContainerResourcesArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              limits: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if limits is not None:
             _setter("limits", limits)
 
@@ -1550,7 +1658,21 @@ class JobTemplateTemplateContainerStartupProbeArgs:
              period_seconds: Optional[pulumi.Input[int]] = None,
              tcp_socket: Optional[pulumi.Input['JobTemplateTemplateContainerStartupProbeTcpSocketArgs']] = None,
              timeout_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if failure_threshold is None and 'failureThreshold' in kwargs:
+            failure_threshold = kwargs['failureThreshold']
+        if http_get is None and 'httpGet' in kwargs:
+            http_get = kwargs['httpGet']
+        if initial_delay_seconds is None and 'initialDelaySeconds' in kwargs:
+            initial_delay_seconds = kwargs['initialDelaySeconds']
+        if period_seconds is None and 'periodSeconds' in kwargs:
+            period_seconds = kwargs['periodSeconds']
+        if tcp_socket is None and 'tcpSocket' in kwargs:
+            tcp_socket = kwargs['tcpSocket']
+        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
+            timeout_seconds = kwargs['timeoutSeconds']
+
         if failure_threshold is not None:
             _setter("failure_threshold", failure_threshold)
         if http_get is not None:
@@ -1659,7 +1781,11 @@ class JobTemplateTemplateContainerStartupProbeHttpGetArgs:
              _setter: Callable[[Any, Any], None],
              http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs']]]] = None,
              path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if http_headers is None and 'httpHeaders' in kwargs:
+            http_headers = kwargs['httpHeaders']
+
         if http_headers is not None:
             _setter("http_headers", http_headers)
         if path is not None:
@@ -1708,9 +1834,13 @@ class JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
         if value is not None:
             _setter("value", value)
@@ -1755,7 +1885,9 @@ class JobTemplateTemplateContainerStartupProbeTcpSocketArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if port is not None:
             _setter("port", port)
 
@@ -1789,9 +1921,17 @@ class JobTemplateTemplateContainerVolumeMountArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             mount_path: pulumi.Input[str],
-             name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             mount_path: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if mount_path is None and 'mountPath' in kwargs:
+            mount_path = kwargs['mountPath']
+        if mount_path is None:
+            raise TypeError("Missing 'mount_path' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("mount_path", mount_path)
         _setter("name", name)
 
@@ -1844,11 +1984,19 @@ class JobTemplateTemplateVolumeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              cloud_sql_instance: Optional[pulumi.Input['JobTemplateTemplateVolumeCloudSqlInstanceArgs']] = None,
              empty_dir: Optional[pulumi.Input['JobTemplateTemplateVolumeEmptyDirArgs']] = None,
              secret: Optional[pulumi.Input['JobTemplateTemplateVolumeSecretArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if cloud_sql_instance is None and 'cloudSqlInstance' in kwargs:
+            cloud_sql_instance = kwargs['cloudSqlInstance']
+        if empty_dir is None and 'emptyDir' in kwargs:
+            empty_dir = kwargs['emptyDir']
+
         _setter("name", name)
         if cloud_sql_instance is not None:
             _setter("cloud_sql_instance", cloud_sql_instance)
@@ -1920,7 +2068,9 @@ class JobTemplateTemplateVolumeCloudSqlInstanceArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if instances is not None:
             _setter("instances", instances)
 
@@ -1958,7 +2108,11 @@ class JobTemplateTemplateVolumeEmptyDirArgs:
              _setter: Callable[[Any, Any], None],
              medium: Optional[pulumi.Input[str]] = None,
              size_limit: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if size_limit is None and 'sizeLimit' in kwargs:
+            size_limit = kwargs['sizeLimit']
+
         if medium is not None:
             _setter("medium", medium)
         if size_limit is not None:
@@ -2012,10 +2166,16 @@ class JobTemplateTemplateVolumeSecretArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             secret: pulumi.Input[str],
+             secret: Optional[pulumi.Input[str]] = None,
              default_mode: Optional[pulumi.Input[int]] = None,
              items: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateVolumeSecretItemArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if secret is None:
+            raise TypeError("Missing 'secret' argument")
+        if default_mode is None and 'defaultMode' in kwargs:
+            default_mode = kwargs['defaultMode']
+
         _setter("secret", secret)
         if default_mode is not None:
             _setter("default_mode", default_mode)
@@ -2080,10 +2240,16 @@ class JobTemplateTemplateVolumeSecretItemArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: pulumi.Input[str],
-             version: pulumi.Input[str],
+             path: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
              mode: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+
         _setter("path", path)
         _setter("version", version)
         if mode is not None:
@@ -2151,7 +2317,11 @@ class JobTemplateTemplateVpcAccessArgs:
              connector: Optional[pulumi.Input[str]] = None,
              egress: Optional[pulumi.Input[str]] = None,
              network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateVpcAccessNetworkInterfaceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+
         if connector is not None:
             _setter("connector", connector)
         if egress is not None:
@@ -2227,7 +2397,9 @@ class JobTemplateTemplateVpcAccessNetworkInterfaceArgs:
              network: Optional[pulumi.Input[str]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if network is not None:
             _setter("network", network)
         if subnetwork is not None:
@@ -2330,7 +2502,15 @@ class JobTerminalConditionArgs:
              severity: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if execution_reason is None and 'executionReason' in kwargs:
+            execution_reason = kwargs['executionReason']
+        if last_transition_time is None and 'lastTransitionTime' in kwargs:
+            last_transition_time = kwargs['lastTransitionTime']
+        if revision_reason is None and 'revisionReason' in kwargs:
+            revision_reason = kwargs['revisionReason']
+
         if execution_reason is not None:
             _setter("execution_reason", execution_reason)
         if last_transition_time is not None:
@@ -2473,7 +2653,13 @@ class ServiceBinaryAuthorizationArgs:
              _setter: Callable[[Any, Any], None],
              breakglass_justification: Optional[pulumi.Input[str]] = None,
              use_default: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if breakglass_justification is None and 'breakglassJustification' in kwargs:
+            breakglass_justification = kwargs['breakglassJustification']
+        if use_default is None and 'useDefault' in kwargs:
+            use_default = kwargs['useDefault']
+
         if breakglass_justification is not None:
             _setter("breakglass_justification", breakglass_justification)
         if use_default is not None:
@@ -2556,7 +2742,15 @@ class ServiceConditionArgs:
              severity: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if execution_reason is None and 'executionReason' in kwargs:
+            execution_reason = kwargs['executionReason']
+        if last_transition_time is None and 'lastTransitionTime' in kwargs:
+            last_transition_time = kwargs['lastTransitionTime']
+        if revision_reason is None and 'revisionReason' in kwargs:
+            revision_reason = kwargs['revisionReason']
+
         if execution_reason is not None:
             _setter("execution_reason", execution_reason)
         if last_transition_time is not None:
@@ -2695,10 +2889,16 @@ class ServiceIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -2747,10 +2947,16 @@ class ServiceIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -2859,7 +3065,21 @@ class ServiceTemplateArgs:
              timeout: Optional[pulumi.Input[str]] = None,
              volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateVolumeArgs']]]] = None,
              vpc_access: Optional[pulumi.Input['ServiceTemplateVpcAccessArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if encryption_key is None and 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if execution_environment is None and 'executionEnvironment' in kwargs:
+            execution_environment = kwargs['executionEnvironment']
+        if max_instance_request_concurrency is None and 'maxInstanceRequestConcurrency' in kwargs:
+            max_instance_request_concurrency = kwargs['maxInstanceRequestConcurrency']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if session_affinity is None and 'sessionAffinity' in kwargs:
+            session_affinity = kwargs['sessionAffinity']
+        if vpc_access is None and 'vpcAccess' in kwargs:
+            vpc_access = kwargs['vpcAccess']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if containers is not None:
@@ -3109,7 +3329,7 @@ class ServiceTemplateContainerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             image: pulumi.Input[str],
+             image: Optional[pulumi.Input[str]] = None,
              args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -3121,7 +3341,21 @@ class ServiceTemplateContainerArgs:
              startup_probe: Optional[pulumi.Input['ServiceTemplateContainerStartupProbeArgs']] = None,
              volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerVolumeMountArgs']]]] = None,
              working_dir: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+        if depends_ons is None and 'dependsOns' in kwargs:
+            depends_ons = kwargs['dependsOns']
+        if liveness_probe is None and 'livenessProbe' in kwargs:
+            liveness_probe = kwargs['livenessProbe']
+        if startup_probe is None and 'startupProbe' in kwargs:
+            startup_probe = kwargs['startupProbe']
+        if volume_mounts is None and 'volumeMounts' in kwargs:
+            volume_mounts = kwargs['volumeMounts']
+        if working_dir is None and 'workingDir' in kwargs:
+            working_dir = kwargs['workingDir']
+
         _setter("image", image)
         if args is not None:
             _setter("args", args)
@@ -3316,10 +3550,16 @@ class ServiceTemplateContainerEnvArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
              value_source: Optional[pulumi.Input['ServiceTemplateContainerEnvValueSourceArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value_source is None and 'valueSource' in kwargs:
+            value_source = kwargs['valueSource']
+
         _setter("name", name)
         if value is not None:
             _setter("value", value)
@@ -3380,7 +3620,11 @@ class ServiceTemplateContainerEnvValueSourceArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              secret_key_ref: Optional[pulumi.Input['ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if secret_key_ref is None and 'secretKeyRef' in kwargs:
+            secret_key_ref = kwargs['secretKeyRef']
+
         if secret_key_ref is not None:
             _setter("secret_key_ref", secret_key_ref)
 
@@ -3415,9 +3659,13 @@ class ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             secret: pulumi.Input[str],
+             secret: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if secret is None:
+            raise TypeError("Missing 'secret' argument")
+
         _setter("secret", secret)
         if version is not None:
             _setter("version", version)
@@ -3492,7 +3740,21 @@ class ServiceTemplateContainerLivenessProbeArgs:
              period_seconds: Optional[pulumi.Input[int]] = None,
              tcp_socket: Optional[pulumi.Input['ServiceTemplateContainerLivenessProbeTcpSocketArgs']] = None,
              timeout_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if failure_threshold is None and 'failureThreshold' in kwargs:
+            failure_threshold = kwargs['failureThreshold']
+        if http_get is None and 'httpGet' in kwargs:
+            http_get = kwargs['httpGet']
+        if initial_delay_seconds is None and 'initialDelaySeconds' in kwargs:
+            initial_delay_seconds = kwargs['initialDelaySeconds']
+        if period_seconds is None and 'periodSeconds' in kwargs:
+            period_seconds = kwargs['periodSeconds']
+        if tcp_socket is None and 'tcpSocket' in kwargs:
+            tcp_socket = kwargs['tcpSocket']
+        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
+            timeout_seconds = kwargs['timeoutSeconds']
+
         if failure_threshold is not None:
             _setter("failure_threshold", failure_threshold)
         if grpc is not None:
@@ -3627,7 +3889,9 @@ class ServiceTemplateContainerLivenessProbeGrpcArgs:
              _setter: Callable[[Any, Any], None],
              port: Optional[pulumi.Input[int]] = None,
              service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if port is not None:
             _setter("port", port)
         if service is not None:
@@ -3686,7 +3950,11 @@ class ServiceTemplateContainerLivenessProbeHttpGetArgs:
              http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs']]]] = None,
              path: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if http_headers is None and 'httpHeaders' in kwargs:
+            http_headers = kwargs['httpHeaders']
+
         if http_headers is not None:
             _setter("http_headers", http_headers)
         if path is not None:
@@ -3750,9 +4018,13 @@ class ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
         if value is not None:
             _setter("value", value)
@@ -3798,7 +4070,9 @@ class ServiceTemplateContainerLivenessProbeTcpSocketArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if port is not None:
             _setter("port", port)
 
@@ -3835,7 +4109,11 @@ class ServiceTemplateContainerPortArgs:
              _setter: Callable[[Any, Any], None],
              container_port: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if container_port is None and 'containerPort' in kwargs:
+            container_port = kwargs['containerPort']
+
         if container_port is not None:
             _setter("container_port", container_port)
         if name is not None:
@@ -3889,7 +4167,13 @@ class ServiceTemplateContainerResourcesArgs:
              cpu_idle: Optional[pulumi.Input[bool]] = None,
              limits: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              startup_cpu_boost: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cpu_idle is None and 'cpuIdle' in kwargs:
+            cpu_idle = kwargs['cpuIdle']
+        if startup_cpu_boost is None and 'startupCpuBoost' in kwargs:
+            startup_cpu_boost = kwargs['startupCpuBoost']
+
         if cpu_idle is not None:
             _setter("cpu_idle", cpu_idle)
         if limits is not None:
@@ -3976,7 +4260,21 @@ class ServiceTemplateContainerStartupProbeArgs:
              period_seconds: Optional[pulumi.Input[int]] = None,
              tcp_socket: Optional[pulumi.Input['ServiceTemplateContainerStartupProbeTcpSocketArgs']] = None,
              timeout_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if failure_threshold is None and 'failureThreshold' in kwargs:
+            failure_threshold = kwargs['failureThreshold']
+        if http_get is None and 'httpGet' in kwargs:
+            http_get = kwargs['httpGet']
+        if initial_delay_seconds is None and 'initialDelaySeconds' in kwargs:
+            initial_delay_seconds = kwargs['initialDelaySeconds']
+        if period_seconds is None and 'periodSeconds' in kwargs:
+            period_seconds = kwargs['periodSeconds']
+        if tcp_socket is None and 'tcpSocket' in kwargs:
+            tcp_socket = kwargs['tcpSocket']
+        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
+            timeout_seconds = kwargs['timeoutSeconds']
+
         if failure_threshold is not None:
             _setter("failure_threshold", failure_threshold)
         if grpc is not None:
@@ -4102,7 +4400,9 @@ class ServiceTemplateContainerStartupProbeGrpcArgs:
              _setter: Callable[[Any, Any], None],
              port: Optional[pulumi.Input[int]] = None,
              service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if port is not None:
             _setter("port", port)
         if service is not None:
@@ -4161,7 +4461,11 @@ class ServiceTemplateContainerStartupProbeHttpGetArgs:
              http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs']]]] = None,
              path: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if http_headers is None and 'httpHeaders' in kwargs:
+            http_headers = kwargs['httpHeaders']
+
         if http_headers is not None:
             _setter("http_headers", http_headers)
         if path is not None:
@@ -4225,9 +4529,13 @@ class ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
         if value is not None:
             _setter("value", value)
@@ -4273,7 +4581,9 @@ class ServiceTemplateContainerStartupProbeTcpSocketArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if port is not None:
             _setter("port", port)
 
@@ -4308,9 +4618,17 @@ class ServiceTemplateContainerVolumeMountArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             mount_path: pulumi.Input[str],
-             name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             mount_path: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if mount_path is None and 'mountPath' in kwargs:
+            mount_path = kwargs['mountPath']
+        if mount_path is None:
+            raise TypeError("Missing 'mount_path' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("mount_path", mount_path)
         _setter("name", name)
 
@@ -4358,7 +4676,13 @@ class ServiceTemplateScalingArgs:
              _setter: Callable[[Any, Any], None],
              max_instance_count: Optional[pulumi.Input[int]] = None,
              min_instance_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if max_instance_count is None and 'maxInstanceCount' in kwargs:
+            max_instance_count = kwargs['maxInstanceCount']
+        if min_instance_count is None and 'minInstanceCount' in kwargs:
+            min_instance_count = kwargs['minInstanceCount']
+
         if max_instance_count is not None:
             _setter("max_instance_count", max_instance_count)
         if min_instance_count is not None:
@@ -4413,11 +4737,19 @@ class ServiceTemplateVolumeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              cloud_sql_instance: Optional[pulumi.Input['ServiceTemplateVolumeCloudSqlInstanceArgs']] = None,
              empty_dir: Optional[pulumi.Input['ServiceTemplateVolumeEmptyDirArgs']] = None,
              secret: Optional[pulumi.Input['ServiceTemplateVolumeSecretArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if cloud_sql_instance is None and 'cloudSqlInstance' in kwargs:
+            cloud_sql_instance = kwargs['cloudSqlInstance']
+        if empty_dir is None and 'emptyDir' in kwargs:
+            empty_dir = kwargs['emptyDir']
+
         _setter("name", name)
         if cloud_sql_instance is not None:
             _setter("cloud_sql_instance", cloud_sql_instance)
@@ -4489,7 +4821,9 @@ class ServiceTemplateVolumeCloudSqlInstanceArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if instances is not None:
             _setter("instances", instances)
 
@@ -4529,7 +4863,11 @@ class ServiceTemplateVolumeEmptyDirArgs:
              _setter: Callable[[Any, Any], None],
              medium: Optional[pulumi.Input[str]] = None,
              size_limit: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if size_limit is None and 'sizeLimit' in kwargs:
+            size_limit = kwargs['sizeLimit']
+
         if medium is not None:
             _setter("medium", medium)
         if size_limit is not None:
@@ -4585,10 +4923,16 @@ class ServiceTemplateVolumeSecretArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             secret: pulumi.Input[str],
+             secret: Optional[pulumi.Input[str]] = None,
              default_mode: Optional[pulumi.Input[int]] = None,
              items: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateVolumeSecretItemArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if secret is None:
+            raise TypeError("Missing 'secret' argument")
+        if default_mode is None and 'defaultMode' in kwargs:
+            default_mode = kwargs['defaultMode']
+
         _setter("secret", secret)
         if default_mode is not None:
             _setter("default_mode", default_mode)
@@ -4653,10 +4997,14 @@ class ServiceTemplateVolumeSecretItemArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: pulumi.Input[str],
+             path: Optional[pulumi.Input[str]] = None,
              mode: Optional[pulumi.Input[int]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+
         _setter("path", path)
         if mode is not None:
             _setter("mode", mode)
@@ -4725,7 +5073,11 @@ class ServiceTemplateVpcAccessArgs:
              connector: Optional[pulumi.Input[str]] = None,
              egress: Optional[pulumi.Input[str]] = None,
              network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateVpcAccessNetworkInterfaceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+
         if connector is not None:
             _setter("connector", connector)
         if egress is not None:
@@ -4799,7 +5151,9 @@ class ServiceTemplateVpcAccessNetworkInterfaceArgs:
              network: Optional[pulumi.Input[str]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if network is not None:
             _setter("network", network)
         if subnetwork is not None:
@@ -4900,7 +5254,15 @@ class ServiceTerminalConditionArgs:
              severity: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if execution_reason is None and 'executionReason' in kwargs:
+            execution_reason = kwargs['executionReason']
+        if last_transition_time is None and 'lastTransitionTime' in kwargs:
+            last_transition_time = kwargs['lastTransitionTime']
+        if revision_reason is None and 'revisionReason' in kwargs:
+            revision_reason = kwargs['revisionReason']
+
         if execution_reason is not None:
             _setter("execution_reason", execution_reason)
         if last_transition_time is not None:
@@ -5052,7 +5414,9 @@ class ServiceTrafficArgs:
              revision: Optional[pulumi.Input[str]] = None,
              tag: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if percent is not None:
             _setter("percent", percent)
         if revision is not None:
@@ -5145,7 +5509,9 @@ class ServiceTrafficStatusArgs:
              tag: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              uri: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if percent is not None:
             _setter("percent", percent)
         if revision is not None:

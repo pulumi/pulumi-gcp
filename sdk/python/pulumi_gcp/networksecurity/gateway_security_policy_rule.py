@@ -63,18 +63,42 @@ class GatewaySecurityPolicyRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             basic_profile: pulumi.Input[str],
-             enabled: pulumi.Input[bool],
-             gateway_security_policy: pulumi.Input[str],
-             location: pulumi.Input[str],
-             priority: pulumi.Input[int],
-             session_matcher: pulumi.Input[str],
+             basic_profile: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             gateway_security_policy: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             session_matcher: Optional[pulumi.Input[str]] = None,
              application_matcher: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              tls_inspection_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if basic_profile is None and 'basicProfile' in kwargs:
+            basic_profile = kwargs['basicProfile']
+        if basic_profile is None:
+            raise TypeError("Missing 'basic_profile' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if gateway_security_policy is None and 'gatewaySecurityPolicy' in kwargs:
+            gateway_security_policy = kwargs['gatewaySecurityPolicy']
+        if gateway_security_policy is None:
+            raise TypeError("Missing 'gateway_security_policy' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if session_matcher is None and 'sessionMatcher' in kwargs:
+            session_matcher = kwargs['sessionMatcher']
+        if session_matcher is None:
+            raise TypeError("Missing 'session_matcher' argument")
+        if application_matcher is None and 'applicationMatcher' in kwargs:
+            application_matcher = kwargs['applicationMatcher']
+        if tls_inspection_enabled is None and 'tlsInspectionEnabled' in kwargs:
+            tls_inspection_enabled = kwargs['tlsInspectionEnabled']
+
         _setter("basic_profile", basic_profile)
         _setter("enabled", enabled)
         _setter("gateway_security_policy", gateway_security_policy)
@@ -311,7 +335,25 @@ class _GatewaySecurityPolicyRuleState:
              session_matcher: Optional[pulumi.Input[str]] = None,
              tls_inspection_enabled: Optional[pulumi.Input[bool]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if application_matcher is None and 'applicationMatcher' in kwargs:
+            application_matcher = kwargs['applicationMatcher']
+        if basic_profile is None and 'basicProfile' in kwargs:
+            basic_profile = kwargs['basicProfile']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if gateway_security_policy is None and 'gatewaySecurityPolicy' in kwargs:
+            gateway_security_policy = kwargs['gatewaySecurityPolicy']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if session_matcher is None and 'sessionMatcher' in kwargs:
+            session_matcher = kwargs['sessionMatcher']
+        if tls_inspection_enabled is None and 'tlsInspectionEnabled' in kwargs:
+            tls_inspection_enabled = kwargs['tlsInspectionEnabled']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if application_matcher is not None:
             _setter("application_matcher", application_matcher)
         if basic_profile is not None:
@@ -547,44 +589,6 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies.rules)
 
         ## Example Usage
-        ### Network Security Gateway Security Policy Rules Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy",
-            location="us-central1",
-            description="gateway security policy created to be used as reference by the rule.")
-        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
-            location="us-central1",
-            gateway_security_policy=default_gateway_security_policy.name,
-            enabled=True,
-            description="my description",
-            priority=0,
-            session_matcher="host() == 'example.com'",
-            basic_profile="ALLOW")
-        ```
-        ### Network Security Gateway Security Policy Rules Advanced
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy",
-            location="us-central1",
-            description="gateway security policy created to be used as reference by the rule.")
-        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
-            location="us-central1",
-            gateway_security_policy=default_gateway_security_policy.name,
-            enabled=True,
-            description="my description",
-            priority=0,
-            session_matcher="host() == 'example.com'",
-            application_matcher="request.method == 'POST'",
-            tls_inspection_enabled=False,
-            basic_profile="ALLOW")
-        ```
 
         ## Import
 
@@ -638,44 +642,6 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies.rules)
 
         ## Example Usage
-        ### Network Security Gateway Security Policy Rules Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy",
-            location="us-central1",
-            description="gateway security policy created to be used as reference by the rule.")
-        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
-            location="us-central1",
-            gateway_security_policy=default_gateway_security_policy.name,
-            enabled=True,
-            description="my description",
-            priority=0,
-            session_matcher="host() == 'example.com'",
-            basic_profile="ALLOW")
-        ```
-        ### Network Security Gateway Security Policy Rules Advanced
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy",
-            location="us-central1",
-            description="gateway security policy created to be used as reference by the rule.")
-        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
-            location="us-central1",
-            gateway_security_policy=default_gateway_security_policy.name,
-            enabled=True,
-            description="my description",
-            priority=0,
-            session_matcher="host() == 'example.com'",
-            application_matcher="request.method == 'POST'",
-            tls_inspection_enabled=False,
-            basic_profile="ALLOW")
-        ```
 
         ## Import
 

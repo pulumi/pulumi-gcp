@@ -22,36 +22,6 @@ import (
 //   - [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 //
 // ## Example Usage
-// ### Gkehub Scope Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gkehub.NewScope(ctx, "scope", &gkehub.ScopeArgs{
-//				Labels: pulumi.StringMap{
-//					"keya": pulumi.String("valuea"),
-//					"keyb": pulumi.String("valueb"),
-//					"keyc": pulumi.String("valuec"),
-//				},
-//				ScopeId: pulumi.String("tf-test-scope%{random_suffix}"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

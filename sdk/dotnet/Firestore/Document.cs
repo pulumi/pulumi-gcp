@@ -29,62 +29,6 @@ namespace Pulumi.Gcp.Firestore
     /// the App Engine location specified.
     /// 
     /// ## Example Usage
-    /// ### Firestore Document Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var mydoc = new Gcp.Firestore.Document("mydoc", new()
-    ///     {
-    ///         Collection = "somenewcollection",
-    ///         DocumentId = "my-doc-id",
-    ///         Fields = "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
-    ///         Project = "my-project-name",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Firestore Document Nested Document
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var mydoc = new Gcp.Firestore.Document("mydoc", new()
-    ///     {
-    ///         Collection = "somenewcollection",
-    ///         DocumentId = "my-doc-id",
-    ///         Fields = "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
-    ///         Project = "my-project-name",
-    ///     });
-    /// 
-    ///     var subDocument = new Gcp.Firestore.Document("subDocument", new()
-    ///     {
-    ///         Collection = mydoc.Path.Apply(path =&gt; $"{path}/subdocs"),
-    ///         DocumentId = "bitcoinkey",
-    ///         Fields = "{\"something\":{\"mapValue\":{\"fields\":{\"ayo\":{\"stringValue\":\"val2\"}}}}}",
-    ///         Project = "my-project-name",
-    ///     });
-    /// 
-    ///     var subSubDocument = new Gcp.Firestore.Document("subSubDocument", new()
-    ///     {
-    ///         Collection = subDocument.Path.Apply(path =&gt; $"{path}/subsubdocs"),
-    ///         DocumentId = "asecret",
-    ///         Fields = "{\"something\":{\"mapValue\":{\"fields\":{\"secret\":{\"stringValue\":\"hithere\"}}}}}",
-    ///         Project = "my-project-name",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

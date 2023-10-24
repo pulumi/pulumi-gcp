@@ -13,52 +13,12 @@ namespace Pulumi.Gcp.SecurityCenter
     {
         /// <summary>
         /// Retrieves the current IAM policy data for source
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.SecurityCenter.GetSourceIamPolicy.Invoke(new()
-        ///     {
-        ///         Source = google_scc_source.Custom_source.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetSourceIamPolicyResult> InvokeAsync(GetSourceIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSourceIamPolicyResult>("gcp:securitycenter/getSourceIamPolicy:getSourceIamPolicy", args ?? new GetSourceIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for source
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.SecurityCenter.GetSourceIamPolicy.Invoke(new()
-        ///     {
-        ///         Source = google_scc_source.Custom_source.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetSourceIamPolicyResult> Invoke(GetSourceIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSourceIamPolicyResult>("gcp:securitycenter/getSourceIamPolicy:getSourceIamPolicy", args ?? new GetSourceIamPolicyInvokeArgs(), options.WithDefaults());

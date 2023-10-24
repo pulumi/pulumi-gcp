@@ -66,7 +66,7 @@ class PerInstanceConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_group_manager: pulumi.Input[str],
+             instance_group_manager: Optional[pulumi.Input[str]] = None,
              minimal_action: Optional[pulumi.Input[str]] = None,
              most_disruptive_allowed_action: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -74,7 +74,21 @@ class PerInstanceConfigArgs:
              project: Optional[pulumi.Input[str]] = None,
              remove_instance_state_on_destroy: Optional[pulumi.Input[bool]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if instance_group_manager is None and 'instanceGroupManager' in kwargs:
+            instance_group_manager = kwargs['instanceGroupManager']
+        if instance_group_manager is None:
+            raise TypeError("Missing 'instance_group_manager' argument")
+        if minimal_action is None and 'minimalAction' in kwargs:
+            minimal_action = kwargs['minimalAction']
+        if most_disruptive_allowed_action is None and 'mostDisruptiveAllowedAction' in kwargs:
+            most_disruptive_allowed_action = kwargs['mostDisruptiveAllowedAction']
+        if preserved_state is None and 'preservedState' in kwargs:
+            preserved_state = kwargs['preservedState']
+        if remove_instance_state_on_destroy is None and 'removeInstanceStateOnDestroy' in kwargs:
+            remove_instance_state_on_destroy = kwargs['removeInstanceStateOnDestroy']
+
         _setter("instance_group_manager", instance_group_manager)
         if minimal_action is not None:
             _setter("minimal_action", minimal_action)
@@ -266,7 +280,19 @@ class _PerInstanceConfigState:
              project: Optional[pulumi.Input[str]] = None,
              remove_instance_state_on_destroy: Optional[pulumi.Input[bool]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if instance_group_manager is None and 'instanceGroupManager' in kwargs:
+            instance_group_manager = kwargs['instanceGroupManager']
+        if minimal_action is None and 'minimalAction' in kwargs:
+            minimal_action = kwargs['minimalAction']
+        if most_disruptive_allowed_action is None and 'mostDisruptiveAllowedAction' in kwargs:
+            most_disruptive_allowed_action = kwargs['mostDisruptiveAllowedAction']
+        if preserved_state is None and 'preservedState' in kwargs:
+            preserved_state = kwargs['preservedState']
+        if remove_instance_state_on_destroy is None and 'removeInstanceStateOnDestroy' in kwargs:
+            remove_instance_state_on_destroy = kwargs['removeInstanceStateOnDestroy']
+
         if instance_group_manager is not None:
             _setter("instance_group_manager", instance_group_manager)
         if minimal_action is not None:
@@ -423,65 +449,6 @@ class PerInstanceConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
 
         ## Example Usage
-        ### Stateful Igm
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_image = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        igm_basic = gcp.compute.InstanceTemplate("igm-basic",
-            machine_type="e2-medium",
-            can_ip_forward=False,
-            tags=[
-                "foo",
-                "bar",
-            ],
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image=my_image.self_link,
-                auto_delete=True,
-                boot=True,
-            )],
-            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
-                network="default",
-            )],
-            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
-                scopes=[
-                    "userinfo-email",
-                    "compute-ro",
-                    "storage-ro",
-                ],
-            ))
-        igm_no_tp = gcp.compute.InstanceGroupManager("igm-no-tp",
-            description="Test instance group manager",
-            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
-                name="prod",
-                instance_template=igm_basic.self_link,
-            )],
-            base_instance_name="igm-no-tp",
-            zone="us-central1-c",
-            target_size=2)
-        default = gcp.compute.Disk("default",
-            type="pd-ssd",
-            zone=google_compute_instance_group_manager["igm"]["zone"],
-            image="debian-11-bullseye-v20220719",
-            physical_block_size_bytes=4096)
-        with_disk = gcp.compute.PerInstanceConfig("withDisk",
-            zone=google_compute_instance_group_manager["igm"]["zone"],
-            instance_group_manager=google_compute_instance_group_manager["igm"]["name"],
-            preserved_state=gcp.compute.PerInstanceConfigPreservedStateArgs(
-                metadata={
-                    "foo": "bar",
-                    "instance_template": igm_basic.self_link,
-                },
-                disks=[gcp.compute.PerInstanceConfigPreservedStateDiskArgs(
-                    device_name="my-stateful-disk",
-                    source=default.id,
-                    mode="READ_ONLY",
-                )],
-            ))
-        ```
 
         ## Import
 
@@ -548,65 +515,6 @@ class PerInstanceConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
 
         ## Example Usage
-        ### Stateful Igm
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_image = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        igm_basic = gcp.compute.InstanceTemplate("igm-basic",
-            machine_type="e2-medium",
-            can_ip_forward=False,
-            tags=[
-                "foo",
-                "bar",
-            ],
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image=my_image.self_link,
-                auto_delete=True,
-                boot=True,
-            )],
-            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
-                network="default",
-            )],
-            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
-                scopes=[
-                    "userinfo-email",
-                    "compute-ro",
-                    "storage-ro",
-                ],
-            ))
-        igm_no_tp = gcp.compute.InstanceGroupManager("igm-no-tp",
-            description="Test instance group manager",
-            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
-                name="prod",
-                instance_template=igm_basic.self_link,
-            )],
-            base_instance_name="igm-no-tp",
-            zone="us-central1-c",
-            target_size=2)
-        default = gcp.compute.Disk("default",
-            type="pd-ssd",
-            zone=google_compute_instance_group_manager["igm"]["zone"],
-            image="debian-11-bullseye-v20220719",
-            physical_block_size_bytes=4096)
-        with_disk = gcp.compute.PerInstanceConfig("withDisk",
-            zone=google_compute_instance_group_manager["igm"]["zone"],
-            instance_group_manager=google_compute_instance_group_manager["igm"]["name"],
-            preserved_state=gcp.compute.PerInstanceConfigPreservedStateArgs(
-                metadata={
-                    "foo": "bar",
-                    "instance_template": igm_basic.self_link,
-                },
-                disks=[gcp.compute.PerInstanceConfigPreservedStateDiskArgs(
-                    device_name="my-stateful-disk",
-                    source=default.id,
-                    mode="READ_ONLY",
-                )],
-            ))
-        ```
 
         ## Import
 
@@ -670,11 +578,7 @@ class PerInstanceConfig(pulumi.CustomResource):
             __props__.__dict__["minimal_action"] = minimal_action
             __props__.__dict__["most_disruptive_allowed_action"] = most_disruptive_allowed_action
             __props__.__dict__["name"] = name
-            if preserved_state is not None and not isinstance(preserved_state, PerInstanceConfigPreservedStateArgs):
-                preserved_state = preserved_state or {}
-                def _setter(key, value):
-                    preserved_state[key] = value
-                PerInstanceConfigPreservedStateArgs._configure(_setter, **preserved_state)
+            preserved_state = _utilities.configure(preserved_state, PerInstanceConfigPreservedStateArgs, True)
             __props__.__dict__["preserved_state"] = preserved_state
             __props__.__dict__["project"] = project
             __props__.__dict__["remove_instance_state_on_destroy"] = remove_instance_state_on_destroy

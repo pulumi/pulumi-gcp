@@ -16,19 +16,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
  *
  * ## Example Usage
- * ### Notebook Environment Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const environment = new gcp.notebooks.Environment("environment", {
- *     containerImage: {
- *         repository: "gcr.io/deeplearning-platform-release/base-cpu",
- *     },
- *     location: "us-west1-a",
- * });
- * ```
  *
  * ## Import
  *

@@ -61,13 +61,25 @@ class PolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             default_admission_rule: pulumi.Input['PolicyDefaultAdmissionRuleArgs'],
+             default_admission_rule: Optional[pulumi.Input['PolicyDefaultAdmissionRuleArgs']] = None,
              admission_whitelist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAdmissionWhitelistPatternArgs']]]] = None,
              cluster_admission_rules: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyClusterAdmissionRuleArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              global_policy_evaluation_mode: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if default_admission_rule is None and 'defaultAdmissionRule' in kwargs:
+            default_admission_rule = kwargs['defaultAdmissionRule']
+        if default_admission_rule is None:
+            raise TypeError("Missing 'default_admission_rule' argument")
+        if admission_whitelist_patterns is None and 'admissionWhitelistPatterns' in kwargs:
+            admission_whitelist_patterns = kwargs['admissionWhitelistPatterns']
+        if cluster_admission_rules is None and 'clusterAdmissionRules' in kwargs:
+            cluster_admission_rules = kwargs['clusterAdmissionRules']
+        if global_policy_evaluation_mode is None and 'globalPolicyEvaluationMode' in kwargs:
+            global_policy_evaluation_mode = kwargs['globalPolicyEvaluationMode']
+
         _setter("default_admission_rule", default_admission_rule)
         if admission_whitelist_patterns is not None:
             _setter("admission_whitelist_patterns", admission_whitelist_patterns)
@@ -225,7 +237,17 @@ class _PolicyState:
              description: Optional[pulumi.Input[str]] = None,
              global_policy_evaluation_mode: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admission_whitelist_patterns is None and 'admissionWhitelistPatterns' in kwargs:
+            admission_whitelist_patterns = kwargs['admissionWhitelistPatterns']
+        if cluster_admission_rules is None and 'clusterAdmissionRules' in kwargs:
+            cluster_admission_rules = kwargs['clusterAdmissionRules']
+        if default_admission_rule is None and 'defaultAdmissionRule' in kwargs:
+            default_admission_rule = kwargs['defaultAdmissionRule']
+        if global_policy_evaluation_mode is None and 'globalPolicyEvaluationMode' in kwargs:
+            global_policy_evaluation_mode = kwargs['globalPolicyEvaluationMode']
+
         if admission_whitelist_patterns is not None:
             _setter("admission_whitelist_patterns", admission_whitelist_patterns)
         if cluster_admission_rules is not None:
@@ -352,57 +374,6 @@ class Policy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/binary-authorization/)
 
         ## Example Usage
-        ### Binary Authorization Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
-                human_readable_name="My attestor",
-            ),
-        ))
-        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
-            note_reference=note.name,
-        ))
-        policy = gcp.binaryauthorization.Policy("policy",
-            admission_whitelist_patterns=[gcp.binaryauthorization.PolicyAdmissionWhitelistPatternArgs(
-                name_pattern="gcr.io/google_containers/*",
-            )],
-            default_admission_rule=gcp.binaryauthorization.PolicyDefaultAdmissionRuleArgs(
-                evaluation_mode="ALWAYS_ALLOW",
-                enforcement_mode="ENFORCED_BLOCK_AND_AUDIT_LOG",
-            ),
-            cluster_admission_rules=[gcp.binaryauthorization.PolicyClusterAdmissionRuleArgs(
-                cluster="us-central1-a.prod-cluster",
-                evaluation_mode="REQUIRE_ATTESTATION",
-                enforcement_mode="ENFORCED_BLOCK_AND_AUDIT_LOG",
-                require_attestations_bies=[attestor.name],
-            )])
-        ```
-        ### Binary Authorization Policy Global Evaluation
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
-                human_readable_name="My attestor",
-            ),
-        ))
-        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
-            note_reference=note.name,
-        ))
-        policy = gcp.binaryauthorization.Policy("policy",
-            default_admission_rule=gcp.binaryauthorization.PolicyDefaultAdmissionRuleArgs(
-                evaluation_mode="REQUIRE_ATTESTATION",
-                enforcement_mode="ENFORCED_BLOCK_AND_AUDIT_LOG",
-                require_attestations_bies=[attestor.name],
-            ),
-            global_policy_evaluation_mode="ENABLE")
-        ```
 
         ## Import
 
@@ -459,57 +430,6 @@ class Policy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/binary-authorization/)
 
         ## Example Usage
-        ### Binary Authorization Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
-                human_readable_name="My attestor",
-            ),
-        ))
-        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
-            note_reference=note.name,
-        ))
-        policy = gcp.binaryauthorization.Policy("policy",
-            admission_whitelist_patterns=[gcp.binaryauthorization.PolicyAdmissionWhitelistPatternArgs(
-                name_pattern="gcr.io/google_containers/*",
-            )],
-            default_admission_rule=gcp.binaryauthorization.PolicyDefaultAdmissionRuleArgs(
-                evaluation_mode="ALWAYS_ALLOW",
-                enforcement_mode="ENFORCED_BLOCK_AND_AUDIT_LOG",
-            ),
-            cluster_admission_rules=[gcp.binaryauthorization.PolicyClusterAdmissionRuleArgs(
-                cluster="us-central1-a.prod-cluster",
-                evaluation_mode="REQUIRE_ATTESTATION",
-                enforcement_mode="ENFORCED_BLOCK_AND_AUDIT_LOG",
-                require_attestations_bies=[attestor.name],
-            )])
-        ```
-        ### Binary Authorization Policy Global Evaluation
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
-                human_readable_name="My attestor",
-            ),
-        ))
-        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
-            note_reference=note.name,
-        ))
-        policy = gcp.binaryauthorization.Policy("policy",
-            default_admission_rule=gcp.binaryauthorization.PolicyDefaultAdmissionRuleArgs(
-                evaluation_mode="REQUIRE_ATTESTATION",
-                enforcement_mode="ENFORCED_BLOCK_AND_AUDIT_LOG",
-                require_attestations_bies=[attestor.name],
-            ),
-            global_policy_evaluation_mode="ENABLE")
-        ```
 
         ## Import
 
@@ -559,11 +479,7 @@ class Policy(pulumi.CustomResource):
 
             __props__.__dict__["admission_whitelist_patterns"] = admission_whitelist_patterns
             __props__.__dict__["cluster_admission_rules"] = cluster_admission_rules
-            if default_admission_rule is not None and not isinstance(default_admission_rule, PolicyDefaultAdmissionRuleArgs):
-                default_admission_rule = default_admission_rule or {}
-                def _setter(key, value):
-                    default_admission_rule[key] = value
-                PolicyDefaultAdmissionRuleArgs._configure(_setter, **default_admission_rule)
+            default_admission_rule = _utilities.configure(default_admission_rule, PolicyDefaultAdmissionRuleArgs, True)
             if default_admission_rule is None and not opts.urn:
                 raise TypeError("Missing required property 'default_admission_rule'")
             __props__.__dict__["default_admission_rule"] = default_admission_rule

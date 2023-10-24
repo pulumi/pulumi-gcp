@@ -13,70 +13,12 @@ namespace Pulumi.Gcp.Container
     {
         /// <summary>
         /// Provides access to available platform versions in a location for a given project.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var manifest = Gcp.Container.GetAttachedInstallManifest.Invoke(new()
-        ///     {
-        ///         Location = "us-west1",
-        ///         Project = "my-project",
-        ///         ClusterId = "test-cluster-1",
-        ///         PlatformVersion = "1.25.0-gke.1",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["installManifest"] = manifest,
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAttachedInstallManifestResult> InvokeAsync(GetAttachedInstallManifestArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAttachedInstallManifestResult>("gcp:container/getAttachedInstallManifest:getAttachedInstallManifest", args ?? new GetAttachedInstallManifestArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides access to available platform versions in a location for a given project.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var manifest = Gcp.Container.GetAttachedInstallManifest.Invoke(new()
-        ///     {
-        ///         Location = "us-west1",
-        ///         Project = "my-project",
-        ///         ClusterId = "test-cluster-1",
-        ///         PlatformVersion = "1.25.0-gke.1",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["installManifest"] = manifest,
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAttachedInstallManifestResult> Invoke(GetAttachedInstallManifestInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAttachedInstallManifestResult>("gcp:container/getAttachedInstallManifest:getAttachedInstallManifest", args ?? new GetAttachedInstallManifestInvokeArgs(), options.WithDefaults());

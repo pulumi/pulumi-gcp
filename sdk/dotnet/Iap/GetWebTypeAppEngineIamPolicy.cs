@@ -13,54 +13,12 @@ namespace Pulumi.Gcp.Iap
     {
         /// <summary>
         /// Retrieves the current IAM policy data for webtypeappengine
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.Iap.GetWebTypeAppEngineIamPolicy.Invoke(new()
-        ///     {
-        ///         Project = google_app_engine_application.App.Project,
-        ///         AppId = google_app_engine_application.App.App_id,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetWebTypeAppEngineIamPolicyResult> InvokeAsync(GetWebTypeAppEngineIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWebTypeAppEngineIamPolicyResult>("gcp:iap/getWebTypeAppEngineIamPolicy:getWebTypeAppEngineIamPolicy", args ?? new GetWebTypeAppEngineIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for webtypeappengine
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.Iap.GetWebTypeAppEngineIamPolicy.Invoke(new()
-        ///     {
-        ///         Project = google_app_engine_application.App.Project,
-        ///         AppId = google_app_engine_application.App.App_id,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetWebTypeAppEngineIamPolicyResult> Invoke(GetWebTypeAppEngineIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWebTypeAppEngineIamPolicyResult>("gcp:iap/getWebTypeAppEngineIamPolicy:getWebTypeAppEngineIamPolicy", args ?? new GetWebTypeAppEngineIamPolicyInvokeArgs(), options.WithDefaults());

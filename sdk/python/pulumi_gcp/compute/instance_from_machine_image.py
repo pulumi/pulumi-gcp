@@ -126,7 +126,7 @@ class InstanceFromMachineImageArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source_machine_image: pulumi.Input[str],
+             source_machine_image: Optional[pulumi.Input[str]] = None,
              advanced_machine_features: Optional[pulumi.Input['InstanceFromMachineImageAdvancedMachineFeaturesArgs']] = None,
              allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
              can_ip_forward: Optional[pulumi.Input[bool]] = None,
@@ -154,7 +154,47 @@ class InstanceFromMachineImageArgs:
              shielded_instance_config: Optional[pulumi.Input['InstanceFromMachineImageShieldedInstanceConfigArgs']] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if source_machine_image is None and 'sourceMachineImage' in kwargs:
+            source_machine_image = kwargs['sourceMachineImage']
+        if source_machine_image is None:
+            raise TypeError("Missing 'source_machine_image' argument")
+        if advanced_machine_features is None and 'advancedMachineFeatures' in kwargs:
+            advanced_machine_features = kwargs['advancedMachineFeatures']
+        if allow_stopping_for_update is None and 'allowStoppingForUpdate' in kwargs:
+            allow_stopping_for_update = kwargs['allowStoppingForUpdate']
+        if can_ip_forward is None and 'canIpForward' in kwargs:
+            can_ip_forward = kwargs['canIpForward']
+        if confidential_instance_config is None and 'confidentialInstanceConfig' in kwargs:
+            confidential_instance_config = kwargs['confidentialInstanceConfig']
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if desired_status is None and 'desiredStatus' in kwargs:
+            desired_status = kwargs['desiredStatus']
+        if enable_display is None and 'enableDisplay' in kwargs:
+            enable_display = kwargs['enableDisplay']
+        if guest_accelerators is None and 'guestAccelerators' in kwargs:
+            guest_accelerators = kwargs['guestAccelerators']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if metadata_startup_script is None and 'metadataStartupScript' in kwargs:
+            metadata_startup_script = kwargs['metadataStartupScript']
+        if min_cpu_platform is None and 'minCpuPlatform' in kwargs:
+            min_cpu_platform = kwargs['minCpuPlatform']
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if network_performance_config is None and 'networkPerformanceConfig' in kwargs:
+            network_performance_config = kwargs['networkPerformanceConfig']
+        if reservation_affinity is None and 'reservationAffinity' in kwargs:
+            reservation_affinity = kwargs['reservationAffinity']
+        if resource_policies is None and 'resourcePolicies' in kwargs:
+            resource_policies = kwargs['resourcePolicies']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
+            shielded_instance_config = kwargs['shieldedInstanceConfig']
+
         _setter("source_machine_image", source_machine_image)
         if advanced_machine_features is not None:
             _setter("advanced_machine_features", advanced_machine_features)
@@ -748,7 +788,65 @@ class _InstanceFromMachineImageState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags_fingerprint: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if advanced_machine_features is None and 'advancedMachineFeatures' in kwargs:
+            advanced_machine_features = kwargs['advancedMachineFeatures']
+        if allow_stopping_for_update is None and 'allowStoppingForUpdate' in kwargs:
+            allow_stopping_for_update = kwargs['allowStoppingForUpdate']
+        if attached_disks is None and 'attachedDisks' in kwargs:
+            attached_disks = kwargs['attachedDisks']
+        if boot_disks is None and 'bootDisks' in kwargs:
+            boot_disks = kwargs['bootDisks']
+        if can_ip_forward is None and 'canIpForward' in kwargs:
+            can_ip_forward = kwargs['canIpForward']
+        if confidential_instance_config is None and 'confidentialInstanceConfig' in kwargs:
+            confidential_instance_config = kwargs['confidentialInstanceConfig']
+        if cpu_platform is None and 'cpuPlatform' in kwargs:
+            cpu_platform = kwargs['cpuPlatform']
+        if current_status is None and 'currentStatus' in kwargs:
+            current_status = kwargs['currentStatus']
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if desired_status is None and 'desiredStatus' in kwargs:
+            desired_status = kwargs['desiredStatus']
+        if enable_display is None and 'enableDisplay' in kwargs:
+            enable_display = kwargs['enableDisplay']
+        if guest_accelerators is None and 'guestAccelerators' in kwargs:
+            guest_accelerators = kwargs['guestAccelerators']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if label_fingerprint is None and 'labelFingerprint' in kwargs:
+            label_fingerprint = kwargs['labelFingerprint']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if metadata_fingerprint is None and 'metadataFingerprint' in kwargs:
+            metadata_fingerprint = kwargs['metadataFingerprint']
+        if metadata_startup_script is None and 'metadataStartupScript' in kwargs:
+            metadata_startup_script = kwargs['metadataStartupScript']
+        if min_cpu_platform is None and 'minCpuPlatform' in kwargs:
+            min_cpu_platform = kwargs['minCpuPlatform']
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if network_performance_config is None and 'networkPerformanceConfig' in kwargs:
+            network_performance_config = kwargs['networkPerformanceConfig']
+        if reservation_affinity is None and 'reservationAffinity' in kwargs:
+            reservation_affinity = kwargs['reservationAffinity']
+        if resource_policies is None and 'resourcePolicies' in kwargs:
+            resource_policies = kwargs['resourcePolicies']
+        if scratch_disks is None and 'scratchDisks' in kwargs:
+            scratch_disks = kwargs['scratchDisks']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
+            shielded_instance_config = kwargs['shieldedInstanceConfig']
+        if source_machine_image is None and 'sourceMachineImage' in kwargs:
+            source_machine_image = kwargs['sourceMachineImage']
+        if tags_fingerprint is None and 'tagsFingerprint' in kwargs:
+            tags_fingerprint = kwargs['tagsFingerprint']
+
         if advanced_machine_features is not None:
             _setter("advanced_machine_features", advanced_machine_features)
         if allow_stopping_for_update is not None:
@@ -1346,22 +1444,6 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         `source_machine_image`. To create an instance without a machine image, use the
         `compute.Instance` resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        tpl = gcp.compute.InstanceFromMachineImage("tpl",
-            zone="us-central1-a",
-            source_machine_image="projects/PROJECT-ID/global/machineImages/NAME",
-            can_ip_forward=False,
-            labels={
-                "my_key": "my_value",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageAdvancedMachineFeaturesArgs']] advanced_machine_features: Controls for advanced machine-related behavior features.
@@ -1426,22 +1508,6 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         `source_machine_image`. To create an instance without a machine image, use the
         `compute.Instance` resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        tpl = gcp.compute.InstanceFromMachineImage("tpl",
-            zone="us-central1-a",
-            source_machine_image="projects/PROJECT-ID/global/machineImages/NAME",
-            can_ip_forward=False,
-            labels={
-                "my_key": "my_value",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-
         :param str resource_name: The name of the resource.
         :param InstanceFromMachineImageArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1498,19 +1564,11 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceFromMachineImageArgs.__new__(InstanceFromMachineImageArgs)
 
-            if advanced_machine_features is not None and not isinstance(advanced_machine_features, InstanceFromMachineImageAdvancedMachineFeaturesArgs):
-                advanced_machine_features = advanced_machine_features or {}
-                def _setter(key, value):
-                    advanced_machine_features[key] = value
-                InstanceFromMachineImageAdvancedMachineFeaturesArgs._configure(_setter, **advanced_machine_features)
+            advanced_machine_features = _utilities.configure(advanced_machine_features, InstanceFromMachineImageAdvancedMachineFeaturesArgs, True)
             __props__.__dict__["advanced_machine_features"] = advanced_machine_features
             __props__.__dict__["allow_stopping_for_update"] = allow_stopping_for_update
             __props__.__dict__["can_ip_forward"] = can_ip_forward
-            if confidential_instance_config is not None and not isinstance(confidential_instance_config, InstanceFromMachineImageConfidentialInstanceConfigArgs):
-                confidential_instance_config = confidential_instance_config or {}
-                def _setter(key, value):
-                    confidential_instance_config[key] = value
-                InstanceFromMachineImageConfidentialInstanceConfigArgs._configure(_setter, **confidential_instance_config)
+            confidential_instance_config = _utilities.configure(confidential_instance_config, InstanceFromMachineImageConfidentialInstanceConfigArgs, True)
             __props__.__dict__["confidential_instance_config"] = confidential_instance_config
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
@@ -1525,43 +1583,19 @@ class InstanceFromMachineImage(pulumi.CustomResource):
             __props__.__dict__["min_cpu_platform"] = min_cpu_platform
             __props__.__dict__["name"] = name
             __props__.__dict__["network_interfaces"] = network_interfaces
-            if network_performance_config is not None and not isinstance(network_performance_config, InstanceFromMachineImageNetworkPerformanceConfigArgs):
-                network_performance_config = network_performance_config or {}
-                def _setter(key, value):
-                    network_performance_config[key] = value
-                InstanceFromMachineImageNetworkPerformanceConfigArgs._configure(_setter, **network_performance_config)
+            network_performance_config = _utilities.configure(network_performance_config, InstanceFromMachineImageNetworkPerformanceConfigArgs, True)
             __props__.__dict__["network_performance_config"] = network_performance_config
-            if params is not None and not isinstance(params, InstanceFromMachineImageParamsArgs):
-                params = params or {}
-                def _setter(key, value):
-                    params[key] = value
-                InstanceFromMachineImageParamsArgs._configure(_setter, **params)
+            params = _utilities.configure(params, InstanceFromMachineImageParamsArgs, True)
             __props__.__dict__["params"] = params
             __props__.__dict__["project"] = project
-            if reservation_affinity is not None and not isinstance(reservation_affinity, InstanceFromMachineImageReservationAffinityArgs):
-                reservation_affinity = reservation_affinity or {}
-                def _setter(key, value):
-                    reservation_affinity[key] = value
-                InstanceFromMachineImageReservationAffinityArgs._configure(_setter, **reservation_affinity)
+            reservation_affinity = _utilities.configure(reservation_affinity, InstanceFromMachineImageReservationAffinityArgs, True)
             __props__.__dict__["reservation_affinity"] = reservation_affinity
             __props__.__dict__["resource_policies"] = resource_policies
-            if scheduling is not None and not isinstance(scheduling, InstanceFromMachineImageSchedulingArgs):
-                scheduling = scheduling or {}
-                def _setter(key, value):
-                    scheduling[key] = value
-                InstanceFromMachineImageSchedulingArgs._configure(_setter, **scheduling)
+            scheduling = _utilities.configure(scheduling, InstanceFromMachineImageSchedulingArgs, True)
             __props__.__dict__["scheduling"] = scheduling
-            if service_account is not None and not isinstance(service_account, InstanceFromMachineImageServiceAccountArgs):
-                service_account = service_account or {}
-                def _setter(key, value):
-                    service_account[key] = value
-                InstanceFromMachineImageServiceAccountArgs._configure(_setter, **service_account)
+            service_account = _utilities.configure(service_account, InstanceFromMachineImageServiceAccountArgs, True)
             __props__.__dict__["service_account"] = service_account
-            if shielded_instance_config is not None and not isinstance(shielded_instance_config, InstanceFromMachineImageShieldedInstanceConfigArgs):
-                shielded_instance_config = shielded_instance_config or {}
-                def _setter(key, value):
-                    shielded_instance_config[key] = value
-                InstanceFromMachineImageShieldedInstanceConfigArgs._configure(_setter, **shielded_instance_config)
+            shielded_instance_config = _utilities.configure(shielded_instance_config, InstanceFromMachineImageShieldedInstanceConfigArgs, True)
             __props__.__dict__["shielded_instance_config"] = shielded_instance_config
             if source_machine_image is None and not opts.urn:
                 raise TypeError("Missing required property 'source_machine_image'")

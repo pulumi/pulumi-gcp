@@ -14,57 +14,6 @@ import * as utilities from "../utilities";
  *     * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
  *
  * ## Example Usage
- * ### Organization Security Policy Association Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const securityPolicyTarget = new gcp.organizations.Folder("securityPolicyTarget", {
- *     displayName: "tf-test-secpol",
- *     parent: "organizations/123456789",
- * }, {
- *     provider: google_beta,
- * });
- * const policyOrganizationSecurityPolicy = new gcp.compute.OrganizationSecurityPolicy("policyOrganizationSecurityPolicy", {
- *     displayName: "tf-test",
- *     parent: securityPolicyTarget.name,
- * }, {
- *     provider: google_beta,
- * });
- * const policyOrganizationSecurityPolicyRule = new gcp.compute.OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule", {
- *     policyId: policyOrganizationSecurityPolicy.id,
- *     action: "allow",
- *     direction: "INGRESS",
- *     enableLogging: true,
- *     match: {
- *         config: {
- *             srcIpRanges: [
- *                 "192.168.0.0/16",
- *                 "10.0.0.0/8",
- *             ],
- *             layer4Configs: [
- *                 {
- *                     ipProtocol: "tcp",
- *                     ports: ["22"],
- *                 },
- *                 {
- *                     ipProtocol: "icmp",
- *                 },
- *             ],
- *         },
- *     },
- *     priority: 100,
- * }, {
- *     provider: google_beta,
- * });
- * const policyOrganizationSecurityPolicyAssociation = new gcp.compute.OrganizationSecurityPolicyAssociation("policyOrganizationSecurityPolicyAssociation", {
- *     attachmentId: policyOrganizationSecurityPolicy.parent,
- *     policyId: policyOrganizationSecurityPolicy.id,
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *

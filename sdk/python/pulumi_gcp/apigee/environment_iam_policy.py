@@ -44,10 +44,24 @@ class EnvironmentIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             env_id: pulumi.Input[str],
-             org_id: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             env_id: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if env_id is None and 'envId' in kwargs:
+            env_id = kwargs['envId']
+        if env_id is None:
+            raise TypeError("Missing 'env_id' argument")
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("env_id", env_id)
         _setter("org_id", org_id)
         _setter("policy_data", policy_data)
@@ -139,7 +153,15 @@ class _EnvironmentIamPolicyState:
              etag: Optional[pulumi.Input[str]] = None,
              org_id: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if env_id is None and 'envId' in kwargs:
+            env_id = kwargs['envId']
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if env_id is not None:
             _setter("env_id", env_id)
         if etag is not None:
@@ -232,48 +254,6 @@ class EnvironmentIamPolicy(pulumi.CustomResource):
 
         > **Note:** `apigee.EnvironmentIamBinding` resources **can be** used in conjunction with `apigee.EnvironmentIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_apigee\\_environment\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.apigee.EnvironmentIamPolicy("policy",
-            org_id=google_apigee_environment["apigee_environment"]["org_id"],
-            env_id=google_apigee_environment["apigee_environment"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_apigee\\_environment\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.apigee.EnvironmentIamBinding("binding",
-            org_id=google_apigee_environment["apigee_environment"]["org_id"],
-            env_id=google_apigee_environment["apigee_environment"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_apigee\\_environment\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.apigee.EnvironmentIamMember("member",
-            org_id=google_apigee_environment["apigee_environment"]["org_id"],
-            env_id=google_apigee_environment["apigee_environment"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* {{org_id}}/environments/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Apigee environment IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -336,48 +316,6 @@ class EnvironmentIamPolicy(pulumi.CustomResource):
         > **Note:** `apigee.EnvironmentIamPolicy` **cannot** be used in conjunction with `apigee.EnvironmentIamBinding` and `apigee.EnvironmentIamMember` or they will fight over what your policy should be.
 
         > **Note:** `apigee.EnvironmentIamBinding` resources **can be** used in conjunction with `apigee.EnvironmentIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\\_apigee\\_environment\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.apigee.EnvironmentIamPolicy("policy",
-            org_id=google_apigee_environment["apigee_environment"]["org_id"],
-            env_id=google_apigee_environment["apigee_environment"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_apigee\\_environment\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.apigee.EnvironmentIamBinding("binding",
-            org_id=google_apigee_environment["apigee_environment"]["org_id"],
-            env_id=google_apigee_environment["apigee_environment"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_apigee\\_environment\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.apigee.EnvironmentIamMember("member",
-            org_id=google_apigee_environment["apigee_environment"]["org_id"],
-            env_id=google_apigee_environment["apigee_environment"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
 
         ## Import
 

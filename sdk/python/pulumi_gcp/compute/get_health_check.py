@@ -204,15 +204,6 @@ def get_health_check(name: Optional[str] = None,
     """
     Get information about a HealthCheck.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    health_check = gcp.compute.get_health_check(name="my-hc")
-    ```
-
 
     :param str name: Name of the resource.
            
@@ -253,15 +244,6 @@ def get_health_check_output(name: Optional[pulumi.Input[str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHealthCheckResult]:
     """
     Get information about a HealthCheck.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    health_check = gcp.compute.get_health_check(name="my-hc")
-    ```
 
 
     :param str name: Name of the resource.

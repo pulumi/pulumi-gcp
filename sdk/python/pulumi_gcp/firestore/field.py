@@ -52,13 +52,23 @@ class FieldArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             collection: pulumi.Input[str],
-             field: pulumi.Input[str],
+             collection: Optional[pulumi.Input[str]] = None,
+             field: Optional[pulumi.Input[str]] = None,
              database: Optional[pulumi.Input[str]] = None,
              index_config: Optional[pulumi.Input['FieldIndexConfigArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
              ttl_config: Optional[pulumi.Input['FieldTtlConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if collection is None:
+            raise TypeError("Missing 'collection' argument")
+        if field is None:
+            raise TypeError("Missing 'field' argument")
+        if index_config is None and 'indexConfig' in kwargs:
+            index_config = kwargs['indexConfig']
+        if ttl_config is None and 'ttlConfig' in kwargs:
+            ttl_config = kwargs['ttlConfig']
+
         _setter("collection", collection)
         _setter("field", field)
         if database is not None:
@@ -202,7 +212,13 @@ class _FieldState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              ttl_config: Optional[pulumi.Input['FieldTtlConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if index_config is None and 'indexConfig' in kwargs:
+            index_config = kwargs['indexConfig']
+        if ttl_config is None and 'ttlConfig' in kwargs:
+            ttl_config = kwargs['ttlConfig']
+
         if collection is not None:
             _setter("collection", collection)
         if database is not None:
@@ -342,67 +358,6 @@ class Field(pulumi.CustomResource):
         chosen location.
 
         ## Example Usage
-        ### Firestore Field Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.firestore.Field("basic",
-            collection="chatrooms_%{random_suffix}",
-            database="(default)",
-            field="basic",
-            index_config=gcp.firestore.FieldIndexConfigArgs(
-                indexes=[
-                    gcp.firestore.FieldIndexConfigIndexArgs(
-                        order="ASCENDING",
-                        query_scope="COLLECTION_GROUP",
-                    ),
-                    gcp.firestore.FieldIndexConfigIndexArgs(
-                        array_config="CONTAINS",
-                    ),
-                ],
-            ),
-            project="my-project-name",
-            ttl_config=gcp.firestore.FieldTtlConfigArgs())
-        ```
-        ### Firestore Field Timestamp
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        timestamp = gcp.firestore.Field("timestamp",
-            collection="chatrooms_%{random_suffix}",
-            field="timestamp",
-            index_config=gcp.firestore.FieldIndexConfigArgs(),
-            project="my-project-name",
-            ttl_config=gcp.firestore.FieldTtlConfigArgs())
-        ```
-        ### Firestore Field Match Override
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        match_override = gcp.firestore.Field("matchOverride",
-            collection="chatrooms_%{random_suffix}",
-            field="field_with_same_configuration_as_ancestor",
-            index_config=gcp.firestore.FieldIndexConfigArgs(
-                indexes=[
-                    gcp.firestore.FieldIndexConfigIndexArgs(
-                        order="ASCENDING",
-                    ),
-                    gcp.firestore.FieldIndexConfigIndexArgs(
-                        order="DESCENDING",
-                    ),
-                    gcp.firestore.FieldIndexConfigIndexArgs(
-                        array_config="CONTAINS",
-                    ),
-                ],
-            ),
-            project="my-project-name")
-        ```
 
         ## Import
 
@@ -453,67 +408,6 @@ class Field(pulumi.CustomResource):
         chosen location.
 
         ## Example Usage
-        ### Firestore Field Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.firestore.Field("basic",
-            collection="chatrooms_%{random_suffix}",
-            database="(default)",
-            field="basic",
-            index_config=gcp.firestore.FieldIndexConfigArgs(
-                indexes=[
-                    gcp.firestore.FieldIndexConfigIndexArgs(
-                        order="ASCENDING",
-                        query_scope="COLLECTION_GROUP",
-                    ),
-                    gcp.firestore.FieldIndexConfigIndexArgs(
-                        array_config="CONTAINS",
-                    ),
-                ],
-            ),
-            project="my-project-name",
-            ttl_config=gcp.firestore.FieldTtlConfigArgs())
-        ```
-        ### Firestore Field Timestamp
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        timestamp = gcp.firestore.Field("timestamp",
-            collection="chatrooms_%{random_suffix}",
-            field="timestamp",
-            index_config=gcp.firestore.FieldIndexConfigArgs(),
-            project="my-project-name",
-            ttl_config=gcp.firestore.FieldTtlConfigArgs())
-        ```
-        ### Firestore Field Match Override
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        match_override = gcp.firestore.Field("matchOverride",
-            collection="chatrooms_%{random_suffix}",
-            field="field_with_same_configuration_as_ancestor",
-            index_config=gcp.firestore.FieldIndexConfigArgs(
-                indexes=[
-                    gcp.firestore.FieldIndexConfigIndexArgs(
-                        order="ASCENDING",
-                    ),
-                    gcp.firestore.FieldIndexConfigIndexArgs(
-                        order="DESCENDING",
-                    ),
-                    gcp.firestore.FieldIndexConfigIndexArgs(
-                        array_config="CONTAINS",
-                    ),
-                ],
-            ),
-            project="my-project-name")
-        ```
 
         ## Import
 
@@ -564,18 +458,10 @@ class Field(pulumi.CustomResource):
             if field is None and not opts.urn:
                 raise TypeError("Missing required property 'field'")
             __props__.__dict__["field"] = field
-            if index_config is not None and not isinstance(index_config, FieldIndexConfigArgs):
-                index_config = index_config or {}
-                def _setter(key, value):
-                    index_config[key] = value
-                FieldIndexConfigArgs._configure(_setter, **index_config)
+            index_config = _utilities.configure(index_config, FieldIndexConfigArgs, True)
             __props__.__dict__["index_config"] = index_config
             __props__.__dict__["project"] = project
-            if ttl_config is not None and not isinstance(ttl_config, FieldTtlConfigArgs):
-                ttl_config = ttl_config or {}
-                def _setter(key, value):
-                    ttl_config[key] = value
-                FieldTtlConfigArgs._configure(_setter, **ttl_config)
+            ttl_config = _utilities.configure(ttl_config, FieldTtlConfigArgs, True)
             __props__.__dict__["ttl_config"] = ttl_config
             __props__.__dict__["name"] = None
         super(Field, __self__).__init__(

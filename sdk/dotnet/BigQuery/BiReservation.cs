@@ -19,24 +19,6 @@ namespace Pulumi.Gcp.BigQuery
     ///     * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
     /// 
     /// ## Example Usage
-    /// ### Bigquery Reservation Bi Reservation Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var reservation = new Gcp.BigQuery.BiReservation("reservation", new()
-    ///     {
-    ///         Location = "us-west2",
-    ///         Size = 3000000000,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

@@ -102,16 +102,6 @@ def get_job_iam_policy(job_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for a Dataproc job.
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.dataproc.get_job_iam_policy(job_id=google_dataproc_job["pyspark"]["reference"][0]["job_id"],
-        region="us-central1")
-    ```
-
 
     :param str job_id: The name or relative resource id of the job to manage IAM policies for.
     """
@@ -138,16 +128,6 @@ def get_job_iam_policy_output(job_id: Optional[pulumi.Input[str]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetJobIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a Dataproc job.
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.dataproc.get_job_iam_policy(job_id=google_dataproc_job["pyspark"]["reference"][0]["job_id"],
-        region="us-central1")
-    ```
 
 
     :param str job_id: The name or relative resource id of the job to manage IAM policies for.

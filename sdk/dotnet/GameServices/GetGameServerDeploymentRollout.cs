@@ -15,28 +15,6 @@ namespace Pulumi.Gcp.GameServices
         /// Use this data source to get the rollout state. 
         /// 
         /// https://cloud.google.com/game-servers/docs/reference/rest/v1beta/GameServerDeploymentRollout
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var qa = Gcp.GameServices.GetGameServerDeploymentRollout.Invoke(new()
-        ///     {
-        ///         DeploymentId = "tf-test-deployment-s8sn12jt2c",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGameServerDeploymentRolloutResult> InvokeAsync(GetGameServerDeploymentRolloutArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGameServerDeploymentRolloutResult>("gcp:gameservices/getGameServerDeploymentRollout:getGameServerDeploymentRollout", args ?? new GetGameServerDeploymentRolloutArgs(), options.WithDefaults());
@@ -45,28 +23,6 @@ namespace Pulumi.Gcp.GameServices
         /// Use this data source to get the rollout state. 
         /// 
         /// https://cloud.google.com/game-servers/docs/reference/rest/v1beta/GameServerDeploymentRollout
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var qa = Gcp.GameServices.GetGameServerDeploymentRollout.Invoke(new()
-        ///     {
-        ///         DeploymentId = "tf-test-deployment-s8sn12jt2c",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetGameServerDeploymentRolloutResult> Invoke(GetGameServerDeploymentRolloutInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGameServerDeploymentRolloutResult>("gcp:gameservices/getGameServerDeploymentRollout:getGameServerDeploymentRollout", args ?? new GetGameServerDeploymentRolloutInvokeArgs(), options.WithDefaults());

@@ -103,17 +103,6 @@ def get_iam_policy(data_policy_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for datapolicy
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.bigquerydatapolicy.get_iam_policy(project=google_bigquery_datapolicy_data_policy["data_policy"]["project"],
-        location=google_bigquery_datapolicy_data_policy["data_policy"]["location"],
-        data_policy_id=google_bigquery_datapolicy_data_policy["data_policy"]["data_policy_id"])
-    ```
-
 
     :param str location: The name of the location of the data policy.
            Used to find the parent resource to bind the IAM policy to
@@ -143,17 +132,6 @@ def get_iam_policy_output(data_policy_id: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIamPolicyResult]:
     """
     Retrieves the current IAM policy data for datapolicy
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.bigquerydatapolicy.get_iam_policy(project=google_bigquery_datapolicy_data_policy["data_policy"]["project"],
-        location=google_bigquery_datapolicy_data_policy["data_policy"]["location"],
-        data_policy_id=google_bigquery_datapolicy_data_policy["data_policy"]["data_policy_id"])
-    ```
 
 
     :param str location: The name of the location of the data policy.

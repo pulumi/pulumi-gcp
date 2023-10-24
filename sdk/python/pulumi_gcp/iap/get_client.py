@@ -86,17 +86,6 @@ def get_client(brand: Optional[str] = None,
     """
     Get info about a Google Cloud IAP Client.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    project = gcp.organizations.get_project(project_id="foobar")
-    project_client = gcp.iap.get_client(brand=f"projects/{project.number}/brands/[BRAND_NUMBER]",
-        client_id=foo["apps"]["googleusercontent"]["com"])
-    ```
-
 
     :param str brand: The name of the brand.
     :param str client_id: The client_id of the brand.
@@ -121,17 +110,6 @@ def get_client_output(brand: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClientResult]:
     """
     Get info about a Google Cloud IAP Client.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    project = gcp.organizations.get_project(project_id="foobar")
-    project_client = gcp.iap.get_client(brand=f"projects/{project.number}/brands/[BRAND_NUMBER]",
-        client_id=foo["apps"]["googleusercontent"]["com"])
-    ```
 
 
     :param str brand: The name of the brand.

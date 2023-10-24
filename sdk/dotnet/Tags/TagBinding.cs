@@ -19,44 +19,6 @@ namespace Pulumi.Gcp.Tags
     ///     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
     /// 
     /// ## Example Usage
-    /// ### Tag Binding Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var project = new Gcp.Organizations.Project("project", new()
-    ///     {
-    ///         OrgId = "123456789",
-    ///         ProjectId = "project_id",
-    ///     });
-    /// 
-    ///     var key = new Gcp.Tags.TagKey("key", new()
-    ///     {
-    ///         Description = "For keyname resources.",
-    ///         Parent = "organizations/123456789",
-    ///         ShortName = "keyname",
-    ///     });
-    /// 
-    ///     var @value = new Gcp.Tags.TagValue("value", new()
-    ///     {
-    ///         Description = "For valuename resources.",
-    ///         Parent = key.Name.Apply(name =&gt; $"tagKeys/{name}"),
-    ///         ShortName = "valuename",
-    ///     });
-    /// 
-    ///     var binding = new Gcp.Tags.TagBinding("binding", new()
-    ///     {
-    ///         Parent = project.Number.Apply(number =&gt; $"//cloudresourcemanager.googleapis.com/projects/{number}"),
-    ///         TagValue = @value.Name.Apply(name =&gt; $"tagValues/{name}"),
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

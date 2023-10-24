@@ -76,7 +76,13 @@ class SSLPolicyArgs:
              name: Optional[pulumi.Input[str]] = None,
              profile: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if custom_features is None and 'customFeatures' in kwargs:
+            custom_features = kwargs['customFeatures']
+        if min_tls_version is None and 'minTlsVersion' in kwargs:
+            min_tls_version = kwargs['minTlsVersion']
+
         if custom_features is not None:
             _setter("custom_features", custom_features)
         if description is not None:
@@ -274,7 +280,19 @@ class _SSLPolicyState:
              profile: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if custom_features is None and 'customFeatures' in kwargs:
+            custom_features = kwargs['customFeatures']
+        if enabled_features is None and 'enabledFeatures' in kwargs:
+            enabled_features = kwargs['enabledFeatures']
+        if min_tls_version is None and 'minTlsVersion' in kwargs:
+            min_tls_version = kwargs['minTlsVersion']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if creation_timestamp is not None:
             _setter("creation_timestamp", creation_timestamp)
         if custom_features is not None:
@@ -470,24 +488,6 @@ class SSLPolicy(pulumi.CustomResource):
             * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
 
         ## Example Usage
-        ### Ssl Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        prod_ssl_policy = gcp.compute.SSLPolicy("prod-ssl-policy", profile="MODERN")
-        nonprod_ssl_policy = gcp.compute.SSLPolicy("nonprod-ssl-policy",
-            min_tls_version="TLS_1_2",
-            profile="MODERN")
-        custom_ssl_policy = gcp.compute.SSLPolicy("custom-ssl-policy",
-            custom_features=[
-                "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
-                "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
-            ],
-            min_tls_version="TLS_1_2",
-            profile="CUSTOM")
-        ```
 
         ## Import
 
@@ -560,24 +560,6 @@ class SSLPolicy(pulumi.CustomResource):
             * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
 
         ## Example Usage
-        ### Ssl Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        prod_ssl_policy = gcp.compute.SSLPolicy("prod-ssl-policy", profile="MODERN")
-        nonprod_ssl_policy = gcp.compute.SSLPolicy("nonprod-ssl-policy",
-            min_tls_version="TLS_1_2",
-            profile="MODERN")
-        custom_ssl_policy = gcp.compute.SSLPolicy("custom-ssl-policy",
-            custom_features=[
-                "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
-                "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
-            ],
-            min_tls_version="TLS_1_2",
-            profile="CUSTOM")
-        ```
 
         ## Import
 

@@ -6,19 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for queue
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.cloudtasks.getQueueIamPolicy({
- *     project: google_cloud_tasks_queue["default"].project,
- *     location: google_cloud_tasks_queue["default"].location,
- *     name: google_cloud_tasks_queue["default"].name,
- * });
- * ```
  */
 export function getQueueIamPolicy(args: GetQueueIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetQueueIamPolicyResult> {
 
@@ -72,19 +59,6 @@ export interface GetQueueIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for queue
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.cloudtasks.getQueueIamPolicy({
- *     project: google_cloud_tasks_queue["default"].project,
- *     location: google_cloud_tasks_queue["default"].location,
- *     name: google_cloud_tasks_queue["default"].name,
- * });
- * ```
  */
 export function getQueueIamPolicyOutput(args: GetQueueIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQueueIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getQueueIamPolicy(a, opts))

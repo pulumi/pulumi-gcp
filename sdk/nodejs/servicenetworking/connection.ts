@@ -10,36 +10,6 @@ import * as utilities from "../utilities";
  * and
  * [API](https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/v1/services.connections).
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * // Create a VPC network
- * const peeringNetwork = new gcp.compute.Network("peeringNetwork", {});
- * // Create an IP address
- * const privateIpAlloc = new gcp.compute.GlobalAddress("privateIpAlloc", {
- *     purpose: "VPC_PEERING",
- *     addressType: "INTERNAL",
- *     prefixLength: 16,
- *     network: peeringNetwork.id,
- * });
- * // Create a private connection
- * const _default = new gcp.servicenetworking.Connection("default", {
- *     network: peeringNetwork.id,
- *     service: "servicenetworking.googleapis.com",
- *     reservedPeeringRanges: [privateIpAlloc.name],
- * });
- * // (Optional) Import or export custom routes
- * const peeringRoutes = new gcp.compute.NetworkPeeringRoutesConfig("peeringRoutes", {
- *     peering: _default.peering,
- *     network: peeringNetwork.name,
- *     importCustomRoutes: true,
- *     exportCustomRoutes: true,
- * });
- * ```
- *
  * ## Import
  *
  * ServiceNetworkingConnection can be imported using any of these accepted formats

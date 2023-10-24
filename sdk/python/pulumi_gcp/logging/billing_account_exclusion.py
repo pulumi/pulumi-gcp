@@ -41,12 +41,20 @@ class BillingAccountExclusionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             billing_account: pulumi.Input[str],
-             filter: pulumi.Input[str],
+             billing_account: Optional[pulumi.Input[str]] = None,
+             filter: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if billing_account is None and 'billingAccount' in kwargs:
+            billing_account = kwargs['billingAccount']
+        if billing_account is None:
+            raise TypeError("Missing 'billing_account' argument")
+        if filter is None:
+            raise TypeError("Missing 'filter' argument")
+
         _setter("billing_account", billing_account)
         _setter("filter", filter)
         if description is not None:
@@ -155,7 +163,11 @@ class _BillingAccountExclusionState:
              disabled: Optional[pulumi.Input[bool]] = None,
              filter: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if billing_account is None and 'billingAccount' in kwargs:
+            billing_account = kwargs['billingAccount']
+
         if billing_account is not None:
             _setter("billing_account", billing_account)
         if description is not None:
@@ -243,18 +255,6 @@ class BillingAccountExclusion(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_exclusion = gcp.logging.BillingAccountExclusion("my-exclusion",
-            billing_account="ABCDEF-012345-GHIJKL",
-            description="Exclude GCE instance debug logs",
-            filter="resource.type = gce_instance AND severity <= DEBUG")
-        ```
-
         ## Import
 
         Billing account logging exclusions can be imported using their URI, e.g.
@@ -281,18 +281,6 @@ class BillingAccountExclusion(pulumi.CustomResource):
                  args: BillingAccountExclusionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_exclusion = gcp.logging.BillingAccountExclusion("my-exclusion",
-            billing_account="ABCDEF-012345-GHIJKL",
-            description="Exclude GCE instance debug logs",
-            filter="resource.type = gce_instance AND severity <= DEBUG")
-        ```
-
         ## Import
 
         Billing account logging exclusions can be imported using their URI, e.g.

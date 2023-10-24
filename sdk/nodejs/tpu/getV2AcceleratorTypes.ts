@@ -6,29 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Get accelerator types available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.acceleratorTypes).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const available = gcp.tpu.getV2AcceleratorTypes({});
- * ```
- * ### Configure Basic TPU VM With Available Type
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const availableV2AcceleratorTypes = gcp.tpu.getV2AcceleratorTypes({});
- * const availableV2RuntimeVersions = gcp.tpu.getV2RuntimeVersions({});
- * const tpu = new gcp.tpu.V2Vm("tpu", {
- *     zone: "us-central1-b",
- *     runtimeVersion: availableV2RuntimeVersions.then(availableV2RuntimeVersions => availableV2RuntimeVersions.versions?.[0]),
- *     acceleratorType: availableV2AcceleratorTypes.then(availableV2AcceleratorTypes => availableV2AcceleratorTypes.types?.[0]),
- * });
- * ```
  */
 export function getV2AcceleratorTypes(args?: GetV2AcceleratorTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetV2AcceleratorTypesResult> {
     args = args || {};
@@ -73,29 +50,6 @@ export interface GetV2AcceleratorTypesResult {
 }
 /**
  * Get accelerator types available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.acceleratorTypes).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const available = gcp.tpu.getV2AcceleratorTypes({});
- * ```
- * ### Configure Basic TPU VM With Available Type
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const availableV2AcceleratorTypes = gcp.tpu.getV2AcceleratorTypes({});
- * const availableV2RuntimeVersions = gcp.tpu.getV2RuntimeVersions({});
- * const tpu = new gcp.tpu.V2Vm("tpu", {
- *     zone: "us-central1-b",
- *     runtimeVersion: availableV2RuntimeVersions.then(availableV2RuntimeVersions => availableV2RuntimeVersions.versions?.[0]),
- *     acceleratorType: availableV2AcceleratorTypes.then(availableV2AcceleratorTypes => availableV2AcceleratorTypes.types?.[0]),
- * });
- * ```
  */
 export function getV2AcceleratorTypesOutput(args?: GetV2AcceleratorTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetV2AcceleratorTypesResult> {
     return pulumi.output(args).apply((a: any) => getV2AcceleratorTypes(a, opts))

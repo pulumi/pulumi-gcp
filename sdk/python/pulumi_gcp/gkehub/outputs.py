@@ -62,10 +62,16 @@ class FeatureIamBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -102,10 +108,16 @@ class FeatureIamMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -179,7 +191,15 @@ class FeatureMembershipConfigmanagement(dict):
              hierarchy_controller: Optional['outputs.FeatureMembershipConfigmanagementHierarchyController'] = None,
              policy_controller: Optional['outputs.FeatureMembershipConfigmanagementPolicyController'] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if config_sync is None and 'configSync' in kwargs:
+            config_sync = kwargs['configSync']
+        if hierarchy_controller is None and 'hierarchyController' in kwargs:
+            hierarchy_controller = kwargs['hierarchyController']
+        if policy_controller is None and 'policyController' in kwargs:
+            policy_controller = kwargs['policyController']
+
         if binauthz is not None:
             _setter("binauthz", binauthz)
         if config_sync is not None:
@@ -247,7 +267,9 @@ class FeatureMembershipConfigmanagementBinauthz(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if enabled is not None:
             _setter("enabled", enabled)
 
@@ -308,7 +330,13 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
              oci: Optional['outputs.FeatureMembershipConfigmanagementConfigSyncOci'] = None,
              prevent_drift: Optional[bool] = None,
              source_format: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if prevent_drift is None and 'preventDrift' in kwargs:
+            prevent_drift = kwargs['preventDrift']
+        if source_format is None and 'sourceFormat' in kwargs:
+            source_format = kwargs['sourceFormat']
+
         if git is not None:
             _setter("git", git)
         if oci is not None:
@@ -427,7 +455,25 @@ class FeatureMembershipConfigmanagementConfigSyncGit(dict):
              sync_repo: Optional[str] = None,
              sync_rev: Optional[str] = None,
              sync_wait_secs: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if gcp_service_account_email is None and 'gcpServiceAccountEmail' in kwargs:
+            gcp_service_account_email = kwargs['gcpServiceAccountEmail']
+        if https_proxy is None and 'httpsProxy' in kwargs:
+            https_proxy = kwargs['httpsProxy']
+        if policy_dir is None and 'policyDir' in kwargs:
+            policy_dir = kwargs['policyDir']
+        if secret_type is None and 'secretType' in kwargs:
+            secret_type = kwargs['secretType']
+        if sync_branch is None and 'syncBranch' in kwargs:
+            sync_branch = kwargs['syncBranch']
+        if sync_repo is None and 'syncRepo' in kwargs:
+            sync_repo = kwargs['syncRepo']
+        if sync_rev is None and 'syncRev' in kwargs:
+            sync_rev = kwargs['syncRev']
+        if sync_wait_secs is None and 'syncWaitSecs' in kwargs:
+            sync_wait_secs = kwargs['syncWaitSecs']
+
         if gcp_service_account_email is not None:
             _setter("gcp_service_account_email", gcp_service_account_email)
         if https_proxy is not None:
@@ -566,7 +612,19 @@ class FeatureMembershipConfigmanagementConfigSyncOci(dict):
              secret_type: Optional[str] = None,
              sync_repo: Optional[str] = None,
              sync_wait_secs: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if gcp_service_account_email is None and 'gcpServiceAccountEmail' in kwargs:
+            gcp_service_account_email = kwargs['gcpServiceAccountEmail']
+        if policy_dir is None and 'policyDir' in kwargs:
+            policy_dir = kwargs['policyDir']
+        if secret_type is None and 'secretType' in kwargs:
+            secret_type = kwargs['secretType']
+        if sync_repo is None and 'syncRepo' in kwargs:
+            sync_repo = kwargs['syncRepo']
+        if sync_wait_secs is None and 'syncWaitSecs' in kwargs:
+            sync_wait_secs = kwargs['syncWaitSecs']
+
         if gcp_service_account_email is not None:
             _setter("gcp_service_account_email", gcp_service_account_email)
         if policy_dir is not None:
@@ -661,7 +719,13 @@ class FeatureMembershipConfigmanagementHierarchyController(dict):
              enable_hierarchical_resource_quota: Optional[bool] = None,
              enable_pod_tree_labels: Optional[bool] = None,
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enable_hierarchical_resource_quota is None and 'enableHierarchicalResourceQuota' in kwargs:
+            enable_hierarchical_resource_quota = kwargs['enableHierarchicalResourceQuota']
+        if enable_pod_tree_labels is None and 'enablePodTreeLabels' in kwargs:
+            enable_pod_tree_labels = kwargs['enablePodTreeLabels']
+
         if enable_hierarchical_resource_quota is not None:
             _setter("enable_hierarchical_resource_quota", enable_hierarchical_resource_quota)
         if enable_pod_tree_labels is not None:
@@ -764,7 +828,21 @@ class FeatureMembershipConfigmanagementPolicyController(dict):
              mutation_enabled: Optional[bool] = None,
              referential_rules_enabled: Optional[bool] = None,
              template_library_installed: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if audit_interval_seconds is None and 'auditIntervalSeconds' in kwargs:
+            audit_interval_seconds = kwargs['auditIntervalSeconds']
+        if exemptable_namespaces is None and 'exemptableNamespaces' in kwargs:
+            exemptable_namespaces = kwargs['exemptableNamespaces']
+        if log_denies_enabled is None and 'logDeniesEnabled' in kwargs:
+            log_denies_enabled = kwargs['logDeniesEnabled']
+        if mutation_enabled is None and 'mutationEnabled' in kwargs:
+            mutation_enabled = kwargs['mutationEnabled']
+        if referential_rules_enabled is None and 'referentialRulesEnabled' in kwargs:
+            referential_rules_enabled = kwargs['referentialRulesEnabled']
+        if template_library_installed is None and 'templateLibraryInstalled' in kwargs:
+            template_library_installed = kwargs['templateLibraryInstalled']
+
         if audit_interval_seconds is not None:
             _setter("audit_interval_seconds", audit_interval_seconds)
         if enabled is not None:
@@ -859,7 +937,9 @@ class FeatureMembershipConfigmanagementPolicyControllerMonitoring(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              backends: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if backends is not None:
             _setter("backends", backends)
 
@@ -904,7 +984,11 @@ class FeatureMembershipMesh(dict):
              _setter: Callable[[Any, Any], None],
              control_plane: Optional[str] = None,
              management: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if control_plane is None and 'controlPlane' in kwargs:
+            control_plane = kwargs['controlPlane']
+
         if control_plane is not None:
             _setter("control_plane", control_plane)
         if management is not None:
@@ -966,7 +1050,11 @@ class FeatureResourceState(dict):
              _setter: Callable[[Any, Any], None],
              has_resources: Optional[bool] = None,
              state: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if has_resources is None and 'hasResources' in kwargs:
+            has_resources = kwargs['hasResources']
+
         if has_resources is not None:
             _setter("has_resources", has_resources)
         if state is not None:
@@ -1013,7 +1101,9 @@ class FeatureSpec(dict):
              _setter: Callable[[Any, Any], None],
              fleetobservability: Optional['outputs.FeatureSpecFleetobservability'] = None,
              multiclusteringress: Optional['outputs.FeatureSpecMulticlusteringress'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if fleetobservability is not None:
             _setter("fleetobservability", fleetobservability)
         if multiclusteringress is not None:
@@ -1071,7 +1161,11 @@ class FeatureSpecFleetobservability(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              logging_config: Optional['outputs.FeatureSpecFleetobservabilityLoggingConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+
         if logging_config is not None:
             _setter("logging_config", logging_config)
 
@@ -1125,7 +1219,13 @@ class FeatureSpecFleetobservabilityLoggingConfig(dict):
              _setter: Callable[[Any, Any], None],
              default_config: Optional['outputs.FeatureSpecFleetobservabilityLoggingConfigDefaultConfig'] = None,
              fleet_scope_logs_config: Optional['outputs.FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if default_config is None and 'defaultConfig' in kwargs:
+            default_config = kwargs['defaultConfig']
+        if fleet_scope_logs_config is None and 'fleetScopeLogsConfig' in kwargs:
+            fleet_scope_logs_config = kwargs['fleetScopeLogsConfig']
+
         if default_config is not None:
             _setter("default_config", default_config)
         if fleet_scope_logs_config is not None:
@@ -1166,7 +1266,9 @@ class FeatureSpecFleetobservabilityLoggingConfigDefaultConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              mode: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if mode is not None:
             _setter("mode", mode)
 
@@ -1196,7 +1298,9 @@ class FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              mode: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if mode is not None:
             _setter("mode", mode)
 
@@ -1241,8 +1345,14 @@ class FeatureSpecMulticlusteringress(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config_membership: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             config_membership: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if config_membership is None and 'configMembership' in kwargs:
+            config_membership = kwargs['configMembership']
+        if config_membership is None:
+            raise TypeError("Missing 'config_membership' argument")
+
         _setter("config_membership", config_membership)
 
     @property
@@ -1271,7 +1381,9 @@ class FeatureState(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              states: Optional[Sequence['outputs.FeatureStateState']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if states is not None:
             _setter("states", states)
 
@@ -1329,7 +1441,11 @@ class FeatureStateState(dict):
              code: Optional[str] = None,
              description: Optional[str] = None,
              update_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if code is not None:
             _setter("code", code)
         if description is not None:
@@ -1376,8 +1492,12 @@ class MembershipAuthority(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             issuer: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             issuer: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if issuer is None:
+            raise TypeError("Missing 'issuer' argument")
+
         _setter("issuer", issuer)
 
     @property
@@ -1402,7 +1522,9 @@ class MembershipBindingState(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              code: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if code is not None:
             _setter("code", code)
 
@@ -1449,7 +1571,11 @@ class MembershipEndpoint(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              gke_cluster: Optional['outputs.MembershipEndpointGkeCluster'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if gke_cluster is None and 'gkeCluster' in kwargs:
+            gke_cluster = kwargs['gkeCluster']
+
         if gke_cluster is not None:
             _setter("gke_cluster", gke_cluster)
 
@@ -1491,8 +1617,14 @@ class MembershipEndpointGkeCluster(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_link: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             resource_link: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if resource_link is None and 'resourceLink' in kwargs:
+            resource_link = kwargs['resourceLink']
+        if resource_link is None:
+            raise TypeError("Missing 'resource_link' argument")
+
         _setter("resource_link", resource_link)
 
     @property
@@ -1516,10 +1648,16 @@ class MembershipIamBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -1556,10 +1694,16 @@ class MembershipIamMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -1615,8 +1759,14 @@ class MembershipRbacRoleBindingRole(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             predefined_role: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             predefined_role: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if predefined_role is None and 'predefinedRole' in kwargs:
+            predefined_role = kwargs['predefinedRole']
+        if predefined_role is None:
+            raise TypeError("Missing 'predefined_role' argument")
+
         _setter("predefined_role", predefined_role)
 
     @property
@@ -1647,7 +1797,9 @@ class MembershipRbacRoleBindingState(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              code: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if code is not None:
             _setter("code", code)
 
@@ -1677,7 +1829,9 @@ class NamespaceState(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              code: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if code is not None:
             _setter("code", code)
 
@@ -1706,10 +1860,16 @@ class ScopeIamBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -1746,10 +1906,16 @@ class ScopeIamMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -1806,7 +1972,11 @@ class ScopeRbacRoleBindingRole(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              predefined_role: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if predefined_role is None and 'predefinedRole' in kwargs:
+            predefined_role = kwargs['predefinedRole']
+
         if predefined_role is not None:
             _setter("predefined_role", predefined_role)
 
@@ -1838,7 +2008,9 @@ class ScopeRbacRoleBindingState(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              code: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if code is not None:
             _setter("code", code)
 
@@ -1868,7 +2040,9 @@ class ScopeState(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              code: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if code is not None:
             _setter("code", code)
 

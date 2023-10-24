@@ -26,44 +26,6 @@ import (
 //	Use `pulumi import` and inspect the output to ensure
 //	your existing members are preserved.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			department1, err := organizations.NewFolder(ctx, "department1", &organizations.FolderArgs{
-//				DisplayName: pulumi.String("Department 1"),
-//				Parent:      pulumi.String("organizations/1234567"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = folder.NewIAMBinding(ctx, "admin", &folder.IAMBindingArgs{
-//				Folder: department1.Name,
-//				Role:   pulumi.String("roles/editor"),
-//				Members: pulumi.StringArray{
-//					pulumi.String("user:alice@gmail.com"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // IAM binding imports use space-delimited identifiers; first the resource in question and then the role.

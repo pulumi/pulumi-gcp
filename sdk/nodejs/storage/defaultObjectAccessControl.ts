@@ -28,19 +28,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
  *
  * ## Example Usage
- * ### Storage Default Object Access Control Public
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const bucket = new gcp.storage.Bucket("bucket", {location: "US"});
- * const publicRule = new gcp.storage.DefaultObjectAccessControl("publicRule", {
- *     bucket: bucket.name,
- *     role: "READER",
- *     entity: "allUsers",
- * });
- * ```
  *
  * ## Import
  *

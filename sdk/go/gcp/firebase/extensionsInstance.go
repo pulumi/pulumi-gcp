@@ -14,67 +14,6 @@ import (
 )
 
 // ## Example Usage
-// ### Firebase Extentions Instance Resize Image
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebase"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			images, err := storage.NewBucket(ctx, "images", &storage.BucketArgs{
-//				Project:                  pulumi.String("my-project-name"),
-//				Location:                 pulumi.String("US"),
-//				UniformBucketLevelAccess: pulumi.Bool(true),
-//				ForceDestroy:             pulumi.Bool(true),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = firebase.NewExtensionsInstance(ctx, "resizeImage", &firebase.ExtensionsInstanceArgs{
-//				Project:    pulumi.String("my-project-name"),
-//				InstanceId: pulumi.String("storage-resize-images"),
-//				Config: &firebase.ExtensionsInstanceConfigArgs{
-//					ExtensionRef:     pulumi.String("firebase/storage-resize-images"),
-//					ExtensionVersion: pulumi.String("0.1.37"),
-//					Params: pulumi.StringMap{
-//						"DELETE_ORIGINAL_FILE": pulumi.String("false"),
-//						"MAKE_PUBLIC":          pulumi.String("false"),
-//						"IMAGE_TYPE":           pulumi.String("false"),
-//						"IS_ANIMATED":          pulumi.String("true"),
-//						"FUNCTION_MEMORY":      pulumi.String("1024"),
-//						"DO_BACKFILL":          pulumi.String("false"),
-//						"IMG_SIZES":            pulumi.String("200x200"),
-//						"IMG_BUCKET":           images.Name,
-//						"LOCATION":             pulumi.String(""),
-//					},
-//					SystemParams: pulumi.StringMap{
-//						"firebaseextensions.v1beta.function/maxInstances":               pulumi.String("3000"),
-//						"firebaseextensions.v1beta.function/memory":                     pulumi.String("256"),
-//						"firebaseextensions.v1beta.function/minInstances":               pulumi.String("0"),
-//						"firebaseextensions.v1beta.function/vpcConnectorEgressSettings": pulumi.String("VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED"),
-//					},
-//					AllowedEventTypes: pulumi.StringArray{
-//						pulumi.String("firebase.extensions.storage-resize-images.v1.complete"),
-//					},
-//					EventarcChannel: pulumi.String("projects/my-project-name/locations//channels/firebase"),
-//				},
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

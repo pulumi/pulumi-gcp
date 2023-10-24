@@ -69,8 +69,8 @@ class SecurityScanConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             starting_urls: pulumi.Input[Sequence[pulumi.Input[str]]],
+             display_name: Optional[pulumi.Input[str]] = None,
+             starting_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              authentication: Optional[pulumi.Input['SecurityScanConfigAuthenticationArgs']] = None,
              blacklist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              export_to_security_command_center: Optional[pulumi.Input[str]] = None,
@@ -79,7 +79,27 @@ class SecurityScanConfigArgs:
              schedule: Optional[pulumi.Input['SecurityScanConfigScheduleArgs']] = None,
              target_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              user_agent: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if starting_urls is None and 'startingUrls' in kwargs:
+            starting_urls = kwargs['startingUrls']
+        if starting_urls is None:
+            raise TypeError("Missing 'starting_urls' argument")
+        if blacklist_patterns is None and 'blacklistPatterns' in kwargs:
+            blacklist_patterns = kwargs['blacklistPatterns']
+        if export_to_security_command_center is None and 'exportToSecurityCommandCenter' in kwargs:
+            export_to_security_command_center = kwargs['exportToSecurityCommandCenter']
+        if max_qps is None and 'maxQps' in kwargs:
+            max_qps = kwargs['maxQps']
+        if target_platforms is None and 'targetPlatforms' in kwargs:
+            target_platforms = kwargs['targetPlatforms']
+        if user_agent is None and 'userAgent' in kwargs:
+            user_agent = kwargs['userAgent']
+
         _setter("display_name", display_name)
         _setter("starting_urls", starting_urls)
         if authentication is not None:
@@ -305,7 +325,23 @@ class _SecurityScanConfigState:
              starting_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              target_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              user_agent: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if blacklist_patterns is None and 'blacklistPatterns' in kwargs:
+            blacklist_patterns = kwargs['blacklistPatterns']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if export_to_security_command_center is None and 'exportToSecurityCommandCenter' in kwargs:
+            export_to_security_command_center = kwargs['exportToSecurityCommandCenter']
+        if max_qps is None and 'maxQps' in kwargs:
+            max_qps = kwargs['maxQps']
+        if starting_urls is None and 'startingUrls' in kwargs:
+            starting_urls = kwargs['startingUrls']
+        if target_platforms is None and 'targetPlatforms' in kwargs:
+            target_platforms = kwargs['targetPlatforms']
+        if user_agent is None and 'userAgent' in kwargs:
+            user_agent = kwargs['userAgent']
+
         if authentication is not None:
             _setter("authentication", authentication)
         if blacklist_patterns is not None:
@@ -505,19 +541,6 @@ class SecurityScanConfig(pulumi.CustomResource):
         > **Warning:** All arguments including `authentication.google_account.password` and `authentication.custom_account.password` will be stored in the raw state as plain-text.
 
         ## Example Usage
-        ### Scan Config Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        scanner_static_ip = gcp.compute.Address("scannerStaticIp", opts=pulumi.ResourceOptions(provider=google_beta))
-        scan_config = gcp.compute.SecurityScanConfig("scan-config",
-            display_name="scan-config",
-            starting_urls=[scanner_static_ip.address.apply(lambda address: f"http://{address}")],
-            target_platforms=["COMPUTE"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -580,19 +603,6 @@ class SecurityScanConfig(pulumi.CustomResource):
         > **Warning:** All arguments including `authentication.google_account.password` and `authentication.custom_account.password` will be stored in the raw state as plain-text.
 
         ## Example Usage
-        ### Scan Config Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        scanner_static_ip = gcp.compute.Address("scannerStaticIp", opts=pulumi.ResourceOptions(provider=google_beta))
-        scan_config = gcp.compute.SecurityScanConfig("scan-config",
-            display_name="scan-config",
-            starting_urls=[scanner_static_ip.address.apply(lambda address: f"http://{address}")],
-            target_platforms=["COMPUTE"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -648,11 +658,7 @@ class SecurityScanConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SecurityScanConfigArgs.__new__(SecurityScanConfigArgs)
 
-            if authentication is not None and not isinstance(authentication, SecurityScanConfigAuthenticationArgs):
-                authentication = authentication or {}
-                def _setter(key, value):
-                    authentication[key] = value
-                SecurityScanConfigAuthenticationArgs._configure(_setter, **authentication)
+            authentication = _utilities.configure(authentication, SecurityScanConfigAuthenticationArgs, True)
             __props__.__dict__["authentication"] = authentication
             __props__.__dict__["blacklist_patterns"] = blacklist_patterns
             if display_name is None and not opts.urn:
@@ -661,11 +667,7 @@ class SecurityScanConfig(pulumi.CustomResource):
             __props__.__dict__["export_to_security_command_center"] = export_to_security_command_center
             __props__.__dict__["max_qps"] = max_qps
             __props__.__dict__["project"] = project
-            if schedule is not None and not isinstance(schedule, SecurityScanConfigScheduleArgs):
-                schedule = schedule or {}
-                def _setter(key, value):
-                    schedule[key] = value
-                SecurityScanConfigScheduleArgs._configure(_setter, **schedule)
+            schedule = _utilities.configure(schedule, SecurityScanConfigScheduleArgs, True)
             __props__.__dict__["schedule"] = schedule
             if starting_urls is None and not opts.urn:
                 raise TypeError("Missing required property 'starting_urls'")

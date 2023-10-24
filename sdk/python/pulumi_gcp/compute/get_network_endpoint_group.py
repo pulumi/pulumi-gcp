@@ -162,17 +162,6 @@ def get_network_endpoint_group(name: Optional[str] = None,
 
     The NEG may be found by providing either a `self_link`, or a `name` and a `zone`.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    neg1 = gcp.compute.get_network_endpoint_group(name="k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
-        zone="us-central1-a")
-    neg2 = gcp.compute.get_network_endpoint_group(self_link="https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
-    ```
-
 
     :param str name: The Network Endpoint Group name.
            Provide either this or a `self_link`.
@@ -213,17 +202,6 @@ def get_network_endpoint_group_output(name: Optional[pulumi.Input[Optional[str]]
     Use this data source to access a Network Endpoint Group's attributes.
 
     The NEG may be found by providing either a `self_link`, or a `name` and a `zone`.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    neg1 = gcp.compute.get_network_endpoint_group(name="k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
-        zone="us-central1-a")
-    neg2 = gcp.compute.get_network_endpoint_group(self_link="https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
-    ```
 
 
     :param str name: The Network Endpoint Group name.

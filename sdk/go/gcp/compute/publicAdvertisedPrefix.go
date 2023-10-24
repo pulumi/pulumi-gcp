@@ -22,33 +22,6 @@ import (
 //   - [Using bring your own IP](https://cloud.google.com/vpc/docs/using-bring-your-own-ip)
 //
 // ## Example Usage
-// ### Public Advertised Prefixes Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewPublicAdvertisedPrefix(ctx, "prefixes", &compute.PublicAdvertisedPrefixArgs{
-//				Description:       pulumi.String("description"),
-//				DnsVerificationIp: pulumi.String("127.127.0.0"),
-//				IpCidrRange:       pulumi.String("127.127.0.0/16"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

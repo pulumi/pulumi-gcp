@@ -13,32 +13,6 @@ import (
 )
 
 // Get the value from a Secret Manager secret version. This is similar to the secretmanager.SecretVersion datasource, but it only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions/access).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := secretmanager.GetSecretVersionAccess(ctx, &secretmanager.GetSecretVersionAccessArgs{
-//				Secret: "my-secret",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetSecretVersionAccess(ctx *pulumi.Context, args *GetSecretVersionAccessArgs, opts ...pulumi.InvokeOption) (*GetSecretVersionAccessResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSecretVersionAccessResult

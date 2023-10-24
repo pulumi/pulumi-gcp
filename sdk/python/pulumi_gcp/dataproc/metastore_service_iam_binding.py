@@ -57,13 +57,23 @@ class MetastoreServiceIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
-             service_id: pulumi.Input[str],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             service_id: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['MetastoreServiceIamBindingConditionArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if service_id is None:
+            raise TypeError("Missing 'service_id' argument")
+
         _setter("members", members)
         _setter("role", role)
         _setter("service_id", service_id)
@@ -209,7 +219,11 @@ class _MetastoreServiceIamBindingState:
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              service_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -345,51 +359,6 @@ class MetastoreServiceIamBinding(pulumi.CustomResource):
 
         > **Note:** `dataproc.MetastoreServiceIamBinding` resources **can be** used in conjunction with `dataproc.MetastoreServiceIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataproc\\_metastore\\_service\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.dataproc.MetastoreServiceIamPolicy("policy",
-            project=google_dataproc_metastore_service["default"]["project"],
-            location=google_dataproc_metastore_service["default"]["location"],
-            service_id=google_dataproc_metastore_service["default"]["service_id"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_dataproc\\_metastore\\_service\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.dataproc.MetastoreServiceIamBinding("binding",
-            project=google_dataproc_metastore_service["default"]["project"],
-            location=google_dataproc_metastore_service["default"]["location"],
-            service_id=google_dataproc_metastore_service["default"]["service_id"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_dataproc\\_metastore\\_service\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.dataproc.MetastoreServiceIamMember("member",
-            project=google_dataproc_metastore_service["default"]["project"],
-            location=google_dataproc_metastore_service["default"]["location"],
-            service_id=google_dataproc_metastore_service["default"]["service_id"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/services/{{service_id}} * {{project}}/{{location}}/{{service_id}} * {{location}}/{{service_id}} * {{service_id}} Any variables not passed in the import command will be taken from the provider configuration. Dataproc metastore service IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -458,51 +427,6 @@ class MetastoreServiceIamBinding(pulumi.CustomResource):
 
         > **Note:** `dataproc.MetastoreServiceIamBinding` resources **can be** used in conjunction with `dataproc.MetastoreServiceIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataproc\\_metastore\\_service\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.dataproc.MetastoreServiceIamPolicy("policy",
-            project=google_dataproc_metastore_service["default"]["project"],
-            location=google_dataproc_metastore_service["default"]["location"],
-            service_id=google_dataproc_metastore_service["default"]["service_id"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_dataproc\\_metastore\\_service\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.dataproc.MetastoreServiceIamBinding("binding",
-            project=google_dataproc_metastore_service["default"]["project"],
-            location=google_dataproc_metastore_service["default"]["location"],
-            service_id=google_dataproc_metastore_service["default"]["service_id"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_dataproc\\_metastore\\_service\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.dataproc.MetastoreServiceIamMember("member",
-            project=google_dataproc_metastore_service["default"]["project"],
-            location=google_dataproc_metastore_service["default"]["location"],
-            service_id=google_dataproc_metastore_service["default"]["service_id"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/services/{{service_id}} * {{project}}/{{location}}/{{service_id}} * {{location}}/{{service_id}} * {{service_id}} Any variables not passed in the import command will be taken from the provider configuration. Dataproc metastore service IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -561,11 +485,7 @@ class MetastoreServiceIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MetastoreServiceIamBindingArgs.__new__(MetastoreServiceIamBindingArgs)
 
-            if condition is not None and not isinstance(condition, MetastoreServiceIamBindingConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                MetastoreServiceIamBindingConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, MetastoreServiceIamBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             __props__.__dict__["location"] = location
             if members is None and not opts.urn:

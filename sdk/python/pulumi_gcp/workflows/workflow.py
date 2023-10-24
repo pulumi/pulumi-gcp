@@ -68,7 +68,17 @@ class WorkflowArgs:
              region: Optional[pulumi.Input[str]] = None,
              service_account: Optional[pulumi.Input[str]] = None,
              source_contents: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if crypto_key_name is None and 'cryptoKeyName' in kwargs:
+            crypto_key_name = kwargs['cryptoKeyName']
+        if name_prefix is None and 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if source_contents is None and 'sourceContents' in kwargs:
+            source_contents = kwargs['sourceContents']
+
         if crypto_key_name is not None:
             _setter("crypto_key_name", crypto_key_name)
         if description is not None:
@@ -279,7 +289,23 @@ class _WorkflowState:
              source_contents: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if crypto_key_name is None and 'cryptoKeyName' in kwargs:
+            crypto_key_name = kwargs['cryptoKeyName']
+        if name_prefix is None and 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if revision_id is None and 'revisionId' in kwargs:
+            revision_id = kwargs['revisionId']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if source_contents is None and 'sourceContents' in kwargs:
+            source_contents = kwargs['sourceContents']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if crypto_key_name is not None:
@@ -498,47 +524,6 @@ class Workflow(pulumi.CustomResource):
             * [Managing Workflows](https://cloud.google.com/workflows/docs/creating-updating-workflow)
 
         ## Example Usage
-        ### Workflow Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        test_account = gcp.service_account.Account("testAccount",
-            account_id="my-account",
-            display_name="Test Service Account")
-        example = gcp.workflows.Workflow("example",
-            region="us-central1",
-            description="Magic",
-            service_account=test_account.id,
-            source_contents=f\"\"\"# This is a sample workflow. You can replace it with your source code.
-        #
-        # This workflow does the following:
-        # - reads current time and date information from an external API and stores
-        #   the response in currentTime variable
-        # - retrieves a list of Wikipedia articles related to the day of the week
-        #   from currentTime
-        # - returns the list of articles as an output of the workflow
-        #
-        # Note: In Terraform you need to escape the $$ or it will cause errors.
-
-        - getCurrentTime:
-            call: http.get
-            args:
-                url: https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam
-            result: currentTime
-        - readWikipedia:
-            call: http.get
-            args:
-                url: https://en.wikipedia.org/w/api.php
-                query:
-                    action: opensearch
-                    search: {current_time["body"]["dayOfWeek"]}
-            result: wikiResult
-        - returnOutput:
-            return: {wiki_result["body"]}
-        \"\"\")
-        ```
 
         ## Import
 
@@ -581,47 +566,6 @@ class Workflow(pulumi.CustomResource):
             * [Managing Workflows](https://cloud.google.com/workflows/docs/creating-updating-workflow)
 
         ## Example Usage
-        ### Workflow Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        test_account = gcp.service_account.Account("testAccount",
-            account_id="my-account",
-            display_name="Test Service Account")
-        example = gcp.workflows.Workflow("example",
-            region="us-central1",
-            description="Magic",
-            service_account=test_account.id,
-            source_contents=f\"\"\"# This is a sample workflow. You can replace it with your source code.
-        #
-        # This workflow does the following:
-        # - reads current time and date information from an external API and stores
-        #   the response in currentTime variable
-        # - retrieves a list of Wikipedia articles related to the day of the week
-        #   from currentTime
-        # - returns the list of articles as an output of the workflow
-        #
-        # Note: In Terraform you need to escape the $$ or it will cause errors.
-
-        - getCurrentTime:
-            call: http.get
-            args:
-                url: https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam
-            result: currentTime
-        - readWikipedia:
-            call: http.get
-            args:
-                url: https://en.wikipedia.org/w/api.php
-                query:
-                    action: opensearch
-                    search: {current_time["body"]["dayOfWeek"]}
-            result: wikiResult
-        - returnOutput:
-            return: {wiki_result["body"]}
-        \"\"\")
-        ```
 
         ## Import
 

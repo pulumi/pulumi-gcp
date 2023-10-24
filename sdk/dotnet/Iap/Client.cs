@@ -26,43 +26,6 @@ namespace Pulumi.Gcp.Iap
     /// state as plain-text.
     /// 
     /// ## Example Usage
-    /// ### Iap Client
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var project = new Gcp.Organizations.Project("project", new()
-    ///     {
-    ///         ProjectId = "my-project",
-    ///         OrgId = "123456789",
-    ///     });
-    /// 
-    ///     var projectService = new Gcp.Projects.Service("projectService", new()
-    ///     {
-    ///         Project = project.ProjectId,
-    ///         ServiceName = "iap.googleapis.com",
-    ///     });
-    /// 
-    ///     var projectBrand = new Gcp.Iap.Brand("projectBrand", new()
-    ///     {
-    ///         SupportEmail = "support@example.com",
-    ///         ApplicationTitle = "Cloud IAP protected Application",
-    ///         Project = projectService.Project,
-    ///     });
-    /// 
-    ///     var projectClient = new Gcp.Iap.Client("projectClient", new()
-    ///     {
-    ///         DisplayName = "Test Client",
-    ///         Brand = projectBrand.Name,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

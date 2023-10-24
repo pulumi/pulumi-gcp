@@ -56,13 +56,23 @@ class MetastoreFederationIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             federation_id: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             federation_id: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['MetastoreFederationIamBindingConditionArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if federation_id is None and 'federationId' in kwargs:
+            federation_id = kwargs['federationId']
+        if federation_id is None:
+            raise TypeError("Missing 'federation_id' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("federation_id", federation_id)
         _setter("members", members)
         _setter("role", role)
@@ -206,7 +216,11 @@ class _MetastoreFederationIamBindingState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if federation_id is None and 'federationId' in kwargs:
+            federation_id = kwargs['federationId']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -438,11 +452,7 @@ class MetastoreFederationIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MetastoreFederationIamBindingArgs.__new__(MetastoreFederationIamBindingArgs)
 
-            if condition is not None and not isinstance(condition, MetastoreFederationIamBindingConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                MetastoreFederationIamBindingConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, MetastoreFederationIamBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if federation_id is None and not opts.urn:
                 raise TypeError("Missing required property 'federation_id'")

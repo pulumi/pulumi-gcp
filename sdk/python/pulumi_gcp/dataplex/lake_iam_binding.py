@@ -55,13 +55,21 @@ class LakeIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             lake: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             lake: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['LakeIamBindingConditionArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if lake is None:
+            raise TypeError("Missing 'lake' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("lake", lake)
         _setter("members", members)
         _setter("role", role)
@@ -203,7 +211,9 @@ class _LakeIamBindingState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -337,51 +347,6 @@ class LakeIamBinding(pulumi.CustomResource):
 
         > **Note:** `dataplex.LakeIamBinding` resources **can be** used in conjunction with `dataplex.LakeIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataplex\\_lake\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.dataplex.LakeIamPolicy("policy",
-            project=google_dataplex_lake["example"]["project"],
-            location=google_dataplex_lake["example"]["location"],
-            lake=google_dataplex_lake["example"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_dataplex\\_lake\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.dataplex.LakeIamBinding("binding",
-            project=google_dataplex_lake["example"]["project"],
-            location=google_dataplex_lake["example"]["location"],
-            lake=google_dataplex_lake["example"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_dataplex\\_lake\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.dataplex.LakeIamMember("member",
-            project=google_dataplex_lake["example"]["project"],
-            location=google_dataplex_lake["example"]["location"],
-            lake=google_dataplex_lake["example"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/lakes/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Dataplex lake IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -448,51 +413,6 @@ class LakeIamBinding(pulumi.CustomResource):
 
         > **Note:** `dataplex.LakeIamBinding` resources **can be** used in conjunction with `dataplex.LakeIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataplex\\_lake\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.dataplex.LakeIamPolicy("policy",
-            project=google_dataplex_lake["example"]["project"],
-            location=google_dataplex_lake["example"]["location"],
-            lake=google_dataplex_lake["example"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_dataplex\\_lake\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.dataplex.LakeIamBinding("binding",
-            project=google_dataplex_lake["example"]["project"],
-            location=google_dataplex_lake["example"]["location"],
-            lake=google_dataplex_lake["example"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_dataplex\\_lake\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.dataplex.LakeIamMember("member",
-            project=google_dataplex_lake["example"]["project"],
-            location=google_dataplex_lake["example"]["location"],
-            lake=google_dataplex_lake["example"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/lakes/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Dataplex lake IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -551,11 +471,7 @@ class LakeIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = LakeIamBindingArgs.__new__(LakeIamBindingArgs)
 
-            if condition is not None and not isinstance(condition, LakeIamBindingConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                LakeIamBindingConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, LakeIamBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if lake is None and not opts.urn:
                 raise TypeError("Missing required property 'lake'")

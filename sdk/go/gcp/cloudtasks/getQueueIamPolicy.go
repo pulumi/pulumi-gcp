@@ -13,34 +13,6 @@ import (
 )
 
 // Retrieves the current IAM policy data for queue
-//
-// ## example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudtasks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudtasks.LookupQueueIamPolicy(ctx, &cloudtasks.LookupQueueIamPolicyArgs{
-//				Project:  pulumi.StringRef(google_cloud_tasks_queue.Default.Project),
-//				Location: pulumi.StringRef(google_cloud_tasks_queue.Default.Location),
-//				Name:     google_cloud_tasks_queue.Default.Name,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupQueueIamPolicy(ctx *pulumi.Context, args *LookupQueueIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupQueueIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupQueueIamPolicyResult

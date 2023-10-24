@@ -10,26 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.RuntimeConfig
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// Example creating a RuntimeConfig resource.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var my_runtime_config = new Gcp.RuntimeConfig.Config("my-runtime-config", new()
-    ///     {
-    ///         Description = "Runtime configuration values for my service",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Runtime Configs can be imported using the `name` or full config name, e.g.

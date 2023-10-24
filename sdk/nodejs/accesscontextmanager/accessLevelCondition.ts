@@ -29,59 +29,6 @@ import * as utilities from "../utilities";
  * `billingProject` you defined.
  *
  * ## Example Usage
- * ### Access Context Manager Access Level Condition Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
- *     parent: "organizations/123456789",
- *     title: "my policy",
- * });
- * const access_level_service_account = new gcp.accesscontextmanager.AccessLevel("access-level-service-account", {
- *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
- *     title: "chromeos_no_lock",
- *     basic: {
- *         conditions: [{
- *             devicePolicy: {
- *                 requireScreenLock: true,
- *                 osConstraints: [{
- *                     osType: "DESKTOP_CHROME_OS",
- *                 }],
- *             },
- *             regions: [
- *                 "CH",
- *                 "IT",
- *                 "US",
- *             ],
- *         }],
- *     },
- * });
- * const created_later = new gcp.serviceaccount.Account("created-later", {accountId: "my-account-id"});
- * const access_level_conditions = new gcp.accesscontextmanager.AccessLevelCondition("access-level-conditions", {
- *     accessLevel: access_level_service_account.name,
- *     ipSubnetworks: ["192.0.4.0/24"],
- *     members: [
- *         "user:test@google.com",
- *         "user:test2@google.com",
- *         pulumi.interpolate`serviceAccount:${created_later.email}`,
- *     ],
- *     negate: false,
- *     devicePolicy: {
- *         requireScreenLock: false,
- *         requireAdminApproval: false,
- *         requireCorpOwned: true,
- *         osConstraints: [{
- *             osType: "DESKTOP_CHROME_OS",
- *         }],
- *     },
- *     regions: [
- *         "IT",
- *         "US",
- *     ],
- * });
- * ```
  *
  * ## Import
  *

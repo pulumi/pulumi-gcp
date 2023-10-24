@@ -16,32 +16,6 @@ namespace Pulumi.Gcp.Storage
         /// See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
         /// and
         /// [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
-        /// 
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Example picture stored within a folder.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var picture = Gcp.Storage.GetBucketObject.Invoke(new()
-        ///     {
-        ///         Bucket = "image-store",
-        ///         Name = "folder/butterfly01.jpg",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBucketObjectResult> InvokeAsync(GetBucketObjectArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBucketObjectResult>("gcp:storage/getBucketObject:getBucketObject", args ?? new GetBucketObjectArgs(), options.WithDefaults());
@@ -51,32 +25,6 @@ namespace Pulumi.Gcp.Storage
         /// See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
         /// and
         /// [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
-        /// 
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Example picture stored within a folder.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var picture = Gcp.Storage.GetBucketObject.Invoke(new()
-        ///     {
-        ///         Bucket = "image-store",
-        ///         Name = "folder/butterfly01.jpg",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetBucketObjectResult> Invoke(GetBucketObjectInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBucketObjectResult>("gcp:storage/getBucketObject:getBucketObject", args ?? new GetBucketObjectInvokeArgs(), options.WithDefaults());

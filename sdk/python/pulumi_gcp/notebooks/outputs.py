@@ -54,9 +54,13 @@ class EnvironmentContainerImage(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             repository: str,
+             repository: Optional[str] = None,
              tag: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if repository is None:
+            raise TypeError("Missing 'repository' argument")
+
         _setter("repository", repository)
         if tag is not None:
             _setter("tag", tag)
@@ -119,10 +123,18 @@ class EnvironmentVmImage(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: str,
+             project: Optional[str] = None,
              image_family: Optional[str] = None,
              image_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if image_family is None and 'imageFamily' in kwargs:
+            image_family = kwargs['imageFamily']
+        if image_name is None and 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+
         _setter("project", project)
         if image_family is not None:
             _setter("image_family", image_family)
@@ -190,9 +202,17 @@ class InstanceAcceleratorConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             core_count: int,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             core_count: Optional[int] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if core_count is None and 'coreCount' in kwargs:
+            core_count = kwargs['coreCount']
+        if core_count is None:
+            raise TypeError("Missing 'core_count' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("core_count", core_count)
         _setter("type", type)
 
@@ -232,9 +252,13 @@ class InstanceContainerImage(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             repository: str,
+             repository: Optional[str] = None,
              tag: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if repository is None:
+            raise TypeError("Missing 'repository' argument")
+
         _setter("repository", repository)
         if tag is not None:
             _setter("tag", tag)
@@ -272,10 +296,16 @@ class InstanceIamBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -312,10 +342,16 @@ class InstanceIamMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -375,10 +411,16 @@ class InstanceReservationAffinity(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             consume_reservation_type: str,
+             consume_reservation_type: Optional[str] = None,
              key: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if consume_reservation_type is None and 'consumeReservationType' in kwargs:
+            consume_reservation_type = kwargs['consumeReservationType']
+        if consume_reservation_type is None:
+            raise TypeError("Missing 'consume_reservation_type' argument")
+
         _setter("consume_reservation_type", consume_reservation_type)
         if key is not None:
             _setter("key", key)
@@ -462,7 +504,15 @@ class InstanceShieldedInstanceConfig(dict):
              enable_integrity_monitoring: Optional[bool] = None,
              enable_secure_boot: Optional[bool] = None,
              enable_vtpm: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enable_integrity_monitoring is None and 'enableIntegrityMonitoring' in kwargs:
+            enable_integrity_monitoring = kwargs['enableIntegrityMonitoring']
+        if enable_secure_boot is None and 'enableSecureBoot' in kwargs:
+            enable_secure_boot = kwargs['enableSecureBoot']
+        if enable_vtpm is None and 'enableVtpm' in kwargs:
+            enable_vtpm = kwargs['enableVtpm']
+
         if enable_integrity_monitoring is not None:
             _setter("enable_integrity_monitoring", enable_integrity_monitoring)
         if enable_secure_boot is not None:
@@ -542,10 +592,18 @@ class InstanceVmImage(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: str,
+             project: Optional[str] = None,
              image_family: Optional[str] = None,
              image_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if image_family is None and 'imageFamily' in kwargs:
+            image_family = kwargs['imageFamily']
+        if image_name is None and 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+
         _setter("project", project)
         if image_family is not None:
             _setter("image_family", image_family)
@@ -626,7 +684,15 @@ class RuntimeAccessConfig(dict):
              access_type: Optional[str] = None,
              proxy_uri: Optional[str] = None,
              runtime_owner: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_type is None and 'accessType' in kwargs:
+            access_type = kwargs['accessType']
+        if proxy_uri is None and 'proxyUri' in kwargs:
+            proxy_uri = kwargs['proxyUri']
+        if runtime_owner is None and 'runtimeOwner' in kwargs:
+            runtime_owner = kwargs['runtimeOwner']
+
         if access_type is not None:
             _setter("access_type", access_type)
         if proxy_uri is not None:
@@ -678,10 +744,16 @@ class RuntimeIamBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -718,10 +790,16 @@ class RuntimeIamMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -777,7 +855,11 @@ class RuntimeMetric(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              system_metrics: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if system_metrics is None and 'systemMetrics' in kwargs:
+            system_metrics = kwargs['systemMetrics']
+
         if system_metrics is not None:
             _setter("system_metrics", system_metrics)
 
@@ -883,7 +965,25 @@ class RuntimeSoftwareConfig(dict):
              post_startup_script: Optional[str] = None,
              post_startup_script_behavior: Optional[str] = None,
              upgradeable: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if custom_gpu_driver_path is None and 'customGpuDriverPath' in kwargs:
+            custom_gpu_driver_path = kwargs['customGpuDriverPath']
+        if enable_health_monitoring is None and 'enableHealthMonitoring' in kwargs:
+            enable_health_monitoring = kwargs['enableHealthMonitoring']
+        if idle_shutdown is None and 'idleShutdown' in kwargs:
+            idle_shutdown = kwargs['idleShutdown']
+        if idle_shutdown_timeout is None and 'idleShutdownTimeout' in kwargs:
+            idle_shutdown_timeout = kwargs['idleShutdownTimeout']
+        if install_gpu_driver is None and 'installGpuDriver' in kwargs:
+            install_gpu_driver = kwargs['installGpuDriver']
+        if notebook_upgrade_schedule is None and 'notebookUpgradeSchedule' in kwargs:
+            notebook_upgrade_schedule = kwargs['notebookUpgradeSchedule']
+        if post_startup_script is None and 'postStartupScript' in kwargs:
+            post_startup_script = kwargs['postStartupScript']
+        if post_startup_script_behavior is None and 'postStartupScriptBehavior' in kwargs:
+            post_startup_script_behavior = kwargs['postStartupScriptBehavior']
+
         if custom_gpu_driver_path is not None:
             _setter("custom_gpu_driver_path", custom_gpu_driver_path)
         if enable_health_monitoring is not None:
@@ -1013,9 +1113,13 @@ class RuntimeSoftwareConfigKernel(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             repository: str,
+             repository: Optional[str] = None,
              tag: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if repository is None:
+            raise TypeError("Missing 'repository' argument")
+
         _setter("repository", repository)
         if tag is not None:
             _setter("tag", tag)
@@ -1085,7 +1189,15 @@ class RuntimeVirtualMachine(dict):
              instance_id: Optional[str] = None,
              instance_name: Optional[str] = None,
              virtual_machine_config: Optional['outputs.RuntimeVirtualMachineVirtualMachineConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if virtual_machine_config is None and 'virtualMachineConfig' in kwargs:
+            virtual_machine_config = kwargs['virtualMachineConfig']
+
         if instance_id is not None:
             _setter("instance_id", instance_id)
         if instance_name is not None:
@@ -1260,8 +1372,8 @@ class RuntimeVirtualMachineVirtualMachineConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_disk: 'outputs.RuntimeVirtualMachineVirtualMachineConfigDataDisk',
-             machine_type: str,
+             data_disk: Optional['outputs.RuntimeVirtualMachineVirtualMachineConfigDataDisk'] = None,
+             machine_type: Optional[str] = None,
              accelerator_config: Optional['outputs.RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig'] = None,
              container_images: Optional[Sequence['outputs.RuntimeVirtualMachineVirtualMachineConfigContainerImage']] = None,
              encryption_config: Optional['outputs.RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig'] = None,
@@ -1276,7 +1388,33 @@ class RuntimeVirtualMachineVirtualMachineConfig(dict):
              subnet: Optional[str] = None,
              tags: Optional[Sequence[str]] = None,
              zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if data_disk is None and 'dataDisk' in kwargs:
+            data_disk = kwargs['dataDisk']
+        if data_disk is None:
+            raise TypeError("Missing 'data_disk' argument")
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if machine_type is None:
+            raise TypeError("Missing 'machine_type' argument")
+        if accelerator_config is None and 'acceleratorConfig' in kwargs:
+            accelerator_config = kwargs['acceleratorConfig']
+        if container_images is None and 'containerImages' in kwargs:
+            container_images = kwargs['containerImages']
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if guest_attributes is None and 'guestAttributes' in kwargs:
+            guest_attributes = kwargs['guestAttributes']
+        if internal_ip_only is None and 'internalIpOnly' in kwargs:
+            internal_ip_only = kwargs['internalIpOnly']
+        if nic_type is None and 'nicType' in kwargs:
+            nic_type = kwargs['nicType']
+        if reserved_ip_range is None and 'reservedIpRange' in kwargs:
+            reserved_ip_range = kwargs['reservedIpRange']
+        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
+            shielded_instance_config = kwargs['shieldedInstanceConfig']
+
         _setter("data_disk", data_disk)
         _setter("machine_type", machine_type)
         if accelerator_config is not None:
@@ -1520,7 +1658,11 @@ class RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig(dict):
              _setter: Callable[[Any, Any], None],
              core_count: Optional[int] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if core_count is None and 'coreCount' in kwargs:
+            core_count = kwargs['coreCount']
+
         if core_count is not None:
             _setter("core_count", core_count)
         if type is not None:
@@ -1563,9 +1705,13 @@ class RuntimeVirtualMachineVirtualMachineConfigContainerImage(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             repository: str,
+             repository: Optional[str] = None,
              tag: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if repository is None:
+            raise TypeError("Missing 'repository' argument")
+
         _setter("repository", repository)
         if tag is not None:
             _setter("tag", tag)
@@ -1711,7 +1857,17 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDisk(dict):
              mode: Optional[str] = None,
              source: Optional[str] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if auto_delete is None and 'autoDelete' in kwargs:
+            auto_delete = kwargs['autoDelete']
+        if device_name is None and 'deviceName' in kwargs:
+            device_name = kwargs['deviceName']
+        if guest_os_features is None and 'guestOsFeatures' in kwargs:
+            guest_os_features = kwargs['guestOsFeatures']
+        if initialize_params is None and 'initializeParams' in kwargs:
+            initialize_params = kwargs['initializeParams']
+
         if auto_delete is not None:
             _setter("auto_delete", auto_delete)
         if boot is not None:
@@ -1938,7 +2094,15 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams(dict):
              disk_size_gb: Optional[int] = None,
              disk_type: Optional[str] = None,
              labels: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disk_name is None and 'diskName' in kwargs:
+            disk_name = kwargs['diskName']
+        if disk_size_gb is None and 'diskSizeGb' in kwargs:
+            disk_size_gb = kwargs['diskSizeGb']
+        if disk_type is None and 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+
         if description is not None:
             _setter("description", description)
         if disk_name is not None:
@@ -2038,7 +2202,11 @@ class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              kms_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if kms_key is None and 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+
         if kms_key is not None:
             _setter("kms_key", kms_key)
 
@@ -2109,7 +2277,15 @@ class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig(dict):
              enable_integrity_monitoring: Optional[bool] = None,
              enable_secure_boot: Optional[bool] = None,
              enable_vtpm: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enable_integrity_monitoring is None and 'enableIntegrityMonitoring' in kwargs:
+            enable_integrity_monitoring = kwargs['enableIntegrityMonitoring']
+        if enable_secure_boot is None and 'enableSecureBoot' in kwargs:
+            enable_secure_boot = kwargs['enableSecureBoot']
+        if enable_vtpm is None and 'enableVtpm' in kwargs:
+            enable_vtpm = kwargs['enableVtpm']
+
         if enable_integrity_monitoring is not None:
             _setter("enable_integrity_monitoring", enable_integrity_monitoring)
         if enable_secure_boot is not None:

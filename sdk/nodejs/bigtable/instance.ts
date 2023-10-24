@@ -23,53 +23,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/bigtable/docs)
  *
  * ## Example Usage
- * ### Simple Instance
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const production_instance = new gcp.bigtable.Instance("production-instance", {
- *     clusters: [{
- *         clusterId: "tf-instance-cluster",
- *         numNodes: 1,
- *         storageType: "HDD",
- *     }],
- *     labels: {
- *         "my-label": "prod-label",
- *     },
- * });
- * ```
- * ### Replicated Instance
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const production_instance = new gcp.bigtable.Instance("production-instance", {
- *     clusters: [
- *         {
- *             clusterId: "tf-instance-cluster1",
- *             numNodes: 1,
- *             storageType: "HDD",
- *             zone: "us-central1-c",
- *         },
- *         {
- *             autoscalingConfig: {
- *                 cpuTarget: 50,
- *                 maxNodes: 3,
- *                 minNodes: 1,
- *             },
- *             clusterId: "tf-instance-cluster2",
- *             storageType: "HDD",
- *             zone: "us-central1-b",
- *         },
- *     ],
- *     labels: {
- *         "my-label": "prod-label",
- *     },
- * });
- * ```
  *
  * ## Import
  *

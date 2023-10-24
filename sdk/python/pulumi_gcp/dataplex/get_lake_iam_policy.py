@@ -103,17 +103,6 @@ def get_lake_iam_policy(lake: Optional[str] = None,
     """
     Retrieves the current IAM policy data for lake
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.dataplex.get_lake_iam_policy(project=google_dataplex_lake["example"]["project"],
-        location=google_dataplex_lake["example"]["location"],
-        lake=google_dataplex_lake["example"]["name"])
-    ```
-
 
     :param str lake: Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.
@@ -142,17 +131,6 @@ def get_lake_iam_policy_output(lake: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLakeIamPolicyResult]:
     """
     Retrieves the current IAM policy data for lake
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.dataplex.get_lake_iam_policy(project=google_dataplex_lake["example"]["project"],
-        location=google_dataplex_lake["example"]["location"],
-        lake=google_dataplex_lake["example"]["name"])
-    ```
 
 
     :param str lake: Used to find the parent resource to bind the IAM policy to

@@ -8,47 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- * ### Redis Cluster Ha
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const producerNet = new gcp.compute.Network("producerNet", {autoCreateSubnetworks: false}, {
- *     provider: google_beta,
- * });
- * const producerSubnet = new gcp.compute.Subnetwork("producerSubnet", {
- *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-central1",
- *     network: producerNet.id,
- * }, {
- *     provider: google_beta,
- * });
- * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
- *     location: "us-central1",
- *     serviceClass: "gcp-memorystore-redis",
- *     description: "my basic service connection policy",
- *     network: producerNet.id,
- *     pscConfig: {
- *         subnetworks: [producerSubnet.id],
- *     },
- * }, {
- *     provider: google_beta,
- * });
- * const cluster_ha = new gcp.redis.Cluster("cluster-ha", {
- *     shardCount: 3,
- *     pscConfigs: [{
- *         network: producerNet.id,
- *     }],
- *     region: "us-central1",
- *     replicaCount: 1,
- *     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
- *     authorizationMode: "AUTH_MODE_DISABLED",
- * }, {
- *     provider: google_beta,
- *     dependsOn: [_default],
- * });
- * ```
  *
  * ## Import
  *

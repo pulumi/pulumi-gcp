@@ -32,9 +32,17 @@ class IngressPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ingress_policy_name: pulumi.Input[str],
-             resource: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             ingress_policy_name: Optional[pulumi.Input[str]] = None,
+             resource: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ingress_policy_name is None and 'ingressPolicyName' in kwargs:
+            ingress_policy_name = kwargs['ingressPolicyName']
+        if ingress_policy_name is None:
+            raise TypeError("Missing 'ingress_policy_name' argument")
+        if resource is None:
+            raise TypeError("Missing 'resource' argument")
+
         _setter("ingress_policy_name", ingress_policy_name)
         _setter("resource", resource)
 
@@ -89,7 +97,11 @@ class _IngressPolicyState:
              _setter: Callable[[Any, Any], None],
              ingress_policy_name: Optional[pulumi.Input[str]] = None,
              resource: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ingress_policy_name is None and 'ingressPolicyName' in kwargs:
+            ingress_policy_name = kwargs['ingressPolicyName']
+
         if ingress_policy_name is not None:
             _setter("ingress_policy_name", ingress_policy_name)
         if resource is not None:

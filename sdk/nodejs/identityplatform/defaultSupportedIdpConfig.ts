@@ -12,19 +12,6 @@ import * as utilities from "../utilities";
  * the marketplace prior to using this resource.
  *
  * ## Example Usage
- * ### Identity Platform Default Supported Idp Config Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const idpConfig = new gcp.identityplatform.DefaultSupportedIdpConfig("idpConfig", {
- *     clientId: "client-id",
- *     clientSecret: "secret",
- *     enabled: true,
- *     idpId: "playgames.google.com",
- * });
- * ```
  *
  * ## Import
  *

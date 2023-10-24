@@ -96,7 +96,19 @@ class AddonsConfigAddonsConfig(dict):
              connectors_platform_config: Optional['outputs.AddonsConfigAddonsConfigConnectorsPlatformConfig'] = None,
              integration_config: Optional['outputs.AddonsConfigAddonsConfigIntegrationConfig'] = None,
              monetization_config: Optional['outputs.AddonsConfigAddonsConfigMonetizationConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if advanced_api_ops_config is None and 'advancedApiOpsConfig' in kwargs:
+            advanced_api_ops_config = kwargs['advancedApiOpsConfig']
+        if api_security_config is None and 'apiSecurityConfig' in kwargs:
+            api_security_config = kwargs['apiSecurityConfig']
+        if connectors_platform_config is None and 'connectorsPlatformConfig' in kwargs:
+            connectors_platform_config = kwargs['connectorsPlatformConfig']
+        if integration_config is None and 'integrationConfig' in kwargs:
+            integration_config = kwargs['integrationConfig']
+        if monetization_config is None and 'monetizationConfig' in kwargs:
+            monetization_config = kwargs['monetizationConfig']
+
         if advanced_api_ops_config is not None:
             _setter("advanced_api_ops_config", advanced_api_ops_config)
         if api_security_config is not None:
@@ -169,7 +181,9 @@ class AddonsConfigAddonsConfigAdvancedApiOpsConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if enabled is not None:
             _setter("enabled", enabled)
 
@@ -219,7 +233,11 @@ class AddonsConfigAddonsConfigApiSecurityConfig(dict):
              _setter: Callable[[Any, Any], None],
              enabled: Optional[bool] = None,
              expires_at: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expires_at is None and 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+
         if enabled is not None:
             _setter("enabled", enabled)
         if expires_at is not None:
@@ -280,7 +298,11 @@ class AddonsConfigAddonsConfigConnectorsPlatformConfig(dict):
              _setter: Callable[[Any, Any], None],
              enabled: Optional[bool] = None,
              expires_at: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expires_at is None and 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+
         if enabled is not None:
             _setter("enabled", enabled)
         if expires_at is not None:
@@ -319,7 +341,9 @@ class AddonsConfigAddonsConfigIntegrationConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if enabled is not None:
             _setter("enabled", enabled)
 
@@ -347,7 +371,9 @@ class AddonsConfigAddonsConfigMonetizationConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if enabled is not None:
             _setter("enabled", enabled)
 
@@ -375,10 +401,16 @@ class EnvironmentIamBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -415,10 +447,16 @@ class EnvironmentIamMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -490,7 +528,15 @@ class EnvironmentNodeConfig(dict):
              current_aggregate_node_count: Optional[str] = None,
              max_node_count: Optional[str] = None,
              min_node_count: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if current_aggregate_node_count is None and 'currentAggregateNodeCount' in kwargs:
+            current_aggregate_node_count = kwargs['currentAggregateNodeCount']
+        if max_node_count is None and 'maxNodeCount' in kwargs:
+            max_node_count = kwargs['maxNodeCount']
+        if min_node_count is None and 'minNodeCount' in kwargs:
+            min_node_count = kwargs['minNodeCount']
+
         if current_aggregate_node_count is not None:
             _setter("current_aggregate_node_count", current_aggregate_node_count)
         if max_node_count is not None:
@@ -563,7 +609,11 @@ class KeystoresAliasesKeyCertFileCertsInfo(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              cert_infos: Optional[Sequence['outputs.KeystoresAliasesKeyCertFileCertsInfoCertInfo']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cert_infos is None and 'certInfos' in kwargs:
+            cert_infos = kwargs['certInfos']
+
         if cert_infos is not None:
             _setter("cert_infos", cert_infos)
 
@@ -676,7 +726,25 @@ class KeystoresAliasesKeyCertFileCertsInfoCertInfo(dict):
              subject_alternative_names: Optional[Sequence[str]] = None,
              valid_from: Optional[str] = None,
              version: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if basic_constraints is None and 'basicConstraints' in kwargs:
+            basic_constraints = kwargs['basicConstraints']
+        if expiry_date is None and 'expiryDate' in kwargs:
+            expiry_date = kwargs['expiryDate']
+        if is_valid is None and 'isValid' in kwargs:
+            is_valid = kwargs['isValid']
+        if public_key is None and 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if serial_number is None and 'serialNumber' in kwargs:
+            serial_number = kwargs['serialNumber']
+        if sig_alg_name is None and 'sigAlgName' in kwargs:
+            sig_alg_name = kwargs['sigAlgName']
+        if subject_alternative_names is None and 'subjectAlternativeNames' in kwargs:
+            subject_alternative_names = kwargs['subjectAlternativeNames']
+        if valid_from is None and 'validFrom' in kwargs:
+            valid_from = kwargs['validFrom']
+
         if basic_constraints is not None:
             _setter("basic_constraints", basic_constraints)
         if expiry_date is not None:
@@ -835,7 +903,11 @@ class KeystoresAliasesPkcs12CertsInfo(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              cert_infos: Optional[Sequence['outputs.KeystoresAliasesPkcs12CertsInfoCertInfo']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cert_infos is None and 'certInfos' in kwargs:
+            cert_infos = kwargs['certInfos']
+
         if cert_infos is not None:
             _setter("cert_infos", cert_infos)
 
@@ -948,7 +1020,25 @@ class KeystoresAliasesPkcs12CertsInfoCertInfo(dict):
              subject_alternative_names: Optional[Sequence[str]] = None,
              valid_from: Optional[str] = None,
              version: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if basic_constraints is None and 'basicConstraints' in kwargs:
+            basic_constraints = kwargs['basicConstraints']
+        if expiry_date is None and 'expiryDate' in kwargs:
+            expiry_date = kwargs['expiryDate']
+        if is_valid is None and 'isValid' in kwargs:
+            is_valid = kwargs['isValid']
+        if public_key is None and 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if serial_number is None and 'serialNumber' in kwargs:
+            serial_number = kwargs['serialNumber']
+        if sig_alg_name is None and 'sigAlgName' in kwargs:
+            sig_alg_name = kwargs['sigAlgName']
+        if subject_alternative_names is None and 'subjectAlternativeNames' in kwargs:
+            subject_alternative_names = kwargs['subjectAlternativeNames']
+        if valid_from is None and 'validFrom' in kwargs:
+            valid_from = kwargs['validFrom']
+
         if basic_constraints is not None:
             _setter("basic_constraints", basic_constraints)
         if expiry_date is not None:
@@ -1107,7 +1197,11 @@ class KeystoresAliasesSelfSignedCertCertsInfo(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              cert_infos: Optional[Sequence['outputs.KeystoresAliasesSelfSignedCertCertsInfoCertInfo']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cert_infos is None and 'certInfos' in kwargs:
+            cert_infos = kwargs['certInfos']
+
         if cert_infos is not None:
             _setter("cert_infos", cert_infos)
 
@@ -1220,7 +1314,25 @@ class KeystoresAliasesSelfSignedCertCertsInfoCertInfo(dict):
              subject_alternative_names: Optional[Sequence[str]] = None,
              valid_from: Optional[str] = None,
              version: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if basic_constraints is None and 'basicConstraints' in kwargs:
+            basic_constraints = kwargs['basicConstraints']
+        if expiry_date is None and 'expiryDate' in kwargs:
+            expiry_date = kwargs['expiryDate']
+        if is_valid is None and 'isValid' in kwargs:
+            is_valid = kwargs['isValid']
+        if public_key is None and 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if serial_number is None and 'serialNumber' in kwargs:
+            serial_number = kwargs['serialNumber']
+        if sig_alg_name is None and 'sigAlgName' in kwargs:
+            sig_alg_name = kwargs['sigAlgName']
+        if subject_alternative_names is None and 'subjectAlternativeNames' in kwargs:
+            subject_alternative_names = kwargs['subjectAlternativeNames']
+        if valid_from is None and 'validFrom' in kwargs:
+            valid_from = kwargs['validFrom']
+
         if basic_constraints is not None:
             _setter("basic_constraints", basic_constraints)
         if expiry_date is not None:
@@ -1407,7 +1519,15 @@ class KeystoresAliasesSelfSignedCertSubject(dict):
              org: Optional[str] = None,
              org_unit: Optional[str] = None,
              state: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if common_name is None and 'commonName' in kwargs:
+            common_name = kwargs['commonName']
+        if country_code is None and 'countryCode' in kwargs:
+            country_code = kwargs['countryCode']
+        if org_unit is None and 'orgUnit' in kwargs:
+            org_unit = kwargs['orgUnit']
+
         if common_name is not None:
             _setter("common_name", common_name)
         if country_code is not None:
@@ -1514,7 +1634,11 @@ class KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              subject_alternative_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if subject_alternative_name is None and 'subjectAlternativeName' in kwargs:
+            subject_alternative_name = kwargs['subjectAlternativeName']
+
         if subject_alternative_name is not None:
             _setter("subject_alternative_name", subject_alternative_name)
 
@@ -1543,7 +1667,9 @@ class OrganizationProperties(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              properties: Optional[Sequence['outputs.OrganizationPropertiesProperty']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if properties is not None:
             _setter("properties", properties)
 
@@ -1576,7 +1702,9 @@ class OrganizationPropertiesProperty(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if value is not None:
@@ -1643,7 +1771,15 @@ class SharedflowMetaData(dict):
              created_at: Optional[str] = None,
              last_modified_at: Optional[str] = None,
              sub_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if last_modified_at is None and 'lastModifiedAt' in kwargs:
+            last_modified_at = kwargs['lastModifiedAt']
+        if sub_type is None and 'subType' in kwargs:
+            sub_type = kwargs['subType']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if last_modified_at is not None:
@@ -1742,7 +1878,7 @@ class TargetServerSSlInfo(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
+             enabled: Optional[bool] = None,
              ciphers: Optional[Sequence[str]] = None,
              client_auth_enabled: Optional[bool] = None,
              common_name: Optional['outputs.TargetServerSSlInfoCommonName'] = None,
@@ -1751,7 +1887,23 @@ class TargetServerSSlInfo(dict):
              key_store: Optional[str] = None,
              protocols: Optional[Sequence[str]] = None,
              trust_store: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if client_auth_enabled is None and 'clientAuthEnabled' in kwargs:
+            client_auth_enabled = kwargs['clientAuthEnabled']
+        if common_name is None and 'commonName' in kwargs:
+            common_name = kwargs['commonName']
+        if ignore_validation_errors is None and 'ignoreValidationErrors' in kwargs:
+            ignore_validation_errors = kwargs['ignoreValidationErrors']
+        if key_alias is None and 'keyAlias' in kwargs:
+            key_alias = kwargs['keyAlias']
+        if key_store is None and 'keyStore' in kwargs:
+            key_store = kwargs['keyStore']
+        if trust_store is None and 'trustStore' in kwargs:
+            trust_store = kwargs['trustStore']
+
         _setter("enabled", enabled)
         if ciphers is not None:
             _setter("ciphers", ciphers)
@@ -1880,7 +2032,11 @@ class TargetServerSSlInfoCommonName(dict):
              _setter: Callable[[Any, Any], None],
              value: Optional[str] = None,
              wildcard_match: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if wildcard_match is None and 'wildcardMatch' in kwargs:
+            wildcard_match = kwargs['wildcardMatch']
+
         if value is not None:
             _setter("value", value)
         if wildcard_match is not None:

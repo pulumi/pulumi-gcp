@@ -13,33 +13,6 @@ import (
 )
 
 // Retrieves the current IAM policy data for snapshot
-//
-// ## example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.LookupSnapshotIamPolicy(ctx, &compute.LookupSnapshotIamPolicyArgs{
-//				Project: pulumi.StringRef(google_compute_snapshot.Snapshot.Project),
-//				Name:    google_compute_snapshot.Snapshot.Name,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupSnapshotIamPolicy(ctx *pulumi.Context, args *LookupSnapshotIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupSnapshotIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSnapshotIamPolicyResult

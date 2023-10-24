@@ -46,10 +46,16 @@ class SnapshotIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_data: pulumi.Input[str],
+             policy_data: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("policy_data", policy_data)
         if name is not None:
             _setter("name", name)
@@ -149,7 +155,11 @@ class _SnapshotIamPolicyState:
              name: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if etag is not None:
             _setter("etag", etag)
         if name is not None:
@@ -246,45 +256,6 @@ class SnapshotIamPolicy(pulumi.CustomResource):
 
         > **Note:** `compute.SnapshotIamBinding` resources **can be** used in conjunction with `compute.SnapshotIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_compute\\_snapshot\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.compute.SnapshotIamPolicy("policy",
-            project=google_compute_snapshot["snapshot"]["project"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_compute\\_snapshot\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.compute.SnapshotIamBinding("binding",
-            project=google_compute_snapshot["snapshot"]["project"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_compute\\_snapshot\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.compute.SnapshotIamMember("member",
-            project=google_compute_snapshot["snapshot"]["project"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/global/snapshots/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine snapshot IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -349,45 +320,6 @@ class SnapshotIamPolicy(pulumi.CustomResource):
         > **Note:** `compute.SnapshotIamPolicy` **cannot** be used in conjunction with `compute.SnapshotIamBinding` and `compute.SnapshotIamMember` or they will fight over what your policy should be.
 
         > **Note:** `compute.SnapshotIamBinding` resources **can be** used in conjunction with `compute.SnapshotIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\\_compute\\_snapshot\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.compute.SnapshotIamPolicy("policy",
-            project=google_compute_snapshot["snapshot"]["project"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_compute\\_snapshot\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.compute.SnapshotIamBinding("binding",
-            project=google_compute_snapshot["snapshot"]["project"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_compute\\_snapshot\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.compute.SnapshotIamMember("member",
-            project=google_compute_snapshot["snapshot"]["project"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
 
         ## Import
 

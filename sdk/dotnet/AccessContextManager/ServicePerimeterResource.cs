@@ -32,43 +32,6 @@ namespace Pulumi.Gcp.AccessContextManager
     /// `billing_project` you defined.
     /// 
     /// ## Example Usage
-    /// ### Access Context Manager Service Perimeter Resource Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new()
-    ///     {
-    ///         Parent = "organizations/123456789",
-    ///         Title = "my policy",
-    ///     });
-    /// 
-    ///     var service_perimeter_resourceServicePerimeter = new Gcp.AccessContextManager.ServicePerimeter("service-perimeter-resourceServicePerimeter", new()
-    ///     {
-    ///         Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
-    ///         Title = "restrict_all",
-    ///         Status = new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusArgs
-    ///         {
-    ///             RestrictedServices = new[]
-    ///             {
-    ///                 "storage.googleapis.com",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var service_perimeter_resourceServicePerimeterResource = new Gcp.AccessContextManager.ServicePerimeterResource("service-perimeter-resourceServicePerimeterResource", new()
-    ///     {
-    ///         PerimeterName = service_perimeter_resourceServicePerimeter.Name,
-    ///         Resource = "projects/987654321",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

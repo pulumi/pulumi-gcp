@@ -13,32 +13,6 @@ import (
 )
 
 // Retrieves the current IAM policy data for web
-//
-// ## example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iap.LookupWebIamPolicy(ctx, &iap.LookupWebIamPolicyArgs{
-//				Project: pulumi.StringRef(google_project_service.Project_service.Project),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupWebIamPolicy(ctx *pulumi.Context, args *LookupWebIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupWebIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebIamPolicyResult

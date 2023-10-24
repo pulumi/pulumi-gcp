@@ -44,7 +44,11 @@ class RepositoryArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if pubsub_configs is None and 'pubsubConfigs' in kwargs:
+            pubsub_configs = kwargs['pubsubConfigs']
+
         if name is not None:
             _setter("name", name)
         if project is not None:
@@ -135,7 +139,11 @@ class _RepositoryState:
              pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]] = None,
              size: Optional[pulumi.Input[int]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if pubsub_configs is None and 'pubsubConfigs' in kwargs:
+            pubsub_configs = kwargs['pubsubConfigs']
+
         if name is not None:
             _setter("name", name)
         if project is not None:
@@ -234,30 +242,6 @@ class Repository(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/source-repositories/)
 
         ## Example Usage
-        ### Sourcerepo Repository Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_repo = gcp.sourcerepo.Repository("my-repo")
-        ```
-        ### Sourcerepo Repository Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        test_account = gcp.service_account.Account("testAccount",
-            account_id="my-account",
-            display_name="Test Service Account")
-        topic = gcp.pubsub.Topic("topic")
-        my_repo = gcp.sourcerepo.Repository("my-repo", pubsub_configs=[gcp.sourcerepo.RepositoryPubsubConfigArgs(
-            topic=topic.id,
-            message_format="JSON",
-            service_account_email=test_account.email,
-        )])
-        ```
 
         ## Import
 
@@ -300,30 +284,6 @@ class Repository(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/source-repositories/)
 
         ## Example Usage
-        ### Sourcerepo Repository Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_repo = gcp.sourcerepo.Repository("my-repo")
-        ```
-        ### Sourcerepo Repository Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        test_account = gcp.service_account.Account("testAccount",
-            account_id="my-account",
-            display_name="Test Service Account")
-        topic = gcp.pubsub.Topic("topic")
-        my_repo = gcp.sourcerepo.Repository("my-repo", pubsub_configs=[gcp.sourcerepo.RepositoryPubsubConfigArgs(
-            topic=topic.id,
-            message_format="JSON",
-            service_account_email=test_account.email,
-        )])
-        ```
 
         ## Import
 

@@ -46,13 +46,25 @@ class GatewayArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api_config: pulumi.Input[str],
-             gateway_id: pulumi.Input[str],
+             api_config: Optional[pulumi.Input[str]] = None,
+             gateway_id: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_config is None and 'apiConfig' in kwargs:
+            api_config = kwargs['apiConfig']
+        if api_config is None:
+            raise TypeError("Missing 'api_config' argument")
+        if gateway_id is None and 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+        if gateway_id is None:
+            raise TypeError("Missing 'gateway_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("api_config", api_config)
         _setter("gateway_id", gateway_id)
         if display_name is not None:
@@ -191,7 +203,17 @@ class _GatewayState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_config is None and 'apiConfig' in kwargs:
+            api_config = kwargs['apiConfig']
+        if default_hostname is None and 'defaultHostname' in kwargs:
+            default_hostname = kwargs['defaultHostname']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if gateway_id is None and 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+
         if api_config is not None:
             _setter("api_config", api_config)
         if default_hostname is not None:
@@ -333,30 +355,6 @@ class Gateway(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
 
         ## Example Usage
-        ### Apigateway Gateway Basic
-
-        ```python
-        import pulumi
-        import base64
-        import pulumi_gcp as gcp
-
-        api_gw_api = gcp.apigateway.Api("apiGwApi", api_id="my-api",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        api_gw_api_config = gcp.apigateway.ApiConfig("apiGwApiConfig",
-            api=api_gw_api.api_id,
-            api_config_id="my-config",
-            openapi_documents=[gcp.apigateway.ApiConfigOpenapiDocumentArgs(
-                document=gcp.apigateway.ApiConfigOpenapiDocumentDocumentArgs(
-                    path="spec.yaml",
-                    contents=(lambda path: base64.b64encode(open(path).read().encode()).decode())("test-fixtures/openapi.yaml"),
-                ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        api_gw_gateway = gcp.apigateway.Gateway("apiGwGateway",
-            api_config=api_gw_api_config.id,
-            gateway_id="my-gateway",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -408,30 +406,6 @@ class Gateway(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
 
         ## Example Usage
-        ### Apigateway Gateway Basic
-
-        ```python
-        import pulumi
-        import base64
-        import pulumi_gcp as gcp
-
-        api_gw_api = gcp.apigateway.Api("apiGwApi", api_id="my-api",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        api_gw_api_config = gcp.apigateway.ApiConfig("apiGwApiConfig",
-            api=api_gw_api.api_id,
-            api_config_id="my-config",
-            openapi_documents=[gcp.apigateway.ApiConfigOpenapiDocumentArgs(
-                document=gcp.apigateway.ApiConfigOpenapiDocumentDocumentArgs(
-                    path="spec.yaml",
-                    contents=(lambda path: base64.b64encode(open(path).read().encode()).decode())("test-fixtures/openapi.yaml"),
-                ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        api_gw_gateway = gcp.apigateway.Gateway("apiGwGateway",
-            api_config=api_gw_api_config.id,
-            gateway_id="my-gateway",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 

@@ -11,56 +11,6 @@ namespace Pulumi.Gcp.Tpu
 {
     /// <summary>
     /// ## Example Usage
-    /// ### Tpu V2 Vm Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var available = Gcp.Tpu.GetV2RuntimeVersions.Invoke();
-    /// 
-    ///     var tpu = new Gcp.Tpu.V2Vm("tpu", new()
-    ///     {
-    ///         Zone = "us-central1-c",
-    ///         RuntimeVersion = "tpu-vm-tf-2.13.0",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Tpu V2 Vm Full
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var availableV2RuntimeVersions = Gcp.Tpu.GetV2RuntimeVersions.Invoke();
-    /// 
-    ///     var availableV2AcceleratorTypes = Gcp.Tpu.GetV2AcceleratorTypes.Invoke();
-    /// 
-    ///     var tpu = new Gcp.Tpu.V2Vm("tpu", new()
-    ///     {
-    ///         Zone = "us-central1-c",
-    ///         Description = "Text description of the TPU.",
-    ///         RuntimeVersion = "tpu-vm-tf-2.13.0",
-    ///         AcceleratorType = "v2-8",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

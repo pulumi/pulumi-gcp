@@ -19,25 +19,6 @@ namespace Pulumi.Gcp.Vertex
     ///     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
     /// 
     /// ## Example Usage
-    /// ### Vertex Ai Dataset
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var dataset = new Gcp.Vertex.AiDataset("dataset", new()
-    ///     {
-    ///         DisplayName = "terraform",
-    ///         MetadataSchemaUri = "gs://google-cloud-aiplatform/schema/dataset/metadata/image_1.0.0.yaml",
-    ///         Region = "us-central1",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

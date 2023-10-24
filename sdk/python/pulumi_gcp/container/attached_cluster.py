@@ -89,11 +89,11 @@ class AttachedClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             distribution: pulumi.Input[str],
-             fleet: pulumi.Input['AttachedClusterFleetArgs'],
-             location: pulumi.Input[str],
-             oidc_config: pulumi.Input['AttachedClusterOidcConfigArgs'],
-             platform_version: pulumi.Input[str],
+             distribution: Optional[pulumi.Input[str]] = None,
+             fleet: Optional[pulumi.Input['AttachedClusterFleetArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             oidc_config: Optional[pulumi.Input['AttachedClusterOidcConfigArgs']] = None,
+             platform_version: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              authorization: Optional[pulumi.Input['AttachedClusterAuthorizationArgs']] = None,
              binary_authorization: Optional[pulumi.Input['AttachedClusterBinaryAuthorizationArgs']] = None,
@@ -103,7 +103,31 @@ class AttachedClusterArgs:
              monitoring_config: Optional[pulumi.Input['AttachedClusterMonitoringConfigArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if distribution is None:
+            raise TypeError("Missing 'distribution' argument")
+        if fleet is None:
+            raise TypeError("Missing 'fleet' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if oidc_config is None and 'oidcConfig' in kwargs:
+            oidc_config = kwargs['oidcConfig']
+        if oidc_config is None:
+            raise TypeError("Missing 'oidc_config' argument")
+        if platform_version is None and 'platformVersion' in kwargs:
+            platform_version = kwargs['platformVersion']
+        if platform_version is None:
+            raise TypeError("Missing 'platform_version' argument")
+        if binary_authorization is None and 'binaryAuthorization' in kwargs:
+            binary_authorization = kwargs['binaryAuthorization']
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+        if monitoring_config is None and 'monitoringConfig' in kwargs:
+            monitoring_config = kwargs['monitoringConfig']
+
         _setter("distribution", distribution)
         _setter("fleet", fleet)
         _setter("location", location)
@@ -451,7 +475,31 @@ class _AttachedClusterState:
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedClusterWorkloadIdentityConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if binary_authorization is None and 'binaryAuthorization' in kwargs:
+            binary_authorization = kwargs['binaryAuthorization']
+        if cluster_region is None and 'clusterRegion' in kwargs:
+            cluster_region = kwargs['clusterRegion']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+        if kubernetes_version is None and 'kubernetesVersion' in kwargs:
+            kubernetes_version = kwargs['kubernetesVersion']
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+        if monitoring_config is None and 'monitoringConfig' in kwargs:
+            monitoring_config = kwargs['monitoringConfig']
+        if oidc_config is None and 'oidcConfig' in kwargs:
+            oidc_config = kwargs['oidcConfig']
+        if platform_version is None and 'platformVersion' in kwargs:
+            platform_version = kwargs['platformVersion']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if workload_identity_configs is None and 'workloadIdentityConfigs' in kwargs:
+            workload_identity_configs = kwargs['workloadIdentityConfigs']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if authorization is not None:
@@ -835,51 +883,6 @@ class AttachedCluster(pulumi.CustomResource):
             * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
 
         ## Example Usage
-        ### Container Attached Cluster Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        versions = gcp.container.get_attached_versions(location="us-west1",
-            project=project.project_id)
-        primary = gcp.container.AttachedCluster("primary",
-            location="us-west1",
-            project=project.project_id,
-            description="Test cluster",
-            distribution="aks",
-            oidc_config=gcp.container.AttachedClusterOidcConfigArgs(
-                issuer_url="https://oidc.issuer.url",
-            ),
-            platform_version=versions.valid_versions[0],
-            fleet=gcp.container.AttachedClusterFleetArgs(
-                project=f"projects/{project.number}",
-            ))
-        ```
-        ### Container Attached Cluster Ignore Errors
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        versions = gcp.container.get_attached_versions(location="us-west1",
-            project=project.project_id)
-        primary = gcp.container.AttachedCluster("primary",
-            location="us-west1",
-            project=project.project_id,
-            description="Test cluster",
-            distribution="aks",
-            oidc_config=gcp.container.AttachedClusterOidcConfigArgs(
-                issuer_url="https://oidc.issuer.url",
-            ),
-            platform_version=versions.valid_versions[0],
-            fleet=gcp.container.AttachedClusterFleetArgs(
-                project=f"projects/{project.number}",
-            ),
-            deletion_policy="DELETE_IGNORE_ERRORS")
-        ```
 
         ## Import
 
@@ -953,51 +956,6 @@ class AttachedCluster(pulumi.CustomResource):
             * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
 
         ## Example Usage
-        ### Container Attached Cluster Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        versions = gcp.container.get_attached_versions(location="us-west1",
-            project=project.project_id)
-        primary = gcp.container.AttachedCluster("primary",
-            location="us-west1",
-            project=project.project_id,
-            description="Test cluster",
-            distribution="aks",
-            oidc_config=gcp.container.AttachedClusterOidcConfigArgs(
-                issuer_url="https://oidc.issuer.url",
-            ),
-            platform_version=versions.valid_versions[0],
-            fleet=gcp.container.AttachedClusterFleetArgs(
-                project=f"projects/{project.number}",
-            ))
-        ```
-        ### Container Attached Cluster Ignore Errors
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        versions = gcp.container.get_attached_versions(location="us-west1",
-            project=project.project_id)
-        primary = gcp.container.AttachedCluster("primary",
-            location="us-west1",
-            project=project.project_id,
-            description="Test cluster",
-            distribution="aks",
-            oidc_config=gcp.container.AttachedClusterOidcConfigArgs(
-                issuer_url="https://oidc.issuer.url",
-            ),
-            platform_version=versions.valid_versions[0],
-            fleet=gcp.container.AttachedClusterFleetArgs(
-                project=f"projects/{project.number}",
-            ),
-            deletion_policy="DELETE_IGNORE_ERRORS")
-        ```
 
         ## Import
 
@@ -1058,52 +1016,28 @@ class AttachedCluster(pulumi.CustomResource):
             __props__ = AttachedClusterArgs.__new__(AttachedClusterArgs)
 
             __props__.__dict__["annotations"] = annotations
-            if authorization is not None and not isinstance(authorization, AttachedClusterAuthorizationArgs):
-                authorization = authorization or {}
-                def _setter(key, value):
-                    authorization[key] = value
-                AttachedClusterAuthorizationArgs._configure(_setter, **authorization)
+            authorization = _utilities.configure(authorization, AttachedClusterAuthorizationArgs, True)
             __props__.__dict__["authorization"] = authorization
-            if binary_authorization is not None and not isinstance(binary_authorization, AttachedClusterBinaryAuthorizationArgs):
-                binary_authorization = binary_authorization or {}
-                def _setter(key, value):
-                    binary_authorization[key] = value
-                AttachedClusterBinaryAuthorizationArgs._configure(_setter, **binary_authorization)
+            binary_authorization = _utilities.configure(binary_authorization, AttachedClusterBinaryAuthorizationArgs, True)
             __props__.__dict__["binary_authorization"] = binary_authorization
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if distribution is None and not opts.urn:
                 raise TypeError("Missing required property 'distribution'")
             __props__.__dict__["distribution"] = distribution
-            if fleet is not None and not isinstance(fleet, AttachedClusterFleetArgs):
-                fleet = fleet or {}
-                def _setter(key, value):
-                    fleet[key] = value
-                AttachedClusterFleetArgs._configure(_setter, **fleet)
+            fleet = _utilities.configure(fleet, AttachedClusterFleetArgs, True)
             if fleet is None and not opts.urn:
                 raise TypeError("Missing required property 'fleet'")
             __props__.__dict__["fleet"] = fleet
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if logging_config is not None and not isinstance(logging_config, AttachedClusterLoggingConfigArgs):
-                logging_config = logging_config or {}
-                def _setter(key, value):
-                    logging_config[key] = value
-                AttachedClusterLoggingConfigArgs._configure(_setter, **logging_config)
+            logging_config = _utilities.configure(logging_config, AttachedClusterLoggingConfigArgs, True)
             __props__.__dict__["logging_config"] = logging_config
-            if monitoring_config is not None and not isinstance(monitoring_config, AttachedClusterMonitoringConfigArgs):
-                monitoring_config = monitoring_config or {}
-                def _setter(key, value):
-                    monitoring_config[key] = value
-                AttachedClusterMonitoringConfigArgs._configure(_setter, **monitoring_config)
+            monitoring_config = _utilities.configure(monitoring_config, AttachedClusterMonitoringConfigArgs, True)
             __props__.__dict__["monitoring_config"] = monitoring_config
             __props__.__dict__["name"] = name
-            if oidc_config is not None and not isinstance(oidc_config, AttachedClusterOidcConfigArgs):
-                oidc_config = oidc_config or {}
-                def _setter(key, value):
-                    oidc_config[key] = value
-                AttachedClusterOidcConfigArgs._configure(_setter, **oidc_config)
+            oidc_config = _utilities.configure(oidc_config, AttachedClusterOidcConfigArgs, True)
             if oidc_config is None and not opts.urn:
                 raise TypeError("Missing required property 'oidc_config'")
             __props__.__dict__["oidc_config"] = oidc_config

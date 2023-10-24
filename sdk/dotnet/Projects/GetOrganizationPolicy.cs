@@ -15,33 +15,6 @@ namespace Pulumi.Gcp.Projects
         /// Allows management of Organization policies for a Google Project. For more information see
         /// [the official
         /// documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.Projects.GetOrganizationPolicy.Invoke(new()
-        ///     {
-        ///         Project = "project-id",
-        ///         Constraint = "constraints/serviceuser.services",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["version"] = policy.Apply(getOrganizationPolicyResult =&gt; getOrganizationPolicyResult.Version),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetOrganizationPolicyResult> InvokeAsync(GetOrganizationPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationPolicyResult>("gcp:projects/getOrganizationPolicy:getOrganizationPolicy", args ?? new GetOrganizationPolicyArgs(), options.WithDefaults());
@@ -50,33 +23,6 @@ namespace Pulumi.Gcp.Projects
         /// Allows management of Organization policies for a Google Project. For more information see
         /// [the official
         /// documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.Projects.GetOrganizationPolicy.Invoke(new()
-        ///     {
-        ///         Project = "project-id",
-        ///         Constraint = "constraints/serviceuser.services",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["version"] = policy.Apply(getOrganizationPolicyResult =&gt; getOrganizationPolicyResult.Version),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetOrganizationPolicyResult> Invoke(GetOrganizationPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationPolicyResult>("gcp:projects/getOrganizationPolicy:getOrganizationPolicy", args ?? new GetOrganizationPolicyInvokeArgs(), options.WithDefaults());

@@ -116,9 +116,9 @@ class RouterPeerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             interface: pulumi.Input[str],
-             peer_asn: pulumi.Input[int],
-             router: pulumi.Input[str],
+             interface: Optional[pulumi.Input[str]] = None,
+             peer_asn: Optional[pulumi.Input[int]] = None,
+             router: Optional[pulumi.Input[str]] = None,
              advertise_mode: Optional[pulumi.Input[str]] = None,
              advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]] = None,
@@ -134,7 +134,37 @@ class RouterPeerArgs:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              router_appliance_instance: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if interface is None:
+            raise TypeError("Missing 'interface' argument")
+        if peer_asn is None and 'peerAsn' in kwargs:
+            peer_asn = kwargs['peerAsn']
+        if peer_asn is None:
+            raise TypeError("Missing 'peer_asn' argument")
+        if router is None:
+            raise TypeError("Missing 'router' argument")
+        if advertise_mode is None and 'advertiseMode' in kwargs:
+            advertise_mode = kwargs['advertiseMode']
+        if advertised_groups is None and 'advertisedGroups' in kwargs:
+            advertised_groups = kwargs['advertisedGroups']
+        if advertised_ip_ranges is None and 'advertisedIpRanges' in kwargs:
+            advertised_ip_ranges = kwargs['advertisedIpRanges']
+        if advertised_route_priority is None and 'advertisedRoutePriority' in kwargs:
+            advertised_route_priority = kwargs['advertisedRoutePriority']
+        if enable_ipv6 is None and 'enableIpv6' in kwargs:
+            enable_ipv6 = kwargs['enableIpv6']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ipv6_nexthop_address is None and 'ipv6NexthopAddress' in kwargs:
+            ipv6_nexthop_address = kwargs['ipv6NexthopAddress']
+        if peer_ip_address is None and 'peerIpAddress' in kwargs:
+            peer_ip_address = kwargs['peerIpAddress']
+        if peer_ipv6_nexthop_address is None and 'peerIpv6NexthopAddress' in kwargs:
+            peer_ipv6_nexthop_address = kwargs['peerIpv6NexthopAddress']
+        if router_appliance_instance is None and 'routerApplianceInstance' in kwargs:
+            router_appliance_instance = kwargs['routerApplianceInstance']
+
         _setter("interface", interface)
         _setter("peer_asn", peer_asn)
         _setter("router", router)
@@ -548,7 +578,33 @@ class _RouterPeerState:
              region: Optional[pulumi.Input[str]] = None,
              router: Optional[pulumi.Input[str]] = None,
              router_appliance_instance: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if advertise_mode is None and 'advertiseMode' in kwargs:
+            advertise_mode = kwargs['advertiseMode']
+        if advertised_groups is None and 'advertisedGroups' in kwargs:
+            advertised_groups = kwargs['advertisedGroups']
+        if advertised_ip_ranges is None and 'advertisedIpRanges' in kwargs:
+            advertised_ip_ranges = kwargs['advertisedIpRanges']
+        if advertised_route_priority is None and 'advertisedRoutePriority' in kwargs:
+            advertised_route_priority = kwargs['advertisedRoutePriority']
+        if enable_ipv6 is None and 'enableIpv6' in kwargs:
+            enable_ipv6 = kwargs['enableIpv6']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ipv6_nexthop_address is None and 'ipv6NexthopAddress' in kwargs:
+            ipv6_nexthop_address = kwargs['ipv6NexthopAddress']
+        if management_type is None and 'managementType' in kwargs:
+            management_type = kwargs['managementType']
+        if peer_asn is None and 'peerAsn' in kwargs:
+            peer_asn = kwargs['peerAsn']
+        if peer_ip_address is None and 'peerIpAddress' in kwargs:
+            peer_ip_address = kwargs['peerIpAddress']
+        if peer_ipv6_nexthop_address is None and 'peerIpv6NexthopAddress' in kwargs:
+            peer_ipv6_nexthop_address = kwargs['peerIpv6NexthopAddress']
+        if router_appliance_instance is None and 'routerApplianceInstance' in kwargs:
+            router_appliance_instance = kwargs['routerApplianceInstance']
+
         if advertise_mode is not None:
             _setter("advertise_mode", advertise_mode)
         if advertised_groups is not None:
@@ -891,126 +947,6 @@ class RouterPeer(pulumi.CustomResource):
             * [Google Cloud Router](https://cloud.google.com/router/docs/)
 
         ## Example Usage
-        ### Router Peer Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        peer = gcp.compute.RouterPeer("peer",
-            advertised_route_priority=100,
-            interface="interface-1",
-            peer_asn=65513,
-            region="us-central1",
-            router="my-router")
-        ```
-        ### Router Peer Disabled
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        peer = gcp.compute.RouterPeer("peer",
-            advertised_route_priority=100,
-            enable=False,
-            interface="interface-1",
-            peer_asn=65513,
-            peer_ip_address="169.254.1.2",
-            region="us-central1",
-            router="my-router")
-        ```
-        ### Router Peer Bfd
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        peer = gcp.compute.RouterPeer("peer",
-            advertised_route_priority=100,
-            bfd=gcp.compute.RouterPeerBfdArgs(
-                min_receive_interval=1000,
-                min_transmit_interval=1000,
-                multiplier=5,
-                session_initialization_mode="ACTIVE",
-            ),
-            interface="interface-1",
-            peer_asn=65513,
-            peer_ip_address="169.254.1.2",
-            region="us-central1",
-            router="my-router")
-        ```
-        ### Router Peer Router Appliance
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network = gcp.compute.Network("network", auto_create_subnetworks=False)
-        subnetwork = gcp.compute.Subnetwork("subnetwork",
-            network=network.self_link,
-            ip_cidr_range="10.0.0.0/16",
-            region="us-central1")
-        addr_intf = gcp.compute.Address("addrIntf",
-            region=subnetwork.region,
-            subnetwork=subnetwork.id,
-            address_type="INTERNAL")
-        addr_intf_redundant = gcp.compute.Address("addrIntfRedundant",
-            region=subnetwork.region,
-            subnetwork=subnetwork.id,
-            address_type="INTERNAL")
-        addr_peer = gcp.compute.Address("addrPeer",
-            region=subnetwork.region,
-            subnetwork=subnetwork.id,
-            address_type="INTERNAL")
-        instance = gcp.compute.Instance("instance",
-            zone="us-central1-a",
-            machine_type="e2-medium",
-            can_ip_forward=True,
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-11",
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network_ip=addr_peer.address,
-                subnetwork=subnetwork.self_link,
-            )])
-        hub = gcp.networkconnectivity.Hub("hub")
-        spoke = gcp.networkconnectivity.Spoke("spoke",
-            location=subnetwork.region,
-            hub=hub.id,
-            linked_router_appliance_instances=gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesArgs(
-                instances=[gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArgs(
-                    virtual_machine=instance.self_link,
-                    ip_address=addr_peer.address,
-                )],
-                site_to_site_data_transfer=False,
-            ))
-        router = gcp.compute.Router("router",
-            region=subnetwork.region,
-            network=network.self_link,
-            bgp=gcp.compute.RouterBgpArgs(
-                asn=64514,
-            ))
-        interface_redundant = gcp.compute.RouterInterface("interfaceRedundant",
-            region=router.region,
-            router=router.name,
-            subnetwork=subnetwork.self_link,
-            private_ip_address=addr_intf_redundant.address)
-        interface = gcp.compute.RouterInterface("interface",
-            region=router.region,
-            router=router.name,
-            subnetwork=subnetwork.self_link,
-            private_ip_address=addr_intf.address,
-            redundant_interface=interface_redundant.name)
-        peer = gcp.compute.RouterPeer("peer",
-            router=router.name,
-            region=router.region,
-            interface=interface.name,
-            router_appliance_instance=instance.self_link,
-            peer_asn=65513,
-            peer_ip_address=addr_peer.address)
-        ```
 
         ## Import
 
@@ -1109,126 +1045,6 @@ class RouterPeer(pulumi.CustomResource):
             * [Google Cloud Router](https://cloud.google.com/router/docs/)
 
         ## Example Usage
-        ### Router Peer Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        peer = gcp.compute.RouterPeer("peer",
-            advertised_route_priority=100,
-            interface="interface-1",
-            peer_asn=65513,
-            region="us-central1",
-            router="my-router")
-        ```
-        ### Router Peer Disabled
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        peer = gcp.compute.RouterPeer("peer",
-            advertised_route_priority=100,
-            enable=False,
-            interface="interface-1",
-            peer_asn=65513,
-            peer_ip_address="169.254.1.2",
-            region="us-central1",
-            router="my-router")
-        ```
-        ### Router Peer Bfd
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        peer = gcp.compute.RouterPeer("peer",
-            advertised_route_priority=100,
-            bfd=gcp.compute.RouterPeerBfdArgs(
-                min_receive_interval=1000,
-                min_transmit_interval=1000,
-                multiplier=5,
-                session_initialization_mode="ACTIVE",
-            ),
-            interface="interface-1",
-            peer_asn=65513,
-            peer_ip_address="169.254.1.2",
-            region="us-central1",
-            router="my-router")
-        ```
-        ### Router Peer Router Appliance
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network = gcp.compute.Network("network", auto_create_subnetworks=False)
-        subnetwork = gcp.compute.Subnetwork("subnetwork",
-            network=network.self_link,
-            ip_cidr_range="10.0.0.0/16",
-            region="us-central1")
-        addr_intf = gcp.compute.Address("addrIntf",
-            region=subnetwork.region,
-            subnetwork=subnetwork.id,
-            address_type="INTERNAL")
-        addr_intf_redundant = gcp.compute.Address("addrIntfRedundant",
-            region=subnetwork.region,
-            subnetwork=subnetwork.id,
-            address_type="INTERNAL")
-        addr_peer = gcp.compute.Address("addrPeer",
-            region=subnetwork.region,
-            subnetwork=subnetwork.id,
-            address_type="INTERNAL")
-        instance = gcp.compute.Instance("instance",
-            zone="us-central1-a",
-            machine_type="e2-medium",
-            can_ip_forward=True,
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-11",
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network_ip=addr_peer.address,
-                subnetwork=subnetwork.self_link,
-            )])
-        hub = gcp.networkconnectivity.Hub("hub")
-        spoke = gcp.networkconnectivity.Spoke("spoke",
-            location=subnetwork.region,
-            hub=hub.id,
-            linked_router_appliance_instances=gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesArgs(
-                instances=[gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArgs(
-                    virtual_machine=instance.self_link,
-                    ip_address=addr_peer.address,
-                )],
-                site_to_site_data_transfer=False,
-            ))
-        router = gcp.compute.Router("router",
-            region=subnetwork.region,
-            network=network.self_link,
-            bgp=gcp.compute.RouterBgpArgs(
-                asn=64514,
-            ))
-        interface_redundant = gcp.compute.RouterInterface("interfaceRedundant",
-            region=router.region,
-            router=router.name,
-            subnetwork=subnetwork.self_link,
-            private_ip_address=addr_intf_redundant.address)
-        interface = gcp.compute.RouterInterface("interface",
-            region=router.region,
-            router=router.name,
-            subnetwork=subnetwork.self_link,
-            private_ip_address=addr_intf.address,
-            redundant_interface=interface_redundant.name)
-        peer = gcp.compute.RouterPeer("peer",
-            router=router.name,
-            region=router.region,
-            interface=interface.name,
-            router_appliance_instance=instance.self_link,
-            peer_asn=65513,
-            peer_ip_address=addr_peer.address)
-        ```
 
         ## Import
 
@@ -1300,11 +1116,7 @@ class RouterPeer(pulumi.CustomResource):
             __props__.__dict__["advertised_groups"] = advertised_groups
             __props__.__dict__["advertised_ip_ranges"] = advertised_ip_ranges
             __props__.__dict__["advertised_route_priority"] = advertised_route_priority
-            if bfd is not None and not isinstance(bfd, RouterPeerBfdArgs):
-                bfd = bfd or {}
-                def _setter(key, value):
-                    bfd[key] = value
-                RouterPeerBfdArgs._configure(_setter, **bfd)
+            bfd = _utilities.configure(bfd, RouterPeerBfdArgs, True)
             __props__.__dict__["bfd"] = bfd
             __props__.__dict__["enable"] = enable
             __props__.__dict__["enable_ipv6"] = enable_ipv6

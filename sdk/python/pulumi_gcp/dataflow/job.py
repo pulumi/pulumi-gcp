@@ -88,8 +88,8 @@ class JobArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             temp_gcs_location: pulumi.Input[str],
-             template_gcs_path: pulumi.Input[str],
+             temp_gcs_location: Optional[pulumi.Input[str]] = None,
+             template_gcs_path: Optional[pulumi.Input[str]] = None,
              additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              enable_streaming_engine: Optional[pulumi.Input[bool]] = None,
              ip_configuration: Optional[pulumi.Input[str]] = None,
@@ -108,7 +108,37 @@ class JobArgs:
              subnetwork: Optional[pulumi.Input[str]] = None,
              transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if temp_gcs_location is None and 'tempGcsLocation' in kwargs:
+            temp_gcs_location = kwargs['tempGcsLocation']
+        if temp_gcs_location is None:
+            raise TypeError("Missing 'temp_gcs_location' argument")
+        if template_gcs_path is None and 'templateGcsPath' in kwargs:
+            template_gcs_path = kwargs['templateGcsPath']
+        if template_gcs_path is None:
+            raise TypeError("Missing 'template_gcs_path' argument")
+        if additional_experiments is None and 'additionalExperiments' in kwargs:
+            additional_experiments = kwargs['additionalExperiments']
+        if enable_streaming_engine is None and 'enableStreamingEngine' in kwargs:
+            enable_streaming_engine = kwargs['enableStreamingEngine']
+        if ip_configuration is None and 'ipConfiguration' in kwargs:
+            ip_configuration = kwargs['ipConfiguration']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if max_workers is None and 'maxWorkers' in kwargs:
+            max_workers = kwargs['maxWorkers']
+        if on_delete is None and 'onDelete' in kwargs:
+            on_delete = kwargs['onDelete']
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if skip_wait_on_job_termination is None and 'skipWaitOnJobTermination' in kwargs:
+            skip_wait_on_job_termination = kwargs['skipWaitOnJobTermination']
+        if transform_name_mapping is None and 'transformNameMapping' in kwargs:
+            transform_name_mapping = kwargs['transformNameMapping']
+
         _setter("temp_gcs_location", temp_gcs_location)
         _setter("template_gcs_path", template_gcs_path)
         if additional_experiments is not None:
@@ -503,7 +533,35 @@ class _JobState:
              transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if additional_experiments is None and 'additionalExperiments' in kwargs:
+            additional_experiments = kwargs['additionalExperiments']
+        if enable_streaming_engine is None and 'enableStreamingEngine' in kwargs:
+            enable_streaming_engine = kwargs['enableStreamingEngine']
+        if ip_configuration is None and 'ipConfiguration' in kwargs:
+            ip_configuration = kwargs['ipConfiguration']
+        if job_id is None and 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if max_workers is None and 'maxWorkers' in kwargs:
+            max_workers = kwargs['maxWorkers']
+        if on_delete is None and 'onDelete' in kwargs:
+            on_delete = kwargs['onDelete']
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if skip_wait_on_job_termination is None and 'skipWaitOnJobTermination' in kwargs:
+            skip_wait_on_job_termination = kwargs['skipWaitOnJobTermination']
+        if temp_gcs_location is None and 'tempGcsLocation' in kwargs:
+            temp_gcs_location = kwargs['tempGcsLocation']
+        if template_gcs_path is None and 'templateGcsPath' in kwargs:
+            template_gcs_path = kwargs['templateGcsPath']
+        if transform_name_mapping is None and 'transformNameMapping' in kwargs:
+            transform_name_mapping = kwargs['transformNameMapping']
+
         if additional_experiments is not None:
             _setter("additional_experiments", additional_experiments)
         if enable_streaming_engine is not None:
@@ -864,82 +922,6 @@ class Job(pulumi.CustomResource):
         the official documentation for
         [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        big_data_job = gcp.dataflow.Job("bigDataJob",
-            parameters={
-                "baz": "qux",
-                "foo": "bar",
-            },
-            temp_gcs_location="gs://my-bucket/tmp_dir",
-            template_gcs_path="gs://my-bucket/templates/template_file")
-        ```
-        ### Streaming Job
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        topic = gcp.pubsub.Topic("topic")
-        bucket1 = gcp.storage.Bucket("bucket1",
-            location="US",
-            force_destroy=True)
-        bucket2 = gcp.storage.Bucket("bucket2",
-            location="US",
-            force_destroy=True)
-        pubsub_stream = gcp.dataflow.Job("pubsubStream",
-            template_gcs_path="gs://my-bucket/templates/template_file",
-            temp_gcs_location="gs://my-bucket/tmp_dir",
-            enable_streaming_engine=True,
-            parameters={
-                "inputFilePattern": bucket1.url.apply(lambda url: f"{url}/*.json"),
-                "outputTopic": topic.id,
-            },
-            transform_name_mapping={
-                "name": "test_job",
-                "env": "test",
-            },
-            on_delete="cancel")
-        ```
-        ## Note on "destroy" / "apply"
-
-        There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other Google resources.
-
-        The Dataflow resource is considered 'existing' while it is in a nonterminal state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE', 'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for jobs which run continuously, but may surprise users who use this resource for other kinds of Dataflow jobs.
-
-        A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If "cancelled", the job terminates - any data written remains where it is, but no new data will be processed.  If "drained", no new data will enter the pipeline, but any data currently in the pipeline will finish being processed.  The default is "drain". When `on_delete` is set to `"drain"` in the configuration, you may experience a long wait for your `pulumi destroy` to complete.
-
-        You can potentially short-circuit the wait by setting `skip_wait_on_job_termination` to `true`, but beware that unless you take active steps to ensure that the job `name` parameter changes between instances, the name will conflict and the launch of the new job will fail. One way to do this is with a random_id resource, for example:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        big_data_job_subscription_id = config.get("bigDataJobSubscriptionId")
-        if big_data_job_subscription_id is None:
-            big_data_job_subscription_id = "projects/myproject/subscriptions/messages"
-        big_data_job_name_suffix = random.RandomId("bigDataJobNameSuffix",
-            byte_length=4,
-            keepers={
-                "region": var["region"],
-                "subscription_id": big_data_job_subscription_id,
-            })
-        big_data_job = gcp.dataflow.FlexTemplateJob("bigDataJob",
-            region=var["region"],
-            container_spec_gcs_path="gs://my-bucket/templates/template.json",
-            skip_wait_on_job_termination=True,
-            parameters={
-                "inputSubscription": big_data_job_subscription_id,
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-
         ## Import
 
         Dataflow jobs can be imported using the job `id` e.g.
@@ -986,82 +968,6 @@ class Job(pulumi.CustomResource):
         Creates a job on Dataflow, which is an implementation of Apache Beam running on Google Compute Engine. For more information see
         the official documentation for
         [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        big_data_job = gcp.dataflow.Job("bigDataJob",
-            parameters={
-                "baz": "qux",
-                "foo": "bar",
-            },
-            temp_gcs_location="gs://my-bucket/tmp_dir",
-            template_gcs_path="gs://my-bucket/templates/template_file")
-        ```
-        ### Streaming Job
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        topic = gcp.pubsub.Topic("topic")
-        bucket1 = gcp.storage.Bucket("bucket1",
-            location="US",
-            force_destroy=True)
-        bucket2 = gcp.storage.Bucket("bucket2",
-            location="US",
-            force_destroy=True)
-        pubsub_stream = gcp.dataflow.Job("pubsubStream",
-            template_gcs_path="gs://my-bucket/templates/template_file",
-            temp_gcs_location="gs://my-bucket/tmp_dir",
-            enable_streaming_engine=True,
-            parameters={
-                "inputFilePattern": bucket1.url.apply(lambda url: f"{url}/*.json"),
-                "outputTopic": topic.id,
-            },
-            transform_name_mapping={
-                "name": "test_job",
-                "env": "test",
-            },
-            on_delete="cancel")
-        ```
-        ## Note on "destroy" / "apply"
-
-        There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other Google resources.
-
-        The Dataflow resource is considered 'existing' while it is in a nonterminal state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE', 'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for jobs which run continuously, but may surprise users who use this resource for other kinds of Dataflow jobs.
-
-        A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If "cancelled", the job terminates - any data written remains where it is, but no new data will be processed.  If "drained", no new data will enter the pipeline, but any data currently in the pipeline will finish being processed.  The default is "drain". When `on_delete` is set to `"drain"` in the configuration, you may experience a long wait for your `pulumi destroy` to complete.
-
-        You can potentially short-circuit the wait by setting `skip_wait_on_job_termination` to `true`, but beware that unless you take active steps to ensure that the job `name` parameter changes between instances, the name will conflict and the launch of the new job will fail. One way to do this is with a random_id resource, for example:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        big_data_job_subscription_id = config.get("bigDataJobSubscriptionId")
-        if big_data_job_subscription_id is None:
-            big_data_job_subscription_id = "projects/myproject/subscriptions/messages"
-        big_data_job_name_suffix = random.RandomId("bigDataJobNameSuffix",
-            byte_length=4,
-            keepers={
-                "region": var["region"],
-                "subscription_id": big_data_job_subscription_id,
-            })
-        big_data_job = gcp.dataflow.FlexTemplateJob("bigDataJob",
-            region=var["region"],
-            container_spec_gcs_path="gs://my-bucket/templates/template.json",
-            skip_wait_on_job_termination=True,
-            parameters={
-                "inputSubscription": big_data_job_subscription_id,
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 

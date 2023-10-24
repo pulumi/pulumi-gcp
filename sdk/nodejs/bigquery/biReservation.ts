@@ -16,17 +16,6 @@ import * as utilities from "../utilities";
  *     * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
  *
  * ## Example Usage
- * ### Bigquery Reservation Bi Reservation Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const reservation = new gcp.bigquery.BiReservation("reservation", {
- *     location: "us-west2",
- *     size: 3000000000,
- * });
- * ```
  *
  * ## Import
  *

@@ -54,7 +54,9 @@ class WorkstationClusterConditionArgs:
              code: Optional[pulumi.Input[int]] = None,
              details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
              message: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if code is not None:
             _setter("code", code)
         if details is not None:
@@ -132,11 +134,23 @@ class WorkstationClusterPrivateClusterConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enable_private_endpoint: pulumi.Input[bool],
+             enable_private_endpoint: Optional[pulumi.Input[bool]] = None,
              allowed_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              cluster_hostname: Optional[pulumi.Input[str]] = None,
              service_attachment_uri: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enable_private_endpoint is None and 'enablePrivateEndpoint' in kwargs:
+            enable_private_endpoint = kwargs['enablePrivateEndpoint']
+        if enable_private_endpoint is None:
+            raise TypeError("Missing 'enable_private_endpoint' argument")
+        if allowed_projects is None and 'allowedProjects' in kwargs:
+            allowed_projects = kwargs['allowedProjects']
+        if cluster_hostname is None and 'clusterHostname' in kwargs:
+            cluster_hostname = kwargs['clusterHostname']
+        if service_attachment_uri is None and 'serviceAttachmentUri' in kwargs:
+            service_attachment_uri = kwargs['serviceAttachmentUri']
+
         _setter("enable_private_endpoint", enable_private_endpoint)
         if allowed_projects is not None:
             _setter("allowed_projects", allowed_projects)
@@ -227,7 +241,9 @@ class WorkstationConfigConditionArgs:
              code: Optional[pulumi.Input[int]] = None,
              details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
              message: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if code is not None:
             _setter("code", code)
         if details is not None:
@@ -311,7 +327,13 @@ class WorkstationConfigContainerArgs:
              image: Optional[pulumi.Input[str]] = None,
              run_as_user: Optional[pulumi.Input[int]] = None,
              working_dir: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if run_as_user is None and 'runAsUser' in kwargs:
+            run_as_user = kwargs['runAsUser']
+        if working_dir is None and 'workingDir' in kwargs:
+            working_dir = kwargs['workingDir']
+
         if args is not None:
             _setter("args", args)
         if commands is not None:
@@ -416,9 +438,19 @@ class WorkstationConfigEncryptionKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kms_key: pulumi.Input[str],
-             kms_key_service_account: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             kms_key: Optional[pulumi.Input[str]] = None,
+             kms_key_service_account: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if kms_key is None and 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+        if kms_key is None:
+            raise TypeError("Missing 'kms_key' argument")
+        if kms_key_service_account is None and 'kmsKeyServiceAccount' in kwargs:
+            kms_key_service_account = kwargs['kmsKeyServiceAccount']
+        if kms_key_service_account is None:
+            raise TypeError("Missing 'kms_key_service_account' argument")
+
         _setter("kms_key", kms_key)
         _setter("kms_key_service_account", kms_key_service_account)
 
@@ -463,7 +495,11 @@ class WorkstationConfigHostArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              gce_instance: Optional[pulumi.Input['WorkstationConfigHostGceInstanceArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if gce_instance is None and 'gceInstance' in kwargs:
+            gce_instance = kwargs['gceInstance']
+
         if gce_instance is not None:
             _setter("gce_instance", gce_instance)
 
@@ -536,7 +572,25 @@ class WorkstationConfigHostGceInstanceArgs:
              service_account: Optional[pulumi.Input[str]] = None,
              shielded_instance_config: Optional[pulumi.Input['WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs']] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if boot_disk_size_gb is None and 'bootDiskSizeGb' in kwargs:
+            boot_disk_size_gb = kwargs['bootDiskSizeGb']
+        if confidential_instance_config is None and 'confidentialInstanceConfig' in kwargs:
+            confidential_instance_config = kwargs['confidentialInstanceConfig']
+        if disable_public_ip_addresses is None and 'disablePublicIpAddresses' in kwargs:
+            disable_public_ip_addresses = kwargs['disablePublicIpAddresses']
+        if enable_nested_virtualization is None and 'enableNestedVirtualization' in kwargs:
+            enable_nested_virtualization = kwargs['enableNestedVirtualization']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if pool_size is None and 'poolSize' in kwargs:
+            pool_size = kwargs['poolSize']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
+            shielded_instance_config = kwargs['shieldedInstanceConfig']
+
         if accelerators is not None:
             _setter("accelerators", accelerators)
         if boot_disk_size_gb is not None:
@@ -700,9 +754,15 @@ class WorkstationConfigHostGceInstanceAcceleratorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             count: pulumi.Input[int],
-             type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             count: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if count is None:
+            raise TypeError("Missing 'count' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("count", count)
         _setter("type", type)
 
@@ -746,7 +806,11 @@ class WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enable_confidential_compute is None and 'enableConfidentialCompute' in kwargs:
+            enable_confidential_compute = kwargs['enableConfidentialCompute']
+
         if enable_confidential_compute is not None:
             _setter("enable_confidential_compute", enable_confidential_compute)
 
@@ -786,7 +850,15 @@ class WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs:
              enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
              enable_secure_boot: Optional[pulumi.Input[bool]] = None,
              enable_vtpm: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enable_integrity_monitoring is None and 'enableIntegrityMonitoring' in kwargs:
+            enable_integrity_monitoring = kwargs['enableIntegrityMonitoring']
+        if enable_secure_boot is None and 'enableSecureBoot' in kwargs:
+            enable_secure_boot = kwargs['enableSecureBoot']
+        if enable_vtpm is None and 'enableVtpm' in kwargs:
+            enable_vtpm = kwargs['enableVtpm']
+
         if enable_integrity_monitoring is not None:
             _setter("enable_integrity_monitoring", enable_integrity_monitoring)
         if enable_secure_boot is not None:
@@ -846,10 +918,16 @@ class WorkstationConfigIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -898,10 +976,16 @@ class WorkstationConfigIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -955,7 +1039,13 @@ class WorkstationConfigPersistentDirectoryArgs:
              _setter: Callable[[Any, Any], None],
              gce_pd: Optional[pulumi.Input['WorkstationConfigPersistentDirectoryGcePdArgs']] = None,
              mount_path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if gce_pd is None and 'gcePd' in kwargs:
+            gce_pd = kwargs['gcePd']
+        if mount_path is None and 'mountPath' in kwargs:
+            mount_path = kwargs['mountPath']
+
         if gce_pd is not None:
             _setter("gce_pd", gce_pd)
         if mount_path is not None:
@@ -1020,7 +1110,19 @@ class WorkstationConfigPersistentDirectoryGcePdArgs:
              reclaim_policy: Optional[pulumi.Input[str]] = None,
              size_gb: Optional[pulumi.Input[int]] = None,
              source_snapshot: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disk_type is None and 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if fs_type is None and 'fsType' in kwargs:
+            fs_type = kwargs['fsType']
+        if reclaim_policy is None and 'reclaimPolicy' in kwargs:
+            reclaim_policy = kwargs['reclaimPolicy']
+        if size_gb is None and 'sizeGb' in kwargs:
+            size_gb = kwargs['sizeGb']
+        if source_snapshot is None and 'sourceSnapshot' in kwargs:
+            source_snapshot = kwargs['sourceSnapshot']
+
         if disk_type is not None:
             _setter("disk_type", disk_type)
         if fs_type is not None:
@@ -1110,10 +1212,16 @@ class WorkstationIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -1162,10 +1270,16 @@ class WorkstationIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:

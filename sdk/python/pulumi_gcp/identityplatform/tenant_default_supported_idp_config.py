@@ -55,13 +55,29 @@ class TenantDefaultSupportedIdpConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             client_id: pulumi.Input[str],
-             client_secret: pulumi.Input[str],
-             idp_id: pulumi.Input[str],
-             tenant: pulumi.Input[str],
+             client_id: Optional[pulumi.Input[str]] = None,
+             client_secret: Optional[pulumi.Input[str]] = None,
+             idp_id: Optional[pulumi.Input[str]] = None,
+             tenant: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_id is None:
+            raise TypeError("Missing 'client_id' argument")
+        if client_secret is None and 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if client_secret is None:
+            raise TypeError("Missing 'client_secret' argument")
+        if idp_id is None and 'idpId' in kwargs:
+            idp_id = kwargs['idpId']
+        if idp_id is None:
+            raise TypeError("Missing 'idp_id' argument")
+        if tenant is None:
+            raise TypeError("Missing 'tenant' argument")
+
         _setter("client_id", client_id)
         _setter("client_secret", client_secret)
         _setter("idp_id", idp_id)
@@ -212,7 +228,15 @@ class _TenantDefaultSupportedIdpConfigState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              tenant: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_secret is None and 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if idp_id is None and 'idpId' in kwargs:
+            idp_id = kwargs['idpId']
+
         if client_id is not None:
             _setter("client_id", client_id)
         if client_secret is not None:
@@ -347,20 +371,6 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
         the marketplace prior to using this resource.
 
         ## Example Usage
-        ### Identity Platform Tenant Default Supported Idp Config Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        tenant = gcp.identityplatform.Tenant("tenant", display_name="tenant")
-        idp_config = gcp.identityplatform.TenantDefaultSupportedIdpConfig("idpConfig",
-            enabled=True,
-            tenant=tenant.name,
-            idp_id="playgames.google.com",
-            client_id="my-client-id",
-            client_secret="secret")
-        ```
 
         ## Import
 
@@ -415,20 +425,6 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
         the marketplace prior to using this resource.
 
         ## Example Usage
-        ### Identity Platform Tenant Default Supported Idp Config Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        tenant = gcp.identityplatform.Tenant("tenant", display_name="tenant")
-        idp_config = gcp.identityplatform.TenantDefaultSupportedIdpConfig("idpConfig",
-            enabled=True,
-            tenant=tenant.name,
-            idp_id="playgames.google.com",
-            client_id="my-client-id",
-            client_secret="secret")
-        ```
 
         ## Import
 

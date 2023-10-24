@@ -67,13 +67,13 @@ class AzureClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             authorization: pulumi.Input['AzureClusterAuthorizationArgs'],
-             azure_region: pulumi.Input[str],
-             control_plane: pulumi.Input['AzureClusterControlPlaneArgs'],
-             fleet: pulumi.Input['AzureClusterFleetArgs'],
-             location: pulumi.Input[str],
-             networking: pulumi.Input['AzureClusterNetworkingArgs'],
-             resource_group_id: pulumi.Input[str],
+             authorization: Optional[pulumi.Input['AzureClusterAuthorizationArgs']] = None,
+             azure_region: Optional[pulumi.Input[str]] = None,
+             control_plane: Optional[pulumi.Input['AzureClusterControlPlaneArgs']] = None,
+             fleet: Optional[pulumi.Input['AzureClusterFleetArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             networking: Optional[pulumi.Input['AzureClusterNetworkingArgs']] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              azure_services_authentication: Optional[pulumi.Input['AzureClusterAzureServicesAuthenticationArgs']] = None,
              client: Optional[pulumi.Input[str]] = None,
@@ -81,7 +81,33 @@ class AzureClusterArgs:
              logging_config: Optional[pulumi.Input['AzureClusterLoggingConfigArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if authorization is None:
+            raise TypeError("Missing 'authorization' argument")
+        if azure_region is None and 'azureRegion' in kwargs:
+            azure_region = kwargs['azureRegion']
+        if azure_region is None:
+            raise TypeError("Missing 'azure_region' argument")
+        if control_plane is None and 'controlPlane' in kwargs:
+            control_plane = kwargs['controlPlane']
+        if control_plane is None:
+            raise TypeError("Missing 'control_plane' argument")
+        if fleet is None:
+            raise TypeError("Missing 'fleet' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if networking is None:
+            raise TypeError("Missing 'networking' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if azure_services_authentication is None and 'azureServicesAuthentication' in kwargs:
+            azure_services_authentication = kwargs['azureServicesAuthentication']
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+
         _setter("authorization", authorization)
         _setter("azure_region", azure_region)
         _setter("control_plane", control_plane)
@@ -373,7 +399,25 @@ class _AzureClusterState:
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AzureClusterWorkloadIdentityConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if azure_region is None and 'azureRegion' in kwargs:
+            azure_region = kwargs['azureRegion']
+        if azure_services_authentication is None and 'azureServicesAuthentication' in kwargs:
+            azure_services_authentication = kwargs['azureServicesAuthentication']
+        if control_plane is None and 'controlPlane' in kwargs:
+            control_plane = kwargs['controlPlane']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if workload_identity_configs is None and 'workloadIdentityConfigs' in kwargs:
+            workload_identity_configs = kwargs['workloadIdentityConfigs']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if authorization is not None:
@@ -710,96 +754,6 @@ class AzureCluster(pulumi.CustomResource):
         For more information, see:
         * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
         ## Example Usage
-        ### Basic_azure_cluster
-        A basic example of a containerazure azure cluster
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        versions = gcp.container.get_azure_versions(location="us-west1",
-            project="my-project-name")
-        basic = gcp.container.AzureClient("basic",
-            application_id="12345678-1234-1234-1234-123456789111",
-            location="us-west1",
-            project="my-project-name",
-            tenant_id="12345678-1234-1234-1234-123456789111")
-        primary = gcp.container.AzureCluster("primary",
-            authorization=gcp.container.AzureClusterAuthorizationArgs(
-                admin_users=[gcp.container.AzureClusterAuthorizationAdminUserArgs(
-                    username="mmv2@google.com",
-                )],
-            ),
-            azure_region="westus2",
-            client=basic.name.apply(lambda name: f"projects/my-project-number/locations/us-west1/azureClients/{name}"),
-            control_plane=gcp.container.AzureClusterControlPlaneArgs(
-                ssh_config=gcp.container.AzureClusterControlPlaneSshConfigArgs(
-                    authorized_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
-                ),
-                subnet_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
-                version=versions.valid_versions[0],
-            ),
-            fleet=gcp.container.AzureClusterFleetArgs(
-                project="my-project-number",
-            ),
-            location="us-west1",
-            networking=gcp.container.AzureClusterNetworkingArgs(
-                pod_address_cidr_blocks=["10.200.0.0/16"],
-                service_address_cidr_blocks=["10.32.0.0/24"],
-                virtual_network_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
-            ),
-            project="my-project-name",
-            resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster")
-        ```
-        ### Beta_basic_enum_azure_cluster
-        A basic example of a containerazure azure cluster with lowercase enums (beta)
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        versions = gcp.container.get_azure_versions(project="my-project-name",
-            location="us-west1")
-        basic = gcp.container.AzureClient("basic",
-            application_id="12345678-1234-1234-1234-123456789111",
-            location="us-west1",
-            tenant_id="12345678-1234-1234-1234-123456789111",
-            project="my-project-name",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        primary = gcp.container.AzureCluster("primary",
-            authorization=gcp.container.AzureClusterAuthorizationArgs(
-                admin_users=[gcp.container.AzureClusterAuthorizationAdminUserArgs(
-                    username="mmv2@google.com",
-                )],
-            ),
-            azure_region="westus2",
-            client=basic.name.apply(lambda name: f"projects/my-project-number/locations/us-west1/azureClients/{name}"),
-            control_plane=gcp.container.AzureClusterControlPlaneArgs(
-                ssh_config=gcp.container.AzureClusterControlPlaneSshConfigArgs(
-                    authorized_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
-                ),
-                subnet_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
-                version=versions.valid_versions[0],
-            ),
-            fleet=gcp.container.AzureClusterFleetArgs(
-                project="my-project-number",
-            ),
-            location="us-west1",
-            networking=gcp.container.AzureClusterNetworkingArgs(
-                pod_address_cidr_blocks=["10.200.0.0/16"],
-                service_address_cidr_blocks=["10.32.0.0/24"],
-                virtual_network_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
-            ),
-            resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
-            project="my-project-name",
-            logging_config=gcp.container.AzureClusterLoggingConfigArgs(
-                component_config=gcp.container.AzureClusterLoggingConfigComponentConfigArgs(
-                    enable_components=[
-                        "system_components",
-                        "workloads",
-                    ],
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -846,96 +800,6 @@ class AzureCluster(pulumi.CustomResource):
         For more information, see:
         * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
         ## Example Usage
-        ### Basic_azure_cluster
-        A basic example of a containerazure azure cluster
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        versions = gcp.container.get_azure_versions(location="us-west1",
-            project="my-project-name")
-        basic = gcp.container.AzureClient("basic",
-            application_id="12345678-1234-1234-1234-123456789111",
-            location="us-west1",
-            project="my-project-name",
-            tenant_id="12345678-1234-1234-1234-123456789111")
-        primary = gcp.container.AzureCluster("primary",
-            authorization=gcp.container.AzureClusterAuthorizationArgs(
-                admin_users=[gcp.container.AzureClusterAuthorizationAdminUserArgs(
-                    username="mmv2@google.com",
-                )],
-            ),
-            azure_region="westus2",
-            client=basic.name.apply(lambda name: f"projects/my-project-number/locations/us-west1/azureClients/{name}"),
-            control_plane=gcp.container.AzureClusterControlPlaneArgs(
-                ssh_config=gcp.container.AzureClusterControlPlaneSshConfigArgs(
-                    authorized_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
-                ),
-                subnet_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
-                version=versions.valid_versions[0],
-            ),
-            fleet=gcp.container.AzureClusterFleetArgs(
-                project="my-project-number",
-            ),
-            location="us-west1",
-            networking=gcp.container.AzureClusterNetworkingArgs(
-                pod_address_cidr_blocks=["10.200.0.0/16"],
-                service_address_cidr_blocks=["10.32.0.0/24"],
-                virtual_network_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
-            ),
-            project="my-project-name",
-            resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster")
-        ```
-        ### Beta_basic_enum_azure_cluster
-        A basic example of a containerazure azure cluster with lowercase enums (beta)
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        versions = gcp.container.get_azure_versions(project="my-project-name",
-            location="us-west1")
-        basic = gcp.container.AzureClient("basic",
-            application_id="12345678-1234-1234-1234-123456789111",
-            location="us-west1",
-            tenant_id="12345678-1234-1234-1234-123456789111",
-            project="my-project-name",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        primary = gcp.container.AzureCluster("primary",
-            authorization=gcp.container.AzureClusterAuthorizationArgs(
-                admin_users=[gcp.container.AzureClusterAuthorizationAdminUserArgs(
-                    username="mmv2@google.com",
-                )],
-            ),
-            azure_region="westus2",
-            client=basic.name.apply(lambda name: f"projects/my-project-number/locations/us-west1/azureClients/{name}"),
-            control_plane=gcp.container.AzureClusterControlPlaneArgs(
-                ssh_config=gcp.container.AzureClusterControlPlaneSshConfigArgs(
-                    authorized_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
-                ),
-                subnet_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
-                version=versions.valid_versions[0],
-            ),
-            fleet=gcp.container.AzureClusterFleetArgs(
-                project="my-project-number",
-            ),
-            location="us-west1",
-            networking=gcp.container.AzureClusterNetworkingArgs(
-                pod_address_cidr_blocks=["10.200.0.0/16"],
-                service_address_cidr_blocks=["10.32.0.0/24"],
-                virtual_network_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
-            ),
-            resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
-            project="my-project-name",
-            logging_config=gcp.container.AzureClusterLoggingConfigArgs(
-                component_config=gcp.container.AzureClusterLoggingConfigComponentConfigArgs(
-                    enable_components=[
-                        "system_components",
-                        "workloads",
-                    ],
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -996,56 +860,32 @@ class AzureCluster(pulumi.CustomResource):
             __props__ = AzureClusterArgs.__new__(AzureClusterArgs)
 
             __props__.__dict__["annotations"] = annotations
-            if authorization is not None and not isinstance(authorization, AzureClusterAuthorizationArgs):
-                authorization = authorization or {}
-                def _setter(key, value):
-                    authorization[key] = value
-                AzureClusterAuthorizationArgs._configure(_setter, **authorization)
+            authorization = _utilities.configure(authorization, AzureClusterAuthorizationArgs, True)
             if authorization is None and not opts.urn:
                 raise TypeError("Missing required property 'authorization'")
             __props__.__dict__["authorization"] = authorization
             if azure_region is None and not opts.urn:
                 raise TypeError("Missing required property 'azure_region'")
             __props__.__dict__["azure_region"] = azure_region
-            if azure_services_authentication is not None and not isinstance(azure_services_authentication, AzureClusterAzureServicesAuthenticationArgs):
-                azure_services_authentication = azure_services_authentication or {}
-                def _setter(key, value):
-                    azure_services_authentication[key] = value
-                AzureClusterAzureServicesAuthenticationArgs._configure(_setter, **azure_services_authentication)
+            azure_services_authentication = _utilities.configure(azure_services_authentication, AzureClusterAzureServicesAuthenticationArgs, True)
             __props__.__dict__["azure_services_authentication"] = azure_services_authentication
             __props__.__dict__["client"] = client
-            if control_plane is not None and not isinstance(control_plane, AzureClusterControlPlaneArgs):
-                control_plane = control_plane or {}
-                def _setter(key, value):
-                    control_plane[key] = value
-                AzureClusterControlPlaneArgs._configure(_setter, **control_plane)
+            control_plane = _utilities.configure(control_plane, AzureClusterControlPlaneArgs, True)
             if control_plane is None and not opts.urn:
                 raise TypeError("Missing required property 'control_plane'")
             __props__.__dict__["control_plane"] = control_plane
             __props__.__dict__["description"] = description
-            if fleet is not None and not isinstance(fleet, AzureClusterFleetArgs):
-                fleet = fleet or {}
-                def _setter(key, value):
-                    fleet[key] = value
-                AzureClusterFleetArgs._configure(_setter, **fleet)
+            fleet = _utilities.configure(fleet, AzureClusterFleetArgs, True)
             if fleet is None and not opts.urn:
                 raise TypeError("Missing required property 'fleet'")
             __props__.__dict__["fleet"] = fleet
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if logging_config is not None and not isinstance(logging_config, AzureClusterLoggingConfigArgs):
-                logging_config = logging_config or {}
-                def _setter(key, value):
-                    logging_config[key] = value
-                AzureClusterLoggingConfigArgs._configure(_setter, **logging_config)
+            logging_config = _utilities.configure(logging_config, AzureClusterLoggingConfigArgs, True)
             __props__.__dict__["logging_config"] = logging_config
             __props__.__dict__["name"] = name
-            if networking is not None and not isinstance(networking, AzureClusterNetworkingArgs):
-                networking = networking or {}
-                def _setter(key, value):
-                    networking[key] = value
-                AzureClusterNetworkingArgs._configure(_setter, **networking)
+            networking = _utilities.configure(networking, AzureClusterNetworkingArgs, True)
             if networking is None and not opts.urn:
                 raise TypeError("Missing required property 'networking'")
             __props__.__dict__["networking"] = networking

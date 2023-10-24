@@ -52,16 +52,26 @@ class WorkflowTemplateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             jobs: pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]],
-             location: pulumi.Input[str],
-             placement: pulumi.Input['WorkflowTemplatePlacementArgs'],
+             jobs: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             placement: Optional[pulumi.Input['WorkflowTemplatePlacementArgs']] = None,
              dag_timeout: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              parameters: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if jobs is None:
+            raise TypeError("Missing 'jobs' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if placement is None:
+            raise TypeError("Missing 'placement' argument")
+        if dag_timeout is None and 'dagTimeout' in kwargs:
+            dag_timeout = kwargs['dagTimeout']
+
         _setter("jobs", jobs)
         _setter("location", location)
         _setter("placement", placement)
@@ -249,7 +259,15 @@ class _WorkflowTemplateState:
              project: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if dag_timeout is None and 'dagTimeout' in kwargs:
+            dag_timeout = kwargs['dagTimeout']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if dag_timeout is not None:
@@ -430,67 +448,6 @@ class WorkflowTemplate(pulumi.CustomResource):
         """
         A Workflow Template is a reusable workflow configuration. It defines a graph of jobs with information on where to run those jobs.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        template = gcp.dataproc.WorkflowTemplate("template",
-            jobs=[
-                gcp.dataproc.WorkflowTemplateJobArgs(
-                    spark_job=gcp.dataproc.WorkflowTemplateJobSparkJobArgs(
-                        main_class="SomeClass",
-                    ),
-                    step_id="someJob",
-                ),
-                gcp.dataproc.WorkflowTemplateJobArgs(
-                    prerequisite_step_ids=["someJob"],
-                    presto_job=gcp.dataproc.WorkflowTemplateJobPrestoJobArgs(
-                        query_file_uri="someuri",
-                    ),
-                    step_id="otherJob",
-                ),
-            ],
-            location="us-central1",
-            placement=gcp.dataproc.WorkflowTemplatePlacementArgs(
-                managed_cluster=gcp.dataproc.WorkflowTemplatePlacementManagedClusterArgs(
-                    cluster_name="my-cluster",
-                    config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigArgs(
-                        gce_cluster_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs(
-                            tags=[
-                                "foo",
-                                "bar",
-                            ],
-                            zone="us-central1-a",
-                        ),
-                        master_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs(
-                            disk_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs(
-                                boot_disk_size_gb=15,
-                                boot_disk_type="pd-ssd",
-                            ),
-                            machine_type="n1-standard-1",
-                            num_instances=1,
-                        ),
-                        secondary_worker_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs(
-                            num_instances=2,
-                        ),
-                        software_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs(
-                            image_version="2.0.35-debian10",
-                        ),
-                        worker_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs(
-                            disk_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs(
-                                boot_disk_size_gb=10,
-                                num_local_ssds=2,
-                            ),
-                            machine_type="n1-standard-2",
-                            num_instances=3,
-                        ),
-                    ),
-                ),
-            ))
-        ```
-
         ## Import
 
         WorkflowTemplate can be imported using any of these accepted formats
@@ -527,67 +484,6 @@ class WorkflowTemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Workflow Template is a reusable workflow configuration. It defines a graph of jobs with information on where to run those jobs.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        template = gcp.dataproc.WorkflowTemplate("template",
-            jobs=[
-                gcp.dataproc.WorkflowTemplateJobArgs(
-                    spark_job=gcp.dataproc.WorkflowTemplateJobSparkJobArgs(
-                        main_class="SomeClass",
-                    ),
-                    step_id="someJob",
-                ),
-                gcp.dataproc.WorkflowTemplateJobArgs(
-                    prerequisite_step_ids=["someJob"],
-                    presto_job=gcp.dataproc.WorkflowTemplateJobPrestoJobArgs(
-                        query_file_uri="someuri",
-                    ),
-                    step_id="otherJob",
-                ),
-            ],
-            location="us-central1",
-            placement=gcp.dataproc.WorkflowTemplatePlacementArgs(
-                managed_cluster=gcp.dataproc.WorkflowTemplatePlacementManagedClusterArgs(
-                    cluster_name="my-cluster",
-                    config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigArgs(
-                        gce_cluster_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs(
-                            tags=[
-                                "foo",
-                                "bar",
-                            ],
-                            zone="us-central1-a",
-                        ),
-                        master_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs(
-                            disk_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs(
-                                boot_disk_size_gb=15,
-                                boot_disk_type="pd-ssd",
-                            ),
-                            machine_type="n1-standard-1",
-                            num_instances=1,
-                        ),
-                        secondary_worker_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs(
-                            num_instances=2,
-                        ),
-                        software_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs(
-                            image_version="2.0.35-debian10",
-                        ),
-                        worker_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs(
-                            disk_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs(
-                                boot_disk_size_gb=10,
-                                num_local_ssds=2,
-                            ),
-                            machine_type="n1-standard-2",
-                            num_instances=3,
-                        ),
-                    ),
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -652,11 +548,7 @@ class WorkflowTemplate(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["parameters"] = parameters
-            if placement is not None and not isinstance(placement, WorkflowTemplatePlacementArgs):
-                placement = placement or {}
-                def _setter(key, value):
-                    placement[key] = value
-                WorkflowTemplatePlacementArgs._configure(_setter, **placement)
+            placement = _utilities.configure(placement, WorkflowTemplatePlacementArgs, True)
             if placement is None and not opts.urn:
                 raise TypeError("Missing required property 'placement'")
             __props__.__dict__["placement"] = placement

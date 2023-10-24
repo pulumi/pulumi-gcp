@@ -77,7 +77,19 @@ class ConnectionArgs:
              friendly_name: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cloud_resource is None and 'cloudResource' in kwargs:
+            cloud_resource = kwargs['cloudResource']
+        if cloud_spanner is None and 'cloudSpanner' in kwargs:
+            cloud_spanner = kwargs['cloudSpanner']
+        if cloud_sql is None and 'cloudSql' in kwargs:
+            cloud_sql = kwargs['cloudSql']
+        if connection_id is None and 'connectionId' in kwargs:
+            connection_id = kwargs['connectionId']
+        if friendly_name is None and 'friendlyName' in kwargs:
+            friendly_name = kwargs['friendlyName']
+
         if aws is not None:
             _setter("aws", aws)
         if azure is not None:
@@ -305,7 +317,21 @@ class _ConnectionState:
              location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cloud_resource is None and 'cloudResource' in kwargs:
+            cloud_resource = kwargs['cloudResource']
+        if cloud_spanner is None and 'cloudSpanner' in kwargs:
+            cloud_spanner = kwargs['cloudSpanner']
+        if cloud_sql is None and 'cloudSql' in kwargs:
+            cloud_sql = kwargs['cloudSql']
+        if connection_id is None and 'connectionId' in kwargs:
+            connection_id = kwargs['connectionId']
+        if friendly_name is None and 'friendlyName' in kwargs:
+            friendly_name = kwargs['friendlyName']
+        if has_credential is None and 'hasCredential' in kwargs:
+            has_credential = kwargs['hasCredential']
+
         if aws is not None:
             _setter("aws", aws)
         if azure is not None:
@@ -519,138 +545,6 @@ class Connection(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
-        ### Bigquery Connection Cloud Resource
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        connection = gcp.bigquery.Connection("connection",
-            cloud_resource=gcp.bigquery.ConnectionCloudResourceArgs(),
-            connection_id="my-connection",
-            description="a riveting description",
-            friendly_name="👋",
-            location="US")
-        ```
-        ### Bigquery Connection Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        instance = gcp.sql.DatabaseInstance("instance",
-            database_version="POSTGRES_11",
-            region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ),
-            deletion_protection=True)
-        db = gcp.sql.Database("db", instance=instance.name)
-        pwd = random.RandomPassword("pwd",
-            length=16,
-            special=False)
-        user = gcp.sql.User("user",
-            instance=instance.name,
-            password=pwd.result)
-        connection = gcp.bigquery.Connection("connection",
-            friendly_name="👋",
-            description="a riveting description",
-            location="US",
-            cloud_sql=gcp.bigquery.ConnectionCloudSqlArgs(
-                instance_id=instance.connection_name,
-                database=db.name,
-                type="POSTGRES",
-                credential=gcp.bigquery.ConnectionCloudSqlCredentialArgs(
-                    username=user.name,
-                    password=user.password,
-                ),
-            ))
-        ```
-        ### Bigquery Connection Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        instance = gcp.sql.DatabaseInstance("instance",
-            database_version="POSTGRES_11",
-            region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ),
-            deletion_protection=True)
-        db = gcp.sql.Database("db", instance=instance.name)
-        pwd = random.RandomPassword("pwd",
-            length=16,
-            special=False)
-        user = gcp.sql.User("user",
-            instance=instance.name,
-            password=pwd.result)
-        connection = gcp.bigquery.Connection("connection",
-            connection_id="my-connection",
-            location="US",
-            friendly_name="👋",
-            description="a riveting description",
-            cloud_sql=gcp.bigquery.ConnectionCloudSqlArgs(
-                instance_id=instance.connection_name,
-                database=db.name,
-                type="POSTGRES",
-                credential=gcp.bigquery.ConnectionCloudSqlCredentialArgs(
-                    username=user.name,
-                    password=user.password,
-                ),
-            ))
-        ```
-        ### Bigquery Connection Aws
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        connection = gcp.bigquery.Connection("connection",
-            aws=gcp.bigquery.ConnectionAwsArgs(
-                access_role=gcp.bigquery.ConnectionAwsAccessRoleArgs(
-                    iam_role_id="arn:aws:iam::999999999999:role/omnirole",
-                ),
-            ),
-            connection_id="my-connection",
-            description="a riveting description",
-            friendly_name="👋",
-            location="aws-us-east-1")
-        ```
-        ### Bigquery Connection Azure
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        connection = gcp.bigquery.Connection("connection",
-            azure=gcp.bigquery.ConnectionAzureArgs(
-                customer_tenant_id="customer-tenant-id",
-                federated_application_client_id="b43eeeee-eeee-eeee-eeee-a480155501ce",
-            ),
-            connection_id="my-connection",
-            description="a riveting description",
-            friendly_name="👋",
-            location="azure-eastus2")
-        ```
-        ### Bigquery Connection Cloudspanner
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        connection = gcp.bigquery.Connection("connection",
-            cloud_spanner=gcp.bigquery.ConnectionCloudSpannerArgs(
-                database="projects/project/instances/instance/databases/database",
-            ),
-            connection_id="my-connection",
-            description="a riveting description",
-            friendly_name="👋",
-            location="US")
-        ```
 
         ## Import
 
@@ -713,138 +607,6 @@ class Connection(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
-        ### Bigquery Connection Cloud Resource
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        connection = gcp.bigquery.Connection("connection",
-            cloud_resource=gcp.bigquery.ConnectionCloudResourceArgs(),
-            connection_id="my-connection",
-            description="a riveting description",
-            friendly_name="👋",
-            location="US")
-        ```
-        ### Bigquery Connection Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        instance = gcp.sql.DatabaseInstance("instance",
-            database_version="POSTGRES_11",
-            region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ),
-            deletion_protection=True)
-        db = gcp.sql.Database("db", instance=instance.name)
-        pwd = random.RandomPassword("pwd",
-            length=16,
-            special=False)
-        user = gcp.sql.User("user",
-            instance=instance.name,
-            password=pwd.result)
-        connection = gcp.bigquery.Connection("connection",
-            friendly_name="👋",
-            description="a riveting description",
-            location="US",
-            cloud_sql=gcp.bigquery.ConnectionCloudSqlArgs(
-                instance_id=instance.connection_name,
-                database=db.name,
-                type="POSTGRES",
-                credential=gcp.bigquery.ConnectionCloudSqlCredentialArgs(
-                    username=user.name,
-                    password=user.password,
-                ),
-            ))
-        ```
-        ### Bigquery Connection Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        instance = gcp.sql.DatabaseInstance("instance",
-            database_version="POSTGRES_11",
-            region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ),
-            deletion_protection=True)
-        db = gcp.sql.Database("db", instance=instance.name)
-        pwd = random.RandomPassword("pwd",
-            length=16,
-            special=False)
-        user = gcp.sql.User("user",
-            instance=instance.name,
-            password=pwd.result)
-        connection = gcp.bigquery.Connection("connection",
-            connection_id="my-connection",
-            location="US",
-            friendly_name="👋",
-            description="a riveting description",
-            cloud_sql=gcp.bigquery.ConnectionCloudSqlArgs(
-                instance_id=instance.connection_name,
-                database=db.name,
-                type="POSTGRES",
-                credential=gcp.bigquery.ConnectionCloudSqlCredentialArgs(
-                    username=user.name,
-                    password=user.password,
-                ),
-            ))
-        ```
-        ### Bigquery Connection Aws
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        connection = gcp.bigquery.Connection("connection",
-            aws=gcp.bigquery.ConnectionAwsArgs(
-                access_role=gcp.bigquery.ConnectionAwsAccessRoleArgs(
-                    iam_role_id="arn:aws:iam::999999999999:role/omnirole",
-                ),
-            ),
-            connection_id="my-connection",
-            description="a riveting description",
-            friendly_name="👋",
-            location="aws-us-east-1")
-        ```
-        ### Bigquery Connection Azure
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        connection = gcp.bigquery.Connection("connection",
-            azure=gcp.bigquery.ConnectionAzureArgs(
-                customer_tenant_id="customer-tenant-id",
-                federated_application_client_id="b43eeeee-eeee-eeee-eeee-a480155501ce",
-            ),
-            connection_id="my-connection",
-            description="a riveting description",
-            friendly_name="👋",
-            location="azure-eastus2")
-        ```
-        ### Bigquery Connection Cloudspanner
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        connection = gcp.bigquery.Connection("connection",
-            cloud_spanner=gcp.bigquery.ConnectionCloudSpannerArgs(
-                database="projects/project/instances/instance/databases/database",
-            ),
-            connection_id="my-connection",
-            description="a riveting description",
-            friendly_name="👋",
-            location="US")
-        ```
 
         ## Import
 
@@ -900,35 +662,15 @@ class Connection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectionArgs.__new__(ConnectionArgs)
 
-            if aws is not None and not isinstance(aws, ConnectionAwsArgs):
-                aws = aws or {}
-                def _setter(key, value):
-                    aws[key] = value
-                ConnectionAwsArgs._configure(_setter, **aws)
+            aws = _utilities.configure(aws, ConnectionAwsArgs, True)
             __props__.__dict__["aws"] = aws
-            if azure is not None and not isinstance(azure, ConnectionAzureArgs):
-                azure = azure or {}
-                def _setter(key, value):
-                    azure[key] = value
-                ConnectionAzureArgs._configure(_setter, **azure)
+            azure = _utilities.configure(azure, ConnectionAzureArgs, True)
             __props__.__dict__["azure"] = azure
-            if cloud_resource is not None and not isinstance(cloud_resource, ConnectionCloudResourceArgs):
-                cloud_resource = cloud_resource or {}
-                def _setter(key, value):
-                    cloud_resource[key] = value
-                ConnectionCloudResourceArgs._configure(_setter, **cloud_resource)
+            cloud_resource = _utilities.configure(cloud_resource, ConnectionCloudResourceArgs, True)
             __props__.__dict__["cloud_resource"] = cloud_resource
-            if cloud_spanner is not None and not isinstance(cloud_spanner, ConnectionCloudSpannerArgs):
-                cloud_spanner = cloud_spanner or {}
-                def _setter(key, value):
-                    cloud_spanner[key] = value
-                ConnectionCloudSpannerArgs._configure(_setter, **cloud_spanner)
+            cloud_spanner = _utilities.configure(cloud_spanner, ConnectionCloudSpannerArgs, True)
             __props__.__dict__["cloud_spanner"] = cloud_spanner
-            if cloud_sql is not None and not isinstance(cloud_sql, ConnectionCloudSqlArgs):
-                cloud_sql = cloud_sql or {}
-                def _setter(key, value):
-                    cloud_sql[key] = value
-                ConnectionCloudSqlArgs._configure(_setter, **cloud_sql)
+            cloud_sql = _utilities.configure(cloud_sql, ConnectionCloudSqlArgs, True)
             __props__.__dict__["cloud_sql"] = cloud_sql
             __props__.__dict__["connection_id"] = connection_id
             __props__.__dict__["description"] = description

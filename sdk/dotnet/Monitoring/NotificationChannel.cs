@@ -38,55 +38,6 @@ namespace Pulumi.Gcp.Monitoring
     /// state as plain-text.
     /// 
     /// ## Example Usage
-    /// ### Notification Channel Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var basic = new Gcp.Monitoring.NotificationChannel("basic", new()
-    ///     {
-    ///         DisplayName = "Test Notification Channel",
-    ///         ForceDelete = false,
-    ///         Labels = 
-    ///         {
-    ///             { "email_address", "fake_email@blahblah.com" },
-    ///         },
-    ///         Type = "email",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Notification Channel Sensitive
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.Monitoring.NotificationChannel("default", new()
-    ///     {
-    ///         DisplayName = "Test Slack Channel",
-    ///         Labels = 
-    ///         {
-    ///             { "channel_name", "#foobar" },
-    ///         },
-    ///         SensitiveLabels = new Gcp.Monitoring.Inputs.NotificationChannelSensitiveLabelsArgs
-    ///         {
-    ///             AuthToken = "one",
-    ///         },
-    ///         Type = "slack",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

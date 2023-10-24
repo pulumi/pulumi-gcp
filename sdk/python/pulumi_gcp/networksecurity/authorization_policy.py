@@ -54,14 +54,18 @@ class AuthorizationPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input[str],
+             action: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+
         _setter("action", action)
         if description is not None:
             _setter("description", description)
@@ -225,7 +229,13 @@ class _AuthorizationPolicyState:
              project: Optional[pulumi.Input[str]] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleArgs']]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if action is not None:
             _setter("action", action)
         if create_time is not None:
@@ -377,55 +387,6 @@ class AuthorizationPolicy(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Network Security Authorization Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.AuthorizationPolicy("default",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            action="ALLOW",
-            rules=[gcp.networksecurity.AuthorizationPolicyRuleArgs(
-                sources=[gcp.networksecurity.AuthorizationPolicyRuleSourceArgs(
-                    principals=["namespace/*"],
-                    ip_blocks=["1.2.3.0/24"],
-                )],
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Network Security Authorization Policy Destinations
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.AuthorizationPolicy("default",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            action="ALLOW",
-            rules=[gcp.networksecurity.AuthorizationPolicyRuleArgs(
-                sources=[gcp.networksecurity.AuthorizationPolicyRuleSourceArgs(
-                    principals=["namespace/*"],
-                    ip_blocks=["1.2.3.0/24"],
-                )],
-                destinations=[gcp.networksecurity.AuthorizationPolicyRuleDestinationArgs(
-                    hosts=["mydomain.*"],
-                    ports=[8080],
-                    methods=["GET"],
-                    http_header_match=gcp.networksecurity.AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs(
-                        header_name=":method",
-                        regex_match="GET",
-                    ),
-                )],
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -469,55 +430,6 @@ class AuthorizationPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Network Security Authorization Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.AuthorizationPolicy("default",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            action="ALLOW",
-            rules=[gcp.networksecurity.AuthorizationPolicyRuleArgs(
-                sources=[gcp.networksecurity.AuthorizationPolicyRuleSourceArgs(
-                    principals=["namespace/*"],
-                    ip_blocks=["1.2.3.0/24"],
-                )],
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Network Security Authorization Policy Destinations
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.AuthorizationPolicy("default",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            action="ALLOW",
-            rules=[gcp.networksecurity.AuthorizationPolicyRuleArgs(
-                sources=[gcp.networksecurity.AuthorizationPolicyRuleSourceArgs(
-                    principals=["namespace/*"],
-                    ip_blocks=["1.2.3.0/24"],
-                )],
-                destinations=[gcp.networksecurity.AuthorizationPolicyRuleDestinationArgs(
-                    hosts=["mydomain.*"],
-                    ports=[8080],
-                    methods=["GET"],
-                    http_header_match=gcp.networksecurity.AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs(
-                        header_name=":method",
-                        regex_match="GET",
-                    ),
-                )],
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 

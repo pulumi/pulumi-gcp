@@ -28,7 +28,13 @@ class ProviderBatchingArgs:
              _setter: Callable[[Any, Any], None],
              enable_batching: Optional[pulumi.Input[bool]] = None,
              send_after: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enable_batching is None and 'enableBatching' in kwargs:
+            enable_batching = kwargs['enableBatching']
+        if send_after is None and 'sendAfter' in kwargs:
+            send_after = kwargs['sendAfter']
+
         if enable_batching is not None:
             _setter("enable_batching", enable_batching)
         if send_after is not None:

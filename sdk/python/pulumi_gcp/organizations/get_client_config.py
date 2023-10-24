@@ -91,15 +91,7 @@ class AwaitableGetClientConfigResult(GetClientConfigResult):
 
 def get_client_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClientConfigResult:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    current = gcp.organizations.get_client_config()
-    pulumi.export("project", current.project)
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -116,14 +108,6 @@ def get_client_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
 @_utilities.lift_output_func(get_client_config)
 def get_client_config_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClientConfigResult]:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    current = gcp.organizations.get_client_config()
-    pulumi.export("project", current.project)
-    ```
+    Use this data source to access information about an existing resource.
     """
     ...

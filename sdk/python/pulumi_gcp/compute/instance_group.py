@@ -65,7 +65,11 @@ class InstanceGroupArgs:
              network: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if named_ports is None and 'namedPorts' in kwargs:
+            named_ports = kwargs['namedPorts']
+
         if description is not None:
             _setter("description", description)
         if instances is not None:
@@ -238,7 +242,13 @@ class _InstanceGroupState:
              self_link: Optional[pulumi.Input[str]] = None,
              size: Optional[pulumi.Input[int]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if named_ports is None and 'namedPorts' in kwargs:
+            named_ports = kwargs['namedPorts']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if description is not None:
             _setter("description", description)
         if instances is not None:
@@ -398,41 +408,6 @@ class InstanceGroup(pulumi.CustomResource):
         and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
 
         ## Example Usage
-        ### Empty Instance Group
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        test = gcp.compute.InstanceGroup("test",
-            description="Test instance group",
-            zone="us-central1-a",
-            network=google_compute_network["default"]["id"])
-        ```
-        ### Example Usage - With instances and named ports
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        webservers = gcp.compute.InstanceGroup("webservers",
-            description="Test instance group",
-            instances=[
-                google_compute_instance["test"]["id"],
-                google_compute_instance["test2"]["id"],
-            ],
-            named_ports=[
-                gcp.compute.InstanceGroupNamedPortArgs(
-                    name="http",
-                    port=8080,
-                ),
-                gcp.compute.InstanceGroupNamedPortArgs(
-                    name="https",
-                    port=8443,
-                ),
-            ],
-            zone="us-central1-a")
-        ```
 
         ## Import
 
@@ -484,41 +459,6 @@ class InstanceGroup(pulumi.CustomResource):
         and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
 
         ## Example Usage
-        ### Empty Instance Group
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        test = gcp.compute.InstanceGroup("test",
-            description="Test instance group",
-            zone="us-central1-a",
-            network=google_compute_network["default"]["id"])
-        ```
-        ### Example Usage - With instances and named ports
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        webservers = gcp.compute.InstanceGroup("webservers",
-            description="Test instance group",
-            instances=[
-                google_compute_instance["test"]["id"],
-                google_compute_instance["test2"]["id"],
-            ],
-            named_ports=[
-                gcp.compute.InstanceGroupNamedPortArgs(
-                    name="http",
-                    port=8080,
-                ),
-                gcp.compute.InstanceGroupNamedPortArgs(
-                    name="https",
-                    port=8443,
-                ),
-            ],
-            zone="us-central1-a")
-        ```
 
         ## Import
 

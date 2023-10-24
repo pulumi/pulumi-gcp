@@ -282,18 +282,6 @@ def get_bucket_object(bucket: Optional[str] = None,
     and
     [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
 
-    ## Example Usage
-
-    Example picture stored within a folder.
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    picture = gcp.storage.get_bucket_object(bucket="image-store",
-        name="folder/butterfly01.jpg")
-    ```
-
 
     :param str bucket: The name of the containing bucket.
     :param str name: The name of the object.
@@ -338,18 +326,6 @@ def get_bucket_object_output(bucket: Optional[pulumi.Input[Optional[str]]] = Non
     See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
     and
     [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
-
-    ## Example Usage
-
-    Example picture stored within a folder.
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    picture = gcp.storage.get_bucket_object(bucket="image-store",
-        name="folder/butterfly01.jpg")
-    ```
 
 
     :param str bucket: The name of the containing bucket.

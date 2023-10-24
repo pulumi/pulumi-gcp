@@ -22,24 +22,6 @@ import * as utilities from "../utilities";
  * `billingProject` you defined.
  *
  * ## Example Usage
- * ### Cloud Identity Groups Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const cloudIdentityGroupBasic = new gcp.cloudidentity.Group("cloudIdentityGroupBasic", {
- *     displayName: "my-identity-group",
- *     groupKey: {
- *         id: "my-identity-group@example.com",
- *     },
- *     initialGroupConfig: "WITH_INITIAL_OWNER",
- *     labels: {
- *         "cloudidentity.googleapis.com/groups.discussion_forum": "",
- *     },
- *     parent: "customers/A01b123xz",
- * });
- * ```
  *
  * ## Import
  *

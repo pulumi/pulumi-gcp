@@ -19,56 +19,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.notebooks.RuntimeIamBinding` resources **can be** used in conjunction with `gcp.notebooks.RuntimeIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_notebooks\_runtime\_iam\_policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/viewer",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const policy = new gcp.notebooks.RuntimeIamPolicy("policy", {
- *     project: google_notebooks_runtime.runtime.project,
- *     location: google_notebooks_runtime.runtime.location,
- *     runtimeName: google_notebooks_runtime.runtime.name,
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
- *
- * ## google\_notebooks\_runtime\_iam\_binding
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const binding = new gcp.notebooks.RuntimeIamBinding("binding", {
- *     project: google_notebooks_runtime.runtime.project,
- *     location: google_notebooks_runtime.runtime.location,
- *     runtimeName: google_notebooks_runtime.runtime.name,
- *     role: "roles/viewer",
- *     members: ["user:jane@example.com"],
- * });
- * ```
- *
- * ## google\_notebooks\_runtime\_iam\_member
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const member = new gcp.notebooks.RuntimeIamMember("member", {
- *     project: google_notebooks_runtime.runtime.project,
- *     location: google_notebooks_runtime.runtime.location,
- *     runtimeName: google_notebooks_runtime.runtime.name,
- *     role: "roles/viewer",
- *     member: "user:jane@example.com",
- * });
- * ```
- *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/runtimes/{{runtime_name}} * {{project}}/{{location}}/{{runtime_name}} * {{location}}/{{runtime_name}} * {{runtime_name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud AI Notebooks runtime IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

@@ -25,45 +25,6 @@ namespace Pulumi.Gcp.Projects
     /// and it is for users who are unable to use constraints. If the default service accounts change their name
     /// or additional service accounts are added, this resource will need to be updated.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myProject = new Gcp.Projects.DefaultServiceAccounts("myProject", new()
-    ///     {
-    ///         Action = "DELETE",
-    ///         Project = "my-project-id",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// To enable the default service accounts on the resource destroy:
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myProject = new Gcp.Projects.DefaultServiceAccounts("myProject", new()
-    ///     {
-    ///         Action = "DISABLE",
-    ///         Project = "my-project-id",
-    ///         RestorePolicy = "REVERT",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// This resource does not support import

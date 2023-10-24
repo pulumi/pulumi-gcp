@@ -6,25 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a [self-signed JWT](https://cloud.google.com/iam/docs/create-short-lived-credentials-direct#sa-credentials-jwt).  Tokens issued from this data source are typically used to call external services that accept JWTs for authentication.
- *
- * ## Example Usage
- *
- * Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `targetServiceAccount`.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const foo = gcp.serviceAccount.getAccountJwt({
- *     targetServiceAccount: "impersonated-account@project.iam.gserviceaccount.com",
- *     payload: JSON.stringify({
- *         foo: "bar",
- *         sub: "subject",
- *     }),
- *     expiresIn: 60,
- * });
- * export const jwt = foo.then(foo => foo.jwt);
- * ```
  */
 export function getAccountJwt(args: GetAccountJwtArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountJwtResult> {
 
@@ -78,25 +59,6 @@ export interface GetAccountJwtResult {
 }
 /**
  * This data source provides a [self-signed JWT](https://cloud.google.com/iam/docs/create-short-lived-credentials-direct#sa-credentials-jwt).  Tokens issued from this data source are typically used to call external services that accept JWTs for authentication.
- *
- * ## Example Usage
- *
- * Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `targetServiceAccount`.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const foo = gcp.serviceAccount.getAccountJwt({
- *     targetServiceAccount: "impersonated-account@project.iam.gserviceaccount.com",
- *     payload: JSON.stringify({
- *         foo: "bar",
- *         sub: "subject",
- *     }),
- *     expiresIn: 60,
- * });
- * export const jwt = foo.then(foo => foo.jwt);
- * ```
  */
 export function getAccountJwtOutput(args: GetAccountJwtOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountJwtResult> {
     return pulumi.output(args).apply((a: any) => getAccountJwt(a, opts))

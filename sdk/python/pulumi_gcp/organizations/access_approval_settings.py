@@ -44,11 +44,25 @@ class AccessApprovalSettingsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enrolled_services: pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]],
-             organization_id: pulumi.Input[str],
+             enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]]] = None,
+             organization_id: Optional[pulumi.Input[str]] = None,
              active_key_version: Optional[pulumi.Input[str]] = None,
              notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enrolled_services is None and 'enrolledServices' in kwargs:
+            enrolled_services = kwargs['enrolledServices']
+        if enrolled_services is None:
+            raise TypeError("Missing 'enrolled_services' argument")
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+        if organization_id is None:
+            raise TypeError("Missing 'organization_id' argument")
+        if active_key_version is None and 'activeKeyVersion' in kwargs:
+            active_key_version = kwargs['activeKeyVersion']
+        if notification_emails is None and 'notificationEmails' in kwargs:
+            notification_emails = kwargs['notificationEmails']
+
         _setter("enrolled_services", enrolled_services)
         _setter("organization_id", organization_id)
         if active_key_version is not None:
@@ -165,7 +179,23 @@ class _AccessApprovalSettingsState:
              name: Optional[pulumi.Input[str]] = None,
              notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              organization_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if active_key_version is None and 'activeKeyVersion' in kwargs:
+            active_key_version = kwargs['activeKeyVersion']
+        if ancestor_has_active_key_version is None and 'ancestorHasActiveKeyVersion' in kwargs:
+            ancestor_has_active_key_version = kwargs['ancestorHasActiveKeyVersion']
+        if enrolled_ancestor is None and 'enrolledAncestor' in kwargs:
+            enrolled_ancestor = kwargs['enrolledAncestor']
+        if enrolled_services is None and 'enrolledServices' in kwargs:
+            enrolled_services = kwargs['enrolledServices']
+        if invalid_key_version is None and 'invalidKeyVersion' in kwargs:
+            invalid_key_version = kwargs['invalidKeyVersion']
+        if notification_emails is None and 'notificationEmails' in kwargs:
+            notification_emails = kwargs['notificationEmails']
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+
         if active_key_version is not None:
             _setter("active_key_version", active_key_version)
         if ancestor_has_active_key_version is not None:
@@ -307,60 +337,6 @@ class AccessApprovalSettings(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/access-approval/docs/reference/rest/v1/organizations)
 
         ## Example Usage
-        ### Organization Access Approval Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        organization_access_approval = gcp.organizations.AccessApprovalSettings("organizationAccessApproval",
-            enrolled_services=[
-                gcp.organizations.AccessApprovalSettingsEnrolledServiceArgs(
-                    cloud_product="appengine.googleapis.com",
-                ),
-                gcp.organizations.AccessApprovalSettingsEnrolledServiceArgs(
-                    cloud_product="dataflow.googleapis.com",
-                    enrollment_level="BLOCK_ALL",
-                ),
-            ],
-            notification_emails=[
-                "testuser@example.com",
-                "example.user@example.com",
-            ],
-            organization_id="123456789")
-        ```
-        ### Organization Access Approval Active Key Version
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_project = gcp.organizations.Project("myProject",
-            project_id="your-project-id",
-            org_id="123456789")
-        key_ring = gcp.kms.KeyRing("keyRing",
-            location="global",
-            project=my_project.project_id)
-        crypto_key = gcp.kms.CryptoKey("cryptoKey",
-            key_ring=key_ring.id,
-            purpose="ASYMMETRIC_SIGN",
-            version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
-                algorithm="EC_SIGN_P384_SHA384",
-            ))
-        service_account = gcp.accessapproval.get_organization_service_account(organization_id="123456789")
-        iam = gcp.kms.CryptoKeyIAMMember("iam",
-            crypto_key_id=crypto_key.id,
-            role="roles/cloudkms.signerVerifier",
-            member=f"serviceAccount:{service_account.account_email}")
-        crypto_key_version = gcp.kms.get_kms_crypto_key_version_output(crypto_key=crypto_key.id)
-        organization_access_approval = gcp.organizations.AccessApprovalSettings("organizationAccessApproval",
-            organization_id="123456789",
-            active_key_version=crypto_key_version.name,
-            enrolled_services=[gcp.organizations.AccessApprovalSettingsEnrolledServiceArgs(
-                cloud_product="all",
-            )],
-            opts=pulumi.ResourceOptions(depends_on=[iam]))
-        ```
 
         ## Import
 
@@ -402,60 +378,6 @@ class AccessApprovalSettings(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/access-approval/docs/reference/rest/v1/organizations)
 
         ## Example Usage
-        ### Organization Access Approval Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        organization_access_approval = gcp.organizations.AccessApprovalSettings("organizationAccessApproval",
-            enrolled_services=[
-                gcp.organizations.AccessApprovalSettingsEnrolledServiceArgs(
-                    cloud_product="appengine.googleapis.com",
-                ),
-                gcp.organizations.AccessApprovalSettingsEnrolledServiceArgs(
-                    cloud_product="dataflow.googleapis.com",
-                    enrollment_level="BLOCK_ALL",
-                ),
-            ],
-            notification_emails=[
-                "testuser@example.com",
-                "example.user@example.com",
-            ],
-            organization_id="123456789")
-        ```
-        ### Organization Access Approval Active Key Version
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_project = gcp.organizations.Project("myProject",
-            project_id="your-project-id",
-            org_id="123456789")
-        key_ring = gcp.kms.KeyRing("keyRing",
-            location="global",
-            project=my_project.project_id)
-        crypto_key = gcp.kms.CryptoKey("cryptoKey",
-            key_ring=key_ring.id,
-            purpose="ASYMMETRIC_SIGN",
-            version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
-                algorithm="EC_SIGN_P384_SHA384",
-            ))
-        service_account = gcp.accessapproval.get_organization_service_account(organization_id="123456789")
-        iam = gcp.kms.CryptoKeyIAMMember("iam",
-            crypto_key_id=crypto_key.id,
-            role="roles/cloudkms.signerVerifier",
-            member=f"serviceAccount:{service_account.account_email}")
-        crypto_key_version = gcp.kms.get_kms_crypto_key_version_output(crypto_key=crypto_key.id)
-        organization_access_approval = gcp.organizations.AccessApprovalSettings("organizationAccessApproval",
-            organization_id="123456789",
-            active_key_version=crypto_key_version.name,
-            enrolled_services=[gcp.organizations.AccessApprovalSettingsEnrolledServiceArgs(
-                cloud_product="all",
-            )],
-            opts=pulumi.ResourceOptions(depends_on=[iam]))
-        ```
 
         ## Import
 

@@ -107,8 +107,8 @@ class SubnetworkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_cidr_range: pulumi.Input[str],
-             network: pulumi.Input[str],
+             ip_cidr_range: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              ipv6_access_type: Optional[pulumi.Input[str]] = None,
              log_config: Optional[pulumi.Input['SubnetworkLogConfigArgs']] = None,
@@ -121,7 +121,27 @@ class SubnetworkArgs:
              role: Optional[pulumi.Input[str]] = None,
              secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]] = None,
              stack_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ip_cidr_range is None and 'ipCidrRange' in kwargs:
+            ip_cidr_range = kwargs['ipCidrRange']
+        if ip_cidr_range is None:
+            raise TypeError("Missing 'ip_cidr_range' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if ipv6_access_type is None and 'ipv6AccessType' in kwargs:
+            ipv6_access_type = kwargs['ipv6AccessType']
+        if log_config is None and 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if private_ip_google_access is None and 'privateIpGoogleAccess' in kwargs:
+            private_ip_google_access = kwargs['privateIpGoogleAccess']
+        if private_ipv6_google_access is None and 'privateIpv6GoogleAccess' in kwargs:
+            private_ipv6_google_access = kwargs['privateIpv6GoogleAccess']
+        if secondary_ip_ranges is None and 'secondaryIpRanges' in kwargs:
+            secondary_ip_ranges = kwargs['secondaryIpRanges']
+        if stack_type is None and 'stackType' in kwargs:
+            stack_type = kwargs['stackType']
+
         _setter("ip_cidr_range", ip_cidr_range)
         _setter("network", network)
         if description is not None:
@@ -495,7 +515,35 @@ class _SubnetworkState:
              secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              stack_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if external_ipv6_prefix is None and 'externalIpv6Prefix' in kwargs:
+            external_ipv6_prefix = kwargs['externalIpv6Prefix']
+        if gateway_address is None and 'gatewayAddress' in kwargs:
+            gateway_address = kwargs['gatewayAddress']
+        if internal_ipv6_prefix is None and 'internalIpv6Prefix' in kwargs:
+            internal_ipv6_prefix = kwargs['internalIpv6Prefix']
+        if ip_cidr_range is None and 'ipCidrRange' in kwargs:
+            ip_cidr_range = kwargs['ipCidrRange']
+        if ipv6_access_type is None and 'ipv6AccessType' in kwargs:
+            ipv6_access_type = kwargs['ipv6AccessType']
+        if ipv6_cidr_range is None and 'ipv6CidrRange' in kwargs:
+            ipv6_cidr_range = kwargs['ipv6CidrRange']
+        if log_config is None and 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if private_ip_google_access is None and 'privateIpGoogleAccess' in kwargs:
+            private_ip_google_access = kwargs['privateIpGoogleAccess']
+        if private_ipv6_google_access is None and 'privateIpv6GoogleAccess' in kwargs:
+            private_ipv6_google_access = kwargs['privateIpv6GoogleAccess']
+        if secondary_ip_ranges is None and 'secondaryIpRanges' in kwargs:
+            secondary_ip_ranges = kwargs['secondaryIpRanges']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if stack_type is None and 'stackType' in kwargs:
+            stack_type = kwargs['stackType']
+
         if creation_timestamp is not None:
             _setter("creation_timestamp", creation_timestamp)
         if description is not None:
@@ -891,85 +939,6 @@ class Subnetwork(pulumi.CustomResource):
             * [Cloud Networking](https://cloud.google.com/vpc/docs/using-vpc)
 
         ## Example Usage
-        ### Subnetwork Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        custom_test = gcp.compute.Network("custom-test", auto_create_subnetworks=False)
-        network_with_private_secondary_ip_ranges = gcp.compute.Subnetwork("network-with-private-secondary-ip-ranges",
-            ip_cidr_range="10.2.0.0/16",
-            region="us-central1",
-            network=custom_test.id,
-            secondary_ip_ranges=[gcp.compute.SubnetworkSecondaryIpRangeArgs(
-                range_name="tf-test-secondary-range-update1",
-                ip_cidr_range="192.168.10.0/24",
-            )])
-        ```
-        ### Subnetwork Logging Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        custom_test = gcp.compute.Network("custom-test", auto_create_subnetworks=False)
-        subnet_with_logging = gcp.compute.Subnetwork("subnet-with-logging",
-            ip_cidr_range="10.2.0.0/16",
-            region="us-central1",
-            network=custom_test.id,
-            log_config=gcp.compute.SubnetworkLogConfigArgs(
-                aggregation_interval="INTERVAL_10_MIN",
-                flow_sampling=0.5,
-                metadata="INCLUDE_ALL_METADATA",
-            ))
-        ```
-        ### Subnetwork Internal L7lb
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        custom_test = gcp.compute.Network("custom-test", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        network_for_l7lb = gcp.compute.Subnetwork("network-for-l7lb",
-            ip_cidr_range="10.0.0.0/22",
-            region="us-central1",
-            purpose="REGIONAL_MANAGED_PROXY",
-            role="ACTIVE",
-            network=custom_test.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Subnetwork Ipv6
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        custom_test = gcp.compute.Network("custom-test", auto_create_subnetworks=False)
-        subnetwork_ipv6 = gcp.compute.Subnetwork("subnetwork-ipv6",
-            ip_cidr_range="10.0.0.0/22",
-            region="us-west2",
-            stack_type="IPV4_IPV6",
-            ipv6_access_type="EXTERNAL",
-            network=custom_test.id)
-        ```
-        ### Subnetwork Internal Ipv6
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        custom_test = gcp.compute.Network("custom-test",
-            auto_create_subnetworks=False,
-            enable_ula_internal_ipv6=True)
-        subnetwork_internal_ipv6 = gcp.compute.Subnetwork("subnetwork-internal-ipv6",
-            ip_cidr_range="10.0.0.0/22",
-            region="us-west2",
-            stack_type="IPV4_IPV6",
-            ipv6_access_type="INTERNAL",
-            network=custom_test.id)
-        ```
 
         ## Import
 
@@ -1086,85 +1055,6 @@ class Subnetwork(pulumi.CustomResource):
             * [Cloud Networking](https://cloud.google.com/vpc/docs/using-vpc)
 
         ## Example Usage
-        ### Subnetwork Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        custom_test = gcp.compute.Network("custom-test", auto_create_subnetworks=False)
-        network_with_private_secondary_ip_ranges = gcp.compute.Subnetwork("network-with-private-secondary-ip-ranges",
-            ip_cidr_range="10.2.0.0/16",
-            region="us-central1",
-            network=custom_test.id,
-            secondary_ip_ranges=[gcp.compute.SubnetworkSecondaryIpRangeArgs(
-                range_name="tf-test-secondary-range-update1",
-                ip_cidr_range="192.168.10.0/24",
-            )])
-        ```
-        ### Subnetwork Logging Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        custom_test = gcp.compute.Network("custom-test", auto_create_subnetworks=False)
-        subnet_with_logging = gcp.compute.Subnetwork("subnet-with-logging",
-            ip_cidr_range="10.2.0.0/16",
-            region="us-central1",
-            network=custom_test.id,
-            log_config=gcp.compute.SubnetworkLogConfigArgs(
-                aggregation_interval="INTERVAL_10_MIN",
-                flow_sampling=0.5,
-                metadata="INCLUDE_ALL_METADATA",
-            ))
-        ```
-        ### Subnetwork Internal L7lb
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        custom_test = gcp.compute.Network("custom-test", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        network_for_l7lb = gcp.compute.Subnetwork("network-for-l7lb",
-            ip_cidr_range="10.0.0.0/22",
-            region="us-central1",
-            purpose="REGIONAL_MANAGED_PROXY",
-            role="ACTIVE",
-            network=custom_test.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Subnetwork Ipv6
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        custom_test = gcp.compute.Network("custom-test", auto_create_subnetworks=False)
-        subnetwork_ipv6 = gcp.compute.Subnetwork("subnetwork-ipv6",
-            ip_cidr_range="10.0.0.0/22",
-            region="us-west2",
-            stack_type="IPV4_IPV6",
-            ipv6_access_type="EXTERNAL",
-            network=custom_test.id)
-        ```
-        ### Subnetwork Internal Ipv6
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        custom_test = gcp.compute.Network("custom-test",
-            auto_create_subnetworks=False,
-            enable_ula_internal_ipv6=True)
-        subnetwork_internal_ipv6 = gcp.compute.Subnetwork("subnetwork-internal-ipv6",
-            ip_cidr_range="10.0.0.0/22",
-            region="us-west2",
-            stack_type="IPV4_IPV6",
-            ipv6_access_type="INTERNAL",
-            network=custom_test.id)
-        ```
 
         ## Import
 
@@ -1233,11 +1123,7 @@ class Subnetwork(pulumi.CustomResource):
                 raise TypeError("Missing required property 'ip_cidr_range'")
             __props__.__dict__["ip_cidr_range"] = ip_cidr_range
             __props__.__dict__["ipv6_access_type"] = ipv6_access_type
-            if log_config is not None and not isinstance(log_config, SubnetworkLogConfigArgs):
-                log_config = log_config or {}
-                def _setter(key, value):
-                    log_config[key] = value
-                SubnetworkLogConfigArgs._configure(_setter, **log_config)
+            log_config = _utilities.configure(log_config, SubnetworkLogConfigArgs, True)
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["name"] = name
             if network is None and not opts.urn:

@@ -83,7 +83,7 @@ class SnapshotArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source_disk: pulumi.Input[str],
+             source_disk: Optional[pulumi.Input[str]] = None,
              chain_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -93,7 +93,21 @@ class SnapshotArgs:
              source_disk_encryption_key: Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs']] = None,
              storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if source_disk is None and 'sourceDisk' in kwargs:
+            source_disk = kwargs['sourceDisk']
+        if source_disk is None:
+            raise TypeError("Missing 'source_disk' argument")
+        if chain_name is None and 'chainName' in kwargs:
+            chain_name = kwargs['chainName']
+        if snapshot_encryption_key is None and 'snapshotEncryptionKey' in kwargs:
+            snapshot_encryption_key = kwargs['snapshotEncryptionKey']
+        if source_disk_encryption_key is None and 'sourceDiskEncryptionKey' in kwargs:
+            source_disk_encryption_key = kwargs['sourceDiskEncryptionKey']
+        if storage_locations is None and 'storageLocations' in kwargs:
+            storage_locations = kwargs['storageLocations']
+
         _setter("source_disk", source_disk)
         if chain_name is not None:
             _setter("chain_name", chain_name)
@@ -377,7 +391,31 @@ class _SnapshotState:
              storage_bytes: Optional[pulumi.Input[int]] = None,
              storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if chain_name is None and 'chainName' in kwargs:
+            chain_name = kwargs['chainName']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if disk_size_gb is None and 'diskSizeGb' in kwargs:
+            disk_size_gb = kwargs['diskSizeGb']
+        if label_fingerprint is None and 'labelFingerprint' in kwargs:
+            label_fingerprint = kwargs['labelFingerprint']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if snapshot_encryption_key is None and 'snapshotEncryptionKey' in kwargs:
+            snapshot_encryption_key = kwargs['snapshotEncryptionKey']
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if source_disk is None and 'sourceDisk' in kwargs:
+            source_disk = kwargs['sourceDisk']
+        if source_disk_encryption_key is None and 'sourceDiskEncryptionKey' in kwargs:
+            source_disk_encryption_key = kwargs['sourceDiskEncryptionKey']
+        if storage_bytes is None and 'storageBytes' in kwargs:
+            storage_bytes = kwargs['storageBytes']
+        if storage_locations is None and 'storageLocations' in kwargs:
+            storage_locations = kwargs['storageLocations']
+
         if chain_name is not None:
             _setter("chain_name", chain_name)
         if creation_timestamp is not None:
@@ -692,49 +730,6 @@ class Snapshot(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
-        ### Snapshot Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        debian = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        persistent = gcp.compute.Disk("persistent",
-            image=debian.self_link,
-            size=10,
-            type="pd-ssd",
-            zone="us-central1-a")
-        snapshot = gcp.compute.Snapshot("snapshot",
-            source_disk=persistent.id,
-            zone="us-central1-a",
-            labels={
-                "my_label": "value",
-            },
-            storage_locations=["us-central1"])
-        ```
-        ### Snapshot Chainname
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        debian = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        persistent = gcp.compute.Disk("persistent",
-            image=debian.self_link,
-            size=10,
-            type="pd-ssd",
-            zone="us-central1-a")
-        snapshot = gcp.compute.Snapshot("snapshot",
-            source_disk=persistent.id,
-            zone="us-central1-a",
-            chain_name="snapshot-chain",
-            labels={
-                "my_label": "value",
-            },
-            storage_locations=["us-central1"])
-        ```
 
         ## Import
 
@@ -823,49 +818,6 @@ class Snapshot(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
-        ### Snapshot Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        debian = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        persistent = gcp.compute.Disk("persistent",
-            image=debian.self_link,
-            size=10,
-            type="pd-ssd",
-            zone="us-central1-a")
-        snapshot = gcp.compute.Snapshot("snapshot",
-            source_disk=persistent.id,
-            zone="us-central1-a",
-            labels={
-                "my_label": "value",
-            },
-            storage_locations=["us-central1"])
-        ```
-        ### Snapshot Chainname
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        debian = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        persistent = gcp.compute.Disk("persistent",
-            image=debian.self_link,
-            size=10,
-            type="pd-ssd",
-            zone="us-central1-a")
-        snapshot = gcp.compute.Snapshot("snapshot",
-            source_disk=persistent.id,
-            zone="us-central1-a",
-            chain_name="snapshot-chain",
-            labels={
-                "my_label": "value",
-            },
-            storage_locations=["us-central1"])
-        ```
 
         ## Import
 
@@ -926,20 +878,12 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            if snapshot_encryption_key is not None and not isinstance(snapshot_encryption_key, SnapshotSnapshotEncryptionKeyArgs):
-                snapshot_encryption_key = snapshot_encryption_key or {}
-                def _setter(key, value):
-                    snapshot_encryption_key[key] = value
-                SnapshotSnapshotEncryptionKeyArgs._configure(_setter, **snapshot_encryption_key)
+            snapshot_encryption_key = _utilities.configure(snapshot_encryption_key, SnapshotSnapshotEncryptionKeyArgs, True)
             __props__.__dict__["snapshot_encryption_key"] = snapshot_encryption_key
             if source_disk is None and not opts.urn:
                 raise TypeError("Missing required property 'source_disk'")
             __props__.__dict__["source_disk"] = source_disk
-            if source_disk_encryption_key is not None and not isinstance(source_disk_encryption_key, SnapshotSourceDiskEncryptionKeyArgs):
-                source_disk_encryption_key = source_disk_encryption_key or {}
-                def _setter(key, value):
-                    source_disk_encryption_key[key] = value
-                SnapshotSourceDiskEncryptionKeyArgs._configure(_setter, **source_disk_encryption_key)
+            source_disk_encryption_key = _utilities.configure(source_disk_encryption_key, SnapshotSourceDiskEncryptionKeyArgs, True)
             __props__.__dict__["source_disk_encryption_key"] = source_disk_encryption_key
             __props__.__dict__["storage_locations"] = storage_locations
             __props__.__dict__["zone"] = zone

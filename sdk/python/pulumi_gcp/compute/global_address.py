@@ -88,7 +88,15 @@ class GlobalAddressArgs:
              prefix_length: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
              purpose: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if address_type is None and 'addressType' in kwargs:
+            address_type = kwargs['addressType']
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if prefix_length is None and 'prefixLength' in kwargs:
+            prefix_length = kwargs['prefixLength']
+
         if address is not None:
             _setter("address", address)
         if address_type is not None:
@@ -345,7 +353,21 @@ class _GlobalAddressState:
              project: Optional[pulumi.Input[str]] = None,
              purpose: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if address_type is None and 'addressType' in kwargs:
+            address_type = kwargs['addressType']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if label_fingerprint is None and 'labelFingerprint' in kwargs:
+            label_fingerprint = kwargs['labelFingerprint']
+        if prefix_length is None and 'prefixLength' in kwargs:
+            prefix_length = kwargs['prefixLength']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if address is not None:
             _setter("address", address)
         if address_type is not None:
@@ -582,29 +604,6 @@ class GlobalAddress(pulumi.CustomResource):
             * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
 
         ## Example Usage
-        ### Global Address Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.GlobalAddress("default")
-        ```
-        ### Global Address Private Services Connect
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network = gcp.compute.Network("network", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default = gcp.compute.GlobalAddress("default",
-            address_type="INTERNAL",
-            purpose="PRIVATE_SERVICE_CONNECT",
-            network=network.id,
-            address="100.100.100.105",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -677,29 +676,6 @@ class GlobalAddress(pulumi.CustomResource):
             * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
 
         ## Example Usage
-        ### Global Address Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.GlobalAddress("default")
-        ```
-        ### Global Address Private Services Connect
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network = gcp.compute.Network("network", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default = gcp.compute.GlobalAddress("default",
-            address_type="INTERNAL",
-            purpose="PRIVATE_SERVICE_CONNECT",
-            network=network.id,
-            address="100.100.100.105",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 

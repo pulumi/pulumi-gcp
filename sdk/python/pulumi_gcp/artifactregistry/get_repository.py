@@ -207,16 +207,6 @@ def get_repository(location: Optional[str] = None,
     the [official documentation](https://cloud.google.com/artifact-registry/docs/)
     and [API](https://cloud.google.com/artifact-registry/docs/apis).
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    my_repo = gcp.artifactregistry.get_repository(location="us-central1",
-        repository_id="my-repository")
-    ```
-
 
     :param str location: The location of the artifact registry repository. eg us-central1
            
@@ -262,16 +252,6 @@ def get_repository_output(location: Optional[pulumi.Input[str]] = None,
     Get information about a Google Artifact Registry Repository. For more information see
     the [official documentation](https://cloud.google.com/artifact-registry/docs/)
     and [API](https://cloud.google.com/artifact-registry/docs/apis).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    my_repo = gcp.artifactregistry.get_repository(location="us-central1",
-        repository_id="my-repository")
-    ```
 
 
     :param str location: The location of the artifact registry repository. eg us-central1

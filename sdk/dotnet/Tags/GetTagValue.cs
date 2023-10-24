@@ -13,58 +13,12 @@ namespace Pulumi.Gcp.Tags
     {
         /// <summary>
         /// Get a tag value by `parent` key and `short_name`.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var environmentProdTagValue = Gcp.Tags.GetTagValue.Invoke(new()
-        ///     {
-        ///         Parent = "tagKeys/56789",
-        ///         ShortName = "production",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTagValueResult> InvokeAsync(GetTagValueArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagValueResult>("gcp:tags/getTagValue:getTagValue", args ?? new GetTagValueArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a tag value by `parent` key and `short_name`.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var environmentProdTagValue = Gcp.Tags.GetTagValue.Invoke(new()
-        ///     {
-        ///         Parent = "tagKeys/56789",
-        ///         ShortName = "production",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetTagValueResult> Invoke(GetTagValueInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagValueResult>("gcp:tags/getTagValue:getTagValue", args ?? new GetTagValueInvokeArgs(), options.WithDefaults());

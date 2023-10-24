@@ -119,9 +119,9 @@ class RouterNatArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             nat_ip_allocate_option: pulumi.Input[str],
-             router: pulumi.Input[str],
-             source_subnetwork_ip_ranges_to_nat: pulumi.Input[str],
+             nat_ip_allocate_option: Optional[pulumi.Input[str]] = None,
+             router: Optional[pulumi.Input[str]] = None,
+             source_subnetwork_ip_ranges_to_nat: Optional[pulumi.Input[str]] = None,
              drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              enable_dynamic_port_allocation: Optional[pulumi.Input[bool]] = None,
              enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
@@ -139,7 +139,43 @@ class RouterNatArgs:
              tcp_time_wait_timeout_sec: Optional[pulumi.Input[int]] = None,
              tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
              udp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if nat_ip_allocate_option is None and 'natIpAllocateOption' in kwargs:
+            nat_ip_allocate_option = kwargs['natIpAllocateOption']
+        if nat_ip_allocate_option is None:
+            raise TypeError("Missing 'nat_ip_allocate_option' argument")
+        if router is None:
+            raise TypeError("Missing 'router' argument")
+        if source_subnetwork_ip_ranges_to_nat is None and 'sourceSubnetworkIpRangesToNat' in kwargs:
+            source_subnetwork_ip_ranges_to_nat = kwargs['sourceSubnetworkIpRangesToNat']
+        if source_subnetwork_ip_ranges_to_nat is None:
+            raise TypeError("Missing 'source_subnetwork_ip_ranges_to_nat' argument")
+        if drain_nat_ips is None and 'drainNatIps' in kwargs:
+            drain_nat_ips = kwargs['drainNatIps']
+        if enable_dynamic_port_allocation is None and 'enableDynamicPortAllocation' in kwargs:
+            enable_dynamic_port_allocation = kwargs['enableDynamicPortAllocation']
+        if enable_endpoint_independent_mapping is None and 'enableEndpointIndependentMapping' in kwargs:
+            enable_endpoint_independent_mapping = kwargs['enableEndpointIndependentMapping']
+        if icmp_idle_timeout_sec is None and 'icmpIdleTimeoutSec' in kwargs:
+            icmp_idle_timeout_sec = kwargs['icmpIdleTimeoutSec']
+        if log_config is None and 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if max_ports_per_vm is None and 'maxPortsPerVm' in kwargs:
+            max_ports_per_vm = kwargs['maxPortsPerVm']
+        if min_ports_per_vm is None and 'minPortsPerVm' in kwargs:
+            min_ports_per_vm = kwargs['minPortsPerVm']
+        if nat_ips is None and 'natIps' in kwargs:
+            nat_ips = kwargs['natIps']
+        if tcp_established_idle_timeout_sec is None and 'tcpEstablishedIdleTimeoutSec' in kwargs:
+            tcp_established_idle_timeout_sec = kwargs['tcpEstablishedIdleTimeoutSec']
+        if tcp_time_wait_timeout_sec is None and 'tcpTimeWaitTimeoutSec' in kwargs:
+            tcp_time_wait_timeout_sec = kwargs['tcpTimeWaitTimeoutSec']
+        if tcp_transitory_idle_timeout_sec is None and 'tcpTransitoryIdleTimeoutSec' in kwargs:
+            tcp_transitory_idle_timeout_sec = kwargs['tcpTransitoryIdleTimeoutSec']
+        if udp_idle_timeout_sec is None and 'udpIdleTimeoutSec' in kwargs:
+            udp_idle_timeout_sec = kwargs['udpIdleTimeoutSec']
+
         _setter("nat_ip_allocate_option", nat_ip_allocate_option)
         _setter("router", router)
         _setter("source_subnetwork_ip_ranges_to_nat", source_subnetwork_ip_ranges_to_nat)
@@ -579,7 +615,37 @@ class _RouterNatState:
              tcp_time_wait_timeout_sec: Optional[pulumi.Input[int]] = None,
              tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
              udp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if drain_nat_ips is None and 'drainNatIps' in kwargs:
+            drain_nat_ips = kwargs['drainNatIps']
+        if enable_dynamic_port_allocation is None and 'enableDynamicPortAllocation' in kwargs:
+            enable_dynamic_port_allocation = kwargs['enableDynamicPortAllocation']
+        if enable_endpoint_independent_mapping is None and 'enableEndpointIndependentMapping' in kwargs:
+            enable_endpoint_independent_mapping = kwargs['enableEndpointIndependentMapping']
+        if icmp_idle_timeout_sec is None and 'icmpIdleTimeoutSec' in kwargs:
+            icmp_idle_timeout_sec = kwargs['icmpIdleTimeoutSec']
+        if log_config is None and 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if max_ports_per_vm is None and 'maxPortsPerVm' in kwargs:
+            max_ports_per_vm = kwargs['maxPortsPerVm']
+        if min_ports_per_vm is None and 'minPortsPerVm' in kwargs:
+            min_ports_per_vm = kwargs['minPortsPerVm']
+        if nat_ip_allocate_option is None and 'natIpAllocateOption' in kwargs:
+            nat_ip_allocate_option = kwargs['natIpAllocateOption']
+        if nat_ips is None and 'natIps' in kwargs:
+            nat_ips = kwargs['natIps']
+        if source_subnetwork_ip_ranges_to_nat is None and 'sourceSubnetworkIpRangesToNat' in kwargs:
+            source_subnetwork_ip_ranges_to_nat = kwargs['sourceSubnetworkIpRangesToNat']
+        if tcp_established_idle_timeout_sec is None and 'tcpEstablishedIdleTimeoutSec' in kwargs:
+            tcp_established_idle_timeout_sec = kwargs['tcpEstablishedIdleTimeoutSec']
+        if tcp_time_wait_timeout_sec is None and 'tcpTimeWaitTimeoutSec' in kwargs:
+            tcp_time_wait_timeout_sec = kwargs['tcpTimeWaitTimeoutSec']
+        if tcp_transitory_idle_timeout_sec is None and 'tcpTransitoryIdleTimeoutSec' in kwargs:
+            tcp_transitory_idle_timeout_sec = kwargs['tcpTransitoryIdleTimeoutSec']
+        if udp_idle_timeout_sec is None and 'udpIdleTimeoutSec' in kwargs:
+            udp_idle_timeout_sec = kwargs['udpIdleTimeoutSec']
+
         if drain_nat_ips is not None:
             _setter("drain_nat_ips", drain_nat_ips)
         if enable_dynamic_port_allocation is not None:
@@ -932,101 +998,6 @@ class RouterNat(pulumi.CustomResource):
             * [Google Cloud Router](https://cloud.google.com/router/docs/)
 
         ## Example Usage
-        ### Router Nat Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        net = gcp.compute.Network("net")
-        subnet = gcp.compute.Subnetwork("subnet",
-            network=net.id,
-            ip_cidr_range="10.0.0.0/16",
-            region="us-central1")
-        router = gcp.compute.Router("router",
-            region=subnet.region,
-            network=net.id,
-            bgp=gcp.compute.RouterBgpArgs(
-                asn=64514,
-            ))
-        nat = gcp.compute.RouterNat("nat",
-            router=router.name,
-            region=router.region,
-            nat_ip_allocate_option="AUTO_ONLY",
-            source_subnetwork_ip_ranges_to_nat="ALL_SUBNETWORKS_ALL_IP_RANGES",
-            log_config=gcp.compute.RouterNatLogConfigArgs(
-                enable=True,
-                filter="ERRORS_ONLY",
-            ))
-        ```
-        ### Router Nat Manual Ips
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        net = gcp.compute.Network("net")
-        subnet = gcp.compute.Subnetwork("subnet",
-            network=net.id,
-            ip_cidr_range="10.0.0.0/16",
-            region="us-central1")
-        router = gcp.compute.Router("router",
-            region=subnet.region,
-            network=net.id)
-        address = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            address.append(gcp.compute.Address(f"address-{range['value']}", region=subnet.region))
-        nat_manual = gcp.compute.RouterNat("natManual",
-            router=router.name,
-            region=router.region,
-            nat_ip_allocate_option="MANUAL_ONLY",
-            nat_ips=[__item.self_link for __item in address],
-            source_subnetwork_ip_ranges_to_nat="LIST_OF_SUBNETWORKS",
-            subnetworks=[gcp.compute.RouterNatSubnetworkArgs(
-                name=subnet.id,
-                source_ip_ranges_to_nats=["ALL_IP_RANGES"],
-            )])
-        ```
-        ### Router Nat Rules
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        net = gcp.compute.Network("net", auto_create_subnetworks=False)
-        subnet = gcp.compute.Subnetwork("subnet",
-            network=net.id,
-            ip_cidr_range="10.0.0.0/16",
-            region="us-central1")
-        router = gcp.compute.Router("router",
-            region=subnet.region,
-            network=net.id)
-        addr1 = gcp.compute.Address("addr1", region=subnet.region)
-        addr2 = gcp.compute.Address("addr2", region=subnet.region)
-        addr3 = gcp.compute.Address("addr3", region=subnet.region)
-        nat_rules = gcp.compute.RouterNat("natRules",
-            router=router.name,
-            region=router.region,
-            nat_ip_allocate_option="MANUAL_ONLY",
-            nat_ips=[addr1.self_link],
-            source_subnetwork_ip_ranges_to_nat="LIST_OF_SUBNETWORKS",
-            subnetworks=[gcp.compute.RouterNatSubnetworkArgs(
-                name=subnet.id,
-                source_ip_ranges_to_nats=["ALL_IP_RANGES"],
-            )],
-            rules=[gcp.compute.RouterNatRuleArgs(
-                rule_number=100,
-                description="nat rules example",
-                match="inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')",
-                action=gcp.compute.RouterNatRuleActionArgs(
-                    source_nat_active_ips=[
-                        addr2.self_link,
-                        addr3.self_link,
-                    ],
-                ),
-            )],
-            enable_endpoint_independent_mapping=False)
-        ```
 
         ## Import
 
@@ -1121,101 +1092,6 @@ class RouterNat(pulumi.CustomResource):
             * [Google Cloud Router](https://cloud.google.com/router/docs/)
 
         ## Example Usage
-        ### Router Nat Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        net = gcp.compute.Network("net")
-        subnet = gcp.compute.Subnetwork("subnet",
-            network=net.id,
-            ip_cidr_range="10.0.0.0/16",
-            region="us-central1")
-        router = gcp.compute.Router("router",
-            region=subnet.region,
-            network=net.id,
-            bgp=gcp.compute.RouterBgpArgs(
-                asn=64514,
-            ))
-        nat = gcp.compute.RouterNat("nat",
-            router=router.name,
-            region=router.region,
-            nat_ip_allocate_option="AUTO_ONLY",
-            source_subnetwork_ip_ranges_to_nat="ALL_SUBNETWORKS_ALL_IP_RANGES",
-            log_config=gcp.compute.RouterNatLogConfigArgs(
-                enable=True,
-                filter="ERRORS_ONLY",
-            ))
-        ```
-        ### Router Nat Manual Ips
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        net = gcp.compute.Network("net")
-        subnet = gcp.compute.Subnetwork("subnet",
-            network=net.id,
-            ip_cidr_range="10.0.0.0/16",
-            region="us-central1")
-        router = gcp.compute.Router("router",
-            region=subnet.region,
-            network=net.id)
-        address = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            address.append(gcp.compute.Address(f"address-{range['value']}", region=subnet.region))
-        nat_manual = gcp.compute.RouterNat("natManual",
-            router=router.name,
-            region=router.region,
-            nat_ip_allocate_option="MANUAL_ONLY",
-            nat_ips=[__item.self_link for __item in address],
-            source_subnetwork_ip_ranges_to_nat="LIST_OF_SUBNETWORKS",
-            subnetworks=[gcp.compute.RouterNatSubnetworkArgs(
-                name=subnet.id,
-                source_ip_ranges_to_nats=["ALL_IP_RANGES"],
-            )])
-        ```
-        ### Router Nat Rules
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        net = gcp.compute.Network("net", auto_create_subnetworks=False)
-        subnet = gcp.compute.Subnetwork("subnet",
-            network=net.id,
-            ip_cidr_range="10.0.0.0/16",
-            region="us-central1")
-        router = gcp.compute.Router("router",
-            region=subnet.region,
-            network=net.id)
-        addr1 = gcp.compute.Address("addr1", region=subnet.region)
-        addr2 = gcp.compute.Address("addr2", region=subnet.region)
-        addr3 = gcp.compute.Address("addr3", region=subnet.region)
-        nat_rules = gcp.compute.RouterNat("natRules",
-            router=router.name,
-            region=router.region,
-            nat_ip_allocate_option="MANUAL_ONLY",
-            nat_ips=[addr1.self_link],
-            source_subnetwork_ip_ranges_to_nat="LIST_OF_SUBNETWORKS",
-            subnetworks=[gcp.compute.RouterNatSubnetworkArgs(
-                name=subnet.id,
-                source_ip_ranges_to_nats=["ALL_IP_RANGES"],
-            )],
-            rules=[gcp.compute.RouterNatRuleArgs(
-                rule_number=100,
-                description="nat rules example",
-                match="inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')",
-                action=gcp.compute.RouterNatRuleActionArgs(
-                    source_nat_active_ips=[
-                        addr2.self_link,
-                        addr3.self_link,
-                    ],
-                ),
-            )],
-            enable_endpoint_independent_mapping=False)
-        ```
 
         ## Import
 
@@ -1289,11 +1165,7 @@ class RouterNat(pulumi.CustomResource):
             __props__.__dict__["enable_dynamic_port_allocation"] = enable_dynamic_port_allocation
             __props__.__dict__["enable_endpoint_independent_mapping"] = enable_endpoint_independent_mapping
             __props__.__dict__["icmp_idle_timeout_sec"] = icmp_idle_timeout_sec
-            if log_config is not None and not isinstance(log_config, RouterNatLogConfigArgs):
-                log_config = log_config or {}
-                def _setter(key, value):
-                    log_config[key] = value
-                RouterNatLogConfigArgs._configure(_setter, **log_config)
+            log_config = _utilities.configure(log_config, RouterNatLogConfigArgs, True)
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["max_ports_per_vm"] = max_ports_per_vm
             __props__.__dict__["min_ports_per_vm"] = min_ports_per_vm

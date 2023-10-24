@@ -73,15 +73,6 @@ def get_groups(parent: Optional[str] = None,
 
     https://cloud.google.com/identity/docs/concepts/overview#groups
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    groups = gcp.cloudidentity.get_groups(parent="customers/A01b123xz")
-    ```
-
 
     :param str parent: The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.
     """
@@ -103,15 +94,6 @@ def get_groups_output(parent: Optional[pulumi.Input[str]] = None,
     Use this data source to get list of the Cloud Identity Groups under a customer or namespace.
 
     https://cloud.google.com/identity/docs/concepts/overview#groups
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    groups = gcp.cloudidentity.get_groups(parent="customers/A01b123xz")
-    ```
 
 
     :param str parent: The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.

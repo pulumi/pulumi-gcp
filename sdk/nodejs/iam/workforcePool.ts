@@ -18,34 +18,6 @@ import * as utilities from "../utilities";
  * your billing/quota project. The account team notifies you when the project is granted access.
  *
  * ## Example Usage
- * ### Iam Workforce Pool Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const example = new gcp.iam.WorkforcePool("example", {
- *     location: "global",
- *     parent: "organizations/123456789",
- *     workforcePoolId: "example-pool",
- * });
- * ```
- * ### Iam Workforce Pool Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const example = new gcp.iam.WorkforcePool("example", {
- *     description: "A sample workforce pool.",
- *     disabled: false,
- *     displayName: "Display name",
- *     location: "global",
- *     parent: "organizations/123456789",
- *     sessionDuration: "7200s",
- *     workforcePoolId: "example-pool",
- * });
- * ```
  *
  * ## Import
  *

@@ -56,13 +56,25 @@ class ApiConfigIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api: pulumi.Input[str],
-             api_config: pulumi.Input[str],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
+             api: Optional[pulumi.Input[str]] = None,
+             api_config: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['ApiConfigIamMemberConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api is None:
+            raise TypeError("Missing 'api' argument")
+        if api_config is None and 'apiConfig' in kwargs:
+            api_config = kwargs['apiConfig']
+        if api_config is None:
+            raise TypeError("Missing 'api_config' argument")
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("api", api)
         _setter("api_config", api_config)
         _setter("member", member)
@@ -205,7 +217,11 @@ class _ApiConfigIamMemberState:
              member: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_config is None and 'apiConfig' in kwargs:
+            api_config = kwargs['apiConfig']
+
         if api is not None:
             _setter("api", api)
         if api_config is not None:
@@ -340,51 +356,6 @@ class ApiConfigIamMember(pulumi.CustomResource):
 
         > **Note:** `apigateway.ApiConfigIamBinding` resources **can be** used in conjunction with `apigateway.ApiConfigIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.apigateway.ApiConfigIamPolicy("policy",
-            api=google_api_gateway_api_config["api_cfg"]["api"],
-            api_config=google_api_gateway_api_config["api_cfg"]["api_config_id"],
-            policy_data=admin.policy_data,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-
-        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.apigateway.ApiConfigIamBinding("binding",
-            api=google_api_gateway_api_config["api_cfg"]["api"],
-            api_config=google_api_gateway_api_config["api_cfg"]["api_config_id"],
-            role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-
-        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.apigateway.ApiConfigIamMember("member",
-            api=google_api_gateway_api_config["api_cfg"]["api"],
-            api_config=google_api_gateway_api_config["api_cfg"]["api_config_id"],
-            role="roles/apigateway.viewer",
-            member="user:jane@example.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config}} * {{project}}/{{api}}/{{api_config}} * {{api}}/{{api_config}} * {{api_config}} Any variables not passed in the import command will be taken from the provider configuration. API Gateway apiconfig IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -452,51 +423,6 @@ class ApiConfigIamMember(pulumi.CustomResource):
 
         > **Note:** `apigateway.ApiConfigIamBinding` resources **can be** used in conjunction with `apigateway.ApiConfigIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.apigateway.ApiConfigIamPolicy("policy",
-            api=google_api_gateway_api_config["api_cfg"]["api"],
-            api_config=google_api_gateway_api_config["api_cfg"]["api_config_id"],
-            policy_data=admin.policy_data,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-
-        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.apigateway.ApiConfigIamBinding("binding",
-            api=google_api_gateway_api_config["api_cfg"]["api"],
-            api_config=google_api_gateway_api_config["api_cfg"]["api_config_id"],
-            role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-
-        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.apigateway.ApiConfigIamMember("member",
-            api=google_api_gateway_api_config["api_cfg"]["api"],
-            api_config=google_api_gateway_api_config["api_cfg"]["api_config_id"],
-            role="roles/apigateway.viewer",
-            member="user:jane@example.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config}} * {{project}}/{{api}}/{{api_config}} * {{api}}/{{api_config}} * {{api_config}} Any variables not passed in the import command will be taken from the provider configuration. API Gateway apiconfig IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -561,11 +487,7 @@ class ApiConfigIamMember(pulumi.CustomResource):
             if api_config is None and not opts.urn:
                 raise TypeError("Missing required property 'api_config'")
             __props__.__dict__["api_config"] = api_config
-            if condition is not None and not isinstance(condition, ApiConfigIamMemberConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                ApiConfigIamMemberConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, ApiConfigIamMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")

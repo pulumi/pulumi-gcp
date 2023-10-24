@@ -13,33 +13,6 @@ import (
 )
 
 // Retrieves the current IAM policy data for image
-//
-// ## example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.LookupImageIamPolicy(ctx, &compute.LookupImageIamPolicyArgs{
-//				Project: pulumi.StringRef(google_compute_image.Example.Project),
-//				Image:   google_compute_image.Example.Name,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupImageIamPolicy(ctx *pulumi.Context, args *LookupImageIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupImageIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupImageIamPolicyResult

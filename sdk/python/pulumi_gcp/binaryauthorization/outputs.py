@@ -84,10 +84,20 @@ class AttestorAttestationAuthorityNote(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             note_reference: str,
+             note_reference: Optional[str] = None,
              delegation_service_account_email: Optional[str] = None,
              public_keys: Optional[Sequence['outputs.AttestorAttestationAuthorityNotePublicKey']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if note_reference is None and 'noteReference' in kwargs:
+            note_reference = kwargs['noteReference']
+        if note_reference is None:
+            raise TypeError("Missing 'note_reference' argument")
+        if delegation_service_account_email is None and 'delegationServiceAccountEmail' in kwargs:
+            delegation_service_account_email = kwargs['delegationServiceAccountEmail']
+        if public_keys is None and 'publicKeys' in kwargs:
+            public_keys = kwargs['publicKeys']
+
         _setter("note_reference", note_reference)
         if delegation_service_account_email is not None:
             _setter("delegation_service_account_email", delegation_service_account_email)
@@ -205,7 +215,13 @@ class AttestorAttestationAuthorityNotePublicKey(dict):
              comment: Optional[str] = None,
              id: Optional[str] = None,
              pkix_public_key: Optional['outputs.AttestorAttestationAuthorityNotePublicKeyPkixPublicKey'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ascii_armored_pgp_public_key is None and 'asciiArmoredPgpPublicKey' in kwargs:
+            ascii_armored_pgp_public_key = kwargs['asciiArmoredPgpPublicKey']
+        if pkix_public_key is None and 'pkixPublicKey' in kwargs:
+            pkix_public_key = kwargs['pkixPublicKey']
+
         if ascii_armored_pgp_public_key is not None:
             _setter("ascii_armored_pgp_public_key", ascii_armored_pgp_public_key)
         if comment is not None:
@@ -311,7 +327,13 @@ class AttestorAttestationAuthorityNotePublicKeyPkixPublicKey(dict):
              _setter: Callable[[Any, Any], None],
              public_key_pem: Optional[str] = None,
              signature_algorithm: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if public_key_pem is None and 'publicKeyPem' in kwargs:
+            public_key_pem = kwargs['publicKeyPem']
+        if signature_algorithm is None and 'signatureAlgorithm' in kwargs:
+            signature_algorithm = kwargs['signatureAlgorithm']
+
         if public_key_pem is not None:
             _setter("public_key_pem", public_key_pem)
         if signature_algorithm is not None:
@@ -356,10 +378,16 @@ class AttestorIamBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -396,10 +424,16 @@ class AttestorIamMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -455,8 +489,14 @@ class PolicyAdmissionWhitelistPattern(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name_pattern: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name_pattern: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name_pattern is None and 'namePattern' in kwargs:
+            name_pattern = kwargs['namePattern']
+        if name_pattern is None:
+            raise TypeError("Missing 'name_pattern' argument")
+
         _setter("name_pattern", name_pattern)
 
     @property
@@ -524,11 +564,25 @@ class PolicyClusterAdmissionRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster: str,
-             enforcement_mode: str,
-             evaluation_mode: str,
+             cluster: Optional[str] = None,
+             enforcement_mode: Optional[str] = None,
+             evaluation_mode: Optional[str] = None,
              require_attestations_bies: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cluster is None:
+            raise TypeError("Missing 'cluster' argument")
+        if enforcement_mode is None and 'enforcementMode' in kwargs:
+            enforcement_mode = kwargs['enforcementMode']
+        if enforcement_mode is None:
+            raise TypeError("Missing 'enforcement_mode' argument")
+        if evaluation_mode is None and 'evaluationMode' in kwargs:
+            evaluation_mode = kwargs['evaluationMode']
+        if evaluation_mode is None:
+            raise TypeError("Missing 'evaluation_mode' argument")
+        if require_attestations_bies is None and 'requireAttestationsBies' in kwargs:
+            require_attestations_bies = kwargs['requireAttestationsBies']
+
         _setter("cluster", cluster)
         _setter("enforcement_mode", enforcement_mode)
         _setter("evaluation_mode", evaluation_mode)
@@ -629,10 +683,22 @@ class PolicyDefaultAdmissionRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enforcement_mode: str,
-             evaluation_mode: str,
+             enforcement_mode: Optional[str] = None,
+             evaluation_mode: Optional[str] = None,
              require_attestations_bies: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enforcement_mode is None and 'enforcementMode' in kwargs:
+            enforcement_mode = kwargs['enforcementMode']
+        if enforcement_mode is None:
+            raise TypeError("Missing 'enforcement_mode' argument")
+        if evaluation_mode is None and 'evaluationMode' in kwargs:
+            evaluation_mode = kwargs['evaluationMode']
+        if evaluation_mode is None:
+            raise TypeError("Missing 'evaluation_mode' argument")
+        if require_attestations_bies is None and 'requireAttestationsBies' in kwargs:
+            require_attestations_bies = kwargs['requireAttestationsBies']
+
         _setter("enforcement_mode", enforcement_mode)
         _setter("evaluation_mode", evaluation_mode)
         if require_attestations_bies is not None:

@@ -42,11 +42,21 @@ class WebAppArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              api_key_id: Optional[pulumi.Input[str]] = None,
              deletion_policy: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if api_key_id is None and 'apiKeyId' in kwargs:
+            api_key_id = kwargs['apiKeyId']
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+
         _setter("display_name", display_name)
         if api_key_id is not None:
             _setter("api_key_id", api_key_id)
@@ -160,7 +170,19 @@ class _WebAppState:
              display_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_key_id is None and 'apiKeyId' in kwargs:
+            api_key_id = kwargs['apiKeyId']
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if app_urls is None and 'appUrls' in kwargs:
+            app_urls = kwargs['appUrls']
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if api_key_id is not None:
             _setter("api_key_id", api_key_id)
         if app_id is not None:
@@ -290,66 +312,6 @@ class WebApp(pulumi.CustomResource):
             * [Official Documentation](https://firebase.google.com/)
 
         ## Example Usage
-        ### Firebase Web App Basic
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_gcp as gcp
-
-        default_project = gcp.organizations.Project("defaultProject",
-            project_id="my-project",
-            org_id="123456789",
-            labels={
-                "firebase": "enabled",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_firebase_project_project = gcp.firebase.Project("defaultFirebase/projectProject", project=default_project.project_id,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        basic_web_app = gcp.firebase.WebApp("basicWebApp",
-            project=default_project.project_id,
-            display_name="Display Name Basic",
-            deletion_policy="DELETE",
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[default_firebase / project_project]))
-        basic_web_app_config = gcp.firebase.get_web_app_config_output(web_app_id=basic_web_app.app_id)
-        default_bucket = gcp.storage.Bucket("defaultBucket", location="US",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_bucket_object = gcp.storage.BucketObject("defaultBucketObject",
-            bucket=default_bucket.name,
-            content=pulumi.Output.all(basic_web_app.app_id, basic_web_app_config, basic_web_app_config, (lambda v, def: v if v is not None else def)(basic_web_app_config["database_url"], ""), (lambda v, def: v if v is not None else def)(basic_web_app_config["storage_bucket"], ""), (lambda v, def: v if v is not None else def)(basic_web_app_config["messaging_sender_id"], ""), (lambda v, def: v if v is not None else def)(basic_web_app_config["measurement_id"], "")).apply(lambda app_id, basic_web_app_config, basic_web_app_config1, s, s1, s2, s3: json.dumps({
-                "appId": app_id,
-                "apiKey": basic_web_app_config.api_key,
-                "authDomain": basic_web_app_config1.auth_domain,
-                "databaseURL": s,
-                "storageBucket": s1,
-                "messagingSenderId": s2,
-                "measurementId": s3,
-            })),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Firebase Web App Custom Api Key
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        web = gcp.projects.ApiKey("web",
-            project="my-project-name",
-            display_name="Display Name",
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                browser_key_restrictions=gcp.projects.ApiKeyRestrictionsBrowserKeyRestrictionsArgs(
-                    allowed_referrers=["*"],
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default = gcp.firebase.WebApp("default",
-            project="my-project-name",
-            display_name="Display Name",
-            api_key_id=web.uid,
-            deletion_policy="DELETE",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -405,66 +367,6 @@ class WebApp(pulumi.CustomResource):
             * [Official Documentation](https://firebase.google.com/)
 
         ## Example Usage
-        ### Firebase Web App Basic
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_gcp as gcp
-
-        default_project = gcp.organizations.Project("defaultProject",
-            project_id="my-project",
-            org_id="123456789",
-            labels={
-                "firebase": "enabled",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_firebase_project_project = gcp.firebase.Project("defaultFirebase/projectProject", project=default_project.project_id,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        basic_web_app = gcp.firebase.WebApp("basicWebApp",
-            project=default_project.project_id,
-            display_name="Display Name Basic",
-            deletion_policy="DELETE",
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[default_firebase / project_project]))
-        basic_web_app_config = gcp.firebase.get_web_app_config_output(web_app_id=basic_web_app.app_id)
-        default_bucket = gcp.storage.Bucket("defaultBucket", location="US",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_bucket_object = gcp.storage.BucketObject("defaultBucketObject",
-            bucket=default_bucket.name,
-            content=pulumi.Output.all(basic_web_app.app_id, basic_web_app_config, basic_web_app_config, (lambda v, def: v if v is not None else def)(basic_web_app_config["database_url"], ""), (lambda v, def: v if v is not None else def)(basic_web_app_config["storage_bucket"], ""), (lambda v, def: v if v is not None else def)(basic_web_app_config["messaging_sender_id"], ""), (lambda v, def: v if v is not None else def)(basic_web_app_config["measurement_id"], "")).apply(lambda app_id, basic_web_app_config, basic_web_app_config1, s, s1, s2, s3: json.dumps({
-                "appId": app_id,
-                "apiKey": basic_web_app_config.api_key,
-                "authDomain": basic_web_app_config1.auth_domain,
-                "databaseURL": s,
-                "storageBucket": s1,
-                "messagingSenderId": s2,
-                "measurementId": s3,
-            })),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Firebase Web App Custom Api Key
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        web = gcp.projects.ApiKey("web",
-            project="my-project-name",
-            display_name="Display Name",
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                browser_key_restrictions=gcp.projects.ApiKeyRestrictionsBrowserKeyRestrictionsArgs(
-                    allowed_referrers=["*"],
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default = gcp.firebase.WebApp("default",
-            project="my-project-name",
-            display_name="Display Name",
-            api_key_id=web.uid,
-            deletion_policy="DELETE",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 

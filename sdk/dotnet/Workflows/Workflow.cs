@@ -19,58 +19,6 @@ namespace Pulumi.Gcp.Workflows
     ///     * [Managing Workflows](https://cloud.google.com/workflows/docs/creating-updating-workflow)
     /// 
     /// ## Example Usage
-    /// ### Workflow Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var testAccount = new Gcp.ServiceAccount.Account("testAccount", new()
-    ///     {
-    ///         AccountId = "my-account",
-    ///         DisplayName = "Test Service Account",
-    ///     });
-    /// 
-    ///     var example = new Gcp.Workflows.Workflow("example", new()
-    ///     {
-    ///         Region = "us-central1",
-    ///         Description = "Magic",
-    ///         ServiceAccount = testAccount.Id,
-    ///         SourceContents = @$"# This is a sample workflow. You can replace it with your source code.
-    /// #
-    /// # This workflow does the following:
-    /// # - reads current time and date information from an external API and stores
-    /// #   the response in currentTime variable
-    /// # - retrieves a list of Wikipedia articles related to the day of the week
-    /// #   from currentTime
-    /// # - returns the list of articles as an output of the workflow
-    /// #
-    /// # Note: In Terraform you need to escape the $$ or it will cause errors.
-    /// 
-    /// - getCurrentTime:
-    ///     call: http.get
-    ///     args:
-    ///         url: https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam
-    ///     result: currentTime
-    /// - readWikipedia:
-    ///     call: http.get
-    ///     args:
-    ///         url: https://en.wikipedia.org/w/api.php
-    ///         query:
-    ///             action: opensearch
-    ///             search: {currentTime.Body.DayOfWeek}
-    ///     result: wikiResult
-    /// - returnOutput:
-    ///     return: {wikiResult.Body[1]}
-    /// ",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

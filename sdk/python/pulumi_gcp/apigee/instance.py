@@ -65,8 +65,8 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             org_id: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
              consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              disk_encryption_key_name: Optional[pulumi.Input[str]] = None,
@@ -74,7 +74,25 @@ class InstanceArgs:
              ip_range: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              peering_cidr_range: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if consumer_accept_lists is None and 'consumerAcceptLists' in kwargs:
+            consumer_accept_lists = kwargs['consumerAcceptLists']
+        if disk_encryption_key_name is None and 'diskEncryptionKeyName' in kwargs:
+            disk_encryption_key_name = kwargs['diskEncryptionKeyName']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if ip_range is None and 'ipRange' in kwargs:
+            ip_range = kwargs['ipRange']
+        if peering_cidr_range is None and 'peeringCidrRange' in kwargs:
+            peering_cidr_range = kwargs['peeringCidrRange']
+
         _setter("location", location)
         _setter("org_id", org_id)
         if consumer_accept_lists is not None:
@@ -293,7 +311,23 @@ class _InstanceState:
              peering_cidr_range: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[str]] = None,
              service_attachment: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if consumer_accept_lists is None and 'consumerAcceptLists' in kwargs:
+            consumer_accept_lists = kwargs['consumerAcceptLists']
+        if disk_encryption_key_name is None and 'diskEncryptionKeyName' in kwargs:
+            disk_encryption_key_name = kwargs['diskEncryptionKeyName']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if ip_range is None and 'ipRange' in kwargs:
+            ip_range = kwargs['ipRange']
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if peering_cidr_range is None and 'peeringCidrRange' in kwargs:
+            peering_cidr_range = kwargs['peeringCidrRange']
+        if service_attachment is None and 'serviceAttachment' in kwargs:
+            service_attachment = kwargs['serviceAttachment']
+
         if consumer_accept_lists is not None:
             _setter("consumer_accept_lists", consumer_accept_lists)
         if description is not None:
@@ -506,131 +540,6 @@ class Instance(pulumi.CustomResource):
             * [Creating a runtime instance](https://cloud.google.com/apigee/docs/api-platform/get-started/create-instance)
 
         ## Example Usage
-        ### Apigee Instance Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        current = gcp.organizations.get_client_config()
-        apigee_network = gcp.compute.Network("apigeeNetwork")
-        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=apigee_network.id)
-        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
-            network=apigee_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[apigee_range.name])
-        apigee_org = gcp.apigee.Organization("apigeeOrg",
-            analytics_region="us-central1",
-            project_id=current.project,
-            authorized_network=apigee_network.id,
-            opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
-        apigee_instance = gcp.apigee.Instance("apigeeInstance",
-            location="us-central1",
-            org_id=apigee_org.id)
-        ```
-        ### Apigee Instance Cidr Range
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        current = gcp.organizations.get_client_config()
-        apigee_network = gcp.compute.Network("apigeeNetwork")
-        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=22,
-            network=apigee_network.id)
-        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
-            network=apigee_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[apigee_range.name])
-        apigee_org = gcp.apigee.Organization("apigeeOrg",
-            analytics_region="us-central1",
-            project_id=current.project,
-            authorized_network=apigee_network.id,
-            opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
-        apigee_instance = gcp.apigee.Instance("apigeeInstance",
-            location="us-central1",
-            org_id=apigee_org.id,
-            peering_cidr_range="SLASH_22")
-        ```
-        ### Apigee Instance Ip Range
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        current = gcp.organizations.get_client_config()
-        apigee_network = gcp.compute.Network("apigeeNetwork")
-        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=22,
-            network=apigee_network.id)
-        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
-            network=apigee_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[apigee_range.name])
-        apigee_org = gcp.apigee.Organization("apigeeOrg",
-            analytics_region="us-central1",
-            project_id=current.project,
-            authorized_network=apigee_network.id,
-            opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
-        apigee_instance = gcp.apigee.Instance("apigeeInstance",
-            location="us-central1",
-            org_id=apigee_org.id,
-            ip_range="10.87.8.0/22")
-        ```
-        ### Apigee Instance Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        current = gcp.organizations.get_client_config()
-        apigee_network = gcp.compute.Network("apigeeNetwork")
-        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=apigee_network.id)
-        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
-            network=apigee_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[apigee_range.name])
-        apigee_keyring = gcp.kms.KeyRing("apigeeKeyring", location="us-central1")
-        apigee_key = gcp.kms.CryptoKey("apigeeKey", key_ring=apigee_keyring.id)
-        apigee_sa = gcp.projects.ServiceIdentity("apigeeSa",
-            project=google_project["project"]["project_id"],
-            service=google_project_service["apigee"]["service"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        apigee_sa_keyuser = gcp.kms.CryptoKeyIAMBinding("apigeeSaKeyuser",
-            crypto_key_id=apigee_key.id,
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            members=[apigee_sa.email.apply(lambda email: f"serviceAccount:{email}")])
-        apigee_org = gcp.apigee.Organization("apigeeOrg",
-            analytics_region="us-central1",
-            display_name="apigee-org",
-            description="Auto-provisioned Apigee Org.",
-            project_id=current.project,
-            authorized_network=apigee_network.id,
-            runtime_database_encryption_key_name=apigee_key.id,
-            opts=pulumi.ResourceOptions(depends_on=[
-                    apigee_vpc_connection,
-                    apigee_sa_keyuser,
-                ]))
-        apigee_instance = gcp.apigee.Instance("apigeeInstance",
-            location="us-central1",
-            description="Auto-managed Apigee Runtime Instance",
-            display_name="my-instance-name",
-            org_id=apigee_org.id,
-            disk_encryption_key_name=apigee_key.id)
-        ```
 
         ## Import
 
@@ -687,131 +596,6 @@ class Instance(pulumi.CustomResource):
             * [Creating a runtime instance](https://cloud.google.com/apigee/docs/api-platform/get-started/create-instance)
 
         ## Example Usage
-        ### Apigee Instance Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        current = gcp.organizations.get_client_config()
-        apigee_network = gcp.compute.Network("apigeeNetwork")
-        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=apigee_network.id)
-        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
-            network=apigee_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[apigee_range.name])
-        apigee_org = gcp.apigee.Organization("apigeeOrg",
-            analytics_region="us-central1",
-            project_id=current.project,
-            authorized_network=apigee_network.id,
-            opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
-        apigee_instance = gcp.apigee.Instance("apigeeInstance",
-            location="us-central1",
-            org_id=apigee_org.id)
-        ```
-        ### Apigee Instance Cidr Range
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        current = gcp.organizations.get_client_config()
-        apigee_network = gcp.compute.Network("apigeeNetwork")
-        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=22,
-            network=apigee_network.id)
-        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
-            network=apigee_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[apigee_range.name])
-        apigee_org = gcp.apigee.Organization("apigeeOrg",
-            analytics_region="us-central1",
-            project_id=current.project,
-            authorized_network=apigee_network.id,
-            opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
-        apigee_instance = gcp.apigee.Instance("apigeeInstance",
-            location="us-central1",
-            org_id=apigee_org.id,
-            peering_cidr_range="SLASH_22")
-        ```
-        ### Apigee Instance Ip Range
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        current = gcp.organizations.get_client_config()
-        apigee_network = gcp.compute.Network("apigeeNetwork")
-        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=22,
-            network=apigee_network.id)
-        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
-            network=apigee_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[apigee_range.name])
-        apigee_org = gcp.apigee.Organization("apigeeOrg",
-            analytics_region="us-central1",
-            project_id=current.project,
-            authorized_network=apigee_network.id,
-            opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
-        apigee_instance = gcp.apigee.Instance("apigeeInstance",
-            location="us-central1",
-            org_id=apigee_org.id,
-            ip_range="10.87.8.0/22")
-        ```
-        ### Apigee Instance Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        current = gcp.organizations.get_client_config()
-        apigee_network = gcp.compute.Network("apigeeNetwork")
-        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=apigee_network.id)
-        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
-            network=apigee_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[apigee_range.name])
-        apigee_keyring = gcp.kms.KeyRing("apigeeKeyring", location="us-central1")
-        apigee_key = gcp.kms.CryptoKey("apigeeKey", key_ring=apigee_keyring.id)
-        apigee_sa = gcp.projects.ServiceIdentity("apigeeSa",
-            project=google_project["project"]["project_id"],
-            service=google_project_service["apigee"]["service"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        apigee_sa_keyuser = gcp.kms.CryptoKeyIAMBinding("apigeeSaKeyuser",
-            crypto_key_id=apigee_key.id,
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            members=[apigee_sa.email.apply(lambda email: f"serviceAccount:{email}")])
-        apigee_org = gcp.apigee.Organization("apigeeOrg",
-            analytics_region="us-central1",
-            display_name="apigee-org",
-            description="Auto-provisioned Apigee Org.",
-            project_id=current.project,
-            authorized_network=apigee_network.id,
-            runtime_database_encryption_key_name=apigee_key.id,
-            opts=pulumi.ResourceOptions(depends_on=[
-                    apigee_vpc_connection,
-                    apigee_sa_keyuser,
-                ]))
-        apigee_instance = gcp.apigee.Instance("apigeeInstance",
-            location="us-central1",
-            description="Auto-managed Apigee Runtime Instance",
-            display_name="my-instance-name",
-            org_id=apigee_org.id,
-            disk_encryption_key_name=apigee_key.id)
-        ```
 
         ## Import
 

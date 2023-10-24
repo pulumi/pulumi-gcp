@@ -17,39 +17,6 @@ import (
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.LookupSnapshot(ctx, &compute.LookupSnapshotArgs{
-//				Name: pulumi.StringRef("my-snapshot"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.LookupSnapshot(ctx, &compute.LookupSnapshotArgs{
-//				Filter:     pulumi.StringRef("name != my-snapshot"),
-//				MostRecent: pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupSnapshot(ctx *pulumi.Context, args *LookupSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupSnapshotResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSnapshotResult

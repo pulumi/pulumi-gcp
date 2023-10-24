@@ -44,11 +44,19 @@ class IAMBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             folder: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             folder: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['IAMBindingConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if folder is None:
+            raise TypeError("Missing 'folder' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("folder", folder)
         _setter("members", members)
         _setter("role", role)
@@ -148,7 +156,9 @@ class _IAMBindingState:
              folder: Optional[pulumi.Input[str]] = None,
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -248,21 +258,6 @@ class IAMBinding(pulumi.CustomResource):
             Use `pulumi import` and inspect the output to ensure
             your existing members are preserved.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        department1 = gcp.organizations.Folder("department1",
-            display_name="Department 1",
-            parent="organizations/1234567")
-        admin = gcp.folder.IAMBinding("admin",
-            folder=department1.name,
-            role="roles/editor",
-            members=["user:alice@gmail.com"])
-        ```
-
         ## Import
 
         IAM binding imports use space-delimited identifiers; first the resource in question and then the role.
@@ -308,21 +303,6 @@ class IAMBinding(pulumi.CustomResource):
         > **Note:** On create, this resource will overwrite members of any existing roles.
             Use `pulumi import` and inspect the output to ensure
             your existing members are preserved.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        department1 = gcp.organizations.Folder("department1",
-            display_name="Department 1",
-            parent="organizations/1234567")
-        admin = gcp.folder.IAMBinding("admin",
-            folder=department1.name,
-            role="roles/editor",
-            members=["user:alice@gmail.com"])
-        ```
 
         ## Import
 
@@ -370,11 +350,7 @@ class IAMBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = IAMBindingArgs.__new__(IAMBindingArgs)
 
-            if condition is not None and not isinstance(condition, IAMBindingConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                IAMBindingConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, IAMBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if folder is None and not opts.urn:
                 raise TypeError("Missing required property 'folder'")

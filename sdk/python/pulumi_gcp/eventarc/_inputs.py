@@ -45,7 +45,13 @@ class TriggerDestinationArgs:
              cloud_run_service: Optional[pulumi.Input['TriggerDestinationCloudRunServiceArgs']] = None,
              gke: Optional[pulumi.Input['TriggerDestinationGkeArgs']] = None,
              workflow: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cloud_function is None and 'cloudFunction' in kwargs:
+            cloud_function = kwargs['cloudFunction']
+        if cloud_run_service is None and 'cloudRunService' in kwargs:
+            cloud_run_service = kwargs['cloudRunService']
+
         if cloud_function is not None:
             _setter("cloud_function", cloud_function)
         if cloud_run_service is not None:
@@ -124,10 +130,14 @@ class TriggerDestinationCloudRunServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service: pulumi.Input[str],
+             service: Optional[pulumi.Input[str]] = None,
              path: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("service", service)
         if path is not None:
             _setter("path", path)
@@ -197,12 +207,22 @@ class TriggerDestinationGkeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster: pulumi.Input[str],
-             location: pulumi.Input[str],
-             namespace: pulumi.Input[str],
-             service: pulumi.Input[str],
+             cluster: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
              path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cluster is None:
+            raise TypeError("Missing 'cluster' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("cluster", cluster)
         _setter("location", location)
         _setter("namespace", namespace)
@@ -293,10 +313,16 @@ class TriggerMatchingCriteriaArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attribute: pulumi.Input[str],
-             value: pulumi.Input[str],
+             attribute: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
              operator: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if attribute is None:
+            raise TypeError("Missing 'attribute' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("attribute", attribute)
         _setter("value", value)
         if operator is not None:
@@ -356,7 +382,9 @@ class TriggerTransportArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              pubsubs: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerTransportPubsubArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if pubsubs is not None:
             _setter("pubsubs", pubsubs)
 
@@ -392,7 +420,9 @@ class TriggerTransportPubsubArgs:
              _setter: Callable[[Any, Any], None],
              subscription: Optional[pulumi.Input[str]] = None,
              topic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if subscription is not None:
             _setter("subscription", subscription)
         if topic is not None:

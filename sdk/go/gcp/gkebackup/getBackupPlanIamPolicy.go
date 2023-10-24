@@ -13,34 +13,6 @@ import (
 )
 
 // Retrieves the current IAM policy data for backupplan
-//
-// ## example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkebackup"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gkebackup.LookupBackupPlanIamPolicy(ctx, &gkebackup.LookupBackupPlanIamPolicyArgs{
-//				Project:  pulumi.StringRef(google_gke_backup_backup_plan.Basic.Project),
-//				Location: pulumi.StringRef(google_gke_backup_backup_plan.Basic.Location),
-//				Name:     google_gke_backup_backup_plan.Basic.Name,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupBackupPlanIamPolicy(ctx *pulumi.Context, args *LookupBackupPlanIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupBackupPlanIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBackupPlanIamPolicyResult

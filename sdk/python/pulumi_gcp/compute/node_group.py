@@ -66,7 +66,7 @@ class NodeGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node_template: pulumi.Input[str],
+             node_template: Optional[pulumi.Input[str]] = None,
              autoscaling_policy: Optional[pulumi.Input['NodeGroupAutoscalingPolicyArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              initial_size: Optional[pulumi.Input[int]] = None,
@@ -77,7 +77,23 @@ class NodeGroupArgs:
              share_settings: Optional[pulumi.Input['NodeGroupShareSettingsArgs']] = None,
              size: Optional[pulumi.Input[int]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if node_template is None and 'nodeTemplate' in kwargs:
+            node_template = kwargs['nodeTemplate']
+        if node_template is None:
+            raise TypeError("Missing 'node_template' argument")
+        if autoscaling_policy is None and 'autoscalingPolicy' in kwargs:
+            autoscaling_policy = kwargs['autoscalingPolicy']
+        if initial_size is None and 'initialSize' in kwargs:
+            initial_size = kwargs['initialSize']
+        if maintenance_policy is None and 'maintenancePolicy' in kwargs:
+            maintenance_policy = kwargs['maintenancePolicy']
+        if maintenance_window is None and 'maintenanceWindow' in kwargs:
+            maintenance_window = kwargs['maintenanceWindow']
+        if share_settings is None and 'shareSettings' in kwargs:
+            share_settings = kwargs['shareSettings']
+
         _setter("node_template", node_template)
         if autoscaling_policy is not None:
             _setter("autoscaling_policy", autoscaling_policy)
@@ -313,7 +329,25 @@ class _NodeGroupState:
              share_settings: Optional[pulumi.Input['NodeGroupShareSettingsArgs']] = None,
              size: Optional[pulumi.Input[int]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if autoscaling_policy is None and 'autoscalingPolicy' in kwargs:
+            autoscaling_policy = kwargs['autoscalingPolicy']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if initial_size is None and 'initialSize' in kwargs:
+            initial_size = kwargs['initialSize']
+        if maintenance_policy is None and 'maintenancePolicy' in kwargs:
+            maintenance_policy = kwargs['maintenancePolicy']
+        if maintenance_window is None and 'maintenanceWindow' in kwargs:
+            maintenance_window = kwargs['maintenanceWindow']
+        if node_template is None and 'nodeTemplate' in kwargs:
+            node_template = kwargs['nodeTemplate']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if share_settings is None and 'shareSettings' in kwargs:
+            share_settings = kwargs['shareSettings']
+
         if autoscaling_policy is not None:
             _setter("autoscaling_policy", autoscaling_policy)
         if creation_timestamp is not None:
@@ -538,70 +572,6 @@ class NodeGroup(pulumi.CustomResource):
         the provider to delete and recreate the node group.
 
         ## Example Usage
-        ### Node Group Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
-            region="us-central1",
-            node_type="n1-node-96-624")
-        nodes = gcp.compute.NodeGroup("nodes",
-            zone="us-central1-a",
-            description="example google_compute_node_group for the Google Provider",
-            size=1,
-            node_template=soletenant_tmpl.id)
-        ```
-        ### Node Group Autoscaling Policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
-            region="us-central1",
-            node_type="n1-node-96-624")
-        nodes = gcp.compute.NodeGroup("nodes",
-            zone="us-central1-a",
-            description="example google_compute_node_group for Google Provider",
-            maintenance_policy="RESTART_IN_PLACE",
-            maintenance_window=gcp.compute.NodeGroupMaintenanceWindowArgs(
-                start_time="08:00",
-            ),
-            initial_size=1,
-            node_template=soletenant_tmpl.id,
-            autoscaling_policy=gcp.compute.NodeGroupAutoscalingPolicyArgs(
-                mode="ONLY_SCALE_OUT",
-                min_nodes=1,
-                max_nodes=10,
-            ))
-        ```
-        ### Node Group Share Settings
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        guest_project = gcp.organizations.Project("guestProject",
-            project_id="project-id",
-            org_id="123456789")
-        soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
-            region="us-central1",
-            node_type="n1-node-96-624")
-        nodes = gcp.compute.NodeGroup("nodes",
-            zone="us-central1-f",
-            description="example google_compute_node_group for Terraform Google Provider",
-            size=1,
-            node_template=soletenant_tmpl.id,
-            share_settings=gcp.compute.NodeGroupShareSettingsArgs(
-                share_type="SPECIFIC_PROJECTS",
-                project_maps=[gcp.compute.NodeGroupShareSettingsProjectMapArgs(
-                    id=guest_project.project_id,
-                    project_id=guest_project.project_id,
-                )],
-            ))
-        ```
 
         ## Import
 
@@ -666,70 +636,6 @@ class NodeGroup(pulumi.CustomResource):
         the provider to delete and recreate the node group.
 
         ## Example Usage
-        ### Node Group Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
-            region="us-central1",
-            node_type="n1-node-96-624")
-        nodes = gcp.compute.NodeGroup("nodes",
-            zone="us-central1-a",
-            description="example google_compute_node_group for the Google Provider",
-            size=1,
-            node_template=soletenant_tmpl.id)
-        ```
-        ### Node Group Autoscaling Policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
-            region="us-central1",
-            node_type="n1-node-96-624")
-        nodes = gcp.compute.NodeGroup("nodes",
-            zone="us-central1-a",
-            description="example google_compute_node_group for Google Provider",
-            maintenance_policy="RESTART_IN_PLACE",
-            maintenance_window=gcp.compute.NodeGroupMaintenanceWindowArgs(
-                start_time="08:00",
-            ),
-            initial_size=1,
-            node_template=soletenant_tmpl.id,
-            autoscaling_policy=gcp.compute.NodeGroupAutoscalingPolicyArgs(
-                mode="ONLY_SCALE_OUT",
-                min_nodes=1,
-                max_nodes=10,
-            ))
-        ```
-        ### Node Group Share Settings
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        guest_project = gcp.organizations.Project("guestProject",
-            project_id="project-id",
-            org_id="123456789")
-        soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
-            region="us-central1",
-            node_type="n1-node-96-624")
-        nodes = gcp.compute.NodeGroup("nodes",
-            zone="us-central1-f",
-            description="example google_compute_node_group for Terraform Google Provider",
-            size=1,
-            node_template=soletenant_tmpl.id,
-            share_settings=gcp.compute.NodeGroupShareSettingsArgs(
-                share_type="SPECIFIC_PROJECTS",
-                project_maps=[gcp.compute.NodeGroupShareSettingsProjectMapArgs(
-                    id=guest_project.project_id,
-                    project_id=guest_project.project_id,
-                )],
-            ))
-        ```
 
         ## Import
 
@@ -790,31 +696,19 @@ class NodeGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NodeGroupArgs.__new__(NodeGroupArgs)
 
-            if autoscaling_policy is not None and not isinstance(autoscaling_policy, NodeGroupAutoscalingPolicyArgs):
-                autoscaling_policy = autoscaling_policy or {}
-                def _setter(key, value):
-                    autoscaling_policy[key] = value
-                NodeGroupAutoscalingPolicyArgs._configure(_setter, **autoscaling_policy)
+            autoscaling_policy = _utilities.configure(autoscaling_policy, NodeGroupAutoscalingPolicyArgs, True)
             __props__.__dict__["autoscaling_policy"] = autoscaling_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["initial_size"] = initial_size
             __props__.__dict__["maintenance_policy"] = maintenance_policy
-            if maintenance_window is not None and not isinstance(maintenance_window, NodeGroupMaintenanceWindowArgs):
-                maintenance_window = maintenance_window or {}
-                def _setter(key, value):
-                    maintenance_window[key] = value
-                NodeGroupMaintenanceWindowArgs._configure(_setter, **maintenance_window)
+            maintenance_window = _utilities.configure(maintenance_window, NodeGroupMaintenanceWindowArgs, True)
             __props__.__dict__["maintenance_window"] = maintenance_window
             __props__.__dict__["name"] = name
             if node_template is None and not opts.urn:
                 raise TypeError("Missing required property 'node_template'")
             __props__.__dict__["node_template"] = node_template
             __props__.__dict__["project"] = project
-            if share_settings is not None and not isinstance(share_settings, NodeGroupShareSettingsArgs):
-                share_settings = share_settings or {}
-                def _setter(key, value):
-                    share_settings[key] = value
-                NodeGroupShareSettingsArgs._configure(_setter, **share_settings)
+            share_settings = _utilities.configure(share_settings, NodeGroupShareSettingsArgs, True)
             __props__.__dict__["share_settings"] = share_settings
             __props__.__dict__["size"] = size
             __props__.__dict__["zone"] = zone

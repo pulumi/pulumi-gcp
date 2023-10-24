@@ -49,7 +49,9 @@ class EnvironmentArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if config is not None:
             _setter("config", config)
         if labels is not None:
@@ -162,7 +164,9 @@ class _EnvironmentState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if config is not None:
             _setter("config", config)
         if labels is not None:
@@ -335,11 +339,7 @@ class Environment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EnvironmentArgs.__new__(EnvironmentArgs)
 
-            if config is not None and not isinstance(config, EnvironmentConfigArgs):
-                config = config or {}
-                def _setter(key, value):
-                    config[key] = value
-                EnvironmentConfigArgs._configure(_setter, **config)
+            config = _utilities.configure(config, EnvironmentConfigArgs, True)
             __props__.__dict__["config"] = config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name

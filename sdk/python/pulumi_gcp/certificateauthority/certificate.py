@@ -70,8 +70,8 @@ class CertificateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             pool: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
+             pool: Optional[pulumi.Input[str]] = None,
              certificate_authority: Optional[pulumi.Input[str]] = None,
              certificate_template: Optional[pulumi.Input[str]] = None,
              config: Optional[pulumi.Input['CertificateConfigArgs']] = None,
@@ -80,7 +80,19 @@ class CertificateArgs:
              name: Optional[pulumi.Input[str]] = None,
              pem_csr: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if pool is None:
+            raise TypeError("Missing 'pool' argument")
+        if certificate_authority is None and 'certificateAuthority' in kwargs:
+            certificate_authority = kwargs['certificateAuthority']
+        if certificate_template is None and 'certificateTemplate' in kwargs:
+            certificate_template = kwargs['certificateTemplate']
+        if pem_csr is None and 'pemCsr' in kwargs:
+            pem_csr = kwargs['pemCsr']
+
         _setter("location", location)
         _setter("pool", pool)
         if certificate_authority is not None:
@@ -341,7 +353,31 @@ class _CertificateState:
              project: Optional[pulumi.Input[str]] = None,
              revocation_details: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateRevocationDetailArgs']]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if certificate_authority is None and 'certificateAuthority' in kwargs:
+            certificate_authority = kwargs['certificateAuthority']
+        if certificate_descriptions is None and 'certificateDescriptions' in kwargs:
+            certificate_descriptions = kwargs['certificateDescriptions']
+        if certificate_template is None and 'certificateTemplate' in kwargs:
+            certificate_template = kwargs['certificateTemplate']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if issuer_certificate_authority is None and 'issuerCertificateAuthority' in kwargs:
+            issuer_certificate_authority = kwargs['issuerCertificateAuthority']
+        if pem_certificate is None and 'pemCertificate' in kwargs:
+            pem_certificate = kwargs['pemCertificate']
+        if pem_certificate_chains is None and 'pemCertificateChains' in kwargs:
+            pem_certificate_chains = kwargs['pemCertificateChains']
+        if pem_certificates is None and 'pemCertificates' in kwargs:
+            pem_certificates = kwargs['pemCertificates']
+        if pem_csr is None and 'pemCsr' in kwargs:
+            pem_csr = kwargs['pemCsr']
+        if revocation_details is None and 'revocationDetails' in kwargs:
+            revocation_details = kwargs['revocationDetails']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if certificate_authority is not None:
             _setter("certificate_authority", certificate_authority)
         if certificate_descriptions is not None:
@@ -646,265 +682,6 @@ class Certificate(pulumi.CustomResource):
         `tier = "ENTERPRISE"`
 
         ## Example Usage
-        ### Privateca Certificate With Template
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_ca_pool = gcp.certificateauthority.CaPool("defaultCaPool",
-            location="us-central1",
-            tier="ENTERPRISE")
-        default_certificate_template = gcp.certificateauthority.CertificateTemplate("defaultCertificateTemplate",
-            location="us-central1",
-            description="An updated sample certificate template",
-            identity_constraints=gcp.certificateauthority.CertificateTemplateIdentityConstraintsArgs(
-                allow_subject_alt_names_passthrough=True,
-                allow_subject_passthrough=True,
-                cel_expression=gcp.certificateauthority.CertificateTemplateIdentityConstraintsCelExpressionArgs(
-                    description="Always true",
-                    expression="true",
-                    location="any.file.anywhere",
-                    title="Sample expression",
-                ),
-            ),
-            passthrough_extensions=gcp.certificateauthority.CertificateTemplatePassthroughExtensionsArgs(
-                additional_extensions=[gcp.certificateauthority.CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs(
-                    object_id_paths=[
-                        1,
-                        6,
-                    ],
-                )],
-                known_extensions=["EXTENDED_KEY_USAGE"],
-            ),
-            predefined_values=gcp.certificateauthority.CertificateTemplatePredefinedValuesArgs(
-                additional_extensions=[gcp.certificateauthority.CertificateTemplatePredefinedValuesAdditionalExtensionArgs(
-                    object_id=gcp.certificateauthority.CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs(
-                        object_id_paths=[
-                            1,
-                            6,
-                        ],
-                    ),
-                    value="c3RyaW5nCg==",
-                    critical=True,
-                )],
-                aia_ocsp_servers=["string"],
-                ca_options=gcp.certificateauthority.CertificateTemplatePredefinedValuesCaOptionsArgs(
-                    is_ca=False,
-                    max_issuer_path_length=6,
-                ),
-                key_usage=gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageArgs(
-                    base_key_usage=gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs(
-                        cert_sign=False,
-                        content_commitment=True,
-                        crl_sign=False,
-                        data_encipherment=True,
-                        decipher_only=True,
-                        digital_signature=True,
-                        encipher_only=True,
-                        key_agreement=True,
-                        key_encipherment=True,
-                    ),
-                    extended_key_usage=gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs(
-                        client_auth=True,
-                        code_signing=True,
-                        email_protection=True,
-                        ocsp_signing=True,
-                        server_auth=True,
-                        time_stamping=True,
-                    ),
-                    unknown_extended_key_usages=[gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs(
-                        object_id_paths=[
-                            1,
-                            6,
-                        ],
-                    )],
-                ),
-                policy_ids=[gcp.certificateauthority.CertificateTemplatePredefinedValuesPolicyIdArgs(
-                    object_id_paths=[
-                        1,
-                        6,
-                    ],
-                )],
-            ))
-        default_authority = gcp.certificateauthority.Authority("defaultAuthority",
-            location="us-central1",
-            pool=default_ca_pool.name,
-            certificate_authority_id="my-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        organization="HashiCorp",
-                        common_name="my-certificate-authority",
-                    ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
-                        dns_names=["hashicorp.com"],
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=False,
-                        ),
-                    ),
-                ),
-            ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
-                algorithm="RSA_PKCS1_4096_SHA256",
-            ),
-            deletion_protection=False,
-            skip_grace_period=True,
-            ignore_active_certificates_on_deletion=True)
-        default_certificate = gcp.certificateauthority.Certificate("defaultCertificate",
-            location="us-central1",
-            pool=default_ca_pool.name,
-            certificate_authority=default_authority.certificate_authority_id,
-            lifetime="860s",
-            pem_csr=(lambda path: open(path).read())("test-fixtures/rsa_csr.pem"),
-            certificate_template=default_certificate_template.id)
-        ```
-        ### Privateca Certificate Csr
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_ca_pool = gcp.certificateauthority.CaPool("defaultCaPool",
-            location="us-central1",
-            tier="ENTERPRISE")
-        default_authority = gcp.certificateauthority.Authority("defaultAuthority",
-            location="us-central1",
-            pool=default_ca_pool.name,
-            certificate_authority_id="my-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        organization="HashiCorp",
-                        common_name="my-certificate-authority",
-                    ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
-                        dns_names=["hashicorp.com"],
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=False,
-                        ),
-                    ),
-                ),
-            ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
-                algorithm="RSA_PKCS1_4096_SHA256",
-            ),
-            deletion_protection=False,
-            skip_grace_period=True,
-            ignore_active_certificates_on_deletion=True)
-        default_certificate = gcp.certificateauthority.Certificate("defaultCertificate",
-            location="us-central1",
-            pool=default_ca_pool.name,
-            certificate_authority=default_authority.certificate_authority_id,
-            lifetime="860s",
-            pem_csr=(lambda path: open(path).read())("test-fixtures/rsa_csr.pem"))
-        ```
-        ### Privateca Certificate No Authority
-
-        ```python
-        import pulumi
-        import base64
-        import pulumi_gcp as gcp
-
-        default_ca_pool = gcp.certificateauthority.CaPool("defaultCaPool",
-            location="us-central1",
-            tier="ENTERPRISE")
-        default_authority = gcp.certificateauthority.Authority("defaultAuthority",
-            location="us-central1",
-            pool=default_ca_pool.name,
-            certificate_authority_id="my-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        organization="HashiCorp",
-                        common_name="my-certificate-authority",
-                    ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
-                        dns_names=["hashicorp.com"],
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            digital_signature=True,
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=True,
-                        ),
-                    ),
-                ),
-            ),
-            lifetime="86400s",
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
-                algorithm="RSA_PKCS1_4096_SHA256",
-            ),
-            deletion_protection=False,
-            skip_grace_period=True,
-            ignore_active_certificates_on_deletion=True)
-        default_certificate = gcp.certificateauthority.Certificate("defaultCertificate",
-            location="us-central1",
-            pool=default_ca_pool.name,
-            lifetime="860s",
-            config=gcp.certificateauthority.CertificateConfigArgs(
-                subject_config=gcp.certificateauthority.CertificateConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.CertificateConfigSubjectConfigSubjectArgs(
-                        common_name="san1.example.com",
-                        country_code="us",
-                        organization="google",
-                        organizational_unit="enterprise",
-                        locality="mountain view",
-                        province="california",
-                        street_address="1600 amphitheatre parkway",
-                        postal_code="94109",
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.CertificateConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.CertificateConfigX509ConfigCaOptionsArgs(
-                        is_ca=False,
-                    ),
-                    key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=True,
-                        ),
-                    ),
-                ),
-                public_key=gcp.certificateauthority.CertificateConfigPublicKeyArgs(
-                    format="PEM",
-                    key=(lambda path: base64.b64encode(open(path).read().encode()).decode())("test-fixtures/rsa_public.pem"),
-                ),
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[default_authority]))
-        ```
 
         ## Import
 
@@ -963,265 +740,6 @@ class Certificate(pulumi.CustomResource):
         `tier = "ENTERPRISE"`
 
         ## Example Usage
-        ### Privateca Certificate With Template
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_ca_pool = gcp.certificateauthority.CaPool("defaultCaPool",
-            location="us-central1",
-            tier="ENTERPRISE")
-        default_certificate_template = gcp.certificateauthority.CertificateTemplate("defaultCertificateTemplate",
-            location="us-central1",
-            description="An updated sample certificate template",
-            identity_constraints=gcp.certificateauthority.CertificateTemplateIdentityConstraintsArgs(
-                allow_subject_alt_names_passthrough=True,
-                allow_subject_passthrough=True,
-                cel_expression=gcp.certificateauthority.CertificateTemplateIdentityConstraintsCelExpressionArgs(
-                    description="Always true",
-                    expression="true",
-                    location="any.file.anywhere",
-                    title="Sample expression",
-                ),
-            ),
-            passthrough_extensions=gcp.certificateauthority.CertificateTemplatePassthroughExtensionsArgs(
-                additional_extensions=[gcp.certificateauthority.CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs(
-                    object_id_paths=[
-                        1,
-                        6,
-                    ],
-                )],
-                known_extensions=["EXTENDED_KEY_USAGE"],
-            ),
-            predefined_values=gcp.certificateauthority.CertificateTemplatePredefinedValuesArgs(
-                additional_extensions=[gcp.certificateauthority.CertificateTemplatePredefinedValuesAdditionalExtensionArgs(
-                    object_id=gcp.certificateauthority.CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs(
-                        object_id_paths=[
-                            1,
-                            6,
-                        ],
-                    ),
-                    value="c3RyaW5nCg==",
-                    critical=True,
-                )],
-                aia_ocsp_servers=["string"],
-                ca_options=gcp.certificateauthority.CertificateTemplatePredefinedValuesCaOptionsArgs(
-                    is_ca=False,
-                    max_issuer_path_length=6,
-                ),
-                key_usage=gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageArgs(
-                    base_key_usage=gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs(
-                        cert_sign=False,
-                        content_commitment=True,
-                        crl_sign=False,
-                        data_encipherment=True,
-                        decipher_only=True,
-                        digital_signature=True,
-                        encipher_only=True,
-                        key_agreement=True,
-                        key_encipherment=True,
-                    ),
-                    extended_key_usage=gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs(
-                        client_auth=True,
-                        code_signing=True,
-                        email_protection=True,
-                        ocsp_signing=True,
-                        server_auth=True,
-                        time_stamping=True,
-                    ),
-                    unknown_extended_key_usages=[gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs(
-                        object_id_paths=[
-                            1,
-                            6,
-                        ],
-                    )],
-                ),
-                policy_ids=[gcp.certificateauthority.CertificateTemplatePredefinedValuesPolicyIdArgs(
-                    object_id_paths=[
-                        1,
-                        6,
-                    ],
-                )],
-            ))
-        default_authority = gcp.certificateauthority.Authority("defaultAuthority",
-            location="us-central1",
-            pool=default_ca_pool.name,
-            certificate_authority_id="my-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        organization="HashiCorp",
-                        common_name="my-certificate-authority",
-                    ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
-                        dns_names=["hashicorp.com"],
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=False,
-                        ),
-                    ),
-                ),
-            ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
-                algorithm="RSA_PKCS1_4096_SHA256",
-            ),
-            deletion_protection=False,
-            skip_grace_period=True,
-            ignore_active_certificates_on_deletion=True)
-        default_certificate = gcp.certificateauthority.Certificate("defaultCertificate",
-            location="us-central1",
-            pool=default_ca_pool.name,
-            certificate_authority=default_authority.certificate_authority_id,
-            lifetime="860s",
-            pem_csr=(lambda path: open(path).read())("test-fixtures/rsa_csr.pem"),
-            certificate_template=default_certificate_template.id)
-        ```
-        ### Privateca Certificate Csr
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_ca_pool = gcp.certificateauthority.CaPool("defaultCaPool",
-            location="us-central1",
-            tier="ENTERPRISE")
-        default_authority = gcp.certificateauthority.Authority("defaultAuthority",
-            location="us-central1",
-            pool=default_ca_pool.name,
-            certificate_authority_id="my-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        organization="HashiCorp",
-                        common_name="my-certificate-authority",
-                    ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
-                        dns_names=["hashicorp.com"],
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=False,
-                        ),
-                    ),
-                ),
-            ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
-                algorithm="RSA_PKCS1_4096_SHA256",
-            ),
-            deletion_protection=False,
-            skip_grace_period=True,
-            ignore_active_certificates_on_deletion=True)
-        default_certificate = gcp.certificateauthority.Certificate("defaultCertificate",
-            location="us-central1",
-            pool=default_ca_pool.name,
-            certificate_authority=default_authority.certificate_authority_id,
-            lifetime="860s",
-            pem_csr=(lambda path: open(path).read())("test-fixtures/rsa_csr.pem"))
-        ```
-        ### Privateca Certificate No Authority
-
-        ```python
-        import pulumi
-        import base64
-        import pulumi_gcp as gcp
-
-        default_ca_pool = gcp.certificateauthority.CaPool("defaultCaPool",
-            location="us-central1",
-            tier="ENTERPRISE")
-        default_authority = gcp.certificateauthority.Authority("defaultAuthority",
-            location="us-central1",
-            pool=default_ca_pool.name,
-            certificate_authority_id="my-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        organization="HashiCorp",
-                        common_name="my-certificate-authority",
-                    ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
-                        dns_names=["hashicorp.com"],
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            digital_signature=True,
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=True,
-                        ),
-                    ),
-                ),
-            ),
-            lifetime="86400s",
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
-                algorithm="RSA_PKCS1_4096_SHA256",
-            ),
-            deletion_protection=False,
-            skip_grace_period=True,
-            ignore_active_certificates_on_deletion=True)
-        default_certificate = gcp.certificateauthority.Certificate("defaultCertificate",
-            location="us-central1",
-            pool=default_ca_pool.name,
-            lifetime="860s",
-            config=gcp.certificateauthority.CertificateConfigArgs(
-                subject_config=gcp.certificateauthority.CertificateConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.CertificateConfigSubjectConfigSubjectArgs(
-                        common_name="san1.example.com",
-                        country_code="us",
-                        organization="google",
-                        organizational_unit="enterprise",
-                        locality="mountain view",
-                        province="california",
-                        street_address="1600 amphitheatre parkway",
-                        postal_code="94109",
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.CertificateConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.CertificateConfigX509ConfigCaOptionsArgs(
-                        is_ca=False,
-                    ),
-                    key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=True,
-                        ),
-                    ),
-                ),
-                public_key=gcp.certificateauthority.CertificateConfigPublicKeyArgs(
-                    format="PEM",
-                    key=(lambda path: base64.b64encode(open(path).read().encode()).decode())("test-fixtures/rsa_public.pem"),
-                ),
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[default_authority]))
-        ```
 
         ## Import
 
@@ -1279,11 +797,7 @@ class Certificate(pulumi.CustomResource):
 
             __props__.__dict__["certificate_authority"] = certificate_authority
             __props__.__dict__["certificate_template"] = certificate_template
-            if config is not None and not isinstance(config, CertificateConfigArgs):
-                config = config or {}
-                def _setter(key, value):
-                    config[key] = value
-                CertificateConfigArgs._configure(_setter, **config)
+            config = _utilities.configure(config, CertificateConfigArgs, True)
             __props__.__dict__["config"] = config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["lifetime"] = lifetime

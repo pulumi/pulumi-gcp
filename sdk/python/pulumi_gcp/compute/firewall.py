@@ -144,7 +144,7 @@ class FirewallArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input[str],
+             network: Optional[pulumi.Input[str]] = None,
              allows: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallAllowArgs']]]] = None,
              denies: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallDenyArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -161,7 +161,27 @@ class FirewallArgs:
              source_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              target_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if destination_ranges is None and 'destinationRanges' in kwargs:
+            destination_ranges = kwargs['destinationRanges']
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if log_config is None and 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if source_ranges is None and 'sourceRanges' in kwargs:
+            source_ranges = kwargs['sourceRanges']
+        if source_service_accounts is None and 'sourceServiceAccounts' in kwargs:
+            source_service_accounts = kwargs['sourceServiceAccounts']
+        if source_tags is None and 'sourceTags' in kwargs:
+            source_tags = kwargs['sourceTags']
+        if target_service_accounts is None and 'targetServiceAccounts' in kwargs:
+            target_service_accounts = kwargs['targetServiceAccounts']
+        if target_tags is None and 'targetTags' in kwargs:
+            target_tags = kwargs['targetTags']
+
         _setter("network", network)
         if allows is not None:
             _setter("allows", allows)
@@ -631,7 +651,29 @@ class _FirewallState:
              source_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              target_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if destination_ranges is None and 'destinationRanges' in kwargs:
+            destination_ranges = kwargs['destinationRanges']
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if log_config is None and 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if source_ranges is None and 'sourceRanges' in kwargs:
+            source_ranges = kwargs['sourceRanges']
+        if source_service_accounts is None and 'sourceServiceAccounts' in kwargs:
+            source_service_accounts = kwargs['sourceServiceAccounts']
+        if source_tags is None and 'sourceTags' in kwargs:
+            source_tags = kwargs['sourceTags']
+        if target_service_accounts is None and 'targetServiceAccounts' in kwargs:
+            target_service_accounts = kwargs['targetServiceAccounts']
+        if target_tags is None and 'targetTags' in kwargs:
+            target_tags = kwargs['targetTags']
+
         if allows is not None:
             _setter("allows", allows)
         if creation_timestamp is not None:
@@ -1018,51 +1060,6 @@ class Firewall(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vpc/docs/firewalls)
 
         ## Example Usage
-        ### Firewall Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork")
-        default_firewall = gcp.compute.Firewall("defaultFirewall",
-            network=default_network.name,
-            allows=[
-                gcp.compute.FirewallAllowArgs(
-                    protocol="icmp",
-                ),
-                gcp.compute.FirewallAllowArgs(
-                    protocol="tcp",
-                    ports=[
-                        "80",
-                        "8080",
-                        "1000-2000",
-                    ],
-                ),
-            ],
-            source_tags=["web"])
-        ```
-        ### Firewall With Target Tags
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        rules = gcp.compute.Firewall("rules",
-            allows=[gcp.compute.FirewallAllowArgs(
-                ports=[
-                    "80",
-                    "8080",
-                    "1000-2000",
-                ],
-                protocol="tcp",
-            )],
-            description="Creates firewall rule targeting tagged instances",
-            network="default",
-            project="my-project-name",
-            source_tags=["foo"],
-            target_tags=["web"])
-        ```
 
         ## Import
 
@@ -1195,51 +1192,6 @@ class Firewall(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vpc/docs/firewalls)
 
         ## Example Usage
-        ### Firewall Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork")
-        default_firewall = gcp.compute.Firewall("defaultFirewall",
-            network=default_network.name,
-            allows=[
-                gcp.compute.FirewallAllowArgs(
-                    protocol="icmp",
-                ),
-                gcp.compute.FirewallAllowArgs(
-                    protocol="tcp",
-                    ports=[
-                        "80",
-                        "8080",
-                        "1000-2000",
-                    ],
-                ),
-            ],
-            source_tags=["web"])
-        ```
-        ### Firewall With Target Tags
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        rules = gcp.compute.Firewall("rules",
-            allows=[gcp.compute.FirewallAllowArgs(
-                ports=[
-                    "80",
-                    "8080",
-                    "1000-2000",
-                ],
-                protocol="tcp",
-            )],
-            description="Creates firewall rule targeting tagged instances",
-            network="default",
-            project="my-project-name",
-            source_tags=["foo"],
-            target_tags=["web"])
-        ```
 
         ## Import
 
@@ -1309,11 +1261,7 @@ class Firewall(pulumi.CustomResource):
             __props__.__dict__["direction"] = direction
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["enable_logging"] = enable_logging
-            if log_config is not None and not isinstance(log_config, FirewallLogConfigArgs):
-                log_config = log_config or {}
-                def _setter(key, value):
-                    log_config[key] = value
-                FirewallLogConfigArgs._configure(_setter, **log_config)
+            log_config = _utilities.configure(log_config, FirewallLogConfigArgs, True)
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["name"] = name
             if network is None and not opts.urn:

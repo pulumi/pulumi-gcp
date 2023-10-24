@@ -37,10 +37,18 @@ class ExtensionsInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config: pulumi.Input['ExtensionsInstanceConfigArgs'],
-             instance_id: pulumi.Input[str],
+             config: Optional[pulumi.Input['ExtensionsInstanceConfigArgs']] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+
         _setter("config", config)
         _setter("instance_id", instance_id)
         if project is not None:
@@ -162,7 +170,25 @@ class _ExtensionsInstanceState:
              service_account_email: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if error_statuses is None and 'errorStatuses' in kwargs:
+            error_statuses = kwargs['errorStatuses']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if last_operation_name is None and 'lastOperationName' in kwargs:
+            last_operation_name = kwargs['lastOperationName']
+        if last_operation_type is None and 'lastOperationType' in kwargs:
+            last_operation_type = kwargs['lastOperationType']
+        if runtime_datas is None and 'runtimeDatas' in kwargs:
+            runtime_datas = kwargs['runtimeDatas']
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if config is not None:
             _setter("config", config)
         if create_time is not None:
@@ -370,46 +396,6 @@ class ExtensionsInstance(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Firebase Extentions Instance Resize Image
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        images = gcp.storage.Bucket("images",
-            project="my-project-name",
-            location="US",
-            uniform_bucket_level_access=True,
-            force_destroy=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        resize_image = gcp.firebase.ExtensionsInstance("resizeImage",
-            project="my-project-name",
-            instance_id="storage-resize-images",
-            config=gcp.firebase.ExtensionsInstanceConfigArgs(
-                extension_ref="firebase/storage-resize-images",
-                extension_version="0.1.37",
-                params={
-                    "DELETE_ORIGINAL_FILE": "false",
-                    "MAKE_PUBLIC": "false",
-                    "IMAGE_TYPE": "false",
-                    "IS_ANIMATED": "true",
-                    "FUNCTION_MEMORY": "1024",
-                    "DO_BACKFILL": "false",
-                    "IMG_SIZES": "200x200",
-                    "IMG_BUCKET": images.name,
-                    "LOCATION": "",
-                },
-                system_params={
-                    "firebaseextensions.v1beta.function/maxInstances": "3000",
-                    "firebaseextensions.v1beta.function/memory": "256",
-                    "firebaseextensions.v1beta.function/minInstances": "0",
-                    "firebaseextensions.v1beta.function/vpcConnectorEgressSettings": "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED",
-                },
-                allowed_event_types=["firebase.extensions.storage-resize-images.v1.complete"],
-                eventarc_channel="projects/my-project-name/locations//channels/firebase",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -444,46 +430,6 @@ class ExtensionsInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Firebase Extentions Instance Resize Image
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        images = gcp.storage.Bucket("images",
-            project="my-project-name",
-            location="US",
-            uniform_bucket_level_access=True,
-            force_destroy=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        resize_image = gcp.firebase.ExtensionsInstance("resizeImage",
-            project="my-project-name",
-            instance_id="storage-resize-images",
-            config=gcp.firebase.ExtensionsInstanceConfigArgs(
-                extension_ref="firebase/storage-resize-images",
-                extension_version="0.1.37",
-                params={
-                    "DELETE_ORIGINAL_FILE": "false",
-                    "MAKE_PUBLIC": "false",
-                    "IMAGE_TYPE": "false",
-                    "IS_ANIMATED": "true",
-                    "FUNCTION_MEMORY": "1024",
-                    "DO_BACKFILL": "false",
-                    "IMG_SIZES": "200x200",
-                    "IMG_BUCKET": images.name,
-                    "LOCATION": "",
-                },
-                system_params={
-                    "firebaseextensions.v1beta.function/maxInstances": "3000",
-                    "firebaseextensions.v1beta.function/memory": "256",
-                    "firebaseextensions.v1beta.function/minInstances": "0",
-                    "firebaseextensions.v1beta.function/vpcConnectorEgressSettings": "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED",
-                },
-                allowed_event_types=["firebase.extensions.storage-resize-images.v1.complete"],
-                eventarc_channel="projects/my-project-name/locations//channels/firebase",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -532,11 +478,7 @@ class ExtensionsInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ExtensionsInstanceArgs.__new__(ExtensionsInstanceArgs)
 
-            if config is not None and not isinstance(config, ExtensionsInstanceConfigArgs):
-                config = config or {}
-                def _setter(key, value):
-                    config[key] = value
-                ExtensionsInstanceConfigArgs._configure(_setter, **config)
+            config = _utilities.configure(config, ExtensionsInstanceConfigArgs, True)
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config

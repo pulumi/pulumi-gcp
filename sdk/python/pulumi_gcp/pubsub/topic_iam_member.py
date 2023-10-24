@@ -53,12 +53,20 @@ class TopicIAMMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
-             topic: pulumi.Input[str],
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             topic: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['TopicIAMMemberConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if topic is None:
+            raise TypeError("Missing 'topic' argument")
+
         _setter("member", member)
         _setter("role", role)
         _setter("topic", topic)
@@ -186,7 +194,9 @@ class _TopicIAMMemberState:
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              topic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -308,48 +318,6 @@ class TopicIAMMember(pulumi.CustomResource):
 
         > **Note:** `pubsub.TopicIAMBinding` resources **can be** used in conjunction with `pubsub.TopicIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_pubsub\\_topic\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.pubsub.TopicIAMPolicy("policy",
-            project=google_pubsub_topic["example"]["project"],
-            topic=google_pubsub_topic["example"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_pubsub\\_topic\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.pubsub.TopicIAMBinding("binding",
-            project=google_pubsub_topic["example"]["project"],
-            topic=google_pubsub_topic["example"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_pubsub\\_topic\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.pubsub.TopicIAMMember("member",
-            project=google_pubsub_topic["example"]["project"],
-            topic=google_pubsub_topic["example"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/topics/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Pub/Sub topic IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -416,48 +384,6 @@ class TopicIAMMember(pulumi.CustomResource):
 
         > **Note:** `pubsub.TopicIAMBinding` resources **can be** used in conjunction with `pubsub.TopicIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_pubsub\\_topic\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.pubsub.TopicIAMPolicy("policy",
-            project=google_pubsub_topic["example"]["project"],
-            topic=google_pubsub_topic["example"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_pubsub\\_topic\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.pubsub.TopicIAMBinding("binding",
-            project=google_pubsub_topic["example"]["project"],
-            topic=google_pubsub_topic["example"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_pubsub\\_topic\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.pubsub.TopicIAMMember("member",
-            project=google_pubsub_topic["example"]["project"],
-            topic=google_pubsub_topic["example"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/topics/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Pub/Sub topic IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -515,11 +441,7 @@ class TopicIAMMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TopicIAMMemberArgs.__new__(TopicIAMMemberArgs)
 
-            if condition is not None and not isinstance(condition, TopicIAMMemberConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                TopicIAMMemberConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, TopicIAMMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")

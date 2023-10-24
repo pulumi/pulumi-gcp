@@ -6,18 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for environment
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.apigee.getEnvironmentIamPolicy({
- *     orgId: google_apigee_environment.apigee_environment.org_id,
- *     envId: google_apigee_environment.apigee_environment.name,
- * });
- * ```
  */
 export function getEnvironmentIamPolicy(args: GetEnvironmentIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentIamPolicyResult> {
 
@@ -61,18 +49,6 @@ export interface GetEnvironmentIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for environment
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.apigee.getEnvironmentIamPolicy({
- *     orgId: google_apigee_environment.apigee_environment.org_id,
- *     envId: google_apigee_environment.apigee_environment.name,
- * });
- * ```
  */
 export function getEnvironmentIamPolicyOutput(args: GetEnvironmentIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getEnvironmentIamPolicy(a, opts))

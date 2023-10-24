@@ -6,19 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for runtime
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.notebooks.getRuntimeIamPolicy({
- *     project: google_notebooks_runtime.runtime.project,
- *     location: google_notebooks_runtime.runtime.location,
- *     runtimeName: google_notebooks_runtime.runtime.name,
- * });
- * ```
  */
 export function getRuntimeIamPolicy(args: GetRuntimeIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRuntimeIamPolicyResult> {
 
@@ -72,19 +59,6 @@ export interface GetRuntimeIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for runtime
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.notebooks.getRuntimeIamPolicy({
- *     project: google_notebooks_runtime.runtime.project,
- *     location: google_notebooks_runtime.runtime.location,
- *     runtimeName: google_notebooks_runtime.runtime.name,
- * });
- * ```
  */
 export function getRuntimeIamPolicyOutput(args: GetRuntimeIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRuntimeIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getRuntimeIamPolicy(a, opts))

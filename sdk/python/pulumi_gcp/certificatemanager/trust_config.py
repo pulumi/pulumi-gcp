@@ -49,13 +49,19 @@ class TrustConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              trust_stores: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if trust_stores is None and 'trustStores' in kwargs:
+            trust_stores = kwargs['trustStores']
+
         _setter("location", location)
         if description is not None:
             _setter("description", description)
@@ -201,7 +207,15 @@ class _TrustConfigState:
              project: Optional[pulumi.Input[str]] = None,
              trust_stores: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreArgs']]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if trust_stores is None and 'trustStores' in kwargs:
+            trust_stores = kwargs['trustStores']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:
@@ -352,27 +366,6 @@ class TrustConfig(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
-        ### Certificate Manager Trust Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.certificatemanager.TrustConfig("default",
-            description="sample description for the trust config",
-            location="us-central1",
-            trust_stores=[gcp.certificatemanager.TrustConfigTrustStoreArgs(
-                trust_anchors=[gcp.certificatemanager.TrustConfigTrustStoreTrustAnchorArgs(
-                    pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
-                )],
-                intermediate_cas=[gcp.certificatemanager.TrustConfigTrustStoreIntermediateCaArgs(
-                    pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
-                )],
-            )],
-            labels={
-                "foo": "bar",
-            })
-        ```
 
         ## Import
 
@@ -425,27 +418,6 @@ class TrustConfig(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
-        ### Certificate Manager Trust Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.certificatemanager.TrustConfig("default",
-            description="sample description for the trust config",
-            location="us-central1",
-            trust_stores=[gcp.certificatemanager.TrustConfigTrustStoreArgs(
-                trust_anchors=[gcp.certificatemanager.TrustConfigTrustStoreTrustAnchorArgs(
-                    pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
-                )],
-                intermediate_cas=[gcp.certificatemanager.TrustConfigTrustStoreIntermediateCaArgs(
-                    pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
-                )],
-            )],
-            labels={
-                "foo": "bar",
-            })
-        ```
 
         ## Import
 

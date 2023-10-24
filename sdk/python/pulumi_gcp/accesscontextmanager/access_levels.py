@@ -36,9 +36,15 @@ class AccessLevelsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parent: pulumi.Input[str],
+             parent: Optional[pulumi.Input[str]] = None,
              access_levels: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if access_levels is None and 'accessLevels' in kwargs:
+            access_levels = kwargs['accessLevels']
+
         _setter("parent", parent)
         if access_levels is not None:
             _setter("access_levels", access_levels)
@@ -98,7 +104,11 @@ class _AccessLevelsState:
              _setter: Callable[[Any, Any], None],
              access_levels: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelArgs']]]] = None,
              parent: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_levels is None and 'accessLevels' in kwargs:
+            access_levels = kwargs['accessLevels']
+
         if access_levels is not None:
             _setter("access_levels", access_levels)
         if parent is not None:
@@ -154,58 +164,6 @@ class AccessLevels(pulumi.CustomResource):
             * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
 
         ## Example Usage
-        ### Access Context Manager Access Levels Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
-            parent="organizations/123456789",
-            title="my policy")
-        access_levels = gcp.accesscontextmanager.AccessLevels("access-levels",
-            access_levels=[
-                gcp.accesscontextmanager.AccessLevelsAccessLevelArgs(
-                    basic=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicArgs(
-                        conditions=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionArgs(
-                            device_policy=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs(
-                                os_constraints=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs(
-                                    os_type="DESKTOP_CHROME_OS",
-                                )],
-                                require_screen_lock=True,
-                            ),
-                            regions=[
-                                "CH",
-                                "IT",
-                                "US",
-                            ],
-                        )],
-                    ),
-                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
-                    title="chromeos_no_lock",
-                ),
-                gcp.accesscontextmanager.AccessLevelsAccessLevelArgs(
-                    basic=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicArgs(
-                        conditions=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionArgs(
-                            device_policy=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs(
-                                os_constraints=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs(
-                                    os_type="DESKTOP_MAC",
-                                )],
-                                require_screen_lock=True,
-                            ),
-                            regions=[
-                                "CH",
-                                "IT",
-                                "US",
-                            ],
-                        )],
-                    ),
-                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/mac_no_lock"),
-                    title="mac_no_lock",
-                ),
-            ],
-            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"))
-        ```
 
         ## Import
 
@@ -247,58 +205,6 @@ class AccessLevels(pulumi.CustomResource):
             * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
 
         ## Example Usage
-        ### Access Context Manager Access Levels Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
-            parent="organizations/123456789",
-            title="my policy")
-        access_levels = gcp.accesscontextmanager.AccessLevels("access-levels",
-            access_levels=[
-                gcp.accesscontextmanager.AccessLevelsAccessLevelArgs(
-                    basic=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicArgs(
-                        conditions=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionArgs(
-                            device_policy=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs(
-                                os_constraints=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs(
-                                    os_type="DESKTOP_CHROME_OS",
-                                )],
-                                require_screen_lock=True,
-                            ),
-                            regions=[
-                                "CH",
-                                "IT",
-                                "US",
-                            ],
-                        )],
-                    ),
-                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
-                    title="chromeos_no_lock",
-                ),
-                gcp.accesscontextmanager.AccessLevelsAccessLevelArgs(
-                    basic=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicArgs(
-                        conditions=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionArgs(
-                            device_policy=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs(
-                                os_constraints=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs(
-                                    os_type="DESKTOP_MAC",
-                                )],
-                                require_screen_lock=True,
-                            ),
-                            regions=[
-                                "CH",
-                                "IT",
-                                "US",
-                            ],
-                        )],
-                    ),
-                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/mac_no_lock"),
-                    title="mac_no_lock",
-                ),
-            ],
-            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"))
-        ```
 
         ## Import
 

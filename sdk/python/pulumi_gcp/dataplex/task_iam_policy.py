@@ -53,12 +53,24 @@ class TaskIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             lake: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
-             task_id: pulumi.Input[str],
+             lake: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             task_id: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if lake is None:
+            raise TypeError("Missing 'lake' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+        if task_id is None and 'taskId' in kwargs:
+            task_id = kwargs['taskId']
+        if task_id is None:
+            raise TypeError("Missing 'task_id' argument")
+
         _setter("lake", lake)
         _setter("policy_data", policy_data)
         _setter("task_id", task_id)
@@ -192,7 +204,13 @@ class _TaskIamPolicyState:
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              task_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if task_id is None and 'taskId' in kwargs:
+            task_id = kwargs['taskId']
+
         if etag is not None:
             _setter("etag", etag)
         if lake is not None:
@@ -318,54 +336,6 @@ class TaskIamPolicy(pulumi.CustomResource):
 
         > **Note:** `dataplex.TaskIamBinding` resources **can be** used in conjunction with `dataplex.TaskIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataplex\\_task\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.dataplex.TaskIamPolicy("policy",
-            project=google_dataplex_task["example"]["project"],
-            location=google_dataplex_task["example"]["location"],
-            lake=google_dataplex_task["example"]["lake"],
-            task_id=google_dataplex_task["example"]["task_id"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_dataplex\\_task\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.dataplex.TaskIamBinding("binding",
-            project=google_dataplex_task["example"]["project"],
-            location=google_dataplex_task["example"]["location"],
-            lake=google_dataplex_task["example"]["lake"],
-            task_id=google_dataplex_task["example"]["task_id"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_dataplex\\_task\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.dataplex.TaskIamMember("member",
-            project=google_dataplex_task["example"]["project"],
-            location=google_dataplex_task["example"]["location"],
-            lake=google_dataplex_task["example"]["lake"],
-            task_id=google_dataplex_task["example"]["task_id"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}} * {{project}}/{{location}}/{{lake}}/{{task_id}} * {{location}}/{{lake}}/{{task_id}} * {{task_id}} Any variables not passed in the import command will be taken from the provider configuration. Dataplex task IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -433,54 +403,6 @@ class TaskIamPolicy(pulumi.CustomResource):
         > **Note:** `dataplex.TaskIamPolicy` **cannot** be used in conjunction with `dataplex.TaskIamBinding` and `dataplex.TaskIamMember` or they will fight over what your policy should be.
 
         > **Note:** `dataplex.TaskIamBinding` resources **can be** used in conjunction with `dataplex.TaskIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\\_dataplex\\_task\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.dataplex.TaskIamPolicy("policy",
-            project=google_dataplex_task["example"]["project"],
-            location=google_dataplex_task["example"]["location"],
-            lake=google_dataplex_task["example"]["lake"],
-            task_id=google_dataplex_task["example"]["task_id"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_dataplex\\_task\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.dataplex.TaskIamBinding("binding",
-            project=google_dataplex_task["example"]["project"],
-            location=google_dataplex_task["example"]["location"],
-            lake=google_dataplex_task["example"]["lake"],
-            task_id=google_dataplex_task["example"]["task_id"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_dataplex\\_task\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.dataplex.TaskIamMember("member",
-            project=google_dataplex_task["example"]["project"],
-            location=google_dataplex_task["example"]["location"],
-            lake=google_dataplex_task["example"]["lake"],
-            task_id=google_dataplex_task["example"]["task_id"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
 
         ## Import
 

@@ -43,10 +43,20 @@ class DatasetIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset_id: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             dataset_id: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if dataset_id is None:
+            raise TypeError("Missing 'dataset_id' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("dataset_id", dataset_id)
         _setter("policy_data", policy_data)
         if project is not None:
@@ -139,7 +149,13 @@ class _DatasetIamPolicyState:
              etag: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if dataset_id is not None:
             _setter("dataset_id", dataset_id)
         if etag is not None:
@@ -237,48 +253,6 @@ class DatasetIamPolicy(pulumi.CustomResource):
 
         > **Note:** `bigquery.DatasetIamBinding` resources **can be** used in conjunction with `bigquery.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_bigquery\\_dataset\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        owner = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/bigquery.dataOwner",
-            members=["user:jane@example.com"],
-        )])
-        dataset_dataset = gcp.bigquery.Dataset("datasetDataset", dataset_id="example_dataset")
-        dataset_dataset_iam_policy = gcp.bigquery.DatasetIamPolicy("datasetDatasetIamPolicy",
-            dataset_id=dataset_dataset.dataset_id,
-            policy_data=owner.policy_data)
-        ```
-
-        ## google\\_bigquery\\_dataset\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
-        reader = gcp.bigquery.DatasetIamBinding("reader",
-            dataset_id=dataset.dataset_id,
-            role="roles/bigquery.dataViewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_bigquery\\_dataset\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
-        editor = gcp.bigquery.DatasetIamMember("editor",
-            dataset_id=dataset.dataset_id,
-            role="roles/bigquery.dataEditor",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
@@ -350,48 +324,6 @@ class DatasetIamPolicy(pulumi.CustomResource):
         > **Note:** `bigquery.DatasetIamPolicy` **cannot** be used in conjunction with `bigquery.DatasetIamBinding` and `bigquery.DatasetIamMember` or they will fight over what your policy should be.
 
         > **Note:** `bigquery.DatasetIamBinding` resources **can be** used in conjunction with `bigquery.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\\_bigquery\\_dataset\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        owner = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/bigquery.dataOwner",
-            members=["user:jane@example.com"],
-        )])
-        dataset_dataset = gcp.bigquery.Dataset("datasetDataset", dataset_id="example_dataset")
-        dataset_dataset_iam_policy = gcp.bigquery.DatasetIamPolicy("datasetDatasetIamPolicy",
-            dataset_id=dataset_dataset.dataset_id,
-            policy_data=owner.policy_data)
-        ```
-
-        ## google\\_bigquery\\_dataset\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
-        reader = gcp.bigquery.DatasetIamBinding("reader",
-            dataset_id=dataset.dataset_id,
-            role="roles/bigquery.dataViewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_bigquery\\_dataset\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
-        editor = gcp.bigquery.DatasetIamMember("editor",
-            dataset_id=dataset.dataset_id,
-            role="roles/bigquery.dataEditor",
-            member="user:jane@example.com")
-        ```
 
         ## Import
 

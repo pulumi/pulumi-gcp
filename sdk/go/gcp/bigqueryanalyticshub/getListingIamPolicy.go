@@ -13,35 +13,6 @@ import (
 )
 
 // Retrieves the current IAM policy data for listing
-//
-// ## example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigqueryanalyticshub"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := bigqueryanalyticshub.LookupListingIamPolicy(ctx, &bigqueryanalyticshub.LookupListingIamPolicyArgs{
-//				Project:        pulumi.StringRef(google_bigquery_analytics_hub_listing.Listing.Project),
-//				Location:       pulumi.StringRef(google_bigquery_analytics_hub_listing.Listing.Location),
-//				DataExchangeId: google_bigquery_analytics_hub_listing.Listing.Data_exchange_id,
-//				ListingId:      google_bigquery_analytics_hub_listing.Listing.Listing_id,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupListingIamPolicy(ctx *pulumi.Context, args *LookupListingIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupListingIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupListingIamPolicyResult

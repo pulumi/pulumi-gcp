@@ -15,61 +15,6 @@ namespace Pulumi.Gcp.Compute
     /// and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
     /// 
     /// ## Example Usage
-    /// ### Empty Instance Group
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var test = new Gcp.Compute.InstanceGroup("test", new()
-    ///     {
-    ///         Description = "Test instance group",
-    ///         Zone = "us-central1-a",
-    ///         Network = google_compute_network.Default.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Example Usage - With instances and named ports
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var webservers = new Gcp.Compute.InstanceGroup("webservers", new()
-    ///     {
-    ///         Description = "Test instance group",
-    ///         Instances = new[]
-    ///         {
-    ///             google_compute_instance.Test.Id,
-    ///             google_compute_instance.Test2.Id,
-    ///         },
-    ///         NamedPorts = new[]
-    ///         {
-    ///             new Gcp.Compute.Inputs.InstanceGroupNamedPortArgs
-    ///             {
-    ///                 Name = "http",
-    ///                 Port = 8080,
-    ///             },
-    ///             new Gcp.Compute.Inputs.InstanceGroupNamedPortArgs
-    ///             {
-    ///                 Name = "https",
-    ///                 Port = 8443,
-    ///             },
-    ///         },
-    ///         Zone = "us-central1-a",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

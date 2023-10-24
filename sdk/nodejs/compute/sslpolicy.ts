@@ -15,26 +15,6 @@ import * as utilities from "../utilities";
  *     * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
  *
  * ## Example Usage
- * ### Ssl Policy Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const prod_ssl_policy = new gcp.compute.SSLPolicy("prod-ssl-policy", {profile: "MODERN"});
- * const nonprod_ssl_policy = new gcp.compute.SSLPolicy("nonprod-ssl-policy", {
- *     minTlsVersion: "TLS_1_2",
- *     profile: "MODERN",
- * });
- * const custom_ssl_policy = new gcp.compute.SSLPolicy("custom-ssl-policy", {
- *     customFeatures: [
- *         "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
- *         "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
- *     ],
- *     minTlsVersion: "TLS_1_2",
- *     profile: "CUSTOM",
- * });
- * ```
  *
  * ## Import
  *

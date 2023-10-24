@@ -18,55 +18,6 @@ import * as utilities from "../utilities";
  *     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
  *
  * ## Example Usage
- * ### Access Context Manager Service Perimeters Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
- *     parent: "organizations/123456789",
- *     title: "my policy",
- * });
- * const service_perimeter = new gcp.accesscontextmanager.ServicePerimeters("service-perimeter", {
- *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
- *     servicePerimeters: [
- *         {
- *             name: pulumi.interpolate`accessPolicies/${access_policy.name}/servicePerimeters/`,
- *             status: {
- *                 restrictedServices: ["storage.googleapis.com"],
- *             },
- *             title: "",
- *         },
- *         {
- *             name: pulumi.interpolate`accessPolicies/${access_policy.name}/servicePerimeters/`,
- *             status: {
- *                 restrictedServices: ["bigtable.googleapis.com"],
- *             },
- *             title: "",
- *         },
- *     ],
- * });
- * const access_level = new gcp.accesscontextmanager.AccessLevel("access-level", {
- *     basic: {
- *         conditions: [{
- *             devicePolicy: {
- *                 osConstraints: [{
- *                     osType: "DESKTOP_CHROME_OS",
- *                 }],
- *                 requireScreenLock: false,
- *             },
- *             regions: [
- *                 "CH",
- *                 "IT",
- *                 "US",
- *             ],
- *         }],
- *     },
- *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
- *     title: "chromeos_no_lock",
- * });
- * ```
  *
  * ## Import
  *

@@ -26,28 +26,6 @@ namespace Pulumi.Gcp.Projects
         /// * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
         /// * How-to Guides
         ///     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var my_project_service = Gcp.Projects.GetProjectService.Invoke(new()
-        ///     {
-        ///         Service = "my-project-service",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectServiceResult> InvokeAsync(GetProjectServiceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectServiceResult>("gcp:projects/getProjectService:getProjectService", args ?? new GetProjectServiceArgs(), options.WithDefaults());
@@ -67,28 +45,6 @@ namespace Pulumi.Gcp.Projects
         /// * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
         /// * How-to Guides
         ///     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var my_project_service = Gcp.Projects.GetProjectService.Invoke(new()
-        ///     {
-        ///         Service = "my-project-service",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectServiceResult> Invoke(GetProjectServiceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectServiceResult>("gcp:projects/getProjectService:getProjectService", args ?? new GetProjectServiceInvokeArgs(), options.WithDefaults());

@@ -47,12 +47,24 @@ class PreventionDeidentifyTemplateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             deidentify_config: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArgs'],
-             parent: pulumi.Input[str],
+             deidentify_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArgs']] = None,
+             parent: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              template_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deidentify_config is None and 'deidentifyConfig' in kwargs:
+            deidentify_config = kwargs['deidentifyConfig']
+        if deidentify_config is None:
+            raise TypeError("Missing 'deidentify_config' argument")
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if template_id is None and 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+
         _setter("deidentify_config", deidentify_config)
         _setter("parent", parent)
         if description is not None:
@@ -181,7 +193,19 @@ class _PreventionDeidentifyTemplateState:
              parent: Optional[pulumi.Input[str]] = None,
              template_id: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if deidentify_config is None and 'deidentifyConfig' in kwargs:
+            deidentify_config = kwargs['deidentifyConfig']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if template_id is None and 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if deidentify_config is not None:
@@ -328,42 +352,6 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
-        ### Dlp Deidentify Template Image Transformations
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.dataloss.PreventionDeidentifyTemplate("basic",
-            deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs(
-                image_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs(
-                    transforms=[
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
-                            redaction_color=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs(
-                                blue=1,
-                                green=0.2,
-                                red=0.5,
-                            ),
-                            selected_info_types=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs(
-                                info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgs(
-                                    name="COLOR_INFO",
-                                    version="latest",
-                                )],
-                            ),
-                        ),
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
-                            all_info_types=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArgs(),
-                        ),
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
-                            all_text=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArgs(),
-                        ),
-                    ],
-                ),
-            ),
-            description="Description",
-            display_name="Displayname",
-            parent="projects/my-project-name")
-        ```
 
         ## Import
 
@@ -412,42 +400,6 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
-        ### Dlp Deidentify Template Image Transformations
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.dataloss.PreventionDeidentifyTemplate("basic",
-            deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs(
-                image_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs(
-                    transforms=[
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
-                            redaction_color=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs(
-                                blue=1,
-                                green=0.2,
-                                red=0.5,
-                            ),
-                            selected_info_types=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs(
-                                info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgs(
-                                    name="COLOR_INFO",
-                                    version="latest",
-                                )],
-                            ),
-                        ),
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
-                            all_info_types=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArgs(),
-                        ),
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
-                            all_text=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArgs(),
-                        ),
-                    ],
-                ),
-            ),
-            description="Description",
-            display_name="Displayname",
-            parent="projects/my-project-name")
-        ```
 
         ## Import
 
@@ -494,11 +446,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PreventionDeidentifyTemplateArgs.__new__(PreventionDeidentifyTemplateArgs)
 
-            if deidentify_config is not None and not isinstance(deidentify_config, PreventionDeidentifyTemplateDeidentifyConfigArgs):
-                deidentify_config = deidentify_config or {}
-                def _setter(key, value):
-                    deidentify_config[key] = value
-                PreventionDeidentifyTemplateDeidentifyConfigArgs._configure(_setter, **deidentify_config)
+            deidentify_config = _utilities.configure(deidentify_config, PreventionDeidentifyTemplateDeidentifyConfigArgs, True)
             if deidentify_config is None and not opts.urn:
                 raise TypeError("Missing required property 'deidentify_config'")
             __props__.__dict__["deidentify_config"] = deidentify_config

@@ -31,23 +31,6 @@ namespace Pulumi.Gcp.Compute
     /// Read more about sensitive data in state.
     /// 
     /// ## Example Usage
-    /// ### Public Ca External Account Key
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var prod = new Gcp.Compute.CaExternalAccountKey("prod", new()
-    ///     {
-    ///         Project = "my-project-name",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

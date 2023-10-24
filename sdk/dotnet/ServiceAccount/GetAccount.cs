@@ -14,29 +14,6 @@ namespace Pulumi.Gcp.ServiceAccount
         /// <summary>
         /// Get the service account from a project. For more information see
         /// the official [API](https://cloud.google.com/compute/docs/access/service-accounts) documentation.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var objectViewer = Gcp.ServiceAccount.GetAccount.Invoke(new()
-        ///     {
-        ///         AccountId = "object-viewer",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountResult> InvokeAsync(GetAccountArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("gcp:serviceAccount/getAccount:getAccount", args ?? new GetAccountArgs(), options.WithDefaults());
@@ -44,29 +21,6 @@ namespace Pulumi.Gcp.ServiceAccount
         /// <summary>
         /// Get the service account from a project. For more information see
         /// the official [API](https://cloud.google.com/compute/docs/access/service-accounts) documentation.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var objectViewer = Gcp.ServiceAccount.GetAccount.Invoke(new()
-        ///     {
-        ///         AccountId = "object-viewer",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccountResult> Invoke(GetAccountInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountResult>("gcp:serviceAccount/getAccount:getAccount", args ?? new GetAccountInvokeArgs(), options.WithDefaults());

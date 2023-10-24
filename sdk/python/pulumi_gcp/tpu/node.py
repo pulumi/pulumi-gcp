@@ -76,8 +76,8 @@ class NodeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_type: pulumi.Input[str],
-             tensorflow_version: pulumi.Input[str],
+             accelerator_type: Optional[pulumi.Input[str]] = None,
+             tensorflow_version: Optional[pulumi.Input[str]] = None,
              cidr_block: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -87,7 +87,23 @@ class NodeArgs:
              scheduling_config: Optional[pulumi.Input['NodeSchedulingConfigArgs']] = None,
              use_service_networking: Optional[pulumi.Input[bool]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if accelerator_type is None and 'acceleratorType' in kwargs:
+            accelerator_type = kwargs['acceleratorType']
+        if accelerator_type is None:
+            raise TypeError("Missing 'accelerator_type' argument")
+        if tensorflow_version is None and 'tensorflowVersion' in kwargs:
+            tensorflow_version = kwargs['tensorflowVersion']
+        if tensorflow_version is None:
+            raise TypeError("Missing 'tensorflow_version' argument")
+        if cidr_block is None and 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if scheduling_config is None and 'schedulingConfig' in kwargs:
+            scheduling_config = kwargs['schedulingConfig']
+        if use_service_networking is None and 'useServiceNetworking' in kwargs:
+            use_service_networking = kwargs['useServiceNetworking']
+
         _setter("accelerator_type", accelerator_type)
         _setter("tensorflow_version", tensorflow_version)
         if cidr_block is not None:
@@ -348,7 +364,23 @@ class _NodeState:
              tensorflow_version: Optional[pulumi.Input[str]] = None,
              use_service_networking: Optional[pulumi.Input[bool]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if accelerator_type is None and 'acceleratorType' in kwargs:
+            accelerator_type = kwargs['acceleratorType']
+        if cidr_block is None and 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if network_endpoints is None and 'networkEndpoints' in kwargs:
+            network_endpoints = kwargs['networkEndpoints']
+        if scheduling_config is None and 'schedulingConfig' in kwargs:
+            scheduling_config = kwargs['schedulingConfig']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if tensorflow_version is None and 'tensorflowVersion' in kwargs:
+            tensorflow_version = kwargs['tensorflowVersion']
+        if use_service_networking is None and 'useServiceNetworking' in kwargs:
+            use_service_networking = kwargs['useServiceNetworking']
+
         if accelerator_type is not None:
             _setter("accelerator_type", accelerator_type)
         if cidr_block is not None:
@@ -584,50 +616,6 @@ class Node(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/tpu/docs/)
 
         ## Example Usage
-        ### Tpu Node Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        available = gcp.tpu.get_tensorflow_versions()
-        tpu = gcp.tpu.Node("tpu",
-            zone="us-central1-b",
-            accelerator_type="v3-8",
-            tensorflow_version=available.versions[0],
-            cidr_block="10.2.0.0/29")
-        ```
-        ### Tpu Node Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        available = gcp.tpu.get_tensorflow_versions()
-        network = gcp.compute.get_network(name="default")
-        service_range = gcp.compute.GlobalAddress("serviceRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=network.id)
-        private_service_connection = gcp.servicenetworking.Connection("privateServiceConnection",
-            network=network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[service_range.name])
-        tpu = gcp.tpu.Node("tpu",
-            zone="us-central1-b",
-            accelerator_type="v3-8",
-            tensorflow_version=available.versions[0],
-            description="Google Provider test TPU",
-            use_service_networking=True,
-            network=private_service_connection.network,
-            labels={
-                "foo": "bar",
-            },
-            scheduling_config=gcp.tpu.NodeSchedulingConfigArgs(
-                preemptible=True,
-            ))
-        ```
 
         ## Import
 
@@ -697,50 +685,6 @@ class Node(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/tpu/docs/)
 
         ## Example Usage
-        ### Tpu Node Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        available = gcp.tpu.get_tensorflow_versions()
-        tpu = gcp.tpu.Node("tpu",
-            zone="us-central1-b",
-            accelerator_type="v3-8",
-            tensorflow_version=available.versions[0],
-            cidr_block="10.2.0.0/29")
-        ```
-        ### Tpu Node Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        available = gcp.tpu.get_tensorflow_versions()
-        network = gcp.compute.get_network(name="default")
-        service_range = gcp.compute.GlobalAddress("serviceRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=network.id)
-        private_service_connection = gcp.servicenetworking.Connection("privateServiceConnection",
-            network=network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[service_range.name])
-        tpu = gcp.tpu.Node("tpu",
-            zone="us-central1-b",
-            accelerator_type="v3-8",
-            tensorflow_version=available.versions[0],
-            description="Google Provider test TPU",
-            use_service_networking=True,
-            network=private_service_connection.network,
-            labels={
-                "foo": "bar",
-            },
-            scheduling_config=gcp.tpu.NodeSchedulingConfigArgs(
-                preemptible=True,
-            ))
-        ```
 
         ## Import
 
@@ -810,11 +754,7 @@ class Node(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
             __props__.__dict__["project"] = project
-            if scheduling_config is not None and not isinstance(scheduling_config, NodeSchedulingConfigArgs):
-                scheduling_config = scheduling_config or {}
-                def _setter(key, value):
-                    scheduling_config[key] = value
-                NodeSchedulingConfigArgs._configure(_setter, **scheduling_config)
+            scheduling_config = _utilities.configure(scheduling_config, NodeSchedulingConfigArgs, True)
             __props__.__dict__["scheduling_config"] = scheduling_config
             if tensorflow_version is None and not opts.urn:
                 raise TypeError("Missing required property 'tensorflow_version'")

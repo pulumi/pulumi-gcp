@@ -52,9 +52,13 @@ class GroupGroupKey(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
+             id: Optional[str] = None,
              namespace: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+
         _setter("id", id)
         if namespace is not None:
             _setter("namespace", namespace)
@@ -115,9 +119,13 @@ class GroupMembershipMemberKey(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
+             id: Optional[str] = None,
              namespace: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+
         _setter("id", id)
         if namespace is not None:
             _setter("namespace", namespace)
@@ -176,9 +184,13 @@ class GroupMembershipPreferredMemberKey(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
+             id: Optional[str] = None,
              namespace: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+
         _setter("id", id)
         if namespace is not None:
             _setter("namespace", namespace)
@@ -227,8 +239,12 @@ class GroupMembershipRole(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -276,15 +292,41 @@ class GetGroupMembershipsMembershipResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             group: str,
-             member_keys: Sequence['outputs.GetGroupMembershipsMembershipMemberKeyResult'],
-             name: str,
-             preferred_member_keys: Sequence['outputs.GetGroupMembershipsMembershipPreferredMemberKeyResult'],
-             roles: Sequence['outputs.GetGroupMembershipsMembershipRoleResult'],
-             type: str,
-             update_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             create_time: Optional[str] = None,
+             group: Optional[str] = None,
+             member_keys: Optional[Sequence['outputs.GetGroupMembershipsMembershipMemberKeyResult']] = None,
+             name: Optional[str] = None,
+             preferred_member_keys: Optional[Sequence['outputs.GetGroupMembershipsMembershipPreferredMemberKeyResult']] = None,
+             roles: Optional[Sequence['outputs.GetGroupMembershipsMembershipRoleResult']] = None,
+             type: Optional[str] = None,
+             update_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if member_keys is None and 'memberKeys' in kwargs:
+            member_keys = kwargs['memberKeys']
+        if member_keys is None:
+            raise TypeError("Missing 'member_keys' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if preferred_member_keys is None and 'preferredMemberKeys' in kwargs:
+            preferred_member_keys = kwargs['preferredMemberKeys']
+        if preferred_member_keys is None:
+            raise TypeError("Missing 'preferred_member_keys' argument")
+        if roles is None:
+            raise TypeError("Missing 'roles' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if update_time is None:
+            raise TypeError("Missing 'update_time' argument")
+
         _setter("create_time", create_time)
         _setter("group", group)
         _setter("member_keys", member_keys)
@@ -375,9 +417,15 @@ class GetGroupMembershipsMembershipMemberKeyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             namespace: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[str] = None,
+             namespace: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+
         _setter("id", id)
         _setter("namespace", namespace)
 
@@ -425,9 +473,15 @@ class GetGroupMembershipsMembershipPreferredMemberKeyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             namespace: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[str] = None,
+             namespace: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+
         _setter("id", id)
         _setter("namespace", namespace)
 
@@ -467,8 +521,12 @@ class GetGroupMembershipsMembershipRoleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -517,16 +575,46 @@ class GetGroupsGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             description: str,
-             display_name: str,
-             group_keys: Sequence['outputs.GetGroupsGroupGroupKeyResult'],
-             initial_group_config: str,
-             labels: Mapping[str, str],
-             name: str,
-             parent: str,
-             update_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             display_name: Optional[str] = None,
+             group_keys: Optional[Sequence['outputs.GetGroupsGroupGroupKeyResult']] = None,
+             initial_group_config: Optional[str] = None,
+             labels: Optional[Mapping[str, str]] = None,
+             name: Optional[str] = None,
+             parent: Optional[str] = None,
+             update_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if group_keys is None and 'groupKeys' in kwargs:
+            group_keys = kwargs['groupKeys']
+        if group_keys is None:
+            raise TypeError("Missing 'group_keys' argument")
+        if initial_group_config is None and 'initialGroupConfig' in kwargs:
+            initial_group_config = kwargs['initialGroupConfig']
+        if initial_group_config is None:
+            raise TypeError("Missing 'initial_group_config' argument")
+        if labels is None:
+            raise TypeError("Missing 'labels' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if update_time is None:
+            raise TypeError("Missing 'update_time' argument")
+
         _setter("create_time", create_time)
         _setter("description", description)
         _setter("display_name", display_name)
@@ -628,9 +716,15 @@ class GetGroupsGroupGroupKeyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             namespace: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[str] = None,
+             namespace: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+
         _setter("id", id)
         _setter("namespace", namespace)
 

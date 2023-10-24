@@ -22,32 +22,6 @@ import (
 //   - [Official Documentation](https://cloud.google.com/game-servers/docs)
 //
 // ## Example Usage
-// ### Game Service Deployment Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gameservices"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gameservices.NewGameServerDeployment(ctx, "default", &gameservices.GameServerDeploymentArgs{
-//				DeploymentId: pulumi.String("tf-test-deployment"),
-//				Description:  pulumi.String("a deployment description"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

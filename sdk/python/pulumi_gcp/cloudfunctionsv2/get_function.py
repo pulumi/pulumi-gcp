@@ -171,16 +171,6 @@ def get_function(location: Optional[str] = None,
 
     * [API documentation](https://cloud.google.com/functions/docs/reference/rest/v2beta/projects.locations.functions).
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    my_function = gcp.cloudfunctionsv2.get_function(location="us-central1",
-        name="function")
-    ```
-
 
     :param str location: The location in which the resource belongs.
            
@@ -222,16 +212,6 @@ def get_function_output(location: Optional[pulumi.Input[str]] = None,
     Get information about a Google Cloud Function (2nd gen). For more information see:
 
     * [API documentation](https://cloud.google.com/functions/docs/reference/rest/v2beta/projects.locations.functions).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    my_function = gcp.cloudfunctionsv2.get_function(location="us-central1",
-        name="function")
-    ```
 
 
     :param str location: The location in which the resource belongs.

@@ -13,48 +13,12 @@ namespace Pulumi.Gcp.Healthcare
     {
         /// <summary>
         /// Retrieves the current IAM policy data for a Google Cloud Healthcare dataset.
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = Gcp.Healthcare.GetDatasetIamPolicy.Invoke(new()
-        ///     {
-        ///         DatasetId = google_healthcare_dataset.Dataset.Id,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetDatasetIamPolicyResult> InvokeAsync(GetDatasetIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatasetIamPolicyResult>("gcp:healthcare/getDatasetIamPolicy:getDatasetIamPolicy", args ?? new GetDatasetIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for a Google Cloud Healthcare dataset.
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = Gcp.Healthcare.GetDatasetIamPolicy.Invoke(new()
-        ///     {
-        ///         DatasetId = google_healthcare_dataset.Dataset.Id,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetDatasetIamPolicyResult> Invoke(GetDatasetIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatasetIamPolicyResult>("gcp:healthcare/getDatasetIamPolicy:getDatasetIamPolicy", args ?? new GetDatasetIamPolicyInvokeArgs(), options.WithDefaults());

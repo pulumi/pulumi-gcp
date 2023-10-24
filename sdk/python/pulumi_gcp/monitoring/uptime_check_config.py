@@ -72,8 +72,8 @@ class UptimeCheckConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             timeout: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
+             timeout: Optional[pulumi.Input[str]] = None,
              checker_type: Optional[pulumi.Input[str]] = None,
              content_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]]] = None,
              http_check: Optional[pulumi.Input['UptimeCheckConfigHttpCheckArgs']] = None,
@@ -84,7 +84,31 @@ class UptimeCheckConfigArgs:
              selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              synthetic_monitor: Optional[pulumi.Input['UptimeCheckConfigSyntheticMonitorArgs']] = None,
              tcp_check: Optional[pulumi.Input['UptimeCheckConfigTcpCheckArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if timeout is None:
+            raise TypeError("Missing 'timeout' argument")
+        if checker_type is None and 'checkerType' in kwargs:
+            checker_type = kwargs['checkerType']
+        if content_matchers is None and 'contentMatchers' in kwargs:
+            content_matchers = kwargs['contentMatchers']
+        if http_check is None and 'httpCheck' in kwargs:
+            http_check = kwargs['httpCheck']
+        if monitored_resource is None and 'monitoredResource' in kwargs:
+            monitored_resource = kwargs['monitoredResource']
+        if resource_group is None and 'resourceGroup' in kwargs:
+            resource_group = kwargs['resourceGroup']
+        if selected_regions is None and 'selectedRegions' in kwargs:
+            selected_regions = kwargs['selectedRegions']
+        if synthetic_monitor is None and 'syntheticMonitor' in kwargs:
+            synthetic_monitor = kwargs['syntheticMonitor']
+        if tcp_check is None and 'tcpCheck' in kwargs:
+            tcp_check = kwargs['tcpCheck']
+
         _setter("display_name", display_name)
         _setter("timeout", timeout)
         if checker_type is not None:
@@ -343,7 +367,29 @@ class _UptimeCheckConfigState:
              tcp_check: Optional[pulumi.Input['UptimeCheckConfigTcpCheckArgs']] = None,
              timeout: Optional[pulumi.Input[str]] = None,
              uptime_check_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if checker_type is None and 'checkerType' in kwargs:
+            checker_type = kwargs['checkerType']
+        if content_matchers is None and 'contentMatchers' in kwargs:
+            content_matchers = kwargs['contentMatchers']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if http_check is None and 'httpCheck' in kwargs:
+            http_check = kwargs['httpCheck']
+        if monitored_resource is None and 'monitoredResource' in kwargs:
+            monitored_resource = kwargs['monitoredResource']
+        if resource_group is None and 'resourceGroup' in kwargs:
+            resource_group = kwargs['resourceGroup']
+        if selected_regions is None and 'selectedRegions' in kwargs:
+            selected_regions = kwargs['selectedRegions']
+        if synthetic_monitor is None and 'syntheticMonitor' in kwargs:
+            synthetic_monitor = kwargs['syntheticMonitor']
+        if tcp_check is None and 'tcpCheck' in kwargs:
+            tcp_check = kwargs['tcpCheck']
+        if uptime_check_id is None and 'uptimeCheckId' in kwargs:
+            uptime_check_id = kwargs['uptimeCheckId']
+
         if checker_type is not None:
             _setter("checker_type", checker_type)
         if content_matchers is not None:
@@ -584,173 +630,6 @@ class UptimeCheckConfig(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
-        ### Uptime Check Config Http
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        http = gcp.monitoring.UptimeCheckConfig("http",
-            checker_type="STATIC_IP_CHECKERS",
-            content_matchers=[gcp.monitoring.UptimeCheckConfigContentMatcherArgs(
-                content="\\"example\\"",
-                json_path_matcher=gcp.monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs(
-                    json_matcher="EXACT_MATCH",
-                    json_path="$.path",
-                ),
-                matcher="MATCHES_JSON_PATH",
-            )],
-            display_name="http-uptime-check",
-            http_check=gcp.monitoring.UptimeCheckConfigHttpCheckArgs(
-                body="Zm9vJTI1M0RiYXI=",
-                content_type="URL_ENCODED",
-                path="some-path",
-                port=8010,
-                request_method="POST",
-            ),
-            monitored_resource=gcp.monitoring.UptimeCheckConfigMonitoredResourceArgs(
-                labels={
-                    "host": "192.168.1.1",
-                    "projectId": "my-project-name",
-                },
-                type="uptime_url",
-            ),
-            timeout="60s")
-        ```
-        ### Uptime Check Config Status Code
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        status_code = gcp.monitoring.UptimeCheckConfig("statusCode",
-            checker_type="STATIC_IP_CHECKERS",
-            content_matchers=[gcp.monitoring.UptimeCheckConfigContentMatcherArgs(
-                content="\\"example\\"",
-                json_path_matcher=gcp.monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs(
-                    json_matcher="EXACT_MATCH",
-                    json_path="$.path",
-                ),
-                matcher="MATCHES_JSON_PATH",
-            )],
-            display_name="http-uptime-check",
-            http_check=gcp.monitoring.UptimeCheckConfigHttpCheckArgs(
-                accepted_response_status_codes=[
-                    gcp.monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs(
-                        status_class="STATUS_CLASS_2XX",
-                    ),
-                    gcp.monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs(
-                        status_value=301,
-                    ),
-                    gcp.monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs(
-                        status_value=302,
-                    ),
-                ],
-                body="Zm9vJTI1M0RiYXI=",
-                content_type="URL_ENCODED",
-                path="some-path",
-                port=8010,
-                request_method="POST",
-            ),
-            monitored_resource=gcp.monitoring.UptimeCheckConfigMonitoredResourceArgs(
-                labels={
-                    "host": "192.168.1.1",
-                    "projectId": "my-project-name",
-                },
-                type="uptime_url",
-            ),
-            timeout="60s")
-        ```
-        ### Uptime Check Config Https
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        https = gcp.monitoring.UptimeCheckConfig("https",
-            content_matchers=[gcp.monitoring.UptimeCheckConfigContentMatcherArgs(
-                content="example",
-                json_path_matcher=gcp.monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs(
-                    json_matcher="REGEX_MATCH",
-                    json_path="$.path",
-                ),
-                matcher="MATCHES_JSON_PATH",
-            )],
-            display_name="https-uptime-check",
-            http_check=gcp.monitoring.UptimeCheckConfigHttpCheckArgs(
-                path="/some-path",
-                port=443,
-                use_ssl=True,
-                validate_ssl=True,
-            ),
-            monitored_resource=gcp.monitoring.UptimeCheckConfigMonitoredResourceArgs(
-                labels={
-                    "host": "192.168.1.1",
-                    "projectId": "my-project-name",
-                },
-                type="uptime_url",
-            ),
-            timeout="60s")
-        ```
-        ### Uptime Check Tcp
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        check = gcp.monitoring.Group("check",
-            display_name="uptime-check-group",
-            filter="resource.metadata.name=has_substring(\\"foo\\")")
-        tcp_group = gcp.monitoring.UptimeCheckConfig("tcpGroup",
-            display_name="tcp-uptime-check",
-            timeout="60s",
-            tcp_check=gcp.monitoring.UptimeCheckConfigTcpCheckArgs(
-                port=888,
-            ),
-            resource_group=gcp.monitoring.UptimeCheckConfigResourceGroupArgs(
-                resource_type="INSTANCE",
-                group_id=check.name,
-            ))
-        ```
-        ### Uptime Check Config Synthetic Monitor
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bucket = gcp.storage.Bucket("bucket",
-            location="US",
-            uniform_bucket_level_access=True)
-        object = gcp.storage.BucketObject("object",
-            bucket=bucket.name,
-            source=pulumi.FileAsset("synthetic-fn-source.zip"))
-        # Add path to the zipped function source code
-        function = gcp.cloudfunctionsv2.Function("function",
-            location="us-central1",
-            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
-                runtime="nodejs16",
-                entry_point="SyntheticFunction",
-                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
-                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
-                        bucket=bucket.name,
-                        object=object.name,
-                    ),
-                ),
-            ),
-            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
-                max_instance_count=1,
-                available_memory="256M",
-                timeout_seconds=60,
-            ))
-        synthetic_monitor = gcp.monitoring.UptimeCheckConfig("syntheticMonitor",
-            display_name="synthetic_monitor",
-            timeout="60s",
-            synthetic_monitor=gcp.monitoring.UptimeCheckConfigSyntheticMonitorArgs(
-                cloud_function_v2=gcp.monitoring.UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args(
-                    name=function.id,
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -805,173 +684,6 @@ class UptimeCheckConfig(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
-        ### Uptime Check Config Http
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        http = gcp.monitoring.UptimeCheckConfig("http",
-            checker_type="STATIC_IP_CHECKERS",
-            content_matchers=[gcp.monitoring.UptimeCheckConfigContentMatcherArgs(
-                content="\\"example\\"",
-                json_path_matcher=gcp.monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs(
-                    json_matcher="EXACT_MATCH",
-                    json_path="$.path",
-                ),
-                matcher="MATCHES_JSON_PATH",
-            )],
-            display_name="http-uptime-check",
-            http_check=gcp.monitoring.UptimeCheckConfigHttpCheckArgs(
-                body="Zm9vJTI1M0RiYXI=",
-                content_type="URL_ENCODED",
-                path="some-path",
-                port=8010,
-                request_method="POST",
-            ),
-            monitored_resource=gcp.monitoring.UptimeCheckConfigMonitoredResourceArgs(
-                labels={
-                    "host": "192.168.1.1",
-                    "projectId": "my-project-name",
-                },
-                type="uptime_url",
-            ),
-            timeout="60s")
-        ```
-        ### Uptime Check Config Status Code
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        status_code = gcp.monitoring.UptimeCheckConfig("statusCode",
-            checker_type="STATIC_IP_CHECKERS",
-            content_matchers=[gcp.monitoring.UptimeCheckConfigContentMatcherArgs(
-                content="\\"example\\"",
-                json_path_matcher=gcp.monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs(
-                    json_matcher="EXACT_MATCH",
-                    json_path="$.path",
-                ),
-                matcher="MATCHES_JSON_PATH",
-            )],
-            display_name="http-uptime-check",
-            http_check=gcp.monitoring.UptimeCheckConfigHttpCheckArgs(
-                accepted_response_status_codes=[
-                    gcp.monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs(
-                        status_class="STATUS_CLASS_2XX",
-                    ),
-                    gcp.monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs(
-                        status_value=301,
-                    ),
-                    gcp.monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs(
-                        status_value=302,
-                    ),
-                ],
-                body="Zm9vJTI1M0RiYXI=",
-                content_type="URL_ENCODED",
-                path="some-path",
-                port=8010,
-                request_method="POST",
-            ),
-            monitored_resource=gcp.monitoring.UptimeCheckConfigMonitoredResourceArgs(
-                labels={
-                    "host": "192.168.1.1",
-                    "projectId": "my-project-name",
-                },
-                type="uptime_url",
-            ),
-            timeout="60s")
-        ```
-        ### Uptime Check Config Https
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        https = gcp.monitoring.UptimeCheckConfig("https",
-            content_matchers=[gcp.monitoring.UptimeCheckConfigContentMatcherArgs(
-                content="example",
-                json_path_matcher=gcp.monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs(
-                    json_matcher="REGEX_MATCH",
-                    json_path="$.path",
-                ),
-                matcher="MATCHES_JSON_PATH",
-            )],
-            display_name="https-uptime-check",
-            http_check=gcp.monitoring.UptimeCheckConfigHttpCheckArgs(
-                path="/some-path",
-                port=443,
-                use_ssl=True,
-                validate_ssl=True,
-            ),
-            monitored_resource=gcp.monitoring.UptimeCheckConfigMonitoredResourceArgs(
-                labels={
-                    "host": "192.168.1.1",
-                    "projectId": "my-project-name",
-                },
-                type="uptime_url",
-            ),
-            timeout="60s")
-        ```
-        ### Uptime Check Tcp
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        check = gcp.monitoring.Group("check",
-            display_name="uptime-check-group",
-            filter="resource.metadata.name=has_substring(\\"foo\\")")
-        tcp_group = gcp.monitoring.UptimeCheckConfig("tcpGroup",
-            display_name="tcp-uptime-check",
-            timeout="60s",
-            tcp_check=gcp.monitoring.UptimeCheckConfigTcpCheckArgs(
-                port=888,
-            ),
-            resource_group=gcp.monitoring.UptimeCheckConfigResourceGroupArgs(
-                resource_type="INSTANCE",
-                group_id=check.name,
-            ))
-        ```
-        ### Uptime Check Config Synthetic Monitor
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bucket = gcp.storage.Bucket("bucket",
-            location="US",
-            uniform_bucket_level_access=True)
-        object = gcp.storage.BucketObject("object",
-            bucket=bucket.name,
-            source=pulumi.FileAsset("synthetic-fn-source.zip"))
-        # Add path to the zipped function source code
-        function = gcp.cloudfunctionsv2.Function("function",
-            location="us-central1",
-            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
-                runtime="nodejs16",
-                entry_point="SyntheticFunction",
-                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
-                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
-                        bucket=bucket.name,
-                        object=object.name,
-                    ),
-                ),
-            ),
-            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
-                max_instance_count=1,
-                available_memory="256M",
-                timeout_seconds=60,
-            ))
-        synthetic_monitor = gcp.monitoring.UptimeCheckConfig("syntheticMonitor",
-            display_name="synthetic_monitor",
-            timeout="60s",
-            synthetic_monitor=gcp.monitoring.UptimeCheckConfigSyntheticMonitorArgs(
-                cloud_function_v2=gcp.monitoring.UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args(
-                    name=function.id,
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -1026,38 +738,18 @@ class UptimeCheckConfig(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
-            if http_check is not None and not isinstance(http_check, UptimeCheckConfigHttpCheckArgs):
-                http_check = http_check or {}
-                def _setter(key, value):
-                    http_check[key] = value
-                UptimeCheckConfigHttpCheckArgs._configure(_setter, **http_check)
+            http_check = _utilities.configure(http_check, UptimeCheckConfigHttpCheckArgs, True)
             __props__.__dict__["http_check"] = http_check
-            if monitored_resource is not None and not isinstance(monitored_resource, UptimeCheckConfigMonitoredResourceArgs):
-                monitored_resource = monitored_resource or {}
-                def _setter(key, value):
-                    monitored_resource[key] = value
-                UptimeCheckConfigMonitoredResourceArgs._configure(_setter, **monitored_resource)
+            monitored_resource = _utilities.configure(monitored_resource, UptimeCheckConfigMonitoredResourceArgs, True)
             __props__.__dict__["monitored_resource"] = monitored_resource
             __props__.__dict__["period"] = period
             __props__.__dict__["project"] = project
-            if resource_group is not None and not isinstance(resource_group, UptimeCheckConfigResourceGroupArgs):
-                resource_group = resource_group or {}
-                def _setter(key, value):
-                    resource_group[key] = value
-                UptimeCheckConfigResourceGroupArgs._configure(_setter, **resource_group)
+            resource_group = _utilities.configure(resource_group, UptimeCheckConfigResourceGroupArgs, True)
             __props__.__dict__["resource_group"] = resource_group
             __props__.__dict__["selected_regions"] = selected_regions
-            if synthetic_monitor is not None and not isinstance(synthetic_monitor, UptimeCheckConfigSyntheticMonitorArgs):
-                synthetic_monitor = synthetic_monitor or {}
-                def _setter(key, value):
-                    synthetic_monitor[key] = value
-                UptimeCheckConfigSyntheticMonitorArgs._configure(_setter, **synthetic_monitor)
+            synthetic_monitor = _utilities.configure(synthetic_monitor, UptimeCheckConfigSyntheticMonitorArgs, True)
             __props__.__dict__["synthetic_monitor"] = synthetic_monitor
-            if tcp_check is not None and not isinstance(tcp_check, UptimeCheckConfigTcpCheckArgs):
-                tcp_check = tcp_check or {}
-                def _setter(key, value):
-                    tcp_check[key] = value
-                UptimeCheckConfigTcpCheckArgs._configure(_setter, **tcp_check)
+            tcp_check = _utilities.configure(tcp_check, UptimeCheckConfigTcpCheckArgs, True)
             __props__.__dict__["tcp_check"] = tcp_check
             if timeout is None and not opts.urn:
                 raise TypeError("Missing required property 'timeout'")

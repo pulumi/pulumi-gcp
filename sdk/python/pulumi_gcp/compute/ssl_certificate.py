@@ -58,13 +58,23 @@ class SSLCertificateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             certificate: pulumi.Input[str],
-             private_key: pulumi.Input[str],
+             certificate: Optional[pulumi.Input[str]] = None,
+             private_key: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              name_prefix: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if certificate is None:
+            raise TypeError("Missing 'certificate' argument")
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if private_key is None:
+            raise TypeError("Missing 'private_key' argument")
+        if name_prefix is None and 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+
         _setter("certificate", certificate)
         _setter("private_key", private_key)
         if description is not None:
@@ -235,7 +245,21 @@ class _SSLCertificateState:
              private_key: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if certificate_id is None and 'certificateId' in kwargs:
+            certificate_id = kwargs['certificateId']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if name_prefix is None and 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if certificate is not None:
             _setter("certificate", certificate)
         if certificate_id is not None:
@@ -422,44 +446,6 @@ class SSLCertificate(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
-        ### Ssl Certificate Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.SSLCertificate("default",
-            name_prefix="my-certificate-",
-            description="a description",
-            private_key=(lambda path: open(path).read())("path/to/private.key"),
-            certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
-        ```
-        ### Ssl Certificate Random Provider
-
-        ```python
-        import pulumi
-        import base64
-        import hashlib
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        def computeFilebase64sha256(path):
-        	fileData = open(path).read().encode()
-        	hashedData = hashlib.sha256(fileData.encode()).digest()
-        	return base64.b64encode(hashedData).decode()
-
-        # You may also want to control name generation explicitly:
-        default = gcp.compute.SSLCertificate("default",
-            private_key=(lambda path: open(path).read())("path/to/private.key"),
-            certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
-        certificate = random.RandomId("certificate",
-            byte_length=4,
-            prefix="my-certificate-",
-            keepers={
-                "private_key": computeFilebase64sha256("path/to/private.key"),
-                "certificate": computeFilebase64sha256("path/to/certificate.crt"),
-            })
-        ```
 
         ## Import
 
@@ -524,44 +510,6 @@ class SSLCertificate(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
-        ### Ssl Certificate Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.SSLCertificate("default",
-            name_prefix="my-certificate-",
-            description="a description",
-            private_key=(lambda path: open(path).read())("path/to/private.key"),
-            certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
-        ```
-        ### Ssl Certificate Random Provider
-
-        ```python
-        import pulumi
-        import base64
-        import hashlib
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        def computeFilebase64sha256(path):
-        	fileData = open(path).read().encode()
-        	hashedData = hashlib.sha256(fileData.encode()).digest()
-        	return base64.b64encode(hashedData).decode()
-
-        # You may also want to control name generation explicitly:
-        default = gcp.compute.SSLCertificate("default",
-            private_key=(lambda path: open(path).read())("path/to/private.key"),
-            certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
-        certificate = random.RandomId("certificate",
-            byte_length=4,
-            prefix="my-certificate-",
-            keepers={
-                "private_key": computeFilebase64sha256("path/to/private.key"),
-                "certificate": computeFilebase64sha256("path/to/certificate.crt"),
-            })
-        ```
 
         ## Import
 

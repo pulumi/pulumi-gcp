@@ -31,10 +31,24 @@ class ConsumersIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             consumer_project: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
-             service_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             consumer_project: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if consumer_project is None and 'consumerProject' in kwargs:
+            consumer_project = kwargs['consumerProject']
+        if consumer_project is None:
+            raise TypeError("Missing 'consumer_project' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+
         _setter("consumer_project", consumer_project)
         _setter("policy_data", policy_data)
         _setter("service_name", service_name)
@@ -98,7 +112,15 @@ class _ConsumersIamPolicyState:
              etag: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if consumer_project is None and 'consumerProject' in kwargs:
+            consumer_project = kwargs['consumerProject']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if consumer_project is not None:
             _setter("consumer_project", consumer_project)
         if etag is not None:

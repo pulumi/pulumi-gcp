@@ -12,39 +12,6 @@ import * as utilities from "../utilities";
  *
  * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     auditConfigs: [{
- *         auditLogConfigs: [
- *             {
- *                 exemptedMembers: ["user:you@domain.com"],
- *                 logType: "DATA_READ",
- *             },
- *             {
- *                 logType: "DATA_WRITE",
- *             },
- *             {
- *                 logType: "ADMIN_READ",
- *             },
- *         ],
- *         service: "cloudkms.googleapis.com",
- *     }],
- *     bindings: [
- *         {
- *             members: ["serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com"],
- *             role: "roles/compute.instanceAdmin",
- *         },
- *         {
- *             members: ["user:alice@gmail.com"],
- *             role: "roles/storage.objectViewer",
- *         },
- *     ],
- * });
- * ```
- *
  * This data source is used to define IAM policies to apply to other resources.
  * Currently, defining a policy through a datasource and referencing that policy
  * from another resource is the only way to apply an IAM policy to a resource.
@@ -99,39 +66,6 @@ export interface GetIAMPolicyResult {
  * other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
  *
  * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     auditConfigs: [{
- *         auditLogConfigs: [
- *             {
- *                 exemptedMembers: ["user:you@domain.com"],
- *                 logType: "DATA_READ",
- *             },
- *             {
- *                 logType: "DATA_WRITE",
- *             },
- *             {
- *                 logType: "ADMIN_READ",
- *             },
- *         ],
- *         service: "cloudkms.googleapis.com",
- *     }],
- *     bindings: [
- *         {
- *             members: ["serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com"],
- *             role: "roles/compute.instanceAdmin",
- *         },
- *         {
- *             members: ["user:alice@gmail.com"],
- *             role: "roles/storage.objectViewer",
- *         },
- *     ],
- * });
- * ```
  *
  * This data source is used to define IAM policies to apply to other resources.
  * Currently, defining a policy through a datasource and referencing that policy

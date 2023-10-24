@@ -77,7 +77,19 @@ class TargetPoolArgs:
              region: Optional[pulumi.Input[str]] = None,
              security_policy: Optional[pulumi.Input[str]] = None,
              session_affinity: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backup_pool is None and 'backupPool' in kwargs:
+            backup_pool = kwargs['backupPool']
+        if failover_ratio is None and 'failoverRatio' in kwargs:
+            failover_ratio = kwargs['failoverRatio']
+        if health_checks is None and 'healthChecks' in kwargs:
+            health_checks = kwargs['healthChecks']
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
+        if session_affinity is None and 'sessionAffinity' in kwargs:
+            session_affinity = kwargs['sessionAffinity']
+
         if backup_pool is not None:
             _setter("backup_pool", backup_pool)
         if description is not None:
@@ -304,7 +316,21 @@ class _TargetPoolState:
              security_policy: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              session_affinity: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backup_pool is None and 'backupPool' in kwargs:
+            backup_pool = kwargs['backupPool']
+        if failover_ratio is None and 'failoverRatio' in kwargs:
+            failover_ratio = kwargs['failoverRatio']
+        if health_checks is None and 'healthChecks' in kwargs:
+            health_checks = kwargs['healthChecks']
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if session_affinity is None and 'sessionAffinity' in kwargs:
+            session_affinity = kwargs['sessionAffinity']
+
         if backup_pool is not None:
             _setter("backup_pool", backup_pool)
         if description is not None:

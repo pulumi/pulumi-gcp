@@ -6,19 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for disk
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.compute.getDiskIamPolicy({
- *     project: google_compute_disk["default"].project,
- *     zone: google_compute_disk["default"].zone,
- *     name: google_compute_disk["default"].name,
- * });
- * ```
  */
 export function getDiskIamPolicy(args: GetDiskIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskIamPolicyResult> {
 
@@ -74,19 +61,6 @@ export interface GetDiskIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for disk
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.compute.getDiskIamPolicy({
- *     project: google_compute_disk["default"].project,
- *     zone: google_compute_disk["default"].zone,
- *     name: google_compute_disk["default"].name,
- * });
- * ```
  */
 export function getDiskIamPolicyOutput(args: GetDiskIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getDiskIamPolicy(a, opts))

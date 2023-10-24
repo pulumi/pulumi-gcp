@@ -17,47 +17,6 @@ namespace Pulumi.Gcp.Storage
     /// and
     /// [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
     /// 
-    /// ## Example Usage
-    /// 
-    /// Example creating a public object in an existing `image-store` bucket.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var picture = new Gcp.Storage.BucketObject("picture", new()
-    ///     {
-    ///         Bucket = "image-store",
-    ///         Source = new FileAsset("/images/nature/garden-tiger-moth.jpg"),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Example creating an empty folder in an existing `image-store` bucket.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var emptyFolder = new Gcp.Storage.BucketObject("emptyFolder", new()
-    ///     {
-    ///         Bucket = "image-store",
-    ///         Content = " ",
-    ///     });
-    /// 
-    ///     // folder name should end with '/'
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// This resource does not support import.

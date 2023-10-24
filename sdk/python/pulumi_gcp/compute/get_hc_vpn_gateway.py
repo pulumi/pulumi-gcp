@@ -124,15 +124,6 @@ def get_hc_vpn_gateway(name: Optional[str] = None,
     """
     Get a HA VPN Gateway within GCE from its name.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    gateway = gcp.compute.get_hc_vpn_gateway(name="foobar")
-    ```
-
 
     :param str name: The name of the forwarding rule.
            
@@ -169,15 +160,6 @@ def get_hc_vpn_gateway_output(name: Optional[pulumi.Input[str]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHcVpnGatewayResult]:
     """
     Get a HA VPN Gateway within GCE from its name.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    gateway = gcp.compute.get_hc_vpn_gateway(name="foobar")
-    ```
 
 
     :param str name: The name of the forwarding rule.

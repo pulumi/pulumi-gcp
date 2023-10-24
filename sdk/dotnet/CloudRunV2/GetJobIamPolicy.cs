@@ -13,56 +13,12 @@ namespace Pulumi.Gcp.CloudRunV2
     {
         /// <summary>
         /// Retrieves the current IAM policy data for job
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.CloudRunV2.GetJobIamPolicy.Invoke(new()
-        ///     {
-        ///         Project = google_cloud_run_v2_job.Default.Project,
-        ///         Location = google_cloud_run_v2_job.Default.Location,
-        ///         Name = google_cloud_run_v2_job.Default.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetJobIamPolicyResult> InvokeAsync(GetJobIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetJobIamPolicyResult>("gcp:cloudrunv2/getJobIamPolicy:getJobIamPolicy", args ?? new GetJobIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for job
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.CloudRunV2.GetJobIamPolicy.Invoke(new()
-        ///     {
-        ///         Project = google_cloud_run_v2_job.Default.Project,
-        ///         Location = google_cloud_run_v2_job.Default.Location,
-        ///         Name = google_cloud_run_v2_job.Default.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetJobIamPolicyResult> Invoke(GetJobIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetJobIamPolicyResult>("gcp:cloudrunv2/getJobIamPolicy:getJobIamPolicy", args ?? new GetJobIamPolicyInvokeArgs(), options.WithDefaults());

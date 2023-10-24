@@ -50,12 +50,20 @@ class InstanceIAMBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             instance: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['InstanceIAMBindingConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if instance is None:
+            raise TypeError("Missing 'instance' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("instance", instance)
         _setter("members", members)
         _setter("role", role)
@@ -177,7 +185,9 @@ class _InstanceIAMBindingState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -295,45 +305,6 @@ class InstanceIAMBinding(pulumi.CustomResource):
 
         > **Note:** `spanner.InstanceIAMBinding` resources **can be** used in conjunction with `spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_spanner\\_instance\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
-        instance = gcp.spanner.InstanceIAMPolicy("instance",
-            instance="your-instance-name",
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_spanner\\_instance\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.spanner.InstanceIAMBinding("instance",
-            instance="your-instance-name",
-            members=["user:jane@example.com"],
-            role="roles/spanner.databaseAdmin")
-        ```
-
-        ## google\\_spanner\\_instance\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.spanner.InstanceIAMMember("instance",
-            instance="your-instance-name",
-            member="user:jane@example.com",
-            role="roles/spanner.databaseAdmin")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* {{project}}/{{name}} * {{name}} (project is taken from provider project) IAM member imports use space-delimited identifiers; the resource in question, the role, and the account, e.g.
@@ -396,45 +367,6 @@ class InstanceIAMBinding(pulumi.CustomResource):
 
         > **Note:** `spanner.InstanceIAMBinding` resources **can be** used in conjunction with `spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_spanner\\_instance\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
-        instance = gcp.spanner.InstanceIAMPolicy("instance",
-            instance="your-instance-name",
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_spanner\\_instance\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.spanner.InstanceIAMBinding("instance",
-            instance="your-instance-name",
-            members=["user:jane@example.com"],
-            role="roles/spanner.databaseAdmin")
-        ```
-
-        ## google\\_spanner\\_instance\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.spanner.InstanceIAMMember("instance",
-            instance="your-instance-name",
-            member="user:jane@example.com",
-            role="roles/spanner.databaseAdmin")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* {{project}}/{{name}} * {{name}} (project is taken from provider project) IAM member imports use space-delimited identifiers; the resource in question, the role, and the account, e.g.
@@ -492,11 +424,7 @@ class InstanceIAMBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceIAMBindingArgs.__new__(InstanceIAMBindingArgs)
 
-            if condition is not None and not isinstance(condition, InstanceIAMBindingConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                InstanceIAMBindingConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, InstanceIAMBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")

@@ -55,12 +55,20 @@ class DicomStoreArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset: pulumi.Input[str],
+             dataset: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              notification_config: Optional[pulumi.Input['DicomStoreNotificationConfigArgs']] = None,
              stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dataset is None:
+            raise TypeError("Missing 'dataset' argument")
+        if notification_config is None and 'notificationConfig' in kwargs:
+            notification_config = kwargs['notificationConfig']
+        if stream_configs is None and 'streamConfigs' in kwargs:
+            stream_configs = kwargs['streamConfigs']
+
         _setter("dataset", dataset)
         if labels is not None:
             _setter("labels", labels)
@@ -198,7 +206,15 @@ class _DicomStoreState:
              notification_config: Optional[pulumi.Input['DicomStoreNotificationConfigArgs']] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if notification_config is None and 'notificationConfig' in kwargs:
+            notification_config = kwargs['notificationConfig']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if stream_configs is None and 'streamConfigs' in kwargs:
+            stream_configs = kwargs['streamConfigs']
+
         if dataset is not None:
             _setter("dataset", dataset)
         if labels is not None:
@@ -322,59 +338,6 @@ class DicomStore(pulumi.CustomResource):
             * [Creating a DICOM store](https://cloud.google.com/healthcare/docs/how-tos/dicom)
 
         ## Example Usage
-        ### Healthcare Dicom Store Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        topic = gcp.pubsub.Topic("topic")
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
-        default = gcp.healthcare.DicomStore("default",
-            dataset=dataset.id,
-            notification_config=gcp.healthcare.DicomStoreNotificationConfigArgs(
-                pubsub_topic=topic.id,
-            ),
-            labels={
-                "label1": "labelvalue1",
-            })
-        ```
-        ### Healthcare Dicom Store Bq Stream
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        topic = gcp.pubsub.Topic("topic", opts=pulumi.ResourceOptions(provider=google_beta))
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        bq_dataset = gcp.bigquery.Dataset("bqDataset",
-            dataset_id="dicom_bq_ds",
-            friendly_name="test",
-            description="This is a test description",
-            location="US",
-            delete_contents_on_destroy=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        bq_table = gcp.bigquery.Table("bqTable",
-            deletion_protection=False,
-            dataset_id=bq_dataset.dataset_id,
-            table_id="dicom_bq_tb",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default = gcp.healthcare.DicomStore("default",
-            dataset=dataset.id,
-            notification_config=gcp.healthcare.DicomStoreNotificationConfigArgs(
-                pubsub_topic=topic.id,
-            ),
-            labels={
-                "label1": "labelvalue1",
-            },
-            stream_configs=[gcp.healthcare.DicomStoreStreamConfigArgs(
-                bigquery_destination=gcp.healthcare.DicomStoreStreamConfigBigqueryDestinationArgs(
-                    table_uri=pulumi.Output.all(bq_dataset.project, bq_dataset.dataset_id, bq_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
-                ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -428,59 +391,6 @@ class DicomStore(pulumi.CustomResource):
             * [Creating a DICOM store](https://cloud.google.com/healthcare/docs/how-tos/dicom)
 
         ## Example Usage
-        ### Healthcare Dicom Store Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        topic = gcp.pubsub.Topic("topic")
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
-        default = gcp.healthcare.DicomStore("default",
-            dataset=dataset.id,
-            notification_config=gcp.healthcare.DicomStoreNotificationConfigArgs(
-                pubsub_topic=topic.id,
-            ),
-            labels={
-                "label1": "labelvalue1",
-            })
-        ```
-        ### Healthcare Dicom Store Bq Stream
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        topic = gcp.pubsub.Topic("topic", opts=pulumi.ResourceOptions(provider=google_beta))
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        bq_dataset = gcp.bigquery.Dataset("bqDataset",
-            dataset_id="dicom_bq_ds",
-            friendly_name="test",
-            description="This is a test description",
-            location="US",
-            delete_contents_on_destroy=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        bq_table = gcp.bigquery.Table("bqTable",
-            deletion_protection=False,
-            dataset_id=bq_dataset.dataset_id,
-            table_id="dicom_bq_tb",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default = gcp.healthcare.DicomStore("default",
-            dataset=dataset.id,
-            notification_config=gcp.healthcare.DicomStoreNotificationConfigArgs(
-                pubsub_topic=topic.id,
-            ),
-            labels={
-                "label1": "labelvalue1",
-            },
-            stream_configs=[gcp.healthcare.DicomStoreStreamConfigArgs(
-                bigquery_destination=gcp.healthcare.DicomStoreStreamConfigBigqueryDestinationArgs(
-                    table_uri=pulumi.Output.all(bq_dataset.project, bq_dataset.dataset_id, bq_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
-                ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -532,11 +442,7 @@ class DicomStore(pulumi.CustomResource):
             __props__.__dict__["dataset"] = dataset
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
-            if notification_config is not None and not isinstance(notification_config, DicomStoreNotificationConfigArgs):
-                notification_config = notification_config or {}
-                def _setter(key, value):
-                    notification_config[key] = value
-                DicomStoreNotificationConfigArgs._configure(_setter, **notification_config)
+            notification_config = _utilities.configure(notification_config, DicomStoreNotificationConfigArgs, True)
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["stream_configs"] = stream_configs
             __props__.__dict__["self_link"] = None

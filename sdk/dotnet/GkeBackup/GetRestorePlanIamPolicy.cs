@@ -13,56 +13,12 @@ namespace Pulumi.Gcp.GkeBackup
     {
         /// <summary>
         /// Retrieves the current IAM policy data for restoreplan
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.GkeBackup.GetRestorePlanIamPolicy.Invoke(new()
-        ///     {
-        ///         Project = google_gke_backup_restore_plan.All_ns.Project,
-        ///         Location = google_gke_backup_restore_plan.All_ns.Location,
-        ///         Name = google_gke_backup_restore_plan.All_ns.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetRestorePlanIamPolicyResult> InvokeAsync(GetRestorePlanIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRestorePlanIamPolicyResult>("gcp:gkebackup/getRestorePlanIamPolicy:getRestorePlanIamPolicy", args ?? new GetRestorePlanIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for restoreplan
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.GkeBackup.GetRestorePlanIamPolicy.Invoke(new()
-        ///     {
-        ///         Project = google_gke_backup_restore_plan.All_ns.Project,
-        ///         Location = google_gke_backup_restore_plan.All_ns.Location,
-        ///         Name = google_gke_backup_restore_plan.All_ns.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetRestorePlanIamPolicyResult> Invoke(GetRestorePlanIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRestorePlanIamPolicyResult>("gcp:gkebackup/getRestorePlanIamPolicy:getRestorePlanIamPolicy", args ?? new GetRestorePlanIamPolicyInvokeArgs(), options.WithDefaults());

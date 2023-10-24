@@ -65,7 +65,13 @@ class TriggerDestination(dict):
              cloud_run_service: Optional['outputs.TriggerDestinationCloudRunService'] = None,
              gke: Optional['outputs.TriggerDestinationGke'] = None,
              workflow: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cloud_function is None and 'cloudFunction' in kwargs:
+            cloud_function = kwargs['cloudFunction']
+        if cloud_run_service is None and 'cloudRunService' in kwargs:
+            cloud_run_service = kwargs['cloudRunService']
+
         if cloud_function is not None:
             _setter("cloud_function", cloud_function)
         if cloud_run_service is not None:
@@ -128,10 +134,14 @@ class TriggerDestinationCloudRunService(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service: str,
+             service: Optional[str] = None,
              path: Optional[str] = None,
              region: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("service", service)
         if path is not None:
             _setter("path", path)
@@ -189,12 +199,22 @@ class TriggerDestinationGke(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster: str,
-             location: str,
-             namespace: str,
-             service: str,
+             cluster: Optional[str] = None,
+             location: Optional[str] = None,
+             namespace: Optional[str] = None,
+             service: Optional[str] = None,
              path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cluster is None:
+            raise TypeError("Missing 'cluster' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("cluster", cluster)
         _setter("location", location)
         _setter("namespace", namespace)
@@ -265,10 +285,16 @@ class TriggerMatchingCriteria(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attribute: str,
-             value: str,
+             attribute: Optional[str] = None,
+             value: Optional[str] = None,
              operator: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if attribute is None:
+            raise TypeError("Missing 'attribute' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("attribute", attribute)
         _setter("value", value)
         if operator is not None:
@@ -316,7 +342,9 @@ class TriggerTransport(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              pubsubs: Optional[Sequence['outputs.TriggerTransportPubsub']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if pubsubs is not None:
             _setter("pubsubs", pubsubs)
 
@@ -348,7 +376,9 @@ class TriggerTransportPubsub(dict):
              _setter: Callable[[Any, Any], None],
              subscription: Optional[str] = None,
              topic: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if subscription is not None:
             _setter("subscription", subscription)
         if topic is not None:

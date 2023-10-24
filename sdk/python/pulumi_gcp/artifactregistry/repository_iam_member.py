@@ -57,13 +57,21 @@ class RepositoryIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             member: pulumi.Input[str],
-             repository: pulumi.Input[str],
-             role: pulumi.Input[str],
+             member: Optional[pulumi.Input[str]] = None,
+             repository: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['RepositoryIamMemberConditionArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if repository is None:
+            raise TypeError("Missing 'repository' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("member", member)
         _setter("repository", repository)
         _setter("role", role)
@@ -211,7 +219,9 @@ class _RepositoryIamMemberState:
              project: Optional[pulumi.Input[str]] = None,
              repository: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -349,51 +359,6 @@ class RepositoryIamMember(pulumi.CustomResource):
 
         > **Note:** `artifactregistry.RepositoryIamBinding` resources **can be** used in conjunction with `artifactregistry.RepositoryIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_artifact\\_registry\\_repository\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/artifactregistry.reader",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.artifactregistry.RepositoryIamPolicy("policy",
-            project=google_artifact_registry_repository["my-repo"]["project"],
-            location=google_artifact_registry_repository["my-repo"]["location"],
-            repository=google_artifact_registry_repository["my-repo"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_artifact\\_registry\\_repository\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.artifactregistry.RepositoryIamBinding("binding",
-            project=google_artifact_registry_repository["my-repo"]["project"],
-            location=google_artifact_registry_repository["my-repo"]["location"],
-            repository=google_artifact_registry_repository["my-repo"]["name"],
-            role="roles/artifactregistry.reader",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_artifact\\_registry\\_repository\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.artifactregistry.RepositoryIamMember("member",
-            project=google_artifact_registry_repository["my-repo"]["project"],
-            location=google_artifact_registry_repository["my-repo"]["location"],
-            repository=google_artifact_registry_repository["my-repo"]["name"],
-            role="roles/artifactregistry.reader",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/repositories/{{repository}} * {{project}}/{{location}}/{{repository}} * {{location}}/{{repository}} * {{repository}} Any variables not passed in the import command will be taken from the provider configuration. Artifact Registry repository IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -462,51 +427,6 @@ class RepositoryIamMember(pulumi.CustomResource):
 
         > **Note:** `artifactregistry.RepositoryIamBinding` resources **can be** used in conjunction with `artifactregistry.RepositoryIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_artifact\\_registry\\_repository\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/artifactregistry.reader",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.artifactregistry.RepositoryIamPolicy("policy",
-            project=google_artifact_registry_repository["my-repo"]["project"],
-            location=google_artifact_registry_repository["my-repo"]["location"],
-            repository=google_artifact_registry_repository["my-repo"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_artifact\\_registry\\_repository\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.artifactregistry.RepositoryIamBinding("binding",
-            project=google_artifact_registry_repository["my-repo"]["project"],
-            location=google_artifact_registry_repository["my-repo"]["location"],
-            repository=google_artifact_registry_repository["my-repo"]["name"],
-            role="roles/artifactregistry.reader",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_artifact\\_registry\\_repository\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.artifactregistry.RepositoryIamMember("member",
-            project=google_artifact_registry_repository["my-repo"]["project"],
-            location=google_artifact_registry_repository["my-repo"]["location"],
-            repository=google_artifact_registry_repository["my-repo"]["name"],
-            role="roles/artifactregistry.reader",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/repositories/{{repository}} * {{project}}/{{location}}/{{repository}} * {{location}}/{{repository}} * {{repository}} Any variables not passed in the import command will be taken from the provider configuration. Artifact Registry repository IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -565,11 +485,7 @@ class RepositoryIamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RepositoryIamMemberArgs.__new__(RepositoryIamMemberArgs)
 
-            if condition is not None and not isinstance(condition, RepositoryIamMemberConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                RepositoryIamMemberConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, RepositoryIamMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             __props__.__dict__["location"] = location
             if member is None and not opts.urn:

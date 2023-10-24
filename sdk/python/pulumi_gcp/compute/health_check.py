@@ -104,7 +104,31 @@ class HealthCheckArgs:
              tcp_health_check: Optional[pulumi.Input['HealthCheckTcpHealthCheckArgs']] = None,
              timeout_sec: Optional[pulumi.Input[int]] = None,
              unhealthy_threshold: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if check_interval_sec is None and 'checkIntervalSec' in kwargs:
+            check_interval_sec = kwargs['checkIntervalSec']
+        if grpc_health_check is None and 'grpcHealthCheck' in kwargs:
+            grpc_health_check = kwargs['grpcHealthCheck']
+        if healthy_threshold is None and 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if http2_health_check is None and 'http2HealthCheck' in kwargs:
+            http2_health_check = kwargs['http2HealthCheck']
+        if http_health_check is None and 'httpHealthCheck' in kwargs:
+            http_health_check = kwargs['httpHealthCheck']
+        if https_health_check is None and 'httpsHealthCheck' in kwargs:
+            https_health_check = kwargs['httpsHealthCheck']
+        if log_config is None and 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if ssl_health_check is None and 'sslHealthCheck' in kwargs:
+            ssl_health_check = kwargs['sslHealthCheck']
+        if tcp_health_check is None and 'tcpHealthCheck' in kwargs:
+            tcp_health_check = kwargs['tcpHealthCheck']
+        if timeout_sec is None and 'timeoutSec' in kwargs:
+            timeout_sec = kwargs['timeoutSec']
+        if unhealthy_threshold is None and 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+
         if check_interval_sec is not None:
             _setter("check_interval_sec", check_interval_sec)
         if description is not None:
@@ -429,7 +453,35 @@ class _HealthCheckState:
              timeout_sec: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
              unhealthy_threshold: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if check_interval_sec is None and 'checkIntervalSec' in kwargs:
+            check_interval_sec = kwargs['checkIntervalSec']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if grpc_health_check is None and 'grpcHealthCheck' in kwargs:
+            grpc_health_check = kwargs['grpcHealthCheck']
+        if healthy_threshold is None and 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if http2_health_check is None and 'http2HealthCheck' in kwargs:
+            http2_health_check = kwargs['http2HealthCheck']
+        if http_health_check is None and 'httpHealthCheck' in kwargs:
+            http_health_check = kwargs['httpHealthCheck']
+        if https_health_check is None and 'httpsHealthCheck' in kwargs:
+            https_health_check = kwargs['httpsHealthCheck']
+        if log_config is None and 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if ssl_health_check is None and 'sslHealthCheck' in kwargs:
+            ssl_health_check = kwargs['sslHealthCheck']
+        if tcp_health_check is None and 'tcpHealthCheck' in kwargs:
+            tcp_health_check = kwargs['tcpHealthCheck']
+        if timeout_sec is None and 'timeoutSec' in kwargs:
+            timeout_sec = kwargs['timeoutSec']
+        if unhealthy_threshold is None and 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+
         if check_interval_sec is not None:
             _setter("check_interval_sec", check_interval_sec)
         if creation_timestamp is not None:
@@ -737,219 +789,6 @@ class HealthCheck(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
 
         ## Example Usage
-        ### Health Check Tcp
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        tcp_health_check = gcp.compute.HealthCheck("tcp-health-check",
-            check_interval_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ),
-            timeout_sec=1)
-        ```
-        ### Health Check Tcp Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        tcp_health_check = gcp.compute.HealthCheck("tcp-health-check",
-            check_interval_sec=1,
-            description="Health check via tcp",
-            healthy_threshold=4,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port_name="health-check-port",
-                port_specification="USE_NAMED_PORT",
-                proxy_header="NONE",
-                request="ARE YOU HEALTHY?",
-                response="I AM HEALTHY",
-            ),
-            timeout_sec=1,
-            unhealthy_threshold=5)
-        ```
-        ### Health Check Ssl
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        ssl_health_check = gcp.compute.HealthCheck("ssl-health-check",
-            check_interval_sec=1,
-            ssl_health_check=gcp.compute.HealthCheckSslHealthCheckArgs(
-                port=443,
-            ),
-            timeout_sec=1)
-        ```
-        ### Health Check Ssl Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        ssl_health_check = gcp.compute.HealthCheck("ssl-health-check",
-            check_interval_sec=1,
-            description="Health check via ssl",
-            healthy_threshold=4,
-            ssl_health_check=gcp.compute.HealthCheckSslHealthCheckArgs(
-                port_name="health-check-port",
-                port_specification="USE_NAMED_PORT",
-                proxy_header="NONE",
-                request="ARE YOU HEALTHY?",
-                response="I AM HEALTHY",
-            ),
-            timeout_sec=1,
-            unhealthy_threshold=5)
-        ```
-        ### Health Check Http
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        http_health_check = gcp.compute.HealthCheck("http-health-check",
-            check_interval_sec=1,
-            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
-                port=80,
-            ),
-            timeout_sec=1)
-        ```
-        ### Health Check Http Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        http_health_check = gcp.compute.HealthCheck("http-health-check",
-            check_interval_sec=1,
-            description="Health check via http",
-            healthy_threshold=4,
-            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
-                host="1.2.3.4",
-                port_name="health-check-port",
-                port_specification="USE_NAMED_PORT",
-                proxy_header="NONE",
-                request_path="/mypath",
-                response="I AM HEALTHY",
-            ),
-            timeout_sec=1,
-            unhealthy_threshold=5)
-        ```
-        ### Health Check Https
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        https_health_check = gcp.compute.HealthCheck("https-health-check",
-            check_interval_sec=1,
-            https_health_check=gcp.compute.HealthCheckHttpsHealthCheckArgs(
-                port=443,
-            ),
-            timeout_sec=1)
-        ```
-        ### Health Check Https Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        https_health_check = gcp.compute.HealthCheck("https-health-check",
-            check_interval_sec=1,
-            description="Health check via https",
-            healthy_threshold=4,
-            https_health_check=gcp.compute.HealthCheckHttpsHealthCheckArgs(
-                host="1.2.3.4",
-                port_name="health-check-port",
-                port_specification="USE_NAMED_PORT",
-                proxy_header="NONE",
-                request_path="/mypath",
-                response="I AM HEALTHY",
-            ),
-            timeout_sec=1,
-            unhealthy_threshold=5)
-        ```
-        ### Health Check Http2
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        http2_health_check = gcp.compute.HealthCheck("http2-health-check",
-            check_interval_sec=1,
-            http2_health_check=gcp.compute.HealthCheckHttp2HealthCheckArgs(
-                port=443,
-            ),
-            timeout_sec=1)
-        ```
-        ### Health Check Http2 Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        http2_health_check = gcp.compute.HealthCheck("http2-health-check",
-            check_interval_sec=1,
-            description="Health check via http2",
-            healthy_threshold=4,
-            http2_health_check=gcp.compute.HealthCheckHttp2HealthCheckArgs(
-                host="1.2.3.4",
-                port_name="health-check-port",
-                port_specification="USE_NAMED_PORT",
-                proxy_header="NONE",
-                request_path="/mypath",
-                response="I AM HEALTHY",
-            ),
-            timeout_sec=1,
-            unhealthy_threshold=5)
-        ```
-        ### Health Check Grpc
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        grpc_health_check = gcp.compute.HealthCheck("grpc-health-check",
-            check_interval_sec=1,
-            grpc_health_check=gcp.compute.HealthCheckGrpcHealthCheckArgs(
-                port=443,
-            ),
-            timeout_sec=1)
-        ```
-        ### Health Check Grpc Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        grpc_health_check = gcp.compute.HealthCheck("grpc-health-check",
-            check_interval_sec=1,
-            grpc_health_check=gcp.compute.HealthCheckGrpcHealthCheckArgs(
-                grpc_service_name="testservice",
-                port_name="health-check-port",
-                port_specification="USE_NAMED_PORT",
-            ),
-            timeout_sec=1)
-        ```
-        ### Health Check With Logging
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        health_check_with_logging = gcp.compute.HealthCheck("health-check-with-logging",
-            timeout_sec=1,
-            check_interval_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=22,
-            ),
-            log_config=gcp.compute.HealthCheckLogConfigArgs(
-                enable=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -1037,219 +876,6 @@ class HealthCheck(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
 
         ## Example Usage
-        ### Health Check Tcp
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        tcp_health_check = gcp.compute.HealthCheck("tcp-health-check",
-            check_interval_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ),
-            timeout_sec=1)
-        ```
-        ### Health Check Tcp Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        tcp_health_check = gcp.compute.HealthCheck("tcp-health-check",
-            check_interval_sec=1,
-            description="Health check via tcp",
-            healthy_threshold=4,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port_name="health-check-port",
-                port_specification="USE_NAMED_PORT",
-                proxy_header="NONE",
-                request="ARE YOU HEALTHY?",
-                response="I AM HEALTHY",
-            ),
-            timeout_sec=1,
-            unhealthy_threshold=5)
-        ```
-        ### Health Check Ssl
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        ssl_health_check = gcp.compute.HealthCheck("ssl-health-check",
-            check_interval_sec=1,
-            ssl_health_check=gcp.compute.HealthCheckSslHealthCheckArgs(
-                port=443,
-            ),
-            timeout_sec=1)
-        ```
-        ### Health Check Ssl Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        ssl_health_check = gcp.compute.HealthCheck("ssl-health-check",
-            check_interval_sec=1,
-            description="Health check via ssl",
-            healthy_threshold=4,
-            ssl_health_check=gcp.compute.HealthCheckSslHealthCheckArgs(
-                port_name="health-check-port",
-                port_specification="USE_NAMED_PORT",
-                proxy_header="NONE",
-                request="ARE YOU HEALTHY?",
-                response="I AM HEALTHY",
-            ),
-            timeout_sec=1,
-            unhealthy_threshold=5)
-        ```
-        ### Health Check Http
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        http_health_check = gcp.compute.HealthCheck("http-health-check",
-            check_interval_sec=1,
-            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
-                port=80,
-            ),
-            timeout_sec=1)
-        ```
-        ### Health Check Http Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        http_health_check = gcp.compute.HealthCheck("http-health-check",
-            check_interval_sec=1,
-            description="Health check via http",
-            healthy_threshold=4,
-            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
-                host="1.2.3.4",
-                port_name="health-check-port",
-                port_specification="USE_NAMED_PORT",
-                proxy_header="NONE",
-                request_path="/mypath",
-                response="I AM HEALTHY",
-            ),
-            timeout_sec=1,
-            unhealthy_threshold=5)
-        ```
-        ### Health Check Https
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        https_health_check = gcp.compute.HealthCheck("https-health-check",
-            check_interval_sec=1,
-            https_health_check=gcp.compute.HealthCheckHttpsHealthCheckArgs(
-                port=443,
-            ),
-            timeout_sec=1)
-        ```
-        ### Health Check Https Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        https_health_check = gcp.compute.HealthCheck("https-health-check",
-            check_interval_sec=1,
-            description="Health check via https",
-            healthy_threshold=4,
-            https_health_check=gcp.compute.HealthCheckHttpsHealthCheckArgs(
-                host="1.2.3.4",
-                port_name="health-check-port",
-                port_specification="USE_NAMED_PORT",
-                proxy_header="NONE",
-                request_path="/mypath",
-                response="I AM HEALTHY",
-            ),
-            timeout_sec=1,
-            unhealthy_threshold=5)
-        ```
-        ### Health Check Http2
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        http2_health_check = gcp.compute.HealthCheck("http2-health-check",
-            check_interval_sec=1,
-            http2_health_check=gcp.compute.HealthCheckHttp2HealthCheckArgs(
-                port=443,
-            ),
-            timeout_sec=1)
-        ```
-        ### Health Check Http2 Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        http2_health_check = gcp.compute.HealthCheck("http2-health-check",
-            check_interval_sec=1,
-            description="Health check via http2",
-            healthy_threshold=4,
-            http2_health_check=gcp.compute.HealthCheckHttp2HealthCheckArgs(
-                host="1.2.3.4",
-                port_name="health-check-port",
-                port_specification="USE_NAMED_PORT",
-                proxy_header="NONE",
-                request_path="/mypath",
-                response="I AM HEALTHY",
-            ),
-            timeout_sec=1,
-            unhealthy_threshold=5)
-        ```
-        ### Health Check Grpc
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        grpc_health_check = gcp.compute.HealthCheck("grpc-health-check",
-            check_interval_sec=1,
-            grpc_health_check=gcp.compute.HealthCheckGrpcHealthCheckArgs(
-                port=443,
-            ),
-            timeout_sec=1)
-        ```
-        ### Health Check Grpc Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        grpc_health_check = gcp.compute.HealthCheck("grpc-health-check",
-            check_interval_sec=1,
-            grpc_health_check=gcp.compute.HealthCheckGrpcHealthCheckArgs(
-                grpc_service_name="testservice",
-                port_name="health-check-port",
-                port_specification="USE_NAMED_PORT",
-            ),
-            timeout_sec=1)
-        ```
-        ### Health Check With Logging
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        health_check_with_logging = gcp.compute.HealthCheck("health-check-with-logging",
-            timeout_sec=1,
-            check_interval_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=22,
-            ),
-            log_config=gcp.compute.HealthCheckLogConfigArgs(
-                enable=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -1311,50 +937,22 @@ class HealthCheck(pulumi.CustomResource):
 
             __props__.__dict__["check_interval_sec"] = check_interval_sec
             __props__.__dict__["description"] = description
-            if grpc_health_check is not None and not isinstance(grpc_health_check, HealthCheckGrpcHealthCheckArgs):
-                grpc_health_check = grpc_health_check or {}
-                def _setter(key, value):
-                    grpc_health_check[key] = value
-                HealthCheckGrpcHealthCheckArgs._configure(_setter, **grpc_health_check)
+            grpc_health_check = _utilities.configure(grpc_health_check, HealthCheckGrpcHealthCheckArgs, True)
             __props__.__dict__["grpc_health_check"] = grpc_health_check
             __props__.__dict__["healthy_threshold"] = healthy_threshold
-            if http2_health_check is not None and not isinstance(http2_health_check, HealthCheckHttp2HealthCheckArgs):
-                http2_health_check = http2_health_check or {}
-                def _setter(key, value):
-                    http2_health_check[key] = value
-                HealthCheckHttp2HealthCheckArgs._configure(_setter, **http2_health_check)
+            http2_health_check = _utilities.configure(http2_health_check, HealthCheckHttp2HealthCheckArgs, True)
             __props__.__dict__["http2_health_check"] = http2_health_check
-            if http_health_check is not None and not isinstance(http_health_check, HealthCheckHttpHealthCheckArgs):
-                http_health_check = http_health_check or {}
-                def _setter(key, value):
-                    http_health_check[key] = value
-                HealthCheckHttpHealthCheckArgs._configure(_setter, **http_health_check)
+            http_health_check = _utilities.configure(http_health_check, HealthCheckHttpHealthCheckArgs, True)
             __props__.__dict__["http_health_check"] = http_health_check
-            if https_health_check is not None and not isinstance(https_health_check, HealthCheckHttpsHealthCheckArgs):
-                https_health_check = https_health_check or {}
-                def _setter(key, value):
-                    https_health_check[key] = value
-                HealthCheckHttpsHealthCheckArgs._configure(_setter, **https_health_check)
+            https_health_check = _utilities.configure(https_health_check, HealthCheckHttpsHealthCheckArgs, True)
             __props__.__dict__["https_health_check"] = https_health_check
-            if log_config is not None and not isinstance(log_config, HealthCheckLogConfigArgs):
-                log_config = log_config or {}
-                def _setter(key, value):
-                    log_config[key] = value
-                HealthCheckLogConfigArgs._configure(_setter, **log_config)
+            log_config = _utilities.configure(log_config, HealthCheckLogConfigArgs, True)
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            if ssl_health_check is not None and not isinstance(ssl_health_check, HealthCheckSslHealthCheckArgs):
-                ssl_health_check = ssl_health_check or {}
-                def _setter(key, value):
-                    ssl_health_check[key] = value
-                HealthCheckSslHealthCheckArgs._configure(_setter, **ssl_health_check)
+            ssl_health_check = _utilities.configure(ssl_health_check, HealthCheckSslHealthCheckArgs, True)
             __props__.__dict__["ssl_health_check"] = ssl_health_check
-            if tcp_health_check is not None and not isinstance(tcp_health_check, HealthCheckTcpHealthCheckArgs):
-                tcp_health_check = tcp_health_check or {}
-                def _setter(key, value):
-                    tcp_health_check[key] = value
-                HealthCheckTcpHealthCheckArgs._configure(_setter, **tcp_health_check)
+            tcp_health_check = _utilities.configure(tcp_health_check, HealthCheckTcpHealthCheckArgs, True)
             __props__.__dict__["tcp_health_check"] = tcp_health_check
             __props__.__dict__["timeout_sec"] = timeout_sec
             __props__.__dict__["unhealthy_threshold"] = unhealthy_threshold

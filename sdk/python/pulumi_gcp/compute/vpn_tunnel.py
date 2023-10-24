@@ -100,7 +100,7 @@ class VPNTunnelArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             shared_secret: pulumi.Input[str],
+             shared_secret: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              ike_version: Optional[pulumi.Input[int]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -117,7 +117,33 @@ class VPNTunnelArgs:
              target_vpn_gateway: Optional[pulumi.Input[str]] = None,
              vpn_gateway: Optional[pulumi.Input[str]] = None,
              vpn_gateway_interface: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if shared_secret is None and 'sharedSecret' in kwargs:
+            shared_secret = kwargs['sharedSecret']
+        if shared_secret is None:
+            raise TypeError("Missing 'shared_secret' argument")
+        if ike_version is None and 'ikeVersion' in kwargs:
+            ike_version = kwargs['ikeVersion']
+        if local_traffic_selectors is None and 'localTrafficSelectors' in kwargs:
+            local_traffic_selectors = kwargs['localTrafficSelectors']
+        if peer_external_gateway is None and 'peerExternalGateway' in kwargs:
+            peer_external_gateway = kwargs['peerExternalGateway']
+        if peer_external_gateway_interface is None and 'peerExternalGatewayInterface' in kwargs:
+            peer_external_gateway_interface = kwargs['peerExternalGatewayInterface']
+        if peer_gcp_gateway is None and 'peerGcpGateway' in kwargs:
+            peer_gcp_gateway = kwargs['peerGcpGateway']
+        if peer_ip is None and 'peerIp' in kwargs:
+            peer_ip = kwargs['peerIp']
+        if remote_traffic_selectors is None and 'remoteTrafficSelectors' in kwargs:
+            remote_traffic_selectors = kwargs['remoteTrafficSelectors']
+        if target_vpn_gateway is None and 'targetVpnGateway' in kwargs:
+            target_vpn_gateway = kwargs['targetVpnGateway']
+        if vpn_gateway is None and 'vpnGateway' in kwargs:
+            vpn_gateway = kwargs['vpnGateway']
+        if vpn_gateway_interface is None and 'vpnGatewayInterface' in kwargs:
+            vpn_gateway_interface = kwargs['vpnGatewayInterface']
+
         _setter("shared_secret", shared_secret)
         if description is not None:
             _setter("description", description)
@@ -513,7 +539,43 @@ class _VPNTunnelState:
              tunnel_id: Optional[pulumi.Input[str]] = None,
              vpn_gateway: Optional[pulumi.Input[str]] = None,
              vpn_gateway_interface: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if detailed_status is None and 'detailedStatus' in kwargs:
+            detailed_status = kwargs['detailedStatus']
+        if ike_version is None and 'ikeVersion' in kwargs:
+            ike_version = kwargs['ikeVersion']
+        if label_fingerprint is None and 'labelFingerprint' in kwargs:
+            label_fingerprint = kwargs['labelFingerprint']
+        if local_traffic_selectors is None and 'localTrafficSelectors' in kwargs:
+            local_traffic_selectors = kwargs['localTrafficSelectors']
+        if peer_external_gateway is None and 'peerExternalGateway' in kwargs:
+            peer_external_gateway = kwargs['peerExternalGateway']
+        if peer_external_gateway_interface is None and 'peerExternalGatewayInterface' in kwargs:
+            peer_external_gateway_interface = kwargs['peerExternalGatewayInterface']
+        if peer_gcp_gateway is None and 'peerGcpGateway' in kwargs:
+            peer_gcp_gateway = kwargs['peerGcpGateway']
+        if peer_ip is None and 'peerIp' in kwargs:
+            peer_ip = kwargs['peerIp']
+        if remote_traffic_selectors is None and 'remoteTrafficSelectors' in kwargs:
+            remote_traffic_selectors = kwargs['remoteTrafficSelectors']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if shared_secret is None and 'sharedSecret' in kwargs:
+            shared_secret = kwargs['sharedSecret']
+        if shared_secret_hash is None and 'sharedSecretHash' in kwargs:
+            shared_secret_hash = kwargs['sharedSecretHash']
+        if target_vpn_gateway is None and 'targetVpnGateway' in kwargs:
+            target_vpn_gateway = kwargs['targetVpnGateway']
+        if tunnel_id is None and 'tunnelId' in kwargs:
+            tunnel_id = kwargs['tunnelId']
+        if vpn_gateway is None and 'vpnGateway' in kwargs:
+            vpn_gateway = kwargs['vpnGateway']
+        if vpn_gateway_interface is None and 'vpnGatewayInterface' in kwargs:
+            vpn_gateway_interface = kwargs['vpnGatewayInterface']
+
         if creation_timestamp is not None:
             _setter("creation_timestamp", creation_timestamp)
         if description is not None:
@@ -901,91 +963,6 @@ class VPNTunnel(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
-        ### Vpn Tunnel Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network1 = gcp.compute.Network("network1")
-        target_gateway = gcp.compute.VPNGateway("targetGateway", network=network1.id)
-        vpn_static_ip = gcp.compute.Address("vpnStaticIp")
-        fr_esp = gcp.compute.ForwardingRule("frEsp",
-            ip_protocol="ESP",
-            ip_address=vpn_static_ip.address,
-            target=target_gateway.id)
-        fr_udp500 = gcp.compute.ForwardingRule("frUdp500",
-            ip_protocol="UDP",
-            port_range="500",
-            ip_address=vpn_static_ip.address,
-            target=target_gateway.id)
-        fr_udp4500 = gcp.compute.ForwardingRule("frUdp4500",
-            ip_protocol="UDP",
-            port_range="4500",
-            ip_address=vpn_static_ip.address,
-            target=target_gateway.id)
-        tunnel1 = gcp.compute.VPNTunnel("tunnel1",
-            peer_ip="15.0.0.120",
-            shared_secret="a secret message",
-            target_vpn_gateway=target_gateway.id,
-            opts=pulumi.ResourceOptions(depends_on=[
-                    fr_esp,
-                    fr_udp500,
-                    fr_udp4500,
-                ]))
-        route1 = gcp.compute.Route("route1",
-            network=network1.name,
-            dest_range="15.0.0.0/24",
-            priority=1000,
-            next_hop_vpn_tunnel=tunnel1.id)
-        ```
-        ### Vpn Tunnel Beta
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network1 = gcp.compute.Network("network1", opts=pulumi.ResourceOptions(provider=google_beta))
-        target_gateway = gcp.compute.VPNGateway("targetGateway", network=network1.id,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        vpn_static_ip = gcp.compute.Address("vpnStaticIp", opts=pulumi.ResourceOptions(provider=google_beta))
-        fr_esp = gcp.compute.ForwardingRule("frEsp",
-            ip_protocol="ESP",
-            ip_address=vpn_static_ip.address,
-            target=target_gateway.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        fr_udp500 = gcp.compute.ForwardingRule("frUdp500",
-            ip_protocol="UDP",
-            port_range="500",
-            ip_address=vpn_static_ip.address,
-            target=target_gateway.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        fr_udp4500 = gcp.compute.ForwardingRule("frUdp4500",
-            ip_protocol="UDP",
-            port_range="4500",
-            ip_address=vpn_static_ip.address,
-            target=target_gateway.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        tunnel1 = gcp.compute.VPNTunnel("tunnel1",
-            peer_ip="15.0.0.120",
-            shared_secret="a secret message",
-            target_vpn_gateway=target_gateway.id,
-            labels={
-                "foo": "bar",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[
-                    fr_esp,
-                    fr_udp500,
-                    fr_udp4500,
-                ]))
-        route1 = gcp.compute.Route("route1",
-            network=network1.name,
-            dest_range="15.0.0.0/24",
-            priority=1000,
-            next_hop_vpn_tunnel=tunnel1.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -1073,91 +1050,6 @@ class VPNTunnel(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
-        ### Vpn Tunnel Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network1 = gcp.compute.Network("network1")
-        target_gateway = gcp.compute.VPNGateway("targetGateway", network=network1.id)
-        vpn_static_ip = gcp.compute.Address("vpnStaticIp")
-        fr_esp = gcp.compute.ForwardingRule("frEsp",
-            ip_protocol="ESP",
-            ip_address=vpn_static_ip.address,
-            target=target_gateway.id)
-        fr_udp500 = gcp.compute.ForwardingRule("frUdp500",
-            ip_protocol="UDP",
-            port_range="500",
-            ip_address=vpn_static_ip.address,
-            target=target_gateway.id)
-        fr_udp4500 = gcp.compute.ForwardingRule("frUdp4500",
-            ip_protocol="UDP",
-            port_range="4500",
-            ip_address=vpn_static_ip.address,
-            target=target_gateway.id)
-        tunnel1 = gcp.compute.VPNTunnel("tunnel1",
-            peer_ip="15.0.0.120",
-            shared_secret="a secret message",
-            target_vpn_gateway=target_gateway.id,
-            opts=pulumi.ResourceOptions(depends_on=[
-                    fr_esp,
-                    fr_udp500,
-                    fr_udp4500,
-                ]))
-        route1 = gcp.compute.Route("route1",
-            network=network1.name,
-            dest_range="15.0.0.0/24",
-            priority=1000,
-            next_hop_vpn_tunnel=tunnel1.id)
-        ```
-        ### Vpn Tunnel Beta
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network1 = gcp.compute.Network("network1", opts=pulumi.ResourceOptions(provider=google_beta))
-        target_gateway = gcp.compute.VPNGateway("targetGateway", network=network1.id,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        vpn_static_ip = gcp.compute.Address("vpnStaticIp", opts=pulumi.ResourceOptions(provider=google_beta))
-        fr_esp = gcp.compute.ForwardingRule("frEsp",
-            ip_protocol="ESP",
-            ip_address=vpn_static_ip.address,
-            target=target_gateway.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        fr_udp500 = gcp.compute.ForwardingRule("frUdp500",
-            ip_protocol="UDP",
-            port_range="500",
-            ip_address=vpn_static_ip.address,
-            target=target_gateway.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        fr_udp4500 = gcp.compute.ForwardingRule("frUdp4500",
-            ip_protocol="UDP",
-            port_range="4500",
-            ip_address=vpn_static_ip.address,
-            target=target_gateway.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        tunnel1 = gcp.compute.VPNTunnel("tunnel1",
-            peer_ip="15.0.0.120",
-            shared_secret="a secret message",
-            target_vpn_gateway=target_gateway.id,
-            labels={
-                "foo": "bar",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[
-                    fr_esp,
-                    fr_udp500,
-                    fr_udp4500,
-                ]))
-        route1 = gcp.compute.Route("route1",
-            network=network1.name,
-            dest_range="15.0.0.0/24",
-            priority=1000,
-            next_hop_vpn_tunnel=tunnel1.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 

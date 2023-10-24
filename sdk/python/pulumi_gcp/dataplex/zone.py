@@ -55,17 +55,35 @@ class ZoneArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             discovery_spec: pulumi.Input['ZoneDiscoverySpecArgs'],
-             lake: pulumi.Input[str],
-             location: pulumi.Input[str],
-             resource_spec: pulumi.Input['ZoneResourceSpecArgs'],
-             type: pulumi.Input[str],
+             discovery_spec: Optional[pulumi.Input['ZoneDiscoverySpecArgs']] = None,
+             lake: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             resource_spec: Optional[pulumi.Input['ZoneResourceSpecArgs']] = None,
+             type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if discovery_spec is None and 'discoverySpec' in kwargs:
+            discovery_spec = kwargs['discoverySpec']
+        if discovery_spec is None:
+            raise TypeError("Missing 'discovery_spec' argument")
+        if lake is None:
+            raise TypeError("Missing 'lake' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if resource_spec is None and 'resourceSpec' in kwargs:
+            resource_spec = kwargs['resourceSpec']
+        if resource_spec is None:
+            raise TypeError("Missing 'resource_spec' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("discovery_spec", discovery_spec)
         _setter("lake", lake)
         _setter("location", location)
@@ -275,7 +293,21 @@ class _ZoneState:
              type: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if asset_statuses is None and 'assetStatuses' in kwargs:
+            asset_statuses = kwargs['assetStatuses']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if discovery_spec is None and 'discoverySpec' in kwargs:
+            discovery_spec = kwargs['discoverySpec']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if resource_spec is None and 'resourceSpec' in kwargs:
+            resource_spec = kwargs['resourceSpec']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if asset_statuses is not None:
             _setter("asset_statuses", asset_statuses)
         if create_time is not None:
@@ -508,35 +540,6 @@ class Zone(pulumi.CustomResource):
         The Dataplex Zone resource
 
         ## Example Usage
-        ### Basic_zone
-        A basic example of a dataplex zone
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.dataplex.Lake("basic",
-            location="us-west1",
-            description="Lake for DCL",
-            display_name="Lake for DCL",
-            labels={
-                "my-lake": "exists",
-            },
-            project="my-project-name")
-        primary = gcp.dataplex.Zone("primary",
-            discovery_spec=gcp.dataplex.ZoneDiscoverySpecArgs(
-                enabled=False,
-            ),
-            lake=basic.name,
-            location="us-west1",
-            resource_spec=gcp.dataplex.ZoneResourceSpecArgs(
-                location_type="MULTI_REGION",
-            ),
-            type="RAW",
-            description="Zone for DCL",
-            display_name="Zone for DCL",
-            labels={},
-            project="my-project-name")
-        ```
 
         ## Import
 
@@ -577,35 +580,6 @@ class Zone(pulumi.CustomResource):
         The Dataplex Zone resource
 
         ## Example Usage
-        ### Basic_zone
-        A basic example of a dataplex zone
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.dataplex.Lake("basic",
-            location="us-west1",
-            description="Lake for DCL",
-            display_name="Lake for DCL",
-            labels={
-                "my-lake": "exists",
-            },
-            project="my-project-name")
-        primary = gcp.dataplex.Zone("primary",
-            discovery_spec=gcp.dataplex.ZoneDiscoverySpecArgs(
-                enabled=False,
-            ),
-            lake=basic.name,
-            location="us-west1",
-            resource_spec=gcp.dataplex.ZoneResourceSpecArgs(
-                location_type="MULTI_REGION",
-            ),
-            type="RAW",
-            description="Zone for DCL",
-            display_name="Zone for DCL",
-            labels={},
-            project="my-project-name")
-        ```
 
         ## Import
 
@@ -662,11 +636,7 @@ class Zone(pulumi.CustomResource):
             __props__ = ZoneArgs.__new__(ZoneArgs)
 
             __props__.__dict__["description"] = description
-            if discovery_spec is not None and not isinstance(discovery_spec, ZoneDiscoverySpecArgs):
-                discovery_spec = discovery_spec or {}
-                def _setter(key, value):
-                    discovery_spec[key] = value
-                ZoneDiscoverySpecArgs._configure(_setter, **discovery_spec)
+            discovery_spec = _utilities.configure(discovery_spec, ZoneDiscoverySpecArgs, True)
             if discovery_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'discovery_spec'")
             __props__.__dict__["discovery_spec"] = discovery_spec
@@ -680,11 +650,7 @@ class Zone(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            if resource_spec is not None and not isinstance(resource_spec, ZoneResourceSpecArgs):
-                resource_spec = resource_spec or {}
-                def _setter(key, value):
-                    resource_spec[key] = value
-                ZoneResourceSpecArgs._configure(_setter, **resource_spec)
+            resource_spec = _utilities.configure(resource_spec, ZoneResourceSpecArgs, True)
             if resource_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_spec'")
             __props__.__dict__["resource_spec"] = resource_spec

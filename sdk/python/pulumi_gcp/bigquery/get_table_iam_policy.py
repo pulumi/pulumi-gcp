@@ -103,17 +103,6 @@ def get_table_iam_policy(dataset_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for table
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.bigquery.get_table_iam_policy(project=google_bigquery_table["test"]["project"],
-        dataset_id=google_bigquery_table["test"]["dataset_id"],
-        table_id=google_bigquery_table["test"]["table_id"])
-    ```
-
 
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -141,17 +130,6 @@ def get_table_iam_policy_output(dataset_id: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTableIamPolicyResult]:
     """
     Retrieves the current IAM policy data for table
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.bigquery.get_table_iam_policy(project=google_bigquery_table["test"]["project"],
-        dataset_id=google_bigquery_table["test"]["dataset_id"],
-        table_id=google_bigquery_table["test"]["table_id"])
-    ```
 
 
     :param str project: The ID of the project in which the resource belongs.

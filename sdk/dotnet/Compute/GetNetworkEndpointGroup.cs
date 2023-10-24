@@ -15,34 +15,6 @@ namespace Pulumi.Gcp.Compute
         /// Use this data source to access a Network Endpoint Group's attributes.
         /// 
         /// The NEG may be found by providing either a `self_link`, or a `name` and a `zone`.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var neg1 = Gcp.Compute.GetNetworkEndpointGroup.Invoke(new()
-        ///     {
-        ///         Name = "k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
-        ///         Zone = "us-central1-a",
-        ///     });
-        /// 
-        ///     var neg2 = Gcp.Compute.GetNetworkEndpointGroup.Invoke(new()
-        ///     {
-        ///         SelfLink = "https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworkEndpointGroupResult> InvokeAsync(GetNetworkEndpointGroupArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkEndpointGroupResult>("gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup", args ?? new GetNetworkEndpointGroupArgs(), options.WithDefaults());
@@ -51,34 +23,6 @@ namespace Pulumi.Gcp.Compute
         /// Use this data source to access a Network Endpoint Group's attributes.
         /// 
         /// The NEG may be found by providing either a `self_link`, or a `name` and a `zone`.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var neg1 = Gcp.Compute.GetNetworkEndpointGroup.Invoke(new()
-        ///     {
-        ///         Name = "k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
-        ///         Zone = "us-central1-a",
-        ///     });
-        /// 
-        ///     var neg2 = Gcp.Compute.GetNetworkEndpointGroup.Invoke(new()
-        ///     {
-        ///         SelfLink = "https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetNetworkEndpointGroupResult> Invoke(GetNetworkEndpointGroupInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkEndpointGroupResult>("gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup", args ?? new GetNetworkEndpointGroupInvokeArgs(), options.WithDefaults());

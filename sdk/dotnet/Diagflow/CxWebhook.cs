@@ -19,50 +19,6 @@ namespace Pulumi.Gcp.Diagflow
     ///     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
     /// 
     /// ## Example Usage
-    /// ### Dialogflowcx Webhook Full
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var agent = new Gcp.Diagflow.CxAgent("agent", new()
-    ///     {
-    ///         DisplayName = "dialogflowcx-agent",
-    ///         Location = "global",
-    ///         DefaultLanguageCode = "en",
-    ///         SupportedLanguageCodes = new[]
-    ///         {
-    ///             "it",
-    ///             "de",
-    ///             "es",
-    ///         },
-    ///         TimeZone = "America/New_York",
-    ///         Description = "Example description.",
-    ///         AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
-    ///         EnableStackdriverLogging = true,
-    ///         EnableSpellCorrection = true,
-    ///         SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
-    ///         {
-    ///             EnableSpeechAdaptation = true,
-    ///         },
-    ///     });
-    /// 
-    ///     var basicWebhook = new Gcp.Diagflow.CxWebhook("basicWebhook", new()
-    ///     {
-    ///         Parent = agent.Id,
-    ///         DisplayName = "MyFlow",
-    ///         GenericWebService = new Gcp.Diagflow.Inputs.CxWebhookGenericWebServiceArgs
-    ///         {
-    ///             Uri = "https://example.com",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

@@ -65,7 +65,7 @@ class TargetInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance: pulumi.Input[str],
+             instance: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              nat_policy: Optional[pulumi.Input[str]] = None,
@@ -73,7 +73,15 @@ class TargetInstanceArgs:
              project: Optional[pulumi.Input[str]] = None,
              security_policy: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if instance is None:
+            raise TypeError("Missing 'instance' argument")
+        if nat_policy is None and 'natPolicy' in kwargs:
+            nat_policy = kwargs['natPolicy']
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
+
         _setter("instance", instance)
         if description is not None:
             _setter("description", description)
@@ -275,7 +283,17 @@ class _TargetInstanceState:
              security_policy: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if nat_policy is None and 'natPolicy' in kwargs:
+            nat_policy = kwargs['natPolicy']
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if creation_timestamp is not None:
             _setter("creation_timestamp", creation_timestamp)
         if description is not None:
@@ -465,53 +483,6 @@ class TargetInstance(pulumi.CustomResource):
             * [Using Protocol Forwarding](https://cloud.google.com/compute/docs/protocol-forwarding)
 
         ## Example Usage
-        ### Target Instance Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        vmimage = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        target_vm = gcp.compute.Instance("target-vm",
-            machine_type="e2-medium",
-            zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=vmimage.self_link,
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-            )])
-        default = gcp.compute.TargetInstance("default", instance=target_vm.id)
-        ```
-        ### Target Instance Custom Network
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        target_vm_network = gcp.compute.get_network(name="default")
-        vmimage = gcp.compute.get_image(family="debian-10",
-            project="debian-cloud")
-        target_vm_instance = gcp.compute.Instance("target-vmInstance",
-            machine_type="e2-medium",
-            zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=vmimage.self_link,
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        custom_network = gcp.compute.TargetInstance("customNetwork",
-            instance=target_vm_instance.id,
-            network=target_vm_network.self_link,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -583,53 +554,6 @@ class TargetInstance(pulumi.CustomResource):
             * [Using Protocol Forwarding](https://cloud.google.com/compute/docs/protocol-forwarding)
 
         ## Example Usage
-        ### Target Instance Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        vmimage = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        target_vm = gcp.compute.Instance("target-vm",
-            machine_type="e2-medium",
-            zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=vmimage.self_link,
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-            )])
-        default = gcp.compute.TargetInstance("default", instance=target_vm.id)
-        ```
-        ### Target Instance Custom Network
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        target_vm_network = gcp.compute.get_network(name="default")
-        vmimage = gcp.compute.get_image(family="debian-10",
-            project="debian-cloud")
-        target_vm_instance = gcp.compute.Instance("target-vmInstance",
-            machine_type="e2-medium",
-            zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=vmimage.self_link,
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        custom_network = gcp.compute.TargetInstance("customNetwork",
-            instance=target_vm_instance.id,
-            network=target_vm_network.self_link,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 

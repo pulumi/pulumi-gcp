@@ -15,50 +15,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.billing.AccountIamBinding` resources **can be** used in conjunction with `gcp.billing.AccountIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_billing\_account\_iam\_policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/billing.viewer",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const editor = new gcp.billing.AccountIamPolicy("editor", {
- *     billingAccountId: "00AA00-000AAA-00AA0A",
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
- *
- * ## google\_billing\_account\_iam\_binding
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const editor = new gcp.billing.AccountIamBinding("editor", {
- *     billingAccountId: "00AA00-000AAA-00AA0A",
- *     members: ["user:jane@example.com"],
- *     role: "roles/billing.viewer",
- * });
- * ```
- *
- * ## google\_billing\_account\_iam\_member
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const editor = new gcp.billing.AccountIamMember("editor", {
- *     billingAccountId: "00AA00-000AAA-00AA0A",
- *     member: "user:jane@example.com",
- *     role: "roles/billing.viewer",
- * });
- * ```
- *
  * ## Import
  *
  * Instance IAM resources can be imported using the project, table name, role and/or member.

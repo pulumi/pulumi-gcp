@@ -57,7 +57,7 @@ class EnvironmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              container_image: Optional[pulumi.Input['EnvironmentContainerImageArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
@@ -65,7 +65,19 @@ class EnvironmentArgs:
              post_startup_script: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              vm_image: Optional[pulumi.Input['EnvironmentVmImageArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if container_image is None and 'containerImage' in kwargs:
+            container_image = kwargs['containerImage']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if post_startup_script is None and 'postStartupScript' in kwargs:
+            post_startup_script = kwargs['postStartupScript']
+        if vm_image is None and 'vmImage' in kwargs:
+            vm_image = kwargs['vmImage']
+
         _setter("location", location)
         if container_image is not None:
             _setter("container_image", container_image)
@@ -243,7 +255,19 @@ class _EnvironmentState:
              post_startup_script: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              vm_image: Optional[pulumi.Input['EnvironmentVmImageArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if container_image is None and 'containerImage' in kwargs:
+            container_image = kwargs['containerImage']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if post_startup_script is None and 'postStartupScript' in kwargs:
+            post_startup_script = kwargs['postStartupScript']
+        if vm_image is None and 'vmImage' in kwargs:
+            vm_image = kwargs['vmImage']
+
         if container_image is not None:
             _setter("container_image", container_image)
         if create_time is not None:
@@ -404,18 +428,6 @@ class Environment(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 
         ## Example Usage
-        ### Notebook Environment Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        environment = gcp.notebooks.Environment("environment",
-            container_image=gcp.notebooks.EnvironmentContainerImageArgs(
-                repository="gcr.io/deeplearning-platform-release/base-cpu",
-            ),
-            location="us-west1-a")
-        ```
 
         ## Import
 
@@ -468,18 +480,6 @@ class Environment(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 
         ## Example Usage
-        ### Notebook Environment Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        environment = gcp.notebooks.Environment("environment",
-            container_image=gcp.notebooks.EnvironmentContainerImageArgs(
-                repository="gcr.io/deeplearning-platform-release/base-cpu",
-            ),
-            location="us-west1-a")
-        ```
 
         ## Import
 
@@ -533,11 +533,7 @@ class Environment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EnvironmentArgs.__new__(EnvironmentArgs)
 
-            if container_image is not None and not isinstance(container_image, EnvironmentContainerImageArgs):
-                container_image = container_image or {}
-                def _setter(key, value):
-                    container_image[key] = value
-                EnvironmentContainerImageArgs._configure(_setter, **container_image)
+            container_image = _utilities.configure(container_image, EnvironmentContainerImageArgs, True)
             __props__.__dict__["container_image"] = container_image
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
@@ -547,11 +543,7 @@ class Environment(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["post_startup_script"] = post_startup_script
             __props__.__dict__["project"] = project
-            if vm_image is not None and not isinstance(vm_image, EnvironmentVmImageArgs):
-                vm_image = vm_image or {}
-                def _setter(key, value):
-                    vm_image[key] = value
-                EnvironmentVmImageArgs._configure(_setter, **vm_image)
+            vm_image = _utilities.configure(vm_image, EnvironmentVmImageArgs, True)
             __props__.__dict__["vm_image"] = vm_image
             __props__.__dict__["create_time"] = None
         super(Environment, __self__).__init__(

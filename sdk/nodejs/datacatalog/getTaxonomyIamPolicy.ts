@@ -6,17 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for taxonomy
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.datacatalog.getTaxonomyIamPolicy({
- *     taxonomy: google_data_catalog_taxonomy.basic_taxonomy.name,
- * });
- * ```
  */
 export function getTaxonomyIamPolicy(args: GetTaxonomyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTaxonomyIamPolicyResult> {
 
@@ -67,17 +56,6 @@ export interface GetTaxonomyIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for taxonomy
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.datacatalog.getTaxonomyIamPolicy({
- *     taxonomy: google_data_catalog_taxonomy.basic_taxonomy.name,
- * });
- * ```
  */
 export function getTaxonomyIamPolicyOutput(args: GetTaxonomyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTaxonomyIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getTaxonomyIamPolicy(a, opts))

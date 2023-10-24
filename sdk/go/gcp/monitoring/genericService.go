@@ -26,42 +26,6 @@ import (
 //   - [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 //
 // ## Example Usage
-// ### Monitoring Service Example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := monitoring.NewGenericService(ctx, "myService", &monitoring.GenericServiceArgs{
-//				BasicService: &monitoring.GenericServiceBasicServiceArgs{
-//					ServiceLabels: pulumi.StringMap{
-//						"moduleId": pulumi.String("another-module-id"),
-//					},
-//					ServiceType: pulumi.String("APP_ENGINE"),
-//				},
-//				DisplayName: pulumi.String("My Service my-service"),
-//				ServiceId:   pulumi.String("my-service"),
-//				UserLabels: pulumi.StringMap{
-//					"my_key":       pulumi.String("my_value"),
-//					"my_other_key": pulumi.String("my_other_value"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

@@ -18,36 +18,6 @@ import (
 // [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
 //
 // > **Warning:** The object content will be saved in the state, and visiable to everyone who has access to the state file.
-//
-// ## Example Usage
-//
-// Example file object  stored within a folder.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			key, err := storage.GetBucketObjectContent(ctx, &storage.GetBucketObjectContentArgs{
-//				Name:   "encryptedkey",
-//				Bucket: "keystore",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("encrypted", key.Content)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetBucketObjectContent(ctx *pulumi.Context, args *GetBucketObjectContentArgs, opts ...pulumi.InvokeOption) (*GetBucketObjectContentResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBucketObjectContentResult

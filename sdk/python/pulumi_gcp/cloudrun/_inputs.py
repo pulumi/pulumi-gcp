@@ -107,14 +107,22 @@ class DomainMappingMetadataArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             namespace: pulumi.Input[str],
+             namespace: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              generation: Optional[pulumi.Input[int]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              resource_version: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if resource_version is None and 'resourceVersion' in kwargs:
+            resource_version = kwargs['resourceVersion']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         _setter("namespace", namespace)
         if annotations is not None:
             _setter("annotations", annotations)
@@ -263,10 +271,20 @@ class DomainMappingSpecArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             route_name: pulumi.Input[str],
+             route_name: Optional[pulumi.Input[str]] = None,
              certificate_mode: Optional[pulumi.Input[str]] = None,
              force_override: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if route_name is None and 'routeName' in kwargs:
+            route_name = kwargs['routeName']
+        if route_name is None:
+            raise TypeError("Missing 'route_name' argument")
+        if certificate_mode is None and 'certificateMode' in kwargs:
+            certificate_mode = kwargs['certificateMode']
+        if force_override is None and 'forceOverride' in kwargs:
+            force_override = kwargs['forceOverride']
+
         _setter("route_name", route_name)
         if certificate_mode is not None:
             _setter("certificate_mode", certificate_mode)
@@ -352,7 +370,15 @@ class DomainMappingStatusArgs:
              mapped_route_name: Optional[pulumi.Input[str]] = None,
              observed_generation: Optional[pulumi.Input[int]] = None,
              resource_records: Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusResourceRecordArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if mapped_route_name is None and 'mappedRouteName' in kwargs:
+            mapped_route_name = kwargs['mappedRouteName']
+        if observed_generation is None and 'observedGeneration' in kwargs:
+            observed_generation = kwargs['observedGeneration']
+        if resource_records is None and 'resourceRecords' in kwargs:
+            resource_records = kwargs['resourceRecords']
+
         if conditions is not None:
             _setter("conditions", conditions)
         if mapped_route_name is not None:
@@ -451,7 +477,9 @@ class DomainMappingStatusConditionArgs:
              reason: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if message is not None:
             _setter("message", message)
         if reason is not None:
@@ -540,7 +568,9 @@ class DomainMappingStatusResourceRecordArgs:
              name: Optional[pulumi.Input[str]] = None,
              rrdata: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if rrdata is not None:
@@ -603,10 +633,16 @@ class IamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -655,10 +691,16 @@ class IamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -760,7 +802,13 @@ class ServiceMetadataArgs:
              resource_version: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if resource_version is None and 'resourceVersion' in kwargs:
+            resource_version = kwargs['resourceVersion']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if generation is not None:
@@ -942,7 +990,15 @@ class ServiceStatusArgs:
              observed_generation: Optional[pulumi.Input[int]] = None,
              traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceStatusTrafficArgs']]]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if latest_created_revision_name is None and 'latestCreatedRevisionName' in kwargs:
+            latest_created_revision_name = kwargs['latestCreatedRevisionName']
+        if latest_ready_revision_name is None and 'latestReadyRevisionName' in kwargs:
+            latest_ready_revision_name = kwargs['latestReadyRevisionName']
+        if observed_generation is None and 'observedGeneration' in kwargs:
+            observed_generation = kwargs['observedGeneration']
+
         if conditions is not None:
             _setter("conditions", conditions)
         if latest_created_revision_name is not None:
@@ -1077,7 +1133,9 @@ class ServiceStatusConditionArgs:
              reason: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if message is not None:
             _setter("message", message)
         if reason is not None:
@@ -1177,7 +1235,13 @@ class ServiceStatusTrafficArgs:
              revision_name: Optional[pulumi.Input[str]] = None,
              tag: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if latest_revision is None and 'latestRevision' in kwargs:
+            latest_revision = kwargs['latestRevision']
+        if revision_name is None and 'revisionName' in kwargs:
+            revision_name = kwargs['revisionName']
+
         if latest_revision is not None:
             _setter("latest_revision", latest_revision)
         if percent is not None:
@@ -1283,7 +1347,9 @@ class ServiceTemplateArgs:
              _setter: Callable[[Any, Any], None],
              metadata: Optional[pulumi.Input['ServiceTemplateMetadataArgs']] = None,
              spec: Optional[pulumi.Input['ServiceTemplateSpecArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if metadata is not None:
             _setter("metadata", metadata)
         if spec is not None:
@@ -1396,7 +1462,13 @@ class ServiceTemplateMetadataArgs:
              resource_version: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if resource_version is None and 'resourceVersion' in kwargs:
+            resource_version = kwargs['resourceVersion']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if generation is not None:
@@ -1589,7 +1661,17 @@ class ServiceTemplateSpecArgs:
              serving_state: Optional[pulumi.Input[str]] = None,
              timeout_seconds: Optional[pulumi.Input[int]] = None,
              volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecVolumeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if container_concurrency is None and 'containerConcurrency' in kwargs:
+            container_concurrency = kwargs['containerConcurrency']
+        if service_account_name is None and 'serviceAccountName' in kwargs:
+            service_account_name = kwargs['serviceAccountName']
+        if serving_state is None and 'servingState' in kwargs:
+            serving_state = kwargs['servingState']
+        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
+            timeout_seconds = kwargs['timeoutSeconds']
+
         if container_concurrency is not None:
             _setter("container_concurrency", container_concurrency)
         if containers is not None:
@@ -1767,7 +1849,7 @@ class ServiceTemplateSpecContainerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             image: pulumi.Input[str],
+             image: Optional[pulumi.Input[str]] = None,
              args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              env_froms: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerEnvFromArgs']]]] = None,
@@ -1779,7 +1861,21 @@ class ServiceTemplateSpecContainerArgs:
              startup_probe: Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeArgs']] = None,
              volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerVolumeMountArgs']]]] = None,
              working_dir: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+        if env_froms is None and 'envFroms' in kwargs:
+            env_froms = kwargs['envFroms']
+        if liveness_probe is None and 'livenessProbe' in kwargs:
+            liveness_probe = kwargs['livenessProbe']
+        if startup_probe is None and 'startupProbe' in kwargs:
+            startup_probe = kwargs['startupProbe']
+        if volume_mounts is None and 'volumeMounts' in kwargs:
+            volume_mounts = kwargs['volumeMounts']
+        if working_dir is None and 'workingDir' in kwargs:
+            working_dir = kwargs['workingDir']
+
         _setter("image", image)
         if args is not None:
             _setter("args", args)
@@ -2011,7 +2107,11 @@ class ServiceTemplateSpecContainerEnvArgs:
              name: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
              value_from: Optional[pulumi.Input['ServiceTemplateSpecContainerEnvValueFromArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if value_from is None and 'valueFrom' in kwargs:
+            value_from = kwargs['valueFrom']
+
         if name is not None:
             _setter("name", name)
         if value is not None:
@@ -2082,7 +2182,13 @@ class ServiceTemplateSpecContainerEnvFromArgs:
              config_map_ref: Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromConfigMapRefArgs']] = None,
              prefix: Optional[pulumi.Input[str]] = None,
              secret_ref: Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromSecretRefArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if config_map_ref is None and 'configMapRef' in kwargs:
+            config_map_ref = kwargs['configMapRef']
+        if secret_ref is None and 'secretRef' in kwargs:
+            secret_ref = kwargs['secretRef']
+
         if config_map_ref is not None:
             _setter("config_map_ref", config_map_ref)
         if prefix is not None:
@@ -2149,7 +2255,11 @@ class ServiceTemplateSpecContainerEnvFromConfigMapRefArgs:
              _setter: Callable[[Any, Any], None],
              local_object_reference: Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs']] = None,
              optional: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if local_object_reference is None and 'localObjectReference' in kwargs:
+            local_object_reference = kwargs['localObjectReference']
+
         if local_object_reference is not None:
             _setter("local_object_reference", local_object_reference)
         if optional is not None:
@@ -2195,8 +2305,12 @@ class ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -2232,7 +2346,11 @@ class ServiceTemplateSpecContainerEnvFromSecretRefArgs:
              _setter: Callable[[Any, Any], None],
              local_object_reference: Optional[pulumi.Input['ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs']] = None,
              optional: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if local_object_reference is None and 'localObjectReference' in kwargs:
+            local_object_reference = kwargs['localObjectReference']
+
         if local_object_reference is not None:
             _setter("local_object_reference", local_object_reference)
         if optional is not None:
@@ -2278,8 +2396,12 @@ class ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -2310,8 +2432,14 @@ class ServiceTemplateSpecContainerEnvValueFromArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             secret_key_ref: pulumi.Input['ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             secret_key_ref: Optional[pulumi.Input['ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if secret_key_ref is None and 'secretKeyRef' in kwargs:
+            secret_key_ref = kwargs['secretKeyRef']
+        if secret_key_ref is None:
+            raise TypeError("Missing 'secret_key_ref' argument")
+
         _setter("secret_key_ref", secret_key_ref)
 
     @property
@@ -2350,9 +2478,15 @@ class ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("key", key)
         _setter("name", name)
 
@@ -2429,7 +2563,19 @@ class ServiceTemplateSpecContainerLivenessProbeArgs:
              initial_delay_seconds: Optional[pulumi.Input[int]] = None,
              period_seconds: Optional[pulumi.Input[int]] = None,
              timeout_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if failure_threshold is None and 'failureThreshold' in kwargs:
+            failure_threshold = kwargs['failureThreshold']
+        if http_get is None and 'httpGet' in kwargs:
+            http_get = kwargs['httpGet']
+        if initial_delay_seconds is None and 'initialDelaySeconds' in kwargs:
+            initial_delay_seconds = kwargs['initialDelaySeconds']
+        if period_seconds is None and 'periodSeconds' in kwargs:
+            period_seconds = kwargs['periodSeconds']
+        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
+            timeout_seconds = kwargs['timeoutSeconds']
+
         if failure_threshold is not None:
             _setter("failure_threshold", failure_threshold)
         if grpc is not None:
@@ -2546,7 +2692,9 @@ class ServiceTemplateSpecContainerLivenessProbeGrpcArgs:
              _setter: Callable[[Any, Any], None],
              port: Optional[pulumi.Input[int]] = None,
              service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if port is not None:
             _setter("port", port)
         if service is not None:
@@ -2605,7 +2753,11 @@ class ServiceTemplateSpecContainerLivenessProbeHttpGetArgs:
              http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs']]]] = None,
              path: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if http_headers is None and 'httpHeaders' in kwargs:
+            http_headers = kwargs['httpHeaders']
+
         if http_headers is not None:
             _setter("http_headers", http_headers)
         if path is not None:
@@ -2669,9 +2821,13 @@ class ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
         if value is not None:
             _setter("value", value)
@@ -2724,7 +2880,11 @@ class ServiceTemplateSpecContainerPortArgs:
              container_port: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if container_port is None and 'containerPort' in kwargs:
+            container_port = kwargs['containerPort']
+
         if container_port is not None:
             _setter("container_port", container_port)
         if name is not None:
@@ -2794,7 +2954,9 @@ class ServiceTemplateSpecContainerResourcesArgs:
              _setter: Callable[[Any, Any], None],
              limits: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              requests: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if limits is not None:
             _setter("limits", limits)
         if requests is not None:
@@ -2879,7 +3041,21 @@ class ServiceTemplateSpecContainerStartupProbeArgs:
              period_seconds: Optional[pulumi.Input[int]] = None,
              tcp_socket: Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeTcpSocketArgs']] = None,
              timeout_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if failure_threshold is None and 'failureThreshold' in kwargs:
+            failure_threshold = kwargs['failureThreshold']
+        if http_get is None and 'httpGet' in kwargs:
+            http_get = kwargs['httpGet']
+        if initial_delay_seconds is None and 'initialDelaySeconds' in kwargs:
+            initial_delay_seconds = kwargs['initialDelaySeconds']
+        if period_seconds is None and 'periodSeconds' in kwargs:
+            period_seconds = kwargs['periodSeconds']
+        if tcp_socket is None and 'tcpSocket' in kwargs:
+            tcp_socket = kwargs['tcpSocket']
+        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
+            timeout_seconds = kwargs['timeoutSeconds']
+
         if failure_threshold is not None:
             _setter("failure_threshold", failure_threshold)
         if grpc is not None:
@@ -3011,7 +3187,9 @@ class ServiceTemplateSpecContainerStartupProbeGrpcArgs:
              _setter: Callable[[Any, Any], None],
              port: Optional[pulumi.Input[int]] = None,
              service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if port is not None:
             _setter("port", port)
         if service is not None:
@@ -3070,7 +3248,11 @@ class ServiceTemplateSpecContainerStartupProbeHttpGetArgs:
              http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs']]]] = None,
              path: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if http_headers is None and 'httpHeaders' in kwargs:
+            http_headers = kwargs['httpHeaders']
+
         if http_headers is not None:
             _setter("http_headers", http_headers)
         if path is not None:
@@ -3134,9 +3316,13 @@ class ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
         if value is not None:
             _setter("value", value)
@@ -3182,7 +3368,9 @@ class ServiceTemplateSpecContainerStartupProbeTcpSocketArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if port is not None:
             _setter("port", port)
 
@@ -3218,9 +3406,17 @@ class ServiceTemplateSpecContainerVolumeMountArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             mount_path: pulumi.Input[str],
-             name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             mount_path: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if mount_path is None and 'mountPath' in kwargs:
+            mount_path = kwargs['mountPath']
+        if mount_path is None:
+            raise TypeError("Missing 'mount_path' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("mount_path", mount_path)
         _setter("name", name)
 
@@ -3272,10 +3468,16 @@ class ServiceTemplateSpecVolumeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              empty_dir: Optional[pulumi.Input['ServiceTemplateSpecVolumeEmptyDirArgs']] = None,
              secret: Optional[pulumi.Input['ServiceTemplateSpecVolumeSecretArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if empty_dir is None and 'emptyDir' in kwargs:
+            empty_dir = kwargs['emptyDir']
+
         _setter("name", name)
         if empty_dir is not None:
             _setter("empty_dir", empty_dir)
@@ -3340,7 +3542,11 @@ class ServiceTemplateSpecVolumeEmptyDirArgs:
              _setter: Callable[[Any, Any], None],
              medium: Optional[pulumi.Input[str]] = None,
              size_limit: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if size_limit is None and 'sizeLimit' in kwargs:
+            size_limit = kwargs['sizeLimit']
+
         if medium is not None:
             _setter("medium", medium)
         if size_limit is not None:
@@ -3409,10 +3615,18 @@ class ServiceTemplateSpecVolumeSecretArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             secret_name: pulumi.Input[str],
+             secret_name: Optional[pulumi.Input[str]] = None,
              default_mode: Optional[pulumi.Input[int]] = None,
              items: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecVolumeSecretItemArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if secret_name is None and 'secretName' in kwargs:
+            secret_name = kwargs['secretName']
+        if secret_name is None:
+            raise TypeError("Missing 'secret_name' argument")
+        if default_mode is None and 'defaultMode' in kwargs:
+            default_mode = kwargs['defaultMode']
+
         _setter("secret_name", secret_name)
         if default_mode is not None:
             _setter("default_mode", default_mode)
@@ -3499,10 +3713,16 @@ class ServiceTemplateSpecVolumeSecretItemArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             path: pulumi.Input[str],
+             key: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
              mode: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+
         _setter("key", key)
         _setter("path", path)
         if mode is not None:
@@ -3584,12 +3804,20 @@ class ServiceTrafficArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             percent: pulumi.Input[int],
+             percent: Optional[pulumi.Input[int]] = None,
              latest_revision: Optional[pulumi.Input[bool]] = None,
              revision_name: Optional[pulumi.Input[str]] = None,
              tag: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if percent is None:
+            raise TypeError("Missing 'percent' argument")
+        if latest_revision is None and 'latestRevision' in kwargs:
+            latest_revision = kwargs['latestRevision']
+        if revision_name is None and 'revisionName' in kwargs:
+            revision_name = kwargs['revisionName']
+
         _setter("percent", percent)
         if latest_revision is not None:
             _setter("latest_revision", latest_revision)

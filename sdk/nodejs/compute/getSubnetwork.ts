@@ -8,18 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Get a subnetwork within GCE from its name and region.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const my-subnetwork = gcp.compute.getSubnetwork({
- *     name: "default-us-east1",
- *     region: "us-east1",
- * });
- * ```
  */
 export function getSubnetwork(args?: GetSubnetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetworkResult> {
     args = args || {};
@@ -103,18 +91,6 @@ export interface GetSubnetworkResult {
 }
 /**
  * Get a subnetwork within GCE from its name and region.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const my-subnetwork = gcp.compute.getSubnetwork({
- *     name: "default-us-east1",
- *     region: "us-east1",
- * });
- * ```
  */
 export function getSubnetworkOutput(args?: GetSubnetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetworkResult> {
     return pulumi.output(args).apply((a: any) => getSubnetwork(a, opts))

@@ -41,11 +41,21 @@ class BackendServiceSignedUrlKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backend_service: pulumi.Input[str],
-             key_value: pulumi.Input[str],
+             backend_service: Optional[pulumi.Input[str]] = None,
+             key_value: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backend_service is None and 'backendService' in kwargs:
+            backend_service = kwargs['backendService']
+        if backend_service is None:
+            raise TypeError("Missing 'backend_service' argument")
+        if key_value is None and 'keyValue' in kwargs:
+            key_value = kwargs['keyValue']
+        if key_value is None:
+            raise TypeError("Missing 'key_value' argument")
+
         _setter("backend_service", backend_service)
         _setter("key_value", key_value)
         if name is not None:
@@ -142,7 +152,13 @@ class _BackendServiceSignedUrlKeyState:
              key_value: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backend_service is None and 'backendService' in kwargs:
+            backend_service = kwargs['backendService']
+        if key_value is None and 'keyValue' in kwargs:
+            key_value = kwargs['keyValue']
+
         if backend_service is not None:
             _setter("backend_service", backend_service)
         if key_value is not None:

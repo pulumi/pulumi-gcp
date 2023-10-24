@@ -43,12 +43,18 @@ class UrlListArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             values: pulumi.Input[Sequence[pulumi.Input[str]]],
+             location: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("location", location)
         _setter("values", values)
         if description is not None:
@@ -173,7 +179,13 @@ class _UrlListState:
              project: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:
@@ -304,31 +316,6 @@ class UrlList(pulumi.CustomResource):
             * Use UrlLists
 
         ## Example Usage
-        ### Network Security Url Lists Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.UrlList("default",
-            location="us-central1",
-            values=["www.example.com"])
-        ```
-        ### Network Security Url Lists Advanced
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.UrlList("default",
-            description="my description",
-            location="us-central1",
-            values=[
-                "www.example.com",
-                "about.example.com",
-                "github.com/example-org/*",
-            ])
-        ```
 
         ## Import
 
@@ -375,31 +362,6 @@ class UrlList(pulumi.CustomResource):
             * Use UrlLists
 
         ## Example Usage
-        ### Network Security Url Lists Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.UrlList("default",
-            location="us-central1",
-            values=["www.example.com"])
-        ```
-        ### Network Security Url Lists Advanced
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.UrlList("default",
-            description="my description",
-            location="us-central1",
-            values=[
-                "www.example.com",
-                "about.example.com",
-                "github.com/example-org/*",
-            ])
-        ```
 
         ## Import
 

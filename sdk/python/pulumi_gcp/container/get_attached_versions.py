@@ -80,17 +80,6 @@ def get_attached_versions(location: Optional[str] = None,
     """
     Provides access to available platform versions in a location for a given project.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    uswest = gcp.container.get_attached_versions(location="us-west1",
-        project="my-project")
-    pulumi.export("firstAvailableVersion", data["google_container_attached_versions"]["versions"]["valid_versions"])
-    ```
-
 
     :param str location: The location to list versions for.
     :param str project: ID of the project to list available platform versions for. Should match the project the cluster will be deployed to.
@@ -115,17 +104,6 @@ def get_attached_versions_output(location: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAttachedVersionsResult]:
     """
     Provides access to available platform versions in a location for a given project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    uswest = gcp.container.get_attached_versions(location="us-west1",
-        project="my-project")
-    pulumi.export("firstAvailableVersion", data["google_container_attached_versions"]["versions"]["valid_versions"])
-    ```
 
 
     :param str location: The location to list versions for.

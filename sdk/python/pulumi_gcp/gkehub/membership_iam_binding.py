@@ -52,12 +52,22 @@ class MembershipIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             membership_id: pulumi.Input[str],
-             role: pulumi.Input[str],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             membership_id: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['MembershipIamBindingConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if membership_id is None and 'membershipId' in kwargs:
+            membership_id = kwargs['membershipId']
+        if membership_id is None:
+            raise TypeError("Missing 'membership_id' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("members", members)
         _setter("membership_id", membership_id)
         _setter("role", role)
@@ -181,7 +191,11 @@ class _MembershipIamBindingState:
              membership_id: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if membership_id is None and 'membershipId' in kwargs:
+            membership_id = kwargs['membershipId']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -300,48 +314,6 @@ class MembershipIamBinding(pulumi.CustomResource):
 
         > **Note:** `gkehub.MembershipIamBinding` resources **can be** used in conjunction with `gkehub.MembershipIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_gke\\_hub\\_membership\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.gkehub.MembershipIamPolicy("policy",
-            project=google_gke_hub_membership["membership"]["project"],
-            membership_id=google_gke_hub_membership["membership"]["membership_id"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_gke\\_hub\\_membership\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.gkehub.MembershipIamBinding("binding",
-            project=google_gke_hub_membership["membership"]["project"],
-            membership_id=google_gke_hub_membership["membership"]["membership_id"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_gke\\_hub\\_membership\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.gkehub.MembershipIamMember("member",
-            project=google_gke_hub_membership["membership"]["project"],
-            membership_id=google_gke_hub_membership["membership"]["membership_id"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/memberships/{{membership_id}} * {{project}}/{{location}}/{{membership_id}} * {{location}}/{{membership_id}} * {{membership_id}} Any variables not passed in the import command will be taken from the provider configuration. GKEHub membership IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -407,48 +379,6 @@ class MembershipIamBinding(pulumi.CustomResource):
 
         > **Note:** `gkehub.MembershipIamBinding` resources **can be** used in conjunction with `gkehub.MembershipIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_gke\\_hub\\_membership\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.gkehub.MembershipIamPolicy("policy",
-            project=google_gke_hub_membership["membership"]["project"],
-            membership_id=google_gke_hub_membership["membership"]["membership_id"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_gke\\_hub\\_membership\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.gkehub.MembershipIamBinding("binding",
-            project=google_gke_hub_membership["membership"]["project"],
-            membership_id=google_gke_hub_membership["membership"]["membership_id"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_gke\\_hub\\_membership\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.gkehub.MembershipIamMember("member",
-            project=google_gke_hub_membership["membership"]["project"],
-            membership_id=google_gke_hub_membership["membership"]["membership_id"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/memberships/{{membership_id}} * {{project}}/{{location}}/{{membership_id}} * {{location}}/{{membership_id}} * {{membership_id}} Any variables not passed in the import command will be taken from the provider configuration. GKEHub membership IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -506,11 +436,7 @@ class MembershipIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MembershipIamBindingArgs.__new__(MembershipIamBindingArgs)
 
-            if condition is not None and not isinstance(condition, MembershipIamBindingConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                MembershipIamBindingConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, MembershipIamBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")

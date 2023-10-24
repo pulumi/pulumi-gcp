@@ -102,16 +102,6 @@ def get_cluster_iam_policy(cluster: Optional[str] = None,
     """
     Retrieves the current IAM policy data for a Dataproc cluster.
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.dataproc.get_cluster_iam_policy(cluster=google_dataproc_cluster["cluster"]["name"],
-        region="us-central1")
-    ```
-
 
     :param str cluster: The name or relative resource id of the cluster to manage IAM policies for.
     """
@@ -138,16 +128,6 @@ def get_cluster_iam_policy_output(cluster: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a Dataproc cluster.
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.dataproc.get_cluster_iam_policy(cluster=google_dataproc_cluster["cluster"]["name"],
-        region="us-central1")
-    ```
 
 
     :param str cluster: The name or relative resource id of the cluster to manage IAM policies for.

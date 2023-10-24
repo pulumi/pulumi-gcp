@@ -14,19 +14,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
  *
  * ## Example Usage
- * ### Bigquery Analyticshub Data Exchange Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const dataExchange = new gcp.bigqueryanalyticshub.DataExchange("dataExchange", {
- *     dataExchangeId: "my_data_exchange",
- *     description: "example data exchange",
- *     displayName: "my_data_exchange",
- *     location: "US",
- * });
- * ```
  *
  * ## Import
  *

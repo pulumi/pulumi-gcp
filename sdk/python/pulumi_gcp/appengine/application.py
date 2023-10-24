@@ -54,14 +54,28 @@ class ApplicationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location_id: pulumi.Input[str],
+             location_id: Optional[pulumi.Input[str]] = None,
              auth_domain: Optional[pulumi.Input[str]] = None,
              database_type: Optional[pulumi.Input[str]] = None,
              feature_settings: Optional[pulumi.Input['ApplicationFeatureSettingsArgs']] = None,
              iap: Optional[pulumi.Input['ApplicationIapArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
              serving_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location_id is None and 'locationId' in kwargs:
+            location_id = kwargs['locationId']
+        if location_id is None:
+            raise TypeError("Missing 'location_id' argument")
+        if auth_domain is None and 'authDomain' in kwargs:
+            auth_domain = kwargs['authDomain']
+        if database_type is None and 'databaseType' in kwargs:
+            database_type = kwargs['databaseType']
+        if feature_settings is None and 'featureSettings' in kwargs:
+            feature_settings = kwargs['featureSettings']
+        if serving_status is None and 'servingStatus' in kwargs:
+            serving_status = kwargs['servingStatus']
+
         _setter("location_id", location_id)
         if auth_domain is not None:
             _setter("auth_domain", auth_domain)
@@ -245,7 +259,31 @@ class _ApplicationState:
              project: Optional[pulumi.Input[str]] = None,
              serving_status: Optional[pulumi.Input[str]] = None,
              url_dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationUrlDispatchRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if auth_domain is None and 'authDomain' in kwargs:
+            auth_domain = kwargs['authDomain']
+        if code_bucket is None and 'codeBucket' in kwargs:
+            code_bucket = kwargs['codeBucket']
+        if database_type is None and 'databaseType' in kwargs:
+            database_type = kwargs['databaseType']
+        if default_bucket is None and 'defaultBucket' in kwargs:
+            default_bucket = kwargs['defaultBucket']
+        if default_hostname is None and 'defaultHostname' in kwargs:
+            default_hostname = kwargs['defaultHostname']
+        if feature_settings is None and 'featureSettings' in kwargs:
+            feature_settings = kwargs['featureSettings']
+        if gcr_domain is None and 'gcrDomain' in kwargs:
+            gcr_domain = kwargs['gcrDomain']
+        if location_id is None and 'locationId' in kwargs:
+            location_id = kwargs['locationId']
+        if serving_status is None and 'servingStatus' in kwargs:
+            serving_status = kwargs['servingStatus']
+        if url_dispatch_rules is None and 'urlDispatchRules' in kwargs:
+            url_dispatch_rules = kwargs['urlDispatchRules']
+
         if app_id is not None:
             _setter("app_id", app_id)
         if auth_domain is not None:
@@ -476,20 +514,6 @@ class Application(pulumi.CustomResource):
         > **Warning:** All arguments including `iap.oauth2_client_secret` will be stored in the raw
         state as plain-text. Read more about sensitive data in state.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_project = gcp.organizations.Project("myProject",
-            project_id="your-project-id",
-            org_id="1234567")
-        app = gcp.appengine.Application("app",
-            project=my_project.project_id,
-            location_id="us-central")
-        ```
-
         ## Import
 
         Applications can be imported using the ID of the project the application belongs to, e.g.
@@ -532,20 +556,6 @@ class Application(pulumi.CustomResource):
 
         > **Warning:** All arguments including `iap.oauth2_client_secret` will be stored in the raw
         state as plain-text. Read more about sensitive data in state.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_project = gcp.organizations.Project("myProject",
-            project_id="your-project-id",
-            org_id="1234567")
-        app = gcp.appengine.Application("app",
-            project=my_project.project_id,
-            location_id="us-central")
-        ```
 
         ## Import
 
@@ -592,17 +602,9 @@ class Application(pulumi.CustomResource):
 
             __props__.__dict__["auth_domain"] = auth_domain
             __props__.__dict__["database_type"] = database_type
-            if feature_settings is not None and not isinstance(feature_settings, ApplicationFeatureSettingsArgs):
-                feature_settings = feature_settings or {}
-                def _setter(key, value):
-                    feature_settings[key] = value
-                ApplicationFeatureSettingsArgs._configure(_setter, **feature_settings)
+            feature_settings = _utilities.configure(feature_settings, ApplicationFeatureSettingsArgs, True)
             __props__.__dict__["feature_settings"] = feature_settings
-            if iap is not None and not isinstance(iap, ApplicationIapArgs):
-                iap = iap or {}
-                def _setter(key, value):
-                    iap[key] = value
-                ApplicationIapArgs._configure(_setter, **iap)
+            iap = _utilities.configure(iap, ApplicationIapArgs, True)
             __props__.__dict__["iap"] = iap
             if location_id is None and not opts.urn:
                 raise TypeError("Missing required property 'location_id'")

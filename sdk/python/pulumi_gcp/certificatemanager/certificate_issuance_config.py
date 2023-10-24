@@ -61,16 +61,32 @@ class CertificateIssuanceConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             certificate_authority_config: pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArgs'],
-             key_algorithm: pulumi.Input[str],
-             lifetime: pulumi.Input[str],
-             rotation_window_percentage: pulumi.Input[int],
+             certificate_authority_config: Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArgs']] = None,
+             key_algorithm: Optional[pulumi.Input[str]] = None,
+             lifetime: Optional[pulumi.Input[str]] = None,
+             rotation_window_percentage: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if certificate_authority_config is None and 'certificateAuthorityConfig' in kwargs:
+            certificate_authority_config = kwargs['certificateAuthorityConfig']
+        if certificate_authority_config is None:
+            raise TypeError("Missing 'certificate_authority_config' argument")
+        if key_algorithm is None and 'keyAlgorithm' in kwargs:
+            key_algorithm = kwargs['keyAlgorithm']
+        if key_algorithm is None:
+            raise TypeError("Missing 'key_algorithm' argument")
+        if lifetime is None:
+            raise TypeError("Missing 'lifetime' argument")
+        if rotation_window_percentage is None and 'rotationWindowPercentage' in kwargs:
+            rotation_window_percentage = kwargs['rotationWindowPercentage']
+        if rotation_window_percentage is None:
+            raise TypeError("Missing 'rotation_window_percentage' argument")
+
         _setter("certificate_authority_config", certificate_authority_config)
         _setter("key_algorithm", key_algorithm)
         _setter("lifetime", lifetime)
@@ -273,7 +289,19 @@ class _CertificateIssuanceConfigState:
              project: Optional[pulumi.Input[str]] = None,
              rotation_window_percentage: Optional[pulumi.Input[int]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if certificate_authority_config is None and 'certificateAuthorityConfig' in kwargs:
+            certificate_authority_config = kwargs['certificateAuthorityConfig']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if key_algorithm is None and 'keyAlgorithm' in kwargs:
+            key_algorithm = kwargs['keyAlgorithm']
+        if rotation_window_percentage is None and 'rotationWindowPercentage' in kwargs:
+            rotation_window_percentage = kwargs['rotationWindowPercentage']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if certificate_authority_config is not None:
             _setter("certificate_authority_config", certificate_authority_config)
         if create_time is not None:
@@ -468,66 +496,6 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
             * [Manage certificate issuance configs](https://cloud.google.com/certificate-manager/docs/issuance-configs)
 
         ## Example Usage
-        ### Certificate Manager Certificate Issuance Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        pool = gcp.certificateauthority.CaPool("pool",
-            location="us-central1",
-            tier="ENTERPRISE")
-        ca_authority = gcp.certificateauthority.Authority("caAuthority",
-            location="us-central1",
-            pool=pool.name,
-            certificate_authority_id="ca-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        organization="HashiCorp",
-                        common_name="my-certificate-authority",
-                    ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
-                        dns_names=["hashicorp.com"],
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=True,
-                        ),
-                    ),
-                ),
-            ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
-                algorithm="RSA_PKCS1_4096_SHA256",
-            ),
-            deletion_protection=False,
-            skip_grace_period=True,
-            ignore_active_certificates_on_deletion=True)
-        default = gcp.certificatemanager.CertificateIssuanceConfig("default",
-            description="sample description for the certificate issuanceConfigs",
-            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
-                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
-                    ca_pool=pool.id,
-                ),
-            ),
-            lifetime="1814400s",
-            rotation_window_percentage=34,
-            key_algorithm="ECDSA_P256",
-            labels={
-                "name": "wrench",
-                "count": "3",
-            },
-            opts=pulumi.ResourceOptions(depends_on=[ca_authority]))
-        ```
 
         ## Import
 
@@ -582,66 +550,6 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
             * [Manage certificate issuance configs](https://cloud.google.com/certificate-manager/docs/issuance-configs)
 
         ## Example Usage
-        ### Certificate Manager Certificate Issuance Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        pool = gcp.certificateauthority.CaPool("pool",
-            location="us-central1",
-            tier="ENTERPRISE")
-        ca_authority = gcp.certificateauthority.Authority("caAuthority",
-            location="us-central1",
-            pool=pool.name,
-            certificate_authority_id="ca-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        organization="HashiCorp",
-                        common_name="my-certificate-authority",
-                    ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
-                        dns_names=["hashicorp.com"],
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=True,
-                        ),
-                    ),
-                ),
-            ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
-                algorithm="RSA_PKCS1_4096_SHA256",
-            ),
-            deletion_protection=False,
-            skip_grace_period=True,
-            ignore_active_certificates_on_deletion=True)
-        default = gcp.certificatemanager.CertificateIssuanceConfig("default",
-            description="sample description for the certificate issuanceConfigs",
-            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
-                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
-                    ca_pool=pool.id,
-                ),
-            ),
-            lifetime="1814400s",
-            rotation_window_percentage=34,
-            key_algorithm="ECDSA_P256",
-            labels={
-                "name": "wrench",
-                "count": "3",
-            },
-            opts=pulumi.ResourceOptions(depends_on=[ca_authority]))
-        ```
 
         ## Import
 
@@ -696,11 +604,7 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CertificateIssuanceConfigArgs.__new__(CertificateIssuanceConfigArgs)
 
-            if certificate_authority_config is not None and not isinstance(certificate_authority_config, CertificateIssuanceConfigCertificateAuthorityConfigArgs):
-                certificate_authority_config = certificate_authority_config or {}
-                def _setter(key, value):
-                    certificate_authority_config[key] = value
-                CertificateIssuanceConfigCertificateAuthorityConfigArgs._configure(_setter, **certificate_authority_config)
+            certificate_authority_config = _utilities.configure(certificate_authority_config, CertificateIssuanceConfigCertificateAuthorityConfigArgs, True)
             if certificate_authority_config is None and not opts.urn:
                 raise TypeError("Missing required property 'certificate_authority_config'")
             __props__.__dict__["certificate_authority_config"] = certificate_authority_config

@@ -58,15 +58,31 @@ class OsPolicyAssignmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_filter: pulumi.Input['OsPolicyAssignmentInstanceFilterArgs'],
-             location: pulumi.Input[str],
-             os_policies: pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArgs']]],
-             rollout: pulumi.Input['OsPolicyAssignmentRolloutArgs'],
+             instance_filter: Optional[pulumi.Input['OsPolicyAssignmentInstanceFilterArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             os_policies: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArgs']]]] = None,
+             rollout: Optional[pulumi.Input['OsPolicyAssignmentRolloutArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              skip_await_rollout: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if instance_filter is None and 'instanceFilter' in kwargs:
+            instance_filter = kwargs['instanceFilter']
+        if instance_filter is None:
+            raise TypeError("Missing 'instance_filter' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if os_policies is None and 'osPolicies' in kwargs:
+            os_policies = kwargs['osPolicies']
+        if os_policies is None:
+            raise TypeError("Missing 'os_policies' argument")
+        if rollout is None:
+            raise TypeError("Missing 'rollout' argument")
+        if skip_await_rollout is None and 'skipAwaitRollout' in kwargs:
+            skip_await_rollout = kwargs['skipAwaitRollout']
+
         _setter("instance_filter", instance_filter)
         _setter("location", location)
         _setter("os_policies", os_policies)
@@ -280,7 +296,21 @@ class _OsPolicyAssignmentState:
              rollout_state: Optional[pulumi.Input[str]] = None,
              skip_await_rollout: Optional[pulumi.Input[bool]] = None,
              uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if instance_filter is None and 'instanceFilter' in kwargs:
+            instance_filter = kwargs['instanceFilter']
+        if os_policies is None and 'osPolicies' in kwargs:
+            os_policies = kwargs['osPolicies']
+        if revision_create_time is None and 'revisionCreateTime' in kwargs:
+            revision_create_time = kwargs['revisionCreateTime']
+        if revision_id is None and 'revisionId' in kwargs:
+            revision_id = kwargs['revisionId']
+        if rollout_state is None and 'rolloutState' in kwargs:
+            rollout_state = kwargs['rolloutState']
+        if skip_await_rollout is None and 'skipAwaitRollout' in kwargs:
+            skip_await_rollout = kwargs['skipAwaitRollout']
+
         if baseline is not None:
             _setter("baseline", baseline)
         if deleted is not None:
@@ -555,90 +585,6 @@ class OsPolicyAssignment(pulumi.CustomResource):
             *   [Official Documentation](https://cloud.google.com/compute/docs/os-configuration-management/create-os-policy-assignment)
 
         ## Example Usage
-        ### Os Config Os Policy Assignment Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.osconfig.OsPolicyAssignment("primary",
-            description="A test os policy assignment",
-            instance_filter=gcp.osconfig.OsPolicyAssignmentInstanceFilterArgs(
-                all=False,
-                exclusion_labels=[gcp.osconfig.OsPolicyAssignmentInstanceFilterExclusionLabelArgs(
-                    labels={
-                        "label-two": "value-two",
-                    },
-                )],
-                inclusion_labels=[gcp.osconfig.OsPolicyAssignmentInstanceFilterInclusionLabelArgs(
-                    labels={
-                        "label-one": "value-one",
-                    },
-                )],
-                inventories=[gcp.osconfig.OsPolicyAssignmentInstanceFilterInventoryArgs(
-                    os_short_name="centos",
-                    os_version="8.*",
-                )],
-            ),
-            location="us-central1-a",
-            os_policies=[gcp.osconfig.OsPolicyAssignmentOsPolicyArgs(
-                allow_no_resource_group_match=False,
-                description="A test os policy",
-                id="policy",
-                mode="VALIDATION",
-                resource_groups=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupArgs(
-                    inventory_filters=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs(
-                        os_short_name="centos",
-                        os_version="8.*",
-                    )],
-                    resources=[
-                        gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                            id="apt-to-yum",
-                            repository=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs(
-                                apt=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs(
-                                    archive_type="DEB",
-                                    components=["doc"],
-                                    distribution="debian",
-                                    gpg_key=".gnupg/pubring.kbx",
-                                    uri="https://atl.mirrors.clouvider.net/debian",
-                                ),
-                            ),
-                        ),
-                        gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                            exec_=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs(
-                                enforce=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs(
-                                    args=["arg1"],
-                                    file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs(
-                                        allow_insecure=True,
-                                        remote=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs(
-                                            sha256_checksum="c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
-                                            uri="https://www.example.com/script.sh",
-                                        ),
-                                    ),
-                                    interpreter="SHELL",
-                                    output_file_path="$HOME/out",
-                                ),
-                                validate=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs(
-                                    args=["arg1"],
-                                    file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs(
-                                        local_path="$HOME/script.sh",
-                                    ),
-                                    interpreter="SHELL",
-                                    output_file_path="$HOME/out",
-                                ),
-                            ),
-                            id="exec1",
-                        ),
-                    ],
-                )],
-            )],
-            rollout=gcp.osconfig.OsPolicyAssignmentRolloutArgs(
-                disruption_budget=gcp.osconfig.OsPolicyAssignmentRolloutDisruptionBudgetArgs(
-                    percent=100,
-                ),
-                min_wait_duration="3s",
-            ))
-        ```
 
         ## Import
 
@@ -698,90 +644,6 @@ class OsPolicyAssignment(pulumi.CustomResource):
             *   [Official Documentation](https://cloud.google.com/compute/docs/os-configuration-management/create-os-policy-assignment)
 
         ## Example Usage
-        ### Os Config Os Policy Assignment Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.osconfig.OsPolicyAssignment("primary",
-            description="A test os policy assignment",
-            instance_filter=gcp.osconfig.OsPolicyAssignmentInstanceFilterArgs(
-                all=False,
-                exclusion_labels=[gcp.osconfig.OsPolicyAssignmentInstanceFilterExclusionLabelArgs(
-                    labels={
-                        "label-two": "value-two",
-                    },
-                )],
-                inclusion_labels=[gcp.osconfig.OsPolicyAssignmentInstanceFilterInclusionLabelArgs(
-                    labels={
-                        "label-one": "value-one",
-                    },
-                )],
-                inventories=[gcp.osconfig.OsPolicyAssignmentInstanceFilterInventoryArgs(
-                    os_short_name="centos",
-                    os_version="8.*",
-                )],
-            ),
-            location="us-central1-a",
-            os_policies=[gcp.osconfig.OsPolicyAssignmentOsPolicyArgs(
-                allow_no_resource_group_match=False,
-                description="A test os policy",
-                id="policy",
-                mode="VALIDATION",
-                resource_groups=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupArgs(
-                    inventory_filters=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs(
-                        os_short_name="centos",
-                        os_version="8.*",
-                    )],
-                    resources=[
-                        gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                            id="apt-to-yum",
-                            repository=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs(
-                                apt=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs(
-                                    archive_type="DEB",
-                                    components=["doc"],
-                                    distribution="debian",
-                                    gpg_key=".gnupg/pubring.kbx",
-                                    uri="https://atl.mirrors.clouvider.net/debian",
-                                ),
-                            ),
-                        ),
-                        gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                            exec_=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs(
-                                enforce=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs(
-                                    args=["arg1"],
-                                    file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs(
-                                        allow_insecure=True,
-                                        remote=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs(
-                                            sha256_checksum="c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
-                                            uri="https://www.example.com/script.sh",
-                                        ),
-                                    ),
-                                    interpreter="SHELL",
-                                    output_file_path="$HOME/out",
-                                ),
-                                validate=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs(
-                                    args=["arg1"],
-                                    file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs(
-                                        local_path="$HOME/script.sh",
-                                    ),
-                                    interpreter="SHELL",
-                                    output_file_path="$HOME/out",
-                                ),
-                            ),
-                            id="exec1",
-                        ),
-                    ],
-                )],
-            )],
-            rollout=gcp.osconfig.OsPolicyAssignmentRolloutArgs(
-                disruption_budget=gcp.osconfig.OsPolicyAssignmentRolloutDisruptionBudgetArgs(
-                    percent=100,
-                ),
-                min_wait_duration="3s",
-            ))
-        ```
 
         ## Import
 
@@ -836,11 +698,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
             __props__ = OsPolicyAssignmentArgs.__new__(OsPolicyAssignmentArgs)
 
             __props__.__dict__["description"] = description
-            if instance_filter is not None and not isinstance(instance_filter, OsPolicyAssignmentInstanceFilterArgs):
-                instance_filter = instance_filter or {}
-                def _setter(key, value):
-                    instance_filter[key] = value
-                OsPolicyAssignmentInstanceFilterArgs._configure(_setter, **instance_filter)
+            instance_filter = _utilities.configure(instance_filter, OsPolicyAssignmentInstanceFilterArgs, True)
             if instance_filter is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_filter'")
             __props__.__dict__["instance_filter"] = instance_filter
@@ -852,11 +710,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
                 raise TypeError("Missing required property 'os_policies'")
             __props__.__dict__["os_policies"] = os_policies
             __props__.__dict__["project"] = project
-            if rollout is not None and not isinstance(rollout, OsPolicyAssignmentRolloutArgs):
-                rollout = rollout or {}
-                def _setter(key, value):
-                    rollout[key] = value
-                OsPolicyAssignmentRolloutArgs._configure(_setter, **rollout)
+            rollout = _utilities.configure(rollout, OsPolicyAssignmentRolloutArgs, True)
             if rollout is None and not opts.urn:
                 raise TypeError("Missing required property 'rollout'")
             __props__.__dict__["rollout"] = rollout

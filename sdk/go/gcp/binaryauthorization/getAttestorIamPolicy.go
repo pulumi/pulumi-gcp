@@ -13,33 +13,6 @@ import (
 )
 
 // Retrieves the current IAM policy data for attestor
-//
-// ## example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/binaryauthorization"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := binaryauthorization.LookupAttestorIamPolicy(ctx, &binaryauthorization.LookupAttestorIamPolicyArgs{
-//				Project:  pulumi.StringRef(google_binary_authorization_attestor.Attestor.Project),
-//				Attestor: google_binary_authorization_attestor.Attestor.Name,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupAttestorIamPolicy(ctx *pulumi.Context, args *LookupAttestorIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAttestorIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAttestorIamPolicyResult

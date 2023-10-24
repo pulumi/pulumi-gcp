@@ -6,48 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- * ### Firebase Apple App Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.firebase.AppleApp("default", {
- *     project: "my-project-name",
- *     displayName: "Display Name Basic",
- *     bundleId: "apple.app.12345",
- * }, {
- *     provider: google_beta,
- * });
- * ```
- * ### Firebase Apple App Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const apple = new gcp.projects.ApiKey("apple", {
- *     displayName: "Display Name Full",
- *     project: "my-project-name",
- *     restrictions: {
- *         iosKeyRestrictions: {
- *             allowedBundleIds: ["apple.app.12345"],
- *         },
- *     },
- * }, {
- *     provider: google_beta,
- * });
- * const full = new gcp.firebase.AppleApp("full", {
- *     project: "my-project-name",
- *     displayName: "Display Name Full",
- *     bundleId: "apple.app.12345",
- *     appStoreId: "12345",
- *     teamId: "9987654321",
- *     apiKeyId: apple.uid,
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *

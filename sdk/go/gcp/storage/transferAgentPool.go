@@ -21,53 +21,6 @@ import (
 //   - [Official Documentation](https://cloud.google.com/storage-transfer/docs/on-prem-agent-pools)
 //
 // ## Example Usage
-// ### Agent Pool Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := storage.GetTransferProjectServiceAccount(ctx, &storage.GetTransferProjectServiceAccountArgs{
-//				Project: pulumi.StringRef("my-project-name"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			pubsubEditorRole, err := projects.NewIAMMember(ctx, "pubsubEditorRole", &projects.IAMMemberArgs{
-//				Project: pulumi.String("my-project-name"),
-//				Role:    pulumi.String("roles/pubsub.editor"),
-//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:%v", _default.Email)),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = storage.NewTransferAgentPool(ctx, "example", &storage.TransferAgentPoolArgs{
-//				DisplayName: pulumi.String("Source A to destination Z"),
-//				BandwidthLimit: &storage.TransferAgentPoolBandwidthLimitArgs{
-//					LimitMbps: pulumi.String("120"),
-//				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				pubsubEditorRole,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

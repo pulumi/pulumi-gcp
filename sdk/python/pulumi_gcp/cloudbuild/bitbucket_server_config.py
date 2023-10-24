@@ -63,17 +63,43 @@ class BitbucketServerConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api_key: pulumi.Input[str],
-             config_id: pulumi.Input[str],
-             host_uri: pulumi.Input[str],
-             location: pulumi.Input[str],
-             secrets: pulumi.Input['BitbucketServerConfigSecretsArgs'],
-             username: pulumi.Input[str],
+             api_key: Optional[pulumi.Input[str]] = None,
+             config_id: Optional[pulumi.Input[str]] = None,
+             host_uri: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             secrets: Optional[pulumi.Input['BitbucketServerConfigSecretsArgs']] = None,
+             username: Optional[pulumi.Input[str]] = None,
              connected_repositories: Optional[pulumi.Input[Sequence[pulumi.Input['BitbucketServerConfigConnectedRepositoryArgs']]]] = None,
              peered_network: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              ssl_ca: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_key is None and 'apiKey' in kwargs:
+            api_key = kwargs['apiKey']
+        if api_key is None:
+            raise TypeError("Missing 'api_key' argument")
+        if config_id is None and 'configId' in kwargs:
+            config_id = kwargs['configId']
+        if config_id is None:
+            raise TypeError("Missing 'config_id' argument")
+        if host_uri is None and 'hostUri' in kwargs:
+            host_uri = kwargs['hostUri']
+        if host_uri is None:
+            raise TypeError("Missing 'host_uri' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if secrets is None:
+            raise TypeError("Missing 'secrets' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+        if connected_repositories is None and 'connectedRepositories' in kwargs:
+            connected_repositories = kwargs['connectedRepositories']
+        if peered_network is None and 'peeredNetwork' in kwargs:
+            peered_network = kwargs['peeredNetwork']
+        if ssl_ca is None and 'sslCa' in kwargs:
+            ssl_ca = kwargs['sslCa']
+
         _setter("api_key", api_key)
         _setter("config_id", config_id)
         _setter("host_uri", host_uri)
@@ -286,7 +312,23 @@ class _BitbucketServerConfigState:
              ssl_ca: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
              webhook_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_key is None and 'apiKey' in kwargs:
+            api_key = kwargs['apiKey']
+        if config_id is None and 'configId' in kwargs:
+            config_id = kwargs['configId']
+        if connected_repositories is None and 'connectedRepositories' in kwargs:
+            connected_repositories = kwargs['connectedRepositories']
+        if host_uri is None and 'hostUri' in kwargs:
+            host_uri = kwargs['hostUri']
+        if peered_network is None and 'peeredNetwork' in kwargs:
+            peered_network = kwargs['peeredNetwork']
+        if ssl_ca is None and 'sslCa' in kwargs:
+            ssl_ca = kwargs['sslCa']
+        if webhook_key is None and 'webhookKey' in kwargs:
+            webhook_key = kwargs['webhookKey']
+
         if api_key is not None:
             _setter("api_key", api_key)
         if config_id is not None:
@@ -491,52 +533,6 @@ class BitbucketServerConfig(pulumi.CustomResource):
             * [Connect to a Bitbucket Server host](https://cloud.google.com/build/docs/automating-builds/bitbucket/connect-host-bitbucket-server)
 
         ## Example Usage
-        ### Cloudbuild Bitbucket Server Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bbs_config = gcp.cloudbuild.BitbucketServerConfig("bbs-config",
-            api_key="<api-key>",
-            config_id="bbs-config",
-            host_uri="https://bbs.com",
-            location="us-central1",
-            secrets=gcp.cloudbuild.BitbucketServerConfigSecretsArgs(
-                admin_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
-                read_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
-                webhook_secret_version_name="projects/myProject/secrets/mybbspat/versions/1",
-            ),
-            username="test")
-        ```
-        ### Cloudbuild Bitbucket Server Config Repositories
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bbs_config_with_repos = gcp.cloudbuild.BitbucketServerConfig("bbs-config-with-repos",
-            api_key="<api-key>",
-            config_id="bbs-config",
-            connected_repositories=[
-                gcp.cloudbuild.BitbucketServerConfigConnectedRepositoryArgs(
-                    project_key="DEV",
-                    repo_slug="repo1",
-                ),
-                gcp.cloudbuild.BitbucketServerConfigConnectedRepositoryArgs(
-                    project_key="PROD",
-                    repo_slug="repo1",
-                ),
-            ],
-            host_uri="https://bbs.com",
-            location="us-central1",
-            secrets=gcp.cloudbuild.BitbucketServerConfigSecretsArgs(
-                admin_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
-                read_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
-                webhook_secret_version_name="projects/myProject/secrets/mybbspat/versions/1",
-            ),
-            username="test")
-        ```
 
         ## Import
 
@@ -591,52 +587,6 @@ class BitbucketServerConfig(pulumi.CustomResource):
             * [Connect to a Bitbucket Server host](https://cloud.google.com/build/docs/automating-builds/bitbucket/connect-host-bitbucket-server)
 
         ## Example Usage
-        ### Cloudbuild Bitbucket Server Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bbs_config = gcp.cloudbuild.BitbucketServerConfig("bbs-config",
-            api_key="<api-key>",
-            config_id="bbs-config",
-            host_uri="https://bbs.com",
-            location="us-central1",
-            secrets=gcp.cloudbuild.BitbucketServerConfigSecretsArgs(
-                admin_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
-                read_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
-                webhook_secret_version_name="projects/myProject/secrets/mybbspat/versions/1",
-            ),
-            username="test")
-        ```
-        ### Cloudbuild Bitbucket Server Config Repositories
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bbs_config_with_repos = gcp.cloudbuild.BitbucketServerConfig("bbs-config-with-repos",
-            api_key="<api-key>",
-            config_id="bbs-config",
-            connected_repositories=[
-                gcp.cloudbuild.BitbucketServerConfigConnectedRepositoryArgs(
-                    project_key="DEV",
-                    repo_slug="repo1",
-                ),
-                gcp.cloudbuild.BitbucketServerConfigConnectedRepositoryArgs(
-                    project_key="PROD",
-                    repo_slug="repo1",
-                ),
-            ],
-            host_uri="https://bbs.com",
-            location="us-central1",
-            secrets=gcp.cloudbuild.BitbucketServerConfigSecretsArgs(
-                admin_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
-                read_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
-                webhook_secret_version_name="projects/myProject/secrets/mybbspat/versions/1",
-            ),
-            username="test")
-        ```
 
         ## Import
 
@@ -707,11 +657,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["peered_network"] = peered_network
             __props__.__dict__["project"] = project
-            if secrets is not None and not isinstance(secrets, BitbucketServerConfigSecretsArgs):
-                secrets = secrets or {}
-                def _setter(key, value):
-                    secrets[key] = value
-                BitbucketServerConfigSecretsArgs._configure(_setter, **secrets)
+            secrets = _utilities.configure(secrets, BitbucketServerConfigSecretsArgs, True)
             if secrets is None and not opts.urn:
                 raise TypeError("Missing required property 'secrets'")
             __props__.__dict__["secrets"] = secrets

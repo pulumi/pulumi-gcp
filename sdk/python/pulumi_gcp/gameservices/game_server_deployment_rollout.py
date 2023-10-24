@@ -47,11 +47,23 @@ class GameServerDeploymentRolloutArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             default_game_server_config: pulumi.Input[str],
-             deployment_id: pulumi.Input[str],
+             default_game_server_config: Optional[pulumi.Input[str]] = None,
+             deployment_id: Optional[pulumi.Input[str]] = None,
              game_server_config_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['GameServerDeploymentRolloutGameServerConfigOverrideArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if default_game_server_config is None and 'defaultGameServerConfig' in kwargs:
+            default_game_server_config = kwargs['defaultGameServerConfig']
+        if default_game_server_config is None:
+            raise TypeError("Missing 'default_game_server_config' argument")
+        if deployment_id is None and 'deploymentId' in kwargs:
+            deployment_id = kwargs['deploymentId']
+        if deployment_id is None:
+            raise TypeError("Missing 'deployment_id' argument")
+        if game_server_config_overrides is None and 'gameServerConfigOverrides' in kwargs:
+            game_server_config_overrides = kwargs['gameServerConfigOverrides']
+
         _setter("default_game_server_config", default_game_server_config)
         _setter("deployment_id", deployment_id)
         if game_server_config_overrides is not None:
@@ -161,7 +173,15 @@ class _GameServerDeploymentRolloutState:
              game_server_config_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['GameServerDeploymentRolloutGameServerConfigOverrideArgs']]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if default_game_server_config is None and 'defaultGameServerConfig' in kwargs:
+            default_game_server_config = kwargs['defaultGameServerConfig']
+        if deployment_id is None and 'deploymentId' in kwargs:
+            deployment_id = kwargs['deploymentId']
+        if game_server_config_overrides is None and 'gameServerConfigOverrides' in kwargs:
+            game_server_config_overrides = kwargs['gameServerConfigOverrides']
+
         if default_game_server_config is not None:
             _setter("default_game_server_config", default_game_server_config)
         if deployment_id is not None:
@@ -266,52 +286,6 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/game-servers/docs)
 
         ## Example Usage
-        ### Game Service Deployment Rollout Basic
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_gcp as gcp
-
-        default_game_server_deployment = gcp.gameservices.GameServerDeployment("defaultGameServerDeployment",
-            deployment_id="tf-test-deployment",
-            description="a deployment description")
-        default_game_server_config = gcp.gameservices.GameServerConfig("defaultGameServerConfig",
-            config_id="tf-test-config",
-            deployment_id=default_game_server_deployment.deployment_id,
-            description="a config description",
-            fleet_configs=[gcp.gameservices.GameServerConfigFleetConfigArgs(
-                name="some-non-guid",
-                fleet_spec=json.dumps({
-                    "replicas": 1,
-                    "scheduling": "Packed",
-                    "template": {
-                        "metadata": {
-                            "name": "tf-test-game-server-template",
-                        },
-                        "spec": {
-                            "ports": [{
-                                "name": "default",
-                                "portPolicy": "Dynamic",
-                                "containerPort": 7654,
-                                "protocol": "UDP",
-                            }],
-                            "template": {
-                                "spec": {
-                                    "containers": [{
-                                        "name": "simple-udp-server",
-                                        "image": "gcr.io/agones-images/udp-server:0.14",
-                                    }],
-                                },
-                            },
-                        },
-                    },
-                }),
-            )])
-        default_game_server_deployment_rollout = gcp.gameservices.GameServerDeploymentRollout("defaultGameServerDeploymentRollout",
-            deployment_id=default_game_server_deployment.deployment_id,
-            default_game_server_config=default_game_server_config.name)
-        ```
 
         ## Import
 
@@ -363,52 +337,6 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/game-servers/docs)
 
         ## Example Usage
-        ### Game Service Deployment Rollout Basic
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_gcp as gcp
-
-        default_game_server_deployment = gcp.gameservices.GameServerDeployment("defaultGameServerDeployment",
-            deployment_id="tf-test-deployment",
-            description="a deployment description")
-        default_game_server_config = gcp.gameservices.GameServerConfig("defaultGameServerConfig",
-            config_id="tf-test-config",
-            deployment_id=default_game_server_deployment.deployment_id,
-            description="a config description",
-            fleet_configs=[gcp.gameservices.GameServerConfigFleetConfigArgs(
-                name="some-non-guid",
-                fleet_spec=json.dumps({
-                    "replicas": 1,
-                    "scheduling": "Packed",
-                    "template": {
-                        "metadata": {
-                            "name": "tf-test-game-server-template",
-                        },
-                        "spec": {
-                            "ports": [{
-                                "name": "default",
-                                "portPolicy": "Dynamic",
-                                "containerPort": 7654,
-                                "protocol": "UDP",
-                            }],
-                            "template": {
-                                "spec": {
-                                    "containers": [{
-                                        "name": "simple-udp-server",
-                                        "image": "gcr.io/agones-images/udp-server:0.14",
-                                    }],
-                                },
-                            },
-                        },
-                    },
-                }),
-            )])
-        default_game_server_deployment_rollout = gcp.gameservices.GameServerDeploymentRollout("defaultGameServerDeploymentRollout",
-            deployment_id=default_game_server_deployment.deployment_id,
-            default_game_server_config=default_game_server_config.name)
-        ```
 
         ## Import
 

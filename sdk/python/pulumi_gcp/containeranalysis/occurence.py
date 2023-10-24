@@ -53,12 +53,24 @@ class OccurenceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attestation: pulumi.Input['OccurenceAttestationArgs'],
-             note_name: pulumi.Input[str],
-             resource_uri: pulumi.Input[str],
+             attestation: Optional[pulumi.Input['OccurenceAttestationArgs']] = None,
+             note_name: Optional[pulumi.Input[str]] = None,
+             resource_uri: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              remediation: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if attestation is None:
+            raise TypeError("Missing 'attestation' argument")
+        if note_name is None and 'noteName' in kwargs:
+            note_name = kwargs['noteName']
+        if note_name is None:
+            raise TypeError("Missing 'note_name' argument")
+        if resource_uri is None and 'resourceUri' in kwargs:
+            resource_uri = kwargs['resourceUri']
+        if resource_uri is None:
+            raise TypeError("Missing 'resource_uri' argument")
+
         _setter("attestation", attestation)
         _setter("note_name", note_name)
         _setter("resource_uri", resource_uri)
@@ -204,7 +216,17 @@ class _OccurenceState:
              remediation: Optional[pulumi.Input[str]] = None,
              resource_uri: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if note_name is None and 'noteName' in kwargs:
+            note_name = kwargs['noteName']
+        if resource_uri is None and 'resourceUri' in kwargs:
+            resource_uri = kwargs['resourceUri']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if attestation is not None:
             _setter("attestation", attestation)
         if create_time is not None:
@@ -475,11 +497,7 @@ class Occurence(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OccurenceArgs.__new__(OccurenceArgs)
 
-            if attestation is not None and not isinstance(attestation, OccurenceAttestationArgs):
-                attestation = attestation or {}
-                def _setter(key, value):
-                    attestation[key] = value
-                OccurenceAttestationArgs._configure(_setter, **attestation)
+            attestation = _utilities.configure(attestation, OccurenceAttestationArgs, True)
             if attestation is None and not opts.urn:
                 raise TypeError("Missing required property 'attestation'")
             __props__.__dict__["attestation"] = attestation

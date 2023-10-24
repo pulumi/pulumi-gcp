@@ -50,12 +50,22 @@ class DatasetIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset_id: pulumi.Input[str],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
+             dataset_id: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['DatasetIamMemberConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if dataset_id is None:
+            raise TypeError("Missing 'dataset_id' argument")
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("dataset_id", dataset_id)
         _setter("member", member)
         _setter("role", role)
@@ -177,7 +187,11 @@ class _DatasetIamMemberState:
              member: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+
         if condition is not None:
             _setter("condition", condition)
         if dataset_id is not None:
@@ -300,48 +314,6 @@ class DatasetIamMember(pulumi.CustomResource):
 
         > **Note:** `bigquery.DatasetIamBinding` resources **can be** used in conjunction with `bigquery.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_bigquery\\_dataset\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        owner = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/bigquery.dataOwner",
-            members=["user:jane@example.com"],
-        )])
-        dataset_dataset = gcp.bigquery.Dataset("datasetDataset", dataset_id="example_dataset")
-        dataset_dataset_iam_policy = gcp.bigquery.DatasetIamPolicy("datasetDatasetIamPolicy",
-            dataset_id=dataset_dataset.dataset_id,
-            policy_data=owner.policy_data)
-        ```
-
-        ## google\\_bigquery\\_dataset\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
-        reader = gcp.bigquery.DatasetIamBinding("reader",
-            dataset_id=dataset.dataset_id,
-            role="roles/bigquery.dataViewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_bigquery\\_dataset\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
-        editor = gcp.bigquery.DatasetIamMember("editor",
-            dataset_id=dataset.dataset_id,
-            role="roles/bigquery.dataEditor",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
@@ -415,48 +387,6 @@ class DatasetIamMember(pulumi.CustomResource):
 
         > **Note:** `bigquery.DatasetIamBinding` resources **can be** used in conjunction with `bigquery.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_bigquery\\_dataset\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        owner = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/bigquery.dataOwner",
-            members=["user:jane@example.com"],
-        )])
-        dataset_dataset = gcp.bigquery.Dataset("datasetDataset", dataset_id="example_dataset")
-        dataset_dataset_iam_policy = gcp.bigquery.DatasetIamPolicy("datasetDatasetIamPolicy",
-            dataset_id=dataset_dataset.dataset_id,
-            policy_data=owner.policy_data)
-        ```
-
-        ## google\\_bigquery\\_dataset\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
-        reader = gcp.bigquery.DatasetIamBinding("reader",
-            dataset_id=dataset.dataset_id,
-            role="roles/bigquery.dataViewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_bigquery\\_dataset\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
-        editor = gcp.bigquery.DatasetIamMember("editor",
-            dataset_id=dataset.dataset_id,
-            role="roles/bigquery.dataEditor",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
@@ -520,11 +450,7 @@ class DatasetIamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatasetIamMemberArgs.__new__(DatasetIamMemberArgs)
 
-            if condition is not None and not isinstance(condition, DatasetIamMemberConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                DatasetIamMemberConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, DatasetIamMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")

@@ -23,23 +23,6 @@ import * as utilities from "../utilities";
  *     * [Reserving zonal resources](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
  *
  * ## Example Usage
- * ### Reservation Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const gceReservation = new gcp.compute.Reservation("gceReservation", {
- *     specificReservation: {
- *         count: 1,
- *         instanceProperties: {
- *             machineType: "n2-standard-2",
- *             minCpuPlatform: "Intel Cascade Lake",
- *         },
- *     },
- *     zone: "us-central1-a",
- * });
- * ```
  *
  * ## Import
  *

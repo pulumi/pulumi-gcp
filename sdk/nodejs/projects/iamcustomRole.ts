@@ -17,26 +17,6 @@ import * as utilities from "../utilities";
  *  made available again. This means a deleted role that has been deleted for more than 7 days cannot be changed at all
  *  by the provider, and new roles cannot share that name.
  *
- * ## Example Usage
- *
- * This snippet creates a customized IAM role.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const my_custom_role = new gcp.projects.IAMCustomRole("my-custom-role", {
- *     description: "A description",
- *     permissions: [
- *         "iam.roles.list",
- *         "iam.roles.create",
- *         "iam.roles.delete",
- *     ],
- *     roleId: "myCustomRole",
- *     title: "My Custom Role",
- * });
- * ```
- *
  * ## Import
  *
  * Custom Roles can be imported using any of these accepted formats

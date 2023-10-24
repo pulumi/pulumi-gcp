@@ -49,12 +49,20 @@ class IndexArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             collection: pulumi.Input[str],
-             fields: pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]],
+             collection: Optional[pulumi.Input[str]] = None,
+             fields: Optional[pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]]] = None,
              database: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              query_scope: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if collection is None:
+            raise TypeError("Missing 'collection' argument")
+        if fields is None:
+            raise TypeError("Missing 'fields' argument")
+        if query_scope is None and 'queryScope' in kwargs:
+            query_scope = kwargs['queryScope']
+
         _setter("collection", collection)
         _setter("fields", fields)
         if database is not None:
@@ -180,7 +188,11 @@ class _IndexState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              query_scope: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if query_scope is None and 'queryScope' in kwargs:
+            query_scope = kwargs['queryScope']
+
         if collection is not None:
             _setter("collection", collection)
         if database is not None:
@@ -309,26 +321,6 @@ class Index(pulumi.CustomResource):
         the App Engine location specified.
 
         ## Example Usage
-        ### Firestore Index Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_index = gcp.firestore.Index("my-index",
-            collection="chatrooms",
-            fields=[
-                gcp.firestore.IndexFieldArgs(
-                    field_path="name",
-                    order="ASCENDING",
-                ),
-                gcp.firestore.IndexFieldArgs(
-                    field_path="description",
-                    order="DESCENDING",
-                ),
-            ],
-            project="my-project-name")
-        ```
 
         ## Import
 
@@ -382,26 +374,6 @@ class Index(pulumi.CustomResource):
         the App Engine location specified.
 
         ## Example Usage
-        ### Firestore Index Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_index = gcp.firestore.Index("my-index",
-            collection="chatrooms",
-            fields=[
-                gcp.firestore.IndexFieldArgs(
-                    field_path="name",
-                    order="ASCENDING",
-                ),
-                gcp.firestore.IndexFieldArgs(
-                    field_path="description",
-                    order="DESCENDING",
-                ),
-            ],
-            project="my-project-name")
-        ```
 
         ## Import
 

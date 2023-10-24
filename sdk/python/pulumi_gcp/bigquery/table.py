@@ -127,8 +127,8 @@ class TableArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset_id: pulumi.Input[str],
-             table_id: pulumi.Input[str],
+             dataset_id: Optional[pulumi.Input[str]] = None,
+             table_id: Optional[pulumi.Input[str]] = None,
              clusterings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              deletion_protection: Optional[pulumi.Input[bool]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -145,7 +145,37 @@ class TableArgs:
              table_constraints: Optional[pulumi.Input['TableTableConstraintsArgs']] = None,
              time_partitioning: Optional[pulumi.Input['TableTimePartitioningArgs']] = None,
              view: Optional[pulumi.Input['TableViewArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if dataset_id is None:
+            raise TypeError("Missing 'dataset_id' argument")
+        if table_id is None and 'tableId' in kwargs:
+            table_id = kwargs['tableId']
+        if table_id is None:
+            raise TypeError("Missing 'table_id' argument")
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if encryption_configuration is None and 'encryptionConfiguration' in kwargs:
+            encryption_configuration = kwargs['encryptionConfiguration']
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if external_data_configuration is None and 'externalDataConfiguration' in kwargs:
+            external_data_configuration = kwargs['externalDataConfiguration']
+        if friendly_name is None and 'friendlyName' in kwargs:
+            friendly_name = kwargs['friendlyName']
+        if materialized_view is None and 'materializedView' in kwargs:
+            materialized_view = kwargs['materializedView']
+        if max_staleness is None and 'maxStaleness' in kwargs:
+            max_staleness = kwargs['maxStaleness']
+        if range_partitioning is None and 'rangePartitioning' in kwargs:
+            range_partitioning = kwargs['rangePartitioning']
+        if table_constraints is None and 'tableConstraints' in kwargs:
+            table_constraints = kwargs['tableConstraints']
+        if time_partitioning is None and 'timePartitioning' in kwargs:
+            time_partitioning = kwargs['timePartitioning']
+
         _setter("dataset_id", dataset_id)
         _setter("table_id", table_id)
         if clusterings is not None:
@@ -615,7 +645,45 @@ class _TableState:
              time_partitioning: Optional[pulumi.Input['TableTimePartitioningArgs']] = None,
              type: Optional[pulumi.Input[str]] = None,
              view: Optional[pulumi.Input['TableViewArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if creation_time is None and 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if encryption_configuration is None and 'encryptionConfiguration' in kwargs:
+            encryption_configuration = kwargs['encryptionConfiguration']
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if external_data_configuration is None and 'externalDataConfiguration' in kwargs:
+            external_data_configuration = kwargs['externalDataConfiguration']
+        if friendly_name is None and 'friendlyName' in kwargs:
+            friendly_name = kwargs['friendlyName']
+        if last_modified_time is None and 'lastModifiedTime' in kwargs:
+            last_modified_time = kwargs['lastModifiedTime']
+        if materialized_view is None and 'materializedView' in kwargs:
+            materialized_view = kwargs['materializedView']
+        if max_staleness is None and 'maxStaleness' in kwargs:
+            max_staleness = kwargs['maxStaleness']
+        if num_bytes is None and 'numBytes' in kwargs:
+            num_bytes = kwargs['numBytes']
+        if num_long_term_bytes is None and 'numLongTermBytes' in kwargs:
+            num_long_term_bytes = kwargs['numLongTermBytes']
+        if num_rows is None and 'numRows' in kwargs:
+            num_rows = kwargs['numRows']
+        if range_partitioning is None and 'rangePartitioning' in kwargs:
+            range_partitioning = kwargs['rangePartitioning']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if table_constraints is None and 'tableConstraints' in kwargs:
+            table_constraints = kwargs['tableConstraints']
+        if table_id is None and 'tableId' in kwargs:
+            table_id = kwargs['tableId']
+        if time_partitioning is None and 'timePartitioning' in kwargs:
+            time_partitioning = kwargs['timePartitioning']
+
         if clusterings is not None:
             _setter("clusterings", clusterings)
         if creation_time is not None:
@@ -1078,58 +1146,6 @@ class Table(pulumi.CustomResource):
         (and run `pulumi update` to write the field to state) in order to destroy an instance.
         It is recommended to not set this field (or set it to true) until you're ready to destroy.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_dataset = gcp.bigquery.Dataset("defaultDataset",
-            dataset_id="foo",
-            friendly_name="test",
-            description="This is a test description",
-            location="EU",
-            default_table_expiration_ms=3600000,
-            labels={
-                "env": "default",
-            })
-        default_table = gcp.bigquery.Table("defaultTable",
-            dataset_id=default_dataset.dataset_id,
-            table_id="bar",
-            time_partitioning=gcp.bigquery.TableTimePartitioningArgs(
-                type="DAY",
-            ),
-            labels={
-                "env": "default",
-            },
-            schema=\"\"\"[
-          {
-            "name": "permalink",
-            "type": "STRING",
-            "mode": "NULLABLE",
-            "description": "The Permalink"
-          },
-          {
-            "name": "state",
-            "type": "STRING",
-            "mode": "NULLABLE",
-            "description": "State where the head office is located"
-          }
-        ]
-        \"\"\")
-        sheet = gcp.bigquery.Table("sheet",
-            dataset_id=default_dataset.dataset_id,
-            table_id="sheet",
-            external_data_configuration=gcp.bigquery.TableExternalDataConfigurationArgs(
-                autodetect=True,
-                source_format="GOOGLE_SHEETS",
-                google_sheets_options=gcp.bigquery.TableExternalDataConfigurationGoogleSheetsOptionsArgs(
-                    skip_leading_rows=1,
-                ),
-                source_uris=["https://docs.google.com/spreadsheets/d/123456789012345"],
-            ))
-        ```
-
         ## Import
 
         BigQuery tables imported using any of these accepted formats
@@ -1230,58 +1246,6 @@ class Table(pulumi.CustomResource):
         (and run `pulumi update` to write the field to state) in order to destroy an instance.
         It is recommended to not set this field (or set it to true) until you're ready to destroy.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_dataset = gcp.bigquery.Dataset("defaultDataset",
-            dataset_id="foo",
-            friendly_name="test",
-            description="This is a test description",
-            location="EU",
-            default_table_expiration_ms=3600000,
-            labels={
-                "env": "default",
-            })
-        default_table = gcp.bigquery.Table("defaultTable",
-            dataset_id=default_dataset.dataset_id,
-            table_id="bar",
-            time_partitioning=gcp.bigquery.TableTimePartitioningArgs(
-                type="DAY",
-            ),
-            labels={
-                "env": "default",
-            },
-            schema=\"\"\"[
-          {
-            "name": "permalink",
-            "type": "STRING",
-            "mode": "NULLABLE",
-            "description": "The Permalink"
-          },
-          {
-            "name": "state",
-            "type": "STRING",
-            "mode": "NULLABLE",
-            "description": "State where the head office is located"
-          }
-        ]
-        \"\"\")
-        sheet = gcp.bigquery.Table("sheet",
-            dataset_id=default_dataset.dataset_id,
-            table_id="sheet",
-            external_data_configuration=gcp.bigquery.TableExternalDataConfigurationArgs(
-                autodetect=True,
-                source_format="GOOGLE_SHEETS",
-                google_sheets_options=gcp.bigquery.TableExternalDataConfigurationGoogleSheetsOptionsArgs(
-                    skip_leading_rows=1,
-                ),
-                source_uris=["https://docs.google.com/spreadsheets/d/123456789012345"],
-            ))
-        ```
-
         ## Import
 
         BigQuery tables imported using any of these accepted formats
@@ -1350,56 +1314,28 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["dataset_id"] = dataset_id
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
-            if encryption_configuration is not None and not isinstance(encryption_configuration, TableEncryptionConfigurationArgs):
-                encryption_configuration = encryption_configuration or {}
-                def _setter(key, value):
-                    encryption_configuration[key] = value
-                TableEncryptionConfigurationArgs._configure(_setter, **encryption_configuration)
+            encryption_configuration = _utilities.configure(encryption_configuration, TableEncryptionConfigurationArgs, True)
             __props__.__dict__["encryption_configuration"] = encryption_configuration
             __props__.__dict__["expiration_time"] = expiration_time
-            if external_data_configuration is not None and not isinstance(external_data_configuration, TableExternalDataConfigurationArgs):
-                external_data_configuration = external_data_configuration or {}
-                def _setter(key, value):
-                    external_data_configuration[key] = value
-                TableExternalDataConfigurationArgs._configure(_setter, **external_data_configuration)
+            external_data_configuration = _utilities.configure(external_data_configuration, TableExternalDataConfigurationArgs, True)
             __props__.__dict__["external_data_configuration"] = external_data_configuration
             __props__.__dict__["friendly_name"] = friendly_name
             __props__.__dict__["labels"] = labels
-            if materialized_view is not None and not isinstance(materialized_view, TableMaterializedViewArgs):
-                materialized_view = materialized_view or {}
-                def _setter(key, value):
-                    materialized_view[key] = value
-                TableMaterializedViewArgs._configure(_setter, **materialized_view)
+            materialized_view = _utilities.configure(materialized_view, TableMaterializedViewArgs, True)
             __props__.__dict__["materialized_view"] = materialized_view
             __props__.__dict__["max_staleness"] = max_staleness
             __props__.__dict__["project"] = project
-            if range_partitioning is not None and not isinstance(range_partitioning, TableRangePartitioningArgs):
-                range_partitioning = range_partitioning or {}
-                def _setter(key, value):
-                    range_partitioning[key] = value
-                TableRangePartitioningArgs._configure(_setter, **range_partitioning)
+            range_partitioning = _utilities.configure(range_partitioning, TableRangePartitioningArgs, True)
             __props__.__dict__["range_partitioning"] = range_partitioning
             __props__.__dict__["schema"] = schema
-            if table_constraints is not None and not isinstance(table_constraints, TableTableConstraintsArgs):
-                table_constraints = table_constraints or {}
-                def _setter(key, value):
-                    table_constraints[key] = value
-                TableTableConstraintsArgs._configure(_setter, **table_constraints)
+            table_constraints = _utilities.configure(table_constraints, TableTableConstraintsArgs, True)
             __props__.__dict__["table_constraints"] = table_constraints
             if table_id is None and not opts.urn:
                 raise TypeError("Missing required property 'table_id'")
             __props__.__dict__["table_id"] = table_id
-            if time_partitioning is not None and not isinstance(time_partitioning, TableTimePartitioningArgs):
-                time_partitioning = time_partitioning or {}
-                def _setter(key, value):
-                    time_partitioning[key] = value
-                TableTimePartitioningArgs._configure(_setter, **time_partitioning)
+            time_partitioning = _utilities.configure(time_partitioning, TableTimePartitioningArgs, True)
             __props__.__dict__["time_partitioning"] = time_partitioning
-            if view is not None and not isinstance(view, TableViewArgs):
-                view = view or {}
-                def _setter(key, value):
-                    view[key] = value
-                TableViewArgs._configure(_setter, **view)
+            view = _utilities.configure(view, TableViewArgs, True)
             __props__.__dict__["view"] = view
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["etag"] = None

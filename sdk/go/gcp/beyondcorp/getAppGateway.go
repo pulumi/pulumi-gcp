@@ -13,32 +13,6 @@ import (
 )
 
 // Get information about a Google BeyondCorp App Gateway.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/beyondcorp"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := beyondcorp.LookupAppGateway(ctx, &beyondcorp.LookupAppGatewayArgs{
-//				Name: "my-beyondcorp-app-gateway",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupAppGateway(ctx *pulumi.Context, args *LookupAppGatewayArgs, opts ...pulumi.InvokeOption) (*LookupAppGatewayResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppGatewayResult

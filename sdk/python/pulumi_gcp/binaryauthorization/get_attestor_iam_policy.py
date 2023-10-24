@@ -93,16 +93,6 @@ def get_attestor_iam_policy(attestor: Optional[str] = None,
     """
     Retrieves the current IAM policy data for attestor
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.binaryauthorization.get_attestor_iam_policy(project=google_binary_authorization_attestor["attestor"]["project"],
-        attestor=google_binary_authorization_attestor["attestor"]["name"])
-    ```
-
 
     :param str attestor: Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.
@@ -128,16 +118,6 @@ def get_attestor_iam_policy_output(attestor: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAttestorIamPolicyResult]:
     """
     Retrieves the current IAM policy data for attestor
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.binaryauthorization.get_attestor_iam_policy(project=google_binary_authorization_attestor["attestor"]["project"],
-        attestor=google_binary_authorization_attestor["attestor"]["name"])
-    ```
 
 
     :param str attestor: Used to find the parent resource to bind the IAM policy to

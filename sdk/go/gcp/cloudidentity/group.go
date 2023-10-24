@@ -28,39 +28,6 @@ import (
 // `billingProject` you defined.
 //
 // ## Example Usage
-// ### Cloud Identity Groups Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudidentity"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudidentity.NewGroup(ctx, "cloudIdentityGroupBasic", &cloudidentity.GroupArgs{
-//				DisplayName: pulumi.String("my-identity-group"),
-//				GroupKey: &cloudidentity.GroupGroupKeyArgs{
-//					Id: pulumi.String("my-identity-group@example.com"),
-//				},
-//				InitialGroupConfig: pulumi.String("WITH_INITIAL_OWNER"),
-//				Labels: pulumi.StringMap{
-//					"cloudidentity.googleapis.com/groups.discussion_forum": pulumi.String(""),
-//				},
-//				Parent: pulumi.String("customers/A01b123xz"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

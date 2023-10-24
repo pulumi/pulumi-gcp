@@ -13,56 +13,12 @@ namespace Pulumi.Gcp.Iot
     {
         /// <summary>
         /// Retrieves the current IAM policy data for deviceregistry
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.Iot.GetRegistryIamPolicy.Invoke(new()
-        ///     {
-        ///         Project = google_cloudiot_registry.Test_registry.Project,
-        ///         Region = google_cloudiot_registry.Test_registry.Region,
-        ///         Name = google_cloudiot_registry.Test_registry.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetRegistryIamPolicyResult> InvokeAsync(GetRegistryIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegistryIamPolicyResult>("gcp:iot/getRegistryIamPolicy:getRegistryIamPolicy", args ?? new GetRegistryIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for deviceregistry
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.Iot.GetRegistryIamPolicy.Invoke(new()
-        ///     {
-        ///         Project = google_cloudiot_registry.Test_registry.Project,
-        ///         Region = google_cloudiot_registry.Test_registry.Region,
-        ///         Name = google_cloudiot_registry.Test_registry.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetRegistryIamPolicyResult> Invoke(GetRegistryIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegistryIamPolicyResult>("gcp:iot/getRegistryIamPolicy:getRegistryIamPolicy", args ?? new GetRegistryIamPolicyInvokeArgs(), options.WithDefaults());

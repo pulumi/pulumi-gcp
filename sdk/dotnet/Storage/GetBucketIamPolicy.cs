@@ -13,52 +13,12 @@ namespace Pulumi.Gcp.Storage
     {
         /// <summary>
         /// Retrieves the current IAM policy data for bucket
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.Storage.GetBucketIamPolicy.Invoke(new()
-        ///     {
-        ///         Bucket = google_storage_bucket.Default.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetBucketIamPolicyResult> InvokeAsync(GetBucketIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBucketIamPolicyResult>("gcp:storage/getBucketIamPolicy:getBucketIamPolicy", args ?? new GetBucketIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for bucket
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.Storage.GetBucketIamPolicy.Invoke(new()
-        ///     {
-        ///         Bucket = google_storage_bucket.Default.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetBucketIamPolicyResult> Invoke(GetBucketIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBucketIamPolicyResult>("gcp:storage/getBucketIamPolicy:getBucketIamPolicy", args ?? new GetBucketIamPolicyInvokeArgs(), options.WithDefaults());

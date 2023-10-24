@@ -16,21 +16,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** If Shared VPC Admin role is set at the folder level, use the google-beta provider. The google provider only supports this permission at project or organizational level currently. [[0]](https://cloud.google.com/vpc/docs/provisioning-shared-vpc#enable-shared-vpc-host)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const service1 = new gcp.compute.SharedVPCServiceProject("service1", {
- *     hostProject: "host-project-id",
- *     serviceProject: "service-project-id-1",
- * });
- * ```
- *
- * For a complete Shared VPC example with both host and service projects, see
- * [`gcp.compute.SharedVPCHostProject`](https://www.terraform.io/docs/providers/google/r/compute_shared_vpc_host_project.html).
- *
  * ## Import
  *
  * Google Compute Engine Shared VPC service project feature can be imported using the `host_project` and `service_project`, e.g.

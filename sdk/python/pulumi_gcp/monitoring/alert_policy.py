@@ -78,16 +78,32 @@ class AlertPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             combiner: pulumi.Input[str],
-             conditions: pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionArgs']]],
-             display_name: pulumi.Input[str],
+             combiner: Optional[pulumi.Input[str]] = None,
+             conditions: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionArgs']]]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
              alert_strategy: Optional[pulumi.Input['AlertPolicyAlertStrategyArgs']] = None,
              documentation: Optional[pulumi.Input['AlertPolicyDocumentationArgs']] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if combiner is None:
+            raise TypeError("Missing 'combiner' argument")
+        if conditions is None:
+            raise TypeError("Missing 'conditions' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if alert_strategy is None and 'alertStrategy' in kwargs:
+            alert_strategy = kwargs['alertStrategy']
+        if notification_channels is None and 'notificationChannels' in kwargs:
+            notification_channels = kwargs['notificationChannels']
+        if user_labels is None and 'userLabels' in kwargs:
+            user_labels = kwargs['userLabels']
+
         _setter("combiner", combiner)
         _setter("conditions", conditions)
         _setter("display_name", display_name)
@@ -330,7 +346,19 @@ class _AlertPolicyState:
              notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if alert_strategy is None and 'alertStrategy' in kwargs:
+            alert_strategy = kwargs['alertStrategy']
+        if creation_records is None and 'creationRecords' in kwargs:
+            creation_records = kwargs['creationRecords']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if notification_channels is None and 'notificationChannels' in kwargs:
+            notification_channels = kwargs['notificationChannels']
+        if user_labels is None and 'userLabels' in kwargs:
+            user_labels = kwargs['userLabels']
+
         if alert_strategy is not None:
             _setter("alert_strategy", alert_strategy)
         if combiner is not None:
@@ -549,85 +577,6 @@ class AlertPolicy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
 
         ## Example Usage
-        ### Monitoring Alert Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        alert_policy = gcp.monitoring.AlertPolicy("alertPolicy",
-            combiner="OR",
-            conditions=[gcp.monitoring.AlertPolicyConditionArgs(
-                condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
-                    aggregations=[gcp.monitoring.AlertPolicyConditionConditionThresholdAggregationArgs(
-                        alignment_period="60s",
-                        per_series_aligner="ALIGN_RATE",
-                    )],
-                    comparison="COMPARISON_GT",
-                    duration="60s",
-                    filter="metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
-                ),
-                display_name="test condition",
-            )],
-            display_name="My Alert Policy",
-            user_labels={
-                "foo": "bar",
-            })
-        ```
-        ### Monitoring Alert Policy Evaluation Missing Data
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        alert_policy = gcp.monitoring.AlertPolicy("alertPolicy",
-            combiner="OR",
-            conditions=[gcp.monitoring.AlertPolicyConditionArgs(
-                condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
-                    aggregations=[gcp.monitoring.AlertPolicyConditionConditionThresholdAggregationArgs(
-                        alignment_period="60s",
-                        per_series_aligner="ALIGN_RATE",
-                    )],
-                    comparison="COMPARISON_GT",
-                    duration="60s",
-                    evaluation_missing_data="EVALUATION_MISSING_DATA_INACTIVE",
-                    filter="metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
-                ),
-                display_name="test condition",
-            )],
-            display_name="My Alert Policy",
-            user_labels={
-                "foo": "bar",
-            })
-        ```
-        ### Monitoring Alert Policy Forecast Options
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        alert_policy = gcp.monitoring.AlertPolicy("alertPolicy",
-            combiner="OR",
-            conditions=[gcp.monitoring.AlertPolicyConditionArgs(
-                condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
-                    aggregations=[gcp.monitoring.AlertPolicyConditionConditionThresholdAggregationArgs(
-                        alignment_period="60s",
-                        per_series_aligner="ALIGN_RATE",
-                    )],
-                    comparison="COMPARISON_GT",
-                    duration="60s",
-                    filter="metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
-                    forecast_options=gcp.monitoring.AlertPolicyConditionConditionThresholdForecastOptionsArgs(
-                        forecast_horizon="3600s",
-                    ),
-                ),
-                display_name="test condition",
-            )],
-            display_name="My Alert Policy",
-            user_labels={
-                "foo": "bar",
-            })
-        ```
 
         ## Import
 
@@ -693,85 +642,6 @@ class AlertPolicy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
 
         ## Example Usage
-        ### Monitoring Alert Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        alert_policy = gcp.monitoring.AlertPolicy("alertPolicy",
-            combiner="OR",
-            conditions=[gcp.monitoring.AlertPolicyConditionArgs(
-                condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
-                    aggregations=[gcp.monitoring.AlertPolicyConditionConditionThresholdAggregationArgs(
-                        alignment_period="60s",
-                        per_series_aligner="ALIGN_RATE",
-                    )],
-                    comparison="COMPARISON_GT",
-                    duration="60s",
-                    filter="metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
-                ),
-                display_name="test condition",
-            )],
-            display_name="My Alert Policy",
-            user_labels={
-                "foo": "bar",
-            })
-        ```
-        ### Monitoring Alert Policy Evaluation Missing Data
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        alert_policy = gcp.monitoring.AlertPolicy("alertPolicy",
-            combiner="OR",
-            conditions=[gcp.monitoring.AlertPolicyConditionArgs(
-                condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
-                    aggregations=[gcp.monitoring.AlertPolicyConditionConditionThresholdAggregationArgs(
-                        alignment_period="60s",
-                        per_series_aligner="ALIGN_RATE",
-                    )],
-                    comparison="COMPARISON_GT",
-                    duration="60s",
-                    evaluation_missing_data="EVALUATION_MISSING_DATA_INACTIVE",
-                    filter="metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
-                ),
-                display_name="test condition",
-            )],
-            display_name="My Alert Policy",
-            user_labels={
-                "foo": "bar",
-            })
-        ```
-        ### Monitoring Alert Policy Forecast Options
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        alert_policy = gcp.monitoring.AlertPolicy("alertPolicy",
-            combiner="OR",
-            conditions=[gcp.monitoring.AlertPolicyConditionArgs(
-                condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
-                    aggregations=[gcp.monitoring.AlertPolicyConditionConditionThresholdAggregationArgs(
-                        alignment_period="60s",
-                        per_series_aligner="ALIGN_RATE",
-                    )],
-                    comparison="COMPARISON_GT",
-                    duration="60s",
-                    filter="metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
-                    forecast_options=gcp.monitoring.AlertPolicyConditionConditionThresholdForecastOptionsArgs(
-                        forecast_horizon="3600s",
-                    ),
-                ),
-                display_name="test condition",
-            )],
-            display_name="My Alert Policy",
-            user_labels={
-                "foo": "bar",
-            })
-        ```
 
         ## Import
 
@@ -818,11 +688,7 @@ class AlertPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AlertPolicyArgs.__new__(AlertPolicyArgs)
 
-            if alert_strategy is not None and not isinstance(alert_strategy, AlertPolicyAlertStrategyArgs):
-                alert_strategy = alert_strategy or {}
-                def _setter(key, value):
-                    alert_strategy[key] = value
-                AlertPolicyAlertStrategyArgs._configure(_setter, **alert_strategy)
+            alert_strategy = _utilities.configure(alert_strategy, AlertPolicyAlertStrategyArgs, True)
             __props__.__dict__["alert_strategy"] = alert_strategy
             if combiner is None and not opts.urn:
                 raise TypeError("Missing required property 'combiner'")
@@ -833,11 +699,7 @@ class AlertPolicy(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
-            if documentation is not None and not isinstance(documentation, AlertPolicyDocumentationArgs):
-                documentation = documentation or {}
-                def _setter(key, value):
-                    documentation[key] = value
-                AlertPolicyDocumentationArgs._configure(_setter, **documentation)
+            documentation = _utilities.configure(documentation, AlertPolicyDocumentationArgs, True)
             __props__.__dict__["documentation"] = documentation
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["notification_channels"] = notification_channels

@@ -22,66 +22,6 @@ import (
 //   - [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_databases)
 //
 // ## Example Usage
-// ### Biglake Database
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/biglake"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			catalog, err := biglake.NewCatalog(ctx, "catalog", &biglake.CatalogArgs{
-//				Location: pulumi.String("US"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-//				Location:                 pulumi.String("US"),
-//				ForceDestroy:             pulumi.Bool(true),
-//				UniformBucketLevelAccess: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			metadataFolder, err := storage.NewBucketObject(ctx, "metadataFolder", &storage.BucketObjectArgs{
-//				Content: pulumi.String(" "),
-//				Bucket:  bucket.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = biglake.NewDatabase(ctx, "database", &biglake.DatabaseArgs{
-//				Catalog: catalog.ID(),
-//				Type:    pulumi.String("HIVE"),
-//				HiveOptions: &biglake.DatabaseHiveOptionsArgs{
-//					LocationUri: pulumi.All(bucket.Name, metadataFolder.Name).ApplyT(func(_args []interface{}) (string, error) {
-//						bucketName := _args[0].(string)
-//						metadataFolderName := _args[1].(string)
-//						return fmt.Sprintf("gs://%v/%v", bucketName, metadataFolderName), nil
-//					}).(pulumi.StringOutput),
-//					Parameters: pulumi.StringMap{
-//						"owner": pulumi.String("John Doe"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

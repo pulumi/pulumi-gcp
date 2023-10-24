@@ -12,42 +12,6 @@ namespace Pulumi.Gcp.Endpoints
     /// <summary>
     /// This resource creates and rolls out a Cloud Endpoints service using OpenAPI or gRPC.  View the relevant docs for [OpenAPI](https://cloud.google.com/endpoints/docs/openapi/) and [gRPC](https://cloud.google.com/endpoints/docs/grpc/).
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System;
-    /// using System.Collections.Generic;
-    /// using System.IO;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// 	private static string ReadFileBase64(string path) {
-    /// 		return Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(File.ReadAllText(path)));
-    /// 	}
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var openapiService = new Gcp.Endpoints.Service("openapiService", new()
-    ///     {
-    ///         ServiceName = "api-name.endpoints.project-id.cloud.goog",
-    ///         Project = "project-id",
-    ///         OpenapiConfig = File.ReadAllText("openapi_spec.yml"),
-    ///     });
-    /// 
-    ///     var grpcService = new Gcp.Endpoints.Service("grpcService", new()
-    ///     {
-    ///         ServiceName = "api-name.endpoints.project-id.cloud.goog",
-    ///         Project = "project-id",
-    ///         GrpcConfig = File.ReadAllText("service_spec.yml"),
-    ///         ProtocOutputBase64 = ReadFileBase64("compiled_descriptor_file.pb"),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// The example in `examples/endpoints_on_compute_engine` shows the API from the quickstart running on a Compute Engine VM and reachable through Cloud Endpoints, which may also be useful.
-    /// 
     /// ## Import
     /// 
     /// This resource does not support import.

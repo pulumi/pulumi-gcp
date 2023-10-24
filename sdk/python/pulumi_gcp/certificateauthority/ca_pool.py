@@ -56,14 +56,24 @@ class CaPoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             tier: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
+             tier: Optional[pulumi.Input[str]] = None,
              issuance_policy: Optional[pulumi.Input['CaPoolIssuancePolicyArgs']] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              publishing_options: Optional[pulumi.Input['CaPoolPublishingOptionsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if tier is None:
+            raise TypeError("Missing 'tier' argument")
+        if issuance_policy is None and 'issuancePolicy' in kwargs:
+            issuance_policy = kwargs['issuancePolicy']
+        if publishing_options is None and 'publishingOptions' in kwargs:
+            publishing_options = kwargs['publishingOptions']
+
         _setter("location", location)
         _setter("tier", tier)
         if issuance_policy is not None:
@@ -222,7 +232,13 @@ class _CaPoolState:
              project: Optional[pulumi.Input[str]] = None,
              publishing_options: Optional[pulumi.Input['CaPoolPublishingOptionsArgs']] = None,
              tier: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if issuance_policy is None and 'issuancePolicy' in kwargs:
+            issuance_policy = kwargs['issuancePolicy']
+        if publishing_options is None and 'publishingOptions' in kwargs:
+            publishing_options = kwargs['publishingOptions']
+
         if issuance_policy is not None:
             _setter("issuance_policy", issuance_policy)
         if labels is not None:
@@ -352,23 +368,6 @@ class CaPool(pulumi.CustomResource):
         trust anchor.
 
         ## Example Usage
-        ### Privateca Capool Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.certificateauthority.CaPool("default",
-            labels={
-                "foo": "bar",
-            },
-            location="us-central1",
-            publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArgs(
-                publish_ca_cert=True,
-                publish_crl=True,
-            ),
-            tier="ENTERPRISE")
-        ```
 
         ## Import
 
@@ -418,23 +417,6 @@ class CaPool(pulumi.CustomResource):
         trust anchor.
 
         ## Example Usage
-        ### Privateca Capool Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.certificateauthority.CaPool("default",
-            labels={
-                "foo": "bar",
-            },
-            location="us-central1",
-            publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArgs(
-                publish_ca_cert=True,
-                publish_crl=True,
-            ),
-            tier="ENTERPRISE")
-        ```
 
         ## Import
 
@@ -487,11 +469,7 @@ class CaPool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CaPoolArgs.__new__(CaPoolArgs)
 
-            if issuance_policy is not None and not isinstance(issuance_policy, CaPoolIssuancePolicyArgs):
-                issuance_policy = issuance_policy or {}
-                def _setter(key, value):
-                    issuance_policy[key] = value
-                CaPoolIssuancePolicyArgs._configure(_setter, **issuance_policy)
+            issuance_policy = _utilities.configure(issuance_policy, CaPoolIssuancePolicyArgs, True)
             __props__.__dict__["issuance_policy"] = issuance_policy
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
@@ -499,11 +477,7 @@ class CaPool(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            if publishing_options is not None and not isinstance(publishing_options, CaPoolPublishingOptionsArgs):
-                publishing_options = publishing_options or {}
-                def _setter(key, value):
-                    publishing_options[key] = value
-                CaPoolPublishingOptionsArgs._configure(_setter, **publishing_options)
+            publishing_options = _utilities.configure(publishing_options, CaPoolPublishingOptionsArgs, True)
             __props__.__dict__["publishing_options"] = publishing_options
             if tier is None and not opts.urn:
                 raise TypeError("Missing required property 'tier'")

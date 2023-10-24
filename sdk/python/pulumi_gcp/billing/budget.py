@@ -52,13 +52,29 @@ class BudgetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             amount: pulumi.Input['BudgetAmountArgs'],
-             billing_account: pulumi.Input[str],
+             amount: Optional[pulumi.Input['BudgetAmountArgs']] = None,
+             billing_account: Optional[pulumi.Input[str]] = None,
              all_updates_rule: Optional[pulumi.Input['BudgetAllUpdatesRuleArgs']] = None,
              budget_filter: Optional[pulumi.Input['BudgetBudgetFilterArgs']] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if amount is None:
+            raise TypeError("Missing 'amount' argument")
+        if billing_account is None and 'billingAccount' in kwargs:
+            billing_account = kwargs['billingAccount']
+        if billing_account is None:
+            raise TypeError("Missing 'billing_account' argument")
+        if all_updates_rule is None and 'allUpdatesRule' in kwargs:
+            all_updates_rule = kwargs['allUpdatesRule']
+        if budget_filter is None and 'budgetFilter' in kwargs:
+            budget_filter = kwargs['budgetFilter']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if threshold_rules is None and 'thresholdRules' in kwargs:
+            threshold_rules = kwargs['thresholdRules']
+
         _setter("amount", amount)
         _setter("billing_account", billing_account)
         if all_updates_rule is not None:
@@ -203,7 +219,19 @@ class _BudgetState:
              display_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if all_updates_rule is None and 'allUpdatesRule' in kwargs:
+            all_updates_rule = kwargs['allUpdatesRule']
+        if billing_account is None and 'billingAccount' in kwargs:
+            billing_account = kwargs['billingAccount']
+        if budget_filter is None and 'budgetFilter' in kwargs:
+            budget_filter = kwargs['budgetFilter']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if threshold_rules is None and 'thresholdRules' in kwargs:
+            threshold_rules = kwargs['thresholdRules']
+
         if all_updates_rule is not None:
             _setter("all_updates_rule", all_updates_rule)
         if amount is not None:
@@ -343,167 +371,6 @@ class Budget(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
-        ### Billing Budget Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        account = gcp.organizations.get_billing_account(billing_account="000000-0000000-0000000-000000")
-        budget = gcp.billing.Budget("budget",
-            billing_account=account.id,
-            display_name="Example Billing Budget",
-            amount=gcp.billing.BudgetAmountArgs(
-                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArgs(
-                    currency_code="USD",
-                    units="100000",
-                ),
-            ),
-            threshold_rules=[gcp.billing.BudgetThresholdRuleArgs(
-                threshold_percent=0.5,
-            )])
-        ```
-        ### Billing Budget Lastperiod
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        account = gcp.organizations.get_billing_account(billing_account="000000-0000000-0000000-000000")
-        project = gcp.organizations.get_project()
-        budget = gcp.billing.Budget("budget",
-            billing_account=account.id,
-            display_name="Example Billing Budget",
-            budget_filter=gcp.billing.BudgetBudgetFilterArgs(
-                projects=[f"projects/{project.number}"],
-            ),
-            amount=gcp.billing.BudgetAmountArgs(
-                last_period_amount=True,
-            ),
-            threshold_rules=[gcp.billing.BudgetThresholdRuleArgs(
-                threshold_percent=10,
-            )])
-        ```
-        ### Billing Budget Filter
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        account = gcp.organizations.get_billing_account(billing_account="000000-0000000-0000000-000000")
-        project = gcp.organizations.get_project()
-        budget = gcp.billing.Budget("budget",
-            billing_account=account.id,
-            display_name="Example Billing Budget",
-            budget_filter=gcp.billing.BudgetBudgetFilterArgs(
-                projects=[f"projects/{project.number}"],
-                credit_types_treatment="INCLUDE_SPECIFIED_CREDITS",
-                services=["services/24E6-581D-38E5"],
-                credit_types=[
-                    "PROMOTION",
-                    "FREE_TIER",
-                ],
-                resource_ancestors=["organizations/123456789"],
-            ),
-            amount=gcp.billing.BudgetAmountArgs(
-                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArgs(
-                    currency_code="USD",
-                    units="100000",
-                ),
-            ),
-            threshold_rules=[
-                gcp.billing.BudgetThresholdRuleArgs(
-                    threshold_percent=0.5,
-                ),
-                gcp.billing.BudgetThresholdRuleArgs(
-                    threshold_percent=0.9,
-                    spend_basis="FORECASTED_SPEND",
-                ),
-            ])
-        ```
-        ### Billing Budget Notify
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        account = gcp.organizations.get_billing_account(billing_account="000000-0000000-0000000-000000")
-        project = gcp.organizations.get_project()
-        notification_channel = gcp.monitoring.NotificationChannel("notificationChannel",
-            display_name="Example Notification Channel",
-            type="email",
-            labels={
-                "email_address": "address@example.com",
-            })
-        budget = gcp.billing.Budget("budget",
-            billing_account=account.id,
-            display_name="Example Billing Budget",
-            budget_filter=gcp.billing.BudgetBudgetFilterArgs(
-                projects=[f"projects/{project.number}"],
-            ),
-            amount=gcp.billing.BudgetAmountArgs(
-                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArgs(
-                    currency_code="USD",
-                    units="100000",
-                ),
-            ),
-            threshold_rules=[
-                gcp.billing.BudgetThresholdRuleArgs(
-                    threshold_percent=1,
-                ),
-                gcp.billing.BudgetThresholdRuleArgs(
-                    threshold_percent=1,
-                    spend_basis="FORECASTED_SPEND",
-                ),
-            ],
-            all_updates_rule=gcp.billing.BudgetAllUpdatesRuleArgs(
-                monitoring_notification_channels=[notification_channel.id],
-                disable_default_iam_recipients=True,
-            ))
-        ```
-        ### Billing Budget Customperiod
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        account = gcp.organizations.get_billing_account(billing_account="000000-0000000-0000000-000000")
-        project = gcp.organizations.get_project()
-        budget = gcp.billing.Budget("budget",
-            billing_account=account.id,
-            display_name="Example Billing Budget",
-            budget_filter=gcp.billing.BudgetBudgetFilterArgs(
-                projects=[f"projects/{project.number}"],
-                credit_types_treatment="EXCLUDE_ALL_CREDITS",
-                services=["services/24E6-581D-38E5"],
-                custom_period=gcp.billing.BudgetBudgetFilterCustomPeriodArgs(
-                    start_date=gcp.billing.BudgetBudgetFilterCustomPeriodStartDateArgs(
-                        year=2022,
-                        month=1,
-                        day=1,
-                    ),
-                    end_date=gcp.billing.BudgetBudgetFilterCustomPeriodEndDateArgs(
-                        year=2023,
-                        month=12,
-                        day=31,
-                    ),
-                ),
-            ),
-            amount=gcp.billing.BudgetAmountArgs(
-                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArgs(
-                    currency_code="USD",
-                    units="100000",
-                ),
-            ),
-            threshold_rules=[
-                gcp.billing.BudgetThresholdRuleArgs(
-                    threshold_percent=0.5,
-                ),
-                gcp.billing.BudgetThresholdRuleArgs(
-                    threshold_percent=0.9,
-                ),
-            ])
-        ```
 
         ## Import
 
@@ -561,167 +428,6 @@ class Budget(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
-        ### Billing Budget Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        account = gcp.organizations.get_billing_account(billing_account="000000-0000000-0000000-000000")
-        budget = gcp.billing.Budget("budget",
-            billing_account=account.id,
-            display_name="Example Billing Budget",
-            amount=gcp.billing.BudgetAmountArgs(
-                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArgs(
-                    currency_code="USD",
-                    units="100000",
-                ),
-            ),
-            threshold_rules=[gcp.billing.BudgetThresholdRuleArgs(
-                threshold_percent=0.5,
-            )])
-        ```
-        ### Billing Budget Lastperiod
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        account = gcp.organizations.get_billing_account(billing_account="000000-0000000-0000000-000000")
-        project = gcp.organizations.get_project()
-        budget = gcp.billing.Budget("budget",
-            billing_account=account.id,
-            display_name="Example Billing Budget",
-            budget_filter=gcp.billing.BudgetBudgetFilterArgs(
-                projects=[f"projects/{project.number}"],
-            ),
-            amount=gcp.billing.BudgetAmountArgs(
-                last_period_amount=True,
-            ),
-            threshold_rules=[gcp.billing.BudgetThresholdRuleArgs(
-                threshold_percent=10,
-            )])
-        ```
-        ### Billing Budget Filter
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        account = gcp.organizations.get_billing_account(billing_account="000000-0000000-0000000-000000")
-        project = gcp.organizations.get_project()
-        budget = gcp.billing.Budget("budget",
-            billing_account=account.id,
-            display_name="Example Billing Budget",
-            budget_filter=gcp.billing.BudgetBudgetFilterArgs(
-                projects=[f"projects/{project.number}"],
-                credit_types_treatment="INCLUDE_SPECIFIED_CREDITS",
-                services=["services/24E6-581D-38E5"],
-                credit_types=[
-                    "PROMOTION",
-                    "FREE_TIER",
-                ],
-                resource_ancestors=["organizations/123456789"],
-            ),
-            amount=gcp.billing.BudgetAmountArgs(
-                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArgs(
-                    currency_code="USD",
-                    units="100000",
-                ),
-            ),
-            threshold_rules=[
-                gcp.billing.BudgetThresholdRuleArgs(
-                    threshold_percent=0.5,
-                ),
-                gcp.billing.BudgetThresholdRuleArgs(
-                    threshold_percent=0.9,
-                    spend_basis="FORECASTED_SPEND",
-                ),
-            ])
-        ```
-        ### Billing Budget Notify
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        account = gcp.organizations.get_billing_account(billing_account="000000-0000000-0000000-000000")
-        project = gcp.organizations.get_project()
-        notification_channel = gcp.monitoring.NotificationChannel("notificationChannel",
-            display_name="Example Notification Channel",
-            type="email",
-            labels={
-                "email_address": "address@example.com",
-            })
-        budget = gcp.billing.Budget("budget",
-            billing_account=account.id,
-            display_name="Example Billing Budget",
-            budget_filter=gcp.billing.BudgetBudgetFilterArgs(
-                projects=[f"projects/{project.number}"],
-            ),
-            amount=gcp.billing.BudgetAmountArgs(
-                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArgs(
-                    currency_code="USD",
-                    units="100000",
-                ),
-            ),
-            threshold_rules=[
-                gcp.billing.BudgetThresholdRuleArgs(
-                    threshold_percent=1,
-                ),
-                gcp.billing.BudgetThresholdRuleArgs(
-                    threshold_percent=1,
-                    spend_basis="FORECASTED_SPEND",
-                ),
-            ],
-            all_updates_rule=gcp.billing.BudgetAllUpdatesRuleArgs(
-                monitoring_notification_channels=[notification_channel.id],
-                disable_default_iam_recipients=True,
-            ))
-        ```
-        ### Billing Budget Customperiod
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        account = gcp.organizations.get_billing_account(billing_account="000000-0000000-0000000-000000")
-        project = gcp.organizations.get_project()
-        budget = gcp.billing.Budget("budget",
-            billing_account=account.id,
-            display_name="Example Billing Budget",
-            budget_filter=gcp.billing.BudgetBudgetFilterArgs(
-                projects=[f"projects/{project.number}"],
-                credit_types_treatment="EXCLUDE_ALL_CREDITS",
-                services=["services/24E6-581D-38E5"],
-                custom_period=gcp.billing.BudgetBudgetFilterCustomPeriodArgs(
-                    start_date=gcp.billing.BudgetBudgetFilterCustomPeriodStartDateArgs(
-                        year=2022,
-                        month=1,
-                        day=1,
-                    ),
-                    end_date=gcp.billing.BudgetBudgetFilterCustomPeriodEndDateArgs(
-                        year=2023,
-                        month=12,
-                        day=31,
-                    ),
-                ),
-            ),
-            amount=gcp.billing.BudgetAmountArgs(
-                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArgs(
-                    currency_code="USD",
-                    units="100000",
-                ),
-            ),
-            threshold_rules=[
-                gcp.billing.BudgetThresholdRuleArgs(
-                    threshold_percent=0.5,
-                ),
-                gcp.billing.BudgetThresholdRuleArgs(
-                    threshold_percent=0.9,
-                ),
-            ])
-        ```
 
         ## Import
 
@@ -773,28 +479,16 @@ class Budget(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BudgetArgs.__new__(BudgetArgs)
 
-            if all_updates_rule is not None and not isinstance(all_updates_rule, BudgetAllUpdatesRuleArgs):
-                all_updates_rule = all_updates_rule or {}
-                def _setter(key, value):
-                    all_updates_rule[key] = value
-                BudgetAllUpdatesRuleArgs._configure(_setter, **all_updates_rule)
+            all_updates_rule = _utilities.configure(all_updates_rule, BudgetAllUpdatesRuleArgs, True)
             __props__.__dict__["all_updates_rule"] = all_updates_rule
-            if amount is not None and not isinstance(amount, BudgetAmountArgs):
-                amount = amount or {}
-                def _setter(key, value):
-                    amount[key] = value
-                BudgetAmountArgs._configure(_setter, **amount)
+            amount = _utilities.configure(amount, BudgetAmountArgs, True)
             if amount is None and not opts.urn:
                 raise TypeError("Missing required property 'amount'")
             __props__.__dict__["amount"] = amount
             if billing_account is None and not opts.urn:
                 raise TypeError("Missing required property 'billing_account'")
             __props__.__dict__["billing_account"] = billing_account
-            if budget_filter is not None and not isinstance(budget_filter, BudgetBudgetFilterArgs):
-                budget_filter = budget_filter or {}
-                def _setter(key, value):
-                    budget_filter[key] = value
-                BudgetBudgetFilterArgs._configure(_setter, **budget_filter)
+            budget_filter = _utilities.configure(budget_filter, BudgetBudgetFilterArgs, True)
             __props__.__dict__["budget_filter"] = budget_filter
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["threshold_rules"] = threshold_rules

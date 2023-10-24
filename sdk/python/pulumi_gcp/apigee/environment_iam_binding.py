@@ -51,12 +51,26 @@ class EnvironmentIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             env_id: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             org_id: pulumi.Input[str],
-             role: pulumi.Input[str],
+             env_id: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['EnvironmentIamBindingConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if env_id is None and 'envId' in kwargs:
+            env_id = kwargs['envId']
+        if env_id is None:
+            raise TypeError("Missing 'env_id' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("env_id", env_id)
         _setter("members", members)
         _setter("org_id", org_id)
@@ -177,7 +191,13 @@ class _EnvironmentIamBindingState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              org_id: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if env_id is None and 'envId' in kwargs:
+            env_id = kwargs['envId']
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+
         if condition is not None:
             _setter("condition", condition)
         if env_id is not None:
@@ -295,48 +315,6 @@ class EnvironmentIamBinding(pulumi.CustomResource):
 
         > **Note:** `apigee.EnvironmentIamBinding` resources **can be** used in conjunction with `apigee.EnvironmentIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_apigee\\_environment\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.apigee.EnvironmentIamPolicy("policy",
-            org_id=google_apigee_environment["apigee_environment"]["org_id"],
-            env_id=google_apigee_environment["apigee_environment"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_apigee\\_environment\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.apigee.EnvironmentIamBinding("binding",
-            org_id=google_apigee_environment["apigee_environment"]["org_id"],
-            env_id=google_apigee_environment["apigee_environment"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_apigee\\_environment\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.apigee.EnvironmentIamMember("member",
-            org_id=google_apigee_environment["apigee_environment"]["org_id"],
-            env_id=google_apigee_environment["apigee_environment"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* {{org_id}}/environments/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Apigee environment IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -401,48 +379,6 @@ class EnvironmentIamBinding(pulumi.CustomResource):
 
         > **Note:** `apigee.EnvironmentIamBinding` resources **can be** used in conjunction with `apigee.EnvironmentIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_apigee\\_environment\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.apigee.EnvironmentIamPolicy("policy",
-            org_id=google_apigee_environment["apigee_environment"]["org_id"],
-            env_id=google_apigee_environment["apigee_environment"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_apigee\\_environment\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.apigee.EnvironmentIamBinding("binding",
-            org_id=google_apigee_environment["apigee_environment"]["org_id"],
-            env_id=google_apigee_environment["apigee_environment"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_apigee\\_environment\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.apigee.EnvironmentIamMember("member",
-            org_id=google_apigee_environment["apigee_environment"]["org_id"],
-            env_id=google_apigee_environment["apigee_environment"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* {{org_id}}/environments/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Apigee environment IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -500,11 +436,7 @@ class EnvironmentIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EnvironmentIamBindingArgs.__new__(EnvironmentIamBindingArgs)
 
-            if condition is not None and not isinstance(condition, EnvironmentIamBindingConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                EnvironmentIamBindingConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, EnvironmentIamBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if env_id is None and not opts.urn:
                 raise TypeError("Missing required property 'env_id'")

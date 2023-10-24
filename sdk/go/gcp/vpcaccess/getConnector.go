@@ -19,40 +19,6 @@ import (
 // * [API documentation](https://cloud.google.com/vpc/docs/reference/vpcaccess/rest/v1/projects.locations.connectors)
 // * How-to Guides
 //   - [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vpcaccess"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vpcaccess.LookupConnector(ctx, &vpcaccess.LookupConnectorArgs{
-//				Name: "vpc-con",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vpcaccess.NewConnector(ctx, "connector", &vpcaccess.ConnectorArgs{
-//				IpCidrRange: pulumi.String("10.8.0.0/28"),
-//				Network:     pulumi.String("default"),
-//				Region:      pulumi.String("us-central1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupConnector(ctx *pulumi.Context, args *LookupConnectorArgs, opts ...pulumi.InvokeOption) (*LookupConnectorResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectorResult

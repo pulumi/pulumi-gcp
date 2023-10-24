@@ -17,33 +17,6 @@ import * as utilities from "../utilities";
  *     * [Managing Subscriptions](https://cloud.google.com/pubsub/lite/docs/subscriptions)
  *
  * ## Example Usage
- * ### Pubsub Lite Subscription Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const project = gcp.organizations.getProject({});
- * const exampleLiteTopic = new gcp.pubsub.LiteTopic("exampleLiteTopic", {
- *     project: project.then(project => project.number),
- *     partitionConfig: {
- *         count: 1,
- *         capacity: {
- *             publishMibPerSec: 4,
- *             subscribeMibPerSec: 8,
- *         },
- *     },
- *     retentionConfig: {
- *         perPartitionBytes: "32212254720",
- *     },
- * });
- * const exampleLiteSubscription = new gcp.pubsub.LiteSubscription("exampleLiteSubscription", {
- *     topic: exampleLiteTopic.name,
- *     deliveryConfig: {
- *         deliveryRequirement: "DELIVER_AFTER_STORED",
- *     },
- * });
- * ```
  *
  * ## Import
  *

@@ -13,32 +13,6 @@ import (
 )
 
 // ## Example Usage
-// ### Artifact Registry Vpcsc Config
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/artifactregistry"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := artifactregistry.NewVpcscConfig(ctx, "my-config", &artifactregistry.VpcscConfigArgs{
-//				Location:    pulumi.String("us-central1"),
-//				VpcscPolicy: pulumi.String("ALLOW"),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

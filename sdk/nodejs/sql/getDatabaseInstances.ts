@@ -8,17 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get information about a list of Cloud SQL instances in a project. You can also apply some filters over this list to get a more filtered list of Cloud SQL instances.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const qa = gcp.sql.getDatabaseInstances({
- *     project: "test-project",
- * });
- * ```
  */
 export function getDatabaseInstances(args?: GetDatabaseInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseInstancesResult> {
     args = args || {};
@@ -82,17 +71,6 @@ export interface GetDatabaseInstancesResult {
 }
 /**
  * Use this data source to get information about a list of Cloud SQL instances in a project. You can also apply some filters over this list to get a more filtered list of Cloud SQL instances.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const qa = gcp.sql.getDatabaseInstances({
- *     project: "test-project",
- * });
- * ```
  */
 export function getDatabaseInstancesOutput(args?: GetDatabaseInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseInstancesResult> {
     return pulumi.output(args).apply((a: any) => getDatabaseInstances(a, opts))

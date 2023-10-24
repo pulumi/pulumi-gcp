@@ -103,17 +103,6 @@ def get_function_iam_policy(cloud_function: Optional[str] = None,
     """
     Retrieves the current IAM policy data for cloudfunction
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.cloudfunctions.get_function_iam_policy(project=google_cloudfunctions_function["function"]["project"],
-        region=google_cloudfunctions_function["function"]["region"],
-        cloud_function=google_cloudfunctions_function["function"]["name"])
-    ```
-
 
     :param str cloud_function: Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.
@@ -145,17 +134,6 @@ def get_function_iam_policy_output(cloud_function: Optional[pulumi.Input[str]] =
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFunctionIamPolicyResult]:
     """
     Retrieves the current IAM policy data for cloudfunction
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.cloudfunctions.get_function_iam_policy(project=google_cloudfunctions_function["function"]["project"],
-        region=google_cloudfunctions_function["function"]["region"],
-        cloud_function=google_cloudfunctions_function["function"]["name"])
-    ```
 
 
     :param str cloud_function: Used to find the parent resource to bind the IAM policy to

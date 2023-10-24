@@ -38,11 +38,21 @@ class IAMBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             org_id: pulumi.Input[str],
-             role: pulumi.Input[str],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['IAMBindingConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("members", members)
         _setter("org_id", org_id)
         _setter("role", role)
@@ -130,7 +140,11 @@ class _IAMBindingState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              org_id: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -224,18 +238,6 @@ class IAMBinding(pulumi.CustomResource):
             Use `pulumi import` and inspect the `output to ensure
             your existing members are preserved.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.organizations.IAMBinding("binding",
-            members=["user:alice@gmail.com"],
-            org_id="123456789",
-            role="roles/browser")
-        ```
-
         ## Import
 
         IAM binding imports use space-delimited identifiers; first the resource in question and then the role.
@@ -275,18 +277,6 @@ class IAMBinding(pulumi.CustomResource):
         > **Note:** On create, this resource will overwrite members of any existing roles.
             Use `pulumi import` and inspect the `output to ensure
             your existing members are preserved.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.organizations.IAMBinding("binding",
-            members=["user:alice@gmail.com"],
-            org_id="123456789",
-            role="roles/browser")
-        ```
 
         ## Import
 
@@ -334,11 +324,7 @@ class IAMBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = IAMBindingArgs.__new__(IAMBindingArgs)
 
-            if condition is not None and not isinstance(condition, IAMBindingConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                IAMBindingConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, IAMBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")

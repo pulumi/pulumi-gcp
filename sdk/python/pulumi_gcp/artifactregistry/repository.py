@@ -92,8 +92,8 @@ class RepositoryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             format: pulumi.Input[str],
-             repository_id: pulumi.Input[str],
+             format: Optional[pulumi.Input[str]] = None,
+             repository_id: Optional[pulumi.Input[str]] = None,
              cleanup_policies: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]]] = None,
              cleanup_policy_dry_run: Optional[pulumi.Input[bool]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -106,7 +106,29 @@ class RepositoryArgs:
              project: Optional[pulumi.Input[str]] = None,
              remote_repository_config: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigArgs']] = None,
              virtual_repository_config: Optional[pulumi.Input['RepositoryVirtualRepositoryConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if format is None:
+            raise TypeError("Missing 'format' argument")
+        if repository_id is None and 'repositoryId' in kwargs:
+            repository_id = kwargs['repositoryId']
+        if repository_id is None:
+            raise TypeError("Missing 'repository_id' argument")
+        if cleanup_policies is None and 'cleanupPolicies' in kwargs:
+            cleanup_policies = kwargs['cleanupPolicies']
+        if cleanup_policy_dry_run is None and 'cleanupPolicyDryRun' in kwargs:
+            cleanup_policy_dry_run = kwargs['cleanupPolicyDryRun']
+        if docker_config is None and 'dockerConfig' in kwargs:
+            docker_config = kwargs['dockerConfig']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if maven_config is None and 'mavenConfig' in kwargs:
+            maven_config = kwargs['mavenConfig']
+        if remote_repository_config is None and 'remoteRepositoryConfig' in kwargs:
+            remote_repository_config = kwargs['remoteRepositoryConfig']
+        if virtual_repository_config is None and 'virtualRepositoryConfig' in kwargs:
+            virtual_repository_config = kwargs['virtualRepositoryConfig']
+
         _setter("format", format)
         _setter("repository_id", repository_id)
         if cleanup_policies is not None:
@@ -434,7 +456,29 @@ class _RepositoryState:
              repository_id: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              virtual_repository_config: Optional[pulumi.Input['RepositoryVirtualRepositoryConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cleanup_policies is None and 'cleanupPolicies' in kwargs:
+            cleanup_policies = kwargs['cleanupPolicies']
+        if cleanup_policy_dry_run is None and 'cleanupPolicyDryRun' in kwargs:
+            cleanup_policy_dry_run = kwargs['cleanupPolicyDryRun']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if docker_config is None and 'dockerConfig' in kwargs:
+            docker_config = kwargs['dockerConfig']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if maven_config is None and 'mavenConfig' in kwargs:
+            maven_config = kwargs['mavenConfig']
+        if remote_repository_config is None and 'remoteRepositoryConfig' in kwargs:
+            remote_repository_config = kwargs['remoteRepositoryConfig']
+        if repository_id is None and 'repositoryId' in kwargs:
+            repository_id = kwargs['repositoryId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if virtual_repository_config is None and 'virtualRepositoryConfig' in kwargs:
+            virtual_repository_config = kwargs['virtualRepositoryConfig']
+
         if cleanup_policies is not None:
             _setter("cleanup_policies", cleanup_policies)
         if cleanup_policy_dry_run is not None:
@@ -731,149 +775,6 @@ class Repository(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
 
         ## Example Usage
-        ### Artifact Registry Repository Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_repo = gcp.artifactregistry.Repository("my-repo",
-            description="example docker repository",
-            format="DOCKER",
-            location="us-central1",
-            repository_id="my-repository")
-        ```
-        ### Artifact Registry Repository Docker
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_repo = gcp.artifactregistry.Repository("my-repo",
-            description="example docker repository",
-            docker_config=gcp.artifactregistry.RepositoryDockerConfigArgs(
-                immutable_tags=True,
-            ),
-            format="DOCKER",
-            location="us-central1",
-            repository_id="my-repository")
-        ```
-        ### Artifact Registry Repository Cmek
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
-            crypto_key_id="kms-key",
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
-        my_repo = gcp.artifactregistry.Repository("my-repo",
-            location="us-central1",
-            repository_id="my-repository",
-            description="example docker repository with cmek",
-            format="DOCKER",
-            kms_key_name="kms-key",
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key]))
-        ```
-        ### Artifact Registry Repository Virtual
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_repo_upstream = gcp.artifactregistry.Repository("my-repo-upstream",
-            location="us-central1",
-            repository_id="my-repository-upstream",
-            description="example docker repository (upstream source)",
-            format="DOCKER")
-        my_repo = gcp.artifactregistry.Repository("my-repo",
-            location="us-central1",
-            repository_id="my-repository",
-            description="example virtual docker repository",
-            format="DOCKER",
-            mode="VIRTUAL_REPOSITORY",
-            virtual_repository_config=gcp.artifactregistry.RepositoryVirtualRepositoryConfigArgs(
-                upstream_policies=[gcp.artifactregistry.RepositoryVirtualRepositoryConfigUpstreamPolicyArgs(
-                    id="my-repository-upstream",
-                    repository=my_repo_upstream.id,
-                    priority=1,
-                )],
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[]))
-        ```
-        ### Artifact Registry Repository Remote
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_repo = gcp.artifactregistry.Repository("my-repo",
-            description="example remote docker repository",
-            format="DOCKER",
-            location="us-central1",
-            mode="REMOTE_REPOSITORY",
-            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
-                description="docker hub",
-                docker_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryArgs(
-                    public_repository="DOCKER_HUB",
-                ),
-            ),
-            repository_id="my-repository")
-        ```
-        ### Artifact Registry Repository Cleanup
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_repo = gcp.artifactregistry.Repository("my-repo",
-            location="us-central1",
-            repository_id="my-repository",
-            description="example docker repository with cleanup policies",
-            format="DOCKER",
-            cleanup_policy_dry_run=False,
-            cleanup_policies=[
-                gcp.artifactregistry.RepositoryCleanupPolicyArgs(
-                    id="delete-prerelease",
-                    action="DELETE",
-                    condition=gcp.artifactregistry.RepositoryCleanupPolicyConditionArgs(
-                        tag_state="TAGGED",
-                        tag_prefixes=[
-                            "alpha",
-                            "v0",
-                        ],
-                        older_than="2592000s",
-                    ),
-                ),
-                gcp.artifactregistry.RepositoryCleanupPolicyArgs(
-                    id="keep-tagged-release",
-                    action="KEEP",
-                    condition=gcp.artifactregistry.RepositoryCleanupPolicyConditionArgs(
-                        tag_state="TAGGED",
-                        tag_prefixes=["release"],
-                        package_name_prefixes=[
-                            "webapp",
-                            "mobile",
-                        ],
-                    ),
-                ),
-                gcp.artifactregistry.RepositoryCleanupPolicyArgs(
-                    id="keep-minimum-versions",
-                    action="KEEP",
-                    most_recent_versions=gcp.artifactregistry.RepositoryCleanupPolicyMostRecentVersionsArgs(
-                        package_name_prefixes=[
-                            "webapp",
-                            "mobile",
-                            "sandbox",
-                        ],
-                        keep_count=5,
-                    ),
-                ),
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -953,149 +854,6 @@ class Repository(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
 
         ## Example Usage
-        ### Artifact Registry Repository Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_repo = gcp.artifactregistry.Repository("my-repo",
-            description="example docker repository",
-            format="DOCKER",
-            location="us-central1",
-            repository_id="my-repository")
-        ```
-        ### Artifact Registry Repository Docker
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_repo = gcp.artifactregistry.Repository("my-repo",
-            description="example docker repository",
-            docker_config=gcp.artifactregistry.RepositoryDockerConfigArgs(
-                immutable_tags=True,
-            ),
-            format="DOCKER",
-            location="us-central1",
-            repository_id="my-repository")
-        ```
-        ### Artifact Registry Repository Cmek
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
-            crypto_key_id="kms-key",
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
-        my_repo = gcp.artifactregistry.Repository("my-repo",
-            location="us-central1",
-            repository_id="my-repository",
-            description="example docker repository with cmek",
-            format="DOCKER",
-            kms_key_name="kms-key",
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key]))
-        ```
-        ### Artifact Registry Repository Virtual
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_repo_upstream = gcp.artifactregistry.Repository("my-repo-upstream",
-            location="us-central1",
-            repository_id="my-repository-upstream",
-            description="example docker repository (upstream source)",
-            format="DOCKER")
-        my_repo = gcp.artifactregistry.Repository("my-repo",
-            location="us-central1",
-            repository_id="my-repository",
-            description="example virtual docker repository",
-            format="DOCKER",
-            mode="VIRTUAL_REPOSITORY",
-            virtual_repository_config=gcp.artifactregistry.RepositoryVirtualRepositoryConfigArgs(
-                upstream_policies=[gcp.artifactregistry.RepositoryVirtualRepositoryConfigUpstreamPolicyArgs(
-                    id="my-repository-upstream",
-                    repository=my_repo_upstream.id,
-                    priority=1,
-                )],
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[]))
-        ```
-        ### Artifact Registry Repository Remote
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_repo = gcp.artifactregistry.Repository("my-repo",
-            description="example remote docker repository",
-            format="DOCKER",
-            location="us-central1",
-            mode="REMOTE_REPOSITORY",
-            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
-                description="docker hub",
-                docker_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryArgs(
-                    public_repository="DOCKER_HUB",
-                ),
-            ),
-            repository_id="my-repository")
-        ```
-        ### Artifact Registry Repository Cleanup
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_repo = gcp.artifactregistry.Repository("my-repo",
-            location="us-central1",
-            repository_id="my-repository",
-            description="example docker repository with cleanup policies",
-            format="DOCKER",
-            cleanup_policy_dry_run=False,
-            cleanup_policies=[
-                gcp.artifactregistry.RepositoryCleanupPolicyArgs(
-                    id="delete-prerelease",
-                    action="DELETE",
-                    condition=gcp.artifactregistry.RepositoryCleanupPolicyConditionArgs(
-                        tag_state="TAGGED",
-                        tag_prefixes=[
-                            "alpha",
-                            "v0",
-                        ],
-                        older_than="2592000s",
-                    ),
-                ),
-                gcp.artifactregistry.RepositoryCleanupPolicyArgs(
-                    id="keep-tagged-release",
-                    action="KEEP",
-                    condition=gcp.artifactregistry.RepositoryCleanupPolicyConditionArgs(
-                        tag_state="TAGGED",
-                        tag_prefixes=["release"],
-                        package_name_prefixes=[
-                            "webapp",
-                            "mobile",
-                        ],
-                    ),
-                ),
-                gcp.artifactregistry.RepositoryCleanupPolicyArgs(
-                    id="keep-minimum-versions",
-                    action="KEEP",
-                    most_recent_versions=gcp.artifactregistry.RepositoryCleanupPolicyMostRecentVersionsArgs(
-                        package_name_prefixes=[
-                            "webapp",
-                            "mobile",
-                            "sandbox",
-                        ],
-                        keep_count=5,
-                    ),
-                ),
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -1162,11 +920,7 @@ class Repository(pulumi.CustomResource):
             __props__.__dict__["cleanup_policies"] = cleanup_policies
             __props__.__dict__["cleanup_policy_dry_run"] = cleanup_policy_dry_run
             __props__.__dict__["description"] = description
-            if docker_config is not None and not isinstance(docker_config, RepositoryDockerConfigArgs):
-                docker_config = docker_config or {}
-                def _setter(key, value):
-                    docker_config[key] = value
-                RepositoryDockerConfigArgs._configure(_setter, **docker_config)
+            docker_config = _utilities.configure(docker_config, RepositoryDockerConfigArgs, True)
             __props__.__dict__["docker_config"] = docker_config
             if format is None and not opts.urn:
                 raise TypeError("Missing required property 'format'")
@@ -1174,28 +928,16 @@ class Repository(pulumi.CustomResource):
             __props__.__dict__["kms_key_name"] = kms_key_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
-            if maven_config is not None and not isinstance(maven_config, RepositoryMavenConfigArgs):
-                maven_config = maven_config or {}
-                def _setter(key, value):
-                    maven_config[key] = value
-                RepositoryMavenConfigArgs._configure(_setter, **maven_config)
+            maven_config = _utilities.configure(maven_config, RepositoryMavenConfigArgs, True)
             __props__.__dict__["maven_config"] = maven_config
             __props__.__dict__["mode"] = mode
             __props__.__dict__["project"] = project
-            if remote_repository_config is not None and not isinstance(remote_repository_config, RepositoryRemoteRepositoryConfigArgs):
-                remote_repository_config = remote_repository_config or {}
-                def _setter(key, value):
-                    remote_repository_config[key] = value
-                RepositoryRemoteRepositoryConfigArgs._configure(_setter, **remote_repository_config)
+            remote_repository_config = _utilities.configure(remote_repository_config, RepositoryRemoteRepositoryConfigArgs, True)
             __props__.__dict__["remote_repository_config"] = remote_repository_config
             if repository_id is None and not opts.urn:
                 raise TypeError("Missing required property 'repository_id'")
             __props__.__dict__["repository_id"] = repository_id
-            if virtual_repository_config is not None and not isinstance(virtual_repository_config, RepositoryVirtualRepositoryConfigArgs):
-                virtual_repository_config = virtual_repository_config or {}
-                def _setter(key, value):
-                    virtual_repository_config[key] = value
-                RepositoryVirtualRepositoryConfigArgs._configure(_setter, **virtual_repository_config)
+            virtual_repository_config = _utilities.configure(virtual_repository_config, RepositoryVirtualRepositoryConfigArgs, True)
             __props__.__dict__["virtual_repository_config"] = virtual_repository_config
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None

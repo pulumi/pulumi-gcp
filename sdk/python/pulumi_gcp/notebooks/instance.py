@@ -163,8 +163,8 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             machine_type: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
+             machine_type: Optional[pulumi.Input[str]] = None,
              accelerator_config: Optional[pulumi.Input['InstanceAcceleratorConfigArgs']] = None,
              boot_disk_size_gb: Optional[pulumi.Input[int]] = None,
              boot_disk_type: Optional[pulumi.Input[str]] = None,
@@ -195,7 +195,61 @@ class InstanceArgs:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              vm_image: Optional[pulumi.Input['InstanceVmImageArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if machine_type is None:
+            raise TypeError("Missing 'machine_type' argument")
+        if accelerator_config is None and 'acceleratorConfig' in kwargs:
+            accelerator_config = kwargs['acceleratorConfig']
+        if boot_disk_size_gb is None and 'bootDiskSizeGb' in kwargs:
+            boot_disk_size_gb = kwargs['bootDiskSizeGb']
+        if boot_disk_type is None and 'bootDiskType' in kwargs:
+            boot_disk_type = kwargs['bootDiskType']
+        if container_image is None and 'containerImage' in kwargs:
+            container_image = kwargs['containerImage']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if custom_gpu_driver_path is None and 'customGpuDriverPath' in kwargs:
+            custom_gpu_driver_path = kwargs['customGpuDriverPath']
+        if data_disk_size_gb is None and 'dataDiskSizeGb' in kwargs:
+            data_disk_size_gb = kwargs['dataDiskSizeGb']
+        if data_disk_type is None and 'dataDiskType' in kwargs:
+            data_disk_type = kwargs['dataDiskType']
+        if disk_encryption is None and 'diskEncryption' in kwargs:
+            disk_encryption = kwargs['diskEncryption']
+        if install_gpu_driver is None and 'installGpuDriver' in kwargs:
+            install_gpu_driver = kwargs['installGpuDriver']
+        if instance_owners is None and 'instanceOwners' in kwargs:
+            instance_owners = kwargs['instanceOwners']
+        if kms_key is None and 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+        if nic_type is None and 'nicType' in kwargs:
+            nic_type = kwargs['nicType']
+        if no_proxy_access is None and 'noProxyAccess' in kwargs:
+            no_proxy_access = kwargs['noProxyAccess']
+        if no_public_ip is None and 'noPublicIp' in kwargs:
+            no_public_ip = kwargs['noPublicIp']
+        if no_remove_data_disk is None and 'noRemoveDataDisk' in kwargs:
+            no_remove_data_disk = kwargs['noRemoveDataDisk']
+        if post_startup_script is None and 'postStartupScript' in kwargs:
+            post_startup_script = kwargs['postStartupScript']
+        if reservation_affinity is None and 'reservationAffinity' in kwargs:
+            reservation_affinity = kwargs['reservationAffinity']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if service_account_scopes is None and 'serviceAccountScopes' in kwargs:
+            service_account_scopes = kwargs['serviceAccountScopes']
+        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
+            shielded_instance_config = kwargs['shieldedInstanceConfig']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if vm_image is None and 'vmImage' in kwargs:
+            vm_image = kwargs['vmImage']
+
         _setter("location", location)
         _setter("machine_type", machine_type)
         if accelerator_config is not None:
@@ -879,7 +933,59 @@ class _InstanceState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              vm_image: Optional[pulumi.Input['InstanceVmImageArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if accelerator_config is None and 'acceleratorConfig' in kwargs:
+            accelerator_config = kwargs['acceleratorConfig']
+        if boot_disk_size_gb is None and 'bootDiskSizeGb' in kwargs:
+            boot_disk_size_gb = kwargs['bootDiskSizeGb']
+        if boot_disk_type is None and 'bootDiskType' in kwargs:
+            boot_disk_type = kwargs['bootDiskType']
+        if container_image is None and 'containerImage' in kwargs:
+            container_image = kwargs['containerImage']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if custom_gpu_driver_path is None and 'customGpuDriverPath' in kwargs:
+            custom_gpu_driver_path = kwargs['customGpuDriverPath']
+        if data_disk_size_gb is None and 'dataDiskSizeGb' in kwargs:
+            data_disk_size_gb = kwargs['dataDiskSizeGb']
+        if data_disk_type is None and 'dataDiskType' in kwargs:
+            data_disk_type = kwargs['dataDiskType']
+        if disk_encryption is None and 'diskEncryption' in kwargs:
+            disk_encryption = kwargs['diskEncryption']
+        if install_gpu_driver is None and 'installGpuDriver' in kwargs:
+            install_gpu_driver = kwargs['installGpuDriver']
+        if instance_owners is None and 'instanceOwners' in kwargs:
+            instance_owners = kwargs['instanceOwners']
+        if kms_key is None and 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if nic_type is None and 'nicType' in kwargs:
+            nic_type = kwargs['nicType']
+        if no_proxy_access is None and 'noProxyAccess' in kwargs:
+            no_proxy_access = kwargs['noProxyAccess']
+        if no_public_ip is None and 'noPublicIp' in kwargs:
+            no_public_ip = kwargs['noPublicIp']
+        if no_remove_data_disk is None and 'noRemoveDataDisk' in kwargs:
+            no_remove_data_disk = kwargs['noRemoveDataDisk']
+        if post_startup_script is None and 'postStartupScript' in kwargs:
+            post_startup_script = kwargs['postStartupScript']
+        if proxy_uri is None and 'proxyUri' in kwargs:
+            proxy_uri = kwargs['proxyUri']
+        if reservation_affinity is None and 'reservationAffinity' in kwargs:
+            reservation_affinity = kwargs['reservationAffinity']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if service_account_scopes is None and 'serviceAccountScopes' in kwargs:
+            service_account_scopes = kwargs['serviceAccountScopes']
+        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
+            shielded_instance_config = kwargs['shieldedInstanceConfig']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if vm_image is None and 'vmImage' in kwargs:
+            vm_image = kwargs['vmImage']
+
         if accelerator_config is not None:
             _setter("accelerator_config", accelerator_config)
         if boot_disk_size_gb is not None:
@@ -1455,85 +1561,6 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 
         ## Example Usage
-        ### Notebook Instance Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.notebooks.Instance("instance",
-            location="us-west1-a",
-            machine_type="e2-medium",
-            vm_image=gcp.notebooks.InstanceVmImageArgs(
-                image_family="tf-latest-cpu",
-                project="deeplearning-platform-release",
-            ))
-        ```
-        ### Notebook Instance Basic Container
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.notebooks.Instance("instance",
-            container_image=gcp.notebooks.InstanceContainerImageArgs(
-                repository="gcr.io/deeplearning-platform-release/base-cpu",
-                tag="latest",
-            ),
-            location="us-west1-a",
-            machine_type="e2-medium",
-            metadata={
-                "proxy-mode": "service_account",
-            })
-        ```
-        ### Notebook Instance Basic Gpu
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.notebooks.Instance("instance",
-            accelerator_config=gcp.notebooks.InstanceAcceleratorConfigArgs(
-                core_count=1,
-                type="NVIDIA_TESLA_T4",
-            ),
-            install_gpu_driver=True,
-            location="us-west1-a",
-            machine_type="n1-standard-1",
-            vm_image=gcp.notebooks.InstanceVmImageArgs(
-                image_family="tf-latest-gpu",
-                project="deeplearning-platform-release",
-            ))
-        ```
-        ### Notebook Instance Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_network = gcp.compute.get_network(name="default")
-        my_subnetwork = gcp.compute.get_subnetwork(name="default",
-            region="us-central1")
-        instance = gcp.notebooks.Instance("instance",
-            location="us-central1-a",
-            machine_type="e2-medium",
-            vm_image=gcp.notebooks.InstanceVmImageArgs(
-                project="deeplearning-platform-release",
-                image_family="tf-latest-cpu",
-            ),
-            instance_owners=["my@service-account.com"],
-            service_account="my@service-account.com",
-            install_gpu_driver=True,
-            boot_disk_type="PD_SSD",
-            boot_disk_size_gb=110,
-            no_public_ip=True,
-            no_proxy_access=True,
-            network=my_network.id,
-            subnet=my_subnetwork.id,
-            labels={
-                "k": "val",
-            })
-        ```
 
         ## Import
 
@@ -1648,85 +1675,6 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 
         ## Example Usage
-        ### Notebook Instance Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.notebooks.Instance("instance",
-            location="us-west1-a",
-            machine_type="e2-medium",
-            vm_image=gcp.notebooks.InstanceVmImageArgs(
-                image_family="tf-latest-cpu",
-                project="deeplearning-platform-release",
-            ))
-        ```
-        ### Notebook Instance Basic Container
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.notebooks.Instance("instance",
-            container_image=gcp.notebooks.InstanceContainerImageArgs(
-                repository="gcr.io/deeplearning-platform-release/base-cpu",
-                tag="latest",
-            ),
-            location="us-west1-a",
-            machine_type="e2-medium",
-            metadata={
-                "proxy-mode": "service_account",
-            })
-        ```
-        ### Notebook Instance Basic Gpu
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.notebooks.Instance("instance",
-            accelerator_config=gcp.notebooks.InstanceAcceleratorConfigArgs(
-                core_count=1,
-                type="NVIDIA_TESLA_T4",
-            ),
-            install_gpu_driver=True,
-            location="us-west1-a",
-            machine_type="n1-standard-1",
-            vm_image=gcp.notebooks.InstanceVmImageArgs(
-                image_family="tf-latest-gpu",
-                project="deeplearning-platform-release",
-            ))
-        ```
-        ### Notebook Instance Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_network = gcp.compute.get_network(name="default")
-        my_subnetwork = gcp.compute.get_subnetwork(name="default",
-            region="us-central1")
-        instance = gcp.notebooks.Instance("instance",
-            location="us-central1-a",
-            machine_type="e2-medium",
-            vm_image=gcp.notebooks.InstanceVmImageArgs(
-                project="deeplearning-platform-release",
-                image_family="tf-latest-cpu",
-            ),
-            instance_owners=["my@service-account.com"],
-            service_account="my@service-account.com",
-            install_gpu_driver=True,
-            boot_disk_type="PD_SSD",
-            boot_disk_size_gb=110,
-            no_public_ip=True,
-            no_proxy_access=True,
-            network=my_network.id,
-            subnet=my_subnetwork.id,
-            labels={
-                "k": "val",
-            })
-        ```
 
         ## Import
 
@@ -1804,19 +1752,11 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
-            if accelerator_config is not None and not isinstance(accelerator_config, InstanceAcceleratorConfigArgs):
-                accelerator_config = accelerator_config or {}
-                def _setter(key, value):
-                    accelerator_config[key] = value
-                InstanceAcceleratorConfigArgs._configure(_setter, **accelerator_config)
+            accelerator_config = _utilities.configure(accelerator_config, InstanceAcceleratorConfigArgs, True)
             __props__.__dict__["accelerator_config"] = accelerator_config
             __props__.__dict__["boot_disk_size_gb"] = boot_disk_size_gb
             __props__.__dict__["boot_disk_type"] = boot_disk_type
-            if container_image is not None and not isinstance(container_image, InstanceContainerImageArgs):
-                container_image = container_image or {}
-                def _setter(key, value):
-                    container_image[key] = value
-                InstanceContainerImageArgs._configure(_setter, **container_image)
+            container_image = _utilities.configure(container_image, InstanceContainerImageArgs, True)
             __props__.__dict__["container_image"] = container_image
             __props__.__dict__["create_time"] = create_time
             __props__.__dict__["custom_gpu_driver_path"] = custom_gpu_driver_path
@@ -1842,28 +1782,16 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["no_remove_data_disk"] = no_remove_data_disk
             __props__.__dict__["post_startup_script"] = post_startup_script
             __props__.__dict__["project"] = project
-            if reservation_affinity is not None and not isinstance(reservation_affinity, InstanceReservationAffinityArgs):
-                reservation_affinity = reservation_affinity or {}
-                def _setter(key, value):
-                    reservation_affinity[key] = value
-                InstanceReservationAffinityArgs._configure(_setter, **reservation_affinity)
+            reservation_affinity = _utilities.configure(reservation_affinity, InstanceReservationAffinityArgs, True)
             __props__.__dict__["reservation_affinity"] = reservation_affinity
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["service_account_scopes"] = service_account_scopes
-            if shielded_instance_config is not None and not isinstance(shielded_instance_config, InstanceShieldedInstanceConfigArgs):
-                shielded_instance_config = shielded_instance_config or {}
-                def _setter(key, value):
-                    shielded_instance_config[key] = value
-                InstanceShieldedInstanceConfigArgs._configure(_setter, **shielded_instance_config)
+            shielded_instance_config = _utilities.configure(shielded_instance_config, InstanceShieldedInstanceConfigArgs, True)
             __props__.__dict__["shielded_instance_config"] = shielded_instance_config
             __props__.__dict__["subnet"] = subnet
             __props__.__dict__["tags"] = tags
             __props__.__dict__["update_time"] = update_time
-            if vm_image is not None and not isinstance(vm_image, InstanceVmImageArgs):
-                vm_image = vm_image or {}
-                def _setter(key, value):
-                    vm_image[key] = value
-                InstanceVmImageArgs._configure(_setter, **vm_image)
+            vm_image = _utilities.configure(vm_image, InstanceVmImageArgs, True)
             __props__.__dict__["vm_image"] = vm_image
             __props__.__dict__["proxy_uri"] = None
             __props__.__dict__["state"] = None

@@ -119,7 +119,19 @@ class AddressArgs:
              purpose: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if address_type is None and 'addressType' in kwargs:
+            address_type = kwargs['addressType']
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if ipv6_endpoint_type is None and 'ipv6EndpointType' in kwargs:
+            ipv6_endpoint_type = kwargs['ipv6EndpointType']
+        if network_tier is None and 'networkTier' in kwargs:
+            network_tier = kwargs['networkTier']
+        if prefix_length is None and 'prefixLength' in kwargs:
+            prefix_length = kwargs['prefixLength']
+
         if address is not None:
             _setter("address", address)
         if address_type is not None:
@@ -482,7 +494,25 @@ class _AddressState:
              self_link: Optional[pulumi.Input[str]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
              users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if address_type is None and 'addressType' in kwargs:
+            address_type = kwargs['addressType']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if ipv6_endpoint_type is None and 'ipv6EndpointType' in kwargs:
+            ipv6_endpoint_type = kwargs['ipv6EndpointType']
+        if label_fingerprint is None and 'labelFingerprint' in kwargs:
+            label_fingerprint = kwargs['labelFingerprint']
+        if network_tier is None and 'networkTier' in kwargs:
+            network_tier = kwargs['networkTier']
+        if prefix_length is None and 'prefixLength' in kwargs:
+            prefix_length = kwargs['prefixLength']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if address is not None:
             _setter("address", address)
         if address_type is not None:
@@ -820,79 +850,6 @@ class Address(pulumi.CustomResource):
             * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
 
         ## Example Usage
-        ### Address Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        ip_address = gcp.compute.Address("ipAddress")
-        ```
-        ### Address With Subnetwork
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork")
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
-            ip_cidr_range="10.0.0.0/16",
-            region="us-central1",
-            network=default_network.id)
-        internal_with_subnet_and_address = gcp.compute.Address("internalWithSubnetAndAddress",
-            subnetwork=default_subnetwork.id,
-            address_type="INTERNAL",
-            address="10.0.42.42",
-            region="us-central1")
-        ```
-        ### Address With Gce Endpoint
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        internal_with_gce_endpoint = gcp.compute.Address("internalWithGceEndpoint",
-            address_type="INTERNAL",
-            purpose="GCE_ENDPOINT")
-        ```
-        ### Instance With Ip
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        static = gcp.compute.Address("static")
-        debian_image = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        instance_with_ip = gcp.compute.Instance("instanceWithIp",
-            machine_type="f1-micro",
-            zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=debian_image.self_link,
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs(
-                    nat_ip=static.address,
-                )],
-            )])
-        ```
-        ### Compute Address Ipsec Interconnect
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network = gcp.compute.Network("network", auto_create_subnetworks=False)
-        ipsec_interconnect_address = gcp.compute.Address("ipsec-interconnect-address",
-            address_type="INTERNAL",
-            purpose="IPSEC_INTERCONNECT",
-            address="192.168.1.0",
-            prefix_length=29,
-            network=network.self_link)
-        ```
 
         ## Import
 
@@ -1000,79 +957,6 @@ class Address(pulumi.CustomResource):
             * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
 
         ## Example Usage
-        ### Address Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        ip_address = gcp.compute.Address("ipAddress")
-        ```
-        ### Address With Subnetwork
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork")
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
-            ip_cidr_range="10.0.0.0/16",
-            region="us-central1",
-            network=default_network.id)
-        internal_with_subnet_and_address = gcp.compute.Address("internalWithSubnetAndAddress",
-            subnetwork=default_subnetwork.id,
-            address_type="INTERNAL",
-            address="10.0.42.42",
-            region="us-central1")
-        ```
-        ### Address With Gce Endpoint
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        internal_with_gce_endpoint = gcp.compute.Address("internalWithGceEndpoint",
-            address_type="INTERNAL",
-            purpose="GCE_ENDPOINT")
-        ```
-        ### Instance With Ip
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        static = gcp.compute.Address("static")
-        debian_image = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        instance_with_ip = gcp.compute.Instance("instanceWithIp",
-            machine_type="f1-micro",
-            zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=debian_image.self_link,
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs(
-                    nat_ip=static.address,
-                )],
-            )])
-        ```
-        ### Compute Address Ipsec Interconnect
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network = gcp.compute.Network("network", auto_create_subnetworks=False)
-        ipsec_interconnect_address = gcp.compute.Address("ipsec-interconnect-address",
-            address_type="INTERNAL",
-            purpose="IPSEC_INTERCONNECT",
-            address="192.168.1.0",
-            prefix_length=29,
-            network=network.self_link)
-        ```
 
         ## Import
 

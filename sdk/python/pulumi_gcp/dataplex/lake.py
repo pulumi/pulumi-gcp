@@ -50,14 +50,20 @@ class LakeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              metastore: Optional[pulumi.Input['LakeMetastoreArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("location", location)
         if description is not None:
             _setter("description", description)
@@ -233,7 +239,21 @@ class _LakeState:
              state: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if asset_statuses is None and 'assetStatuses' in kwargs:
+            asset_statuses = kwargs['assetStatuses']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if metastore_statuses is None and 'metastoreStatuses' in kwargs:
+            metastore_statuses = kwargs['metastoreStatuses']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if asset_statuses is not None:
             _setter("asset_statuses", asset_statuses)
         if create_time is not None:
@@ -453,21 +473,6 @@ class Lake(pulumi.CustomResource):
         The Dataplex Lake resource
 
         ## Example Usage
-        ### Basic_lake
-        A basic example of a dataplex lake
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.dataplex.Lake("primary",
-            description="Lake for DCL",
-            display_name="Lake for DCL",
-            labels={
-                "my-lake": "exists",
-            },
-            location="us-west1",
-            project="my-project-name")
-        ```
 
         ## Import
 
@@ -509,21 +514,6 @@ class Lake(pulumi.CustomResource):
         The Dataplex Lake resource
 
         ## Example Usage
-        ### Basic_lake
-        A basic example of a dataplex lake
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.dataplex.Lake("primary",
-            description="Lake for DCL",
-            display_name="Lake for DCL",
-            labels={
-                "my-lake": "exists",
-            },
-            location="us-west1",
-            project="my-project-name")
-        ```
 
         ## Import
 
@@ -582,11 +572,7 @@ class Lake(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if metastore is not None and not isinstance(metastore, LakeMetastoreArgs):
-                metastore = metastore or {}
-                def _setter(key, value):
-                    metastore[key] = value
-                LakeMetastoreArgs._configure(_setter, **metastore)
+            metastore = _utilities.configure(metastore, LakeMetastoreArgs, True)
             __props__.__dict__["metastore"] = metastore
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

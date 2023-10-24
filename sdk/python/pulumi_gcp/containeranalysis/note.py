@@ -60,7 +60,7 @@ class NoteArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attestation_authority: pulumi.Input['NoteAttestationAuthorityArgs'],
+             attestation_authority: Optional[pulumi.Input['NoteAttestationAuthorityArgs']] = None,
              expiration_time: Optional[pulumi.Input[str]] = None,
              long_description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -68,7 +68,23 @@ class NoteArgs:
              related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              related_urls: Optional[pulumi.Input[Sequence[pulumi.Input['NoteRelatedUrlArgs']]]] = None,
              short_description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if attestation_authority is None and 'attestationAuthority' in kwargs:
+            attestation_authority = kwargs['attestationAuthority']
+        if attestation_authority is None:
+            raise TypeError("Missing 'attestation_authority' argument")
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if long_description is None and 'longDescription' in kwargs:
+            long_description = kwargs['longDescription']
+        if related_note_names is None and 'relatedNoteNames' in kwargs:
+            related_note_names = kwargs['relatedNoteNames']
+        if related_urls is None and 'relatedUrls' in kwargs:
+            related_urls = kwargs['relatedUrls']
+        if short_description is None and 'shortDescription' in kwargs:
+            short_description = kwargs['shortDescription']
+
         _setter("attestation_authority", attestation_authority)
         if expiration_time is not None:
             _setter("expiration_time", expiration_time)
@@ -260,7 +276,25 @@ class _NoteState:
              related_urls: Optional[pulumi.Input[Sequence[pulumi.Input['NoteRelatedUrlArgs']]]] = None,
              short_description: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if attestation_authority is None and 'attestationAuthority' in kwargs:
+            attestation_authority = kwargs['attestationAuthority']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if long_description is None and 'longDescription' in kwargs:
+            long_description = kwargs['longDescription']
+        if related_note_names is None and 'relatedNoteNames' in kwargs:
+            related_note_names = kwargs['relatedNoteNames']
+        if related_urls is None and 'relatedUrls' in kwargs:
+            related_urls = kwargs['relatedUrls']
+        if short_description is None and 'shortDescription' in kwargs:
+            short_description = kwargs['shortDescription']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if attestation_authority is not None:
             _setter("attestation_authority", attestation_authority)
         if create_time is not None:
@@ -454,43 +488,6 @@ class Note(pulumi.CustomResource):
             * [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
 
         ## Example Usage
-        ### Container Analysis Note Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
-                human_readable_name="Attestor Note",
-            ),
-        ))
-        ```
-        ### Container Analysis Note Attestation Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        note = gcp.containeranalysis.Note("note",
-            attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-                hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
-                    human_readable_name="Attestor Note",
-                ),
-            ),
-            expiration_time="2120-10-02T15:01:23.045123456Z",
-            long_description="a longer description of test note",
-            related_urls=[
-                gcp.containeranalysis.NoteRelatedUrlArgs(
-                    label="foo",
-                    url="some.url",
-                ),
-                gcp.containeranalysis.NoteRelatedUrlArgs(
-                    url="google.com",
-                ),
-            ],
-            short_description="test note")
-        ```
 
         ## Import
 
@@ -548,43 +545,6 @@ class Note(pulumi.CustomResource):
             * [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
 
         ## Example Usage
-        ### Container Analysis Note Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
-                human_readable_name="Attestor Note",
-            ),
-        ))
-        ```
-        ### Container Analysis Note Attestation Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        note = gcp.containeranalysis.Note("note",
-            attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-                hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
-                    human_readable_name="Attestor Note",
-                ),
-            ),
-            expiration_time="2120-10-02T15:01:23.045123456Z",
-            long_description="a longer description of test note",
-            related_urls=[
-                gcp.containeranalysis.NoteRelatedUrlArgs(
-                    label="foo",
-                    url="some.url",
-                ),
-                gcp.containeranalysis.NoteRelatedUrlArgs(
-                    url="google.com",
-                ),
-            ],
-            short_description="test note")
-        ```
 
         ## Import
 
@@ -638,11 +598,7 @@ class Note(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NoteArgs.__new__(NoteArgs)
 
-            if attestation_authority is not None and not isinstance(attestation_authority, NoteAttestationAuthorityArgs):
-                attestation_authority = attestation_authority or {}
-                def _setter(key, value):
-                    attestation_authority[key] = value
-                NoteAttestationAuthorityArgs._configure(_setter, **attestation_authority)
+            attestation_authority = _utilities.configure(attestation_authority, NoteAttestationAuthorityArgs, True)
             if attestation_authority is None and not opts.urn:
                 raise TypeError("Missing required property 'attestation_authority'")
             __props__.__dict__["attestation_authority"] = attestation_authority

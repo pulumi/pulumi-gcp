@@ -133,8 +133,8 @@ class InstanceTemplateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disks: pulumi.Input[Sequence[pulumi.Input['InstanceTemplateDiskArgs']]],
-             machine_type: pulumi.Input[str],
+             disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateDiskArgs']]]] = None,
+             machine_type: Optional[pulumi.Input[str]] = None,
              advanced_machine_features: Optional[pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs']] = None,
              can_ip_forward: Optional[pulumi.Input[bool]] = None,
              confidential_instance_config: Optional[pulumi.Input['InstanceTemplateConfidentialInstanceConfigArgs']] = None,
@@ -158,7 +158,45 @@ class InstanceTemplateArgs:
              service_account: Optional[pulumi.Input['InstanceTemplateServiceAccountArgs']] = None,
              shielded_instance_config: Optional[pulumi.Input['InstanceTemplateShieldedInstanceConfigArgs']] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disks is None:
+            raise TypeError("Missing 'disks' argument")
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if machine_type is None:
+            raise TypeError("Missing 'machine_type' argument")
+        if advanced_machine_features is None and 'advancedMachineFeatures' in kwargs:
+            advanced_machine_features = kwargs['advancedMachineFeatures']
+        if can_ip_forward is None and 'canIpForward' in kwargs:
+            can_ip_forward = kwargs['canIpForward']
+        if confidential_instance_config is None and 'confidentialInstanceConfig' in kwargs:
+            confidential_instance_config = kwargs['confidentialInstanceConfig']
+        if enable_display is None and 'enableDisplay' in kwargs:
+            enable_display = kwargs['enableDisplay']
+        if guest_accelerators is None and 'guestAccelerators' in kwargs:
+            guest_accelerators = kwargs['guestAccelerators']
+        if instance_description is None and 'instanceDescription' in kwargs:
+            instance_description = kwargs['instanceDescription']
+        if metadata_startup_script is None and 'metadataStartupScript' in kwargs:
+            metadata_startup_script = kwargs['metadataStartupScript']
+        if min_cpu_platform is None and 'minCpuPlatform' in kwargs:
+            min_cpu_platform = kwargs['minCpuPlatform']
+        if name_prefix is None and 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if network_performance_config is None and 'networkPerformanceConfig' in kwargs:
+            network_performance_config = kwargs['networkPerformanceConfig']
+        if reservation_affinity is None and 'reservationAffinity' in kwargs:
+            reservation_affinity = kwargs['reservationAffinity']
+        if resource_policies is None and 'resourcePolicies' in kwargs:
+            resource_policies = kwargs['resourcePolicies']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
+            shielded_instance_config = kwargs['shieldedInstanceConfig']
+
         _setter("disks", disks)
         _setter("machine_type", machine_type)
         if advanced_machine_features is not None:
@@ -704,7 +742,49 @@ class _InstanceTemplateState:
              shielded_instance_config: Optional[pulumi.Input['InstanceTemplateShieldedInstanceConfigArgs']] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags_fingerprint: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if advanced_machine_features is None and 'advancedMachineFeatures' in kwargs:
+            advanced_machine_features = kwargs['advancedMachineFeatures']
+        if can_ip_forward is None and 'canIpForward' in kwargs:
+            can_ip_forward = kwargs['canIpForward']
+        if confidential_instance_config is None and 'confidentialInstanceConfig' in kwargs:
+            confidential_instance_config = kwargs['confidentialInstanceConfig']
+        if enable_display is None and 'enableDisplay' in kwargs:
+            enable_display = kwargs['enableDisplay']
+        if guest_accelerators is None and 'guestAccelerators' in kwargs:
+            guest_accelerators = kwargs['guestAccelerators']
+        if instance_description is None and 'instanceDescription' in kwargs:
+            instance_description = kwargs['instanceDescription']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if metadata_fingerprint is None and 'metadataFingerprint' in kwargs:
+            metadata_fingerprint = kwargs['metadataFingerprint']
+        if metadata_startup_script is None and 'metadataStartupScript' in kwargs:
+            metadata_startup_script = kwargs['metadataStartupScript']
+        if min_cpu_platform is None and 'minCpuPlatform' in kwargs:
+            min_cpu_platform = kwargs['minCpuPlatform']
+        if name_prefix is None and 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if network_performance_config is None and 'networkPerformanceConfig' in kwargs:
+            network_performance_config = kwargs['networkPerformanceConfig']
+        if reservation_affinity is None and 'reservationAffinity' in kwargs:
+            reservation_affinity = kwargs['reservationAffinity']
+        if resource_policies is None and 'resourcePolicies' in kwargs:
+            resource_policies = kwargs['resourcePolicies']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if self_link_unique is None and 'selfLinkUnique' in kwargs:
+            self_link_unique = kwargs['selfLinkUnique']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
+            shielded_instance_config = kwargs['shieldedInstanceConfig']
+        if tags_fingerprint is None and 'tagsFingerprint' in kwargs:
+            tags_fingerprint = kwargs['tagsFingerprint']
+
         if advanced_machine_features is not None:
             _setter("advanced_machine_features", advanced_machine_features)
         if can_ip_forward is not None:
@@ -1184,125 +1264,6 @@ class InstanceTemplate(pulumi.CustomResource):
         and
         [API](https://cloud.google.com/compute/docs/reference/latest/instanceTemplates).
 
-        ## Example Usage
-        ### Automatic Envoy Deployment
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.get_default_service_account()
-        my_image = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        foobar = gcp.compute.InstanceTemplate("foobar",
-            machine_type="e2-medium",
-            can_ip_forward=False,
-            tags=[
-                "foo",
-                "bar",
-            ],
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image=my_image.self_link,
-                auto_delete=True,
-                boot=True,
-            )],
-            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
-                network="default",
-            )],
-            scheduling=gcp.compute.InstanceTemplateSchedulingArgs(
-                preemptible=False,
-                automatic_restart=True,
-            ),
-            metadata={
-                "gce-software-declaration": \"\"\"{
-          "softwareRecipes": [{
-            "name": "install-gce-service-proxy-agent",
-            "desired_state": "INSTALLED",
-            "installSteps": [{
-              "scriptRun": {
-                "script": "#! /bin/bash\\nZONE=$(curl --silent http://metadata.google.internal/computeMetadata/v1/instance/zone -H Metadata-Flavor:Google | cut -d/ -f4 )\\nexport SERVICE_PROXY_AGENT_DIRECTORY=$(mktemp -d)\\nsudo gsutil cp   gs://gce-service-proxy-"$ZONE"/service-proxy-agent/releases/service-proxy-agent-0.2.tgz   "$SERVICE_PROXY_AGENT_DIRECTORY"   || sudo gsutil cp     gs://gce-service-proxy/service-proxy-agent/releases/service-proxy-agent-0.2.tgz     "$SERVICE_PROXY_AGENT_DIRECTORY"\\nsudo tar -xzf "$SERVICE_PROXY_AGENT_DIRECTORY"/service-proxy-agent-0.2.tgz -C "$SERVICE_PROXY_AGENT_DIRECTORY"\\n"$SERVICE_PROXY_AGENT_DIRECTORY"/service-proxy-agent/service-proxy-agent-bootstrap.sh"
-              }
-            }]
-          }]
-        }
-        \"\"\",
-                "gce-service-proxy": \"\"\"{
-          "api-version": "0.2",
-          "proxy-spec": {
-            "proxy-port": 15001,
-            "network": "my-network",
-            "tracing": "ON",
-            "access-log": "/var/log/envoy/access.log"
-          }
-          "service": {
-            "serving-ports": [80, 81]
-          },
-         "labels": {
-           "app_name": "bookserver_app",
-           "app_version": "STABLE"
-          }
-        }
-        \"\"\",
-                "enable-guest-attributes": "true",
-                "enable-osconfig": "true",
-            },
-            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
-                email=default.email,
-                scopes=["cloud-platform"],
-            ),
-            labels={
-                "gce-service-proxy": "on",
-            })
-        ```
-        ## Deploying the Latest Image
-
-        A common way to use instance templates and managed instance groups is to deploy the
-        latest image in a family, usually the latest build of your application. There are two
-        ways to do this in the provider, and they have their pros and cons. The difference ends
-        up being in how "latest" is interpreted. You can either deploy the latest image available
-        when the provider runs, or you can have each instance check what the latest image is when
-        it's being created, either as part of a scaling event or being rebuilt by the instance
-        group manager.
-
-        If you're not sure, we recommend deploying the latest image available when the provider runs,
-        because this means all the instances in your group will be based on the same image, always,
-        and means that no upgrades or changes to your instances happen outside of a `pulumi up`.
-        You can achieve this by using the `compute.Image`
-        data source, which will retrieve the latest image on every `pulumi apply`, and will update
-        the template to use that specific image:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_image = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
-            name_prefix="instance-template-",
-            machine_type="e2-medium",
-            region="us-central1",
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image=my_image.self_link,
-            )])
-        ```
-
-        To have instances update to the latest on every scaling event or instance re-creation,
-        use the family as the image for the disk, and it will use GCP's default behavior, setting
-        the image for the template to the family:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image="debian-cloud/debian-11",
-            )],
-            machine_type="e2-medium",
-            name_prefix="instance-template-",
-            region="us-central1")
-        ```
-
         ## Import
 
         Instance templates can be imported using any of these accepted formats
@@ -1394,125 +1355,6 @@ class InstanceTemplate(pulumi.CustomResource):
         and
         [API](https://cloud.google.com/compute/docs/reference/latest/instanceTemplates).
 
-        ## Example Usage
-        ### Automatic Envoy Deployment
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.get_default_service_account()
-        my_image = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        foobar = gcp.compute.InstanceTemplate("foobar",
-            machine_type="e2-medium",
-            can_ip_forward=False,
-            tags=[
-                "foo",
-                "bar",
-            ],
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image=my_image.self_link,
-                auto_delete=True,
-                boot=True,
-            )],
-            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
-                network="default",
-            )],
-            scheduling=gcp.compute.InstanceTemplateSchedulingArgs(
-                preemptible=False,
-                automatic_restart=True,
-            ),
-            metadata={
-                "gce-software-declaration": \"\"\"{
-          "softwareRecipes": [{
-            "name": "install-gce-service-proxy-agent",
-            "desired_state": "INSTALLED",
-            "installSteps": [{
-              "scriptRun": {
-                "script": "#! /bin/bash\\nZONE=$(curl --silent http://metadata.google.internal/computeMetadata/v1/instance/zone -H Metadata-Flavor:Google | cut -d/ -f4 )\\nexport SERVICE_PROXY_AGENT_DIRECTORY=$(mktemp -d)\\nsudo gsutil cp   gs://gce-service-proxy-"$ZONE"/service-proxy-agent/releases/service-proxy-agent-0.2.tgz   "$SERVICE_PROXY_AGENT_DIRECTORY"   || sudo gsutil cp     gs://gce-service-proxy/service-proxy-agent/releases/service-proxy-agent-0.2.tgz     "$SERVICE_PROXY_AGENT_DIRECTORY"\\nsudo tar -xzf "$SERVICE_PROXY_AGENT_DIRECTORY"/service-proxy-agent-0.2.tgz -C "$SERVICE_PROXY_AGENT_DIRECTORY"\\n"$SERVICE_PROXY_AGENT_DIRECTORY"/service-proxy-agent/service-proxy-agent-bootstrap.sh"
-              }
-            }]
-          }]
-        }
-        \"\"\",
-                "gce-service-proxy": \"\"\"{
-          "api-version": "0.2",
-          "proxy-spec": {
-            "proxy-port": 15001,
-            "network": "my-network",
-            "tracing": "ON",
-            "access-log": "/var/log/envoy/access.log"
-          }
-          "service": {
-            "serving-ports": [80, 81]
-          },
-         "labels": {
-           "app_name": "bookserver_app",
-           "app_version": "STABLE"
-          }
-        }
-        \"\"\",
-                "enable-guest-attributes": "true",
-                "enable-osconfig": "true",
-            },
-            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
-                email=default.email,
-                scopes=["cloud-platform"],
-            ),
-            labels={
-                "gce-service-proxy": "on",
-            })
-        ```
-        ## Deploying the Latest Image
-
-        A common way to use instance templates and managed instance groups is to deploy the
-        latest image in a family, usually the latest build of your application. There are two
-        ways to do this in the provider, and they have their pros and cons. The difference ends
-        up being in how "latest" is interpreted. You can either deploy the latest image available
-        when the provider runs, or you can have each instance check what the latest image is when
-        it's being created, either as part of a scaling event or being rebuilt by the instance
-        group manager.
-
-        If you're not sure, we recommend deploying the latest image available when the provider runs,
-        because this means all the instances in your group will be based on the same image, always,
-        and means that no upgrades or changes to your instances happen outside of a `pulumi up`.
-        You can achieve this by using the `compute.Image`
-        data source, which will retrieve the latest image on every `pulumi apply`, and will update
-        the template to use that specific image:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_image = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
-            name_prefix="instance-template-",
-            machine_type="e2-medium",
-            region="us-central1",
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image=my_image.self_link,
-            )])
-        ```
-
-        To have instances update to the latest on every scaling event or instance re-creation,
-        use the family as the image for the disk, and it will use GCP's default behavior, setting
-        the image for the template to the family:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image="debian-cloud/debian-11",
-            )],
-            machine_type="e2-medium",
-            name_prefix="instance-template-",
-            region="us-central1")
-        ```
-
         ## Import
 
         Instance templates can be imported using any of these accepted formats
@@ -1584,18 +1426,10 @@ class InstanceTemplate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceTemplateArgs.__new__(InstanceTemplateArgs)
 
-            if advanced_machine_features is not None and not isinstance(advanced_machine_features, InstanceTemplateAdvancedMachineFeaturesArgs):
-                advanced_machine_features = advanced_machine_features or {}
-                def _setter(key, value):
-                    advanced_machine_features[key] = value
-                InstanceTemplateAdvancedMachineFeaturesArgs._configure(_setter, **advanced_machine_features)
+            advanced_machine_features = _utilities.configure(advanced_machine_features, InstanceTemplateAdvancedMachineFeaturesArgs, True)
             __props__.__dict__["advanced_machine_features"] = advanced_machine_features
             __props__.__dict__["can_ip_forward"] = can_ip_forward
-            if confidential_instance_config is not None and not isinstance(confidential_instance_config, InstanceTemplateConfidentialInstanceConfigArgs):
-                confidential_instance_config = confidential_instance_config or {}
-                def _setter(key, value):
-                    confidential_instance_config[key] = value
-                InstanceTemplateConfidentialInstanceConfigArgs._configure(_setter, **confidential_instance_config)
+            confidential_instance_config = _utilities.configure(confidential_instance_config, InstanceTemplateConfidentialInstanceConfigArgs, True)
             __props__.__dict__["confidential_instance_config"] = confidential_instance_config
             __props__.__dict__["description"] = description
             if disks is None and not opts.urn:
@@ -1614,38 +1448,18 @@ class InstanceTemplate(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["name_prefix"] = name_prefix
             __props__.__dict__["network_interfaces"] = network_interfaces
-            if network_performance_config is not None and not isinstance(network_performance_config, InstanceTemplateNetworkPerformanceConfigArgs):
-                network_performance_config = network_performance_config or {}
-                def _setter(key, value):
-                    network_performance_config[key] = value
-                InstanceTemplateNetworkPerformanceConfigArgs._configure(_setter, **network_performance_config)
+            network_performance_config = _utilities.configure(network_performance_config, InstanceTemplateNetworkPerformanceConfigArgs, True)
             __props__.__dict__["network_performance_config"] = network_performance_config
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
-            if reservation_affinity is not None and not isinstance(reservation_affinity, InstanceTemplateReservationAffinityArgs):
-                reservation_affinity = reservation_affinity or {}
-                def _setter(key, value):
-                    reservation_affinity[key] = value
-                InstanceTemplateReservationAffinityArgs._configure(_setter, **reservation_affinity)
+            reservation_affinity = _utilities.configure(reservation_affinity, InstanceTemplateReservationAffinityArgs, True)
             __props__.__dict__["reservation_affinity"] = reservation_affinity
             __props__.__dict__["resource_policies"] = resource_policies
-            if scheduling is not None and not isinstance(scheduling, InstanceTemplateSchedulingArgs):
-                scheduling = scheduling or {}
-                def _setter(key, value):
-                    scheduling[key] = value
-                InstanceTemplateSchedulingArgs._configure(_setter, **scheduling)
+            scheduling = _utilities.configure(scheduling, InstanceTemplateSchedulingArgs, True)
             __props__.__dict__["scheduling"] = scheduling
-            if service_account is not None and not isinstance(service_account, InstanceTemplateServiceAccountArgs):
-                service_account = service_account or {}
-                def _setter(key, value):
-                    service_account[key] = value
-                InstanceTemplateServiceAccountArgs._configure(_setter, **service_account)
+            service_account = _utilities.configure(service_account, InstanceTemplateServiceAccountArgs, True)
             __props__.__dict__["service_account"] = service_account
-            if shielded_instance_config is not None and not isinstance(shielded_instance_config, InstanceTemplateShieldedInstanceConfigArgs):
-                shielded_instance_config = shielded_instance_config or {}
-                def _setter(key, value):
-                    shielded_instance_config[key] = value
-                InstanceTemplateShieldedInstanceConfigArgs._configure(_setter, **shielded_instance_config)
+            shielded_instance_config = _utilities.configure(shielded_instance_config, InstanceTemplateShieldedInstanceConfigArgs, True)
             __props__.__dict__["shielded_instance_config"] = shielded_instance_config
             __props__.__dict__["tags"] = tags
             __props__.__dict__["metadata_fingerprint"] = None

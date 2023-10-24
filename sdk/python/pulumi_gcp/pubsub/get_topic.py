@@ -116,15 +116,6 @@ def get_topic(name: Optional[str] = None,
     the [official documentation](https://cloud.google.com/pubsub/docs/)
     and [API](https://cloud.google.com/pubsub/docs/apis).
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    my_pubsub_topic = gcp.pubsub.get_topic(name="my-pubsub-topic")
-    ```
-
 
     :param str name: The name of the Cloud Pub/Sub Topic.
            
@@ -157,15 +148,6 @@ def get_topic_output(name: Optional[pulumi.Input[str]] = None,
     Get information about a Google Cloud Pub/Sub Topic. For more information see
     the [official documentation](https://cloud.google.com/pubsub/docs/)
     and [API](https://cloud.google.com/pubsub/docs/apis).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    my_pubsub_topic = gcp.pubsub.get_topic(name="my-pubsub-topic")
-    ```
 
 
     :param str name: The name of the Cloud Pub/Sub Topic.

@@ -75,7 +75,7 @@ class JobArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             placement: pulumi.Input['JobPlacementArgs'],
+             placement: Optional[pulumi.Input['JobPlacementArgs']] = None,
              force_delete: Optional[pulumi.Input[bool]] = None,
              hadoop_config: Optional[pulumi.Input['JobHadoopConfigArgs']] = None,
              hive_config: Optional[pulumi.Input['JobHiveConfigArgs']] = None,
@@ -89,7 +89,27 @@ class JobArgs:
              scheduling: Optional[pulumi.Input['JobSchedulingArgs']] = None,
              spark_config: Optional[pulumi.Input['JobSparkConfigArgs']] = None,
              sparksql_config: Optional[pulumi.Input['JobSparksqlConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if placement is None:
+            raise TypeError("Missing 'placement' argument")
+        if force_delete is None and 'forceDelete' in kwargs:
+            force_delete = kwargs['forceDelete']
+        if hadoop_config is None and 'hadoopConfig' in kwargs:
+            hadoop_config = kwargs['hadoopConfig']
+        if hive_config is None and 'hiveConfig' in kwargs:
+            hive_config = kwargs['hiveConfig']
+        if pig_config is None and 'pigConfig' in kwargs:
+            pig_config = kwargs['pigConfig']
+        if presto_config is None and 'prestoConfig' in kwargs:
+            presto_config = kwargs['prestoConfig']
+        if pyspark_config is None and 'pysparkConfig' in kwargs:
+            pyspark_config = kwargs['pysparkConfig']
+        if spark_config is None and 'sparkConfig' in kwargs:
+            spark_config = kwargs['sparkConfig']
+        if sparksql_config is None and 'sparksqlConfig' in kwargs:
+            sparksql_config = kwargs['sparksqlConfig']
+
         _setter("placement", placement)
         if force_delete is not None:
             _setter("force_delete", force_delete)
@@ -383,7 +403,29 @@ class _JobState:
              spark_config: Optional[pulumi.Input['JobSparkConfigArgs']] = None,
              sparksql_config: Optional[pulumi.Input['JobSparksqlConfigArgs']] = None,
              statuses: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if driver_controls_files_uri is None and 'driverControlsFilesUri' in kwargs:
+            driver_controls_files_uri = kwargs['driverControlsFilesUri']
+        if driver_output_resource_uri is None and 'driverOutputResourceUri' in kwargs:
+            driver_output_resource_uri = kwargs['driverOutputResourceUri']
+        if force_delete is None and 'forceDelete' in kwargs:
+            force_delete = kwargs['forceDelete']
+        if hadoop_config is None and 'hadoopConfig' in kwargs:
+            hadoop_config = kwargs['hadoopConfig']
+        if hive_config is None and 'hiveConfig' in kwargs:
+            hive_config = kwargs['hiveConfig']
+        if pig_config is None and 'pigConfig' in kwargs:
+            pig_config = kwargs['pigConfig']
+        if presto_config is None and 'prestoConfig' in kwargs:
+            presto_config = kwargs['prestoConfig']
+        if pyspark_config is None and 'pysparkConfig' in kwargs:
+            pyspark_config = kwargs['pysparkConfig']
+        if spark_config is None and 'sparkConfig' in kwargs:
+            spark_config = kwargs['sparkConfig']
+        if sparksql_config is None and 'sparksqlConfig' in kwargs:
+            sparksql_config = kwargs['sparksqlConfig']
+
         if driver_controls_files_uri is not None:
             _setter("driver_controls_files_uri", driver_controls_files_uri)
         if driver_output_resource_uri is not None:
@@ -658,50 +700,6 @@ class Job(pulumi.CustomResource):
 
         !> **Note:** This resource does not support 'update' and changing any attributes will cause the resource to be recreated.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        mycluster = gcp.dataproc.Cluster("mycluster", region="us-central1")
-        # Submit an example spark job to a dataproc cluster
-        spark = gcp.dataproc.Job("spark",
-            region=mycluster.region,
-            force_delete=True,
-            placement=gcp.dataproc.JobPlacementArgs(
-                cluster_name=mycluster.name,
-            ),
-            spark_config=gcp.dataproc.JobSparkConfigArgs(
-                main_class="org.apache.spark.examples.SparkPi",
-                jar_file_uris=["file:///usr/lib/spark/examples/jars/spark-examples.jar"],
-                args=["1000"],
-                properties={
-                    "spark.logConf": "true",
-                },
-                logging_config=gcp.dataproc.JobSparkConfigLoggingConfigArgs(
-                    driver_log_levels={
-                        "root": "INFO",
-                    },
-                ),
-            ))
-        # Submit an example pyspark job to a dataproc cluster
-        pyspark = gcp.dataproc.Job("pyspark",
-            region=mycluster.region,
-            force_delete=True,
-            placement=gcp.dataproc.JobPlacementArgs(
-                cluster_name=mycluster.name,
-            ),
-            pyspark_config=gcp.dataproc.JobPysparkConfigArgs(
-                main_python_file_uri="gs://dataproc-examples-2f10d78d114f6aaec76462e3c310f31f/src/pyspark/hello-world/hello-world.py",
-                properties={
-                    "spark.logConf": "true",
-                },
-            ))
-        pulumi.export("sparkStatus", spark.statuses[0].state)
-        pulumi.export("pysparkStatus", pyspark.statuses[0].state)
-        ```
-
         ## Import
 
         This resource does not support import.
@@ -742,50 +740,6 @@ class Job(pulumi.CustomResource):
         [the official dataproc documentation](https://cloud.google.com/dataproc/).
 
         !> **Note:** This resource does not support 'update' and changing any attributes will cause the resource to be recreated.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        mycluster = gcp.dataproc.Cluster("mycluster", region="us-central1")
-        # Submit an example spark job to a dataproc cluster
-        spark = gcp.dataproc.Job("spark",
-            region=mycluster.region,
-            force_delete=True,
-            placement=gcp.dataproc.JobPlacementArgs(
-                cluster_name=mycluster.name,
-            ),
-            spark_config=gcp.dataproc.JobSparkConfigArgs(
-                main_class="org.apache.spark.examples.SparkPi",
-                jar_file_uris=["file:///usr/lib/spark/examples/jars/spark-examples.jar"],
-                args=["1000"],
-                properties={
-                    "spark.logConf": "true",
-                },
-                logging_config=gcp.dataproc.JobSparkConfigLoggingConfigArgs(
-                    driver_log_levels={
-                        "root": "INFO",
-                    },
-                ),
-            ))
-        # Submit an example pyspark job to a dataproc cluster
-        pyspark = gcp.dataproc.Job("pyspark",
-            region=mycluster.region,
-            force_delete=True,
-            placement=gcp.dataproc.JobPlacementArgs(
-                cluster_name=mycluster.name,
-            ),
-            pyspark_config=gcp.dataproc.JobPysparkConfigArgs(
-                main_python_file_uri="gs://dataproc-examples-2f10d78d114f6aaec76462e3c310f31f/src/pyspark/hello-world/hello-world.py",
-                properties={
-                    "spark.logConf": "true",
-                },
-            ))
-        pulumi.export("sparkStatus", spark.statuses[0].state)
-        pulumi.export("pysparkStatus", pyspark.statuses[0].state)
-        ```
 
         ## Import
 
@@ -834,70 +788,30 @@ class Job(pulumi.CustomResource):
             __props__ = JobArgs.__new__(JobArgs)
 
             __props__.__dict__["force_delete"] = force_delete
-            if hadoop_config is not None and not isinstance(hadoop_config, JobHadoopConfigArgs):
-                hadoop_config = hadoop_config or {}
-                def _setter(key, value):
-                    hadoop_config[key] = value
-                JobHadoopConfigArgs._configure(_setter, **hadoop_config)
+            hadoop_config = _utilities.configure(hadoop_config, JobHadoopConfigArgs, True)
             __props__.__dict__["hadoop_config"] = hadoop_config
-            if hive_config is not None and not isinstance(hive_config, JobHiveConfigArgs):
-                hive_config = hive_config or {}
-                def _setter(key, value):
-                    hive_config[key] = value
-                JobHiveConfigArgs._configure(_setter, **hive_config)
+            hive_config = _utilities.configure(hive_config, JobHiveConfigArgs, True)
             __props__.__dict__["hive_config"] = hive_config
             __props__.__dict__["labels"] = labels
-            if pig_config is not None and not isinstance(pig_config, JobPigConfigArgs):
-                pig_config = pig_config or {}
-                def _setter(key, value):
-                    pig_config[key] = value
-                JobPigConfigArgs._configure(_setter, **pig_config)
+            pig_config = _utilities.configure(pig_config, JobPigConfigArgs, True)
             __props__.__dict__["pig_config"] = pig_config
-            if placement is not None and not isinstance(placement, JobPlacementArgs):
-                placement = placement or {}
-                def _setter(key, value):
-                    placement[key] = value
-                JobPlacementArgs._configure(_setter, **placement)
+            placement = _utilities.configure(placement, JobPlacementArgs, True)
             if placement is None and not opts.urn:
                 raise TypeError("Missing required property 'placement'")
             __props__.__dict__["placement"] = placement
-            if presto_config is not None and not isinstance(presto_config, JobPrestoConfigArgs):
-                presto_config = presto_config or {}
-                def _setter(key, value):
-                    presto_config[key] = value
-                JobPrestoConfigArgs._configure(_setter, **presto_config)
+            presto_config = _utilities.configure(presto_config, JobPrestoConfigArgs, True)
             __props__.__dict__["presto_config"] = presto_config
             __props__.__dict__["project"] = project
-            if pyspark_config is not None and not isinstance(pyspark_config, JobPysparkConfigArgs):
-                pyspark_config = pyspark_config or {}
-                def _setter(key, value):
-                    pyspark_config[key] = value
-                JobPysparkConfigArgs._configure(_setter, **pyspark_config)
+            pyspark_config = _utilities.configure(pyspark_config, JobPysparkConfigArgs, True)
             __props__.__dict__["pyspark_config"] = pyspark_config
-            if reference is not None and not isinstance(reference, JobReferenceArgs):
-                reference = reference or {}
-                def _setter(key, value):
-                    reference[key] = value
-                JobReferenceArgs._configure(_setter, **reference)
+            reference = _utilities.configure(reference, JobReferenceArgs, True)
             __props__.__dict__["reference"] = reference
             __props__.__dict__["region"] = region
-            if scheduling is not None and not isinstance(scheduling, JobSchedulingArgs):
-                scheduling = scheduling or {}
-                def _setter(key, value):
-                    scheduling[key] = value
-                JobSchedulingArgs._configure(_setter, **scheduling)
+            scheduling = _utilities.configure(scheduling, JobSchedulingArgs, True)
             __props__.__dict__["scheduling"] = scheduling
-            if spark_config is not None and not isinstance(spark_config, JobSparkConfigArgs):
-                spark_config = spark_config or {}
-                def _setter(key, value):
-                    spark_config[key] = value
-                JobSparkConfigArgs._configure(_setter, **spark_config)
+            spark_config = _utilities.configure(spark_config, JobSparkConfigArgs, True)
             __props__.__dict__["spark_config"] = spark_config
-            if sparksql_config is not None and not isinstance(sparksql_config, JobSparksqlConfigArgs):
-                sparksql_config = sparksql_config or {}
-                def _setter(key, value):
-                    sparksql_config[key] = value
-                JobSparksqlConfigArgs._configure(_setter, **sparksql_config)
+            sparksql_config = _utilities.configure(sparksql_config, JobSparksqlConfigArgs, True)
             __props__.__dict__["sparksql_config"] = sparksql_config
             __props__.__dict__["driver_controls_files_uri"] = None
             __props__.__dict__["driver_output_resource_uri"] = None

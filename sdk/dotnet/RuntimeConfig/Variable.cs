@@ -10,65 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.RuntimeConfig
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// Example creating a RuntimeConfig variable.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var my_runtime_config = new Gcp.RuntimeConfig.Config("my-runtime-config", new()
-    ///     {
-    ///         Description = "Runtime configuration values for my service",
-    ///     });
-    /// 
-    ///     var environment = new Gcp.RuntimeConfig.Variable("environment", new()
-    ///     {
-    ///         Parent = my_runtime_config.Name,
-    ///         Text = "example.com",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// You can also encode binary content using the `value` argument instead. The
-    /// value must be base64 encoded.
-    /// 
-    /// Example of using the `value` argument.
-    /// 
-    /// ```csharp
-    /// using System;
-    /// using System.Collections.Generic;
-    /// using System.IO;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// 	private static string ReadFileBase64(string path) {
-    /// 		return Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(File.ReadAllText(path)));
-    /// 	}
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var my_runtime_config = new Gcp.RuntimeConfig.Config("my-runtime-config", new()
-    ///     {
-    ///         Description = "Runtime configuration values for my service",
-    ///     });
-    /// 
-    ///     var my_secret = new Gcp.RuntimeConfig.Variable("my-secret", new()
-    ///     {
-    ///         Parent = my_runtime_config.Name,
-    ///         Value = ReadFileBase64("my-encrypted-secret.dat"),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Runtime Config Variables can be imported using the `name` or full variable name, e.g.

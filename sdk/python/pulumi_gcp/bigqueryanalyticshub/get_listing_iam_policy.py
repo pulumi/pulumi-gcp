@@ -113,18 +113,6 @@ def get_listing_iam_policy(data_exchange_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for listing
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.bigqueryanalyticshub.get_listing_iam_policy(project=google_bigquery_analytics_hub_listing["listing"]["project"],
-        location=google_bigquery_analytics_hub_listing["listing"]["location"],
-        data_exchange_id=google_bigquery_analytics_hub_listing["listing"]["data_exchange_id"],
-        listing_id=google_bigquery_analytics_hub_listing["listing"]["listing_id"])
-    ```
-
 
     :param str data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
     :param str listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
@@ -159,18 +147,6 @@ def get_listing_iam_policy_output(data_exchange_id: Optional[pulumi.Input[str]] 
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetListingIamPolicyResult]:
     """
     Retrieves the current IAM policy data for listing
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.bigqueryanalyticshub.get_listing_iam_policy(project=google_bigquery_analytics_hub_listing["listing"]["project"],
-        location=google_bigquery_analytics_hub_listing["listing"]["location"],
-        data_exchange_id=google_bigquery_analytics_hub_listing["listing"]["data_exchange_id"],
-        listing_id=google_bigquery_analytics_hub_listing["listing"]["listing_id"])
-    ```
 
 
     :param str data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to

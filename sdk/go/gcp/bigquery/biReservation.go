@@ -22,32 +22,6 @@ import (
 //   - [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 //
 // ## Example Usage
-// ### Bigquery Reservation Bi Reservation Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := bigquery.NewBiReservation(ctx, "reservation", &bigquery.BiReservationArgs{
-//				Location: pulumi.String("us-west2"),
-//				Size:     pulumi.Int(3000000000),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

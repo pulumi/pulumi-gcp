@@ -35,9 +35,15 @@ class ProjectInfoArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             billing_account: pulumi.Input[str],
+             billing_account: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if billing_account is None and 'billingAccount' in kwargs:
+            billing_account = kwargs['billingAccount']
+        if billing_account is None:
+            raise TypeError("Missing 'billing_account' argument")
+
         _setter("billing_account", billing_account)
         if project is not None:
             _setter("project", project)
@@ -99,7 +105,11 @@ class _ProjectInfoState:
              _setter: Callable[[Any, Any], None],
              billing_account: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if billing_account is None and 'billingAccount' in kwargs:
+            billing_account = kwargs['billingAccount']
+
         if billing_account is not None:
             _setter("billing_account", billing_account)
         if project is not None:

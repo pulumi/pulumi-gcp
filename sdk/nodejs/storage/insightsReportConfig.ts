@@ -16,60 +16,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/storage/docs/insights/using-storage-insights)
  *
  * ## Example Usage
- * ### Storage Insights Report Config
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const project = gcp.organizations.getProject({});
- * const reportBucket = new gcp.storage.Bucket("reportBucket", {
- *     location: "us-central1",
- *     forceDestroy: true,
- *     uniformBucketLevelAccess: true,
- * });
- * const config = new gcp.storage.InsightsReportConfig("config", {
- *     displayName: "Test Report Config",
- *     location: "us-central1",
- *     frequencyOptions: {
- *         frequency: "WEEKLY",
- *         startDate: {
- *             day: 15,
- *             month: 3,
- *             year: 2050,
- *         },
- *         endDate: {
- *             day: 15,
- *             month: 4,
- *             year: 2050,
- *         },
- *     },
- *     csvOptions: {
- *         recordSeparator: "\n",
- *         delimiter: ",",
- *         headerRequired: false,
- *     },
- *     objectMetadataReportOptions: {
- *         metadataFields: [
- *             "bucket",
- *             "name",
- *             "project",
- *         ],
- *         storageFilters: {
- *             bucket: reportBucket.name,
- *         },
- *         storageDestinationOptions: {
- *             bucket: reportBucket.name,
- *             destinationPath: "test-insights-reports",
- *         },
- *     },
- * });
- * const admin = new gcp.storage.BucketIAMMember("admin", {
- *     bucket: reportBucket.name,
- *     role: "roles/storage.admin",
- *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-storageinsights.iam.gserviceaccount.com`),
- * });
- * ```
  *
  * ## Import
  *

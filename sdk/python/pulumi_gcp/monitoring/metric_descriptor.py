@@ -80,17 +80,37 @@ class MetricDescriptorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: pulumi.Input[str],
-             display_name: pulumi.Input[str],
-             metric_kind: pulumi.Input[str],
-             type: pulumi.Input[str],
-             value_type: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             metric_kind: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             value_type: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Sequence[pulumi.Input['MetricDescriptorLabelArgs']]]] = None,
              launch_stage: Optional[pulumi.Input[str]] = None,
              metadata: Optional[pulumi.Input['MetricDescriptorMetadataArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
              unit: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if metric_kind is None and 'metricKind' in kwargs:
+            metric_kind = kwargs['metricKind']
+        if metric_kind is None:
+            raise TypeError("Missing 'metric_kind' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if value_type is None and 'valueType' in kwargs:
+            value_type = kwargs['valueType']
+        if value_type is None:
+            raise TypeError("Missing 'value_type' argument")
+        if launch_stage is None and 'launchStage' in kwargs:
+            launch_stage = kwargs['launchStage']
+
         _setter("description", description)
         _setter("display_name", display_name)
         _setter("metric_kind", metric_kind)
@@ -338,7 +358,19 @@ class _MetricDescriptorState:
              type: Optional[pulumi.Input[str]] = None,
              unit: Optional[pulumi.Input[str]] = None,
              value_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if launch_stage is None and 'launchStage' in kwargs:
+            launch_stage = kwargs['launchStage']
+        if metric_kind is None and 'metricKind' in kwargs:
+            metric_kind = kwargs['metricKind']
+        if monitored_resource_types is None and 'monitoredResourceTypes' in kwargs:
+            monitored_resource_types = kwargs['monitoredResourceTypes']
+        if value_type is None and 'valueType' in kwargs:
+            value_type = kwargs['valueType']
+
         if description is not None:
             _setter("description", description)
         if display_name is not None:
@@ -560,55 +592,6 @@ class MetricDescriptor(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/monitoring/custom-metrics/)
 
         ## Example Usage
-        ### Monitoring Metric Descriptor Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.monitoring.MetricDescriptor("basic",
-            description="Daily sales records from all branch stores.",
-            display_name="metric-descriptor",
-            labels=[gcp.monitoring.MetricDescriptorLabelArgs(
-                description="The ID of the store.",
-                key="store_id",
-                value_type="STRING",
-            )],
-            launch_stage="BETA",
-            metadata=gcp.monitoring.MetricDescriptorMetadataArgs(
-                ingest_delay="30s",
-                sample_period="60s",
-            ),
-            metric_kind="GAUGE",
-            type="custom.googleapis.com/stores/daily_sales",
-            unit="{USD}",
-            value_type="DOUBLE")
-        ```
-        ### Monitoring Metric Descriptor Alert
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        with_alert = gcp.monitoring.MetricDescriptor("withAlert",
-            description="Daily sales records from all branch stores.",
-            display_name="metric-descriptor",
-            metric_kind="GAUGE",
-            type="custom.googleapis.com/stores/daily_sales",
-            unit="{USD}",
-            value_type="DOUBLE")
-        alert_policy = gcp.monitoring.AlertPolicy("alertPolicy",
-            combiner="OR",
-            conditions=[gcp.monitoring.AlertPolicyConditionArgs(
-                condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
-                    comparison="COMPARISON_GT",
-                    duration="60s",
-                    filter=with_alert.type.apply(lambda type: f"metric.type=\\"{type}\\" AND resource.type=\\"gce_instance\\""),
-                ),
-                display_name="test condition",
-            )],
-            display_name="metric-descriptor")
-        ```
 
         ## Import
 
@@ -672,55 +655,6 @@ class MetricDescriptor(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/monitoring/custom-metrics/)
 
         ## Example Usage
-        ### Monitoring Metric Descriptor Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.monitoring.MetricDescriptor("basic",
-            description="Daily sales records from all branch stores.",
-            display_name="metric-descriptor",
-            labels=[gcp.monitoring.MetricDescriptorLabelArgs(
-                description="The ID of the store.",
-                key="store_id",
-                value_type="STRING",
-            )],
-            launch_stage="BETA",
-            metadata=gcp.monitoring.MetricDescriptorMetadataArgs(
-                ingest_delay="30s",
-                sample_period="60s",
-            ),
-            metric_kind="GAUGE",
-            type="custom.googleapis.com/stores/daily_sales",
-            unit="{USD}",
-            value_type="DOUBLE")
-        ```
-        ### Monitoring Metric Descriptor Alert
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        with_alert = gcp.monitoring.MetricDescriptor("withAlert",
-            description="Daily sales records from all branch stores.",
-            display_name="metric-descriptor",
-            metric_kind="GAUGE",
-            type="custom.googleapis.com/stores/daily_sales",
-            unit="{USD}",
-            value_type="DOUBLE")
-        alert_policy = gcp.monitoring.AlertPolicy("alertPolicy",
-            combiner="OR",
-            conditions=[gcp.monitoring.AlertPolicyConditionArgs(
-                condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
-                    comparison="COMPARISON_GT",
-                    duration="60s",
-                    filter=with_alert.type.apply(lambda type: f"metric.type=\\"{type}\\" AND resource.type=\\"gce_instance\\""),
-                ),
-                display_name="test condition",
-            )],
-            display_name="metric-descriptor")
-        ```
 
         ## Import
 
@@ -776,11 +710,7 @@ class MetricDescriptor(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["launch_stage"] = launch_stage
-            if metadata is not None and not isinstance(metadata, MetricDescriptorMetadataArgs):
-                metadata = metadata or {}
-                def _setter(key, value):
-                    metadata[key] = value
-                MetricDescriptorMetadataArgs._configure(_setter, **metadata)
+            metadata = _utilities.configure(metadata, MetricDescriptorMetadataArgs, True)
             __props__.__dict__["metadata"] = metadata
             if metric_kind is None and not opts.urn:
                 raise TypeError("Missing required property 'metric_kind'")

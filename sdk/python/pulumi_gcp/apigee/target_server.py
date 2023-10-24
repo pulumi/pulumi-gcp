@@ -55,15 +55,29 @@ class TargetServerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             env_id: pulumi.Input[str],
-             host: pulumi.Input[str],
-             port: pulumi.Input[int],
+             env_id: Optional[pulumi.Input[str]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
              is_enabled: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
              s_sl_info: Optional[pulumi.Input['TargetServerSSlInfoArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if env_id is None and 'envId' in kwargs:
+            env_id = kwargs['envId']
+        if env_id is None:
+            raise TypeError("Missing 'env_id' argument")
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if is_enabled is None and 'isEnabled' in kwargs:
+            is_enabled = kwargs['isEnabled']
+        if s_sl_info is None and 'sSlInfo' in kwargs:
+            s_sl_info = kwargs['sSlInfo']
+
         _setter("env_id", env_id)
         _setter("host", host)
         _setter("port", port)
@@ -231,7 +245,15 @@ class _TargetServerState:
              port: Optional[pulumi.Input[int]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
              s_sl_info: Optional[pulumi.Input['TargetServerSSlInfoArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if env_id is None and 'envId' in kwargs:
+            env_id = kwargs['envId']
+        if is_enabled is None and 'isEnabled' in kwargs:
+            is_enabled = kwargs['isEnabled']
+        if s_sl_info is None and 'sSlInfo' in kwargs:
+            s_sl_info = kwargs['sSlInfo']
+
         if description is not None:
             _setter("description", description)
         if env_id is not None:
@@ -376,59 +398,6 @@ class TargetServer(pulumi.CustomResource):
             * [Load balancing across backend servers](https://cloud.google.com/apigee/docs/api-platform/deploy/load-balancing-across-backend-servers)
 
         ## Example Usage
-        ### Apigee Target Server Test Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.Project("project",
-            project_id="my-project",
-            org_id="123456789",
-            billing_account="000000-0000000-0000000-000000")
-        apigee = gcp.projects.Service("apigee",
-            project=project.project_id,
-            service="apigee.googleapis.com")
-        servicenetworking = gcp.projects.Service("servicenetworking",
-            project=project.project_id,
-            service="servicenetworking.googleapis.com",
-            opts=pulumi.ResourceOptions(depends_on=[apigee]))
-        compute = gcp.projects.Service("compute",
-            project=project.project_id,
-            service="compute.googleapis.com",
-            opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
-        apigee_network = gcp.compute.Network("apigeeNetwork", project=project.project_id,
-        opts=pulumi.ResourceOptions(depends_on=[compute]))
-        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=apigee_network.id,
-            project=project.project_id)
-        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
-            network=apigee_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[apigee_range.name],
-            opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
-        apigee_org = gcp.apigee.Organization("apigeeOrg",
-            analytics_region="us-central1",
-            project_id=project.project_id,
-            authorized_network=apigee_network.id,
-            opts=pulumi.ResourceOptions(depends_on=[
-                    apigee_vpc_connection,
-                    apigee,
-                ]))
-        apigee_environment = gcp.apigee.Environment("apigeeEnvironment",
-            org_id=apigee_org.id,
-            description="Apigee Environment",
-            display_name="environment-1")
-        apigee_target_server = gcp.apigee.TargetServer("apigeeTargetServer",
-            description="Apigee Target Server",
-            protocol="HTTP",
-            host="abc.foo.com",
-            port=8080,
-            env_id=apigee_environment.id)
-        ```
 
         ## Import
 
@@ -475,59 +444,6 @@ class TargetServer(pulumi.CustomResource):
             * [Load balancing across backend servers](https://cloud.google.com/apigee/docs/api-platform/deploy/load-balancing-across-backend-servers)
 
         ## Example Usage
-        ### Apigee Target Server Test Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.Project("project",
-            project_id="my-project",
-            org_id="123456789",
-            billing_account="000000-0000000-0000000-000000")
-        apigee = gcp.projects.Service("apigee",
-            project=project.project_id,
-            service="apigee.googleapis.com")
-        servicenetworking = gcp.projects.Service("servicenetworking",
-            project=project.project_id,
-            service="servicenetworking.googleapis.com",
-            opts=pulumi.ResourceOptions(depends_on=[apigee]))
-        compute = gcp.projects.Service("compute",
-            project=project.project_id,
-            service="compute.googleapis.com",
-            opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
-        apigee_network = gcp.compute.Network("apigeeNetwork", project=project.project_id,
-        opts=pulumi.ResourceOptions(depends_on=[compute]))
-        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=apigee_network.id,
-            project=project.project_id)
-        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
-            network=apigee_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[apigee_range.name],
-            opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
-        apigee_org = gcp.apigee.Organization("apigeeOrg",
-            analytics_region="us-central1",
-            project_id=project.project_id,
-            authorized_network=apigee_network.id,
-            opts=pulumi.ResourceOptions(depends_on=[
-                    apigee_vpc_connection,
-                    apigee,
-                ]))
-        apigee_environment = gcp.apigee.Environment("apigeeEnvironment",
-            org_id=apigee_org.id,
-            description="Apigee Environment",
-            display_name="environment-1")
-        apigee_target_server = gcp.apigee.TargetServer("apigeeTargetServer",
-            description="Apigee Target Server",
-            protocol="HTTP",
-            host="abc.foo.com",
-            port=8080,
-            env_id=apigee_environment.id)
-        ```
 
         ## Import
 
@@ -590,11 +506,7 @@ class TargetServer(pulumi.CustomResource):
                 raise TypeError("Missing required property 'port'")
             __props__.__dict__["port"] = port
             __props__.__dict__["protocol"] = protocol
-            if s_sl_info is not None and not isinstance(s_sl_info, TargetServerSSlInfoArgs):
-                s_sl_info = s_sl_info or {}
-                def _setter(key, value):
-                    s_sl_info[key] = value
-                TargetServerSSlInfoArgs._configure(_setter, **s_sl_info)
+            s_sl_info = _utilities.configure(s_sl_info, TargetServerSSlInfoArgs, True)
             __props__.__dict__["s_sl_info"] = s_sl_info
         super(TargetServer, __self__).__init__(
             'gcp:apigee/targetServer:TargetServer',

@@ -10,37 +10,6 @@ import * as utilities from "../utilities";
  * The Dataplex Zone resource
  *
  * ## Example Usage
- * ### Basic_zone
- * A basic example of a dataplex zone
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const basic = new gcp.dataplex.Lake("basic", {
- *     location: "us-west1",
- *     description: "Lake for DCL",
- *     displayName: "Lake for DCL",
- *     labels: {
- *         "my-lake": "exists",
- *     },
- *     project: "my-project-name",
- * });
- * const primary = new gcp.dataplex.Zone("primary", {
- *     discoverySpec: {
- *         enabled: false,
- *     },
- *     lake: basic.name,
- *     location: "us-west1",
- *     resourceSpec: {
- *         locationType: "MULTI_REGION",
- *     },
- *     type: "RAW",
- *     description: "Zone for DCL",
- *     displayName: "Zone for DCL",
- *     labels: {},
- *     project: "my-project-name",
- * });
- * ```
  *
  * ## Import
  *

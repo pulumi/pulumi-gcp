@@ -6,20 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for listing
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.bigqueryanalyticshub.getListingIamPolicy({
- *     project: google_bigquery_analytics_hub_listing.listing.project,
- *     location: google_bigquery_analytics_hub_listing.listing.location,
- *     dataExchangeId: google_bigquery_analytics_hub_listing.listing.data_exchange_id,
- *     listingId: google_bigquery_analytics_hub_listing.listing.listing_id,
- * });
- * ```
  */
 export function getListingIamPolicy(args: GetListingIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetListingIamPolicyResult> {
 
@@ -80,20 +66,6 @@ export interface GetListingIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for listing
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.bigqueryanalyticshub.getListingIamPolicy({
- *     project: google_bigquery_analytics_hub_listing.listing.project,
- *     location: google_bigquery_analytics_hub_listing.listing.location,
- *     dataExchangeId: google_bigquery_analytics_hub_listing.listing.data_exchange_id,
- *     listingId: google_bigquery_analytics_hub_listing.listing.listing_id,
- * });
- * ```
  */
 export function getListingIamPolicyOutput(args: GetListingIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetListingIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getListingIamPolicy(a, opts))

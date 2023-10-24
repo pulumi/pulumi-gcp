@@ -6,19 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const myNw = gcp.vmwareengine.getNetwork({
- *     name: "us-central1-default",
- *     location: "us-central1",
- * });
- * ```
- */
 export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -66,19 +53,6 @@ export interface GetNetworkResult {
     readonly uid: string;
     readonly vpcNetworks: outputs.vmwareengine.GetNetworkVpcNetwork[];
 }
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const myNw = gcp.vmwareengine.getNetwork({
- *     name: "us-central1-default",
- *     location: "us-central1",
- * });
- * ```
- */
 export function getNetworkOutput(args: GetNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkResult> {
     return pulumi.output(args).apply((a: any) => getNetwork(a, opts))
 }

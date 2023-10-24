@@ -55,12 +55,22 @@ class WebBackendServiceIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
-             web_backend_service: pulumi.Input[str],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             web_backend_service: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['WebBackendServiceIamBindingConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if web_backend_service is None and 'webBackendService' in kwargs:
+            web_backend_service = kwargs['webBackendService']
+        if web_backend_service is None:
+            raise TypeError("Missing 'web_backend_service' argument")
+
         _setter("members", members)
         _setter("role", role)
         _setter("web_backend_service", web_backend_service)
@@ -194,7 +204,11 @@ class _WebBackendServiceIamBindingState:
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              web_backend_service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if web_backend_service is None and 'webBackendService' in kwargs:
+            web_backend_service = kwargs['webBackendService']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -322,103 +336,6 @@ class WebBackendServiceIamBinding(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_iap\\_web\\_backend\\_service\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/iap.httpsResourceAccessor",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.iap.WebBackendServiceIamPolicy("policy",
-            project=google_compute_backend_service["default"]["project"],
-            web_backend_service=google_compute_backend_service["default"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/iap.httpsResourceAccessor",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
-        policy = gcp.iap.WebBackendServiceIamPolicy("policy",
-            project=google_compute_backend_service["default"]["project"],
-            web_backend_service=google_compute_backend_service["default"]["name"],
-            policy_data=admin.policy_data)
-        ```
-        ## google\\_iap\\_web\\_backend\\_service\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.iap.WebBackendServiceIamBinding("binding",
-            project=google_compute_backend_service["default"]["project"],
-            web_backend_service=google_compute_backend_service["default"]["name"],
-            role="roles/iap.httpsResourceAccessor",
-            members=["user:jane@example.com"])
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.iap.WebBackendServiceIamBinding("binding",
-            project=google_compute_backend_service["default"]["project"],
-            web_backend_service=google_compute_backend_service["default"]["name"],
-            role="roles/iap.httpsResourceAccessor",
-            members=["user:jane@example.com"],
-            condition=gcp.iap.WebBackendServiceIamBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-        ## google\\_iap\\_web\\_backend\\_service\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.iap.WebBackendServiceIamMember("member",
-            project=google_compute_backend_service["default"]["project"],
-            web_backend_service=google_compute_backend_service["default"]["name"],
-            role="roles/iap.httpsResourceAccessor",
-            member="user:jane@example.com")
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.iap.WebBackendServiceIamMember("member",
-            project=google_compute_backend_service["default"]["project"],
-            web_backend_service=google_compute_backend_service["default"]["name"],
-            role="roles/iap.httpsResourceAccessor",
-            member="user:jane@example.com",
-            condition=gcp.iap.WebBackendServiceIamMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/iap_web/compute/services/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Identity-Aware Proxy webbackendservice IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -489,103 +406,6 @@ class WebBackendServiceIamBinding(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_iap\\_web\\_backend\\_service\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/iap.httpsResourceAccessor",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.iap.WebBackendServiceIamPolicy("policy",
-            project=google_compute_backend_service["default"]["project"],
-            web_backend_service=google_compute_backend_service["default"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/iap.httpsResourceAccessor",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
-        policy = gcp.iap.WebBackendServiceIamPolicy("policy",
-            project=google_compute_backend_service["default"]["project"],
-            web_backend_service=google_compute_backend_service["default"]["name"],
-            policy_data=admin.policy_data)
-        ```
-        ## google\\_iap\\_web\\_backend\\_service\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.iap.WebBackendServiceIamBinding("binding",
-            project=google_compute_backend_service["default"]["project"],
-            web_backend_service=google_compute_backend_service["default"]["name"],
-            role="roles/iap.httpsResourceAccessor",
-            members=["user:jane@example.com"])
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.iap.WebBackendServiceIamBinding("binding",
-            project=google_compute_backend_service["default"]["project"],
-            web_backend_service=google_compute_backend_service["default"]["name"],
-            role="roles/iap.httpsResourceAccessor",
-            members=["user:jane@example.com"],
-            condition=gcp.iap.WebBackendServiceIamBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-        ## google\\_iap\\_web\\_backend\\_service\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.iap.WebBackendServiceIamMember("member",
-            project=google_compute_backend_service["default"]["project"],
-            web_backend_service=google_compute_backend_service["default"]["name"],
-            role="roles/iap.httpsResourceAccessor",
-            member="user:jane@example.com")
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.iap.WebBackendServiceIamMember("member",
-            project=google_compute_backend_service["default"]["project"],
-            web_backend_service=google_compute_backend_service["default"]["name"],
-            role="roles/iap.httpsResourceAccessor",
-            member="user:jane@example.com",
-            condition=gcp.iap.WebBackendServiceIamMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/iap_web/compute/services/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Identity-Aware Proxy webbackendservice IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -643,11 +463,7 @@ class WebBackendServiceIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WebBackendServiceIamBindingArgs.__new__(WebBackendServiceIamBindingArgs)
 
-            if condition is not None and not isinstance(condition, WebBackendServiceIamBindingConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                WebBackendServiceIamBindingConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, WebBackendServiceIamBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")

@@ -6,19 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- * ### Artifact Registry Vpcsc Config
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const my_config = new gcp.artifactregistry.VpcscConfig("my-config", {
- *     location: "us-central1",
- *     vpcscPolicy: "ALLOW",
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *

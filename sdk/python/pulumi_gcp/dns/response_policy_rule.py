@@ -50,13 +50,29 @@ class ResponsePolicyRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dns_name: pulumi.Input[str],
-             response_policy: pulumi.Input[str],
-             rule_name: pulumi.Input[str],
+             dns_name: Optional[pulumi.Input[str]] = None,
+             response_policy: Optional[pulumi.Input[str]] = None,
+             rule_name: Optional[pulumi.Input[str]] = None,
              behavior: Optional[pulumi.Input[str]] = None,
              local_data: Optional[pulumi.Input['ResponsePolicyRuleLocalDataArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dns_name is None and 'dnsName' in kwargs:
+            dns_name = kwargs['dnsName']
+        if dns_name is None:
+            raise TypeError("Missing 'dns_name' argument")
+        if response_policy is None and 'responsePolicy' in kwargs:
+            response_policy = kwargs['responsePolicy']
+        if response_policy is None:
+            raise TypeError("Missing 'response_policy' argument")
+        if rule_name is None and 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+        if rule_name is None:
+            raise TypeError("Missing 'rule_name' argument")
+        if local_data is None and 'localData' in kwargs:
+            local_data = kwargs['localData']
+
         _setter("dns_name", dns_name)
         _setter("response_policy", response_policy)
         _setter("rule_name", rule_name)
@@ -190,7 +206,17 @@ class _ResponsePolicyRuleState:
              project: Optional[pulumi.Input[str]] = None,
              response_policy: Optional[pulumi.Input[str]] = None,
              rule_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dns_name is None and 'dnsName' in kwargs:
+            dns_name = kwargs['dnsName']
+        if local_data is None and 'localData' in kwargs:
+            local_data = kwargs['localData']
+        if response_policy is None and 'responsePolicy' in kwargs:
+            response_policy = kwargs['responsePolicy']
+        if rule_name is None and 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+
         if behavior is not None:
             _setter("behavior", behavior)
         if dns_name is not None:
@@ -303,37 +329,6 @@ class ResponsePolicyRule(pulumi.CustomResource):
         as identified by the dns_name field with the longest matching suffix.
 
         ## Example Usage
-        ### Dns Response Policy Rule Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
-        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False)
-        response_policy = gcp.dns.ResponsePolicy("response-policy",
-            response_policy_name="example-response-policy",
-            networks=[
-                gcp.dns.ResponsePolicyNetworkArgs(
-                    network_url=network_1.id,
-                ),
-                gcp.dns.ResponsePolicyNetworkArgs(
-                    network_url=network_2.id,
-                ),
-            ])
-        example_response_policy_rule = gcp.dns.ResponsePolicyRule("example-response-policy-rule",
-            response_policy=response_policy.response_policy_name,
-            rule_name="example-rule",
-            dns_name="dns.example.com.",
-            local_data=gcp.dns.ResponsePolicyRuleLocalDataArgs(
-                local_datas=[gcp.dns.ResponsePolicyRuleLocalDataLocalDataArgs(
-                    name="dns.example.com.",
-                    type="A",
-                    ttl=300,
-                    rrdatas=["192.0.2.91"],
-                )],
-            ))
-        ```
 
         ## Import
 
@@ -380,37 +375,6 @@ class ResponsePolicyRule(pulumi.CustomResource):
         as identified by the dns_name field with the longest matching suffix.
 
         ## Example Usage
-        ### Dns Response Policy Rule Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
-        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False)
-        response_policy = gcp.dns.ResponsePolicy("response-policy",
-            response_policy_name="example-response-policy",
-            networks=[
-                gcp.dns.ResponsePolicyNetworkArgs(
-                    network_url=network_1.id,
-                ),
-                gcp.dns.ResponsePolicyNetworkArgs(
-                    network_url=network_2.id,
-                ),
-            ])
-        example_response_policy_rule = gcp.dns.ResponsePolicyRule("example-response-policy-rule",
-            response_policy=response_policy.response_policy_name,
-            rule_name="example-rule",
-            dns_name="dns.example.com.",
-            local_data=gcp.dns.ResponsePolicyRuleLocalDataArgs(
-                local_datas=[gcp.dns.ResponsePolicyRuleLocalDataLocalDataArgs(
-                    name="dns.example.com.",
-                    type="A",
-                    ttl=300,
-                    rrdatas=["192.0.2.91"],
-                )],
-            ))
-        ```
 
         ## Import
 
@@ -466,11 +430,7 @@ class ResponsePolicyRule(pulumi.CustomResource):
             if dns_name is None and not opts.urn:
                 raise TypeError("Missing required property 'dns_name'")
             __props__.__dict__["dns_name"] = dns_name
-            if local_data is not None and not isinstance(local_data, ResponsePolicyRuleLocalDataArgs):
-                local_data = local_data or {}
-                def _setter(key, value):
-                    local_data[key] = value
-                ResponsePolicyRuleLocalDataArgs._configure(_setter, **local_data)
+            local_data = _utilities.configure(local_data, ResponsePolicyRuleLocalDataArgs, True)
             __props__.__dict__["local_data"] = local_data
             __props__.__dict__["project"] = project
             if response_policy is None and not opts.urn:

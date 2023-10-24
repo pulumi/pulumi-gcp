@@ -73,7 +73,7 @@ class DeploymentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             target: pulumi.Input['DeploymentTargetArgs'],
+             target: Optional[pulumi.Input['DeploymentTargetArgs']] = None,
              create_policy: Optional[pulumi.Input[str]] = None,
              delete_policy: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -81,7 +81,15 @@ class DeploymentArgs:
              name: Optional[pulumi.Input[str]] = None,
              preview: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+        if create_policy is None and 'createPolicy' in kwargs:
+            create_policy = kwargs['createPolicy']
+        if delete_policy is None and 'deletePolicy' in kwargs:
+            delete_policy = kwargs['deletePolicy']
+
         _setter("target", target)
         if create_policy is not None:
             _setter("create_policy", create_policy)
@@ -300,7 +308,17 @@ class _DeploymentState:
              project: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              target: Optional[pulumi.Input['DeploymentTargetArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_policy is None and 'createPolicy' in kwargs:
+            create_policy = kwargs['createPolicy']
+        if delete_policy is None and 'deletePolicy' in kwargs:
+            delete_policy = kwargs['deletePolicy']
+        if deployment_id is None and 'deploymentId' in kwargs:
+            deployment_id = kwargs['deploymentId']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if create_policy is not None:
             _setter("create_policy", create_policy)
         if delete_policy is not None:
@@ -512,23 +530,6 @@ class Deployment(pulumi.CustomResource):
         `preview=false`).
 
         ## Example Usage
-        ### Deployment Manager Deployment Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        deployment = gcp.deploymentmanager.Deployment("deployment",
-            target=gcp.deploymentmanager.DeploymentTargetArgs(
-                config=gcp.deploymentmanager.DeploymentTargetConfigArgs(
-                    content=(lambda path: open(path).read())("path/to/config.yml"),
-                ),
-            ),
-            labels=[gcp.deploymentmanager.DeploymentLabelArgs(
-                key="foo",
-                value="bar",
-            )])
-        ```
 
         ## Import
 
@@ -603,23 +604,6 @@ class Deployment(pulumi.CustomResource):
         `preview=false`).
 
         ## Example Usage
-        ### Deployment Manager Deployment Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        deployment = gcp.deploymentmanager.Deployment("deployment",
-            target=gcp.deploymentmanager.DeploymentTargetArgs(
-                config=gcp.deploymentmanager.DeploymentTargetConfigArgs(
-                    content=(lambda path: open(path).read())("path/to/config.yml"),
-                ),
-            ),
-            labels=[gcp.deploymentmanager.DeploymentLabelArgs(
-                key="foo",
-                value="bar",
-            )])
-        ```
 
         ## Import
 
@@ -680,11 +664,7 @@ class Deployment(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["preview"] = preview
             __props__.__dict__["project"] = project
-            if target is not None and not isinstance(target, DeploymentTargetArgs):
-                target = target or {}
-                def _setter(key, value):
-                    target[key] = value
-                DeploymentTargetArgs._configure(_setter, **target)
+            target = _utilities.configure(target, DeploymentTargetArgs, True)
             if target is None and not opts.urn:
                 raise TypeError("Missing required property 'target'")
             __props__.__dict__["target"] = target

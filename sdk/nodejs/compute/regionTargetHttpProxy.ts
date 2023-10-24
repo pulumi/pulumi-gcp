@@ -15,24 +15,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
  *
  * ## Example Usage
- * ### Region Target Http Proxy Https Redirect
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultRegionUrlMap = new gcp.compute.RegionUrlMap("defaultRegionUrlMap", {
- *     region: "us-central1",
- *     defaultUrlRedirect: {
- *         httpsRedirect: true,
- *         stripQuery: false,
- *     },
- * });
- * const defaultRegionTargetHttpProxy = new gcp.compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy", {
- *     region: "us-central1",
- *     urlMap: defaultRegionUrlMap.id,
- * });
- * ```
  *
  * ## Import
  *

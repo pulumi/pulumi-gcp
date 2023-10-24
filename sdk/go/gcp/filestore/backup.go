@@ -23,58 +23,6 @@ import (
 //   - [Creating Backups](https://cloud.google.com/filestore/docs/create-backups)
 //
 // ## Example Usage
-// ### Filestore Backup Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/filestore"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			instance, err := filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
-//				Location: pulumi.String("us-central1-b"),
-//				Tier:     pulumi.String("BASIC_HDD"),
-//				FileShares: &filestore.InstanceFileSharesArgs{
-//					CapacityGb: pulumi.Int(1024),
-//					Name:       pulumi.String("share1"),
-//				},
-//				Networks: filestore.InstanceNetworkArray{
-//					&filestore.InstanceNetworkArgs{
-//						Network: pulumi.String("default"),
-//						Modes: pulumi.StringArray{
-//							pulumi.String("MODE_IPV4"),
-//						},
-//						ConnectMode: pulumi.String("DIRECT_PEERING"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = filestore.NewBackup(ctx, "backup", &filestore.BackupArgs{
-//				Location:        pulumi.String("us-central1"),
-//				Description:     pulumi.String("This is a filestore backup for the test instance"),
-//				SourceInstance:  instance.ID(),
-//				SourceFileShare: pulumi.String("share1"),
-//				Labels: pulumi.StringMap{
-//					"files":       pulumi.String("label1"),
-//					"other-label": pulumi.String("label2"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

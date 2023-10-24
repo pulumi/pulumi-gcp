@@ -53,11 +53,21 @@ class InstanceMaintenancePolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             weekly_maintenance_windows: pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]],
+             weekly_maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]]] = None,
              create_time: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if weekly_maintenance_windows is None and 'weeklyMaintenanceWindows' in kwargs:
+            weekly_maintenance_windows = kwargs['weeklyMaintenanceWindows']
+        if weekly_maintenance_windows is None:
+            raise TypeError("Missing 'weekly_maintenance_windows' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         _setter("weekly_maintenance_windows", weekly_maintenance_windows)
         if create_time is not None:
             _setter("create_time", create_time)
@@ -158,10 +168,20 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             day: pulumi.Input[str],
-             duration: pulumi.Input[str],
-             start_time: pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             day: Optional[pulumi.Input[str]] = None,
+             duration: Optional[pulumi.Input[str]] = None,
+             start_time: Optional[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if day is None:
+            raise TypeError("Missing 'day' argument")
+        if duration is None:
+            raise TypeError("Missing 'duration' argument")
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+
         _setter("day", day)
         _setter("duration", duration)
         _setter("start_time", start_time)
@@ -244,7 +264,9 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
              minutes: Optional[pulumi.Input[int]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
              seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if hours is not None:
             _setter("hours", hours)
         if minutes is not None:
@@ -336,7 +358,15 @@ class InstanceMaintenanceScheduleArgs:
              end_time: Optional[pulumi.Input[str]] = None,
              schedule_deadline_time: Optional[pulumi.Input[str]] = None,
              start_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if schedule_deadline_time is None and 'scheduleDeadlineTime' in kwargs:
+            schedule_deadline_time = kwargs['scheduleDeadlineTime']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+
         if end_time is not None:
             _setter("end_time", end_time)
         if schedule_deadline_time is not None:
@@ -425,7 +455,11 @@ class InstanceMemcacheNodeArgs:
              port: Optional[pulumi.Input[int]] = None,
              state: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if node_id is None and 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+
         if host is not None:
             _setter("host", host)
         if node_id is not None:
@@ -523,7 +557,9 @@ class InstanceMemcacheParametersArgs:
              _setter: Callable[[Any, Any], None],
              id: Optional[pulumi.Input[str]] = None,
              params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if id is not None:
             _setter("id", id)
         if params is not None:
@@ -574,9 +610,19 @@ class InstanceNodeConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cpu_count: pulumi.Input[int],
-             memory_size_mb: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             cpu_count: Optional[pulumi.Input[int]] = None,
+             memory_size_mb: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cpu_count is None and 'cpuCount' in kwargs:
+            cpu_count = kwargs['cpuCount']
+        if cpu_count is None:
+            raise TypeError("Missing 'cpu_count' argument")
+        if memory_size_mb is None and 'memorySizeMb' in kwargs:
+            memory_size_mb = kwargs['memorySizeMb']
+        if memory_size_mb is None:
+            raise TypeError("Missing 'memory_size_mb' argument")
+
         _setter("cpu_count", cpu_count)
         _setter("memory_size_mb", memory_size_mb)
 

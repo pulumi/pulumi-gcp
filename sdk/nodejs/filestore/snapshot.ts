@@ -15,56 +15,6 @@ import * as utilities from "../utilities";
  *     * [Creating Snapshots](https://cloud.google.com/filestore/docs/create-snapshots)
  *
  * ## Example Usage
- * ### Filestore Snapshot Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const instance = new gcp.filestore.Instance("instance", {
- *     location: "us-east1",
- *     tier: "ENTERPRISE",
- *     fileShares: {
- *         capacityGb: 1024,
- *         name: "share1",
- *     },
- *     networks: [{
- *         network: "default",
- *         modes: ["MODE_IPV4"],
- *     }],
- * });
- * const snapshot = new gcp.filestore.Snapshot("snapshot", {
- *     instance: instance.name,
- *     location: "us-east1",
- * });
- * ```
- * ### Filestore Snapshot Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const instance = new gcp.filestore.Instance("instance", {
- *     location: "us-west1",
- *     tier: "ENTERPRISE",
- *     fileShares: {
- *         capacityGb: 1024,
- *         name: "share1",
- *     },
- *     networks: [{
- *         network: "default",
- *         modes: ["MODE_IPV4"],
- *     }],
- * });
- * const snapshot = new gcp.filestore.Snapshot("snapshot", {
- *     instance: instance.name,
- *     location: "us-west1",
- *     description: "Snapshot of test-instance-for-snapshot",
- *     labels: {
- *         my_label: "value",
- *     },
- * });
- * ```
  *
  * ## Import
  *

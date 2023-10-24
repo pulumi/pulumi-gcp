@@ -22,55 +22,6 @@ import (
 //   - [About Service Connection Policies](https://cloud.google.com/vpc/docs/about-service-connection-policies#service-policies)
 //
 // ## Example Usage
-// ### Network Connectivity Policy Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			producerNet, err := compute.NewNetwork(ctx, "producerNet", &compute.NetworkArgs{
-//				AutoCreateSubnetworks: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			producerSubnet, err := compute.NewSubnetwork(ctx, "producerSubnet", &compute.SubnetworkArgs{
-//				IpCidrRange: pulumi.String("10.0.0.0/16"),
-//				Region:      pulumi.String("us-central1"),
-//				Network:     producerNet.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
-//				Location:     pulumi.String("us-central1"),
-//				ServiceClass: pulumi.String("my-basic-service-class"),
-//				Description:  pulumi.String("my basic service connection policy"),
-//				Network:      producerNet.ID(),
-//				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
-//					Subnetworks: pulumi.StringArray{
-//						producerSubnet.ID(),
-//					},
-//					Limit: pulumi.String("2"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

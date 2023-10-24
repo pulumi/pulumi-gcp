@@ -40,11 +40,19 @@ class IAMBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             project: pulumi.Input[str],
-             role: pulumi.Input[str],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['IAMBindingConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("members", members)
         _setter("project", project)
         _setter("role", role)
@@ -136,7 +144,9 @@ class _IAMBindingState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -235,127 +245,6 @@ class IAMBinding(pulumi.CustomResource):
         > **Note:** The underlying API method `projects.setIamPolicy` has a lot of constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
            IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning 400 error code so please review these if you encounter errors with this resource.
 
-        ## google\\_project\\_iam\\_policy
-
-        !> **Be careful!** You can accidentally lock yourself out of your project
-           using this resource. Deleting a `projects.IAMPolicy` removes access
-           from anyone without organization-level access to the project. Proceed with caution.
-           It's not recommended to use `projects.IAMPolicy` with your provider project
-           to avoid locking yourself out, and it should generally only be used with projects
-           fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
-           applying the change.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
-        project = gcp.projects.IAMPolicy("project",
-            project="your-project-id",
-            policy_data=admin.policy_data)
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
-            ),
-            members=["user:jane@example.com"],
-            role="roles/compute.admin",
-        )])
-        project = gcp.projects.IAMPolicy("project",
-            policy_data=admin.policy_data,
-            project="your-project-id")
-        ```
-
-        ## google\\_project\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.projects.IAMBinding("project",
-            members=["user:jane@example.com"],
-            project="your-project-id",
-            role="roles/editor")
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.projects.IAMBinding("project",
-            condition=gcp.projects.IAMBindingConditionArgs(
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
-            ),
-            members=["user:jane@example.com"],
-            project="your-project-id",
-            role="roles/container.admin")
-        ```
-
-        ## google\\_project\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.projects.IAMMember("project",
-            member="user:jane@example.com",
-            project="your-project-id",
-            role="roles/editor")
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.projects.IAMMember("project",
-            condition=gcp.projects.IAMMemberConditionArgs(
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
-            ),
-            member="user:jane@example.com",
-            project="your-project-id",
-            role="roles/firebase.admin")
-        ```
-
-        ## google\\_project\\_iam\\_audit\\_config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.projects.IAMAuditConfig("project",
-            audit_log_configs=[
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    log_type="ADMIN_READ",
-                ),
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    exempted_members=["user:joebloggs@hashicorp.com"],
-                    log_type="DATA_READ",
-                ),
-            ],
-            project="your-project-id",
-            service="allServices")
-        ```
-
         ## Import
 
         IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
@@ -426,127 +315,6 @@ class IAMBinding(pulumi.CustomResource):
 
         > **Note:** The underlying API method `projects.setIamPolicy` has a lot of constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
            IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning 400 error code so please review these if you encounter errors with this resource.
-
-        ## google\\_project\\_iam\\_policy
-
-        !> **Be careful!** You can accidentally lock yourself out of your project
-           using this resource. Deleting a `projects.IAMPolicy` removes access
-           from anyone without organization-level access to the project. Proceed with caution.
-           It's not recommended to use `projects.IAMPolicy` with your provider project
-           to avoid locking yourself out, and it should generally only be used with projects
-           fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
-           applying the change.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
-        project = gcp.projects.IAMPolicy("project",
-            project="your-project-id",
-            policy_data=admin.policy_data)
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
-            ),
-            members=["user:jane@example.com"],
-            role="roles/compute.admin",
-        )])
-        project = gcp.projects.IAMPolicy("project",
-            policy_data=admin.policy_data,
-            project="your-project-id")
-        ```
-
-        ## google\\_project\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.projects.IAMBinding("project",
-            members=["user:jane@example.com"],
-            project="your-project-id",
-            role="roles/editor")
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.projects.IAMBinding("project",
-            condition=gcp.projects.IAMBindingConditionArgs(
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
-            ),
-            members=["user:jane@example.com"],
-            project="your-project-id",
-            role="roles/container.admin")
-        ```
-
-        ## google\\_project\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.projects.IAMMember("project",
-            member="user:jane@example.com",
-            project="your-project-id",
-            role="roles/editor")
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.projects.IAMMember("project",
-            condition=gcp.projects.IAMMemberConditionArgs(
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
-            ),
-            member="user:jane@example.com",
-            project="your-project-id",
-            role="roles/firebase.admin")
-        ```
-
-        ## google\\_project\\_iam\\_audit\\_config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.projects.IAMAuditConfig("project",
-            audit_log_configs=[
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    log_type="ADMIN_READ",
-                ),
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    exempted_members=["user:joebloggs@hashicorp.com"],
-                    log_type="DATA_READ",
-                ),
-            ],
-            project="your-project-id",
-            service="allServices")
-        ```
 
         ## Import
 
@@ -620,11 +388,7 @@ class IAMBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = IAMBindingArgs.__new__(IAMBindingArgs)
 
-            if condition is not None and not isinstance(condition, IAMBindingConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                IAMBindingConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, IAMBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")

@@ -13,32 +13,6 @@ import (
 )
 
 // Retrieves the current IAM policy data for a Google Cloud KMS key ring.
-//
-// ## example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kms.GetKeyRingIamPolicy(ctx, &kms.GetKeyRingIamPolicyArgs{
-//				KeyRingId: "{project_id}/{location_name}/{key_ring_name}",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetKeyRingIamPolicy(ctx *pulumi.Context, args *GetKeyRingIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetKeyRingIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKeyRingIamPolicyResult

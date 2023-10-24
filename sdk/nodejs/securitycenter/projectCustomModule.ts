@@ -20,64 +20,6 @@ import * as utilities from "../utilities";
  *     * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
  *
  * ## Example Usage
- * ### Scc Project Custom Module Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const example = new gcp.securitycenter.ProjectCustomModule("example", {
- *     customConfig: {
- *         description: "The rotation period of the identified cryptokey resource exceeds 30 days.",
- *         predicate: {
- *             expression: "resource.rotationPeriod > duration(\"2592000s\")",
- *         },
- *         recommendation: "Set the rotation period to at most 30 days.",
- *         resourceSelector: {
- *             resourceTypes: ["cloudkms.googleapis.com/CryptoKey"],
- *         },
- *         severity: "MEDIUM",
- *     },
- *     displayName: "basic_custom_module",
- *     enablementState: "ENABLED",
- * });
- * ```
- * ### Scc Project Custom Module Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const example = new gcp.securitycenter.ProjectCustomModule("example", {
- *     customConfig: {
- *         customOutput: {
- *             properties: [{
- *                 name: "duration",
- *                 valueExpression: {
- *                     description: "description of the expression",
- *                     expression: "resource.rotationPeriod",
- *                     location: "location of the expression",
- *                     title: "Purpose of the expression",
- *                 },
- *             }],
- *         },
- *         description: "Description of the custom module",
- *         predicate: {
- *             description: "description of the expression",
- *             expression: "resource.rotationPeriod > duration(\"2592000s\")",
- *             location: "location of the expression",
- *             title: "Purpose of the expression",
- *         },
- *         recommendation: "Steps to resolve violation",
- *         resourceSelector: {
- *             resourceTypes: ["cloudkms.googleapis.com/CryptoKey"],
- *         },
- *         severity: "LOW",
- *     },
- *     displayName: "full_custom_module",
- *     enablementState: "ENABLED",
- * });
- * ```
  *
  * ## Import
  *

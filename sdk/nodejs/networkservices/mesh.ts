@@ -6,37 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- * ### Network Services Mesh Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.networkservices.Mesh("default", {
- *     labels: {
- *         foo: "bar",
- *     },
- *     description: "my description",
- *     interceptionPort: 443,
- * }, {
- *     provider: google_beta,
- * });
- * ```
- * ### Network Services Mesh No Port
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.networkservices.Mesh("default", {
- *     labels: {
- *         foo: "bar",
- *     },
- *     description: "my description",
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *

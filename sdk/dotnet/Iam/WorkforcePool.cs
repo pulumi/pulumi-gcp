@@ -23,48 +23,6 @@ namespace Pulumi.Gcp.Iam
     /// your billing/quota project. The account team notifies you when the project is granted access.
     /// 
     /// ## Example Usage
-    /// ### Iam Workforce Pool Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Gcp.Iam.WorkforcePool("example", new()
-    ///     {
-    ///         Location = "global",
-    ///         Parent = "organizations/123456789",
-    ///         WorkforcePoolId = "example-pool",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Iam Workforce Pool Full
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Gcp.Iam.WorkforcePool("example", new()
-    ///     {
-    ///         Description = "A sample workforce pool.",
-    ///         Disabled = false,
-    ///         DisplayName = "Display name",
-    ///         Location = "global",
-    ///         Parent = "organizations/123456789",
-    ///         SessionDuration = "7200s",
-    ///         WorkforcePoolId = "example-pool",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 
