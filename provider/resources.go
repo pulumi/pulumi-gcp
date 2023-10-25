@@ -292,10 +292,6 @@ func gcpResource(mod string, res string) tokens.Type {
 // managedByPulumi is a default used for some managed resources, in the absence of something more meaningful.
 var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
 
-func boolRef(b bool) *bool {
-	return &b
-}
-
 // stringValue gets a string value from a property map if present, else ""
 func stringValue(vars resource.PropertyMap, prop resource.PropertyKey, envs []string) string {
 	val, ok := vars[prop]
